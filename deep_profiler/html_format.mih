@@ -1,0 +1,133 @@
+/*
+** Automatically generated from `html_format.m'
+** by the Mercury compiler,
+** version rotd-2014-10-24
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module html_format. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_html_format
+#define MR_HEADER_GUARD_html_format
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HTML_FORMAT_DECL_GUARD
+#define HTML_FORMAT_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "html_format.mih.tmp"
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_column_class_map_0;
+
+#line 45 "html_format.mih.tmp"
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_format_info_0;
+
+#line 48 "html_format.mih.tmp"
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_html_0;
+
+#line 51 "html_format.mih.tmp"
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_style_control_0;
+
+#line 54 "html_format.mih.tmp"
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_style_control_map_0;
+
+#line 57 "html_format.mih.tmp"
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_style_element_0;
+
+#line 60 "html_format.mih.tmp"
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_style_element_map_0;
+
+#line 63 "html_format.mih.tmp"
+extern const MR_TypeCtorInfo_Struct html_format__html_format__type_ctor_info_table_header_rows_0;
+
+#line 34 "html_format.m"
+void MR_CALL 
+html_format____Compare____html_0_0(
+#line 34 "html_format.m"
+  MR_Word * html_format__param_1,
+#line 34 "html_format.m"
+  MR_Word html_format__param_2,
+#line 34 "html_format.m"
+  MR_Word html_format__param_3);
+
+#line 34 "html_format.m"
+MR_bool MR_CALL 
+html_format____Unify____html_0_0(
+#line 34 "html_format.m"
+  MR_Word html_format__param_1,
+#line 34 "html_format.m"
+  MR_Word html_format__param_2);
+
+#line 61 "html_format.m"
+MR_String MR_CALL 
+html_format__escape_break_html_attr_string_1_f_0(
+#line 61 "html_format.m"
+  MR_Word html_format__param_1);
+
+#line 60 "html_format.m"
+MR_String MR_CALL 
+html_format__escape_break_html_string_1_f_0(
+#line 60 "html_format.m"
+  MR_String html_format__param_1);
+
+#line 54 "html_format.m"
+MR_String MR_CALL 
+html_format__escape_html_attr_string_1_f_0(
+#line 54 "html_format.m"
+  MR_Word html_format__param_1);
+
+#line 53 "html_format.m"
+MR_String MR_CALL 
+html_format__escape_html_string_1_f_0(
+#line 53 "html_format.m"
+  MR_String html_format__param_1);
+
+#line 46 "html_format.m"
+MR_Word MR_CALL 
+html_format__htmlize_display_3_f_0(
+#line 46 "html_format.m"
+  MR_Word html_format__param_1,
+#line 46 "html_format.m"
+  MR_Word html_format__param_2,
+#line 46 "html_format.m"
+  MR_Word html_format__param_3);
+
+#line 36 "html_format.m"
+MR_String MR_CALL 
+html_format__html_to_string_1_f_0(
+#line 36 "html_format.m"
+  MR_Word html_format__param_1);
+
+void mercury__html_format__init(void);
+void mercury__html_format__init_type_tables(void);
+void mercury__html_format__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_html_format */
+
+/* :- end_interface html_format. */

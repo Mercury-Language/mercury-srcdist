@@ -1,0 +1,13 @@
+:- module (transform_hlds.trans_opt).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.module_imports).
+:- pred grab_trans_opt_files(libs.globals.globals, list.list(mdbcomp.sym_name.module_name), parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports, bool.bool, io.io, io.io).
+:- mode grab_trans_opt_files((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_trans_opt_file(hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_trans_opt_file((builtin.in), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,46 @@
+:- module (mdbcomp.rtti_access).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.trace_counts).
+:- type bytecode
+	--->	bytecode(mdbcomp.rtti_access.bytecode_bytes, int).
+:- type bytecode_bytes
+	--->	dummy_bytecode_bytes .
+:- pragma foreign_type(c, bytecode_bytes, "const MR_uint_least8_t *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(java, bytecode_bytes, "java.lang.Object").
+:- pragma foreign_type(csharp, bytecode_bytes, "object").
+:- pragma foreign_type(erlang, bytecode_bytes, "").
+:- type label_layout.
+:- type module_layout.
+:- type proc_layout.
+:- type string_table
+	--->	string_table(mdbcomp.rtti_access.string_table_chars, int).
+:- type string_table_chars.
+:- implementation.
+:- pragma foreign_type(c, label_layout, "const MR_LabelLayout *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(java, label_layout, "java.lang.Object").
+:- pragma foreign_type(csharp, label_layout, "object").
+:- pragma foreign_type(erlang, label_layout, "").
+:- pragma foreign_type(c, module_layout, "const MR_ModuleLayout *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(java, module_layout, "java.lang.Object").
+:- pragma foreign_type(csharp, module_layout, "object").
+:- pragma foreign_type(erlang, module_layout, "").
+:- pragma foreign_type(c, proc_layout, "const MR_ProcLayout *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(java, proc_layout, "java.lang.Object").
+:- pragma foreign_type(csharp, proc_layout, "object").
+:- pragma foreign_type(erlang, proc_layout, "").
+:- pragma foreign_type(c, string_table_chars, "MR_ConstString", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(java, string_table_chars, "java.lang.Object").
+:- pragma foreign_type(csharp, string_table_chars, "object").
+:- pragma foreign_type(erlang, string_table_chars, "").
+:- pragma foreign_import_module("C", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("C#", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("Java", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("Erlang", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("C", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("C#", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("Java", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("Erlang", (mdbcomp.rtti_access)).

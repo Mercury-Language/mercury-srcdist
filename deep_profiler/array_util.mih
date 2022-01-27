@@ -1,0 +1,545 @@
+/*
+** Automatically generated from `array_util.m'
+** by the Mercury compiler,
+** version rotd-2014-10-24
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module array_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_array_util
+#define MR_HEADER_GUARD_array_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ARRAY_UTIL_DECL_GUARD
+#define ARRAY_UTIL_DECL_GUARD
+
+#endif
+
+
+
+
+#line 125 "array_util.m"
+void MR_CALL 
+array_util__array_map_from_1_3_p_0(
+#line 125 "array_util.m"
+  MR_Word array_util__param_1,
+#line 125 "array_util.m"
+  MR_Word array_util__param_2,
+#line 125 "array_util.m"
+  MR_ArrayPtr array_util__param_3,
+#line 125 "array_util.m"
+  MR_ArrayPtr * array_util__param_4);
+
+#line 119 "array_util.m"
+void MR_CALL 
+array_util__array_map_from_0_3_p_0(
+#line 119 "array_util.m"
+  MR_Word array_util__param_1,
+#line 119 "array_util.m"
+  MR_Word array_util__param_2,
+#line 119 "array_util.m"
+  MR_ArrayPtr array_util__param_3,
+#line 119 "array_util.m"
+  MR_ArrayPtr * array_util__param_4);
+
+#line 112 "array_util.m"
+void MR_CALL 
+array_util__array_list_foldl2_6_p_0(
+#line 112 "array_util.m"
+  MR_Word array_util__param_1,
+#line 112 "array_util.m"
+  MR_Word array_util__param_2,
+#line 112 "array_util.m"
+  MR_Word array_util__param_3,
+#line 112 "array_util.m"
+  MR_Word array_util__param_4,
+#line 112 "array_util.m"
+  MR_Word array_util__param_5,
+#line 112 "array_util.m"
+  MR_ArrayPtr array_util__param_6,
+#line 112 "array_util.m"
+  MR_ArrayPtr * array_util__param_7,
+#line 112 "array_util.m"
+  MR_ArrayPtr array_util__param_8,
+#line 112 "array_util.m"
+  MR_ArrayPtr * array_util__param_9);
+
+#line 104 "array_util.m"
+void MR_CALL 
+array_util__array_list_foldl_4_p_0(
+#line 104 "array_util.m"
+  MR_Word array_util__param_1,
+#line 104 "array_util.m"
+  MR_Word array_util__param_2,
+#line 104 "array_util.m"
+  MR_Word array_util__param_3,
+#line 104 "array_util.m"
+  MR_Word array_util__param_4,
+#line 104 "array_util.m"
+  MR_ArrayPtr array_util__param_5,
+#line 104 "array_util.m"
+  MR_ArrayPtr * array_util__param_6);
+
+#line 95 "array_util.m"
+void MR_CALL 
+array_util__array_foldl3_from_1_8_p_0(
+#line 95 "array_util.m"
+  MR_Word array_util__param_1,
+#line 95 "array_util.m"
+  MR_Word array_util__param_2,
+#line 95 "array_util.m"
+  MR_Word array_util__param_3,
+#line 95 "array_util.m"
+  MR_Word array_util__param_4,
+#line 95 "array_util.m"
+  MR_Word array_util__param_5,
+#line 95 "array_util.m"
+  MR_ArrayPtr array_util__param_6,
+#line 95 "array_util.m"
+  MR_Box array_util__param_7,
+#line 95 "array_util.m"
+  MR_Box * array_util__param_8,
+#line 95 "array_util.m"
+  MR_Box array_util__param_9,
+#line 95 "array_util.m"
+  MR_Box * array_util__param_10,
+#line 95 "array_util.m"
+  MR_Box array_util__param_11,
+#line 95 "array_util.m"
+  MR_Box * array_util__param_12);
+
+#line 87 "array_util.m"
+void MR_CALL 
+array_util__array_foldl2_8_p_4(
+#line 87 "array_util.m"
+  MR_Word array_util__param_1,
+#line 87 "array_util.m"
+  MR_Word array_util__param_2,
+#line 87 "array_util.m"
+  MR_Word array_util__param_3,
+#line 87 "array_util.m"
+  MR_Integer array_util__param_4,
+#line 87 "array_util.m"
+  MR_Integer array_util__param_5,
+#line 87 "array_util.m"
+  MR_Word array_util__param_6,
+#line 87 "array_util.m"
+  MR_ArrayPtr array_util__param_7,
+#line 87 "array_util.m"
+  MR_Box array_util__param_8,
+#line 87 "array_util.m"
+  MR_Box * array_util__param_9,
+#line 87 "array_util.m"
+  MR_Box array_util__param_10,
+#line 87 "array_util.m"
+  MR_Box * array_util__param_11);
+
+#line 85 "array_util.m"
+void MR_CALL 
+array_util__array_foldl2_8_p_3(
+#line 85 "array_util.m"
+  MR_Word array_util__param_1,
+#line 85 "array_util.m"
+  MR_Word array_util__param_2,
+#line 85 "array_util.m"
+  MR_Word array_util__param_3,
+#line 85 "array_util.m"
+  MR_Integer array_util__param_4,
+#line 85 "array_util.m"
+  MR_Integer array_util__param_5,
+#line 85 "array_util.m"
+  MR_Word array_util__param_6,
+#line 85 "array_util.m"
+  MR_ArrayPtr array_util__param_7,
+#line 85 "array_util.m"
+  MR_Box array_util__param_8,
+#line 85 "array_util.m"
+  MR_Box * array_util__param_9,
+#line 85 "array_util.m"
+  MR_Box array_util__param_10,
+#line 85 "array_util.m"
+  MR_Box * array_util__param_11);
+
+#line 82 "array_util.m"
+void MR_CALL 
+array_util__array_foldl2_8_p_2(
+#line 82 "array_util.m"
+  MR_Word array_util__param_1,
+#line 82 "array_util.m"
+  MR_Word array_util__param_2,
+#line 82 "array_util.m"
+  MR_Word array_util__param_3,
+#line 82 "array_util.m"
+  MR_Integer array_util__param_4,
+#line 82 "array_util.m"
+  MR_Integer array_util__param_5,
+#line 82 "array_util.m"
+  MR_Word array_util__param_6,
+#line 82 "array_util.m"
+  MR_ArrayPtr array_util__param_7,
+#line 82 "array_util.m"
+  MR_Box array_util__param_8,
+#line 82 "array_util.m"
+  MR_Box * array_util__param_9,
+#line 82 "array_util.m"
+  MR_Box array_util__param_10,
+#line 82 "array_util.m"
+  MR_Box * array_util__param_11);
+
+#line 79 "array_util.m"
+void MR_CALL 
+array_util__array_foldl2_8_p_1(
+#line 79 "array_util.m"
+  MR_Word array_util__param_1,
+#line 79 "array_util.m"
+  MR_Word array_util__param_2,
+#line 79 "array_util.m"
+  MR_Word array_util__param_3,
+#line 79 "array_util.m"
+  MR_Integer array_util__param_4,
+#line 79 "array_util.m"
+  MR_Integer array_util__param_5,
+#line 79 "array_util.m"
+  MR_Word array_util__param_6,
+#line 79 "array_util.m"
+  MR_ArrayPtr array_util__param_7,
+#line 79 "array_util.m"
+  MR_Box array_util__param_8,
+#line 79 "array_util.m"
+  MR_Box * array_util__param_9,
+#line 79 "array_util.m"
+  MR_Box array_util__param_10,
+#line 79 "array_util.m"
+  MR_Box * array_util__param_11);
+
+#line 77 "array_util.m"
+void MR_CALL 
+array_util__array_foldl2_8_p_0(
+#line 77 "array_util.m"
+  MR_Word array_util__param_1,
+#line 77 "array_util.m"
+  MR_Word array_util__param_2,
+#line 77 "array_util.m"
+  MR_Word array_util__param_3,
+#line 77 "array_util.m"
+  MR_Integer array_util__param_4,
+#line 77 "array_util.m"
+  MR_Integer array_util__param_5,
+#line 77 "array_util.m"
+  MR_Word array_util__param_6,
+#line 77 "array_util.m"
+  MR_ArrayPtr array_util__param_7,
+#line 77 "array_util.m"
+  MR_Box array_util__param_8,
+#line 77 "array_util.m"
+  MR_Box * array_util__param_9,
+#line 77 "array_util.m"
+  MR_Box array_util__param_10,
+#line 77 "array_util.m"
+  MR_Box * array_util__param_11);
+
+#line 70 "array_util.m"
+void MR_CALL 
+array_util__array_foldl2_from_1_6_p_4(
+#line 70 "array_util.m"
+  MR_Word array_util__param_1,
+#line 70 "array_util.m"
+  MR_Word array_util__param_2,
+#line 70 "array_util.m"
+  MR_Word array_util__param_3,
+#line 70 "array_util.m"
+  MR_Word array_util__param_4,
+#line 70 "array_util.m"
+  MR_ArrayPtr array_util__param_5,
+#line 70 "array_util.m"
+  MR_Box array_util__param_6,
+#line 70 "array_util.m"
+  MR_Box * array_util__param_7,
+#line 70 "array_util.m"
+  MR_Box array_util__param_8,
+#line 70 "array_util.m"
+  MR_Box * array_util__param_9);
+
+#line 68 "array_util.m"
+void MR_CALL 
+array_util__array_foldl2_from_1_6_p_3(
+#line 68 "array_util.m"
+  MR_Word array_util__param_1,
+#line 68 "array_util.m"
+  MR_Word array_util__param_2,
+#line 68 "array_util.m"
+  MR_Word array_util__param_3,
+#line 68 "array_util.m"
+  MR_Word array_util__param_4,
+#line 68 "array_util.m"
+  MR_ArrayPtr array_util__param_5,
+#line 68 "array_util.m"
+  MR_Box array_util__param_6,
+#line 68 "array_util.m"
+  MR_Box * array_util__param_7,
+#line 68 "array_util.m"
+  MR_Box array_util__param_8,
+#line 68 "array_util.m"
+  MR_Box * array_util__param_9);
+
+#line 66 "array_util.m"
+void MR_CALL 
+array_util__array_foldl2_from_1_6_p_2(
+#line 66 "array_util.m"
+  MR_Word array_util__param_1,
+#line 66 "array_util.m"
+  MR_Word array_util__param_2,
+#line 66 "array_util.m"
+  MR_Word array_util__param_3,
+#line 66 "array_util.m"
+  MR_Word array_util__param_4,
+#line 66 "array_util.m"
+  MR_ArrayPtr array_util__param_5,
+#line 66 "array_util.m"
+  MR_Box array_util__param_6,
+#line 66 "array_util.m"
+  MR_Box * array_util__param_7,
+#line 66 "array_util.m"
+  MR_Box array_util__param_8,
+#line 66 "array_util.m"
+  MR_Box * array_util__param_9);
+
+#line 63 "array_util.m"
+void MR_CALL 
+array_util__array_foldl2_from_1_6_p_1(
+#line 63 "array_util.m"
+  MR_Word array_util__param_1,
+#line 63 "array_util.m"
+  MR_Word array_util__param_2,
+#line 63 "array_util.m"
+  MR_Word array_util__param_3,
+#line 63 "array_util.m"
+  MR_Word array_util__param_4,
+#line 63 "array_util.m"
+  MR_ArrayPtr array_util__param_5,
+#line 63 "array_util.m"
+  MR_Box array_util__param_6,
+#line 63 "array_util.m"
+  MR_Box * array_util__param_7,
+#line 63 "array_util.m"
+  MR_Box array_util__param_8,
+#line 63 "array_util.m"
+  MR_Box * array_util__param_9);
+
+#line 61 "array_util.m"
+void MR_CALL 
+array_util__array_foldl2_from_1_6_p_0(
+#line 61 "array_util.m"
+  MR_Word array_util__param_1,
+#line 61 "array_util.m"
+  MR_Word array_util__param_2,
+#line 61 "array_util.m"
+  MR_Word array_util__param_3,
+#line 61 "array_util.m"
+  MR_Word array_util__param_4,
+#line 61 "array_util.m"
+  MR_ArrayPtr array_util__param_5,
+#line 61 "array_util.m"
+  MR_Box array_util__param_6,
+#line 61 "array_util.m"
+  MR_Box * array_util__param_7,
+#line 61 "array_util.m"
+  MR_Box array_util__param_8,
+#line 61 "array_util.m"
+  MR_Box * array_util__param_9);
+
+#line 55 "array_util.m"
+void MR_CALL 
+array_util__array_foldl_6_p_2(
+#line 55 "array_util.m"
+  MR_Word array_util__param_1,
+#line 55 "array_util.m"
+  MR_Word array_util__param_2,
+#line 55 "array_util.m"
+  MR_Integer array_util__param_3,
+#line 55 "array_util.m"
+  MR_Integer array_util__param_4,
+#line 55 "array_util.m"
+  MR_Word array_util__param_5,
+#line 55 "array_util.m"
+  MR_ArrayPtr array_util__param_6,
+#line 55 "array_util.m"
+  MR_Box array_util__param_7,
+#line 55 "array_util.m"
+  MR_Box * array_util__param_8);
+
+#line 53 "array_util.m"
+void MR_CALL 
+array_util__array_foldl_6_p_1(
+#line 53 "array_util.m"
+  MR_Word array_util__param_1,
+#line 53 "array_util.m"
+  MR_Word array_util__param_2,
+#line 53 "array_util.m"
+  MR_Integer array_util__param_3,
+#line 53 "array_util.m"
+  MR_Integer array_util__param_4,
+#line 53 "array_util.m"
+  MR_Word array_util__param_5,
+#line 53 "array_util.m"
+  MR_ArrayPtr array_util__param_6,
+#line 53 "array_util.m"
+  MR_Box array_util__param_7,
+#line 53 "array_util.m"
+  MR_Box * array_util__param_8);
+
+#line 52 "array_util.m"
+void MR_CALL 
+array_util__array_foldl_6_p_0(
+#line 52 "array_util.m"
+  MR_Word array_util__param_1,
+#line 52 "array_util.m"
+  MR_Word array_util__param_2,
+#line 52 "array_util.m"
+  MR_Integer array_util__param_3,
+#line 52 "array_util.m"
+  MR_Integer array_util__param_4,
+#line 52 "array_util.m"
+  MR_Word array_util__param_5,
+#line 52 "array_util.m"
+  MR_ArrayPtr array_util__param_6,
+#line 52 "array_util.m"
+  MR_Box array_util__param_7,
+#line 52 "array_util.m"
+  MR_Box * array_util__param_8);
+
+#line 46 "array_util.m"
+void MR_CALL 
+array_util__array_foldl_from_0_4_p_2(
+#line 46 "array_util.m"
+  MR_Word array_util__param_1,
+#line 46 "array_util.m"
+  MR_Word array_util__param_2,
+#line 46 "array_util.m"
+  MR_Word array_util__param_3,
+#line 46 "array_util.m"
+  MR_ArrayPtr array_util__param_4,
+#line 46 "array_util.m"
+  MR_Box array_util__param_5,
+#line 46 "array_util.m"
+  MR_Box * array_util__param_6);
+
+#line 44 "array_util.m"
+void MR_CALL 
+array_util__array_foldl_from_0_4_p_1(
+#line 44 "array_util.m"
+  MR_Word array_util__param_1,
+#line 44 "array_util.m"
+  MR_Word array_util__param_2,
+#line 44 "array_util.m"
+  MR_Word array_util__param_3,
+#line 44 "array_util.m"
+  MR_ArrayPtr array_util__param_4,
+#line 44 "array_util.m"
+  MR_Box array_util__param_5,
+#line 44 "array_util.m"
+  MR_Box * array_util__param_6);
+
+#line 43 "array_util.m"
+void MR_CALL 
+array_util__array_foldl_from_0_4_p_0(
+#line 43 "array_util.m"
+  MR_Word array_util__param_1,
+#line 43 "array_util.m"
+  MR_Word array_util__param_2,
+#line 43 "array_util.m"
+  MR_Word array_util__param_3,
+#line 43 "array_util.m"
+  MR_ArrayPtr array_util__param_4,
+#line 43 "array_util.m"
+  MR_Box array_util__param_5,
+#line 43 "array_util.m"
+  MR_Box * array_util__param_6);
+
+#line 37 "array_util.m"
+void MR_CALL 
+array_util__array_foldl_from_1_4_p_2(
+#line 37 "array_util.m"
+  MR_Word array_util__param_1,
+#line 37 "array_util.m"
+  MR_Word array_util__param_2,
+#line 37 "array_util.m"
+  MR_Word array_util__param_3,
+#line 37 "array_util.m"
+  MR_ArrayPtr array_util__param_4,
+#line 37 "array_util.m"
+  MR_Box array_util__param_5,
+#line 37 "array_util.m"
+  MR_Box * array_util__param_6);
+
+#line 35 "array_util.m"
+void MR_CALL 
+array_util__array_foldl_from_1_4_p_1(
+#line 35 "array_util.m"
+  MR_Word array_util__param_1,
+#line 35 "array_util.m"
+  MR_Word array_util__param_2,
+#line 35 "array_util.m"
+  MR_Word array_util__param_3,
+#line 35 "array_util.m"
+  MR_ArrayPtr array_util__param_4,
+#line 35 "array_util.m"
+  MR_Box array_util__param_5,
+#line 35 "array_util.m"
+  MR_Box * array_util__param_6);
+
+#line 34 "array_util.m"
+void MR_CALL 
+array_util__array_foldl_from_1_4_p_0(
+#line 34 "array_util.m"
+  MR_Word array_util__param_1,
+#line 34 "array_util.m"
+  MR_Word array_util__param_2,
+#line 34 "array_util.m"
+  MR_Word array_util__param_3,
+#line 34 "array_util.m"
+  MR_ArrayPtr array_util__param_4,
+#line 34 "array_util.m"
+  MR_Box array_util__param_5,
+#line 34 "array_util.m"
+  MR_Box * array_util__param_6);
+
+#line 28 "array_util.m"
+MR_Box MR_CALL 
+array_util__u_1_f_0(
+#line 28 "array_util.m"
+  MR_Word array_util__param_1,
+#line 28 "array_util.m"
+  MR_Box array_util__param_2);
+
+void mercury__array_util__init(void);
+void mercury__array_util__init_type_tables(void);
+void mercury__array_util__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_array_util */
+
+/* :- end_interface array_util. */

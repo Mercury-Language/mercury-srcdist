@@ -1,0 +1,17 @@
+:- module (hlds.goal_path).
+:- interface.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.goal_path).
+:- import_module (parse_tree.prog_data).
+:- pred fill_goal_id_slots_in_clauses(hlds.hlds_module.module_info, mdbcomp.goal_path.containing_goal_map, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info).
+:- mode fill_goal_id_slots_in_clauses((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred fill_goal_id_slots_in_proc(hlds.hlds_module.module_info, mdbcomp.goal_path.containing_goal_map, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode fill_goal_id_slots_in_proc((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred fill_goal_id_slots_in_proc_body(hlds.hlds_module.module_info, parse_tree.prog_data.vartypes, mdbcomp.goal_path.containing_goal_map, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode fill_goal_id_slots_in_proc_body((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred fill_goal_path_slots_in_proc(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode fill_goal_path_slots_in_proc((builtin.in), (builtin.in), (builtin.out)) is det.

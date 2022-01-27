@@ -1,0 +1,20 @@
+:- module (parse_tree.module_imports).
+:- interface.
+:- import_module cord.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io_error).
+:- import_module (parse_tree.prog_item).
+:- type module_and_imports
+	--->	module_and_imports(((parse_tree.module_imports).mai_source_file_name) :: libs.file_util.file_name, ((parse_tree.module_imports).mai_source_file_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.module_imports).mai_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.module_imports).mai_parent_deps) :: list.list(mdbcomp.sym_name.module_name), ((parse_tree.module_imports).mai_int_deps) :: list.list(mdbcomp.sym_name.module_name), ((parse_tree.module_imports).mai_impl_deps) :: list.list(mdbcomp.sym_name.module_name), ((parse_tree.module_imports).mai_indirect_deps) :: list.list(mdbcomp.sym_name.module_name), ((parse_tree.module_imports).mai_children) :: list.list(mdbcomp.sym_name.module_name), ((parse_tree.module_imports).mai_public_children) :: list.list(mdbcomp.sym_name.module_name), ((parse_tree.module_imports).mai_nested_children) :: list.list(mdbcomp.sym_name.module_name), ((parse_tree.module_imports).mai_fact_table_deps) :: list.list(string), ((parse_tree.module_imports).mai_has_foreign_code) :: parse_tree.prog_item.contains_foreign_code, ((parse_tree.module_imports).mai_foreign_import_modules) :: parse_tree.prog_data.foreign_import_module_info_list, ((parse_tree.module_imports).mai_foreign_include_files) :: parse_tree.prog_data.foreign_include_file_info_list, ((parse_tree.module_imports).mai_contains_foreign_export) :: parse_tree.prog_item.contains_foreign_export, ((parse_tree.module_imports).mai_items_cord) :: cord.cord(parse_tree.prog_item.item), ((parse_tree.module_imports).mai_specs) :: list.list(parse_tree.error_util.error_spec), ((parse_tree.module_imports).mai_error) :: parse_tree.prog_io_error.module_error, ((parse_tree.module_imports).mai_maybe_timestamps) :: maybe.maybe(parse_tree.module_imports.module_timestamps), ((parse_tree.module_imports).mai_has_main) :: parse_tree.prog_data.has_main, ((parse_tree.module_imports).mai_module_dir) :: libs.file_util.dir_name).
+:- type module_timestamp
+	--->	module_timestamp(((parse_tree.module_imports).suffix) :: string, ((parse_tree.module_imports).timestamp) :: libs.timestamp.timestamp, ((parse_tree.module_imports).need_qualifier) :: parse_tree.prog_data.need_qualifier).
+:- type module_timestamps == map.map(mdbcomp.sym_name.module_name, parse_tree.module_imports.module_timestamp).

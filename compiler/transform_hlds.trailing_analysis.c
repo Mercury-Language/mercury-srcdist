@@ -1,0 +1,10194 @@
+/*
+** Automatically generated from `trailing_analysis.m'
+** by the Mercury compiler,
+** version rotd-2014-10-24
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.trailing_analysis. */
+/* :- implementation. */
+
+/*
+INIT mercury__transform_hlds__trailing_analysis__init
+ENDINIT
+*/
+
+#include "transform_hlds.trailing_analysis.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "hlds.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "transform_hlds.mih"
+#include "tree234.mih"
+#include "tree_bitset.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.type_util.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_error_util.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.builtin_modules.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_names.mih"
+#include "parse_tree.mercury_to_mercury.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.dependency_graph.mih"
+#include "transform_hlds.mmc_analysis.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+#line 858 "trailing_analysis.m"
+struct transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0_s {
+#line 864 "trailing_analysis.m"
+  MR_bool transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded;
+#line 877 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__CallPredInfo_45;
+#line 886 "trailing_analysis.m"
+  jmp_buf transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__commit_0;
+#line 886 "trailing_analysis.m"
+  MR_String transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__Name_47;
+#line 886 "trailing_analysis.m"
+  MR_Integer transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__Arity_48;
+#line 886 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__SpecialPredId_49;
+#line 886 "trailing_analysis.m"
+  MR_String transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__V_139_139;
+#line 886 "trailing_analysis.m"
+  MR_Integer transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__V_140_140;
+#line 858 "trailing_analysis.m"
+};
+
+#line 318 "trailing_analysis.m"
+struct transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0_s {
+#line 323 "trailing_analysis.m"
+  MR_bool transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded;
+#line 340 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__CallPredInfo_48;
+#line 361 "trailing_analysis.m"
+  jmp_buf transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__commit_0;
+#line 361 "trailing_analysis.m"
+  MR_String transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__Name_52;
+#line 361 "trailing_analysis.m"
+  MR_Integer transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__Arity_53;
+#line 361 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__SpecialPredId_54;
+#line 361 "trailing_analysis.m"
+  MR_String transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__V_162_162;
+#line 361 "trailing_analysis.m"
+  MR_Integer transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__V_163_163;
+#line 318 "trailing_analysis.m"
+};
+
+#line 246 "trailing_analysis.m"
+struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s {
+#line 246 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1;
+#line 249 "trailing_analysis.m"
+  MR_bool transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded;
+#line 256 "trailing_analysis.m"
+  jmp_buf transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__commit_0;
+#line 256 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14;
+#line 257 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__conv0_ProcResult_14;
+#line 264 "trailing_analysis.m"
+  jmp_buf transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__commit_1;
+#line 264 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15;
+#line 264 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__V_18_18;
+#line 265 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__conv1_EResult_15;
+#line 270 "trailing_analysis.m"
+  jmp_buf transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__commit_2;
+#line 270 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__V_19_19;
+#line 270 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_20;
+#line 270 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__conv2_CResult_20;
+#line 246 "trailing_analysis.m"
+};
+
+
+#line 215 "transform_hlds.trailing_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__trailing_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+#line 218 "transform_hlds.trailing_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_hlds__hlds_module__type_ctor_info_proc_trailing_info_0;
+
+#line 221 "transform_hlds.trailing_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__trailing_analysis__list__pti_list_1__plain_transform_hlds__trailing_analysis__type_ctor_info_proc_result_0;
+
+#line 224 "transform_hlds.trailing_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__trailing_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0;
+
+#line 227 "transform_hlds.trailing_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__trailing_analysis__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 230 "transform_hlds.trailing_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+#line 233 "transform_hlds.trailing_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__trailing_analysis__maybe__ti_maybe_1analysis__type_ctor_info_analysis_status_0;
+
+#line 236 "transform_hlds.trailing_analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__field_types_proc_result_0_0[3];
+
+#line 239 "transform_hlds.trailing_analysis.c"
+static const MR_ConstString transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__field_names_proc_result_0_0[3];
+
+#line 242 "transform_hlds.trailing_analysis.c"
+static const MR_DuFunctorDesc transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_functor_desc_proc_result_0_0;
+
+#line 245 "transform_hlds.trailing_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_stag_ordered_proc_result_0_0[1];
+
+#line 248 "transform_hlds.trailing_analysis.c"
+static const MR_DuPtagLayout transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_ptag_ordered_proc_result_0[1];
+
+#line 251 "transform_hlds.trailing_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_name_ordered_proc_result_0[1];
+
+#line 254 "transform_hlds.trailing_analysis.c"
+static const MR_Integer transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__functor_number_map_proc_result_0[1];
+
+#line 257 "transform_hlds.trailing_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__trailing_analysis__list__ti_list_1transform_hlds__trailing_analysis__type_ctor_info_proc_result_0;
+
+#line 260 "transform_hlds.trailing_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__trailing_analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+#line 263 "transform_hlds.trailing_analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_functor_desc_should_write_for_0_0;
+
+#line 266 "transform_hlds.trailing_analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_functor_desc_should_write_for_0_1;
+
+#line 269 "transform_hlds.trailing_analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_value_ordered_should_write_for_0[2];
+
+#line 272 "transform_hlds.trailing_analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_name_ordered_should_write_for_0[2];
+
+#line 275 "transform_hlds.trailing_analysis.c"
+static const MR_Integer transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__functor_number_map_should_write_for_0[2];
+
+#line 278 "transform_hlds.trailing_analysis.c"
+static const MR_Integer transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__functor_number_map_trailing_analysis_answer_0[1];
+
+#line 281 "transform_hlds.trailing_analysis.c"
+static const MR_NotagFunctorDesc transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__notag_functor_desc_trailing_analysis_answer_0;
+
+#line 284 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____proc_result_0_0_10001(
+#line 287 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 289 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2);
+
+#line 292 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____proc_result_0_0_10001(
+#line 295 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 297 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 299 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 302 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____proc_results_0_0_10001(
+#line 305 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 307 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2);
+
+#line 310 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____proc_results_0_0_10001(
+#line 313 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 315 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 317 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 320 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____scc_0_0_10001(
+#line 323 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 325 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2);
+
+#line 328 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____scc_0_0_10001(
+#line 331 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 333 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 335 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 338 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____should_write_for_0_0_10001(
+#line 341 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 343 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2);
+
+#line 346 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____should_write_for_0_0_10001(
+#line 349 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 351 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 353 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 356 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____trailing_analysis_answer_0_0_10001(
+#line 359 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 361 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2);
+
+#line 364 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____trailing_analysis_answer_0_0_10001(
+#line 367 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 369 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 371 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 374 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__to_term_1_1_f_0_10001(
+#line 377 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 379 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1);
+
+#line 382 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__from_term_2_2_p_0_10001(
+#line 385 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 387 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 389 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_2);
+
+#line 392 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0_10001(
+#line 395 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 397 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 399 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 401 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 404 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__equivalent_3_3_p_0_10001(
+#line 407 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 409 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 411 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 413 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 416 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_name_2_2_f_0_10001(
+#line 419 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg);
+
+#line 422 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001(
+#line 425 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg);
+
+#line 428 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001(
+#line 431 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg);
+
+#line 434 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__bottom_2_2_f_0_10001(
+#line 437 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 439 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1);
+
+#line 442 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__top_2_2_f_0_10001(
+#line 445 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 447 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1);
+
+#line 450 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__get_func_info_6_6_p_0_10001(
+#line 453 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 455 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 457 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 459 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3,
+#line 461 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_6);
+
+#line 1172 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 1172 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Status_8,
+#line 1172 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Status_3);
+
+#line 1167 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 1167 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Answer1_4,
+#line 1167 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Answer2_5);
+
+#line 1162 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_6_p_0(void);
+
+#line 1161 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1160 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1159 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1158 "trailing_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1157 "trailing_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 462 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__IntroducedFrom__func__check_goal_for_trail_mods__462__1_1_f_0(
+#line 462 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_125);
+
+#line 221 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__IntroducedFrom__pred__process_scc__221__1_5_p_0(
+#line 221 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__TrailingStatus_11,
+#line 221 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__MaybeAnalysisStatus_12,
+#line 221 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_25,
+#line 221 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__4_26,
+#line 221 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__5_27);
+
+#line 1184 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__from_term_2_2_p_0(
+#line 1184 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 1184 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__2_2);
+
+#line 1183 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__to_term_1_1_f_0(
+#line 1183 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1);
+
+#line 1172 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__equivalent_3_3_p_0(
+#line 1172 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Status_8,
+#line 1172 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Status_3);
+
+#line 1167 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0(
+#line 1167 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Answer1_4,
+#line 1167 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Answer2_5);
+
+#line 1162 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__get_func_info_6_6_p_0(
+#line 1162 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_17,
+#line 1162 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_18,
+#line 1162 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_19);
+
+#line 1161 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__top_2_2_f_0(void);
+
+#line 1160 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__bottom_2_2_f_0(void);
+
+#line 1159 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0(void);
+
+#line 1158 "trailing_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0(void);
+
+#line 1157 "trailing_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_name_2_2_f_0(void);
+
+#line 1110 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____should_write_for_0_0(
+#line 1110 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 1110 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 1110 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_3);
+
+#line 1110 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____should_write_for_0_0(
+#line 1110 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_1,
+#line 1110 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2);
+
+#line 188 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____scc_0_0(
+#line 188 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 188 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 188 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_3);
+
+#line 188 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____scc_0_0(
+#line 188 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 188 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2);
+
+#line 190 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____proc_results_0_0(
+#line 190 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 190 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 190 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_3);
+
+#line 190 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____proc_results_0_0(
+#line 190 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 190 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2);
+
+#line 192 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____proc_result_0_0(
+#line 192 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 192 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 192 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_3);
+
+#line 192 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____proc_result_0_0(
+#line 192 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 192 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2);
+
+#line 1309 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__output_proc_name_4_p_0(
+#line 1309 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Moduleinfo_5,
+#line 1309 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_6);
+
+#line 1251 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__maybe_record_trailing_result_2_6_p_0(
+#line 1251 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_7,
+#line 1251 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredId_8,
+#line 1251 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredInfo_9,
+#line 1251 "trailing_analysis.m"
+  MR_Integer transform_hlds__trailing_analysis__ProcId_10,
+#line 1251 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_0_19,
+#line 1251 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_20);
+
+#line 1248 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__maybe_record_trailing_result_4_p_0_1(
+#line 1248 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1248 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1248 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1248 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 1242 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__maybe_record_trailing_result_4_p_0(
+#line 1242 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_5,
+#line 1242 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredId_6,
+#line 1242 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_0_10,
+#line 1242 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_11);
+
+#line 1208 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__search_analysis_status_5_p_0(
+#line 1208 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_6,
+#line 1208 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Result_7,
+#line 1208 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__AnalysisStatus_8,
+#line 1208 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_12,
+#line 1208 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_13);
+
+#line 1079 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__write_pragma_trailing_info_2_7_p_0(
+#line 1079 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_8,
+#line 1079 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__TrailingMap_9,
+#line 1079 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredId_10,
+#line 1079 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredInfo_11,
+#line 1079 "trailing_analysis.m"
+  MR_Integer transform_hlds__trailing_analysis__ProcId_12);
+
+#line 1057 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__make_opt_int_3_p_0_1(
+#line 1057 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1057 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1057 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1057 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 1039 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__make_opt_int_3_p_0(
+#line 1039 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_4);
+
+#line 1026 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_case_6_p_0(
+#line 1026 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 1026 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Case_0_15,
+#line 1026 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Case_16,
+#line 1026 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_9,
+#line 1026 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_17,
+#line 1026 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_18);
+
+#line 1023 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_cases_6_p_0_2(
+#line 1023 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1023 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1023 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1023 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 1022 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_cases_6_p_0_1(
+#line 1022 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1022 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1022 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1022 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3,
+#line 1022 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_4,
+#line 1022 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_5);
+
+#line 1018 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_cases_6_p_0(
+#line 1018 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 1018 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Cases_0_12,
+#line 1018 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Cases_13,
+#line 1018 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_9,
+#line 1018 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 1018 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_15);
+
+#line 1015 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_list_6_p_0_2(
+#line 1015 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1015 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1015 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1015 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 1014 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_list_6_p_0_1(
+#line 1014 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1014 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1014 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1014 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3,
+#line 1014 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_4,
+#line 1014 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_5);
+
+#line 1009 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_list_6_p_0(
+#line 1009 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 1009 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Goals_0_12,
+#line 1009 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Goals_13,
+#line 1009 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_9,
+#line 1009 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 1009 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_15);
+
+#line 886 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_1(
+#line 886 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 886 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_2(
+#line 886 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 886 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_3(
+#line 886 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 858 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_2_7_p_0(
+#line 858 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_8,
+#line 858 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__GoalInfo_9,
+#line 858 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109,
+#line 858 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110,
+#line 858 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_11,
+#line 858 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111,
+#line 858 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112);
+
+#line 839 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_6_p_0(
+#line 839 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 839 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Goal_0_15,
+#line 839 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Goal_16,
+#line 839 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_9,
+#line 839 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_17,
+#line 839 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_18);
+
+#line 826 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_proc_3_p_0(
+#line 826 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_4,
+#line 826 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_11,
+#line 826 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_12);
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_3_f_0_4(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_3_f_0_3(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_3_f_0_2(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_3_f_0_1(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 781 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_3_f_0(
+#line 781 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_5,
+#line 781 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Type_6,
+#line 781 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__TypeCtorCat_7);
+
+#line 765 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_f_0(
+#line 765 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_4,
+#line 765 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Type_5);
+
+#line 757 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_type_4_p_0(
+#line 757 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_5,
+#line 757 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Type_6,
+#line 757 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Status_0_8,
+#line 757 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Status_9);
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_types_2_f_0_1(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 752 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__check_types_2_f_0(
+#line 752 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_4,
+#line 752 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Types_5);
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_vars_3_f_0_1(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 714 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__check_vars_3_f_0(
+#line 714 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_5,
+#line 714 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_6,
+#line 714 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Vars_7);
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_call_2_5_p_0_1(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 686 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_call_2_5_p_0(
+#line 686 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_6,
+#line 686 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 686 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_8,
+#line 686 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Args_9,
+#line 686 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__MaybeResult_10);
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_call_5_p_0_1(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 672 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_call_5_p_0(
+#line 672 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_6,
+#line 672 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 672 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_8,
+#line 672 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Args_9,
+#line 672 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Result_10);
+
+#line 652 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_maybe_analysis_status_3_p_0(
+#line 652 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__MaybeStatusA_4,
+#line 652 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__MaybeStatusB_5,
+#line 652 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__MaybeStatus_6);
+
+#line 641 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_trailing_status_3_p_0(
+#line 641 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 641 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 641 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__3_3);
+
+#line 579 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__pred_info_has_known_status_2_p_0(
+#line 579 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredInfo_3,
+#line 579 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_4);
+
+#line 554 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__scope_implies_trail_mod_3_f_0(
+#line 554 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__InnerCodeModel_5,
+#line 554 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__OuterCodeModel_6,
+#line 554 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__InnerStatus_7);
+
+#line 544 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__attributes_imply_trail_mod_1_f_0(
+#line 544 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Attributes_3);
+
+#line 536 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0_3(
+#line 536 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 536 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 536 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 536 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 534 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0_2(
+#line 534 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 534 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 534 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 534 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 532 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0_1(
+#line 532 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 532 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 532 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 532 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3,
+#line 532 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_4,
+#line 532 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_5);
+
+#line 526 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0(
+#line 526 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__SCC_8,
+#line 526 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_9,
+#line 526 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Goals_10,
+#line 526 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Result_11,
+#line 526 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__MaybeAnalysisStatus_12,
+#line 526 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_16,
+#line 526 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_17);
+
+#line 462 "trailing_analysis.m"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_4(
+#line 462 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 462 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1);
+
+#line 361 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_1(
+#line 361 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 361 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_2(
+#line 361 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 361 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_3(
+#line 361 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 318 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0(
+#line 318 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__SCC_8,
+#line 318 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_9,
+#line 318 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Goal_10,
+#line 318 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Result_11,
+#line 318 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__MaybeAnalysisStatus_12,
+#line 318 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109,
+#line 318 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110);
+
+#line 301 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_proc_for_trail_mods_6_p_0(
+#line 301 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__SCC_7,
+#line 301 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_8,
+#line 301 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Results_0_17,
+#line 301 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Results_18,
+#line 301 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_19,
+#line 301 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_20);
+
+#line 291 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__maybe_analysis_status_2_p_0(
+#line 291 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ProcResult_3,
+#line 291 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__2_2);
+
+#line 288 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_14(
+#line 288 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 288 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 288 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 288 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 287 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_13(
+#line 287 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 287 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 287 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_2);
+
+#line 256 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_1(
+#line 256 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 257 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_3(
+#line 257 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 256 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_2(
+#line 256 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 256 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_4(
+#line 256 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 264 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_5(
+#line 264 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 265 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_7(
+#line 265 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 264 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_6(
+#line 264 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 264 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_8(
+#line 264 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 270 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_9(
+#line 270 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 270 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_11(
+#line 270 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 270 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_10(
+#line 270 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 270 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_12(
+#line 270 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg);
+
+#line 246 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0(
+#line 246 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 246 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__SCC_Result_2,
+#line 246 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__MaybeAnalysisStatus_3);
+
+#line 230 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__process_scc_5_p_0_4(
+#line 230 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 230 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 230 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 230 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 221 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__process_scc_5_p_0_3(
+#line 221 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 221 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 221 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 221 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 1307 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__process_scc_5_p_0_2(
+#line 1307 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1307 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1307 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1307 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 241 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__process_scc_5_p_0_1(
+#line 241 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 241 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 241 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 241 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3,
+#line 241 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_4,
+#line 241 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_5);
+
+#line 199 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__process_scc_5_p_0(
+#line 199 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Debug_6,
+#line 199 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Pass1Only_7,
+#line 199 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__SCC_8,
+#line 199 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_20,
+#line 199 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_21);
+
+#line 1075 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__write_pragma_trailing_info_5_p_0_1(
+#line 1075 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1075 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1075 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1075 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 173 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__analyse_trail_usage_4_p_0_2(
+#line 173 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 173 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 173 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 173 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+#line 152 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__analyse_trail_usage_4_p_0_1(
+#line 152 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 152 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 152 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 152 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3);
+
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_1[5][2];
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_2[11][3];
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_3[4][5];
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_4[4][6];
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_5[3][8];
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_6[3][7];
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_7[2][10];
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_8[4][9];
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_9[1][1];
+
+
+#line 366 "trailing_analysis.m"
+/* sealed */ struct transform_hlds__trailing_analysis__vector_common_type_10_0_s {
+#line 366 "trailing_analysis.m"
+  const MR_Word transform_hlds__trailing_analysis__vector_common_type_10_0__vct_10_f_0;
+#line 366 "trailing_analysis.m"
+};
+
+static /* final */ const struct transform_hlds__trailing_analysis__vector_common_type_10_0_s transform_hlds__trailing_analysis_vector_common_10[4];
+
+
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_1[5][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_status_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__analysis__any_call__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_trailing_analysis_answer_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_2[11][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_trailing_info_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_trailing_analysis_answer_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_4[1])),
+    ((MR_Box) (transform_hlds__trailing_analysis__process_scc_5_p_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_3[2])),
+    ((MR_Box) (transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_13)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_4[2])),
+    ((MR_Box) (transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_14)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_3[3])),
+    ((MR_Box) (transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_4[3])),
+    ((MR_Box) (transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_4[2])),
+    ((MR_Box) (transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_4[3])),
+    ((MR_Box) (transform_hlds__trailing_analysis__annotate_goal_list_6_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_4[3])),
+    ((MR_Box) (transform_hlds__trailing_analysis__annotate_cases_6_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_3[4][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__call_pattern__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__)),
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_2[1])),
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_1[3])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__answer_pattern__arity2__analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_2[2])),
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_1[4])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_trailing_analysis_answer_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_4[4][6] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__analysis__arity3__analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_3[0])),
+    ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_3[1])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_trailing_analysis_answer_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_5[3][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_hlds__hlds_module__type_ctor_info_proc_trailing_info_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_hlds__hlds_module__type_ctor_info_proc_trailing_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_hlds__hlds_module__type_ctor_info_proc_trailing_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_6[3][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_7[2][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_hlds__hlds_module__type_ctor_info_proc_trailing_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_8[4][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__list__pti_list_1__plain_transform_hlds__trailing_analysis__type_ctor_info_proc_result_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__list__pti_list_1__plain_transform_hlds__trailing_analysis__type_ctor_info_proc_result_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__trailing_analysis_scalar_common_9[1][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 2))
+  },
+};
+
+
+static /* final */ const struct transform_hlds__trailing_analysis__vector_common_type_10_0_s transform_hlds__trailing_analysis_vector_common_10[4] = {
+  /* row 0 */
+  {
+    (MR_Integer) 2
+  },
+  /* row 1 */
+  {
+    (MR_Integer) 0
+  },
+  /* row 2 */
+  {
+    (MR_Integer) 2
+  },
+  /* row 3 */
+  {
+    (MR_Integer) 0
+  },
+};
+
+
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "time.mh"
+#include "time.mh"
+#include "array.mh"
+#include "array.mh"
+#include "mdbcomp.rtti_access.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+#line 1858 "transform_hlds.trailing_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__trailing_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+  }
+};
+
+#line 1866 "transform_hlds.trailing_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_hlds__hlds_module__type_ctor_info_proc_trailing_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_trailing_info_0
+  }
+};
+
+#line 1875 "transform_hlds.trailing_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__trailing_analysis__list__pti_list_1__plain_transform_hlds__trailing_analysis__type_ctor_info_proc_result_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0
+  }
+};
+
+#line 1883 "transform_hlds.trailing_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__trailing_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) &analysis__analysis__type_ctor_info_analysis_status_0
+  }
+};
+
+#line 1891 "transform_hlds.trailing_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__trailing_analysis__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+#line 1899 "transform_hlds.trailing_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__trailing_analysis__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__trailing_analysis__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0
+  }
+};
+
+#line 1908 "transform_hlds.trailing_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__trailing_analysis__maybe__ti_maybe_1analysis__type_ctor_info_analysis_status_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &analysis__analysis__type_ctor_info_analysis_status_0
+  }
+};
+
+#line 1916 "transform_hlds.trailing_analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__field_types_proc_result_0_0[3] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0,
+  (MR_PseudoTypeInfo) &transform_hlds__trailing_analysis__maybe__ti_maybe_1analysis__type_ctor_info_analysis_status_0
+};
+
+#line 1923 "transform_hlds.trailing_analysis.c"
+static const MR_ConstString transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__field_names_proc_result_0_0[3] = {
+  (MR_String) "ppid",
+  (MR_String) "status",
+  (MR_String) "maybe_analysis_status"
+};
+
+#line 1930 "transform_hlds.trailing_analysis.c"
+static const MR_DuFunctorDesc transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_functor_desc_proc_result_0_0 = {
+  (MR_String) "proc_result",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__field_types_proc_result_0_0,
+  transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__field_names_proc_result_0_0,
+  NULL,
+  NULL
+};
+
+#line 1945 "transform_hlds.trailing_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_stag_ordered_proc_result_0_0[1] = {
+  &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_functor_desc_proc_result_0_0
+};
+
+#line 1950 "transform_hlds.trailing_analysis.c"
+static const MR_DuPtagLayout transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_ptag_ordered_proc_result_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_stag_ordered_proc_result_0_0
+  }
+};
+
+#line 1959 "transform_hlds.trailing_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_name_ordered_proc_result_0[1] = {
+  &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_functor_desc_proc_result_0_0
+};
+
+#line 1964 "transform_hlds.trailing_analysis.c"
+static const MR_Integer transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__functor_number_map_proc_result_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1969 "transform_hlds.trailing_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__trailing_analysis____Unify____proc_result_0_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis____Compare____proc_result_0_0_10001)),
+  (MR_String) "transform_hlds.trailing_analysis",
+  (MR_String) "proc_result",
+  {
+    transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_name_ordered_proc_result_0
+  },
+  {
+    transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__du_ptag_ordered_proc_result_0
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__functor_number_map_proc_result_0
+};
+
+#line 1990 "transform_hlds.trailing_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__trailing_analysis__list__ti_list_1transform_hlds__trailing_analysis__type_ctor_info_proc_result_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0
+  }
+};
+
+#line 1998 "transform_hlds.trailing_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_results_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__trailing_analysis____Unify____proc_results_0_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis____Compare____proc_results_0_0_10001)),
+  (MR_String) "transform_hlds.trailing_analysis",
+  (MR_String) "proc_results",
+  {
+    NULL
+  },
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__trailing_analysis__list__ti_list_1transform_hlds__trailing_analysis__type_ctor_info_proc_result_0
+  },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2019 "transform_hlds.trailing_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__trailing_analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+  }
+};
+
+#line 2027 "transform_hlds.trailing_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_scc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__trailing_analysis____Unify____scc_0_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis____Compare____scc_0_0_10001)),
+  (MR_String) "transform_hlds.trailing_analysis",
+  (MR_String) "scc",
+  {
+    NULL
+  },
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__trailing_analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+  },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2048 "transform_hlds.trailing_analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_functor_desc_should_write_for_0_0 = {
+  (MR_String) "for_analysis_framework",
+  (MR_Integer) 0
+};
+
+#line 2054 "transform_hlds.trailing_analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_functor_desc_should_write_for_0_1 = {
+  (MR_String) "for_pragma",
+  (MR_Integer) 1
+};
+
+#line 2060 "transform_hlds.trailing_analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_value_ordered_should_write_for_0[2] = {
+  &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_functor_desc_should_write_for_0_0,
+  &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_functor_desc_should_write_for_0_1
+};
+
+#line 2066 "transform_hlds.trailing_analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_name_ordered_should_write_for_0[2] = {
+  &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_functor_desc_should_write_for_0_0,
+  &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_functor_desc_should_write_for_0_1
+};
+
+#line 2072 "transform_hlds.trailing_analysis.c"
+static const MR_Integer transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__functor_number_map_should_write_for_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2078 "transform_hlds.trailing_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_should_write_for_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (transform_hlds__trailing_analysis____Unify____should_write_for_0_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis____Compare____should_write_for_0_0_10001)),
+  (MR_String) "transform_hlds.trailing_analysis",
+  (MR_String) "should_write_for",
+  {
+    transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_name_ordered_should_write_for_0
+  },
+  {
+    transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__enum_value_ordered_should_write_for_0
+  },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__functor_number_map_should_write_for_0
+};
+
+#line 2099 "transform_hlds.trailing_analysis.c"
+static const MR_Integer transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__functor_number_map_trailing_analysis_answer_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2104 "transform_hlds.trailing_analysis.c"
+static const MR_NotagFunctorDesc transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__notag_functor_desc_trailing_analysis_answer_0 = {
+  (MR_String) "trailing_analysis_answer",
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0,
+  NULL
+};
+
+#line 2111 "transform_hlds.trailing_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_trailing_analysis_answer_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (transform_hlds__trailing_analysis____Unify____trailing_analysis_answer_0_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis____Compare____trailing_analysis_answer_0_0_10001)),
+  (MR_String) "transform_hlds.trailing_analysis",
+  (MR_String) "trailing_analysis_answer",
+  {
+    &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__notag_functor_desc_trailing_analysis_answer_0
+  },
+  {
+    &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__notag_functor_desc_trailing_analysis_answer_0
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__functor_number_map_trailing_analysis_answer_0
+};
+
+#line 2132 "transform_hlds.trailing_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__to_term__arity1__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__to_term_1_1_f_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__from_term_2_2_p_0_10001))
+};
+
+#line 2143 "transform_hlds.trailing_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__equivalent_3_3_p_0_10001))
+};
+
+#line 2154 "transform_hlds.trailing_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__answer_pattern__arity2__analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__[5] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0))
+};
+
+#line 2163 "transform_hlds.trailing_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__analysis__arity3__analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__[11] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+  ((MR_Box) (transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_name_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__bottom_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__top_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__get_func_info_6_6_p_0_10001))
+};
+
+#line 2178 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____proc_result_0_0_10001(
+#line 2181 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2183 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2)
+#line 2185 "transform_hlds.trailing_analysis.c"
+{
+#line 2187 "transform_hlds.trailing_analysis.c"
+  {
+#line 2189 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 2192 "transform_hlds.trailing_analysis.c"
+    {
+#line 2194 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__succeeded = transform_hlds__trailing_analysis____Unify____proc_result_0_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2));
+    }
+#line 2197 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 2199 "transform_hlds.trailing_analysis.c"
+  }
+#line 2201 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2204 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____proc_result_0_0_10001(
+#line 2207 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2209 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 2211 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 2213 "transform_hlds.trailing_analysis.c"
+{
+#line 2215 "transform_hlds.trailing_analysis.c"
+  {
+#line 2217 "transform_hlds.trailing_analysis.c"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__1_1;
+
+#line 2220 "transform_hlds.trailing_analysis.c"
+    {
+#line 2222 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis____Compare____proc_result_0_0(&transform_hlds__trailing_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_3));
+    }
+#line 2225 "transform_hlds.trailing_analysis.c"
+    *transform_hlds__trailing_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__1_1));
+#line 2227 "transform_hlds.trailing_analysis.c"
+  }
+#line 2229 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2232 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____proc_results_0_0_10001(
+#line 2235 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2237 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2)
+#line 2239 "transform_hlds.trailing_analysis.c"
+{
+#line 2241 "transform_hlds.trailing_analysis.c"
+  {
+#line 2243 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 2246 "transform_hlds.trailing_analysis.c"
+    {
+#line 2248 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__succeeded = transform_hlds__trailing_analysis____Unify____proc_results_0_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2));
+    }
+#line 2251 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 2253 "transform_hlds.trailing_analysis.c"
+  }
+#line 2255 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2258 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____proc_results_0_0_10001(
+#line 2261 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2263 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 2265 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 2267 "transform_hlds.trailing_analysis.c"
+{
+#line 2269 "transform_hlds.trailing_analysis.c"
+  {
+#line 2271 "transform_hlds.trailing_analysis.c"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__1_1;
+
+#line 2274 "transform_hlds.trailing_analysis.c"
+    {
+#line 2276 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis____Compare____proc_results_0_0(&transform_hlds__trailing_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_3));
+    }
+#line 2279 "transform_hlds.trailing_analysis.c"
+    *transform_hlds__trailing_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__1_1));
+#line 2281 "transform_hlds.trailing_analysis.c"
+  }
+#line 2283 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2286 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____scc_0_0_10001(
+#line 2289 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2291 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2)
+#line 2293 "transform_hlds.trailing_analysis.c"
+{
+#line 2295 "transform_hlds.trailing_analysis.c"
+  {
+#line 2297 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 2300 "transform_hlds.trailing_analysis.c"
+    {
+#line 2302 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__succeeded = transform_hlds__trailing_analysis____Unify____scc_0_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2));
+    }
+#line 2305 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 2307 "transform_hlds.trailing_analysis.c"
+  }
+#line 2309 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2312 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____scc_0_0_10001(
+#line 2315 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2317 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 2319 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 2321 "transform_hlds.trailing_analysis.c"
+{
+#line 2323 "transform_hlds.trailing_analysis.c"
+  {
+#line 2325 "transform_hlds.trailing_analysis.c"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__1_1;
+
+#line 2328 "transform_hlds.trailing_analysis.c"
+    {
+#line 2330 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis____Compare____scc_0_0(&transform_hlds__trailing_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_3));
+    }
+#line 2333 "transform_hlds.trailing_analysis.c"
+    *transform_hlds__trailing_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__1_1));
+#line 2335 "transform_hlds.trailing_analysis.c"
+  }
+#line 2337 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2340 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____should_write_for_0_0_10001(
+#line 2343 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2345 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2)
+#line 2347 "transform_hlds.trailing_analysis.c"
+{
+#line 2349 "transform_hlds.trailing_analysis.c"
+  {
+#line 2351 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 2354 "transform_hlds.trailing_analysis.c"
+    {
+#line 2356 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__succeeded = transform_hlds__trailing_analysis____Unify____should_write_for_0_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2));
+    }
+#line 2359 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 2361 "transform_hlds.trailing_analysis.c"
+  }
+#line 2363 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2366 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____should_write_for_0_0_10001(
+#line 2369 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2371 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 2373 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 2375 "transform_hlds.trailing_analysis.c"
+{
+#line 2377 "transform_hlds.trailing_analysis.c"
+  {
+#line 2379 "transform_hlds.trailing_analysis.c"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__1_1;
+
+#line 2382 "transform_hlds.trailing_analysis.c"
+    {
+#line 2384 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis____Compare____should_write_for_0_0(&transform_hlds__trailing_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_3));
+    }
+#line 2387 "transform_hlds.trailing_analysis.c"
+    *transform_hlds__trailing_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__1_1));
+#line 2389 "transform_hlds.trailing_analysis.c"
+  }
+#line 2391 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2394 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____trailing_analysis_answer_0_0_10001(
+#line 2397 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2399 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2)
+#line 2401 "transform_hlds.trailing_analysis.c"
+{
+#line 2403 "transform_hlds.trailing_analysis.c"
+  {
+#line 2405 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 2408 "transform_hlds.trailing_analysis.c"
+    {
+#line 2410 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__succeeded = transform_hlds__trailing_analysis____Unify____trailing_analysis_answer_0_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2));
+    }
+#line 2413 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 2415 "transform_hlds.trailing_analysis.c"
+  }
+#line 2417 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2420 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____trailing_analysis_answer_0_0_10001(
+#line 2423 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2425 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 2427 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 2429 "transform_hlds.trailing_analysis.c"
+{
+#line 2431 "transform_hlds.trailing_analysis.c"
+  {
+#line 2433 "transform_hlds.trailing_analysis.c"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__1_1;
+
+#line 2436 "transform_hlds.trailing_analysis.c"
+    {
+#line 2438 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis____Compare____trailing_analysis_answer_0_0(&transform_hlds__trailing_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_3));
+    }
+#line 2441 "transform_hlds.trailing_analysis.c"
+    *transform_hlds__trailing_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__1_1));
+#line 2443 "transform_hlds.trailing_analysis.c"
+  }
+#line 2445 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2448 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__to_term_1_1_f_0_10001(
+#line 2451 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 2453 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1)
+#line 2455 "transform_hlds.trailing_analysis.c"
+{
+#line 2457 "transform_hlds.trailing_analysis.c"
+  {
+#line 2459 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__wrapper_arg_2;
+#line 2461 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__closure;
+#line 2463 "transform_hlds.trailing_analysis.c"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__2_2;
+
+#line 2466 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 2468 "transform_hlds.trailing_analysis.c"
+    {
+#line 2470 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__conv0_HeadVar__2_2 = transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__to_term_1_1_f_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1));
+    }
+#line 2473 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__2_2));
+#line 2475 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__wrapper_arg_2;
+#line 2477 "transform_hlds.trailing_analysis.c"
+  }
+#line 2479 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2482 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__from_term_2_2_p_0_10001(
+#line 2485 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 2487 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2489 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_2)
+#line 2491 "transform_hlds.trailing_analysis.c"
+{
+#line 2493 "transform_hlds.trailing_analysis.c"
+  {
+#line 2495 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 2497 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__closure;
+#line 2499 "transform_hlds.trailing_analysis.c"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__2_2;
+
+#line 2502 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 2504 "transform_hlds.trailing_analysis.c"
+    {
+#line 2506 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__succeeded = transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__from_term_2_2_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), &transform_hlds__trailing_analysis__conv0_HeadVar__2_2);
+    }
+#line 2509 "transform_hlds.trailing_analysis.c"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 2511 "transform_hlds.trailing_analysis.c"
+      {
+#line 2513 "transform_hlds.trailing_analysis.c"
+        *transform_hlds__trailing_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__2_2));
+#line 2515 "transform_hlds.trailing_analysis.c"
+        transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 2517 "transform_hlds.trailing_analysis.c"
+      }
+#line 2519 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 2521 "transform_hlds.trailing_analysis.c"
+  }
+#line 2523 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2526 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0_10001(
+#line 2529 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 2531 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2533 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 2535 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 2537 "transform_hlds.trailing_analysis.c"
+{
+#line 2539 "transform_hlds.trailing_analysis.c"
+  {
+#line 2541 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 2543 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__closure;
+
+#line 2546 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 2548 "transform_hlds.trailing_analysis.c"
+    {
+#line 2550 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__succeeded = transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_3));
+    }
+#line 2553 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 2555 "transform_hlds.trailing_analysis.c"
+  }
+#line 2557 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2560 "transform_hlds.trailing_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__equivalent_3_3_p_0_10001(
+#line 2563 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 2565 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2567 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 2569 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 2571 "transform_hlds.trailing_analysis.c"
+{
+#line 2573 "transform_hlds.trailing_analysis.c"
+  {
+#line 2575 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 2577 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__closure;
+
+#line 2580 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 2582 "transform_hlds.trailing_analysis.c"
+    {
+#line 2584 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__succeeded = transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__equivalent_3_3_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_3));
+    }
+#line 2587 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 2589 "transform_hlds.trailing_analysis.c"
+  }
+#line 2591 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2594 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_name_2_2_f_0_10001(
+#line 2597 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg)
+#line 2599 "transform_hlds.trailing_analysis.c"
+{
+#line 2601 "transform_hlds.trailing_analysis.c"
+  {
+#line 2603 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__wrapper_arg_3;
+#line 2605 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__closure;
+#line 2607 "transform_hlds.trailing_analysis.c"
+    MR_String transform_hlds__trailing_analysis__conv0_HeadVar__3_3;
+
+#line 2610 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 2612 "transform_hlds.trailing_analysis.c"
+    {
+#line 2614 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__conv0_HeadVar__3_3 = transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_name_2_2_f_0();
+    }
+#line 2617 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__3_3));
+#line 2619 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__wrapper_arg_3;
+#line 2621 "transform_hlds.trailing_analysis.c"
+  }
+#line 2623 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2626 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001(
+#line 2629 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg)
+#line 2631 "transform_hlds.trailing_analysis.c"
+{
+#line 2633 "transform_hlds.trailing_analysis.c"
+  {
+#line 2635 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__wrapper_arg_3;
+#line 2637 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__closure;
+#line 2639 "transform_hlds.trailing_analysis.c"
+    MR_Integer transform_hlds__trailing_analysis__conv0_HeadVar__3_3;
+
+#line 2642 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 2644 "transform_hlds.trailing_analysis.c"
+    {
+#line 2646 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__conv0_HeadVar__3_3 = transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0();
+    }
+#line 2649 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__3_3));
+#line 2651 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__wrapper_arg_3;
+#line 2653 "transform_hlds.trailing_analysis.c"
+  }
+#line 2655 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2658 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001(
+#line 2661 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg)
+#line 2663 "transform_hlds.trailing_analysis.c"
+{
+#line 2665 "transform_hlds.trailing_analysis.c"
+  {
+#line 2667 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__wrapper_arg_3;
+#line 2669 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__closure;
+#line 2671 "transform_hlds.trailing_analysis.c"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__3_3;
+
+#line 2674 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 2676 "transform_hlds.trailing_analysis.c"
+    {
+#line 2678 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__conv0_HeadVar__3_3 = transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0();
+    }
+#line 2681 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__3_3));
+#line 2683 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__wrapper_arg_3;
+#line 2685 "transform_hlds.trailing_analysis.c"
+  }
+#line 2687 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2690 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__bottom_2_2_f_0_10001(
+#line 2693 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 2695 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1)
+#line 2697 "transform_hlds.trailing_analysis.c"
+{
+#line 2699 "transform_hlds.trailing_analysis.c"
+  {
+#line 2701 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__wrapper_arg_3;
+#line 2703 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__closure;
+#line 2705 "transform_hlds.trailing_analysis.c"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__3_3;
+
+#line 2708 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 2710 "transform_hlds.trailing_analysis.c"
+    {
+#line 2712 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__conv0_HeadVar__3_3 = transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__bottom_2_2_f_0();
+    }
+#line 2715 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__3_3));
+#line 2717 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__wrapper_arg_3;
+#line 2719 "transform_hlds.trailing_analysis.c"
+  }
+#line 2721 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2724 "transform_hlds.trailing_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__top_2_2_f_0_10001(
+#line 2727 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 2729 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1)
+#line 2731 "transform_hlds.trailing_analysis.c"
+{
+#line 2733 "transform_hlds.trailing_analysis.c"
+  {
+#line 2735 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__wrapper_arg_3;
+#line 2737 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__closure;
+#line 2739 "transform_hlds.trailing_analysis.c"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__3_3;
+
+#line 2742 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 2744 "transform_hlds.trailing_analysis.c"
+    {
+#line 2746 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__conv0_HeadVar__3_3 = transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__top_2_2_f_0();
+    }
+#line 2749 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__3_3));
+#line 2751 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__wrapper_arg_3;
+#line 2753 "transform_hlds.trailing_analysis.c"
+  }
+#line 2755 "transform_hlds.trailing_analysis.c"
+}
+
+#line 2758 "transform_hlds.trailing_analysis.c"
+static void MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__get_func_info_6_6_p_0_10001(
+#line 2761 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 2763 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 2765 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 2767 "transform_hlds.trailing_analysis.c"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_3,
+#line 2769 "transform_hlds.trailing_analysis.c"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_6)
+#line 2771 "transform_hlds.trailing_analysis.c"
+{
+#line 2773 "transform_hlds.trailing_analysis.c"
+  {
+#line 2775 "transform_hlds.trailing_analysis.c"
+    MR_Box transform_hlds__trailing_analysis__closure;
+
+#line 2778 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 2780 "transform_hlds.trailing_analysis.c"
+    {
+#line 2782 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__get_func_info_6_6_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_3));
+    }
+#line 2785 "transform_hlds.trailing_analysis.c"
+  }
+#line 2787 "transform_hlds.trailing_analysis.c"
+}
+
+#line 1172 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 1172 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Status_8,
+#line 1172 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Status_3)
+#line 1172 "trailing_analysis.m"
+{
+#line 1149 "trailing_analysis.m"
+  {
+#line 1149 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1149 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__CastX_11 = (MR_Integer) transform_hlds__trailing_analysis__Status_3;
+#line 1149 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__CastY_12 = (MR_Integer) transform_hlds__trailing_analysis__Status_8;
+
+#line 1149 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__CastX_11 == transform_hlds__trailing_analysis__CastY_12);
+#line 1149 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 1149 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1149 "trailing_analysis.m"
+    else
+#line 1149 "trailing_analysis.m"
+      {
+#line 1149 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_9_9 = (MR_Word) transform_hlds__trailing_analysis__Status_3;
+#line 1149 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_10_10 = (MR_Word) transform_hlds__trailing_analysis__Status_8;
+
+#line 2823 "transform_hlds.trailing_analysis.c"
+        transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__V_9_9 == transform_hlds__trailing_analysis__V_10_10);
+#line 1149 "trailing_analysis.m"
+      }
+#line 1149 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 1149 "trailing_analysis.m"
+  }
+#line 1172 "trailing_analysis.m"
+}
+
+#line 1167 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 1167 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Answer1_4,
+#line 1167 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Answer2_5)
+#line 1167 "trailing_analysis.m"
+{
+#line 1167 "trailing_analysis.m"
+  {
+#line 1167 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1167 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Status1_6 = (MR_Word) transform_hlds__trailing_analysis__Answer1_4;
+#line 1167 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Status2_7 = (MR_Word) transform_hlds__trailing_analysis__Answer2_5;
+
+#line 1178 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis__Status1_6 == (MR_Integer) 2))
+#line 1180 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__Status2_7 == (MR_Integer) 0);
+#line 1178 "trailing_analysis.m"
+    else
+#line 1178 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__Status1_6 == (MR_Integer) 1))
+#line 1178 "trailing_analysis.m"
+        if ((transform_hlds__trailing_analysis__Status2_7 == (MR_Integer) 2))
+#line 1179 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1178 "trailing_analysis.m"
+        else
+#line 1178 "trailing_analysis.m"
+          if ((transform_hlds__trailing_analysis__Status2_7 == (MR_Integer) 0))
+#line 1178 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1178 "trailing_analysis.m"
+          else
+#line 1178 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__succeeded = MR_FALSE;
+#line 1178 "trailing_analysis.m"
+      else
+#line 1178 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = MR_FALSE;
+#line 1167 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 1167 "trailing_analysis.m"
+  }
+#line 1167 "trailing_analysis.m"
+}
+
+#line 1162 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_6_p_0(void)
+#line 1162 "trailing_analysis.m"
+{
+#line 1162 "trailing_analysis.m"
+  {
+#line 1162 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 1162 "trailing_analysis.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1162 "trailing_analysis.m"
+  }
+#line 1162 "trailing_analysis.m"
+}
+
+#line 1161 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1161 "trailing_analysis.m"
+{
+#line 1161 "trailing_analysis.m"
+  {
+#line 1161 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 1161 "trailing_analysis.m"
+    return (MR_Word) ((MR_Box) ((MR_Integer) 0));
+#line 1161 "trailing_analysis.m"
+  }
+#line 1161 "trailing_analysis.m"
+}
+
+#line 1160 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1160 "trailing_analysis.m"
+{
+#line 1160 "trailing_analysis.m"
+  {
+#line 1160 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 1160 "trailing_analysis.m"
+    return (MR_Word) ((MR_Box) ((MR_Integer) 1));
+#line 1160 "trailing_analysis.m"
+  }
+#line 1160 "trailing_analysis.m"
+}
+
+#line 1159 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1159 "trailing_analysis.m"
+{
+#line 1159 "trailing_analysis.m"
+  {
+#line 1159 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 1159 "trailing_analysis.m"
+    return (MR_Integer) 0;
+#line 1159 "trailing_analysis.m"
+  }
+#line 1159 "trailing_analysis.m"
+}
+
+#line 1158 "trailing_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1158 "trailing_analysis.m"
+{
+#line 1158 "trailing_analysis.m"
+  {
+#line 1158 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 1158 "trailing_analysis.m"
+    return (MR_Integer) 1;
+#line 1158 "trailing_analysis.m"
+  }
+#line 1158 "trailing_analysis.m"
+}
+
+#line 1157 "trailing_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1157 "trailing_analysis.m"
+{
+#line 1154 "trailing_analysis.m"
+  {
+#line 1154 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 1154 "trailing_analysis.m"
+    return (MR_String) "trail_usage";
+#line 1154 "trailing_analysis.m"
+  }
+#line 1157 "trailing_analysis.m"
+}
+
+#line 462 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__IntroducedFrom__func__check_goal_for_trail_mods__462__1_1_f_0(
+#line 462 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_125)
+#line 462 "trailing_analysis.m"
+{
+#line 462 "trailing_analysis.m"
+  {
+#line 462 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 462 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__HeadVar__2_126 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__1_125, (MR_Integer) 2)));
+#line 462 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_150_150 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__1_125, (MR_Integer) 0)));
+#line 462 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_151_151 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__1_125, (MR_Integer) 1)));
+
+#line 462 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__HeadVar__2_126;
+#line 462 "trailing_analysis.m"
+  }
+#line 462 "trailing_analysis.m"
+}
+
+#line 221 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__IntroducedFrom__pred__process_scc__221__1_5_p_0(
+#line 221 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__TrailingStatus_11,
+#line 221 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__MaybeAnalysisStatus_12,
+#line 221 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_25,
+#line 221 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__4_26,
+#line 221 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__5_27)
+#line 221 "trailing_analysis.m"
+{
+#line 221 "trailing_analysis.m"
+  {
+#line 221 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 221 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_28_28;
+
+#line 223 "trailing_analysis.m"
+    {
+#line 223 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 223 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_28_28, 0) = ((MR_Box) (transform_hlds__trailing_analysis__TrailingStatus_11));
+#line 223 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_28_28, 1) = ((MR_Box) (transform_hlds__trailing_analysis__MaybeAnalysisStatus_12));
+#line 223 "trailing_analysis.m"
+    }
+#line 222 "trailing_analysis.m"
+    {
+#line 222 "trailing_analysis.m"
+      *transform_hlds__trailing_analysis__HeadVar__5_27 = mercury__map__f_101_108_101_109_32_58_61_3_f_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_trailing_info_0, ((MR_Box) (transform_hlds__trailing_analysis__HeadVar__3_25)), transform_hlds__trailing_analysis__HeadVar__4_26, ((MR_Box) (transform_hlds__trailing_analysis__V_28_28)));
+    }
+#line 221 "trailing_analysis.m"
+  }
+#line 221 "trailing_analysis.m"
+}
+
+#line 1184 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__from_term_2_2_p_0(
+#line 1184 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 1184 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__2_2)
+#line 1184 "trailing_analysis.m"
+{
+#line 1196 "trailing_analysis.m"
+  {
+#line 1196 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__trailing_analysis__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0)));
+#line 1196 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Status_4;
+#line 1196 "trailing_analysis.m"
+    MR_String transform_hlds__trailing_analysis__String_5;
+#line 1196 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_7_7;
+#line 1196 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_8_8;
+#line 1197 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_6_6;
+
+#line 1197 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 1197 "trailing_analysis.m"
+      {
+#line 1197 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 1197 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__1_1, (MR_Integer) 1)));
+#line 1197 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__1_1, (MR_Integer) 2)));
+#line 1197 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__trailing_analysis__V_7_7)) == (MR_mktag((MR_Integer) 0)));
+#line 1197 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 1197 "trailing_analysis.m"
+          {
+#line 1197 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__String_5 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_7_7, (MR_Integer) 0)));
+#line 1197 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__V_8_8 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1196 "trailing_analysis.m"
+            if (transform_hlds__trailing_analysis__succeeded)
+#line 1196 "trailing_analysis.m"
+              {
+#line 1204 "trailing_analysis.m"
+                if ((strcmp(transform_hlds__trailing_analysis__String_5, (MR_String) "conditional") == 0))
+#line 1206 "trailing_analysis.m"
+                  {
+#line 1206 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__Status_4 = (MR_Integer) 2;
+#line 1206 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1206 "trailing_analysis.m"
+                  }
+#line 1204 "trailing_analysis.m"
+                else
+#line 1204 "trailing_analysis.m"
+                  if ((strcmp(transform_hlds__trailing_analysis__String_5, (MR_String) "may_modify_trail") == 0))
+#line 1204 "trailing_analysis.m"
+                    {
+#line 1204 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__Status_4 = (MR_Integer) 0;
+#line 1204 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1204 "trailing_analysis.m"
+                    }
+#line 1204 "trailing_analysis.m"
+                  else
+#line 1204 "trailing_analysis.m"
+                    if ((strcmp(transform_hlds__trailing_analysis__String_5, (MR_String) "will_not_modify_trail") == 0))
+#line 1205 "trailing_analysis.m"
+                      {
+#line 1205 "trailing_analysis.m"
+                        transform_hlds__trailing_analysis__Status_4 = (MR_Integer) 1;
+#line 1205 "trailing_analysis.m"
+                        transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1205 "trailing_analysis.m"
+                      }
+#line 1204 "trailing_analysis.m"
+                    else
+#line 1204 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__succeeded = MR_FALSE;
+#line 1196 "trailing_analysis.m"
+                if (transform_hlds__trailing_analysis__succeeded)
+#line 1196 "trailing_analysis.m"
+                  {
+#line 1196 "trailing_analysis.m"
+                    *transform_hlds__trailing_analysis__HeadVar__2_2 = (MR_Word) transform_hlds__trailing_analysis__Status_4;
+#line 1196 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1196 "trailing_analysis.m"
+                  }
+#line 1196 "trailing_analysis.m"
+              }
+#line 1197 "trailing_analysis.m"
+          }
+#line 1197 "trailing_analysis.m"
+      }
+#line 1196 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 1196 "trailing_analysis.m"
+  }
+#line 1184 "trailing_analysis.m"
+}
+
+#line 1183 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__to_term____transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__to_term_1_1_f_0(
+#line 1183 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1)
+#line 1183 "trailing_analysis.m"
+{
+#line 1189 "trailing_analysis.m"
+  {
+#line 1189 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1189 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 1189 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Status_4 = (MR_Word) transform_hlds__trailing_analysis__HeadVar__1_1;
+#line 1189 "trailing_analysis.m"
+    MR_String transform_hlds__trailing_analysis__String_5;
+#line 1189 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_6_6;
+#line 1189 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_8_8;
+
+#line 1204 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis__Status_4 == (MR_Integer) 2))
+#line 1206 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__String_5 = (MR_String) "conditional";
+#line 1204 "trailing_analysis.m"
+    else
+#line 1204 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__Status_4 == (MR_Integer) 0))
+#line 1204 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__String_5 = (MR_String) "may_modify_trail";
+#line 1204 "trailing_analysis.m"
+      else
+#line 1205 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__String_5 = (MR_String) "will_not_modify_trail";
+#line 1191 "trailing_analysis.m"
+    {
+#line 1191 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_6_6 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1191 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_6_6, 0) = ((MR_Box) (transform_hlds__trailing_analysis__String_5));
+#line 1191 "trailing_analysis.m"
+    }
+#line 1191 "trailing_analysis.m"
+    {
+#line 1191 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_8_8 = mercury__term__context_init_0_f_0();
+    }
+#line 1191 "trailing_analysis.m"
+    {
+#line 1191 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1191 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__2_2, 0) = ((MR_Box) (transform_hlds__trailing_analysis__V_6_6));
+#line 1191 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__2_2, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1191 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__2_2, 2) = ((MR_Box) (transform_hlds__trailing_analysis__V_8_8));
+#line 1191 "trailing_analysis.m"
+    }
+#line 1189 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 1189 "trailing_analysis.m"
+  }
+#line 1183 "trailing_analysis.m"
+}
+
+#line 1172 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__equivalent_3_3_p_0(
+#line 1172 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Status_8,
+#line 1172 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Status_3)
+#line 1172 "trailing_analysis.m"
+{
+#line 1149 "trailing_analysis.m"
+  {
+#line 1149 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 1149 "trailing_analysis.m"
+    {
+#line 1149 "trailing_analysis.m"
+      return transform_hlds__trailing_analysis__succeeded = transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(transform_hlds__trailing_analysis__Status_8, transform_hlds__trailing_analysis__Status_3);
+    }
+#line 1149 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 1149 "trailing_analysis.m"
+  }
+#line 1172 "trailing_analysis.m"
+}
+
+#line 1167 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0(
+#line 1167 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Answer1_4,
+#line 1167 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Answer2_5)
+#line 1167 "trailing_analysis.m"
+{
+#line 1167 "trailing_analysis.m"
+  {
+#line 1167 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 1167 "trailing_analysis.m"
+    {
+#line 1167 "trailing_analysis.m"
+      return transform_hlds__trailing_analysis__succeeded = transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_93_95_48_3_p_0(transform_hlds__trailing_analysis__Answer1_4, transform_hlds__trailing_analysis__Answer2_5);
+    }
+#line 1167 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 1167 "trailing_analysis.m"
+  }
+#line 1167 "trailing_analysis.m"
+}
+
+#line 1162 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__get_func_info_6_6_p_0(
+#line 1162 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_17,
+#line 1162 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_18,
+#line 1162 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_19)
+#line 1162 "trailing_analysis.m"
+{
+#line 1162 "trailing_analysis.m"
+  {
+#line 1162 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 1162 "trailing_analysis.m"
+    {
+#line 1162 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_6_p_0();
+#line 1162 "trailing_analysis.m"
+      return;
+    }
+#line 1162 "trailing_analysis.m"
+  }
+#line 1162 "trailing_analysis.m"
+}
+
+#line 1161 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__top_2_2_f_0(void)
+#line 1161 "trailing_analysis.m"
+{
+#line 1161 "trailing_analysis.m"
+  {
+#line 1161 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1161 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__HeadVar__3_3;
+
+#line 1161 "trailing_analysis.m"
+    {
+#line 1161 "trailing_analysis.m"
+      return transform_hlds__trailing_analysis__HeadVar__3_3 = transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1161 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__HeadVar__3_3;
+#line 1161 "trailing_analysis.m"
+  }
+#line 1161 "trailing_analysis.m"
+}
+
+#line 1160 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__bottom_2_2_f_0(void)
+#line 1160 "trailing_analysis.m"
+{
+#line 1160 "trailing_analysis.m"
+  {
+#line 1160 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1160 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__HeadVar__3_3;
+
+#line 1160 "trailing_analysis.m"
+    {
+#line 1160 "trailing_analysis.m"
+      return transform_hlds__trailing_analysis__HeadVar__3_3 = transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1160 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__HeadVar__3_3;
+#line 1160 "trailing_analysis.m"
+  }
+#line 1160 "trailing_analysis.m"
+}
+
+#line 1159 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0(void)
+#line 1159 "trailing_analysis.m"
+{
+#line 1159 "trailing_analysis.m"
+  {
+#line 1159 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1159 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__HeadVar__3_3;
+
+#line 1159 "trailing_analysis.m"
+    {
+#line 1159 "trailing_analysis.m"
+      return transform_hlds__trailing_analysis__HeadVar__3_3 = transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1159 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__HeadVar__3_3;
+#line 1159 "trailing_analysis.m"
+  }
+#line 1159 "trailing_analysis.m"
+}
+
+#line 1158 "trailing_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0(void)
+#line 1158 "trailing_analysis.m"
+{
+#line 1158 "trailing_analysis.m"
+  {
+#line 1158 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1158 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__HeadVar__3_3;
+
+#line 1158 "trailing_analysis.m"
+    {
+#line 1158 "trailing_analysis.m"
+      return transform_hlds__trailing_analysis__HeadVar__3_3 = transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1158 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__HeadVar__3_3;
+#line 1158 "trailing_analysis.m"
+  }
+#line 1158 "trailing_analysis.m"
+}
+
+#line 1157 "trailing_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__trailing_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0______analysis__analysis_name_2_2_f_0(void)
+#line 1157 "trailing_analysis.m"
+{
+#line 1154 "trailing_analysis.m"
+  {
+#line 1154 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1154 "trailing_analysis.m"
+    MR_String transform_hlds__trailing_analysis__HeadVar__3_3;
+
+#line 1154 "trailing_analysis.m"
+    {
+#line 1154 "trailing_analysis.m"
+      return transform_hlds__trailing_analysis__HeadVar__3_3 = transform_hlds__trailing_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_116_114_97_105_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1154 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__HeadVar__3_3;
+#line 1154 "trailing_analysis.m"
+  }
+#line 1157 "trailing_analysis.m"
+}
+
+#line 1149 "trailing_analysis.m"
+void MR_CALL 
+transform_hlds__trailing_analysis____Compare____trailing_analysis_answer_0_0(
+#line 1149 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 1149 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 1149 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_3)
+#line 1149 "trailing_analysis.m"
+{
+#line 1149 "trailing_analysis.m"
+  {
+#line 1149 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1149 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__CastX_6 = (MR_Integer) transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 1149 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__CastY_7 = (MR_Integer) transform_hlds__trailing_analysis__HeadVar__3_3;
+
+#line 1149 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__CastX_6 == transform_hlds__trailing_analysis__CastY_7);
+#line 1149 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 3455 "transform_hlds.trailing_analysis.c"
+      *transform_hlds__trailing_analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 1149 "trailing_analysis.m"
+    else
+#line 1149 "trailing_analysis.m"
+      {
+#line 1149 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_4_4 = (MR_Word) transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 1149 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_5_5 = (MR_Word) transform_hlds__trailing_analysis__HeadVar__3_3;
+#line 1149 "trailing_analysis.m"
+        MR_Integer transform_hlds__trailing_analysis__V_9_9 = (MR_Integer) transform_hlds__trailing_analysis__V_4_4;
+#line 1149 "trailing_analysis.m"
+        MR_Integer transform_hlds__trailing_analysis__V_10_10 = (MR_Integer) transform_hlds__trailing_analysis__V_5_5;
+
+#line 1149 "trailing_analysis.m"
+        {
+#line 1149 "trailing_analysis.m"
+          mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__trailing_analysis__HeadVar__1_1, transform_hlds__trailing_analysis__V_9_9, transform_hlds__trailing_analysis__V_10_10);
+#line 1149 "trailing_analysis.m"
+          return;
+        }
+#line 1149 "trailing_analysis.m"
+      }
+#line 1149 "trailing_analysis.m"
+  }
+#line 1149 "trailing_analysis.m"
+}
+
+#line 1149 "trailing_analysis.m"
+MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____trailing_analysis_answer_0_0(
+#line 1149 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 1149 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2)
+#line 1149 "trailing_analysis.m"
+{
+#line 1149 "trailing_analysis.m"
+  {
+#line 1149 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1149 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__CastX_5 = (MR_Integer) transform_hlds__trailing_analysis__HeadVar__1_1;
+#line 1149 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__CastY_6 = (MR_Integer) transform_hlds__trailing_analysis__HeadVar__2_2;
+
+#line 1149 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__CastX_5 == transform_hlds__trailing_analysis__CastY_6);
+#line 1149 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 1149 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1149 "trailing_analysis.m"
+    else
+#line 1149 "trailing_analysis.m"
+      {
+#line 1149 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_3_3 = (MR_Word) transform_hlds__trailing_analysis__HeadVar__1_1;
+#line 1149 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_4_4 = (MR_Word) transform_hlds__trailing_analysis__HeadVar__2_2;
+
+#line 3517 "transform_hlds.trailing_analysis.c"
+        transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__V_3_3 == transform_hlds__trailing_analysis__V_4_4);
+#line 1149 "trailing_analysis.m"
+      }
+#line 1149 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 1149 "trailing_analysis.m"
+  }
+#line 1149 "trailing_analysis.m"
+}
+
+#line 1110 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____should_write_for_0_0(
+#line 1110 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 1110 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 1110 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_3)
+#line 1110 "trailing_analysis.m"
+{
+#line 1110 "trailing_analysis.m"
+  {
+#line 1110 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1110 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__Cast_HeadVar1_4 = (MR_Integer) transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 1110 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__Cast_HeadVar2_5 = (MR_Integer) transform_hlds__trailing_analysis__HeadVar__3_3;
+
+#line 1110 "trailing_analysis.m"
+    {
+#line 1110 "trailing_analysis.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__trailing_analysis__HeadVar__1_1, transform_hlds__trailing_analysis__Cast_HeadVar1_4, transform_hlds__trailing_analysis__Cast_HeadVar2_5);
+#line 1110 "trailing_analysis.m"
+      return;
+    }
+#line 1110 "trailing_analysis.m"
+  }
+#line 1110 "trailing_analysis.m"
+}
+
+#line 1110 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____should_write_for_0_0(
+#line 1110 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_1,
+#line 1110 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2)
+#line 1110 "trailing_analysis.m"
+{
+#line 3569 "transform_hlds.trailing_analysis.c"
+  {
+#line 3571 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__HeadVar__2_1 == transform_hlds__trailing_analysis__HeadVar__2_2);
+
+#line 3574 "transform_hlds.trailing_analysis.c"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 3576 "transform_hlds.trailing_analysis.c"
+  }
+#line 1110 "trailing_analysis.m"
+}
+
+#line 188 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____scc_0_0(
+#line 188 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 188 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 188 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_3)
+#line 188 "trailing_analysis.m"
+{
+#line 188 "trailing_analysis.m"
+  {
+#line 188 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 188 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Cast_HeadVar1_4 = transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 188 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Cast_HeadVar2_5 = transform_hlds__trailing_analysis__HeadVar__3_3;
+
+#line 188 "trailing_analysis.m"
+    {
+#line 188 "trailing_analysis.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__trailing_analysis_scalar_common_1[0], transform_hlds__trailing_analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__trailing_analysis__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__trailing_analysis__Cast_HeadVar2_5)));
+#line 188 "trailing_analysis.m"
+      return;
+    }
+#line 188 "trailing_analysis.m"
+  }
+#line 188 "trailing_analysis.m"
+}
+
+#line 188 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____scc_0_0(
+#line 188 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 188 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2)
+#line 188 "trailing_analysis.m"
+{
+#line 188 "trailing_analysis.m"
+  {
+#line 188 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 188 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Cast_HeadVar1_3 = transform_hlds__trailing_analysis__HeadVar__1_1;
+#line 188 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Cast_HeadVar2_4 = transform_hlds__trailing_analysis__HeadVar__2_2;
+
+#line 188 "trailing_analysis.m"
+    {
+#line 188 "trailing_analysis.m"
+      return transform_hlds__trailing_analysis__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__trailing_analysis_scalar_common_1[0], ((MR_Box) (transform_hlds__trailing_analysis__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__trailing_analysis__Cast_HeadVar2_4)));
+    }
+#line 188 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 188 "trailing_analysis.m"
+  }
+#line 188 "trailing_analysis.m"
+}
+
+#line 190 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____proc_results_0_0(
+#line 190 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 190 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 190 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_3)
+#line 190 "trailing_analysis.m"
+{
+#line 190 "trailing_analysis.m"
+  {
+#line 190 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 190 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Cast_HeadVar1_4 = transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 190 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Cast_HeadVar2_5 = transform_hlds__trailing_analysis__HeadVar__3_3;
+
+#line 190 "trailing_analysis.m"
+    {
+#line 190 "trailing_analysis.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__trailing_analysis_scalar_common_1[1], transform_hlds__trailing_analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__trailing_analysis__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__trailing_analysis__Cast_HeadVar2_5)));
+#line 190 "trailing_analysis.m"
+      return;
+    }
+#line 190 "trailing_analysis.m"
+  }
+#line 190 "trailing_analysis.m"
+}
+
+#line 190 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____proc_results_0_0(
+#line 190 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 190 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2)
+#line 190 "trailing_analysis.m"
+{
+#line 190 "trailing_analysis.m"
+  {
+#line 190 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 190 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Cast_HeadVar1_3 = transform_hlds__trailing_analysis__HeadVar__1_1;
+#line 190 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Cast_HeadVar2_4 = transform_hlds__trailing_analysis__HeadVar__2_2;
+
+#line 190 "trailing_analysis.m"
+    {
+#line 190 "trailing_analysis.m"
+      return transform_hlds__trailing_analysis__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__trailing_analysis_scalar_common_1[1], ((MR_Box) (transform_hlds__trailing_analysis__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__trailing_analysis__Cast_HeadVar2_4)));
+    }
+#line 190 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 190 "trailing_analysis.m"
+  }
+#line 190 "trailing_analysis.m"
+}
+
+#line 192 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis____Compare____proc_result_0_0(
+#line 192 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 192 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 192 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__3_3)
+#line 192 "trailing_analysis.m"
+{
+#line 192 "trailing_analysis.m"
+  {
+#line 192 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 192 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__CastX_12 = (MR_Integer) transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 192 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__CastY_13 = (MR_Integer) transform_hlds__trailing_analysis__HeadVar__3_3;
+
+#line 192 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__CastX_12 == transform_hlds__trailing_analysis__CastY_13);
+#line 192 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 3729 "transform_hlds.trailing_analysis.c"
+      *transform_hlds__trailing_analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 192 "trailing_analysis.m"
+    else
+#line 192 "trailing_analysis.m"
+      {
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__2_2, (MR_Integer) 0)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__2_2, (MR_Integer) 1)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__2_2, (MR_Integer) 2)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__3_3, (MR_Integer) 0)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__3_3, (MR_Integer) 1)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__3_3, (MR_Integer) 2)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_10_10;
+
+#line 192 "trailing_analysis.m"
+        {
+#line 192 "trailing_analysis.m"
+          hlds__hlds_pred____Compare____pred_proc_id_0_0(&transform_hlds__trailing_analysis__V_10_10, transform_hlds__trailing_analysis__V_4_4, transform_hlds__trailing_analysis__V_7_7);
+        }
+#line 3755 "transform_hlds.trailing_analysis.c"
+        transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__V_10_10 == (MR_Integer) 0);
+#line 192 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = !(transform_hlds__trailing_analysis__succeeded);
+#line 192 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 192 "trailing_analysis.m"
+          *transform_hlds__trailing_analysis__HeadVar__1_1 = transform_hlds__trailing_analysis__V_10_10;
+#line 192 "trailing_analysis.m"
+        else
+#line 192 "trailing_analysis.m"
+          {
+#line 192 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__V_11_11;
+#line 192 "trailing_analysis.m"
+            MR_Integer transform_hlds__trailing_analysis__V_17_17 = (MR_Integer) transform_hlds__trailing_analysis__V_5_5;
+#line 192 "trailing_analysis.m"
+            MR_Integer transform_hlds__trailing_analysis__V_18_18 = (MR_Integer) transform_hlds__trailing_analysis__V_8_8;
+
+#line 192 "trailing_analysis.m"
+            {
+#line 192 "trailing_analysis.m"
+              mercury__private_builtin__builtin_compare_int_3_p_0(&transform_hlds__trailing_analysis__V_11_11, transform_hlds__trailing_analysis__V_17_17, transform_hlds__trailing_analysis__V_18_18);
+            }
+#line 3779 "transform_hlds.trailing_analysis.c"
+            transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__V_11_11 == (MR_Integer) 0);
+#line 192 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__succeeded = !(transform_hlds__trailing_analysis__succeeded);
+#line 192 "trailing_analysis.m"
+            if (transform_hlds__trailing_analysis__succeeded)
+#line 192 "trailing_analysis.m"
+              *transform_hlds__trailing_analysis__HeadVar__1_1 = transform_hlds__trailing_analysis__V_11_11;
+#line 192 "trailing_analysis.m"
+            else
+#line 192 "trailing_analysis.m"
+              {
+#line 192 "trailing_analysis.m"
+                {
+#line 192 "trailing_analysis.m"
+                  mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__trailing_analysis_scalar_common_1[2], transform_hlds__trailing_analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__trailing_analysis__V_6_6)), ((MR_Box) (transform_hlds__trailing_analysis__V_9_9)));
+#line 192 "trailing_analysis.m"
+                  return;
+                }
+#line 192 "trailing_analysis.m"
+              }
+#line 192 "trailing_analysis.m"
+          }
+#line 192 "trailing_analysis.m"
+      }
+#line 192 "trailing_analysis.m"
+  }
+#line 192 "trailing_analysis.m"
+}
+
+#line 192 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis____Unify____proc_result_0_0(
+#line 192 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 192 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2)
+#line 192 "trailing_analysis.m"
+{
+#line 192 "trailing_analysis.m"
+  {
+#line 192 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 192 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__CastX_9 = (MR_Integer) transform_hlds__trailing_analysis__HeadVar__1_1;
+#line 192 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__CastY_10 = (MR_Integer) transform_hlds__trailing_analysis__HeadVar__2_2;
+
+#line 192 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__CastX_9 == transform_hlds__trailing_analysis__CastY_10);
+#line 192 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 192 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 192 "trailing_analysis.m"
+    else
+#line 192 "trailing_analysis.m"
+      {
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__TypeInfo_12_12;
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__1_1, (MR_Integer) 1)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__1_1, (MR_Integer) 2)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__2_2, (MR_Integer) 0)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__2_2, (MR_Integer) 1)));
+#line 192 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__HeadVar__2_2, (MR_Integer) 2)));
+
+#line 3852 "transform_hlds.trailing_analysis.c"
+        {
+#line 3854 "transform_hlds.trailing_analysis.c"
+          transform_hlds__trailing_analysis__succeeded = hlds__hlds_pred____Unify____pred_proc_id_0_0(transform_hlds__trailing_analysis__V_3_3, transform_hlds__trailing_analysis__V_6_6);
+        }
+#line 192 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 192 "trailing_analysis.m"
+          {
+#line 3861 "transform_hlds.trailing_analysis.c"
+            transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__V_4_4 == transform_hlds__trailing_analysis__V_7_7);
+#line 192 "trailing_analysis.m"
+            if (transform_hlds__trailing_analysis__succeeded)
+#line 192 "trailing_analysis.m"
+              {
+#line 3867 "transform_hlds.trailing_analysis.c"
+                transform_hlds__trailing_analysis__TypeInfo_12_12 = (MR_Word) &transform_hlds__trailing_analysis_scalar_common_1[2];
+#line 3869 "transform_hlds.trailing_analysis.c"
+                {
+#line 3871 "transform_hlds.trailing_analysis.c"
+                  return transform_hlds__trailing_analysis__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__trailing_analysis__TypeInfo_12_12, ((MR_Box) (transform_hlds__trailing_analysis__V_5_5)), ((MR_Box) (transform_hlds__trailing_analysis__V_8_8)));
+                }
+#line 192 "trailing_analysis.m"
+              }
+#line 192 "trailing_analysis.m"
+          }
+#line 192 "trailing_analysis.m"
+      }
+#line 192 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 192 "trailing_analysis.m"
+  }
+#line 192 "trailing_analysis.m"
+}
+
+#line 1309 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__output_proc_name_4_p_0(
+#line 1309 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Moduleinfo_5,
+#line 1309 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_6)
+#line 1309 "trailing_analysis.m"
+{
+#line 1312 "trailing_analysis.m"
+  {
+#line 1312 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1312 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Pieces_8;
+#line 1312 "trailing_analysis.m"
+    MR_String transform_hlds__trailing_analysis__Str_9;
+#line 1312 "trailing_analysis.m"
+    MR_String transform_hlds__trailing_analysis__V_19_19;
+#line 1312 "trailing_analysis.m"
+    MR_String transform_hlds__trailing_analysis__V_21_21;
+
+#line 1313 "trailing_analysis.m"
+    {
+#line 1313 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__Pieces_8 = hlds__hlds_error_util__describe_one_proc_name_3_f_0(transform_hlds__trailing_analysis__Moduleinfo_5, (MR_Integer) 0, transform_hlds__trailing_analysis__PPId_6);
+    }
+#line 1314 "trailing_analysis.m"
+    {
+#line 1314 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__Str_9 = parse_tree__error_util__error_pieces_to_string_1_f_0(transform_hlds__trailing_analysis__Pieces_8);
+    }
+#line 3919 "transform_hlds.trailing_analysis.c"
+    {
+#line 3921 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__V_19_19 = mercury__string__f_43_43_2_f_0(transform_hlds__trailing_analysis__Str_9, (MR_String) "\n");
+    }
+#line 3924 "transform_hlds.trailing_analysis.c"
+    {
+#line 3926 "transform_hlds.trailing_analysis.c"
+      transform_hlds__trailing_analysis__V_21_21 = mercury__string__f_43_43_2_f_0((MR_String) "\t", transform_hlds__trailing_analysis__V_19_19);
+    }
+#line 3929 "transform_hlds.trailing_analysis.c"
+    {
+#line 3931 "transform_hlds.trailing_analysis.c"
+      mercury__io__write_string_3_p_0(transform_hlds__trailing_analysis__V_21_21);
+#line 3933 "transform_hlds.trailing_analysis.c"
+      return;
+    }
+#line 1312 "trailing_analysis.m"
+  }
+#line 1309 "trailing_analysis.m"
+}
+
+#line 1251 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__maybe_record_trailing_result_2_6_p_0(
+#line 1251 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_7,
+#line 1251 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredId_8,
+#line 1251 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredInfo_9,
+#line 1251 "trailing_analysis.m"
+  MR_Integer transform_hlds__trailing_analysis__ProcId_10,
+#line 1251 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_0_19,
+#line 1251 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_20)
+#line 1251 "trailing_analysis.m"
+{
+#line 3958 "transform_hlds.trailing_analysis.c"
+  {
+#line 3960 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 1120 "trailing_analysis.m"
+    {
+#line 1120 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__succeeded = hlds__hlds_pred__procedure_is_exported_3_p_0(transform_hlds__trailing_analysis__ModuleInfo_7, transform_hlds__trailing_analysis__PredInfo_9, transform_hlds__trailing_analysis__ProcId_10);
+    }
+#line 1120 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 1120 "trailing_analysis.m"
+      {
+#line 1121 "trailing_analysis.m"
+        {
+#line 1121 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__succeeded = hlds__hlds_pred__is_unify_or_compare_pred_1_p_0(transform_hlds__trailing_analysis__PredInfo_9);
+        }
+#line 1121 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = !(transform_hlds__trailing_analysis__succeeded);
+#line 1120 "trailing_analysis.m"
+      }
+#line 3981 "transform_hlds.trailing_analysis.c"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 3983 "transform_hlds.trailing_analysis.c"
+      {
+#line 3985 "transform_hlds.trailing_analysis.c"
+        MR_Word transform_hlds__trailing_analysis__PPId_13;
+#line 3987 "transform_hlds.trailing_analysis.c"
+        MR_Word transform_hlds__trailing_analysis__TrailingInfo_14;
+#line 3989 "transform_hlds.trailing_analysis.c"
+        MR_Word transform_hlds__trailing_analysis__Status_15;
+#line 3991 "transform_hlds.trailing_analysis.c"
+        MR_Word transform_hlds__trailing_analysis__ResultStatus_16;
+#line 3993 "transform_hlds.trailing_analysis.c"
+        MR_Word transform_hlds__trailing_analysis__ModuleName_17;
+#line 3995 "transform_hlds.trailing_analysis.c"
+        MR_Word transform_hlds__trailing_analysis__FuncId_18;
+#line 3997 "transform_hlds.trailing_analysis.c"
+        MR_Word transform_hlds__trailing_analysis__V_23_23;
+#line 1282 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__ProcTrailingInfo_45;
+#line 1274 "trailing_analysis.m"
+        MR_Box transform_hlds__trailing_analysis__conv0_ProcTrailingInfo_45;
+
+#line 1260 "trailing_analysis.m"
+        {
+#line 1260 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__PPId_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1260 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__PPId_13, 0) = ((MR_Box) (transform_hlds__trailing_analysis__PredId_8));
+#line 1260 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__PPId_13, 1) = ((MR_Box) (transform_hlds__trailing_analysis__ProcId_10));
+#line 1260 "trailing_analysis.m"
+        }
+#line 1261 "trailing_analysis.m"
+        {
+#line 1261 "trailing_analysis.m"
+          hlds__hlds_module__module_info_get_trailing_info_2_p_0(transform_hlds__trailing_analysis__ModuleInfo_7, &transform_hlds__trailing_analysis__TrailingInfo_14);
+        }
+#line 1274 "trailing_analysis.m"
+        {
+#line 1274 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_trailing_info_0, transform_hlds__trailing_analysis__TrailingInfo_14, ((MR_Box) (transform_hlds__trailing_analysis__PPId_13)), &transform_hlds__trailing_analysis__conv0_ProcTrailingInfo_45);
+        }
+#line 1274 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 1274 "trailing_analysis.m"
+          {
+#line 1274 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__ProcTrailingInfo_45 = ((MR_Word) transform_hlds__trailing_analysis__conv0_ProcTrailingInfo_45);
+#line 1274 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1274 "trailing_analysis.m"
+          }
+#line 1282 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 1275 "trailing_analysis.m"
+          {
+#line 1275 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__MaybeResultStatus_46;
+
+#line 1275 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__Status_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__ProcTrailingInfo_45, (MR_Integer) 0)));
+#line 1275 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__MaybeResultStatus_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__ProcTrailingInfo_45, (MR_Integer) 1)));
+#line 1278 "trailing_analysis.m"
+            if ((transform_hlds__trailing_analysis__MaybeResultStatus_46 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1279 "trailing_analysis.m"
+              {
+#line 1280 "trailing_analysis.m"
+                {
+#line 1280 "trailing_analysis.m"
+                  mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.trailing_analysis", (MR_String) "predicate \140transform_hlds.trailing_analysis.lookup_proc_trailing_info\'/4", (MR_String) "no result status");
+#line 1280 "trailing_analysis.m"
+                  return;
+                }
+#line 1279 "trailing_analysis.m"
+              }
+#line 1278 "trailing_analysis.m"
+            else
+#line 1277 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__ResultStatus_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__MaybeResultStatus_46, (MR_Integer) 0)));
+#line 1275 "trailing_analysis.m"
+          }
+#line 1282 "trailing_analysis.m"
+        else
+#line 1285 "trailing_analysis.m"
+          {
+#line 1285 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__Status_15 = (MR_Integer) 0;
+#line 1286 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__ResultStatus_16 = (MR_Integer) 2;
+#line 1285 "trailing_analysis.m"
+          }
+#line 1263 "trailing_analysis.m"
+        {
+#line 1263 "trailing_analysis.m"
+          transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__trailing_analysis__ModuleInfo_7, transform_hlds__trailing_analysis__PPId_13, &transform_hlds__trailing_analysis__ModuleName_17, &transform_hlds__trailing_analysis__FuncId_18);
+        }
+#line 1264 "trailing_analysis.m"
+        mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1265 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__V_23_23 = (MR_Word) transform_hlds__trailing_analysis__Status_15;
+#line 1264 "trailing_analysis.m"
+        {
+#line 1264 "trailing_analysis.m"
+          analysis__record_result_7_p_0((MR_Word) &transform_hlds__trailing_analysis_scalar_common_4[0], transform_hlds__trailing_analysis__ModuleName_17, transform_hlds__trailing_analysis__FuncId_18, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) (transform_hlds__trailing_analysis__V_23_23)), transform_hlds__trailing_analysis__ResultStatus_16, transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_0_19, transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_20);
+#line 1264 "trailing_analysis.m"
+          return;
+        }
+#line 4090 "transform_hlds.trailing_analysis.c"
+      }
+#line 4092 "transform_hlds.trailing_analysis.c"
+    else
+#line 1267 "trailing_analysis.m"
+      *transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_20 = transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_0_19;
+#line 4096 "transform_hlds.trailing_analysis.c"
+  }
+#line 1251 "trailing_analysis.m"
+}
+
+#line 1248 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__maybe_record_trailing_result_4_p_0_1(
+#line 1248 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1248 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1248 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1248 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 1248 "trailing_analysis.m"
+{
+#line 1248 "trailing_analysis.m"
+  {
+#line 1248 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 1248 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_AnalysisInfo_20;
+
+#line 1248 "trailing_analysis.m"
+    {
+#line 1248 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__maybe_record_trailing_result_2_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 5))), ((MR_Integer) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_AnalysisInfo_20);
+    }
+#line 1248 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_AnalysisInfo_20));
+#line 1248 "trailing_analysis.m"
+  }
+#line 1248 "trailing_analysis.m"
+}
+
+#line 1242 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__maybe_record_trailing_result_4_p_0(
+#line 1242 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_5,
+#line 1242 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredId_6,
+#line 1242 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_0_10,
+#line 1242 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_11)
+#line 1242 "trailing_analysis.m"
+{
+#line 1245 "trailing_analysis.m"
+  {
+#line 1245 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1245 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__PredInfo_8;
+#line 1245 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__ProcIds_9;
+#line 1245 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_12_12;
+#line 1248 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_AnalysisInfo_11;
+
+#line 1246 "trailing_analysis.m"
+    {
+#line 1246 "trailing_analysis.m"
+      hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__trailing_analysis__ModuleInfo_5, transform_hlds__trailing_analysis__PredId_6, &transform_hlds__trailing_analysis__PredInfo_8);
+    }
+#line 1247 "trailing_analysis.m"
+    {
+#line 1247 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__ProcIds_9 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__trailing_analysis__PredInfo_8);
+    }
+#line 1248 "trailing_analysis.m"
+    {
+#line 1248 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_12_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 1248 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_12_12, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_8[3]));
+#line 1248 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_12_12, 1) = ((MR_Box) (transform_hlds__trailing_analysis__maybe_record_trailing_result_4_p_0_1));
+#line 1248 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_12_12, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 1248 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_12_12, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_5));
+#line 1248 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_12_12, 4) = ((MR_Box) (transform_hlds__trailing_analysis__PredId_6));
+#line 1248 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_12_12, 5) = ((MR_Box) (transform_hlds__trailing_analysis__PredInfo_8));
+#line 1248 "trailing_analysis.m"
+    }
+#line 1248 "trailing_analysis.m"
+    {
+#line 1248 "trailing_analysis.m"
+      mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0, (MR_Word) &analysis__analysis__type_ctor_info_analysis_info_0, transform_hlds__trailing_analysis__V_12_12, transform_hlds__trailing_analysis__ProcIds_9, ((MR_Box) (transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_0_10)), &transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_AnalysisInfo_11);
+    }
+#line 1248 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__STATE_VARIABLE_AnalysisInfo_11 = ((MR_Word) transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_AnalysisInfo_11);
+#line 1245 "trailing_analysis.m"
+  }
+#line 1242 "trailing_analysis.m"
+}
+
+#line 1208 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__search_analysis_status_5_p_0(
+#line 1208 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_6,
+#line 1208 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Result_7,
+#line 1208 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__AnalysisStatus_8,
+#line 1208 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_12,
+#line 1208 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_13)
+#line 1208 "trailing_analysis.m"
+{
+#line 1211 "trailing_analysis.m"
+  {
+#line 1211 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1211 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__AnalysisInfo0_10;
+#line 1211 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__AnalysisInfo_11;
+#line 1211 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__ModuleName_22;
+#line 1211 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__FuncId_23;
+#line 1211 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__MaybeBestStatus_25;
+
+#line 1212 "trailing_analysis.m"
+    {
+#line 1212 "trailing_analysis.m"
+      hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_12, &transform_hlds__trailing_analysis__AnalysisInfo0_10);
+    }
+#line 1223 "trailing_analysis.m"
+    {
+#line 1223 "trailing_analysis.m"
+      transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_12, transform_hlds__trailing_analysis__PPId_6, &transform_hlds__trailing_analysis__ModuleName_22, &transform_hlds__trailing_analysis__FuncId_23);
+    }
+#line 1224 "trailing_analysis.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1226 "trailing_analysis.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1225 "trailing_analysis.m"
+    {
+#line 1225 "trailing_analysis.m"
+      analysis__lookup_best_result_6_p_0((MR_Word) &transform_hlds__trailing_analysis_scalar_common_4[0], transform_hlds__trailing_analysis__AnalysisInfo0_10, transform_hlds__trailing_analysis__ModuleName_22, transform_hlds__trailing_analysis__FuncId_23, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), &transform_hlds__trailing_analysis__MaybeBestStatus_25);
+    }
+#line 1232 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis__MaybeBestStatus_25 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1233 "trailing_analysis.m"
+      {
+#line 1233 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__TypeClassInfo_for_analysis_40 = (MR_Word) &transform_hlds__trailing_analysis_scalar_common_4[0];
+#line 1233 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__Answer_28;
+#line 4256 "transform_hlds.trailing_analysis.c"
+        MR_Box MR_CALL (* transform_hlds__trailing_analysis__func_0)(MR_Box, MR_Box);
+#line 4258 "transform_hlds.trailing_analysis.c"
+        MR_Box transform_hlds__trailing_analysis__conv1_Answer_28;
+
+#line 1236 "trailing_analysis.m"
+        mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 4263 "transform_hlds.trailing_analysis.c"
+        transform_hlds__trailing_analysis__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__TypeClassInfo_for_analysis_40, (MR_Integer) 0)), (MR_Integer) 9)));
+#line 4265 "transform_hlds.trailing_analysis.c"
+        {
+#line 4267 "transform_hlds.trailing_analysis.c"
+          transform_hlds__trailing_analysis__conv1_Answer_28 = transform_hlds__trailing_analysis__func_0(((MR_Box) transform_hlds__trailing_analysis__TypeClassInfo_for_analysis_40), ((MR_Box) ((MR_Integer) 0)));
+        }
+#line 4270 "transform_hlds.trailing_analysis.c"
+        transform_hlds__trailing_analysis__Answer_28 = ((MR_Word) transform_hlds__trailing_analysis__conv1_Answer_28);
+#line 1237 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__Result_7 = (MR_Word) transform_hlds__trailing_analysis__Answer_28;
+#line 1238 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__AnalysisStatus_8 = (MR_Integer) 2;
+#line 1239 "trailing_analysis.m"
+        {
+#line 1239 "trailing_analysis.m"
+          analysis__record_request_6_p_0((MR_Word) &transform_hlds__trailing_analysis_scalar_common_3[0], (MR_String) "trail_usage", transform_hlds__trailing_analysis__ModuleName_22, transform_hlds__trailing_analysis__FuncId_23, ((MR_Box) ((MR_Integer) 0)), transform_hlds__trailing_analysis__AnalysisInfo0_10, &transform_hlds__trailing_analysis__AnalysisInfo_11);
+        }
+#line 1233 "trailing_analysis.m"
+      }
+#line 1232 "trailing_analysis.m"
+    else
+#line 1229 "trailing_analysis.m"
+      {
+#line 1229 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__MaybeBestStatus_25, (MR_Integer) 0)));
+#line 1229 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_33_33, (MR_Integer) 1)));
+#line 1230 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_36_36;
+
+#line 1228 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__AnalysisStatus_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_33_33, (MR_Integer) 2)));
+#line 1229 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__Result_7 = (MR_Word) transform_hlds__trailing_analysis__V_34_34;
+#line 1230 "trailing_analysis.m"
+        mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1230 "trailing_analysis.m"
+        {
+#line 1230 "trailing_analysis.m"
+          analysis__record_dependency_7_p_0((MR_Word) &transform_hlds__trailing_analysis_scalar_common_4[0], transform_hlds__trailing_analysis__ModuleName_22, transform_hlds__trailing_analysis__FuncId_23, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), transform_hlds__trailing_analysis__AnalysisInfo0_10, &transform_hlds__trailing_analysis__AnalysisInfo_11);
+        }
+#line 1229 "trailing_analysis.m"
+      }
+#line 1215 "trailing_analysis.m"
+    {
+#line 1215 "trailing_analysis.m"
+      hlds__hlds_module__module_info_set_analysis_info_3_p_0(transform_hlds__trailing_analysis__AnalysisInfo_11, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_12, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_13);
+#line 1215 "trailing_analysis.m"
+      return;
+    }
+#line 1211 "trailing_analysis.m"
+  }
+#line 1208 "trailing_analysis.m"
+}
+
+#line 1079 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__write_pragma_trailing_info_2_7_p_0(
+#line 1079 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_8,
+#line 1079 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__TrailingMap_9,
+#line 1079 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredId_10,
+#line 1079 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredInfo_11,
+#line 1079 "trailing_analysis.m"
+  MR_Integer transform_hlds__trailing_analysis__ProcId_12)
+#line 1079 "trailing_analysis.m"
+{
+#line 4334 "transform_hlds.trailing_analysis.c"
+  {
+#line 4336 "transform_hlds.trailing_analysis.c"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1120 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TypeSpecInfo_39;
+#line 1120 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TypeSpecForcePreds_41;
+#line 1120 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Markers_44;
+#line 1127 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_40_40;
+#line 1127 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_42_42;
+#line 1127 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_43_43;
+#line 1128 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TypeCtorInfo_21_47;
+#line 1135 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_45_45;
+#line 1136 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_46_46;
+
+#line 1120 "trailing_analysis.m"
+    {
+#line 1120 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__succeeded = hlds__hlds_pred__procedure_is_exported_3_p_0(transform_hlds__trailing_analysis__ModuleInfo_8, transform_hlds__trailing_analysis__PredInfo_11, transform_hlds__trailing_analysis__ProcId_12);
+    }
+#line 1120 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 1120 "trailing_analysis.m"
+      {
+#line 1121 "trailing_analysis.m"
+        {
+#line 1121 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__succeeded = hlds__hlds_pred__is_unify_or_compare_pred_1_p_0(transform_hlds__trailing_analysis__PredInfo_11);
+        }
+#line 1121 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = !(transform_hlds__trailing_analysis__succeeded);
+#line 1120 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 1120 "trailing_analysis.m"
+          {
+#line 1126 "trailing_analysis.m"
+            {
+#line 1126 "trailing_analysis.m"
+              hlds__hlds_module__module_info_get_type_spec_info_2_p_0(transform_hlds__trailing_analysis__ModuleInfo_8, &transform_hlds__trailing_analysis__TypeSpecInfo_39);
+            }
+#line 1127 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__TypeSpecInfo_39, (MR_Integer) 0)));
+#line 1127 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__TypeSpecForcePreds_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__TypeSpecInfo_39, (MR_Integer) 1)));
+#line 1127 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__TypeSpecInfo_39, (MR_Integer) 2)));
+#line 1127 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__TypeSpecInfo_39, (MR_Integer) 3)));
+#line 4390 "transform_hlds.trailing_analysis.c"
+            transform_hlds__trailing_analysis__TypeCtorInfo_21_47 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+#line 1128 "trailing_analysis.m"
+            {
+#line 1128 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__succeeded = mercury__set__member_2_p_0(transform_hlds__trailing_analysis__TypeCtorInfo_21_47, ((MR_Box) (transform_hlds__trailing_analysis__PredId_10)), transform_hlds__trailing_analysis__TypeSpecForcePreds_41);
+            }
+#line 1128 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__succeeded = !(transform_hlds__trailing_analysis__succeeded);
+#line 1120 "trailing_analysis.m"
+            if (transform_hlds__trailing_analysis__succeeded)
+#line 1120 "trailing_analysis.m"
+              {
+#line 1134 "trailing_analysis.m"
+                {
+#line 1134 "trailing_analysis.m"
+                  hlds__hlds_pred__pred_info_get_markers_2_p_0(transform_hlds__trailing_analysis__PredInfo_11, &transform_hlds__trailing_analysis__Markers_44);
+                }
+#line 1135 "trailing_analysis.m"
+                transform_hlds__trailing_analysis__V_45_45 = (MR_Integer) 10;
+#line 1135 "trailing_analysis.m"
+                {
+#line 1135 "trailing_analysis.m"
+                  transform_hlds__trailing_analysis__succeeded = hlds__hlds_pred__check_marker_2_p_0(transform_hlds__trailing_analysis__Markers_44, transform_hlds__trailing_analysis__V_45_45);
+                }
+#line 1135 "trailing_analysis.m"
+                transform_hlds__trailing_analysis__succeeded = !(transform_hlds__trailing_analysis__succeeded);
+#line 1120 "trailing_analysis.m"
+                if (transform_hlds__trailing_analysis__succeeded)
+#line 1120 "trailing_analysis.m"
+                  {
+#line 1136 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__V_46_46 = (MR_Integer) 11;
+#line 1136 "trailing_analysis.m"
+                    {
+#line 1136 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__succeeded = hlds__hlds_pred__check_marker_2_p_0(transform_hlds__trailing_analysis__Markers_44, transform_hlds__trailing_analysis__V_46_46);
+                    }
+#line 1136 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__succeeded = !(transform_hlds__trailing_analysis__succeeded);
+#line 1120 "trailing_analysis.m"
+                  }
+#line 1120 "trailing_analysis.m"
+              }
+#line 1120 "trailing_analysis.m"
+          }
+#line 1120 "trailing_analysis.m"
+      }
+#line 4438 "transform_hlds.trailing_analysis.c"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 4440 "transform_hlds.trailing_analysis.c"
+      {
+#line 4442 "transform_hlds.trailing_analysis.c"
+        MR_Word transform_hlds__trailing_analysis__ModuleName_15;
+#line 4444 "transform_hlds.trailing_analysis.c"
+        MR_String transform_hlds__trailing_analysis__Name_16;
+#line 4446 "transform_hlds.trailing_analysis.c"
+        MR_Integer transform_hlds__trailing_analysis__Arity_17;
+#line 4448 "transform_hlds.trailing_analysis.c"
+        MR_Word transform_hlds__trailing_analysis__PredOrFunc_18;
+#line 4450 "transform_hlds.trailing_analysis.c"
+        MR_Integer transform_hlds__trailing_analysis__ModeNum_19;
+#line 1103 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__Status_21;
+#line 1094 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__ProcTrailInfo_20;
+#line 1094 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_29_29;
+#line 1094 "trailing_analysis.m"
+        MR_Box transform_hlds__trailing_analysis__conv0_ProcTrailInfo_20;
+#line 1095 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_22_22;
+
+#line 1088 "trailing_analysis.m"
+        {
+#line 1088 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__ModuleName_15 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__trailing_analysis__PredInfo_11);
+        }
+#line 1089 "trailing_analysis.m"
+        {
+#line 1089 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__Name_16 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__trailing_analysis__PredInfo_11);
+        }
+#line 1090 "trailing_analysis.m"
+        {
+#line 1090 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__Arity_17 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(transform_hlds__trailing_analysis__PredInfo_11);
+        }
+#line 1091 "trailing_analysis.m"
+        {
+#line 1091 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__PredOrFunc_18 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(transform_hlds__trailing_analysis__PredInfo_11);
+        }
+#line 1092 "trailing_analysis.m"
+        {
+#line 1092 "trailing_analysis.m"
+          hlds__hlds_pred__proc_id_to_int_2_p_0(transform_hlds__trailing_analysis__ProcId_12, &transform_hlds__trailing_analysis__ModeNum_19);
+        }
+#line 1094 "trailing_analysis.m"
+        {
+#line 1094 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__V_29_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1094 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_29_29, 0) = ((MR_Box) (transform_hlds__trailing_analysis__PredId_10));
+#line 1094 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_29_29, 1) = ((MR_Box) (transform_hlds__trailing_analysis__ProcId_12));
+#line 1094 "trailing_analysis.m"
+        }
+#line 1094 "trailing_analysis.m"
+        {
+#line 1094 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_trailing_info_0, transform_hlds__trailing_analysis__TrailingMap_9, ((MR_Box) (transform_hlds__trailing_analysis__V_29_29)), &transform_hlds__trailing_analysis__conv0_ProcTrailInfo_20);
+        }
+#line 1094 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 1094 "trailing_analysis.m"
+          {
+#line 1094 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__ProcTrailInfo_20 = ((MR_Word) transform_hlds__trailing_analysis__conv0_ProcTrailInfo_20);
+#line 1094 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1094 "trailing_analysis.m"
+          }
+#line 1094 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 1094 "trailing_analysis.m"
+          {
+#line 1095 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__Status_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__ProcTrailInfo_20, (MR_Integer) 0)));
+#line 1095 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__ProcTrailInfo_20, (MR_Integer) 1)));
+#line 1095 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 1094 "trailing_analysis.m"
+          }
+#line 1103 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 1097 "trailing_analysis.m"
+          {
+#line 1097 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__PredSymName_23;
+#line 1097 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__PredNameArityPFMn_24;
+#line 1097 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__TrailingInfo_25;
+
+#line 1097 "trailing_analysis.m"
+            {
+#line 1097 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__PredSymName_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1097 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__PredSymName_23, 0) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleName_15));
+#line 1097 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__PredSymName_23, 1) = ((MR_Box) (transform_hlds__trailing_analysis__Name_16));
+#line 1097 "trailing_analysis.m"
+            }
+#line 1098 "trailing_analysis.m"
+            {
+#line 1098 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__PredNameArityPFMn_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1098 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__PredNameArityPFMn_24, 0) = ((MR_Box) (transform_hlds__trailing_analysis__PredSymName_23));
+#line 1098 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__PredNameArityPFMn_24, 1) = ((MR_Box) (transform_hlds__trailing_analysis__Arity_17));
+#line 1098 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__PredNameArityPFMn_24, 2) = ((MR_Box) (transform_hlds__trailing_analysis__PredOrFunc_18));
+#line 1098 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__PredNameArityPFMn_24, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModeNum_19));
+#line 1098 "trailing_analysis.m"
+            }
+#line 1100 "trailing_analysis.m"
+            {
+#line 1100 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__TrailingInfo_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1100 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__TrailingInfo_25, 0) = ((MR_Box) (transform_hlds__trailing_analysis__PredNameArityPFMn_24));
+#line 1100 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__TrailingInfo_25, 1) = ((MR_Box) (transform_hlds__trailing_analysis__Status_21));
+#line 1100 "trailing_analysis.m"
+            }
+#line 1102 "trailing_analysis.m"
+            {
+#line 1102 "trailing_analysis.m"
+              parse_tree__mercury_to_mercury__mercury_output_pragma_trailing_info_3_p_0(transform_hlds__trailing_analysis__TrailingInfo_25);
+#line 1102 "trailing_analysis.m"
+              return;
+            }
+#line 1097 "trailing_analysis.m"
+          }
+#line 1103 "trailing_analysis.m"
+        else
+#line 1102 "trailing_analysis.m"
+          {
+#line 1102 "trailing_analysis.m"
+          }
+#line 4585 "transform_hlds.trailing_analysis.c"
+      }
+#line 4587 "transform_hlds.trailing_analysis.c"
+    else
+#line 1107 "trailing_analysis.m"
+      {
+#line 1107 "trailing_analysis.m"
+      }
+#line 4593 "transform_hlds.trailing_analysis.c"
+  }
+#line 1079 "trailing_analysis.m"
+}
+
+#line 1057 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__make_opt_int_3_p_0_1(
+#line 1057 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1057 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1057 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1057 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 1057 "trailing_analysis.m"
+{
+#line 1057 "trailing_analysis.m"
+  {
+#line 1057 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+
+#line 1057 "trailing_analysis.m"
+    {
+#line 1057 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__write_pragma_trailing_info_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1));
+#line 1057 "trailing_analysis.m"
+      return;
+    }
+#line 1057 "trailing_analysis.m"
+  }
+#line 1057 "trailing_analysis.m"
+}
+
+#line 1039 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__make_opt_int_3_p_0(
+#line 1039 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_4)
+#line 1039 "trailing_analysis.m"
+{
+#line 1041 "trailing_analysis.m"
+  {
+#line 1041 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1041 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Globals_6;
+#line 1041 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__ModuleName_7;
+#line 1041 "trailing_analysis.m"
+    MR_String transform_hlds__trailing_analysis__OptFileName_8;
+#line 1041 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Verbose_9;
+#line 1041 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__OptFileRes_10;
+
+#line 1042 "trailing_analysis.m"
+    {
+#line 1042 "trailing_analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__trailing_analysis__ModuleInfo_4, &transform_hlds__trailing_analysis__Globals_6);
+    }
+#line 1043 "trailing_analysis.m"
+    {
+#line 1043 "trailing_analysis.m"
+      hlds__hlds_module__module_info_get_name_2_p_0(transform_hlds__trailing_analysis__ModuleInfo_4, &transform_hlds__trailing_analysis__ModuleName_7);
+    }
+#line 1044 "trailing_analysis.m"
+    {
+#line 1044 "trailing_analysis.m"
+      parse_tree__file_names__module_name_to_file_name_7_p_0(transform_hlds__trailing_analysis__Globals_6, transform_hlds__trailing_analysis__ModuleName_7, (MR_String) ".opt.tmp", (MR_Integer) 1, &transform_hlds__trailing_analysis__OptFileName_8);
+    }
+#line 1046 "trailing_analysis.m"
+    {
+#line 1046 "trailing_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__trailing_analysis__Globals_6, (MR_Integer) 44, &transform_hlds__trailing_analysis__Verbose_9);
+    }
+#line 1047 "trailing_analysis.m"
+    {
+#line 1047 "trailing_analysis.m"
+      libs__file_util__maybe_write_string_4_p_0(transform_hlds__trailing_analysis__Verbose_9, (MR_String) "% Appending trailing_info pragmas to \140");
+    }
+#line 1048 "trailing_analysis.m"
+    {
+#line 1048 "trailing_analysis.m"
+      libs__file_util__maybe_write_string_4_p_0(transform_hlds__trailing_analysis__Verbose_9, transform_hlds__trailing_analysis__OptFileName_8);
+    }
+#line 1049 "trailing_analysis.m"
+    {
+#line 1049 "trailing_analysis.m"
+      libs__file_util__maybe_write_string_4_p_0(transform_hlds__trailing_analysis__Verbose_9, (MR_String) "\'...");
+    }
+#line 1050 "trailing_analysis.m"
+    {
+#line 1050 "trailing_analysis.m"
+      libs__file_util__maybe_flush_output_3_p_0(transform_hlds__trailing_analysis__Verbose_9);
+    }
+#line 1051 "trailing_analysis.m"
+    {
+#line 1051 "trailing_analysis.m"
+      mercury__io__open_append_4_p_0(transform_hlds__trailing_analysis__OptFileName_8, &transform_hlds__trailing_analysis__OptFileRes_10);
+    }
+#line 1062 "trailing_analysis.m"
+    if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__OptFileRes_10)) == (MR_mktag((MR_Integer) 1))))
+#line 1063 "trailing_analysis.m"
+      {
+#line 1063 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__IOError_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__OptFileRes_10, (MR_Integer) 0)));
+#line 1063 "trailing_analysis.m"
+        MR_String transform_hlds__trailing_analysis__IOErrorMessage_18;
+#line 1063 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_34_34;
+#line 1063 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_37_37;
+#line 1063 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_38_38;
+#line 1063 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_40_40;
+
+#line 1064 "trailing_analysis.m"
+        {
+#line 1064 "trailing_analysis.m"
+          libs__file_util__maybe_write_string_4_p_0(transform_hlds__trailing_analysis__Verbose_9, (MR_String) " failed!\n");
+        }
+#line 1065 "trailing_analysis.m"
+        {
+#line 1065 "trailing_analysis.m"
+          mercury__io__error_message_2_p_0(transform_hlds__trailing_analysis__IOError_17, &transform_hlds__trailing_analysis__IOErrorMessage_18);
+        }
+#line 1067 "trailing_analysis.m"
+        {
+#line 1067 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__V_40_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1067 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_40_40, 0) = ((MR_Box) (transform_hlds__trailing_analysis__IOErrorMessage_18));
+#line 1067 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_40_40, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1067 "trailing_analysis.m"
+        }
+#line 1067 "trailing_analysis.m"
+        {
+#line 1067 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__V_38_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1067 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_38_38, 0) = ((MR_Box) ((MR_String) "\' for output: "));
+#line 1067 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_38_38, 1) = ((MR_Box) (transform_hlds__trailing_analysis__V_40_40));
+#line 1067 "trailing_analysis.m"
+        }
+#line 1067 "trailing_analysis.m"
+        {
+#line 1067 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__V_37_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1067 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_37_37, 0) = ((MR_Box) (transform_hlds__trailing_analysis__OptFileName_8));
+#line 1067 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_37_37, 1) = ((MR_Box) (transform_hlds__trailing_analysis__V_38_38));
+#line 1067 "trailing_analysis.m"
+        }
+#line 1066 "trailing_analysis.m"
+        {
+#line 1066 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__V_34_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1066 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_34_34, 0) = ((MR_Box) ((MR_String) "Error opening file \140"));
+#line 1066 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_34_34, 1) = ((MR_Box) (transform_hlds__trailing_analysis__V_37_37));
+#line 1066 "trailing_analysis.m"
+        }
+#line 1066 "trailing_analysis.m"
+        {
+#line 1066 "trailing_analysis.m"
+          mercury__io__write_strings_3_p_0(transform_hlds__trailing_analysis__V_34_34);
+        }
+#line 1068 "trailing_analysis.m"
+        {
+#line 1068 "trailing_analysis.m"
+          mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+#line 1068 "trailing_analysis.m"
+          return;
+        }
+#line 1063 "trailing_analysis.m"
+      }
+#line 1062 "trailing_analysis.m"
+    else
+#line 1053 "trailing_analysis.m"
+      {
+#line 1053 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__OptFile_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__OptFileRes_10, (MR_Integer) 0)));
+#line 1053 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__OldStream_12;
+#line 1053 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__TrailingInfo_13;
+#line 1053 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__PredIds_14;
+#line 1053 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_45_45;
+#line 1056 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis___ModuleInfo_15;
+#line 1057 "trailing_analysis.m"
+        MR_Box transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_IO_46_46;
+#line 1059 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_16_16;
+
+#line 1054 "trailing_analysis.m"
+        {
+#line 1054 "trailing_analysis.m"
+          mercury__io__set_output_stream_4_p_0(transform_hlds__trailing_analysis__OptFile_11, &transform_hlds__trailing_analysis__OldStream_12);
+        }
+#line 1055 "trailing_analysis.m"
+        {
+#line 1055 "trailing_analysis.m"
+          hlds__hlds_module__module_info_get_trailing_info_2_p_0(transform_hlds__trailing_analysis__ModuleInfo_4, &transform_hlds__trailing_analysis__TrailingInfo_13);
+        }
+#line 1056 "trailing_analysis.m"
+        {
+#line 1056 "trailing_analysis.m"
+          hlds__hlds_module__module_info_get_valid_predids_3_p_0(&transform_hlds__trailing_analysis__PredIds_14, transform_hlds__trailing_analysis__ModuleInfo_4, &transform_hlds__trailing_analysis___ModuleInfo_15);
+        }
+#line 1057 "trailing_analysis.m"
+        {
+#line 1057 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__V_45_45 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 1057 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_45_45, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_5[2]));
+#line 1057 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_45_45, 1) = ((MR_Box) (transform_hlds__trailing_analysis__make_opt_int_3_p_0_1));
+#line 1057 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_45_45, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 1057 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_45_45, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_4));
+#line 1057 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_45_45, 4) = ((MR_Box) (transform_hlds__trailing_analysis__TrailingInfo_13));
+#line 1057 "trailing_analysis.m"
+        }
+#line 1057 "trailing_analysis.m"
+        {
+#line 1057 "trailing_analysis.m"
+          mercury__list__foldl_4_p_2((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, transform_hlds__trailing_analysis__V_45_45, transform_hlds__trailing_analysis__PredIds_14, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_IO_46_46);
+        }
+#line 1059 "trailing_analysis.m"
+        {
+#line 1059 "trailing_analysis.m"
+          mercury__io__set_output_stream_4_p_0(transform_hlds__trailing_analysis__OldStream_12, &transform_hlds__trailing_analysis__V_16_16);
+        }
+#line 1060 "trailing_analysis.m"
+        {
+#line 1060 "trailing_analysis.m"
+          mercury__io__close_output_3_p_0(transform_hlds__trailing_analysis__OptFile_11);
+        }
+#line 1061 "trailing_analysis.m"
+        {
+#line 1061 "trailing_analysis.m"
+          libs__file_util__maybe_write_string_4_p_0(transform_hlds__trailing_analysis__Verbose_9, (MR_String) " done.\n");
+#line 1061 "trailing_analysis.m"
+          return;
+        }
+#line 1053 "trailing_analysis.m"
+      }
+#line 1041 "trailing_analysis.m"
+  }
+#line 1039 "trailing_analysis.m"
+}
+
+#line 1026 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_case_6_p_0(
+#line 1026 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 1026 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Case_0_15,
+#line 1026 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Case_16,
+#line 1026 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_9,
+#line 1026 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_17,
+#line 1026 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_18)
+#line 1026 "trailing_analysis.m"
+{
+#line 1029 "trailing_analysis.m"
+  {
+#line 1029 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1029 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__MainConsId_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__STATE_VARIABLE_Case_0_15, (MR_Integer) 0)));
+#line 1029 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__OtherConsIds_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__STATE_VARIABLE_Case_0_15, (MR_Integer) 1)));
+#line 1029 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Goal0_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__STATE_VARIABLE_Case_0_15, (MR_Integer) 2)));
+#line 1029 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Goal_14;
+#line 1029 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalExpr0_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Goal0_13, (MR_Integer) 0)));
+#line 1029 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalInfo0_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Goal0_13, (MR_Integer) 1)));
+#line 1029 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalExpr_31;
+#line 1029 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalInfo_32;
+
+#line 844 "trailing_analysis.m"
+    {
+#line 844 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__annotate_goal_2_7_p_0(transform_hlds__trailing_analysis__VarTypes_7, transform_hlds__trailing_analysis__GoalInfo0_30, transform_hlds__trailing_analysis__GoalExpr0_29, &transform_hlds__trailing_analysis__GoalExpr_31, transform_hlds__trailing_analysis__Status_9, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_17, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_18);
+    }
+#line 850 "trailing_analysis.m"
+    if ((*transform_hlds__trailing_analysis__Status_9 == (MR_Integer) 1))
+#line 847 "trailing_analysis.m"
+      {
+#line 848 "trailing_analysis.m"
+        {
+#line 848 "trailing_analysis.m"
+          hlds__hlds_goal__goal_info_add_feature_3_p_0((MR_Integer) 15, transform_hlds__trailing_analysis__GoalInfo0_30, &transform_hlds__trailing_analysis__GoalInfo_32);
+        }
+#line 847 "trailing_analysis.m"
+      }
+#line 850 "trailing_analysis.m"
+    else
+#line 854 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__GoalInfo_32 = transform_hlds__trailing_analysis__GoalInfo0_30;
+#line 856 "trailing_analysis.m"
+    {
+#line 856 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__Goal_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 856 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Goal_14, 0) = ((MR_Box) (transform_hlds__trailing_analysis__GoalExpr_31));
+#line 856 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Goal_14, 1) = ((MR_Box) (transform_hlds__trailing_analysis__GoalInfo_32));
+#line 856 "trailing_analysis.m"
+    }
+#line 1032 "trailing_analysis.m"
+    {
+#line 1032 "trailing_analysis.m"
+      MR_Word base;
+#line 1032 "trailing_analysis.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1032 "trailing_analysis.m"
+      *transform_hlds__trailing_analysis__STATE_VARIABLE_Case_16 = base;
+#line 1032 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__trailing_analysis__MainConsId_11));
+#line 1032 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__trailing_analysis__OtherConsIds_12));
+#line 1032 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__trailing_analysis__Goal_14));
+#line 1032 "trailing_analysis.m"
+    }
+#line 1029 "trailing_analysis.m"
+  }
+#line 1026 "trailing_analysis.m"
+}
+
+#line 1023 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_cases_6_p_0_2(
+#line 1023 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1023 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1023 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1023 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 1023 "trailing_analysis.m"
+{
+#line 1023 "trailing_analysis.m"
+  {
+#line 1023 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 1023 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv4_HeadVar__3_3;
+
+#line 1023 "trailing_analysis.m"
+    {
+#line 1023 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__combine_trailing_status_3_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv4_HeadVar__3_3);
+    }
+#line 1023 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv4_HeadVar__3_3));
+#line 1023 "trailing_analysis.m"
+  }
+#line 1023 "trailing_analysis.m"
+}
+
+#line 1022 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_cases_6_p_0_1(
+#line 1022 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1022 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1022 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1022 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3,
+#line 1022 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_4,
+#line 1022 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_5)
+#line 1022 "trailing_analysis.m"
+{
+#line 1022 "trailing_analysis.m"
+  {
+#line 1022 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 1022 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_Case_16;
+#line 1022 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv1_Status_9;
+#line 1022 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_18;
+
+#line 1022 "trailing_analysis.m"
+    {
+#line 1022 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__annotate_case_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), &transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_Case_16, &transform_hlds__trailing_analysis__conv1_Status_9, ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_4), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_18);
+    }
+#line 1022 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_Case_16));
+#line 1022 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv1_Status_9));
+#line 1022 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_18));
+#line 1022 "trailing_analysis.m"
+  }
+#line 1022 "trailing_analysis.m"
+}
+
+#line 1018 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_cases_6_p_0(
+#line 1018 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 1018 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Cases_0_12,
+#line 1018 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Cases_13,
+#line 1018 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_9,
+#line 1018 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 1018 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_15)
+#line 1018 "trailing_analysis.m"
+{
+#line 1021 "trailing_analysis.m"
+  {
+#line 1021 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1021 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TypeCtorInfo_26_26;
+#line 1021 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TypeCtorInfo_27_27;
+#line 1021 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Statuses_11;
+#line 1021 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_16_16;
+#line 1022 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv3_STATE_VARIABLE_ModuleInfo_15;
+#line 1023 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv5_Status_9;
+
+#line 1022 "trailing_analysis.m"
+    {
+#line 1022 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1022 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_16_16, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_8[2]));
+#line 1022 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_16_16, 1) = ((MR_Box) (transform_hlds__trailing_analysis__annotate_cases_6_p_0_1));
+#line 1022 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_16_16, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 1022 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_16_16, 3) = ((MR_Box) (transform_hlds__trailing_analysis__VarTypes_7));
+#line 1022 "trailing_analysis.m"
+    }
+#line 5070 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__TypeCtorInfo_26_26 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0;
+#line 5072 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__TypeCtorInfo_27_27 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0;
+#line 1022 "trailing_analysis.m"
+    {
+#line 1022 "trailing_analysis.m"
+      mercury__list__map2_foldl_6_p_0(transform_hlds__trailing_analysis__TypeCtorInfo_26_26, transform_hlds__trailing_analysis__TypeCtorInfo_26_26, transform_hlds__trailing_analysis__TypeCtorInfo_27_27, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__trailing_analysis__V_16_16, transform_hlds__trailing_analysis__STATE_VARIABLE_Cases_0_12, transform_hlds__trailing_analysis__STATE_VARIABLE_Cases_13, &transform_hlds__trailing_analysis__Statuses_11, ((MR_Box) (transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_14)), &transform_hlds__trailing_analysis__conv3_STATE_VARIABLE_ModuleInfo_15);
+    }
+#line 1022 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_15 = ((MR_Word) transform_hlds__trailing_analysis__conv3_STATE_VARIABLE_ModuleInfo_15);
+#line 1023 "trailing_analysis.m"
+    {
+#line 1023 "trailing_analysis.m"
+      mercury__list__foldl_4_p_0(transform_hlds__trailing_analysis__TypeCtorInfo_27_27, transform_hlds__trailing_analysis__TypeCtorInfo_27_27, (MR_Word) &transform_hlds__trailing_analysis_scalar_common_2[10], transform_hlds__trailing_analysis__Statuses_11, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv5_Status_9);
+    }
+#line 1023 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__Status_9 = ((MR_Word) transform_hlds__trailing_analysis__conv5_Status_9);
+#line 1021 "trailing_analysis.m"
+  }
+#line 1018 "trailing_analysis.m"
+}
+
+#line 1015 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_list_6_p_0_2(
+#line 1015 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1015 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1015 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1015 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 1015 "trailing_analysis.m"
+{
+#line 1015 "trailing_analysis.m"
+  {
+#line 1015 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 1015 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv4_HeadVar__3_3;
+
+#line 1015 "trailing_analysis.m"
+    {
+#line 1015 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__combine_trailing_status_3_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv4_HeadVar__3_3);
+    }
+#line 1015 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv4_HeadVar__3_3));
+#line 1015 "trailing_analysis.m"
+  }
+#line 1015 "trailing_analysis.m"
+}
+
+#line 1014 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_list_6_p_0_1(
+#line 1014 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1014 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1014 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1014 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3,
+#line 1014 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_4,
+#line 1014 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_5)
+#line 1014 "trailing_analysis.m"
+{
+#line 1014 "trailing_analysis.m"
+  {
+#line 1014 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 1014 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_Goal_16;
+#line 1014 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv1_Status_9;
+#line 1014 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_18;
+
+#line 1014 "trailing_analysis.m"
+    {
+#line 1014 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__annotate_goal_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), &transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_Goal_16, &transform_hlds__trailing_analysis__conv1_Status_9, ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_4), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_18);
+    }
+#line 1014 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_Goal_16));
+#line 1014 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv1_Status_9));
+#line 1014 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_18));
+#line 1014 "trailing_analysis.m"
+  }
+#line 1014 "trailing_analysis.m"
+}
+
+#line 1009 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_list_6_p_0(
+#line 1009 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 1009 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Goals_0_12,
+#line 1009 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Goals_13,
+#line 1009 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_9,
+#line 1009 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 1009 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_15)
+#line 1009 "trailing_analysis.m"
+{
+#line 1013 "trailing_analysis.m"
+  {
+#line 1013 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1013 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TypeCtorInfo_26_26;
+#line 1013 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TypeCtorInfo_27_27;
+#line 1013 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Statuses_11;
+#line 1013 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_16_16;
+#line 1014 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv3_STATE_VARIABLE_ModuleInfo_15;
+#line 1015 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv5_Status_9;
+
+#line 1014 "trailing_analysis.m"
+    {
+#line 1014 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1014 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_16_16, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_8[1]));
+#line 1014 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_16_16, 1) = ((MR_Box) (transform_hlds__trailing_analysis__annotate_goal_list_6_p_0_1));
+#line 1014 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_16_16, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 1014 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_16_16, 3) = ((MR_Box) (transform_hlds__trailing_analysis__VarTypes_7));
+#line 1014 "trailing_analysis.m"
+    }
+#line 5217 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__TypeCtorInfo_26_26 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+#line 5219 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__TypeCtorInfo_27_27 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0;
+#line 1014 "trailing_analysis.m"
+    {
+#line 1014 "trailing_analysis.m"
+      mercury__list__map2_foldl_6_p_0(transform_hlds__trailing_analysis__TypeCtorInfo_26_26, transform_hlds__trailing_analysis__TypeCtorInfo_26_26, transform_hlds__trailing_analysis__TypeCtorInfo_27_27, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__trailing_analysis__V_16_16, transform_hlds__trailing_analysis__STATE_VARIABLE_Goals_0_12, transform_hlds__trailing_analysis__STATE_VARIABLE_Goals_13, &transform_hlds__trailing_analysis__Statuses_11, ((MR_Box) (transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_14)), &transform_hlds__trailing_analysis__conv3_STATE_VARIABLE_ModuleInfo_15);
+    }
+#line 1014 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_15 = ((MR_Word) transform_hlds__trailing_analysis__conv3_STATE_VARIABLE_ModuleInfo_15);
+#line 1015 "trailing_analysis.m"
+    {
+#line 1015 "trailing_analysis.m"
+      mercury__list__foldl_4_p_0(transform_hlds__trailing_analysis__TypeCtorInfo_27_27, transform_hlds__trailing_analysis__TypeCtorInfo_27_27, (MR_Word) &transform_hlds__trailing_analysis_scalar_common_2[9], transform_hlds__trailing_analysis__Statuses_11, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv5_Status_9);
+    }
+#line 1015 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__Status_9 = ((MR_Word) transform_hlds__trailing_analysis__conv5_Status_9);
+#line 1013 "trailing_analysis.m"
+  }
+#line 1009 "trailing_analysis.m"
+}
+
+#line 886 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_1(
+#line 886 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 886 "trailing_analysis.m"
+{
+#line 886 "trailing_analysis.m"
+  {
+#line 886 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 886 "trailing_analysis.m"
+    MR_builtin_longjmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__commit_0, 1);
+#line 886 "trailing_analysis.m"
+  }
+#line 886 "trailing_analysis.m"
+}
+
+#line 886 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_2(
+#line 886 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 886 "trailing_analysis.m"
+{
+#line 886 "trailing_analysis.m"
+  {
+#line 886 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 886 "trailing_analysis.m"
+    {
+#line 893 "trailing_analysis.m"
+      MR_String transform_hlds__trailing_analysis__V_50_50;
+
+#line 893 "trailing_analysis.m"
+      {
+#line 893 "trailing_analysis.m"
+        mdbcomp__prim_data__special_pred_name_arity_4_p_0((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__SpecialPredId_49, &(transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__V_139_139, &transform_hlds__trailing_analysis__V_50_50, &(transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__V_140_140);
+      }
+#line 893 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = (strcmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__Name_47, (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__V_139_139) == 0);
+#line 886 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 886 "trailing_analysis.m"
+        {
+#line 893 "trailing_analysis.m"
+          (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__Arity_48 == (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__V_140_140);
+#line 893 "trailing_analysis.m"
+          if ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 893 "trailing_analysis.m"
+            {
+#line 893 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_1(transform_hlds__trailing_analysis__env_ptr);
+#line 893 "trailing_analysis.m"
+              return;
+            }
+#line 886 "trailing_analysis.m"
+        }
+#line 886 "trailing_analysis.m"
+    }
+#line 886 "trailing_analysis.m"
+  }
+#line 886 "trailing_analysis.m"
+}
+
+#line 886 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_3(
+#line 886 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 886 "trailing_analysis.m"
+{
+#line 886 "trailing_analysis.m"
+  {
+#line 886 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 886 "trailing_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__commit_0) == 0)
+#line 886 "trailing_analysis.m"
+      {
+#line 886 "trailing_analysis.m"
+        {
+#line 886 "trailing_analysis.m"
+          MR_Word transform_hlds__trailing_analysis__ModuleName_46;
+
+#line 886 "trailing_analysis.m"
+          {
+#line 886 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__ModuleName_46 = hlds__hlds_pred__pred_info_module_1_f_0((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__CallPredInfo_45);
+          }
+#line 887 "trailing_analysis.m"
+          {
+#line 887 "trailing_analysis.m"
+            (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = mdbcomp__builtin_modules__any_mercury_builtin_module_1_p_0(transform_hlds__trailing_analysis__ModuleName_46);
+          }
+#line 886 "trailing_analysis.m"
+          if ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 886 "trailing_analysis.m"
+            {
+#line 888 "trailing_analysis.m"
+              {
+#line 888 "trailing_analysis.m"
+                (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__Name_47 = hlds__hlds_pred__pred_info_name_1_f_0((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__CallPredInfo_45);
+              }
+#line 889 "trailing_analysis.m"
+              {
+#line 889 "trailing_analysis.m"
+                (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__Arity_48 = hlds__hlds_pred__pred_info_orig_arity_1_f_0((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__CallPredInfo_45);
+              }
+#line 891 "trailing_analysis.m"
+              {
+#line 891 "trailing_analysis.m"
+                MR_Integer transform_hlds__trailing_analysis__slot_1 = (MR_Integer) 0;
+
+#line 891 "trailing_analysis.m"
+                do
+#line 891 "trailing_analysis.m"
+                  {
+#line 891 "trailing_analysis.m"
+                    (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__SpecialPredId_49 = ((&transform_hlds__trailing_analysis_vector_common_10[2 + transform_hlds__trailing_analysis__slot_1]))->transform_hlds__trailing_analysis__vector_common_type_10_0__vct_10_f_0;
+#line 891 "trailing_analysis.m"
+                    {
+#line 891 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_2(transform_hlds__trailing_analysis__env_ptr);
+                    }
+#line 891 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__slot_1 = (transform_hlds__trailing_analysis__slot_1 + (MR_Integer) 1);
+#line 891 "trailing_analysis.m"
+                  }
+#line 891 "trailing_analysis.m"
+                while ((transform_hlds__trailing_analysis__slot_1 < (MR_Integer) 2));
+#line 891 "trailing_analysis.m"
+              }
+#line 886 "trailing_analysis.m"
+            }
+#line 886 "trailing_analysis.m"
+        }
+#line 886 "trailing_analysis.m"
+        (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = MR_FALSE;
+#line 886 "trailing_analysis.m"
+      }
+#line 886 "trailing_analysis.m"
+    else
+#line 886 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = MR_TRUE;
+#line 886 "trailing_analysis.m"
+  }
+#line 886 "trailing_analysis.m"
+}
+
+#line 858 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_2_7_p_0(
+#line 858 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_8,
+#line 858 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__GoalInfo_9,
+#line 858 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109,
+#line 858 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110,
+#line 858 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_11,
+#line 858 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111,
+#line 858 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112)
+#line 858 "trailing_analysis.m"
+{
+#line 858 "trailing_analysis.m"
+  {
+#line 858 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0_s transform_hlds__trailing_analysis__env;
+
+#line 864 "trailing_analysis.m"
+    if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109)) == (MR_mktag((MR_Integer) 0))))
+#line 986 "trailing_analysis.m"
+      {
+#line 986 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__SubGoal0_97 = (MR_Word) MR_body(((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109), (MR_Integer) 0);
+#line 986 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__SubGoal_98;
+
+#line 987 "trailing_analysis.m"
+        {
+#line 987 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__annotate_goal_6_p_0(transform_hlds__trailing_analysis__VarTypes_8, transform_hlds__trailing_analysis__SubGoal0_97, &transform_hlds__trailing_analysis__SubGoal_98, transform_hlds__trailing_analysis__Status_11, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112);
+        }
+#line 988 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = (MR_Word) MR_mkword(MR_mktag(0), (MR_Word) transform_hlds__trailing_analysis__SubGoal_98);
+#line 986 "trailing_analysis.m"
+      }
+#line 864 "trailing_analysis.m"
+    else
+#line 864 "trailing_analysis.m"
+      if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109)) == (MR_mktag((MR_Integer) 2))))
+#line 877 "trailing_analysis.m"
+        {
+#line 877 "trailing_analysis.m"
+          MR_Word transform_hlds__trailing_analysis__CallPredId_38 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 0)));
+#line 877 "trailing_analysis.m"
+          MR_Integer transform_hlds__trailing_analysis__CallProcId_39 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 1)));
+#line 877 "trailing_analysis.m"
+          MR_Word transform_hlds__trailing_analysis__CallArgs_40 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 2)));
+#line 877 "trailing_analysis.m"
+          MR_Word transform_hlds__trailing_analysis__CallPPId_44;
+#line 877 "trailing_analysis.m"
+          MR_Word transform_hlds__trailing_analysis__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 3)));
+#line 877 "trailing_analysis.m"
+          MR_Word transform_hlds__trailing_analysis__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 4)));
+#line 877 "trailing_analysis.m"
+          MR_Word transform_hlds__trailing_analysis__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 5)));
+
+#line 878 "trailing_analysis.m"
+          {
+#line 878 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__CallPPId_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 878 "trailing_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__CallPPId_44, 0) = ((MR_Box) (transform_hlds__trailing_analysis__CallPredId_38));
+#line 878 "trailing_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__CallPPId_44, 1) = ((MR_Box) (transform_hlds__trailing_analysis__CallProcId_39));
+#line 878 "trailing_analysis.m"
+          }
+#line 879 "trailing_analysis.m"
+          {
+#line 879 "trailing_analysis.m"
+            hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111, transform_hlds__trailing_analysis__CallPredId_38, &(transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__CallPredInfo_45);
+          }
+#line 881 "trailing_analysis.m"
+          {
+#line 881 "trailing_analysis.m"
+            (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = hlds__hlds_pred__pred_info_is_builtin_1_p_0((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__CallPredInfo_45);
+          }
+#line 884 "trailing_analysis.m"
+          if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 883 "trailing_analysis.m"
+            {
+#line 883 "trailing_analysis.m"
+              *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 1;
+#line 883 "trailing_analysis.m"
+              *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111;
+#line 883 "trailing_analysis.m"
+            }
+#line 884 "trailing_analysis.m"
+          else
+#line 896 "trailing_analysis.m"
+            {
+#line 886 "trailing_analysis.m"
+              {
+#line 886 "trailing_analysis.m"
+                transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_3(&transform_hlds__trailing_analysis__env);
+              }
+#line 896 "trailing_analysis.m"
+              if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 895 "trailing_analysis.m"
+                {
+#line 895 "trailing_analysis.m"
+                  *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 0;
+#line 895 "trailing_analysis.m"
+                  *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111;
+#line 895 "trailing_analysis.m"
+                }
+#line 896 "trailing_analysis.m"
+              else
+#line 902 "trailing_analysis.m"
+                {
+#line 902 "trailing_analysis.m"
+                  MR_Word transform_hlds__trailing_analysis__Status0_51;
+
+#line 899 "trailing_analysis.m"
+                  {
+#line 899 "trailing_analysis.m"
+                    (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = transform_hlds__trailing_analysis__pred_info_has_known_status_2_p_0((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__CallPredInfo_45, &transform_hlds__trailing_analysis__Status0_51);
+                  }
+#line 902 "trailing_analysis.m"
+                  if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 901 "trailing_analysis.m"
+                    {
+#line 901 "trailing_analysis.m"
+                      *transform_hlds__trailing_analysis__Status_11 = transform_hlds__trailing_analysis__Status0_51;
+#line 901 "trailing_analysis.m"
+                      *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111;
+#line 901 "trailing_analysis.m"
+                    }
+#line 902 "trailing_analysis.m"
+                  else
+#line 903 "trailing_analysis.m"
+                    {
+#line 903 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__Globals_52;
+#line 903 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__IntermodAnalysis_53;
+
+#line 903 "trailing_analysis.m"
+                      {
+#line 903 "trailing_analysis.m"
+                        hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111, &transform_hlds__trailing_analysis__Globals_52);
+                      }
+#line 904 "trailing_analysis.m"
+                      {
+#line 904 "trailing_analysis.m"
+                        libs__globals__lookup_bool_option_3_p_0(transform_hlds__trailing_analysis__Globals_52, (MR_Integer) 328, &transform_hlds__trailing_analysis__IntermodAnalysis_53);
+                      }
+#line 907 "trailing_analysis.m"
+                      (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = (transform_hlds__trailing_analysis__IntermodAnalysis_53 == (MR_Integer) 1);
+#line 907 "trailing_analysis.m"
+                      if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 908 "trailing_analysis.m"
+                        {
+#line 908 "trailing_analysis.m"
+                          (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = hlds__hlds_pred__pred_info_is_imported_1_p_0((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__CallPredInfo_45);
+                        }
+#line 932 "trailing_analysis.m"
+                      if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 911 "trailing_analysis.m"
+                        {
+#line 911 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis__Result_54;
+#line 911 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis__AnalysisStatus_55;
+
+#line 910 "trailing_analysis.m"
+                          {
+#line 910 "trailing_analysis.m"
+                            transform_hlds__trailing_analysis__search_analysis_status_5_p_0(transform_hlds__trailing_analysis__CallPPId_44, &transform_hlds__trailing_analysis__Result_54, &transform_hlds__trailing_analysis__AnalysisStatus_55, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112);
+                          }
+#line 918 "trailing_analysis.m"
+                          if ((transform_hlds__trailing_analysis__AnalysisStatus_55 == (MR_Integer) 0))
+#line 917 "trailing_analysis.m"
+                            *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 0;
+#line 918 "trailing_analysis.m"
+                          else
+#line 925 "trailing_analysis.m"
+                            if ((transform_hlds__trailing_analysis__Result_54 == (MR_Integer) 2))
+#line 924 "trailing_analysis.m"
+                              {
+#line 924 "trailing_analysis.m"
+                                *transform_hlds__trailing_analysis__Status_11 = transform_hlds__trailing_analysis__check_vars_3_f_0(*transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112, transform_hlds__trailing_analysis__VarTypes_8, transform_hlds__trailing_analysis__CallArgs_40);
+                              }
+#line 925 "trailing_analysis.m"
+                            else
+#line 929 "trailing_analysis.m"
+                              *transform_hlds__trailing_analysis__Status_11 = transform_hlds__trailing_analysis__Result_54;
+#line 911 "trailing_analysis.m"
+                        }
+#line 932 "trailing_analysis.m"
+                      else
+#line 934 "trailing_analysis.m"
+                        {
+#line 934 "trailing_analysis.m"
+                          {
+#line 934 "trailing_analysis.m"
+                            transform_hlds__trailing_analysis__check_call_5_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111, transform_hlds__trailing_analysis__VarTypes_8, transform_hlds__trailing_analysis__CallPPId_44, transform_hlds__trailing_analysis__CallArgs_40, transform_hlds__trailing_analysis__Status_11);
+                          }
+#line 934 "trailing_analysis.m"
+                          *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111;
+#line 934 "trailing_analysis.m"
+                        }
+#line 903 "trailing_analysis.m"
+                    }
+#line 902 "trailing_analysis.m"
+                }
+#line 896 "trailing_analysis.m"
+            }
+#line 934 "trailing_analysis.m"
+          *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109;
+#line 877 "trailing_analysis.m"
+        }
+#line 864 "trailing_analysis.m"
+      else
+#line 864 "trailing_analysis.m"
+        if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109)) == (MR_mktag((MR_Integer) 1))))
+#line 864 "trailing_analysis.m"
+          {
+#line 864 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__Kind_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 3)));
+#line 864 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 0)));
+#line 864 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 1)));
+#line 864 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 2)));
+#line 864 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 4)));
+
+#line 871 "trailing_analysis.m"
+            if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__Kind_16)) == (MR_mktag((MR_Integer) 2))))
+#line 868 "trailing_analysis.m"
+              {
+#line 868 "trailing_analysis.m"
+              }
+#line 871 "trailing_analysis.m"
+            else
+#line 871 "trailing_analysis.m"
+              if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__Kind_16)) == (MR_mktag((MR_Integer) 0))))
+#line 866 "trailing_analysis.m"
+                {
+#line 866 "trailing_analysis.m"
+                }
+#line 871 "trailing_analysis.m"
+              else
+#line 871 "trailing_analysis.m"
+                if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__Kind_16)) == (MR_mktag((MR_Integer) 1))))
+#line 867 "trailing_analysis.m"
+                  {
+#line 867 "trailing_analysis.m"
+                  }
+#line 871 "trailing_analysis.m"
+                else
+#line 871 "trailing_analysis.m"
+                  if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__Kind_16)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__Kind_16, (MR_Integer) 0)))) == (MR_Integer) 1))))
+#line 872 "trailing_analysis.m"
+                    {
+#line 873 "trailing_analysis.m"
+                      {
+#line 873 "trailing_analysis.m"
+                        mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.trailing_analysis", (MR_String) "predicate \140transform_hlds.trailing_analysis.annotate_goal_2\'/7", (MR_String) "complicated unify");
+#line 873 "trailing_analysis.m"
+                        return;
+                      }
+#line 872 "trailing_analysis.m"
+                    }
+#line 871 "trailing_analysis.m"
+                  else
+#line 869 "trailing_analysis.m"
+                    {
+#line 869 "trailing_analysis.m"
+                    }
+#line 875 "trailing_analysis.m"
+            *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 1;
+#line 875 "trailing_analysis.m"
+            *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109;
+#line 875 "trailing_analysis.m"
+            *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111;
+#line 864 "trailing_analysis.m"
+          }
+#line 864 "trailing_analysis.m"
+        else
+#line 864 "trailing_analysis.m"
+          if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 0)))) == (MR_Integer) 1))))
+#line 938 "trailing_analysis.m"
+            {
+#line 938 "trailing_analysis.m"
+              MR_Word transform_hlds__trailing_analysis__Attributes_56 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 1)));
+#line 938 "trailing_analysis.m"
+              MR_Word transform_hlds__trailing_analysis__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 2)));
+#line 938 "trailing_analysis.m"
+              MR_Integer transform_hlds__trailing_analysis__V_58_58 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 3)));
+#line 938 "trailing_analysis.m"
+              MR_Word transform_hlds__trailing_analysis__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 4)));
+#line 938 "trailing_analysis.m"
+              MR_Word transform_hlds__trailing_analysis__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 5)));
+#line 938 "trailing_analysis.m"
+              MR_Word transform_hlds__trailing_analysis__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 6)));
+#line 938 "trailing_analysis.m"
+              MR_Word transform_hlds__trailing_analysis__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 7)));
+
+#line 939 "trailing_analysis.m"
+              {
+#line 939 "trailing_analysis.m"
+                *transform_hlds__trailing_analysis__Status_11 = transform_hlds__trailing_analysis__attributes_imply_trail_mod_1_f_0(transform_hlds__trailing_analysis__Attributes_56);
+              }
+#line 939 "trailing_analysis.m"
+              *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109;
+#line 939 "trailing_analysis.m"
+              *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111;
+#line 938 "trailing_analysis.m"
+            }
+#line 864 "trailing_analysis.m"
+          else
+#line 864 "trailing_analysis.m"
+            if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 0)))) == (MR_Integer) 2))))
+#line 957 "trailing_analysis.m"
+              {
+#line 957 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__ConjType_78 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 1)));
+#line 957 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__Conjuncts0_79 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 2)));
+#line 957 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__Conjuncts_80;
+
+#line 958 "trailing_analysis.m"
+                {
+#line 958 "trailing_analysis.m"
+                  transform_hlds__trailing_analysis__annotate_goal_list_6_p_0(transform_hlds__trailing_analysis__VarTypes_8, transform_hlds__trailing_analysis__Conjuncts0_79, &transform_hlds__trailing_analysis__Conjuncts_80, transform_hlds__trailing_analysis__Status_11, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112);
+                }
+#line 960 "trailing_analysis.m"
+                {
+#line 960 "trailing_analysis.m"
+                  MR_Word base;
+#line 960 "trailing_analysis.m"
+                  base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 960 "trailing_analysis.m"
+                  *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = base;
+#line 960 "trailing_analysis.m"
+                  MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 960 "trailing_analysis.m"
+                  MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (transform_hlds__trailing_analysis__ConjType_78));
+#line 960 "trailing_analysis.m"
+                  MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (transform_hlds__trailing_analysis__Conjuncts_80));
+#line 960 "trailing_analysis.m"
+                }
+#line 957 "trailing_analysis.m"
+              }
+#line 864 "trailing_analysis.m"
+            else
+#line 864 "trailing_analysis.m"
+              if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 0)))) == (MR_Integer) 3))))
+#line 962 "trailing_analysis.m"
+                {
+#line 962 "trailing_analysis.m"
+                  MR_Word transform_hlds__trailing_analysis__Disjuncts0_81 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 1)));
+#line 962 "trailing_analysis.m"
+                  MR_Word transform_hlds__trailing_analysis__Disjuncts_82;
+
+#line 963 "trailing_analysis.m"
+                  {
+#line 963 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__annotate_goal_list_6_p_0(transform_hlds__trailing_analysis__VarTypes_8, transform_hlds__trailing_analysis__Disjuncts0_81, &transform_hlds__trailing_analysis__Disjuncts_82, transform_hlds__trailing_analysis__Status_11, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112);
+                  }
+#line 965 "trailing_analysis.m"
+                  {
+#line 965 "trailing_analysis.m"
+                    MR_Word base;
+#line 965 "trailing_analysis.m"
+                    base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 965 "trailing_analysis.m"
+                    *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = base;
+#line 965 "trailing_analysis.m"
+                    MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 965 "trailing_analysis.m"
+                    MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (transform_hlds__trailing_analysis__Disjuncts_82));
+#line 965 "trailing_analysis.m"
+                  }
+#line 962 "trailing_analysis.m"
+                }
+#line 864 "trailing_analysis.m"
+              else
+#line 864 "trailing_analysis.m"
+                if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 0)))) == (MR_Integer) 0))))
+#line 942 "trailing_analysis.m"
+                  {
+#line 942 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__GenericCall_63 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 1)));
+#line 942 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 2)));
+#line 942 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 3)));
+#line 942 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 4)));
+#line 942 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 5)));
+
+#line 946 "trailing_analysis.m"
+                    if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__GenericCall_63)) == (MR_mktag((MR_Integer) 3))))
+#line 954 "trailing_analysis.m"
+                      *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 1;
+#line 946 "trailing_analysis.m"
+                    else
+#line 946 "trailing_analysis.m"
+                      if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__GenericCall_63)) == (MR_mktag((MR_Integer) 1))))
+#line 948 "trailing_analysis.m"
+                        *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 0;
+#line 946 "trailing_analysis.m"
+                      else
+#line 946 "trailing_analysis.m"
+                        if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__GenericCall_63)) == (MR_mktag((MR_Integer) 2))))
+#line 951 "trailing_analysis.m"
+                          *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 1;
+#line 946 "trailing_analysis.m"
+                        else
+#line 945 "trailing_analysis.m"
+                          *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 0;
+#line 954 "trailing_analysis.m"
+                    *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109;
+#line 954 "trailing_analysis.m"
+                    *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111;
+#line 942 "trailing_analysis.m"
+                  }
+#line 864 "trailing_analysis.m"
+                else
+#line 864 "trailing_analysis.m"
+                  if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 0)))) == (MR_Integer) 6))))
+#line 971 "trailing_analysis.m"
+                    {
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__Vars_87 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 1)));
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__If0_88 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 2)));
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__Then0_89 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 3)));
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__Else0_90 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 4)));
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__If_91;
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__IfStatus_92;
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__Then_93;
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__ThenStatus_94;
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__Else_95;
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__ElseStatus_96;
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_121_121;
+#line 971 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_122_122;
+
+#line 972 "trailing_analysis.m"
+                      {
+#line 972 "trailing_analysis.m"
+                        transform_hlds__trailing_analysis__annotate_goal_6_p_0(transform_hlds__trailing_analysis__VarTypes_8, transform_hlds__trailing_analysis__If0_88, &transform_hlds__trailing_analysis__If_91, &transform_hlds__trailing_analysis__IfStatus_92, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111, &transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_121_121);
+                      }
+#line 973 "trailing_analysis.m"
+                      {
+#line 973 "trailing_analysis.m"
+                        transform_hlds__trailing_analysis__annotate_goal_6_p_0(transform_hlds__trailing_analysis__VarTypes_8, transform_hlds__trailing_analysis__Then0_89, &transform_hlds__trailing_analysis__Then_93, &transform_hlds__trailing_analysis__ThenStatus_94, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_121_121, &transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_122_122);
+                      }
+#line 974 "trailing_analysis.m"
+                      {
+#line 974 "trailing_analysis.m"
+                        transform_hlds__trailing_analysis__annotate_goal_6_p_0(transform_hlds__trailing_analysis__VarTypes_8, transform_hlds__trailing_analysis__Else0_90, &transform_hlds__trailing_analysis__Else_95, &transform_hlds__trailing_analysis__ElseStatus_96, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_122_122, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112);
+                      }
+#line 976 "trailing_analysis.m"
+                      (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = (transform_hlds__trailing_analysis__IfStatus_92 == (MR_Integer) 1);
+#line 976 "trailing_analysis.m"
+                      if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 976 "trailing_analysis.m"
+                        {
+#line 977 "trailing_analysis.m"
+                          (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = (transform_hlds__trailing_analysis__ThenStatus_94 == (MR_Integer) 1);
+#line 976 "trailing_analysis.m"
+                          if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 978 "trailing_analysis.m"
+                            (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = (transform_hlds__trailing_analysis__ElseStatus_96 == (MR_Integer) 1);
+#line 976 "trailing_analysis.m"
+                        }
+#line 981 "trailing_analysis.m"
+                      if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 980 "trailing_analysis.m"
+                        *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 1;
+#line 981 "trailing_analysis.m"
+                      else
+#line 982 "trailing_analysis.m"
+                        *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 0;
+#line 984 "trailing_analysis.m"
+                      {
+#line 984 "trailing_analysis.m"
+                        MR_Word base;
+#line 984 "trailing_analysis.m"
+                        base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+#line 984 "trailing_analysis.m"
+                        *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = base;
+#line 984 "trailing_analysis.m"
+                        MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+#line 984 "trailing_analysis.m"
+                        MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (transform_hlds__trailing_analysis__Vars_87));
+#line 984 "trailing_analysis.m"
+                        MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (transform_hlds__trailing_analysis__If_91));
+#line 984 "trailing_analysis.m"
+                        MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (transform_hlds__trailing_analysis__Then_93));
+#line 984 "trailing_analysis.m"
+                        MR_hl_field(MR_mktag(3), base, 4) = ((MR_Box) (transform_hlds__trailing_analysis__Else_95));
+#line 984 "trailing_analysis.m"
+                      }
+#line 971 "trailing_analysis.m"
+                    }
+#line 864 "trailing_analysis.m"
+                  else
+#line 864 "trailing_analysis.m"
+                    if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 0)))) == (MR_Integer) 5))))
+#line 990 "trailing_analysis.m"
+                      {
+#line 990 "trailing_analysis.m"
+                        MR_Word transform_hlds__trailing_analysis__Reason_99 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 1)));
+#line 990 "trailing_analysis.m"
+                        MR_Word transform_hlds__trailing_analysis__InnerGoal0_100 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 2)));
+#line 991 "trailing_analysis.m"
+                        MR_Word transform_hlds__trailing_analysis__V_116_116;
+#line 991 "trailing_analysis.m"
+                        MR_Word transform_hlds__trailing_analysis__V_101_101;
+
+#line 991 "trailing_analysis.m"
+                        (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = ((((MR_tag((MR_Word) transform_hlds__trailing_analysis__Reason_99)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__Reason_99, (MR_Integer) 0)))) == (MR_Integer) 4)));
+#line 991 "trailing_analysis.m"
+                        if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 991 "trailing_analysis.m"
+                          {
+#line 991 "trailing_analysis.m"
+                            transform_hlds__trailing_analysis__V_101_101 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__Reason_99, (MR_Integer) 1)));
+#line 991 "trailing_analysis.m"
+                            transform_hlds__trailing_analysis__V_116_116 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__Reason_99, (MR_Integer) 2)));
+#line 991 "trailing_analysis.m"
+                            (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded = (transform_hlds__trailing_analysis__V_116_116 == (MR_Integer) 1);
+#line 991 "trailing_analysis.m"
+                          }
+#line 993 "trailing_analysis.m"
+                        if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__annotate_goal_2_7_p_0_env_0__succeeded)
+#line 992 "trailing_analysis.m"
+                          {
+#line 992 "trailing_analysis.m"
+                            *transform_hlds__trailing_analysis__Status_11 = (MR_Integer) 1;
+#line 992 "trailing_analysis.m"
+                            *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111;
+#line 992 "trailing_analysis.m"
+                            *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109;
+#line 992 "trailing_analysis.m"
+                          }
+#line 993 "trailing_analysis.m"
+                        else
+#line 994 "trailing_analysis.m"
+                          {
+#line 994 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__InnerGoal_103;
+#line 994 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__InnerGoalInfo_105;
+#line 994 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__InnerCodeModel_106;
+#line 994 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__OuterCodeModel_107;
+#line 994 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__Status0_136;
+#line 997 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__V_104_104;
+
+#line 995 "trailing_analysis.m"
+                            {
+#line 995 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__annotate_goal_6_p_0(transform_hlds__trailing_analysis__VarTypes_8, transform_hlds__trailing_analysis__InnerGoal0_100, &transform_hlds__trailing_analysis__InnerGoal_103, &transform_hlds__trailing_analysis__Status0_136, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112);
+                            }
+#line 997 "trailing_analysis.m"
+                            transform_hlds__trailing_analysis__V_104_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__InnerGoal_103, (MR_Integer) 0)));
+#line 997 "trailing_analysis.m"
+                            transform_hlds__trailing_analysis__InnerGoalInfo_105 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__InnerGoal_103, (MR_Integer) 1)));
+#line 998 "trailing_analysis.m"
+                            {
+#line 998 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__InnerCodeModel_106 = hlds__code_model__goal_info_get_code_model_1_f_0(transform_hlds__trailing_analysis__InnerGoalInfo_105);
+                            }
+#line 999 "trailing_analysis.m"
+                            {
+#line 999 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__OuterCodeModel_107 = hlds__code_model__goal_info_get_code_model_1_f_0(transform_hlds__trailing_analysis__GoalInfo_9);
+                            }
+#line 1000 "trailing_analysis.m"
+                            {
+#line 1000 "trailing_analysis.m"
+                              *transform_hlds__trailing_analysis__Status_11 = transform_hlds__trailing_analysis__scope_implies_trail_mod_3_f_0(transform_hlds__trailing_analysis__InnerCodeModel_106, transform_hlds__trailing_analysis__OuterCodeModel_107, transform_hlds__trailing_analysis__Status0_136);
+                            }
+#line 1002 "trailing_analysis.m"
+                            {
+#line 1002 "trailing_analysis.m"
+                              MR_Word base;
+#line 1002 "trailing_analysis.m"
+                              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 1002 "trailing_analysis.m"
+                              *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = base;
+#line 1002 "trailing_analysis.m"
+                              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+#line 1002 "trailing_analysis.m"
+                              MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (transform_hlds__trailing_analysis__Reason_99));
+#line 1002 "trailing_analysis.m"
+                              MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (transform_hlds__trailing_analysis__InnerGoal_103));
+#line 1002 "trailing_analysis.m"
+                            }
+#line 994 "trailing_analysis.m"
+                          }
+#line 990 "trailing_analysis.m"
+                      }
+#line 864 "trailing_analysis.m"
+                    else
+#line 864 "trailing_analysis.m"
+                      if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 0)))) == (MR_Integer) 7))))
+#line 1005 "trailing_analysis.m"
+                        {
+#line 1006 "trailing_analysis.m"
+                          {
+#line 1006 "trailing_analysis.m"
+                            mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.trailing_analysis", (MR_String) "predicate \140transform_hlds.trailing_analysis.annotate_goal_2\'/7", (MR_String) "shorthand");
+#line 1006 "trailing_analysis.m"
+                            return;
+                          }
+#line 1005 "trailing_analysis.m"
+                        }
+#line 864 "trailing_analysis.m"
+                      else
+#line 967 "trailing_analysis.m"
+                        {
+#line 967 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis__Var_83 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 1)));
+#line 967 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis__CanFail_84 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 2)));
+#line 967 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis__Cases0_85 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_0_109, (MR_Integer) 3)));
+#line 967 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis__Cases_86;
+
+#line 968 "trailing_analysis.m"
+                          {
+#line 968 "trailing_analysis.m"
+                            transform_hlds__trailing_analysis__annotate_cases_6_p_0(transform_hlds__trailing_analysis__VarTypes_8, transform_hlds__trailing_analysis__Cases0_85, &transform_hlds__trailing_analysis__Cases_86, transform_hlds__trailing_analysis__Status_11, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_111, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_112);
+                          }
+#line 969 "trailing_analysis.m"
+                          {
+#line 969 "trailing_analysis.m"
+                            MR_Word base;
+#line 969 "trailing_analysis.m"
+                            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+#line 969 "trailing_analysis.m"
+                            *transform_hlds__trailing_analysis__STATE_VARIABLE_GoalExpr_110 = base;
+#line 969 "trailing_analysis.m"
+                            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 969 "trailing_analysis.m"
+                            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (transform_hlds__trailing_analysis__Var_83));
+#line 969 "trailing_analysis.m"
+                            MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (transform_hlds__trailing_analysis__CanFail_84));
+#line 969 "trailing_analysis.m"
+                            MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (transform_hlds__trailing_analysis__Cases_86));
+#line 969 "trailing_analysis.m"
+                          }
+#line 967 "trailing_analysis.m"
+                        }
+#line 858 "trailing_analysis.m"
+  }
+#line 858 "trailing_analysis.m"
+}
+
+#line 839 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_goal_6_p_0(
+#line 839 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 839 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Goal_0_15,
+#line 839 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Goal_16,
+#line 839 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_9,
+#line 839 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_17,
+#line 839 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_18)
+#line 839 "trailing_analysis.m"
+{
+#line 842 "trailing_analysis.m"
+  {
+#line 842 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 842 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalExpr0_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__STATE_VARIABLE_Goal_0_15, (MR_Integer) 0)));
+#line 842 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalInfo0_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__STATE_VARIABLE_Goal_0_15, (MR_Integer) 1)));
+#line 842 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalExpr_13;
+#line 842 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalInfo_14;
+
+#line 844 "trailing_analysis.m"
+    {
+#line 844 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__annotate_goal_2_7_p_0(transform_hlds__trailing_analysis__VarTypes_7, transform_hlds__trailing_analysis__GoalInfo0_12, transform_hlds__trailing_analysis__GoalExpr0_11, &transform_hlds__trailing_analysis__GoalExpr_13, transform_hlds__trailing_analysis__Status_9, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_17, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_18);
+    }
+#line 850 "trailing_analysis.m"
+    if ((*transform_hlds__trailing_analysis__Status_9 == (MR_Integer) 1))
+#line 847 "trailing_analysis.m"
+      {
+#line 848 "trailing_analysis.m"
+        {
+#line 848 "trailing_analysis.m"
+          hlds__hlds_goal__goal_info_add_feature_3_p_0((MR_Integer) 15, transform_hlds__trailing_analysis__GoalInfo0_12, &transform_hlds__trailing_analysis__GoalInfo_14);
+        }
+#line 847 "trailing_analysis.m"
+      }
+#line 850 "trailing_analysis.m"
+    else
+#line 854 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__GoalInfo_14 = transform_hlds__trailing_analysis__GoalInfo0_12;
+#line 856 "trailing_analysis.m"
+    {
+#line 856 "trailing_analysis.m"
+      MR_Word base;
+#line 856 "trailing_analysis.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 856 "trailing_analysis.m"
+      *transform_hlds__trailing_analysis__STATE_VARIABLE_Goal_16 = base;
+#line 856 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__trailing_analysis__GoalExpr_13));
+#line 856 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__trailing_analysis__GoalInfo_14));
+#line 856 "trailing_analysis.m"
+    }
+#line 842 "trailing_analysis.m"
+  }
+#line 839 "trailing_analysis.m"
+}
+
+#line 826 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__annotate_proc_3_p_0(
+#line 826 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_4,
+#line 826 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_11,
+#line 826 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_12)
+#line 826 "trailing_analysis.m"
+{
+#line 831 "trailing_analysis.m"
+  {
+#line 831 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__PredInfo_8;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__VarTypes_9;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis___Status_10;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ProcInfo_13_13;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Body_14_14;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Body_15_15;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_16_16;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ProcInfo_17_17;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalExpr0_27;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalInfo0_28;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalExpr_29;
+#line 831 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__GoalInfo_30;
+
+#line 831 "trailing_analysis.m"
+    {
+#line 831 "trailing_analysis.m"
+      hlds__hlds_module__module_info_pred_proc_info_4_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_11, transform_hlds__trailing_analysis__PPId_4, &transform_hlds__trailing_analysis__PredInfo_8, &transform_hlds__trailing_analysis__STATE_VARIABLE_ProcInfo_13_13);
+    }
+#line 832 "trailing_analysis.m"
+    {
+#line 832 "trailing_analysis.m"
+      hlds__hlds_pred__proc_info_get_goal_2_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ProcInfo_13_13, &transform_hlds__trailing_analysis__STATE_VARIABLE_Body_14_14);
+    }
+#line 833 "trailing_analysis.m"
+    {
+#line 833 "trailing_analysis.m"
+      hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ProcInfo_13_13, &transform_hlds__trailing_analysis__VarTypes_9);
+    }
+#line 843 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__GoalExpr0_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__STATE_VARIABLE_Body_14_14, (MR_Integer) 0)));
+#line 843 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__GoalInfo0_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__STATE_VARIABLE_Body_14_14, (MR_Integer) 1)));
+#line 844 "trailing_analysis.m"
+    {
+#line 844 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__annotate_goal_2_7_p_0(transform_hlds__trailing_analysis__VarTypes_9, transform_hlds__trailing_analysis__GoalInfo0_28, transform_hlds__trailing_analysis__GoalExpr0_27, &transform_hlds__trailing_analysis__GoalExpr_29, &transform_hlds__trailing_analysis___Status_10, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_11, &transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_16_16);
+    }
+#line 850 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis___Status_10 == (MR_Integer) 1))
+#line 847 "trailing_analysis.m"
+      {
+#line 848 "trailing_analysis.m"
+        {
+#line 848 "trailing_analysis.m"
+          hlds__hlds_goal__goal_info_add_feature_3_p_0((MR_Integer) 15, transform_hlds__trailing_analysis__GoalInfo0_28, &transform_hlds__trailing_analysis__GoalInfo_30);
+        }
+#line 847 "trailing_analysis.m"
+      }
+#line 850 "trailing_analysis.m"
+    else
+#line 854 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__GoalInfo_30 = transform_hlds__trailing_analysis__GoalInfo0_28;
+#line 856 "trailing_analysis.m"
+    {
+#line 856 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__STATE_VARIABLE_Body_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 856 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__STATE_VARIABLE_Body_15_15, 0) = ((MR_Box) (transform_hlds__trailing_analysis__GoalExpr_29));
+#line 856 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__STATE_VARIABLE_Body_15_15, 1) = ((MR_Box) (transform_hlds__trailing_analysis__GoalInfo_30));
+#line 856 "trailing_analysis.m"
+    }
+#line 835 "trailing_analysis.m"
+    {
+#line 835 "trailing_analysis.m"
+      hlds__hlds_pred__proc_info_set_goal_3_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_Body_15_15, transform_hlds__trailing_analysis__STATE_VARIABLE_ProcInfo_13_13, &transform_hlds__trailing_analysis__STATE_VARIABLE_ProcInfo_17_17);
+    }
+#line 836 "trailing_analysis.m"
+    {
+#line 836 "trailing_analysis.m"
+      hlds__hlds_module__module_info_set_pred_proc_info_5_p_0(transform_hlds__trailing_analysis__PPId_4, transform_hlds__trailing_analysis__PredInfo_8, transform_hlds__trailing_analysis__STATE_VARIABLE_ProcInfo_17_17, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_16_16, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_12);
+#line 836 "trailing_analysis.m"
+      return;
+    }
+#line 831 "trailing_analysis.m"
+  }
+#line 826 "trailing_analysis.m"
+}
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_3_f_0_4(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 755 "trailing_analysis.m"
+{
+#line 755 "trailing_analysis.m"
+  {
+#line 755 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 755 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv6_STATE_VARIABLE_Status_9;
+
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv6_STATE_VARIABLE_Status_9);
+    }
+#line 755 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv6_STATE_VARIABLE_Status_9));
+#line 755 "trailing_analysis.m"
+  }
+#line 755 "trailing_analysis.m"
+}
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_3_f_0_3(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 755 "trailing_analysis.m"
+{
+#line 755 "trailing_analysis.m"
+  {
+#line 755 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 755 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv4_STATE_VARIABLE_Status_9;
+
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv4_STATE_VARIABLE_Status_9);
+    }
+#line 755 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv4_STATE_VARIABLE_Status_9));
+#line 755 "trailing_analysis.m"
+  }
+#line 755 "trailing_analysis.m"
+}
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_3_f_0_2(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 755 "trailing_analysis.m"
+{
+#line 755 "trailing_analysis.m"
+  {
+#line 755 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 755 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_Status_9;
+
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_Status_9);
+    }
+#line 755 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_Status_9));
+#line 755 "trailing_analysis.m"
+  }
+#line 755 "trailing_analysis.m"
+}
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_3_f_0_1(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 755 "trailing_analysis.m"
+{
+#line 755 "trailing_analysis.m"
+  {
+#line 755 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 755 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_Status_9;
+
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_Status_9);
+    }
+#line 755 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_Status_9));
+#line 755 "trailing_analysis.m"
+  }
+#line 755 "trailing_analysis.m"
+}
+
+#line 781 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_3_f_0(
+#line 781 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_5,
+#line 781 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Type_6,
+#line 781 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__TypeCtorCat_7)
+#line 781 "trailing_analysis.m"
+{
+#line 792 "trailing_analysis.m"
+  {
+#line 792 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 792 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Status_8;
+
+#line 792 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis__TypeCtorCat_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2)))))
+#line 792 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 1;
+#line 792 "trailing_analysis.m"
+    else
+#line 792 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__TypeCtorCat_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 792 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 1;
+#line 792 "trailing_analysis.m"
+      else
+#line 792 "trailing_analysis.m"
+        if ((transform_hlds__trailing_analysis__TypeCtorCat_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 802 "trailing_analysis.m"
+          {
+#line 802 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__Args_22;
+#line 803 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis___TypeCtor_18;
+#line 805 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis___UnifyCompare_19;
+
+#line 803 "trailing_analysis.m"
+            {
+#line 803 "trailing_analysis.m"
+              parse_tree__prog_type__type_to_ctor_and_args_det_3_p_0(transform_hlds__trailing_analysis__Type_6, &transform_hlds__trailing_analysis___TypeCtor_18, &transform_hlds__trailing_analysis__Args_22);
+            }
+#line 805 "trailing_analysis.m"
+            {
+#line 805 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__succeeded = check_hlds__type_util__type_has_user_defined_equality_pred_3_p_0(transform_hlds__trailing_analysis__ModuleInfo_5, transform_hlds__trailing_analysis__Type_6, &transform_hlds__trailing_analysis___UnifyCompare_19);
+            }
+#line 812 "trailing_analysis.m"
+            if (transform_hlds__trailing_analysis__succeeded)
+#line 811 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 0;
+#line 812 "trailing_analysis.m"
+            else
+#line 754 "trailing_analysis.m"
+              {
+#line 754 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__V_53_53;
+#line 755 "trailing_analysis.m"
+                MR_Box transform_hlds__trailing_analysis__conv1_Status_8;
+
+#line 755 "trailing_analysis.m"
+                {
+#line 755 "trailing_analysis.m"
+                  transform_hlds__trailing_analysis__V_53_53 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 755 "trailing_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_53_53, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_6[2]));
+#line 755 "trailing_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_53_53, 1) = ((MR_Box) (transform_hlds__trailing_analysis__check_type_2_3_f_0_1));
+#line 755 "trailing_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_53_53, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 755 "trailing_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_53_53, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_5));
+#line 755 "trailing_analysis.m"
+                }
+#line 755 "trailing_analysis.m"
+                {
+#line 755 "trailing_analysis.m"
+                  mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0, transform_hlds__trailing_analysis__V_53_53, transform_hlds__trailing_analysis__Args_22, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv1_Status_8);
+                }
+#line 755 "trailing_analysis.m"
+                transform_hlds__trailing_analysis__Status_8 = ((MR_Word) transform_hlds__trailing_analysis__conv1_Status_8);
+#line 754 "trailing_analysis.m"
+              }
+#line 802 "trailing_analysis.m"
+          }
+#line 792 "trailing_analysis.m"
+        else
+#line 792 "trailing_analysis.m"
+          if ((transform_hlds__trailing_analysis__TypeCtorCat_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3)))))
+#line 795 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 2;
+#line 792 "trailing_analysis.m"
+          else
+#line 792 "trailing_analysis.m"
+            if ((transform_hlds__trailing_analysis__TypeCtorCat_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4)))))
+#line 792 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 1;
+#line 792 "trailing_analysis.m"
+            else
+#line 792 "trailing_analysis.m"
+              if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__TypeCtorCat_7)) == (MR_mktag((MR_Integer) 1))))
+#line 793 "trailing_analysis.m"
+                transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 1;
+#line 792 "trailing_analysis.m"
+              else
+#line 792 "trailing_analysis.m"
+                if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__TypeCtorCat_7)) == (MR_mktag((MR_Integer) 2))))
+#line 802 "trailing_analysis.m"
+                  {
+#line 802 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__Args_13;
+#line 803 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis___TypeCtor_12;
+#line 805 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis___UnifyCompare_14;
+
+#line 803 "trailing_analysis.m"
+                    {
+#line 803 "trailing_analysis.m"
+                      parse_tree__prog_type__type_to_ctor_and_args_det_3_p_0(transform_hlds__trailing_analysis__Type_6, &transform_hlds__trailing_analysis___TypeCtor_12, &transform_hlds__trailing_analysis__Args_13);
+                    }
+#line 805 "trailing_analysis.m"
+                    {
+#line 805 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__succeeded = check_hlds__type_util__type_has_user_defined_equality_pred_3_p_0(transform_hlds__trailing_analysis__ModuleInfo_5, transform_hlds__trailing_analysis__Type_6, &transform_hlds__trailing_analysis___UnifyCompare_14);
+                    }
+#line 812 "trailing_analysis.m"
+                    if (transform_hlds__trailing_analysis__succeeded)
+#line 811 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 0;
+#line 812 "trailing_analysis.m"
+                    else
+#line 754 "trailing_analysis.m"
+                      {
+#line 754 "trailing_analysis.m"
+                        MR_Word transform_hlds__trailing_analysis__V_43_43;
+#line 755 "trailing_analysis.m"
+                        MR_Box transform_hlds__trailing_analysis__conv3_Status_8;
+
+#line 755 "trailing_analysis.m"
+                        {
+#line 755 "trailing_analysis.m"
+                          transform_hlds__trailing_analysis__V_43_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 755 "trailing_analysis.m"
+                          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_43_43, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_6[2]));
+#line 755 "trailing_analysis.m"
+                          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_43_43, 1) = ((MR_Box) (transform_hlds__trailing_analysis__check_type_2_3_f_0_2));
+#line 755 "trailing_analysis.m"
+                          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_43_43, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 755 "trailing_analysis.m"
+                          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_43_43, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_5));
+#line 755 "trailing_analysis.m"
+                        }
+#line 755 "trailing_analysis.m"
+                        {
+#line 755 "trailing_analysis.m"
+                          mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0, transform_hlds__trailing_analysis__V_43_43, transform_hlds__trailing_analysis__Args_13, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv3_Status_8);
+                        }
+#line 755 "trailing_analysis.m"
+                        transform_hlds__trailing_analysis__Status_8 = ((MR_Word) transform_hlds__trailing_analysis__conv3_Status_8);
+#line 754 "trailing_analysis.m"
+                      }
+#line 802 "trailing_analysis.m"
+                  }
+#line 792 "trailing_analysis.m"
+                else
+#line 792 "trailing_analysis.m"
+                  if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__TypeCtorCat_7)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__TypeCtorCat_7, (MR_Integer) 0)))) == (MR_Integer) 0))))
+#line 793 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 1;
+#line 792 "trailing_analysis.m"
+                  else
+#line 792 "trailing_analysis.m"
+                    {
+#line 792 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__TypeCtorCat_7, (MR_Integer) 1)));
+
+#line 792 "trailing_analysis.m"
+                      if ((transform_hlds__trailing_analysis__V_39_39 == (MR_Integer) 0))
+#line 793 "trailing_analysis.m"
+                        transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 1;
+#line 792 "trailing_analysis.m"
+                      else
+#line 792 "trailing_analysis.m"
+                        if ((transform_hlds__trailing_analysis__V_39_39 == (MR_Integer) 2))
+#line 802 "trailing_analysis.m"
+                          {
+#line 802 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__Args_34;
+#line 803 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis___TypeCtor_30;
+#line 805 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis___UnifyCompare_31;
+
+#line 803 "trailing_analysis.m"
+                            {
+#line 803 "trailing_analysis.m"
+                              parse_tree__prog_type__type_to_ctor_and_args_det_3_p_0(transform_hlds__trailing_analysis__Type_6, &transform_hlds__trailing_analysis___TypeCtor_30, &transform_hlds__trailing_analysis__Args_34);
+                            }
+#line 805 "trailing_analysis.m"
+                            {
+#line 805 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__succeeded = check_hlds__type_util__type_has_user_defined_equality_pred_3_p_0(transform_hlds__trailing_analysis__ModuleInfo_5, transform_hlds__trailing_analysis__Type_6, &transform_hlds__trailing_analysis___UnifyCompare_31);
+                            }
+#line 812 "trailing_analysis.m"
+                            if (transform_hlds__trailing_analysis__succeeded)
+#line 811 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 0;
+#line 812 "trailing_analysis.m"
+                            else
+#line 754 "trailing_analysis.m"
+                              {
+#line 754 "trailing_analysis.m"
+                                MR_Word transform_hlds__trailing_analysis__V_63_63;
+#line 755 "trailing_analysis.m"
+                                MR_Box transform_hlds__trailing_analysis__conv5_Status_8;
+
+#line 755 "trailing_analysis.m"
+                                {
+#line 755 "trailing_analysis.m"
+                                  transform_hlds__trailing_analysis__V_63_63 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 755 "trailing_analysis.m"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_63_63, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_6[2]));
+#line 755 "trailing_analysis.m"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_63_63, 1) = ((MR_Box) (transform_hlds__trailing_analysis__check_type_2_3_f_0_3));
+#line 755 "trailing_analysis.m"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_63_63, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 755 "trailing_analysis.m"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_63_63, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_5));
+#line 755 "trailing_analysis.m"
+                                }
+#line 755 "trailing_analysis.m"
+                                {
+#line 755 "trailing_analysis.m"
+                                  mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0, transform_hlds__trailing_analysis__V_63_63, transform_hlds__trailing_analysis__Args_34, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv5_Status_8);
+                                }
+#line 755 "trailing_analysis.m"
+                                transform_hlds__trailing_analysis__Status_8 = ((MR_Word) transform_hlds__trailing_analysis__conv5_Status_8);
+#line 754 "trailing_analysis.m"
+                              }
+#line 802 "trailing_analysis.m"
+                          }
+#line 792 "trailing_analysis.m"
+                        else
+#line 802 "trailing_analysis.m"
+                          {
+#line 802 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__Args_28;
+#line 803 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis___TypeCtor_24;
+#line 805 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis___UnifyCompare_25;
+
+#line 803 "trailing_analysis.m"
+                            {
+#line 803 "trailing_analysis.m"
+                              parse_tree__prog_type__type_to_ctor_and_args_det_3_p_0(transform_hlds__trailing_analysis__Type_6, &transform_hlds__trailing_analysis___TypeCtor_24, &transform_hlds__trailing_analysis__Args_28);
+                            }
+#line 805 "trailing_analysis.m"
+                            {
+#line 805 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__succeeded = check_hlds__type_util__type_has_user_defined_equality_pred_3_p_0(transform_hlds__trailing_analysis__ModuleInfo_5, transform_hlds__trailing_analysis__Type_6, &transform_hlds__trailing_analysis___UnifyCompare_25);
+                            }
+#line 812 "trailing_analysis.m"
+                            if (transform_hlds__trailing_analysis__succeeded)
+#line 811 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__Status_8 = (MR_Integer) 0;
+#line 812 "trailing_analysis.m"
+                            else
+#line 754 "trailing_analysis.m"
+                              {
+#line 754 "trailing_analysis.m"
+                                MR_Word transform_hlds__trailing_analysis__V_73_73;
+#line 755 "trailing_analysis.m"
+                                MR_Box transform_hlds__trailing_analysis__conv7_Status_8;
+
+#line 755 "trailing_analysis.m"
+                                {
+#line 755 "trailing_analysis.m"
+                                  transform_hlds__trailing_analysis__V_73_73 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 755 "trailing_analysis.m"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_73_73, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_6[2]));
+#line 755 "trailing_analysis.m"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_73_73, 1) = ((MR_Box) (transform_hlds__trailing_analysis__check_type_2_3_f_0_4));
+#line 755 "trailing_analysis.m"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_73_73, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 755 "trailing_analysis.m"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_73_73, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_5));
+#line 755 "trailing_analysis.m"
+                                }
+#line 755 "trailing_analysis.m"
+                                {
+#line 755 "trailing_analysis.m"
+                                  mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0, transform_hlds__trailing_analysis__V_73_73, transform_hlds__trailing_analysis__Args_28, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv7_Status_8);
+                                }
+#line 755 "trailing_analysis.m"
+                                transform_hlds__trailing_analysis__Status_8 = ((MR_Word) transform_hlds__trailing_analysis__conv7_Status_8);
+#line 754 "trailing_analysis.m"
+                              }
+#line 802 "trailing_analysis.m"
+                          }
+#line 792 "trailing_analysis.m"
+                    }
+#line 792 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__Status_8;
+#line 792 "trailing_analysis.m"
+  }
+#line 781 "trailing_analysis.m"
+}
+
+#line 765 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__check_type_2_f_0(
+#line 765 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_4,
+#line 765 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Type_5)
+#line 765 "trailing_analysis.m"
+{
+#line 776 "trailing_analysis.m"
+  {
+#line 776 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 776 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Status_6;
+
+#line 769 "trailing_analysis.m"
+    {
+#line 769 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__succeeded = check_hlds__type_util__type_is_solver_type_2_p_0(transform_hlds__trailing_analysis__ModuleInfo_4, transform_hlds__trailing_analysis__Type_5);
+    }
+#line 770 "trailing_analysis.m"
+    if (!(transform_hlds__trailing_analysis__succeeded))
+#line 770 "trailing_analysis.m"
+      {
+#line 770 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = check_hlds__type_util__type_is_existq_type_2_p_0(transform_hlds__trailing_analysis__ModuleInfo_4, transform_hlds__trailing_analysis__Type_5);
+      }
+#line 776 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 775 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__Status_6 = (MR_Integer) 0;
+#line 776 "trailing_analysis.m"
+    else
+#line 777 "trailing_analysis.m"
+      {
+#line 777 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__TypeCtorCategory_7;
+
+#line 777 "trailing_analysis.m"
+        {
+#line 777 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__TypeCtorCategory_7 = check_hlds__type_util__classify_type_2_f_0(transform_hlds__trailing_analysis__ModuleInfo_4, transform_hlds__trailing_analysis__Type_5);
+        }
+#line 778 "trailing_analysis.m"
+        {
+#line 778 "trailing_analysis.m"
+          return transform_hlds__trailing_analysis__Status_6 = transform_hlds__trailing_analysis__check_type_2_3_f_0(transform_hlds__trailing_analysis__ModuleInfo_4, transform_hlds__trailing_analysis__Type_5, transform_hlds__trailing_analysis__TypeCtorCategory_7);
+        }
+#line 777 "trailing_analysis.m"
+      }
+#line 776 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__Status_6;
+#line 776 "trailing_analysis.m"
+  }
+#line 765 "trailing_analysis.m"
+}
+
+#line 757 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_type_4_p_0(
+#line 757 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_5,
+#line 757 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Type_6,
+#line 757 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Status_0_8,
+#line 757 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Status_9)
+#line 757 "trailing_analysis.m"
+{
+#line 760 "trailing_analysis.m"
+  {
+#line 760 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 760 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_10_10;
+
+#line 761 "trailing_analysis.m"
+    {
+#line 761 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_10_10 = transform_hlds__trailing_analysis__check_type_2_f_0(transform_hlds__trailing_analysis__ModuleInfo_5, transform_hlds__trailing_analysis__Type_6);
+    }
+#line 644 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis__V_10_10 == (MR_Integer) 2))
+#line 644 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__STATE_VARIABLE_Status_0_8 == (MR_Integer) 2))
+#line 649 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 2;
+#line 644 "trailing_analysis.m"
+      else
+#line 644 "trailing_analysis.m"
+        if ((transform_hlds__trailing_analysis__STATE_VARIABLE_Status_0_8 == (MR_Integer) 0))
+#line 650 "trailing_analysis.m"
+          *transform_hlds__trailing_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 0;
+#line 644 "trailing_analysis.m"
+        else
+#line 647 "trailing_analysis.m"
+          *transform_hlds__trailing_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 2;
+#line 644 "trailing_analysis.m"
+    else
+#line 644 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__V_10_10 == (MR_Integer) 0))
+#line 645 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 0;
+#line 644 "trailing_analysis.m"
+      else
+#line 644 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__STATE_VARIABLE_Status_9 = transform_hlds__trailing_analysis__STATE_VARIABLE_Status_0_8;
+#line 760 "trailing_analysis.m"
+  }
+#line 757 "trailing_analysis.m"
+}
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_types_2_f_0_1(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 755 "trailing_analysis.m"
+{
+#line 755 "trailing_analysis.m"
+  {
+#line 755 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 755 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_Status_9;
+
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_Status_9);
+    }
+#line 755 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_Status_9));
+#line 755 "trailing_analysis.m"
+  }
+#line 755 "trailing_analysis.m"
+}
+
+#line 752 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__check_types_2_f_0(
+#line 752 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_4,
+#line 752 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Types_5)
+#line 752 "trailing_analysis.m"
+{
+#line 754 "trailing_analysis.m"
+  {
+#line 754 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 754 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Status_6;
+#line 754 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_7_7;
+#line 755 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv1_Status_6;
+
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 755 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_7_7, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_6[2]));
+#line 755 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_7_7, 1) = ((MR_Box) (transform_hlds__trailing_analysis__check_types_2_f_0_1));
+#line 755 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_7_7, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 755 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_7_7, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_4));
+#line 755 "trailing_analysis.m"
+    }
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0, transform_hlds__trailing_analysis__V_7_7, transform_hlds__trailing_analysis__Types_5, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv1_Status_6);
+    }
+#line 755 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__Status_6 = ((MR_Word) transform_hlds__trailing_analysis__conv1_Status_6);
+#line 754 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__Status_6;
+#line 754 "trailing_analysis.m"
+  }
+#line 752 "trailing_analysis.m"
+}
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_vars_3_f_0_1(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 755 "trailing_analysis.m"
+{
+#line 755 "trailing_analysis.m"
+  {
+#line 755 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 755 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_Status_9;
+
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_Status_9);
+    }
+#line 755 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_Status_9));
+#line 755 "trailing_analysis.m"
+  }
+#line 755 "trailing_analysis.m"
+}
+
+#line 714 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__check_vars_3_f_0(
+#line 714 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_5,
+#line 714 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_6,
+#line 714 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Vars_7)
+#line 714 "trailing_analysis.m"
+{
+#line 716 "trailing_analysis.m"
+  {
+#line 716 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 716 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Result_8;
+#line 716 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Types_9;
+#line 716 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_13_13;
+#line 755 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv1_Result_8;
+
+#line 717 "trailing_analysis.m"
+    {
+#line 717 "trailing_analysis.m"
+      parse_tree__prog_data__lookup_var_types_3_p_0(transform_hlds__trailing_analysis__VarTypes_6, transform_hlds__trailing_analysis__Vars_7, &transform_hlds__trailing_analysis__Types_9);
+    }
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 755 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_13_13, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_6[2]));
+#line 755 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_13_13, 1) = ((MR_Box) (transform_hlds__trailing_analysis__check_vars_3_f_0_1));
+#line 755 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_13_13, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 755 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_13_13, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_5));
+#line 755 "trailing_analysis.m"
+    }
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0, transform_hlds__trailing_analysis__V_13_13, transform_hlds__trailing_analysis__Types_9, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv1_Result_8);
+    }
+#line 755 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__Result_8 = ((MR_Word) transform_hlds__trailing_analysis__conv1_Result_8);
+#line 716 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__Result_8;
+#line 716 "trailing_analysis.m"
+  }
+#line 714 "trailing_analysis.m"
+}
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_call_2_5_p_0_1(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 755 "trailing_analysis.m"
+{
+#line 755 "trailing_analysis.m"
+  {
+#line 755 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 755 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_Status_9;
+
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_Status_9);
+    }
+#line 755 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_Status_9));
+#line 755 "trailing_analysis.m"
+  }
+#line 755 "trailing_analysis.m"
+}
+
+#line 686 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_call_2_5_p_0(
+#line 686 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_6,
+#line 686 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 686 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_8,
+#line 686 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Args_9,
+#line 686 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__MaybeResult_10)
+#line 686 "trailing_analysis.m"
+{
+#line 689 "trailing_analysis.m"
+  {
+#line 689 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 689 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TrailingInfo_11;
+#line 710 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__CalleeTrailingInfo_12;
+#line 691 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv0_CalleeTrailingInfo_12;
+
+#line 690 "trailing_analysis.m"
+    {
+#line 690 "trailing_analysis.m"
+      hlds__hlds_module__module_info_get_trailing_info_2_p_0(transform_hlds__trailing_analysis__ModuleInfo_6, &transform_hlds__trailing_analysis__TrailingInfo_11);
+    }
+#line 691 "trailing_analysis.m"
+    {
+#line 691 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_trailing_info_0, transform_hlds__trailing_analysis__TrailingInfo_11, ((MR_Box) (transform_hlds__trailing_analysis__PPId_8)), &transform_hlds__trailing_analysis__conv0_CalleeTrailingInfo_12);
+    }
+#line 691 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 691 "trailing_analysis.m"
+      {
+#line 691 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__CalleeTrailingInfo_12 = ((MR_Word) transform_hlds__trailing_analysis__conv0_CalleeTrailingInfo_12);
+#line 691 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 691 "trailing_analysis.m"
+      }
+#line 710 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 693 "trailing_analysis.m"
+      {
+#line 693 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__CalleeTrailingStatus_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__CalleeTrailingInfo_12, (MR_Integer) 0)));
+#line 693 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__AnalysisStatus_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__CalleeTrailingInfo_12, (MR_Integer) 1)));
+
+#line 697 "trailing_analysis.m"
+        if ((transform_hlds__trailing_analysis__CalleeTrailingStatus_13 == (MR_Integer) 2))
+#line 701 "trailing_analysis.m"
+          {
+#line 701 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__TrailingStatus_15;
+#line 701 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__V_16_16;
+#line 701 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__Types_23;
+#line 701 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__V_27_27;
+#line 755 "trailing_analysis.m"
+            MR_Box transform_hlds__trailing_analysis__conv2_TrailingStatus_15;
+
+#line 717 "trailing_analysis.m"
+            {
+#line 717 "trailing_analysis.m"
+              parse_tree__prog_data__lookup_var_types_3_p_0(transform_hlds__trailing_analysis__VarTypes_7, transform_hlds__trailing_analysis__Args_9, &transform_hlds__trailing_analysis__Types_23);
+            }
+#line 755 "trailing_analysis.m"
+            {
+#line 755 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__V_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 755 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_27_27, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_6[2]));
+#line 755 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_27_27, 1) = ((MR_Box) (transform_hlds__trailing_analysis__check_call_2_5_p_0_1));
+#line 755 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_27_27, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 755 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_27_27, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_6));
+#line 755 "trailing_analysis.m"
+            }
+#line 755 "trailing_analysis.m"
+            {
+#line 755 "trailing_analysis.m"
+              mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0, transform_hlds__trailing_analysis__V_27_27, transform_hlds__trailing_analysis__Types_23, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv2_TrailingStatus_15);
+            }
+#line 755 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__TrailingStatus_15 = ((MR_Word) transform_hlds__trailing_analysis__conv2_TrailingStatus_15);
+#line 706 "trailing_analysis.m"
+            {
+#line 706 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__V_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 706 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_16_16, 0) = ((MR_Box) (transform_hlds__trailing_analysis__TrailingStatus_15));
+#line 706 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_16_16, 1) = ((MR_Box) (transform_hlds__trailing_analysis__AnalysisStatus_14));
+#line 706 "trailing_analysis.m"
+            }
+#line 706 "trailing_analysis.m"
+            {
+#line 706 "trailing_analysis.m"
+              MR_Word base;
+#line 706 "trailing_analysis.m"
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 706 "trailing_analysis.m"
+              *transform_hlds__trailing_analysis__MaybeResult_10 = base;
+#line 706 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__trailing_analysis__V_16_16));
+#line 706 "trailing_analysis.m"
+            }
+#line 701 "trailing_analysis.m"
+          }
+#line 697 "trailing_analysis.m"
+        else
+#line 697 "trailing_analysis.m"
+          if ((transform_hlds__trailing_analysis__CalleeTrailingStatus_13 == (MR_Integer) 0))
+#line 699 "trailing_analysis.m"
+            {
+#line 699 "trailing_analysis.m"
+              MR_Word base;
+#line 699 "trailing_analysis.m"
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 699 "trailing_analysis.m"
+              *transform_hlds__trailing_analysis__MaybeResult_10 = base;
+#line 699 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__trailing_analysis__CalleeTrailingInfo_12));
+#line 699 "trailing_analysis.m"
+            }
+#line 697 "trailing_analysis.m"
+          else
+#line 696 "trailing_analysis.m"
+            {
+#line 696 "trailing_analysis.m"
+              MR_Word base;
+#line 696 "trailing_analysis.m"
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 696 "trailing_analysis.m"
+              *transform_hlds__trailing_analysis__MaybeResult_10 = base;
+#line 696 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__trailing_analysis__CalleeTrailingInfo_12));
+#line 696 "trailing_analysis.m"
+            }
+#line 693 "trailing_analysis.m"
+      }
+#line 710 "trailing_analysis.m"
+    else
+#line 711 "trailing_analysis.m"
+      *transform_hlds__trailing_analysis__MaybeResult_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 689 "trailing_analysis.m"
+  }
+#line 686 "trailing_analysis.m"
+}
+
+#line 755 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_call_5_p_0_1(
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 755 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 755 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 755 "trailing_analysis.m"
+{
+#line 755 "trailing_analysis.m"
+  {
+#line 755 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 755 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_Status_9;
+
+#line 755 "trailing_analysis.m"
+    {
+#line 755 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_Status_9);
+    }
+#line 755 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_Status_9));
+#line 755 "trailing_analysis.m"
+  }
+#line 755 "trailing_analysis.m"
+}
+
+#line 672 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_call_5_p_0(
+#line 672 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_6,
+#line 672 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_7,
+#line 672 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_8,
+#line 672 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Args_9,
+#line 672 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Result_10)
+#line 672 "trailing_analysis.m"
+{
+#line 675 "trailing_analysis.m"
+  {
+#line 675 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 675 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__MaybeResult_11;
+#line 675 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TrailingInfo_19;
+#line 710 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__CalleeTrailingInfo_20;
+#line 691 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv0_CalleeTrailingInfo_20;
+
+#line 690 "trailing_analysis.m"
+    {
+#line 690 "trailing_analysis.m"
+      hlds__hlds_module__module_info_get_trailing_info_2_p_0(transform_hlds__trailing_analysis__ModuleInfo_6, &transform_hlds__trailing_analysis__TrailingInfo_19);
+    }
+#line 691 "trailing_analysis.m"
+    {
+#line 691 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_trailing_info_0, transform_hlds__trailing_analysis__TrailingInfo_19, ((MR_Box) (transform_hlds__trailing_analysis__PPId_8)), &transform_hlds__trailing_analysis__conv0_CalleeTrailingInfo_20);
+    }
+#line 691 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 691 "trailing_analysis.m"
+      {
+#line 691 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__CalleeTrailingInfo_20 = ((MR_Word) transform_hlds__trailing_analysis__conv0_CalleeTrailingInfo_20);
+#line 691 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 691 "trailing_analysis.m"
+      }
+#line 710 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 693 "trailing_analysis.m"
+      {
+#line 693 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__CalleeTrailingStatus_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__CalleeTrailingInfo_20, (MR_Integer) 0)));
+#line 693 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__AnalysisStatus_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__CalleeTrailingInfo_20, (MR_Integer) 1)));
+
+#line 697 "trailing_analysis.m"
+        if ((transform_hlds__trailing_analysis__CalleeTrailingStatus_21 == (MR_Integer) 2))
+#line 701 "trailing_analysis.m"
+          {
+#line 701 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__TrailingStatus_23;
+#line 701 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__V_24_24;
+#line 701 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__Types_31;
+#line 701 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__V_35_35;
+#line 755 "trailing_analysis.m"
+            MR_Box transform_hlds__trailing_analysis__conv2_TrailingStatus_23;
+
+#line 717 "trailing_analysis.m"
+            {
+#line 717 "trailing_analysis.m"
+              parse_tree__prog_data__lookup_var_types_3_p_0(transform_hlds__trailing_analysis__VarTypes_7, transform_hlds__trailing_analysis__Args_9, &transform_hlds__trailing_analysis__Types_31);
+            }
+#line 755 "trailing_analysis.m"
+            {
+#line 755 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__V_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 755 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_35_35, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_6[2]));
+#line 755 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_35_35, 1) = ((MR_Box) (transform_hlds__trailing_analysis__check_call_5_p_0_1));
+#line 755 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_35_35, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 755 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_35_35, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_6));
+#line 755 "trailing_analysis.m"
+            }
+#line 755 "trailing_analysis.m"
+            {
+#line 755 "trailing_analysis.m"
+              mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0, transform_hlds__trailing_analysis__V_35_35, transform_hlds__trailing_analysis__Types_31, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv2_TrailingStatus_23);
+            }
+#line 755 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__TrailingStatus_23 = ((MR_Word) transform_hlds__trailing_analysis__conv2_TrailingStatus_23);
+#line 706 "trailing_analysis.m"
+            {
+#line 706 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__V_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 706 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_24_24, 0) = ((MR_Box) (transform_hlds__trailing_analysis__TrailingStatus_23));
+#line 706 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_24_24, 1) = ((MR_Box) (transform_hlds__trailing_analysis__AnalysisStatus_22));
+#line 706 "trailing_analysis.m"
+            }
+#line 706 "trailing_analysis.m"
+            {
+#line 706 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__MaybeResult_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 706 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__MaybeResult_11, 0) = ((MR_Box) (transform_hlds__trailing_analysis__V_24_24));
+#line 706 "trailing_analysis.m"
+            }
+#line 701 "trailing_analysis.m"
+          }
+#line 697 "trailing_analysis.m"
+        else
+#line 697 "trailing_analysis.m"
+          if ((transform_hlds__trailing_analysis__CalleeTrailingStatus_21 == (MR_Integer) 0))
+#line 699 "trailing_analysis.m"
+            {
+#line 699 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__MaybeResult_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 699 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__MaybeResult_11, 0) = ((MR_Box) (transform_hlds__trailing_analysis__CalleeTrailingInfo_20));
+#line 699 "trailing_analysis.m"
+            }
+#line 697 "trailing_analysis.m"
+          else
+#line 696 "trailing_analysis.m"
+            {
+#line 696 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__MaybeResult_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 696 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__MaybeResult_11, 0) = ((MR_Box) (transform_hlds__trailing_analysis__CalleeTrailingInfo_20));
+#line 696 "trailing_analysis.m"
+            }
+#line 693 "trailing_analysis.m"
+      }
+#line 710 "trailing_analysis.m"
+    else
+#line 711 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__MaybeResult_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 679 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis__MaybeResult_11 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 683 "trailing_analysis.m"
+      *transform_hlds__trailing_analysis__Result_10 = (MR_Integer) 0;
+#line 679 "trailing_analysis.m"
+    else
+#line 678 "trailing_analysis.m"
+      {
+#line 678 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__MaybeResult_11, (MR_Integer) 0)));
+#line 678 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_12_12;
+
+#line 678 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__Result_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_13_13, (MR_Integer) 0)));
+#line 678 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_13_13, (MR_Integer) 1)));
+#line 678 "trailing_analysis.m"
+      }
+#line 675 "trailing_analysis.m"
+  }
+#line 672 "trailing_analysis.m"
+}
+
+#line 652 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_maybe_analysis_status_3_p_0(
+#line 652 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__MaybeStatusA_4,
+#line 652 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__MaybeStatusB_5,
+#line 652 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__MaybeStatus_6)
+#line 652 "trailing_analysis.m"
+{
+#line 661 "trailing_analysis.m"
+  {
+#line 661 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__trailing_analysis__MaybeStatusA_4)) == (MR_mktag((MR_Integer) 1)));
+#line 661 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__StatusA_7;
+#line 661 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__StatusB_8;
+
+#line 657 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 657 "trailing_analysis.m"
+      {
+#line 657 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__StatusA_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__MaybeStatusA_4, (MR_Integer) 0)));
+#line 658 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__trailing_analysis__MaybeStatusB_5)) == (MR_mktag((MR_Integer) 1)));
+#line 658 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 658 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__StatusB_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__MaybeStatusB_5, (MR_Integer) 0)));
+#line 657 "trailing_analysis.m"
+      }
+#line 661 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 660 "trailing_analysis.m"
+      {
+#line 660 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_9_9;
+
+#line 660 "trailing_analysis.m"
+        {
+#line 660 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__V_9_9 = analysis__lub_2_f_0(transform_hlds__trailing_analysis__StatusA_7, transform_hlds__trailing_analysis__StatusB_8);
+        }
+#line 660 "trailing_analysis.m"
+        {
+#line 660 "trailing_analysis.m"
+          MR_Word base;
+#line 660 "trailing_analysis.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 660 "trailing_analysis.m"
+          *transform_hlds__trailing_analysis__MaybeStatus_6 = base;
+#line 660 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__trailing_analysis__V_9_9));
+#line 660 "trailing_analysis.m"
+        }
+#line 660 "trailing_analysis.m"
+      }
+#line 661 "trailing_analysis.m"
+    else
+#line 662 "trailing_analysis.m"
+      *transform_hlds__trailing_analysis__MaybeStatus_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 661 "trailing_analysis.m"
+  }
+#line 652 "trailing_analysis.m"
+}
+
+#line 641 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_trailing_status_3_p_0(
+#line 641 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 641 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__2_2,
+#line 641 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__3_3)
+#line 641 "trailing_analysis.m"
+{
+#line 644 "trailing_analysis.m"
+  {
+#line 644 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+
+#line 644 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis__HeadVar__1_1 == (MR_Integer) 2))
+#line 644 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__HeadVar__2_2 == (MR_Integer) 2))
+#line 649 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__HeadVar__3_3 = (MR_Integer) 2;
+#line 644 "trailing_analysis.m"
+      else
+#line 644 "trailing_analysis.m"
+        if ((transform_hlds__trailing_analysis__HeadVar__2_2 == (MR_Integer) 0))
+#line 650 "trailing_analysis.m"
+          *transform_hlds__trailing_analysis__HeadVar__3_3 = (MR_Integer) 0;
+#line 644 "trailing_analysis.m"
+        else
+#line 647 "trailing_analysis.m"
+          *transform_hlds__trailing_analysis__HeadVar__3_3 = (MR_Integer) 2;
+#line 644 "trailing_analysis.m"
+    else
+#line 644 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__HeadVar__1_1 == (MR_Integer) 0))
+#line 645 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__HeadVar__3_3 = (MR_Integer) 0;
+#line 644 "trailing_analysis.m"
+      else
+#line 644 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__HeadVar__3_3 = transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 644 "trailing_analysis.m"
+  }
+#line 641 "trailing_analysis.m"
+}
+
+#line 579 "trailing_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__trailing_analysis__pred_info_has_known_status_2_p_0(
+#line 579 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredInfo_3,
+#line 579 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Status_4)
+#line 579 "trailing_analysis.m"
+{
+#line 582 "trailing_analysis.m"
+  {
+#line 582 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 582 "trailing_analysis.m"
+    MR_String transform_hlds__trailing_analysis__Name_5;
+#line 582 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__PredOrFunc_6;
+#line 582 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__ModuleName_7;
+#line 582 "trailing_analysis.m"
+    MR_String transform_hlds__trailing_analysis__ModuleNameStr_8;
+#line 582 "trailing_analysis.m"
+    MR_Integer transform_hlds__trailing_analysis__Arity_9;
+
+#line 583 "trailing_analysis.m"
+    {
+#line 583 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__Name_5 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__trailing_analysis__PredInfo_3);
+    }
+#line 584 "trailing_analysis.m"
+    {
+#line 584 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__PredOrFunc_6 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(transform_hlds__trailing_analysis__PredInfo_3);
+    }
+#line 585 "trailing_analysis.m"
+    {
+#line 585 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__ModuleName_7 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__trailing_analysis__PredInfo_3);
+    }
+#line 586 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__trailing_analysis__ModuleName_7)) == (MR_mktag((MR_Integer) 0)));
+#line 586 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 586 "trailing_analysis.m"
+      {
+#line 586 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__ModuleNameStr_8 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__ModuleName_7, (MR_Integer) 0)));
+#line 587 "trailing_analysis.m"
+        {
+#line 587 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__Arity_9 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(transform_hlds__trailing_analysis__PredInfo_3);
+        }
+#line 603 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__Arity_9 == (MR_Integer) 1);
+#line 582 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 598 "trailing_analysis.m"
+          {
+#line 598 "trailing_analysis.m"
+            if ((strcmp(transform_hlds__trailing_analysis__ModuleNameStr_8, (MR_String) "require") == 0))
+#line 598 "trailing_analysis.m"
+              if ((transform_hlds__trailing_analysis__PredOrFunc_6 == (MR_Integer) 1))
+#line 600 "trailing_analysis.m"
+                {
+#line 600 "trailing_analysis.m"
+                  transform_hlds__trailing_analysis__succeeded = (strcmp(transform_hlds__trailing_analysis__Name_5, (MR_String) "func_error") == 0);
+#line 600 "trailing_analysis.m"
+                  if (transform_hlds__trailing_analysis__succeeded)
+#line 600 "trailing_analysis.m"
+                    {
+#line 601 "trailing_analysis.m"
+                      *transform_hlds__trailing_analysis__Status_4 = (MR_Integer) 1;
+#line 601 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 600 "trailing_analysis.m"
+                    }
+#line 600 "trailing_analysis.m"
+                }
+#line 598 "trailing_analysis.m"
+              else
+#line 598 "trailing_analysis.m"
+                {
+#line 598 "trailing_analysis.m"
+                  transform_hlds__trailing_analysis__succeeded = (strcmp(transform_hlds__trailing_analysis__Name_5, (MR_String) "error") == 0);
+#line 598 "trailing_analysis.m"
+                  if (transform_hlds__trailing_analysis__succeeded)
+#line 598 "trailing_analysis.m"
+                    {
+#line 599 "trailing_analysis.m"
+                      *transform_hlds__trailing_analysis__Status_4 = (MR_Integer) 1;
+#line 599 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 598 "trailing_analysis.m"
+                    }
+#line 598 "trailing_analysis.m"
+                }
+#line 598 "trailing_analysis.m"
+            else
+#line 598 "trailing_analysis.m"
+              if ((strcmp(transform_hlds__trailing_analysis__ModuleNameStr_8, (MR_String) "exception") == 0))
+#line 598 "trailing_analysis.m"
+                if ((strcmp(transform_hlds__trailing_analysis__Name_5, (MR_String) "throw") == 0))
+#line 602 "trailing_analysis.m"
+                  {
+#line 602 "trailing_analysis.m"
+                    *transform_hlds__trailing_analysis__Status_4 = (MR_Integer) 1;
+#line 602 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 602 "trailing_analysis.m"
+                  }
+#line 598 "trailing_analysis.m"
+                else
+#line 598 "trailing_analysis.m"
+                  if ((strcmp(transform_hlds__trailing_analysis__Name_5, (MR_String) "rethrow") == 0))
+#line 603 "trailing_analysis.m"
+                    {
+#line 603 "trailing_analysis.m"
+                      *transform_hlds__trailing_analysis__Status_4 = (MR_Integer) 1;
+#line 603 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__succeeded = MR_TRUE;
+#line 603 "trailing_analysis.m"
+                    }
+#line 598 "trailing_analysis.m"
+                  else
+#line 598 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__succeeded = MR_FALSE;
+#line 598 "trailing_analysis.m"
+              else
+#line 598 "trailing_analysis.m"
+                transform_hlds__trailing_analysis__succeeded = MR_FALSE;
+#line 598 "trailing_analysis.m"
+          }
+#line 586 "trailing_analysis.m"
+      }
+#line 582 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__succeeded;
+#line 582 "trailing_analysis.m"
+  }
+#line 579 "trailing_analysis.m"
+}
+
+#line 554 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__scope_implies_trail_mod_3_f_0(
+#line 554 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__InnerCodeModel_5,
+#line 554 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__OuterCodeModel_6,
+#line 554 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__InnerStatus_7)
+#line 554 "trailing_analysis.m"
+{
+#line 557 "trailing_analysis.m"
+  {
+#line 557 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__InnerCodeModel_5 == (MR_Integer) 2);
+#line 557 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__HeadVar__4_4;
+
+#line 561 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 561 "trailing_analysis.m"
+      {
+#line 562 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__OuterCodeModel_6 == (MR_Integer) 2);
+#line 562 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = !(transform_hlds__trailing_analysis__succeeded);
+#line 561 "trailing_analysis.m"
+      }
+#line 557 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 564 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__HeadVar__4_4 = (MR_Integer) 0;
+#line 557 "trailing_analysis.m"
+    else
+#line 557 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__HeadVar__4_4 = transform_hlds__trailing_analysis__InnerStatus_7;
+#line 557 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__HeadVar__4_4;
+#line 557 "trailing_analysis.m"
+  }
+#line 554 "trailing_analysis.m"
+}
+
+#line 544 "trailing_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__trailing_analysis__attributes_imply_trail_mod_1_f_0(
+#line 544 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Attributes_3)
+#line 544 "trailing_analysis.m"
+{
+#line 547 "trailing_analysis.m"
+  {
+#line 547 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 547 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 548 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_4_4;
+
+#line 548 "trailing_analysis.m"
+    {
+#line 548 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_4_4 = parse_tree__prog_data__get_may_modify_trail_1_f_0(transform_hlds__trailing_analysis__Attributes_3);
+    }
+#line 548 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__V_4_4 == (MR_Integer) 0);
+#line 547 "trailing_analysis.m"
+    if (transform_hlds__trailing_analysis__succeeded)
+#line 549 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__HeadVar__2_2 = (MR_Integer) 0;
+#line 547 "trailing_analysis.m"
+    else
+#line 551 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__HeadVar__2_2 = (MR_Integer) 1;
+#line 547 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__HeadVar__2_2;
+#line 547 "trailing_analysis.m"
+  }
+#line 544 "trailing_analysis.m"
+}
+
+#line 536 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0_3(
+#line 536 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 536 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 536 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 536 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 536 "trailing_analysis.m"
+{
+#line 536 "trailing_analysis.m"
+  {
+#line 536 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 536 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv6_MaybeStatus_6;
+
+#line 536 "trailing_analysis.m"
+    {
+#line 536 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__combine_maybe_analysis_status_3_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv6_MaybeStatus_6);
+    }
+#line 536 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv6_MaybeStatus_6));
+#line 536 "trailing_analysis.m"
+  }
+#line 536 "trailing_analysis.m"
+}
+
+#line 534 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0_2(
+#line 534 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 534 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 534 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 534 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 534 "trailing_analysis.m"
+{
+#line 534 "trailing_analysis.m"
+  {
+#line 534 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 534 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv4_HeadVar__3_3;
+
+#line 534 "trailing_analysis.m"
+    {
+#line 534 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__combine_trailing_status_3_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv4_HeadVar__3_3);
+    }
+#line 534 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv4_HeadVar__3_3));
+#line 534 "trailing_analysis.m"
+  }
+#line 534 "trailing_analysis.m"
+}
+
+#line 532 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0_1(
+#line 532 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 532 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 532 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 532 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3,
+#line 532 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_4,
+#line 532 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_5)
+#line 532 "trailing_analysis.m"
+{
+#line 532 "trailing_analysis.m"
+  {
+#line 532 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 532 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv2_Result_11;
+#line 532 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv1_MaybeAnalysisStatus_12;
+#line 532 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_110;
+
+#line 532 "trailing_analysis.m"
+    {
+#line 532 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), &transform_hlds__trailing_analysis__conv2_Result_11, &transform_hlds__trailing_analysis__conv1_MaybeAnalysisStatus_12, ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_4), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_110);
+    }
+#line 532 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__trailing_analysis__conv2_Result_11));
+#line 532 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv1_MaybeAnalysisStatus_12));
+#line 532 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_110));
+#line 532 "trailing_analysis.m"
+  }
+#line 532 "trailing_analysis.m"
+}
+
+#line 526 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0(
+#line 526 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__SCC_8,
+#line 526 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_9,
+#line 526 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Goals_10,
+#line 526 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Result_11,
+#line 526 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__MaybeAnalysisStatus_12,
+#line 526 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_16,
+#line 526 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_17)
+#line 526 "trailing_analysis.m"
+{
+#line 531 "trailing_analysis.m"
+  {
+#line 531 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 531 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TypeCtorInfo_31_31;
+#line 531 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TypeInfo_32_32;
+#line 531 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Results_14;
+#line 531 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__MaybeAnalysisStatuses_15;
+#line 531 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_18_18;
+#line 532 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv3_STATE_VARIABLE_ModuleInfo_17;
+#line 534 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv5_Result_11;
+#line 536 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv7_MaybeAnalysisStatus_12;
+
+#line 532 "trailing_analysis.m"
+    {
+#line 532 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 532 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_18_18, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_7[1]));
+#line 532 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_18_18, 1) = ((MR_Box) (transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0_1));
+#line 532 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_18_18, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 532 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_18_18, 3) = ((MR_Box) (transform_hlds__trailing_analysis__SCC_8));
+#line 532 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_18_18, 4) = ((MR_Box) (transform_hlds__trailing_analysis__VarTypes_9));
+#line 532 "trailing_analysis.m"
+    }
+#line 7869 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__TypeCtorInfo_31_31 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0;
+#line 7871 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__TypeInfo_32_32 = (MR_Word) &transform_hlds__trailing_analysis_scalar_common_1[2];
+#line 532 "trailing_analysis.m"
+    {
+#line 532 "trailing_analysis.m"
+      mercury__list__map2_foldl_6_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, transform_hlds__trailing_analysis__TypeCtorInfo_31_31, transform_hlds__trailing_analysis__TypeInfo_32_32, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__trailing_analysis__V_18_18, transform_hlds__trailing_analysis__Goals_10, &transform_hlds__trailing_analysis__Results_14, &transform_hlds__trailing_analysis__MaybeAnalysisStatuses_15, ((MR_Box) (transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_16)), &transform_hlds__trailing_analysis__conv3_STATE_VARIABLE_ModuleInfo_17);
+    }
+#line 532 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_17 = ((MR_Word) transform_hlds__trailing_analysis__conv3_STATE_VARIABLE_ModuleInfo_17);
+#line 534 "trailing_analysis.m"
+    {
+#line 534 "trailing_analysis.m"
+      mercury__list__foldl_4_p_0(transform_hlds__trailing_analysis__TypeCtorInfo_31_31, transform_hlds__trailing_analysis__TypeCtorInfo_31_31, (MR_Word) &transform_hlds__trailing_analysis_scalar_common_2[7], transform_hlds__trailing_analysis__Results_14, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__trailing_analysis__conv5_Result_11);
+    }
+#line 534 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__Result_11 = ((MR_Word) transform_hlds__trailing_analysis__conv5_Result_11);
+#line 536 "trailing_analysis.m"
+    {
+#line 536 "trailing_analysis.m"
+      mercury__list__foldl_4_p_0(transform_hlds__trailing_analysis__TypeInfo_32_32, transform_hlds__trailing_analysis__TypeInfo_32_32, (MR_Word) &transform_hlds__trailing_analysis_scalar_common_2[8], transform_hlds__trailing_analysis__MaybeAnalysisStatuses_15, ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]))), &transform_hlds__trailing_analysis__conv7_MaybeAnalysisStatus_12);
+    }
+#line 536 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = ((MR_Word) transform_hlds__trailing_analysis__conv7_MaybeAnalysisStatus_12);
+#line 531 "trailing_analysis.m"
+  }
+#line 526 "trailing_analysis.m"
+}
+
+#line 462 "trailing_analysis.m"
+static MR_Box MR_CALL 
+transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_4(
+#line 462 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 462 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1)
+#line 462 "trailing_analysis.m"
+{
+#line 462 "trailing_analysis.m"
+  {
+#line 462 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__wrapper_arg_2;
+#line 462 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 462 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv0_HeadVar__2_126;
+
+#line 462 "trailing_analysis.m"
+    {
+#line 462 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__conv0_HeadVar__2_126 = transform_hlds__trailing_analysis__IntroducedFrom__func__check_goal_for_trail_mods__462__1_1_f_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1));
+    }
+#line 462 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_HeadVar__2_126));
+#line 462 "trailing_analysis.m"
+    return transform_hlds__trailing_analysis__wrapper_arg_2;
+#line 462 "trailing_analysis.m"
+  }
+#line 462 "trailing_analysis.m"
+}
+
+#line 361 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_1(
+#line 361 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 361 "trailing_analysis.m"
+{
+#line 361 "trailing_analysis.m"
+  {
+#line 361 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 361 "trailing_analysis.m"
+    MR_builtin_longjmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__commit_0, 1);
+#line 361 "trailing_analysis.m"
+  }
+#line 361 "trailing_analysis.m"
+}
+
+#line 361 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_2(
+#line 361 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 361 "trailing_analysis.m"
+{
+#line 361 "trailing_analysis.m"
+  {
+#line 361 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 361 "trailing_analysis.m"
+    {
+#line 368 "trailing_analysis.m"
+      MR_String transform_hlds__trailing_analysis__V_55_55;
+
+#line 368 "trailing_analysis.m"
+      {
+#line 368 "trailing_analysis.m"
+        mdbcomp__prim_data__special_pred_name_arity_4_p_0((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__SpecialPredId_54, &(transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__V_162_162, &transform_hlds__trailing_analysis__V_55_55, &(transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__V_163_163);
+      }
+#line 368 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = (strcmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__Name_52, (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__V_162_162) == 0);
+#line 361 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 361 "trailing_analysis.m"
+        {
+#line 368 "trailing_analysis.m"
+          (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__Arity_53 == (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__V_163_163);
+#line 368 "trailing_analysis.m"
+          if ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 368 "trailing_analysis.m"
+            {
+#line 368 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_1(transform_hlds__trailing_analysis__env_ptr);
+#line 368 "trailing_analysis.m"
+              return;
+            }
+#line 361 "trailing_analysis.m"
+        }
+#line 361 "trailing_analysis.m"
+    }
+#line 361 "trailing_analysis.m"
+  }
+#line 361 "trailing_analysis.m"
+}
+
+#line 361 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_3(
+#line 361 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 361 "trailing_analysis.m"
+{
+#line 361 "trailing_analysis.m"
+  {
+#line 361 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 361 "trailing_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__commit_0) == 0)
+#line 361 "trailing_analysis.m"
+      {
+#line 361 "trailing_analysis.m"
+        {
+#line 361 "trailing_analysis.m"
+          MR_Word transform_hlds__trailing_analysis__ModuleName_51;
+
+#line 361 "trailing_analysis.m"
+          {
+#line 361 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__ModuleName_51 = hlds__hlds_pred__pred_info_module_1_f_0((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__CallPredInfo_48);
+          }
+#line 362 "trailing_analysis.m"
+          {
+#line 362 "trailing_analysis.m"
+            (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = mdbcomp__builtin_modules__any_mercury_builtin_module_1_p_0(transform_hlds__trailing_analysis__ModuleName_51);
+          }
+#line 361 "trailing_analysis.m"
+          if ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 361 "trailing_analysis.m"
+            {
+#line 363 "trailing_analysis.m"
+              {
+#line 363 "trailing_analysis.m"
+                (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__Name_52 = hlds__hlds_pred__pred_info_name_1_f_0((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__CallPredInfo_48);
+              }
+#line 364 "trailing_analysis.m"
+              {
+#line 364 "trailing_analysis.m"
+                (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__Arity_53 = hlds__hlds_pred__pred_info_orig_arity_1_f_0((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__CallPredInfo_48);
+              }
+#line 366 "trailing_analysis.m"
+              {
+#line 366 "trailing_analysis.m"
+                MR_Integer transform_hlds__trailing_analysis__slot_1 = (MR_Integer) 0;
+
+#line 366 "trailing_analysis.m"
+                do
+#line 366 "trailing_analysis.m"
+                  {
+#line 366 "trailing_analysis.m"
+                    (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__SpecialPredId_54 = ((&transform_hlds__trailing_analysis_vector_common_10[0 + transform_hlds__trailing_analysis__slot_1]))->transform_hlds__trailing_analysis__vector_common_type_10_0__vct_10_f_0;
+#line 366 "trailing_analysis.m"
+                    {
+#line 366 "trailing_analysis.m"
+                      transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_2(transform_hlds__trailing_analysis__env_ptr);
+                    }
+#line 366 "trailing_analysis.m"
+                    transform_hlds__trailing_analysis__slot_1 = (transform_hlds__trailing_analysis__slot_1 + (MR_Integer) 1);
+#line 366 "trailing_analysis.m"
+                  }
+#line 366 "trailing_analysis.m"
+                while ((transform_hlds__trailing_analysis__slot_1 < (MR_Integer) 2));
+#line 366 "trailing_analysis.m"
+              }
+#line 361 "trailing_analysis.m"
+            }
+#line 361 "trailing_analysis.m"
+        }
+#line 361 "trailing_analysis.m"
+        (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = MR_FALSE;
+#line 361 "trailing_analysis.m"
+      }
+#line 361 "trailing_analysis.m"
+    else
+#line 361 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = MR_TRUE;
+#line 361 "trailing_analysis.m"
+  }
+#line 361 "trailing_analysis.m"
+}
+
+#line 318 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0(
+#line 318 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__SCC_8,
+#line 318 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__VarTypes_9,
+#line 318 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Goal_10,
+#line 318 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__Result_11,
+#line 318 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__MaybeAnalysisStatus_12,
+#line 318 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109,
+#line 318 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110)
+#line 318 "trailing_analysis.m"
+{
+#line 318 "trailing_analysis.m"
+  {
+#line 318 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0_s transform_hlds__trailing_analysis__env;
+
+#line 323 "trailing_analysis.m"
+    while (MR_TRUE)
+#line 323 "trailing_analysis.m"
+      {
+#line 323 "trailing_analysis.m"
+        /* tailcall optimized into a loop */
+#line 323 "trailing_analysis.m"
+        {
+#line 323 "trailing_analysis.m"
+          MR_Word transform_hlds__trailing_analysis__GoalExpr_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Goal_10, (MR_Integer) 0)));
+#line 323 "trailing_analysis.m"
+          MR_Word transform_hlds__trailing_analysis__GoalInfo_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Goal_10, (MR_Integer) 1)));
+
+#line 339 "trailing_analysis.m"
+          if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14)) == (MR_mktag((MR_Integer) 0))))
+#line 497 "trailing_analysis.m"
+            {
+#line 497 "trailing_analysis.m"
+              MR_Word transform_hlds__trailing_analysis__SubGoal_99 = (MR_Word) MR_body(((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14), (MR_Integer) 0);
+
+#line 498 "trailing_analysis.m"
+              /* direct tailcall eliminated */
+#line 498 "trailing_analysis.m"
+              {
+#line 498 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__Goal__tmp_copy_10 = transform_hlds__trailing_analysis__SubGoal_99;
+
+#line 498 "trailing_analysis.m"
+                transform_hlds__trailing_analysis__Goal_10 = transform_hlds__trailing_analysis__Goal__tmp_copy_10;
+#line 498 "trailing_analysis.m"
+              }
+#line 498 "trailing_analysis.m"
+              continue;
+#line 497 "trailing_analysis.m"
+            }
+#line 339 "trailing_analysis.m"
+          else
+#line 339 "trailing_analysis.m"
+            if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14)) == (MR_mktag((MR_Integer) 2))))
+#line 340 "trailing_analysis.m"
+              {
+#line 340 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__CallPredId_41 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 0)));
+#line 340 "trailing_analysis.m"
+                MR_Integer transform_hlds__trailing_analysis__CallProcId_42 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 340 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__CallArgs_43 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 340 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__CallPPId_47;
+#line 340 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 340 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 4)));
+#line 340 "trailing_analysis.m"
+                MR_Word transform_hlds__trailing_analysis__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 5)));
+
+#line 341 "trailing_analysis.m"
+                {
+#line 341 "trailing_analysis.m"
+                  transform_hlds__trailing_analysis__CallPPId_47 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 341 "trailing_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__CallPPId_47, 0) = ((MR_Box) (transform_hlds__trailing_analysis__CallPredId_41));
+#line 341 "trailing_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__CallPPId_47, 1) = ((MR_Box) (transform_hlds__trailing_analysis__CallProcId_42));
+#line 341 "trailing_analysis.m"
+                }
+#line 342 "trailing_analysis.m"
+                {
+#line 342 "trailing_analysis.m"
+                  hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109, transform_hlds__trailing_analysis__CallPredId_41, &(transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__CallPredInfo_48);
+                }
+#line 345 "trailing_analysis.m"
+                {
+#line 345 "trailing_analysis.m"
+                  (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = mercury__list__member_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, ((MR_Box) (transform_hlds__trailing_analysis__CallPPId_47)), transform_hlds__trailing_analysis__SCC_8);
+                }
+#line 351 "trailing_analysis.m"
+                if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 347 "trailing_analysis.m"
+                  {
+#line 347 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__Types_49;
+
+#line 347 "trailing_analysis.m"
+                    {
+#line 347 "trailing_analysis.m"
+                      parse_tree__prog_data__lookup_var_types_3_p_0(transform_hlds__trailing_analysis__VarTypes_9, transform_hlds__trailing_analysis__CallArgs_43, &transform_hlds__trailing_analysis__Types_49);
+                    }
+#line 348 "trailing_analysis.m"
+                    {
+#line 348 "trailing_analysis.m"
+                      *transform_hlds__trailing_analysis__Result_11 = transform_hlds__trailing_analysis__check_types_2_f_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109, transform_hlds__trailing_analysis__Types_49);
+                    }
+#line 350 "trailing_analysis.m"
+                    *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 350 "trailing_analysis.m"
+                    *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109;
+#line 347 "trailing_analysis.m"
+                  }
+#line 351 "trailing_analysis.m"
+                else
+#line 357 "trailing_analysis.m"
+                  {
+#line 352 "trailing_analysis.m"
+                    {
+#line 352 "trailing_analysis.m"
+                      (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = hlds__hlds_pred__pred_info_is_builtin_1_p_0((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__CallPredInfo_48);
+                    }
+#line 357 "trailing_analysis.m"
+                    if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 355 "trailing_analysis.m"
+                      {
+#line 355 "trailing_analysis.m"
+                        *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 1;
+#line 356 "trailing_analysis.m"
+                        *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 356 "trailing_analysis.m"
+                        *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109;
+#line 355 "trailing_analysis.m"
+                      }
+#line 357 "trailing_analysis.m"
+                    else
+#line 375 "trailing_analysis.m"
+                      {
+#line 361 "trailing_analysis.m"
+                        {
+#line 361 "trailing_analysis.m"
+                          transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_3(&transform_hlds__trailing_analysis__env);
+                        }
+#line 375 "trailing_analysis.m"
+                        if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 373 "trailing_analysis.m"
+                          {
+#line 373 "trailing_analysis.m"
+                            *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 0;
+#line 374 "trailing_analysis.m"
+                            *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 374 "trailing_analysis.m"
+                            *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109;
+#line 373 "trailing_analysis.m"
+                          }
+#line 375 "trailing_analysis.m"
+                        else
+#line 382 "trailing_analysis.m"
+                          {
+#line 382 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__Result0_56;
+
+#line 378 "trailing_analysis.m"
+                            {
+#line 378 "trailing_analysis.m"
+                              (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = transform_hlds__trailing_analysis__pred_info_has_known_status_2_p_0((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__CallPredInfo_48, &transform_hlds__trailing_analysis__Result0_56);
+                            }
+#line 382 "trailing_analysis.m"
+                            if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 380 "trailing_analysis.m"
+                              {
+#line 380 "trailing_analysis.m"
+                                *transform_hlds__trailing_analysis__Result_11 = transform_hlds__trailing_analysis__Result0_56;
+#line 381 "trailing_analysis.m"
+                                *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 381 "trailing_analysis.m"
+                                *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109;
+#line 380 "trailing_analysis.m"
+                              }
+#line 382 "trailing_analysis.m"
+                            else
+#line 383 "trailing_analysis.m"
+                              {
+#line 383 "trailing_analysis.m"
+                                MR_Word transform_hlds__trailing_analysis__Globals_57;
+#line 383 "trailing_analysis.m"
+                                MR_Word transform_hlds__trailing_analysis__Intermod_58;
+
+#line 383 "trailing_analysis.m"
+                                {
+#line 383 "trailing_analysis.m"
+                                  hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109, &transform_hlds__trailing_analysis__Globals_57);
+                                }
+#line 384 "trailing_analysis.m"
+                                {
+#line 384 "trailing_analysis.m"
+                                  libs__globals__lookup_bool_option_3_p_0(transform_hlds__trailing_analysis__Globals_57, (MR_Integer) 328, &transform_hlds__trailing_analysis__Intermod_58);
+                                }
+#line 387 "trailing_analysis.m"
+                                (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = (transform_hlds__trailing_analysis__Intermod_58 == (MR_Integer) 1);
+#line 387 "trailing_analysis.m"
+                                if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 388 "trailing_analysis.m"
+                                  {
+#line 388 "trailing_analysis.m"
+                                    (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = hlds__hlds_pred__pred_info_is_imported_not_external_1_p_0((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__CallPredInfo_48);
+                                  }
+#line 405 "trailing_analysis.m"
+                                if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 394 "trailing_analysis.m"
+                                  {
+#line 394 "trailing_analysis.m"
+                                    MR_Word transform_hlds__trailing_analysis__AnalysisStatus_59;
+#line 394 "trailing_analysis.m"
+                                    MR_Word transform_hlds__trailing_analysis__Result0_146;
+
+#line 393 "trailing_analysis.m"
+                                    {
+#line 393 "trailing_analysis.m"
+                                      transform_hlds__trailing_analysis__search_analysis_status_5_p_0(transform_hlds__trailing_analysis__CallPPId_47, &transform_hlds__trailing_analysis__Result0_146, &transform_hlds__trailing_analysis__AnalysisStatus_59, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110);
+                                    }
+#line 398 "trailing_analysis.m"
+                                    if ((transform_hlds__trailing_analysis__Result0_146 == (MR_Integer) 2))
+#line 397 "trailing_analysis.m"
+                                      {
+#line 397 "trailing_analysis.m"
+                                        *transform_hlds__trailing_analysis__Result_11 = transform_hlds__trailing_analysis__check_vars_3_f_0(*transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110, transform_hlds__trailing_analysis__VarTypes_9, transform_hlds__trailing_analysis__CallArgs_43);
+                                      }
+#line 398 "trailing_analysis.m"
+                                    else
+#line 402 "trailing_analysis.m"
+                                      *transform_hlds__trailing_analysis__Result_11 = transform_hlds__trailing_analysis__Result0_146;
+#line 404 "trailing_analysis.m"
+                                    {
+#line 404 "trailing_analysis.m"
+                                      MR_Word base;
+#line 404 "trailing_analysis.m"
+                                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 404 "trailing_analysis.m"
+                                      *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = base;
+#line 404 "trailing_analysis.m"
+                                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__trailing_analysis__AnalysisStatus_59));
+#line 404 "trailing_analysis.m"
+                                    }
+#line 394 "trailing_analysis.m"
+                                  }
+#line 405 "trailing_analysis.m"
+                                else
+#line 407 "trailing_analysis.m"
+                                  {
+#line 407 "trailing_analysis.m"
+                                    MR_Word transform_hlds__trailing_analysis__MaybeResult_60;
+
+#line 406 "trailing_analysis.m"
+                                    {
+#line 406 "trailing_analysis.m"
+                                      transform_hlds__trailing_analysis__check_call_2_5_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109, transform_hlds__trailing_analysis__VarTypes_9, transform_hlds__trailing_analysis__CallPPId_47, transform_hlds__trailing_analysis__CallArgs_43, &transform_hlds__trailing_analysis__MaybeResult_60);
+                                    }
+#line 411 "trailing_analysis.m"
+                                    if ((transform_hlds__trailing_analysis__MaybeResult_60 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 412 "trailing_analysis.m"
+                                      {
+#line 415 "trailing_analysis.m"
+                                        *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 0;
+#line 419 "trailing_analysis.m"
+                                        if ((transform_hlds__trailing_analysis__Intermod_58 == (MR_Integer) 0))
+#line 421 "trailing_analysis.m"
+                                          *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 419 "trailing_analysis.m"
+                                        else
+#line 417 "trailing_analysis.m"
+                                          {
+#line 418 "trailing_analysis.m"
+                                            *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 417 "trailing_analysis.m"
+                                          }
+#line 412 "trailing_analysis.m"
+                                      }
+#line 411 "trailing_analysis.m"
+                                    else
+#line 409 "trailing_analysis.m"
+                                      {
+#line 409 "trailing_analysis.m"
+                                        MR_Word transform_hlds__trailing_analysis__V_141_141 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__MaybeResult_60, (MR_Integer) 0)));
+
+#line 409 "trailing_analysis.m"
+                                        *transform_hlds__trailing_analysis__Result_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_141_141, (MR_Integer) 0)));
+#line 409 "trailing_analysis.m"
+                                        *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_141_141, (MR_Integer) 1)));
+#line 409 "trailing_analysis.m"
+                                      }
+#line 421 "trailing_analysis.m"
+                                    *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109;
+#line 407 "trailing_analysis.m"
+                                  }
+#line 383 "trailing_analysis.m"
+                              }
+#line 382 "trailing_analysis.m"
+                          }
+#line 375 "trailing_analysis.m"
+                      }
+#line 357 "trailing_analysis.m"
+                  }
+#line 340 "trailing_analysis.m"
+              }
+#line 339 "trailing_analysis.m"
+            else
+#line 339 "trailing_analysis.m"
+              if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14)) == (MR_mktag((MR_Integer) 1))))
+#line 326 "trailing_analysis.m"
+                {
+#line 326 "trailing_analysis.m"
+                  MR_Word transform_hlds__trailing_analysis__Kind_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 326 "trailing_analysis.m"
+                  MR_Word transform_hlds__trailing_analysis__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 0)));
+#line 326 "trailing_analysis.m"
+                  MR_Word transform_hlds__trailing_analysis__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 326 "trailing_analysis.m"
+                  MR_Word transform_hlds__trailing_analysis__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 326 "trailing_analysis.m"
+                  MR_Word transform_hlds__trailing_analysis__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 4)));
+
+#line 327 "trailing_analysis.m"
+                  *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 1;
+#line 328 "trailing_analysis.m"
+                  *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 335 "trailing_analysis.m"
+                  if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__Kind_19)) == (MR_mktag((MR_Integer) 2))))
+#line 332 "trailing_analysis.m"
+                    {
+#line 332 "trailing_analysis.m"
+                    }
+#line 335 "trailing_analysis.m"
+                  else
+#line 335 "trailing_analysis.m"
+                    if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__Kind_19)) == (MR_mktag((MR_Integer) 0))))
+#line 330 "trailing_analysis.m"
+                      {
+#line 330 "trailing_analysis.m"
+                      }
+#line 335 "trailing_analysis.m"
+                    else
+#line 335 "trailing_analysis.m"
+                      if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__Kind_19)) == (MR_mktag((MR_Integer) 1))))
+#line 331 "trailing_analysis.m"
+                        {
+#line 331 "trailing_analysis.m"
+                        }
+#line 335 "trailing_analysis.m"
+                      else
+#line 335 "trailing_analysis.m"
+                        if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__Kind_19)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__Kind_19, (MR_Integer) 0)))) == (MR_Integer) 1))))
+#line 336 "trailing_analysis.m"
+                          {
+#line 337 "trailing_analysis.m"
+                            {
+#line 337 "trailing_analysis.m"
+                              mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.trailing_analysis", (MR_String) "predicate \140transform_hlds.trailing_analysis.check_goal_for_trail_mods\'/7", (MR_String) "complicated unify");
+#line 337 "trailing_analysis.m"
+                              return;
+                            }
+#line 336 "trailing_analysis.m"
+                          }
+#line 335 "trailing_analysis.m"
+                        else
+#line 333 "trailing_analysis.m"
+                          {
+#line 333 "trailing_analysis.m"
+                          }
+#line 337 "trailing_analysis.m"
+                  *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109;
+#line 326 "trailing_analysis.m"
+                }
+#line 339 "trailing_analysis.m"
+              else
+#line 339 "trailing_analysis.m"
+                if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 0)))) == (MR_Integer) 1))))
+#line 446 "trailing_analysis.m"
+                  {
+#line 446 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__Attributes_76 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 446 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 446 "trailing_analysis.m"
+                    MR_Integer transform_hlds__trailing_analysis__V_78_78 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 446 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 4)));
+#line 446 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 5)));
+#line 446 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 6)));
+#line 446 "trailing_analysis.m"
+                    MR_Word transform_hlds__trailing_analysis__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 7)));
+
+#line 447 "trailing_analysis.m"
+                    {
+#line 447 "trailing_analysis.m"
+                      *transform_hlds__trailing_analysis__Result_11 = transform_hlds__trailing_analysis__attributes_imply_trail_mod_1_f_0(transform_hlds__trailing_analysis__Attributes_76);
+                    }
+#line 448 "trailing_analysis.m"
+                    *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 448 "trailing_analysis.m"
+                    *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109;
+#line 446 "trailing_analysis.m"
+                  }
+#line 339 "trailing_analysis.m"
+                else
+#line 339 "trailing_analysis.m"
+                  if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 0)))) == (MR_Integer) 2))))
+#line 450 "trailing_analysis.m"
+                    {
+#line 450 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis__Goals_84 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 450 "trailing_analysis.m"
+                      MR_Word transform_hlds__trailing_analysis___ConjType_83 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 1)));
+
+#line 451 "trailing_analysis.m"
+                      {
+#line 451 "trailing_analysis.m"
+                        transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0(transform_hlds__trailing_analysis__SCC_8, transform_hlds__trailing_analysis__VarTypes_9, transform_hlds__trailing_analysis__Goals_84, transform_hlds__trailing_analysis__Result_11, transform_hlds__trailing_analysis__MaybeAnalysisStatus_12, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110);
+#line 451 "trailing_analysis.m"
+                        return;
+                      }
+#line 450 "trailing_analysis.m"
+                    }
+#line 339 "trailing_analysis.m"
+                  else
+#line 339 "trailing_analysis.m"
+                    if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 0)))) == (MR_Integer) 3))))
+#line 454 "trailing_analysis.m"
+                      {
+#line 454 "trailing_analysis.m"
+                        MR_Word transform_hlds__trailing_analysis__Goals_149 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 455 "trailing_analysis.m"
+                        MR_Word transform_hlds__trailing_analysis___Result0_85;
+
+#line 455 "trailing_analysis.m"
+                        {
+#line 455 "trailing_analysis.m"
+                          transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0(transform_hlds__trailing_analysis__SCC_8, transform_hlds__trailing_analysis__VarTypes_9, transform_hlds__trailing_analysis__Goals_149, &transform_hlds__trailing_analysis___Result0_85, transform_hlds__trailing_analysis__MaybeAnalysisStatus_12, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110);
+                        }
+#line 459 "trailing_analysis.m"
+                        *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 0;
+#line 454 "trailing_analysis.m"
+                      }
+#line 339 "trailing_analysis.m"
+                    else
+#line 339 "trailing_analysis.m"
+                      if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 0)))) == (MR_Integer) 0))))
+#line 427 "trailing_analysis.m"
+                        {
+#line 427 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis__Details_61 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 427 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis___Args_62 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 427 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis___ArgModes_63 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 427 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 4)));
+#line 427 "trailing_analysis.m"
+                          MR_Word transform_hlds__trailing_analysis__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 5)));
+
+#line 433 "trailing_analysis.m"
+                          if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__Details_61)) == (MR_mktag((MR_Integer) 1))))
+#line 435 "trailing_analysis.m"
+                            {
+#line 436 "trailing_analysis.m"
+                              *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 0;
+#line 437 "trailing_analysis.m"
+                              *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 435 "trailing_analysis.m"
+                            }
+#line 433 "trailing_analysis.m"
+                          else
+#line 433 "trailing_analysis.m"
+                            if (((MR_tag((MR_Word) transform_hlds__trailing_analysis__Details_61)) == (MR_mktag((MR_Integer) 0))))
+#line 430 "trailing_analysis.m"
+                              {
+#line 431 "trailing_analysis.m"
+                                *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 0;
+#line 432 "trailing_analysis.m"
+                                *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 430 "trailing_analysis.m"
+                              }
+#line 433 "trailing_analysis.m"
+                            else
+#line 441 "trailing_analysis.m"
+                              {
+#line 442 "trailing_analysis.m"
+                                *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 1;
+#line 443 "trailing_analysis.m"
+                                *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 441 "trailing_analysis.m"
+                              }
+#line 443 "trailing_analysis.m"
+                          *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109;
+#line 427 "trailing_analysis.m"
+                        }
+#line 339 "trailing_analysis.m"
+                      else
+#line 339 "trailing_analysis.m"
+                        if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 0)))) == (MR_Integer) 6))))
+#line 466 "trailing_analysis.m"
+                          {
+#line 466 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__Cond_94 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 466 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__Then_95 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 466 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__Else_96 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 4)));
+#line 466 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__V_118_118;
+#line 466 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__V_120_120;
+#line 466 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__V_121_121;
+#line 466 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__Result0_155;
+#line 466 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__V_93_93 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 477 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__CondGoalInfo_98;
+#line 478 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis___CondGoalExpr_97;
+#line 479 "trailing_analysis.m"
+                            MR_Word transform_hlds__trailing_analysis__V_123_123;
+
+#line 467 "trailing_analysis.m"
+                            {
+#line 467 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__V_121_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 467 "trailing_analysis.m"
+                              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_121_121, 0) = ((MR_Box) (transform_hlds__trailing_analysis__Else_96));
+#line 467 "trailing_analysis.m"
+                              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_121_121, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 467 "trailing_analysis.m"
+                            }
+#line 467 "trailing_analysis.m"
+                            {
+#line 467 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__V_120_120 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 467 "trailing_analysis.m"
+                              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_120_120, 0) = ((MR_Box) (transform_hlds__trailing_analysis__Then_95));
+#line 467 "trailing_analysis.m"
+                              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_120_120, 1) = ((MR_Box) (transform_hlds__trailing_analysis__V_121_121));
+#line 467 "trailing_analysis.m"
+                            }
+#line 467 "trailing_analysis.m"
+                            {
+#line 467 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__V_118_118 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 467 "trailing_analysis.m"
+                              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_118_118, 0) = ((MR_Box) (transform_hlds__trailing_analysis__Cond_94));
+#line 467 "trailing_analysis.m"
+                              MR_hl_field(MR_mktag(1), transform_hlds__trailing_analysis__V_118_118, 1) = ((MR_Box) (transform_hlds__trailing_analysis__V_120_120));
+#line 467 "trailing_analysis.m"
+                            }
+#line 467 "trailing_analysis.m"
+                            {
+#line 467 "trailing_analysis.m"
+                              transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0(transform_hlds__trailing_analysis__SCC_8, transform_hlds__trailing_analysis__VarTypes_9, transform_hlds__trailing_analysis__V_118_118, &transform_hlds__trailing_analysis__Result0_155, transform_hlds__trailing_analysis__MaybeAnalysisStatus_12, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110);
+                            }
+#line 477 "trailing_analysis.m"
+                            (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = (transform_hlds__trailing_analysis__Result0_155 == (MR_Integer) 1);
+#line 477 "trailing_analysis.m"
+                            if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 477 "trailing_analysis.m"
+                              {
+#line 478 "trailing_analysis.m"
+                                transform_hlds__trailing_analysis___CondGoalExpr_97 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Cond_94, (MR_Integer) 0)));
+#line 478 "trailing_analysis.m"
+                                transform_hlds__trailing_analysis__CondGoalInfo_98 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Cond_94, (MR_Integer) 1)));
+#line 479 "trailing_analysis.m"
+                                {
+#line 479 "trailing_analysis.m"
+                                  transform_hlds__trailing_analysis__V_123_123 = hlds__code_model__goal_info_get_code_model_1_f_0(transform_hlds__trailing_analysis__CondGoalInfo_98);
+                                }
+#line 479 "trailing_analysis.m"
+                                (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = (transform_hlds__trailing_analysis__V_123_123 == (MR_Integer) 2);
+#line 479 "trailing_analysis.m"
+                                (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = !((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded);
+#line 477 "trailing_analysis.m"
+                              }
+#line 482 "trailing_analysis.m"
+                            if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 481 "trailing_analysis.m"
+                              *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 1;
+#line 482 "trailing_analysis.m"
+                            else
+#line 494 "trailing_analysis.m"
+                              *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 0;
+#line 466 "trailing_analysis.m"
+                          }
+#line 339 "trailing_analysis.m"
+                        else
+#line 339 "trailing_analysis.m"
+                          if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 0)))) == (MR_Integer) 5))))
+#line 501 "trailing_analysis.m"
+                            {
+#line 501 "trailing_analysis.m"
+                              MR_Word transform_hlds__trailing_analysis__Reason_100 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 501 "trailing_analysis.m"
+                              MR_Word transform_hlds__trailing_analysis__InnerGoal_101 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 502 "trailing_analysis.m"
+                              MR_Word transform_hlds__trailing_analysis__V_114_114;
+#line 502 "trailing_analysis.m"
+                              MR_Word transform_hlds__trailing_analysis__V_102_102;
+
+#line 502 "trailing_analysis.m"
+                              (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = ((((MR_tag((MR_Word) transform_hlds__trailing_analysis__Reason_100)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__Reason_100, (MR_Integer) 0)))) == (MR_Integer) 4)));
+#line 502 "trailing_analysis.m"
+                              if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 502 "trailing_analysis.m"
+                                {
+#line 502 "trailing_analysis.m"
+                                  transform_hlds__trailing_analysis__V_102_102 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__Reason_100, (MR_Integer) 1)));
+#line 502 "trailing_analysis.m"
+                                  transform_hlds__trailing_analysis__V_114_114 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__Reason_100, (MR_Integer) 2)));
+#line 502 "trailing_analysis.m"
+                                  (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded = (transform_hlds__trailing_analysis__V_114_114 == (MR_Integer) 1);
+#line 502 "trailing_analysis.m"
+                                }
+#line 506 "trailing_analysis.m"
+                              if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0_env_0__succeeded)
+#line 504 "trailing_analysis.m"
+                                {
+#line 504 "trailing_analysis.m"
+                                  *transform_hlds__trailing_analysis__Result_11 = (MR_Integer) 1;
+#line 505 "trailing_analysis.m"
+                                  *transform_hlds__trailing_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]);
+#line 505 "trailing_analysis.m"
+                                  *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109;
+#line 504 "trailing_analysis.m"
+                                }
+#line 506 "trailing_analysis.m"
+                              else
+#line 507 "trailing_analysis.m"
+                                {
+#line 507 "trailing_analysis.m"
+                                  MR_Word transform_hlds__trailing_analysis__InnerGoalInfo_105;
+#line 507 "trailing_analysis.m"
+                                  MR_Word transform_hlds__trailing_analysis__InnerCodeModel_106;
+#line 507 "trailing_analysis.m"
+                                  MR_Word transform_hlds__trailing_analysis__OuterCodeModel_107;
+#line 507 "trailing_analysis.m"
+                                  MR_Word transform_hlds__trailing_analysis__Result0_156;
+#line 510 "trailing_analysis.m"
+                                  MR_Word transform_hlds__trailing_analysis__V_104_104;
+
+#line 508 "trailing_analysis.m"
+                                  {
+#line 508 "trailing_analysis.m"
+                                    transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0(transform_hlds__trailing_analysis__SCC_8, transform_hlds__trailing_analysis__VarTypes_9, transform_hlds__trailing_analysis__InnerGoal_101, &transform_hlds__trailing_analysis__Result0_156, transform_hlds__trailing_analysis__MaybeAnalysisStatus_12, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110);
+                                  }
+#line 510 "trailing_analysis.m"
+                                  transform_hlds__trailing_analysis__V_104_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__InnerGoal_101, (MR_Integer) 0)));
+#line 510 "trailing_analysis.m"
+                                  transform_hlds__trailing_analysis__InnerGoalInfo_105 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__InnerGoal_101, (MR_Integer) 1)));
+#line 511 "trailing_analysis.m"
+                                  {
+#line 511 "trailing_analysis.m"
+                                    transform_hlds__trailing_analysis__InnerCodeModel_106 = hlds__code_model__goal_info_get_code_model_1_f_0(transform_hlds__trailing_analysis__InnerGoalInfo_105);
+                                  }
+#line 512 "trailing_analysis.m"
+                                  {
+#line 512 "trailing_analysis.m"
+                                    transform_hlds__trailing_analysis__OuterCodeModel_107 = hlds__code_model__goal_info_get_code_model_1_f_0(transform_hlds__trailing_analysis__GoalInfo_15);
+                                  }
+#line 518 "trailing_analysis.m"
+                                  {
+#line 518 "trailing_analysis.m"
+                                    *transform_hlds__trailing_analysis__Result_11 = transform_hlds__trailing_analysis__scope_implies_trail_mod_3_f_0(transform_hlds__trailing_analysis__InnerCodeModel_106, transform_hlds__trailing_analysis__OuterCodeModel_107, transform_hlds__trailing_analysis__Result0_156);
+                                  }
+#line 507 "trailing_analysis.m"
+                                }
+#line 501 "trailing_analysis.m"
+                            }
+#line 339 "trailing_analysis.m"
+                          else
+#line 339 "trailing_analysis.m"
+                            if (((((MR_tag((MR_Word) transform_hlds__trailing_analysis__GoalExpr_14)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 0)))) == (MR_Integer) 7))))
+#line 522 "trailing_analysis.m"
+                              {
+#line 523 "trailing_analysis.m"
+                                {
+#line 523 "trailing_analysis.m"
+                                  mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.trailing_analysis", (MR_String) "predicate \140transform_hlds.trailing_analysis.check_goal_for_trail_mods\'/7", (MR_String) "shorthand");
+#line 523 "trailing_analysis.m"
+                                  return;
+                                }
+#line 522 "trailing_analysis.m"
+                              }
+#line 339 "trailing_analysis.m"
+                            else
+#line 461 "trailing_analysis.m"
+                              {
+#line 461 "trailing_analysis.m"
+                                MR_Word transform_hlds__trailing_analysis__Cases_88 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 461 "trailing_analysis.m"
+                                MR_Word transform_hlds__trailing_analysis__CaseGoals_89;
+#line 461 "trailing_analysis.m"
+                                MR_Word transform_hlds__trailing_analysis__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 461 "trailing_analysis.m"
+                                MR_Word transform_hlds__trailing_analysis__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__trailing_analysis__GoalExpr_14, (MR_Integer) 2)));
+
+#line 462 "trailing_analysis.m"
+                                {
+#line 462 "trailing_analysis.m"
+                                  transform_hlds__trailing_analysis__CaseGoals_89 = mercury__list__map_2_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0, (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &transform_hlds__trailing_analysis_scalar_common_2[6], transform_hlds__trailing_analysis__Cases_88);
+                                }
+#line 463 "trailing_analysis.m"
+                                {
+#line 463 "trailing_analysis.m"
+                                  transform_hlds__trailing_analysis__check_goals_for_trail_mods_7_p_0(transform_hlds__trailing_analysis__SCC_8, transform_hlds__trailing_analysis__VarTypes_9, transform_hlds__trailing_analysis__CaseGoals_89, transform_hlds__trailing_analysis__Result_11, transform_hlds__trailing_analysis__MaybeAnalysisStatus_12, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_109, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_110);
+#line 463 "trailing_analysis.m"
+                                  return;
+                                }
+#line 461 "trailing_analysis.m"
+                              }
+#line 323 "trailing_analysis.m"
+        }
+#line 323 "trailing_analysis.m"
+        break;
+#line 323 "trailing_analysis.m"
+      }
+#line 318 "trailing_analysis.m"
+  }
+#line 318 "trailing_analysis.m"
+}
+
+#line 301 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__check_proc_for_trail_mods_6_p_0(
+#line 301 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__SCC_7,
+#line 301 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PPId_8,
+#line 301 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_Results_0_17,
+#line 301 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_Results_18,
+#line 301 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_19,
+#line 301 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_20)
+#line 301 "trailing_analysis.m"
+{
+#line 305 "trailing_analysis.m"
+  {
+#line 305 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 305 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__ProcInfo_12;
+#line 305 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Body_13;
+#line 305 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__VarTypes_14;
+#line 305 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Result_15;
+#line 305 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__MaybeAnalysisStatus_16;
+#line 305 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_22_22;
+#line 306 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_11_11;
+
+#line 306 "trailing_analysis.m"
+    {
+#line 306 "trailing_analysis.m"
+      hlds__hlds_module__module_info_pred_proc_info_4_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_19, transform_hlds__trailing_analysis__PPId_8, &transform_hlds__trailing_analysis__V_11_11, &transform_hlds__trailing_analysis__ProcInfo_12);
+    }
+#line 307 "trailing_analysis.m"
+    {
+#line 307 "trailing_analysis.m"
+      hlds__hlds_pred__proc_info_get_goal_2_p_0(transform_hlds__trailing_analysis__ProcInfo_12, &transform_hlds__trailing_analysis__Body_13);
+    }
+#line 308 "trailing_analysis.m"
+    {
+#line 308 "trailing_analysis.m"
+      hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__trailing_analysis__ProcInfo_12, &transform_hlds__trailing_analysis__VarTypes_14);
+    }
+#line 309 "trailing_analysis.m"
+    {
+#line 309 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_goal_for_trail_mods_7_p_0(transform_hlds__trailing_analysis__SCC_7, transform_hlds__trailing_analysis__VarTypes_14, transform_hlds__trailing_analysis__Body_13, &transform_hlds__trailing_analysis__Result_15, &transform_hlds__trailing_analysis__MaybeAnalysisStatus_16, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_19, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_20);
+    }
+#line 311 "trailing_analysis.m"
+    {
+#line 311 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 311 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_22_22, 0) = ((MR_Box) (transform_hlds__trailing_analysis__PPId_8));
+#line 311 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_22_22, 1) = ((MR_Box) (transform_hlds__trailing_analysis__Result_15));
+#line 311 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_22_22, 2) = ((MR_Box) (transform_hlds__trailing_analysis__MaybeAnalysisStatus_16));
+#line 311 "trailing_analysis.m"
+    }
+#line 311 "trailing_analysis.m"
+    {
+#line 311 "trailing_analysis.m"
+      mercury__list__cons_3_p_0((MR_Word) &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0, ((MR_Box) (transform_hlds__trailing_analysis__V_22_22)), transform_hlds__trailing_analysis__STATE_VARIABLE_Results_0_17, transform_hlds__trailing_analysis__STATE_VARIABLE_Results_18);
+#line 311 "trailing_analysis.m"
+      return;
+    }
+#line 305 "trailing_analysis.m"
+  }
+#line 301 "trailing_analysis.m"
+}
+
+#line 291 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__maybe_analysis_status_2_p_0(
+#line 291 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ProcResult_3,
+#line 291 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__HeadVar__2_2)
+#line 291 "trailing_analysis.m"
+{
+#line 294 "trailing_analysis.m"
+  {
+#line 294 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 294 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__ProcResult_3, (MR_Integer) 0)));
+#line 294 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__ProcResult_3, (MR_Integer) 1)));
+
+#line 294 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__HeadVar__2_2 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__ProcResult_3, (MR_Integer) 2)));
+#line 294 "trailing_analysis.m"
+  }
+#line 291 "trailing_analysis.m"
+}
+
+#line 288 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_14(
+#line 288 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 288 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 288 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 288 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 288 "trailing_analysis.m"
+{
+#line 288 "trailing_analysis.m"
+  {
+#line 288 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 288 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv4_MaybeStatus_6;
+
+#line 288 "trailing_analysis.m"
+    {
+#line 288 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__combine_maybe_analysis_status_3_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv4_MaybeStatus_6);
+    }
+#line 288 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv4_MaybeStatus_6));
+#line 288 "trailing_analysis.m"
+  }
+#line 288 "trailing_analysis.m"
+}
+
+#line 287 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_13(
+#line 287 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 287 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 287 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_2)
+#line 287 "trailing_analysis.m"
+{
+#line 287 "trailing_analysis.m"
+  {
+#line 287 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 287 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv3_HeadVar__2_2;
+
+#line 287 "trailing_analysis.m"
+    {
+#line 287 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__maybe_analysis_status_2_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), &transform_hlds__trailing_analysis__conv3_HeadVar__2_2);
+    }
+#line 287 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__trailing_analysis__conv3_HeadVar__2_2));
+#line 287 "trailing_analysis.m"
+  }
+#line 287 "trailing_analysis.m"
+}
+
+#line 256 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_1(
+#line 256 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 256 "trailing_analysis.m"
+{
+#line 256 "trailing_analysis.m"
+  {
+#line 256 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 256 "trailing_analysis.m"
+    MR_builtin_longjmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__commit_0, 1);
+#line 256 "trailing_analysis.m"
+  }
+#line 256 "trailing_analysis.m"
+}
+
+#line 257 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_3(
+#line 257 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 257 "trailing_analysis.m"
+{
+#line 257 "trailing_analysis.m"
+  {
+#line 257 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 257 "trailing_analysis.m"
+    (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14 = ((MR_Word) (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__conv0_ProcResult_14);
+#line 257 "trailing_analysis.m"
+    {
+#line 257 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_2(transform_hlds__trailing_analysis__env_ptr);
+#line 257 "trailing_analysis.m"
+      return;
+    }
+#line 257 "trailing_analysis.m"
+  }
+#line 257 "trailing_analysis.m"
+}
+
+#line 256 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_2(
+#line 256 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 256 "trailing_analysis.m"
+{
+#line 256 "trailing_analysis.m"
+  {
+#line 256 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 256 "trailing_analysis.m"
+    {
+#line 259 "trailing_analysis.m"
+      MR_Word transform_hlds__trailing_analysis__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14, (MR_Integer) 1)));
+#line 259 "trailing_analysis.m"
+      MR_Word transform_hlds__trailing_analysis__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14, (MR_Integer) 0)));
+#line 259 "trailing_analysis.m"
+      MR_Word transform_hlds__trailing_analysis__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14, (MR_Integer) 2)));
+
+#line 259 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = (transform_hlds__trailing_analysis__V_17_17 == (MR_Integer) 1);
+#line 258 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = !((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded);
+#line 258 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 258 "trailing_analysis.m"
+        {
+#line 258 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_1(transform_hlds__trailing_analysis__env_ptr);
+#line 258 "trailing_analysis.m"
+          return;
+        }
+#line 256 "trailing_analysis.m"
+    }
+#line 256 "trailing_analysis.m"
+  }
+#line 256 "trailing_analysis.m"
+}
+
+#line 256 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_4(
+#line 256 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 256 "trailing_analysis.m"
+{
+#line 256 "trailing_analysis.m"
+  {
+#line 256 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 256 "trailing_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__commit_0) == 0)
+#line 256 "trailing_analysis.m"
+      {
+#line 256 "trailing_analysis.m"
+        {
+#line 257 "trailing_analysis.m"
+          {
+#line 257 "trailing_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0, &(transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__conv0_ProcResult_14, (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_3, transform_hlds__trailing_analysis__env_ptr);
+          }
+#line 256 "trailing_analysis.m"
+        }
+#line 256 "trailing_analysis.m"
+        (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_FALSE;
+#line 256 "trailing_analysis.m"
+      }
+#line 256 "trailing_analysis.m"
+    else
+#line 256 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_TRUE;
+#line 256 "trailing_analysis.m"
+  }
+#line 256 "trailing_analysis.m"
+}
+
+#line 264 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_5(
+#line 264 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 264 "trailing_analysis.m"
+{
+#line 264 "trailing_analysis.m"
+  {
+#line 264 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 264 "trailing_analysis.m"
+    MR_builtin_longjmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__commit_1, 1);
+#line 264 "trailing_analysis.m"
+  }
+#line 264 "trailing_analysis.m"
+}
+
+#line 265 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_7(
+#line 265 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 265 "trailing_analysis.m"
+{
+#line 265 "trailing_analysis.m"
+  {
+#line 265 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 265 "trailing_analysis.m"
+    (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15 = ((MR_Word) (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__conv1_EResult_15);
+#line 265 "trailing_analysis.m"
+    {
+#line 265 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_6(transform_hlds__trailing_analysis__env_ptr);
+#line 265 "trailing_analysis.m"
+      return;
+    }
+#line 265 "trailing_analysis.m"
+  }
+#line 265 "trailing_analysis.m"
+}
+
+#line 264 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_6(
+#line 264 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 264 "trailing_analysis.m"
+{
+#line 264 "trailing_analysis.m"
+  {
+#line 264 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 264 "trailing_analysis.m"
+    {
+#line 267 "trailing_analysis.m"
+      MR_Word transform_hlds__trailing_analysis__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15, (MR_Integer) 0)));
+#line 267 "trailing_analysis.m"
+      MR_Word transform_hlds__trailing_analysis__V_24_24;
+
+#line 267 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15, (MR_Integer) 1)));
+#line 267 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15, (MR_Integer) 2)));
+#line 267 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__V_18_18 == (MR_Integer) 0);
+#line 267 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 267 "trailing_analysis.m"
+        {
+#line 267 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_5(transform_hlds__trailing_analysis__env_ptr);
+#line 267 "trailing_analysis.m"
+          return;
+        }
+#line 264 "trailing_analysis.m"
+    }
+#line 264 "trailing_analysis.m"
+  }
+#line 264 "trailing_analysis.m"
+}
+
+#line 264 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_8(
+#line 264 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 264 "trailing_analysis.m"
+{
+#line 264 "trailing_analysis.m"
+  {
+#line 264 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 264 "trailing_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__commit_1) == 0)
+#line 264 "trailing_analysis.m"
+      {
+#line 264 "trailing_analysis.m"
+        {
+#line 265 "trailing_analysis.m"
+          {
+#line 265 "trailing_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0, &(transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__conv1_EResult_15, (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_7, transform_hlds__trailing_analysis__env_ptr);
+          }
+#line 264 "trailing_analysis.m"
+        }
+#line 264 "trailing_analysis.m"
+        (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_FALSE;
+#line 264 "trailing_analysis.m"
+      }
+#line 264 "trailing_analysis.m"
+    else
+#line 264 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_TRUE;
+#line 264 "trailing_analysis.m"
+  }
+#line 264 "trailing_analysis.m"
+}
+
+#line 270 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_9(
+#line 270 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 270 "trailing_analysis.m"
+{
+#line 270 "trailing_analysis.m"
+  {
+#line 270 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 270 "trailing_analysis.m"
+    MR_builtin_longjmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__commit_2, 1);
+#line 270 "trailing_analysis.m"
+  }
+#line 270 "trailing_analysis.m"
+}
+
+#line 270 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_11(
+#line 270 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 270 "trailing_analysis.m"
+{
+#line 270 "trailing_analysis.m"
+  {
+#line 270 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 270 "trailing_analysis.m"
+    (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_20 = ((MR_Word) (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__conv2_CResult_20);
+#line 270 "trailing_analysis.m"
+    {
+#line 270 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_10(transform_hlds__trailing_analysis__env_ptr);
+#line 270 "trailing_analysis.m"
+      return;
+    }
+#line 270 "trailing_analysis.m"
+  }
+#line 270 "trailing_analysis.m"
+}
+
+#line 270 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_10(
+#line 270 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 270 "trailing_analysis.m"
+{
+#line 270 "trailing_analysis.m"
+  {
+#line 270 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 270 "trailing_analysis.m"
+    {
+#line 271 "trailing_analysis.m"
+      MR_Word transform_hlds__trailing_analysis__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_20, (MR_Integer) 0)));
+#line 271 "trailing_analysis.m"
+      MR_Word transform_hlds__trailing_analysis__V_26_26;
+
+#line 271 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_20, (MR_Integer) 1)));
+#line 271 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_20, (MR_Integer) 2)));
+#line 271 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__V_19_19 == (MR_Integer) 2);
+#line 271 "trailing_analysis.m"
+      if ((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 271 "trailing_analysis.m"
+        {
+#line 271 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_9(transform_hlds__trailing_analysis__env_ptr);
+#line 271 "trailing_analysis.m"
+          return;
+        }
+#line 270 "trailing_analysis.m"
+    }
+#line 270 "trailing_analysis.m"
+  }
+#line 270 "trailing_analysis.m"
+}
+
+#line 270 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_12(
+#line 270 "trailing_analysis.m"
+  void * transform_hlds__trailing_analysis__env_ptr_arg)
+#line 270 "trailing_analysis.m"
+{
+#line 270 "trailing_analysis.m"
+  {
+#line 270 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__trailing_analysis__env_ptr = (struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__trailing_analysis__env_ptr_arg;
+
+#line 270 "trailing_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__commit_2) == 0)
+#line 270 "trailing_analysis.m"
+      {
+#line 270 "trailing_analysis.m"
+        {
+#line 270 "trailing_analysis.m"
+          {
+#line 270 "trailing_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0, &(transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__conv2_CResult_20, (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_11, transform_hlds__trailing_analysis__env_ptr);
+          }
+#line 270 "trailing_analysis.m"
+        }
+#line 270 "trailing_analysis.m"
+        (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_FALSE;
+#line 270 "trailing_analysis.m"
+      }
+#line 270 "trailing_analysis.m"
+    else
+#line 270 "trailing_analysis.m"
+      (transform_hlds__trailing_analysis__env_ptr)->transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_TRUE;
+#line 270 "trailing_analysis.m"
+  }
+#line 270 "trailing_analysis.m"
+}
+
+#line 246 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0(
+#line 246 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__HeadVar__1_1,
+#line 246 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__SCC_Result_2,
+#line 246 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__MaybeAnalysisStatus_3)
+#line 246 "trailing_analysis.m"
+{
+#line 246 "trailing_analysis.m"
+  {
+#line 246 "trailing_analysis.m"
+    struct transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0_s transform_hlds__trailing_analysis__env;
+
+#line 246 "trailing_analysis.m"
+    (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1 = transform_hlds__trailing_analysis__HeadVar__1_1;
+#line 249 "trailing_analysis.m"
+    if (((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 249 "trailing_analysis.m"
+      {
+#line 250 "trailing_analysis.m"
+        {
+#line 250 "trailing_analysis.m"
+          mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.trailing_analysis", (MR_String) "predicate \140transform_hlds.trailing_analysis.combine_individual_proc_results\'/3", (MR_String) "empty SCC");
+#line 250 "trailing_analysis.m"
+          return;
+        }
+#line 249 "trailing_analysis.m"
+      }
+#line 249 "trailing_analysis.m"
+    else
+#line 252 "trailing_analysis.m"
+      {
+#line 252 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__TypeInfo_13_40;
+#line 252 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__MaybeAnalysisStatuses_32;
+#line 288 "trailing_analysis.m"
+        MR_Box transform_hlds__trailing_analysis__conv5_MaybeAnalysisStatus_3;
+
+#line 256 "trailing_analysis.m"
+        {
+#line 256 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_4(&transform_hlds__trailing_analysis__env);
+        }
+#line 256 "trailing_analysis.m"
+        (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = !((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded);
+#line 263 "trailing_analysis.m"
+        if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 262 "trailing_analysis.m"
+          *transform_hlds__trailing_analysis__SCC_Result_2 = (MR_Integer) 1;
+#line 263 "trailing_analysis.m"
+        else
+#line 275 "trailing_analysis.m"
+          {
+#line 264 "trailing_analysis.m"
+            {
+#line 264 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_8(&transform_hlds__trailing_analysis__env);
+            }
+#line 264 "trailing_analysis.m"
+            (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = !((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded);
+#line 268 "trailing_analysis.m"
+            if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 270 "trailing_analysis.m"
+              {
+#line 270 "trailing_analysis.m"
+                transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_12(&transform_hlds__trailing_analysis__env);
+              }
+#line 275 "trailing_analysis.m"
+            if ((transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 274 "trailing_analysis.m"
+              *transform_hlds__trailing_analysis__SCC_Result_2 = (MR_Integer) 2;
+#line 275 "trailing_analysis.m"
+            else
+#line 277 "trailing_analysis.m"
+              *transform_hlds__trailing_analysis__SCC_Result_2 = (MR_Integer) 0;
+#line 275 "trailing_analysis.m"
+          }
+#line 9444 "transform_hlds.trailing_analysis.c"
+        transform_hlds__trailing_analysis__TypeInfo_13_40 = (MR_Word) &transform_hlds__trailing_analysis_scalar_common_1[2];
+#line 287 "trailing_analysis.m"
+        {
+#line 287 "trailing_analysis.m"
+          mercury__list__map_3_p_0((MR_Word) &transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0, transform_hlds__trailing_analysis__TypeInfo_13_40, (MR_Word) &transform_hlds__trailing_analysis_scalar_common_2[4], (transform_hlds__trailing_analysis__env).transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, &transform_hlds__trailing_analysis__MaybeAnalysisStatuses_32);
+        }
+#line 288 "trailing_analysis.m"
+        {
+#line 288 "trailing_analysis.m"
+          mercury__list__foldl_4_p_0(transform_hlds__trailing_analysis__TypeInfo_13_40, transform_hlds__trailing_analysis__TypeInfo_13_40, (MR_Word) &transform_hlds__trailing_analysis_scalar_common_2[5], transform_hlds__trailing_analysis__MaybeAnalysisStatuses_32, ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__trailing_analysis_scalar_common_9[0]))), &transform_hlds__trailing_analysis__conv5_MaybeAnalysisStatus_3);
+        }
+#line 288 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__MaybeAnalysisStatus_3 = ((MR_Word) transform_hlds__trailing_analysis__conv5_MaybeAnalysisStatus_3);
+#line 252 "trailing_analysis.m"
+      }
+#line 246 "trailing_analysis.m"
+  }
+#line 246 "trailing_analysis.m"
+}
+
+#line 230 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__process_scc_5_p_0_4(
+#line 230 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 230 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 230 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 230 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 230 "trailing_analysis.m"
+{
+#line 230 "trailing_analysis.m"
+  {
+#line 230 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 230 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv7_STATE_VARIABLE_ModuleInfo_12;
+
+#line 230 "trailing_analysis.m"
+    {
+#line 230 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__annotate_proc_3_p_0(((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv7_STATE_VARIABLE_ModuleInfo_12);
+    }
+#line 230 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv7_STATE_VARIABLE_ModuleInfo_12));
+#line 230 "trailing_analysis.m"
+  }
+#line 230 "trailing_analysis.m"
+}
+
+#line 221 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__process_scc_5_p_0_3(
+#line 221 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 221 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 221 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 221 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 221 "trailing_analysis.m"
+{
+#line 221 "trailing_analysis.m"
+  {
+#line 221 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 221 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv5_HeadVar__5_27;
+
+#line 221 "trailing_analysis.m"
+    {
+#line 221 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__IntroducedFrom__pred__process_scc__221__1_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv5_HeadVar__5_27);
+    }
+#line 221 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv5_HeadVar__5_27));
+#line 221 "trailing_analysis.m"
+  }
+#line 221 "trailing_analysis.m"
+}
+
+#line 1307 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__process_scc_5_p_0_2(
+#line 1307 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1307 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1307 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1307 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 1307 "trailing_analysis.m"
+{
+#line 1307 "trailing_analysis.m"
+  {
+#line 1307 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+
+#line 1307 "trailing_analysis.m"
+    {
+#line 1307 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__output_proc_name_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1));
+#line 1307 "trailing_analysis.m"
+      return;
+    }
+#line 1307 "trailing_analysis.m"
+  }
+#line 1307 "trailing_analysis.m"
+}
+
+#line 241 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__process_scc_5_p_0_1(
+#line 241 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 241 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 241 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 241 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3,
+#line 241 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_4,
+#line 241 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_5)
+#line 241 "trailing_analysis.m"
+{
+#line 241 "trailing_analysis.m"
+  {
+#line 241 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 241 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_Results_18;
+#line 241 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_20;
+
+#line 241 "trailing_analysis.m"
+    {
+#line 241 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__check_proc_for_trail_mods_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_Results_18, ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_4), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_20);
+    }
+#line 241 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_Results_18));
+#line 241 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_20));
+#line 241 "trailing_analysis.m"
+  }
+#line 241 "trailing_analysis.m"
+}
+
+#line 199 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__process_scc_5_p_0(
+#line 199 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Debug_6,
+#line 199 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__Pass1Only_7,
+#line 199 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__SCC_8,
+#line 199 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_20,
+#line 199 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_21)
+#line 199 "trailing_analysis.m"
+{
+#line 202 "trailing_analysis.m"
+  {
+#line 202 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 202 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TypeCtorInfo_37_37;
+#line 202 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__ProcResults_10;
+#line 202 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TrailingStatus_11;
+#line 202 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__MaybeAnalysisStatus_12;
+#line 202 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TrailingInfo0_14;
+#line 202 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Update_15;
+#line 202 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__TrailingInfo_19;
+#line 202 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_22_22;
+#line 202 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_29_29;
+#line 202 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_48_48;
+#line 241 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv3_ProcResults_10;
+#line 241 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_ModuleInfo_22_22;
+#line 225 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv6_TrailingInfo_19;
+
+#line 241 "trailing_analysis.m"
+    {
+#line 241 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_48_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 241 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_48_48, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_8[0]));
+#line 241 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_48_48, 1) = ((MR_Box) (transform_hlds__trailing_analysis__process_scc_5_p_0_1));
+#line 241 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_48_48, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 241 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_48_48, 3) = ((MR_Box) (transform_hlds__trailing_analysis__SCC_8));
+#line 241 "trailing_analysis.m"
+    }
+#line 241 "trailing_analysis.m"
+    {
+#line 241 "trailing_analysis.m"
+      mercury__list__foldl2_6_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__trailing_analysis_scalar_common_1[1], (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__trailing_analysis__V_48_48, transform_hlds__trailing_analysis__SCC_8, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &transform_hlds__trailing_analysis__conv3_ProcResults_10, ((MR_Box) (transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_20)), &transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_ModuleInfo_22_22);
+    }
+#line 241 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__ProcResults_10 = ((MR_Word) transform_hlds__trailing_analysis__conv3_ProcResults_10);
+#line 241 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_22_22 = ((MR_Word) transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_ModuleInfo_22_22);
+#line 207 "trailing_analysis.m"
+    {
+#line 207 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__combine_individual_proc_results_3_p_0(transform_hlds__trailing_analysis__ProcResults_10, &transform_hlds__trailing_analysis__TrailingStatus_11, &transform_hlds__trailing_analysis__MaybeAnalysisStatus_12);
+    }
+#line 215 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis__Debug_6 == (MR_Integer) 0))
+#line 216 "trailing_analysis.m"
+      {
+#line 216 "trailing_analysis.m"
+      }
+#line 215 "trailing_analysis.m"
+    else
+#line 212 "trailing_analysis.m"
+      {
+#line 212 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_77_77;
+#line 1307 "trailing_analysis.m"
+        MR_Box transform_hlds__trailing_analysis__conv4_STATE_VARIABLE_IO_16_69;
+
+#line 1298 "trailing_analysis.m"
+        {
+#line 1298 "trailing_analysis.m"
+          mercury__io__write_string_3_p_0((MR_String) "SCC: ");
+        }
+#line 1299 "trailing_analysis.m"
+        {
+#line 1299 "trailing_analysis.m"
+          mercury__io__write_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0, ((MR_Box) (transform_hlds__trailing_analysis__TrailingStatus_11)));
+        }
+#line 1300 "trailing_analysis.m"
+        {
+#line 1300 "trailing_analysis.m"
+          mercury__io__nl_2_p_0();
+        }
+#line 1307 "trailing_analysis.m"
+        {
+#line 1307 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__V_77_77 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1307 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_77_77, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_6[1]));
+#line 1307 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_77_77, 1) = ((MR_Box) (transform_hlds__trailing_analysis__process_scc_5_p_0_2));
+#line 1307 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_77_77, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 1307 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_77_77, 3) = ((MR_Box) (transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_22_22));
+#line 1307 "trailing_analysis.m"
+        }
+#line 1307 "trailing_analysis.m"
+        {
+#line 1307 "trailing_analysis.m"
+          mercury__list__foldl_4_p_2((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, transform_hlds__trailing_analysis__V_77_77, transform_hlds__trailing_analysis__SCC_8, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__trailing_analysis__conv4_STATE_VARIABLE_IO_16_69);
+        }
+#line 1302 "trailing_analysis.m"
+        {
+#line 1302 "trailing_analysis.m"
+          mercury__io__nl_2_p_0();
+        }
+#line 212 "trailing_analysis.m"
+      }
+#line 220 "trailing_analysis.m"
+    {
+#line 220 "trailing_analysis.m"
+      hlds__hlds_module__module_info_get_trailing_info_2_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_22_22, &transform_hlds__trailing_analysis__TrailingInfo0_14);
+    }
+#line 221 "trailing_analysis.m"
+    {
+#line 221 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__Update_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 221 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Update_15, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_5[1]));
+#line 221 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Update_15, 1) = ((MR_Box) (transform_hlds__trailing_analysis__process_scc_5_p_0_3));
+#line 221 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Update_15, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 221 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Update_15, 3) = ((MR_Box) (transform_hlds__trailing_analysis__TrailingStatus_11));
+#line 221 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__Update_15, 4) = ((MR_Box) (transform_hlds__trailing_analysis__MaybeAnalysisStatus_12));
+#line 221 "trailing_analysis.m"
+    }
+#line 9750 "transform_hlds.trailing_analysis.c"
+    transform_hlds__trailing_analysis__TypeCtorInfo_37_37 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 225 "trailing_analysis.m"
+    {
+#line 225 "trailing_analysis.m"
+      mercury__list__foldl_4_p_0(transform_hlds__trailing_analysis__TypeCtorInfo_37_37, (MR_Word) &transform_hlds__trailing_analysis_scalar_common_2[0], transform_hlds__trailing_analysis__Update_15, transform_hlds__trailing_analysis__SCC_8, ((MR_Box) (transform_hlds__trailing_analysis__TrailingInfo0_14)), &transform_hlds__trailing_analysis__conv6_TrailingInfo_19);
+    }
+#line 225 "trailing_analysis.m"
+    transform_hlds__trailing_analysis__TrailingInfo_19 = ((MR_Word) transform_hlds__trailing_analysis__conv6_TrailingInfo_19);
+#line 226 "trailing_analysis.m"
+    {
+#line 226 "trailing_analysis.m"
+      hlds__hlds_module__module_info_set_trailing_info_3_p_0(transform_hlds__trailing_analysis__TrailingInfo_19, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_22_22, &transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_29_29);
+    }
+#line 231 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis__Pass1Only_7 == (MR_Integer) 0))
+#line 229 "trailing_analysis.m"
+      {
+#line 230 "trailing_analysis.m"
+        MR_Box transform_hlds__trailing_analysis__conv8_STATE_VARIABLE_ModuleInfo_21;
+
+#line 230 "trailing_analysis.m"
+        {
+#line 230 "trailing_analysis.m"
+          mercury__list__foldl_4_p_0(transform_hlds__trailing_analysis__TypeCtorInfo_37_37, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, (MR_Word) &transform_hlds__trailing_analysis_scalar_common_2[3], transform_hlds__trailing_analysis__SCC_8, ((MR_Box) (transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_29_29)), &transform_hlds__trailing_analysis__conv8_STATE_VARIABLE_ModuleInfo_21);
+        }
+#line 230 "trailing_analysis.m"
+        *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_21 = ((MR_Word) transform_hlds__trailing_analysis__conv8_STATE_VARIABLE_ModuleInfo_21);
+#line 229 "trailing_analysis.m"
+      }
+#line 231 "trailing_analysis.m"
+    else
+#line 232 "trailing_analysis.m"
+      *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_21 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_29_29;
+#line 202 "trailing_analysis.m"
+  }
+#line 199 "trailing_analysis.m"
+}
+
+#line 1075 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__write_pragma_trailing_info_5_p_0_1(
+#line 1075 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 1075 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 1075 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 1075 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 1075 "trailing_analysis.m"
+{
+#line 1075 "trailing_analysis.m"
+  {
+#line 1075 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+
+#line 1075 "trailing_analysis.m"
+    {
+#line 1075 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__write_pragma_trailing_info_2_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 6))), ((MR_Integer) transform_hlds__trailing_analysis__wrapper_arg_1));
+#line 1075 "trailing_analysis.m"
+      return;
+    }
+#line 1075 "trailing_analysis.m"
+  }
+#line 1075 "trailing_analysis.m"
+}
+
+#line 71 "trailing_analysis.m"
+void MR_CALL 
+transform_hlds__trailing_analysis__write_pragma_trailing_info_5_p_0(
+#line 71 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__ModuleInfo_6,
+#line 71 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__TrailingInfo_7,
+#line 71 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__PredId_8)
+#line 71 "trailing_analysis.m"
+{
+#line 1071 "trailing_analysis.m"
+  {
+#line 1071 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 1071 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__PredInfo_10;
+#line 1071 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__ProcIds_11;
+#line 1071 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__V_14_14;
+#line 1074 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_IO_13;
+
+#line 1072 "trailing_analysis.m"
+    {
+#line 1072 "trailing_analysis.m"
+      hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__trailing_analysis__ModuleInfo_6, transform_hlds__trailing_analysis__PredId_8, &transform_hlds__trailing_analysis__PredInfo_10);
+    }
+#line 1073 "trailing_analysis.m"
+    {
+#line 1073 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__ProcIds_11 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__trailing_analysis__PredInfo_10);
+    }
+#line 1075 "trailing_analysis.m"
+    {
+#line 1075 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__V_14_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 1075 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_14_14, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_7[0]));
+#line 1075 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_14_14, 1) = ((MR_Box) (transform_hlds__trailing_analysis__write_pragma_trailing_info_5_p_0_1));
+#line 1075 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_14_14, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 1075 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_14_14, 3) = ((MR_Box) (transform_hlds__trailing_analysis__ModuleInfo_6));
+#line 1075 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_14_14, 4) = ((MR_Box) (transform_hlds__trailing_analysis__TrailingInfo_7));
+#line 1075 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_14_14, 5) = ((MR_Box) (transform_hlds__trailing_analysis__PredId_8));
+#line 1075 "trailing_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_14_14, 6) = ((MR_Box) (transform_hlds__trailing_analysis__PredInfo_10));
+#line 1075 "trailing_analysis.m"
+    }
+#line 1074 "trailing_analysis.m"
+    {
+#line 1074 "trailing_analysis.m"
+      mercury__list__foldl_4_p_2((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, transform_hlds__trailing_analysis__V_14_14, transform_hlds__trailing_analysis__ProcIds_11, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_IO_13);
+    }
+#line 1071 "trailing_analysis.m"
+  }
+#line 71 "trailing_analysis.m"
+}
+
+#line 173 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__analyse_trail_usage_4_p_0_2(
+#line 173 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 173 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 173 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 173 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 173 "trailing_analysis.m"
+{
+#line 173 "trailing_analysis.m"
+  {
+#line 173 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 173 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_AnalysisInfo_11;
+
+#line 173 "trailing_analysis.m"
+    {
+#line 173 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__maybe_record_trailing_result_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_AnalysisInfo_11);
+    }
+#line 173 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv2_STATE_VARIABLE_AnalysisInfo_11));
+#line 173 "trailing_analysis.m"
+  }
+#line 173 "trailing_analysis.m"
+}
+
+#line 152 "trailing_analysis.m"
+static void MR_CALL 
+transform_hlds__trailing_analysis__analyse_trail_usage_4_p_0_1(
+#line 152 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__closure_arg,
+#line 152 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_1,
+#line 152 "trailing_analysis.m"
+  MR_Box transform_hlds__trailing_analysis__wrapper_arg_2,
+#line 152 "trailing_analysis.m"
+  MR_Box * transform_hlds__trailing_analysis__wrapper_arg_3)
+#line 152 "trailing_analysis.m"
+{
+#line 152 "trailing_analysis.m"
+  {
+#line 152 "trailing_analysis.m"
+    MR_Box transform_hlds__trailing_analysis__closure = transform_hlds__trailing_analysis__closure_arg;
+#line 152 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_21;
+
+#line 152 "trailing_analysis.m"
+    {
+#line 152 "trailing_analysis.m"
+      transform_hlds__trailing_analysis__process_scc_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__trailing_analysis__wrapper_arg_2), &transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_21);
+    }
+#line 152 "trailing_analysis.m"
+    *transform_hlds__trailing_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__trailing_analysis__conv0_STATE_VARIABLE_ModuleInfo_21));
+#line 152 "trailing_analysis.m"
+  }
+#line 152 "trailing_analysis.m"
+}
+
+#line 66 "trailing_analysis.m"
+void MR_CALL 
+transform_hlds__trailing_analysis__analyse_trail_usage_4_p_0(
+#line 66 "trailing_analysis.m"
+  MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_20,
+#line 66 "trailing_analysis.m"
+  MR_Word * transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_21)
+#line 66 "trailing_analysis.m"
+{
+#line 132 "trailing_analysis.m"
+  {
+#line 132 "trailing_analysis.m"
+    MR_bool transform_hlds__trailing_analysis__succeeded;
+#line 132 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__Globals_7;
+#line 132 "trailing_analysis.m"
+    MR_Word transform_hlds__trailing_analysis__UseTrail_8;
+
+#line 133 "trailing_analysis.m"
+    {
+#line 133 "trailing_analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_20, &transform_hlds__trailing_analysis__Globals_7);
+    }
+#line 134 "trailing_analysis.m"
+    {
+#line 134 "trailing_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__trailing_analysis__Globals_7, (MR_Integer) 212, &transform_hlds__trailing_analysis__UseTrail_8);
+    }
+#line 179 "trailing_analysis.m"
+    if ((transform_hlds__trailing_analysis__UseTrail_8 == (MR_Integer) 0))
+#line 180 "trailing_analysis.m"
+      *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_21 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_20;
+#line 179 "trailing_analysis.m"
+    else
+#line 137 "trailing_analysis.m"
+      {
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__MakeOptInt_9;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__MakeTransOptInt_10;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__IntermodAnalysis_11;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__MakeAnalysisReg_12;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__Pass1Only_13;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__DepInfo_14;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__SCCs_15;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__Debug_16;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_29_29;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_30_30;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__V_32_32;
+#line 137 "trailing_analysis.m"
+        MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_33_33;
+#line 152 "trailing_analysis.m"
+        MR_Box transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_ModuleInfo_33_33;
+
+#line 138 "trailing_analysis.m"
+        {
+#line 138 "trailing_analysis.m"
+          libs__globals__lookup_bool_option_3_p_0(transform_hlds__trailing_analysis__Globals_7, (MR_Integer) 85, &transform_hlds__trailing_analysis__MakeOptInt_9);
+        }
+#line 140 "trailing_analysis.m"
+        {
+#line 140 "trailing_analysis.m"
+          libs__globals__lookup_bool_option_3_p_0(transform_hlds__trailing_analysis__Globals_7, (MR_Integer) 86, &transform_hlds__trailing_analysis__MakeTransOptInt_10);
+        }
+#line 142 "trailing_analysis.m"
+        {
+#line 142 "trailing_analysis.m"
+          libs__globals__lookup_bool_option_3_p_0(transform_hlds__trailing_analysis__Globals_7, (MR_Integer) 328, &transform_hlds__trailing_analysis__IntermodAnalysis_11);
+        }
+#line 144 "trailing_analysis.m"
+        {
+#line 144 "trailing_analysis.m"
+          libs__globals__lookup_bool_option_3_p_0(transform_hlds__trailing_analysis__Globals_7, (MR_Integer) 87, &transform_hlds__trailing_analysis__MakeAnalysisReg_12);
+        }
+#line 146 "trailing_analysis.m"
+        {
+#line 146 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__V_29_29 = mercury__bool__or_2_f_0(transform_hlds__trailing_analysis__MakeOptInt_9, transform_hlds__trailing_analysis__MakeTransOptInt_10);
+        }
+#line 147 "trailing_analysis.m"
+        {
+#line 147 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__Pass1Only_13 = mercury__bool__or_2_f_0(transform_hlds__trailing_analysis__V_29_29, transform_hlds__trailing_analysis__MakeAnalysisReg_12);
+        }
+#line 148 "trailing_analysis.m"
+        {
+#line 148 "trailing_analysis.m"
+          transform_hlds__dependency_graph__module_info_ensure_dependency_info_2_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_0_20, &transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_30_30);
+        }
+#line 149 "trailing_analysis.m"
+        {
+#line 149 "trailing_analysis.m"
+          hlds__hlds_module__module_info_dependency_info_2_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_30_30, &transform_hlds__trailing_analysis__DepInfo_14);
+        }
+#line 150 "trailing_analysis.m"
+        {
+#line 150 "trailing_analysis.m"
+          hlds__hlds_module__hlds_dependency_info_get_dependency_ordering_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, transform_hlds__trailing_analysis__DepInfo_14, &transform_hlds__trailing_analysis__SCCs_15);
+        }
+#line 151 "trailing_analysis.m"
+        {
+#line 151 "trailing_analysis.m"
+          libs__globals__lookup_bool_option_3_p_0(transform_hlds__trailing_analysis__Globals_7, (MR_Integer) 76, &transform_hlds__trailing_analysis__Debug_16);
+        }
+#line 152 "trailing_analysis.m"
+        {
+#line 152 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__V_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 152 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_32_32, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_5[0]));
+#line 152 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_32_32, 1) = ((MR_Box) (transform_hlds__trailing_analysis__analyse_trail_usage_4_p_0_1));
+#line 152 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_32_32, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 152 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_32_32, 3) = ((MR_Box) (transform_hlds__trailing_analysis__Debug_16));
+#line 152 "trailing_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_32_32, 4) = ((MR_Box) (transform_hlds__trailing_analysis__Pass1Only_13));
+#line 152 "trailing_analysis.m"
+        }
+#line 152 "trailing_analysis.m"
+        {
+#line 152 "trailing_analysis.m"
+          mercury__list__foldl_4_p_0((MR_Word) &transform_hlds__trailing_analysis_scalar_common_1[0], (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__trailing_analysis__V_32_32, transform_hlds__trailing_analysis__SCCs_15, ((MR_Box) (transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_30_30)), &transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_ModuleInfo_33_33);
+        }
+#line 152 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_33_33 = ((MR_Word) transform_hlds__trailing_analysis__conv1_STATE_VARIABLE_ModuleInfo_33_33);
+#line 157 "trailing_analysis.m"
+        transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__MakeOptInt_9 == (MR_Integer) 1);
+#line 157 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 158 "trailing_analysis.m"
+          transform_hlds__trailing_analysis__succeeded = (transform_hlds__trailing_analysis__IntermodAnalysis_11 == (MR_Integer) 0);
+#line 161 "trailing_analysis.m"
+        if (transform_hlds__trailing_analysis__succeeded)
+#line 160 "trailing_analysis.m"
+          {
+#line 160 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__make_opt_int_3_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_33_33);
+          }
+#line 161 "trailing_analysis.m"
+        else
+#line 160 "trailing_analysis.m"
+          {
+#line 160 "trailing_analysis.m"
+          }
+#line 176 "trailing_analysis.m"
+        if ((transform_hlds__trailing_analysis__MakeAnalysisReg_12 == (MR_Integer) 0))
+#line 177 "trailing_analysis.m"
+          *transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_21 = transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_33_33;
+#line 176 "trailing_analysis.m"
+        else
+#line 170 "trailing_analysis.m"
+          {
+#line 170 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__AnalysisInfo0_17;
+#line 170 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__PredIds_18;
+#line 170 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__AnalysisInfo_19;
+#line 170 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_35_35;
+#line 170 "trailing_analysis.m"
+            MR_Word transform_hlds__trailing_analysis__V_36_36;
+#line 173 "trailing_analysis.m"
+            MR_Box transform_hlds__trailing_analysis__conv3_AnalysisInfo_19;
+
+#line 171 "trailing_analysis.m"
+            {
+#line 171 "trailing_analysis.m"
+              hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_33_33, &transform_hlds__trailing_analysis__AnalysisInfo0_17);
+            }
+#line 172 "trailing_analysis.m"
+            {
+#line 172 "trailing_analysis.m"
+              hlds__hlds_module__module_info_get_valid_predids_3_p_0(&transform_hlds__trailing_analysis__PredIds_18, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_33_33, &transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_35_35);
+            }
+#line 173 "trailing_analysis.m"
+            {
+#line 173 "trailing_analysis.m"
+              transform_hlds__trailing_analysis__V_36_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 173 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_36_36, 0) = ((MR_Box) (&transform_hlds__trailing_analysis_scalar_common_6[0]));
+#line 173 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_36_36, 1) = ((MR_Box) (transform_hlds__trailing_analysis__analyse_trail_usage_4_p_0_2));
+#line 173 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_36_36, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 173 "trailing_analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__trailing_analysis__V_36_36, 3) = ((MR_Box) (transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_35_35));
+#line 173 "trailing_analysis.m"
+            }
+#line 173 "trailing_analysis.m"
+            {
+#line 173 "trailing_analysis.m"
+              mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &analysis__analysis__type_ctor_info_analysis_info_0, transform_hlds__trailing_analysis__V_36_36, transform_hlds__trailing_analysis__PredIds_18, ((MR_Box) (transform_hlds__trailing_analysis__AnalysisInfo0_17)), &transform_hlds__trailing_analysis__conv3_AnalysisInfo_19);
+            }
+#line 173 "trailing_analysis.m"
+            transform_hlds__trailing_analysis__AnalysisInfo_19 = ((MR_Word) transform_hlds__trailing_analysis__conv3_AnalysisInfo_19);
+#line 175 "trailing_analysis.m"
+            {
+#line 175 "trailing_analysis.m"
+              hlds__hlds_module__module_info_set_analysis_info_3_p_0(transform_hlds__trailing_analysis__AnalysisInfo_19, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_35_35, transform_hlds__trailing_analysis__STATE_VARIABLE_ModuleInfo_21);
+#line 175 "trailing_analysis.m"
+              return;
+            }
+#line 170 "trailing_analysis.m"
+          }
+#line 137 "trailing_analysis.m"
+      }
+#line 132 "trailing_analysis.m"
+  }
+#line 66 "trailing_analysis.m"
+}
+
+void mercury__transform_hlds__trailing_analysis__init(void)
+{
+}
+
+void mercury__transform_hlds__trailing_analysis__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_result_0);
+	MR_register_type_ctor_info(&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_proc_results_0);
+	MR_register_type_ctor_info(&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_scc_0);
+	MR_register_type_ctor_info(&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_should_write_for_0);
+	MR_register_type_ctor_info(&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_trailing_analysis_answer_0);
+}
+
+void mercury__transform_hlds__trailing_analysis__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module transform_hlds.trailing_analysis. */

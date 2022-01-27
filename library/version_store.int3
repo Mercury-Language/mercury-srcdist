@@ -1,0 +1,4 @@
+:- module version_store.
+:- interface.
+:- type version_store(S).
+:- type mutvar(T, S).

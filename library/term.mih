@@ -1,0 +1,1445 @@
+/*
+** Automatically generated from `term.m'
+** by the Mercury compiler,
+** version rotd-2014-10-24
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module term. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_term
+#define MR_HEADER_GUARD_term
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERM_DECL_GUARD
+#define TERM_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_const_0;
+
+#line 45 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_context_0;
+
+#line 48 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_generic_0;
+
+#line 51 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_renaming_1;
+
+#line 54 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_renaming_0;
+
+#line 57 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_substitution_1;
+
+#line 60 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_substitution_0;
+
+#line 63 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_term_1;
+
+#line 66 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_term_0;
+
+#line 69 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_term_to_type_arg_context_0;
+
+#line 72 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_term_to_type_context_0;
+
+#line 75 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_term_to_type_error_1;
+
+#line 78 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_term_to_type_result_2;
+
+#line 81 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_term_to_type_result_1;
+
+#line 84 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_var_1;
+
+#line 87 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_var_0;
+
+#line 90 "term.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_var_supply_1;
+
+#line 93 "term.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__enum__arity1__term__var__arity1__[7];
+
+#line 57 "term.m"
+void MR_CALL 
+mercury__term__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_116_101_114_109_95_95_103_101_110_101_114_105_99_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 57 "term.m"
+  MR_Word * mercury__term__param_1);
+
+#line 57 "term.m"
+MR_bool MR_CALL 
+mercury__term__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_116_101_114_109_95_95_103_101_110_101_114_105_99_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 439 "term.m"
+void MR_CALL 
+mercury__term__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_105_99_95_116_101_114_109_95_95_91_49_93_95_48_1_p_0(void);
+
+#line 1158 "term.m"
+MR_bool MR_CALL 
+mercury__term__ClassMethod_for_enum__enum____term__var__arity1______enum__from_int_1_1_f_0(
+#line 1158 "term.m"
+  MR_Word mercury__term__param_1,
+#line 1158 "term.m"
+  MR_Integer mercury__term__param_2,
+#line 1158 "term.m"
+  MR_Word * mercury__term__param_3);
+
+#line 1157 "term.m"
+MR_Integer MR_CALL 
+mercury__term__ClassMethod_for_enum__enum____term__var__arity1______enum__to_int_1_1_f_0(
+#line 1157 "term.m"
+  MR_Word mercury__term__param_1,
+#line 1157 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 490 "term.m"
+void MR_CALL 
+mercury__term____Compare____var_supply_1_0(
+#line 490 "term.m"
+  MR_Word mercury__term__param_1,
+#line 490 "term.m"
+  MR_Word * mercury__term__param_2,
+#line 490 "term.m"
+  MR_Word mercury__term__param_3,
+#line 490 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 490 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____var_supply_1_0(
+#line 490 "term.m"
+  MR_Word mercury__term__param_1,
+#line 490 "term.m"
+  MR_Word mercury__term__param_2,
+#line 490 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 493 "term.m"
+void MR_CALL 
+mercury__term____Compare____var_1_0(
+#line 493 "term.m"
+  MR_Word mercury__term__param_1,
+#line 493 "term.m"
+  MR_Word * mercury__term__param_2,
+#line 493 "term.m"
+  MR_Word mercury__term__param_3,
+#line 493 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 493 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____var_1_0(
+#line 493 "term.m"
+  MR_Word mercury__term__param_1,
+#line 493 "term.m"
+  MR_Word mercury__term__param_2,
+#line 493 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 61 "term.m"
+void MR_CALL 
+mercury__term____Compare____var_0_0(
+#line 61 "term.m"
+  MR_Word * mercury__term__param_1,
+#line 61 "term.m"
+  MR_Word mercury__term__param_2,
+#line 61 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 61 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____var_0_0(
+#line 61 "term.m"
+  MR_Word mercury__term__param_1,
+#line 61 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 70 "term.m"
+void MR_CALL 
+mercury__term____Compare____term_to_type_result_2_0(
+#line 70 "term.m"
+  MR_Word mercury__term__param_1,
+#line 70 "term.m"
+  MR_Word mercury__term__param_2,
+#line 70 "term.m"
+  MR_Word * mercury__term__param_3,
+#line 70 "term.m"
+  MR_Word mercury__term__param_4,
+#line 70 "term.m"
+  MR_Word mercury__term__param_5);
+
+#line 70 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____term_to_type_result_2_0(
+#line 70 "term.m"
+  MR_Word mercury__term__param_1,
+#line 70 "term.m"
+  MR_Word mercury__term__param_2,
+#line 70 "term.m"
+  MR_Word mercury__term__param_3,
+#line 70 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 74 "term.m"
+void MR_CALL 
+mercury__term____Compare____term_to_type_result_1_0(
+#line 74 "term.m"
+  MR_Word mercury__term__param_1,
+#line 74 "term.m"
+  MR_Word * mercury__term__param_2,
+#line 74 "term.m"
+  MR_Word mercury__term__param_3,
+#line 74 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 74 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____term_to_type_result_1_0(
+#line 74 "term.m"
+  MR_Word mercury__term__param_1,
+#line 74 "term.m"
+  MR_Word mercury__term__param_2,
+#line 74 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 93 "term.m"
+void MR_CALL 
+mercury__term____Compare____term_to_type_error_1_0(
+#line 93 "term.m"
+  MR_Word mercury__term__param_1,
+#line 93 "term.m"
+  MR_Word * mercury__term__param_2,
+#line 93 "term.m"
+  MR_Word mercury__term__param_3,
+#line 93 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 93 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____term_to_type_error_1_0(
+#line 93 "term.m"
+  MR_Word mercury__term__param_1,
+#line 93 "term.m"
+  MR_Word mercury__term__param_2,
+#line 93 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 105 "term.m"
+void MR_CALL 
+mercury__term____Compare____term_to_type_context_0_0(
+#line 105 "term.m"
+  MR_Word * mercury__term__param_1,
+#line 105 "term.m"
+  MR_Word mercury__term__param_2,
+#line 105 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 105 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____term_to_type_context_0_0(
+#line 105 "term.m"
+  MR_Word mercury__term__param_1,
+#line 105 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 107 "term.m"
+void MR_CALL 
+mercury__term____Compare____term_to_type_arg_context_0_0(
+#line 107 "term.m"
+  MR_Word * mercury__term__param_1,
+#line 107 "term.m"
+  MR_Word mercury__term__param_2,
+#line 107 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 107 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____term_to_type_arg_context_0_0(
+#line 107 "term.m"
+  MR_Word mercury__term__param_1,
+#line 107 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 32 "term.m"
+void MR_CALL 
+mercury__term____Compare____term_1_0(
+#line 32 "term.m"
+  MR_Word mercury__term__param_1,
+#line 32 "term.m"
+  MR_Word * mercury__term__param_2,
+#line 32 "term.m"
+  MR_Word mercury__term__param_3,
+#line 32 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 32 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____term_1_0(
+#line 32 "term.m"
+  MR_Word mercury__term__param_1,
+#line 32 "term.m"
+  MR_Word mercury__term__param_2,
+#line 32 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 60 "term.m"
+void MR_CALL 
+mercury__term____Compare____term_0_0(
+#line 60 "term.m"
+  MR_Word * mercury__term__param_1,
+#line 60 "term.m"
+  MR_Word mercury__term__param_2,
+#line 60 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 60 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____term_0_0(
+#line 60 "term.m"
+  MR_Word mercury__term__param_1,
+#line 60 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 178 "term.m"
+void MR_CALL 
+mercury__term____Compare____substitution_1_0(
+#line 178 "term.m"
+  MR_Word mercury__term__param_1,
+#line 178 "term.m"
+  MR_Word * mercury__term__param_2,
+#line 178 "term.m"
+  MR_Word mercury__term__param_3,
+#line 178 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 178 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____substitution_1_0(
+#line 178 "term.m"
+  MR_Word mercury__term__param_1,
+#line 178 "term.m"
+  MR_Word mercury__term__param_2,
+#line 178 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 179 "term.m"
+void MR_CALL 
+mercury__term____Compare____substitution_0_0(
+#line 179 "term.m"
+  MR_Word * mercury__term__param_1,
+#line 179 "term.m"
+  MR_Word mercury__term__param_2,
+#line 179 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 179 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____substitution_0_0(
+#line 179 "term.m"
+  MR_Word mercury__term__param_1,
+#line 179 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 175 "term.m"
+void MR_CALL 
+mercury__term____Compare____renaming_1_0(
+#line 175 "term.m"
+  MR_Word mercury__term__param_1,
+#line 175 "term.m"
+  MR_Word * mercury__term__param_2,
+#line 175 "term.m"
+  MR_Word mercury__term__param_3,
+#line 175 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 175 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____renaming_1_0(
+#line 175 "term.m"
+  MR_Word mercury__term__param_1,
+#line 175 "term.m"
+  MR_Word mercury__term__param_2,
+#line 175 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 176 "term.m"
+void MR_CALL 
+mercury__term____Compare____renaming_0_0(
+#line 176 "term.m"
+  MR_Word * mercury__term__param_1,
+#line 176 "term.m"
+  MR_Word mercury__term__param_2,
+#line 176 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 176 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____renaming_0_0(
+#line 176 "term.m"
+  MR_Word mercury__term__param_1,
+#line 176 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 57 "term.m"
+void MR_CALL 
+mercury__term____Compare____generic_0_0(
+#line 57 "term.m"
+  MR_Word * mercury__term__param_1);
+
+#line 57 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____generic_0_0(void);
+
+#line 50 "term.m"
+void MR_CALL 
+mercury__term____Compare____context_0_0(
+#line 50 "term.m"
+  MR_Word * mercury__term__param_1,
+#line 50 "term.m"
+  MR_Word mercury__term__param_2,
+#line 50 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 50 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____context_0_0(
+#line 50 "term.m"
+  MR_Word mercury__term__param_1,
+#line 50 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 43 "term.m"
+void MR_CALL 
+mercury__term____Compare____const_0_0(
+#line 43 "term.m"
+  MR_Word * mercury__term__param_1,
+#line 43 "term.m"
+  MR_Word mercury__term__param_2,
+#line 43 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 43 "term.m"
+MR_bool MR_CALL 
+mercury__term____Unify____const_0_0(
+#line 43 "term.m"
+  MR_Word mercury__term__param_1,
+#line 43 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 1246 "term.m"
+MR_bool MR_CALL 
+mercury__term__is_ground_list_1_p_0(
+#line 1246 "term.m"
+  MR_Word mercury__term__param_1,
+#line 1246 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 1075 "term.m"
+MR_bool MR_CALL 
+mercury__term__substitute_corresponding_2_4_p_0(
+#line 1075 "term.m"
+  MR_Word mercury__term__param_1,
+#line 1075 "term.m"
+  MR_Word mercury__term__param_2,
+#line 1075 "term.m"
+  MR_Word mercury__term__param_3,
+#line 1075 "term.m"
+  MR_Word mercury__term__param_4,
+#line 1075 "term.m"
+  MR_Word * mercury__term__param_5);
+
+#line 832 "term.m"
+void MR_CALL 
+mercury__term__vars_2_list_3_p_0(
+#line 832 "term.m"
+  MR_Word mercury__term__param_1,
+#line 832 "term.m"
+  MR_Word mercury__term__param_2,
+#line 832 "term.m"
+  MR_Word mercury__term__param_3,
+#line 832 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 472 "term.m"
+MR_Integer MR_CALL 
+mercury__term__var_supply_num_allocated_1_f_0(
+#line 472 "term.m"
+  MR_Word mercury__term__param_1,
+#line 472 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 470 "term.m"
+MR_Word MR_CALL 
+mercury__term__var_supply_max_var_1_f_0(
+#line 470 "term.m"
+  MR_Word mercury__term__param_1,
+#line 470 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 454 "term.m"
+void MR_CALL 
+mercury__term__coerce_var_supply_2_p_0(
+#line 454 "term.m"
+  MR_Word mercury__term__param_1,
+#line 454 "term.m"
+  MR_Word mercury__term__param_2,
+#line 454 "term.m"
+  MR_Word mercury__term__param_3,
+#line 454 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 453 "term.m"
+MR_Word MR_CALL 
+mercury__term__coerce_var_supply_1_f_0(
+#line 453 "term.m"
+  MR_Word mercury__term__param_1,
+#line 453 "term.m"
+  MR_Word mercury__term__param_2,
+#line 453 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 449 "term.m"
+void MR_CALL 
+mercury__term__coerce_var_2_p_0(
+#line 449 "term.m"
+  MR_Word mercury__term__param_1,
+#line 449 "term.m"
+  MR_Word mercury__term__param_2,
+#line 449 "term.m"
+  MR_Word mercury__term__param_3,
+#line 449 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 448 "term.m"
+MR_Word MR_CALL 
+mercury__term__coerce_var_1_f_0(
+#line 448 "term.m"
+  MR_Word mercury__term__param_1,
+#line 448 "term.m"
+  MR_Word mercury__term__param_2,
+#line 448 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 444 "term.m"
+void MR_CALL 
+mercury__term__coerce_2_p_0(
+#line 444 "term.m"
+  MR_Word mercury__term__param_1,
+#line 444 "term.m"
+  MR_Word mercury__term__param_2,
+#line 444 "term.m"
+  MR_Word mercury__term__param_3,
+#line 444 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 443 "term.m"
+MR_Word MR_CALL 
+mercury__term__coerce_1_f_0(
+#line 443 "term.m"
+  MR_Word mercury__term__param_1,
+#line 443 "term.m"
+  MR_Word mercury__term__param_2,
+#line 443 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 439 "term.m"
+void MR_CALL 
+mercury__term__generic_term_1_p_0(
+#line 439 "term.m"
+  MR_Word mercury__term__param_1);
+
+#line 430 "term.m"
+void MR_CALL 
+mercury__term__var_list_to_term_list_2_p_0(
+#line 430 "term.m"
+  MR_Word mercury__term__param_1,
+#line 430 "term.m"
+  MR_Word mercury__term__param_2,
+#line 430 "term.m"
+  MR_Word * mercury__term__param_3);
+
+#line 429 "term.m"
+MR_Word MR_CALL 
+mercury__term__var_list_to_term_list_1_f_0(
+#line 429 "term.m"
+  MR_Word mercury__term__param_1,
+#line 429 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 424 "term.m"
+MR_bool MR_CALL 
+mercury__term__term_list_to_var_list_2_p_0(
+#line 424 "term.m"
+  MR_Word mercury__term__param_1,
+#line 424 "term.m"
+  MR_Word mercury__term__param_2,
+#line 424 "term.m"
+  MR_Word * mercury__term__param_3);
+
+#line 420 "term.m"
+MR_Word MR_CALL 
+mercury__term__term_list_to_var_list_1_f_0(
+#line 420 "term.m"
+  MR_Word mercury__term__param_1,
+#line 420 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 415 "term.m"
+void MR_CALL 
+mercury__term__context_init_3_p_0(
+#line 415 "term.m"
+  MR_String mercury__term__param_1,
+#line 415 "term.m"
+  MR_Integer mercury__term__param_2,
+#line 415 "term.m"
+  MR_Word * mercury__term__param_3);
+
+#line 414 "term.m"
+MR_Word MR_CALL 
+mercury__term__context_init_2_f_0(
+#line 414 "term.m"
+  MR_String mercury__term__param_1,
+#line 414 "term.m"
+  MR_Integer mercury__term__param_2);
+
+#line 413 "term.m"
+void MR_CALL 
+mercury__term__context_init_1_p_0(
+#line 413 "term.m"
+  MR_Word * mercury__term__param_1);
+
+#line 412 "term.m"
+MR_Word MR_CALL 
+mercury__term__context_init_0_f_0(void);
+
+#line 407 "term.m"
+void MR_CALL 
+mercury__term__context_file_2_p_0(
+#line 407 "term.m"
+  MR_Word mercury__term__param_1,
+#line 407 "term.m"
+  MR_String * mercury__term__param_2);
+
+#line 406 "term.m"
+MR_String MR_CALL 
+mercury__term__context_file_1_f_0(
+#line 406 "term.m"
+  MR_Word mercury__term__param_1);
+
+#line 402 "term.m"
+void MR_CALL 
+mercury__term__context_line_2_p_0(
+#line 402 "term.m"
+  MR_Word mercury__term__param_1,
+#line 402 "term.m"
+  MR_Integer * mercury__term__param_2);
+
+#line 401 "term.m"
+MR_Integer MR_CALL 
+mercury__term__context_line_1_f_0(
+#line 401 "term.m"
+  MR_Word mercury__term__param_1);
+
+#line 395 "term.m"
+void MR_CALL 
+mercury__term__var_to_int_2_p_0(
+#line 395 "term.m"
+  MR_Word mercury__term__param_1,
+#line 395 "term.m"
+  MR_Word mercury__term__param_2,
+#line 395 "term.m"
+  MR_Integer * mercury__term__param_3);
+
+#line 394 "term.m"
+MR_Integer MR_CALL 
+mercury__term__var_to_int_1_f_0(
+#line 394 "term.m"
+  MR_Word mercury__term__param_1,
+#line 394 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 382 "term.m"
+MR_Integer MR_CALL 
+mercury__term__var_id_1_f_0(
+#line 382 "term.m"
+  MR_Word mercury__term__param_1,
+#line 382 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 376 "term.m"
+void MR_CALL 
+mercury__term__create_var_3_p_0(
+#line 376 "term.m"
+  MR_Word mercury__term__param_1,
+#line 376 "term.m"
+  MR_Word * mercury__term__param_2,
+#line 376 "term.m"
+  MR_Word mercury__term__param_3,
+#line 376 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 371 "term.m"
+MR_bool MR_CALL 
+mercury__term__init_var_supply_1_p_1(
+#line 371 "term.m"
+  MR_Word mercury__term__param_1,
+#line 371 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 370 "term.m"
+void MR_CALL 
+mercury__term__init_var_supply_1_p_0(
+#line 370 "term.m"
+  MR_Word mercury__term__param_1,
+#line 370 "term.m"
+  MR_Word * mercury__term__param_2);
+
+#line 368 "term.m"
+MR_Word MR_CALL 
+mercury__term__init_var_supply_0_f_0(
+#line 368 "term.m"
+  MR_Word mercury__term__param_1);
+
+#line 357 "term.m"
+MR_bool MR_CALL 
+mercury__term__is_ground_1_p_0(
+#line 357 "term.m"
+  MR_Word mercury__term__param_1,
+#line 357 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 353 "term.m"
+MR_bool MR_CALL 
+mercury__term__is_ground_in_bindings_2_p_0(
+#line 353 "term.m"
+  MR_Word mercury__term__param_1,
+#line 353 "term.m"
+  MR_Word mercury__term__param_2,
+#line 353 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 347 "term.m"
+void MR_CALL 
+mercury__term__apply_variable_renaming_to_vars_3_p_0(
+#line 347 "term.m"
+  MR_Word mercury__term__param_1,
+#line 347 "term.m"
+  MR_Word mercury__term__param_2,
+#line 347 "term.m"
+  MR_Word mercury__term__param_3,
+#line 347 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 345 "term.m"
+MR_Word MR_CALL 
+mercury__term__apply_variable_renaming_to_vars_2_f_0(
+#line 345 "term.m"
+  MR_Word mercury__term__param_1,
+#line 345 "term.m"
+  MR_Word mercury__term__param_2,
+#line 345 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 340 "term.m"
+void MR_CALL 
+mercury__term__apply_variable_renaming_to_var_3_p_0(
+#line 340 "term.m"
+  MR_Word mercury__term__param_1,
+#line 340 "term.m"
+  MR_Word mercury__term__param_2,
+#line 340 "term.m"
+  MR_Word mercury__term__param_3,
+#line 340 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 338 "term.m"
+MR_Word MR_CALL 
+mercury__term__apply_variable_renaming_to_var_2_f_0(
+#line 338 "term.m"
+  MR_Word mercury__term__param_1,
+#line 338 "term.m"
+  MR_Word mercury__term__param_2,
+#line 338 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 333 "term.m"
+void MR_CALL 
+mercury__term__apply_variable_renaming_to_list_3_p_0(
+#line 333 "term.m"
+  MR_Word mercury__term__param_1,
+#line 333 "term.m"
+  MR_Word mercury__term__param_2,
+#line 333 "term.m"
+  MR_Word mercury__term__param_3,
+#line 333 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 331 "term.m"
+MR_Word MR_CALL 
+mercury__term__apply_variable_renaming_to_list_2_f_0(
+#line 331 "term.m"
+  MR_Word mercury__term__param_1,
+#line 331 "term.m"
+  MR_Word mercury__term__param_2,
+#line 331 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 326 "term.m"
+void MR_CALL 
+mercury__term__apply_variable_renaming_3_p_0(
+#line 326 "term.m"
+  MR_Word mercury__term__param_1,
+#line 326 "term.m"
+  MR_Word mercury__term__param_2,
+#line 326 "term.m"
+  MR_Word mercury__term__param_3,
+#line 326 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 325 "term.m"
+MR_Word MR_CALL 
+mercury__term__apply_variable_renaming_2_f_0(
+#line 325 "term.m"
+  MR_Word mercury__term__param_1,
+#line 325 "term.m"
+  MR_Word mercury__term__param_2,
+#line 325 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 319 "term.m"
+void MR_CALL 
+mercury__term__relabel_variables_4_p_0(
+#line 319 "term.m"
+  MR_Word mercury__term__param_1,
+#line 319 "term.m"
+  MR_Word mercury__term__param_2,
+#line 319 "term.m"
+  MR_Word mercury__term__param_3,
+#line 319 "term.m"
+  MR_Word mercury__term__param_4,
+#line 319 "term.m"
+  MR_Word * mercury__term__param_5);
+
+#line 318 "term.m"
+MR_Word MR_CALL 
+mercury__term__relabel_variables_3_f_0(
+#line 318 "term.m"
+  MR_Word mercury__term__param_1,
+#line 318 "term.m"
+  MR_Word mercury__term__param_2,
+#line 318 "term.m"
+  MR_Word mercury__term__param_3,
+#line 318 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 312 "term.m"
+void MR_CALL 
+mercury__term__relabel_variable_4_p_0(
+#line 312 "term.m"
+  MR_Word mercury__term__param_1,
+#line 312 "term.m"
+  MR_Word mercury__term__param_2,
+#line 312 "term.m"
+  MR_Word mercury__term__param_3,
+#line 312 "term.m"
+  MR_Word mercury__term__param_4,
+#line 312 "term.m"
+  MR_Word * mercury__term__param_5);
+
+#line 311 "term.m"
+MR_Word MR_CALL 
+mercury__term__relabel_variable_3_f_0(
+#line 311 "term.m"
+  MR_Word mercury__term__param_1,
+#line 311 "term.m"
+  MR_Word mercury__term__param_2,
+#line 311 "term.m"
+  MR_Word mercury__term__param_3,
+#line 311 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 303 "term.m"
+MR_bool MR_CALL 
+mercury__term__occurs_list_3_p_0(
+#line 303 "term.m"
+  MR_Word mercury__term__param_1,
+#line 303 "term.m"
+  MR_Word mercury__term__param_2,
+#line 303 "term.m"
+  MR_Word mercury__term__param_3,
+#line 303 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 299 "term.m"
+MR_bool MR_CALL 
+mercury__term__occurs_3_p_0(
+#line 299 "term.m"
+  MR_Word mercury__term__param_1,
+#line 299 "term.m"
+  MR_Word mercury__term__param_2,
+#line 299 "term.m"
+  MR_Word mercury__term__param_3,
+#line 299 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 292 "term.m"
+void MR_CALL 
+mercury__term__apply_renaming_to_list_3_p_0(
+#line 292 "term.m"
+  MR_Word mercury__term__param_1,
+#line 292 "term.m"
+  MR_Word mercury__term__param_2,
+#line 292 "term.m"
+  MR_Word mercury__term__param_3,
+#line 292 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 291 "term.m"
+MR_Word MR_CALL 
+mercury__term__apply_renaming_to_list_2_f_0(
+#line 291 "term.m"
+  MR_Word mercury__term__param_1,
+#line 291 "term.m"
+  MR_Word mercury__term__param_2,
+#line 291 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 287 "term.m"
+void MR_CALL 
+mercury__term__apply_renaming_3_p_0(
+#line 287 "term.m"
+  MR_Word mercury__term__param_1,
+#line 287 "term.m"
+  MR_Word mercury__term__param_2,
+#line 287 "term.m"
+  MR_Word mercury__term__param_3,
+#line 287 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 286 "term.m"
+MR_Word MR_CALL 
+mercury__term__apply_renaming_2_f_0(
+#line 286 "term.m"
+  MR_Word mercury__term__param_1,
+#line 286 "term.m"
+  MR_Word mercury__term__param_2,
+#line 286 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 279 "term.m"
+void MR_CALL 
+mercury__term__apply_substitution_to_list_3_p_0(
+#line 279 "term.m"
+  MR_Word mercury__term__param_1,
+#line 279 "term.m"
+  MR_Word mercury__term__param_2,
+#line 279 "term.m"
+  MR_Word mercury__term__param_3,
+#line 279 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 277 "term.m"
+MR_Word MR_CALL 
+mercury__term__apply_substitution_to_list_2_f_0(
+#line 277 "term.m"
+  MR_Word mercury__term__param_1,
+#line 277 "term.m"
+  MR_Word mercury__term__param_2,
+#line 277 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 272 "term.m"
+void MR_CALL 
+mercury__term__apply_substitution_3_p_0(
+#line 272 "term.m"
+  MR_Word mercury__term__param_1,
+#line 272 "term.m"
+  MR_Word mercury__term__param_2,
+#line 272 "term.m"
+  MR_Word mercury__term__param_3,
+#line 272 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 271 "term.m"
+MR_Word MR_CALL 
+mercury__term__apply_substitution_2_f_0(
+#line 271 "term.m"
+  MR_Word mercury__term__param_1,
+#line 271 "term.m"
+  MR_Word mercury__term__param_2,
+#line 271 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 264 "term.m"
+void MR_CALL 
+mercury__term__apply_rec_substitution_to_list_3_p_0(
+#line 264 "term.m"
+  MR_Word mercury__term__param_1,
+#line 264 "term.m"
+  MR_Word mercury__term__param_2,
+#line 264 "term.m"
+  MR_Word mercury__term__param_3,
+#line 264 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 262 "term.m"
+MR_Word MR_CALL 
+mercury__term__apply_rec_substitution_to_list_2_f_0(
+#line 262 "term.m"
+  MR_Word mercury__term__param_1,
+#line 262 "term.m"
+  MR_Word mercury__term__param_2,
+#line 262 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 257 "term.m"
+void MR_CALL 
+mercury__term__apply_rec_substitution_3_p_0(
+#line 257 "term.m"
+  MR_Word mercury__term__param_1,
+#line 257 "term.m"
+  MR_Word mercury__term__param_2,
+#line 257 "term.m"
+  MR_Word mercury__term__param_3,
+#line 257 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 256 "term.m"
+MR_Word MR_CALL 
+mercury__term__apply_rec_substitution_2_f_0(
+#line 256 "term.m"
+  MR_Word mercury__term__param_1,
+#line 256 "term.m"
+  MR_Word mercury__term__param_2,
+#line 256 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 248 "term.m"
+void MR_CALL 
+mercury__term__substitute_corresponding_list_4_p_0(
+#line 248 "term.m"
+  MR_Word mercury__term__param_1,
+#line 248 "term.m"
+  MR_Word mercury__term__param_2,
+#line 248 "term.m"
+  MR_Word mercury__term__param_3,
+#line 248 "term.m"
+  MR_Word mercury__term__param_4,
+#line 248 "term.m"
+  MR_Word * mercury__term__param_5);
+
+#line 246 "term.m"
+MR_Word MR_CALL 
+mercury__term__substitute_corresponding_list_3_f_0(
+#line 246 "term.m"
+  MR_Word mercury__term__param_1,
+#line 246 "term.m"
+  MR_Word mercury__term__param_2,
+#line 246 "term.m"
+  MR_Word mercury__term__param_3,
+#line 246 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 241 "term.m"
+void MR_CALL 
+mercury__term__substitute_corresponding_4_p_0(
+#line 241 "term.m"
+  MR_Word mercury__term__param_1,
+#line 241 "term.m"
+  MR_Word mercury__term__param_2,
+#line 241 "term.m"
+  MR_Word mercury__term__param_3,
+#line 241 "term.m"
+  MR_Word mercury__term__param_4,
+#line 241 "term.m"
+  MR_Word * mercury__term__param_5);
+
+#line 239 "term.m"
+MR_Word MR_CALL 
+mercury__term__substitute_corresponding_3_f_0(
+#line 239 "term.m"
+  MR_Word mercury__term__param_1,
+#line 239 "term.m"
+  MR_Word mercury__term__param_2,
+#line 239 "term.m"
+  MR_Word mercury__term__param_3,
+#line 239 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 229 "term.m"
+void MR_CALL 
+mercury__term__substitute_list_4_p_0(
+#line 229 "term.m"
+  MR_Word mercury__term__param_1,
+#line 229 "term.m"
+  MR_Word mercury__term__param_2,
+#line 229 "term.m"
+  MR_Word mercury__term__param_3,
+#line 229 "term.m"
+  MR_Word mercury__term__param_4,
+#line 229 "term.m"
+  MR_Word * mercury__term__param_5);
+
+#line 228 "term.m"
+MR_Word MR_CALL 
+mercury__term__substitute_list_3_f_0(
+#line 228 "term.m"
+  MR_Word mercury__term__param_1,
+#line 228 "term.m"
+  MR_Word mercury__term__param_2,
+#line 228 "term.m"
+  MR_Word mercury__term__param_3,
+#line 228 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 223 "term.m"
+void MR_CALL 
+mercury__term__substitute_4_p_0(
+#line 223 "term.m"
+  MR_Word mercury__term__param_1,
+#line 223 "term.m"
+  MR_Word mercury__term__param_2,
+#line 223 "term.m"
+  MR_Word mercury__term__param_3,
+#line 223 "term.m"
+  MR_Word mercury__term__param_4,
+#line 223 "term.m"
+  MR_Word * mercury__term__param_5);
+
+#line 222 "term.m"
+MR_Word MR_CALL 
+mercury__term__substitute_3_f_0(
+#line 222 "term.m"
+  MR_Word mercury__term__param_1,
+#line 222 "term.m"
+  MR_Word mercury__term__param_2,
+#line 222 "term.m"
+  MR_Word mercury__term__param_3,
+#line 222 "term.m"
+  MR_Word mercury__term__param_4);
+
+#line 214 "term.m"
+MR_bool MR_CALL 
+mercury__term__list_subsumes_3_p_0(
+#line 214 "term.m"
+  MR_Word mercury__term__param_1,
+#line 214 "term.m"
+  MR_Word mercury__term__param_2,
+#line 214 "term.m"
+  MR_Word mercury__term__param_3,
+#line 214 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 207 "term.m"
+MR_bool MR_CALL 
+mercury__term__unify_term_list_dont_bind_5_p_0(
+#line 207 "term.m"
+  MR_Word mercury__term__param_1,
+#line 207 "term.m"
+  MR_Word mercury__term__param_2,
+#line 207 "term.m"
+  MR_Word mercury__term__param_3,
+#line 207 "term.m"
+  MR_Word mercury__term__param_4,
+#line 207 "term.m"
+  MR_Word mercury__term__param_5,
+#line 207 "term.m"
+  MR_Word * mercury__term__param_6);
+
+#line 201 "term.m"
+MR_bool MR_CALL 
+mercury__term__unify_term_dont_bind_5_p_0(
+#line 201 "term.m"
+  MR_Word mercury__term__param_1,
+#line 201 "term.m"
+  MR_Word mercury__term__param_2,
+#line 201 "term.m"
+  MR_Word mercury__term__param_3,
+#line 201 "term.m"
+  MR_Word mercury__term__param_4,
+#line 201 "term.m"
+  MR_Word mercury__term__param_5,
+#line 201 "term.m"
+  MR_Word * mercury__term__param_6);
+
+#line 192 "term.m"
+MR_bool MR_CALL 
+mercury__term__unify_term_list_4_p_0(
+#line 192 "term.m"
+  MR_Word mercury__term__param_1,
+#line 192 "term.m"
+  MR_Word mercury__term__param_2,
+#line 192 "term.m"
+  MR_Word mercury__term__param_3,
+#line 192 "term.m"
+  MR_Word mercury__term__param_4,
+#line 192 "term.m"
+  MR_Word * mercury__term__param_5);
+
+#line 186 "term.m"
+MR_bool MR_CALL 
+mercury__term__unify_term_4_p_0(
+#line 186 "term.m"
+  MR_Word mercury__term__param_1,
+#line 186 "term.m"
+  MR_Word mercury__term__param_2,
+#line 186 "term.m"
+  MR_Word mercury__term__param_3,
+#line 186 "term.m"
+  MR_Word mercury__term__param_4,
+#line 186 "term.m"
+  MR_Word * mercury__term__param_5);
+
+#line 173 "term.m"
+void MR_CALL 
+mercury__term__contains_var_list_2_p_1(
+#line 173 "term.m"
+  MR_Word mercury__term__param_1,
+#line 173 "term.m"
+  MR_Word mercury__term__param_2,
+#line 173 "term.m"
+  MR_Word * mercury__term__param_3,
+#line 173 "term.m"
+  MR_Cont mercury__term__param_4,
+#line 173 "term.m"
+  void * mercury__term__param_5);
+
+#line 172 "term.m"
+MR_bool MR_CALL 
+mercury__term__contains_var_list_2_p_0(
+#line 172 "term.m"
+  MR_Word mercury__term__param_1,
+#line 172 "term.m"
+  MR_Word mercury__term__param_2,
+#line 172 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 164 "term.m"
+void MR_CALL 
+mercury__term__contains_var_2_p_1(
+#line 164 "term.m"
+  MR_Word mercury__term__param_1,
+#line 164 "term.m"
+  MR_Word mercury__term__param_2,
+#line 164 "term.m"
+  MR_Word * mercury__term__param_3,
+#line 164 "term.m"
+  MR_Cont mercury__term__param_4,
+#line 164 "term.m"
+  void * mercury__term__param_5);
+
+#line 163 "term.m"
+MR_bool MR_CALL 
+mercury__term__contains_var_2_p_0(
+#line 163 "term.m"
+  MR_Word mercury__term__param_1,
+#line 163 "term.m"
+  MR_Word mercury__term__param_2,
+#line 163 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 155 "term.m"
+void MR_CALL 
+mercury__term__vars_list_2_p_0(
+#line 155 "term.m"
+  MR_Word mercury__term__param_1,
+#line 155 "term.m"
+  MR_Word mercury__term__param_2,
+#line 155 "term.m"
+  MR_Word * mercury__term__param_3);
+
+#line 154 "term.m"
+MR_Word MR_CALL 
+mercury__term__vars_list_1_f_0(
+#line 154 "term.m"
+  MR_Word mercury__term__param_1,
+#line 154 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 147 "term.m"
+void MR_CALL 
+mercury__term__vars_2_3_p_0(
+#line 147 "term.m"
+  MR_Word mercury__term__param_1,
+#line 147 "term.m"
+  MR_Word mercury__term__param_2,
+#line 147 "term.m"
+  MR_Word mercury__term__param_3,
+#line 147 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 146 "term.m"
+MR_Word MR_CALL 
+mercury__term__vars_2_2_f_0(
+#line 146 "term.m"
+  MR_Word mercury__term__param_1,
+#line 146 "term.m"
+  MR_Word mercury__term__param_2,
+#line 146 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 142 "term.m"
+void MR_CALL 
+mercury__term__vars_2_p_0(
+#line 142 "term.m"
+  MR_Word mercury__term__param_1,
+#line 142 "term.m"
+  MR_Word mercury__term__param_2,
+#line 142 "term.m"
+  MR_Word * mercury__term__param_3);
+
+#line 141 "term.m"
+MR_Word MR_CALL 
+mercury__term__vars_1_f_0(
+#line 141 "term.m"
+  MR_Word mercury__term__param_1,
+#line 141 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 132 "term.m"
+void MR_CALL 
+mercury__term__univ_to_term_2_p_0(
+#line 132 "term.m"
+  MR_Word mercury__term__param_1,
+#line 132 "term.m"
+  MR_Word mercury__term__param_2,
+#line 132 "term.m"
+  MR_Word * mercury__term__param_3);
+
+#line 131 "term.m"
+MR_Word MR_CALL 
+mercury__term__univ_to_term_1_f_0(
+#line 131 "term.m"
+  MR_Word mercury__term__param_1,
+#line 131 "term.m"
+  MR_Word mercury__term__param_2);
+
+#line 126 "term.m"
+void MR_CALL 
+mercury__term__type_to_term_2_p_0(
+#line 126 "term.m"
+  MR_Word mercury__term__param_1,
+#line 126 "term.m"
+  MR_Word mercury__term__param_2,
+#line 126 "term.m"
+  MR_Box mercury__term__param_3,
+#line 126 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 125 "term.m"
+MR_Word MR_CALL 
+mercury__term__type_to_term_1_f_0(
+#line 125 "term.m"
+  MR_Word mercury__term__param_1,
+#line 125 "term.m"
+  MR_Word mercury__term__param_2,
+#line 125 "term.m"
+  MR_Box mercury__term__param_3);
+
+#line 121 "term.m"
+void MR_CALL 
+mercury__term__det_term_to_type_2_p_0(
+#line 121 "term.m"
+  MR_Word mercury__term__param_1,
+#line 121 "term.m"
+  MR_Word mercury__term__param_2,
+#line 121 "term.m"
+  MR_Word mercury__term__param_3,
+#line 121 "term.m"
+  MR_Box * mercury__term__param_4);
+
+#line 120 "term.m"
+MR_Box MR_CALL 
+mercury__term__det_term_to_type_1_f_0(
+#line 120 "term.m"
+  MR_Word mercury__term__param_1,
+#line 120 "term.m"
+  MR_Word mercury__term__param_2,
+#line 120 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 116 "term.m"
+MR_bool MR_CALL 
+mercury__term__term_to_type_2_p_0(
+#line 116 "term.m"
+  MR_Word mercury__term__param_1,
+#line 116 "term.m"
+  MR_Word mercury__term__param_2,
+#line 116 "term.m"
+  MR_Word mercury__term__param_3,
+#line 116 "term.m"
+  MR_Box * mercury__term__param_4);
+
+#line 91 "term.m"
+void MR_CALL 
+mercury__term__try_term_to_type_2_p_0(
+#line 91 "term.m"
+  MR_Word mercury__term__param_1,
+#line 91 "term.m"
+  MR_Word mercury__term__param_2,
+#line 91 "term.m"
+  MR_Word mercury__term__param_3,
+#line 91 "term.m"
+  MR_Word * mercury__term__param_4);
+
+#line 90 "term.m"
+MR_Word MR_CALL 
+mercury__term__try_term_to_type_1_f_0(
+#line 90 "term.m"
+  MR_Word mercury__term__param_1,
+#line 90 "term.m"
+  MR_Word mercury__term__param_2,
+#line 90 "term.m"
+  MR_Word mercury__term__param_3);
+
+#line 63 "term.m"
+MR_Word MR_CALL 
+mercury__term__get_term_context_1_f_0(
+#line 63 "term.m"
+  MR_Word mercury__term__param_1,
+#line 63 "term.m"
+  MR_Word mercury__term__param_2);
+
+void mercury__term__init(void);
+void mercury__term__init_type_tables(void);
+void mercury__term__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_term */
+
+/* :- end_interface term. */

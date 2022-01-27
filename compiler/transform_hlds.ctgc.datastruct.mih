@@ -1,0 +1,223 @@
+/*
+** Automatically generated from `ctgc.datastruct.m'
+** by the Mercury compiler,
+** version rotd-2014-10-24
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.ctgc.datastruct. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__ctgc__datastruct
+#define MR_HEADER_GUARD_transform_hlds__ctgc__datastruct
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CTGC__DATASTRUCT_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__DATASTRUCT_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.ctgc.mih"
+
+#endif
+
+
+
+
+#line 88 "ctgc.datastruct.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastructs_vars_1_f_0(
+#line 88 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1);
+
+#line 85 "ctgc.datastruct.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastructs_project_2_f_0(
+#line 85 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 85 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2);
+
+#line 82 "ctgc.datastruct.m"
+void MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_apply_widening_4_p_0(
+#line 82 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 82 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2,
+#line 82 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_3,
+#line 82 "ctgc.datastruct.m"
+  MR_Word * transform_hlds__ctgc__datastruct__param_4);
+
+#line 79 "ctgc.datastruct.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_lists_least_upper_bound_4_f_0(
+#line 79 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 79 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2,
+#line 79 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_3,
+#line 79 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_4);
+
+#line 76 "ctgc.datastruct.m"
+void MR_CALL 
+transform_hlds__ctgc__datastruct__datastructs_that_are_subsumed_by_list_5_p_0(
+#line 76 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 76 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2,
+#line 76 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_3,
+#line 76 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_4,
+#line 76 "ctgc.datastruct.m"
+  MR_Word * transform_hlds__ctgc__datastruct__param_5);
+
+#line 73 "ctgc.datastruct.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastructs_subsumed_by_list_4_p_0(
+#line 73 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 73 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2,
+#line 73 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_3,
+#line 73 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_4);
+
+#line 70 "ctgc.datastruct.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_subsumed_by_list_4_p_0(
+#line 70 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 70 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2,
+#line 70 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_3,
+#line 70 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_4);
+
+#line 67 "ctgc.datastruct.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_subsumed_by_4_p_0(
+#line 67 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 67 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2,
+#line 67 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_3,
+#line 67 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_4);
+
+#line 64 "ctgc.datastruct.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_subsumed_by_return_selector_5_p_0(
+#line 64 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 64 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2,
+#line 64 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_3,
+#line 64 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_4,
+#line 64 "ctgc.datastruct.m"
+  MR_Word * transform_hlds__ctgc__datastruct__param_5);
+
+#line 62 "ctgc.datastruct.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__normalize_datastruct_3_f_0(
+#line 62 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 62 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2,
+#line 62 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_3);
+
+#line 52 "ctgc.datastruct.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_termshift_4_f_0(
+#line 52 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 52 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2,
+#line 52 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_3,
+#line 52 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_4);
+
+#line 46 "ctgc.datastruct.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_refers_to_topcell_1_p_0(
+#line 46 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1);
+
+#line 41 "ctgc.datastruct.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_same_vars_2_p_0(
+#line 41 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 41 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2);
+
+#line 36 "ctgc.datastruct.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_equal_2_p_0(
+#line 36 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 36 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2);
+
+#line 32 "ctgc.datastruct.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_init_with_pos_3_f_0(
+#line 32 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 32 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2,
+#line 32 "ctgc.datastruct.m"
+  MR_Integer transform_hlds__ctgc__datastruct__param_3);
+
+#line 31 "ctgc.datastruct.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_init_with_selector_2_f_0(
+#line 31 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1,
+#line 31 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_2);
+
+#line 30 "ctgc.datastruct.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_init_1_f_0(
+#line 30 "ctgc.datastruct.m"
+  MR_Word transform_hlds__ctgc__datastruct__param_1);
+
+void mercury__transform_hlds__ctgc__datastruct__init(void);
+void mercury__transform_hlds__ctgc__datastruct__init_type_tables(void);
+void mercury__transform_hlds__ctgc__datastruct__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.ctgc.datastruct */
+
+/* :- end_interface transform_hlds.ctgc.datastruct. */

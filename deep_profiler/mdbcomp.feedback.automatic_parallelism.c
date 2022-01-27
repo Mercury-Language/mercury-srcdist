@@ -1,0 +1,6930 @@
+/*
+** Automatically generated from `feedback.automatic_parallelism.m'
+** by the Mercury compiler,
+** version rotd-2014-10-24
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdbcomp.feedback.automatic_parallelism. */
+/* :- implementation. */
+
+/*
+INIT mercury__mdbcomp__feedback__automatic_parallelism__init
+ENDINIT
+*/
+
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "exception.mih"
+#include "float.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "stm_builtin.mih"
+#include "store.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+
+
+
+
+#line 79 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1;
+
+#line 82 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_VA_PseudoTypeInfo_Struct3 mdbcomp__feedback__automatic_parallelism____vpti_pred_3__pseudo_mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1__pseudo_1__pseudo_2;
+
+#line 85 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_2;
+
+#line 88 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_VA_PseudoTypeInfo_Struct2 mdbcomp__feedback__automatic_parallelism____vpti_pred_2__pseudo_1__pseudo_2;
+
+#line 91 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_1;
+
+#line 94 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_2;
+
+#line 97 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_best_par_algorithm_0_0[1];
+
+#line 100 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_0;
+
+#line 103 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_best_par_algorithm_0_1[1];
+
+#line 106 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_1;
+
+#line 109 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_2;
+
+#line 112 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_3;
+
+#line 115 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_best_par_algorithm_0_0[2];
+
+#line 118 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_best_par_algorithm_0_1[1];
+
+#line 121 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_best_par_algorithm_0_2[1];
+
+#line 124 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_best_par_algorithm_0[3];
+
+#line 127 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_best_par_algorithm_0[4];
+
+#line 130 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_best_par_algorithm_0[4];
+
+#line 133 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_callee_rep_0_0;
+
+#line 136 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_callee_rep_0_1[2];
+
+#line 139 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_callee_rep_0_1[2];
+
+#line 142 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_callee_rep_0_1;
+
+#line 145 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_callee_rep_0_0[1];
+
+#line 148 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_callee_rep_0_1[1];
+
+#line 151 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_callee_rep_0[2];
+
+#line 154 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_callee_rep_0[2];
+
+#line 157 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_callee_rep_0[2];
+
+#line 160 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__maybe__ti_maybe_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0;
+
+#line 163 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_1;
+
+#line 166 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_1;
+
+#line 169 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_candidate_par_conjunction_1_0[10];
+
+#line 172 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_candidate_par_conjunction_1_0[10];
+
+#line 175 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunction_1_0;
+
+#line 178 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_candidate_par_conjunction_1_0[1];
+
+#line 181 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_candidate_par_conjunction_1[1];
+
+#line 184 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_candidate_par_conjunction_1[1];
+
+#line 187 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_candidate_par_conjunction_1[1];
+
+#line 190 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_candidate_par_conjunctions_params_0_0[13];
+
+#line 193 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_candidate_par_conjunctions_params_0_0[13];
+
+#line 196 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunctions_params_0_0;
+
+#line 199 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_candidate_par_conjunctions_params_0_0[1];
+
+#line 202 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_candidate_par_conjunctions_params_0[1];
+
+#line 205 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_candidate_par_conjunctions_params_0[1];
+
+#line 208 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_candidate_par_conjunctions_params_0[1];
+
+#line 211 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct2 mdbcomp__feedback__automatic_parallelism__tree234__ti_tree234_2builtin__type_ctor_info_int_0builtin__type_ctor_info_string_0;
+
+#line 214 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__ti_list_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0;
+
+#line 217 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1;
+
+#line 220 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_candidate_par_conjunctions_proc_1_0[3];
+
+#line 223 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_candidate_par_conjunctions_proc_1_0[3];
+
+#line 226 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunctions_proc_1_0;
+
+#line 229 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_candidate_par_conjunctions_proc_1_0[1];
+
+#line 232 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_candidate_par_conjunctions_proc_1[1];
+
+#line 235 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_candidate_par_conjunctions_proc_1[1];
+
+#line 238 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_candidate_par_conjunctions_proc_1[1];
+
+#line 241 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 244 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 247 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0;
+
+#line 250 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_conjuncts_are_dependent_0_0[1];
+
+#line 253 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_conjuncts_are_dependent_0_0;
+
+#line 256 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_conjuncts_are_dependent_0_1;
+
+#line 259 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_conjuncts_are_dependent_0_0[1];
+
+#line 262 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_conjuncts_are_dependent_0_1[1];
+
+#line 265 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_conjuncts_are_dependent_0[2];
+
+#line 268 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_conjuncts_are_dependent_0[2];
+
+#line 271 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_conjuncts_are_dependent_0[2];
+
+#line 274 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_cost_above_par_threshold_0_0;
+
+#line 277 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_cost_above_par_threshold_0_1;
+
+#line 280 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_value_ordered_cost_above_par_threshold_0[2];
+
+#line 283 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_name_ordered_cost_above_par_threshold_0[2];
+
+#line 286 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_cost_above_par_threshold_0[2];
+
+#line 289 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_parallel_exec_metrics_0_0[9];
+
+#line 292 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_parallel_exec_metrics_0_0[9];
+
+#line 295 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallel_exec_metrics_0_0;
+
+#line 298 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_parallel_exec_metrics_0_0[1];
+
+#line 301 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_parallel_exec_metrics_0[1];
+
+#line 304 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_parallel_exec_metrics_0[1];
+
+#line 307 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_parallel_exec_metrics_0[1];
+
+#line 310 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallelise_dep_conjs_0_0;
+
+#line 313 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_parallelise_dep_conjs_0_1[1];
+
+#line 316 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallelise_dep_conjs_0_1;
+
+#line 319 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_parallelise_dep_conjs_0_0[1];
+
+#line 322 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_parallelise_dep_conjs_0_1[1];
+
+#line 325 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_parallelise_dep_conjs_0[2];
+
+#line 328 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_parallelise_dep_conjs_0[2];
+
+#line 331 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_parallelise_dep_conjs_0[2];
+
+#line 334 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct2 mdbcomp__feedback__automatic_parallelism__pair__ti_pair_2builtin__type_ctor_info_int_0builtin__type_ctor_info_float_0;
+
+#line 337 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0builtin__type_ctor_info_float_0;
+
+#line 340 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_pard_goal_annotation_0_0[4];
+
+#line 343 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_pard_goal_annotation_0_0[4];
+
+#line 346 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_pard_goal_annotation_0_0;
+
+#line 349 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_pard_goal_annotation_0_0[1];
+
+#line 352 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_pard_goal_annotation_0[1];
+
+#line 355 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_pard_goal_annotation_0[1];
+
+#line 358 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_pard_goal_annotation_0[1];
+
+#line 361 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__ti_list_1builtin__type_ctor_info_string_0;
+
+#line 364 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_push_goal_0_0[4];
+
+#line 367 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_push_goal_0_0[4];
+
+#line 370 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_push_goal_0_0;
+
+#line 373 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_push_goal_0_0[1];
+
+#line 376 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_push_goal_0[1];
+
+#line 379 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_push_goal_0[1];
+
+#line 382 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_push_goal_0[1];
+
+#line 385 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_seq_conj_1[1];
+
+#line 388 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_NotagFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__notag_functor_desc_seq_conj_1;
+
+#line 391 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_0;
+
+#line 394 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_1;
+
+#line 397 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_2;
+
+#line 400 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_value_ordered_speedup_estimate_alg_0[3];
+
+#line 403 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_name_ordered_speedup_estimate_alg_0[3];
+
+#line 406 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_speedup_estimate_alg_0[3];
+
+#line 409 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_stat_measure_0_0;
+
+#line 412 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_stat_measure_0_1;
+
+#line 415 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_value_ordered_stat_measure_0[2];
+
+#line 418 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_name_ordered_stat_measure_0[2];
+
+#line 421 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_stat_measure_0[2];
+
+#line 424 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____best_par_algorithm_0_0_10001(
+#line 427 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 429 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 432 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____best_par_algorithm_0_0_10001(
+#line 435 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 437 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 439 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 442 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____callee_rep_0_0_10001(
+#line 445 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 447 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 450 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____callee_rep_0_0_10001(
+#line 453 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 455 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 457 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 460 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunction_1_0_10001(
+#line 463 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 465 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 467 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 470 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunction_1_0_10001(
+#line 473 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 475 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 477 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3,
+#line 479 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_4);
+
+#line 482 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_params_0_0_10001(
+#line 485 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 487 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 490 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_params_0_0_10001(
+#line 493 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 495 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 497 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 500 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_1_0_10001(
+#line 503 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 505 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 507 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 510 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_1_0_10001(
+#line 513 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 515 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 517 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3,
+#line 519 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_4);
+
+#line 522 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_0_0_10001(
+#line 525 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 527 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 530 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_0_0_10001(
+#line 533 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 535 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 537 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 540 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____conjuncts_are_dependent_0_0_10001(
+#line 543 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 545 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 548 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____conjuncts_are_dependent_0_0_10001(
+#line 551 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 553 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 555 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 558 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____cost_above_par_threshold_0_0_10001(
+#line 561 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 563 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 566 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____cost_above_par_threshold_0_0_10001(
+#line 569 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 571 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 573 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 576 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____parallel_exec_metrics_0_0_10001(
+#line 579 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 581 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 584 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____parallel_exec_metrics_0_0_10001(
+#line 587 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 589 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 591 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 594 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____parallelise_dep_conjs_0_0_10001(
+#line 597 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 599 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 602 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____parallelise_dep_conjs_0_0_10001(
+#line 605 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 607 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 609 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 612 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_0_0_10001(
+#line 615 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 617 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 620 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_0_0_10001(
+#line 623 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 625 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 627 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 630 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_annotation_0_0_10001(
+#line 633 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 635 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 638 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_annotation_0_0_10001(
+#line 641 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 643 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 645 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 648 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____push_goal_0_0_10001(
+#line 651 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 653 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 656 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____push_goal_0_0_10001(
+#line 659 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 661 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 663 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 666 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____seq_conj_1_0_10001(
+#line 669 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 671 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 673 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 676 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____seq_conj_1_0_10001(
+#line 679 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 681 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 683 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3,
+#line 685 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_4);
+
+#line 688 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____speedup_estimate_alg_0_0_10001(
+#line 691 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 693 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 696 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____speedup_estimate_alg_0_0_10001(
+#line 699 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 701 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 703 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 706 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____stat_measure_0_0_10001(
+#line 709 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 711 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 714 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____stat_measure_0_0_10001(
+#line 717 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 719 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 721 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3);
+
+#line 411 "feedback.automatic_parallelism.m"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__IntroducedFrom__pred__convert_candidate_par_conjunction__411__1_6_p_0(
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_28,
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_29,
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__Conv0_4,
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__CPC0_5,
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__HeadVar__5_23,
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__HeadVar__6_24);
+
+#line 413 "feedback.automatic_parallelism.m"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunction_3_p_0_2(
+#line 413 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__closure_arg,
+#line 413 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 413 "feedback.automatic_parallelism.m"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 410 "feedback.automatic_parallelism.m"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunction_3_p_0_1(
+#line 410 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__closure_arg,
+#line 410 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 410 "feedback.automatic_parallelism.m"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+#line 403 "feedback.automatic_parallelism.m"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunctions_proc_3_p_0_1(
+#line 403 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__closure_arg,
+#line 403 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 403 "feedback.automatic_parallelism.m"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+
+
+static /* final */ const MR_Box mdbcomp__feedback__automatic_parallelism_scalar_common_1[7][2];
+
+static /* final */ const MR_Box mdbcomp__feedback__automatic_parallelism_scalar_common_2[1][3];
+
+static /* final */ const MR_Integer mdbcomp__feedback__automatic_parallelism_scalar_common_3[1][3];
+
+static /* final */ const MR_Box mdbcomp__feedback__automatic_parallelism_scalar_common_4[2][8];
+
+static /* final */ const MR_Box mdbcomp__feedback__automatic_parallelism_scalar_common_5[1][9];
+
+
+
+
+static /* final */ const MR_Box mdbcomp__feedback__automatic_parallelism_scalar_common_1[7][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism_scalar_common_1[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism_scalar_common_2[0]))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box mdbcomp__feedback__automatic_parallelism_scalar_common_2[1][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_float_0))
+  },
+};
+
+static /* final */ const MR_Integer mdbcomp__feedback__automatic_parallelism_scalar_common_3[1][3] = {
+  /* row 0 */
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 33,
+    (MR_Integer) 65
+  },
+};
+
+static /* final */ const MR_Box mdbcomp__feedback__automatic_parallelism_scalar_common_4[2][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism_scalar_common_3[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism____vpti_pred_3__pseudo_mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1__pseudo_1__pseudo_2)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_2))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism_scalar_common_3[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism____vpti_pred_2__pseudo_1__pseudo_2)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_1)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_2))
+  },
+};
+
+static /* final */ const MR_Box mdbcomp__feedback__automatic_parallelism_scalar_common_5[1][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism_scalar_common_3[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism____vpti_pred_3__pseudo_mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1__pseudo_1__pseudo_2)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2))
+  },
+};
+
+
+
+#include "mdbcomp.mh"
+#include "mdbcomp.program_representation.mh"
+#include "mdbcomp.program_representation.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "array.mh"
+#include "array.mh"
+#include "mdbcomp.rtti_access.mh"
+#include "mdbcomp.rtti_access.mh"
+#include "stm_builtin.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "store.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "time.mh"
+#include "time.mh"
+
+
+
+#line 904 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 912 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_VA_PseudoTypeInfo_Struct3 mdbcomp__feedback__automatic_parallelism____vpti_pred_3__pseudo_mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1__pseudo_1__pseudo_2 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 3,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1,
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+#line 923 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_2 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+#line 931 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_VA_PseudoTypeInfo_Struct2 mdbcomp__feedback__automatic_parallelism____vpti_pred_2__pseudo_1__pseudo_2 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 2,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+#line 941 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_1 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 949 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_2 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+#line 957 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_best_par_algorithm_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+#line 962 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_0 = {
+  (MR_String) "bpa_complete_branches",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_best_par_algorithm_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 977 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_best_par_algorithm_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+#line 982 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_1 = {
+  (MR_String) "bpa_complete_size",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_best_par_algorithm_0_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 997 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_2 = {
+  (MR_String) "bpa_complete",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1012 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_3 = {
+  (MR_String) "bpa_greedy",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1027 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_best_par_algorithm_0_0[2] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_2,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_3
+};
+
+#line 1033 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_best_par_algorithm_0_1[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_0
+};
+
+#line 1038 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_best_par_algorithm_0_2[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_1
+};
+
+#line 1043 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_best_par_algorithm_0[3] = {
+  {
+    (MR_Integer) 2,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_best_par_algorithm_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_best_par_algorithm_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_best_par_algorithm_0_2
+  }
+};
+
+#line 1062 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_best_par_algorithm_0[4] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_2,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_0,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_1,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_best_par_algorithm_0_3
+};
+
+#line 1070 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_best_par_algorithm_0[4] = {
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 3
+};
+
+#line 1078 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_best_par_algorithm_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____best_par_algorithm_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____best_par_algorithm_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "best_par_algorithm",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_best_par_algorithm_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_best_par_algorithm_0
+  },
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_best_par_algorithm_0
+};
+
+#line 1099 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_callee_rep_0_0 = {
+  (MR_String) "unknown_callee",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1114 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_callee_rep_0_1[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+#line 1120 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_callee_rep_0_1[2] = {
+  (MR_String) "nc_module_name",
+  (MR_String) "nc_proc_name"
+};
+
+#line 1126 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_callee_rep_0_1 = {
+  (MR_String) "named_callee",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_callee_rep_0_1,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_callee_rep_0_1,
+  NULL,
+  NULL
+};
+
+#line 1141 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_callee_rep_0_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_callee_rep_0_0
+};
+
+#line 1146 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_callee_rep_0_1[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_callee_rep_0_1
+};
+
+#line 1151 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_callee_rep_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_callee_rep_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_callee_rep_0_1
+  }
+};
+
+#line 1165 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_callee_rep_0[2] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_callee_rep_0_1,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_callee_rep_0_0
+};
+
+#line 1171 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_callee_rep_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+#line 1177 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_callee_rep_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____callee_rep_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____callee_rep_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "callee_rep",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_callee_rep_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_callee_rep_0
+  },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_callee_rep_0
+};
+
+#line 1198 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__maybe__ti_maybe_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0
+  }
+};
+
+#line 1206 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 1214 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_1
+  }
+};
+
+#line 1222 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_candidate_par_conjunction_1_0[10] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__maybe__ti_maybe_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_conjuncts_are_dependent_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallel_exec_metrics_0
+};
+
+#line 1236 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_candidate_par_conjunction_1_0[10] = {
+  (MR_String) "cpc_goal_path",
+  (MR_String) "cpc_maybe_push_goal",
+  (MR_String) "cpc_first_conj_num",
+  (MR_String) "cpc_is_dependent",
+  (MR_String) "cpc_goals_before",
+  (MR_String) "cpc_goals_before_cost",
+  (MR_String) "cpc_conjs",
+  (MR_String) "cpc_goals_after",
+  (MR_String) "cpc_goals_after_cost",
+  (MR_String) "cpc_par_exec_metrics"
+};
+
+#line 1250 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunction_1_0 = {
+  (MR_String) "candidate_par_conjunction",
+  (MR_Integer) 10,
+  (MR_Integer) 208,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_candidate_par_conjunction_1_0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_candidate_par_conjunction_1_0,
+  NULL,
+  NULL
+};
+
+#line 1265 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_candidate_par_conjunction_1_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunction_1_0
+};
+
+#line 1270 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_candidate_par_conjunction_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_candidate_par_conjunction_1_0
+  }
+};
+
+#line 1279 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_candidate_par_conjunction_1[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunction_1_0
+};
+
+#line 1284 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_candidate_par_conjunction_1[1] = {
+  (MR_Integer) 0
+};
+
+#line 1289 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunction_1_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunction_1_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "candidate_par_conjunction",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_candidate_par_conjunction_1
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_candidate_par_conjunction_1
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_candidate_par_conjunction_1
+};
+
+#line 1310 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_candidate_par_conjunctions_params_0_0[13] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallelise_dep_conjs_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_best_par_algorithm_0
+};
+
+#line 1327 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_candidate_par_conjunctions_params_0_0[13] = {
+  (MR_String) "cpcp_desired_parallelism",
+  (MR_String) "cpcp_intermodule_var_use",
+  (MR_String) "cpcp_sparking_cost",
+  (MR_String) "cpcp_sparking_delay",
+  (MR_String) "cpcp_barrier_cost",
+  (MR_String) "cpcp_future_signal_cost",
+  (MR_String) "cpcp_future_wait_cost",
+  (MR_String) "cpcp_context_wakeup_delay",
+  (MR_String) "cpcp_clique_threshold",
+  (MR_String) "cpcp_call_site_threshold",
+  (MR_String) "cpcp_speedup_threshold",
+  (MR_String) "cpcp_parallelise_dep_conjs",
+  (MR_String) "cpcp_best_par_alg"
+};
+
+#line 1344 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunctions_params_0_0 = {
+  (MR_String) "candidate_par_conjunctions_params",
+  (MR_Integer) 13,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_candidate_par_conjunctions_params_0_0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_candidate_par_conjunctions_params_0_0,
+  NULL,
+  NULL
+};
+
+#line 1359 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_candidate_par_conjunctions_params_0_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunctions_params_0_0
+};
+
+#line 1364 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_candidate_par_conjunctions_params_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_candidate_par_conjunctions_params_0_0
+  }
+};
+
+#line 1373 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_candidate_par_conjunctions_params_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunctions_params_0_0
+};
+
+#line 1378 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_candidate_par_conjunctions_params_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1383 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_params_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_params_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_params_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "candidate_par_conjunctions_params",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_candidate_par_conjunctions_params_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_candidate_par_conjunctions_params_0
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_candidate_par_conjunctions_params_0
+};
+
+#line 1404 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct2 mdbcomp__feedback__automatic_parallelism__tree234__ti_tree234_2builtin__type_ctor_info_int_0builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1413 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__ti_list_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0
+  }
+};
+
+#line 1421 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1
+  }
+};
+
+#line 1429 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_candidate_par_conjunctions_proc_1_0[3] = {
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__tree234__ti_tree234_2builtin__type_ctor_info_int_0builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__list__ti_list_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__pseudo_1
+};
+
+#line 1436 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_candidate_par_conjunctions_proc_1_0[3] = {
+  (MR_String) "cpcp_var_table",
+  (MR_String) "cpcp_push_goals",
+  (MR_String) "cpcp_par_conjs"
+};
+
+#line 1443 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunctions_proc_1_0 = {
+  (MR_String) "candidate_par_conjunctions_proc",
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_candidate_par_conjunctions_proc_1_0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_candidate_par_conjunctions_proc_1_0,
+  NULL,
+  NULL
+};
+
+#line 1458 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_candidate_par_conjunctions_proc_1_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunctions_proc_1_0
+};
+
+#line 1463 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_candidate_par_conjunctions_proc_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_candidate_par_conjunctions_proc_1_0
+  }
+};
+
+#line 1472 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_candidate_par_conjunctions_proc_1[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_candidate_par_conjunctions_proc_1_0
+};
+
+#line 1477 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_candidate_par_conjunctions_proc_1[1] = {
+  (MR_Integer) 0
+};
+
+#line 1482 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_1_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_1_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "candidate_par_conjunctions_proc",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_candidate_par_conjunctions_proc_1
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_candidate_par_conjunctions_proc_1
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_candidate_par_conjunctions_proc_1
+};
+
+#line 1503 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1,
+  {
+    (MR_TypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1511 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1,
+  {
+    (MR_TypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1519 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "candidate_par_conjunctions_proc",
+  {
+    NULL
+  },
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1540 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+#line 1548 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_conjuncts_are_dependent_0_0[1] = {
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0
+};
+
+#line 1553 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_conjuncts_are_dependent_0_0 = {
+  (MR_String) "conjuncts_are_dependent",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_conjuncts_are_dependent_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1568 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_conjuncts_are_dependent_0_1 = {
+  (MR_String) "conjuncts_are_independent",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1583 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_conjuncts_are_dependent_0_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_conjuncts_are_dependent_0_1
+};
+
+#line 1588 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_conjuncts_are_dependent_0_1[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_conjuncts_are_dependent_0_0
+};
+
+#line 1593 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_conjuncts_are_dependent_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_conjuncts_are_dependent_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_conjuncts_are_dependent_0_1
+  }
+};
+
+#line 1607 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_conjuncts_are_dependent_0[2] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_conjuncts_are_dependent_0_0,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_conjuncts_are_dependent_0_1
+};
+
+#line 1613 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_conjuncts_are_dependent_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 1619 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_conjuncts_are_dependent_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____conjuncts_are_dependent_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____conjuncts_are_dependent_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "conjuncts_are_dependent",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_conjuncts_are_dependent_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_conjuncts_are_dependent_0
+  },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_conjuncts_are_dependent_0
+};
+
+#line 1640 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_cost_above_par_threshold_0_0 = {
+  (MR_String) "cost_above_par_threshold",
+  (MR_Integer) 0
+};
+
+#line 1646 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_cost_above_par_threshold_0_1 = {
+  (MR_String) "cost_not_above_par_threshold",
+  (MR_Integer) 1
+};
+
+#line 1652 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_value_ordered_cost_above_par_threshold_0[2] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_cost_above_par_threshold_0_0,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_cost_above_par_threshold_0_1
+};
+
+#line 1658 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_name_ordered_cost_above_par_threshold_0[2] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_cost_above_par_threshold_0_0,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_cost_above_par_threshold_0_1
+};
+
+#line 1664 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_cost_above_par_threshold_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 1670 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_cost_above_par_threshold_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____cost_above_par_threshold_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____cost_above_par_threshold_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "cost_above_par_threshold",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_name_ordered_cost_above_par_threshold_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_value_ordered_cost_above_par_threshold_0
+  },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_cost_above_par_threshold_0
+};
+
+#line 1691 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_parallel_exec_metrics_0_0[9] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+};
+
+#line 1704 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_parallel_exec_metrics_0_0[9] = {
+  (MR_String) "pem_num_calls",
+  (MR_String) "pem_seq_time",
+  (MR_String) "pem_par_time",
+  (MR_String) "pem_par_overhead_xpark_cost",
+  (MR_String) "pem_par_overhead_barrier",
+  (MR_String) "pem_par_overhead_signals",
+  (MR_String) "pem_par_overhead_waits",
+  (MR_String) "pem_first_conj_dead_time",
+  (MR_String) "pem_future_dead_time"
+};
+
+#line 1717 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallel_exec_metrics_0_0 = {
+  (MR_String) "parallel_exec_metrics",
+  (MR_Integer) 9,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_parallel_exec_metrics_0_0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_parallel_exec_metrics_0_0,
+  NULL,
+  NULL
+};
+
+#line 1732 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_parallel_exec_metrics_0_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallel_exec_metrics_0_0
+};
+
+#line 1737 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_parallel_exec_metrics_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_parallel_exec_metrics_0_0
+  }
+};
+
+#line 1746 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_parallel_exec_metrics_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallel_exec_metrics_0_0
+};
+
+#line 1751 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_parallel_exec_metrics_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1756 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallel_exec_metrics_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____parallel_exec_metrics_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____parallel_exec_metrics_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "parallel_exec_metrics",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_parallel_exec_metrics_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_parallel_exec_metrics_0
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_parallel_exec_metrics_0
+};
+
+#line 1777 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallelise_dep_conjs_0_0 = {
+  (MR_String) "do_not_parallelise_dep_conjs",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1792 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_parallelise_dep_conjs_0_1[1] = {
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_speedup_estimate_alg_0
+};
+
+#line 1797 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallelise_dep_conjs_0_1 = {
+  (MR_String) "parallelise_dep_conjs",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_parallelise_dep_conjs_0_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1812 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_parallelise_dep_conjs_0_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallelise_dep_conjs_0_0
+};
+
+#line 1817 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_parallelise_dep_conjs_0_1[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallelise_dep_conjs_0_1
+};
+
+#line 1822 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_parallelise_dep_conjs_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_parallelise_dep_conjs_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_parallelise_dep_conjs_0_1
+  }
+};
+
+#line 1836 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_parallelise_dep_conjs_0[2] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallelise_dep_conjs_0_0,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_parallelise_dep_conjs_0_1
+};
+
+#line 1842 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_parallelise_dep_conjs_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 1848 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallelise_dep_conjs_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____parallelise_dep_conjs_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____parallelise_dep_conjs_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "parallelise_dep_conjs",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_parallelise_dep_conjs_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_parallelise_dep_conjs_0
+  },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_parallelise_dep_conjs_0
+};
+
+#line 1869 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "pard_goal",
+  {
+    NULL
+  },
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1890 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct2 mdbcomp__feedback__automatic_parallelism__pair__ti_pair_2builtin__type_ctor_info_int_0builtin__type_ctor_info_float_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+  }
+};
+
+#line 1899 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0builtin__type_ctor_info_float_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mdbcomp__feedback__automatic_parallelism__pair__ti_pair_2builtin__type_ctor_info_int_0builtin__type_ctor_info_float_0
+  }
+};
+
+#line 1907 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_pard_goal_annotation_0_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_cost_above_par_threshold_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0builtin__type_ctor_info_float_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0builtin__type_ctor_info_float_0
+};
+
+#line 1915 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_pard_goal_annotation_0_0[4] = {
+  (MR_String) "pga_cost_percall",
+  (MR_String) "pga_coat_above_threshold",
+  (MR_String) "pga_var_productions",
+  (MR_String) "pga_var_consumptions"
+};
+
+#line 1923 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_pard_goal_annotation_0_0 = {
+  (MR_String) "pard_goal_annotation",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_pard_goal_annotation_0_0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_pard_goal_annotation_0_0,
+  NULL,
+  NULL
+};
+
+#line 1938 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_pard_goal_annotation_0_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_pard_goal_annotation_0_0
+};
+
+#line 1943 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_pard_goal_annotation_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_pard_goal_annotation_0_0
+  }
+};
+
+#line 1952 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_pard_goal_annotation_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_pard_goal_annotation_0_0
+};
+
+#line 1957 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_pard_goal_annotation_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1962 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_annotation_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_annotation_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "pard_goal_annotation",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_pard_goal_annotation_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_pard_goal_annotation_0
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_pard_goal_annotation_0
+};
+
+#line 1983 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 mdbcomp__feedback__automatic_parallelism__list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1991 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_PseudoTypeInfo mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_push_goal_0_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__list__ti_list_1builtin__type_ctor_info_string_0
+};
+
+#line 1999 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_ConstString mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_push_goal_0_0[4] = {
+  (MR_String) "pg_goal_path",
+  (MR_String) "pg_pushee_lo",
+  (MR_String) "pg_pushee_hi",
+  (MR_String) "pg_pushed_into"
+};
+
+#line 2007 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_push_goal_0_0 = {
+  (MR_String) "push_goal",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_types_push_goal_0_0,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__field_names_push_goal_0_0,
+  NULL,
+  NULL
+};
+
+#line 2022 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_push_goal_0_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_push_goal_0_0
+};
+
+#line 2027 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuPtagLayout mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_push_goal_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_stag_ordered_push_goal_0_0
+  }
+};
+
+#line 2036 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_DuFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_push_goal_0[1] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_functor_desc_push_goal_0_0
+};
+
+#line 2041 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_push_goal_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2046 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____push_goal_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____push_goal_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "push_goal",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_name_ordered_push_goal_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__du_ptag_ordered_push_goal_0
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_push_goal_0
+};
+
+#line 2067 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_seq_conj_1[1] = {
+  (MR_Integer) 0
+};
+
+#line 2072 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_NotagFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__notag_functor_desc_seq_conj_1 = {
+  (MR_String) "seq_conj",
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__list__pti_list_1__pseudo_1,
+  (MR_String) "sc_conjs"
+};
+
+#line 2079 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____seq_conj_1_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____seq_conj_1_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "seq_conj",
+  {
+    &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__notag_functor_desc_seq_conj_1
+  },
+  {
+    &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__notag_functor_desc_seq_conj_1
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_seq_conj_1
+};
+
+#line 2100 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_0 = {
+  (MR_String) "estimate_speedup_naively",
+  (MR_Integer) 0
+};
+
+#line 2106 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_1 = {
+  (MR_String) "estimate_speedup_by_num_vars",
+  (MR_Integer) 1
+};
+
+#line 2112 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_2 = {
+  (MR_String) "estimate_speedup_by_overlap",
+  (MR_Integer) 2
+};
+
+#line 2118 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_value_ordered_speedup_estimate_alg_0[3] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_0,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_1,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_2
+};
+
+#line 2125 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_name_ordered_speedup_estimate_alg_0[3] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_1,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_2,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_speedup_estimate_alg_0_0
+};
+
+#line 2132 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_speedup_estimate_alg_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2139 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_speedup_estimate_alg_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____speedup_estimate_alg_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____speedup_estimate_alg_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "speedup_estimate_alg",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_name_ordered_speedup_estimate_alg_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_value_ordered_speedup_estimate_alg_0
+  },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_speedup_estimate_alg_0
+};
+
+#line 2160 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_stat_measure_0_0 = {
+  (MR_String) "stat_mean",
+  (MR_Integer) 0
+};
+
+#line 2166 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDesc mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_stat_measure_0_1 = {
+  (MR_String) "stat_median",
+  (MR_Integer) 1
+};
+
+#line 2172 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_value_ordered_stat_measure_0[2] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_stat_measure_0_0,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_stat_measure_0_1
+};
+
+#line 2178 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_EnumFunctorDescPtr mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_name_ordered_stat_measure_0[2] = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_stat_measure_0_0,
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_functor_desc_stat_measure_0_1
+};
+
+#line 2184 "mdbcomp.feedback.automatic_parallelism.c"
+static const MR_Integer mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_stat_measure_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2190 "mdbcomp.feedback.automatic_parallelism.c"
+const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_stat_measure_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Unify____stat_measure_0_0_10001)),
+  ((MR_Box) (mdbcomp__feedback__automatic_parallelism____Compare____stat_measure_0_0_10001)),
+  (MR_String) "mdbcomp.feedback.automatic_parallelism",
+  (MR_String) "stat_measure",
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_name_ordered_stat_measure_0
+  },
+  {
+    mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__enum_value_ordered_stat_measure_0
+  },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__functor_number_map_stat_measure_0
+};
+
+#line 2211 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____best_par_algorithm_0_0_10001(
+#line 2214 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2216 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2218 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2220 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2222 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2225 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2227 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____best_par_algorithm_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2230 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2232 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2234 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2237 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____best_par_algorithm_0_0_10001(
+#line 2240 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2242 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2244 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2246 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2248 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2250 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2253 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2255 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____best_par_algorithm_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2258 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2260 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2262 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2265 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____callee_rep_0_0_10001(
+#line 2268 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2270 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2272 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2274 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2276 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2279 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2281 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____callee_rep_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2284 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2286 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2288 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2291 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____callee_rep_0_0_10001(
+#line 2294 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2296 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2298 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2300 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2302 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2304 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2307 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2309 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____callee_rep_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2312 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2314 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2316 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2319 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunction_1_0_10001(
+#line 2322 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2324 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2326 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2328 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2330 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2332 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2335 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2337 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunction_1_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2340 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2342 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2344 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2347 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunction_1_0_10001(
+#line 2350 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2352 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2354 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3,
+#line 2356 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_4)
+#line 2358 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2360 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2362 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2365 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2367 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunction_1_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), &mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_4));
+    }
+#line 2370 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_2 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2372 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2374 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2377 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_params_0_0_10001(
+#line 2380 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2382 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2384 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2386 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2388 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2391 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2393 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_params_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2396 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2398 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2400 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2403 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_params_0_0_10001(
+#line 2406 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2408 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2410 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2412 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2414 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2416 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2419 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2421 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_params_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2424 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2426 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2428 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2431 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_1_0_10001(
+#line 2434 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2436 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2438 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2440 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2442 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2444 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2447 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2449 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_1_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2452 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2454 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2456 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2459 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_1_0_10001(
+#line 2462 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2464 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2466 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3,
+#line 2468 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_4)
+#line 2470 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2472 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2474 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2477 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2479 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_1_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), &mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_4));
+    }
+#line 2482 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_2 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2484 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2486 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2489 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_0_0_10001(
+#line 2492 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2494 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2496 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2498 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2500 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2503 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2505 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2508 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2510 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2512 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2515 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_0_0_10001(
+#line 2518 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2520 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2522 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2524 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2526 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2528 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2531 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2533 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2536 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2538 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2540 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2543 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____conjuncts_are_dependent_0_0_10001(
+#line 2546 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2548 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2550 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2552 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2554 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2557 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2559 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____conjuncts_are_dependent_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2562 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2564 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2566 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2569 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____conjuncts_are_dependent_0_0_10001(
+#line 2572 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2574 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2576 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2578 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2580 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2582 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2585 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2587 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____conjuncts_are_dependent_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2590 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2592 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2594 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2597 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____cost_above_par_threshold_0_0_10001(
+#line 2600 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2602 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2604 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2606 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2608 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2611 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2613 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____cost_above_par_threshold_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2616 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2618 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2620 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2623 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____cost_above_par_threshold_0_0_10001(
+#line 2626 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2628 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2630 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2632 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2634 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2636 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2639 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2641 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____cost_above_par_threshold_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2644 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2646 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2648 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2651 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____parallel_exec_metrics_0_0_10001(
+#line 2654 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2656 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2658 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2660 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2662 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2665 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2667 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____parallel_exec_metrics_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2670 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2672 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2674 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2677 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____parallel_exec_metrics_0_0_10001(
+#line 2680 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2682 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2684 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2686 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2688 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2690 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2693 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2695 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____parallel_exec_metrics_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2698 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2700 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2702 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2705 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____parallelise_dep_conjs_0_0_10001(
+#line 2708 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2710 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2712 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2714 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2716 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2719 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2721 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____parallelise_dep_conjs_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2724 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2726 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2728 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2731 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____parallelise_dep_conjs_0_0_10001(
+#line 2734 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2736 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2738 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2740 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2742 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2744 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2747 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2749 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____parallelise_dep_conjs_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2752 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2754 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2756 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2759 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_0_0_10001(
+#line 2762 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2764 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2766 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2768 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2770 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2773 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2775 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2778 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2780 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2782 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2785 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_0_0_10001(
+#line 2788 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2790 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2792 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2794 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2796 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2798 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2801 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2803 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2806 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2808 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2810 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2813 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_annotation_0_0_10001(
+#line 2816 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2818 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2820 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2822 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2824 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2827 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2829 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_annotation_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2832 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2834 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2836 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2839 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_annotation_0_0_10001(
+#line 2842 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2844 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2846 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2848 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2850 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2852 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2855 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2857 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_annotation_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2860 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2862 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2864 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2867 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____push_goal_0_0_10001(
+#line 2870 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2872 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2874 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2876 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2878 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2881 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2883 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____push_goal_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2886 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2888 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2890 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2893 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____push_goal_0_0_10001(
+#line 2896 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2898 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2900 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2902 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2904 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2906 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2909 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2911 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____push_goal_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2914 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2916 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2918 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2921 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____seq_conj_1_0_10001(
+#line 2924 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2926 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2928 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 2930 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2932 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2934 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2937 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2939 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____seq_conj_1_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 2942 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 2944 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2946 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2949 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____seq_conj_1_0_10001(
+#line 2952 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2954 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 2956 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3,
+#line 2958 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_4)
+#line 2960 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2962 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2964 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 2967 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2969 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____seq_conj_1_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), &mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_4));
+    }
+#line 2972 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_2 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 2974 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 2976 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 2979 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____speedup_estimate_alg_0_0_10001(
+#line 2982 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 2984 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 2986 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 2988 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 2990 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 2993 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 2995 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____speedup_estimate_alg_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 2998 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 3000 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 3002 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 3005 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____speedup_estimate_alg_0_0_10001(
+#line 3008 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 3010 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 3012 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 3014 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 3016 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 3018 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 3021 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 3023 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____speedup_estimate_alg_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 3026 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 3028 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 3030 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 3033 "mdbcomp.feedback.automatic_parallelism.c"
+static MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____stat_measure_0_0_10001(
+#line 3036 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 3038 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 3040 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 3042 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 3044 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+
+#line 3047 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 3049 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____stat_measure_0_0(((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2));
+    }
+#line 3052 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 3054 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 3056 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 3059 "mdbcomp.feedback.automatic_parallelism.c"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____stat_measure_0_0_10001(
+#line 3062 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 3064 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_2,
+#line 3066 "mdbcomp.feedback.automatic_parallelism.c"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_3)
+#line 3068 "mdbcomp.feedback.automatic_parallelism.c"
+{
+#line 3070 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 3072 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1;
+
+#line 3075 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 3077 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism____Compare____stat_measure_0_0(&mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1, ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_2), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_3));
+    }
+#line 3080 "mdbcomp.feedback.automatic_parallelism.c"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_1 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__1_1));
+#line 3082 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 3084 "mdbcomp.feedback.automatic_parallelism.c"
+}
+
+#line 411 "feedback.automatic_parallelism.m"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__IntroducedFrom__pred__convert_candidate_par_conjunction__411__1_6_p_0(
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_28,
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_29,
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__Conv0_4,
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__CPC0_5,
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__HeadVar__5_23,
+#line 411 "feedback.automatic_parallelism.m"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__HeadVar__6_24)
+#line 411 "feedback.automatic_parallelism.m"
+{
+#line 411 "feedback.automatic_parallelism.m"
+  {
+#line 411 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 411 "feedback.automatic_parallelism.m"
+    void MR_CALL (* mdbcomp__feedback__automatic_parallelism__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__Conv0_4, (MR_Integer) 1)));
+
+#line 411 "feedback.automatic_parallelism.m"
+    {
+#line 411 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__func_0(((MR_Box) mdbcomp__feedback__automatic_parallelism__Conv0_4), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__CPC0_5)), mdbcomp__feedback__automatic_parallelism__HeadVar__5_23, mdbcomp__feedback__automatic_parallelism__HeadVar__6_24);
+#line 411 "feedback.automatic_parallelism.m"
+      return;
+    }
+#line 411 "feedback.automatic_parallelism.m"
+  }
+#line 411 "feedback.automatic_parallelism.m"
+}
+
+#line 37 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____stat_measure_0_0(
+#line 37 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 37 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 37 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 37 "feedback.automatic_parallelism.m"
+{
+#line 37 "feedback.automatic_parallelism.m"
+  {
+#line 37 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 37 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_4 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 37 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_5 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 37 "feedback.automatic_parallelism.m"
+    {
+#line 37 "feedback.automatic_parallelism.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_4, mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_5);
+#line 37 "feedback.automatic_parallelism.m"
+      return;
+    }
+#line 37 "feedback.automatic_parallelism.m"
+  }
+#line 37 "feedback.automatic_parallelism.m"
+}
+
+#line 37 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____stat_measure_0_0(
+#line 37 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_1,
+#line 37 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 37 "feedback.automatic_parallelism.m"
+{
+#line 3164 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 3166 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__HeadVar__2_1 == mdbcomp__feedback__automatic_parallelism__HeadVar__2_2);
+
+#line 3169 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 3171 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 37 "feedback.automatic_parallelism.m"
+}
+
+#line 107 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____speedup_estimate_alg_0_0(
+#line 107 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 107 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 107 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 107 "feedback.automatic_parallelism.m"
+{
+#line 107 "feedback.automatic_parallelism.m"
+  {
+#line 107 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 107 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_4 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 107 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_5 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 107 "feedback.automatic_parallelism.m"
+    {
+#line 107 "feedback.automatic_parallelism.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_4, mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_5);
+#line 107 "feedback.automatic_parallelism.m"
+      return;
+    }
+#line 107 "feedback.automatic_parallelism.m"
+  }
+#line 107 "feedback.automatic_parallelism.m"
+}
+
+#line 107 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____speedup_estimate_alg_0_0(
+#line 107 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_1,
+#line 107 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 107 "feedback.automatic_parallelism.m"
+{
+#line 3217 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 3219 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__HeadVar__2_1 == mdbcomp__feedback__automatic_parallelism__HeadVar__2_2);
+
+#line 3222 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 3224 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 107 "feedback.automatic_parallelism.m"
+}
+
+#line 248 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____seq_conj_1_0(
+#line 248 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_8,
+#line 248 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 248 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 248 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 248 "feedback.automatic_parallelism.m"
+{
+#line 248 "feedback.automatic_parallelism.m"
+  {
+#line 248 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 248 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_6 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 248 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_7 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 248 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_6 == mdbcomp__feedback__automatic_parallelism__CastY_7);
+#line 248 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 3255 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 248 "feedback.automatic_parallelism.m"
+    else
+#line 248 "feedback.automatic_parallelism.m"
+      {
+#line 248 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_4_4 = (MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 248 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_5_5 = (MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 248 "feedback.automatic_parallelism.m"
+        {
+#line 248 "feedback.automatic_parallelism.m"
+          mercury__list____Compare____list_1_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_8, mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__V_4_4, mdbcomp__feedback__automatic_parallelism__V_5_5);
+#line 248 "feedback.automatic_parallelism.m"
+          return;
+        }
+#line 248 "feedback.automatic_parallelism.m"
+      }
+#line 248 "feedback.automatic_parallelism.m"
+  }
+#line 248 "feedback.automatic_parallelism.m"
+}
+
+#line 248 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____seq_conj_1_0(
+#line 248 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_7,
+#line 248 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 248 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 248 "feedback.automatic_parallelism.m"
+{
+#line 248 "feedback.automatic_parallelism.m"
+  {
+#line 248 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 248 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_5 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 248 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_6 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 248 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_5 == mdbcomp__feedback__automatic_parallelism__CastY_6);
+#line 248 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 248 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 248 "feedback.automatic_parallelism.m"
+    else
+#line 248 "feedback.automatic_parallelism.m"
+      {
+#line 248 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_3_3 = (MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 248 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_4_4 = (MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 3315 "mdbcomp.feedback.automatic_parallelism.c"
+        {
+#line 3317 "mdbcomp.feedback.automatic_parallelism.c"
+          return mdbcomp__feedback__automatic_parallelism__succeeded = mercury__list____Unify____list_1_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_7, mdbcomp__feedback__automatic_parallelism__V_3_3, mdbcomp__feedback__automatic_parallelism__V_4_4);
+        }
+#line 248 "feedback.automatic_parallelism.m"
+      }
+#line 248 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 248 "feedback.automatic_parallelism.m"
+  }
+#line 248 "feedback.automatic_parallelism.m"
+}
+
+#line 171 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____push_goal_0_0(
+#line 171 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 171 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 171 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 171 "feedback.automatic_parallelism.m"
+{
+#line 171 "feedback.automatic_parallelism.m"
+  {
+#line 171 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 171 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_15 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 171 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_16 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 171 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_15 == mdbcomp__feedback__automatic_parallelism__CastY_16);
+#line 171 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 3353 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 171 "feedback.automatic_parallelism.m"
+    else
+#line 171 "feedback.automatic_parallelism.m"
+      {
+#line 171 "feedback.automatic_parallelism.m"
+        MR_String mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_String mdbcomp__feedback__automatic_parallelism__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 2)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 3)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_12_12;
+
+#line 171 "feedback.automatic_parallelism.m"
+        {
+#line 171 "feedback.automatic_parallelism.m"
+          mercury__private_builtin__builtin_compare_string_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_12_12, mdbcomp__feedback__automatic_parallelism__V_4_4, mdbcomp__feedback__automatic_parallelism__V_8_8);
+        }
+#line 3383 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_12_12 == (MR_Integer) 0);
+#line 171 "feedback.automatic_parallelism.m"
+        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 171 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 171 "feedback.automatic_parallelism.m"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_12_12;
+#line 171 "feedback.automatic_parallelism.m"
+        else
+#line 171 "feedback.automatic_parallelism.m"
+          {
+#line 171 "feedback.automatic_parallelism.m"
+            MR_Word mdbcomp__feedback__automatic_parallelism__V_13_13;
+
+#line 171 "feedback.automatic_parallelism.m"
+            {
+#line 171 "feedback.automatic_parallelism.m"
+              mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_13_13, mdbcomp__feedback__automatic_parallelism__V_5_5, mdbcomp__feedback__automatic_parallelism__V_9_9);
+            }
+#line 3403 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_13_13 == (MR_Integer) 0);
+#line 171 "feedback.automatic_parallelism.m"
+            mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 171 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 171 "feedback.automatic_parallelism.m"
+              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_13_13;
+#line 171 "feedback.automatic_parallelism.m"
+            else
+#line 171 "feedback.automatic_parallelism.m"
+              {
+#line 171 "feedback.automatic_parallelism.m"
+                MR_Word mdbcomp__feedback__automatic_parallelism__V_14_14;
+
+#line 171 "feedback.automatic_parallelism.m"
+                {
+#line 171 "feedback.automatic_parallelism.m"
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_14_14, mdbcomp__feedback__automatic_parallelism__V_6_6, mdbcomp__feedback__automatic_parallelism__V_10_10);
+                }
+#line 3423 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_14_14 == (MR_Integer) 0);
+#line 171 "feedback.automatic_parallelism.m"
+                mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 171 "feedback.automatic_parallelism.m"
+                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 171 "feedback.automatic_parallelism.m"
+                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_14_14;
+#line 171 "feedback.automatic_parallelism.m"
+                else
+#line 171 "feedback.automatic_parallelism.m"
+                  {
+#line 171 "feedback.automatic_parallelism.m"
+                    {
+#line 171 "feedback.automatic_parallelism.m"
+                      mercury__builtin__compare_3_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[6], mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_7_7)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_11_11)));
+#line 171 "feedback.automatic_parallelism.m"
+                      return;
+                    }
+#line 171 "feedback.automatic_parallelism.m"
+                  }
+#line 171 "feedback.automatic_parallelism.m"
+              }
+#line 171 "feedback.automatic_parallelism.m"
+          }
+#line 171 "feedback.automatic_parallelism.m"
+      }
+#line 171 "feedback.automatic_parallelism.m"
+  }
+#line 171 "feedback.automatic_parallelism.m"
+}
+
+#line 171 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____push_goal_0_0(
+#line 171 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 171 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 171 "feedback.automatic_parallelism.m"
+{
+#line 171 "feedback.automatic_parallelism.m"
+  {
+#line 171 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 171 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_11 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 171 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_12 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 171 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_11 == mdbcomp__feedback__automatic_parallelism__CastY_12);
+#line 171 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 171 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 171 "feedback.automatic_parallelism.m"
+    else
+#line 171 "feedback.automatic_parallelism.m"
+      {
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_13_13;
+#line 171 "feedback.automatic_parallelism.m"
+        MR_String mdbcomp__feedback__automatic_parallelism__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 2)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 3)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_String mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 171 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+
+#line 3502 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (strcmp(mdbcomp__feedback__automatic_parallelism__V_3_3, mdbcomp__feedback__automatic_parallelism__V_7_7) == 0);
+#line 171 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 171 "feedback.automatic_parallelism.m"
+          {
+#line 3508 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_4_4 == mdbcomp__feedback__automatic_parallelism__V_8_8);
+#line 171 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 171 "feedback.automatic_parallelism.m"
+              {
+#line 3514 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_5_5 == mdbcomp__feedback__automatic_parallelism__V_9_9);
+#line 171 "feedback.automatic_parallelism.m"
+                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 171 "feedback.automatic_parallelism.m"
+                  {
+#line 3520 "mdbcomp.feedback.automatic_parallelism.c"
+                    mdbcomp__feedback__automatic_parallelism__TypeInfo_13_13 = (MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[6];
+#line 3522 "mdbcomp.feedback.automatic_parallelism.c"
+                    {
+#line 3524 "mdbcomp.feedback.automatic_parallelism.c"
+                      return mdbcomp__feedback__automatic_parallelism__succeeded = mercury__builtin__unify_2_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_13_13, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_6_6)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_10_10)));
+                    }
+#line 171 "feedback.automatic_parallelism.m"
+                  }
+#line 171 "feedback.automatic_parallelism.m"
+              }
+#line 171 "feedback.automatic_parallelism.m"
+          }
+#line 171 "feedback.automatic_parallelism.m"
+      }
+#line 171 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 171 "feedback.automatic_parallelism.m"
+  }
+#line 171 "feedback.automatic_parallelism.m"
+}
+
+#line 270 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_annotation_0_0(
+#line 270 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 270 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 270 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 270 "feedback.automatic_parallelism.m"
+{
+#line 270 "feedback.automatic_parallelism.m"
+  {
+#line 270 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 270 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_15 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 270 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_16 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 270 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_15 == mdbcomp__feedback__automatic_parallelism__CastY_16);
+#line 270 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 3566 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 270 "feedback.automatic_parallelism.m"
+    else
+#line 270 "feedback.automatic_parallelism.m"
+      {
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_4_4 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_8_8 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 2)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 3)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_12_12;
+
+#line 270 "feedback.automatic_parallelism.m"
+        {
+#line 270 "feedback.automatic_parallelism.m"
+          mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_12_12, mdbcomp__feedback__automatic_parallelism__V_4_4, mdbcomp__feedback__automatic_parallelism__V_8_8);
+        }
+#line 3596 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_12_12 == (MR_Integer) 0);
+#line 270 "feedback.automatic_parallelism.m"
+        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 270 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 270 "feedback.automatic_parallelism.m"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_12_12;
+#line 270 "feedback.automatic_parallelism.m"
+        else
+#line 270 "feedback.automatic_parallelism.m"
+          {
+#line 270 "feedback.automatic_parallelism.m"
+            MR_Word mdbcomp__feedback__automatic_parallelism__V_13_13;
+#line 270 "feedback.automatic_parallelism.m"
+            MR_Integer mdbcomp__feedback__automatic_parallelism__V_21_21 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__V_5_5;
+#line 270 "feedback.automatic_parallelism.m"
+            MR_Integer mdbcomp__feedback__automatic_parallelism__V_22_22 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__V_9_9;
+
+#line 270 "feedback.automatic_parallelism.m"
+            {
+#line 270 "feedback.automatic_parallelism.m"
+              mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_13_13, mdbcomp__feedback__automatic_parallelism__V_21_21, mdbcomp__feedback__automatic_parallelism__V_22_22);
+            }
+#line 3620 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_13_13 == (MR_Integer) 0);
+#line 270 "feedback.automatic_parallelism.m"
+            mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 270 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 270 "feedback.automatic_parallelism.m"
+              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_13_13;
+#line 270 "feedback.automatic_parallelism.m"
+            else
+#line 270 "feedback.automatic_parallelism.m"
+              {
+#line 270 "feedback.automatic_parallelism.m"
+                MR_Word mdbcomp__feedback__automatic_parallelism__V_14_14;
+
+#line 270 "feedback.automatic_parallelism.m"
+                {
+#line 270 "feedback.automatic_parallelism.m"
+                  mercury__builtin__compare_3_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[5], &mdbcomp__feedback__automatic_parallelism__V_14_14, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_6_6)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_10_10)));
+                }
+#line 3640 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_14_14 == (MR_Integer) 0);
+#line 270 "feedback.automatic_parallelism.m"
+                mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 270 "feedback.automatic_parallelism.m"
+                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 270 "feedback.automatic_parallelism.m"
+                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_14_14;
+#line 270 "feedback.automatic_parallelism.m"
+                else
+#line 270 "feedback.automatic_parallelism.m"
+                  {
+#line 270 "feedback.automatic_parallelism.m"
+                    {
+#line 270 "feedback.automatic_parallelism.m"
+                      mercury__builtin__compare_3_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[5], mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_7_7)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_11_11)));
+#line 270 "feedback.automatic_parallelism.m"
+                      return;
+                    }
+#line 270 "feedback.automatic_parallelism.m"
+                  }
+#line 270 "feedback.automatic_parallelism.m"
+              }
+#line 270 "feedback.automatic_parallelism.m"
+          }
+#line 270 "feedback.automatic_parallelism.m"
+      }
+#line 270 "feedback.automatic_parallelism.m"
+  }
+#line 270 "feedback.automatic_parallelism.m"
+}
+
+#line 270 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_annotation_0_0(
+#line 270 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 270 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 270 "feedback.automatic_parallelism.m"
+{
+#line 270 "feedback.automatic_parallelism.m"
+  {
+#line 270 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 270 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_11 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 270 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_12 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 270 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_11 == mdbcomp__feedback__automatic_parallelism__CastY_12);
+#line 270 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 270 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 270 "feedback.automatic_parallelism.m"
+    else
+#line 270 "feedback.automatic_parallelism.m"
+      {
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_13_13;
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_14_14;
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_3_3 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 2)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 3)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_7_7 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 270 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+
+#line 3721 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_3_3 == mdbcomp__feedback__automatic_parallelism__V_7_7);
+#line 270 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 270 "feedback.automatic_parallelism.m"
+          {
+#line 3727 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_4_4 == mdbcomp__feedback__automatic_parallelism__V_8_8);
+#line 270 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 270 "feedback.automatic_parallelism.m"
+              {
+#line 3733 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__TypeInfo_13_13 = (MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[5];
+#line 3735 "mdbcomp.feedback.automatic_parallelism.c"
+                {
+#line 3737 "mdbcomp.feedback.automatic_parallelism.c"
+                  mdbcomp__feedback__automatic_parallelism__succeeded = mercury__builtin__unify_2_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_13_13, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_5_5)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_9_9)));
+                }
+#line 270 "feedback.automatic_parallelism.m"
+                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 270 "feedback.automatic_parallelism.m"
+                  {
+#line 3744 "mdbcomp.feedback.automatic_parallelism.c"
+                    mdbcomp__feedback__automatic_parallelism__TypeInfo_14_14 = (MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[5];
+#line 3746 "mdbcomp.feedback.automatic_parallelism.c"
+                    {
+#line 3748 "mdbcomp.feedback.automatic_parallelism.c"
+                      return mdbcomp__feedback__automatic_parallelism__succeeded = mercury__builtin__unify_2_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_14_14, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_6_6)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_10_10)));
+                    }
+#line 270 "feedback.automatic_parallelism.m"
+                  }
+#line 270 "feedback.automatic_parallelism.m"
+              }
+#line 270 "feedback.automatic_parallelism.m"
+          }
+#line 270 "feedback.automatic_parallelism.m"
+      }
+#line 270 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 270 "feedback.automatic_parallelism.m"
+  }
+#line 270 "feedback.automatic_parallelism.m"
+}
+
+#line 268 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_0_0(
+#line 268 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 268 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 268 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 268 "feedback.automatic_parallelism.m"
+{
+#line 268 "feedback.automatic_parallelism.m"
+  {
+#line 268 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 268 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_4 = mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 268 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_5 = mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 268 "feedback.automatic_parallelism.m"
+    {
+#line 268 "feedback.automatic_parallelism.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[1], mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_4)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_5)));
+#line 268 "feedback.automatic_parallelism.m"
+      return;
+    }
+#line 268 "feedback.automatic_parallelism.m"
+  }
+#line 268 "feedback.automatic_parallelism.m"
+}
+
+#line 268 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_0_0(
+#line 268 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 268 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 268 "feedback.automatic_parallelism.m"
+{
+#line 268 "feedback.automatic_parallelism.m"
+  {
+#line 268 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 268 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_3 = mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 268 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_4 = mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 268 "feedback.automatic_parallelism.m"
+    {
+#line 268 "feedback.automatic_parallelism.m"
+      return mdbcomp__feedback__automatic_parallelism__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[1], ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_3)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_4)));
+    }
+#line 268 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 268 "feedback.automatic_parallelism.m"
+  }
+#line 268 "feedback.automatic_parallelism.m"
+}
+
+#line 103 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____parallelise_dep_conjs_0_0(
+#line 103 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 103 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 103 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 103 "feedback.automatic_parallelism.m"
+{
+#line 103 "feedback.automatic_parallelism.m"
+  {
+#line 103 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 103 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_8 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 103 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_9 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 103 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_8 == mdbcomp__feedback__automatic_parallelism__CastY_9);
+#line 103 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 3852 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 103 "feedback.automatic_parallelism.m"
+    else
+#line 103 "feedback.automatic_parallelism.m"
+      if ((mdbcomp__feedback__automatic_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 103 "feedback.automatic_parallelism.m"
+        if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 103 "feedback.automatic_parallelism.m"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 103 "feedback.automatic_parallelism.m"
+        else
+#line 3864 "mdbcomp.feedback.automatic_parallelism.c"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 1;
+#line 103 "feedback.automatic_parallelism.m"
+      else
+#line 103 "feedback.automatic_parallelism.m"
+        {
+#line 103 "feedback.automatic_parallelism.m"
+          MR_Word mdbcomp__feedback__automatic_parallelism__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 103 "feedback.automatic_parallelism.m"
+          if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 3875 "mdbcomp.feedback.automatic_parallelism.c"
+            *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 2;
+#line 103 "feedback.automatic_parallelism.m"
+          else
+#line 103 "feedback.automatic_parallelism.m"
+            {
+#line 103 "feedback.automatic_parallelism.m"
+              MR_Word mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 103 "feedback.automatic_parallelism.m"
+              MR_Integer mdbcomp__feedback__automatic_parallelism__V_12_12 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__V_11_11;
+#line 103 "feedback.automatic_parallelism.m"
+              MR_Integer mdbcomp__feedback__automatic_parallelism__V_13_13 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__V_7_7;
+
+#line 103 "feedback.automatic_parallelism.m"
+              {
+#line 103 "feedback.automatic_parallelism.m"
+                mercury__private_builtin__builtin_compare_int_3_p_0(mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__V_12_12, mdbcomp__feedback__automatic_parallelism__V_13_13);
+#line 103 "feedback.automatic_parallelism.m"
+                return;
+              }
+#line 103 "feedback.automatic_parallelism.m"
+            }
+#line 103 "feedback.automatic_parallelism.m"
+        }
+#line 103 "feedback.automatic_parallelism.m"
+  }
+#line 103 "feedback.automatic_parallelism.m"
+}
+
+#line 103 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____parallelise_dep_conjs_0_0(
+#line 103 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 103 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 103 "feedback.automatic_parallelism.m"
+{
+#line 103 "feedback.automatic_parallelism.m"
+  {
+#line 103 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 103 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_7 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 103 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_8 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 103 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_7 == mdbcomp__feedback__automatic_parallelism__CastY_8);
+#line 103 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 103 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 103 "feedback.automatic_parallelism.m"
+    else
+#line 103 "feedback.automatic_parallelism.m"
+      if ((mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 103 "feedback.automatic_parallelism.m"
+        {
+#line 103 "feedback.automatic_parallelism.m"
+          MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_3 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 103 "feedback.automatic_parallelism.m"
+          MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_4 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 103 "feedback.automatic_parallelism.m"
+          mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastY_4 == mdbcomp__feedback__automatic_parallelism__CastX_3);
+#line 103 "feedback.automatic_parallelism.m"
+        }
+#line 103 "feedback.automatic_parallelism.m"
+      else
+#line 103 "feedback.automatic_parallelism.m"
+        {
+#line 103 "feedback.automatic_parallelism.m"
+          MR_Word mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 103 "feedback.automatic_parallelism.m"
+          MR_Word mdbcomp__feedback__automatic_parallelism__V_6_6;
+
+#line 103 "feedback.automatic_parallelism.m"
+          mdbcomp__feedback__automatic_parallelism__succeeded = ((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 103 "feedback.automatic_parallelism.m"
+          if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 103 "feedback.automatic_parallelism.m"
+            {
+#line 103 "feedback.automatic_parallelism.m"
+              mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 3960 "mdbcomp.feedback.automatic_parallelism.c"
+              mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_5_5 == mdbcomp__feedback__automatic_parallelism__V_6_6);
+#line 103 "feedback.automatic_parallelism.m"
+            }
+#line 103 "feedback.automatic_parallelism.m"
+        }
+#line 103 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 103 "feedback.automatic_parallelism.m"
+  }
+#line 103 "feedback.automatic_parallelism.m"
+}
+
+#line 314 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____parallel_exec_metrics_0_0(
+#line 314 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 314 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 314 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 314 "feedback.automatic_parallelism.m"
+{
+#line 314 "feedback.automatic_parallelism.m"
+  {
+#line 314 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 314 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_30 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 314 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_31 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 314 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_30 == mdbcomp__feedback__automatic_parallelism__CastY_31);
+#line 314 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 3997 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 314 "feedback.automatic_parallelism.m"
+    else
+#line 314 "feedback.automatic_parallelism.m"
+      {
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_5_5 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_6_6 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_7_7 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_8_8 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 4)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_9_9 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 5)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_10_10 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 6)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_11_11 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 7)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_12_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 8)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_14_14 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_15_15 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 2)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_16_16 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 3)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_17_17 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 4)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_18_18 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 5)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_19_19 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 6)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_20_20 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 7)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_21_21 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 8)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_22_22;
+
+#line 314 "feedback.automatic_parallelism.m"
+        {
+#line 314 "feedback.automatic_parallelism.m"
+          mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_22_22, mdbcomp__feedback__automatic_parallelism__V_4_4, mdbcomp__feedback__automatic_parallelism__V_13_13);
+        }
+#line 4047 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_22_22 == (MR_Integer) 0);
+#line 314 "feedback.automatic_parallelism.m"
+        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 314 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_22_22;
+#line 314 "feedback.automatic_parallelism.m"
+        else
+#line 314 "feedback.automatic_parallelism.m"
+          {
+#line 314 "feedback.automatic_parallelism.m"
+            MR_Word mdbcomp__feedback__automatic_parallelism__V_23_23;
+
+#line 314 "feedback.automatic_parallelism.m"
+            {
+#line 314 "feedback.automatic_parallelism.m"
+              mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_23_23, mdbcomp__feedback__automatic_parallelism__V_5_5, mdbcomp__feedback__automatic_parallelism__V_14_14);
+            }
+#line 4067 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_23_23 == (MR_Integer) 0);
+#line 314 "feedback.automatic_parallelism.m"
+            mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 314 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_23_23;
+#line 314 "feedback.automatic_parallelism.m"
+            else
+#line 314 "feedback.automatic_parallelism.m"
+              {
+#line 314 "feedback.automatic_parallelism.m"
+                MR_Word mdbcomp__feedback__automatic_parallelism__V_24_24;
+
+#line 314 "feedback.automatic_parallelism.m"
+                {
+#line 314 "feedback.automatic_parallelism.m"
+                  mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_24_24, mdbcomp__feedback__automatic_parallelism__V_6_6, mdbcomp__feedback__automatic_parallelism__V_15_15);
+                }
+#line 4087 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_24_24 == (MR_Integer) 0);
+#line 314 "feedback.automatic_parallelism.m"
+                mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 314 "feedback.automatic_parallelism.m"
+                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_24_24;
+#line 314 "feedback.automatic_parallelism.m"
+                else
+#line 314 "feedback.automatic_parallelism.m"
+                  {
+#line 314 "feedback.automatic_parallelism.m"
+                    MR_Word mdbcomp__feedback__automatic_parallelism__V_25_25;
+
+#line 314 "feedback.automatic_parallelism.m"
+                    {
+#line 314 "feedback.automatic_parallelism.m"
+                      mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_25_25, mdbcomp__feedback__automatic_parallelism__V_7_7, mdbcomp__feedback__automatic_parallelism__V_16_16);
+                    }
+#line 4107 "mdbcomp.feedback.automatic_parallelism.c"
+                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_25_25 == (MR_Integer) 0);
+#line 314 "feedback.automatic_parallelism.m"
+                    mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 314 "feedback.automatic_parallelism.m"
+                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_25_25;
+#line 314 "feedback.automatic_parallelism.m"
+                    else
+#line 314 "feedback.automatic_parallelism.m"
+                      {
+#line 314 "feedback.automatic_parallelism.m"
+                        MR_Word mdbcomp__feedback__automatic_parallelism__V_26_26;
+
+#line 314 "feedback.automatic_parallelism.m"
+                        {
+#line 314 "feedback.automatic_parallelism.m"
+                          mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_26_26, mdbcomp__feedback__automatic_parallelism__V_8_8, mdbcomp__feedback__automatic_parallelism__V_17_17);
+                        }
+#line 4127 "mdbcomp.feedback.automatic_parallelism.c"
+                        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_26_26 == (MR_Integer) 0);
+#line 314 "feedback.automatic_parallelism.m"
+                        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 314 "feedback.automatic_parallelism.m"
+                        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_26_26;
+#line 314 "feedback.automatic_parallelism.m"
+                        else
+#line 314 "feedback.automatic_parallelism.m"
+                          {
+#line 314 "feedback.automatic_parallelism.m"
+                            MR_Word mdbcomp__feedback__automatic_parallelism__V_27_27;
+
+#line 314 "feedback.automatic_parallelism.m"
+                            {
+#line 314 "feedback.automatic_parallelism.m"
+                              mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_27_27, mdbcomp__feedback__automatic_parallelism__V_9_9, mdbcomp__feedback__automatic_parallelism__V_18_18);
+                            }
+#line 4147 "mdbcomp.feedback.automatic_parallelism.c"
+                            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_27_27 == (MR_Integer) 0);
+#line 314 "feedback.automatic_parallelism.m"
+                            mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 314 "feedback.automatic_parallelism.m"
+                            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_27_27;
+#line 314 "feedback.automatic_parallelism.m"
+                            else
+#line 314 "feedback.automatic_parallelism.m"
+                              {
+#line 314 "feedback.automatic_parallelism.m"
+                                MR_Word mdbcomp__feedback__automatic_parallelism__V_28_28;
+
+#line 314 "feedback.automatic_parallelism.m"
+                                {
+#line 314 "feedback.automatic_parallelism.m"
+                                  mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_28_28, mdbcomp__feedback__automatic_parallelism__V_10_10, mdbcomp__feedback__automatic_parallelism__V_19_19);
+                                }
+#line 4167 "mdbcomp.feedback.automatic_parallelism.c"
+                                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_28_28 == (MR_Integer) 0);
+#line 314 "feedback.automatic_parallelism.m"
+                                mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 314 "feedback.automatic_parallelism.m"
+                                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_28_28;
+#line 314 "feedback.automatic_parallelism.m"
+                                else
+#line 314 "feedback.automatic_parallelism.m"
+                                  {
+#line 314 "feedback.automatic_parallelism.m"
+                                    MR_Word mdbcomp__feedback__automatic_parallelism__V_29_29;
+
+#line 314 "feedback.automatic_parallelism.m"
+                                    {
+#line 314 "feedback.automatic_parallelism.m"
+                                      mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_29_29, mdbcomp__feedback__automatic_parallelism__V_11_11, mdbcomp__feedback__automatic_parallelism__V_20_20);
+                                    }
+#line 4187 "mdbcomp.feedback.automatic_parallelism.c"
+                                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_29_29 == (MR_Integer) 0);
+#line 314 "feedback.automatic_parallelism.m"
+                                    mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 314 "feedback.automatic_parallelism.m"
+                                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                                      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_29_29;
+#line 314 "feedback.automatic_parallelism.m"
+                                    else
+#line 314 "feedback.automatic_parallelism.m"
+                                      {
+#line 314 "feedback.automatic_parallelism.m"
+                                        mercury__private_builtin__builtin_compare_float_3_p_0(mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__V_12_12, mdbcomp__feedback__automatic_parallelism__V_21_21);
+#line 314 "feedback.automatic_parallelism.m"
+                                        return;
+                                      }
+#line 314 "feedback.automatic_parallelism.m"
+                                  }
+#line 314 "feedback.automatic_parallelism.m"
+                              }
+#line 314 "feedback.automatic_parallelism.m"
+                          }
+#line 314 "feedback.automatic_parallelism.m"
+                      }
+#line 314 "feedback.automatic_parallelism.m"
+                  }
+#line 314 "feedback.automatic_parallelism.m"
+              }
+#line 314 "feedback.automatic_parallelism.m"
+          }
+#line 314 "feedback.automatic_parallelism.m"
+      }
+#line 314 "feedback.automatic_parallelism.m"
+  }
+#line 314 "feedback.automatic_parallelism.m"
+}
+
+#line 314 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____parallel_exec_metrics_0_0(
+#line 314 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 314 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 314 "feedback.automatic_parallelism.m"
+{
+#line 314 "feedback.automatic_parallelism.m"
+  {
+#line 314 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 314 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_21 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 314 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_22 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 314 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_21 == mdbcomp__feedback__automatic_parallelism__CastY_22);
+#line 314 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 314 "feedback.automatic_parallelism.m"
+    else
+#line 314 "feedback.automatic_parallelism.m"
+      {
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_4_4 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_5_5 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 2)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_6_6 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 3)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_7_7 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 4)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_8_8 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 5)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_9_9 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 6)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_10_10 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 7)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_11_11 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 8)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_13_13 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_14_14 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_15_15 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_16_16 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 4)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_17_17 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 5)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_18_18 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 6)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_19_19 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 7)));
+#line 314 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_20_20 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 8)));
+
+#line 4290 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_3_3 == mdbcomp__feedback__automatic_parallelism__V_12_12);
+#line 314 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+          {
+#line 4296 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_4_4 == mdbcomp__feedback__automatic_parallelism__V_13_13);
+#line 314 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+              {
+#line 4302 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_5_5 == mdbcomp__feedback__automatic_parallelism__V_14_14);
+#line 314 "feedback.automatic_parallelism.m"
+                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                  {
+#line 4308 "mdbcomp.feedback.automatic_parallelism.c"
+                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_6_6 == mdbcomp__feedback__automatic_parallelism__V_15_15);
+#line 314 "feedback.automatic_parallelism.m"
+                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                      {
+#line 4314 "mdbcomp.feedback.automatic_parallelism.c"
+                        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_7_7 == mdbcomp__feedback__automatic_parallelism__V_16_16);
+#line 314 "feedback.automatic_parallelism.m"
+                        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                          {
+#line 4320 "mdbcomp.feedback.automatic_parallelism.c"
+                            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_8_8 == mdbcomp__feedback__automatic_parallelism__V_17_17);
+#line 314 "feedback.automatic_parallelism.m"
+                            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                              {
+#line 4326 "mdbcomp.feedback.automatic_parallelism.c"
+                                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_9_9 == mdbcomp__feedback__automatic_parallelism__V_18_18);
+#line 314 "feedback.automatic_parallelism.m"
+                                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 314 "feedback.automatic_parallelism.m"
+                                  {
+#line 4332 "mdbcomp.feedback.automatic_parallelism.c"
+                                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_10_10 == mdbcomp__feedback__automatic_parallelism__V_19_19);
+#line 314 "feedback.automatic_parallelism.m"
+                                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 4336 "mdbcomp.feedback.automatic_parallelism.c"
+                                      mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_11_11 == mdbcomp__feedback__automatic_parallelism__V_20_20);
+#line 314 "feedback.automatic_parallelism.m"
+                                  }
+#line 314 "feedback.automatic_parallelism.m"
+                              }
+#line 314 "feedback.automatic_parallelism.m"
+                          }
+#line 314 "feedback.automatic_parallelism.m"
+                      }
+#line 314 "feedback.automatic_parallelism.m"
+                  }
+#line 314 "feedback.automatic_parallelism.m"
+              }
+#line 314 "feedback.automatic_parallelism.m"
+          }
+#line 314 "feedback.automatic_parallelism.m"
+      }
+#line 314 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 314 "feedback.automatic_parallelism.m"
+  }
+#line 314 "feedback.automatic_parallelism.m"
+}
+
+#line 282 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____cost_above_par_threshold_0_0(
+#line 282 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 282 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 282 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 282 "feedback.automatic_parallelism.m"
+{
+#line 282 "feedback.automatic_parallelism.m"
+  {
+#line 282 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 282 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_4 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 282 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_5 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 282 "feedback.automatic_parallelism.m"
+    {
+#line 282 "feedback.automatic_parallelism.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_4, mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_5);
+#line 282 "feedback.automatic_parallelism.m"
+      return;
+    }
+#line 282 "feedback.automatic_parallelism.m"
+  }
+#line 282 "feedback.automatic_parallelism.m"
+}
+
+#line 282 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____cost_above_par_threshold_0_0(
+#line 282 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_1,
+#line 282 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 282 "feedback.automatic_parallelism.m"
+{
+#line 4402 "mdbcomp.feedback.automatic_parallelism.c"
+  {
+#line 4404 "mdbcomp.feedback.automatic_parallelism.c"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__HeadVar__2_1 == mdbcomp__feedback__automatic_parallelism__HeadVar__2_2);
+
+#line 4407 "mdbcomp.feedback.automatic_parallelism.c"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 4409 "mdbcomp.feedback.automatic_parallelism.c"
+  }
+#line 282 "feedback.automatic_parallelism.m"
+}
+
+#line 292 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____conjuncts_are_dependent_0_0(
+#line 292 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 292 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 292 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 292 "feedback.automatic_parallelism.m"
+{
+#line 292 "feedback.automatic_parallelism.m"
+  {
+#line 292 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 292 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_8 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 292 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_9 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 292 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_8 == mdbcomp__feedback__automatic_parallelism__CastY_9);
+#line 292 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 4438 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 292 "feedback.automatic_parallelism.m"
+    else
+#line 292 "feedback.automatic_parallelism.m"
+      if ((mdbcomp__feedback__automatic_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 292 "feedback.automatic_parallelism.m"
+        if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 292 "feedback.automatic_parallelism.m"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 292 "feedback.automatic_parallelism.m"
+        else
+#line 4450 "mdbcomp.feedback.automatic_parallelism.c"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 2;
+#line 292 "feedback.automatic_parallelism.m"
+      else
+#line 292 "feedback.automatic_parallelism.m"
+        {
+#line 292 "feedback.automatic_parallelism.m"
+          MR_Word mdbcomp__feedback__automatic_parallelism__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 292 "feedback.automatic_parallelism.m"
+          if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 4461 "mdbcomp.feedback.automatic_parallelism.c"
+            *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 1;
+#line 292 "feedback.automatic_parallelism.m"
+          else
+#line 292 "feedback.automatic_parallelism.m"
+            {
+#line 292 "feedback.automatic_parallelism.m"
+              MR_Word mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 292 "feedback.automatic_parallelism.m"
+              {
+#line 292 "feedback.automatic_parallelism.m"
+                mercury__builtin__compare_3_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[4], mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_11_11)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_5_5)));
+#line 292 "feedback.automatic_parallelism.m"
+                return;
+              }
+#line 292 "feedback.automatic_parallelism.m"
+            }
+#line 292 "feedback.automatic_parallelism.m"
+        }
+#line 292 "feedback.automatic_parallelism.m"
+  }
+#line 292 "feedback.automatic_parallelism.m"
+}
+
+#line 292 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____conjuncts_are_dependent_0_0(
+#line 292 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 292 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 292 "feedback.automatic_parallelism.m"
+{
+#line 292 "feedback.automatic_parallelism.m"
+  {
+#line 292 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 292 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_7 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 292 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_8 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 292 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_7 == mdbcomp__feedback__automatic_parallelism__CastY_8);
+#line 292 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 292 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 292 "feedback.automatic_parallelism.m"
+    else
+#line 292 "feedback.automatic_parallelism.m"
+      if ((mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 292 "feedback.automatic_parallelism.m"
+        {
+#line 292 "feedback.automatic_parallelism.m"
+          MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_5 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 292 "feedback.automatic_parallelism.m"
+          MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_6 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 292 "feedback.automatic_parallelism.m"
+          mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastY_6 == mdbcomp__feedback__automatic_parallelism__CastX_5);
+#line 292 "feedback.automatic_parallelism.m"
+        }
+#line 292 "feedback.automatic_parallelism.m"
+      else
+#line 292 "feedback.automatic_parallelism.m"
+        {
+#line 292 "feedback.automatic_parallelism.m"
+          MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_9_9;
+#line 292 "feedback.automatic_parallelism.m"
+          MR_Word mdbcomp__feedback__automatic_parallelism__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 292 "feedback.automatic_parallelism.m"
+          MR_Word mdbcomp__feedback__automatic_parallelism__V_4_4;
+
+#line 292 "feedback.automatic_parallelism.m"
+          mdbcomp__feedback__automatic_parallelism__succeeded = ((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 292 "feedback.automatic_parallelism.m"
+          if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 292 "feedback.automatic_parallelism.m"
+            {
+#line 292 "feedback.automatic_parallelism.m"
+              mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 4544 "mdbcomp.feedback.automatic_parallelism.c"
+              mdbcomp__feedback__automatic_parallelism__TypeInfo_9_9 = (MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[4];
+#line 4546 "mdbcomp.feedback.automatic_parallelism.c"
+              {
+#line 4548 "mdbcomp.feedback.automatic_parallelism.c"
+                return mdbcomp__feedback__automatic_parallelism__succeeded = mercury__builtin__unify_2_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_9_9, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_3_3)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_4_4)));
+              }
+#line 292 "feedback.automatic_parallelism.m"
+            }
+#line 292 "feedback.automatic_parallelism.m"
+        }
+#line 292 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 292 "feedback.automatic_parallelism.m"
+  }
+#line 292 "feedback.automatic_parallelism.m"
+}
+
+#line 145 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_1_0(
+#line 145 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_14,
+#line 145 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 145 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 145 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 145 "feedback.automatic_parallelism.m"
+{
+#line 145 "feedback.automatic_parallelism.m"
+  {
+#line 145 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 145 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_12 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 145 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_13 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 145 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_12 == mdbcomp__feedback__automatic_parallelism__CastY_13);
+#line 145 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 4588 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 145 "feedback.automatic_parallelism.m"
+    else
+#line 145 "feedback.automatic_parallelism.m"
+      {
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 2)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_10_10;
+
+#line 145 "feedback.automatic_parallelism.m"
+        {
+#line 145 "feedback.automatic_parallelism.m"
+          mercury__builtin__compare_3_p_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_var_name_table_0, &mdbcomp__feedback__automatic_parallelism__V_10_10, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_4_4)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_7_7)));
+        }
+#line 4614 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_10_10 == (MR_Integer) 0);
+#line 145 "feedback.automatic_parallelism.m"
+        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 145 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 145 "feedback.automatic_parallelism.m"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_10_10;
+#line 145 "feedback.automatic_parallelism.m"
+        else
+#line 145 "feedback.automatic_parallelism.m"
+          {
+#line 145 "feedback.automatic_parallelism.m"
+            MR_Word mdbcomp__feedback__automatic_parallelism__V_11_11;
+
+#line 145 "feedback.automatic_parallelism.m"
+            {
+#line 145 "feedback.automatic_parallelism.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[3], &mdbcomp__feedback__automatic_parallelism__V_11_11, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_5_5)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_8_8)));
+            }
+#line 4634 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_11_11 == (MR_Integer) 0);
+#line 145 "feedback.automatic_parallelism.m"
+            mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 145 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 145 "feedback.automatic_parallelism.m"
+              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_11_11;
+#line 145 "feedback.automatic_parallelism.m"
+            else
+#line 145 "feedback.automatic_parallelism.m"
+              {
+#line 145 "feedback.automatic_parallelism.m"
+                MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_18_18;
+
+#line 4649 "mdbcomp.feedback.automatic_parallelism.c"
+                {
+#line 4651 "mdbcomp.feedback.automatic_parallelism.c"
+                  mdbcomp__feedback__automatic_parallelism__TypeInfo_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 4653 "mdbcomp.feedback.automatic_parallelism.c"
+                  MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_18_18, 0) = ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1));
+#line 4655 "mdbcomp.feedback.automatic_parallelism.c"
+                  MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_18_18, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_14));
+#line 4657 "mdbcomp.feedback.automatic_parallelism.c"
+                }
+#line 145 "feedback.automatic_parallelism.m"
+                {
+#line 145 "feedback.automatic_parallelism.m"
+                  mercury__list____Compare____list_1_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_18_18, mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Word) mdbcomp__feedback__automatic_parallelism__V_6_6, (MR_Word) mdbcomp__feedback__automatic_parallelism__V_9_9);
+#line 145 "feedback.automatic_parallelism.m"
+                  return;
+                }
+#line 145 "feedback.automatic_parallelism.m"
+              }
+#line 145 "feedback.automatic_parallelism.m"
+          }
+#line 145 "feedback.automatic_parallelism.m"
+      }
+#line 145 "feedback.automatic_parallelism.m"
+  }
+#line 145 "feedback.automatic_parallelism.m"
+}
+
+#line 145 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_1_0(
+#line 145 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_11,
+#line 145 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 145 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 145 "feedback.automatic_parallelism.m"
+{
+#line 145 "feedback.automatic_parallelism.m"
+  {
+#line 145 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 145 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_9 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 145 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_10 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 145 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_9 == mdbcomp__feedback__automatic_parallelism__CastY_10);
+#line 145 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 145 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 145 "feedback.automatic_parallelism.m"
+    else
+#line 145 "feedback.automatic_parallelism.m"
+      {
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_13_13;
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_14_14;
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_15_15;
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 2)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 145 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+
+#line 4726 "mdbcomp.feedback.automatic_parallelism.c"
+        {
+#line 4728 "mdbcomp.feedback.automatic_parallelism.c"
+          mdbcomp__feedback__automatic_parallelism__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_var_name_table_0, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_3_3)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_6_6)));
+        }
+#line 145 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 145 "feedback.automatic_parallelism.m"
+          {
+#line 4735 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__TypeInfo_13_13 = (MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[3];
+#line 4737 "mdbcomp.feedback.automatic_parallelism.c"
+            {
+#line 4739 "mdbcomp.feedback.automatic_parallelism.c"
+              mdbcomp__feedback__automatic_parallelism__succeeded = mercury__builtin__unify_2_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_13_13, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_4_4)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_7_7)));
+            }
+#line 145 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 145 "feedback.automatic_parallelism.m"
+              {
+#line 4746 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_14_14 = (MR_Word) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1;
+#line 4748 "mdbcomp.feedback.automatic_parallelism.c"
+                {
+#line 4750 "mdbcomp.feedback.automatic_parallelism.c"
+                  mdbcomp__feedback__automatic_parallelism__TypeInfo_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 4752 "mdbcomp.feedback.automatic_parallelism.c"
+                  MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_15_15, 0) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_14_14));
+#line 4754 "mdbcomp.feedback.automatic_parallelism.c"
+                  MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_15_15, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_11));
+#line 4756 "mdbcomp.feedback.automatic_parallelism.c"
+                }
+#line 4758 "mdbcomp.feedback.automatic_parallelism.c"
+                {
+#line 4760 "mdbcomp.feedback.automatic_parallelism.c"
+                  return mdbcomp__feedback__automatic_parallelism__succeeded = mercury__list____Unify____list_1_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_15_15, (MR_Word) mdbcomp__feedback__automatic_parallelism__V_5_5, (MR_Word) mdbcomp__feedback__automatic_parallelism__V_8_8);
+                }
+#line 145 "feedback.automatic_parallelism.m"
+              }
+#line 145 "feedback.automatic_parallelism.m"
+          }
+#line 145 "feedback.automatic_parallelism.m"
+      }
+#line 145 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 145 "feedback.automatic_parallelism.m"
+  }
+#line 145 "feedback.automatic_parallelism.m"
+}
+
+#line 194 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_0_0(
+#line 194 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 194 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 194 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 194 "feedback.automatic_parallelism.m"
+{
+#line 194 "feedback.automatic_parallelism.m"
+  {
+#line 194 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 194 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_4 = mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 194 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_5 = mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 194 "feedback.automatic_parallelism.m"
+    {
+#line 194 "feedback.automatic_parallelism.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[2], mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_4)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_5)));
+#line 194 "feedback.automatic_parallelism.m"
+      return;
+    }
+#line 194 "feedback.automatic_parallelism.m"
+  }
+#line 194 "feedback.automatic_parallelism.m"
+}
+
+#line 194 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_0_0(
+#line 194 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 194 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 194 "feedback.automatic_parallelism.m"
+{
+#line 194 "feedback.automatic_parallelism.m"
+  {
+#line 194 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 194 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_3 = mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 194 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_4 = mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 194 "feedback.automatic_parallelism.m"
+    {
+#line 194 "feedback.automatic_parallelism.m"
+      return mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_1_0((MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[1], mdbcomp__feedback__automatic_parallelism__Cast_HeadVar1_3, mdbcomp__feedback__automatic_parallelism__Cast_HeadVar2_4);
+    }
+#line 194 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 194 "feedback.automatic_parallelism.m"
+  }
+#line 194 "feedback.automatic_parallelism.m"
+}
+
+#line 41 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_params_0_0(
+#line 41 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 41 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 41 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 41 "feedback.automatic_parallelism.m"
+{
+#line 41 "feedback.automatic_parallelism.m"
+  {
+#line 41 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 41 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_42 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 41 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_43 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 41 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_42 == mdbcomp__feedback__automatic_parallelism__CastY_43);
+#line 41 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 4862 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 41 "feedback.automatic_parallelism.m"
+    else
+#line 41 "feedback.automatic_parallelism.m"
+      {
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_4_4 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 4)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 5)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 6)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 7)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 8)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 9)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_14_14 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 10)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 11)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 12)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_17_17 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 2)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 3)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 4)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 5)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 6)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 7)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 8)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_26_26 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 9)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_27_27 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 10)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 11)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 12)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_30_30;
+
+#line 41 "feedback.automatic_parallelism.m"
+        {
+#line 41 "feedback.automatic_parallelism.m"
+          mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_30_30, mdbcomp__feedback__automatic_parallelism__V_4_4, mdbcomp__feedback__automatic_parallelism__V_17_17);
+        }
+#line 4928 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_30_30 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_30_30;
+#line 41 "feedback.automatic_parallelism.m"
+        else
+#line 41 "feedback.automatic_parallelism.m"
+          {
+#line 41 "feedback.automatic_parallelism.m"
+            MR_Word mdbcomp__feedback__automatic_parallelism__V_31_31;
+#line 41 "feedback.automatic_parallelism.m"
+            MR_Integer mdbcomp__feedback__automatic_parallelism__V_57_57 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__V_5_5;
+#line 41 "feedback.automatic_parallelism.m"
+            MR_Integer mdbcomp__feedback__automatic_parallelism__V_58_58 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__V_18_18;
+
+#line 41 "feedback.automatic_parallelism.m"
+            {
+#line 41 "feedback.automatic_parallelism.m"
+              mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_31_31, mdbcomp__feedback__automatic_parallelism__V_57_57, mdbcomp__feedback__automatic_parallelism__V_58_58);
+            }
+#line 4952 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_31_31 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+            mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_31_31;
+#line 41 "feedback.automatic_parallelism.m"
+            else
+#line 41 "feedback.automatic_parallelism.m"
+              {
+#line 41 "feedback.automatic_parallelism.m"
+                MR_Word mdbcomp__feedback__automatic_parallelism__V_32_32;
+
+#line 41 "feedback.automatic_parallelism.m"
+                {
+#line 41 "feedback.automatic_parallelism.m"
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_32_32, mdbcomp__feedback__automatic_parallelism__V_6_6, mdbcomp__feedback__automatic_parallelism__V_19_19);
+                }
+#line 4972 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_32_32 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+                mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_32_32;
+#line 41 "feedback.automatic_parallelism.m"
+                else
+#line 41 "feedback.automatic_parallelism.m"
+                  {
+#line 41 "feedback.automatic_parallelism.m"
+                    MR_Word mdbcomp__feedback__automatic_parallelism__V_33_33;
+
+#line 41 "feedback.automatic_parallelism.m"
+                    {
+#line 41 "feedback.automatic_parallelism.m"
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_33_33, mdbcomp__feedback__automatic_parallelism__V_7_7, mdbcomp__feedback__automatic_parallelism__V_20_20);
+                    }
+#line 4992 "mdbcomp.feedback.automatic_parallelism.c"
+                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_33_33 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+                    mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_33_33;
+#line 41 "feedback.automatic_parallelism.m"
+                    else
+#line 41 "feedback.automatic_parallelism.m"
+                      {
+#line 41 "feedback.automatic_parallelism.m"
+                        MR_Word mdbcomp__feedback__automatic_parallelism__V_34_34;
+
+#line 41 "feedback.automatic_parallelism.m"
+                        {
+#line 41 "feedback.automatic_parallelism.m"
+                          mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_34_34, mdbcomp__feedback__automatic_parallelism__V_8_8, mdbcomp__feedback__automatic_parallelism__V_21_21);
+                        }
+#line 5012 "mdbcomp.feedback.automatic_parallelism.c"
+                        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_34_34 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+                        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+                        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_34_34;
+#line 41 "feedback.automatic_parallelism.m"
+                        else
+#line 41 "feedback.automatic_parallelism.m"
+                          {
+#line 41 "feedback.automatic_parallelism.m"
+                            MR_Word mdbcomp__feedback__automatic_parallelism__V_35_35;
+
+#line 41 "feedback.automatic_parallelism.m"
+                            {
+#line 41 "feedback.automatic_parallelism.m"
+                              mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_35_35, mdbcomp__feedback__automatic_parallelism__V_9_9, mdbcomp__feedback__automatic_parallelism__V_22_22);
+                            }
+#line 5032 "mdbcomp.feedback.automatic_parallelism.c"
+                            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_35_35 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+                            mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+                            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_35_35;
+#line 41 "feedback.automatic_parallelism.m"
+                            else
+#line 41 "feedback.automatic_parallelism.m"
+                              {
+#line 41 "feedback.automatic_parallelism.m"
+                                MR_Word mdbcomp__feedback__automatic_parallelism__V_36_36;
+
+#line 41 "feedback.automatic_parallelism.m"
+                                {
+#line 41 "feedback.automatic_parallelism.m"
+                                  mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_36_36, mdbcomp__feedback__automatic_parallelism__V_10_10, mdbcomp__feedback__automatic_parallelism__V_23_23);
+                                }
+#line 5052 "mdbcomp.feedback.automatic_parallelism.c"
+                                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_36_36 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+                                mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+                                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_36_36;
+#line 41 "feedback.automatic_parallelism.m"
+                                else
+#line 41 "feedback.automatic_parallelism.m"
+                                  {
+#line 41 "feedback.automatic_parallelism.m"
+                                    MR_Word mdbcomp__feedback__automatic_parallelism__V_37_37;
+
+#line 41 "feedback.automatic_parallelism.m"
+                                    {
+#line 41 "feedback.automatic_parallelism.m"
+                                      mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_37_37, mdbcomp__feedback__automatic_parallelism__V_11_11, mdbcomp__feedback__automatic_parallelism__V_24_24);
+                                    }
+#line 5072 "mdbcomp.feedback.automatic_parallelism.c"
+                                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_37_37 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+                                    mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+                                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_37_37;
+#line 41 "feedback.automatic_parallelism.m"
+                                    else
+#line 41 "feedback.automatic_parallelism.m"
+                                      {
+#line 41 "feedback.automatic_parallelism.m"
+                                        MR_Word mdbcomp__feedback__automatic_parallelism__V_38_38;
+
+#line 41 "feedback.automatic_parallelism.m"
+                                        {
+#line 41 "feedback.automatic_parallelism.m"
+                                          mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_38_38, mdbcomp__feedback__automatic_parallelism__V_12_12, mdbcomp__feedback__automatic_parallelism__V_25_25);
+                                        }
+#line 5092 "mdbcomp.feedback.automatic_parallelism.c"
+                                        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_38_38 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+                                        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+                                        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_38_38;
+#line 41 "feedback.automatic_parallelism.m"
+                                        else
+#line 41 "feedback.automatic_parallelism.m"
+                                          {
+#line 41 "feedback.automatic_parallelism.m"
+                                            MR_Word mdbcomp__feedback__automatic_parallelism__V_39_39;
+
+#line 41 "feedback.automatic_parallelism.m"
+                                            {
+#line 41 "feedback.automatic_parallelism.m"
+                                              mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_39_39, mdbcomp__feedback__automatic_parallelism__V_13_13, mdbcomp__feedback__automatic_parallelism__V_26_26);
+                                            }
+#line 5112 "mdbcomp.feedback.automatic_parallelism.c"
+                                            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_39_39 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+                                            mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+                                            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_39_39;
+#line 41 "feedback.automatic_parallelism.m"
+                                            else
+#line 41 "feedback.automatic_parallelism.m"
+                                              {
+#line 41 "feedback.automatic_parallelism.m"
+                                                MR_Word mdbcomp__feedback__automatic_parallelism__V_40_40;
+
+#line 41 "feedback.automatic_parallelism.m"
+                                                {
+#line 41 "feedback.automatic_parallelism.m"
+                                                  mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_40_40, mdbcomp__feedback__automatic_parallelism__V_14_14, mdbcomp__feedback__automatic_parallelism__V_27_27);
+                                                }
+#line 5132 "mdbcomp.feedback.automatic_parallelism.c"
+                                                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_40_40 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+                                                mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+                                                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_40_40;
+#line 41 "feedback.automatic_parallelism.m"
+                                                else
+#line 41 "feedback.automatic_parallelism.m"
+                                                  {
+#line 41 "feedback.automatic_parallelism.m"
+                                                    MR_Word mdbcomp__feedback__automatic_parallelism__V_41_41;
+
+#line 41 "feedback.automatic_parallelism.m"
+                                                    {
+#line 41 "feedback.automatic_parallelism.m"
+                                                      mdbcomp__feedback__automatic_parallelism____Compare____parallelise_dep_conjs_0_0(&mdbcomp__feedback__automatic_parallelism__V_41_41, mdbcomp__feedback__automatic_parallelism__V_15_15, mdbcomp__feedback__automatic_parallelism__V_28_28);
+                                                    }
+#line 5152 "mdbcomp.feedback.automatic_parallelism.c"
+                                                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_41_41 == (MR_Integer) 0);
+#line 41 "feedback.automatic_parallelism.m"
+                                                    mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 41 "feedback.automatic_parallelism.m"
+                                                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                                      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_41_41;
+#line 41 "feedback.automatic_parallelism.m"
+                                                    else
+#line 41 "feedback.automatic_parallelism.m"
+                                                      {
+#line 41 "feedback.automatic_parallelism.m"
+                                                        mdbcomp__feedback__automatic_parallelism____Compare____best_par_algorithm_0_0(mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__V_16_16, mdbcomp__feedback__automatic_parallelism__V_29_29);
+#line 41 "feedback.automatic_parallelism.m"
+                                                        return;
+                                                      }
+#line 41 "feedback.automatic_parallelism.m"
+                                                  }
+#line 41 "feedback.automatic_parallelism.m"
+                                              }
+#line 41 "feedback.automatic_parallelism.m"
+                                          }
+#line 41 "feedback.automatic_parallelism.m"
+                                      }
+#line 41 "feedback.automatic_parallelism.m"
+                                  }
+#line 41 "feedback.automatic_parallelism.m"
+                              }
+#line 41 "feedback.automatic_parallelism.m"
+                          }
+#line 41 "feedback.automatic_parallelism.m"
+                      }
+#line 41 "feedback.automatic_parallelism.m"
+                  }
+#line 41 "feedback.automatic_parallelism.m"
+              }
+#line 41 "feedback.automatic_parallelism.m"
+          }
+#line 41 "feedback.automatic_parallelism.m"
+      }
+#line 41 "feedback.automatic_parallelism.m"
+  }
+#line 41 "feedback.automatic_parallelism.m"
+}
+
+#line 41 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_params_0_0(
+#line 41 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 41 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 41 "feedback.automatic_parallelism.m"
+{
+#line 41 "feedback.automatic_parallelism.m"
+  {
+#line 41 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 41 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_29 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 41 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_30 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 41 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_29 == mdbcomp__feedback__automatic_parallelism__CastY_30);
+#line 41 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 41 "feedback.automatic_parallelism.m"
+    else
+#line 41 "feedback.automatic_parallelism.m"
+      {
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_3_3 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 2)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 3)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 4)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 5)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 6)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 7)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 8)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 9)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_13_13 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 10)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 11)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 12)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_16_16 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 4)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 5)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 6)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 7)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 8)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 9)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_26_26 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 10)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 11)));
+#line 41 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 12)));
+
+#line 5279 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_3_3 == mdbcomp__feedback__automatic_parallelism__V_16_16);
+#line 41 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+          {
+#line 5285 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_4_4 == mdbcomp__feedback__automatic_parallelism__V_17_17);
+#line 41 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+              {
+#line 5291 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_5_5 == mdbcomp__feedback__automatic_parallelism__V_18_18);
+#line 41 "feedback.automatic_parallelism.m"
+                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                  {
+#line 5297 "mdbcomp.feedback.automatic_parallelism.c"
+                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_6_6 == mdbcomp__feedback__automatic_parallelism__V_19_19);
+#line 41 "feedback.automatic_parallelism.m"
+                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                      {
+#line 5303 "mdbcomp.feedback.automatic_parallelism.c"
+                        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_7_7 == mdbcomp__feedback__automatic_parallelism__V_20_20);
+#line 41 "feedback.automatic_parallelism.m"
+                        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                          {
+#line 5309 "mdbcomp.feedback.automatic_parallelism.c"
+                            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_8_8 == mdbcomp__feedback__automatic_parallelism__V_21_21);
+#line 41 "feedback.automatic_parallelism.m"
+                            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                              {
+#line 5315 "mdbcomp.feedback.automatic_parallelism.c"
+                                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_9_9 == mdbcomp__feedback__automatic_parallelism__V_22_22);
+#line 41 "feedback.automatic_parallelism.m"
+                                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                  {
+#line 5321 "mdbcomp.feedback.automatic_parallelism.c"
+                                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_10_10 == mdbcomp__feedback__automatic_parallelism__V_23_23);
+#line 41 "feedback.automatic_parallelism.m"
+                                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                      {
+#line 5327 "mdbcomp.feedback.automatic_parallelism.c"
+                                        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_11_11 == mdbcomp__feedback__automatic_parallelism__V_24_24);
+#line 41 "feedback.automatic_parallelism.m"
+                                        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                          {
+#line 5333 "mdbcomp.feedback.automatic_parallelism.c"
+                                            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_12_12 == mdbcomp__feedback__automatic_parallelism__V_25_25);
+#line 41 "feedback.automatic_parallelism.m"
+                                            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                              {
+#line 5339 "mdbcomp.feedback.automatic_parallelism.c"
+                                                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_13_13 == mdbcomp__feedback__automatic_parallelism__V_26_26);
+#line 41 "feedback.automatic_parallelism.m"
+                                                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 41 "feedback.automatic_parallelism.m"
+                                                  {
+#line 5345 "mdbcomp.feedback.automatic_parallelism.c"
+                                                    {
+#line 5347 "mdbcomp.feedback.automatic_parallelism.c"
+                                                      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____parallelise_dep_conjs_0_0(mdbcomp__feedback__automatic_parallelism__V_14_14, mdbcomp__feedback__automatic_parallelism__V_27_27);
+                                                    }
+#line 41 "feedback.automatic_parallelism.m"
+                                                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 5352 "mdbcomp.feedback.automatic_parallelism.c"
+                                                      {
+#line 5354 "mdbcomp.feedback.automatic_parallelism.c"
+                                                        return mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____best_par_algorithm_0_0(mdbcomp__feedback__automatic_parallelism__V_15_15, mdbcomp__feedback__automatic_parallelism__V_28_28);
+                                                      }
+#line 41 "feedback.automatic_parallelism.m"
+                                                  }
+#line 41 "feedback.automatic_parallelism.m"
+                                              }
+#line 41 "feedback.automatic_parallelism.m"
+                                          }
+#line 41 "feedback.automatic_parallelism.m"
+                                      }
+#line 41 "feedback.automatic_parallelism.m"
+                                  }
+#line 41 "feedback.automatic_parallelism.m"
+                              }
+#line 41 "feedback.automatic_parallelism.m"
+                          }
+#line 41 "feedback.automatic_parallelism.m"
+                      }
+#line 41 "feedback.automatic_parallelism.m"
+                  }
+#line 41 "feedback.automatic_parallelism.m"
+              }
+#line 41 "feedback.automatic_parallelism.m"
+          }
+#line 41 "feedback.automatic_parallelism.m"
+      }
+#line 41 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 41 "feedback.automatic_parallelism.m"
+  }
+#line 41 "feedback.automatic_parallelism.m"
+}
+
+#line 208 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunction_1_0(
+#line 208 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_35,
+#line 208 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 208 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 208 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 208 "feedback.automatic_parallelism.m"
+{
+#line 208 "feedback.automatic_parallelism.m"
+  {
+#line 208 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 208 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_33 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 208 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_34 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 208 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_33 == mdbcomp__feedback__automatic_parallelism__CastY_34);
+#line 208 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 5414 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 208 "feedback.automatic_parallelism.m"
+    else
+#line 208 "feedback.automatic_parallelism.m"
+      {
+#line 208 "feedback.automatic_parallelism.m"
+        MR_String mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 4)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_9_9 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 5)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 6)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 7)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_12_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 8)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 9)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_String mdbcomp__feedback__automatic_parallelism__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 2)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 3)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 4)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_19_19 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 5)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 6)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 7)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_22_22 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 8)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 9)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_24_24;
+
+#line 208 "feedback.automatic_parallelism.m"
+        {
+#line 208 "feedback.automatic_parallelism.m"
+          mercury__private_builtin__builtin_compare_string_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_24_24, mdbcomp__feedback__automatic_parallelism__V_4_4, mdbcomp__feedback__automatic_parallelism__V_14_14);
+        }
+#line 5468 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_24_24 == (MR_Integer) 0);
+#line 208 "feedback.automatic_parallelism.m"
+        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 208 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_24_24;
+#line 208 "feedback.automatic_parallelism.m"
+        else
+#line 208 "feedback.automatic_parallelism.m"
+          {
+#line 208 "feedback.automatic_parallelism.m"
+            MR_Word mdbcomp__feedback__automatic_parallelism__V_25_25;
+
+#line 208 "feedback.automatic_parallelism.m"
+            {
+#line 208 "feedback.automatic_parallelism.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[0], &mdbcomp__feedback__automatic_parallelism__V_25_25, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_5_5)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_15_15)));
+            }
+#line 5488 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_25_25 == (MR_Integer) 0);
+#line 208 "feedback.automatic_parallelism.m"
+            mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 208 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_25_25;
+#line 208 "feedback.automatic_parallelism.m"
+            else
+#line 208 "feedback.automatic_parallelism.m"
+              {
+#line 208 "feedback.automatic_parallelism.m"
+                MR_Word mdbcomp__feedback__automatic_parallelism__V_26_26;
+
+#line 208 "feedback.automatic_parallelism.m"
+                {
+#line 208 "feedback.automatic_parallelism.m"
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_26_26, mdbcomp__feedback__automatic_parallelism__V_6_6, mdbcomp__feedback__automatic_parallelism__V_16_16);
+                }
+#line 5508 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_26_26 == (MR_Integer) 0);
+#line 208 "feedback.automatic_parallelism.m"
+                mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 208 "feedback.automatic_parallelism.m"
+                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_26_26;
+#line 208 "feedback.automatic_parallelism.m"
+                else
+#line 208 "feedback.automatic_parallelism.m"
+                  {
+#line 208 "feedback.automatic_parallelism.m"
+                    MR_Word mdbcomp__feedback__automatic_parallelism__V_27_27;
+
+#line 208 "feedback.automatic_parallelism.m"
+                    {
+#line 208 "feedback.automatic_parallelism.m"
+                      mdbcomp__feedback__automatic_parallelism____Compare____conjuncts_are_dependent_0_0(&mdbcomp__feedback__automatic_parallelism__V_27_27, mdbcomp__feedback__automatic_parallelism__V_7_7, mdbcomp__feedback__automatic_parallelism__V_17_17);
+                    }
+#line 5528 "mdbcomp.feedback.automatic_parallelism.c"
+                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_27_27 == (MR_Integer) 0);
+#line 208 "feedback.automatic_parallelism.m"
+                    mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 208 "feedback.automatic_parallelism.m"
+                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_27_27;
+#line 208 "feedback.automatic_parallelism.m"
+                    else
+#line 208 "feedback.automatic_parallelism.m"
+                      {
+#line 208 "feedback.automatic_parallelism.m"
+                        MR_Word mdbcomp__feedback__automatic_parallelism__V_28_28;
+
+#line 208 "feedback.automatic_parallelism.m"
+                        {
+#line 208 "feedback.automatic_parallelism.m"
+                          mercury__list____Compare____list_1_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_35, &mdbcomp__feedback__automatic_parallelism__V_28_28, mdbcomp__feedback__automatic_parallelism__V_8_8, mdbcomp__feedback__automatic_parallelism__V_18_18);
+                        }
+#line 5548 "mdbcomp.feedback.automatic_parallelism.c"
+                        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_28_28 == (MR_Integer) 0);
+#line 208 "feedback.automatic_parallelism.m"
+                        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 208 "feedback.automatic_parallelism.m"
+                        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_28_28;
+#line 208 "feedback.automatic_parallelism.m"
+                        else
+#line 208 "feedback.automatic_parallelism.m"
+                          {
+#line 208 "feedback.automatic_parallelism.m"
+                            MR_Word mdbcomp__feedback__automatic_parallelism__V_29_29;
+
+#line 208 "feedback.automatic_parallelism.m"
+                            {
+#line 208 "feedback.automatic_parallelism.m"
+                              mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_29_29, mdbcomp__feedback__automatic_parallelism__V_9_9, mdbcomp__feedback__automatic_parallelism__V_19_19);
+                            }
+#line 5568 "mdbcomp.feedback.automatic_parallelism.c"
+                            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_29_29 == (MR_Integer) 0);
+#line 208 "feedback.automatic_parallelism.m"
+                            mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 208 "feedback.automatic_parallelism.m"
+                            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_29_29;
+#line 208 "feedback.automatic_parallelism.m"
+                            else
+#line 208 "feedback.automatic_parallelism.m"
+                              {
+#line 208 "feedback.automatic_parallelism.m"
+                                MR_Word mdbcomp__feedback__automatic_parallelism__V_30_30;
+#line 208 "feedback.automatic_parallelism.m"
+                                MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_44_44;
+
+#line 5585 "mdbcomp.feedback.automatic_parallelism.c"
+                                {
+#line 5587 "mdbcomp.feedback.automatic_parallelism.c"
+                                  mdbcomp__feedback__automatic_parallelism__TypeInfo_44_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 5589 "mdbcomp.feedback.automatic_parallelism.c"
+                                  MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_44_44, 0) = ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1));
+#line 5591 "mdbcomp.feedback.automatic_parallelism.c"
+                                  MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_44_44, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_35));
+#line 5593 "mdbcomp.feedback.automatic_parallelism.c"
+                                }
+#line 208 "feedback.automatic_parallelism.m"
+                                {
+#line 208 "feedback.automatic_parallelism.m"
+                                  mercury__list____Compare____list_1_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_44_44, &mdbcomp__feedback__automatic_parallelism__V_30_30, (MR_Word) mdbcomp__feedback__automatic_parallelism__V_10_10, (MR_Word) mdbcomp__feedback__automatic_parallelism__V_20_20);
+                                }
+#line 5600 "mdbcomp.feedback.automatic_parallelism.c"
+                                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_30_30 == (MR_Integer) 0);
+#line 208 "feedback.automatic_parallelism.m"
+                                mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 208 "feedback.automatic_parallelism.m"
+                                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_30_30;
+#line 208 "feedback.automatic_parallelism.m"
+                                else
+#line 208 "feedback.automatic_parallelism.m"
+                                  {
+#line 208 "feedback.automatic_parallelism.m"
+                                    MR_Word mdbcomp__feedback__automatic_parallelism__V_31_31;
+
+#line 208 "feedback.automatic_parallelism.m"
+                                    {
+#line 208 "feedback.automatic_parallelism.m"
+                                      mercury__list____Compare____list_1_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_35, &mdbcomp__feedback__automatic_parallelism__V_31_31, mdbcomp__feedback__automatic_parallelism__V_11_11, mdbcomp__feedback__automatic_parallelism__V_21_21);
+                                    }
+#line 5620 "mdbcomp.feedback.automatic_parallelism.c"
+                                    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_31_31 == (MR_Integer) 0);
+#line 208 "feedback.automatic_parallelism.m"
+                                    mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 208 "feedback.automatic_parallelism.m"
+                                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                                      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_31_31;
+#line 208 "feedback.automatic_parallelism.m"
+                                    else
+#line 208 "feedback.automatic_parallelism.m"
+                                      {
+#line 208 "feedback.automatic_parallelism.m"
+                                        MR_Word mdbcomp__feedback__automatic_parallelism__V_32_32;
+
+#line 208 "feedback.automatic_parallelism.m"
+                                        {
+#line 208 "feedback.automatic_parallelism.m"
+                                          mercury__private_builtin__builtin_compare_float_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_32_32, mdbcomp__feedback__automatic_parallelism__V_12_12, mdbcomp__feedback__automatic_parallelism__V_22_22);
+                                        }
+#line 5640 "mdbcomp.feedback.automatic_parallelism.c"
+                                        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_32_32 == (MR_Integer) 0);
+#line 208 "feedback.automatic_parallelism.m"
+                                        mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 208 "feedback.automatic_parallelism.m"
+                                        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                                          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_32_32;
+#line 208 "feedback.automatic_parallelism.m"
+                                        else
+#line 208 "feedback.automatic_parallelism.m"
+                                          {
+#line 208 "feedback.automatic_parallelism.m"
+                                            mdbcomp__feedback__automatic_parallelism____Compare____parallel_exec_metrics_0_0(mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__V_13_13, mdbcomp__feedback__automatic_parallelism__V_23_23);
+#line 208 "feedback.automatic_parallelism.m"
+                                            return;
+                                          }
+#line 208 "feedback.automatic_parallelism.m"
+                                      }
+#line 208 "feedback.automatic_parallelism.m"
+                                  }
+#line 208 "feedback.automatic_parallelism.m"
+                              }
+#line 208 "feedback.automatic_parallelism.m"
+                          }
+#line 208 "feedback.automatic_parallelism.m"
+                      }
+#line 208 "feedback.automatic_parallelism.m"
+                  }
+#line 208 "feedback.automatic_parallelism.m"
+              }
+#line 208 "feedback.automatic_parallelism.m"
+          }
+#line 208 "feedback.automatic_parallelism.m"
+      }
+#line 208 "feedback.automatic_parallelism.m"
+  }
+#line 208 "feedback.automatic_parallelism.m"
+}
+
+#line 208 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunction_1_0(
+#line 208 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_25,
+#line 208 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 208 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 208 "feedback.automatic_parallelism.m"
+{
+#line 208 "feedback.automatic_parallelism.m"
+  {
+#line 208 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 208 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_23 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 208 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_24 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 208 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_23 == mdbcomp__feedback__automatic_parallelism__CastY_24);
+#line 208 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 208 "feedback.automatic_parallelism.m"
+    else
+#line 208 "feedback.automatic_parallelism.m"
+      {
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_26_26;
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_29_29;
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_30_30;
+#line 208 "feedback.automatic_parallelism.m"
+        MR_String mdbcomp__feedback__automatic_parallelism__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 2)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 3)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 4)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_8_8 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 5)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 6)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 7)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_11_11 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 8)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 9)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_String mdbcomp__feedback__automatic_parallelism__V_13_13 = ((MR_String) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Integer mdbcomp__feedback__automatic_parallelism__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 4)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_18_18 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 5)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 6)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 7)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Float mdbcomp__feedback__automatic_parallelism__V_21_21 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 8)));
+#line 208 "feedback.automatic_parallelism.m"
+        MR_Word mdbcomp__feedback__automatic_parallelism__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 9)));
+
+#line 5757 "mdbcomp.feedback.automatic_parallelism.c"
+        mdbcomp__feedback__automatic_parallelism__succeeded = (strcmp(mdbcomp__feedback__automatic_parallelism__V_3_3, mdbcomp__feedback__automatic_parallelism__V_13_13) == 0);
+#line 208 "feedback.automatic_parallelism.m"
+        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+          {
+#line 5763 "mdbcomp.feedback.automatic_parallelism.c"
+            mdbcomp__feedback__automatic_parallelism__TypeInfo_26_26 = (MR_Word) &mdbcomp__feedback__automatic_parallelism_scalar_common_1[0];
+#line 5765 "mdbcomp.feedback.automatic_parallelism.c"
+            {
+#line 5767 "mdbcomp.feedback.automatic_parallelism.c"
+              mdbcomp__feedback__automatic_parallelism__succeeded = mercury__builtin__unify_2_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_26_26, ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_4_4)), ((MR_Box) (mdbcomp__feedback__automatic_parallelism__V_14_14)));
+            }
+#line 208 "feedback.automatic_parallelism.m"
+            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+              {
+#line 5774 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_5_5 == mdbcomp__feedback__automatic_parallelism__V_15_15);
+#line 208 "feedback.automatic_parallelism.m"
+                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                  {
+#line 5780 "mdbcomp.feedback.automatic_parallelism.c"
+                    {
+#line 5782 "mdbcomp.feedback.automatic_parallelism.c"
+                      mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____conjuncts_are_dependent_0_0(mdbcomp__feedback__automatic_parallelism__V_6_6, mdbcomp__feedback__automatic_parallelism__V_16_16);
+                    }
+#line 208 "feedback.automatic_parallelism.m"
+                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                      {
+#line 5789 "mdbcomp.feedback.automatic_parallelism.c"
+                        {
+#line 5791 "mdbcomp.feedback.automatic_parallelism.c"
+                          mdbcomp__feedback__automatic_parallelism__succeeded = mercury__list____Unify____list_1_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_25, mdbcomp__feedback__automatic_parallelism__V_7_7, mdbcomp__feedback__automatic_parallelism__V_17_17);
+                        }
+#line 208 "feedback.automatic_parallelism.m"
+                        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                          {
+#line 5798 "mdbcomp.feedback.automatic_parallelism.c"
+                            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_8_8 == mdbcomp__feedback__automatic_parallelism__V_18_18);
+#line 208 "feedback.automatic_parallelism.m"
+                            if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                              {
+#line 5804 "mdbcomp.feedback.automatic_parallelism.c"
+                                mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_29_29 = (MR_Word) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1;
+#line 5806 "mdbcomp.feedback.automatic_parallelism.c"
+                                {
+#line 5808 "mdbcomp.feedback.automatic_parallelism.c"
+                                  mdbcomp__feedback__automatic_parallelism__TypeInfo_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 5810 "mdbcomp.feedback.automatic_parallelism.c"
+                                  MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_30_30, 0) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_29_29));
+#line 5812 "mdbcomp.feedback.automatic_parallelism.c"
+                                  MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_30_30, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_25));
+#line 5814 "mdbcomp.feedback.automatic_parallelism.c"
+                                }
+#line 5816 "mdbcomp.feedback.automatic_parallelism.c"
+                                {
+#line 5818 "mdbcomp.feedback.automatic_parallelism.c"
+                                  mdbcomp__feedback__automatic_parallelism__succeeded = mercury__list____Unify____list_1_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_30_30, (MR_Word) mdbcomp__feedback__automatic_parallelism__V_9_9, (MR_Word) mdbcomp__feedback__automatic_parallelism__V_19_19);
+                                }
+#line 208 "feedback.automatic_parallelism.m"
+                                if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                                  {
+#line 5825 "mdbcomp.feedback.automatic_parallelism.c"
+                                    {
+#line 5827 "mdbcomp.feedback.automatic_parallelism.c"
+                                      mdbcomp__feedback__automatic_parallelism__succeeded = mercury__list____Unify____list_1_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_for_GoalType_25, mdbcomp__feedback__automatic_parallelism__V_10_10, mdbcomp__feedback__automatic_parallelism__V_20_20);
+                                    }
+#line 208 "feedback.automatic_parallelism.m"
+                                    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 208 "feedback.automatic_parallelism.m"
+                                      {
+#line 5834 "mdbcomp.feedback.automatic_parallelism.c"
+                                        mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_11_11 == mdbcomp__feedback__automatic_parallelism__V_21_21);
+#line 208 "feedback.automatic_parallelism.m"
+                                        if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 5838 "mdbcomp.feedback.automatic_parallelism.c"
+                                          {
+#line 5840 "mdbcomp.feedback.automatic_parallelism.c"
+                                            return mdbcomp__feedback__automatic_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____parallel_exec_metrics_0_0(mdbcomp__feedback__automatic_parallelism__V_12_12, mdbcomp__feedback__automatic_parallelism__V_22_22);
+                                          }
+#line 208 "feedback.automatic_parallelism.m"
+                                      }
+#line 208 "feedback.automatic_parallelism.m"
+                                  }
+#line 208 "feedback.automatic_parallelism.m"
+                              }
+#line 208 "feedback.automatic_parallelism.m"
+                          }
+#line 208 "feedback.automatic_parallelism.m"
+                      }
+#line 208 "feedback.automatic_parallelism.m"
+                  }
+#line 208 "feedback.automatic_parallelism.m"
+              }
+#line 208 "feedback.automatic_parallelism.m"
+          }
+#line 208 "feedback.automatic_parallelism.m"
+      }
+#line 208 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 208 "feedback.automatic_parallelism.m"
+  }
+#line 208 "feedback.automatic_parallelism.m"
+}
+
+#line 253 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____callee_rep_0_0(
+#line 253 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 253 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 253 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 253 "feedback.automatic_parallelism.m"
+{
+#line 253 "feedback.automatic_parallelism.m"
+  {
+#line 253 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 253 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_13 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 253 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_14 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 253 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_13 == mdbcomp__feedback__automatic_parallelism__CastY_14);
+#line 253 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 5892 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 253 "feedback.automatic_parallelism.m"
+    else
+#line 253 "feedback.automatic_parallelism.m"
+      if ((mdbcomp__feedback__automatic_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 253 "feedback.automatic_parallelism.m"
+        if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 253 "feedback.automatic_parallelism.m"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 253 "feedback.automatic_parallelism.m"
+        else
+#line 5904 "mdbcomp.feedback.automatic_parallelism.c"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 1;
+#line 253 "feedback.automatic_parallelism.m"
+      else
+#line 253 "feedback.automatic_parallelism.m"
+        {
+#line 253 "feedback.automatic_parallelism.m"
+          MR_String mdbcomp__feedback__automatic_parallelism__V_17_17 = ((MR_String) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 253 "feedback.automatic_parallelism.m"
+          MR_String mdbcomp__feedback__automatic_parallelism__V_18_18 = ((MR_String) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 253 "feedback.automatic_parallelism.m"
+          if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 5917 "mdbcomp.feedback.automatic_parallelism.c"
+            *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 2;
+#line 253 "feedback.automatic_parallelism.m"
+          else
+#line 253 "feedback.automatic_parallelism.m"
+            {
+#line 253 "feedback.automatic_parallelism.m"
+              MR_String mdbcomp__feedback__automatic_parallelism__V_10_10 = ((MR_String) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 253 "feedback.automatic_parallelism.m"
+              MR_String mdbcomp__feedback__automatic_parallelism__V_11_11 = ((MR_String) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 253 "feedback.automatic_parallelism.m"
+              MR_Word mdbcomp__feedback__automatic_parallelism__V_12_12;
+
+#line 253 "feedback.automatic_parallelism.m"
+              {
+#line 253 "feedback.automatic_parallelism.m"
+                mercury__private_builtin__builtin_compare_string_3_p_0(&mdbcomp__feedback__automatic_parallelism__V_12_12, mdbcomp__feedback__automatic_parallelism__V_18_18, mdbcomp__feedback__automatic_parallelism__V_10_10);
+              }
+#line 5935 "mdbcomp.feedback.automatic_parallelism.c"
+              mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_12_12 == (MR_Integer) 0);
+#line 253 "feedback.automatic_parallelism.m"
+              mdbcomp__feedback__automatic_parallelism__succeeded = !(mdbcomp__feedback__automatic_parallelism__succeeded);
+#line 253 "feedback.automatic_parallelism.m"
+              if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 253 "feedback.automatic_parallelism.m"
+                *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = mdbcomp__feedback__automatic_parallelism__V_12_12;
+#line 253 "feedback.automatic_parallelism.m"
+              else
+#line 253 "feedback.automatic_parallelism.m"
+                {
+#line 253 "feedback.automatic_parallelism.m"
+                  mercury__private_builtin__builtin_compare_string_3_p_0(mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__V_17_17, mdbcomp__feedback__automatic_parallelism__V_11_11);
+#line 253 "feedback.automatic_parallelism.m"
+                  return;
+                }
+#line 253 "feedback.automatic_parallelism.m"
+            }
+#line 253 "feedback.automatic_parallelism.m"
+        }
+#line 253 "feedback.automatic_parallelism.m"
+  }
+#line 253 "feedback.automatic_parallelism.m"
+}
+
+#line 253 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____callee_rep_0_0(
+#line 253 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 253 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 253 "feedback.automatic_parallelism.m"
+{
+#line 253 "feedback.automatic_parallelism.m"
+  {
+#line 253 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 253 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_9 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 253 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_10 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 253 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_9 == mdbcomp__feedback__automatic_parallelism__CastY_10);
+#line 253 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 253 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 253 "feedback.automatic_parallelism.m"
+    else
+#line 253 "feedback.automatic_parallelism.m"
+      if ((mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 253 "feedback.automatic_parallelism.m"
+        {
+#line 253 "feedback.automatic_parallelism.m"
+          MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_3 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 253 "feedback.automatic_parallelism.m"
+          MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_4 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 253 "feedback.automatic_parallelism.m"
+          mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastY_4 == mdbcomp__feedback__automatic_parallelism__CastX_3);
+#line 253 "feedback.automatic_parallelism.m"
+        }
+#line 253 "feedback.automatic_parallelism.m"
+      else
+#line 253 "feedback.automatic_parallelism.m"
+        {
+#line 253 "feedback.automatic_parallelism.m"
+          MR_String mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 253 "feedback.automatic_parallelism.m"
+          MR_String mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 253 "feedback.automatic_parallelism.m"
+          MR_String mdbcomp__feedback__automatic_parallelism__V_7_7;
+#line 253 "feedback.automatic_parallelism.m"
+          MR_String mdbcomp__feedback__automatic_parallelism__V_8_8;
+
+#line 253 "feedback.automatic_parallelism.m"
+          mdbcomp__feedback__automatic_parallelism__succeeded = ((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 253 "feedback.automatic_parallelism.m"
+          if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 253 "feedback.automatic_parallelism.m"
+            {
+#line 253 "feedback.automatic_parallelism.m"
+              mdbcomp__feedback__automatic_parallelism__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 253 "feedback.automatic_parallelism.m"
+              mdbcomp__feedback__automatic_parallelism__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 6023 "mdbcomp.feedback.automatic_parallelism.c"
+              mdbcomp__feedback__automatic_parallelism__succeeded = (strcmp(mdbcomp__feedback__automatic_parallelism__V_5_5, mdbcomp__feedback__automatic_parallelism__V_7_7) == 0);
+#line 253 "feedback.automatic_parallelism.m"
+              if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 6027 "mdbcomp.feedback.automatic_parallelism.c"
+                mdbcomp__feedback__automatic_parallelism__succeeded = (strcmp(mdbcomp__feedback__automatic_parallelism__V_6_6, mdbcomp__feedback__automatic_parallelism__V_8_8) == 0);
+#line 253 "feedback.automatic_parallelism.m"
+            }
+#line 253 "feedback.automatic_parallelism.m"
+        }
+#line 253 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 253 "feedback.automatic_parallelism.m"
+  }
+#line 253 "feedback.automatic_parallelism.m"
+}
+
+#line 123 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____best_par_algorithm_0_0(
+#line 123 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 123 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 123 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 123 "feedback.automatic_parallelism.m"
+{
+#line 123 "feedback.automatic_parallelism.m"
+  {
+#line 123 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 123 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_20 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 123 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_21 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3;
+
+#line 123 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_20 == mdbcomp__feedback__automatic_parallelism__CastY_21);
+#line 123 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 6064 "mdbcomp.feedback.automatic_parallelism.c"
+      *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 123 "feedback.automatic_parallelism.m"
+    else
+#line 123 "feedback.automatic_parallelism.m"
+      if ((mdbcomp__feedback__automatic_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 123 "feedback.automatic_parallelism.m"
+        if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 123 "feedback.automatic_parallelism.m"
+          *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 123 "feedback.automatic_parallelism.m"
+        else
+#line 123 "feedback.automatic_parallelism.m"
+          if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 123 "feedback.automatic_parallelism.m"
+            *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 1;
+#line 123 "feedback.automatic_parallelism.m"
+          else
+#line 123 "feedback.automatic_parallelism.m"
+            if (((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+#line 6084 "mdbcomp.feedback.automatic_parallelism.c"
+              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 2;
+#line 123 "feedback.automatic_parallelism.m"
+            else
+#line 6088 "mdbcomp.feedback.automatic_parallelism.c"
+              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 2;
+#line 123 "feedback.automatic_parallelism.m"
+      else
+#line 123 "feedback.automatic_parallelism.m"
+        if ((mdbcomp__feedback__automatic_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 123 "feedback.automatic_parallelism.m"
+          if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 123 "feedback.automatic_parallelism.m"
+            *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 2;
+#line 123 "feedback.automatic_parallelism.m"
+          else
+#line 123 "feedback.automatic_parallelism.m"
+            if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 123 "feedback.automatic_parallelism.m"
+              *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 123 "feedback.automatic_parallelism.m"
+            else
+#line 123 "feedback.automatic_parallelism.m"
+              if (((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+#line 6108 "mdbcomp.feedback.automatic_parallelism.c"
+                *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 2;
+#line 123 "feedback.automatic_parallelism.m"
+              else
+#line 6112 "mdbcomp.feedback.automatic_parallelism.c"
+                *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 2;
+#line 123 "feedback.automatic_parallelism.m"
+        else
+#line 123 "feedback.automatic_parallelism.m"
+          if (((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+#line 123 "feedback.automatic_parallelism.m"
+            {
+#line 123 "feedback.automatic_parallelism.m"
+              MR_Integer mdbcomp__feedback__automatic_parallelism__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 123 "feedback.automatic_parallelism.m"
+              if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 6125 "mdbcomp.feedback.automatic_parallelism.c"
+                *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 1;
+#line 123 "feedback.automatic_parallelism.m"
+              else
+#line 123 "feedback.automatic_parallelism.m"
+                if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 6131 "mdbcomp.feedback.automatic_parallelism.c"
+                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 1;
+#line 123 "feedback.automatic_parallelism.m"
+                else
+#line 123 "feedback.automatic_parallelism.m"
+                  if (((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+#line 123 "feedback.automatic_parallelism.m"
+                    {
+#line 123 "feedback.automatic_parallelism.m"
+                      MR_Integer mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 123 "feedback.automatic_parallelism.m"
+                      {
+#line 123 "feedback.automatic_parallelism.m"
+                        mercury__private_builtin__builtin_compare_int_3_p_0(mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__V_24_24, mdbcomp__feedback__automatic_parallelism__V_5_5);
+#line 123 "feedback.automatic_parallelism.m"
+                        return;
+                      }
+#line 123 "feedback.automatic_parallelism.m"
+                    }
+#line 123 "feedback.automatic_parallelism.m"
+                  else
+#line 6153 "mdbcomp.feedback.automatic_parallelism.c"
+                    *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 1;
+#line 123 "feedback.automatic_parallelism.m"
+            }
+#line 123 "feedback.automatic_parallelism.m"
+          else
+#line 123 "feedback.automatic_parallelism.m"
+            {
+#line 123 "feedback.automatic_parallelism.m"
+              MR_Integer mdbcomp__feedback__automatic_parallelism__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 123 "feedback.automatic_parallelism.m"
+              if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 6166 "mdbcomp.feedback.automatic_parallelism.c"
+                *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 1;
+#line 123 "feedback.automatic_parallelism.m"
+              else
+#line 123 "feedback.automatic_parallelism.m"
+                if ((mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 6172 "mdbcomp.feedback.automatic_parallelism.c"
+                  *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 1;
+#line 123 "feedback.automatic_parallelism.m"
+                else
+#line 123 "feedback.automatic_parallelism.m"
+                  if (((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+#line 6178 "mdbcomp.feedback.automatic_parallelism.c"
+                    *mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 = (MR_Integer) 2;
+#line 123 "feedback.automatic_parallelism.m"
+                  else
+#line 123 "feedback.automatic_parallelism.m"
+                    {
+#line 123 "feedback.automatic_parallelism.m"
+                      MR_Integer mdbcomp__feedback__automatic_parallelism__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdbcomp__feedback__automatic_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 123 "feedback.automatic_parallelism.m"
+                      {
+#line 123 "feedback.automatic_parallelism.m"
+                        mercury__private_builtin__builtin_compare_int_3_p_0(mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, mdbcomp__feedback__automatic_parallelism__V_25_25, mdbcomp__feedback__automatic_parallelism__V_13_13);
+#line 123 "feedback.automatic_parallelism.m"
+                        return;
+                      }
+#line 123 "feedback.automatic_parallelism.m"
+                    }
+#line 123 "feedback.automatic_parallelism.m"
+            }
+#line 123 "feedback.automatic_parallelism.m"
+  }
+#line 123 "feedback.automatic_parallelism.m"
+}
+
+#line 123 "feedback.automatic_parallelism.m"
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____best_par_algorithm_0_0(
+#line 123 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__1_1,
+#line 123 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)
+#line 123 "feedback.automatic_parallelism.m"
+{
+#line 123 "feedback.automatic_parallelism.m"
+  {
+#line 123 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 123 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_11 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 123 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_12 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 123 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastX_11 == mdbcomp__feedback__automatic_parallelism__CastY_12);
+#line 123 "feedback.automatic_parallelism.m"
+    if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 123 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__succeeded = MR_TRUE;
+#line 123 "feedback.automatic_parallelism.m"
+    else
+#line 123 "feedback.automatic_parallelism.m"
+      if ((mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 123 "feedback.automatic_parallelism.m"
+        {
+#line 123 "feedback.automatic_parallelism.m"
+          MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_7 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 123 "feedback.automatic_parallelism.m"
+          MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_8 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 123 "feedback.automatic_parallelism.m"
+          mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastY_8 == mdbcomp__feedback__automatic_parallelism__CastX_7);
+#line 123 "feedback.automatic_parallelism.m"
+        }
+#line 123 "feedback.automatic_parallelism.m"
+      else
+#line 123 "feedback.automatic_parallelism.m"
+        if ((mdbcomp__feedback__automatic_parallelism__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 123 "feedback.automatic_parallelism.m"
+          {
+#line 123 "feedback.automatic_parallelism.m"
+            MR_Integer mdbcomp__feedback__automatic_parallelism__CastX_9 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1;
+#line 123 "feedback.automatic_parallelism.m"
+            MR_Integer mdbcomp__feedback__automatic_parallelism__CastY_10 = (MR_Integer) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+
+#line 123 "feedback.automatic_parallelism.m"
+            mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__CastY_10 == mdbcomp__feedback__automatic_parallelism__CastX_9);
+#line 123 "feedback.automatic_parallelism.m"
+          }
+#line 123 "feedback.automatic_parallelism.m"
+        else
+#line 123 "feedback.automatic_parallelism.m"
+          if (((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+#line 123 "feedback.automatic_parallelism.m"
+            {
+#line 123 "feedback.automatic_parallelism.m"
+              MR_Integer mdbcomp__feedback__automatic_parallelism__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 123 "feedback.automatic_parallelism.m"
+              MR_Integer mdbcomp__feedback__automatic_parallelism__V_4_4;
+
+#line 123 "feedback.automatic_parallelism.m"
+              mdbcomp__feedback__automatic_parallelism__succeeded = ((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 123 "feedback.automatic_parallelism.m"
+              if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 123 "feedback.automatic_parallelism.m"
+                {
+#line 123 "feedback.automatic_parallelism.m"
+                  mdbcomp__feedback__automatic_parallelism__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 6276 "mdbcomp.feedback.automatic_parallelism.c"
+                  mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_3_3 == mdbcomp__feedback__automatic_parallelism__V_4_4);
+#line 123 "feedback.automatic_parallelism.m"
+                }
+#line 123 "feedback.automatic_parallelism.m"
+            }
+#line 123 "feedback.automatic_parallelism.m"
+          else
+#line 123 "feedback.automatic_parallelism.m"
+            {
+#line 123 "feedback.automatic_parallelism.m"
+              MR_Integer mdbcomp__feedback__automatic_parallelism__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdbcomp__feedback__automatic_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 123 "feedback.automatic_parallelism.m"
+              MR_Integer mdbcomp__feedback__automatic_parallelism__V_6_6;
+
+#line 123 "feedback.automatic_parallelism.m"
+              mdbcomp__feedback__automatic_parallelism__succeeded = ((MR_tag((MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+#line 123 "feedback.automatic_parallelism.m"
+              if (mdbcomp__feedback__automatic_parallelism__succeeded)
+#line 123 "feedback.automatic_parallelism.m"
+                {
+#line 123 "feedback.automatic_parallelism.m"
+                  mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(2), mdbcomp__feedback__automatic_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 6299 "mdbcomp.feedback.automatic_parallelism.c"
+                  mdbcomp__feedback__automatic_parallelism__succeeded = (mdbcomp__feedback__automatic_parallelism__V_5_5 == mdbcomp__feedback__automatic_parallelism__V_6_6);
+#line 123 "feedback.automatic_parallelism.m"
+                }
+#line 123 "feedback.automatic_parallelism.m"
+            }
+#line 123 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 123 "feedback.automatic_parallelism.m"
+  }
+#line 123 "feedback.automatic_parallelism.m"
+}
+
+#line 363 "feedback.automatic_parallelism.m"
+MR_Float MR_CALL 
+mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_overheads_1_f_0(
+#line 363 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__PEM_3)
+#line 363 "feedback.automatic_parallelism.m"
+{
+#line 392 "feedback.automatic_parallelism.m"
+  {
+#line 392 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 392 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 392 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__SparkCosts_4 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 3)));
+#line 392 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__BarrierCosts_5 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 4)));
+#line 392 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__SignalCosts_6 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 5)));
+#line 392 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__WaitCosts_7 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 6)));
+#line 392 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_13_13;
+#line 392 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_14_14 = (mdbcomp__feedback__automatic_parallelism__SparkCosts_4 + mdbcomp__feedback__automatic_parallelism__BarrierCosts_5);
+#line 393 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 0)));
+#line 393 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_9_9 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 1)));
+#line 393 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_10_10 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 2)));
+#line 393 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_11_11 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 7)));
+#line 393 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_12_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 8)));
+
+#line 392 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__V_13_13 = (mdbcomp__feedback__automatic_parallelism__V_14_14 + mdbcomp__feedback__automatic_parallelism__SignalCosts_6);
+#line 392 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__HeadVar__2_2 = (mdbcomp__feedback__automatic_parallelism__V_13_13 + mdbcomp__feedback__automatic_parallelism__WaitCosts_7);
+#line 392 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 392 "feedback.automatic_parallelism.m"
+  }
+#line 363 "feedback.automatic_parallelism.m"
+}
+
+#line 357 "feedback.automatic_parallelism.m"
+MR_Float MR_CALL 
+mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_cpu_time_1_f_0(
+#line 357 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__PEM_3)
+#line 357 "feedback.automatic_parallelism.m"
+{
+#line 387 "feedback.automatic_parallelism.m"
+  {
+#line 387 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 387 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 387 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__SeqTime_4 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 1)));
+#line 387 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__Overheads_5;
+#line 387 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__SparkCosts_15 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 3)));
+#line 387 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__BarrierCosts_16 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 4)));
+#line 387 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__SignalCosts_17 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 5)));
+#line 387 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__WaitCosts_18 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 6)));
+#line 387 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_24_24;
+#line 387 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_25_25 = (mdbcomp__feedback__automatic_parallelism__SparkCosts_15 + mdbcomp__feedback__automatic_parallelism__BarrierCosts_16);
+#line 388 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 0)));
+#line 388 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_7_7 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 2)));
+#line 388 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_12_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 7)));
+#line 388 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_13_13 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 8)));
+
+#line 392 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__V_24_24 = (mdbcomp__feedback__automatic_parallelism__V_25_25 + mdbcomp__feedback__automatic_parallelism__SignalCosts_17);
+#line 392 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__Overheads_5 = (mdbcomp__feedback__automatic_parallelism__V_24_24 + mdbcomp__feedback__automatic_parallelism__WaitCosts_18);
+#line 387 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__HeadVar__2_2 = (mdbcomp__feedback__automatic_parallelism__SeqTime_4 + mdbcomp__feedback__automatic_parallelism__Overheads_5);
+#line 387 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 387 "feedback.automatic_parallelism.m"
+  }
+#line 357 "feedback.automatic_parallelism.m"
+}
+
+#line 353 "feedback.automatic_parallelism.m"
+MR_Float MR_CALL 
+mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_time_saving_1_f_0(
+#line 353 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__PEM_3)
+#line 353 "feedback.automatic_parallelism.m"
+{
+#line 383 "feedback.automatic_parallelism.m"
+  {
+#line 383 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 383 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 383 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__SeqTime_4 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 1)));
+#line 383 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__ParTime_5 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 2)));
+#line 384 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 0)));
+#line 384 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_8_8 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 3)));
+#line 384 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_9_9 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 4)));
+#line 384 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_10_10 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 5)));
+#line 384 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_11_11 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 6)));
+#line 384 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_12_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 7)));
+#line 384 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_13_13 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 8)));
+
+#line 383 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__HeadVar__2_2 = (mdbcomp__feedback__automatic_parallelism__SeqTime_4 - mdbcomp__feedback__automatic_parallelism__ParTime_5);
+#line 383 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 383 "feedback.automatic_parallelism.m"
+  }
+#line 353 "feedback.automatic_parallelism.m"
+}
+
+#line 349 "feedback.automatic_parallelism.m"
+MR_Float MR_CALL 
+mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_speedup_1_f_0(
+#line 349 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__PEM_3)
+#line 349 "feedback.automatic_parallelism.m"
+{
+#line 379 "feedback.automatic_parallelism.m"
+  {
+#line 379 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 379 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 379 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__SeqTime_4 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 1)));
+#line 379 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__ParTime_5 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 2)));
+#line 380 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 0)));
+#line 380 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_8_8 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 3)));
+#line 380 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_9_9 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 4)));
+#line 380 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_10_10 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 5)));
+#line 380 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_11_11 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 6)));
+#line 380 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_12_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 7)));
+#line 380 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__V_13_13 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__PEM_3, (MR_Integer) 8)));
+
+#line 379 "feedback.automatic_parallelism.m"
+    {
+#line 379 "feedback.automatic_parallelism.m"
+      return mdbcomp__feedback__automatic_parallelism__HeadVar__2_2 = mercury__float__f_slash_2_f_0(mdbcomp__feedback__automatic_parallelism__SeqTime_4, mdbcomp__feedback__automatic_parallelism__ParTime_5);
+    }
+#line 379 "feedback.automatic_parallelism.m"
+    return mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 379 "feedback.automatic_parallelism.m"
+  }
+#line 349 "feedback.automatic_parallelism.m"
+}
+
+#line 306 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_seq_conj_3_p_0(
+#line 306 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_7,
+#line 306 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_8,
+#line 306 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__Conv_4,
+#line 306 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__HeadVar__2_2,
+#line 306 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__HeadVar__3_3)
+#line 306 "feedback.automatic_parallelism.m"
+{
+#line 420 "feedback.automatic_parallelism.m"
+  {
+#line 420 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 420 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Conjs0_5 = (MR_Word) mdbcomp__feedback__automatic_parallelism__HeadVar__2_2;
+#line 420 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Conjs_6;
+
+#line 421 "feedback.automatic_parallelism.m"
+    {
+#line 421 "feedback.automatic_parallelism.m"
+      mercury__list__map_3_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_7, mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_8, mdbcomp__feedback__automatic_parallelism__Conv_4, mdbcomp__feedback__automatic_parallelism__Conjs0_5, &mdbcomp__feedback__automatic_parallelism__Conjs_6);
+    }
+#line 420 "feedback.automatic_parallelism.m"
+    *mdbcomp__feedback__automatic_parallelism__HeadVar__3_3 = (MR_Word) mdbcomp__feedback__automatic_parallelism__Conjs_6;
+#line 420 "feedback.automatic_parallelism.m"
+  }
+#line 306 "feedback.automatic_parallelism.m"
+}
+
+#line 413 "feedback.automatic_parallelism.m"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunction_3_p_0_2(
+#line 413 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__closure_arg,
+#line 413 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 413 "feedback.automatic_parallelism.m"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 413 "feedback.automatic_parallelism.m"
+{
+#line 413 "feedback.automatic_parallelism.m"
+  {
+#line 413 "feedback.automatic_parallelism.m"
+    MR_Box mdbcomp__feedback__automatic_parallelism__closure = mdbcomp__feedback__automatic_parallelism__closure_arg;
+#line 413 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__3_3;
+
+#line 413 "feedback.automatic_parallelism.m"
+    {
+#line 413 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__convert_seq_conj_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__closure, (MR_Integer) 5))), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), &mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__3_3);
+    }
+#line 413 "feedback.automatic_parallelism.m"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_2 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_HeadVar__3_3));
+#line 413 "feedback.automatic_parallelism.m"
+  }
+#line 413 "feedback.automatic_parallelism.m"
+}
+
+#line 410 "feedback.automatic_parallelism.m"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunction_3_p_0_1(
+#line 410 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__closure_arg,
+#line 410 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 410 "feedback.automatic_parallelism.m"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 410 "feedback.automatic_parallelism.m"
+{
+#line 410 "feedback.automatic_parallelism.m"
+  {
+#line 410 "feedback.automatic_parallelism.m"
+    MR_Box mdbcomp__feedback__automatic_parallelism__closure = mdbcomp__feedback__automatic_parallelism__closure_arg;
+
+#line 410 "feedback.automatic_parallelism.m"
+    {
+#line 410 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__IntroducedFrom__pred__convert_candidate_par_conjunction__411__1_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__closure, (MR_Integer) 6))), mdbcomp__feedback__automatic_parallelism__wrapper_arg_1, mdbcomp__feedback__automatic_parallelism__wrapper_arg_2);
+#line 410 "feedback.automatic_parallelism.m"
+      return;
+    }
+#line 410 "feedback.automatic_parallelism.m"
+  }
+#line 410 "feedback.automatic_parallelism.m"
+}
+
+#line 301 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunction_3_p_0(
+#line 301 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_28,
+#line 301 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_29,
+#line 301 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__Conv0_4,
+#line 301 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__CPC0_5,
+#line 301 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__CPC_6)
+#line 301 "feedback.automatic_parallelism.m"
+{
+#line 406 "feedback.automatic_parallelism.m"
+  {
+#line 406 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_32_32;
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_33_33;
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_34_34;
+#line 406 "feedback.automatic_parallelism.m"
+    MR_String mdbcomp__feedback__automatic_parallelism__GoalPath_7 = ((MR_String) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPC0_5, (MR_Integer) 0)));
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__MaybePushGoal_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPC0_5, (MR_Integer) 1)));
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Integer mdbcomp__feedback__automatic_parallelism__FirstGoalNum_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPC0_5, (MR_Integer) 2)));
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__IsDependent_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPC0_5, (MR_Integer) 3)));
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__GoalsBefore0_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPC0_5, (MR_Integer) 4)));
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__GoalsBeforeCost_12 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPC0_5, (MR_Integer) 5)));
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Conjs0_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPC0_5, (MR_Integer) 6)));
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__GoalsAfter0_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPC0_5, (MR_Integer) 7)));
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Float mdbcomp__feedback__automatic_parallelism__GoalsAfterCost_15 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPC0_5, (MR_Integer) 8)));
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Metrics_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPC0_5, (MR_Integer) 9)));
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Conv_17;
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__Conjs_20;
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__GoalsBefore_21;
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__GoalsAfter_22;
+#line 406 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__V_25_25;
+#line 413 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv1_Conjs_20;
+
+#line 410 "feedback.automatic_parallelism.m"
+    {
+#line 410 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__Conv_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 410 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__Conv_17, 0) = ((MR_Box) (&mdbcomp__feedback__automatic_parallelism_scalar_common_5[0]));
+#line 410 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__Conv_17, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunction_3_p_0_1));
+#line 410 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__Conv_17, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 410 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__Conv_17, 3) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_28));
+#line 410 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__Conv_17, 4) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_29));
+#line 410 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__Conv_17, 5) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Conv0_4));
+#line 410 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__Conv_17, 6) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__CPC0_5));
+#line 410 "feedback.automatic_parallelism.m"
+    }
+#line 413 "feedback.automatic_parallelism.m"
+    {
+#line 413 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__V_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 413 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_25_25, 0) = ((MR_Box) (&mdbcomp__feedback__automatic_parallelism_scalar_common_4[1]));
+#line 413 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_25_25, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunction_3_p_0_2));
+#line 413 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_25_25, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 413 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_25_25, 3) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_28));
+#line 413 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_25_25, 4) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_29));
+#line 413 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_25_25, 5) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Conv_17));
+#line 413 "feedback.automatic_parallelism.m"
+    }
+#line 6685 "mdbcomp.feedback.automatic_parallelism.c"
+    mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_32_32 = (MR_Word) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1;
+#line 6687 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 6689 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__TypeInfo_33_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6691 "mdbcomp.feedback.automatic_parallelism.c"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_33_33, 0) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_32_32));
+#line 6693 "mdbcomp.feedback.automatic_parallelism.c"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_33_33, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_28));
+#line 6695 "mdbcomp.feedback.automatic_parallelism.c"
+    }
+#line 6697 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 6699 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__TypeInfo_34_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6701 "mdbcomp.feedback.automatic_parallelism.c"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_34_34, 0) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_32_32));
+#line 6703 "mdbcomp.feedback.automatic_parallelism.c"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_34_34, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_29));
+#line 6705 "mdbcomp.feedback.automatic_parallelism.c"
+    }
+#line 413 "feedback.automatic_parallelism.m"
+    {
+#line 413 "feedback.automatic_parallelism.m"
+      mercury__list__map_3_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_33_33, mdbcomp__feedback__automatic_parallelism__TypeInfo_34_34, (MR_Word) mdbcomp__feedback__automatic_parallelism__V_25_25, (MR_Word) mdbcomp__feedback__automatic_parallelism__Conjs0_13, &mdbcomp__feedback__automatic_parallelism__conv1_Conjs_20);
+    }
+#line 413 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__Conjs_20 = (MR_Word) mdbcomp__feedback__automatic_parallelism__conv1_Conjs_20;
+#line 414 "feedback.automatic_parallelism.m"
+    {
+#line 414 "feedback.automatic_parallelism.m"
+      mercury__list__map_3_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_28, mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_29, mdbcomp__feedback__automatic_parallelism__Conv_17, mdbcomp__feedback__automatic_parallelism__GoalsBefore0_11, &mdbcomp__feedback__automatic_parallelism__GoalsBefore_21);
+    }
+#line 415 "feedback.automatic_parallelism.m"
+    {
+#line 415 "feedback.automatic_parallelism.m"
+      mercury__list__map_3_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_28, mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_29, mdbcomp__feedback__automatic_parallelism__Conv_17, mdbcomp__feedback__automatic_parallelism__GoalsAfter0_14, &mdbcomp__feedback__automatic_parallelism__GoalsAfter_22);
+    }
+#line 416 "feedback.automatic_parallelism.m"
+    {
+#line 416 "feedback.automatic_parallelism.m"
+      MR_Word base;
+#line 416 "feedback.automatic_parallelism.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 10 * sizeof(MR_Word)), NULL, NULL);
+#line 416 "feedback.automatic_parallelism.m"
+      *mdbcomp__feedback__automatic_parallelism__CPC_6 = base;
+#line 416 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__GoalPath_7));
+#line 416 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__MaybePushGoal_8));
+#line 416 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__FirstGoalNum_9));
+#line 416 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__IsDependent_10));
+#line 416 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__GoalsBefore_21));
+#line 416 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 5) = MR_box_float(mdbcomp__feedback__automatic_parallelism__GoalsBeforeCost_12);
+#line 416 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Conjs_20));
+#line 416 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__GoalsAfter_22));
+#line 416 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 8) = MR_box_float(mdbcomp__feedback__automatic_parallelism__GoalsAfterCost_15);
+#line 416 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Metrics_16));
+#line 416 "feedback.automatic_parallelism.m"
+    }
+#line 406 "feedback.automatic_parallelism.m"
+  }
+#line 301 "feedback.automatic_parallelism.m"
+}
+
+#line 403 "feedback.automatic_parallelism.m"
+static void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunctions_proc_3_p_0_1(
+#line 403 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__closure_arg,
+#line 403 "feedback.automatic_parallelism.m"
+  MR_Box mdbcomp__feedback__automatic_parallelism__wrapper_arg_1,
+#line 403 "feedback.automatic_parallelism.m"
+  MR_Box * mdbcomp__feedback__automatic_parallelism__wrapper_arg_2)
+#line 403 "feedback.automatic_parallelism.m"
+{
+#line 403 "feedback.automatic_parallelism.m"
+  {
+#line 403 "feedback.automatic_parallelism.m"
+    MR_Box mdbcomp__feedback__automatic_parallelism__closure = mdbcomp__feedback__automatic_parallelism__closure_arg;
+#line 403 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv0_CPC_6;
+
+#line 403 "feedback.automatic_parallelism.m"
+    {
+#line 403 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunction_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__closure, (MR_Integer) 5))), ((MR_Word) mdbcomp__feedback__automatic_parallelism__wrapper_arg_1), &mdbcomp__feedback__automatic_parallelism__conv0_CPC_6);
+    }
+#line 403 "feedback.automatic_parallelism.m"
+    *mdbcomp__feedback__automatic_parallelism__wrapper_arg_2 = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__conv0_CPC_6));
+#line 403 "feedback.automatic_parallelism.m"
+  }
+#line 403 "feedback.automatic_parallelism.m"
+}
+
+#line 296 "feedback.automatic_parallelism.m"
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunctions_proc_3_p_0(
+#line 296 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_12,
+#line 296 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_13,
+#line 296 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__Conv_4,
+#line 296 "feedback.automatic_parallelism.m"
+  MR_Word mdbcomp__feedback__automatic_parallelism__CPCProcA_5,
+#line 296 "feedback.automatic_parallelism.m"
+  MR_Word * mdbcomp__feedback__automatic_parallelism__CPCProcB_6)
+#line 296 "feedback.automatic_parallelism.m"
+{
+#line 401 "feedback.automatic_parallelism.m"
+  {
+#line 401 "feedback.automatic_parallelism.m"
+    MR_bool mdbcomp__feedback__automatic_parallelism__succeeded;
+#line 401 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_16_16;
+#line 401 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_17_17;
+#line 401 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__TypeInfo_18_18;
+#line 401 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__VarTable_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPCProcA_5, (MR_Integer) 0)));
+#line 401 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__PushGoals_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPCProcA_5, (MR_Integer) 1)));
+#line 401 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__CPCA_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__CPCProcA_5, (MR_Integer) 2)));
+#line 401 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__CPCB_10;
+#line 401 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__V_11_11;
+#line 403 "feedback.automatic_parallelism.m"
+    MR_Word mdbcomp__feedback__automatic_parallelism__conv1_CPCB_10;
+
+#line 403 "feedback.automatic_parallelism.m"
+    {
+#line 403 "feedback.automatic_parallelism.m"
+      mdbcomp__feedback__automatic_parallelism__V_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 403 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_11_11, 0) = ((MR_Box) (&mdbcomp__feedback__automatic_parallelism_scalar_common_4[0]));
+#line 403 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_11_11, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunctions_proc_3_p_0_1));
+#line 403 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_11_11, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 403 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_11_11, 3) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_12));
+#line 403 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_11_11, 4) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_13));
+#line 403 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__V_11_11, 5) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__Conv_4));
+#line 403 "feedback.automatic_parallelism.m"
+    }
+#line 6845 "mdbcomp.feedback.automatic_parallelism.c"
+    mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_16_16 = (MR_Word) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1;
+#line 6847 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 6849 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__TypeInfo_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6851 "mdbcomp.feedback.automatic_parallelism.c"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_17_17, 0) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_16_16));
+#line 6853 "mdbcomp.feedback.automatic_parallelism.c"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_17_17, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_A_12));
+#line 6855 "mdbcomp.feedback.automatic_parallelism.c"
+    }
+#line 6857 "mdbcomp.feedback.automatic_parallelism.c"
+    {
+#line 6859 "mdbcomp.feedback.automatic_parallelism.c"
+      mdbcomp__feedback__automatic_parallelism__TypeInfo_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6861 "mdbcomp.feedback.automatic_parallelism.c"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_18_18, 0) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeCtorInfo_16_16));
+#line 6863 "mdbcomp.feedback.automatic_parallelism.c"
+      MR_hl_field(MR_mktag(0), mdbcomp__feedback__automatic_parallelism__TypeInfo_18_18, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__TypeInfo_for_B_13));
+#line 6865 "mdbcomp.feedback.automatic_parallelism.c"
+    }
+#line 403 "feedback.automatic_parallelism.m"
+    {
+#line 403 "feedback.automatic_parallelism.m"
+      mercury__list__map_3_p_0(mdbcomp__feedback__automatic_parallelism__TypeInfo_17_17, mdbcomp__feedback__automatic_parallelism__TypeInfo_18_18, (MR_Word) mdbcomp__feedback__automatic_parallelism__V_11_11, (MR_Word) mdbcomp__feedback__automatic_parallelism__CPCA_9, &mdbcomp__feedback__automatic_parallelism__conv1_CPCB_10);
+    }
+#line 403 "feedback.automatic_parallelism.m"
+    mdbcomp__feedback__automatic_parallelism__CPCB_10 = (MR_Word) mdbcomp__feedback__automatic_parallelism__conv1_CPCB_10;
+#line 404 "feedback.automatic_parallelism.m"
+    {
+#line 404 "feedback.automatic_parallelism.m"
+      MR_Word base;
+#line 404 "feedback.automatic_parallelism.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 404 "feedback.automatic_parallelism.m"
+      *mdbcomp__feedback__automatic_parallelism__CPCProcB_6 = base;
+#line 404 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__VarTable_7));
+#line 404 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__PushGoals_8));
+#line 404 "feedback.automatic_parallelism.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdbcomp__feedback__automatic_parallelism__CPCB_10));
+#line 404 "feedback.automatic_parallelism.m"
+    }
+#line 401 "feedback.automatic_parallelism.m"
+  }
+#line 296 "feedback.automatic_parallelism.m"
+}
+
+void mercury__mdbcomp__feedback__automatic_parallelism__init(void)
+{
+}
+
+void mercury__mdbcomp__feedback__automatic_parallelism__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_best_par_algorithm_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_callee_rep_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_params_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_conjuncts_are_dependent_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_cost_above_par_threshold_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallel_exec_metrics_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallelise_dep_conjs_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_speedup_estimate_alg_0);
+	MR_register_type_ctor_info(&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_stat_measure_0);
+}
+
+void mercury__mdbcomp__feedback__automatic_parallelism__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module mdbcomp.feedback.automatic_parallelism. */

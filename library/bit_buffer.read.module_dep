@@ -1,0 +1,13 @@
+module(1, "bit_buffer.read.m",
+	(bit_buffer.read),
+	{bit_buffer},
+	{builtin, bitmap, io, private_builtin},
+	{builtin, bitmap, io, require, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

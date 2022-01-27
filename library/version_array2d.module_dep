@@ -1,0 +1,13 @@
+module(1, "version_array2d.m",
+	version_array2d,
+	{},
+	{builtin, list, private_builtin},
+	{builtin, list, int, require, string, version_array, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

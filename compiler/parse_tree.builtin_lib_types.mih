@@ -1,0 +1,244 @@
+/*
+** Automatically generated from `builtin_lib_types.m'
+** by the Mercury compiler,
+** version rotd-2014-10-24
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.builtin_lib_types. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__builtin_lib_types
+#define MR_HEADER_GUARD_parse_tree__builtin_lib_types
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__BUILTIN_LIB_TYPES_DECL_GUARD
+#define PARSE_TREE__BUILTIN_LIB_TYPES_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 104 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_dummy_output_functor_0_f_0(void);
+
+#line 100 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_rollback_retry_functor_0_f_0(void);
+
+#line 99 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_rollback_exception_functor_0_f_0(void);
+
+#line 95 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_validres_invalid_functor_0_f_0(void);
+
+#line 94 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_validres_valid_functor_0_f_0(void);
+
+#line 90 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__exception_exception_functor_0_f_0(void);
+
+#line 89 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__exception_failed_functor_0_f_0(void);
+
+#line 88 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__exception_succeeded_functor_0_f_0(void);
+
+#line 79 "builtin_lib_types.m"
+MR_bool MR_CALL 
+parse_tree__builtin_lib_types__is_region_var_2_p_0(
+#line 79 "builtin_lib_types.m"
+  MR_Word parse_tree__builtin_lib_types__param_1,
+#line 79 "builtin_lib_types.m"
+  MR_Word parse_tree__builtin_lib_types__param_2);
+
+#line 73 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_dummy_output_type_ctor_0_f_0(void);
+
+#line 72 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_rollback_exception_type_ctor_0_f_0(void);
+
+#line 71 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_valid_result_type_ctor_0_f_0(void);
+
+#line 69 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__exception_result_type_ctor_0_f_0(void);
+
+#line 67 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__list_type_ctor_0_f_0(void);
+
+#line 65 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__poly_type_type_ctor_0_f_0(void);
+
+#line 63 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__string_type_ctor_0_f_0(void);
+
+#line 62 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__char_type_ctor_0_f_0(void);
+
+#line 61 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__float_type_ctor_0_f_0(void);
+
+#line 60 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int_type_ctor_0_f_0(void);
+
+#line 53 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__future_type_1_f_0(
+#line 53 "builtin_lib_types.m"
+  MR_Word parse_tree__builtin_lib_types__param_1);
+
+#line 52 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__region_type_0_f_0(void);
+
+#line 51 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_dummy_output_type_0_f_0(void);
+
+#line 50 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_rollback_exception_type_0_f_0(void);
+
+#line 49 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_valid_result_type_0_f_0(void);
+
+#line 48 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_state_type_0_f_0(void);
+
+#line 47 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__stm_atomic_type_0_f_0(void);
+
+#line 46 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__exception_result_type_1_f_0(
+#line 46 "builtin_lib_types.m"
+  MR_Word parse_tree__builtin_lib_types__param_1);
+
+#line 45 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__univ_type_0_f_0(void);
+
+#line 44 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__io_io_type_0_f_0(void);
+
+#line 43 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__io_state_type_0_f_0(void);
+
+#line 42 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__comparison_result_type_0_f_0(void);
+
+#line 41 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__type_ctor_desc_type_0_f_0(void);
+
+#line 40 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__pseudo_type_desc_type_0_f_0(void);
+
+#line 39 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__type_desc_type_0_f_0(void);
+
+#line 38 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__type_ctor_info_type_0_f_0(void);
+
+#line 37 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__type_info_type_0_f_0(void);
+
+#line 36 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__sample_typeclass_info_type_0_f_0(void);
+
+#line 35 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__sample_type_info_type_0_f_0(void);
+
+#line 34 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__float_box_type_0_f_0(void);
+
+#line 33 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__heap_pointer_type_0_f_0(void);
+
+#line 32 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__c_pointer_type_0_f_0(void);
+
+#line 31 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__void_type_0_f_0(void);
+
+#line 30 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__char_type_0_f_0(void);
+
+#line 29 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__string_type_0_f_0(void);
+
+#line 28 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__float_type_0_f_0(void);
+
+#line 27 "builtin_lib_types.m"
+MR_Word MR_CALL 
+parse_tree__builtin_lib_types__int_type_0_f_0(void);
+
+void mercury__parse_tree__builtin_lib_types__init(void);
+void mercury__parse_tree__builtin_lib_types__init_type_tables(void);
+void mercury__parse_tree__builtin_lib_types__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.builtin_lib_types */
+
+/* :- end_interface parse_tree.builtin_lib_types. */

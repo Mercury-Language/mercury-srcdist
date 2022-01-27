@@ -1,0 +1,10 @@
+:- module (parse_tree.item_util).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module (libs.globals).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.prog_item).
+:- type short_interface_kind
+	--->	int2 
+	;	int3 .
