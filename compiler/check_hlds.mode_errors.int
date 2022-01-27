@@ -1,0 +1,86 @@
+:- module (check_hlds.mode_errors).
+:- interface.
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module one_or_more.
+:- use_module parse_tree.
+:- use_module (check_hlds.mode_info).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.prim_data).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.set_of_var).
+:- type cannot_create_reason
+    --->    cannot_init_any 
+    ;       cannot_deep_copy_partial_term .
+:- type delayed_goal
+    --->    delayed_goal(parse_tree.set_of_var.set_of_progvar, check_hlds.mode_errors.mode_error_info, hlds.hlds_goal.hlds_goal).
+:- type final_inst_error
+    --->    too_instantiated 
+    ;       not_instantiated_enough 
+    ;       wrongly_instantiated .
+:- type merge_context
+    --->    merge_disj 
+    ;       merge_if_then_else 
+    ;       merge_stm_atomic .
+:- type merge_error
+    --->    merge_error(parse_tree.prog_data.prog_var, assoc_list.assoc_list(parse_tree.prog_data.prog_context, parse_tree.prog_data.mer_inst)).
+:- type mode_error
+    --->    mode_error_unify_var_var(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst)
+    ;       mode_error_unify_var_poly(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst)
+    ;       mode_error_unify_var_functor(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.mer_inst, list.list(parse_tree.prog_data.mer_inst))
+    ;       mode_error_unify_var_lambda(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst)
+    ;       mode_error_unify_var_multimode_pf(parse_tree.prog_data.prog_var, check_hlds.mode_errors.pred_id_var_multimode_error)
+    ;       mode_error_non_ground_non_local_lambda_var(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst)
+    ;       mode_error_higher_order_unify(parse_tree.prog_data.prog_var, check_hlds.mode_errors.mode_error_unify_rhs, parse_tree.prog_data.mer_type, mdbcomp.prim_data.pred_or_func)
+    ;       mode_error_var_is_not_sufficiently_instantiated(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, maybe.maybe(check_hlds.mode_errors.pred_id_var_multimode_error))
+    ;       mode_error_clobbered_var_is_live(parse_tree.prog_data.prog_var)
+    ;       mode_error_callee_pred_has_no_mode_decl 
+    ;       mode_error_no_matching_mode(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_inst), list.list(list.list(parse_tree.prog_data.mer_inst)))
+    ;       mode_error_bad_higher_order_inst(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.arity)
+    ;       mode_error_unschedulable_conjuncts(one_or_more.one_or_more(check_hlds.mode_errors.delayed_goal), check_hlds.mode_errors.schedule_culprit)
+    ;       mode_error_merge_par_conj(one_or_more.one_or_more(check_hlds.mode_errors.merge_error))
+    ;       mode_error_merge_disj(check_hlds.mode_errors.merge_context, one_or_more.one_or_more(check_hlds.mode_errors.merge_error))
+    ;       mode_error_coerce_input_not_ground(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst)
+    ;       mode_error_coerce_ground_invalid(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_type)
+    ;       mode_error_bind_locked_var(check_hlds.mode_info.var_lock_reason, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst)
+    ;       mode_error_unexpected_final_inst(int, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, check_hlds.mode_errors.final_inst_error)
+    ;       mode_error_in_callee(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_inst), hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(check_hlds.mode_errors.mode_error_info))
+    ;       mode_error_cannot_create_implied_mode(check_hlds.mode_errors.cannot_create_reason, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst)
+    ;       purity_error_should_be_in_promise_purity_scope(check_hlds.mode_errors.negated_context_desc, parse_tree.prog_data.prog_var)
+    ;       purity_error_lambda_should_be_any(one_or_more.one_or_more(parse_tree.prog_data.prog_var)).
+:- type mode_error_info
+    --->    mode_error_info(parse_tree.set_of_var.set_of_progvar, check_hlds.mode_errors.mode_error, parse_tree.prog_data.prog_context, check_hlds.mode_info.mode_context).
+:- type mode_error_unify_rhs
+    --->    error_at_var(parse_tree.prog_data.prog_var)
+    ;       error_at_functor(parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var))
+    ;       error_at_lambda(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.from_to_insts)).
+:- type mode_warning
+    --->    cannot_succeed_var_var(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst)
+    ;       cannot_succeed_var_functor(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, parse_tree.prog_data.cons_id)
+    ;       cannot_succeed_ground_occur_check(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id).
+:- type mode_warning_info
+    --->    mode_warning_info(check_hlds.mode_errors.mode_warning, parse_tree.prog_data.prog_context, check_hlds.mode_info.mode_context).
+:- type negated_context_desc
+    --->    if_then_else 
+    ;       negation .
+:- type pred_id_var_multimode_error
+    --->    pred_id_var_multimode_error(hlds.hlds_pred.pred_id, check_hlds.mode_errors.var_multimode_error).
+:- type schedule_culprit
+    --->    goal_itself_was_impure 
+    ;       goals_followed_by_impure_goal(hlds.hlds_goal.hlds_goal)
+    ;       conj_floundered .
+:- type var_multimode_error
+    --->    no_matching_mode(list.list(parse_tree.prog_data.prog_var))
+    ;       more_than_one_matching_mode(list.list(parse_tree.prog_data.prog_var))
+    ;       some_ho_args_non_ground(list.list(parse_tree.prog_data.prog_var)).
+:- func mode_decl_to_string(parse_tree.parse_tree_out_info.output_lang, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info) = string.
+:- func mode_error_info_to_spec(check_hlds.mode_info.mode_info, check_hlds.mode_errors.mode_error_info) = parse_tree.error_util.error_spec.
+:- func mode_warning_info_to_spec(check_hlds.mode_info.mode_info, check_hlds.mode_errors.mode_warning_info) = parse_tree.error_util.error_spec.
+:- func should_report_mode_warning_for_pred_origin(hlds.hlds_pred.pred_origin) = bool.bool.

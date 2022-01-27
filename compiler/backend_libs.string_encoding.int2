@@ -1,0 +1,6 @@
+:- module (backend_libs.string_encoding).
+:- interface.
+:- type string_encoding
+    --->    utf8 
+    ;       utf16 .
+:- type_representation(string_encoding, du_repn(enum("utf8", "utf16", [],  no_c_j_cs))).
