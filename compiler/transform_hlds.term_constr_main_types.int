@@ -1,0 +1,48 @@
+:- module (transform_hlds.term_constr_main_types).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module (libs.polyhedron).
+:- import_module (parse_tree.prog_data).
+:- import_module (transform_hlds.term_constr_data).
+:- import_module (transform_hlds.term_constr_errors).
+:- type constr_arg_size_info == libs.polyhedron.polyhedron.
+:- type constr_termination_info == parse_tree.prog_data.generic_termination_info(transform_hlds.term_constr_main_types.term_reason, list.list(transform_hlds.term_constr_errors.term2_error)).
+:- type intermod_status
+    --->    not_mutually_recursive 
+    ;       may_be_mutually_recursive .
+:- type term_reason
+    --->    term_reason_builtin 
+    ;       term_reason_pragma_supplied 
+    ;       term_reason_foreign_supplied 
+    ;       term_reason_import_supplied 
+    ;       term_reason_analysis .
+:- type termination2_info.
+:- func term2_info_get_abstract_rep(transform_hlds.term_constr_main_types.termination2_info) = maybe.maybe(transform_hlds.term_constr_data.abstract_proc).
+:- func term2_info_get_failure_constrs(transform_hlds.term_constr_main_types.termination2_info) = maybe.maybe(transform_hlds.term_constr_main_types.constr_arg_size_info).
+:- func term2_info_get_head_vars(transform_hlds.term_constr_main_types.termination2_info) = list.list(transform_hlds.term_constr_data.size_var).
+:- func term2_info_get_import_failure(transform_hlds.term_constr_main_types.termination2_info) = maybe.maybe(parse_tree.prog_data.pragma_constr_arg_size_info).
+:- func term2_info_get_import_success(transform_hlds.term_constr_main_types.termination2_info) = maybe.maybe(parse_tree.prog_data.pragma_constr_arg_size_info).
+:- func term2_info_get_intermod_status(transform_hlds.term_constr_main_types.termination2_info) = maybe.maybe(transform_hlds.term_constr_main_types.intermod_status).
+:- func term2_info_get_size_var_map(transform_hlds.term_constr_main_types.termination2_info) = transform_hlds.term_constr_data.size_var_map.
+:- func term2_info_get_success_constrs(transform_hlds.term_constr_main_types.termination2_info) = maybe.maybe(transform_hlds.term_constr_main_types.constr_arg_size_info).
+:- func term2_info_get_term_status(transform_hlds.term_constr_main_types.termination2_info) = maybe.maybe(transform_hlds.term_constr_main_types.constr_termination_info).
+:- func term2_info_init = transform_hlds.term_constr_main_types.termination2_info.
+:- pred term2_info_set_abstract_rep(maybe.maybe(transform_hlds.term_constr_data.abstract_proc), transform_hlds.term_constr_main_types.termination2_info, transform_hlds.term_constr_main_types.termination2_info).
+:- mode term2_info_set_abstract_rep((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term2_info_set_failure_constrs(maybe.maybe(transform_hlds.term_constr_main_types.constr_arg_size_info), transform_hlds.term_constr_main_types.termination2_info, transform_hlds.term_constr_main_types.termination2_info).
+:- mode term2_info_set_failure_constrs((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term2_info_set_head_vars(list.list(transform_hlds.term_constr_data.size_var), transform_hlds.term_constr_main_types.termination2_info, transform_hlds.term_constr_main_types.termination2_info).
+:- mode term2_info_set_head_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term2_info_set_import_failure(maybe.maybe(parse_tree.prog_data.pragma_constr_arg_size_info), transform_hlds.term_constr_main_types.termination2_info, transform_hlds.term_constr_main_types.termination2_info).
+:- mode term2_info_set_import_failure((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term2_info_set_import_success(maybe.maybe(parse_tree.prog_data.pragma_constr_arg_size_info), transform_hlds.term_constr_main_types.termination2_info, transform_hlds.term_constr_main_types.termination2_info).
+:- mode term2_info_set_import_success((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term2_info_set_intermod_status(maybe.maybe(transform_hlds.term_constr_main_types.intermod_status), transform_hlds.term_constr_main_types.termination2_info, transform_hlds.term_constr_main_types.termination2_info).
+:- mode term2_info_set_intermod_status((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term2_info_set_size_var_map(transform_hlds.term_constr_data.size_var_map, transform_hlds.term_constr_main_types.termination2_info, transform_hlds.term_constr_main_types.termination2_info).
+:- mode term2_info_set_size_var_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term2_info_set_success_constrs(maybe.maybe(transform_hlds.term_constr_main_types.constr_arg_size_info), transform_hlds.term_constr_main_types.termination2_info, transform_hlds.term_constr_main_types.termination2_info).
+:- mode term2_info_set_success_constrs((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term2_info_set_term_status(maybe.maybe(transform_hlds.term_constr_main_types.constr_termination_info), transform_hlds.term_constr_main_types.termination2_info, transform_hlds.term_constr_main_types.termination2_info).
+:- mode term2_info_set_term_status((builtin.in), (builtin.in), (builtin.out)) is det.

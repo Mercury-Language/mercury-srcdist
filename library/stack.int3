@@ -1,0 +1,3 @@
+:- module stack.
+:- interface.
+:- type stack(T).

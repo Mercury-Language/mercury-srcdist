@@ -1,0 +1,3 @@
+:- module ((hlds.make_hlds).make_hlds_passes).
+:- implementation.
+:- include_module (((hlds.make_hlds).make_hlds_passes).du_type_layout).

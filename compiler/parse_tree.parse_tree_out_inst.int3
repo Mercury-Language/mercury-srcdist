@@ -1,0 +1,11 @@
+:- module (parse_tree.parse_tree_out_inst).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module set.
+:- import_module term.
+:- import_module (parse_tree.parse_tree_out_info).
+:- import_module (parse_tree.prog_data).
+:- type simple_inst_info.
+:- typeclass inst_info(InstInfo).
+:- instance ((parse_tree.parse_tree_out_inst).inst_info(parse_tree.parse_tree_out_inst.simple_inst_info)).

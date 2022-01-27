@@ -1,0 +1,22 @@
+:- module (((transform_hlds.ctgc).structure_reuse).analysis).
+:- interface.
+:- import_module analysis.
+:- import_module bool.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (((transform_hlds.ctgc).structure_reuse).domain).
+:- type structure_reuse_answer.
+:- type structure_reuse_call.
+:- type structure_reuse_func_info.
+:- pred perform_structure_reuse_analysis(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode perform_structure_reuse_analysis((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred structure_reuse_answer_harsher_than_in_analysis_registry(hlds.hlds_module.module_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, hlds.hlds_pred.pred_proc_id, bool.bool).
+:- mode structure_reuse_answer_harsher_than_in_analysis_registry((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- instance (analysis.analysis(transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_func_info, transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_call, transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_answer)).
+:- instance (analysis.answer_pattern(transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_func_info, transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_answer)).
+:- instance (analysis.call_pattern(transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_func_info, transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_call)).
+:- instance (analysis.partial_order(transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_func_info, transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_answer)).
+:- instance (analysis.partial_order(transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_func_info, transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_call)).
+:- instance (analysis.to_term(transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_answer)).
+:- instance (analysis.to_term(transform_hlds.ctgc.structure_reuse.analysis.structure_reuse_call)).

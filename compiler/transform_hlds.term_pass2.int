@@ -1,0 +1,8 @@
+:- module (transform_hlds.term_pass2).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (transform_hlds.term_util).
+:- pred prove_termination_in_scc(hlds.hlds_module.module_info, transform_hlds.term_util.pass_info, list.list(hlds.hlds_pred.pred_proc_id), int, transform_hlds.term_util.termination_info).
+:- mode prove_termination_in_scc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

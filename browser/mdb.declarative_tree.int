@@ -1,0 +1,16 @@
+:- module (mdb.declarative_tree).
+:- interface.
+:- import_module (mdb.declarative_edt).
+:- import_module (mdb.declarative_execution).
+:- import_module (mdbcomp.program_representation).
+:- type edt_node(R)
+    --->    dynamic(R).
+:- type wrap(S)
+    --->    wrap(S).
+:- pred edt_subtree_details(S, mdb.declarative_tree.edt_node(R), mdb.declarative_execution.event_number, mdb.declarative_execution.sequence_number, R) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- mode edt_subtree_details((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred trace_atom_subterm_is_ground(mdb.declarative_execution.trace_atom, mdbcomp.program_representation.arg_pos, mdbcomp.program_representation.term_path).
+:- mode trace_atom_subterm_is_ground((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred trace_implicit_tree_info(mdb.declarative_tree.wrap(S), mdb.declarative_tree.edt_node(R), mdb.declarative_execution.implicit_tree_info) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- mode trace_implicit_tree_info((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- instance ((mdb.declarative_edt).mercury_edt(mdb.declarative_tree.wrap(S), mdb.declarative_tree.edt_node(R))) <= ((mdb.declarative_execution).annotated_trace(S, R)).
