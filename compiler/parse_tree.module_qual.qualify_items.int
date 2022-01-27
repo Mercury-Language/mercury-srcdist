@@ -1,0 +1,17 @@
+:- module ((parse_tree.module_qual).qualify_items).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- pred module_qualify_items_in_src_item_blocks(list.list(parse_tree.prog_item.src_item_block), list.list(parse_tree.prog_item.src_item_block), parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode module_qualify_items_in_src_item_blocks((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_qualify_items_loop(parse_tree.module_qual.mq_in_interface, list.list(parse_tree.prog_item.item), list.list(parse_tree.prog_item.item), parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode module_qualify_items_loop((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred qualify_event_specs(parse_tree.module_qual.mq_in_interface, string, assoc_list.assoc_list(string, parse_tree.prog_data.event_spec), assoc_list.assoc_list(string, parse_tree.prog_data.event_spec), parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode qualify_event_specs((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred qualify_mode_list(parse_tree.module_qual.mq_in_interface, parse_tree.module_qual.qual_errors.mq_error_context, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode), parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode qualify_mode_list((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred qualify_type(parse_tree.module_qual.mq_in_interface, parse_tree.module_qual.qual_errors.mq_error_context, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode qualify_type((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

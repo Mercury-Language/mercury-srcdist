@@ -1,0 +1,9 @@
+:- module stm_builtin.
+:- interface.
+:- type rollback_exception
+	where	type_is_abstract_enum(1).
+:- type stm.
+:- type stm_dummy_output.
+:- type stm_validation_result
+	where	type_is_abstract_enum(1).
+:- type stm_var(T).

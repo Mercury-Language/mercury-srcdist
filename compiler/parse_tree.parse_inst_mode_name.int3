@@ -1,0 +1,4 @@
+:- module (parse_tree.parse_inst_mode_name).
+:- interface.
+:- type allow_constrained_inst_var
+	where	type_is_abstract_enum(1).

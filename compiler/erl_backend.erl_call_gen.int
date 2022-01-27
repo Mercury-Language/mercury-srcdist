@@ -1,0 +1,30 @@
+:- module (erl_backend.erl_call_gen).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (erl_backend.elds).
+:- import_module (erl_backend.erl_code_util).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- inst (ground_class_method) == bound(class_method(ground, ground, ground, ground)).
+:- inst (ground_higher_order) == bound(higher_order(ground, ground, ground, ground)).
+:- pred erl_gen_builtin(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, parse_tree.prog_data.prog_vars, hlds.code_model.code_model, parse_tree.prog_data.prog_context, maybe.maybe(erl_backend.elds.elds_expr), erl_backend.elds.elds_expr, erl_backend.erl_code_util.erl_gen_info, erl_backend.erl_code_util.erl_gen_info).
+:- mode erl_gen_builtin((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred erl_gen_call(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, parse_tree.prog_data.prog_vars, list.list(parse_tree.prog_data.mer_type), hlds.code_model.code_model, parse_tree.prog_data.prog_context, maybe.maybe(erl_backend.elds.elds_expr), erl_backend.elds.elds_expr, erl_backend.erl_code_util.erl_gen_info, erl_backend.erl_code_util.erl_gen_info).
+:- mode erl_gen_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred erl_gen_cast(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_vars, maybe.maybe(erl_backend.elds.elds_expr), erl_backend.elds.elds_expr, erl_backend.erl_code_util.erl_gen_info, erl_backend.erl_code_util.erl_gen_info).
+:- mode erl_gen_cast((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred erl_gen_class_method_call(hlds.hlds_goal.generic_call, parse_tree.prog_data.prog_vars, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.determinism, parse_tree.prog_data.prog_context, maybe.maybe(erl_backend.elds.elds_expr), erl_backend.elds.elds_expr, erl_backend.erl_code_util.erl_gen_info, erl_backend.erl_code_util.erl_gen_info).
+:- mode erl_gen_class_method_call(builtin.in(((erl_backend.erl_call_gen).ground_class_method)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred erl_gen_foreign_proc_call(list.list(hlds.hlds_goal.foreign_arg), maybe.maybe(parse_tree.prog_data.trace_expr(parse_tree.prog_data.trace_runtime)), parse_tree.prog_data.pragma_foreign_proc_impl, hlds.code_model.code_model, parse_tree.prog_data.prog_context, maybe.maybe(erl_backend.elds.elds_expr), erl_backend.elds.elds_expr, erl_backend.erl_code_util.erl_gen_info, erl_backend.erl_code_util.erl_gen_info).
+:- mode erl_gen_foreign_proc_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred erl_gen_higher_order_call(hlds.hlds_goal.generic_call, parse_tree.prog_data.prog_vars, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.determinism, parse_tree.prog_data.prog_context, maybe.maybe(erl_backend.elds.elds_expr), erl_backend.elds.elds_expr, erl_backend.erl_code_util.erl_gen_info, erl_backend.erl_code_util.erl_gen_info).
+:- mode erl_gen_higher_order_call(builtin.in(((erl_backend.erl_call_gen).ground_higher_order)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred erl_make_call(hlds.code_model.code_model, erl_backend.elds.elds_call_target, parse_tree.prog_data.prog_vars, parse_tree.prog_data.prog_vars, maybe.maybe(erl_backend.elds.elds_expr), erl_backend.elds.elds_expr).
+:- mode erl_make_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred erl_make_call_replace_dummies(erl_backend.erl_code_util.erl_gen_info, hlds.code_model.code_model, erl_backend.elds.elds_call_target, parse_tree.prog_data.prog_vars, parse_tree.prog_data.prog_vars, maybe.maybe(erl_backend.elds.elds_expr), erl_backend.elds.elds_expr).
+:- mode erl_make_call_replace_dummies((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

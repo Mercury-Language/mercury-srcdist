@@ -1,0 +1,232 @@
+:- module analysis.
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module set.
+:- import_module term.
+:- import_module unit.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- type analysis_info.
+:- type analysis_name == string.
+:- type analysis_result(Call, Answer)
+    --->    analysis_result((analysis.ar_call) :: Call, (analysis.ar_answer) :: Answer, (analysis.ar_status) :: analysis.analysis_status).
+:- type analysis_status
+    --->    invalid 
+    ;       suboptimal 
+    ;       optimal .
+:- type analysis_type
+    --->    some [FuncInfo, Call, Answer] (analysis_type(unit.unit(Call), unit.unit(Answer)) => (analysis.analysis(FuncInfo, Call, Answer))).
+:- type any_call
+    --->    any_call .
+:- type fixpoint_type
+    --->    least_fixpoint 
+    ;       greatest_fixpoint .
+:- type func_id
+    --->    func_id((analysis.fid_pf) :: mdbcomp.prim_data.pred_or_func, (analysis.fid_name) :: string, (analysis.fid_arity) :: int, (analysis.fid_mode) :: hlds.hlds_pred.proc_id).
+:- type no_func_info
+    --->    no_func_info .
+:- pred do_read_module_overall_status(Compiler, libs.globals.globals, mdbcomp.sym_name.module_name, analysis.analysis_status, io.io, io.io) <= (analysis.compiler(Compiler)).
+:- mode do_read_module_overall_status((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred enable_debug_messages(bool.bool, io.io, io.io).
+:- mode enable_debug_messages((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func init_analysis_info(Compiler, mdbcomp.sym_name.module_name, bool.bool) = analysis.analysis_info <= (analysis.compiler(Compiler)).
+:- pred lookup_best_result(analysis.analysis_info, mdbcomp.sym_name.module_name, analysis.func_id, FuncInfo, Call, maybe.maybe(analysis.analysis_result(Call, Answer))) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode lookup_best_result((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_existing_call_patterns(analysis.analysis_info, analysis.analysis_name, mdbcomp.sym_name.module_name, analysis.func_id, list.list(Call)) <= (analysis.call_pattern(FuncInfo, Call)).
+:- mode lookup_existing_call_patterns((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_matching_results(analysis.analysis_info, mdbcomp.sym_name.module_name, analysis.func_id, FuncInfo, Call, list.list(analysis.analysis_result(Call, Answer))) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode lookup_matching_results((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_requests(analysis.analysis_info, analysis.analysis_name, mdbcomp.sym_name.module_name, analysis.func_id, list.list(Call)) <= (analysis.call_pattern(FuncInfo, Call)).
+:- mode lookup_requests((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_results(analysis.analysis_info, mdbcomp.sym_name.module_name, analysis.func_id, list.list(analysis.analysis_result(Call, Answer))) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode lookup_results((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lub(analysis.analysis_status, analysis.analysis_status) = analysis.analysis_status.
+:- pred module_is_local(analysis.analysis_info, mdbcomp.sym_name.module_name, bool.bool).
+:- mode module_is_local((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prepare_intermodule_analysis(libs.globals.globals, set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), analysis.analysis_info, analysis.analysis_info, io.io, io.io).
+:- mode prepare_intermodule_analysis((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred record_dependency(mdbcomp.sym_name.module_name, analysis.func_id, FuncInfo, Call, Answer, analysis.analysis_info, analysis.analysis_info) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode record_dependency((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.unused), (builtin.in), (builtin.out)) is det.
+:- pred record_request(analysis.analysis_name, mdbcomp.sym_name.module_name, analysis.func_id, Call, analysis.analysis_info, analysis.analysis_info) <= (analysis.call_pattern(FuncInfo, Call)).
+:- mode record_request((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred record_result(mdbcomp.sym_name.module_name, analysis.func_id, Call, Answer, analysis.analysis_status, analysis.analysis_info, analysis.analysis_info) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode record_result((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred write_analysis_files(Compiler, hlds.hlds_module.module_info, set.set(mdbcomp.sym_name.module_name), analysis.analysis_info, analysis.analysis_info, io.io, io.io) <= (analysis.compiler(Compiler)).
+:- mode write_analysis_files((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma foreign_import_module("C", analysis).
+:- pragma foreign_import_module("C#", analysis).
+:- pragma foreign_import_module("Java", analysis).
+:- pragma foreign_import_module("Erlang", analysis).
+:- typeclass analysis(FuncInfo, Call, Answer) <= (analysis.call_pattern(FuncInfo, Call), analysis.answer_pattern(FuncInfo, Answer)) where [
+	func analysis_name(Call, Answer) = analysis.analysis_name,
+	mode analysis_name((builtin.unused), (builtin.unused)) = (builtin.out) is det,
+	func analysis_version_number(Call, Answer) = int,
+	mode analysis_version_number((builtin.unused), (builtin.unused)) = (builtin.out) is det,
+	func preferred_fixpoint_type(Call, Answer) = analysis.fixpoint_type,
+	mode preferred_fixpoint_type((builtin.unused), (builtin.unused)) = (builtin.out) is det,
+	func bottom(FuncInfo, Call) = Answer,
+	mode bottom((builtin.in), (builtin.unused)) = (builtin.out) is det,
+	func top(FuncInfo, Call) = Answer,
+	mode top((builtin.in), (builtin.unused)) = (builtin.out) is det,
+	pred get_func_info(hlds.hlds_module.module_info, mdbcomp.sym_name.module_name, analysis.func_id, Call, Answer, FuncInfo),
+	mode get_func_info((builtin.in), (builtin.in), (builtin.in), (builtin.unused), (builtin.unused), (builtin.out)) is det
+].
+:- typeclass answer_pattern(FuncInfo, Answer) <= (analysis.partial_order(FuncInfo, Answer), analysis.to_term(Answer)) where [
+
+].
+:- typeclass call_pattern(FuncInfo, Call) <= (analysis.partial_order(FuncInfo, Call), analysis.to_term(Call)) where [
+
+].
+:- typeclass compiler(Compiler) where [
+	func compiler_name(Compiler) = string,
+	func analyses(Compiler, analysis.analysis_name) = analysis.analysis_type is semidet,
+	pred module_name_to_read_file_name(Compiler, libs.globals.globals, mdbcomp.sym_name.module_name, string, maybe.maybe_error(string), io.io, io.io),
+	mode module_name_to_read_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det,
+	pred module_name_to_write_file_name(Compiler, libs.globals.globals, mdbcomp.sym_name.module_name, string, string, io.io, io.io),
+	mode module_name_to_write_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det
+].
+:- typeclass partial_order(FuncInfo, T) <= ((T -> FuncInfo)) where [
+	pred more_precise_than(FuncInfo, T, T),
+	mode more_precise_than((builtin.in), (builtin.in), (builtin.in)) is semidet,
+	pred equivalent(FuncInfo, T, T),
+	mode equivalent((builtin.in), (builtin.in), (builtin.in)) is semidet
+].
+:- typeclass to_term(S) where [
+	func to_term(S) = term.term,
+	pred from_term(term.term, S),
+	mode from_term((builtin.in), (builtin.out)) is semidet
+].
+:- instance (analysis.call_pattern(analysis.no_func_info, analysis.any_call)).
+:- instance (analysis.partial_order(analysis.no_func_info, analysis.any_call)).
+:- instance (analysis.to_term(analysis.any_call)).
+:- implementation.
+:- include_module (analysis.file).
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module require.
+:- import_module set.
+:- import_module term.
+:- import_module type_desc.
+:- import_module unit.
+:- import_module univ.
+:- import_module (analysis.file).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.module_cmds).
+:- type analysis_info
+    --->    some [Compiler] (analysis_info((analysis.compiler) :: Compiler, (analysis.this_module) :: mdbcomp.sym_name.module_name, (analysis.make_analysis_registry) :: analysis.make_analysis_registry, (analysis.local_module_names) :: set.set(mdbcomp.sym_name.module_name), (analysis.analysis_requests) :: analysis.analysis_map(analysis.analysis_request), (analysis.module_statuses) :: map.map(mdbcomp.sym_name.module_name, analysis.analysis_status), (analysis.old_analysis_results) :: analysis.analysis_map(analysis.some_analysis_result), (analysis.new_analysis_results) :: analysis.module_analysis_map(analysis.some_analysis_result), (analysis.old_imdg) :: analysis.analysis_map(analysis.imdg_arc), (analysis.new_imdg) :: analysis.analysis_map(analysis.imdg_arc)) => (analysis.compiler(Compiler))).
+:- type analysis_map(T) == map.map(mdbcomp.sym_name.module_name, analysis.module_analysis_map(T)).
+:- type analysis_request
+    --->    some [FuncInfo, Call] (analysis_request((analysis.req_call) :: Call, (analysis.req_caller) :: mdbcomp.sym_name.module_name) => (analysis.call_pattern(FuncInfo, Call))).
+:- type func_analysis_map(T) == map.map(analysis.func_id, list.list(T)).
+:- type imdg_arc
+    --->    some [FuncInfo, Call] (imdg_arc((analysis.imdg_call) :: Call, (analysis.imdg_caller) :: mdbcomp.sym_name.module_name) => (analysis.call_pattern(FuncInfo, Call))).
+:- type make_analysis_registry
+    --->    make_analysis_registry 
+    ;       use_analysis_registry_only .
+:- type module_analysis_map(T) == map.map(analysis.analysis_name, analysis.func_analysis_map(T)).
+:- type some_analysis_result
+    --->    some [FuncInfo, Call, Answer] (some_analysis_result((analysis.some_ar_call) :: Call, (analysis.some_ar_answer) :: Answer, (analysis.some_ar_status) :: analysis.analysis_status) => (analysis.analysis(FuncInfo, Call, Answer))).
+:- func arc_module_name(FuncInfo, Call, analysis.imdg_arc) = mdbcomp.sym_name.module_name <= (analysis.call_pattern(FuncInfo, Call)).
+:- mode arc_module_name((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is semidet.
+:- pred clear_imdg_entries_pointing_at(mdbcomp.sym_name.module_name, analysis.module_analysis_map(analysis.imdg_arc), analysis.module_analysis_map(analysis.imdg_arc)).
+:- mode clear_imdg_entries_pointing_at((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clear_imdg_entries_pointing_at_2(mdbcomp.sym_name.module_name, analysis.func_analysis_map(analysis.imdg_arc), analysis.func_analysis_map(analysis.imdg_arc)).
+:- mode clear_imdg_entries_pointing_at_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clear_imdg_entries_pointing_at_3(mdbcomp.sym_name.module_name, list.list(analysis.imdg_arc), list.list(analysis.imdg_arc)).
+:- mode clear_imdg_entries_pointing_at_3((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred combine_func_imdg(analysis.func_analysis_map(analysis.imdg_arc), analysis.func_analysis_map(analysis.imdg_arc), analysis.func_analysis_map(analysis.imdg_arc)).
+:- mode combine_func_imdg((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred combine_imdg_lists(list.list(analysis.imdg_arc), list.list(analysis.imdg_arc), list.list(analysis.imdg_arc)).
+:- mode combine_imdg_lists((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred debug_msg(pred(io.io, io.io), io.io, io.io).
+:- mode debug_msg(builtin.in((pred((builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.
+:- pred ensure_module_status_loaded(libs.globals.globals, mdbcomp.sym_name.module_name, analysis.analysis_info, analysis.analysis_info, io.io, io.io).
+:- mode ensure_module_status_loaded((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- semipure pred get_debug_analysis(bool.bool).
+:- mode get_debug_analysis(builtin.out(ground)) is det.
+:- pred get_debug_analysis(bool.bool, io.state, io.state).
+:- mode get_debug_analysis(builtin.out(ground), (builtin.di), (builtin.uo)) is det.
+:- func imdg_dependent_modules(analysis.module_analysis_map(analysis.imdg_arc), analysis.analysis_name, analysis.func_id, FuncInfo, Call) = set.set(mdbcomp.sym_name.module_name) <= (analysis.call_pattern(FuncInfo, Call)).
+:- pred load_module_analysis_results(libs.globals.globals, mdbcomp.sym_name.module_name, analysis.analysis_info, analysis.analysis_info, io.io, io.io).
+:- mode load_module_analysis_results((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred load_module_imdg(libs.globals.globals, mdbcomp.sym_name.module_name, analysis.analysis_info, analysis.analysis_info, io.io, io.io).
+:- mode load_module_imdg((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lookup_exactly_matching_result_even_from_invalid_modules(analysis.analysis_info, mdbcomp.sym_name.module_name, analysis.func_id, FuncInfo, Call, maybe.maybe(analysis.analysis_result(Call, Answer))) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode lookup_exactly_matching_result_even_from_invalid_modules((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_results_1(analysis.analysis_info, mdbcomp.sym_name.module_name, analysis.func_id, bool.bool, list.list(analysis.analysis_result(Call, Answer))) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode lookup_results_1((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_results_2(analysis.analysis_map(analysis.some_analysis_result), mdbcomp.sym_name.module_name, analysis.func_id, list.list(analysis.analysis_result(Call, Answer))) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode lookup_results_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lub_result_statuses(analysis.module_analysis_map(analysis.some_analysis_result)) = analysis.analysis_status.
+:- func lub_result_statuses_2(analysis.analysis_name, analysis.func_analysis_map(analysis.some_analysis_result), analysis.analysis_status) = analysis.analysis_status.
+:- func lub_result_statuses_3(analysis.func_id, list.list(analysis.some_analysis_result), analysis.analysis_status) = analysis.analysis_status.
+:- func lub_result_statuses_4(analysis.some_analysis_result, analysis.analysis_status) = analysis.analysis_status.
+:- pred maybe_write_module_imdg(analysis.analysis_info, libs.globals.globals, mdbcomp.sym_name.module_name, io.io, io.io).
+:- mode maybe_write_module_imdg((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_module_overall_status(analysis.analysis_info, libs.globals.globals, mdbcomp.sym_name.module_name, io.io, io.io).
+:- mode maybe_write_module_overall_status((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_module_requests(analysis.analysis_info, libs.globals.globals, mdbcomp.sym_name.module_name, io.io, io.io).
+:- mode maybe_write_module_requests((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred more_precise_answer(FuncInfo, analysis.analysis_result(Call, Answer), analysis.analysis_result(Call, Answer), analysis.analysis_result(Call, Answer)) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode more_precise_answer((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred record_dependency_2(mdbcomp.sym_name.module_name, analysis.analysis_name, mdbcomp.sym_name.module_name, analysis.func_id, Call, analysis.analysis_info, analysis.analysis_info) <= (analysis.call_pattern(FuncInfo, Call)).
+:- mode record_dependency_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred record_request_2(mdbcomp.sym_name.module_name, analysis.analysis_name, mdbcomp.sym_name.module_name, analysis.func_id, Call, analysis.analysis_info, analysis.analysis_info) <= (analysis.call_pattern(FuncInfo, Call)).
+:- mode record_request_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred record_result_in_analysis_map(analysis.func_id, Call, Answer, analysis.analysis_status, analysis.module_analysis_map(analysis.some_analysis_result), analysis.module_analysis_map(analysis.some_analysis_result)) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode record_result_in_analysis_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred replace_result_in_analysis_map(mdbcomp.sym_name.module_name, analysis.func_id, FuncInfo, Call, Answer, analysis.analysis_status, analysis.analysis_map(analysis.some_analysis_result), analysis.analysis_map(analysis.some_analysis_result)) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode replace_result_in_analysis_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred replace_result_in_list(FuncInfo, Call, Answer, analysis.analysis_status, list.list(analysis.some_analysis_result), list.list(analysis.some_analysis_result)) <= (analysis.analysis(FuncInfo, Call, Answer)).
+:- mode replace_result_in_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred set_debug_analysis(bool.bool).
+:- mode set_debug_analysis(builtin.in(ground)) is det.
+:- pred set_debug_analysis(bool.bool, io.state, io.state).
+:- mode set_debug_analysis(builtin.in(ground), (builtin.di), (builtin.uo)) is det.
+:- pred taint_module_overall_status(libs.globals.globals, analysis.analysis_status, mdbcomp.sym_name.module_name, analysis.analysis_info, analysis.analysis_info, io.io, io.io).
+:- mode taint_module_overall_status((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred update_analysis_registry(hlds.hlds_module.module_info, analysis.analysis_info, analysis.analysis_info, io.io, io.io).
+:- mode update_analysis_registry((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred update_analysis_registry_2(hlds.hlds_module.module_info, mdbcomp.sym_name.module_name, analysis.module_analysis_map(analysis.some_analysis_result), analysis.analysis_info, analysis.analysis_info, io.io, io.io).
+:- mode update_analysis_registry_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred update_analysis_registry_3(hlds.hlds_module.module_info, mdbcomp.sym_name.module_name, analysis.analysis_name, analysis.func_analysis_map(analysis.some_analysis_result), analysis.analysis_info, analysis.analysis_info, io.io, io.io).
+:- mode update_analysis_registry_3((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred update_analysis_registry_4(hlds.hlds_module.module_info, mdbcomp.sym_name.module_name, analysis.analysis_name, analysis.func_id, list.list(analysis.some_analysis_result), analysis.analysis_info, analysis.analysis_info, io.io, io.io).
+:- mode update_analysis_registry_4((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred update_analysis_registry_5(hlds.hlds_module.module_info, mdbcomp.sym_name.module_name, analysis.analysis_name, analysis.func_id, analysis.some_analysis_result, analysis.analysis_info, analysis.analysis_info, io.io, io.io).
+:- mode update_analysis_registry_5((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred update_intermodule_dependencies(mdbcomp.sym_name.module_name, set.set(mdbcomp.sym_name.module_name), analysis.analysis_info, analysis.analysis_info).
+:- mode update_intermodule_dependencies((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred update_intermodule_dependencies_2(mdbcomp.sym_name.module_name, mdbcomp.sym_name.module_name, analysis.analysis_info, analysis.analysis_info).
+:- mode update_intermodule_dependencies_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred write_changed_answer(Answer, Answer, analysis.analysis_status, set.set(mdbcomp.sym_name.module_name), io.io, io.io).
+:- mode write_changed_answer((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_clearing_entries(mdbcomp.sym_name.module_name, mdbcomp.sym_name.module_name, io.io, io.io).
+:- mode write_clearing_entries((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_no_change_in_result(mdbcomp.sym_name.module_name, analysis.func_id, Call, Answer, io.io, io.io).
+:- mode write_no_change_in_result((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_tainting_module(mdbcomp.sym_name.module_name, analysis.analysis_status, io.io, io.io).
+:- mode write_tainting_module((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- instance (analysis.call_pattern(analysis.no_func_info, analysis.any_call)).
+:- instance (analysis.partial_order(analysis.no_func_info, analysis.any_call)).
+:- instance (analysis.to_term(analysis.any_call)).

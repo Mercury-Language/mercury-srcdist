@@ -1,0 +1,342 @@
+:- module lexer.
+:- use_module builtin.
+:- use_module char.
+:- use_module int.
+:- use_module integer.
+:- use_module io.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+
+:- type get_token_action
+    --->    action_whitespace 
+    ;       action_alpha_lower 
+    ;       action_alpha_upper_uscore 
+    ;       action_zero 
+    ;       action_nonzero_digit 
+    ;       action_special_token 
+    ;       action_dot 
+    ;       action_percent 
+    ;       action_quote 
+    ;       action_slash 
+    ;       action_hash 
+    ;       action_backquote 
+    ;       action_dollar 
+    ;       action_graphic_token .
+:- type maybe_have_valid_token
+    --->    maybe_have_valid_token(int).
+:- type scanned_past_whitespace
+    --->    scanned_past_whitespace 
+    ;       not_scanned_past_whitespace .
+:- type string_token_context == int.
+
+:- pred lexer.execute_get_token_action(io.input_stream, character, lexer.get_token_action, lexer.scanned_past_whitespace, lexer.token, int, io.state, io.state).
+:- mode lexer.execute_get_token_action((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lexer.get_context(io.input_stream, int, io.state, io.state).
+:- mode lexer.get_context((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lexer.get_token(io.input_stream, lexer.token, int, io.state, io.state).
+:- mode lexer.get_token((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lexer.get_token_2(io.input_stream, lexer.scanned_past_whitespace, lexer.token, int, io.state, io.state).
+:- mode lexer.get_token_2((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma inline((lexer.get_token_2)/6).
+:- pred lexer.get_token_list_2(io.input_stream, lexer.token, int, lexer.token_list, io.state, io.state).
+:- mode lexer.get_token_list_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lexer.lookup_token_action(character, lexer.get_token_action).
+:- mode lexer.lookup_token_action((builtin.in), (builtin.out)) is semidet.
+:- pragma inline((lexer.lookup_token_action)/2).
+
+lexer.get_context(V_5, V_6, V_8, V_9) :-
+    io.get_line_number(V_5, V_6, V_8, V_9).
+
+lexer.get_token(V_6, V_7, V_8, V_10, V_11) :-
+    V_12 = lexer.not_scanned_past_whitespace : lexer.scanned_past_whitespace,
+    lexer.get_token_2(V_6, V_12, V_7, V_8, V_10, V_11).
+
+:- pragma inline((lexer.get_token_2)/6).
+lexer.get_token_2(V_7, V_8, V_9, V_10, V_16, V_17) :-
+    io.read_char_unboxed(V_7, V_12, V_13, V_16, V_18),
+    ( % disjunction
+      V_12 = io.error(V_14) : io.result,
+      lexer.get_context(V_7, V_10, V_18, V_17),
+      V_9 = lexer.io_error(V_14) : lexer.token
+    ;
+      V_12 = io.eof : io.result,
+      lexer.get_context(V_7, V_10, V_18, V_17),
+      V_9 = lexer.eof : lexer.token
+    ;
+      V_12 = io.ok : io.result,
+      ( if
+        lexer.lookup_token_action(V_13, V_15)
+      then
+        lexer.execute_get_token_action(V_7, V_13, V_15, V_8, V_9, V_10, V_18, V_17)
+      else
+        lexer.get_context(V_7, V_10, V_18, V_17),
+        V_9 = lexer.junk(V_13) : lexer.token
+      )
+    ).
+
+lexer.get_token_list(V_4, V_9, V_10) :-
+    io.input_stream(V_6, V_9, V_11),
+    lexer.get_token(V_6, V_7, V_8, V_11, V_12),
+    lexer.get_token_list_2(V_6, V_7, V_8, V_4, V_12, V_10).
+
+:- pragma inline((lexer.lookup_token_action)/2).
+lexer.lookup_token_action(V_3, V_4) :-
+    ( % disjunction
+      ( % disjunction
+        V_3 = (' ') : character
+      ;
+        V_3 = ('\t') : character
+      ;
+        V_3 = ('\n') : character
+      ;
+        V_3 = ('\015\') : character
+      ;
+        V_3 = ('\014\') : character
+      ;
+        V_3 = ('\013\') : character
+      ),
+      V_4 = lexer.action_whitespace : lexer.get_token_action
+    ;
+      ( % disjunction
+        V_3 = ('a') : character
+      ;
+        V_3 = ('b') : character
+      ;
+        V_3 = ('c') : character
+      ;
+        V_3 = ('d') : character
+      ;
+        V_3 = ('e') : character
+      ;
+        V_3 = ('f') : character
+      ;
+        V_3 = ('g') : character
+      ;
+        V_3 = ('h') : character
+      ;
+        V_3 = ('i') : character
+      ;
+        V_3 = ('j') : character
+      ;
+        V_3 = ('k') : character
+      ;
+        V_3 = ('l') : character
+      ;
+        V_3 = ('m') : character
+      ;
+        V_3 = ('n') : character
+      ;
+        V_3 = ('o') : character
+      ;
+        V_3 = ('p') : character
+      ;
+        V_3 = ('q') : character
+      ;
+        V_3 = ('r') : character
+      ;
+        V_3 = ('s') : character
+      ;
+        V_3 = ('t') : character
+      ;
+        V_3 = ('u') : character
+      ;
+        V_3 = ('v') : character
+      ;
+        V_3 = ('w') : character
+      ;
+        V_3 = ('x') : character
+      ;
+        V_3 = ('y') : character
+      ;
+        V_3 = ('z') : character
+      ),
+      V_4 = lexer.action_alpha_lower : lexer.get_token_action
+    ;
+      ( % disjunction
+        V_3 = ('_') : character
+      ;
+        V_3 = ('A') : character
+      ;
+        V_3 = ('B') : character
+      ;
+        V_3 = ('C') : character
+      ;
+        V_3 = ('D') : character
+      ;
+        V_3 = ('E') : character
+      ;
+        V_3 = ('F') : character
+      ;
+        V_3 = ('G') : character
+      ;
+        V_3 = ('H') : character
+      ;
+        V_3 = ('I') : character
+      ;
+        V_3 = ('J') : character
+      ;
+        V_3 = ('K') : character
+      ;
+        V_3 = ('L') : character
+      ;
+        V_3 = ('M') : character
+      ;
+        V_3 = ('N') : character
+      ;
+        V_3 = ('O') : character
+      ;
+        V_3 = ('P') : character
+      ;
+        V_3 = ('Q') : character
+      ;
+        V_3 = ('R') : character
+      ;
+        V_3 = ('S') : character
+      ;
+        V_3 = ('T') : character
+      ;
+        V_3 = ('U') : character
+      ;
+        V_3 = ('V') : character
+      ;
+        V_3 = ('W') : character
+      ;
+        V_3 = ('X') : character
+      ;
+        V_3 = ('Y') : character
+      ;
+        V_3 = ('Z') : character
+      ),
+      V_4 = lexer.action_alpha_upper_uscore : lexer.get_token_action
+    ;
+      V_3 = ('0') : character,
+      V_4 = lexer.action_zero : lexer.get_token_action
+    ;
+      ( % disjunction
+        V_3 = ('1') : character
+      ;
+        V_3 = ('2') : character
+      ;
+        V_3 = ('3') : character
+      ;
+        V_3 = ('4') : character
+      ;
+        V_3 = ('5') : character
+      ;
+        V_3 = ('6') : character
+      ;
+        V_3 = ('7') : character
+      ;
+        V_3 = ('8') : character
+      ;
+        V_3 = ('9') : character
+      ),
+      V_4 = lexer.action_nonzero_digit : lexer.get_token_action
+    ;
+      ( % disjunction
+        V_3 = ('(') : character
+      ;
+        V_3 = (')') : character
+      ;
+        V_3 = ('[') : character
+      ;
+        V_3 = (']') : character
+      ;
+        V_3 = ('{') : character
+      ;
+        V_3 = ('}') : character
+      ;
+        V_3 = ('|') : character
+      ;
+        V_3 = (',') : character
+      ;
+        V_3 = (';') : character
+      ),
+      V_4 = lexer.action_special_token : lexer.get_token_action
+    ;
+      V_3 = ('.') : character,
+      V_4 = lexer.action_dot : lexer.get_token_action
+    ;
+      V_3 = ('%') : character,
+      V_4 = lexer.action_percent : lexer.get_token_action
+    ;
+      ( % disjunction
+        V_3 = ('\"') : character
+      ;
+        V_3 = ('\'') : character
+      ),
+      V_4 = lexer.action_quote : lexer.get_token_action
+    ;
+      V_3 = ('/') : character,
+      V_4 = lexer.action_slash : lexer.get_token_action
+    ;
+      V_3 = ('#') : character,
+      V_4 = lexer.action_hash : lexer.get_token_action
+    ;
+      V_3 = ('`') : character,
+      V_4 = lexer.action_backquote : lexer.get_token_action
+    ;
+      V_3 = ('$') : character,
+      V_4 = lexer.action_dollar : lexer.get_token_action
+    ;
+      ( % disjunction
+        V_3 = ('!') : character
+      ;
+        V_3 = ('&') : character
+      ;
+        V_3 = ('*') : character
+      ;
+        V_3 = ('+') : character
+      ;
+        V_3 = ('-') : character
+      ;
+        V_3 = (':') : character
+      ;
+        V_3 = ('<') : character
+      ;
+        V_3 = ('=') : character
+      ;
+        V_3 = ('>') : character
+      ;
+        V_3 = ('?') : character
+      ;
+        V_3 = ('@') : character
+      ;
+        V_3 = ('^') : character
+      ;
+        V_3 = ('~') : character
+      ;
+        V_3 = ('\\') : character
+      ),
+      V_4 = lexer.action_graphic_token : lexer.get_token_action
+    ).
+
+lexer.string_get_token_list(V_5, V_6, V_9, V_10) :-
+    string.length(V_5, V_8),
+    lexer.string_get_token_list_max(V_5, V_8, V_6, V_9, V_10).
+
+:- pragma exceptions(predicate, (lexer.execute_get_token_action), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.get_context), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.get_token), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.get_token_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.get_token_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.get_token_list_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.graphic_token_char), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (lexer.lookup_token_action), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (lexer.string_get_token_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.string_get_token_list_max), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.token_to_string), 2, 0, may_throw(user_exception)).
+
+:- pragma termination_info(lexer.execute_get_token_action((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(lexer.get_context((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(lexer.get_token((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(lexer.get_token_2((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(lexer.get_token_list((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(lexer.get_token_list_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(lexer.graphic_token_char((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(lexer.lookup_token_action((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(lexer.string_get_token_list((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(lexer.string_get_token_list_max((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(lexer.token_to_string((builtin.in), (builtin.out)), infinite, can_loop).

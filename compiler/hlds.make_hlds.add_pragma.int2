@@ -1,0 +1,17 @@
+:- module ((hlds.make_hlds).add_pragma).
+:- interface.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_item).
+:- import_module ((hlds.make_hlds).qual_info).
+:- inst (ims_pragma_2) == (hlds.make_hlds).ims_item(((hlds.make_hlds).add_pragma).item_pragma_info((((hlds.make_hlds).add_pragma).pragma_pass_2))).
+:- inst (ims_pragma_3) == (hlds.make_hlds).ims_item(((hlds.make_hlds).add_pragma).item_pragma_info((((hlds.make_hlds).add_pragma).pragma_pass_3))).
+:- inst (item_pragma_info(I)) == bound(item_pragma_info(I, ground, ground, ground)).
+:- inst (pragma_pass_2) == bound(pragma_check_termination(ground) ; pragma_consider_used(ground) ; pragma_does_not_terminate(ground) ; pragma_exceptions(ground) ; pragma_external_proc(ground) ; pragma_foreign_code(ground) ; pragma_foreign_decl(ground) ; pragma_foreign_enum(ground) ; pragma_foreign_export_enum(ground) ; pragma_foreign_import_module(ground) ; pragma_inline(ground) ; pragma_mm_tabling_info(ground) ; pragma_mode_check_clauses(ground) ; pragma_no_detism_warning(ground) ; pragma_no_inline(ground) ; pragma_obsolete(ground) ; pragma_promise_eqv_clauses(ground) ; pragma_promise_pure(ground) ; pragma_promise_semipure(ground) ; pragma_require_feature_set(ground) ; pragma_require_tail_recursion(ground) ; pragma_terminates(ground) ; pragma_trailing_info(ground) ; pragma_unused_args(ground)).
+:- inst (pragma_pass_3) == bound(pragma_fact_table(ground) ; pragma_foreign_proc(ground) ; pragma_foreign_proc_export(ground) ; pragma_oisu(ground) ; pragma_reserve_tag(ground) ; pragma_structure_reuse(ground) ; pragma_structure_sharing(ground) ; pragma_tabled(ground) ; pragma_termination2_info(ground) ; pragma_termination_info(ground) ; pragma_type_spec(ground)).
+:- implementation.
+:- include_module (((hlds.make_hlds).add_pragma).add_foreign_enum).
+:- include_module (((hlds.make_hlds).add_pragma).add_pragma_tabling).
+:- include_module (((hlds.make_hlds).add_pragma).add_pragma_type_spec).
