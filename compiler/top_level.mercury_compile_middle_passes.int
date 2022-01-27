@@ -1,0 +1,18 @@
+:- module (top_level.mercury_compile_middle_passes).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.passes_aux).
+:- import_module (parse_tree.prog_item).
+:- pred maybe_unused_args(bool.bool, bool.bool, set.set(parse_tree.prog_item.pragma_info_unused_args), hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode maybe_unused_args((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred middle_pass(hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, io.io, io.io).
+:- mode middle_pass((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred middle_pass_for_opt_file(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode middle_pass_for_opt_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_analysis_file(hlds.hlds_module.module_info, hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, io.io, io.io).
+:- mode output_analysis_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_trans_opt_file(hlds.hlds_module.module_info, hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, io.io, io.io).
+:- mode output_trans_opt_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

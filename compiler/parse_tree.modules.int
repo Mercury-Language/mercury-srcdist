@@ -1,0 +1,22 @@
+:- module (parse_tree.modules).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.prog_item).
+:- import_module (parse_tree.read_modules).
+:- pred grab_imported_modules(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, maybe.maybe(libs.timestamp.timestamp), set.set(mdbcomp.sym_name.module_name), parse_tree.prog_item.raw_compilation_unit, parse_tree.read_modules.have_read_module_maps, parse_tree.module_imports.module_and_imports, io.io, io.io).
+:- mode grab_imported_modules((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred grab_opt_files(libs.globals.globals, parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports, bool.bool, io.io, io.io).
+:- mode grab_opt_files((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred grab_trans_opt_files(libs.globals.globals, list.list(mdbcomp.sym_name.module_name), parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports, bool.bool, io.io, io.io).
+:- mode grab_trans_opt_files((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred grab_unqual_imported_modules(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, parse_tree.prog_item.raw_compilation_unit, parse_tree.module_imports.module_and_imports, io.io, io.io).
+:- mode grab_unqual_imported_modules((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,12 @@
+:- module (transform_hlds.term_constr_build).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (transform_hlds.term_constr_errors).
+:- import_module (transform_hlds.term_norm).
+:- type term_build_options.
+:- func term_build_options_init(transform_hlds.term_norm.functor_info, bool.bool, bool.bool) = transform_hlds.term_constr_build.term_build_options.
+:- pred term_constr_build_abstract_scc(hlds.hlds_module.dependency_ordering, list.list(hlds.hlds_pred.pred_proc_id), transform_hlds.term_constr_build.term_build_options, list.list(transform_hlds.term_constr_errors.term2_error), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode term_constr_build_abstract_scc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,5 @@
+:- module ((hlds.make_hlds).add_pragma).
+:- implementation.
+:- include_module (((hlds.make_hlds).add_pragma).add_foreign_enum).
+:- include_module (((hlds.make_hlds).add_pragma).add_pragma_tabling).
+:- include_module (((hlds.make_hlds).add_pragma).add_pragma_type_spec).

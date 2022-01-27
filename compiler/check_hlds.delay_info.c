@@ -1,0 +1,3574 @@
+/*
+** Automatically generated from `delay_info.m'
+** by the Mercury compiler,
+** version 2015-10-27
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.delay_info. */
+/* :- implementation. */
+
+/*
+INIT mercury__check_hlds__delay_info__init
+ENDINIT
+*/
+
+#include "check_hlds.delay_info.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+#line 138 "check_hlds.delay_info.c"
+static const MR_PseudoTypeInfo check_hlds__delay_info__check_hlds__delay_info__field_types_delay_goal_num_0_0[2];
+
+#line 141 "check_hlds.delay_info.c"
+static const MR_DuFunctorDesc check_hlds__delay_info__check_hlds__delay_info__du_functor_desc_delay_goal_num_0_0;
+
+#line 144 "check_hlds.delay_info.c"
+static const MR_DuFunctorDescPtr check_hlds__delay_info__check_hlds__delay_info__du_stag_ordered_delay_goal_num_0_0[1];
+
+#line 147 "check_hlds.delay_info.c"
+static const MR_DuPtagLayout check_hlds__delay_info__check_hlds__delay_info__du_ptag_ordered_delay_goal_num_0[1];
+
+#line 150 "check_hlds.delay_info.c"
+static const MR_DuFunctorDescPtr check_hlds__delay_info__check_hlds__delay_info__du_name_ordered_delay_goal_num_0[1];
+
+#line 153 "check_hlds.delay_info.c"
+static const MR_Integer check_hlds__delay_info__check_hlds__delay_info__functor_number_map_delay_goal_num_0[1];
+
+#line 156 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct2 check_hlds__delay_info__tree234__ti_tree234_2builtin__type_ctor_info_int_0check_hlds__mode_errors__type_ctor_info_delayed_goal_0;
+
+#line 159 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct1 check_hlds__delay_info__stack__ti_stack_1tree234__ti_tree234_2builtin__type_ctor_info_int_0check_hlds__mode_errors__type_ctor_info_delayed_goal_0;
+
+#line 162 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct1 check_hlds__delay_info__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 165 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct1 check_hlds__delay_info__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 168 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct2 check_hlds__delay_info__tree234__ti_tree234_2check_hlds__delay_info__type_ctor_info_delay_goal_num_0list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 171 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct2 check_hlds__delay_info__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0tree234__ti_tree234_2check_hlds__delay_info__type_ctor_info_delay_goal_num_0list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 174 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct1 check_hlds__delay_info__cord__ti_cord_1builtin__type_ctor_info_int_0;
+
+#line 177 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct2 check_hlds__delay_info__tree234__ti_tree234_2builtin__type_ctor_info_int_0cord__ti_cord_1builtin__type_ctor_info_int_0;
+
+#line 180 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct1 check_hlds__delay_info__stack__ti_stack_1builtin__type_ctor_info_int_0;
+
+#line 183 "check_hlds.delay_info.c"
+static const MR_PseudoTypeInfo check_hlds__delay_info__check_hlds__delay_info__field_types_delay_info_0_0[5];
+
+#line 186 "check_hlds.delay_info.c"
+static const MR_ConstString check_hlds__delay_info__check_hlds__delay_info__field_names_delay_info_0_0[5];
+
+#line 189 "check_hlds.delay_info.c"
+static const MR_DuFunctorDesc check_hlds__delay_info__check_hlds__delay_info__du_functor_desc_delay_info_0_0;
+
+#line 192 "check_hlds.delay_info.c"
+static const MR_DuFunctorDescPtr check_hlds__delay_info__check_hlds__delay_info__du_stag_ordered_delay_info_0_0[1];
+
+#line 195 "check_hlds.delay_info.c"
+static const MR_DuPtagLayout check_hlds__delay_info__check_hlds__delay_info__du_ptag_ordered_delay_info_0[1];
+
+#line 198 "check_hlds.delay_info.c"
+static const MR_DuFunctorDescPtr check_hlds__delay_info__check_hlds__delay_info__du_name_ordered_delay_info_0[1];
+
+#line 201 "check_hlds.delay_info.c"
+static const MR_Integer check_hlds__delay_info__check_hlds__delay_info__functor_number_map_delay_info_0[1];
+
+#line 204 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_goal_num_0_0_10001(
+#line 207 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 209 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2);
+
+#line 212 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____delay_goal_num_0_0_10001(
+#line 215 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 217 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 219 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3);
+
+#line 222 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_goal_stack_0_0_10001(
+#line 225 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 227 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2);
+
+#line 230 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____delay_goal_stack_0_0_10001(
+#line 233 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 235 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 237 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3);
+
+#line 240 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_info_0_0_10001(
+#line 243 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 245 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2);
+
+#line 248 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____delay_info_0_0_10001(
+#line 251 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 253 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 255 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3);
+
+#line 258 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____depth_num_0_0_10001(
+#line 261 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 263 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2);
+
+#line 266 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____depth_num_0_0_10001(
+#line 269 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 271 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 273 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3);
+
+#line 276 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____pending_goals_table_0_0_10001(
+#line 279 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 281 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2);
+
+#line 284 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____pending_goals_table_0_0_10001(
+#line 287 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 289 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 291 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3);
+
+#line 294 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____seq_num_0_0_10001(
+#line 297 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 299 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2);
+
+#line 302 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____seq_num_0_0_10001(
+#line 305 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 307 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 309 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3);
+
+#line 312 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____waiting_goals_0_0_10001(
+#line 315 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 317 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2);
+
+#line 320 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____waiting_goals_0_0_10001(
+#line 323 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 325 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 327 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3);
+
+#line 330 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____waiting_goals_table_0_0_10001(
+#line 333 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 335 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2);
+
+#line 338 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____waiting_goals_table_0_0_10001(
+#line 341 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 343 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 345 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3);
+
+#line 126 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____waiting_goals_table_0_0(
+#line 126 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 126 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 126 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3);
+
+#line 126 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____waiting_goals_table_0_0(
+#line 126 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 126 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2);
+
+#line 131 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____waiting_goals_0_0(
+#line 131 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 131 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 131 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3);
+
+#line 131 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____waiting_goals_0_0(
+#line 131 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 131 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2);
+
+#line 111 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____seq_num_0_0(
+#line 111 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 111 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__2_2,
+#line 111 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__3_3);
+
+#line 111 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____seq_num_0_0(
+#line 111 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__1_1,
+#line 111 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__2_2);
+
+#line 139 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____pending_goals_table_0_0(
+#line 139 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 139 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 139 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3);
+
+#line 139 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____pending_goals_table_0_0(
+#line 139 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 139 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2);
+
+#line 110 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____depth_num_0_0(
+#line 110 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 110 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__2_2,
+#line 110 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__3_3);
+
+#line 110 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____depth_num_0_0(
+#line 110 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__1_1,
+#line 110 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__2_2);
+
+#line 123 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____delay_goal_stack_0_0(
+#line 123 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 123 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 123 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3);
+
+#line 123 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_goal_stack_0_0(
+#line 123 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 123 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2);
+
+#line 113 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____delay_goal_num_0_0(
+#line 113 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 113 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 113 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3);
+
+#line 113 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_goal_num_0_0(
+#line 113 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 113 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2);
+
+#line 472 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info__lookup_delayed_goals_4_p_0(
+#line 472 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 472 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__2_2,
+#line 472 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_0_3,
+#line 472 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_4);
+
+#line 414 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info__delete_waiting_vars_4_p_0(
+#line 414 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 414 "delay_info.m"
+  MR_Word check_hlds__delay_info__GoalNum_2,
+#line 414 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3,
+#line 414 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__4_4);
+
+#line 383 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info__add_pending_goals_6_p_0(
+#line 383 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 383 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 383 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_PendingGoals_0_3,
+#line 383 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_PendingGoals_4,
+#line 383 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_0_5,
+#line 383 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_6);
+
+#line 337 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info__add_waiting_vars_5_p_0(
+#line 337 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 337 "delay_info.m"
+  MR_Word check_hlds__delay_info__Goal_2,
+#line 337 "delay_info.m"
+  MR_Word check_hlds__delay_info__AllVars_3,
+#line 337 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4,
+#line 337 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_5);
+
+#line 288 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info__remove_delayed_goals_5_p_0(
+#line 288 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 288 "delay_info.m"
+  MR_Word check_hlds__delay_info__DelayedGoalsTable_2,
+#line 288 "delay_info.m"
+  MR_Integer check_hlds__delay_info__Depth_3,
+#line 288 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4,
+#line 288 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_5);
+
+
+static /* final */ const MR_Box check_hlds__delay_info_scalar_common_1[4][3];
+
+static /* final */ const MR_Box check_hlds__delay_info_scalar_common_2[5][2];
+
+
+
+
+static /* final */ const MR_Box check_hlds__delay_info_scalar_common_1[4][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_num_0)),
+    ((MR_Box) (&check_hlds__delay_info_scalar_common_2[1]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&check_hlds__delay_info_scalar_common_2[0])),
+    ((MR_Box) (&check_hlds__delay_info_scalar_common_1[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&check_hlds__delay_info_scalar_common_2[2]))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__delay_info_scalar_common_2[5][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&check_hlds__delay_info_scalar_common_2[0]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__stack__stack__type_ctor_info_stack_1)),
+    ((MR_Box) (&check_hlds__delay_info_scalar_common_1[0]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__stack__stack__type_ctor_info_stack_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+#line 614 "check_hlds.delay_info.c"
+static const MR_PseudoTypeInfo check_hlds__delay_info__check_hlds__delay_info__field_types_delay_goal_num_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+#line 620 "check_hlds.delay_info.c"
+static const MR_DuFunctorDesc check_hlds__delay_info__check_hlds__delay_info__du_functor_desc_delay_goal_num_0_0 = {
+  (MR_String) "delay_goal_num",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__delay_info__check_hlds__delay_info__field_types_delay_goal_num_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 635 "check_hlds.delay_info.c"
+static const MR_DuFunctorDescPtr check_hlds__delay_info__check_hlds__delay_info__du_stag_ordered_delay_goal_num_0_0[1] = {
+  &check_hlds__delay_info__check_hlds__delay_info__du_functor_desc_delay_goal_num_0_0
+};
+
+#line 640 "check_hlds.delay_info.c"
+static const MR_DuPtagLayout check_hlds__delay_info__check_hlds__delay_info__du_ptag_ordered_delay_goal_num_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__delay_info__check_hlds__delay_info__du_stag_ordered_delay_goal_num_0_0
+  }
+};
+
+#line 649 "check_hlds.delay_info.c"
+static const MR_DuFunctorDescPtr check_hlds__delay_info__check_hlds__delay_info__du_name_ordered_delay_goal_num_0[1] = {
+  &check_hlds__delay_info__check_hlds__delay_info__du_functor_desc_delay_goal_num_0_0
+};
+
+#line 654 "check_hlds.delay_info.c"
+static const MR_Integer check_hlds__delay_info__check_hlds__delay_info__functor_number_map_delay_goal_num_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 659 "check_hlds.delay_info.c"
+const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_num_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__delay_info____Unify____delay_goal_num_0_0_10001)),
+  ((MR_Box) (check_hlds__delay_info____Compare____delay_goal_num_0_0_10001)),
+  (MR_String) "check_hlds.delay_info",
+  (MR_String) "delay_goal_num",
+  {     check_hlds__delay_info__check_hlds__delay_info__du_name_ordered_delay_goal_num_0 },
+  {     check_hlds__delay_info__check_hlds__delay_info__du_ptag_ordered_delay_goal_num_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__delay_info__check_hlds__delay_info__functor_number_map_delay_goal_num_0
+};
+
+#line 676 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct2 check_hlds__delay_info__tree234__ti_tree234_2builtin__type_ctor_info_int_0check_hlds__mode_errors__type_ctor_info_delayed_goal_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0
+  }
+};
+
+#line 685 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct1 check_hlds__delay_info__stack__ti_stack_1tree234__ti_tree234_2builtin__type_ctor_info_int_0check_hlds__mode_errors__type_ctor_info_delayed_goal_0 = {
+  &mercury__stack__stack__type_ctor_info_stack_1,
+  {
+    (MR_TypeInfo) &check_hlds__delay_info__tree234__ti_tree234_2builtin__type_ctor_info_int_0check_hlds__mode_errors__type_ctor_info_delayed_goal_0
+  }
+};
+
+#line 693 "check_hlds.delay_info.c"
+const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_stack_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__delay_info____Unify____delay_goal_stack_0_0_10001)),
+  ((MR_Box) (check_hlds__delay_info____Compare____delay_goal_stack_0_0_10001)),
+  (MR_String) "check_hlds.delay_info",
+  (MR_String) "delay_goal_stack",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__delay_info__stack__ti_stack_1tree234__ti_tree234_2builtin__type_ctor_info_int_0check_hlds__mode_errors__type_ctor_info_delayed_goal_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 710 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct1 check_hlds__delay_info__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+#line 718 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct1 check_hlds__delay_info__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &check_hlds__delay_info__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+#line 726 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct2 check_hlds__delay_info__tree234__ti_tree234_2check_hlds__delay_info__type_ctor_info_delay_goal_num_0list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_num_0,
+    (MR_TypeInfo) &check_hlds__delay_info__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+#line 735 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct2 check_hlds__delay_info__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0tree234__ti_tree234_2check_hlds__delay_info__type_ctor_info_delay_goal_num_0list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &check_hlds__delay_info__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_TypeInfo) &check_hlds__delay_info__tree234__ti_tree234_2check_hlds__delay_info__type_ctor_info_delay_goal_num_0list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+#line 744 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct1 check_hlds__delay_info__cord__ti_cord_1builtin__type_ctor_info_int_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+#line 752 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct2 check_hlds__delay_info__tree234__ti_tree234_2builtin__type_ctor_info_int_0cord__ti_cord_1builtin__type_ctor_info_int_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &check_hlds__delay_info__cord__ti_cord_1builtin__type_ctor_info_int_0
+  }
+};
+
+#line 761 "check_hlds.delay_info.c"
+static const MR_FA_TypeInfo_Struct1 check_hlds__delay_info__stack__ti_stack_1builtin__type_ctor_info_int_0 = {
+  &mercury__stack__stack__type_ctor_info_stack_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+#line 769 "check_hlds.delay_info.c"
+static const MR_PseudoTypeInfo check_hlds__delay_info__check_hlds__delay_info__field_types_delay_info_0_0[5] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &check_hlds__delay_info__stack__ti_stack_1tree234__ti_tree234_2builtin__type_ctor_info_int_0check_hlds__mode_errors__type_ctor_info_delayed_goal_0,
+  (MR_PseudoTypeInfo) &check_hlds__delay_info__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0tree234__ti_tree234_2check_hlds__delay_info__type_ctor_info_delay_goal_num_0list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__delay_info__tree234__ti_tree234_2builtin__type_ctor_info_int_0cord__ti_cord_1builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &check_hlds__delay_info__stack__ti_stack_1builtin__type_ctor_info_int_0
+};
+
+#line 778 "check_hlds.delay_info.c"
+static const MR_ConstString check_hlds__delay_info__check_hlds__delay_info__field_names_delay_info_0_0[5] = {
+  (MR_String) "delay_depth",
+  (MR_String) "delay_goal_stack",
+  (MR_String) "delay_waiting",
+  (MR_String) "delay_pending",
+  (MR_String) "delay_seq_stack"
+};
+
+#line 787 "check_hlds.delay_info.c"
+static const MR_DuFunctorDesc check_hlds__delay_info__check_hlds__delay_info__du_functor_desc_delay_info_0_0 = {
+  (MR_String) "delay_info",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__delay_info__check_hlds__delay_info__field_types_delay_info_0_0,
+  check_hlds__delay_info__check_hlds__delay_info__field_names_delay_info_0_0,
+  NULL,
+  NULL
+};
+
+#line 802 "check_hlds.delay_info.c"
+static const MR_DuFunctorDescPtr check_hlds__delay_info__check_hlds__delay_info__du_stag_ordered_delay_info_0_0[1] = {
+  &check_hlds__delay_info__check_hlds__delay_info__du_functor_desc_delay_info_0_0
+};
+
+#line 807 "check_hlds.delay_info.c"
+static const MR_DuPtagLayout check_hlds__delay_info__check_hlds__delay_info__du_ptag_ordered_delay_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__delay_info__check_hlds__delay_info__du_stag_ordered_delay_info_0_0
+  }
+};
+
+#line 816 "check_hlds.delay_info.c"
+static const MR_DuFunctorDescPtr check_hlds__delay_info__check_hlds__delay_info__du_name_ordered_delay_info_0[1] = {
+  &check_hlds__delay_info__check_hlds__delay_info__du_functor_desc_delay_info_0_0
+};
+
+#line 821 "check_hlds.delay_info.c"
+static const MR_Integer check_hlds__delay_info__check_hlds__delay_info__functor_number_map_delay_info_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 826 "check_hlds.delay_info.c"
+const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__delay_info____Unify____delay_info_0_0_10001)),
+  ((MR_Box) (check_hlds__delay_info____Compare____delay_info_0_0_10001)),
+  (MR_String) "check_hlds.delay_info",
+  (MR_String) "delay_info",
+  {     check_hlds__delay_info__check_hlds__delay_info__du_name_ordered_delay_info_0 },
+  {     check_hlds__delay_info__check_hlds__delay_info__du_ptag_ordered_delay_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__delay_info__check_hlds__delay_info__functor_number_map_delay_info_0
+};
+
+#line 843 "check_hlds.delay_info.c"
+const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_depth_num_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__delay_info____Unify____depth_num_0_0_10001)),
+  ((MR_Box) (check_hlds__delay_info____Compare____depth_num_0_0_10001)),
+  (MR_String) "check_hlds.delay_info",
+  (MR_String) "depth_num",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 860 "check_hlds.delay_info.c"
+const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_pending_goals_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__delay_info____Unify____pending_goals_table_0_0_10001)),
+  ((MR_Box) (check_hlds__delay_info____Compare____pending_goals_table_0_0_10001)),
+  (MR_String) "check_hlds.delay_info",
+  (MR_String) "pending_goals_table",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__delay_info__tree234__ti_tree234_2builtin__type_ctor_info_int_0cord__ti_cord_1builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 877 "check_hlds.delay_info.c"
+const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_seq_num_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__delay_info____Unify____seq_num_0_0_10001)),
+  ((MR_Box) (check_hlds__delay_info____Compare____seq_num_0_0_10001)),
+  (MR_String) "check_hlds.delay_info",
+  (MR_String) "seq_num",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 894 "check_hlds.delay_info.c"
+const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_waiting_goals_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__delay_info____Unify____waiting_goals_0_0_10001)),
+  ((MR_Box) (check_hlds__delay_info____Compare____waiting_goals_0_0_10001)),
+  (MR_String) "check_hlds.delay_info",
+  (MR_String) "waiting_goals",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__delay_info__tree234__ti_tree234_2check_hlds__delay_info__type_ctor_info_delay_goal_num_0list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 911 "check_hlds.delay_info.c"
+const MR_TypeCtorInfo_Struct check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_waiting_goals_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (check_hlds__delay_info____Unify____waiting_goals_table_0_0_10001)),
+  ((MR_Box) (check_hlds__delay_info____Compare____waiting_goals_table_0_0_10001)),
+  (MR_String) "check_hlds.delay_info",
+  (MR_String) "waiting_goals_table",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__delay_info__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0tree234__ti_tree234_2check_hlds__delay_info__type_ctor_info_delay_goal_num_0list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 928 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_goal_num_0_0_10001(
+#line 931 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 933 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2)
+#line 935 "check_hlds.delay_info.c"
+{
+#line 937 "check_hlds.delay_info.c"
+  {
+#line 939 "check_hlds.delay_info.c"
+    MR_bool check_hlds__delay_info__succeeded;
+
+#line 942 "check_hlds.delay_info.c"
+    {
+#line 944 "check_hlds.delay_info.c"
+      check_hlds__delay_info__succeeded = check_hlds__delay_info____Unify____delay_goal_num_0_0(((MR_Word) check_hlds__delay_info__wrapper_arg_1), ((MR_Word) check_hlds__delay_info__wrapper_arg_2));
+    }
+#line 947 "check_hlds.delay_info.c"
+    return check_hlds__delay_info__succeeded;
+#line 949 "check_hlds.delay_info.c"
+  }
+#line 951 "check_hlds.delay_info.c"
+}
+
+#line 954 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____delay_goal_num_0_0_10001(
+#line 957 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 959 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 961 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3)
+#line 963 "check_hlds.delay_info.c"
+{
+#line 965 "check_hlds.delay_info.c"
+  {
+#line 967 "check_hlds.delay_info.c"
+    MR_Word check_hlds__delay_info__conv0_HeadVar__1_1;
+
+#line 970 "check_hlds.delay_info.c"
+    {
+#line 972 "check_hlds.delay_info.c"
+      check_hlds__delay_info____Compare____delay_goal_num_0_0(&check_hlds__delay_info__conv0_HeadVar__1_1, ((MR_Word) check_hlds__delay_info__wrapper_arg_2), ((MR_Word) check_hlds__delay_info__wrapper_arg_3));
+    }
+#line 975 "check_hlds.delay_info.c"
+    *check_hlds__delay_info__wrapper_arg_1 = ((MR_Box) (check_hlds__delay_info__conv0_HeadVar__1_1));
+#line 977 "check_hlds.delay_info.c"
+  }
+#line 979 "check_hlds.delay_info.c"
+}
+
+#line 982 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_goal_stack_0_0_10001(
+#line 985 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 987 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2)
+#line 989 "check_hlds.delay_info.c"
+{
+#line 991 "check_hlds.delay_info.c"
+  {
+#line 993 "check_hlds.delay_info.c"
+    MR_bool check_hlds__delay_info__succeeded;
+
+#line 996 "check_hlds.delay_info.c"
+    {
+#line 998 "check_hlds.delay_info.c"
+      check_hlds__delay_info__succeeded = check_hlds__delay_info____Unify____delay_goal_stack_0_0(((MR_Word) check_hlds__delay_info__wrapper_arg_1), ((MR_Word) check_hlds__delay_info__wrapper_arg_2));
+    }
+#line 1001 "check_hlds.delay_info.c"
+    return check_hlds__delay_info__succeeded;
+#line 1003 "check_hlds.delay_info.c"
+  }
+#line 1005 "check_hlds.delay_info.c"
+}
+
+#line 1008 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____delay_goal_stack_0_0_10001(
+#line 1011 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 1013 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 1015 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3)
+#line 1017 "check_hlds.delay_info.c"
+{
+#line 1019 "check_hlds.delay_info.c"
+  {
+#line 1021 "check_hlds.delay_info.c"
+    MR_Word check_hlds__delay_info__conv0_HeadVar__1_1;
+
+#line 1024 "check_hlds.delay_info.c"
+    {
+#line 1026 "check_hlds.delay_info.c"
+      check_hlds__delay_info____Compare____delay_goal_stack_0_0(&check_hlds__delay_info__conv0_HeadVar__1_1, ((MR_Word) check_hlds__delay_info__wrapper_arg_2), ((MR_Word) check_hlds__delay_info__wrapper_arg_3));
+    }
+#line 1029 "check_hlds.delay_info.c"
+    *check_hlds__delay_info__wrapper_arg_1 = ((MR_Box) (check_hlds__delay_info__conv0_HeadVar__1_1));
+#line 1031 "check_hlds.delay_info.c"
+  }
+#line 1033 "check_hlds.delay_info.c"
+}
+
+#line 1036 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_info_0_0_10001(
+#line 1039 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 1041 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2)
+#line 1043 "check_hlds.delay_info.c"
+{
+#line 1045 "check_hlds.delay_info.c"
+  {
+#line 1047 "check_hlds.delay_info.c"
+    MR_bool check_hlds__delay_info__succeeded;
+
+#line 1050 "check_hlds.delay_info.c"
+    {
+#line 1052 "check_hlds.delay_info.c"
+      check_hlds__delay_info__succeeded = check_hlds__delay_info____Unify____delay_info_0_0(((MR_Word) check_hlds__delay_info__wrapper_arg_1), ((MR_Word) check_hlds__delay_info__wrapper_arg_2));
+    }
+#line 1055 "check_hlds.delay_info.c"
+    return check_hlds__delay_info__succeeded;
+#line 1057 "check_hlds.delay_info.c"
+  }
+#line 1059 "check_hlds.delay_info.c"
+}
+
+#line 1062 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____delay_info_0_0_10001(
+#line 1065 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 1067 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 1069 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3)
+#line 1071 "check_hlds.delay_info.c"
+{
+#line 1073 "check_hlds.delay_info.c"
+  {
+#line 1075 "check_hlds.delay_info.c"
+    MR_Word check_hlds__delay_info__conv0_HeadVar__1_1;
+
+#line 1078 "check_hlds.delay_info.c"
+    {
+#line 1080 "check_hlds.delay_info.c"
+      check_hlds__delay_info____Compare____delay_info_0_0(&check_hlds__delay_info__conv0_HeadVar__1_1, ((MR_Word) check_hlds__delay_info__wrapper_arg_2), ((MR_Word) check_hlds__delay_info__wrapper_arg_3));
+    }
+#line 1083 "check_hlds.delay_info.c"
+    *check_hlds__delay_info__wrapper_arg_1 = ((MR_Box) (check_hlds__delay_info__conv0_HeadVar__1_1));
+#line 1085 "check_hlds.delay_info.c"
+  }
+#line 1087 "check_hlds.delay_info.c"
+}
+
+#line 1090 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____depth_num_0_0_10001(
+#line 1093 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 1095 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2)
+#line 1097 "check_hlds.delay_info.c"
+{
+#line 1099 "check_hlds.delay_info.c"
+  {
+#line 1101 "check_hlds.delay_info.c"
+    MR_bool check_hlds__delay_info__succeeded;
+
+#line 1104 "check_hlds.delay_info.c"
+    {
+#line 1106 "check_hlds.delay_info.c"
+      check_hlds__delay_info__succeeded = check_hlds__delay_info____Unify____depth_num_0_0(((MR_Integer) check_hlds__delay_info__wrapper_arg_1), ((MR_Integer) check_hlds__delay_info__wrapper_arg_2));
+    }
+#line 1109 "check_hlds.delay_info.c"
+    return check_hlds__delay_info__succeeded;
+#line 1111 "check_hlds.delay_info.c"
+  }
+#line 1113 "check_hlds.delay_info.c"
+}
+
+#line 1116 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____depth_num_0_0_10001(
+#line 1119 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 1121 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 1123 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3)
+#line 1125 "check_hlds.delay_info.c"
+{
+#line 1127 "check_hlds.delay_info.c"
+  {
+#line 1129 "check_hlds.delay_info.c"
+    MR_Word check_hlds__delay_info__conv0_HeadVar__1_1;
+
+#line 1132 "check_hlds.delay_info.c"
+    {
+#line 1134 "check_hlds.delay_info.c"
+      check_hlds__delay_info____Compare____depth_num_0_0(&check_hlds__delay_info__conv0_HeadVar__1_1, ((MR_Integer) check_hlds__delay_info__wrapper_arg_2), ((MR_Integer) check_hlds__delay_info__wrapper_arg_3));
+    }
+#line 1137 "check_hlds.delay_info.c"
+    *check_hlds__delay_info__wrapper_arg_1 = ((MR_Box) (check_hlds__delay_info__conv0_HeadVar__1_1));
+#line 1139 "check_hlds.delay_info.c"
+  }
+#line 1141 "check_hlds.delay_info.c"
+}
+
+#line 1144 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____pending_goals_table_0_0_10001(
+#line 1147 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 1149 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2)
+#line 1151 "check_hlds.delay_info.c"
+{
+#line 1153 "check_hlds.delay_info.c"
+  {
+#line 1155 "check_hlds.delay_info.c"
+    MR_bool check_hlds__delay_info__succeeded;
+
+#line 1158 "check_hlds.delay_info.c"
+    {
+#line 1160 "check_hlds.delay_info.c"
+      check_hlds__delay_info__succeeded = check_hlds__delay_info____Unify____pending_goals_table_0_0(((MR_Word) check_hlds__delay_info__wrapper_arg_1), ((MR_Word) check_hlds__delay_info__wrapper_arg_2));
+    }
+#line 1163 "check_hlds.delay_info.c"
+    return check_hlds__delay_info__succeeded;
+#line 1165 "check_hlds.delay_info.c"
+  }
+#line 1167 "check_hlds.delay_info.c"
+}
+
+#line 1170 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____pending_goals_table_0_0_10001(
+#line 1173 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 1175 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 1177 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3)
+#line 1179 "check_hlds.delay_info.c"
+{
+#line 1181 "check_hlds.delay_info.c"
+  {
+#line 1183 "check_hlds.delay_info.c"
+    MR_Word check_hlds__delay_info__conv0_HeadVar__1_1;
+
+#line 1186 "check_hlds.delay_info.c"
+    {
+#line 1188 "check_hlds.delay_info.c"
+      check_hlds__delay_info____Compare____pending_goals_table_0_0(&check_hlds__delay_info__conv0_HeadVar__1_1, ((MR_Word) check_hlds__delay_info__wrapper_arg_2), ((MR_Word) check_hlds__delay_info__wrapper_arg_3));
+    }
+#line 1191 "check_hlds.delay_info.c"
+    *check_hlds__delay_info__wrapper_arg_1 = ((MR_Box) (check_hlds__delay_info__conv0_HeadVar__1_1));
+#line 1193 "check_hlds.delay_info.c"
+  }
+#line 1195 "check_hlds.delay_info.c"
+}
+
+#line 1198 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____seq_num_0_0_10001(
+#line 1201 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 1203 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2)
+#line 1205 "check_hlds.delay_info.c"
+{
+#line 1207 "check_hlds.delay_info.c"
+  {
+#line 1209 "check_hlds.delay_info.c"
+    MR_bool check_hlds__delay_info__succeeded;
+
+#line 1212 "check_hlds.delay_info.c"
+    {
+#line 1214 "check_hlds.delay_info.c"
+      check_hlds__delay_info__succeeded = check_hlds__delay_info____Unify____seq_num_0_0(((MR_Integer) check_hlds__delay_info__wrapper_arg_1), ((MR_Integer) check_hlds__delay_info__wrapper_arg_2));
+    }
+#line 1217 "check_hlds.delay_info.c"
+    return check_hlds__delay_info__succeeded;
+#line 1219 "check_hlds.delay_info.c"
+  }
+#line 1221 "check_hlds.delay_info.c"
+}
+
+#line 1224 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____seq_num_0_0_10001(
+#line 1227 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 1229 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 1231 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3)
+#line 1233 "check_hlds.delay_info.c"
+{
+#line 1235 "check_hlds.delay_info.c"
+  {
+#line 1237 "check_hlds.delay_info.c"
+    MR_Word check_hlds__delay_info__conv0_HeadVar__1_1;
+
+#line 1240 "check_hlds.delay_info.c"
+    {
+#line 1242 "check_hlds.delay_info.c"
+      check_hlds__delay_info____Compare____seq_num_0_0(&check_hlds__delay_info__conv0_HeadVar__1_1, ((MR_Integer) check_hlds__delay_info__wrapper_arg_2), ((MR_Integer) check_hlds__delay_info__wrapper_arg_3));
+    }
+#line 1245 "check_hlds.delay_info.c"
+    *check_hlds__delay_info__wrapper_arg_1 = ((MR_Box) (check_hlds__delay_info__conv0_HeadVar__1_1));
+#line 1247 "check_hlds.delay_info.c"
+  }
+#line 1249 "check_hlds.delay_info.c"
+}
+
+#line 1252 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____waiting_goals_0_0_10001(
+#line 1255 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 1257 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2)
+#line 1259 "check_hlds.delay_info.c"
+{
+#line 1261 "check_hlds.delay_info.c"
+  {
+#line 1263 "check_hlds.delay_info.c"
+    MR_bool check_hlds__delay_info__succeeded;
+
+#line 1266 "check_hlds.delay_info.c"
+    {
+#line 1268 "check_hlds.delay_info.c"
+      check_hlds__delay_info__succeeded = check_hlds__delay_info____Unify____waiting_goals_0_0(((MR_Word) check_hlds__delay_info__wrapper_arg_1), ((MR_Word) check_hlds__delay_info__wrapper_arg_2));
+    }
+#line 1271 "check_hlds.delay_info.c"
+    return check_hlds__delay_info__succeeded;
+#line 1273 "check_hlds.delay_info.c"
+  }
+#line 1275 "check_hlds.delay_info.c"
+}
+
+#line 1278 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____waiting_goals_0_0_10001(
+#line 1281 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 1283 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 1285 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3)
+#line 1287 "check_hlds.delay_info.c"
+{
+#line 1289 "check_hlds.delay_info.c"
+  {
+#line 1291 "check_hlds.delay_info.c"
+    MR_Word check_hlds__delay_info__conv0_HeadVar__1_1;
+
+#line 1294 "check_hlds.delay_info.c"
+    {
+#line 1296 "check_hlds.delay_info.c"
+      check_hlds__delay_info____Compare____waiting_goals_0_0(&check_hlds__delay_info__conv0_HeadVar__1_1, ((MR_Word) check_hlds__delay_info__wrapper_arg_2), ((MR_Word) check_hlds__delay_info__wrapper_arg_3));
+    }
+#line 1299 "check_hlds.delay_info.c"
+    *check_hlds__delay_info__wrapper_arg_1 = ((MR_Box) (check_hlds__delay_info__conv0_HeadVar__1_1));
+#line 1301 "check_hlds.delay_info.c"
+  }
+#line 1303 "check_hlds.delay_info.c"
+}
+
+#line 1306 "check_hlds.delay_info.c"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____waiting_goals_table_0_0_10001(
+#line 1309 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_1,
+#line 1311 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2)
+#line 1313 "check_hlds.delay_info.c"
+{
+#line 1315 "check_hlds.delay_info.c"
+  {
+#line 1317 "check_hlds.delay_info.c"
+    MR_bool check_hlds__delay_info__succeeded;
+
+#line 1320 "check_hlds.delay_info.c"
+    {
+#line 1322 "check_hlds.delay_info.c"
+      check_hlds__delay_info__succeeded = check_hlds__delay_info____Unify____waiting_goals_table_0_0(((MR_Word) check_hlds__delay_info__wrapper_arg_1), ((MR_Word) check_hlds__delay_info__wrapper_arg_2));
+    }
+#line 1325 "check_hlds.delay_info.c"
+    return check_hlds__delay_info__succeeded;
+#line 1327 "check_hlds.delay_info.c"
+  }
+#line 1329 "check_hlds.delay_info.c"
+}
+
+#line 1332 "check_hlds.delay_info.c"
+static void MR_CALL 
+check_hlds__delay_info____Compare____waiting_goals_table_0_0_10001(
+#line 1335 "check_hlds.delay_info.c"
+  MR_Box * check_hlds__delay_info__wrapper_arg_1,
+#line 1337 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_2,
+#line 1339 "check_hlds.delay_info.c"
+  MR_Box check_hlds__delay_info__wrapper_arg_3)
+#line 1341 "check_hlds.delay_info.c"
+{
+#line 1343 "check_hlds.delay_info.c"
+  {
+#line 1345 "check_hlds.delay_info.c"
+    MR_Word check_hlds__delay_info__conv0_HeadVar__1_1;
+
+#line 1348 "check_hlds.delay_info.c"
+    {
+#line 1350 "check_hlds.delay_info.c"
+      check_hlds__delay_info____Compare____waiting_goals_table_0_0(&check_hlds__delay_info__conv0_HeadVar__1_1, ((MR_Word) check_hlds__delay_info__wrapper_arg_2), ((MR_Word) check_hlds__delay_info__wrapper_arg_3));
+    }
+#line 1353 "check_hlds.delay_info.c"
+    *check_hlds__delay_info__wrapper_arg_1 = ((MR_Box) (check_hlds__delay_info__conv0_HeadVar__1_1));
+#line 1355 "check_hlds.delay_info.c"
+  }
+#line 1357 "check_hlds.delay_info.c"
+}
+
+#line 126 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____waiting_goals_table_0_0(
+#line 126 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 126 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 126 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3)
+#line 126 "delay_info.m"
+{
+#line 126 "delay_info.m"
+  {
+#line 126 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 126 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar1_4 = check_hlds__delay_info__HeadVar__2_2;
+#line 126 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar2_5 = check_hlds__delay_info__HeadVar__3_3;
+
+#line 126 "delay_info.m"
+    {
+#line 126 "delay_info.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[2], check_hlds__delay_info__HeadVar__1_1, ((MR_Box) (check_hlds__delay_info__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__delay_info__Cast_HeadVar2_5)));
+#line 126 "delay_info.m"
+      return;
+    }
+#line 126 "delay_info.m"
+  }
+#line 126 "delay_info.m"
+}
+
+#line 126 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____waiting_goals_table_0_0(
+#line 126 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 126 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2)
+#line 126 "delay_info.m"
+{
+#line 126 "delay_info.m"
+  {
+#line 126 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 126 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar1_3 = check_hlds__delay_info__HeadVar__1_1;
+#line 126 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar2_4 = check_hlds__delay_info__HeadVar__2_2;
+
+#line 126 "delay_info.m"
+    {
+#line 126 "delay_info.m"
+      return check_hlds__delay_info__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[2], ((MR_Box) (check_hlds__delay_info__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__delay_info__Cast_HeadVar2_4)));
+    }
+#line 126 "delay_info.m"
+    return check_hlds__delay_info__succeeded;
+#line 126 "delay_info.m"
+  }
+#line 126 "delay_info.m"
+}
+
+#line 131 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____waiting_goals_0_0(
+#line 131 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 131 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 131 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3)
+#line 131 "delay_info.m"
+{
+#line 131 "delay_info.m"
+  {
+#line 131 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 131 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar1_4 = check_hlds__delay_info__HeadVar__2_2;
+#line 131 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar2_5 = check_hlds__delay_info__HeadVar__3_3;
+
+#line 131 "delay_info.m"
+    {
+#line 131 "delay_info.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[1], check_hlds__delay_info__HeadVar__1_1, ((MR_Box) (check_hlds__delay_info__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__delay_info__Cast_HeadVar2_5)));
+#line 131 "delay_info.m"
+      return;
+    }
+#line 131 "delay_info.m"
+  }
+#line 131 "delay_info.m"
+}
+
+#line 131 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____waiting_goals_0_0(
+#line 131 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 131 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2)
+#line 131 "delay_info.m"
+{
+#line 131 "delay_info.m"
+  {
+#line 131 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 131 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar1_3 = check_hlds__delay_info__HeadVar__1_1;
+#line 131 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar2_4 = check_hlds__delay_info__HeadVar__2_2;
+
+#line 131 "delay_info.m"
+    {
+#line 131 "delay_info.m"
+      return check_hlds__delay_info__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[1], ((MR_Box) (check_hlds__delay_info__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__delay_info__Cast_HeadVar2_4)));
+    }
+#line 131 "delay_info.m"
+    return check_hlds__delay_info__succeeded;
+#line 131 "delay_info.m"
+  }
+#line 131 "delay_info.m"
+}
+
+#line 111 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____seq_num_0_0(
+#line 111 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 111 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__2_2,
+#line 111 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__3_3)
+#line 111 "delay_info.m"
+{
+#line 111 "delay_info.m"
+  {
+#line 111 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 111 "delay_info.m"
+    MR_Integer check_hlds__delay_info__Cast_HeadVar1_4 = check_hlds__delay_info__HeadVar__2_2;
+#line 111 "delay_info.m"
+    MR_Integer check_hlds__delay_info__Cast_HeadVar2_5 = check_hlds__delay_info__HeadVar__3_3;
+
+#line 111 "delay_info.m"
+    {
+#line 111 "delay_info.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__delay_info__HeadVar__1_1, check_hlds__delay_info__Cast_HeadVar1_4, check_hlds__delay_info__Cast_HeadVar2_5);
+#line 111 "delay_info.m"
+      return;
+    }
+#line 111 "delay_info.m"
+  }
+#line 111 "delay_info.m"
+}
+
+#line 111 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____seq_num_0_0(
+#line 111 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__1_1,
+#line 111 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__2_2)
+#line 111 "delay_info.m"
+{
+#line 111 "delay_info.m"
+  {
+#line 111 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 111 "delay_info.m"
+    MR_Integer check_hlds__delay_info__Cast_HeadVar1_3 = check_hlds__delay_info__HeadVar__1_1;
+#line 111 "delay_info.m"
+    MR_Integer check_hlds__delay_info__Cast_HeadVar2_4 = check_hlds__delay_info__HeadVar__2_2;
+
+#line 111 "delay_info.m"
+    check_hlds__delay_info__succeeded = (check_hlds__delay_info__Cast_HeadVar1_3 == check_hlds__delay_info__Cast_HeadVar2_4);
+#line 111 "delay_info.m"
+    return check_hlds__delay_info__succeeded;
+#line 111 "delay_info.m"
+  }
+#line 111 "delay_info.m"
+}
+
+#line 139 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____pending_goals_table_0_0(
+#line 139 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 139 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 139 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3)
+#line 139 "delay_info.m"
+{
+#line 139 "delay_info.m"
+  {
+#line 139 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 139 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar1_4 = check_hlds__delay_info__HeadVar__2_2;
+#line 139 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar2_5 = check_hlds__delay_info__HeadVar__3_3;
+
+#line 139 "delay_info.m"
+    {
+#line 139 "delay_info.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[3], check_hlds__delay_info__HeadVar__1_1, ((MR_Box) (check_hlds__delay_info__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__delay_info__Cast_HeadVar2_5)));
+#line 139 "delay_info.m"
+      return;
+    }
+#line 139 "delay_info.m"
+  }
+#line 139 "delay_info.m"
+}
+
+#line 139 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____pending_goals_table_0_0(
+#line 139 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 139 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2)
+#line 139 "delay_info.m"
+{
+#line 139 "delay_info.m"
+  {
+#line 139 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 139 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar1_3 = check_hlds__delay_info__HeadVar__1_1;
+#line 139 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar2_4 = check_hlds__delay_info__HeadVar__2_2;
+
+#line 139 "delay_info.m"
+    {
+#line 139 "delay_info.m"
+      return check_hlds__delay_info__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[3], ((MR_Box) (check_hlds__delay_info__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__delay_info__Cast_HeadVar2_4)));
+    }
+#line 139 "delay_info.m"
+    return check_hlds__delay_info__succeeded;
+#line 139 "delay_info.m"
+  }
+#line 139 "delay_info.m"
+}
+
+#line 110 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____depth_num_0_0(
+#line 110 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 110 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__2_2,
+#line 110 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__3_3)
+#line 110 "delay_info.m"
+{
+#line 110 "delay_info.m"
+  {
+#line 110 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 110 "delay_info.m"
+    MR_Integer check_hlds__delay_info__Cast_HeadVar1_4 = check_hlds__delay_info__HeadVar__2_2;
+#line 110 "delay_info.m"
+    MR_Integer check_hlds__delay_info__Cast_HeadVar2_5 = check_hlds__delay_info__HeadVar__3_3;
+
+#line 110 "delay_info.m"
+    {
+#line 110 "delay_info.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__delay_info__HeadVar__1_1, check_hlds__delay_info__Cast_HeadVar1_4, check_hlds__delay_info__Cast_HeadVar2_5);
+#line 110 "delay_info.m"
+      return;
+    }
+#line 110 "delay_info.m"
+  }
+#line 110 "delay_info.m"
+}
+
+#line 110 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____depth_num_0_0(
+#line 110 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__1_1,
+#line 110 "delay_info.m"
+  MR_Integer check_hlds__delay_info__HeadVar__2_2)
+#line 110 "delay_info.m"
+{
+#line 110 "delay_info.m"
+  {
+#line 110 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 110 "delay_info.m"
+    MR_Integer check_hlds__delay_info__Cast_HeadVar1_3 = check_hlds__delay_info__HeadVar__1_1;
+#line 110 "delay_info.m"
+    MR_Integer check_hlds__delay_info__Cast_HeadVar2_4 = check_hlds__delay_info__HeadVar__2_2;
+
+#line 110 "delay_info.m"
+    check_hlds__delay_info__succeeded = (check_hlds__delay_info__Cast_HeadVar1_3 == check_hlds__delay_info__Cast_HeadVar2_4);
+#line 110 "delay_info.m"
+    return check_hlds__delay_info__succeeded;
+#line 110 "delay_info.m"
+  }
+#line 110 "delay_info.m"
+}
+
+#line 147 "delay_info.m"
+void MR_CALL 
+check_hlds__delay_info____Compare____delay_info_0_0(
+#line 147 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 147 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 147 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3)
+#line 147 "delay_info.m"
+{
+#line 147 "delay_info.m"
+  {
+#line 147 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 147 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CastX_18 = (MR_Integer) check_hlds__delay_info__HeadVar__2_2;
+#line 147 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CastY_19 = (MR_Integer) check_hlds__delay_info__HeadVar__3_3;
+
+#line 147 "delay_info.m"
+    check_hlds__delay_info__succeeded = (check_hlds__delay_info__CastX_18 == check_hlds__delay_info__CastY_19);
+#line 147 "delay_info.m"
+    if (check_hlds__delay_info__succeeded)
+#line 1688 "check_hlds.delay_info.c"
+      *check_hlds__delay_info__HeadVar__1_1 = (MR_Integer) 0;
+#line 147 "delay_info.m"
+    else
+#line 147 "delay_info.m"
+      {
+#line 147 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 0)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 1)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 2)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 3)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 4)));
+#line 147 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__3_3, (MR_Integer) 0)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__3_3, (MR_Integer) 1)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__3_3, (MR_Integer) 2)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__3_3, (MR_Integer) 3)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__3_3, (MR_Integer) 4)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_14_14;
+
+#line 147 "delay_info.m"
+        {
+#line 147 "delay_info.m"
+          mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__delay_info__V_14_14, check_hlds__delay_info__V_4_4, check_hlds__delay_info__V_9_9);
+        }
+#line 1722 "check_hlds.delay_info.c"
+        check_hlds__delay_info__succeeded = (check_hlds__delay_info__V_14_14 == (MR_Integer) 0);
+#line 147 "delay_info.m"
+        check_hlds__delay_info__succeeded = !(check_hlds__delay_info__succeeded);
+#line 147 "delay_info.m"
+        if (check_hlds__delay_info__succeeded)
+#line 147 "delay_info.m"
+          *check_hlds__delay_info__HeadVar__1_1 = check_hlds__delay_info__V_14_14;
+#line 147 "delay_info.m"
+        else
+#line 147 "delay_info.m"
+          {
+#line 147 "delay_info.m"
+            MR_Word check_hlds__delay_info__V_15_15;
+
+#line 147 "delay_info.m"
+            {
+#line 147 "delay_info.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[3], &check_hlds__delay_info__V_15_15, ((MR_Box) (check_hlds__delay_info__V_5_5)), ((MR_Box) (check_hlds__delay_info__V_10_10)));
+            }
+#line 1742 "check_hlds.delay_info.c"
+            check_hlds__delay_info__succeeded = (check_hlds__delay_info__V_15_15 == (MR_Integer) 0);
+#line 147 "delay_info.m"
+            check_hlds__delay_info__succeeded = !(check_hlds__delay_info__succeeded);
+#line 147 "delay_info.m"
+            if (check_hlds__delay_info__succeeded)
+#line 147 "delay_info.m"
+              *check_hlds__delay_info__HeadVar__1_1 = check_hlds__delay_info__V_15_15;
+#line 147 "delay_info.m"
+            else
+#line 147 "delay_info.m"
+              {
+#line 147 "delay_info.m"
+                MR_Word check_hlds__delay_info__V_16_16;
+
+#line 147 "delay_info.m"
+                {
+#line 147 "delay_info.m"
+                  mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[2], &check_hlds__delay_info__V_16_16, ((MR_Box) (check_hlds__delay_info__V_6_6)), ((MR_Box) (check_hlds__delay_info__V_11_11)));
+                }
+#line 1762 "check_hlds.delay_info.c"
+                check_hlds__delay_info__succeeded = (check_hlds__delay_info__V_16_16 == (MR_Integer) 0);
+#line 147 "delay_info.m"
+                check_hlds__delay_info__succeeded = !(check_hlds__delay_info__succeeded);
+#line 147 "delay_info.m"
+                if (check_hlds__delay_info__succeeded)
+#line 147 "delay_info.m"
+                  *check_hlds__delay_info__HeadVar__1_1 = check_hlds__delay_info__V_16_16;
+#line 147 "delay_info.m"
+                else
+#line 147 "delay_info.m"
+                  {
+#line 147 "delay_info.m"
+                    MR_Word check_hlds__delay_info__V_17_17;
+
+#line 147 "delay_info.m"
+                    {
+#line 147 "delay_info.m"
+                      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[3], &check_hlds__delay_info__V_17_17, ((MR_Box) (check_hlds__delay_info__V_7_7)), ((MR_Box) (check_hlds__delay_info__V_12_12)));
+                    }
+#line 1782 "check_hlds.delay_info.c"
+                    check_hlds__delay_info__succeeded = (check_hlds__delay_info__V_17_17 == (MR_Integer) 0);
+#line 147 "delay_info.m"
+                    check_hlds__delay_info__succeeded = !(check_hlds__delay_info__succeeded);
+#line 147 "delay_info.m"
+                    if (check_hlds__delay_info__succeeded)
+#line 147 "delay_info.m"
+                      *check_hlds__delay_info__HeadVar__1_1 = check_hlds__delay_info__V_17_17;
+#line 147 "delay_info.m"
+                    else
+#line 147 "delay_info.m"
+                      {
+#line 147 "delay_info.m"
+                        {
+#line 147 "delay_info.m"
+                          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[4], check_hlds__delay_info__HeadVar__1_1, ((MR_Box) (check_hlds__delay_info__V_8_8)), ((MR_Box) (check_hlds__delay_info__V_13_13)));
+#line 147 "delay_info.m"
+                          return;
+                        }
+#line 147 "delay_info.m"
+                      }
+#line 147 "delay_info.m"
+                  }
+#line 147 "delay_info.m"
+              }
+#line 147 "delay_info.m"
+          }
+#line 147 "delay_info.m"
+      }
+#line 147 "delay_info.m"
+  }
+#line 147 "delay_info.m"
+}
+
+#line 147 "delay_info.m"
+MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_info_0_0(
+#line 147 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 147 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2)
+#line 147 "delay_info.m"
+{
+#line 147 "delay_info.m"
+  {
+#line 147 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 147 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CastX_13 = (MR_Integer) check_hlds__delay_info__HeadVar__1_1;
+#line 147 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CastY_14 = (MR_Integer) check_hlds__delay_info__HeadVar__2_2;
+
+#line 147 "delay_info.m"
+    check_hlds__delay_info__succeeded = (check_hlds__delay_info__CastX_13 == check_hlds__delay_info__CastY_14);
+#line 147 "delay_info.m"
+    if (check_hlds__delay_info__succeeded)
+#line 147 "delay_info.m"
+      check_hlds__delay_info__succeeded = MR_TRUE;
+#line 147 "delay_info.m"
+    else
+#line 147 "delay_info.m"
+      {
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__TypeInfo_15_15;
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__TypeInfo_16_16;
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__TypeInfo_17_17;
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__TypeInfo_18_18;
+#line 147 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 0)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 1)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 2)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 3)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 4)));
+#line 147 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 0)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 1)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 2)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 3)));
+#line 147 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 4)));
+
+#line 1873 "check_hlds.delay_info.c"
+        check_hlds__delay_info__succeeded = (check_hlds__delay_info__V_3_3 == check_hlds__delay_info__V_8_8);
+#line 147 "delay_info.m"
+        if (check_hlds__delay_info__succeeded)
+#line 147 "delay_info.m"
+          {
+#line 1879 "check_hlds.delay_info.c"
+            check_hlds__delay_info__TypeInfo_15_15 = (MR_Word) &check_hlds__delay_info_scalar_common_2[3];
+#line 1881 "check_hlds.delay_info.c"
+            {
+#line 1883 "check_hlds.delay_info.c"
+              check_hlds__delay_info__succeeded = mercury__builtin__unify_2_p_0(check_hlds__delay_info__TypeInfo_15_15, ((MR_Box) (check_hlds__delay_info__V_4_4)), ((MR_Box) (check_hlds__delay_info__V_9_9)));
+            }
+#line 147 "delay_info.m"
+            if (check_hlds__delay_info__succeeded)
+#line 147 "delay_info.m"
+              {
+#line 1890 "check_hlds.delay_info.c"
+                check_hlds__delay_info__TypeInfo_16_16 = (MR_Word) &check_hlds__delay_info_scalar_common_1[2];
+#line 1892 "check_hlds.delay_info.c"
+                {
+#line 1894 "check_hlds.delay_info.c"
+                  check_hlds__delay_info__succeeded = mercury__builtin__unify_2_p_0(check_hlds__delay_info__TypeInfo_16_16, ((MR_Box) (check_hlds__delay_info__V_5_5)), ((MR_Box) (check_hlds__delay_info__V_10_10)));
+                }
+#line 147 "delay_info.m"
+                if (check_hlds__delay_info__succeeded)
+#line 147 "delay_info.m"
+                  {
+#line 1901 "check_hlds.delay_info.c"
+                    check_hlds__delay_info__TypeInfo_17_17 = (MR_Word) &check_hlds__delay_info_scalar_common_1[3];
+#line 1903 "check_hlds.delay_info.c"
+                    {
+#line 1905 "check_hlds.delay_info.c"
+                      check_hlds__delay_info__succeeded = mercury__builtin__unify_2_p_0(check_hlds__delay_info__TypeInfo_17_17, ((MR_Box) (check_hlds__delay_info__V_6_6)), ((MR_Box) (check_hlds__delay_info__V_11_11)));
+                    }
+#line 147 "delay_info.m"
+                    if (check_hlds__delay_info__succeeded)
+#line 147 "delay_info.m"
+                      {
+#line 1912 "check_hlds.delay_info.c"
+                        check_hlds__delay_info__TypeInfo_18_18 = (MR_Word) &check_hlds__delay_info_scalar_common_2[4];
+#line 1914 "check_hlds.delay_info.c"
+                        {
+#line 1916 "check_hlds.delay_info.c"
+                          return check_hlds__delay_info__succeeded = mercury__builtin__unify_2_p_0(check_hlds__delay_info__TypeInfo_18_18, ((MR_Box) (check_hlds__delay_info__V_7_7)), ((MR_Box) (check_hlds__delay_info__V_12_12)));
+                        }
+#line 147 "delay_info.m"
+                      }
+#line 147 "delay_info.m"
+                  }
+#line 147 "delay_info.m"
+              }
+#line 147 "delay_info.m"
+          }
+#line 147 "delay_info.m"
+      }
+#line 147 "delay_info.m"
+    return check_hlds__delay_info__succeeded;
+#line 147 "delay_info.m"
+  }
+#line 147 "delay_info.m"
+}
+
+#line 123 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____delay_goal_stack_0_0(
+#line 123 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 123 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 123 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3)
+#line 123 "delay_info.m"
+{
+#line 123 "delay_info.m"
+  {
+#line 123 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 123 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar1_4 = check_hlds__delay_info__HeadVar__2_2;
+#line 123 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar2_5 = check_hlds__delay_info__HeadVar__3_3;
+
+#line 123 "delay_info.m"
+    {
+#line 123 "delay_info.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[3], check_hlds__delay_info__HeadVar__1_1, ((MR_Box) (check_hlds__delay_info__Cast_HeadVar1_4)), ((MR_Box) (check_hlds__delay_info__Cast_HeadVar2_5)));
+#line 123 "delay_info.m"
+      return;
+    }
+#line 123 "delay_info.m"
+  }
+#line 123 "delay_info.m"
+}
+
+#line 123 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_goal_stack_0_0(
+#line 123 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 123 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2)
+#line 123 "delay_info.m"
+{
+#line 123 "delay_info.m"
+  {
+#line 123 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 123 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar1_3 = check_hlds__delay_info__HeadVar__1_1;
+#line 123 "delay_info.m"
+    MR_Word check_hlds__delay_info__Cast_HeadVar2_4 = check_hlds__delay_info__HeadVar__2_2;
+
+#line 123 "delay_info.m"
+    {
+#line 123 "delay_info.m"
+      return check_hlds__delay_info__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[3], ((MR_Box) (check_hlds__delay_info__Cast_HeadVar1_3)), ((MR_Box) (check_hlds__delay_info__Cast_HeadVar2_4)));
+    }
+#line 123 "delay_info.m"
+    return check_hlds__delay_info__succeeded;
+#line 123 "delay_info.m"
+  }
+#line 123 "delay_info.m"
+}
+
+#line 113 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info____Compare____delay_goal_num_0_0(
+#line 113 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__1_1,
+#line 113 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 113 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3)
+#line 113 "delay_info.m"
+{
+#line 113 "delay_info.m"
+  {
+#line 113 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 113 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CastX_9 = (MR_Integer) check_hlds__delay_info__HeadVar__2_2;
+#line 113 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CastY_10 = (MR_Integer) check_hlds__delay_info__HeadVar__3_3;
+
+#line 113 "delay_info.m"
+    check_hlds__delay_info__succeeded = (check_hlds__delay_info__CastX_9 == check_hlds__delay_info__CastY_10);
+#line 113 "delay_info.m"
+    if (check_hlds__delay_info__succeeded)
+#line 2022 "check_hlds.delay_info.c"
+      *check_hlds__delay_info__HeadVar__1_1 = (MR_Integer) 0;
+#line 113 "delay_info.m"
+    else
+#line 113 "delay_info.m"
+      {
+#line 113 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 0)));
+#line 113 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 1)));
+#line 113 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__3_3, (MR_Integer) 0)));
+#line 113 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__3_3, (MR_Integer) 1)));
+#line 113 "delay_info.m"
+        MR_Word check_hlds__delay_info__V_8_8;
+
+#line 113 "delay_info.m"
+        {
+#line 113 "delay_info.m"
+          mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__delay_info__V_8_8, check_hlds__delay_info__V_4_4, check_hlds__delay_info__V_6_6);
+        }
+#line 2044 "check_hlds.delay_info.c"
+        check_hlds__delay_info__succeeded = (check_hlds__delay_info__V_8_8 == (MR_Integer) 0);
+#line 113 "delay_info.m"
+        check_hlds__delay_info__succeeded = !(check_hlds__delay_info__succeeded);
+#line 113 "delay_info.m"
+        if (check_hlds__delay_info__succeeded)
+#line 113 "delay_info.m"
+          *check_hlds__delay_info__HeadVar__1_1 = check_hlds__delay_info__V_8_8;
+#line 113 "delay_info.m"
+        else
+#line 113 "delay_info.m"
+          {
+#line 113 "delay_info.m"
+            mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__delay_info__HeadVar__1_1, check_hlds__delay_info__V_5_5, check_hlds__delay_info__V_7_7);
+#line 113 "delay_info.m"
+            return;
+          }
+#line 113 "delay_info.m"
+      }
+#line 113 "delay_info.m"
+  }
+#line 113 "delay_info.m"
+}
+
+#line 113 "delay_info.m"
+static MR_bool MR_CALL 
+check_hlds__delay_info____Unify____delay_goal_num_0_0(
+#line 113 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 113 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2)
+#line 113 "delay_info.m"
+{
+#line 113 "delay_info.m"
+  {
+#line 113 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 113 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CastX_7 = (MR_Integer) check_hlds__delay_info__HeadVar__1_1;
+#line 113 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CastY_8 = (MR_Integer) check_hlds__delay_info__HeadVar__2_2;
+
+#line 113 "delay_info.m"
+    check_hlds__delay_info__succeeded = (check_hlds__delay_info__CastX_7 == check_hlds__delay_info__CastY_8);
+#line 113 "delay_info.m"
+    if (check_hlds__delay_info__succeeded)
+#line 113 "delay_info.m"
+      check_hlds__delay_info__succeeded = MR_TRUE;
+#line 113 "delay_info.m"
+    else
+#line 113 "delay_info.m"
+      {
+#line 113 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 0)));
+#line 113 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 1)));
+#line 113 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 0)));
+#line 113 "delay_info.m"
+        MR_Integer check_hlds__delay_info__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 2105 "check_hlds.delay_info.c"
+        check_hlds__delay_info__succeeded = (check_hlds__delay_info__V_3_3 == check_hlds__delay_info__V_5_5);
+#line 113 "delay_info.m"
+        if (check_hlds__delay_info__succeeded)
+#line 2109 "check_hlds.delay_info.c"
+          check_hlds__delay_info__succeeded = (check_hlds__delay_info__V_4_4 == check_hlds__delay_info__V_6_6);
+#line 113 "delay_info.m"
+      }
+#line 113 "delay_info.m"
+    return check_hlds__delay_info__succeeded;
+#line 113 "delay_info.m"
+  }
+#line 113 "delay_info.m"
+}
+
+#line 472 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info__lookup_delayed_goals_4_p_0(
+#line 472 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 472 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__2_2,
+#line 472 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_0_3,
+#line 472 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_4)
+#line 472 "delay_info.m"
+{
+#line 475 "delay_info.m"
+  {
+#line 475 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+
+#line 475 "delay_info.m"
+    if ((check_hlds__delay_info__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 475 "delay_info.m"
+      {
+#line 475 "delay_info.m"
+        *check_hlds__delay_info__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 475 "delay_info.m"
+        *check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_4 = check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_0_3;
+#line 475 "delay_info.m"
+      }
+#line 475 "delay_info.m"
+    else
+#line 476 "delay_info.m"
+      {
+#line 476 "delay_info.m"
+        MR_Integer check_hlds__delay_info__SeqNum_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 0)));
+#line 476 "delay_info.m"
+        MR_Word check_hlds__delay_info__SeqNums_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 1)));
+#line 476 "delay_info.m"
+        MR_Word check_hlds__delay_info__Goal_10;
+#line 476 "delay_info.m"
+        MR_Word check_hlds__delay_info__Goals_11;
+#line 476 "delay_info.m"
+        MR_Word check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_15_15;
+#line 476 "delay_info.m"
+        MR_Word check_hlds__delay_info__DelayedGoal_22;
+#line 484 "delay_info.m"
+        MR_Box check_hlds__delay_info__conv0_DelayedGoal_22;
+#line 485 "delay_info.m"
+        MR_Word check_hlds__delay_info___Vars_23;
+#line 485 "delay_info.m"
+        MR_Word check_hlds__delay_info___ErrorReason_24;
+
+#line 484 "delay_info.m"
+        {
+#line 484 "delay_info.m"
+          mercury__map__det_remove_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0, ((MR_Box) (check_hlds__delay_info__SeqNum_8)), &check_hlds__delay_info__conv0_DelayedGoal_22, check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_0_3, &check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_15_15);
+        }
+#line 484 "delay_info.m"
+        check_hlds__delay_info__DelayedGoal_22 = ((MR_Word) check_hlds__delay_info__conv0_DelayedGoal_22);
+#line 485 "delay_info.m"
+        check_hlds__delay_info___Vars_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayedGoal_22, (MR_Integer) 0)));
+#line 485 "delay_info.m"
+        check_hlds__delay_info___ErrorReason_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayedGoal_22, (MR_Integer) 1)));
+#line 485 "delay_info.m"
+        check_hlds__delay_info__Goal_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayedGoal_22, (MR_Integer) 2)));
+#line 478 "delay_info.m"
+        {
+#line 478 "delay_info.m"
+          check_hlds__delay_info__lookup_delayed_goals_4_p_0(check_hlds__delay_info__SeqNums_9, &check_hlds__delay_info__Goals_11, check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_15_15, check_hlds__delay_info__STATE_VARIABLE_DelayedGoalMap_4);
+        }
+#line 476 "delay_info.m"
+        {
+#line 476 "delay_info.m"
+          MR_Word base;
+#line 476 "delay_info.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 476 "delay_info.m"
+          *check_hlds__delay_info__HeadVar__2_2 = base;
+#line 476 "delay_info.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__delay_info__Goal_10));
+#line 476 "delay_info.m"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__delay_info__Goals_11));
+#line 476 "delay_info.m"
+        }
+#line 476 "delay_info.m"
+      }
+#line 475 "delay_info.m"
+  }
+#line 472 "delay_info.m"
+}
+
+#line 414 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info__delete_waiting_vars_4_p_0(
+#line 414 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 414 "delay_info.m"
+  MR_Word check_hlds__delay_info__GoalNum_2,
+#line 414 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__3_3,
+#line 414 "delay_info.m"
+  MR_Word * check_hlds__delay_info__HeadVar__4_4)
+#line 414 "delay_info.m"
+{
+#line 417 "delay_info.m"
+  while (MR_TRUE)
+#line 417 "delay_info.m"
+    {
+#line 417 "delay_info.m"
+      /* tailcall optimized into a loop */
+#line 417 "delay_info.m"
+      {
+#line 417 "delay_info.m"
+        MR_bool check_hlds__delay_info__succeeded;
+
+#line 417 "delay_info.m"
+        if ((check_hlds__delay_info__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 417 "delay_info.m"
+          *check_hlds__delay_info__HeadVar__4_4 = check_hlds__delay_info__HeadVar__3_3;
+#line 417 "delay_info.m"
+        else
+#line 418 "delay_info.m"
+          {
+#line 418 "delay_info.m"
+            MR_Word check_hlds__delay_info__TypeInfo_20_20 = (MR_Word) &check_hlds__delay_info_scalar_common_2[0];
+#line 418 "delay_info.m"
+            MR_Word check_hlds__delay_info__TypeInfo_21_21 = (MR_Word) &check_hlds__delay_info_scalar_common_1[1];
+#line 418 "delay_info.m"
+            MR_Word check_hlds__delay_info__TypeCtorInfo_22_22;
+#line 418 "delay_info.m"
+            MR_Word check_hlds__delay_info__TypeInfo_23_23;
+#line 418 "delay_info.m"
+            MR_Word check_hlds__delay_info__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 0)));
+#line 418 "delay_info.m"
+            MR_Word check_hlds__delay_info__Vars_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 1)));
+#line 418 "delay_info.m"
+            MR_Word check_hlds__delay_info__WaitingGoals0_13;
+#line 418 "delay_info.m"
+            MR_Word check_hlds__delay_info__WaitingGoals_14;
+#line 418 "delay_info.m"
+            MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_17_17;
+#line 419 "delay_info.m"
+            MR_Box check_hlds__delay_info__conv0_WaitingGoals0_13;
+
+#line 419 "delay_info.m"
+            {
+#line 419 "delay_info.m"
+              mercury__map__lookup_3_p_0(check_hlds__delay_info__TypeInfo_20_20, check_hlds__delay_info__TypeInfo_21_21, check_hlds__delay_info__HeadVar__3_3, ((MR_Box) (check_hlds__delay_info__Var_9)), &check_hlds__delay_info__conv0_WaitingGoals0_13);
+            }
+#line 419 "delay_info.m"
+            check_hlds__delay_info__WaitingGoals0_13 = ((MR_Word) check_hlds__delay_info__conv0_WaitingGoals0_13);
+#line 2270 "check_hlds.delay_info.c"
+            check_hlds__delay_info__TypeCtorInfo_22_22 = (MR_Word) &check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_num_0;
+#line 2272 "check_hlds.delay_info.c"
+            check_hlds__delay_info__TypeInfo_23_23 = (MR_Word) &check_hlds__delay_info_scalar_common_2[1];
+#line 420 "delay_info.m"
+            {
+#line 420 "delay_info.m"
+              mercury__map__delete_3_p_0(check_hlds__delay_info__TypeCtorInfo_22_22, check_hlds__delay_info__TypeInfo_23_23, ((MR_Box) (check_hlds__delay_info__GoalNum_2)), check_hlds__delay_info__WaitingGoals0_13, &check_hlds__delay_info__WaitingGoals_14);
+            }
+#line 421 "delay_info.m"
+            {
+#line 421 "delay_info.m"
+              check_hlds__delay_info__succeeded = mercury__map__is_empty_1_p_0(check_hlds__delay_info__TypeCtorInfo_22_22, check_hlds__delay_info__TypeInfo_23_23, check_hlds__delay_info__WaitingGoals_14);
+            }
+#line 423 "delay_info.m"
+            if (check_hlds__delay_info__succeeded)
+#line 422 "delay_info.m"
+              {
+#line 422 "delay_info.m"
+                mercury__map__delete_3_p_0(check_hlds__delay_info__TypeInfo_20_20, check_hlds__delay_info__TypeInfo_21_21, ((MR_Box) (check_hlds__delay_info__Var_9)), check_hlds__delay_info__HeadVar__3_3, &check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_17_17);
+              }
+#line 423 "delay_info.m"
+            else
+#line 424 "delay_info.m"
+              {
+#line 424 "delay_info.m"
+                mercury__map__det_update_4_p_0(check_hlds__delay_info__TypeInfo_20_20, check_hlds__delay_info__TypeInfo_21_21, ((MR_Box) (check_hlds__delay_info__Var_9)), ((MR_Box) (check_hlds__delay_info__WaitingGoals_14)), check_hlds__delay_info__HeadVar__3_3, &check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_17_17);
+              }
+#line 426 "delay_info.m"
+            /* direct tailcall eliminated */
+#line 426 "delay_info.m"
+            {
+#line 426 "delay_info.m"
+              MR_Word check_hlds__delay_info__HeadVar__1__tmp_copy_1 = check_hlds__delay_info__Vars_10;
+#line 426 "delay_info.m"
+              MR_Word check_hlds__delay_info__HeadVar__3__tmp_copy_3 = check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_17_17;
+
+#line 426 "delay_info.m"
+              check_hlds__delay_info__HeadVar__3_3 = check_hlds__delay_info__HeadVar__3__tmp_copy_3;
+#line 426 "delay_info.m"
+              check_hlds__delay_info__HeadVar__1_1 = check_hlds__delay_info__HeadVar__1__tmp_copy_1;
+#line 426 "delay_info.m"
+            }
+#line 426 "delay_info.m"
+            continue;
+#line 418 "delay_info.m"
+          }
+#line 417 "delay_info.m"
+      }
+#line 417 "delay_info.m"
+      break;
+#line 417 "delay_info.m"
+    }
+#line 414 "delay_info.m"
+}
+
+#line 383 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info__add_pending_goals_6_p_0(
+#line 383 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 383 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__2_2,
+#line 383 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_PendingGoals_0_3,
+#line 383 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_PendingGoals_4,
+#line 383 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_0_5,
+#line 383 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_6)
+#line 383 "delay_info.m"
+{
+#line 388 "delay_info.m"
+  while (MR_TRUE)
+#line 388 "delay_info.m"
+    {
+#line 388 "delay_info.m"
+      /* tailcall optimized into a loop */
+#line 388 "delay_info.m"
+      {
+#line 388 "delay_info.m"
+        MR_bool check_hlds__delay_info__succeeded;
+
+#line 388 "delay_info.m"
+        if ((check_hlds__delay_info__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 388 "delay_info.m"
+          {
+#line 388 "delay_info.m"
+            *check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_6 = check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_0_5;
+#line 388 "delay_info.m"
+            *check_hlds__delay_info__STATE_VARIABLE_PendingGoals_4 = check_hlds__delay_info__STATE_VARIABLE_PendingGoals_0_3;
+#line 388 "delay_info.m"
+          }
+#line 388 "delay_info.m"
+        else
+#line 390 "delay_info.m"
+          {
+#line 390 "delay_info.m"
+            MR_Word check_hlds__delay_info__DelayGoalNums_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 1)));
+#line 390 "delay_info.m"
+            MR_Integer check_hlds__delay_info__Depth_19;
+#line 390 "delay_info.m"
+            MR_Integer check_hlds__delay_info__SeqNum_20;
+#line 390 "delay_info.m"
+            MR_Word check_hlds__delay_info__GoalNum_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 0)));
+#line 390 "delay_info.m"
+            MR_Word check_hlds__delay_info__WaitingVars_22;
+#line 390 "delay_info.m"
+            MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_29_29;
+#line 390 "delay_info.m"
+            MR_Word check_hlds__delay_info__STATE_VARIABLE_PendingGoals_30_30;
+#line 394 "delay_info.m"
+            MR_Box check_hlds__delay_info__conv0_WaitingVars_22;
+#line 401 "delay_info.m"
+            MR_Word check_hlds__delay_info__PendingSeqNums0_23;
+#line 398 "delay_info.m"
+            MR_Box check_hlds__delay_info__conv1_PendingSeqNums0_23;
+
+#line 391 "delay_info.m"
+            check_hlds__delay_info__Depth_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__GoalNum_21, (MR_Integer) 0)));
+#line 391 "delay_info.m"
+            check_hlds__delay_info__SeqNum_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__GoalNum_21, (MR_Integer) 1)));
+#line 394 "delay_info.m"
+            {
+#line 394 "delay_info.m"
+              mercury__map__lookup_3_p_0((MR_Word) &check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_num_0, (MR_Word) &check_hlds__delay_info_scalar_common_2[1], check_hlds__delay_info__HeadVar__2_2, ((MR_Box) (check_hlds__delay_info__GoalNum_21)), &check_hlds__delay_info__conv0_WaitingVars_22);
+            }
+#line 394 "delay_info.m"
+            check_hlds__delay_info__WaitingVars_22 = ((MR_Word) check_hlds__delay_info__conv0_WaitingVars_22);
+#line 395 "delay_info.m"
+            {
+#line 395 "delay_info.m"
+              check_hlds__delay_info__delete_waiting_vars_4_p_0(check_hlds__delay_info__WaitingVars_22, check_hlds__delay_info__GoalNum_21, check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_0_5, &check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_29_29);
+            }
+#line 398 "delay_info.m"
+            {
+#line 398 "delay_info.m"
+              check_hlds__delay_info__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[2], check_hlds__delay_info__STATE_VARIABLE_PendingGoals_0_3, check_hlds__delay_info__Depth_19, &check_hlds__delay_info__conv1_PendingSeqNums0_23);
+            }
+#line 398 "delay_info.m"
+            if (check_hlds__delay_info__succeeded)
+#line 398 "delay_info.m"
+              {
+#line 398 "delay_info.m"
+                check_hlds__delay_info__PendingSeqNums0_23 = ((MR_Word) check_hlds__delay_info__conv1_PendingSeqNums0_23);
+#line 398 "delay_info.m"
+                check_hlds__delay_info__succeeded = MR_TRUE;
+#line 398 "delay_info.m"
+              }
+#line 401 "delay_info.m"
+            if (check_hlds__delay_info__succeeded)
+#line 399 "delay_info.m"
+              {
+#line 399 "delay_info.m"
+                MR_Word check_hlds__delay_info__PendingSeqNums_24;
+
+#line 399 "delay_info.m"
+                {
+#line 399 "delay_info.m"
+                  check_hlds__delay_info__PendingSeqNums_24 = mercury__cord__snoc_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, check_hlds__delay_info__PendingSeqNums0_23, ((MR_Box) (check_hlds__delay_info__SeqNum_20)));
+                }
+#line 400 "delay_info.m"
+                {
+#line 400 "delay_info.m"
+                  mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[2], check_hlds__delay_info__Depth_19, ((MR_Box) (check_hlds__delay_info__PendingSeqNums_24)), check_hlds__delay_info__STATE_VARIABLE_PendingGoals_0_3, &check_hlds__delay_info__STATE_VARIABLE_PendingGoals_30_30);
+                }
+#line 399 "delay_info.m"
+              }
+#line 401 "delay_info.m"
+            else
+#line 402 "delay_info.m"
+              {
+#line 402 "delay_info.m"
+                MR_Word check_hlds__delay_info__PendingSeqNums_34;
+
+#line 402 "delay_info.m"
+                {
+#line 402 "delay_info.m"
+                  check_hlds__delay_info__PendingSeqNums_34 = mercury__cord__singleton_1_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (check_hlds__delay_info__SeqNum_20)));
+                }
+#line 403 "delay_info.m"
+                {
+#line 403 "delay_info.m"
+                  mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[2], check_hlds__delay_info__Depth_19, ((MR_Box) (check_hlds__delay_info__PendingSeqNums_34)), check_hlds__delay_info__STATE_VARIABLE_PendingGoals_0_3, &check_hlds__delay_info__STATE_VARIABLE_PendingGoals_30_30);
+                }
+#line 402 "delay_info.m"
+              }
+#line 407 "delay_info.m"
+            /* direct tailcall eliminated */
+#line 407 "delay_info.m"
+            {
+#line 407 "delay_info.m"
+              MR_Word check_hlds__delay_info__HeadVar__1__tmp_copy_1 = check_hlds__delay_info__DelayGoalNums_15;
+#line 407 "delay_info.m"
+              MR_Word check_hlds__delay_info__STATE_VARIABLE_PendingGoals_0__tmp_copy_3 = check_hlds__delay_info__STATE_VARIABLE_PendingGoals_30_30;
+#line 407 "delay_info.m"
+              MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_0__tmp_copy_5 = check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_29_29;
+
+#line 407 "delay_info.m"
+              check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_0_5 = check_hlds__delay_info__STATE_VARIABLE_WaitingGoals_0__tmp_copy_5;
+#line 407 "delay_info.m"
+              check_hlds__delay_info__STATE_VARIABLE_PendingGoals_0_3 = check_hlds__delay_info__STATE_VARIABLE_PendingGoals_0__tmp_copy_3;
+#line 407 "delay_info.m"
+              check_hlds__delay_info__HeadVar__1_1 = check_hlds__delay_info__HeadVar__1__tmp_copy_1;
+#line 407 "delay_info.m"
+            }
+#line 407 "delay_info.m"
+            continue;
+#line 390 "delay_info.m"
+          }
+#line 388 "delay_info.m"
+      }
+#line 388 "delay_info.m"
+      break;
+#line 388 "delay_info.m"
+    }
+#line 383 "delay_info.m"
+}
+
+#line 337 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info__add_waiting_vars_5_p_0(
+#line 337 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 337 "delay_info.m"
+  MR_Word check_hlds__delay_info__Goal_2,
+#line 337 "delay_info.m"
+  MR_Word check_hlds__delay_info__AllVars_3,
+#line 337 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4,
+#line 337 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_5)
+#line 337 "delay_info.m"
+{
+#line 341 "delay_info.m"
+  while (MR_TRUE)
+#line 341 "delay_info.m"
+    {
+#line 341 "delay_info.m"
+      /* tailcall optimized into a loop */
+#line 341 "delay_info.m"
+      {
+#line 341 "delay_info.m"
+        MR_bool check_hlds__delay_info__succeeded;
+
+#line 341 "delay_info.m"
+        if ((check_hlds__delay_info__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 341 "delay_info.m"
+          *check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_5 = check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4;
+#line 341 "delay_info.m"
+        else
+#line 342 "delay_info.m"
+          {
+#line 342 "delay_info.m"
+            MR_Word check_hlds__delay_info__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 0)));
+#line 342 "delay_info.m"
+            MR_Word check_hlds__delay_info__Vars_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 1)));
+#line 342 "delay_info.m"
+            MR_Word check_hlds__delay_info__WaitingGoals1_17;
+#line 342 "delay_info.m"
+            MR_Word check_hlds__delay_info__WaitingGoals_18;
+#line 342 "delay_info.m"
+            MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_21_21;
+#line 345 "delay_info.m"
+            MR_Word check_hlds__delay_info__WaitingGoals0_16;
+#line 343 "delay_info.m"
+            MR_Box check_hlds__delay_info__conv0_WaitingGoals0_16;
+
+#line 343 "delay_info.m"
+            {
+#line 343 "delay_info.m"
+              check_hlds__delay_info__succeeded = mercury__map__search_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[0], (MR_Word) &check_hlds__delay_info_scalar_common_1[1], check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4, ((MR_Box) (check_hlds__delay_info__Var_11)), &check_hlds__delay_info__conv0_WaitingGoals0_16);
+            }
+#line 343 "delay_info.m"
+            if (check_hlds__delay_info__succeeded)
+#line 343 "delay_info.m"
+              {
+#line 343 "delay_info.m"
+                check_hlds__delay_info__WaitingGoals0_16 = ((MR_Word) check_hlds__delay_info__conv0_WaitingGoals0_16);
+#line 343 "delay_info.m"
+                check_hlds__delay_info__succeeded = MR_TRUE;
+#line 343 "delay_info.m"
+              }
+#line 345 "delay_info.m"
+            if (check_hlds__delay_info__succeeded)
+#line 344 "delay_info.m"
+              check_hlds__delay_info__WaitingGoals1_17 = check_hlds__delay_info__WaitingGoals0_16;
+#line 345 "delay_info.m"
+            else
+#line 346 "delay_info.m"
+              {
+#line 346 "delay_info.m"
+                {
+#line 346 "delay_info.m"
+                  mercury__map__init_1_p_0((MR_Word) &check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_num_0, (MR_Word) &check_hlds__delay_info_scalar_common_2[1], &check_hlds__delay_info__WaitingGoals1_17);
+                }
+#line 346 "delay_info.m"
+              }
+#line 348 "delay_info.m"
+            {
+#line 348 "delay_info.m"
+              mercury__map__set_4_p_0((MR_Word) &check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_num_0, (MR_Word) &check_hlds__delay_info_scalar_common_2[1], ((MR_Box) (check_hlds__delay_info__Goal_2)), ((MR_Box) (check_hlds__delay_info__AllVars_3)), check_hlds__delay_info__WaitingGoals1_17, &check_hlds__delay_info__WaitingGoals_18);
+            }
+#line 349 "delay_info.m"
+            {
+#line 349 "delay_info.m"
+              mercury__map__set_4_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[0], (MR_Word) &check_hlds__delay_info_scalar_common_1[1], ((MR_Box) (check_hlds__delay_info__Var_11)), ((MR_Box) (check_hlds__delay_info__WaitingGoals_18)), check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4, &check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_21_21);
+            }
+#line 350 "delay_info.m"
+            /* direct tailcall eliminated */
+#line 350 "delay_info.m"
+            {
+#line 350 "delay_info.m"
+              MR_Word check_hlds__delay_info__HeadVar__1__tmp_copy_1 = check_hlds__delay_info__Vars_12;
+#line 350 "delay_info.m"
+              MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0__tmp_copy_4 = check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_21_21;
+
+#line 350 "delay_info.m"
+              check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4 = check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0__tmp_copy_4;
+#line 350 "delay_info.m"
+              check_hlds__delay_info__HeadVar__1_1 = check_hlds__delay_info__HeadVar__1__tmp_copy_1;
+#line 350 "delay_info.m"
+            }
+#line 350 "delay_info.m"
+            continue;
+#line 342 "delay_info.m"
+          }
+#line 341 "delay_info.m"
+      }
+#line 341 "delay_info.m"
+      break;
+#line 341 "delay_info.m"
+    }
+#line 337 "delay_info.m"
+}
+
+#line 288 "delay_info.m"
+static void MR_CALL 
+check_hlds__delay_info__remove_delayed_goals_5_p_0(
+#line 288 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 288 "delay_info.m"
+  MR_Word check_hlds__delay_info__DelayedGoalsTable_2,
+#line 288 "delay_info.m"
+  MR_Integer check_hlds__delay_info__Depth_3,
+#line 288 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4,
+#line 288 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_5)
+#line 288 "delay_info.m"
+{
+#line 291 "delay_info.m"
+  while (MR_TRUE)
+#line 291 "delay_info.m"
+    {
+#line 291 "delay_info.m"
+      /* tailcall optimized into a loop */
+#line 291 "delay_info.m"
+      {
+#line 291 "delay_info.m"
+        MR_bool check_hlds__delay_info__succeeded;
+
+#line 291 "delay_info.m"
+        if ((check_hlds__delay_info__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 291 "delay_info.m"
+          *check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_5 = check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4;
+#line 291 "delay_info.m"
+        else
+#line 293 "delay_info.m"
+          {
+#line 293 "delay_info.m"
+            MR_Integer check_hlds__delay_info__SeqNum_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 0)));
+#line 293 "delay_info.m"
+            MR_Word check_hlds__delay_info__SeqNums_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 1)));
+#line 293 "delay_info.m"
+            MR_Word check_hlds__delay_info__DelayedGoal_16;
+#line 293 "delay_info.m"
+            MR_Word check_hlds__delay_info__Vars_17;
+#line 293 "delay_info.m"
+            MR_Word check_hlds__delay_info__GoalNum_20;
+#line 293 "delay_info.m"
+            MR_Word check_hlds__delay_info__VarList_21;
+#line 293 "delay_info.m"
+            MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_24_24;
+#line 294 "delay_info.m"
+            MR_Box check_hlds__delay_info__conv0_DelayedGoal_16;
+#line 295 "delay_info.m"
+            MR_Word check_hlds__delay_info___Error_18;
+#line 295 "delay_info.m"
+            MR_Word check_hlds__delay_info___Goal_19;
+
+#line 294 "delay_info.m"
+            {
+#line 294 "delay_info.m"
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0, check_hlds__delay_info__DelayedGoalsTable_2, check_hlds__delay_info__SeqNum_11, &check_hlds__delay_info__conv0_DelayedGoal_16);
+            }
+#line 294 "delay_info.m"
+            check_hlds__delay_info__DelayedGoal_16 = ((MR_Word) check_hlds__delay_info__conv0_DelayedGoal_16);
+#line 295 "delay_info.m"
+            check_hlds__delay_info__Vars_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayedGoal_16, (MR_Integer) 0)));
+#line 295 "delay_info.m"
+            check_hlds__delay_info___Error_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayedGoal_16, (MR_Integer) 1)));
+#line 295 "delay_info.m"
+            check_hlds__delay_info___Goal_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayedGoal_16, (MR_Integer) 2)));
+#line 296 "delay_info.m"
+            {
+#line 296 "delay_info.m"
+              check_hlds__delay_info__GoalNum_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 296 "delay_info.m"
+              MR_hl_field(MR_mktag(0), check_hlds__delay_info__GoalNum_20, 0) = ((MR_Box) (check_hlds__delay_info__Depth_3));
+#line 296 "delay_info.m"
+              MR_hl_field(MR_mktag(0), check_hlds__delay_info__GoalNum_20, 1) = ((MR_Box) (check_hlds__delay_info__SeqNum_11));
+#line 296 "delay_info.m"
+            }
+#line 297 "delay_info.m"
+            {
+#line 297 "delay_info.m"
+              parse_tree__set_of_var__to_sorted_list_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__delay_info__Vars_17, &check_hlds__delay_info__VarList_21);
+            }
+#line 298 "delay_info.m"
+            {
+#line 298 "delay_info.m"
+              check_hlds__delay_info__delete_waiting_vars_4_p_0(check_hlds__delay_info__VarList_21, check_hlds__delay_info__GoalNum_20, check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4, &check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_24_24);
+            }
+#line 299 "delay_info.m"
+            /* direct tailcall eliminated */
+#line 299 "delay_info.m"
+            {
+#line 299 "delay_info.m"
+              MR_Word check_hlds__delay_info__HeadVar__1__tmp_copy_1 = check_hlds__delay_info__SeqNums_12;
+#line 299 "delay_info.m"
+              MR_Word check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0__tmp_copy_4 = check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_24_24;
+
+#line 299 "delay_info.m"
+              check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0_4 = check_hlds__delay_info__STATE_VARIABLE_WaitingGoalsTable_0__tmp_copy_4;
+#line 299 "delay_info.m"
+              check_hlds__delay_info__HeadVar__1_1 = check_hlds__delay_info__HeadVar__1__tmp_copy_1;
+#line 299 "delay_info.m"
+            }
+#line 299 "delay_info.m"
+            continue;
+#line 293 "delay_info.m"
+          }
+#line 291 "delay_info.m"
+      }
+#line 291 "delay_info.m"
+      break;
+#line 291 "delay_info.m"
+    }
+#line 288 "delay_info.m"
+}
+
+#line 91 "delay_info.m"
+void MR_CALL 
+check_hlds__delay_info__delay_info_wakeup_goals_3_p_0(
+#line 91 "delay_info.m"
+  MR_Word * check_hlds__delay_info__Goals_4,
+#line 91 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_23,
+#line 91 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_DelayInfo_24)
+#line 91 "delay_info.m"
+{
+#line 430 "delay_info.m"
+  {
+#line 430 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 430 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CurrentDepth_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_23, (MR_Integer) 0)));
+#line 430 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoalStack0_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_23, (MR_Integer) 1)));
+#line 430 "delay_info.m"
+    MR_Word check_hlds__delay_info__WaitingGoals_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_23, (MR_Integer) 2)));
+#line 430 "delay_info.m"
+    MR_Word check_hlds__delay_info__PendingGoalsTable0_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_23, (MR_Integer) 3)));
+#line 430 "delay_info.m"
+    MR_Word check_hlds__delay_info__NextSeqNums_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_23, (MR_Integer) 4)));
+#line 468 "delay_info.m"
+    MR_Word check_hlds__delay_info__PendingGoals0_11;
+#line 444 "delay_info.m"
+    MR_Box check_hlds__delay_info__conv0_PendingGoals0_11;
+
+#line 444 "delay_info.m"
+    {
+#line 444 "delay_info.m"
+      check_hlds__delay_info__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[2], check_hlds__delay_info__PendingGoalsTable0_9, check_hlds__delay_info__CurrentDepth_6, &check_hlds__delay_info__conv0_PendingGoals0_11);
+    }
+#line 444 "delay_info.m"
+    if (check_hlds__delay_info__succeeded)
+#line 444 "delay_info.m"
+      {
+#line 444 "delay_info.m"
+        check_hlds__delay_info__PendingGoals0_11 = ((MR_Word) check_hlds__delay_info__conv0_PendingGoals0_11);
+#line 444 "delay_info.m"
+        check_hlds__delay_info__succeeded = MR_TRUE;
+#line 444 "delay_info.m"
+      }
+#line 468 "delay_info.m"
+    if (check_hlds__delay_info__succeeded)
+#line 447 "delay_info.m"
+      {
+#line 447 "delay_info.m"
+        MR_Word check_hlds__delay_info__TypeCtorInfo_29_29 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 447 "delay_info.m"
+        MR_Word check_hlds__delay_info__SeqNums_12;
+
+#line 447 "delay_info.m"
+        {
+#line 447 "delay_info.m"
+          check_hlds__delay_info__SeqNums_12 = mercury__cord__list_1_f_0(check_hlds__delay_info__TypeCtorInfo_29_29, check_hlds__delay_info__PendingGoals0_11);
+        }
+#line 464 "delay_info.m"
+        if ((check_hlds__delay_info__SeqNums_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 465 "delay_info.m"
+          {
+#line 466 "delay_info.m"
+            *check_hlds__delay_info__Goals_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 465 "delay_info.m"
+            *check_hlds__delay_info__STATE_VARIABLE_DelayInfo_24 = check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_23;
+#line 465 "delay_info.m"
+          }
+#line 464 "delay_info.m"
+        else
+#line 449 "delay_info.m"
+          {
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__TypeInfo_31_31;
+#line 449 "delay_info.m"
+            MR_Integer check_hlds__delay_info__HeadSeqNum_13 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__SeqNums_12, (MR_Integer) 0)));
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__TailSeqNums_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__SeqNums_12, (MR_Integer) 1)));
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__PendingGoalsTable_15;
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__DelayedGoals0_16;
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__DelayedGoalStack1_17;
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__HeadGoal_18;
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__DelayedGoals1_19;
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__TailGoals_20;
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__DelayedGoals_21;
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__DelayedGoalStack_22;
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__V_25_25;
+#line 449 "delay_info.m"
+            MR_Word check_hlds__delay_info__DelayedGoal_53;
+#line 453 "delay_info.m"
+            MR_Box check_hlds__delay_info__conv1_DelayedGoals0_16;
+#line 484 "delay_info.m"
+            MR_Box check_hlds__delay_info__conv2_DelayedGoal_53;
+#line 485 "delay_info.m"
+            MR_Word check_hlds__delay_info___Vars_54;
+#line 485 "delay_info.m"
+            MR_Word check_hlds__delay_info___ErrorReason_55;
+
+#line 450 "delay_info.m"
+            {
+#line 450 "delay_info.m"
+              check_hlds__delay_info__V_25_25 = mercury__cord__init_0_f_0(check_hlds__delay_info__TypeCtorInfo_29_29);
+            }
+#line 450 "delay_info.m"
+            {
+#line 450 "delay_info.m"
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[2], check_hlds__delay_info__CurrentDepth_6, ((MR_Box) (check_hlds__delay_info__V_25_25)), check_hlds__delay_info__PendingGoalsTable0_9, &check_hlds__delay_info__PendingGoalsTable_15);
+            }
+#line 2841 "check_hlds.delay_info.c"
+            check_hlds__delay_info__TypeInfo_31_31 = (MR_Word) &check_hlds__delay_info_scalar_common_1[0];
+#line 453 "delay_info.m"
+            {
+#line 453 "delay_info.m"
+              mercury__stack__det_pop_3_p_0(check_hlds__delay_info__TypeInfo_31_31, &check_hlds__delay_info__conv1_DelayedGoals0_16, check_hlds__delay_info__DelayedGoalStack0_7, &check_hlds__delay_info__DelayedGoalStack1_17);
+            }
+#line 453 "delay_info.m"
+            check_hlds__delay_info__DelayedGoals0_16 = ((MR_Word) check_hlds__delay_info__conv1_DelayedGoals0_16);
+#line 484 "delay_info.m"
+            {
+#line 484 "delay_info.m"
+              mercury__map__det_remove_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0, ((MR_Box) (check_hlds__delay_info__HeadSeqNum_13)), &check_hlds__delay_info__conv2_DelayedGoal_53, check_hlds__delay_info__DelayedGoals0_16, &check_hlds__delay_info__DelayedGoals1_19);
+            }
+#line 484 "delay_info.m"
+            check_hlds__delay_info__DelayedGoal_53 = ((MR_Word) check_hlds__delay_info__conv2_DelayedGoal_53);
+#line 485 "delay_info.m"
+            check_hlds__delay_info___Vars_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayedGoal_53, (MR_Integer) 0)));
+#line 485 "delay_info.m"
+            check_hlds__delay_info___ErrorReason_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayedGoal_53, (MR_Integer) 1)));
+#line 485 "delay_info.m"
+            check_hlds__delay_info__HeadGoal_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayedGoal_53, (MR_Integer) 2)));
+#line 456 "delay_info.m"
+            {
+#line 456 "delay_info.m"
+              check_hlds__delay_info__lookup_delayed_goals_4_p_0(check_hlds__delay_info__TailSeqNums_14, &check_hlds__delay_info__TailGoals_20, check_hlds__delay_info__DelayedGoals1_19, &check_hlds__delay_info__DelayedGoals_21);
+            }
+#line 458 "delay_info.m"
+            {
+#line 458 "delay_info.m"
+              mercury__stack__push_3_p_0(check_hlds__delay_info__TypeInfo_31_31, ((MR_Box) (check_hlds__delay_info__DelayedGoals_21)), check_hlds__delay_info__DelayedGoalStack1_17, &check_hlds__delay_info__DelayedGoalStack_22);
+            }
+#line 459 "delay_info.m"
+            {
+#line 459 "delay_info.m"
+              MR_Word base;
+#line 459 "delay_info.m"
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 459 "delay_info.m"
+              *check_hlds__delay_info__Goals_4 = base;
+#line 459 "delay_info.m"
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__delay_info__HeadGoal_18));
+#line 459 "delay_info.m"
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__delay_info__TailGoals_20));
+#line 459 "delay_info.m"
+            }
+#line 461 "delay_info.m"
+            {
+#line 461 "delay_info.m"
+              MR_Word base;
+#line 461 "delay_info.m"
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 461 "delay_info.m"
+              *check_hlds__delay_info__STATE_VARIABLE_DelayInfo_24 = base;
+#line 461 "delay_info.m"
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__delay_info__CurrentDepth_6));
+#line 461 "delay_info.m"
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__delay_info__DelayedGoalStack_22));
+#line 461 "delay_info.m"
+              MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (check_hlds__delay_info__WaitingGoals_8));
+#line 461 "delay_info.m"
+              MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (check_hlds__delay_info__PendingGoalsTable_15));
+#line 461 "delay_info.m"
+              MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (check_hlds__delay_info__NextSeqNums_10));
+#line 461 "delay_info.m"
+            }
+#line 449 "delay_info.m"
+          }
+#line 447 "delay_info.m"
+      }
+#line 468 "delay_info.m"
+    else
+#line 469 "delay_info.m"
+      {
+#line 469 "delay_info.m"
+        *check_hlds__delay_info__Goals_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 469 "delay_info.m"
+        *check_hlds__delay_info__STATE_VARIABLE_DelayInfo_24 = check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_23;
+#line 469 "delay_info.m"
+      }
+#line 430 "delay_info.m"
+  }
+#line 91 "delay_info.m"
+}
+
+#line 80 "delay_info.m"
+void MR_CALL 
+check_hlds__delay_info__delay_info_bind_all_vars_2_p_0(
+#line 80 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_5,
+#line 80 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_DelayInfo_6)
+#line 80 "delay_info.m"
+{
+#line 354 "delay_info.m"
+  {
+#line 354 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 354 "delay_info.m"
+    MR_Word check_hlds__delay_info__WaitingVars_4;
+#line 354 "delay_info.m"
+    MR_Word check_hlds__delay_info__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_5, (MR_Integer) 2)));
+#line 355 "delay_info.m"
+    MR_Integer check_hlds__delay_info__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_5, (MR_Integer) 0)));
+#line 355 "delay_info.m"
+    MR_Word check_hlds__delay_info__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_5, (MR_Integer) 1)));
+#line 355 "delay_info.m"
+    MR_Word check_hlds__delay_info__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_5, (MR_Integer) 3)));
+#line 355 "delay_info.m"
+    MR_Word check_hlds__delay_info__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_5, (MR_Integer) 4)));
+
+#line 355 "delay_info.m"
+    {
+#line 355 "delay_info.m"
+      mercury__map__keys_2_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[0], (MR_Word) &check_hlds__delay_info_scalar_common_1[1], check_hlds__delay_info__V_7_7, &check_hlds__delay_info__WaitingVars_4);
+    }
+#line 356 "delay_info.m"
+    {
+#line 356 "delay_info.m"
+      check_hlds__delay_info__delay_info_bind_var_list_3_p_0(check_hlds__delay_info__WaitingVars_4, check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_5, check_hlds__delay_info__STATE_VARIABLE_DelayInfo_6);
+#line 356 "delay_info.m"
+      return;
+    }
+#line 354 "delay_info.m"
+  }
+#line 80 "delay_info.m"
+}
+
+#line 68 "delay_info.m"
+void MR_CALL 
+check_hlds__delay_info__delay_info_bind_var_3_p_0(
+#line 68 "delay_info.m"
+  MR_Word check_hlds__delay_info__Var_4,
+#line 68 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_15,
+#line 68 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_DelayInfo_16)
+#line 68 "delay_info.m"
+{
+#line 363 "delay_info.m"
+  {
+#line 363 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 363 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CurrentDepth_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_15, (MR_Integer) 0)));
+#line 363 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoalStack_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_15, (MR_Integer) 1)));
+#line 363 "delay_info.m"
+    MR_Word check_hlds__delay_info__WaitingGoalsTable0_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_15, (MR_Integer) 2)));
+#line 363 "delay_info.m"
+    MR_Word check_hlds__delay_info__PendingGoals0_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_15, (MR_Integer) 3)));
+#line 363 "delay_info.m"
+    MR_Word check_hlds__delay_info__NextSeqNums_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_15, (MR_Integer) 4)));
+#line 375 "delay_info.m"
+    MR_Word check_hlds__delay_info__GoalsWaitingOnVar_11;
+#line 367 "delay_info.m"
+    MR_Box check_hlds__delay_info__conv0_GoalsWaitingOnVar_11;
+
+#line 367 "delay_info.m"
+    {
+#line 367 "delay_info.m"
+      check_hlds__delay_info__succeeded = mercury__map__search_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[0], (MR_Word) &check_hlds__delay_info_scalar_common_1[1], check_hlds__delay_info__WaitingGoalsTable0_8, ((MR_Box) (check_hlds__delay_info__Var_4)), &check_hlds__delay_info__conv0_GoalsWaitingOnVar_11);
+    }
+#line 367 "delay_info.m"
+    if (check_hlds__delay_info__succeeded)
+#line 367 "delay_info.m"
+      {
+#line 367 "delay_info.m"
+        check_hlds__delay_info__GoalsWaitingOnVar_11 = ((MR_Word) check_hlds__delay_info__conv0_GoalsWaitingOnVar_11);
+#line 367 "delay_info.m"
+        check_hlds__delay_info__succeeded = MR_TRUE;
+#line 367 "delay_info.m"
+      }
+#line 375 "delay_info.m"
+    if (check_hlds__delay_info__succeeded)
+#line 368 "delay_info.m"
+      {
+#line 368 "delay_info.m"
+        MR_Word check_hlds__delay_info__NewlyPendingGoals_12;
+#line 368 "delay_info.m"
+        MR_Word check_hlds__delay_info__PendingGoals_13;
+#line 368 "delay_info.m"
+        MR_Word check_hlds__delay_info__WaitingGoalsTable_14;
+
+#line 368 "delay_info.m"
+        {
+#line 368 "delay_info.m"
+          mercury__map__keys_2_p_0((MR_Word) &check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_num_0, (MR_Word) &check_hlds__delay_info_scalar_common_2[1], check_hlds__delay_info__GoalsWaitingOnVar_11, &check_hlds__delay_info__NewlyPendingGoals_12);
+        }
+#line 369 "delay_info.m"
+        {
+#line 369 "delay_info.m"
+          check_hlds__delay_info__add_pending_goals_6_p_0(check_hlds__delay_info__NewlyPendingGoals_12, check_hlds__delay_info__GoalsWaitingOnVar_11, check_hlds__delay_info__PendingGoals0_9, &check_hlds__delay_info__PendingGoals_13, check_hlds__delay_info__WaitingGoalsTable0_8, &check_hlds__delay_info__WaitingGoalsTable_14);
+        }
+#line 372 "delay_info.m"
+        {
+#line 372 "delay_info.m"
+          MR_Word base;
+#line 372 "delay_info.m"
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 372 "delay_info.m"
+          *check_hlds__delay_info__STATE_VARIABLE_DelayInfo_16 = base;
+#line 372 "delay_info.m"
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__delay_info__CurrentDepth_6));
+#line 372 "delay_info.m"
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__delay_info__DelayedGoalStack_7));
+#line 372 "delay_info.m"
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (check_hlds__delay_info__WaitingGoalsTable_14));
+#line 372 "delay_info.m"
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (check_hlds__delay_info__PendingGoals_13));
+#line 372 "delay_info.m"
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (check_hlds__delay_info__NextSeqNums_10));
+#line 372 "delay_info.m"
+        }
+#line 368 "delay_info.m"
+      }
+#line 375 "delay_info.m"
+    else
+#line 375 "delay_info.m"
+      *check_hlds__delay_info__STATE_VARIABLE_DelayInfo_16 = check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_15;
+#line 363 "delay_info.m"
+  }
+#line 68 "delay_info.m"
+}
+
+#line 61 "delay_info.m"
+void MR_CALL 
+check_hlds__delay_info__delay_info_bind_var_list_3_p_0(
+#line 61 "delay_info.m"
+  MR_Word check_hlds__delay_info__HeadVar__1_1,
+#line 61 "delay_info.m"
+  MR_Word check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_2,
+#line 61 "delay_info.m"
+  MR_Word * check_hlds__delay_info__STATE_VARIABLE_DelayInfo_3)
+#line 61 "delay_info.m"
+{
+#line 358 "delay_info.m"
+  while (MR_TRUE)
+#line 358 "delay_info.m"
+    {
+#line 358 "delay_info.m"
+      /* tailcall optimized into a loop */
+#line 358 "delay_info.m"
+      {
+#line 358 "delay_info.m"
+        MR_bool check_hlds__delay_info__succeeded;
+
+#line 358 "delay_info.m"
+        if ((check_hlds__delay_info__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 358 "delay_info.m"
+          *check_hlds__delay_info__STATE_VARIABLE_DelayInfo_3 = check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_2;
+#line 358 "delay_info.m"
+        else
+#line 359 "delay_info.m"
+          {
+#line 359 "delay_info.m"
+            MR_Word check_hlds__delay_info__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 0)));
+#line 359 "delay_info.m"
+            MR_Word check_hlds__delay_info__Vars_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__delay_info__HeadVar__1_1, (MR_Integer) 1)));
+#line 359 "delay_info.m"
+            MR_Word check_hlds__delay_info__STATE_VARIABLE_DelayInfo_12_12;
+
+#line 360 "delay_info.m"
+            {
+#line 360 "delay_info.m"
+              check_hlds__delay_info__delay_info_bind_var_3_p_0(check_hlds__delay_info__Var_7, check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_2, &check_hlds__delay_info__STATE_VARIABLE_DelayInfo_12_12);
+            }
+#line 361 "delay_info.m"
+            /* direct tailcall eliminated */
+#line 361 "delay_info.m"
+            {
+#line 361 "delay_info.m"
+              MR_Word check_hlds__delay_info__HeadVar__1__tmp_copy_1 = check_hlds__delay_info__Vars_8;
+#line 361 "delay_info.m"
+              MR_Word check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0__tmp_copy_2 = check_hlds__delay_info__STATE_VARIABLE_DelayInfo_12_12;
+
+#line 361 "delay_info.m"
+              check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0_2 = check_hlds__delay_info__STATE_VARIABLE_DelayInfo_0__tmp_copy_2;
+#line 361 "delay_info.m"
+              check_hlds__delay_info__HeadVar__1_1 = check_hlds__delay_info__HeadVar__1__tmp_copy_1;
+#line 361 "delay_info.m"
+            }
+#line 361 "delay_info.m"
+            continue;
+#line 359 "delay_info.m"
+          }
+#line 358 "delay_info.m"
+      }
+#line 358 "delay_info.m"
+      break;
+#line 358 "delay_info.m"
+    }
+#line 61 "delay_info.m"
+}
+
+#line 53 "delay_info.m"
+void MR_CALL 
+check_hlds__delay_info__delay_info_delay_goal_4_p_0(
+#line 53 "delay_info.m"
+  MR_Word check_hlds__delay_info__Error_5,
+#line 53 "delay_info.m"
+  MR_Word check_hlds__delay_info__Goal_6,
+#line 53 "delay_info.m"
+  MR_Word check_hlds__delay_info__DelayInfo0_7,
+#line 53 "delay_info.m"
+  MR_Word * check_hlds__delay_info__DelayInfo_8)
+#line 53 "delay_info.m"
+{
+#line 304 "delay_info.m"
+  {
+#line 304 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__TypeCtorInfo_32_32 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__TypeInfo_33_33;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__Vars_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__Error_5, (MR_Integer) 0)));
+#line 304 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CurrentDepth_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_7, (MR_Integer) 0)));
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoalStack0_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_7, (MR_Integer) 1)));
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__WaitingGoalsTable0_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_7, (MR_Integer) 2)));
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__PendingGoals_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_7, (MR_Integer) 3)));
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__NextSeqNums0_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_7, (MR_Integer) 4)));
+#line 304 "delay_info.m"
+    MR_Integer check_hlds__delay_info__SeqNum_18;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__NextSeqNums1_19;
+#line 304 "delay_info.m"
+    MR_Integer check_hlds__delay_info__NextSeq_20;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__NextSeqNums_21;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoals0_22;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoalStack1_23;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoals_24;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoalStack_25;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__GoalNum_26;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__VarList_27;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__WaitingGoalsTable_28;
+#line 304 "delay_info.m"
+    MR_Word check_hlds__delay_info__V_30_30;
+#line 306 "delay_info.m"
+    MR_Word check_hlds__delay_info__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__Error_5, (MR_Integer) 1)));
+#line 306 "delay_info.m"
+    MR_Word check_hlds__delay_info__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__Error_5, (MR_Integer) 2)));
+#line 306 "delay_info.m"
+    MR_Word check_hlds__delay_info__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__Error_5, (MR_Integer) 3)));
+#line 311 "delay_info.m"
+    MR_Box check_hlds__delay_info__conv0_SeqNum_18;
+#line 316 "delay_info.m"
+    MR_Box check_hlds__delay_info__conv1_DelayedGoals0_22;
+
+#line 311 "delay_info.m"
+    {
+#line 311 "delay_info.m"
+      mercury__stack__det_pop_3_p_0(check_hlds__delay_info__TypeCtorInfo_32_32, &check_hlds__delay_info__conv0_SeqNum_18, check_hlds__delay_info__NextSeqNums0_17, &check_hlds__delay_info__NextSeqNums1_19);
+    }
+#line 311 "delay_info.m"
+    check_hlds__delay_info__SeqNum_18 = ((MR_Integer) check_hlds__delay_info__conv0_SeqNum_18);
+#line 312 "delay_info.m"
+    check_hlds__delay_info__NextSeq_20 = (check_hlds__delay_info__SeqNum_18 + (MR_Integer) 1);
+#line 313 "delay_info.m"
+    {
+#line 313 "delay_info.m"
+      mercury__stack__push_3_p_0(check_hlds__delay_info__TypeCtorInfo_32_32, ((MR_Box) (check_hlds__delay_info__NextSeq_20)), check_hlds__delay_info__NextSeqNums1_19, &check_hlds__delay_info__NextSeqNums_21);
+    }
+#line 3218 "check_hlds.delay_info.c"
+    check_hlds__delay_info__TypeInfo_33_33 = (MR_Word) &check_hlds__delay_info_scalar_common_1[0];
+#line 316 "delay_info.m"
+    {
+#line 316 "delay_info.m"
+      mercury__stack__det_pop_3_p_0(check_hlds__delay_info__TypeInfo_33_33, &check_hlds__delay_info__conv1_DelayedGoals0_22, check_hlds__delay_info__DelayedGoalStack0_14, &check_hlds__delay_info__DelayedGoalStack1_23);
+    }
+#line 316 "delay_info.m"
+    check_hlds__delay_info__DelayedGoals0_22 = ((MR_Word) check_hlds__delay_info__conv1_DelayedGoals0_22);
+#line 317 "delay_info.m"
+    {
+#line 317 "delay_info.m"
+      check_hlds__delay_info__V_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 317 "delay_info.m"
+      MR_hl_field(MR_mktag(0), check_hlds__delay_info__V_30_30, 0) = ((MR_Box) (check_hlds__delay_info__Vars_9));
+#line 317 "delay_info.m"
+      MR_hl_field(MR_mktag(0), check_hlds__delay_info__V_30_30, 1) = ((MR_Box) (check_hlds__delay_info__Error_5));
+#line 317 "delay_info.m"
+      MR_hl_field(MR_mktag(0), check_hlds__delay_info__V_30_30, 2) = ((MR_Box) (check_hlds__delay_info__Goal_6));
+#line 317 "delay_info.m"
+    }
+#line 317 "delay_info.m"
+    {
+#line 317 "delay_info.m"
+      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_115_101_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0, check_hlds__delay_info__SeqNum_18, ((MR_Box) (check_hlds__delay_info__V_30_30)), check_hlds__delay_info__DelayedGoals0_22, &check_hlds__delay_info__DelayedGoals_24);
+    }
+#line 319 "delay_info.m"
+    {
+#line 319 "delay_info.m"
+      mercury__stack__push_3_p_0(check_hlds__delay_info__TypeInfo_33_33, ((MR_Box) (check_hlds__delay_info__DelayedGoals_24)), check_hlds__delay_info__DelayedGoalStack1_23, &check_hlds__delay_info__DelayedGoalStack_25);
+    }
+#line 322 "delay_info.m"
+    {
+#line 322 "delay_info.m"
+      check_hlds__delay_info__GoalNum_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 322 "delay_info.m"
+      MR_hl_field(MR_mktag(0), check_hlds__delay_info__GoalNum_26, 0) = ((MR_Box) (check_hlds__delay_info__CurrentDepth_13));
+#line 322 "delay_info.m"
+      MR_hl_field(MR_mktag(0), check_hlds__delay_info__GoalNum_26, 1) = ((MR_Box) (check_hlds__delay_info__SeqNum_18));
+#line 322 "delay_info.m"
+    }
+#line 323 "delay_info.m"
+    {
+#line 323 "delay_info.m"
+      parse_tree__set_of_var__to_sorted_list_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__delay_info__Vars_9, &check_hlds__delay_info__VarList_27);
+    }
+#line 324 "delay_info.m"
+    {
+#line 324 "delay_info.m"
+      check_hlds__delay_info__add_waiting_vars_5_p_0(check_hlds__delay_info__VarList_27, check_hlds__delay_info__GoalNum_26, check_hlds__delay_info__VarList_27, check_hlds__delay_info__WaitingGoalsTable0_15, &check_hlds__delay_info__WaitingGoalsTable_28);
+    }
+#line 327 "delay_info.m"
+    {
+#line 327 "delay_info.m"
+      MR_Word base;
+#line 327 "delay_info.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 327 "delay_info.m"
+      *check_hlds__delay_info__DelayInfo_8 = base;
+#line 327 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__delay_info__CurrentDepth_13));
+#line 327 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__delay_info__DelayedGoalStack_25));
+#line 327 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (check_hlds__delay_info__WaitingGoalsTable_28));
+#line 327 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (check_hlds__delay_info__PendingGoals_16));
+#line 327 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (check_hlds__delay_info__NextSeqNums_21));
+#line 327 "delay_info.m"
+    }
+#line 304 "delay_info.m"
+  }
+#line 53 "delay_info.m"
+}
+
+#line 48 "delay_info.m"
+void MR_CALL 
+check_hlds__delay_info__delay_info_leave_conj_3_p_0(
+#line 48 "delay_info.m"
+  MR_Word check_hlds__delay_info__DelayInfo0_4,
+#line 48 "delay_info.m"
+  MR_Word * check_hlds__delay_info__DelayedGoalsList_5,
+#line 48 "delay_info.m"
+  MR_Word * check_hlds__delay_info__DelayInfo_6)
+#line 48 "delay_info.m"
+{
+#line 268 "delay_info.m"
+  {
+#line 268 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__TypeCtorInfo_21_21;
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__TypeCtorInfo_22_22;
+#line 268 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CurrentDepth0_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_4, (MR_Integer) 0)));
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoalStack0_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_4, (MR_Integer) 1)));
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__WaitingGoalsTable0_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_4, (MR_Integer) 2)));
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__PendingGoals_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_4, (MR_Integer) 3)));
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__NextSeqNums0_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_4, (MR_Integer) 4)));
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoals_12;
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoalStack_13;
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__SeqNums_14;
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__WaitingGoalsTable_15;
+#line 268 "delay_info.m"
+    MR_Word check_hlds__delay_info__NextSeqNums_17;
+#line 268 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CurrentDepth_18;
+#line 272 "delay_info.m"
+    MR_Box check_hlds__delay_info__conv0_DelayedGoals_12;
+#line 276 "delay_info.m"
+    MR_Integer check_hlds__delay_info__V_16_16;
+#line 276 "delay_info.m"
+    MR_Box check_hlds__delay_info__conv1_V_16_16;
+
+#line 272 "delay_info.m"
+    {
+#line 272 "delay_info.m"
+      mercury__stack__det_pop_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[0], &check_hlds__delay_info__conv0_DelayedGoals_12, check_hlds__delay_info__DelayedGoalStack0_8, &check_hlds__delay_info__DelayedGoalStack_13);
+    }
+#line 272 "delay_info.m"
+    check_hlds__delay_info__DelayedGoals_12 = ((MR_Word) check_hlds__delay_info__conv0_DelayedGoals_12);
+#line 3349 "check_hlds.delay_info.c"
+    check_hlds__delay_info__TypeCtorInfo_21_21 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 3351 "check_hlds.delay_info.c"
+    check_hlds__delay_info__TypeCtorInfo_22_22 = (MR_Word) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0;
+#line 273 "delay_info.m"
+    {
+#line 273 "delay_info.m"
+      mercury__map__keys_2_p_0(check_hlds__delay_info__TypeCtorInfo_21_21, check_hlds__delay_info__TypeCtorInfo_22_22, check_hlds__delay_info__DelayedGoals_12, &check_hlds__delay_info__SeqNums_14);
+    }
+#line 274 "delay_info.m"
+    {
+#line 274 "delay_info.m"
+      check_hlds__delay_info__remove_delayed_goals_5_p_0(check_hlds__delay_info__SeqNums_14, check_hlds__delay_info__DelayedGoals_12, check_hlds__delay_info__CurrentDepth0_7, check_hlds__delay_info__WaitingGoalsTable0_9, &check_hlds__delay_info__WaitingGoalsTable_15);
+    }
+#line 276 "delay_info.m"
+    {
+#line 276 "delay_info.m"
+      mercury__stack__det_pop_3_p_0(check_hlds__delay_info__TypeCtorInfo_21_21, &check_hlds__delay_info__conv1_V_16_16, check_hlds__delay_info__NextSeqNums0_11, &check_hlds__delay_info__NextSeqNums_17);
+    }
+#line 276 "delay_info.m"
+    check_hlds__delay_info__V_16_16 = ((MR_Integer) check_hlds__delay_info__conv1_V_16_16);
+#line 277 "delay_info.m"
+    check_hlds__delay_info__CurrentDepth_18 = (check_hlds__delay_info__CurrentDepth0_7 - (MR_Integer) 1);
+#line 278 "delay_info.m"
+    {
+#line 278 "delay_info.m"
+      mercury__map__values_2_p_0(check_hlds__delay_info__TypeCtorInfo_21_21, check_hlds__delay_info__TypeCtorInfo_22_22, check_hlds__delay_info__DelayedGoals_12, check_hlds__delay_info__DelayedGoalsList_5);
+    }
+#line 279 "delay_info.m"
+    {
+#line 279 "delay_info.m"
+      MR_Word base;
+#line 279 "delay_info.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 279 "delay_info.m"
+      *check_hlds__delay_info__DelayInfo_6 = base;
+#line 279 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__delay_info__CurrentDepth_18));
+#line 279 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__delay_info__DelayedGoalStack_13));
+#line 279 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (check_hlds__delay_info__WaitingGoalsTable_15));
+#line 279 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (check_hlds__delay_info__PendingGoals_10));
+#line 279 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (check_hlds__delay_info__NextSeqNums_17));
+#line 279 "delay_info.m"
+    }
+#line 268 "delay_info.m"
+  }
+#line 48 "delay_info.m"
+}
+
+#line 42 "delay_info.m"
+void MR_CALL 
+check_hlds__delay_info__delay_info_enter_conj_2_p_0(
+#line 42 "delay_info.m"
+  MR_Word check_hlds__delay_info__DelayInfo0_3,
+#line 42 "delay_info.m"
+  MR_Word * check_hlds__delay_info__DelayInfo_4)
+#line 42 "delay_info.m"
+{
+#line 254 "delay_info.m"
+  {
+#line 254 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 254 "delay_info.m"
+    MR_Word check_hlds__delay_info__TypeCtorInfo_16_16 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 254 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CurrentDepth0_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_3, (MR_Integer) 0)));
+#line 254 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoalStack0_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_3, (MR_Integer) 1)));
+#line 254 "delay_info.m"
+    MR_Word check_hlds__delay_info__WaitingGoalsTable_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_3, (MR_Integer) 2)));
+#line 254 "delay_info.m"
+    MR_Word check_hlds__delay_info__PendingGoals_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_3, (MR_Integer) 3)));
+#line 254 "delay_info.m"
+    MR_Word check_hlds__delay_info__NextSeqNums0_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__delay_info__DelayInfo0_3, (MR_Integer) 4)));
+#line 254 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoals_10;
+#line 254 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoalStack_11;
+#line 254 "delay_info.m"
+    MR_Word check_hlds__delay_info__NextSeqNums_12;
+#line 254 "delay_info.m"
+    MR_Integer check_hlds__delay_info__CurrentDepth_13;
+
+#line 258 "delay_info.m"
+    {
+#line 258 "delay_info.m"
+      mercury__map__init_1_p_0(check_hlds__delay_info__TypeCtorInfo_16_16, (MR_Word) &check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0, &check_hlds__delay_info__DelayedGoals_10);
+    }
+#line 259 "delay_info.m"
+    {
+#line 259 "delay_info.m"
+      mercury__stack__push_3_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[0], ((MR_Box) (check_hlds__delay_info__DelayedGoals_10)), check_hlds__delay_info__DelayedGoalStack0_6, &check_hlds__delay_info__DelayedGoalStack_11);
+    }
+#line 260 "delay_info.m"
+    {
+#line 260 "delay_info.m"
+      mercury__stack__push_3_p_0(check_hlds__delay_info__TypeCtorInfo_16_16, ((MR_Box) ((MR_Integer) 0)), check_hlds__delay_info__NextSeqNums0_9, &check_hlds__delay_info__NextSeqNums_12);
+    }
+#line 261 "delay_info.m"
+    check_hlds__delay_info__CurrentDepth_13 = (check_hlds__delay_info__CurrentDepth0_5 + (MR_Integer) 1);
+#line 262 "delay_info.m"
+    {
+#line 262 "delay_info.m"
+      MR_Word base;
+#line 262 "delay_info.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 262 "delay_info.m"
+      *check_hlds__delay_info__DelayInfo_4 = base;
+#line 262 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__delay_info__CurrentDepth_13));
+#line 262 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__delay_info__DelayedGoalStack_11));
+#line 262 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (check_hlds__delay_info__WaitingGoalsTable_7));
+#line 262 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (check_hlds__delay_info__PendingGoals_8));
+#line 262 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (check_hlds__delay_info__NextSeqNums_12));
+#line 262 "delay_info.m"
+    }
+#line 254 "delay_info.m"
+  }
+#line 42 "delay_info.m"
+}
+
+#line 38 "delay_info.m"
+void MR_CALL 
+check_hlds__delay_info__delay_info_init_1_p_0(
+#line 38 "delay_info.m"
+  MR_Word * check_hlds__delay_info__DelayInfo_2)
+#line 38 "delay_info.m"
+{
+#line 242 "delay_info.m"
+  {
+#line 242 "delay_info.m"
+    MR_bool check_hlds__delay_info__succeeded;
+#line 242 "delay_info.m"
+    MR_Word check_hlds__delay_info__TypeCtorInfo_11_11;
+#line 242 "delay_info.m"
+    MR_Word check_hlds__delay_info__DelayedGoalStack_4;
+#line 242 "delay_info.m"
+    MR_Word check_hlds__delay_info__WaitingGoalsTable_5;
+#line 242 "delay_info.m"
+    MR_Word check_hlds__delay_info__PendingGoals_6;
+#line 242 "delay_info.m"
+    MR_Word check_hlds__delay_info__NextSeqNums_7;
+
+#line 244 "delay_info.m"
+    {
+#line 244 "delay_info.m"
+      mercury__stack__init_1_p_0((MR_Word) &check_hlds__delay_info_scalar_common_1[0], &check_hlds__delay_info__DelayedGoalStack_4);
+    }
+#line 245 "delay_info.m"
+    {
+#line 245 "delay_info.m"
+      mercury__map__init_1_p_0((MR_Word) &check_hlds__delay_info_scalar_common_2[0], (MR_Word) &check_hlds__delay_info_scalar_common_1[1], &check_hlds__delay_info__WaitingGoalsTable_5);
+    }
+#line 3510 "check_hlds.delay_info.c"
+    check_hlds__delay_info__TypeCtorInfo_11_11 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 246 "delay_info.m"
+    {
+#line 246 "delay_info.m"
+      mercury__map__init_1_p_0(check_hlds__delay_info__TypeCtorInfo_11_11, (MR_Word) &check_hlds__delay_info_scalar_common_2[2], &check_hlds__delay_info__PendingGoals_6);
+    }
+#line 247 "delay_info.m"
+    {
+#line 247 "delay_info.m"
+      mercury__stack__init_1_p_0(check_hlds__delay_info__TypeCtorInfo_11_11, &check_hlds__delay_info__NextSeqNums_7);
+    }
+#line 248 "delay_info.m"
+    {
+#line 248 "delay_info.m"
+      MR_Word base;
+#line 248 "delay_info.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 248 "delay_info.m"
+      *check_hlds__delay_info__DelayInfo_2 = base;
+#line 248 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) ((MR_Integer) 0));
+#line 248 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__delay_info__DelayedGoalStack_4));
+#line 248 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (check_hlds__delay_info__WaitingGoalsTable_5));
+#line 248 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (check_hlds__delay_info__PendingGoals_6));
+#line 248 "delay_info.m"
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (check_hlds__delay_info__NextSeqNums_7));
+#line 248 "delay_info.m"
+    }
+#line 242 "delay_info.m"
+  }
+#line 38 "delay_info.m"
+}
+
+void mercury__check_hlds__delay_info__init(void)
+{
+}
+
+void mercury__check_hlds__delay_info__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_num_0);
+	MR_register_type_ctor_info(&check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_goal_stack_0);
+	MR_register_type_ctor_info(&check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_delay_info_0);
+	MR_register_type_ctor_info(&check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_depth_num_0);
+	MR_register_type_ctor_info(&check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_pending_goals_table_0);
+	MR_register_type_ctor_info(&check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_seq_num_0);
+	MR_register_type_ctor_info(&check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_waiting_goals_0);
+	MR_register_type_ctor_info(&check_hlds__delay_info__check_hlds__delay_info__type_ctor_info_waiting_goals_table_0);
+}
+
+void mercury__check_hlds__delay_info__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module check_hlds.delay_info. */

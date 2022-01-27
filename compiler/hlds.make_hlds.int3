@@ -1,0 +1,7 @@
+:- module (hlds.make_hlds).
+:- interface.
+:- type found_invalid_inst_or_mode
+	where	type_is_abstract_enum(1).
+:- type found_invalid_type
+	where	type_is_abstract_enum(1).
+:- type make_hlds_qual_info.

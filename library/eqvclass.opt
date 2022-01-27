@@ -1,0 +1,231 @@
+:- module eqvclass.
+:- use_module builtin.
+:- use_module counter.
+:- use_module int.
+:- use_module list.
+:- use_module map.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module set.
+
+:- type eqvclass(T)
+    --->    eqvclass((eqvclass.next_id) :: counter.counter, (eqvclass.partitions) :: tree234.tree234(int, set_ordlist.set_ordlist(T)), (eqvclass.keys) :: tree234.tree234(T, int)).
+:- type partition_id == int.
+
+:- pred eqvclass.divide_equivalence_classes_2(((func T_1) = U_2), int, set_ordlist.set_ordlist(T_1), counter.counter, counter.counter, tree234.tree234(int, set_ordlist.set_ordlist(T_1)), tree234.tree234(int, set_ordlist.set_ordlist(T_1)), tree234.tree234(T_1, int), tree234.tree234(T_1, int)).
+:- mode eqvclass.divide_equivalence_classes_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred eqvclass.divide_equivalence_classes_3(((func T_1) = U_2), int, T_1, tree234.tree234(U_2, int), tree234.tree234(U_2, int), counter.counter, counter.counter, tree234.tree234(int, set_ordlist.set_ordlist(T_1)), tree234.tree234(int, set_ordlist.set_ordlist(T_1)), tree234.tree234(T_1, int), tree234.tree234(T_1, int)).
+:- mode eqvclass.divide_equivalence_classes_3((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred eqvclass.partition_ids(eqvclass.eqvclass(T_1), list.list(int)).
+:- mode eqvclass.partition_ids((builtin.in), (builtin.out)) is det.
+:- pred eqvclass.partitions(eqvclass.eqvclass(T_1), list.list(int), list.list(set_ordlist.set_ordlist(T_1))).
+:- mode eqvclass.partitions((builtin.in), (builtin.in), (builtin.out)) is det.
+
+eqvclass.divide_equivalence_classes(V_4, V_5) = V_6 :-
+    V_5 = eqvclass.eqvclass(V_7, V_8, V_9) : eqvclass.eqvclass(T_1),
+    V_13 = eqvclass.divide_equivalence_classes_2(V_4) : pred(int, set_ordlist.set_ordlist(T_1), counter.counter, counter.counter, tree234.tree234(int, set_ordlist.set_ordlist(T_1)), tree234.tree234(int, set_ordlist.set_ordlist(T_1)), tree234.tree234(T_1, int), tree234.tree234(T_1, int)),
+    V_14 = V_8,
+    map.foldl3(V_13, V_8, V_7, V_10, V_14, V_11, V_9, V_12),
+    V_6 = eqvclass.eqvclass(V_10, V_11, V_12) : eqvclass.eqvclass(T_1).
+
+eqvclass.divide_equivalence_classes_2(V_10, V_11, V_12, V_23, V_24, V_25, V_26, V_27, V_28) :-
+    set.to_sorted_list(V_12, V_16),
+    ( % disjunction
+      V_16 = list.[] : list.list(T_1),
+      V_33 = "divide_equivalence_classes_2: empty partition" : string,
+      require.error(V_33),
+      V_24 = V_23,
+      V_26 = V_25,
+      V_28 = V_27
+    ;
+      V_16 = list.[V_17 | V_18] : list.list(T_1),
+      V_19 = apply(V_10, V_17),
+      map.init(V_20),
+      map.det_insert(V_19, V_11, V_20, V_21),
+      V_29 = eqvclass.divide_equivalence_classes_3(V_10, V_11) : pred(T_1, tree234.tree234(U_2, int), tree234.tree234(U_2, int), counter.counter, counter.counter, tree234.tree234(int, set_ordlist.set_ordlist(T_1)), tree234.tree234(int, set_ordlist.set_ordlist(T_1)), tree234.tree234(T_1, int), tree234.tree234(T_1, int)),
+      list.foldl4(V_29, V_18, V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28)
+    ).
+
+eqvclass.divide_equivalence_classes_3(V_12, V_13, V_14, V_26, V_27, V_28, V_29, V_30, V_31, V_32, V_33) :-
+    V_19 = apply(V_12, V_14),
+    ( if
+      map.search(V_26, V_19, V_20)
+    then
+      ( if
+        V_20 = V_13
+      then
+        V_33 = V_32,
+        V_31 = V_30
+      else
+        map.lookup(V_30, V_13, V_21),
+        set.delete(V_14, V_21, V_22),
+        map.det_update(V_13, V_22, V_30, V_34),
+        map.lookup(V_34, V_20, V_23),
+        set.insert(V_14, V_23, V_24),
+        map.det_update(V_20, V_24, V_34, V_31),
+        map.det_update(V_14, V_20, V_32, V_33)
+      ),
+      V_29 = V_28,
+      V_27 = V_26
+    else
+      counter.allocate(V_25, V_28, V_29),
+      map.det_insert(V_19, V_25, V_26, V_27),
+      map.lookup(V_30, V_13, V_42),
+      set.delete(V_14, V_42, V_43),
+      map.det_update(V_13, V_43, V_30, V_39),
+      V_44 = set.make_singleton_set(V_14),
+      map.det_insert(V_25, V_44, V_39, V_31),
+      map.det_update(V_14, V_25, V_32, V_33)
+    ).
+
+eqvclass.ensure_corresponding_equivalences(V_5, V_6, V_7) = V_8 :-
+    eqvclass.ensure_corresponding_equivalences(V_5, V_6, V_7, V_8).
+
+eqvclass.ensure_element(V_4, V_7, V_8) :-
+    eqvclass.ensure_element_partition_id(V_4, V_6, V_7, V_8).
+
+eqvclass.ensure_element(V_6, V_5) = V_7 :-
+    eqvclass.ensure_element(V_5, V_6, V_7).
+
+eqvclass.ensure_equivalence(V_8, V_6, V_7) = V_9 :-
+    eqvclass.ensure_equivalence(V_6, V_7, V_8, V_9).
+
+eqvclass.get_equivalent_elements(eqvclass.eqvclass(V_4, V_5, V_6), V_7) = V_3 :-
+    ( if
+      V_8 = map.search(V_5, V_9),
+      V_9 = map.search(V_6, V_7)
+    then
+      V_3 = V_8
+    else
+      V_3 = set.make_singleton_set(V_7)
+    ).
+
+eqvclass.get_minimum_element(V_4, V_5) = V_3 :-
+    V_3 = list.det_head(V_6),
+    V_6 = set.to_sorted_list(V_7),
+    V_7 = eqvclass.get_equivalent_elements(V_4, V_5).
+
+eqvclass.init = V_2 :-
+    eqvclass.init(V_2).
+
+eqvclass.is_member(V_3, V_4) :-
+    V_3 = eqvclass.eqvclass(V_7, V_8, V_5) : eqvclass.eqvclass(T_1),
+    map.search(V_5, V_4, V_6).
+
+eqvclass.new_element(V_6, V_5) = V_7 :-
+    eqvclass.new_element(V_5, V_6, V_7).
+
+eqvclass.new_equivalence(V_8, V_6, V_7) = V_9 :-
+    eqvclass.new_equivalence(V_6, V_7, V_8, V_9).
+
+eqvclass.partition_id(V_4, V_5, V_6) :-
+    V_4 = eqvclass.eqvclass(V_8, V_9, V_7) : eqvclass.eqvclass(T_1),
+    map.search(V_7, V_5, V_6).
+
+eqvclass.partition_ids(V_3, V_4) :-
+    V_3 = eqvclass.eqvclass(V_6, V_5, V_7) : eqvclass.eqvclass(T_1),
+    map.keys(V_5, V_4).
+
+eqvclass.partition_list(V_3, V_4) :-
+    eqvclass.partition_ids(V_3, V_5),
+    eqvclass.partitions(V_3, V_5, V_4).
+
+eqvclass.partition_list(V_3) = V_4 :-
+    eqvclass.partition_list(V_3, V_4).
+
+eqvclass.partition_list_to_eqvclass(V_3) = V_4 :-
+    eqvclass.partition_list_to_eqvclass(V_3, V_4).
+
+eqvclass.partition_set(V_3, V_4) :-
+    eqvclass.partition_ids(V_3, V_5),
+    eqvclass.partitions(V_3, V_5, V_6),
+    set.list_to_set(V_6, V_4).
+
+eqvclass.partition_set(V_3) = V_4 :-
+    eqvclass.partition_set(V_3, V_4).
+
+eqvclass.partition_set_to_eqvclass(V_3, V_4) :-
+    set.to_sorted_list(V_3, V_5),
+    eqvclass.partition_list_to_eqvclass(V_5, V_4).
+
+eqvclass.partition_set_to_eqvclass(V_3) = V_4 :-
+    eqvclass.partition_set_to_eqvclass(V_3, V_4).
+
+eqvclass.remove_equivalent_elements(V_4, V_6, V_7) :-
+    V_7 = eqvclass.remove_equivalent_elements(V_6, V_4).
+
+eqvclass.same_eqvclass(V_4, V_5, V_6) :-
+    V_4 = eqvclass.eqvclass(V_10, V_11, V_7) : eqvclass.eqvclass(T_1),
+    map.search(V_7, V_5, V_8),
+    map.search(V_7, V_6, V_9),
+    V_8 = V_9.
+
+:- pragma exceptions(function, (eqvclass.divide_equivalence_classes), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.divide_equivalence_classes_2), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.divide_equivalence_classes_3), 11, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.ensure_corresponding_equivalences), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.ensure_corresponding_equivalences), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.ensure_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.ensure_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.ensure_element_partition_id), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.ensure_equivalence), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.ensure_equivalence), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.get_equivalent_elements), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.get_minimum_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.is_member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.new_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.new_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.new_equivalence), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.new_equivalence), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.partition_id), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.partition_ids), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.partition_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.partition_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.partition_list_to_eqvclass), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.partition_list_to_eqvclass), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.partition_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.partition_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.partition_set_to_eqvclass), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.partition_set_to_eqvclass), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.partitions), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.remove_equivalent_elements), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (eqvclass.remove_equivalent_elements), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.same_eqvclass), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (eqvclass.same_eqvclass_list), 2, 0, may_throw(user_exception)).
+
+:- pragma termination_info(eqvclass.divide_equivalence_classes((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.divide_equivalence_classes_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.divide_equivalence_classes_3((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_corresponding_equivalences((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_corresponding_equivalences((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_element((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_element((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_element_partition_id((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_equivalence((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.ensure_equivalence((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.get_equivalent_elements((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.get_minimum_element((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.init((builtin.out)), infinite, can_loop).
+:- pragma termination_info((eqvclass.init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.is_member((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(eqvclass.new_element((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.new_element((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.new_equivalence((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.new_equivalence((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_id((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_ids((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_list_to_eqvclass((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_list_to_eqvclass((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_set_to_eqvclass((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.partition_set_to_eqvclass((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.partitions((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.remove_equivalent_elements((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(eqvclass.remove_equivalent_elements((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(eqvclass.same_eqvclass((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(eqvclass.same_eqvclass_list((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).

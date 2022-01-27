@@ -1,0 +1,73 @@
+/*
+** Automatically generated from `prog_io_mode_defn.m'
+** by the Mercury compiler,
+** version 2015-10-27
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_io_mode_defn. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_io_mode_defn
+#define MR_HEADER_GUARD_parse_tree__prog_io_mode_defn
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_IO_MODE_DEFN_DECL_GUARD
+#define PARSE_TREE__PROG_IO_MODE_DEFN_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_mode_defn__parse_tree__prog_io_mode_defn__type_ctor_info_processed_mode_body_0;
+
+void MR_CALL 
+parse_tree__prog_io_mode_defn__parse_inst_defn_6_p_0(
+  MR_Word parse_tree__prog_io_mode_defn__param_1,
+  MR_Word parse_tree__prog_io_mode_defn__param_2,
+  MR_Word parse_tree__prog_io_mode_defn__param_3,
+  MR_Word parse_tree__prog_io_mode_defn__param_4,
+  MR_Integer parse_tree__prog_io_mode_defn__param_5,
+  MR_Word * parse_tree__prog_io_mode_defn__param_6);
+
+void MR_CALL 
+parse_tree__prog_io_mode_defn__parse_mode_defn_7_p_0(
+  MR_Word parse_tree__prog_io_mode_defn__param_1,
+  MR_Word parse_tree__prog_io_mode_defn__param_2,
+  MR_Word parse_tree__prog_io_mode_defn__param_3,
+  MR_Word parse_tree__prog_io_mode_defn__param_4,
+  MR_Word parse_tree__prog_io_mode_defn__param_5,
+  MR_Integer parse_tree__prog_io_mode_defn__param_6,
+  MR_Word * parse_tree__prog_io_mode_defn__param_7);
+
+void mercury__parse_tree__prog_io_mode_defn__init(void);
+void mercury__parse_tree__prog_io_mode_defn__init_type_tables(void);
+void mercury__parse_tree__prog_io_mode_defn__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.prog_io_mode_defn */
+
+/* :- end_interface parse_tree.prog_io_mode_defn. */

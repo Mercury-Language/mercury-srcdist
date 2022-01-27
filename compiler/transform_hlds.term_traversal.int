@@ -1,0 +1,27 @@
+:- module (transform_hlds.term_traversal).
+:- interface.
+:- import_module bag.
+:- import_module list.
+:- import_module maybe.
+:- import_module pair.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.vartypes).
+:- import_module (parse_tree.prog_data).
+:- import_module (transform_hlds.term_errors).
+:- import_module (transform_hlds.term_norm).
+:- import_module (transform_hlds.term_util).
+:- type term_path_info
+    --->    term_path_info(hlds.hlds_pred.pred_proc_id, maybe.maybe(pair.pair(hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_context)), int, list.list(hlds.hlds_pred.pred_proc_id), bag.bag(parse_tree.prog_data.prog_var)).
+:- type term_traversal_info
+    --->    term_traversal_ok(set.set(transform_hlds.term_traversal.term_path_info), list.list(transform_hlds.term_errors.term_error))
+    ;       term_traversal_error(list.list(transform_hlds.term_errors.term_error), list.list(transform_hlds.term_errors.term_error)).
+:- type term_traversal_params.
+:- pred init_term_traversal_params(transform_hlds.term_norm.functor_info, hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_context, hlds.vartypes.vartypes, transform_hlds.term_util.used_args, transform_hlds.term_util.used_args, int, int, transform_hlds.term_traversal.term_traversal_params).
+:- mode init_term_traversal_params((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term_traverse_goal(hlds.hlds_module.module_info, transform_hlds.term_traversal.term_traversal_params, hlds.hlds_goal.hlds_goal, transform_hlds.term_traversal.term_traversal_info, transform_hlds.term_traversal.term_traversal_info).
+:- mode term_traverse_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred upper_bound_active_vars(list.list(transform_hlds.term_traversal.term_path_info), bag.bag(parse_tree.prog_data.prog_var)).
+:- mode upper_bound_active_vars((builtin.in), (builtin.out)) is det.

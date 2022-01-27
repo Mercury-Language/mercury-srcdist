@@ -1,0 +1,11 @@
+:- module table_statistics.
+
+:- pragma termination_info((table_statistics.dummy_proc_table_statistics) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(table_statistics.table_stats_difference((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(table_statistics.table_step_stats_diff((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(table_statistics.write_table_stats((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(function, (table_statistics.dummy_proc_table_statistics), 1, 0, will_not_throw).
+:- pragma exceptions(function, (table_statistics.table_stats_difference), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (table_statistics.table_step_stats_diff), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (table_statistics.write_table_stats), 3, 0, may_throw(user_exception)).
