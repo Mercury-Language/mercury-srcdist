@@ -1,0 +1,20 @@
+:- module array.
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module pretty_printer.
+:- import_module random.
+:- type array(T).
+:- type index_out_of_bounds.
+:- inst (array) == array.array(ground).
+:- inst (array(I)) == ground.
+:- inst (mostly_uniq_array) == array.mostly_uniq_array(ground).
+:- inst (mostly_uniq_array(I)) == array.array(I).
+:- inst (uniq_array) == array.uniq_array(ground).
+:- inst (uniq_array(I)) == array.array(I).
+:- mode (array_di) == di((array.uniq_array)).
+:- mode (array_mdi) == mdi((array.mostly_uniq_array)).
+:- mode (array_mui) == in((array.mostly_uniq_array)).
+:- mode (array_muo) == out((array.mostly_uniq_array)).
+:- mode (array_ui) == in((array.uniq_array)).
+:- mode (array_uo) == out((array.uniq_array)).

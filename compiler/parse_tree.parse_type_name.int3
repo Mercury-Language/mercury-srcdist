@@ -1,0 +1,4 @@
+:- module (parse_tree.parse_type_name).
+:- interface.
+:- type allow_ho_inst_info
+	where	type_is_abstract_enum(1).

@@ -1,0 +1,64 @@
+:- module (parse_tree.parse_tree_out_info).
+:- interface.
+:- import_module char.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module term.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_pragma).
+:- type maybe_output_line_numbers
+    --->    dont_output_line_numbers 
+    ;       do_output_line_numbers .
+:- type maybe_qualified_item_names
+    --->    unqualified_item_names 
+    ;       qualified_item_names .
+:- type merc_out_info.
+:- type output_lang
+    --->    output_mercury 
+    ;       output_debug .
+:- func get_maybe_qualified_item_names(parse_tree.parse_tree_out_info.merc_out_info) = parse_tree.parse_tree_out_info.maybe_qualified_item_names.
+:- func get_output_lang(parse_tree.parse_tree_out_info.merc_out_info) = parse_tree.parse_tree_out_info.output_lang.
+:- func get_output_line_numbers(parse_tree.parse_tree_out_info.merc_out_info) = parse_tree.parse_tree_out_info.maybe_output_line_numbers.
+:- func init_debug_merc_out_info = parse_tree.parse_tree_out_info.merc_out_info.
+:- func init_merc_out_info(libs.globals.globals, parse_tree.parse_tree_out_info.maybe_qualified_item_names, parse_tree.parse_tree_out_info.output_lang) = parse_tree.parse_tree_out_info.merc_out_info.
+:- pred maybe_output_line_number(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_data.prog_context, io.io, io.io).
+:- mode maybe_output_line_number((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_unqualify_sym_name(parse_tree.parse_tree_out_info.merc_out_info, mdbcomp.sym_name.sym_name, mdbcomp.sym_name.sym_name).
+:- mode maybe_unqualify_sym_name((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func merc_out_info_disable_line_numbers(parse_tree.parse_tree_out_info.merc_out_info) = parse_tree.parse_tree_out_info.merc_out_info.
+:- typeclass output(U) where [
+	pred add_string(string, U, U),
+	mode add_string((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_strings(list.list(string), U, U),
+	mode add_strings((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_char(char.char, U, U),
+	mode add_char((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_int(int, U, U),
+	mode add_int((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_float(float, U, U),
+	mode add_float((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_purity_prefix(parse_tree.prog_data.purity, U, U),
+	mode add_purity_prefix((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_quoted_atom(string, U, U),
+	mode add_quoted_atom((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_quoted_string(string, U, U),
+	mode add_quoted_string((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_constant(term.const, U, U),
+	mode add_constant((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_eval_method(parse_tree.prog_data_pragma.eval_method, U, U),
+	mode add_eval_method((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_lambda_eval_method(parse_tree.prog_data.lambda_eval_method, U, U),
+	mode add_lambda_eval_method((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_escaped_string(string, U, U),
+	mode add_escaped_string((builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_format(string, list.list(io.poly_type), U, U),
+	mode add_format((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det,
+	pred add_list(list.list(T), string, pred(T, U, U), U, U),
+	mode add_list((builtin.in), (builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det
+].
+:- instance ((parse_tree.parse_tree_out_info).output(io.state)).
+:- instance ((parse_tree.parse_tree_out_info).output(string)).

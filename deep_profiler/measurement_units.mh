@@ -1,0 +1,31 @@
+/*
+** Automatically generated from `measurement_units.m'
+** by the Mercury compiler,
+** version rotd-2016-03-21
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+*/
+#ifndef MEASUREMENT_UNITS_MH
+#define MEASUREMENT_UNITS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MEASUREMENT_UNITS_MH */

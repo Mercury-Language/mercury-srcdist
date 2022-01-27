@@ -1,0 +1,4 @@
+:- module (parse_tree.comp_unit_interface).
+:- interface.
+:- type maybe_include_impl_types
+	where	type_is_abstract_enum(1).

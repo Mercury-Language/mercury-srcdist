@@ -1,0 +1,54 @@
+:- module (stream.string_writer).
+:- interface.
+:- import_module char.
+:- import_module deconstruct.
+:- import_module io.
+:- import_module list.
+:- import_module ops.
+:- import_module string.
+:- import_module univ.
+:- pred format(Stream, string, list.list(string.poly_type), State, State) <= (stream.writer(Stream, string, State)).
+:- mode format((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_paren(Stream, char.char, ops.priority, ops.priority, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode maybe_write_paren((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred nl(Stream, State, State) <= (stream.writer(Stream, string, State)).
+:- mode nl((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print(Stream, T, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode print((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print(Stream, deconstruct.noncanon_handling, T, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode print((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode print((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode print((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode print((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred print_cc(Stream, T, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode print_cc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred put_char(Stream, char.char, State, State) <= (stream.writer(Stream, string, State)).
+:- mode put_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred put_float(Stream, float, State, State) <= (stream.writer(Stream, string, State)).
+:- mode put_float((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred put_int(Stream, int, State, State) <= (stream.writer(Stream, string, State)).
+:- mode put_int((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write(Stream, T, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode write((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write(Stream, deconstruct.noncanon_handling, T, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode write((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode write((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode write((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode write((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred write_cc(Stream, T, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode write_cc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred write_univ(Stream, univ.univ, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode write_univ((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_univ(Stream, deconstruct.noncanon_handling, univ.univ, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode write_univ((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode write_univ((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode write_univ((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode write_univ((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pragma type_spec(((stream.string_writer).maybe_write_paren)/6, (Stream = io.output_stream, State = io.state), ((stream.string_writer).'TypeSpecOf__pred_or_func__maybe_write_paren__[Stream = io.output_stream, State = io.state]')).
+:- pragma type_spec(((stream.string_writer).put_char)/4, (Stream = io.output_stream, State = io.state), ((stream.string_writer).'TypeSpecOf__pred_or_func__put_char__[Stream = io.output_stream, State = io.state]')).
+:- pragma type_spec(((stream.string_writer).put_float)/4, (Stream = io.output_stream, State = io.state), ((stream.string_writer).'TypeSpecOf__pred_or_func__put_float__[Stream = io.output_stream, State = io.state]')).
+:- pragma type_spec(((stream.string_writer).put_int)/4, (Stream = io.output_stream, State = io.state), ((stream.string_writer).'TypeSpecOf__pred_or_func__put_int__[Stream = io.output_stream, State = io.state]')).
+:- pragma type_spec(((stream.string_writer).write)/4, (Stream = io.output_stream, State = io.state), ((stream.string_writer).'TypeSpecOf__pred_or_func__write__[Stream = io.output_stream, State = io.state]')).
+:- pragma type_spec(((stream.string_writer).write)/5, (Stream = io.output_stream, State = io.state), ((stream.string_writer).'TypeSpecOf__pred_or_func__write__[Stream = io.output_stream, State = io.state]')).
+:- pragma type_spec(((stream.string_writer).write_univ)/4, (Stream = io.output_stream, State = io.state), ((stream.string_writer).'TypeSpecOf__pred_or_func__write_univ__[Stream = io.output_stream, State = io.state]')).
+:- pragma type_spec(((stream.string_writer).write_univ)/5, (Stream = io.output_stream, State = io.state), ((stream.string_writer).'TypeSpecOf__pred_or_func__write_univ__[Stream = io.output_stream, State = io.state]')).

@@ -1,0 +1,28 @@
+:- module (parse_tree.write_deps_file).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module set.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.deps_map).
+:- import_module (parse_tree.module_deps_graph).
+:- import_module (parse_tree.module_imports).
+:- pred generate_dependencies_write_d_files(libs.globals.globals, list.list(parse_tree.deps_map.deps), parse_tree.module_deps_graph.deps_graph, parse_tree.module_deps_graph.deps_graph, parse_tree.module_deps_graph.deps_graph, parse_tree.module_deps_graph.deps_graph, list.list(mdbcomp.sym_name.module_name), parse_tree.deps_map.deps_map, io.io, io.io).
+:- mode generate_dependencies_write_d_files((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred generate_dependencies_write_dep_file(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, parse_tree.deps_map.deps_map, io.io, io.io).
+:- mode generate_dependencies_write_dep_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred generate_dependencies_write_dv_file(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, parse_tree.deps_map.deps_map, io.io, io.io).
+:- mode generate_dependencies_write_dv_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred get_opt_deps(libs.globals.globals, bool.bool, list.list(string), string, list.list(mdbcomp.sym_name.module_name), list.list(mdbcomp.sym_name.module_name), io.io, io.io).
+:- mode get_opt_deps((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_output_module_order(libs.globals.globals, mdbcomp.sym_name.module_name, list.list(set.set(mdbcomp.sym_name.module_name)), io.io, io.io).
+:- mode maybe_output_module_order((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func referenced_dlls(mdbcomp.sym_name.module_name, set.set(mdbcomp.sym_name.module_name)) = set.set(mdbcomp.sym_name.module_name).
+:- pred write_dependency_file(libs.globals.globals, parse_tree.module_imports.module_and_imports, set.set(mdbcomp.sym_name.module_name), maybe.maybe(list.list(mdbcomp.sym_name.module_name)), io.io, io.io).
+:- mode write_dependency_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
