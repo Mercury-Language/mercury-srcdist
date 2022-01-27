@@ -1,0 +1,24 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2000, 2002 The University of Melbourne.
+# Copyright (C) 2015, 2018 The Mercury team.
+# This file is distributed under the terms specified in COPYING.LIB.
+#-----------------------------------------------------------------------------#
+
+-include ../Mmake.params
+
+INSTALL_PREFIX := $(INSTALL_PREFIX)/extras
+
+.PHONY: default_target
+default_target: tryit libxml
+
+.PHONY: depend
+depend: tryit.depend xml.depend
+
+.PHONY: install
+install: libxml.install
+
+.PHONY: check
+check:
+	true
