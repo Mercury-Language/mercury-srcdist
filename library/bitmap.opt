@@ -1,0 +1,363 @@
+:- module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module exception.
+:- use_module int.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module (string.format).
+:- use_module (string.parse_util).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", store).
+
+:- type bit_index_in_byte == int.
+:- type bitmap.
+:- pragma foreign_type(c, bitmap, "MR_BitmapPtr", [can_pass_as_mercury_type])
+    where   equality is (bitmap.bitmap_equal),
+            comparison is (bitmap.bitmap_compare).
+:- pragma foreign_type(java, bitmap, "jmercury.runtime.MercuryBitmap")
+    where   equality is (bitmap.bitmap_equal),
+            comparison is (bitmap.bitmap_compare).
+:- pragma foreign_type(csharp, bitmap, "mercury.runtime.MercuryBitmap")
+    where   equality is (bitmap.bitmap_equal),
+            comparison is (bitmap.bitmap_compare).
+:- type copy_direction
+    --->    left_to_right 
+    ;       right_to_left .
+:- type slice
+    --->    slice_ctor((bitmap.slice_bitmap_field) :: bitmap.bitmap, (bitmap.slice_start_bit_index_field) :: int, (bitmap.slice_num_bits_field) :: int).
+
+:- func bitmap.bit_index_in_byte(int) = int.
+:- mode bit_index_in_byte((builtin.in)) = (builtin.out) is det.
+:- pred bitmap.bitmap_compare(builtin.comparison_result, bitmap.bitmap, bitmap.bitmap).
+:- mode bitmap_compare((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pragma terminates(pred((bitmap.bitmap_compare)/3)).
+:- pred bitmap.bitmap_equal(bitmap.bitmap, bitmap.bitmap).
+:- mode bitmap_equal((builtin.in), (builtin.in)) is semidet.
+:- pragma terminates(pred((bitmap.bitmap_equal)/2)).
+:- func bitmap.bitmap_to_byte_strings(bitmap.bitmap) = list.list(string).
+:- mode bitmap_to_byte_strings((builtin.in)) = (builtin.out) is det.
+:- func bitmap.bitmap_to_byte_strings(bitmap.bitmap, int, list.list(string)) = list.list(string).
+:- mode bitmap_to_byte_strings((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func bitmap.byte_index_for_bit(int) = int.
+:- mode byte_index_for_bit((builtin.in)) = (builtin.out) is det.
+:- func bitmap.copy_bits(int, bitmap.bitmap, int, bitmap.bitmap, int, int) = bitmap.bitmap.
+:- mode copy_bits((builtin.in), (builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func bitmap.copy_bytes(int, bitmap.bitmap, int, bitmap.bitmap, int, int) = bitmap.bitmap.
+:- mode copy_bytes((builtin.in), (builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- pred bitmap.extract_bits_from_bytes(int, int, int, bitmap.bitmap, int, int).
+:- mode extract_bits_from_bytes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func bitmap.quotient_bits_per_byte_with_rem_zero(string, int) = int.
+:- mode quotient_bits_per_byte_with_rem_zero((builtin.in), (builtin.in)) = (builtin.out) is det.
+
+bitmap.bit_index_in_byte(V_3) = V_2 :-
+    V_2 = int.unchecked_rem(V_3, V_4),
+    V_4 = bitmap.bits_per_byte.
+
+bitmap.bitmap_to_byte_strings(V_3) = V_4 :-
+    V_5 = bitmap.num_bits(V_3),
+    V_4 = bitmap.bitmap_to_byte_strings(V_3, V_5, V_6),
+    V_6 = list.[] : list.list(string).
+
+bitmap.bits_per_byte = 8.
+
+bitmap.byte_slice(V_5, V_6, V_7) = V_4 :-
+    V_4 = bitmap.slice(V_5, V_8, V_10),
+    V_8 = int.(V_6 * V_9),
+    V_9 = bitmap.bits_per_byte,
+    V_10 = int.(V_7 * V_11),
+    V_11 = bitmap.bits_per_byte.
+
+bitmap.clear(V_6, V_5) = V_7 :-
+    bitmap.clear(V_5, V_6, V_7).
+
+:- pragma foreign_proc("C", bitmap.copy(BM0 :: (builtin.in)) = (BM :: (bitmap.bitmap_uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    MR_allocate_bitmap_msg(BM, BM0->num_bits, MR_ALLOC_ID);
+    MR_copy_bitmap(BM, BM0);
+").
+
+bitmap.copy_bits(V_7, V_8, V_9, V_10, V_11) = V_6 :-
+    V_6 = bitmap.copy_bits(V_12, V_7, V_8, V_9, V_10, V_11),
+    V_12 = 0 : int.
+
+bitmap.copy_bits_in_bitmap(V_6, V_7, V_8, V_9) = V_5 :-
+    V_5 = bitmap.copy_bits(V_10, V_6, V_7, V_11, V_8, V_9),
+    V_10 = 1 : int,
+    V_11 = V_6.
+
+bitmap.copy_bytes(V_7, V_8, V_9, V_10, V_11) = V_6 :-
+    V_6 = bitmap.copy_bytes(V_12, V_7, V_8, V_9, V_10, V_11),
+    V_12 = 0 : int.
+
+bitmap.copy_bytes_in_bitmap(V_6, V_7, V_8, V_9) = V_5 :-
+    V_5 = bitmap.copy_bytes(V_10, V_6, V_7, V_11, V_8, V_9),
+    V_10 = 1 : int,
+    V_11 = V_6.
+
+bitmap.flip(V_6, V_5) = V_7 :-
+    bitmap.flip(V_5, V_6, V_7).
+
+bitmap.in_range(V_3, V_4) :-
+    V_5 = 0 : int,
+    int.(V_5 =< V_4),
+    V_6 = bitmap.num_bits(V_3),
+    int.(V_4 < V_6).
+
+bitmap.init(V_3) = V_2 :-
+    V_2 = bitmap.init(V_3, V_4),
+    V_4 = bool.no : bool.bool.
+
+bitmap.is_empty(V_2) :-
+    V_3 = bitmap.num_bits(V_2),
+    V_3 = 0 : int.
+
+:- pragma foreign_proc("C", bitmap.num_bits(BM :: (builtin.in)) = (NumBits :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    NumBits = BM->num_bits;
+").
+
+bitmap.set(V_6, V_5) = V_7 :-
+    bitmap.set(V_5, V_6, V_7).
+
+bitmap.slice_bitmap(V_3) = V_2 :-
+    V_3 = bitmap.slice_ctor(V_2, V_4, V_5) : bitmap.slice.
+
+bitmap.slice_num_bits(V_3) = V_2 :-
+    V_3 = bitmap.slice_ctor(V_4, V_5, V_2) : bitmap.slice.
+
+bitmap.slice_num_bytes(V_3) = V_2 :-
+    V_2 = bitmap.quotient_bits_per_byte_with_rem_zero(V_4, V_5),
+    V_4 = "bitmap.slice_num_bytes" : string,
+    V_5 = bitmap.slice_num_bits(V_3).
+
+bitmap.slice_start_bit_index(V_3) = V_2 :-
+    V_3 = bitmap.slice_ctor(V_4, V_2, V_5) : bitmap.slice.
+
+bitmap.slice_start_byte_index(V_3) = V_2 :-
+    V_2 = bitmap.quotient_bits_per_byte_with_rem_zero(V_4, V_5),
+    V_4 = "bitmap.slice_start_byte_index" : string,
+    V_5 = bitmap.slice_start_bit_index(V_3).
+
+bitmap.to_byte_string(V_3) = V_2 :-
+    V_2 = string.join_list(V_4, V_5),
+    V_4 = "." : string,
+    V_5 = bitmap.bitmap_to_byte_strings(V_3).
+
+bitmap.unsafe_bit(V_5, V_4) = V_3 :-
+    ( if
+      bitmap.unsafe_is_set(V_4, V_5)
+    then
+      V_3 = bool.yes : bool.bool
+    else
+      V_3 = bool.no : bool.bool
+    ).
+
+bitmap.unsafe_bits(V_6, V_7, V_5) = V_8 :-
+    V_9 = bitmap.byte_index_for_bit(V_6),
+    V_10 = bitmap.bit_index_in_byte(V_6),
+    V_11 = 0 : int,
+    bitmap.extract_bits_from_bytes(V_9, V_10, V_7, V_5, V_11, V_8).
+
+:- pragma foreign_proc("C", bitmap.unsafe_byte(N :: (builtin.in), BM :: (builtin.in)) = (Byte :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    Byte = (MR_Integer) BM->elements[N];
+").
+
+:- pragma foreign_proc("C", bitmap.'unsafe_byte :='(N :: (builtin.in), BM0 :: (bitmap.bitmap_di), Byte :: (builtin.in)) = (BM :: (bitmap.bitmap_uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    BM = BM0;
+    BM->elements[N] = (MR_uint_least8_t) Byte;
+").
+
+bitmap.unsafe_clear(V_4, V_5, V_3) :-
+    V_3 = bitmap.unsafe_clear(V_5, V_4).
+
+bitmap.unsafe_flip(V_4, V_5, V_3) :-
+    V_3 = bitmap.unsafe_flip(V_5, V_4).
+
+:- pragma foreign_proc("C", bitmap.unsafe_get_uint8(BM :: (builtin.in), N :: (builtin.in)) = (U8 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    U8 = (uint8_t) BM->elements[N];
+").
+
+bitmap.unsafe_is_set(V_3, V_4) :-
+    not (
+      bitmap.unsafe_is_clear(V_3, V_4)
+    ).
+
+bitmap.unsafe_set(V_4, V_5, V_3) :-
+    V_3 = bitmap.unsafe_set(V_5, V_4).
+
+:- pragma foreign_proc("C", bitmap.unsafe_set_uint8(N :: (builtin.in), U8 :: (builtin.in), BM0 :: (bitmap.bitmap_di), BM :: (bitmap.bitmap_uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    BM = BM0;
+    BM->elements[N] = (MR_uint_least8_t) U8;
+").
+
+:- pragma termination_info(bitmap.append_list((builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bitmap.'bit :='((builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.bit_index_in_byte((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bitmap.bitmap_compare((builtin.uo), (builtin.in), (builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(bitmap.bitmap_equal((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bitmap.bitmap_to_byte_strings((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bitmap.bitmap_to_byte_strings((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bitmap.bits((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(bitmap.'bits :='((builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info((bitmap.bits_per_byte) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(bitmap.byte((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bitmap.'byte :='((builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.byte_in_range((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bitmap.byte_index_for_bit((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bitmap.byte_slice((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(3, [yes, no, no, no]), can_loop).
+:- pragma termination_info(bitmap.clear((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.clear((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)), infinite, can_loop).
+:- pragma termination_info(bitmap.complement((bitmap.bitmap_di)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.copy((builtin.in)) = (bitmap.bitmap_uo), infinite, cannot_loop).
+:- pragma termination_info(bitmap.copy_bits((builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.copy_bits((builtin.in), (builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.copy_bits_in_bitmap((bitmap.bitmap_di), (builtin.in), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.copy_bytes((builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.copy_bytes((builtin.in), (builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.copy_bytes_in_bitmap((bitmap.bitmap_di), (builtin.in), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.det_from_string((builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.det_num_bytes((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(bitmap.difference((builtin.in), (bitmap.bitmap_di)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.extract_bits_from_bytes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, no, yes, no]), can_loop).
+:- pragma termination_info(bitmap.flip((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.flip((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)), infinite, can_loop).
+:- pragma termination_info(bitmap.from_string((builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.get_uint8((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bitmap.hash((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(bitmap.in_range((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bitmap.init((builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.init((builtin.in), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.intersect((builtin.in), (bitmap.bitmap_di)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.is_clear((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(bitmap.is_empty((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(bitmap.is_set((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(bitmap.num_bits((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(bitmap.num_bytes((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bitmap.quotient_bits_per_byte_with_rem_zero((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bitmap.resize((bitmap.bitmap_di), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.set((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.set((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)), infinite, can_loop).
+:- pragma termination_info(bitmap.set_uint8((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)), infinite, can_loop).
+:- pragma termination_info(bitmap.shrink_without_copying((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.slice((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(3, [yes, yes, yes, no]), can_loop).
+:- pragma termination_info(bitmap.slice_bitmap((builtin.in)) = (builtin.out), finite(-3, [yes, no]), cannot_loop).
+:- pragma termination_info(bitmap.slice_num_bits((builtin.in)) = (builtin.out), finite(-3, [yes, no]), cannot_loop).
+:- pragma termination_info(bitmap.slice_num_bytes((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(bitmap.slice_start_bit_index((builtin.in)) = (builtin.out), finite(-3, [yes, no]), cannot_loop).
+:- pragma termination_info(bitmap.slice_start_byte_index((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(bitmap.throw_bounds_error((builtin.in), (builtin.in), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(bitmap.to_byte_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bitmap.to_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bitmap.union((builtin.in), (bitmap.bitmap_di)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.unsafe_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(bitmap.'unsafe_bit :='((builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, cannot_loop).
+:- pragma termination_info(bitmap.unsafe_bits((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(bitmap.'unsafe_bits :='((builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, can_loop).
+:- pragma termination_info(bitmap.unsafe_byte((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(bitmap.'unsafe_byte :='((builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, cannot_loop).
+:- pragma termination_info(bitmap.unsafe_clear((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, cannot_loop).
+:- pragma termination_info(bitmap.unsafe_clear((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)), infinite, cannot_loop).
+:- pragma termination_info(bitmap.unsafe_flip((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, cannot_loop).
+:- pragma termination_info(bitmap.unsafe_flip((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)), infinite, cannot_loop).
+:- pragma termination_info(bitmap.unsafe_get_uint8((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(bitmap.unsafe_is_clear((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bitmap.unsafe_is_set((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bitmap.unsafe_set((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo), infinite, cannot_loop).
+:- pragma termination_info(bitmap.unsafe_set((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)), infinite, cannot_loop).
+:- pragma termination_info(bitmap.unsafe_set_uint8((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)), infinite, cannot_loop).
+:- pragma termination_info(bitmap.xor((builtin.in), (bitmap.bitmap_di)) = (bitmap.bitmap_uo), infinite, can_loop).
+
+:- pragma exceptions(function, (bitmap.append_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.bit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.'bit :='), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.bit_index_in_byte), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (bitmap.bitmap_compare), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bitmap.bitmap_equal), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.bitmap_to_byte_strings), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.bitmap_to_byte_strings), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.bits), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.'bits :='), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.bits_per_byte), 0, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.byte), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.'byte :='), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bitmap.byte_in_range), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.byte_index_for_bit), 1, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.byte_slice), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.clear), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bitmap.clear), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.complement), 1, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.copy), 1, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.copy_bits), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.copy_bits), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.copy_bits_in_bitmap), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.copy_bytes), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.copy_bytes), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.copy_bytes_in_bitmap), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.det_from_string), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.det_num_bytes), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.difference), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bitmap.extract_bits_from_bytes), 6, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.flip), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bitmap.flip), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.from_string), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.get_uint8), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.hash), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bitmap.in_range), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.init), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.intersect), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bitmap.is_clear), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bitmap.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (bitmap.is_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.num_bits), 1, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.num_bytes), 1, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.quotient_bits_per_byte_with_rem_zero), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.resize), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bitmap.set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bitmap.set_uint8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.shrink_without_copying), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.slice), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.slice_bitmap), 1, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.slice_num_bits), 1, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.slice_num_bytes), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.slice_start_bit_index), 1, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.slice_start_byte_index), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bitmap.throw_bounds_error), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.to_byte_string), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.to_string), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.union), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bitmap.unsafe_bit), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.'unsafe_bit :='), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.unsafe_bits), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.'unsafe_bits :='), 4, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.unsafe_byte), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.'unsafe_byte :='), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.unsafe_clear), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bitmap.unsafe_clear), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.unsafe_flip), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bitmap.unsafe_flip), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.unsafe_get_uint8), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bitmap.unsafe_is_clear), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bitmap.unsafe_is_set), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.unsafe_set), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bitmap.unsafe_set), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bitmap.unsafe_set_uint8), 4, 0, will_not_throw).
+:- pragma exceptions(function, (bitmap.xor), 2, 0, may_throw(user_exception)).

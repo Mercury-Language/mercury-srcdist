@@ -1,0 +1,14 @@
+:- module (libs.op_mode).
+:- interface.
+:- type op_mode.
+:- type op_mode_args.
+:- type op_mode_augment.
+:- type op_mode_codegen
+	where	type_is_abstract_enum(2).
+:- type op_mode_interface_file
+	where	type_is_abstract_enum(2).
+:- type op_mode_query
+	where	type_is_abstract_enum(4).
+:- type_representation(op_mode_codegen, du_repn(enum("opmcg_target_code_only", "opmcg_target_and_object_code_only", ["opmcg_target_object_and_executable"],  no_c_j_cs))).
+:- type_representation(op_mode_interface_file, du_repn(enum("omif_int0", "omif_int1_int2", ["omif_int3"],  no_c_j_cs))).
+:- type_representation(op_mode_query, du_repn(enum("opmq_output_cc", "opmq_output_c_compiler_type", ["opmq_output_cflags", "opmq_output_c_include_directory_flags", "opmq_output_grade_defines", "opmq_output_csharp_compiler", "opmq_output_csharp_compiler_type", "opmq_output_link_command", "opmq_output_shared_lib_link_command", "opmq_output_library_link_flags", "opmq_output_class_dir", "opmq_output_grade_string", "opmq_output_libgrades", "opmq_output_target_arch"],  no_c_j_cs))).
