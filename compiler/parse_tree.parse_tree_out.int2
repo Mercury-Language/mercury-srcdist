@@ -1,0 +1,3 @@
+:- module (parse_tree.parse_tree_out).
+:- interface.
+:- type_representation(output_parse_tree(V_1), is_eqv_to(pred(parse_tree.parse_tree_out_info.merc_out_info, io.text_output_stream, V_1, io.io, io.io))).

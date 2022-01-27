@@ -1,0 +1,15 @@
+register --quiet
+context none
+echo on
+table_io allow
+table_io start
+trust all_trusted
+break p
+c
+f
+dd -d 3 -n 7 -a
+y
+break main
+c
+dd -d 3 -n 7 -a
+quit -y

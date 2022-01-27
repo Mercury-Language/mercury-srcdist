@@ -1,0 +1,108 @@
+:- module benchmarking.
+:- use_module bool.
+:- use_module builtin.
+:- use_module int.
+:- use_module io.
+:- use_module maybe.
+:- use_module mutvar.
+:- use_module private_builtin.
+:- use_module string.
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", benchmarking).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", benchmarking).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", mutvar).
+:- pragma foreign_import_module("C#", string).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", benchmarking).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", mutvar).
+:- pragma foreign_import_module("Java", string).
+
+:- pragma foreign_proc("C", benchmarking.log_threadscope_message(Message :: (builtin.in), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, will_not_throw_exception, may_modify_trail], "
+#if MR_THREADSCOPE
+    MR_threadscope_post_log_msg(Message);
+#endif
+").
+
+benchmarking.report_memory_attribution(V_4, V_6, V_7) :-
+    V_8 = bool.yes : bool.bool,
+    benchmarking.report_memory_attribution(V_4, V_8, V_6, V_7).
+
+:- pragma foreign_proc("C", benchmarking.report_memory_attribution(Label :: (builtin.in), Collect :: (builtin.in), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    MR_bool run_collect = (Collect) ? MR_TRUE : MR_FALSE;
+
+#ifdef  MR_MPROF_PROFILE_MEMORY_ATTRIBUTION
+    MR_report_memory_attribution(Label, run_collect);
+#else
+    (void) Label;
+#endif
+").
+
+:- pragma termination_info(benchmarking.benchmark_det(((pred((builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(benchmarking.benchmark_det(((pred((builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(benchmarking.benchmark_det_io(((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(benchmarking.benchmark_func(((func((builtin.in)) = (builtin.out) is det) >> (func((builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(benchmarking.benchmark_nondet(((pred((builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(benchmarking.log_threadscope_message((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((benchmarking.report_full_memory_stats), finite(0, []), can_loop).
+:- pragma termination_info(benchmarking.report_memory_attribution((builtin.in)), finite(0, [no]), can_loop).
+:- pragma termination_info(benchmarking.report_memory_attribution((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(benchmarking.report_memory_attribution((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(benchmarking.report_memory_attribution((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((benchmarking.report_stats), finite(0, []), can_loop).
+:- pragma termination_info((benchmarking.turn_off_call_profiling), finite(0, []), cannot_loop).
+:- pragma termination_info(benchmarking.turn_off_call_profiling((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info((benchmarking.turn_off_heap_profiling), finite(0, []), cannot_loop).
+:- pragma termination_info(benchmarking.turn_off_heap_profiling((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info((benchmarking.turn_off_profiling), finite(0, []), cannot_loop).
+:- pragma termination_info(benchmarking.turn_off_profiling((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info((benchmarking.turn_off_time_profiling), finite(0, []), cannot_loop).
+:- pragma termination_info(benchmarking.turn_off_time_profiling((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info((benchmarking.turn_on_call_profiling), finite(0, []), cannot_loop).
+:- pragma termination_info(benchmarking.turn_on_call_profiling((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info((benchmarking.turn_on_heap_profiling), finite(0, []), cannot_loop).
+:- pragma termination_info(benchmarking.turn_on_heap_profiling((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info((benchmarking.turn_on_profiling), finite(0, []), cannot_loop).
+:- pragma termination_info(benchmarking.turn_on_profiling((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info((benchmarking.turn_on_time_profiling), finite(0, []), cannot_loop).
+:- pragma termination_info(benchmarking.turn_on_time_profiling((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(benchmarking.write_out_trace_counts((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (benchmarking.benchmark_det), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (benchmarking.benchmark_det), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (benchmarking.benchmark_det_io), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (benchmarking.benchmark_func), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (benchmarking.benchmark_nondet), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (benchmarking.log_threadscope_message), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.report_full_memory_stats), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (benchmarking.report_memory_attribution), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (benchmarking.report_memory_attribution), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (benchmarking.report_memory_attribution), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.report_memory_attribution), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.report_stats), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (benchmarking.turn_off_call_profiling), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_off_call_profiling), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_off_heap_profiling), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_off_heap_profiling), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_off_profiling), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_off_profiling), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_off_time_profiling), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_off_time_profiling), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_on_call_profiling), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_on_call_profiling), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_on_heap_profiling), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_on_heap_profiling), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_on_profiling), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_on_profiling), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_on_time_profiling), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.turn_on_time_profiling), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (benchmarking.write_out_trace_counts), 4, 0, may_throw(user_exception)).

@@ -1,0 +1,8 @@
+:- module (ll_backend.store_alloc).
+:- interface.
+:- type store_map_run_type
+    --->    final_allocation 
+    ;       for_stack_opt .
+:- type_representation(last_locns, is_eqv_to(map.map(parse_tree.prog_data.prog_var, ll_backend.store_alloc.where_stored))).
+:- type_representation(store_map_run_type, du_repn(enum("final_allocation", "for_stack_opt", [],  no_c_j_cs))).
+:- type_representation(where_stored, is_eqv_to(set.set(ll_backend.llds.lval))).
