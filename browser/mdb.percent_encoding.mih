@@ -1,0 +1,58 @@
+/*
+** Automatically generated from `percent_encoding.m'
+** by the Mercury compiler,
+** version rotd-2021-12-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.percent_encoding.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__percent_encoding
+#define MR_HEADER_GUARD_mdb__percent_encoding
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__PERCENT_ENCODING_DECL_GUARD
+#define MDB__PERCENT_ENCODING_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+
+MR_String MR_CALL 
+mdb__percent_encoding__percent_encode_path_segment_1_f_0(
+  MR_String param_1);
+
+void mercury__mdb__percent_encoding__init(void);
+void mercury__mdb__percent_encoding__init_type_tables(void);
+void mercury__mdb__percent_encoding__init_debugger(void);
+const char *mercury__mdb__percent_encoding__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.percent_encoding
+
+// :- end_interface mdb.percent_encoding.
