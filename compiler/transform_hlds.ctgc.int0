@@ -1,0 +1,12 @@
+:- module (transform_hlds.ctgc).
+:- interface.
+:- include_module ((transform_hlds.ctgc).datastruct).
+:- include_module ((transform_hlds.ctgc).fixpoint_table).
+:- include_module ((transform_hlds.ctgc).livedata).
+:- include_module ((transform_hlds.ctgc).selector).
+:- include_module ((transform_hlds.ctgc).structure_reuse).
+:- include_module ((transform_hlds.ctgc).structure_sharing).
+:- include_module ((transform_hlds.ctgc).util).
+:- import_module parse_tree.
+:- implementation.
+:- import_module parse_tree.

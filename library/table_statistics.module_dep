@@ -1,0 +1,13 @@
+module(1, "table_statistics.m",
+	table_statistics,
+	{},
+	{builtin, io, list, maybe, private_builtin},
+	{bool, builtin, float, int, io, list, maybe, private_builtin, require, string, table_builtin, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - table_statistics, "IL" - table_statistics, "C" - table_statistics},
+	contains_foreign_export,
+	no_main
+).

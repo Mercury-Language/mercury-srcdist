@@ -1,0 +1,16 @@
+:- module (hlds.vartypes).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module (parse_tree.prog_data).
+:- type maybe_vartypes
+    --->    varset_vartypes(parse_tree.prog_data.tvarset, hlds.vartypes.vartypes)
+    ;       no_varset_vartypes .
+:- type prog_var_set_types
+    --->    prog_var_set_types(parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes).
+:- type vartypes.
+:- implementation.
+:- import_module map.
+:- type vartypes == map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type).

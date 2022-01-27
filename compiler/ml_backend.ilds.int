@@ -1,0 +1,203 @@
+:- module (ml_backend.ilds).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module maybe.
+:- type alignment == int.
+:- type assembly_name
+    --->    module(((ml_backend.ilds).il_module_name) :: ml_backend.ilds.id, ((ml_backend.ilds).containing_assembly_name) :: ml_backend.ilds.id)
+    ;       assembly(ml_backend.ilds.id).
+:- type blockid == int.
+:- type blocktype
+    --->    bt_scope(ml_backend.ilds.locals)
+    ;       bt_try 
+    ;       bt_catch(ml_backend.ilds.class_name).
+:- type bound
+    --->    upper(int)
+    ;       lower(int)
+    ;       between(int, int).
+:- type bounds == list.list(ml_backend.ilds.bound).
+:- type call_conv
+    --->    call_conv(bool.bool, ml_backend.ilds.il_call_kind).
+:- type class_member_name
+    --->    class_member_name(ml_backend.ilds.class_name, ml_backend.ilds.member_name).
+:- type class_name == ml_backend.ilds.structured_name.
+:- type constant
+    --->    i(int)
+    ;       f(float).
+:- type fieldref
+    --->    fieldref(ml_backend.ilds.il_type, ml_backend.ilds.class_member_name).
+:- type id == string.
+:- type il_call_kind
+    --->    default 
+    ;       vararg 
+    ;       unmanaged_cdecl 
+    ;       unmanaged_stdcall 
+    ;       unmanaged_thiscall 
+    ;       unmanaged_fastcall .
+:- type il_method_param
+    --->    il_method_param(((ml_backend.ilds).ilmp_type) :: ml_backend.ilds.il_type, ((ml_backend.ilds).ilmp_maybe_id) :: maybe.maybe(ml_backend.ilds.id)).
+:- type il_type
+    --->    il_type(list.list(ml_backend.ilds.type_modifier), ml_backend.ilds.simple_type).
+:- type index == int.
+:- type instr
+    --->    comment(string)
+    ;       label(ml_backend.ilds.label)
+    ;       start_block(ml_backend.ilds.blocktype, ml_backend.ilds.blockid)
+    ;       end_block(ml_backend.ilds.blocktype, ml_backend.ilds.blockid)
+    ;       context(string, int)
+    ;       il_asm_code(string, int)
+    ;       add(ml_backend.ilds.overflow, ml_backend.ilds.signed)
+    ;       bitwise_and 
+    ;       arglist 
+    ;       beq(ml_backend.ilds.target)
+    ;       bge(ml_backend.ilds.signed, ml_backend.ilds.target)
+    ;       bgt(ml_backend.ilds.signed, ml_backend.ilds.target)
+    ;       ble(ml_backend.ilds.signed, ml_backend.ilds.target)
+    ;       blt(ml_backend.ilds.signed, ml_backend.ilds.target)
+    ;       bne(ml_backend.ilds.signed, ml_backend.ilds.target)
+    ;       br(ml_backend.ilds.target)
+    ;       break 
+    ;       brfalse(ml_backend.ilds.target)
+    ;       brtrue(ml_backend.ilds.target)
+    ;       call(ml_backend.ilds.methodref)
+    ;       calli(ml_backend.ilds.signature)
+    ;       ceq 
+    ;       cgt(ml_backend.ilds.signed)
+    ;       ckfinite 
+    ;       clt(ml_backend.ilds.signed)
+    ;       conv(ml_backend.ilds.simple_type)
+    ;       cpblk 
+    ;       div(ml_backend.ilds.signed)
+    ;       dup 
+    ;       endfilter 
+    ;       endfinally 
+    ;       initblk 
+    ;       jmp(ml_backend.ilds.methodref)
+    ;       ldarg(ml_backend.ilds.variable)
+    ;       ldarga(ml_backend.ilds.variable)
+    ;       ldc(ml_backend.ilds.simple_type, ml_backend.ilds.constant)
+    ;       ldftn(ml_backend.ilds.methodref)
+    ;       ldind(ml_backend.ilds.simple_type)
+    ;       ldloc(ml_backend.ilds.variable)
+    ;       ldloca(ml_backend.ilds.variable)
+    ;       ldnull 
+    ;       leave(ml_backend.ilds.target)
+    ;       localloc 
+    ;       mul(ml_backend.ilds.overflow, ml_backend.ilds.signed)
+    ;       neg 
+    ;       nop 
+    ;       bitwise_not 
+    ;       bitwise_or 
+    ;       pop 
+    ;       rem(ml_backend.ilds.signed)
+    ;       ret 
+    ;       shl 
+    ;       shr(ml_backend.ilds.signed)
+    ;       starg(ml_backend.ilds.variable)
+    ;       stind(ml_backend.ilds.simple_type)
+    ;       stloc(ml_backend.ilds.variable)
+    ;       sub(ml_backend.ilds.overflow, ml_backend.ilds.signed)
+    ;       switch(list.list(ml_backend.ilds.target))
+    ;       tailcall 
+    ;       unaligned(ml_backend.ilds.alignment)
+    ;       volatile 
+    ;       bitwise_xor 
+    ;       box(ml_backend.ilds.il_type)
+    ;       callvirt(ml_backend.ilds.methodref)
+    ;       castclass(ml_backend.ilds.il_type)
+    ;       cpobj(ml_backend.ilds.il_type)
+    ;       initobj(ml_backend.ilds.il_type)
+    ;       isinst(ml_backend.ilds.il_type)
+    ;       ldelem(ml_backend.ilds.simple_type)
+    ;       ldelema(ml_backend.ilds.il_type)
+    ;       ldfld(ml_backend.ilds.fieldref)
+    ;       ldflda(ml_backend.ilds.fieldref)
+    ;       ldlen 
+    ;       ldobj(ml_backend.ilds.il_type)
+    ;       ldsfld(ml_backend.ilds.fieldref)
+    ;       ldsflda(ml_backend.ilds.fieldref)
+    ;       ldstr(string)
+    ;       ldtoken(ml_backend.ilds.signature)
+    ;       ldvirtftn(ml_backend.ilds.methodref)
+    ;       mkrefany(ml_backend.ilds.il_type)
+    ;       newarr(ml_backend.ilds.il_type)
+    ;       newobj(ml_backend.ilds.methodref)
+    ;       refanytype 
+    ;       refanyval(ml_backend.ilds.il_type)
+    ;       rethrow 
+    ;       sizeof(ml_backend.ilds.il_type)
+    ;       stelem(ml_backend.ilds.simple_type)
+    ;       stfld(ml_backend.ilds.fieldref)
+    ;       stobj(ml_backend.ilds.il_type)
+    ;       stsfld(ml_backend.ilds.fieldref)
+    ;       throw 
+    ;       unbox(ml_backend.ilds.il_type).
+:- type label == string.
+:- type locals == assoc_list.assoc_list(ml_backend.ilds.id, ml_backend.ilds.il_type).
+:- type location == int.
+:- type member_name
+    --->    ctor 
+    ;       cctor 
+    ;       id(ml_backend.ilds.id).
+:- type methodref
+    --->    methoddef(ml_backend.ilds.call_conv, ml_backend.ilds.ret_type, ml_backend.ilds.class_member_name, list.list(ml_backend.ilds.il_type))
+    ;       local_method(ml_backend.ilds.call_conv, ml_backend.ilds.ret_type, ml_backend.ilds.member_name, list.list(ml_backend.ilds.il_type)).
+:- type namespace_name == ml_backend.ilds.structured_name.
+:- type namespace_qual_name == list.list(ml_backend.ilds.id).
+:- type nested_class_name == list.list(ml_backend.ilds.id).
+:- type node_number == int.
+:- type overflow
+    --->    checkoverflow 
+    ;       nocheckoverflow .
+:- type ret_type
+    --->    void 
+    ;       simple_type(ml_backend.ilds.simple_type).
+:- type signature
+    --->    signature(ml_backend.ilds.call_conv, ml_backend.ilds.ret_type, list.list(ml_backend.ilds.il_method_param)).
+:- type signed
+    --->    signed 
+    ;       unsigned .
+:- type simple_type
+    --->    int8 
+    ;       int16 
+    ;       int32 
+    ;       int64 
+    ;       uint8 
+    ;       uint16 
+    ;       uint32 
+    ;       uint64 
+    ;       native_int 
+    ;       native_uint 
+    ;       float32 
+    ;       float64 
+    ;       native_float 
+    ;       bool 
+    ;       char 
+    ;       object 
+    ;       string 
+    ;       refany 
+    ;       class(ml_backend.ilds.class_name)
+    ;       valuetype(ml_backend.ilds.class_name)
+    ;       interface(ml_backend.ilds.class_name)
+    ;       [](ml_backend.ilds.il_type, ml_backend.ilds.bounds)
+    ;       &(ml_backend.ilds.il_type)
+    ;       *(ml_backend.ilds.il_type).
+:- type structured_name
+    --->    structured_name(ml_backend.ilds.assembly_name, ml_backend.ilds.namespace_qual_name, ml_backend.ilds.nested_class_name).
+:- type target
+    --->    offset_target(int)
+    ;       label_target(ml_backend.ilds.label).
+:- type type_modifier
+    --->    const 
+    ;       readonly 
+    ;       volatile .
+:- type variable
+    --->    name(ml_backend.ilds.id)
+    ;       index(ml_backend.ilds.index).
+:- func append_nested_class_name(ml_backend.ilds.class_name, ml_backend.ilds.nested_class_name) = ml_backend.ilds.class_name.
+:- func append_toplevel_class_name(ml_backend.ilds.namespace_name, ml_backend.ilds.id) = ml_backend.ilds.class_name.
+:- func calculate_max_stack(list.list(ml_backend.ilds.instr)) = int.
+:- func get_class_namespace(ml_backend.ilds.class_name) = ml_backend.ilds.namespace_qual_name.
+:- func get_class_suffix(ml_backend.ilds.class_name) = list.list(ml_backend.ilds.id).

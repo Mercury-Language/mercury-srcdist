@@ -1,0 +1,82 @@
+:- module (ll_backend.continuation_info).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (hlds.instmap).
+:- import_module (hlds.vartypes).
+:- import_module (libs.globals).
+:- import_module (libs.trace_params).
+:- import_module (ll_backend.global_data).
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.llds).
+:- import_module (ll_backend.trace_gen).
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type closure_arg_info
+    --->    closure_arg_info(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst).
+:- type closure_layout_info
+    --->    closure_layout_info(list.list(ll_backend.continuation_info.closure_arg_info), map.map(parse_tree.prog_data.tvar, set.set(ll_backend.llds.layout_locn))).
+:- type internal_layout_info
+    --->    internal_layout_info(maybe.maybe(ll_backend.continuation_info.trace_port_layout_info), maybe.maybe(ll_backend.continuation_info.layout_label_info), maybe.maybe(ll_backend.continuation_info.return_layout_info)).
+:- type layout_label_info
+    --->    layout_label_info(set.set(ll_backend.continuation_info.layout_var_info), map.map(parse_tree.prog_data.tvar, set.set(ll_backend.llds.layout_locn))).
+:- type layout_var_info
+    --->    layout_var_info(ll_backend.llds.layout_locn, ll_backend.llds.live_value_type, string).
+:- type proc_deep_prof_info
+    --->    proc_deep_prof_info(((ll_backend.continuation_info).pdpi_proc_static) :: hlds.hlds_pred.hlds_proc_static, ((ll_backend.continuation_info).pdpi_excp_slots) :: ll_backend.layout.deep_excp_slots, ((ll_backend.continuation_info).pdpi_orig_body) :: hlds.hlds_pred.deep_original_body).
+:- type proc_label_layout_info == map.map(int, ll_backend.continuation_info.internal_layout_info).
+:- type proc_layout_info
+    --->    proc_layout_info(((ll_backend.continuation_info).pli_rtti_proc_label) :: hlds.hlds_rtti.rtti_proc_label, ((ll_backend.continuation_info).pli_entry_label) :: ll_backend.llds.label, ((ll_backend.continuation_info).pli_detism) :: parse_tree.prog_data.determinism, ((ll_backend.continuation_info).pli_stack_slot_count) :: int, ((ll_backend.continuation_info).pli_succip_slot) :: maybe.maybe(int), ((ll_backend.continuation_info).pli_eval_method) :: parse_tree.prog_data.eval_method, ((ll_backend.continuation_info).pli_eff_trace_level) :: libs.trace_params.trace_level, ((ll_backend.continuation_info).pli_call_label) :: maybe.maybe(ll_backend.llds.label), ((ll_backend.continuation_info).pli_max_trace_reg_r) :: int, ((ll_backend.continuation_info).pli_max_trace_reg_f) :: int, ((ll_backend.continuation_info).pli_head_vars) :: list.list(parse_tree.prog_data.prog_var), ((ll_backend.continuation_info).pli_arg_modes) :: list.list(parse_tree.prog_data.mer_mode), ((ll_backend.continuation_info).pli_proc_body) :: hlds.hlds_goal.hlds_goal, ((ll_backend.continuation_info).pli_trace_body_rep) :: ll_backend.continuation_info.trace_needs_body_rep, ((ll_backend.continuation_info).pli_initial_instmap) :: hlds.instmap.instmap, ((ll_backend.continuation_info).pli_trace_slot_info) :: ll_backend.trace_gen.trace_slot_info, ((ll_backend.continuation_info).pli_need_proc_id) :: bool.bool, ((ll_backend.continuation_info).pli_varset) :: parse_tree.prog_data.prog_varset, ((ll_backend.continuation_info).pli_vartypes) :: hlds.vartypes.vartypes, ((ll_backend.continuation_info).pli_internal_map) :: ll_backend.continuation_info.proc_label_layout_info, ((ll_backend.continuation_info).pli_maybe_table_info) :: maybe.maybe(ll_backend.continuation_info.proc_layout_table_info), ((ll_backend.continuation_info).pli_need_all_names) :: bool.bool, ((ll_backend.continuation_info).pli_oisu_kind_fors) :: list.list(hlds.hlds_pred.oisu_pred_kind_for), ((ll_backend.continuation_info).pli_deep_prof) :: maybe.maybe(ll_backend.continuation_info.proc_deep_prof_info)).
+:- type proc_layout_table_info
+    --->    proc_table_io_entry(hlds.hlds_pred.proc_table_io_info)
+    ;       proc_table_struct(hlds.hlds_pred.proc_table_struct_info).
+:- type return_layout_info
+    --->    return_layout_info(assoc_list.assoc_list(ll_backend.llds.code_addr, pair.pair(parse_tree.prog_data.prog_context, mdbcomp.goal_path.forward_goal_path)), ll_backend.continuation_info.layout_label_info).
+:- type slot_contents
+    --->    slot_ticket 
+    ;       slot_ticket_counter 
+    ;       slot_trace_data 
+    ;       slot_lookup_disj_cur 
+    ;       slot_lookup_switch_cur 
+    ;       slot_lookup_switch_max 
+    ;       slot_sync_term 
+    ;       slot_region_ite 
+    ;       slot_region_disj 
+    ;       slot_region_commit 
+    ;       slot_success_record 
+    ;       slot_lval(ll_backend.llds.lval).
+:- type trace_needs_body_rep
+    --->    trace_needs_body_rep 
+    ;       trace_does_not_need_body_rep .
+:- type trace_port_layout_info
+    --->    trace_port_layout_info(((ll_backend.continuation_info).port_context) :: parse_tree.prog_data.prog_context, ((ll_backend.continuation_info).port_type) :: mdbcomp.prim_data.trace_port, ((ll_backend.continuation_info).port_is_hidden) :: bool.bool, ((ll_backend.continuation_info).port_path) :: mdbcomp.goal_path.forward_goal_path, ((ll_backend.continuation_info).port_user) :: maybe.maybe(ll_backend.continuation_info.user_event_info), ((ll_backend.continuation_info).port_label) :: ll_backend.continuation_info.layout_label_info).
+:- type user_attribute
+    --->    user_attribute(((ll_backend.continuation_info).attr_locn) :: ll_backend.llds.rval, ((ll_backend.continuation_info).attr_var) :: parse_tree.prog_data.prog_var).
+:- type user_event_info
+    --->    user_event_info(((ll_backend.continuation_info).user_port_number) :: int, ((ll_backend.continuation_info).user_attributes) :: list.list(maybe.maybe(ll_backend.continuation_info.user_attribute))).
+:- pred basic_stack_layout_for_proc(hlds.hlds_pred.pred_info, libs.globals.globals, bool.bool, bool.bool).
+:- mode basic_stack_layout_for_proc((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred find_typeinfos_for_tvars(list.list(parse_tree.prog_data.tvar), map.map(parse_tree.prog_data.prog_var, set.set(ll_backend.llds.lval)), hlds.hlds_pred.proc_info, map.map(parse_tree.prog_data.tvar, set.set(ll_backend.llds.layout_locn))).
+:- mode find_typeinfos_for_tvars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generate_closure_layout(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, ll_backend.continuation_info.closure_layout_info).
+:- mode generate_closure_layout((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generate_resume_layout(map.map(parse_tree.prog_data.prog_var, set.set(ll_backend.llds.lval)), assoc_list.assoc_list(ll_backend.llds.lval, ll_backend.continuation_info.slot_contents), hlds.instmap.instmap, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, ll_backend.continuation_info.layout_label_info).
+:- mode generate_resume_layout((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generate_return_live_lvalues(assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_loc), hlds.instmap.instmap, list.list(parse_tree.prog_data.prog_var), map.map(parse_tree.prog_data.prog_var, set.set(ll_backend.llds.lval)), assoc_list.assoc_list(ll_backend.llds.lval, ll_backend.continuation_info.slot_contents), hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, libs.globals.globals, bool.bool, list.list(ll_backend.llds.liveinfo)).
+:- mode generate_return_live_lvalues((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generate_table_arg_type_info(hlds.hlds_pred.proc_info, assoc_list.assoc_list(parse_tree.prog_data.prog_var, int), hlds.hlds_pred.table_arg_infos).
+:- mode generate_table_arg_type_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_process_llds(list.list(ll_backend.llds.c_procedure), hlds.hlds_module.module_info, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode maybe_process_llds((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_process_proc_llds(list.list(ll_backend.llds.instruction), hlds.hlds_pred.pred_proc_id, hlds.hlds_module.module_info, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode maybe_process_proc_llds((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

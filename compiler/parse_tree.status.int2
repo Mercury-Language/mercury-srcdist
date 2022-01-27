@@ -1,0 +1,43 @@
+:- module (parse_tree.status).
+:- interface.
+:- import_module bool.
+:- import_module mdbcomp.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.file_kind).
+:- type import_locn
+    --->    import_locn_implementation 
+    ;       import_locn_interface 
+    ;       import_locn_ancestor 
+    ;       import_locn_ancestor_private_interface_proper .
+:- type import_status
+    --->    status_external(parse_tree.status.import_status)
+    ;       status_imported(parse_tree.status.import_locn)
+    ;       status_opt_imported 
+    ;       status_abstract_imported 
+    ;       status_pseudo_imported 
+    ;       status_exported 
+    ;       status_opt_exported 
+    ;       status_abstract_exported 
+    ;       status_pseudo_exported 
+    ;       status_exported_to_submodules 
+    ;       status_local .
+:- type int_for_opt_module_section
+    --->    ioms_opt_imported(mdbcomp.sym_name.module_name, parse_tree.file_kind.int_file_kind).
+:- type int_module_section
+    --->    ims_imported(mdbcomp.sym_name.module_name, parse_tree.file_kind.int_file_kind, parse_tree.status.import_locn)
+    ;       ims_used(mdbcomp.sym_name.module_name, parse_tree.file_kind.int_file_kind, parse_tree.status.import_locn)
+    ;       ims_abstract_imported(mdbcomp.sym_name.module_name, parse_tree.file_kind.int_file_kind).
+:- type item_status
+    --->    item_status(parse_tree.status.import_status, parse_tree.status.need_qualifier).
+:- type module_section
+    --->    ms_interface 
+    ;       ms_implementation .
+:- type need_qualifier
+    --->    must_be_qualified 
+    ;       may_be_unqualified .
+:- type opt_module_section
+    --->    oms_opt_imported(mdbcomp.sym_name.module_name, parse_tree.file_kind.opt_file_kind).
+:- type src_module_section
+    --->    sms_interface 
+    ;       sms_implementation 
+    ;       sms_impl_but_exported_to_submodules .

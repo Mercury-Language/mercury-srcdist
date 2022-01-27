@@ -1,0 +1,455 @@
+/*
+** Automatically generated from `make_hlds_passes.m'
+** by the Mercury compiler,
+** version DEV
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.make_hlds.make_hlds_passes. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__make_hlds_passes
+#define MR_HEADER_GUARD_hlds__make_hlds__make_hlds_passes
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__MAKE_HLDS_PASSES_DECL_GUARD
+#define HLDS__MAKE_HLDS__MAKE_HLDS_PASSES_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_passes__hlds__make_hlds__make_hlds_passes__type_ctor_info_avail_locn_0;
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_100_100_95_112_97_115_115_95_50_95_112_114_101_100_95_100_101_99_108_95_95_91_50_93_95_48_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_5);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_100_100_95_112_97_115_115_95_51_95_105_110_105_116_105_97_108_105_115_101_95_95_91_50_93_95_48_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_7);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_116_117_114_110_95_110_111_95_115_101_99_116_105_111_110_95_95_91_49_44_32_50_93_95_48_2_p_0(
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_1);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_block_decls_pass_1_9_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_9,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_10);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_block_decls_pass_2_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_7);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_blocks_pass_3_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_8,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_9);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_builtin_type_ctor_special_preds_3_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_3);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_item_avail_pass_1_4_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_item_decl_pass_1_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_item_decl_pass_2_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_item_decls_pass_1_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_item_decls_pass_2_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_item_pass_3_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_items_pass_3_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_1_mode_decl_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_1_mutable_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_1_pred_decl_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_1_type_defn_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_2_finalise_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_2_initialise_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_2_instance_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_2_mutable_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_2_pred_decl_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_2_type_defn_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_3_clause_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_3_finalise_5_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_5);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_3_initialise_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_3_initialise_user_7_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Integer hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_7);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_3_mutable_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_3_pred_decl_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_3_promise_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pass_3_type_defn_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_promise_clause_12_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_9,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_10,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_11,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_12);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_solver_type_mutable_items_clauses_8_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_solver_type_mutable_items_pass_1_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_solver_type_mutable_items_pass_2_6_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_version_numbers_pass_3_4_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__do_parse_tree_to_hlds_11_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_String hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_7,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_9,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_10,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_11);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__return_no_section_2_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Box hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_3);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__return_yes_section_2_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_2);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__update_module_version_numbers_4_p_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes____Compare____avail_locn_0_0(
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes____Unify____avail_locn_0_0(
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2);
+
+void mercury__hlds__make_hlds__make_hlds_passes__init(void);
+void mercury__hlds__make_hlds__make_hlds_passes__init_type_tables(void);
+void mercury__hlds__make_hlds__make_hlds_passes__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.make_hlds.make_hlds_passes */
+
+/* :- end_interface hlds.make_hlds.make_hlds_passes. */

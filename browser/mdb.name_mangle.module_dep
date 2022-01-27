@@ -1,0 +1,13 @@
+module(1, "name_mangle.m",
+	(mdb.name_mangle),
+	{mdb},
+	{builtin, private_builtin},
+	{builtin, char, list, private_builtin, string},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.name_mangle), "C" - (mdb.name_mangle)},
+	no_foreign_export,
+	no_main
+).

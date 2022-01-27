@@ -1,0 +1,18 @@
+:- module (parse_tree.modules).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.file_kind).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.prog_item).
+:- import_module (parse_tree.read_modules).
+:- import_module (parse_tree.status).
+:- type int_section_maker(MS) == (func(mdbcomp.sym_name.module_name, parse_tree.file_kind.int_file_kind) = MS).
+:- type section_appender(MS) == pred(list.list(parse_tree.prog_item.item_block(MS)), parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports).
+:- inst (section_appender) == (pred((builtin.in), (builtin.in), (builtin.out)) is det).

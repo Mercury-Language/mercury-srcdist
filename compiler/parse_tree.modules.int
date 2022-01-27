@@ -1,0 +1,32 @@
+:- module (parse_tree.modules).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.file_kind).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.prog_item).
+:- import_module (parse_tree.read_modules).
+:- import_module (parse_tree.status).
+:- type int_section_maker(MS) == (func(mdbcomp.sym_name.module_name, parse_tree.file_kind.int_file_kind) = MS).
+:- type section_appender(MS) == pred(list.list(parse_tree.prog_item.item_block(MS)), parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports).
+:- inst (section_appender) == (pred((builtin.in), (builtin.in), (builtin.out)) is det).
+:- pred grab_imported_modules(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, maybe.maybe(libs.timestamp.timestamp), set.set(mdbcomp.sym_name.module_name), parse_tree.prog_item.raw_compilation_unit, parse_tree.read_modules.have_read_module_maps, parse_tree.module_imports.module_and_imports, io.io, io.io).
+:- mode grab_imported_modules((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred grab_unqual_imported_modules(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, parse_tree.prog_item.raw_compilation_unit, parse_tree.module_imports.module_and_imports, io.io, io.io).
+:- mode grab_unqual_imported_modules((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred process_module_long_interfaces(libs.globals.globals, parse_tree.read_modules.have_read_module_maps, parse_tree.status.need_qualifier, set.set(mdbcomp.sym_name.module_name), parse_tree.file_kind.int_file_kind, parse_tree.modules.int_section_maker(MS), parse_tree.modules.int_section_maker(MS), parse_tree.modules.section_appender(MS), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports, io.io, io.io).
+:- mode process_module_long_interfaces((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(((parse_tree.modules).section_appender)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred process_module_private_interfaces(libs.globals.globals, parse_tree.read_modules.have_read_module_maps, set.set(mdbcomp.sym_name.module_name), parse_tree.modules.int_section_maker(MS), parse_tree.modules.int_section_maker(MS), parse_tree.modules.section_appender(MS), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports, io.io, io.io).
+:- mode process_module_private_interfaces((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(((parse_tree.modules).section_appender)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred process_module_short_interfaces(libs.globals.globals, parse_tree.read_modules.have_read_module_maps, set.set(mdbcomp.sym_name.module_name), parse_tree.file_kind.int_file_kind, parse_tree.modules.int_section_maker(MS), parse_tree.modules.int_section_maker(MS), parse_tree.modules.section_appender(MS), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports, io.io, io.io).
+:- mode process_module_short_interfaces((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(((parse_tree.modules).section_appender)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred process_module_short_interfaces_and_impls_transitively(libs.globals.globals, parse_tree.read_modules.have_read_module_maps, set.set(mdbcomp.sym_name.module_name), parse_tree.file_kind.int_file_kind, parse_tree.modules.int_section_maker(MS), parse_tree.modules.int_section_maker(MS), parse_tree.modules.section_appender(MS), parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports, io.io, io.io).
+:- mode process_module_short_interfaces_and_impls_transitively((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(((parse_tree.modules).section_appender)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred process_module_short_interfaces_transitively(libs.globals.globals, parse_tree.read_modules.have_read_module_maps, set.set(mdbcomp.sym_name.module_name), parse_tree.file_kind.int_file_kind, parse_tree.modules.int_section_maker(MS), parse_tree.modules.int_section_maker(MS), parse_tree.modules.section_appender(MS), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports, io.io, io.io).
+:- mode process_module_short_interfaces_transitively((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(((parse_tree.modules).section_appender)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

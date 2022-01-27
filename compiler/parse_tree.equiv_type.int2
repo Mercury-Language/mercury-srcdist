@@ -1,0 +1,13 @@
+:- module (parse_tree.equiv_type).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module recompilation.
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type eqv_type_body
+    --->    eqv_type_body(parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.type_param), parse_tree.prog_data.mer_type).
+:- type type_eqv_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.equiv_type.eqv_type_body).

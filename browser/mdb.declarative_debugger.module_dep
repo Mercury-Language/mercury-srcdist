@@ -1,0 +1,13 @@
+module(1, "declarative_debugger.m",
+	(mdb.declarative_debugger),
+	{mdb},
+	{builtin, io, list, maybe, private_builtin, unit, (mdb.browser_info), (mdb.declarative_analyser), (mdb.declarative_execution), (mdb.declarative_tree), (mdb.help), (mdb.io_action), (mdb.term_rep), (mdbcomp.program_representation)},
+	{bool, builtin, exception, int, io, list, maybe, private_builtin, string, unit, univ, (mdb.browser_info), (mdb.declarative_analyser), (mdb.declarative_edt), (mdb.declarative_execution), (mdb.declarative_oracle), (mdb.declarative_tree), (mdb.help), (mdb.io_action), (mdb.term_rep), (mdb.util), (mdbcomp.program_representation), (mdbcomp.rtti_access), (mdbcomp.sym_name)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.declarative_debugger), "C" - (mdb.declarative_debugger)},
+	contains_foreign_export,
+	no_main
+).
