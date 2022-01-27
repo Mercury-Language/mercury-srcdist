@@ -1,0 +1,12 @@
+hlc.gc
+hlc.gc.memprof
+hlc.gc.prof
+hlc.gc.trseg
+hlc.par.gc
+none.gc
+none.gc.debug
+none.gc.debug.trseg
+none.gc.decldebug
+none.gc.prof
+none.gc.profdeep
+none.par.gc.stseg

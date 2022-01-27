@@ -1,0 +1,1199 @@
+/*
+** Automatically generated from `injection.m'
+** by the Mercury compiler,
+** version 13.05.2-beta-2013-10-31, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module injection. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_injection
+#define MR_HEADER_GUARD_injection
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef INJECTION_DECL_GUARD
+#define INJECTION_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "injection.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__injection__injection__type_ctor_info_injection_2;
+
+#line 321 "injection.m"
+void MR_CALL 
+mercury__injection____Compare____injection_2_0(
+#line 321 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 321 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 321 "injection.m"
+  MR_Word * mercury__injection__param_3,
+#line 321 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 321 "injection.m"
+  MR_Word mercury__injection__param_5);
+
+#line 321 "injection.m"
+MR_bool MR_CALL 
+mercury__injection____Unify____injection_2_0(
+#line 321 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 321 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 321 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 321 "injection.m"
+  MR_Word mercury__injection__param_4);
+
+#line 635 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__insert_transformed_value_f_4_f_0(
+#line 635 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 635 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 635 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 635 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 635 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 635 "injection.m"
+  MR_Box mercury__injection__param_6,
+#line 635 "injection.m"
+  MR_Word mercury__injection__param_7);
+
+#line 625 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__maybe_transform_key_3_p_0(
+#line 625 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 625 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 625 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 625 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 625 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 625 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 615 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__maybe_set_transformed_key_4_f_0(
+#line 615 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 615 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 615 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 615 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 615 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 615 "injection.m"
+  MR_Box mercury__injection__param_6,
+#line 615 "injection.m"
+  MR_Word mercury__injection__param_7);
+
+#line 601 "injection.m"
+void MR_CALL 
+mercury__injection__insert_transformed_key_p_5_p_0(
+#line 601 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 601 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 601 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 601 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 601 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 601 "injection.m"
+  MR_Box mercury__injection__param_6,
+#line 601 "injection.m"
+  MR_Word mercury__injection__param_7,
+#line 601 "injection.m"
+  MR_Word * mercury__injection__param_8);
+
+#line 592 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__insert_transformed_key_f_4_f_0(
+#line 592 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 592 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 592 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 592 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 592 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 592 "injection.m"
+  MR_Box mercury__injection__param_6,
+#line 592 "injection.m"
+  MR_Word mercury__injection__param_7);
+
+#line 423 "injection.m"
+void MR_CALL 
+mercury__injection__det_set_2_6_p_0(
+#line 423 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 423 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 423 "injection.m"
+  MR_Box mercury__injection__param_3,
+#line 423 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 423 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 423 "injection.m"
+  MR_Word * mercury__injection__param_6,
+#line 423 "injection.m"
+  MR_Word mercury__injection__param_7,
+#line 423 "injection.m"
+  MR_Word * mercury__injection__param_8);
+
+#line 406 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__set_2_6_p_0(
+#line 406 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 406 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 406 "injection.m"
+  MR_Box mercury__injection__param_3,
+#line 406 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 406 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 406 "injection.m"
+  MR_Word * mercury__injection__param_6,
+#line 406 "injection.m"
+  MR_Word mercury__injection__param_7,
+#line 406 "injection.m"
+  MR_Word * mercury__injection__param_8);
+
+#line 310 "injection.m"
+void MR_CALL 
+mercury__injection__reverse_map_2_p_0(
+#line 310 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 310 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 310 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 310 "injection.m"
+  MR_Word * mercury__injection__param_4);
+
+#line 309 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__reverse_map_1_f_0(
+#line 309 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 309 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 309 "injection.m"
+  MR_Word mercury__injection__param_3);
+
+#line 305 "injection.m"
+void MR_CALL 
+mercury__injection__forward_map_2_p_0(
+#line 305 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 305 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 305 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 305 "injection.m"
+  MR_Word * mercury__injection__param_4);
+
+#line 304 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__forward_map_1_f_0(
+#line 304 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 304 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 304 "injection.m"
+  MR_Word mercury__injection__param_3);
+
+#line 299 "injection.m"
+void MR_CALL 
+mercury__injection__map_values_3_p_0(
+#line 299 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 299 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 299 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 299 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 299 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 299 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 297 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__map_values_2_f_0(
+#line 297 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 297 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 297 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 297 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 297 "injection.m"
+  MR_Word mercury__injection__param_5);
+
+#line 288 "injection.m"
+void MR_CALL 
+mercury__injection__filter_map_keys_3_p_0(
+#line 288 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 288 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 288 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 288 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 288 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 288 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 282 "injection.m"
+void MR_CALL 
+mercury__injection__map_keys_3_p_0(
+#line 282 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 282 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 282 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 282 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 282 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 282 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 281 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__map_keys_2_f_0(
+#line 281 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 281 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 281 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 281 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 281 "injection.m"
+  MR_Word mercury__injection__param_5);
+
+#line 273 "injection.m"
+void MR_CALL 
+mercury__injection__apply_reverse_map_to_list_3_p_0(
+#line 273 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 273 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 273 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 273 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 273 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 271 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__apply_reverse_map_to_list_2_f_0(
+#line 271 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 271 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 271 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 271 "injection.m"
+  MR_Word mercury__injection__param_4);
+
+#line 265 "injection.m"
+void MR_CALL 
+mercury__injection__apply_forward_map_to_list_3_p_0(
+#line 265 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 265 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 265 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 265 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 265 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 263 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__apply_forward_map_to_list_2_f_0(
+#line 263 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 263 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 263 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 263 "injection.m"
+  MR_Word mercury__injection__param_4);
+
+#line 257 "injection.m"
+void MR_CALL 
+mercury__injection__overlay_3_p_0(
+#line 257 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 257 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 257 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 257 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 257 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 256 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__overlay_2_f_0(
+#line 256 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 256 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 256 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 256 "injection.m"
+  MR_Word mercury__injection__param_4);
+
+#line 249 "injection.m"
+void MR_CALL 
+mercury__injection__merge_3_p_0(
+#line 249 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 249 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 249 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 249 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 249 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 248 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__merge_2_f_0(
+#line 248 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 248 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 248 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 248 "injection.m"
+  MR_Word mercury__injection__param_4);
+
+#line 242 "injection.m"
+void MR_CALL 
+mercury__injection__delete_values_3_p_0(
+#line 242 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 242 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 242 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 242 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 242 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 241 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__delete_values_2_f_0(
+#line 241 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 241 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 241 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 241 "injection.m"
+  MR_Word mercury__injection__param_4);
+
+#line 236 "injection.m"
+void MR_CALL 
+mercury__injection__delete_keys_3_p_0(
+#line 236 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 236 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 236 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 236 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 236 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 235 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__delete_keys_2_f_0(
+#line 235 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 235 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 235 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 235 "injection.m"
+  MR_Word mercury__injection__param_4);
+
+#line 230 "injection.m"
+void MR_CALL 
+mercury__injection__delete_value_3_p_0(
+#line 230 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 230 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 230 "injection.m"
+  MR_Box mercury__injection__param_3,
+#line 230 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 230 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 229 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__delete_value_2_f_0(
+#line 229 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 229 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 229 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 229 "injection.m"
+  MR_Box mercury__injection__param_4);
+
+#line 222 "injection.m"
+void MR_CALL 
+mercury__injection__delete_key_3_p_0(
+#line 222 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 222 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 222 "injection.m"
+  MR_Box mercury__injection__param_3,
+#line 222 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 222 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 221 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__delete_key_2_f_0(
+#line 221 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 221 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 221 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 221 "injection.m"
+  MR_Box mercury__injection__param_4);
+
+#line 214 "injection.m"
+void MR_CALL 
+mercury__injection__det_set_from_corresponding_lists_4_p_0(
+#line 214 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 214 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 214 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 214 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 214 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 214 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 212 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__det_set_from_corresponding_lists_3_f_0(
+#line 212 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 212 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 212 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 212 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 212 "injection.m"
+  MR_Word mercury__injection__param_5);
+
+#line 206 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__set_from_corresponding_lists_4_p_0(
+#line 206 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 206 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 206 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 206 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 206 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 206 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 204 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__set_from_corresponding_lists_3_f_0(
+#line 204 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 204 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 204 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 204 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 204 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 204 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 197 "injection.m"
+void MR_CALL 
+mercury__injection__det_insert_from_corresponding_lists_4_p_0(
+#line 197 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 197 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 197 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 197 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 197 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 197 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 195 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__det_insert_from_corresponding_lists_3_f_0(
+#line 195 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 195 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 195 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 195 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 195 "injection.m"
+  MR_Word mercury__injection__param_5);
+
+#line 189 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__insert_from_corresponding_lists_4_p_0(
+#line 189 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 189 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 189 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 189 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 189 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 189 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 187 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__insert_from_corresponding_lists_3_f_0(
+#line 187 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 187 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 187 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 187 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 187 "injection.m"
+  MR_Word mercury__injection__param_5,
+#line 187 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 180 "injection.m"
+void MR_CALL 
+mercury__injection__det_set_from_assoc_list_3_p_0(
+#line 180 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 180 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 180 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 180 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 180 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 178 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__det_set_from_assoc_list_2_f_0(
+#line 178 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 178 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 178 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 178 "injection.m"
+  MR_Word mercury__injection__param_4);
+
+#line 172 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__set_from_assoc_list_3_p_0(
+#line 172 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 172 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 172 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 172 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 172 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 170 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__set_from_assoc_list_2_f_0(
+#line 170 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 170 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 170 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 170 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 170 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 164 "injection.m"
+void MR_CALL 
+mercury__injection__det_insert_from_assoc_list_3_p_0(
+#line 164 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 164 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 164 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 164 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 164 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 162 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__det_insert_from_assoc_list_2_f_0(
+#line 162 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 162 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 162 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 162 "injection.m"
+  MR_Word mercury__injection__param_4);
+
+#line 156 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__insert_from_assoc_list_3_p_0(
+#line 156 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 156 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 156 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 156 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 156 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 154 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__insert_from_assoc_list_2_f_0(
+#line 154 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 154 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 154 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 154 "injection.m"
+  MR_Word mercury__injection__param_4,
+#line 154 "injection.m"
+  MR_Word * mercury__injection__param_5);
+
+#line 148 "injection.m"
+void MR_CALL 
+mercury__injection__det_set_4_p_0(
+#line 148 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 148 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 148 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 148 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 148 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 148 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 147 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__det_set_3_f_0(
+#line 147 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 147 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 147 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 147 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 147 "injection.m"
+  MR_Box mercury__injection__param_5);
+
+#line 141 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__set_4_p_0(
+#line 141 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 141 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 141 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 141 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 141 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 141 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 140 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__set_3_f_0(
+#line 140 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 140 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 140 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 140 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 140 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 140 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 133 "injection.m"
+void MR_CALL 
+mercury__injection__det_update_4_p_0(
+#line 133 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 133 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 133 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 133 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 133 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 133 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 132 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__det_update_3_f_0(
+#line 132 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 132 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 132 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 132 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 132 "injection.m"
+  MR_Box mercury__injection__param_5);
+
+#line 126 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__update_4_p_0(
+#line 126 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 126 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 126 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 126 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 126 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 126 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 125 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__update_3_f_0(
+#line 125 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 125 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 125 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 125 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 125 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 125 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 118 "injection.m"
+void MR_CALL 
+mercury__injection__det_insert_4_p_0(
+#line 118 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 118 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 118 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 118 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 118 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 118 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 117 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__det_insert_3_f_0(
+#line 117 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 117 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 117 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 117 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 117 "injection.m"
+  MR_Box mercury__injection__param_5);
+
+#line 111 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__insert_4_p_0(
+#line 111 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 111 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 111 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 111 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 111 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 111 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 110 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__insert_3_f_0(
+#line 110 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 110 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 110 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 110 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 110 "injection.m"
+  MR_Box mercury__injection__param_5,
+#line 110 "injection.m"
+  MR_Word * mercury__injection__param_6);
+
+#line 105 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__contains_value_2_p_0(
+#line 105 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 105 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 105 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 105 "injection.m"
+  MR_Box mercury__injection__param_4);
+
+#line 101 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__contains_key_2_p_0(
+#line 101 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 101 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 101 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 101 "injection.m"
+  MR_Box mercury__injection__param_4);
+
+#line 97 "injection.m"
+void MR_CALL 
+mercury__injection__values_2_p_0(
+#line 97 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 97 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 97 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 97 "injection.m"
+  MR_Word * mercury__injection__param_4);
+
+#line 96 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__values_1_f_0(
+#line 96 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 96 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 96 "injection.m"
+  MR_Word mercury__injection__param_3);
+
+#line 92 "injection.m"
+void MR_CALL 
+mercury__injection__keys_2_p_0(
+#line 92 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 92 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 92 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 92 "injection.m"
+  MR_Word * mercury__injection__param_4);
+
+#line 91 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__keys_1_f_0(
+#line 91 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 91 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 91 "injection.m"
+  MR_Word mercury__injection__param_3);
+
+#line 87 "injection.m"
+void MR_CALL 
+mercury__injection__reverse_lookup_3_p_0(
+#line 87 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 87 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 87 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 87 "injection.m"
+  MR_Box * mercury__injection__param_4,
+#line 87 "injection.m"
+  MR_Box mercury__injection__param_5);
+
+#line 86 "injection.m"
+MR_Box MR_CALL 
+mercury__injection__reverse_lookup_2_f_0(
+#line 86 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 86 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 86 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 86 "injection.m"
+  MR_Box mercury__injection__param_4);
+
+#line 81 "injection.m"
+void MR_CALL 
+mercury__injection__lookup_3_p_0(
+#line 81 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 81 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 81 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 81 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 81 "injection.m"
+  MR_Box * mercury__injection__param_5);
+
+#line 80 "injection.m"
+MR_Box MR_CALL 
+mercury__injection__lookup_2_f_0(
+#line 80 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 80 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 80 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 80 "injection.m"
+  MR_Box mercury__injection__param_4);
+
+#line 75 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__search_3_p_1(
+#line 75 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 75 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 75 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 75 "injection.m"
+  MR_Box * mercury__injection__param_4,
+#line 75 "injection.m"
+  MR_Box mercury__injection__param_5);
+
+#line 74 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__search_3_p_0(
+#line 74 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 74 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 74 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 74 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 74 "injection.m"
+  MR_Box * mercury__injection__param_5);
+
+#line 67 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__reverse_search_3_p_0(
+#line 67 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 67 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 67 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 67 "injection.m"
+  MR_Box * mercury__injection__param_4,
+#line 67 "injection.m"
+  MR_Box mercury__injection__param_5);
+
+#line 66 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__reverse_search_2_f_0(
+#line 66 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 66 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 66 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 66 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 66 "injection.m"
+  MR_Box * mercury__injection__param_5);
+
+#line 61 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__forward_search_3_p_0(
+#line 61 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 61 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 61 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 61 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 61 "injection.m"
+  MR_Box * mercury__injection__param_5);
+
+#line 60 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__forward_search_2_f_0(
+#line 60 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 60 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 60 "injection.m"
+  MR_Word mercury__injection__param_3,
+#line 60 "injection.m"
+  MR_Box mercury__injection__param_4,
+#line 60 "injection.m"
+  MR_Box * mercury__injection__param_5);
+
+#line 56 "injection.m"
+MR_bool MR_CALL 
+mercury__injection__is_empty_1_p_0(
+#line 56 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 56 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 56 "injection.m"
+  MR_Word mercury__injection__param_3);
+
+#line 52 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__singleton_2_f_0(
+#line 52 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 52 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 52 "injection.m"
+  MR_Box mercury__injection__param_3,
+#line 52 "injection.m"
+  MR_Box mercury__injection__param_4);
+
+#line 48 "injection.m"
+void MR_CALL 
+mercury__injection__init_1_p_0(
+#line 48 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 48 "injection.m"
+  MR_Word mercury__injection__param_2,
+#line 48 "injection.m"
+  MR_Word * mercury__injection__param_3);
+
+#line 47 "injection.m"
+MR_Word MR_CALL 
+mercury__injection__init_0_f_0(
+#line 47 "injection.m"
+  MR_Word mercury__injection__param_1,
+#line 47 "injection.m"
+  MR_Word mercury__injection__param_2);
+
+void mercury__injection__init(void);
+void mercury__injection__init_type_tables(void);
+void mercury__injection__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_injection */
+
+/* :- end_interface injection. */

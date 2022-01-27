@@ -1,0 +1,8624 @@
+/*
+** Automatically generated from `introduce_parallelism.m'
+** by the Mercury compiler,
+** version 13.05.2-beta-2013-10-31, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.implicit_parallelism.introduce_parallelism. */
+/* :- implementation. */
+
+/*
+INIT mercury__transform_hlds__implicit_parallelism__introduce_parallelism__init
+ENDINIT
+*/
+
+#include "transform_hlds.implicit_parallelism.introduce_parallelism.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "hlds.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "ll_backend.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "transform_hlds.mih"
+#include "tree234.mih"
+#include "tree_bitset.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.rtti.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.type_util.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.goal_util.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "ll_backend.code_info.mih"
+#include "ll_backend.continuation_info.mih"
+#include "ll_backend.global_data.mih"
+#include "ll_backend.layout.mih"
+#include "ll_backend.llds.mih"
+#include "ll_backend.prog_rep.mih"
+#include "ll_backend.prog_rep_tables.mih"
+#include "ll_backend.stack_layout.mih"
+#include "ll_backend.trace_gen.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.implicit_parallelism.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "transform_hlds.implicit_parallelism.push_goals_together.mih"
+
+
+
+
+#line 151 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 154 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 157 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__pair__pti_pair_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 160 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__pair__pti_pair_2__plain_transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 163 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain_hlds__hlds_pred__type_ctor_info_pred_info_0;
+
+#line 166 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0;
+
+#line 169 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0;
+
+#line 172 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 175 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_string_0;
+
+#line 178 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__maybe__pti_maybe_error_2__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_builtin__type_ctor_info_string_0;
+
+#line 181 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunction_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 184 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_find_first_goal_result_0_0;
+
+#line 187 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+#line 190 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_PseudoTypeInfo transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_find_first_goal_result_0_1[3];
+
+#line 193 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_ConstString transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_find_first_goal_result_0_1[3];
+
+#line 196 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_find_first_goal_result_0_1;
+
+#line 199 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_find_first_goal_result_0_0[1];
+
+#line 202 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_find_first_goal_result_0_1[1];
+
+#line 205 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuPtagLayout transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_find_first_goal_result_0[2];
+
+#line 208 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_find_first_goal_result_0[2];
+
+#line 211 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_find_first_goal_result_0[2];
+
+#line 214 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_PseudoTypeInfo transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_intra_module_proc_label_0_0[4];
+
+#line 217 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_ConstString transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_intra_module_proc_label_0_0[4];
+
+#line 220 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_intra_module_proc_label_0_0;
+
+#line 223 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_intra_module_proc_label_0_0[1];
+
+#line 226 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuPtagLayout transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_intra_module_proc_label_0[1];
+
+#line 229 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_intra_module_proc_label_0[1];
+
+#line 232 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_intra_module_proc_label_0[1];
+
+#line 235 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_EnumFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_functor_desc_introduced_parallelism_0_0;
+
+#line 238 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_EnumFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_functor_desc_introduced_parallelism_0_1;
+
+#line 241 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_EnumFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_value_ordered_introduced_parallelism_0[2];
+
+#line 244 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_EnumFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_name_ordered_introduced_parallelism_0[2];
+
+#line 247 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_introduced_parallelism_0[2];
+
+#line 250 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__tree234__ti_tree234_2transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 253 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_PseudoTypeInfo transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_par_conjunction_and_remaining_goals_0_0[2];
+
+#line 256 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_ConstString transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_par_conjunction_and_remaining_goals_0_0[2];
+
+#line 259 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_par_conjunction_and_remaining_goals_0_0;
+
+#line 262 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_par_conjunction_and_remaining_goals_0_0[1];
+
+#line 265 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuPtagLayout transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_par_conjunction_and_remaining_goals_0[1];
+
+#line 268 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_par_conjunction_and_remaining_goals_0[1];
+
+#line 271 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_par_conjunction_and_remaining_goals_0[1];
+
+#line 274 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_PseudoTypeInfo transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_parallelism_info_0_0[2];
+
+#line 277 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_ConstString transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_parallelism_info_0_0[2];
+
+#line 280 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_parallelism_info_0_0;
+
+#line 283 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_parallelism_info_0_0[1];
+
+#line 286 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuPtagLayout transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_parallelism_info_0[1];
+
+#line 289 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_parallelism_info_0[1];
+
+#line 292 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_parallelism_info_0[1];
+
+#line 295 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_seq_conj_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 298 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____candidate_par_conjunction_0_0_10001(
+#line 301 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 303 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2);
+
+#line 306 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____candidate_par_conjunction_0_0_10001(
+#line 309 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 311 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 313 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 316 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____find_first_goal_result_0_0_10001(
+#line 319 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 321 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2);
+
+#line 324 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____find_first_goal_result_0_0_10001(
+#line 327 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 329 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 331 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 334 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____intra_module_proc_label_0_0_10001(
+#line 337 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 339 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2);
+
+#line 342 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____intra_module_proc_label_0_0_10001(
+#line 345 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 347 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 349 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 352 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____introduced_parallelism_0_0_10001(
+#line 355 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 357 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2);
+
+#line 360 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____introduced_parallelism_0_0_10001(
+#line 363 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 365 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 367 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 370 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____module_candidate_par_conjs_map_0_0_10001(
+#line 373 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 375 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2);
+
+#line 378 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____module_candidate_par_conjs_map_0_0_10001(
+#line 381 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 383 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 385 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 388 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____par_conjunction_and_remaining_goals_0_0_10001(
+#line 391 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 393 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2);
+
+#line 396 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____par_conjunction_and_remaining_goals_0_0_10001(
+#line 399 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 401 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 403 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 406 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____parallelism_info_0_0_10001(
+#line 409 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 411 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2);
+
+#line 414 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____parallelism_info_0_0_10001(
+#line 417 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 419 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 421 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 424 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____seq_conj_0_0_10001(
+#line 427 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 429 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2);
+
+#line 432 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____seq_conj_0_0_10001(
+#line 435 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 437 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 439 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 825 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_52_95_95_91_49_44_32_50_44_32_54_44_32_55_44_32_56_93_95_48_3_p_0(
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 825 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_51_95_95_91_49_44_32_50_44_32_54_44_32_55_44_32_56_93_95_48_3_p_0(
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 825 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_50_95_95_91_50_93_95_48_3_p_0(
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 825 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_49_95_95_91_50_93_95_48_3_p_0(
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 230 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_121_98_101_95_112_97_114_97_108_108_101_108_105_115_101_95_112_114_111_99_95_95_91_51_93_95_48_12_p_0(
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_13,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14,
+#line 230 "introduce_parallelism.m"
+  MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__ProcId_16,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_0_33,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_34,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_0_35,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_36,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_37,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_38,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_39,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_40);
+
+#line 382 "introduce_parallelism.m"
+static MR_Word MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__IntroducedFrom__func__maybe_parallelise_conj__382__1_1_f_0(
+#line 382 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_33);
+
+#line 156 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____seq_conj_0_0(
+#line 156 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 156 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 156 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 156 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____seq_conj_0_0(
+#line 156 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 156 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2);
+
+#line 137 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____parallelism_info_0_0(
+#line 137 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 137 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 137 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 137 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____parallelism_info_0_0(
+#line 137 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 137 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2);
+
+#line 462 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____par_conjunction_and_remaining_goals_0_0(
+#line 462 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 462 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 462 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 462 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____par_conjunction_and_remaining_goals_0_0(
+#line 462 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 462 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2);
+
+#line 161 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____module_candidate_par_conjs_map_0_0(
+#line 161 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 161 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 161 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 161 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____module_candidate_par_conjs_map_0_0(
+#line 161 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 161 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2);
+
+#line 91 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____introduced_parallelism_0_0(
+#line 91 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 91 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 91 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 91 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____introduced_parallelism_0_0(
+#line 91 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_1,
+#line 91 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2);
+
+#line 146 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____intra_module_proc_label_0_0(
+#line 146 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 146 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 146 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 146 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____intra_module_proc_label_0_0(
+#line 146 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 146 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2);
+
+#line 426 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____find_first_goal_result_0_0(
+#line 426 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 426 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 426 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 426 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____find_first_goal_result_0_0(
+#line 426 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 426 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2);
+
+#line 154 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____candidate_par_conjunction_0_0(
+#line 154 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 154 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 154 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 154 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____candidate_par_conjunction_0_0(
+#line 154 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 154 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2);
+
+#line 792 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(
+#line 792 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4,
+#line 792 "introduce_parallelism.m"
+  MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA_5,
+#line 792 "introduce_parallelism.m"
+  MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB_6);
+
+#line 723 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__atomic_goal_reps_match_3_p_0(
+#line 723 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4,
+#line 723 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5,
+#line 723 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6);
+
+#line 674 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__goal_reps_match_3_p_0(
+#line 674 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_A_45,
+#line 674 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_B_46,
+#line 674 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4,
+#line 674 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalA_5,
+#line 674 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalB_6);
+
+#line 623 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__compare_goal_paths_3_p_0(
+#line 623 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PathA_4,
+#line 623 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PathB_5,
+#line 623 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__Result_6);
+
+#line 615 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__compare_candidate_par_conjunctions_3_p_0(
+#line 615 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4,
+#line 615 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5,
+#line 615 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__Result_6);
+
+#line 576 "introduce_parallelism.m"
+static MR_Word MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__report_failed_parallelisation_3_f_0(
+#line 576 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_5,
+#line 576 "introduce_parallelism.m"
+  MR_String transform_hlds__implicit_parallelism__introduce_parallelism__GoalPath_6,
+#line 576 "introduce_parallelism.m"
+  MR_String transform_hlds__implicit_parallelism__introduce_parallelism__Error_7);
+
+#line 542 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__build_seq_conjuncts_8_p_0(
+#line 542 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_1,
+#line 542 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_2,
+#line 542 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3,
+#line 542 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4,
+#line 542 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5,
+#line 542 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6,
+#line 542 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7,
+#line 542 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8);
+
+#line 515 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__build_par_conjuncts_8_p_0(
+#line 515 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_1,
+#line 515 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_2,
+#line 515 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3,
+#line 515 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4,
+#line 515 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5,
+#line 515 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6,
+#line 515 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7,
+#line 515 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8);
+
+#line 468 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__build_par_conjunction_6_p_0(
+#line 468 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_7,
+#line 468 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_8,
+#line 468 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Instmap0_9,
+#line 468 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_26,
+#line 468 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11,
+#line 468 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_12);
+
+#line 434 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__find_first_goal_6_p_0(
+#line 434 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRep_1,
+#line 434 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 434 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_3,
+#line 434 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4,
+#line 434 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_5,
+#line 434 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__6_6);
+
+#line 385 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_conj_6_p_0_2(
+#line 385 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 385 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 385 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 385 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 382 "introduce_parallelism.m"
+static MR_Box MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_conj_6_p_0_1(
+#line 382 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 382 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1);
+
+#line 366 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_conj_6_p_0(
+#line 366 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_7,
+#line 366 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_8,
+#line 366 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9,
+#line 366 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Instmap0_10,
+#line 366 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_11,
+#line 366 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_12);
+
+#line 344 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_goal_11_p_0_1(
+#line 344 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 344 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 344 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 344 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 329 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_goal_11_p_0(
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_12,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_13,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_14,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Instmap0_15,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_17,
+#line 329 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__Goal_18,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_IntroducedParallelism_0_27,
+#line 329 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_IntroducedParallelism_28,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_29,
+#line 329 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_30);
+
+#line 306 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__parallelise_proc_9_p_0_2(
+#line 306 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 306 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 306 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 306 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3,
+#line 306 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_4,
+#line 306 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_5,
+#line 306 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_6,
+#line 306 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_7);
+
+#line 305 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__parallelise_proc_9_p_0_1(
+#line 305 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 305 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 305 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 305 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3);
+
+#line 269 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__parallelise_proc_9_p_0(
+#line 269 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPCProc_10,
+#line 269 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_11,
+#line 269 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_0_34,
+#line 269 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_35,
+#line 269 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__IntroducedParallelism_13,
+#line 269 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_36,
+#line 269 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_37,
+#line 269 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_38,
+#line 269 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_39);
+
+#line 230 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_proc_12_p_0(
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_13,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism___PredId_15,
+#line 230 "introduce_parallelism.m"
+  MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__ProcId_16,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_0_33,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_34,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_0_35,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_36,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_37,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_38,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_39,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_40);
+
+#line 217 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_pred_10_p_0_1(
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 217 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3,
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_4,
+#line 217 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_5,
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_6,
+#line 217 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_7,
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_8,
+#line 217 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_9);
+
+#line 206 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_pred_10_p_0(
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_11,
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredId_12,
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_PredTable_0_23,
+#line 206 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_PredTable_24,
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyPredIntroducedParallelism_0_25,
+#line 206 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyPredIntroducedParallelism_26,
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_27,
+#line 206 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_28,
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_29,
+#line 206 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_30);
+
+#line 188 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__cpc_proc_is_in_module_3_p_0(
+#line 188 "introduce_parallelism.m"
+  MR_String transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_4,
+#line 188 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 188 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3);
+
+#line 112 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__do_apply_implicit_parallelism_transformation_4_p_0_2(
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 112 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3,
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_4,
+#line 112 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_5,
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_6,
+#line 112 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_7,
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_8,
+#line 112 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_9);
+
+#line 184 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__do_apply_implicit_parallelism_transformation_4_p_0_1(
+#line 184 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 184 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 184 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2);
+
+#line 95 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__do_apply_implicit_parallelism_transformation_4_p_0(
+#line 95 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__SourceFileMap_5,
+#line 95 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__Specs_6,
+#line 95 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_22,
+#line 95 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_23);
+
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[8][3];
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[24][2];
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_3[3][6];
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_4[1][13];
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_5[6][1];
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_6[1][15];
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_7[1][14];
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_8[1][9];
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_9[1][5];
+
+
+
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[8][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[2]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[2]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[2]))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_3[1])),
+    ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__parallelise_proc_9_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_9[0])),
+    ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_conj_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_3[2])),
+    ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_conj_6_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[24][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[1]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[1]))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "conjunctions feedback information."))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[6]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "feedback file does not the candidate parallel"))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[8]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[7])))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "Implicit parallelism was requested but the"))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[10]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[9])))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "conjunctions, it will not be automatically parallelised."))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[12]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "Warning: this procedure contains explicit parallel"))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[14]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[13])))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[15])))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) ((MR_String) ":"))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[17]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[16])))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_cons_id_arity_rep_0))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_5[0])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "In"))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) ((MR_String) ":"))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "Warning: could not auto-parallelise"))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_3[3][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__pair__pti_pair_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__pair__pti_pair_2__plain_transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_comparison_result_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__instmap__hlds__instmap__type_ctor_info_instmap_0)),
+    ((MR_Box) (&hlds__instmap__hlds__instmap__type_ctor_info_instmap_0)),
+    ((MR_Box) (&hlds__instmap__hlds__instmap__type_ctor_info_instmap_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_4[1][13] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_parallelism_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain_hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain_hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_5[6][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[11])))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_String) "Could not find partition within conjunction: perhaps the program has changed"))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_String) "The goals before the parallel conjunction do not match those in the feedback file"))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) ((MR_String) "The goals within the parallel conjunction do not match those in the feedback file"))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_String) "The goals after the parallel conjunction do not match those in the feedback file"))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_6[1][15] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 12)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_parallelism_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_7[1][14] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 11)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&ll_backend__prog_rep__ll_backend__prog_rep__type_ctor_info_prog_rep_info_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&hlds__instmap__hlds__instmap__type_ctor_info_instmap_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_8[1][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&ll_backend__prog_rep__ll_backend__prog_rep__type_ctor_info_prog_rep_info_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0)),
+    ((MR_Box) (&hlds__instmap__hlds__instmap__type_ctor_info_instmap_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism__maybe__pti_maybe_error_2__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_9[1][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&hlds__instmap__hlds__instmap__type_ctor_info_instmap_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "mdbcomp.program_representation.mh"
+#include "mdbcomp.program_representation.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "time.mh"
+#include "time.mh"
+#include "array.mh"
+#include "array.mh"
+#include "mdbcomp.rtti_access.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+#line 1420 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1,
+  {
+    (MR_TypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1428 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1,
+  {
+    (MR_TypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1436 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__pair__pti_pair_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0,
+    (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1445 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__pair__pti_pair_2__plain_transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0,
+    (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1454 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_id_0__plain_hlds__hlds_pred__type_ctor_info_pred_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0,
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0
+  }
+};
+
+#line 1463 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0
+  }
+};
+
+#line 1471 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0
+  }
+};
+
+#line 1480 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1488 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1497 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__maybe__pti_maybe_error_2__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0,
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1506 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunction_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1,
+  {
+    (MR_TypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1514 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_candidate_par_conjunction_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Unify____candidate_par_conjunction_0_0_10001)),
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Compare____candidate_par_conjunction_0_0_10001)),
+  (MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism",
+  (MR_String) "candidate_par_conjunction",
+  {
+    NULL
+  },
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunction_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1535 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_find_first_goal_result_0_0 = {
+  (MR_String) "did_not_find_first_goal",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1550 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+#line 1558 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_PseudoTypeInfo transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_find_first_goal_result_0_1[3] = {
+  (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0,
+  (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0
+};
+
+#line 1565 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_ConstString transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_find_first_goal_result_0_1[3] = {
+  (MR_String) "ffg_goals_before",
+  (MR_String) "ffg_goal",
+  (MR_String) "ffg_goals_after"
+};
+
+#line 1572 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_find_first_goal_result_0_1 = {
+  (MR_String) "found_first_goal",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_find_first_goal_result_0_1,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_find_first_goal_result_0_1,
+  NULL,
+  NULL
+};
+
+#line 1587 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_find_first_goal_result_0_0[1] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_find_first_goal_result_0_0
+};
+
+#line 1592 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_find_first_goal_result_0_1[1] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_find_first_goal_result_0_1
+};
+
+#line 1597 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuPtagLayout transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_find_first_goal_result_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_find_first_goal_result_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_find_first_goal_result_0_1
+  }
+};
+
+#line 1611 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_find_first_goal_result_0[2] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_find_first_goal_result_0_0,
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_find_first_goal_result_0_1
+};
+
+#line 1617 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_find_first_goal_result_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 1623 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_find_first_goal_result_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Unify____find_first_goal_result_0_0_10001)),
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Compare____find_first_goal_result_0_0_10001)),
+  (MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism",
+  (MR_String) "find_first_goal_result",
+  {
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_find_first_goal_result_0
+  },
+  {
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_find_first_goal_result_0
+  },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_find_first_goal_result_0
+};
+
+#line 1644 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_PseudoTypeInfo transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_intra_module_proc_label_0_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_pred_or_func_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+#line 1652 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_ConstString transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_intra_module_proc_label_0_0[4] = {
+  (MR_String) "im_pred_name",
+  (MR_String) "im_arity",
+  (MR_String) "im_pred_or_func",
+  (MR_String) "im_mode"
+};
+
+#line 1660 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_intra_module_proc_label_0_0 = {
+  (MR_String) "intra_module_proc_label",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_intra_module_proc_label_0_0,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_intra_module_proc_label_0_0,
+  NULL,
+  NULL
+};
+
+#line 1675 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_intra_module_proc_label_0_0[1] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_intra_module_proc_label_0_0
+};
+
+#line 1680 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuPtagLayout transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_intra_module_proc_label_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_intra_module_proc_label_0_0
+  }
+};
+
+#line 1689 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_intra_module_proc_label_0[1] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_intra_module_proc_label_0_0
+};
+
+#line 1694 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_intra_module_proc_label_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1699 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Unify____intra_module_proc_label_0_0_10001)),
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Compare____intra_module_proc_label_0_0_10001)),
+  (MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism",
+  (MR_String) "intra_module_proc_label",
+  {
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_intra_module_proc_label_0
+  },
+  {
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_intra_module_proc_label_0
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_intra_module_proc_label_0
+};
+
+#line 1720 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_EnumFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_functor_desc_introduced_parallelism_0_0 = {
+  (MR_String) "have_not_introduced_parallelism",
+  (MR_Integer) 0
+};
+
+#line 1726 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_EnumFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_functor_desc_introduced_parallelism_0_1 = {
+  (MR_String) "introduced_parallelism",
+  (MR_Integer) 1
+};
+
+#line 1732 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_EnumFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_value_ordered_introduced_parallelism_0[2] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_functor_desc_introduced_parallelism_0_0,
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_functor_desc_introduced_parallelism_0_1
+};
+
+#line 1738 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_EnumFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_name_ordered_introduced_parallelism_0[2] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_functor_desc_introduced_parallelism_0_0,
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_functor_desc_introduced_parallelism_0_1
+};
+
+#line 1744 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_introduced_parallelism_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 1750 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Unify____introduced_parallelism_0_0_10001)),
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Compare____introduced_parallelism_0_0_10001)),
+  (MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism",
+  (MR_String) "introduced_parallelism",
+  {
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_name_ordered_introduced_parallelism_0
+  },
+  {
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__enum_value_ordered_introduced_parallelism_0
+  },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_introduced_parallelism_0
+};
+
+#line 1771 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__implicit_parallelism__introduce_parallelism__tree234__ti_tree234_2transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0,
+    (MR_TypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1780 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_module_candidate_par_conjs_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Unify____module_candidate_par_conjs_map_0_0_10001)),
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Compare____module_candidate_par_conjs_map_0_0_10001)),
+  (MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism",
+  (MR_String) "module_candidate_par_conjs_map",
+  {
+    NULL
+  },
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__tree234__ti_tree234_2transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1801 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_PseudoTypeInfo transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_par_conjunction_and_remaining_goals_0_0[2] = {
+  (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0,
+  (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0
+};
+
+#line 1807 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_ConstString transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_par_conjunction_and_remaining_goals_0_0[2] = {
+  (MR_String) "pcrg_par_conjunction",
+  (MR_String) "pcrg_remaining_goals"
+};
+
+#line 1813 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_par_conjunction_and_remaining_goals_0_0 = {
+  (MR_String) "par_conjunction_and_remaining_goals",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_par_conjunction_and_remaining_goals_0_0,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_par_conjunction_and_remaining_goals_0_0,
+  NULL,
+  NULL
+};
+
+#line 1828 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_par_conjunction_and_remaining_goals_0_0[1] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_par_conjunction_and_remaining_goals_0_0
+};
+
+#line 1833 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuPtagLayout transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_par_conjunction_and_remaining_goals_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_par_conjunction_and_remaining_goals_0_0
+  }
+};
+
+#line 1842 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_par_conjunction_and_remaining_goals_0[1] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_par_conjunction_and_remaining_goals_0_0
+};
+
+#line 1847 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_par_conjunction_and_remaining_goals_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1852 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_par_conjunction_and_remaining_goals_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Unify____par_conjunction_and_remaining_goals_0_0_10001)),
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Compare____par_conjunction_and_remaining_goals_0_0_10001)),
+  (MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism",
+  (MR_String) "par_conjunction_and_remaining_goals",
+  {
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_par_conjunction_and_remaining_goals_0
+  },
+  {
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_par_conjunction_and_remaining_goals_0
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_par_conjunction_and_remaining_goals_0
+};
+
+#line 1873 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_PseudoTypeInfo transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_parallelism_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_params_0,
+  (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__tree234__ti_tree234_2transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+};
+
+#line 1879 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_ConstString transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_parallelism_info_0_0[2] = {
+  (MR_String) "pi_parameters",
+  (MR_String) "pi_cpc_map"
+};
+
+#line 1885 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDesc transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_parallelism_info_0_0 = {
+  (MR_String) "parallelism_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_types_parallelism_info_0_0,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__field_names_parallelism_info_0_0,
+  NULL,
+  NULL
+};
+
+#line 1900 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_parallelism_info_0_0[1] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_parallelism_info_0_0
+};
+
+#line 1905 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuPtagLayout transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_parallelism_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_stag_ordered_parallelism_info_0_0
+  }
+};
+
+#line 1914 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_DuFunctorDescPtr transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_parallelism_info_0[1] = {
+  &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_functor_desc_parallelism_info_0_0
+};
+
+#line 1919 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_parallelism_info_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1924 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_parallelism_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Unify____parallelism_info_0_0_10001)),
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Compare____parallelism_info_0_0_10001)),
+  (MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism",
+  (MR_String) "parallelism_info",
+  {
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_name_ordered_parallelism_info_0
+  },
+  {
+    transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__du_ptag_ordered_parallelism_info_0
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__functor_number_map_parallelism_info_0
+};
+
+#line 1945 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_seq_conj_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1,
+  {
+    (MR_TypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1953 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+const MR_TypeCtorInfo_Struct transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_seq_conj_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Unify____seq_conj_0_0_10001)),
+  ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism____Compare____seq_conj_0_0_10001)),
+  (MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism",
+  (MR_String) "seq_conj",
+  {
+    NULL
+  },
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__implicit_parallelism__introduce_parallelism__mdbcomp__feedback__automatic_parallelism__ti_seq_conj_1mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1974 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____candidate_par_conjunction_0_0_10001(
+#line 1977 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 1979 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2)
+#line 1981 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 1983 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 1985 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 1988 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 1990 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism____Unify____candidate_par_conjunction_0_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2));
+    }
+#line 1993 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 1995 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 1997 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2000 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____candidate_par_conjunction_0_0_10001(
+#line 2003 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2005 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 2007 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 2009 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2011 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2013 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1;
+
+#line 2016 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2018 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism____Compare____candidate_par_conjunction_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3));
+    }
+#line 2021 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1));
+#line 2023 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2025 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2028 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____find_first_goal_result_0_0_10001(
+#line 2031 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2033 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2)
+#line 2035 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2037 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2039 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 2042 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2044 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism____Unify____find_first_goal_result_0_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2));
+    }
+#line 2047 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 2049 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2051 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2054 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____find_first_goal_result_0_0_10001(
+#line 2057 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2059 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 2061 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 2063 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2065 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2067 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1;
+
+#line 2070 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2072 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism____Compare____find_first_goal_result_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3));
+    }
+#line 2075 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1));
+#line 2077 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2079 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2082 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____intra_module_proc_label_0_0_10001(
+#line 2085 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2087 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2)
+#line 2089 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2091 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2093 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 2096 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2098 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism____Unify____intra_module_proc_label_0_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2));
+    }
+#line 2101 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 2103 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2105 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2108 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____intra_module_proc_label_0_0_10001(
+#line 2111 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2113 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 2115 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 2117 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2119 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2121 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1;
+
+#line 2124 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2126 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism____Compare____intra_module_proc_label_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3));
+    }
+#line 2129 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1));
+#line 2131 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2133 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2136 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____introduced_parallelism_0_0_10001(
+#line 2139 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2141 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2)
+#line 2143 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2145 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2147 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 2150 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2152 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism____Unify____introduced_parallelism_0_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2));
+    }
+#line 2155 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 2157 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2159 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2162 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____introduced_parallelism_0_0_10001(
+#line 2165 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2167 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 2169 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 2171 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2173 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2175 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1;
+
+#line 2178 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2180 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism____Compare____introduced_parallelism_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3));
+    }
+#line 2183 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1));
+#line 2185 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2187 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2190 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____module_candidate_par_conjs_map_0_0_10001(
+#line 2193 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2195 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2)
+#line 2197 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2199 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2201 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 2204 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2206 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism____Unify____module_candidate_par_conjs_map_0_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2));
+    }
+#line 2209 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 2211 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2213 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2216 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____module_candidate_par_conjs_map_0_0_10001(
+#line 2219 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2221 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 2223 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 2225 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2227 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2229 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1;
+
+#line 2232 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2234 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism____Compare____module_candidate_par_conjs_map_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3));
+    }
+#line 2237 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1));
+#line 2239 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2241 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2244 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____par_conjunction_and_remaining_goals_0_0_10001(
+#line 2247 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2249 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2)
+#line 2251 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2253 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2255 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 2258 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2260 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism____Unify____par_conjunction_and_remaining_goals_0_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2));
+    }
+#line 2263 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 2265 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2267 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2270 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____par_conjunction_and_remaining_goals_0_0_10001(
+#line 2273 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2275 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 2277 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 2279 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2281 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2283 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1;
+
+#line 2286 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2288 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism____Compare____par_conjunction_and_remaining_goals_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3));
+    }
+#line 2291 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1));
+#line 2293 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2295 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2298 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____parallelism_info_0_0_10001(
+#line 2301 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2303 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2)
+#line 2305 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2307 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2309 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 2312 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2314 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism____Unify____parallelism_info_0_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2));
+    }
+#line 2317 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 2319 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2321 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2324 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____parallelism_info_0_0_10001(
+#line 2327 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2329 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 2331 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 2333 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2335 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2337 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1;
+
+#line 2340 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2342 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism____Compare____parallelism_info_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3));
+    }
+#line 2345 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1));
+#line 2347 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2349 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2352 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____seq_conj_0_0_10001(
+#line 2355 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2357 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2)
+#line 2359 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2361 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2363 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 2366 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2368 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism____Unify____seq_conj_0_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2));
+    }
+#line 2371 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 2373 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2375 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 2378 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____seq_conj_0_0_10001(
+#line 2381 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 2383 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 2385 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 2387 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+{
+#line 2389 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 2391 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1;
+
+#line 2394 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    {
+#line 2396 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      transform_hlds__implicit_parallelism__introduce_parallelism____Compare____seq_conj_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3));
+    }
+#line 2399 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__1_1));
+#line 2401 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 2403 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+}
+
+#line 825 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_52_95_95_91_49_44_32_50_44_32_54_44_32_55_44_32_56_93_95_48_3_p_0(
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 825 "introduce_parallelism.m"
+{
+#line 827 "introduce_parallelism.m"
+  while (MR_TRUE)
+#line 827 "introduce_parallelism.m"
+    {
+#line 827 "introduce_parallelism.m"
+      /* tailcall optimized into a loop */
+#line 827 "introduce_parallelism.m"
+      {
+#line 827 "introduce_parallelism.m"
+        MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 827 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 827 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 827 "introduce_parallelism.m"
+        else
+#line 828 "introduce_parallelism.m"
+          {
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__A_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__As_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__B_8;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9;
+
+#line 828 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+#line 828 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 828 "introduce_parallelism.m"
+              {
+#line 828 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__B_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 828 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 829 "introduce_parallelism.m"
+                {
+#line 829 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__goal_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16, transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17, transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18, transform_hlds__implicit_parallelism__introduce_parallelism__A_6, transform_hlds__implicit_parallelism__introduce_parallelism__B_8);
+                }
+#line 828 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 830 "introduce_parallelism.m"
+                  {
+#line 830 "introduce_parallelism.m"
+                    /* direct tailcall eliminated */
+#line 830 "introduce_parallelism.m"
+                    {
+#line 830 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2__tmp_copy_2 = transform_hlds__implicit_parallelism__introduce_parallelism__As_7;
+#line 830 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3__tmp_copy_3 = transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9;
+
+#line 830 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3__tmp_copy_3;
+#line 830 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2__tmp_copy_2;
+#line 830 "introduce_parallelism.m"
+                    }
+#line 830 "introduce_parallelism.m"
+                    continue;
+#line 830 "introduce_parallelism.m"
+                  }
+#line 828 "introduce_parallelism.m"
+              }
+#line 828 "introduce_parallelism.m"
+          }
+#line 827 "introduce_parallelism.m"
+        return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 827 "introduce_parallelism.m"
+      }
+#line 827 "introduce_parallelism.m"
+      break;
+#line 827 "introduce_parallelism.m"
+    }
+#line 825 "introduce_parallelism.m"
+}
+
+#line 825 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_51_95_95_91_49_44_32_50_44_32_54_44_32_55_44_32_56_93_95_48_3_p_0(
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 825 "introduce_parallelism.m"
+{
+#line 827 "introduce_parallelism.m"
+  while (MR_TRUE)
+#line 827 "introduce_parallelism.m"
+    {
+#line 827 "introduce_parallelism.m"
+      /* tailcall optimized into a loop */
+#line 827 "introduce_parallelism.m"
+      {
+#line 827 "introduce_parallelism.m"
+        MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 827 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 827 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 827 "introduce_parallelism.m"
+        else
+#line 828 "introduce_parallelism.m"
+          {
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_16_29;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__A_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__As_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__B_8;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_22;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__OtherConsIds_23;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_24;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_25;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_26_26;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_27_27;
+
+#line 828 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+#line 828 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 828 "introduce_parallelism.m"
+              {
+#line 828 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__B_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 828 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 788 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__A_6, (MR_Integer) 0)));
+#line 788 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__OtherConsIds_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__A_6, (MR_Integer) 1)));
+#line 788 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__A_6, (MR_Integer) 2)));
+#line 789 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__B_8, (MR_Integer) 0)));
+#line 789 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__B_8, (MR_Integer) 1)));
+#line 789 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__B_8, (MR_Integer) 2)));
+#line 789 "introduce_parallelism.m"
+                {
+#line 789 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mdbcomp__program_representation____Unify____cons_id_arity_rep_0_0(transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_22, transform_hlds__implicit_parallelism__introduce_parallelism__V_26_26);
+                }
+#line 828 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 828 "introduce_parallelism.m"
+                  {
+#line 2590 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                    transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_16_29 = (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[19];
+#line 789 "introduce_parallelism.m"
+                    {
+#line 789 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_16_29, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__OtherConsIds_23)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_27_27)));
+                    }
+#line 828 "introduce_parallelism.m"
+                    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 828 "introduce_parallelism.m"
+                      {
+#line 790 "introduce_parallelism.m"
+                        {
+#line 790 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__goal_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16, transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17, transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18, transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_24, transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_25);
+                        }
+#line 828 "introduce_parallelism.m"
+                        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 830 "introduce_parallelism.m"
+                          {
+#line 830 "introduce_parallelism.m"
+                            /* direct tailcall eliminated */
+#line 830 "introduce_parallelism.m"
+                            {
+#line 830 "introduce_parallelism.m"
+                              MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2__tmp_copy_2 = transform_hlds__implicit_parallelism__introduce_parallelism__As_7;
+#line 830 "introduce_parallelism.m"
+                              MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3__tmp_copy_3 = transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9;
+
+#line 830 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3__tmp_copy_3;
+#line 830 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2__tmp_copy_2;
+#line 830 "introduce_parallelism.m"
+                            }
+#line 830 "introduce_parallelism.m"
+                            continue;
+#line 830 "introduce_parallelism.m"
+                          }
+#line 828 "introduce_parallelism.m"
+                      }
+#line 828 "introduce_parallelism.m"
+                  }
+#line 828 "introduce_parallelism.m"
+              }
+#line 828 "introduce_parallelism.m"
+          }
+#line 827 "introduce_parallelism.m"
+        return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 827 "introduce_parallelism.m"
+      }
+#line 827 "introduce_parallelism.m"
+      break;
+#line 827 "introduce_parallelism.m"
+    }
+#line 825 "introduce_parallelism.m"
+}
+
+#line 825 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_50_95_95_91_50_93_95_48_3_p_0(
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 825 "introduce_parallelism.m"
+{
+#line 827 "introduce_parallelism.m"
+  while (MR_TRUE)
+#line 827 "introduce_parallelism.m"
+    {
+#line 827 "introduce_parallelism.m"
+      /* tailcall optimized into a loop */
+#line 827 "introduce_parallelism.m"
+      {
+#line 827 "introduce_parallelism.m"
+        MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 827 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 827 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 827 "introduce_parallelism.m"
+        else
+#line 828 "introduce_parallelism.m"
+          {
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__A_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__As_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__B_8;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9;
+
+#line 828 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+#line 828 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 828 "introduce_parallelism.m"
+              {
+#line 828 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__B_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 828 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 813 "introduce_parallelism.m"
+                if ((transform_hlds__implicit_parallelism__introduce_parallelism__A_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 813 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__B_8 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 813 "introduce_parallelism.m"
+                else
+#line 814 "introduce_parallelism.m"
+                  {
+#line 814 "introduce_parallelism.m"
+                    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA_15 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__A_6, (MR_Integer) 0)));
+#line 814 "introduce_parallelism.m"
+                    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB_16;
+#line 796 "introduce_parallelism.m"
+                    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_20_20;
+
+#line 814 "introduce_parallelism.m"
+                    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__B_8)) == (MR_mktag((MR_Integer) 1)));
+#line 814 "introduce_parallelism.m"
+                    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 814 "introduce_parallelism.m"
+                      {
+#line 814 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__VarB_16 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__B_8, (MR_Integer) 0)));
+#line 796 "introduce_parallelism.m"
+                        {
+#line 796 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mdbcomp__program_representation__search_var_name_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12, transform_hlds__implicit_parallelism__introduce_parallelism__VarA_15, &transform_hlds__implicit_parallelism__introduce_parallelism__V_20_20);
+                        }
+#line 802 "introduce_parallelism.m"
+                        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 801 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__VarA_15 == transform_hlds__implicit_parallelism__introduce_parallelism__VarB_16);
+#line 802 "introduce_parallelism.m"
+                        else
+#line 807 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 814 "introduce_parallelism.m"
+                      }
+#line 814 "introduce_parallelism.m"
+                  }
+#line 828 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 830 "introduce_parallelism.m"
+                  {
+#line 830 "introduce_parallelism.m"
+                    /* direct tailcall eliminated */
+#line 830 "introduce_parallelism.m"
+                    {
+#line 830 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2__tmp_copy_2 = transform_hlds__implicit_parallelism__introduce_parallelism__As_7;
+#line 830 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3__tmp_copy_3 = transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9;
+
+#line 830 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3__tmp_copy_3;
+#line 830 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2__tmp_copy_2;
+#line 830 "introduce_parallelism.m"
+                    }
+#line 830 "introduce_parallelism.m"
+                    continue;
+#line 830 "introduce_parallelism.m"
+                  }
+#line 828 "introduce_parallelism.m"
+              }
+#line 828 "introduce_parallelism.m"
+          }
+#line 827 "introduce_parallelism.m"
+        return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 827 "introduce_parallelism.m"
+      }
+#line 827 "introduce_parallelism.m"
+      break;
+#line 827 "introduce_parallelism.m"
+    }
+#line 825 "introduce_parallelism.m"
+}
+
+#line 825 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_49_95_95_91_50_93_95_48_3_p_0(
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 825 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 825 "introduce_parallelism.m"
+{
+#line 827 "introduce_parallelism.m"
+  while (MR_TRUE)
+#line 827 "introduce_parallelism.m"
+    {
+#line 827 "introduce_parallelism.m"
+      /* tailcall optimized into a loop */
+#line 827 "introduce_parallelism.m"
+      {
+#line 827 "introduce_parallelism.m"
+        MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 827 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 827 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 827 "introduce_parallelism.m"
+        else
+#line 828 "introduce_parallelism.m"
+          {
+#line 828 "introduce_parallelism.m"
+            MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__A_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__As_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 828 "introduce_parallelism.m"
+            MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__B_8;
+#line 828 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9;
+#line 796 "introduce_parallelism.m"
+            MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16;
+
+#line 828 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+#line 828 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 828 "introduce_parallelism.m"
+              {
+#line 828 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__B_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 828 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 796 "introduce_parallelism.m"
+                {
+#line 796 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mdbcomp__program_representation__search_var_name_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12, transform_hlds__implicit_parallelism__introduce_parallelism__A_6, &transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16);
+                }
+#line 802 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 801 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__A_6 == transform_hlds__implicit_parallelism__introduce_parallelism__B_8);
+#line 802 "introduce_parallelism.m"
+                else
+#line 807 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 828 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 830 "introduce_parallelism.m"
+                  {
+#line 830 "introduce_parallelism.m"
+                    /* direct tailcall eliminated */
+#line 830 "introduce_parallelism.m"
+                    {
+#line 830 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2__tmp_copy_2 = transform_hlds__implicit_parallelism__introduce_parallelism__As_7;
+#line 830 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3__tmp_copy_3 = transform_hlds__implicit_parallelism__introduce_parallelism__Bs_9;
+
+#line 830 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3__tmp_copy_3;
+#line 830 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2__tmp_copy_2;
+#line 830 "introduce_parallelism.m"
+                    }
+#line 830 "introduce_parallelism.m"
+                    continue;
+#line 830 "introduce_parallelism.m"
+                  }
+#line 828 "introduce_parallelism.m"
+              }
+#line 828 "introduce_parallelism.m"
+          }
+#line 827 "introduce_parallelism.m"
+        return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 827 "introduce_parallelism.m"
+      }
+#line 827 "introduce_parallelism.m"
+      break;
+#line 827 "introduce_parallelism.m"
+    }
+#line 825 "introduce_parallelism.m"
+}
+
+#line 230 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_121_98_101_95_112_97_114_97_108_108_101_108_105_115_101_95_112_114_111_99_95_95_91_51_93_95_48_12_p_0(
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_13,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14,
+#line 230 "introduce_parallelism.m"
+  MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__ProcId_16,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_0_33,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_34,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_0_35,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_36,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_37,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_38,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_39,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_40)
+#line 230 "introduce_parallelism.m"
+{
+#line 237 "introduce_parallelism.m"
+  {
+#line 237 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 237 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_47_47 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0;
+#line 237 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_48_48 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0;
+#line 237 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcInfo0_21;
+#line 237 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__Name_22;
+#line 237 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__Arity_23;
+#line 237 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_24;
+#line 237 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__Mode_25;
+#line 237 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_26;
+#line 237 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPCMap_27;
+#line 238 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv0_ProcInfo0_21;
+#line 246 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46;
+#line 265 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPCProc_28;
+#line 247 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv1_CPCProc_28;
+
+#line 238 "introduce_parallelism.m"
+    {
+#line 238 "introduce_parallelism.m"
+      mercury__map__lookup_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_47_47, transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_48_48, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_0_33, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ProcId_16)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv0_ProcInfo0_21);
+    }
+#line 238 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__ProcInfo0_21 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv0_ProcInfo0_21);
+#line 241 "introduce_parallelism.m"
+    {
+#line 241 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__Name_22 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14);
+    }
+#line 242 "introduce_parallelism.m"
+    {
+#line 242 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__Arity_23 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14);
+    }
+#line 243 "introduce_parallelism.m"
+    {
+#line 243 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_24 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14);
+    }
+#line 244 "introduce_parallelism.m"
+    {
+#line 244 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__Mode_25 = hlds__hlds_pred__proc_id_to_int_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcId_16);
+    }
+#line 245 "introduce_parallelism.m"
+    {
+#line 245 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 245 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_26, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Name_22));
+#line 245 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_26, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Arity_23));
+#line 245 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_26, 2) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_24));
+#line 245 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_26, 3) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Mode_25));
+#line 245 "introduce_parallelism.m"
+    }
+#line 246 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_13, (MR_Integer) 0)));
+#line 246 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__CPCMap_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_13, (MR_Integer) 1)));
+#line 247 "introduce_parallelism.m"
+    {
+#line 247 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mercury__map__search_3_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0, (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[2], transform_hlds__implicit_parallelism__introduce_parallelism__CPCMap_27, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_26)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv1_CPCProc_28);
+    }
+#line 247 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 247 "introduce_parallelism.m"
+      {
+#line 247 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__CPCProc_28 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv1_CPCProc_28);
+#line 247 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 247 "introduce_parallelism.m"
+      }
+#line 265 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 248 "introduce_parallelism.m"
+      {
+#line 248 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HasParallelConj_29;
+
+#line 248 "introduce_parallelism.m"
+        {
+#line 248 "introduce_parallelism.m"
+          hlds__hlds_pred__proc_info_get_has_parallel_conj_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcInfo0_21, &transform_hlds__implicit_parallelism__introduce_parallelism__HasParallelConj_29);
+        }
+#line 253 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__HasParallelConj_29 == (MR_Integer) 0))
+#line 254 "introduce_parallelism.m"
+          {
+#line 254 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcInfo_31;
+#line 254 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcIntroducedParallelism_32;
+
+#line 255 "introduce_parallelism.m"
+            {
+#line 255 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__parallelise_proc_9_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__CPCProc_28, transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14, transform_hlds__implicit_parallelism__introduce_parallelism__ProcInfo0_21, &transform_hlds__implicit_parallelism__introduce_parallelism__ProcInfo_31, &transform_hlds__implicit_parallelism__introduce_parallelism__ProcIntroducedParallelism_32, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_37, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_38, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_39, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_40);
+            }
+#line 259 "introduce_parallelism.m"
+            if ((transform_hlds__implicit_parallelism__introduce_parallelism__ProcIntroducedParallelism_32 == (MR_Integer) 0))
+#line 258 "introduce_parallelism.m"
+              {
+#line 258 "introduce_parallelism.m"
+                *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_34 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_0_33;
+#line 258 "introduce_parallelism.m"
+                *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_36 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_0_35;
+#line 258 "introduce_parallelism.m"
+              }
+#line 259 "introduce_parallelism.m"
+            else
+#line 260 "introduce_parallelism.m"
+              {
+#line 261 "introduce_parallelism.m"
+                *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_36 = (MR_Integer) 1;
+#line 262 "introduce_parallelism.m"
+                {
+#line 262 "introduce_parallelism.m"
+                  mercury__map__det_update_4_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_47_47, transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_48_48, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ProcId_16)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ProcInfo_31)), transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_0_33, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_34);
+#line 262 "introduce_parallelism.m"
+                  return;
+                }
+#line 260 "introduce_parallelism.m"
+              }
+#line 254 "introduce_parallelism.m"
+          }
+#line 253 "introduce_parallelism.m"
+        else
+#line 250 "introduce_parallelism.m"
+          {
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Spec_30;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_53;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_54;
+#line 250 "introduce_parallelism.m"
+            MR_String transform_hlds__implicit_parallelism__introduce_parallelism__PredName_55;
+#line 250 "introduce_parallelism.m"
+            MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__Arity_56;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_57;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Context_58;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_61_61;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_62_62;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_63_63;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_65_65;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_66_66;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_82_82;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_83_83;
+#line 250 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_84_84;
+
+#line 600 "introduce_parallelism.m"
+            {
+#line 600 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_53 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14);
+            }
+#line 601 "introduce_parallelism.m"
+            {
+#line 601 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_54 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14);
+            }
+#line 602 "introduce_parallelism.m"
+            {
+#line 602 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__PredName_55 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14);
+            }
+#line 603 "introduce_parallelism.m"
+            {
+#line 603 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__Arity_56 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14);
+            }
+#line 604 "introduce_parallelism.m"
+            {
+#line 604 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_62_62 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 604 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_62_62, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+#line 604 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_62_62, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_53));
+#line 604 "introduce_parallelism.m"
+            }
+#line 605 "introduce_parallelism.m"
+            {
+#line 605 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_66_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 605 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_66_66, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_54));
+#line 605 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_66_66, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredName_55));
+#line 605 "introduce_parallelism.m"
+            }
+#line 605 "introduce_parallelism.m"
+            {
+#line 605 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_65_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 605 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_65_65, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_66_66));
+#line 605 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_65_65, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Arity_56));
+#line 605 "introduce_parallelism.m"
+            }
+#line 605 "introduce_parallelism.m"
+            {
+#line 605 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 605 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+#line 605 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_65_65));
+#line 605 "introduce_parallelism.m"
+            }
+#line 604 "introduce_parallelism.m"
+            {
+#line 604 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_63_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 604 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_63_63, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64));
+#line 604 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_63_63, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[18])));
+#line 604 "introduce_parallelism.m"
+            }
+#line 604 "introduce_parallelism.m"
+            {
+#line 604 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_61_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 604 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_61_61, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_62_62));
+#line 604 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_61_61, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_63_63));
+#line 604 "introduce_parallelism.m"
+            }
+#line 604 "introduce_parallelism.m"
+            {
+#line 604 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 604 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_57, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[21])));
+#line 604 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_57, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_61_61));
+#line 604 "introduce_parallelism.m"
+            }
+#line 609 "introduce_parallelism.m"
+            {
+#line 609 "introduce_parallelism.m"
+              hlds__hlds_pred__pred_info_get_context_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14, &transform_hlds__implicit_parallelism__introduce_parallelism__Context_58);
+            }
+#line 611 "introduce_parallelism.m"
+            {
+#line 611 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_84_84 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 611 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_84_84, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_57));
+#line 611 "introduce_parallelism.m"
+            }
+#line 611 "introduce_parallelism.m"
+            {
+#line 611 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_83_83 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 611 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_83_83, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_84_84));
+#line 611 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_83_83, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 611 "introduce_parallelism.m"
+            }
+#line 611 "introduce_parallelism.m"
+            {
+#line 611 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_82_82 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 611 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_82_82, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Context_58));
+#line 611 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_82_82, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_83_83));
+#line 611 "introduce_parallelism.m"
+            }
+#line 610 "introduce_parallelism.m"
+            {
+#line 610 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 610 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_82_82));
+#line 610 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 610 "introduce_parallelism.m"
+            }
+#line 610 "introduce_parallelism.m"
+            {
+#line 610 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__Spec_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 610 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Spec_30, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+#line 610 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Spec_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+#line 610 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Spec_30, 2) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81));
+#line 610 "introduce_parallelism.m"
+            }
+#line 252 "introduce_parallelism.m"
+            {
+#line 252 "introduce_parallelism.m"
+              MR_Word base;
+#line 252 "introduce_parallelism.m"
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 252 "introduce_parallelism.m"
+              *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_40 = base;
+#line 252 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Spec_30));
+#line 252 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_39));
+#line 252 "introduce_parallelism.m"
+            }
+#line 252 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_34 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_0_33;
+#line 252 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_36 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_0_35;
+#line 252 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_38 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_37;
+#line 250 "introduce_parallelism.m"
+          }
+#line 248 "introduce_parallelism.m"
+      }
+#line 265 "introduce_parallelism.m"
+    else
+#line 266 "introduce_parallelism.m"
+      {
+#line 266 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_40 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_39;
+#line 266 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_38 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_37;
+#line 266 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_36 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_0_35;
+#line 266 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_34 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_0_33;
+#line 266 "introduce_parallelism.m"
+      }
+#line 237 "introduce_parallelism.m"
+  }
+#line 230 "introduce_parallelism.m"
+}
+
+#line 382 "introduce_parallelism.m"
+static MR_Word MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__IntroducedFrom__func__maybe_parallelise_conj__382__1_1_f_0(
+#line 382 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_33)
+#line 382 "introduce_parallelism.m"
+{
+#line 382 "introduce_parallelism.m"
+  {
+#line 382 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 382 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_34;
+#line 382 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_33, (MR_Integer) 1)));
+#line 383 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_33, (MR_Integer) 0)));
+
+#line 382 "introduce_parallelism.m"
+    {
+#line 382 "introduce_parallelism.m"
+      return transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_34 = hlds__hlds_goal__goal_info_get_instmap_delta_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_35_35);
+    }
+#line 382 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_34;
+#line 382 "introduce_parallelism.m"
+  }
+#line 382 "introduce_parallelism.m"
+}
+
+#line 156 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____seq_conj_0_0(
+#line 156 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 156 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 156 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 156 "introduce_parallelism.m"
+{
+#line 156 "introduce_parallelism.m"
+  {
+#line 156 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 156 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_4 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+#line 156 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_5 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3;
+
+#line 156 "introduce_parallelism.m"
+    {
+#line 156 "introduce_parallelism.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[5], transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_5)));
+#line 156 "introduce_parallelism.m"
+      return;
+    }
+#line 156 "introduce_parallelism.m"
+  }
+#line 156 "introduce_parallelism.m"
+}
+
+#line 156 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____seq_conj_0_0(
+#line 156 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 156 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2)
+#line 156 "introduce_parallelism.m"
+{
+#line 156 "introduce_parallelism.m"
+  {
+#line 156 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 156 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_3 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1;
+#line 156 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_4 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+
+#line 156 "introduce_parallelism.m"
+    {
+#line 156 "introduce_parallelism.m"
+      return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[5], ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_4)));
+    }
+#line 156 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 156 "introduce_parallelism.m"
+  }
+#line 156 "introduce_parallelism.m"
+}
+
+#line 137 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____parallelism_info_0_0(
+#line 137 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 137 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 137 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 137 "introduce_parallelism.m"
+{
+#line 137 "introduce_parallelism.m"
+  {
+#line 137 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 137 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastX_9 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+#line 137 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastY_10 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3;
+
+#line 137 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__CastX_9 == transform_hlds__implicit_parallelism__introduce_parallelism__CastY_10);
+#line 137 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 3391 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 137 "introduce_parallelism.m"
+    else
+#line 137 "introduce_parallelism.m"
+      {
+#line 137 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 137 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 137 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 137 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 137 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8;
+
+#line 137 "introduce_parallelism.m"
+        {
+#line 137 "introduce_parallelism.m"
+          mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_params_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8, transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4, transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6);
+        }
+#line 3413 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8 == (MR_Integer) 0);
+#line 137 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = !(transform_hlds__implicit_parallelism__introduce_parallelism__succeeded);
+#line 137 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 137 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8;
+#line 137 "introduce_parallelism.m"
+        else
+#line 137 "introduce_parallelism.m"
+          {
+#line 137 "introduce_parallelism.m"
+            {
+#line 137 "introduce_parallelism.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[4], transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7)));
+#line 137 "introduce_parallelism.m"
+              return;
+            }
+#line 137 "introduce_parallelism.m"
+          }
+#line 137 "introduce_parallelism.m"
+      }
+#line 137 "introduce_parallelism.m"
+  }
+#line 137 "introduce_parallelism.m"
+}
+
+#line 137 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____parallelism_info_0_0(
+#line 137 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 137 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2)
+#line 137 "introduce_parallelism.m"
+{
+#line 137 "introduce_parallelism.m"
+  {
+#line 137 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 137 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastX_7 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1;
+#line 137 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastY_8 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+
+#line 137 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__CastX_7 == transform_hlds__implicit_parallelism__introduce_parallelism__CastY_8);
+#line 137 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 137 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 137 "introduce_parallelism.m"
+    else
+#line 137 "introduce_parallelism.m"
+      {
+#line 137 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_10_10;
+#line 137 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 137 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 137 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 137 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 3480 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+        {
+#line 3482 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_params_0_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_3_3, transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5);
+        }
+#line 137 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 137 "introduce_parallelism.m"
+          {
+#line 3489 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_10_10 = (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[4];
+#line 3491 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            {
+#line 3493 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+              return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_10_10, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6)));
+            }
+#line 137 "introduce_parallelism.m"
+          }
+#line 137 "introduce_parallelism.m"
+      }
+#line 137 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 137 "introduce_parallelism.m"
+  }
+#line 137 "introduce_parallelism.m"
+}
+
+#line 462 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____par_conjunction_and_remaining_goals_0_0(
+#line 462 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 462 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 462 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 462 "introduce_parallelism.m"
+{
+#line 462 "introduce_parallelism.m"
+  {
+#line 462 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 462 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastX_9 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+#line 462 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastY_10 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3;
+
+#line 462 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__CastX_9 == transform_hlds__implicit_parallelism__introduce_parallelism__CastY_10);
+#line 462 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 3531 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 462 "introduce_parallelism.m"
+    else
+#line 462 "introduce_parallelism.m"
+      {
+#line 462 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 462 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 462 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 462 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 462 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8;
+
+#line 462 "introduce_parallelism.m"
+        {
+#line 462 "introduce_parallelism.m"
+          mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[4], &transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6)));
+        }
+#line 3553 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8 == (MR_Integer) 0);
+#line 462 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = !(transform_hlds__implicit_parallelism__introduce_parallelism__succeeded);
+#line 462 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 462 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8;
+#line 462 "introduce_parallelism.m"
+        else
+#line 462 "introduce_parallelism.m"
+          {
+#line 462 "introduce_parallelism.m"
+            {
+#line 462 "introduce_parallelism.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[4], transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7)));
+#line 462 "introduce_parallelism.m"
+              return;
+            }
+#line 462 "introduce_parallelism.m"
+          }
+#line 462 "introduce_parallelism.m"
+      }
+#line 462 "introduce_parallelism.m"
+  }
+#line 462 "introduce_parallelism.m"
+}
+
+#line 462 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____par_conjunction_and_remaining_goals_0_0(
+#line 462 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 462 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2)
+#line 462 "introduce_parallelism.m"
+{
+#line 462 "introduce_parallelism.m"
+  {
+#line 462 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 462 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastX_7 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1;
+#line 462 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastY_8 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+
+#line 462 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__CastX_7 == transform_hlds__implicit_parallelism__introduce_parallelism__CastY_8);
+#line 462 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 462 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 462 "introduce_parallelism.m"
+    else
+#line 462 "introduce_parallelism.m"
+      {
+#line 462 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_10_10;
+#line 462 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 462 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 462 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 462 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 3620 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+        {
+#line 3622 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[4], ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_3_3)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5)));
+        }
+#line 462 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 462 "introduce_parallelism.m"
+          {
+#line 3629 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_10_10 = (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[4];
+#line 3631 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            {
+#line 3633 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+              return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_10_10, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6)));
+            }
+#line 462 "introduce_parallelism.m"
+          }
+#line 462 "introduce_parallelism.m"
+      }
+#line 462 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 462 "introduce_parallelism.m"
+  }
+#line 462 "introduce_parallelism.m"
+}
+
+#line 161 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____module_candidate_par_conjs_map_0_0(
+#line 161 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 161 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 161 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 161 "introduce_parallelism.m"
+{
+#line 161 "introduce_parallelism.m"
+  {
+#line 161 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 161 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_4 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+#line 161 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_5 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3;
+
+#line 161 "introduce_parallelism.m"
+    {
+#line 161 "introduce_parallelism.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[4], transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_5)));
+#line 161 "introduce_parallelism.m"
+      return;
+    }
+#line 161 "introduce_parallelism.m"
+  }
+#line 161 "introduce_parallelism.m"
+}
+
+#line 161 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____module_candidate_par_conjs_map_0_0(
+#line 161 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 161 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2)
+#line 161 "introduce_parallelism.m"
+{
+#line 161 "introduce_parallelism.m"
+  {
+#line 161 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 161 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_3 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1;
+#line 161 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_4 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+
+#line 161 "introduce_parallelism.m"
+    {
+#line 161 "introduce_parallelism.m"
+      return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[4], ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_4)));
+    }
+#line 161 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 161 "introduce_parallelism.m"
+  }
+#line 161 "introduce_parallelism.m"
+}
+
+#line 91 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____introduced_parallelism_0_0(
+#line 91 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 91 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 91 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 91 "introduce_parallelism.m"
+{
+#line 91 "introduce_parallelism.m"
+  {
+#line 91 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 91 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_4 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+#line 91 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_5 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3;
+
+#line 91 "introduce_parallelism.m"
+    {
+#line 91 "introduce_parallelism.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_4, transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_5);
+#line 91 "introduce_parallelism.m"
+      return;
+    }
+#line 91 "introduce_parallelism.m"
+  }
+#line 91 "introduce_parallelism.m"
+}
+
+#line 91 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____introduced_parallelism_0_0(
+#line 91 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_1,
+#line 91 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2)
+#line 91 "introduce_parallelism.m"
+{
+#line 3750 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  {
+#line 3752 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_1 == transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2);
+
+#line 3755 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 3757 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+  }
+#line 91 "introduce_parallelism.m"
+}
+
+#line 146 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____intra_module_proc_label_0_0(
+#line 146 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 146 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 146 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 146 "introduce_parallelism.m"
+{
+#line 146 "introduce_parallelism.m"
+  {
+#line 146 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 146 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastX_15 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+#line 146 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastY_16 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3;
+
+#line 146 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__CastX_15 == transform_hlds__implicit_parallelism__introduce_parallelism__CastY_16);
+#line 146 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 3786 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 146 "introduce_parallelism.m"
+    else
+#line 146 "introduce_parallelism.m"
+      {
+#line 146 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 146 "introduce_parallelism.m"
+        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 146 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 146 "introduce_parallelism.m"
+        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+#line 146 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 146 "introduce_parallelism.m"
+        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 146 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 2)));
+#line 146 "introduce_parallelism.m"
+        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 3)));
+#line 146 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12;
+
+#line 146 "introduce_parallelism.m"
+        {
+#line 146 "introduce_parallelism.m"
+          mercury__private_builtin__builtin_compare_string_3_p_0(&transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12, transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4, transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8);
+        }
+#line 3816 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12 == (MR_Integer) 0);
+#line 146 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = !(transform_hlds__implicit_parallelism__introduce_parallelism__succeeded);
+#line 146 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 146 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12;
+#line 146 "introduce_parallelism.m"
+        else
+#line 146 "introduce_parallelism.m"
+          {
+#line 146 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_13_13;
+
+#line 146 "introduce_parallelism.m"
+            {
+#line 146 "introduce_parallelism.m"
+              mercury__private_builtin__builtin_compare_int_3_p_0(&transform_hlds__implicit_parallelism__introduce_parallelism__V_13_13, transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5, transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9);
+            }
+#line 3836 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_13_13 == (MR_Integer) 0);
+#line 146 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = !(transform_hlds__implicit_parallelism__introduce_parallelism__succeeded);
+#line 146 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 146 "introduce_parallelism.m"
+              *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = transform_hlds__implicit_parallelism__introduce_parallelism__V_13_13;
+#line 146 "introduce_parallelism.m"
+            else
+#line 146 "introduce_parallelism.m"
+              {
+#line 146 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_14_14;
+#line 146 "introduce_parallelism.m"
+                MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6;
+#line 146 "introduce_parallelism.m"
+                MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__V_10_10;
+
+#line 146 "introduce_parallelism.m"
+                {
+#line 146 "introduce_parallelism.m"
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&transform_hlds__implicit_parallelism__introduce_parallelism__V_14_14, transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21, transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22);
+                }
+#line 3860 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_14_14 == (MR_Integer) 0);
+#line 146 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = !(transform_hlds__implicit_parallelism__introduce_parallelism__succeeded);
+#line 146 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 146 "introduce_parallelism.m"
+                  *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = transform_hlds__implicit_parallelism__introduce_parallelism__V_14_14;
+#line 146 "introduce_parallelism.m"
+                else
+#line 146 "introduce_parallelism.m"
+                  {
+#line 146 "introduce_parallelism.m"
+                    mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7, transform_hlds__implicit_parallelism__introduce_parallelism__V_11_11);
+#line 146 "introduce_parallelism.m"
+                    return;
+                  }
+#line 146 "introduce_parallelism.m"
+              }
+#line 146 "introduce_parallelism.m"
+          }
+#line 146 "introduce_parallelism.m"
+      }
+#line 146 "introduce_parallelism.m"
+  }
+#line 146 "introduce_parallelism.m"
+}
+
+#line 146 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____intra_module_proc_label_0_0(
+#line 146 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 146 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2)
+#line 146 "introduce_parallelism.m"
+{
+#line 146 "introduce_parallelism.m"
+  {
+#line 146 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 146 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastX_11 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1;
+#line 146 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastY_12 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+
+#line 146 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__CastX_11 == transform_hlds__implicit_parallelism__introduce_parallelism__CastY_12);
+#line 146 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 146 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 146 "introduce_parallelism.m"
+    else
+#line 146 "introduce_parallelism.m"
+      {
+#line 146 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 146 "introduce_parallelism.m"
+        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 146 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 2)));
+#line 146 "introduce_parallelism.m"
+        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 3)));
+#line 146 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 146 "introduce_parallelism.m"
+        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 146 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 146 "introduce_parallelism.m"
+        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 3)));
+
+#line 3933 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__V_3_3, transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7) == 0);
+#line 146 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 146 "introduce_parallelism.m"
+          {
+#line 3939 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_4_4 == transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8);
+#line 146 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 146 "introduce_parallelism.m"
+              {
+#line 3945 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5 == transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9);
+#line 146 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 3949 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6 == transform_hlds__implicit_parallelism__introduce_parallelism__V_10_10);
+#line 146 "introduce_parallelism.m"
+              }
+#line 146 "introduce_parallelism.m"
+          }
+#line 146 "introduce_parallelism.m"
+      }
+#line 146 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 146 "introduce_parallelism.m"
+  }
+#line 146 "introduce_parallelism.m"
+}
+
+#line 426 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____find_first_goal_result_0_0(
+#line 426 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 426 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 426 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 426 "introduce_parallelism.m"
+{
+#line 426 "introduce_parallelism.m"
+  {
+#line 426 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 426 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastX_18 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+#line 426 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastY_19 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3;
+
+#line 426 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__CastX_18 == transform_hlds__implicit_parallelism__introduce_parallelism__CastY_19);
+#line 426 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 3988 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+      *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 426 "introduce_parallelism.m"
+    else
+#line 426 "introduce_parallelism.m"
+      if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 426 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 426 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = (MR_Integer) 0;
+#line 426 "introduce_parallelism.m"
+        else
+#line 4000 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = (MR_Integer) 1;
+#line 426 "introduce_parallelism.m"
+      else
+#line 426 "introduce_parallelism.m"
+        {
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 426 "introduce_parallelism.m"
+          if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 4015 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = (MR_Integer) 2;
+#line 426 "introduce_parallelism.m"
+          else
+#line 426 "introduce_parallelism.m"
+            {
+#line 426 "introduce_parallelism.m"
+              MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 426 "introduce_parallelism.m"
+              MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 426 "introduce_parallelism.m"
+              MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 2)));
+#line 426 "introduce_parallelism.m"
+              MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16;
+
+#line 426 "introduce_parallelism.m"
+              {
+#line 426 "introduce_parallelism.m"
+                mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[4], &transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_13_13)));
+              }
+#line 4035 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16 == (MR_Integer) 0);
+#line 426 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = !(transform_hlds__implicit_parallelism__introduce_parallelism__succeeded);
+#line 426 "introduce_parallelism.m"
+              if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 426 "introduce_parallelism.m"
+                *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16;
+#line 426 "introduce_parallelism.m"
+              else
+#line 426 "introduce_parallelism.m"
+                {
+#line 426 "introduce_parallelism.m"
+                  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17;
+
+#line 426 "introduce_parallelism.m"
+                  {
+#line 426 "introduce_parallelism.m"
+                    hlds__hlds_goal____Compare____hlds_goal_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17, transform_hlds__implicit_parallelism__introduce_parallelism__V_24_24, transform_hlds__implicit_parallelism__introduce_parallelism__V_14_14);
+                  }
+#line 4055 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17 == (MR_Integer) 0);
+#line 426 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = !(transform_hlds__implicit_parallelism__introduce_parallelism__succeeded);
+#line 426 "introduce_parallelism.m"
+                  if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 426 "introduce_parallelism.m"
+                    *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 = transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17;
+#line 426 "introduce_parallelism.m"
+                  else
+#line 426 "introduce_parallelism.m"
+                    {
+#line 426 "introduce_parallelism.m"
+                      {
+#line 426 "introduce_parallelism.m"
+                        mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[4], transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_23_23)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_15_15)));
+#line 426 "introduce_parallelism.m"
+                        return;
+                      }
+#line 426 "introduce_parallelism.m"
+                    }
+#line 426 "introduce_parallelism.m"
+                }
+#line 426 "introduce_parallelism.m"
+            }
+#line 426 "introduce_parallelism.m"
+        }
+#line 426 "introduce_parallelism.m"
+  }
+#line 426 "introduce_parallelism.m"
+}
+
+#line 426 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____find_first_goal_result_0_0(
+#line 426 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 426 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2)
+#line 426 "introduce_parallelism.m"
+{
+#line 426 "introduce_parallelism.m"
+  {
+#line 426 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 426 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastX_11 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1;
+#line 426 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastY_12 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+
+#line 426 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__CastX_11 == transform_hlds__implicit_parallelism__introduce_parallelism__CastY_12);
+#line 426 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 426 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 426 "introduce_parallelism.m"
+    else
+#line 426 "introduce_parallelism.m"
+      if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 426 "introduce_parallelism.m"
+        {
+#line 426 "introduce_parallelism.m"
+          MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastX_3 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1;
+#line 426 "introduce_parallelism.m"
+          MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__CastY_4 = (MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+
+#line 426 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__CastY_4 == transform_hlds__implicit_parallelism__introduce_parallelism__CastX_3);
+#line 426 "introduce_parallelism.m"
+        }
+#line 426 "introduce_parallelism.m"
+      else
+#line 426 "introduce_parallelism.m"
+        {
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_13_13;
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_15_15;
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 0)));
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 1)));
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, (MR_Integer) 2)));
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8;
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9;
+#line 426 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_10_10;
+
+#line 426 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 426 "introduce_parallelism.m"
+          if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 426 "introduce_parallelism.m"
+            {
+#line 426 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 426 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 426 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 2)));
+#line 4159 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+              transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_13_13 = (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[4];
+#line 4161 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+              {
+#line 4163 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_13_13, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_5_5)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_8_8)));
+              }
+#line 426 "introduce_parallelism.m"
+              if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 426 "introduce_parallelism.m"
+                {
+#line 4170 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                  {
+#line 4172 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = hlds__hlds_goal____Unify____hlds_goal_0_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_6_6, transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9);
+                  }
+#line 426 "introduce_parallelism.m"
+                  if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 426 "introduce_parallelism.m"
+                    {
+#line 4179 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_15_15 = (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[4];
+#line 4181 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                      {
+#line 4183 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                        return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_15_15, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_10_10)));
+                      }
+#line 426 "introduce_parallelism.m"
+                    }
+#line 426 "introduce_parallelism.m"
+                }
+#line 426 "introduce_parallelism.m"
+            }
+#line 426 "introduce_parallelism.m"
+        }
+#line 426 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 426 "introduce_parallelism.m"
+  }
+#line 426 "introduce_parallelism.m"
+}
+
+#line 154 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Compare____candidate_par_conjunction_0_0(
+#line 154 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 154 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 154 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 154 "introduce_parallelism.m"
+{
+#line 154 "introduce_parallelism.m"
+  {
+#line 154 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 154 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_4 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+#line 154 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_5 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3;
+
+#line 154 "introduce_parallelism.m"
+    {
+#line 154 "introduce_parallelism.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[3], transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_5)));
+#line 154 "introduce_parallelism.m"
+      return;
+    }
+#line 154 "introduce_parallelism.m"
+  }
+#line 154 "introduce_parallelism.m"
+}
+
+#line 154 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism____Unify____candidate_par_conjunction_0_0(
+#line 154 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1,
+#line 154 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2)
+#line 154 "introduce_parallelism.m"
+{
+#line 154 "introduce_parallelism.m"
+  {
+#line 154 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 154 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_3 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__1_1;
+#line 154 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_4 = transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2;
+
+#line 154 "introduce_parallelism.m"
+    {
+#line 154 "introduce_parallelism.m"
+      return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[3], ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Cast_HeadVar2_4)));
+    }
+#line 154 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 154 "introduce_parallelism.m"
+  }
+#line 154 "introduce_parallelism.m"
+}
+
+#line 792 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(
+#line 792 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4,
+#line 792 "introduce_parallelism.m"
+  MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA_5,
+#line 792 "introduce_parallelism.m"
+  MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB_6)
+#line 792 "introduce_parallelism.m"
+{
+#line 802 "introduce_parallelism.m"
+  {
+#line 802 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 796 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7;
+
+#line 796 "introduce_parallelism.m"
+    {
+#line 796 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mdbcomp__program_representation__search_var_name_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA_5, &transform_hlds__implicit_parallelism__introduce_parallelism__V_7_7);
+    }
+#line 802 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 801 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__VarA_5 == transform_hlds__implicit_parallelism__introduce_parallelism__VarB_6);
+#line 802 "introduce_parallelism.m"
+    else
+#line 807 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 802 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 802 "introduce_parallelism.m"
+  }
+#line 792 "introduce_parallelism.m"
+}
+
+#line 723 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__atomic_goal_reps_match_3_p_0(
+#line 723 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4,
+#line 723 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5,
+#line 723 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)
+#line 723 "introduce_parallelism.m"
+{
+#line 740 "introduce_parallelism.m"
+  {
+#line 740 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 740 "introduce_parallelism.m"
+    if (((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 2))))
+#line 750 "introduce_parallelism.m"
+      {
+#line 750 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_26 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 750 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_48_48;
+#line 750 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeArgsA_71 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 750 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeArgsB_72;
+#line 750 "introduce_parallelism.m"
+        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA_74 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)));
+#line 750 "introduce_parallelism.m"
+        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB_75;
+
+#line 746 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 2)));
+#line 746 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 746 "introduce_parallelism.m"
+          {
+#line 746 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__VarB_75 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)));
+#line 746 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_48_48 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 746 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__MaybeArgsB_72 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 746 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_26, transform_hlds__implicit_parallelism__introduce_parallelism__V_48_48) == 0);
+#line 750 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 750 "introduce_parallelism.m"
+              {
+#line 751 "introduce_parallelism.m"
+                {
+#line 751 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA_74, transform_hlds__implicit_parallelism__introduce_parallelism__VarB_75);
+                }
+#line 750 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 752 "introduce_parallelism.m"
+                  {
+#line 752 "introduce_parallelism.m"
+                    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_50_95_95_91_50_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__MaybeArgsA_71, transform_hlds__implicit_parallelism__introduce_parallelism__MaybeArgsB_72);
+                  }
+#line 750 "introduce_parallelism.m"
+              }
+#line 746 "introduce_parallelism.m"
+          }
+#line 750 "introduce_parallelism.m"
+      }
+#line 740 "introduce_parallelism.m"
+    else
+#line 740 "introduce_parallelism.m"
+      if (((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 0))))
+#line 740 "introduce_parallelism.m"
+        {
+#line 740 "introduce_parallelism.m"
+          MR_String transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_8 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 740 "introduce_parallelism.m"
+          MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45;
+#line 740 "introduce_parallelism.m"
+          MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA_95 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)));
+#line 740 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 740 "introduce_parallelism.m"
+          MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB_97;
+#line 740 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_98;
+
+#line 730 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 0)));
+#line 730 "introduce_parallelism.m"
+          if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 730 "introduce_parallelism.m"
+            {
+#line 730 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__VarB_97 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)));
+#line 730 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 730 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_98 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 730 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_8, transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45) == 0);
+#line 740 "introduce_parallelism.m"
+              if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 740 "introduce_parallelism.m"
+                {
+#line 741 "introduce_parallelism.m"
+                  {
+#line 741 "introduce_parallelism.m"
+                    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA_95, transform_hlds__implicit_parallelism__introduce_parallelism__VarB_97);
+                  }
+#line 740 "introduce_parallelism.m"
+                  if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 742 "introduce_parallelism.m"
+                    {
+#line 742 "introduce_parallelism.m"
+                      return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_49_95_95_91_50_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_96, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_98);
+                    }
+#line 740 "introduce_parallelism.m"
+                }
+#line 730 "introduce_parallelism.m"
+            }
+#line 740 "introduce_parallelism.m"
+        }
+#line 740 "introduce_parallelism.m"
+      else
+#line 740 "introduce_parallelism.m"
+        if (((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 1))))
+#line 740 "introduce_parallelism.m"
+          {
+#line 740 "introduce_parallelism.m"
+            MR_String transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_25 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 740 "introduce_parallelism.m"
+            MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46;
+#line 740 "introduce_parallelism.m"
+            MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA_103 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)));
+#line 740 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_104 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 740 "introduce_parallelism.m"
+            MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB_105;
+#line 740 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_106;
+
+#line 733 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 1)));
+#line 733 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 733 "introduce_parallelism.m"
+              {
+#line 733 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__VarB_105 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)));
+#line 733 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 733 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_106 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 733 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_25, transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46) == 0);
+#line 740 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 740 "introduce_parallelism.m"
+                  {
+#line 741 "introduce_parallelism.m"
+                    {
+#line 741 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA_103, transform_hlds__implicit_parallelism__introduce_parallelism__VarB_105);
+                    }
+#line 740 "introduce_parallelism.m"
+                    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 742 "introduce_parallelism.m"
+                      {
+#line 742 "introduce_parallelism.m"
+                        return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_49_95_95_91_50_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_104, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_106);
+                      }
+#line 740 "introduce_parallelism.m"
+                  }
+#line 733 "introduce_parallelism.m"
+              }
+#line 740 "introduce_parallelism.m"
+          }
+#line 740 "introduce_parallelism.m"
+        else
+#line 740 "introduce_parallelism.m"
+          if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)))) == (MR_Integer) 8))))
+#line 780 "introduce_parallelism.m"
+            {
+#line 780 "introduce_parallelism.m"
+              MR_String transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_32 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 780 "introduce_parallelism.m"
+              MR_String transform_hlds__implicit_parallelism__introduce_parallelism__PredName_33 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 780 "introduce_parallelism.m"
+              MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 3)));
+#line 780 "introduce_parallelism.m"
+              MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_35;
+#line 780 "introduce_parallelism.m"
+              MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_52_52;
+#line 780 "introduce_parallelism.m"
+              MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_53_53;
+
+#line 776 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)))) == (MR_Integer) 8)));
+#line 776 "introduce_parallelism.m"
+              if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 776 "introduce_parallelism.m"
+                {
+#line 776 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__V_52_52 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 776 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__V_53_53 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 776 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 3)));
+#line 776 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_32, transform_hlds__implicit_parallelism__introduce_parallelism__V_52_52) == 0);
+#line 780 "introduce_parallelism.m"
+                  if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 780 "introduce_parallelism.m"
+                    {
+#line 776 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__PredName_33, transform_hlds__implicit_parallelism__introduce_parallelism__V_53_53) == 0);
+#line 780 "introduce_parallelism.m"
+                      if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 781 "introduce_parallelism.m"
+                        {
+#line 781 "introduce_parallelism.m"
+                          return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_49_95_95_91_50_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_34, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_35);
+                        }
+#line 780 "introduce_parallelism.m"
+                    }
+#line 776 "introduce_parallelism.m"
+                }
+#line 780 "introduce_parallelism.m"
+            }
+#line 740 "introduce_parallelism.m"
+          else
+#line 740 "introduce_parallelism.m"
+            if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)))) == (MR_Integer) 2))))
+#line 764 "introduce_parallelism.m"
+              {
+#line 764 "introduce_parallelism.m"
+                MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA1_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 764 "introduce_parallelism.m"
+                MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA2_16 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 764 "introduce_parallelism.m"
+                MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB1_17;
+#line 764 "introduce_parallelism.m"
+                MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB2_18;
+
+#line 760 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)))) == (MR_Integer) 2)));
+#line 760 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 760 "introduce_parallelism.m"
+                  {
+#line 760 "introduce_parallelism.m"
+                    transform_hlds__implicit_parallelism__introduce_parallelism__VarB1_17 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 760 "introduce_parallelism.m"
+                    transform_hlds__implicit_parallelism__introduce_parallelism__VarB2_18 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 765 "introduce_parallelism.m"
+                    {
+#line 765 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA1_15, transform_hlds__implicit_parallelism__introduce_parallelism__VarB1_17);
+                    }
+#line 764 "introduce_parallelism.m"
+                    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 766 "introduce_parallelism.m"
+                      {
+#line 766 "introduce_parallelism.m"
+                        return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA2_16, transform_hlds__implicit_parallelism__introduce_parallelism__VarB2_18);
+                      }
+#line 760 "introduce_parallelism.m"
+                  }
+#line 764 "introduce_parallelism.m"
+              }
+#line 740 "introduce_parallelism.m"
+            else
+#line 740 "introduce_parallelism.m"
+              if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)))) == (MR_Integer) 9))))
+#line 780 "introduce_parallelism.m"
+                {
+#line 780 "introduce_parallelism.m"
+                  MR_String transform_hlds__implicit_parallelism__introduce_parallelism__EventName_21 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 780 "introduce_parallelism.m"
+                  MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_54_54;
+#line 780 "introduce_parallelism.m"
+                  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_58 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 780 "introduce_parallelism.m"
+                  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_59;
+
+#line 779 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)))) == (MR_Integer) 9)));
+#line 779 "introduce_parallelism.m"
+                  if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 779 "introduce_parallelism.m"
+                    {
+#line 779 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__V_54_54 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 779 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_59 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 779 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__EventName_21, transform_hlds__implicit_parallelism__introduce_parallelism__V_54_54) == 0);
+#line 780 "introduce_parallelism.m"
+                      if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 781 "introduce_parallelism.m"
+                        {
+#line 781 "introduce_parallelism.m"
+                          return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_49_95_95_91_50_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_58, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_59);
+                        }
+#line 779 "introduce_parallelism.m"
+                    }
+#line 780 "introduce_parallelism.m"
+                }
+#line 740 "introduce_parallelism.m"
+              else
+#line 740 "introduce_parallelism.m"
+                if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)))) == (MR_Integer) 5))))
+#line 740 "introduce_parallelism.m"
+                  {
+#line 740 "introduce_parallelism.m"
+                    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA_7 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 740 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 740 "introduce_parallelism.m"
+                    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB_10;
+#line 740 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_11;
+
+#line 736 "introduce_parallelism.m"
+                    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)))) == (MR_Integer) 5)));
+#line 736 "introduce_parallelism.m"
+                    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 736 "introduce_parallelism.m"
+                      {
+#line 736 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__VarB_10 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 736 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 741 "introduce_parallelism.m"
+                        {
+#line 741 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA_7, transform_hlds__implicit_parallelism__introduce_parallelism__VarB_10);
+                        }
+#line 740 "introduce_parallelism.m"
+                        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 742 "introduce_parallelism.m"
+                          {
+#line 742 "introduce_parallelism.m"
+                            return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_49_95_95_91_50_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_9, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_11);
+                          }
+#line 736 "introduce_parallelism.m"
+                      }
+#line 740 "introduce_parallelism.m"
+                  }
+#line 740 "introduce_parallelism.m"
+                else
+#line 740 "introduce_parallelism.m"
+                  if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)))) == (MR_Integer) 6))))
+#line 740 "introduce_parallelism.m"
+                    {
+#line 740 "introduce_parallelism.m"
+                      MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__MethodNum_12 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 740 "introduce_parallelism.m"
+                      MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_47_47;
+#line 740 "introduce_parallelism.m"
+                      MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA_63 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 740 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 3)));
+#line 740 "introduce_parallelism.m"
+                      MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB_65;
+#line 740 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_66;
+
+#line 739 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)))) == (MR_Integer) 6)));
+#line 739 "introduce_parallelism.m"
+                      if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 739 "introduce_parallelism.m"
+                        {
+#line 739 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__VarB_65 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 739 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__V_47_47 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 739 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 3)));
+#line 739 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__MethodNum_12 == transform_hlds__implicit_parallelism__introduce_parallelism__V_47_47);
+#line 740 "introduce_parallelism.m"
+                          if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 740 "introduce_parallelism.m"
+                            {
+#line 741 "introduce_parallelism.m"
+                              {
+#line 741 "introduce_parallelism.m"
+                                transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA_63, transform_hlds__implicit_parallelism__introduce_parallelism__VarB_65);
+                              }
+#line 740 "introduce_parallelism.m"
+                              if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 742 "introduce_parallelism.m"
+                                {
+#line 742 "introduce_parallelism.m"
+                                  return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_49_95_95_91_50_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_64, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_66);
+                                }
+#line 740 "introduce_parallelism.m"
+                            }
+#line 739 "introduce_parallelism.m"
+                        }
+#line 740 "introduce_parallelism.m"
+                    }
+#line 740 "introduce_parallelism.m"
+                  else
+#line 740 "introduce_parallelism.m"
+                    if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)))) == (MR_Integer) 0))))
+#line 750 "introduce_parallelism.m"
+                      {
+#line 750 "introduce_parallelism.m"
+                        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeArgsA_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 3)));
+#line 750 "introduce_parallelism.m"
+                        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeArgsB_14;
+#line 750 "introduce_parallelism.m"
+                        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_27 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 750 "introduce_parallelism.m"
+                        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 750 "introduce_parallelism.m"
+                        MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB_31;
+#line 750 "introduce_parallelism.m"
+                        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_49_49;
+
+#line 749 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)))) == (MR_Integer) 0)));
+#line 749 "introduce_parallelism.m"
+                        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 749 "introduce_parallelism.m"
+                          {
+#line 749 "introduce_parallelism.m"
+                            transform_hlds__implicit_parallelism__introduce_parallelism__VarB_31 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 749 "introduce_parallelism.m"
+                            transform_hlds__implicit_parallelism__introduce_parallelism__V_49_49 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 749 "introduce_parallelism.m"
+                            transform_hlds__implicit_parallelism__introduce_parallelism__MaybeArgsB_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 3)));
+#line 749 "introduce_parallelism.m"
+                            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__ConsId_27, transform_hlds__implicit_parallelism__introduce_parallelism__V_49_49) == 0);
+#line 750 "introduce_parallelism.m"
+                            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 750 "introduce_parallelism.m"
+                              {
+#line 751 "introduce_parallelism.m"
+                                {
+#line 751 "introduce_parallelism.m"
+                                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA_29, transform_hlds__implicit_parallelism__introduce_parallelism__VarB_31);
+                                }
+#line 750 "introduce_parallelism.m"
+                                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 752 "introduce_parallelism.m"
+                                  {
+#line 752 "introduce_parallelism.m"
+                                    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_50_95_95_91_50_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__MaybeArgsA_13, transform_hlds__implicit_parallelism__introduce_parallelism__MaybeArgsB_14);
+                                  }
+#line 750 "introduce_parallelism.m"
+                              }
+#line 749 "introduce_parallelism.m"
+                          }
+#line 750 "introduce_parallelism.m"
+                      }
+#line 740 "introduce_parallelism.m"
+                    else
+#line 740 "introduce_parallelism.m"
+                      if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)))) == (MR_Integer) 7))))
+#line 780 "introduce_parallelism.m"
+                        {
+#line 780 "introduce_parallelism.m"
+                          MR_String transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_19 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 780 "introduce_parallelism.m"
+                          MR_String transform_hlds__implicit_parallelism__introduce_parallelism__PredName_20 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 780 "introduce_parallelism.m"
+                          MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_50_50;
+#line 780 "introduce_parallelism.m"
+                          MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_51_51;
+#line 780 "introduce_parallelism.m"
+                          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_80 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 3)));
+#line 780 "introduce_parallelism.m"
+                          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_81;
+
+#line 773 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)))) == (MR_Integer) 7)));
+#line 773 "introduce_parallelism.m"
+                          if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 773 "introduce_parallelism.m"
+                            {
+#line 773 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__V_50_50 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 773 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__V_51_51 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 773 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_81 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 3)));
+#line 773 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_19, transform_hlds__implicit_parallelism__introduce_parallelism__V_50_50) == 0);
+#line 780 "introduce_parallelism.m"
+                              if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 780 "introduce_parallelism.m"
+                                {
+#line 773 "introduce_parallelism.m"
+                                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__PredName_20, transform_hlds__implicit_parallelism__introduce_parallelism__V_51_51) == 0);
+#line 780 "introduce_parallelism.m"
+                                  if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 781 "introduce_parallelism.m"
+                                    {
+#line 781 "introduce_parallelism.m"
+                                      return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_49_95_95_91_50_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_80, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_81);
+                                    }
+#line 780 "introduce_parallelism.m"
+                                }
+#line 773 "introduce_parallelism.m"
+                            }
+#line 780 "introduce_parallelism.m"
+                        }
+#line 740 "introduce_parallelism.m"
+                      else
+#line 740 "introduce_parallelism.m"
+                        if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)))) == (MR_Integer) 4))))
+#line 780 "introduce_parallelism.m"
+                          {
+#line 780 "introduce_parallelism.m"
+                            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_86 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 780 "introduce_parallelism.m"
+                            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_87;
+
+#line 770 "introduce_parallelism.m"
+                            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)))) == (MR_Integer) 4)));
+#line 770 "introduce_parallelism.m"
+                            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 770 "introduce_parallelism.m"
+                              {
+#line 770 "introduce_parallelism.m"
+                                transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_87 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 781 "introduce_parallelism.m"
+                                {
+#line 781 "introduce_parallelism.m"
+                                  return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_49_95_95_91_50_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsA_86, transform_hlds__implicit_parallelism__introduce_parallelism__ArgsB_87);
+                                }
+#line 770 "introduce_parallelism.m"
+                              }
+#line 780 "introduce_parallelism.m"
+                          }
+#line 740 "introduce_parallelism.m"
+                        else
+#line 740 "introduce_parallelism.m"
+                          if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 0)))) == (MR_Integer) 1))))
+#line 764 "introduce_parallelism.m"
+                            {
+#line 764 "introduce_parallelism.m"
+                              MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA1_89 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 764 "introduce_parallelism.m"
+                              MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA2_90 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 764 "introduce_parallelism.m"
+                              MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB1_91;
+#line 764 "introduce_parallelism.m"
+                              MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB2_92;
+
+#line 757 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)))) == (MR_Integer) 1)));
+#line 757 "introduce_parallelism.m"
+                              if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 757 "introduce_parallelism.m"
+                                {
+#line 757 "introduce_parallelism.m"
+                                  transform_hlds__implicit_parallelism__introduce_parallelism__VarB1_91 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 757 "introduce_parallelism.m"
+                                  transform_hlds__implicit_parallelism__introduce_parallelism__VarB2_92 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 765 "introduce_parallelism.m"
+                                  {
+#line 765 "introduce_parallelism.m"
+                                    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA1_89, transform_hlds__implicit_parallelism__introduce_parallelism__VarB1_91);
+                                  }
+#line 764 "introduce_parallelism.m"
+                                  if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 766 "introduce_parallelism.m"
+                                    {
+#line 766 "introduce_parallelism.m"
+                                      return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA2_90, transform_hlds__implicit_parallelism__introduce_parallelism__VarB2_92);
+                                    }
+#line 757 "introduce_parallelism.m"
+                                }
+#line 764 "introduce_parallelism.m"
+                            }
+#line 740 "introduce_parallelism.m"
+                          else
+#line 764 "introduce_parallelism.m"
+                            {
+#line 764 "introduce_parallelism.m"
+                              MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA1_109 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 1)));
+#line 764 "introduce_parallelism.m"
+                              MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarA2_110 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepA_5, (MR_Integer) 2)));
+#line 764 "introduce_parallelism.m"
+                              MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB1_111;
+#line 764 "introduce_parallelism.m"
+                              MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarB2_112;
+
+#line 763 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 0)))) == (MR_Integer) 3)));
+#line 763 "introduce_parallelism.m"
+                              if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 763 "introduce_parallelism.m"
+                                {
+#line 763 "introduce_parallelism.m"
+                                  transform_hlds__implicit_parallelism__introduce_parallelism__VarB1_111 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 1)));
+#line 763 "introduce_parallelism.m"
+                                  transform_hlds__implicit_parallelism__introduce_parallelism__VarB2_112 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__AtomicRepB_6, (MR_Integer) 2)));
+#line 765 "introduce_parallelism.m"
+                                  {
+#line 765 "introduce_parallelism.m"
+                                    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA1_109, transform_hlds__implicit_parallelism__introduce_parallelism__VarB1_111);
+                                  }
+#line 764 "introduce_parallelism.m"
+                                  if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 766 "introduce_parallelism.m"
+                                    {
+#line 766 "introduce_parallelism.m"
+                                      return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__var_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarA2_110, transform_hlds__implicit_parallelism__introduce_parallelism__VarB2_112);
+                                    }
+#line 763 "introduce_parallelism.m"
+                                }
+#line 764 "introduce_parallelism.m"
+                            }
+#line 740 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 740 "introduce_parallelism.m"
+  }
+#line 723 "introduce_parallelism.m"
+}
+
+#line 674 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__goal_reps_match_3_p_0(
+#line 674 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_A_45,
+#line 674 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_B_46,
+#line 674 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4,
+#line 674 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalA_5,
+#line 674 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalB_6)
+#line 674 "introduce_parallelism.m"
+{
+#line 677 "introduce_parallelism.m"
+  while (MR_TRUE)
+#line 677 "introduce_parallelism.m"
+    {
+#line 677 "introduce_parallelism.m"
+      /* tailcall optimized into a loop */
+#line 677 "introduce_parallelism.m"
+      {
+#line 677 "introduce_parallelism.m"
+        MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 677 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__GoalA_5, (MR_Integer) 0)));
+#line 677 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Detism_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__GoalA_5, (MR_Integer) 1)));
+#line 677 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__GoalB_6, (MR_Integer) 0)));
+#line 677 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__GoalB_6, (MR_Integer) 1)));
+#line 678 "introduce_parallelism.m"
+        MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9 = (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__GoalA_5, (MR_Integer) 2));
+#line 679 "introduce_parallelism.m"
+        MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__V_11_11 = (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__GoalB_6, (MR_Integer) 2));
+
+#line 679 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__Detism_8 == transform_hlds__implicit_parallelism__introduce_parallelism__V_62_62);
+#line 677 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 684 "introduce_parallelism.m"
+          {
+#line 684 "introduce_parallelism.m"
+            if (((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7)) == (MR_mktag((MR_Integer) 0))))
+#line 681 "introduce_parallelism.m"
+              {
+#line 681 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ConjsA_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 0)));
+#line 681 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ConjsB_13;
+
+#line 682 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10)) == (MR_mktag((MR_Integer) 0)));
+#line 682 "introduce_parallelism.m"
+                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 682 "introduce_parallelism.m"
+                  {
+#line 682 "introduce_parallelism.m"
+                    transform_hlds__implicit_parallelism__introduce_parallelism__ConjsB_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 0)));
+#line 683 "introduce_parallelism.m"
+                    {
+#line 683 "introduce_parallelism.m"
+                      return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_52_95_95_91_49_44_32_50_44_32_54_44_32_55_44_32_56_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_A_45, transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_B_46, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__ConjsA_12, transform_hlds__implicit_parallelism__introduce_parallelism__ConjsB_13);
+                    }
+#line 682 "introduce_parallelism.m"
+                  }
+#line 681 "introduce_parallelism.m"
+              }
+#line 684 "introduce_parallelism.m"
+            else
+#line 684 "introduce_parallelism.m"
+              if (((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7)) == (MR_mktag((MR_Integer) 1))))
+#line 685 "introduce_parallelism.m"
+                {
+#line 685 "introduce_parallelism.m"
+                  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__DisjsA_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 0)));
+#line 685 "introduce_parallelism.m"
+                  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__DisjsB_15;
+
+#line 686 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10)) == (MR_mktag((MR_Integer) 1)));
+#line 686 "introduce_parallelism.m"
+                  if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 686 "introduce_parallelism.m"
+                    {
+#line 686 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__DisjsB_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 0)));
+#line 687 "introduce_parallelism.m"
+                      {
+#line 687 "introduce_parallelism.m"
+                        return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_52_95_95_91_49_44_32_50_44_32_54_44_32_55_44_32_56_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_A_45, transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_B_46, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__DisjsA_14, transform_hlds__implicit_parallelism__introduce_parallelism__DisjsB_15);
+                      }
+#line 686 "introduce_parallelism.m"
+                    }
+#line 685 "introduce_parallelism.m"
+                }
+#line 684 "introduce_parallelism.m"
+              else
+#line 684 "introduce_parallelism.m"
+                if (((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7)) == (MR_mktag((MR_Integer) 2))))
+#line 689 "introduce_parallelism.m"
+                  {
+#line 689 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_57_57;
+#line 689 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_58_58;
+#line 689 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_59_59;
+#line 689 "introduce_parallelism.m"
+                    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarRepA_16 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 0)));
+#line 689 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CanFail_17 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 1)));
+#line 689 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CasesA_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 2)));
+#line 689 "introduce_parallelism.m"
+                    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__VarRepB_19;
+#line 689 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CasesB_20;
+#line 689 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__SortedCasesA_21;
+#line 689 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__SortedCasesB_22;
+#line 689 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_63_63;
+#line 796 "introduce_parallelism.m"
+                    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_68_68;
+#line 694 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_SortedCasesA_21;
+
+#line 690 "introduce_parallelism.m"
+                    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10)) == (MR_mktag((MR_Integer) 2)));
+#line 690 "introduce_parallelism.m"
+                    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 690 "introduce_parallelism.m"
+                      {
+#line 690 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__VarRepB_19 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 0)));
+#line 690 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 1)));
+#line 690 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__CasesB_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 2)));
+#line 690 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__CanFail_17 == transform_hlds__implicit_parallelism__introduce_parallelism__V_63_63);
+#line 689 "introduce_parallelism.m"
+                        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 689 "introduce_parallelism.m"
+                          {
+#line 796 "introduce_parallelism.m"
+                            {
+#line 796 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mdbcomp__program_representation__search_var_name_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__VarRepA_16, &transform_hlds__implicit_parallelism__introduce_parallelism__V_68_68);
+                            }
+#line 802 "introduce_parallelism.m"
+                            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 801 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__VarRepA_16 == transform_hlds__implicit_parallelism__introduce_parallelism__VarRepB_19);
+#line 802 "introduce_parallelism.m"
+                            else
+#line 807 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 689 "introduce_parallelism.m"
+                            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 689 "introduce_parallelism.m"
+                              {
+#line 5095 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_57_57 = (MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_case_rep_1;
+#line 5097 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                {
+#line 5099 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                  transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_58_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 5101 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_58_58, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_57_57));
+#line 5103 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_58_58, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_A_45));
+#line 5105 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                }
+#line 694 "introduce_parallelism.m"
+                                {
+#line 694 "introduce_parallelism.m"
+                                  mercury__list__sort_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_58_58, (MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__CasesA_18, &transform_hlds__implicit_parallelism__introduce_parallelism__conv0_SortedCasesA_21);
+                                }
+#line 694 "introduce_parallelism.m"
+                                transform_hlds__implicit_parallelism__introduce_parallelism__SortedCasesA_21 = (MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv0_SortedCasesA_21;
+#line 5114 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                {
+#line 5116 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                  transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_59_59 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 5118 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_59_59, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_57_57));
+#line 5120 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                  MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_59_59, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_B_46));
+#line 5122 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+                                }
+#line 695 "introduce_parallelism.m"
+                                {
+#line 695 "introduce_parallelism.m"
+                                  mercury__list__sort_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_59_59, transform_hlds__implicit_parallelism__introduce_parallelism__CasesB_20, &transform_hlds__implicit_parallelism__introduce_parallelism__SortedCasesB_22);
+                                }
+#line 696 "introduce_parallelism.m"
+                                {
+#line 696 "introduce_parallelism.m"
+                                  return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_122_105_112_95_97_108_108_95_116_114_117_101_95_95_104_111_51_95_95_91_49_44_32_50_44_32_54_44_32_55_44_32_56_93_95_48_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_A_45, transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_B_46, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__SortedCasesA_21, transform_hlds__implicit_parallelism__introduce_parallelism__SortedCasesB_22);
+                                }
+#line 689 "introduce_parallelism.m"
+                              }
+#line 689 "introduce_parallelism.m"
+                          }
+#line 690 "introduce_parallelism.m"
+                      }
+#line 689 "introduce_parallelism.m"
+                  }
+#line 684 "introduce_parallelism.m"
+                else
+#line 684 "introduce_parallelism.m"
+                  if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 0)))) == (MR_Integer) 3))))
+#line 712 "introduce_parallelism.m"
+                    {
+#line 712 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__AtomicGoalA_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 4)));
+#line 712 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__AtomicGoalB_39;
+#line 712 "introduce_parallelism.m"
+                      MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_32_32 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 1)));
+#line 712 "introduce_parallelism.m"
+                      MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_33_33 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 2)));
+#line 712 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 3)));
+#line 713 "introduce_parallelism.m"
+                      MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_36_36;
+#line 713 "introduce_parallelism.m"
+                      MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37;
+#line 713 "introduce_parallelism.m"
+                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_38_38;
+
+#line 713 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 0)))) == (MR_Integer) 3)));
+#line 713 "introduce_parallelism.m"
+                      if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 713 "introduce_parallelism.m"
+                        {
+#line 713 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__V_36_36 = ((MR_String) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 1)));
+#line 713 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 2)));
+#line 713 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 3)));
+#line 713 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__AtomicGoalB_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 4)));
+#line 720 "introduce_parallelism.m"
+                          {
+#line 720 "introduce_parallelism.m"
+                            return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__atomic_goal_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__AtomicGoalA_35, transform_hlds__implicit_parallelism__introduce_parallelism__AtomicGoalB_39);
+                          }
+#line 713 "introduce_parallelism.m"
+                        }
+#line 712 "introduce_parallelism.m"
+                    }
+#line 684 "introduce_parallelism.m"
+                  else
+#line 684 "introduce_parallelism.m"
+                    if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 0)))) == (MR_Integer) 0))))
+#line 698 "introduce_parallelism.m"
+                      {
+#line 698 "introduce_parallelism.m"
+                        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CondA_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 1)));
+#line 698 "introduce_parallelism.m"
+                        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ThenA_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 2)));
+#line 698 "introduce_parallelism.m"
+                        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ElseA_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 3)));
+#line 698 "introduce_parallelism.m"
+                        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CondB_26;
+#line 698 "introduce_parallelism.m"
+                        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ThenB_27;
+#line 698 "introduce_parallelism.m"
+                        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ElseB_28;
+
+#line 699 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 0)))) == (MR_Integer) 0)));
+#line 699 "introduce_parallelism.m"
+                        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 699 "introduce_parallelism.m"
+                          {
+#line 699 "introduce_parallelism.m"
+                            transform_hlds__implicit_parallelism__introduce_parallelism__CondB_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 1)));
+#line 699 "introduce_parallelism.m"
+                            transform_hlds__implicit_parallelism__introduce_parallelism__ThenB_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 2)));
+#line 699 "introduce_parallelism.m"
+                            transform_hlds__implicit_parallelism__introduce_parallelism__ElseB_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 3)));
+#line 700 "introduce_parallelism.m"
+                            {
+#line 700 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__goal_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_A_45, transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_B_46, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__CondA_23, transform_hlds__implicit_parallelism__introduce_parallelism__CondB_26);
+                            }
+#line 698 "introduce_parallelism.m"
+                            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 698 "introduce_parallelism.m"
+                              {
+#line 701 "introduce_parallelism.m"
+                                {
+#line 701 "introduce_parallelism.m"
+                                  transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__goal_reps_match_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_A_45, transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_for_B_46, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__ThenA_24, transform_hlds__implicit_parallelism__introduce_parallelism__ThenB_27);
+                                }
+#line 698 "introduce_parallelism.m"
+                                if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 702 "introduce_parallelism.m"
+                                  {
+#line 702 "introduce_parallelism.m"
+                                    /* direct tailcall eliminated */
+#line 702 "introduce_parallelism.m"
+                                    {
+#line 702 "introduce_parallelism.m"
+                                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalA__tmp_copy_5 = transform_hlds__implicit_parallelism__introduce_parallelism__ElseA_25;
+#line 702 "introduce_parallelism.m"
+                                      MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalB__tmp_copy_6 = transform_hlds__implicit_parallelism__introduce_parallelism__ElseB_28;
+
+#line 702 "introduce_parallelism.m"
+                                      transform_hlds__implicit_parallelism__introduce_parallelism__GoalB_6 = transform_hlds__implicit_parallelism__introduce_parallelism__GoalB__tmp_copy_6;
+#line 702 "introduce_parallelism.m"
+                                      transform_hlds__implicit_parallelism__introduce_parallelism__GoalA_5 = transform_hlds__implicit_parallelism__introduce_parallelism__GoalA__tmp_copy_5;
+#line 702 "introduce_parallelism.m"
+                                    }
+#line 702 "introduce_parallelism.m"
+                                    continue;
+#line 702 "introduce_parallelism.m"
+                                  }
+#line 698 "introduce_parallelism.m"
+                              }
+#line 699 "introduce_parallelism.m"
+                          }
+#line 698 "introduce_parallelism.m"
+                      }
+#line 684 "introduce_parallelism.m"
+                    else
+#line 684 "introduce_parallelism.m"
+                      if (((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 0)))) == (MR_Integer) 1))))
+#line 704 "introduce_parallelism.m"
+                        {
+#line 704 "introduce_parallelism.m"
+                          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__SubGoalA_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 1)));
+#line 704 "introduce_parallelism.m"
+                          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__SubGoalB_30;
+
+#line 705 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 0)))) == (MR_Integer) 1)));
+#line 705 "introduce_parallelism.m"
+                          if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 705 "introduce_parallelism.m"
+                            {
+#line 705 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__SubGoalB_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 1)));
+#line 706 "introduce_parallelism.m"
+                              /* direct tailcall eliminated */
+#line 706 "introduce_parallelism.m"
+                              {
+#line 706 "introduce_parallelism.m"
+                                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalA__tmp_copy_5 = transform_hlds__implicit_parallelism__introduce_parallelism__SubGoalA_29;
+#line 706 "introduce_parallelism.m"
+                                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalB__tmp_copy_6 = transform_hlds__implicit_parallelism__introduce_parallelism__SubGoalB_30;
+
+#line 706 "introduce_parallelism.m"
+                                transform_hlds__implicit_parallelism__introduce_parallelism__GoalB_6 = transform_hlds__implicit_parallelism__introduce_parallelism__GoalB__tmp_copy_6;
+#line 706 "introduce_parallelism.m"
+                                transform_hlds__implicit_parallelism__introduce_parallelism__GoalA_5 = transform_hlds__implicit_parallelism__introduce_parallelism__GoalA__tmp_copy_5;
+#line 706 "introduce_parallelism.m"
+                              }
+#line 706 "introduce_parallelism.m"
+                              continue;
+#line 705 "introduce_parallelism.m"
+                            }
+#line 704 "introduce_parallelism.m"
+                        }
+#line 684 "introduce_parallelism.m"
+                      else
+#line 708 "introduce_parallelism.m"
+                        {
+#line 708 "introduce_parallelism.m"
+                          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeCut_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 2)));
+#line 708 "introduce_parallelism.m"
+                          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__SubGoalA_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepA_7, (MR_Integer) 1)));
+#line 708 "introduce_parallelism.m"
+                          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__SubGoalB_44;
+#line 708 "introduce_parallelism.m"
+                          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64;
+
+#line 709 "introduce_parallelism.m"
+                          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 0)))) == (MR_Integer) 2)));
+#line 709 "introduce_parallelism.m"
+                          if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 709 "introduce_parallelism.m"
+                            {
+#line 709 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__SubGoalB_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 1)));
+#line 709 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_10, (MR_Integer) 2)));
+#line 709 "introduce_parallelism.m"
+                              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__MaybeCut_31 == transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64);
+#line 708 "introduce_parallelism.m"
+                              if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 710 "introduce_parallelism.m"
+                                {
+#line 710 "introduce_parallelism.m"
+                                  /* direct tailcall eliminated */
+#line 710 "introduce_parallelism.m"
+                                  {
+#line 710 "introduce_parallelism.m"
+                                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalA__tmp_copy_5 = transform_hlds__implicit_parallelism__introduce_parallelism__SubGoalA_43;
+#line 710 "introduce_parallelism.m"
+                                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalB__tmp_copy_6 = transform_hlds__implicit_parallelism__introduce_parallelism__SubGoalB_44;
+
+#line 710 "introduce_parallelism.m"
+                                    transform_hlds__implicit_parallelism__introduce_parallelism__GoalB_6 = transform_hlds__implicit_parallelism__introduce_parallelism__GoalB__tmp_copy_6;
+#line 710 "introduce_parallelism.m"
+                                    transform_hlds__implicit_parallelism__introduce_parallelism__GoalA_5 = transform_hlds__implicit_parallelism__introduce_parallelism__GoalA__tmp_copy_5;
+#line 710 "introduce_parallelism.m"
+                                  }
+#line 710 "introduce_parallelism.m"
+                                  continue;
+#line 710 "introduce_parallelism.m"
+                                }
+#line 709 "introduce_parallelism.m"
+                            }
+#line 708 "introduce_parallelism.m"
+                        }
+#line 684 "introduce_parallelism.m"
+          }
+#line 677 "introduce_parallelism.m"
+        return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 677 "introduce_parallelism.m"
+      }
+#line 677 "introduce_parallelism.m"
+      break;
+#line 677 "introduce_parallelism.m"
+    }
+#line 674 "introduce_parallelism.m"
+}
+
+#line 623 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__compare_goal_paths_3_p_0(
+#line 623 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PathA_4,
+#line 623 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PathB_5,
+#line 623 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__Result_6)
+#line 623 "introduce_parallelism.m"
+{
+#line 628 "introduce_parallelism.m"
+  while (MR_TRUE)
+#line 628 "introduce_parallelism.m"
+    {
+#line 628 "introduce_parallelism.m"
+      /* tailcall optimized into a loop */
+#line 628 "introduce_parallelism.m"
+      {
+#line 628 "introduce_parallelism.m"
+        MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 628 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__PathA_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 657 "introduce_parallelism.m"
+          if ((transform_hlds__implicit_parallelism__introduce_parallelism__PathB_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 660 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__Result_6 = (MR_Integer) 0;
+#line 657 "introduce_parallelism.m"
+          else
+#line 656 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__Result_6 = (MR_Integer) 2;
+#line 628 "introduce_parallelism.m"
+        else
+#line 628 "introduce_parallelism.m"
+          {
+#line 628 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__FirstStepA_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__PathA_4, (MR_Integer) 0)));
+#line 628 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__LaterPathA_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__PathA_4, (MR_Integer) 1)));
+
+#line 645 "introduce_parallelism.m"
+            if ((transform_hlds__implicit_parallelism__introduce_parallelism__PathB_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 649 "introduce_parallelism.m"
+              *transform_hlds__implicit_parallelism__introduce_parallelism__Result_6 = (MR_Integer) 1;
+#line 645 "introduce_parallelism.m"
+            else
+#line 630 "introduce_parallelism.m"
+              {
+#line 630 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__FirstStepB_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__PathB_5, (MR_Integer) 0)));
+#line 630 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__LaterPathB_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__PathB_5, (MR_Integer) 1)));
+#line 630 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Result0_11;
+
+#line 631 "introduce_parallelism.m"
+                {
+#line 631 "introduce_parallelism.m"
+                  mdbcomp__goal_path____Compare____goal_path_step_0_0(&transform_hlds__implicit_parallelism__introduce_parallelism__Result0_11, transform_hlds__implicit_parallelism__introduce_parallelism__FirstStepA_7, transform_hlds__implicit_parallelism__introduce_parallelism__FirstStepB_9);
+                }
+#line 638 "introduce_parallelism.m"
+                if ((transform_hlds__implicit_parallelism__introduce_parallelism__Result0_11 == (MR_Integer) 1))
+#line 640 "introduce_parallelism.m"
+                  *transform_hlds__implicit_parallelism__introduce_parallelism__Result_6 = (MR_Integer) 2;
+#line 638 "introduce_parallelism.m"
+                else
+#line 638 "introduce_parallelism.m"
+                  if ((transform_hlds__implicit_parallelism__introduce_parallelism__Result0_11 == (MR_Integer) 0))
+#line 637 "introduce_parallelism.m"
+                    {
+#line 637 "introduce_parallelism.m"
+                      /* direct tailcall eliminated */
+#line 637 "introduce_parallelism.m"
+                      {
+#line 637 "introduce_parallelism.m"
+                        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PathA__tmp_copy_4 = transform_hlds__implicit_parallelism__introduce_parallelism__LaterPathA_8;
+#line 637 "introduce_parallelism.m"
+                        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PathB__tmp_copy_5 = transform_hlds__implicit_parallelism__introduce_parallelism__LaterPathB_10;
+
+#line 637 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__PathB_5 = transform_hlds__implicit_parallelism__introduce_parallelism__PathB__tmp_copy_5;
+#line 637 "introduce_parallelism.m"
+                        transform_hlds__implicit_parallelism__introduce_parallelism__PathA_4 = transform_hlds__implicit_parallelism__introduce_parallelism__PathA__tmp_copy_4;
+#line 637 "introduce_parallelism.m"
+                      }
+#line 637 "introduce_parallelism.m"
+                      continue;
+#line 637 "introduce_parallelism.m"
+                    }
+#line 638 "introduce_parallelism.m"
+                  else
+#line 643 "introduce_parallelism.m"
+                    *transform_hlds__implicit_parallelism__introduce_parallelism__Result_6 = (MR_Integer) 1;
+#line 630 "introduce_parallelism.m"
+              }
+#line 628 "introduce_parallelism.m"
+          }
+#line 628 "introduce_parallelism.m"
+      }
+#line 628 "introduce_parallelism.m"
+      break;
+#line 628 "introduce_parallelism.m"
+    }
+#line 623 "introduce_parallelism.m"
+}
+
+#line 615 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__compare_candidate_par_conjunctions_3_p_0(
+#line 615 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4,
+#line 615 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5,
+#line 615 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__Result_6)
+#line 615 "introduce_parallelism.m"
+{
+#line 618 "introduce_parallelism.m"
+  {
+#line 618 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 618 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PathA_7;
+#line 618 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PathB_8;
+#line 618 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4, (MR_Integer) 0)));
+#line 618 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_10_10;
+#line 619 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4, (MR_Integer) 1)));
+#line 619 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4, (MR_Integer) 2)));
+#line 619 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4, (MR_Integer) 3)));
+#line 619 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4, (MR_Integer) 4)));
+#line 619 "introduce_parallelism.m"
+    MR_Float transform_hlds__implicit_parallelism__introduce_parallelism__V_15_15 = MR_unbox_float((MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4, (MR_Integer) 5)));
+#line 619 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4, (MR_Integer) 6)));
+#line 619 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4, (MR_Integer) 7)));
+#line 619 "introduce_parallelism.m"
+    MR_Float transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18 = MR_unbox_float((MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4, (MR_Integer) 8)));
+#line 619 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCA_4, (MR_Integer) 9)));
+#line 620 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_20_20;
+#line 620 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21;
+#line 620 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22;
+#line 620 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_23_23;
+#line 620 "introduce_parallelism.m"
+    MR_Float transform_hlds__implicit_parallelism__introduce_parallelism__V_24_24;
+#line 620 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25;
+#line 620 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_26_26;
+#line 620 "introduce_parallelism.m"
+    MR_Float transform_hlds__implicit_parallelism__introduce_parallelism__V_27_27;
+#line 620 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_28_28;
+
+#line 619 "introduce_parallelism.m"
+    {
+#line 619 "introduce_parallelism.m"
+      mdbcomp__goal_path__goal_path_from_string_det_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9, &transform_hlds__implicit_parallelism__introduce_parallelism__PathA_7);
+    }
+#line 620 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_10_10 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5, (MR_Integer) 0)));
+#line 620 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5, (MR_Integer) 1)));
+#line 620 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5, (MR_Integer) 2)));
+#line 620 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5, (MR_Integer) 3)));
+#line 620 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5, (MR_Integer) 4)));
+#line 620 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_24_24 = MR_unbox_float((MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5, (MR_Integer) 5)));
+#line 620 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5, (MR_Integer) 6)));
+#line 620 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5, (MR_Integer) 7)));
+#line 620 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_27_27 = MR_unbox_float((MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5, (MR_Integer) 8)));
+#line 620 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCB_5, (MR_Integer) 9)));
+#line 620 "introduce_parallelism.m"
+    {
+#line 620 "introduce_parallelism.m"
+      mdbcomp__goal_path__goal_path_from_string_det_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_10_10, &transform_hlds__implicit_parallelism__introduce_parallelism__PathB_8);
+    }
+#line 621 "introduce_parallelism.m"
+    {
+#line 621 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__compare_goal_paths_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__PathA_7, transform_hlds__implicit_parallelism__introduce_parallelism__PathB_8, transform_hlds__implicit_parallelism__introduce_parallelism__Result_6);
+#line 621 "introduce_parallelism.m"
+      return;
+    }
+#line 618 "introduce_parallelism.m"
+  }
+#line 615 "introduce_parallelism.m"
+}
+
+#line 576 "introduce_parallelism.m"
+static MR_Word MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__report_failed_parallelisation_3_f_0(
+#line 576 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_5,
+#line 576 "introduce_parallelism.m"
+  MR_String transform_hlds__implicit_parallelism__introduce_parallelism__GoalPath_6,
+#line 576 "introduce_parallelism.m"
+  MR_String transform_hlds__implicit_parallelism__introduce_parallelism__Error_7)
+#line 576 "introduce_parallelism.m"
+{
+#line 579 "introduce_parallelism.m"
+  {
+#line 579 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Spec_8;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_9;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_10;
+#line 579 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__PredName_11;
+#line 579 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__Arity_12;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_13;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Context_14;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_19_19;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_20_20;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_23_23;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_24_24;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_26_26;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_28_28;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_32_32;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_33_33;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_36_36;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_43_43;
+#line 579 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44;
+
+#line 581 "introduce_parallelism.m"
+    {
+#line 581 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_9 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_5);
+    }
+#line 582 "introduce_parallelism.m"
+    {
+#line 582 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_10 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_5);
+    }
+#line 583 "introduce_parallelism.m"
+    {
+#line 583 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__PredName_11 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_5);
+    }
+#line 584 "introduce_parallelism.m"
+    {
+#line 584 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__Arity_12 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_5);
+    }
+#line 585 "introduce_parallelism.m"
+    {
+#line 585 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 585 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+#line 585 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_9));
+#line 585 "introduce_parallelism.m"
+    }
+#line 586 "introduce_parallelism.m"
+    {
+#line 586 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 586 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_10));
+#line 586 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredName_11));
+#line 586 "introduce_parallelism.m"
+    }
+#line 586 "introduce_parallelism.m"
+    {
+#line 586 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 586 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22));
+#line 586 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Arity_12));
+#line 586 "introduce_parallelism.m"
+    }
+#line 586 "introduce_parallelism.m"
+    {
+#line 586 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_20_20 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 586 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_20_20, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+#line 586 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_20_20, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21));
+#line 586 "introduce_parallelism.m"
+    }
+#line 587 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_24_24 = (MR_Word) MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[22]);
+#line 588 "introduce_parallelism.m"
+    {
+#line 588 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_32_32 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 588 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__V_32_32, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__GoalPath_6));
+#line 588 "introduce_parallelism.m"
+    }
+#line 589 "introduce_parallelism.m"
+    {
+#line 589 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 589 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 589 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Error_7));
+#line 589 "introduce_parallelism.m"
+    }
+#line 589 "introduce_parallelism.m"
+    {
+#line 589 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_36_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 589 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_36_36, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37));
+#line 589 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_36_36, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 589 "introduce_parallelism.m"
+    }
+#line 588 "introduce_parallelism.m"
+    {
+#line 588 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_33_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 588 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_33_33, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_24_24));
+#line 588 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_33_33, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_36_36));
+#line 588 "introduce_parallelism.m"
+    }
+#line 588 "introduce_parallelism.m"
+    {
+#line 588 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 588 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_32_32));
+#line 588 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_33_33));
+#line 588 "introduce_parallelism.m"
+    }
+#line 587 "introduce_parallelism.m"
+    {
+#line 587 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_28_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 587 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_28_28, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[23])));
+#line 587 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_28_28, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31));
+#line 587 "introduce_parallelism.m"
+    }
+#line 587 "introduce_parallelism.m"
+    {
+#line 587 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_26_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 587 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_26_26, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+#line 587 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_26_26, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_28_28));
+#line 587 "introduce_parallelism.m"
+    }
+#line 586 "introduce_parallelism.m"
+    {
+#line 586 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_23_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 586 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_23_23, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_24_24));
+#line 586 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_23_23, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_26_26));
+#line 586 "introduce_parallelism.m"
+    }
+#line 585 "introduce_parallelism.m"
+    {
+#line 585 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_19_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 585 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_19_19, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_20_20));
+#line 585 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_19_19, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_23_23));
+#line 585 "introduce_parallelism.m"
+    }
+#line 585 "introduce_parallelism.m"
+    {
+#line 585 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 585 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_18_18));
+#line 585 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_19_19));
+#line 585 "introduce_parallelism.m"
+    }
+#line 585 "introduce_parallelism.m"
+    {
+#line 585 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 585 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_13, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[21])));
+#line 585 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_13, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_17_17));
+#line 585 "introduce_parallelism.m"
+    }
+#line 590 "introduce_parallelism.m"
+    {
+#line 590 "introduce_parallelism.m"
+      hlds__hlds_pred__pred_info_get_context_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_5, &transform_hlds__implicit_parallelism__introduce_parallelism__Context_14);
+    }
+#line 594 "introduce_parallelism.m"
+    {
+#line 594 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 594 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_13));
+#line 594 "introduce_parallelism.m"
+    }
+#line 594 "introduce_parallelism.m"
+    {
+#line 594 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_43_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 594 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_43_43, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44));
+#line 594 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_43_43, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 594 "introduce_parallelism.m"
+    }
+#line 594 "introduce_parallelism.m"
+    {
+#line 594 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 594 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Context_14));
+#line 594 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_43_43));
+#line 594 "introduce_parallelism.m"
+    }
+#line 593 "introduce_parallelism.m"
+    {
+#line 593 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 593 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42));
+#line 593 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 593 "introduce_parallelism.m"
+    }
+#line 593 "introduce_parallelism.m"
+    {
+#line 593 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__Spec_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 593 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Spec_8, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+#line 593 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Spec_8, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+#line 593 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Spec_8, 2) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41));
+#line 593 "introduce_parallelism.m"
+    }
+#line 579 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__Spec_8;
+#line 579 "introduce_parallelism.m"
+  }
+#line 576 "introduce_parallelism.m"
+}
+
+#line 542 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__build_seq_conjuncts_8_p_0(
+#line 542 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_1,
+#line 542 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_2,
+#line 542 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3,
+#line 542 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4,
+#line 542 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5,
+#line 542 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6,
+#line 542 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7,
+#line 542 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8)
+#line 542 "introduce_parallelism.m"
+{
+#line 546 "introduce_parallelism.m"
+  {
+#line 546 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 546 "introduce_parallelism.m"
+    if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 546 "introduce_parallelism.m"
+      {
+#line 546 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_5[5]);
+#line 546 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7;
+#line 546 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5;
+#line 546 "introduce_parallelism.m"
+      }
+#line 546 "introduce_parallelism.m"
+    else
+#line 548 "introduce_parallelism.m"
+      {
+#line 548 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRep_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 548 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalReps_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+
+#line 569 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 570 "introduce_parallelism.m"
+          {
+#line 571 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 571 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5;
+#line 571 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7;
+#line 570 "introduce_parallelism.m"
+          }
+#line 569 "introduce_parallelism.m"
+        else
+#line 550 "introduce_parallelism.m"
+          {
+#line 550 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Goal_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5, (MR_Integer) 0)));
+#line 550 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5, (MR_Integer) 1)));
+#line 670 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_45;
+
+#line 671 "introduce_parallelism.m"
+            {
+#line 671 "introduce_parallelism.m"
+              ll_backend__prog_rep__goal_to_goal_rep_4_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_1, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7, transform_hlds__implicit_parallelism__introduce_parallelism__Goal_25, &transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_45);
+            }
+#line 672 "introduce_parallelism.m"
+            {
+#line 672 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__goal_reps_match_3_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0, (MR_Word) &mercury__unit__unit__type_ctor_info_unit_0, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_2, transform_hlds__implicit_parallelism__introduce_parallelism__GoalRep_20, transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_45);
+            }
+#line 566 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 555 "introduce_parallelism.m"
+              {
+#line 555 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__InstmapDelta_26;
+#line 555 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConjs0_27;
+#line 555 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Goal_25, (MR_Integer) 1)));
+#line 555 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_35_35;
+#line 555 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Goal_25, (MR_Integer) 0)));
+
+#line 555 "introduce_parallelism.m"
+                {
+#line 555 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__InstmapDelta_26 = hlds__hlds_goal__goal_info_get_instmap_delta_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34);
+                }
+#line 556 "introduce_parallelism.m"
+                {
+#line 556 "introduce_parallelism.m"
+                  hlds__instmap__apply_instmap_delta_sv_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__InstmapDelta_26, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_35_35);
+                }
+#line 557 "introduce_parallelism.m"
+                {
+#line 557 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__build_seq_conjuncts_8_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_1, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_2, transform_hlds__implicit_parallelism__introduce_parallelism__GoalReps_21, &transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConjs0_27, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_33_33, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_35_35, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8);
+                }
+#line 562 "introduce_parallelism.m"
+                if ((transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConjs0_27 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 564 "introduce_parallelism.m"
+                  *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 562 "introduce_parallelism.m"
+                else
+#line 560 "introduce_parallelism.m"
+                  {
+#line 560 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Conjs0_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConjs0_27, (MR_Integer) 0)));
+#line 560 "introduce_parallelism.m"
+                    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_38_38;
+
+#line 561 "introduce_parallelism.m"
+                    {
+#line 561 "introduce_parallelism.m"
+                      transform_hlds__implicit_parallelism__introduce_parallelism__V_38_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 561 "introduce_parallelism.m"
+                      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_38_38, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Goal_25));
+#line 561 "introduce_parallelism.m"
+                      MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_38_38, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Conjs0_28));
+#line 561 "introduce_parallelism.m"
+                    }
+#line 561 "introduce_parallelism.m"
+                    {
+#line 561 "introduce_parallelism.m"
+                      MR_Word base;
+#line 561 "introduce_parallelism.m"
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 561 "introduce_parallelism.m"
+                      *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4 = base;
+#line 561 "introduce_parallelism.m"
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_38_38));
+#line 561 "introduce_parallelism.m"
+                    }
+#line 560 "introduce_parallelism.m"
+                  }
+#line 555 "introduce_parallelism.m"
+              }
+#line 566 "introduce_parallelism.m"
+            else
+#line 567 "introduce_parallelism.m"
+              {
+#line 567 "introduce_parallelism.m"
+                *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 567 "introduce_parallelism.m"
+                *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7;
+#line 567 "introduce_parallelism.m"
+                *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_33_33;
+#line 567 "introduce_parallelism.m"
+              }
+#line 550 "introduce_parallelism.m"
+          }
+#line 548 "introduce_parallelism.m"
+      }
+#line 546 "introduce_parallelism.m"
+  }
+#line 542 "introduce_parallelism.m"
+}
+
+#line 515 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__build_par_conjuncts_8_p_0(
+#line 515 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_1,
+#line 515 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_2,
+#line 515 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3,
+#line 515 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4,
+#line 515 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5,
+#line 515 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6,
+#line 515 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7,
+#line 515 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8)
+#line 515 "introduce_parallelism.m"
+{
+#line 519 "introduce_parallelism.m"
+  {
+#line 519 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 519 "introduce_parallelism.m"
+    if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 519 "introduce_parallelism.m"
+      {
+#line 519 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_5[5]);
+#line 519 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7;
+#line 519 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5;
+#line 519 "introduce_parallelism.m"
+      }
+#line 519 "introduce_parallelism.m"
+    else
+#line 521 "introduce_parallelism.m"
+      {
+#line 521 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRep_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 0)));
+#line 521 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalReps_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3, (MR_Integer) 1)));
+#line 521 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__SeqConjs_25 = (MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalRep_20;
+#line 521 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConj_26;
+#line 521 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_35_35;
+#line 521 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_36_36;
+
+#line 523 "introduce_parallelism.m"
+        {
+#line 523 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__build_seq_conjuncts_8_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_1, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_2, transform_hlds__implicit_parallelism__introduce_parallelism__SeqConjs_25, &transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConj_26, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_5, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_35_35, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_7, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_36_36);
+        }
+#line 537 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConj_26 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 538 "introduce_parallelism.m"
+          {
+#line 539 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 539 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_35_35;
+#line 539 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_36_36;
+#line 538 "introduce_parallelism.m"
+          }
+#line 537 "introduce_parallelism.m"
+        else
+#line 526 "introduce_parallelism.m"
+          {
+#line 526 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Conj0_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConj_26, (MR_Integer) 0)));
+#line 526 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Conj_28;
+#line 526 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConjs0_29;
+
+#line 527 "introduce_parallelism.m"
+            {
+#line 527 "introduce_parallelism.m"
+              hlds__goal_util__create_conj_from_list_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__Conj0_27, (MR_Integer) 0, &transform_hlds__implicit_parallelism__introduce_parallelism__Conj_28);
+            }
+#line 528 "introduce_parallelism.m"
+            {
+#line 528 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__build_par_conjuncts_8_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_1, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_2, transform_hlds__implicit_parallelism__introduce_parallelism__GoalReps_21, &transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConjs0_29, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_35_35, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_6, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_36_36, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_8);
+            }
+#line 533 "introduce_parallelism.m"
+            if ((transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConjs0_29 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 535 "introduce_parallelism.m"
+              *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 533 "introduce_parallelism.m"
+            else
+#line 531 "introduce_parallelism.m"
+              {
+#line 531 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Conjs0_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeConjs0_29, (MR_Integer) 0)));
+#line 531 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_40_40;
+
+#line 532 "introduce_parallelism.m"
+                {
+#line 532 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__V_40_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 532 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_40_40, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Conj_28));
+#line 532 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_40_40, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Conjs0_30));
+#line 532 "introduce_parallelism.m"
+                }
+#line 532 "introduce_parallelism.m"
+                {
+#line 532 "introduce_parallelism.m"
+                  MR_Word base;
+#line 532 "introduce_parallelism.m"
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 532 "introduce_parallelism.m"
+                  *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__4_4 = base;
+#line 532 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_40_40));
+#line 532 "introduce_parallelism.m"
+                }
+#line 531 "introduce_parallelism.m"
+              }
+#line 526 "introduce_parallelism.m"
+          }
+#line 521 "introduce_parallelism.m"
+      }
+#line 519 "introduce_parallelism.m"
+  }
+#line 515 "introduce_parallelism.m"
+}
+
+#line 468 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__build_par_conjunction_6_p_0(
+#line 468 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_7,
+#line 468 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_8,
+#line 468 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Instmap0_9,
+#line 468 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_26,
+#line 468 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11,
+#line 468 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_12)
+#line 468 "introduce_parallelism.m"
+{
+#line 473 "introduce_parallelism.m"
+  {
+#line 473 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepsBefore_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11, (MR_Integer) 4)));
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepsAfter_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11, (MR_Integer) 7)));
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParConjReps_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11, (MR_Integer) 6)));
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoalsBefore_17;
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjuncts_18;
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoalsAfter_19;
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_28_28;
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_29_29;
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_30_30;
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_31_31;
+#line 473 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_32_32;
+#line 474 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11, (MR_Integer) 0)));
+#line 474 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11, (MR_Integer) 1)));
+#line 474 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_48_48 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11, (MR_Integer) 2)));
+#line 474 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11, (MR_Integer) 3)));
+#line 474 "introduce_parallelism.m"
+    MR_Float transform_hlds__implicit_parallelism__introduce_parallelism__V_50_50 = MR_unbox_float((MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11, (MR_Integer) 5)));
+#line 474 "introduce_parallelism.m"
+    MR_Float transform_hlds__implicit_parallelism__introduce_parallelism__V_53_53 = MR_unbox_float((MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11, (MR_Integer) 8)));
+#line 474 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_11, (MR_Integer) 9)));
+#line 483 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_33_33;
+
+#line 479 "introduce_parallelism.m"
+    {
+#line 479 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__build_seq_conjuncts_8_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_7, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_8, transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepsBefore_13, &transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoalsBefore_17, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_0_26, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_28_28, transform_hlds__implicit_parallelism__introduce_parallelism__Instmap0_9, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_29_29);
+    }
+#line 481 "introduce_parallelism.m"
+    {
+#line 481 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__build_par_conjuncts_8_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_7, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_8, transform_hlds__implicit_parallelism__introduce_parallelism__ParConjReps_15, &transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjuncts_18, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_28_28, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_30_30, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_29_29, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_31_31);
+    }
+#line 483 "introduce_parallelism.m"
+    {
+#line 483 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__build_seq_conjuncts_8_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_7, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_8, transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepsAfter_14, &transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoalsAfter_19, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_30_30, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_32_32, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_31_31, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_33_33);
+    }
+#line 509 "introduce_parallelism.m"
+    if ((transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoalsBefore_17 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 510 "introduce_parallelism.m"
+      {
+#line 511 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_5[2]);
+#line 510 "introduce_parallelism.m"
+      }
+#line 509 "introduce_parallelism.m"
+    else
+#line 488 "introduce_parallelism.m"
+      {
+#line 488 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoalsBefore_17, (MR_Integer) 0)));
+
+#line 504 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjuncts_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 505 "introduce_parallelism.m"
+          {
+#line 506 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_5[3]);
+#line 505 "introduce_parallelism.m"
+          }
+#line 504 "introduce_parallelism.m"
+        else
+#line 490 "introduce_parallelism.m"
+          {
+#line 490 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParConjuncts_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjuncts_18, (MR_Integer) 0)));
+
+#line 499 "introduce_parallelism.m"
+            if ((transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoalsAfter_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 500 "introduce_parallelism.m"
+              {
+#line 501 "introduce_parallelism.m"
+                *transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_5[4]);
+#line 500 "introduce_parallelism.m"
+              }
+#line 499 "introduce_parallelism.m"
+            else
+#line 492 "introduce_parallelism.m"
+              {
+#line 492 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalsAfter_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoalsAfter_19, (MR_Integer) 0)));
+#line 492 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParConjunction0_24;
+#line 492 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParConjunction_25;
+#line 492 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44;
+#line 492 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45;
+
+#line 493 "introduce_parallelism.m"
+                {
+#line 493 "introduce_parallelism.m"
+                  hlds__goal_util__create_conj_from_list_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ParConjuncts_22, (MR_Integer) 1, &transform_hlds__implicit_parallelism__introduce_parallelism__ParConjunction0_24);
+                }
+#line 495 "introduce_parallelism.m"
+                {
+#line 495 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 495 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ParConjunction0_24));
+#line 495 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__GoalsAfter_23));
+#line 495 "introduce_parallelism.m"
+                }
+#line 495 "introduce_parallelism.m"
+                {
+#line 495 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__ParConjunction_25 = mercury__list__f_43_43_2_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore_21, transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44);
+                }
+#line 496 "introduce_parallelism.m"
+                {
+#line 496 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 496 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ParConjunction_25));
+#line 496 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Goals_32_32));
+#line 496 "introduce_parallelism.m"
+                }
+#line 496 "introduce_parallelism.m"
+                {
+#line 496 "introduce_parallelism.m"
+                  MR_Word base;
+#line 496 "introduce_parallelism.m"
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 496 "introduce_parallelism.m"
+                  *transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_12 = base;
+#line 496 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45));
+#line 496 "introduce_parallelism.m"
+                }
+#line 492 "introduce_parallelism.m"
+              }
+#line 490 "introduce_parallelism.m"
+          }
+#line 488 "introduce_parallelism.m"
+      }
+#line 473 "introduce_parallelism.m"
+  }
+#line 468 "introduce_parallelism.m"
+}
+
+#line 434 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__find_first_goal_6_p_0(
+#line 434 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRep_1,
+#line 434 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 434 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_3,
+#line 434 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4,
+#line 434 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_5,
+#line 434 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__6_6)
+#line 434 "introduce_parallelism.m"
+{
+#line 438 "introduce_parallelism.m"
+  {
+#line 438 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 438 "introduce_parallelism.m"
+    if ((transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 438 "introduce_parallelism.m"
+      *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__6_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 438 "introduce_parallelism.m"
+    else
+#line 440 "introduce_parallelism.m"
+      {
+#line 440 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Goal_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 440 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Goals_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 670 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_38;
+
+#line 671 "introduce_parallelism.m"
+        {
+#line 671 "introduce_parallelism.m"
+          ll_backend__prog_rep__goal_to_goal_rep_4_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_3, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_5, transform_hlds__implicit_parallelism__introduce_parallelism__Goal_12, &transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_38);
+        }
+#line 672 "introduce_parallelism.m"
+        {
+#line 672 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__goal_reps_match_3_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0, (MR_Word) &mercury__unit__unit__type_ctor_info_unit_0, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__GoalRep_1, transform_hlds__implicit_parallelism__introduce_parallelism__GoalRepB_38);
+        }
+#line 446 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 445 "introduce_parallelism.m"
+          {
+#line 445 "introduce_parallelism.m"
+            {
+#line 445 "introduce_parallelism.m"
+              MR_Word base;
+#line 445 "introduce_parallelism.m"
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 445 "introduce_parallelism.m"
+              *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__6_6 = base;
+#line 445 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 445 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Goal_12));
+#line 445 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Goals_13));
+#line 445 "introduce_parallelism.m"
+            }
+#line 445 "introduce_parallelism.m"
+          }
+#line 446 "introduce_parallelism.m"
+        else
+#line 447 "introduce_parallelism.m"
+          {
+#line 447 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__InstmapDelta_18;
+#line 447 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Result0_19;
+#line 447 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Goal_12, (MR_Integer) 1)));
+#line 447 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_26_28;
+#line 447 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Goal_12, (MR_Integer) 0)));
+
+#line 447 "introduce_parallelism.m"
+            {
+#line 447 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__InstmapDelta_18 = hlds__hlds_goal__goal_info_get_instmap_delta_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25);
+            }
+#line 448 "introduce_parallelism.m"
+            {
+#line 448 "introduce_parallelism.m"
+              hlds__instmap__apply_instmap_delta_sv_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__InstmapDelta_18, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_0_5, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_26_28);
+            }
+#line 449 "introduce_parallelism.m"
+            {
+#line 449 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__find_first_goal_6_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__GoalRep_1, transform_hlds__implicit_parallelism__introduce_parallelism__Goals_13, transform_hlds__implicit_parallelism__introduce_parallelism__ProcRepInfo_3, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_4, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Instmap_26_28, &transform_hlds__implicit_parallelism__introduce_parallelism__Result0_19);
+            }
+#line 454 "introduce_parallelism.m"
+            if ((transform_hlds__implicit_parallelism__introduce_parallelism__Result0_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 453 "introduce_parallelism.m"
+              *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__6_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 454 "introduce_parallelism.m"
+            else
+#line 455 "introduce_parallelism.m"
+              {
+#line 455 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore0_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__Result0_19, (MR_Integer) 0)));
+#line 455 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__Result0_19, (MR_Integer) 1)));
+#line 455 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__Result0_19, (MR_Integer) 2)));
+#line 455 "introduce_parallelism.m"
+                MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_27_27;
+
+#line 456 "introduce_parallelism.m"
+                {
+#line 456 "introduce_parallelism.m"
+                  transform_hlds__implicit_parallelism__introduce_parallelism__V_27_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 456 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_27_27, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Goal_12));
+#line 456 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_27_27, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore0_20));
+#line 456 "introduce_parallelism.m"
+                }
+#line 456 "introduce_parallelism.m"
+                {
+#line 456 "introduce_parallelism.m"
+                  MR_Word base;
+#line 456 "introduce_parallelism.m"
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 456 "introduce_parallelism.m"
+                  *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__6_6 = base;
+#line 456 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_27_27));
+#line 456 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_21_21));
+#line 456 "introduce_parallelism.m"
+                  MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_22_22));
+#line 456 "introduce_parallelism.m"
+                }
+#line 455 "introduce_parallelism.m"
+              }
+#line 447 "introduce_parallelism.m"
+          }
+#line 440 "introduce_parallelism.m"
+      }
+#line 438 "introduce_parallelism.m"
+  }
+#line 434 "introduce_parallelism.m"
+}
+
+#line 385 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_conj_6_p_0_2(
+#line 385 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 385 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 385 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 385 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 385 "introduce_parallelism.m"
+{
+#line 385 "introduce_parallelism.m"
+  {
+#line 385 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure = transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg;
+#line 385 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv1_HeadVar__3_3;
+
+#line 385 "introduce_parallelism.m"
+    {
+#line 385 "introduce_parallelism.m"
+      hlds__instmap__apply_instmap_delta_sv_3_p_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), &transform_hlds__implicit_parallelism__introduce_parallelism__conv1_HeadVar__3_3);
+    }
+#line 385 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv1_HeadVar__3_3));
+#line 385 "introduce_parallelism.m"
+  }
+#line 385 "introduce_parallelism.m"
+}
+
+#line 382 "introduce_parallelism.m"
+static MR_Box MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_conj_6_p_0_1(
+#line 382 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 382 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1)
+#line 382 "introduce_parallelism.m"
+{
+#line 382 "introduce_parallelism.m"
+  {
+#line 382 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2;
+#line 382 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure = transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg;
+#line 382 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__2_34;
+
+#line 382 "introduce_parallelism.m"
+    {
+#line 382 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__2_34 = transform_hlds__implicit_parallelism__introduce_parallelism__IntroducedFrom__func__maybe_parallelise_conj__382__1_1_f_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1));
+    }
+#line 382 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__2_34));
+#line 382 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2;
+#line 382 "introduce_parallelism.m"
+  }
+#line 382 "introduce_parallelism.m"
+}
+
+#line 366 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_conj_6_p_0(
+#line 366 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_7,
+#line 366 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_8,
+#line 366 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9,
+#line 366 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Instmap0_10,
+#line 366 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_11,
+#line 366 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_12)
+#line 366 "introduce_parallelism.m"
+{
+#line 371 "introduce_parallelism.m"
+  {
+#line 371 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 371 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr0_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_11, (MR_Integer) 0)));
+#line 371 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__FirstGoalRep_15;
+#line 371 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, (MR_Integer) 4)));
+#line 371 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, (MR_Integer) 6)));
+#line 372 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism___GoalInfo0_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_11, (MR_Integer) 1)));
+#line 409 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_68_68 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, (MR_Integer) 0)));
+#line 409 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, (MR_Integer) 1)));
+#line 409 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_70_70 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, (MR_Integer) 2)));
+#line 409 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, (MR_Integer) 3)));
+#line 409 "introduce_parallelism.m"
+    MR_Float transform_hlds__implicit_parallelism__introduce_parallelism__V_72_72 = MR_unbox_float((MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, (MR_Integer) 5)));
+#line 409 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, (MR_Integer) 7)));
+#line 409 "introduce_parallelism.m"
+    MR_Float transform_hlds__implicit_parallelism__introduce_parallelism__V_75_75 = MR_unbox_float((MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, (MR_Integer) 8)));
+#line 409 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, (MR_Integer) 9)));
+#line 400 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore_18;
+#line 400 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__FirstGoal_19;
+#line 400 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__OtherGoals_20;
+#line 377 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Conjs0_16;
+#line 377 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Conjs1_17;
+#line 377 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_30_30;
+#line 377 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31;
+
+#line 412 "introduce_parallelism.m"
+    if ((transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore_57 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 420 "introduce_parallelism.m"
+      {
+#line 420 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__FirstGoalPrime_62;
+#line 416 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__FirstParConj_60;
+#line 416 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64;
+#line 416 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_61_61;
+#line 417 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_63_63;
+
+#line 416 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__V_73_73)) == (MR_mktag((MR_Integer) 1)));
+#line 416 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 416 "introduce_parallelism.m"
+          {
+#line 416 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__FirstParConj_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_73_73, (MR_Integer) 0)));
+#line 416 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_73_73, (MR_Integer) 1)));
+#line 417 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64 = (MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__FirstParConj_60;
+#line 417 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64)) == (MR_mktag((MR_Integer) 1)));
+#line 417 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 417 "introduce_parallelism.m"
+              {
+#line 417 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__FirstGoalPrime_62 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64, (MR_Integer) 0)));
+#line 417 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_64_64, (MR_Integer) 1)));
+#line 417 "introduce_parallelism.m"
+              }
+#line 416 "introduce_parallelism.m"
+          }
+#line 420 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 419 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__FirstGoalRep_15 = transform_hlds__implicit_parallelism__introduce_parallelism__FirstGoalPrime_62;
+#line 420 "introduce_parallelism.m"
+        else
+#line 421 "introduce_parallelism.m"
+          {
+#line 421 "introduce_parallelism.m"
+            {
+#line 421 "introduce_parallelism.m"
+              mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism", (MR_String) "predicate \140transform_hlds.implicit_parallelism.introduce_parallelism.cpc_get_first_goal\'/2", (MR_String) "candidate parallel conjunction is empty");
+#line 421 "introduce_parallelism.m"
+              return;
+            }
+#line 421 "introduce_parallelism.m"
+          }
+#line 420 "introduce_parallelism.m"
+      }
+#line 412 "introduce_parallelism.m"
+    else
+#line 411 "introduce_parallelism.m"
+      {
+#line 411 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_58_58;
+
+#line 411 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__FirstGoalRep_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore_57, (MR_Integer) 0)));
+#line 411 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore_57, (MR_Integer) 1)));
+#line 411 "introduce_parallelism.m"
+      }
+#line 377 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr0_13)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr0_13, (MR_Integer) 0)))) == (MR_Integer) 2)));
+#line 377 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 377 "introduce_parallelism.m"
+      {
+#line 377 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr0_13, (MR_Integer) 1)));
+#line 377 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__Conjs0_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr0_13, (MR_Integer) 2)));
+#line 377 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (transform_hlds__implicit_parallelism__introduce_parallelism__V_30_30 == (MR_Integer) 0);
+#line 377 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 377 "introduce_parallelism.m"
+          {
+#line 378 "introduce_parallelism.m"
+            {
+#line 378 "introduce_parallelism.m"
+              hlds__goal_util__flatten_conj_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__Conjs0_16, &transform_hlds__implicit_parallelism__introduce_parallelism__Conjs1_17);
+            }
+#line 379 "introduce_parallelism.m"
+            {
+#line 379 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__find_first_goal_6_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__FirstGoalRep_15, transform_hlds__implicit_parallelism__introduce_parallelism__Conjs1_17, transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_7, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_8, transform_hlds__implicit_parallelism__introduce_parallelism__Instmap0_10, &transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31);
+            }
+#line 379 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31)) == (MR_mktag((MR_Integer) 1)));
+#line 379 "introduce_parallelism.m"
+            if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 379 "introduce_parallelism.m"
+              {
+#line 379 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, (MR_Integer) 0)));
+#line 379 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__FirstGoal_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, (MR_Integer) 1)));
+#line 379 "introduce_parallelism.m"
+                transform_hlds__implicit_parallelism__introduce_parallelism__OtherGoals_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, (MR_Integer) 2)));
+#line 379 "introduce_parallelism.m"
+              }
+#line 377 "introduce_parallelism.m"
+          }
+#line 377 "introduce_parallelism.m"
+      }
+#line 400 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 384 "introduce_parallelism.m"
+      {
+#line 384 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_49_49 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+#line 384 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_50_50 = (MR_Word) &hlds__instmap__hlds__instmap__type_ctor_info_instmap_delta_0;
+#line 384 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBeforeInstDeltas_21;
+#line 384 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Instmap_23;
+#line 384 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_24;
+#line 384 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37;
+#line 385 "introduce_parallelism.m"
+        MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv2_Instmap_23;
+
+#line 382 "introduce_parallelism.m"
+        {
+#line 382 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBeforeInstDeltas_21 = mercury__list__map_2_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_49_49, transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_50_50, (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[6], transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore_18);
+        }
+#line 385 "introduce_parallelism.m"
+        {
+#line 385 "introduce_parallelism.m"
+          mercury__list__foldl_4_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_50_50, (MR_Word) &hlds__instmap__hlds__instmap__type_ctor_info_instmap_0, (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[7], transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBeforeInstDeltas_21, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Instmap0_10)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv2_Instmap_23);
+        }
+#line 385 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__Instmap_23 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv2_Instmap_23);
+#line 387 "introduce_parallelism.m"
+        {
+#line 387 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 387 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__FirstGoal_19));
+#line 387 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__OtherGoals_20));
+#line 387 "introduce_parallelism.m"
+        }
+#line 387 "introduce_parallelism.m"
+        {
+#line 387 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__build_par_conjunction_6_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_7, transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_8, transform_hlds__implicit_parallelism__introduce_parallelism__Instmap_23, transform_hlds__implicit_parallelism__introduce_parallelism__V_37_37, transform_hlds__implicit_parallelism__introduce_parallelism__CPC_9, &transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_24);
+        }
+#line 396 "introduce_parallelism.m"
+        if (((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_24)) == (MR_mktag((MR_Integer) 1))))
+#line 398 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_12 = (MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_24;
+#line 396 "introduce_parallelism.m"
+        else
+#line 392 "introduce_parallelism.m"
+          {
+#line 392 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParConjunction_25;
+#line 392 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__RemainingGoals_26;
+#line 392 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Conjs_27;
+#line 392 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr_28;
+#line 392 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeParConjunction_24, (MR_Integer) 0)));
+#line 392 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_39_39;
+#line 392 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41;
+#line 392 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42;
+#line 395 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_48_48;
+
+#line 390 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__ParConjunction_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_38_38, (MR_Integer) 0)));
+#line 390 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__RemainingGoals_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_38_38, (MR_Integer) 1)));
+#line 393 "introduce_parallelism.m"
+            {
+#line 393 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_39_39 = mercury__list__f_43_43_2_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_49_49, transform_hlds__implicit_parallelism__introduce_parallelism__ParConjunction_25, transform_hlds__implicit_parallelism__introduce_parallelism__RemainingGoals_26);
+            }
+#line 393 "introduce_parallelism.m"
+            {
+#line 393 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__Conjs_27 = mercury__list__f_43_43_2_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_49_49, transform_hlds__implicit_parallelism__introduce_parallelism__GoalsBefore_18, transform_hlds__implicit_parallelism__introduce_parallelism__V_39_39);
+            }
+#line 394 "introduce_parallelism.m"
+            {
+#line 394 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr_28 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 394 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr_28, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 394 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr_28, 1) = ((MR_Box) ((MR_Integer) 0));
+#line 394 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr_28, 2) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Conjs_27));
+#line 394 "introduce_parallelism.m"
+            }
+#line 395 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_11, (MR_Integer) 0)));
+#line 395 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_11, (MR_Integer) 1)));
+#line 395 "introduce_parallelism.m"
+            {
+#line 395 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 395 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__GoalExpr_28));
+#line 395 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42));
+#line 395 "introduce_parallelism.m"
+            }
+#line 395 "introduce_parallelism.m"
+            {
+#line 395 "introduce_parallelism.m"
+              MR_Word base;
+#line 395 "introduce_parallelism.m"
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 395 "introduce_parallelism.m"
+              *transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_12 = base;
+#line 395 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41));
+#line 395 "introduce_parallelism.m"
+            }
+#line 392 "introduce_parallelism.m"
+          }
+#line 384 "introduce_parallelism.m"
+      }
+#line 400 "introduce_parallelism.m"
+    else
+#line 401 "introduce_parallelism.m"
+      {
+#line 401 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_5[1]);
+#line 401 "introduce_parallelism.m"
+      }
+#line 371 "introduce_parallelism.m"
+  }
+#line 366 "introduce_parallelism.m"
+}
+
+#line 344 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_goal_11_p_0_1(
+#line 344 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 344 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 344 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 344 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 344 "introduce_parallelism.m"
+{
+#line 344 "introduce_parallelism.m"
+  {
+#line 344 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure = transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg;
+#line 344 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_MaybeGoal_12;
+
+#line 344 "introduce_parallelism.m"
+    {
+#line 344 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_conj_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 5))), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), &transform_hlds__implicit_parallelism__introduce_parallelism__conv0_MaybeGoal_12);
+    }
+#line 344 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_MaybeGoal_12));
+#line 344 "introduce_parallelism.m"
+  }
+#line 344 "introduce_parallelism.m"
+}
+
+#line 329 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_goal_11_p_0(
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_12,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_13,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_14,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Instmap0_15,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_17,
+#line 329 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__Goal_18,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_IntroducedParallelism_0_27,
+#line 329 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_IntroducedParallelism_28,
+#line 329 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_29,
+#line 329 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_30)
+#line 329 "introduce_parallelism.m"
+{
+#line 336 "introduce_parallelism.m"
+  {
+#line 336 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 336 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__TargetGoalPathString_21 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16, (MR_Integer) 0)));
+#line 336 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TargetGoalPath_23;
+#line 336 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_24;
+#line 336 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34;
+#line 337 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16, (MR_Integer) 1)));
+#line 337 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_40_40 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16, (MR_Integer) 2)));
+#line 337 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16, (MR_Integer) 3)));
+#line 337 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16, (MR_Integer) 4)));
+#line 337 "introduce_parallelism.m"
+    MR_Float transform_hlds__implicit_parallelism__introduce_parallelism__V_43_43 = MR_unbox_float((MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16, (MR_Integer) 5)));
+#line 337 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16, (MR_Integer) 6)));
+#line 337 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16, (MR_Integer) 7)));
+#line 337 "introduce_parallelism.m"
+    MR_Float transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46 = MR_unbox_float((MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16, (MR_Integer) 8)));
+#line 337 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16, (MR_Integer) 9)));
+#line 340 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TargetGoalPathPrime_22;
+
+#line 338 "introduce_parallelism.m"
+    {
+#line 338 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mdbcomp__goal_path__goal_path_from_string_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TargetGoalPathString_21, &transform_hlds__implicit_parallelism__introduce_parallelism__TargetGoalPathPrime_22);
+    }
+#line 340 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 339 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__TargetGoalPath_23 = transform_hlds__implicit_parallelism__introduce_parallelism__TargetGoalPathPrime_22;
+#line 340 "introduce_parallelism.m"
+    else
+#line 341 "introduce_parallelism.m"
+      {
+#line 341 "introduce_parallelism.m"
+        {
+#line 341 "introduce_parallelism.m"
+          mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism", (MR_String) "predicate \140transform_hlds.implicit_parallelism.introduce_parallelism.maybe_parallelise_goal\'/11", (MR_String) "Invalid goal path in CPC Feedback Information");
+#line 341 "introduce_parallelism.m"
+          return;
+        }
+#line 341 "introduce_parallelism.m"
+      }
+#line 344 "introduce_parallelism.m"
+    {
+#line 344 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 344 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34, 0) = ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_8[0]));
+#line 344 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_goal_11_p_0_1));
+#line 344 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 344 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34, 3) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_13));
+#line 344 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34, 4) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_14));
+#line 344 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34, 5) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__CPC_16));
+#line 344 "introduce_parallelism.m"
+    }
+#line 344 "introduce_parallelism.m"
+    {
+#line 344 "introduce_parallelism.m"
+      hlds__goal_util__maybe_transform_goal_at_goal_path_with_instmap_5_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_34_34, transform_hlds__implicit_parallelism__introduce_parallelism__TargetGoalPath_23, transform_hlds__implicit_parallelism__introduce_parallelism__Instmap0_15, transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_17, &transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_24);
+    }
+#line 350 "introduce_parallelism.m"
+    if ((transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_24 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 357 "introduce_parallelism.m"
+      {
+#line 357 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Spec_52;
+
+#line 358 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__Goal_18 = transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_17;
+#line 359 "introduce_parallelism.m"
+        {
+#line 359 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__Spec_52 = transform_hlds__implicit_parallelism__introduce_parallelism__report_failed_parallelisation_3_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_12, transform_hlds__implicit_parallelism__introduce_parallelism__TargetGoalPathString_21, (MR_String) "Could not find goal in procedure; perhaps the program has changed");
+        }
+#line 361 "introduce_parallelism.m"
+        {
+#line 361 "introduce_parallelism.m"
+          MR_Word base;
+#line 361 "introduce_parallelism.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 361 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_30 = base;
+#line 361 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Spec_52));
+#line 361 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_29));
+#line 361 "introduce_parallelism.m"
+        }
+#line 361 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_IntroducedParallelism_28 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_IntroducedParallelism_0_27;
+#line 357 "introduce_parallelism.m"
+      }
+#line 350 "introduce_parallelism.m"
+    else
+#line 350 "introduce_parallelism.m"
+      if (((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_24)) == (MR_mktag((MR_Integer) 2))))
+#line 357 "introduce_parallelism.m"
+        {
+#line 357 "introduce_parallelism.m"
+          MR_String transform_hlds__implicit_parallelism__introduce_parallelism__Error_25 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_24, (MR_Integer) 0)));
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Spec_26;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_57;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_58;
+#line 357 "introduce_parallelism.m"
+          MR_String transform_hlds__implicit_parallelism__introduce_parallelism__PredName_59;
+#line 357 "introduce_parallelism.m"
+          MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__Arity_60;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_61;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Context_62;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_65_65;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_66_66;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_67_67;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_68_68;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_69_69;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_70_70;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_71_71;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_72_72;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_74_74;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_76_76;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_79_79;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_80_80;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_84_84;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_85_85;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_89_89;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_90_90;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_91_91;
+#line 357 "introduce_parallelism.m"
+          MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_92_92;
+
+#line 358 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__Goal_18 = transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_17;
+#line 581 "introduce_parallelism.m"
+          {
+#line 581 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_57 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_12);
+          }
+#line 582 "introduce_parallelism.m"
+          {
+#line 582 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_58 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_12);
+          }
+#line 583 "introduce_parallelism.m"
+          {
+#line 583 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__PredName_59 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_12);
+          }
+#line 584 "introduce_parallelism.m"
+          {
+#line 584 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__Arity_60 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_12);
+          }
+#line 585 "introduce_parallelism.m"
+          {
+#line 585 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_66_66 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 585 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_66_66, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+#line 585 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_66_66, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_57));
+#line 585 "introduce_parallelism.m"
+          }
+#line 586 "introduce_parallelism.m"
+          {
+#line 586 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_70_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 586 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_70_70, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_58));
+#line 586 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_70_70, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredName_59));
+#line 586 "introduce_parallelism.m"
+          }
+#line 586 "introduce_parallelism.m"
+          {
+#line 586 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_69_69 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 586 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_69_69, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_70_70));
+#line 586 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_69_69, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Arity_60));
+#line 586 "introduce_parallelism.m"
+          }
+#line 586 "introduce_parallelism.m"
+          {
+#line 586 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_68_68 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 586 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_68_68, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+#line 586 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_68_68, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_69_69));
+#line 586 "introduce_parallelism.m"
+          }
+#line 587 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__V_72_72 = (MR_Word) MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[22]);
+#line 588 "introduce_parallelism.m"
+          {
+#line 588 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_80_80 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 588 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(2), transform_hlds__implicit_parallelism__introduce_parallelism__V_80_80, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__TargetGoalPathString_21));
+#line 588 "introduce_parallelism.m"
+          }
+#line 589 "introduce_parallelism.m"
+          {
+#line 589 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_85_85 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 589 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_85_85, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 589 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(3), transform_hlds__implicit_parallelism__introduce_parallelism__V_85_85, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Error_25));
+#line 589 "introduce_parallelism.m"
+          }
+#line 589 "introduce_parallelism.m"
+          {
+#line 589 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_84_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 589 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_84_84, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_85_85));
+#line 589 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_84_84, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 589 "introduce_parallelism.m"
+          }
+#line 588 "introduce_parallelism.m"
+          {
+#line 588 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 588 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_72_72));
+#line 588 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_84_84));
+#line 588 "introduce_parallelism.m"
+          }
+#line 588 "introduce_parallelism.m"
+          {
+#line 588 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_79_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 588 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_79_79, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_80_80));
+#line 588 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_79_79, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81));
+#line 588 "introduce_parallelism.m"
+          }
+#line 587 "introduce_parallelism.m"
+          {
+#line 587 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_76_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 587 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_76_76, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[23])));
+#line 587 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_76_76, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_79_79));
+#line 587 "introduce_parallelism.m"
+          }
+#line 587 "introduce_parallelism.m"
+          {
+#line 587 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_74_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 587 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_74_74, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+#line 587 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_74_74, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_76_76));
+#line 587 "introduce_parallelism.m"
+          }
+#line 586 "introduce_parallelism.m"
+          {
+#line 586 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_71_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 586 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_71_71, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_72_72));
+#line 586 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_71_71, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_74_74));
+#line 586 "introduce_parallelism.m"
+          }
+#line 585 "introduce_parallelism.m"
+          {
+#line 585 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_67_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 585 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_67_67, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_68_68));
+#line 585 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_67_67, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_71_71));
+#line 585 "introduce_parallelism.m"
+          }
+#line 585 "introduce_parallelism.m"
+          {
+#line 585 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_65_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 585 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_65_65, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_66_66));
+#line 585 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_65_65, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_67_67));
+#line 585 "introduce_parallelism.m"
+          }
+#line 585 "introduce_parallelism.m"
+          {
+#line 585 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 585 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_61, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[21])));
+#line 585 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_61, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_65_65));
+#line 585 "introduce_parallelism.m"
+          }
+#line 590 "introduce_parallelism.m"
+          {
+#line 590 "introduce_parallelism.m"
+            hlds__hlds_pred__pred_info_get_context_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_12, &transform_hlds__implicit_parallelism__introduce_parallelism__Context_62);
+          }
+#line 594 "introduce_parallelism.m"
+          {
+#line 594 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_92_92 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 594 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_92_92, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Pieces_61));
+#line 594 "introduce_parallelism.m"
+          }
+#line 594 "introduce_parallelism.m"
+          {
+#line 594 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_91_91 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 594 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_91_91, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_92_92));
+#line 594 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_91_91, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 594 "introduce_parallelism.m"
+          }
+#line 594 "introduce_parallelism.m"
+          {
+#line 594 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_90_90 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 594 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_90_90, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Context_62));
+#line 594 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_90_90, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_91_91));
+#line 594 "introduce_parallelism.m"
+          }
+#line 593 "introduce_parallelism.m"
+          {
+#line 593 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__V_89_89 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 593 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_89_89, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_90_90));
+#line 593 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_89_89, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 593 "introduce_parallelism.m"
+          }
+#line 593 "introduce_parallelism.m"
+          {
+#line 593 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__Spec_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 593 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Spec_26, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+#line 593 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Spec_26, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+#line 593 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Spec_26, 2) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_89_89));
+#line 593 "introduce_parallelism.m"
+          }
+#line 361 "introduce_parallelism.m"
+          {
+#line 361 "introduce_parallelism.m"
+            MR_Word base;
+#line 361 "introduce_parallelism.m"
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 361 "introduce_parallelism.m"
+            *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_30 = base;
+#line 361 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Spec_26));
+#line 361 "introduce_parallelism.m"
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_29));
+#line 361 "introduce_parallelism.m"
+          }
+#line 361 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_IntroducedParallelism_28 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_IntroducedParallelism_0_27;
+#line 357 "introduce_parallelism.m"
+        }
+#line 350 "introduce_parallelism.m"
+      else
+#line 348 "introduce_parallelism.m"
+        {
+#line 348 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__Goal_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeGoal_24, (MR_Integer) 0)));
+#line 349 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_IntroducedParallelism_28 = (MR_Integer) 1;
+#line 349 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_30 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_29;
+#line 348 "introduce_parallelism.m"
+        }
+#line 336 "introduce_parallelism.m"
+  }
+#line 329 "introduce_parallelism.m"
+}
+
+#line 306 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__parallelise_proc_9_p_0_2(
+#line 306 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 306 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 306 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 306 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3,
+#line 306 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_4,
+#line 306 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_5,
+#line 306 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_6,
+#line 306 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_7)
+#line 306 "introduce_parallelism.m"
+{
+#line 306 "introduce_parallelism.m"
+  {
+#line 306 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure = transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg;
+#line 306 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv3_Goal_18;
+#line 306 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv2_STATE_VARIABLE_IntroducedParallelism_28;
+#line 306 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv1_STATE_VARIABLE_Specs_30;
+
+#line 306 "introduce_parallelism.m"
+    {
+#line 306 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_goal_11_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 6))), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), &transform_hlds__implicit_parallelism__introduce_parallelism__conv3_Goal_18, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_4), &transform_hlds__implicit_parallelism__introduce_parallelism__conv2_STATE_VARIABLE_IntroducedParallelism_28, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_6), &transform_hlds__implicit_parallelism__introduce_parallelism__conv1_STATE_VARIABLE_Specs_30);
+    }
+#line 306 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv3_Goal_18));
+#line 306 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_5 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv2_STATE_VARIABLE_IntroducedParallelism_28));
+#line 306 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_7 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv1_STATE_VARIABLE_Specs_30));
+#line 306 "introduce_parallelism.m"
+  }
+#line 306 "introduce_parallelism.m"
+}
+
+#line 305 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__parallelise_proc_9_p_0_1(
+#line 305 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 305 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 305 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 305 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3)
+#line 305 "introduce_parallelism.m"
+{
+#line 305 "introduce_parallelism.m"
+  {
+#line 305 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure = transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg;
+#line 305 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_Result_6;
+
+#line 305 "introduce_parallelism.m"
+    {
+#line 305 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__compare_candidate_par_conjunctions_3_p_0(((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), &transform_hlds__implicit_parallelism__introduce_parallelism__conv0_Result_6);
+    }
+#line 305 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_Result_6));
+#line 305 "introduce_parallelism.m"
+  }
+#line 305 "introduce_parallelism.m"
+}
+
+#line 269 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__parallelise_proc_9_p_0(
+#line 269 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPCProc_10,
+#line 269 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_11,
+#line 269 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_0_34,
+#line 269 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_35,
+#line 269 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__IntroducedParallelism_13,
+#line 269 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_36,
+#line 269 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_37,
+#line 269 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_38,
+#line 269 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_39)
+#line 269 "introduce_parallelism.m"
+{
+#line 276 "introduce_parallelism.m"
+  {
+#line 276 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_56_56;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCProc_10, (MR_Integer) 0)));
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PushGoals_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCProc_10, (MR_Integer) 1)));
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPCs0_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__CPCProc_10, (MR_Integer) 2)));
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_22;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Context_23;
+#line 276 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__FileName_24;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarTypes_25;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVars_27;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarSet_28;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__VarNumMap_29;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_30;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Instmap_31;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPCs_32;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Goal_33;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_40_40;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42;
+#line 276 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46;
+#line 287 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_52_52;
+#line 306 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv6_Goal_33;
+#line 306 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv5_IntroducedParallelism_13;
+#line 306 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv4_STATE_VARIABLE_Specs_39;
+
+#line 281 "introduce_parallelism.m"
+    if ((transform_hlds__implicit_parallelism__introduce_parallelism__PushGoals_17 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 280 "introduce_parallelism.m"
+      {
+#line 280 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_40_40 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_0_34;
+#line 280 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_37 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_36;
+#line 280 "introduce_parallelism.m"
+      }
+#line 281 "introduce_parallelism.m"
+    else
+#line 283 "introduce_parallelism.m"
+      {
+#line 283 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism___Result_21;
+
+#line 283 "introduce_parallelism.m"
+        {
+#line 283 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__push_goals_together__push_goals_in_proc_6_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__PushGoals_17, &transform_hlds__implicit_parallelism__introduce_parallelism___Result_21, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_0_34, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_40_40, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_36, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_37);
+        }
+#line 283 "introduce_parallelism.m"
+      }
+#line 286 "introduce_parallelism.m"
+    {
+#line 286 "introduce_parallelism.m"
+      hlds__hlds_pred__proc_info_get_goal_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_40_40, &transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_22);
+    }
+#line 287 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_22, (MR_Integer) 0)));
+#line 287 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_22, (MR_Integer) 1)));
+#line 287 "introduce_parallelism.m"
+    {
+#line 287 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__Context_23 = hlds__hlds_goal__goal_info_get_context_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__V_42_42);
+    }
+#line 288 "introduce_parallelism.m"
+    {
+#line 288 "introduce_parallelism.m"
+      mercury__term__context_file_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__Context_23, &transform_hlds__implicit_parallelism__introduce_parallelism__FileName_24);
+    }
+#line 289 "introduce_parallelism.m"
+    {
+#line 289 "introduce_parallelism.m"
+      hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_40_40, &transform_hlds__implicit_parallelism__introduce_parallelism__VarTypes_25);
+    }
+#line 293 "introduce_parallelism.m"
+    {
+#line 293 "introduce_parallelism.m"
+      hlds__hlds_pred__proc_info_get_headvars_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_40_40, &transform_hlds__implicit_parallelism__introduce_parallelism__HeadVars_27);
+    }
+#line 294 "introduce_parallelism.m"
+    {
+#line 294 "introduce_parallelism.m"
+      hlds__hlds_pred__proc_info_get_varset_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_40_40, &transform_hlds__implicit_parallelism__introduce_parallelism__VarSet_28);
+    }
+#line 295 "introduce_parallelism.m"
+    {
+#line 295 "introduce_parallelism.m"
+      ll_backend__stack_layout__compute_var_number_map_5_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__HeadVars_27, transform_hlds__implicit_parallelism__introduce_parallelism__VarSet_28, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_22, &transform_hlds__implicit_parallelism__introduce_parallelism__VarNumMap_29);
+    }
+#line 296 "introduce_parallelism.m"
+    {
+#line 296 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 296 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_30, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__FileName_24));
+#line 296 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_30, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__VarTypes_25));
+#line 296 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_30, 2) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__VarNumMap_29));
+#line 296 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_30, 3) = ((MR_Box) ((MR_Integer) 0));
+#line 296 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_30, 4) = ((MR_Box) (*transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_37));
+#line 296 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_30, 5) = ((MR_Box) ((MR_Integer) 0));
+#line 296 "introduce_parallelism.m"
+    }
+#line 298 "introduce_parallelism.m"
+    {
+#line 298 "introduce_parallelism.m"
+      hlds__hlds_pred__proc_info_get_initial_instmap_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_40_40, *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_37, &transform_hlds__implicit_parallelism__introduce_parallelism__Instmap_31);
+    }
+#line 7634 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+    transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_56_56 = (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[3];
+#line 305 "introduce_parallelism.m"
+    {
+#line 305 "introduce_parallelism.m"
+      mercury__list__sort_and_remove_dups_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_56_56, (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[5], transform_hlds__implicit_parallelism__introduce_parallelism__CPCs0_18, &transform_hlds__implicit_parallelism__introduce_parallelism__CPCs_32);
+    }
+#line 306 "introduce_parallelism.m"
+    {
+#line 306 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 306 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46, 0) = ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_7[0]));
+#line 306 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__parallelise_proc_9_p_0_2));
+#line 306 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 306 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46, 3) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_11));
+#line 306 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46, 4) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ProgRepInfo_30));
+#line 306 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46, 5) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__VarNameTable_16));
+#line 306 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46, 6) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Instmap_31));
+#line 306 "introduce_parallelism.m"
+    }
+#line 306 "introduce_parallelism.m"
+    {
+#line 306 "introduce_parallelism.m"
+      mercury__list__foldl3_8_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_56_56, (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0, (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[0], transform_hlds__implicit_parallelism__introduce_parallelism__V_46_46, transform_hlds__implicit_parallelism__introduce_parallelism__CPCs_32, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Goal0_22)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv6_Goal_33, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv5_IntroducedParallelism_13, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_38)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv4_STATE_VARIABLE_Specs_39);
+    }
+#line 306 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__Goal_33 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv6_Goal_33);
+#line 306 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__IntroducedParallelism_13 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv5_IntroducedParallelism_13);
+#line 306 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_39 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv4_STATE_VARIABLE_Specs_39);
+#line 316 "introduce_parallelism.m"
+    if ((*transform_hlds__implicit_parallelism__introduce_parallelism__IntroducedParallelism_13 == (MR_Integer) 0))
+#line 317 "introduce_parallelism.m"
+      *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_35 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_40_40;
+#line 316 "introduce_parallelism.m"
+    else
+#line 311 "introduce_parallelism.m"
+      {
+#line 311 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_49_49;
+
+#line 314 "introduce_parallelism.m"
+        {
+#line 314 "introduce_parallelism.m"
+          hlds__hlds_pred__proc_info_set_goal_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__Goal_33, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_40_40, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_49_49);
+        }
+#line 315 "introduce_parallelism.m"
+        {
+#line 315 "introduce_parallelism.m"
+          hlds__hlds_pred__proc_info_set_has_parallel_conj_3_p_0((MR_Integer) 1, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_49_49, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcInfo_35);
+#line 315 "introduce_parallelism.m"
+          return;
+        }
+#line 311 "introduce_parallelism.m"
+      }
+#line 276 "introduce_parallelism.m"
+  }
+#line 269 "introduce_parallelism.m"
+}
+
+#line 230 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_proc_12_p_0(
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_13,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism___PredId_15,
+#line 230 "introduce_parallelism.m"
+  MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__ProcId_16,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_0_33,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_34,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_0_35,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_36,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_37,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_38,
+#line 230 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_39,
+#line 230 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_40)
+#line 230 "introduce_parallelism.m"
+{
+#line 237 "introduce_parallelism.m"
+  {
+#line 237 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+
+#line 237 "introduce_parallelism.m"
+    {
+#line 237 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_121_98_101_95_112_97_114_97_108_108_101_108_105_115_101_95_112_114_111_99_95_95_91_51_93_95_48_12_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_13, transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_14, transform_hlds__implicit_parallelism__introduce_parallelism__ProcId_16, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_0_33, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ProcTable_34, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_0_35, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyProcIntroducedParallelism_36, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_37, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_38, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_39, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_40);
+#line 237 "introduce_parallelism.m"
+      return;
+    }
+#line 237 "introduce_parallelism.m"
+  }
+#line 230 "introduce_parallelism.m"
+}
+
+#line 217 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_pred_10_p_0_1(
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 217 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3,
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_4,
+#line 217 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_5,
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_6,
+#line 217 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_7,
+#line 217 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_8,
+#line 217 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_9)
+#line 217 "introduce_parallelism.m"
+{
+#line 217 "introduce_parallelism.m"
+  {
+#line 217 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure = transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg;
+#line 217 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv4_STATE_VARIABLE_ProcTable_34;
+#line 217 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv3_STATE_VARIABLE_AnyProcIntroducedParallelism_36;
+#line 217 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv2_STATE_VARIABLE_ModuleInfo_38;
+#line 217 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv1_STATE_VARIABLE_Specs_40;
+
+#line 217 "introduce_parallelism.m"
+    {
+#line 217 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_proc_12_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 5))), ((MR_Integer) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), &transform_hlds__implicit_parallelism__introduce_parallelism__conv4_STATE_VARIABLE_ProcTable_34, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_4), &transform_hlds__implicit_parallelism__introduce_parallelism__conv3_STATE_VARIABLE_AnyProcIntroducedParallelism_36, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_6), &transform_hlds__implicit_parallelism__introduce_parallelism__conv2_STATE_VARIABLE_ModuleInfo_38, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_8), &transform_hlds__implicit_parallelism__introduce_parallelism__conv1_STATE_VARIABLE_Specs_40);
+    }
+#line 217 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv4_STATE_VARIABLE_ProcTable_34));
+#line 217 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_5 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv3_STATE_VARIABLE_AnyProcIntroducedParallelism_36));
+#line 217 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_7 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv2_STATE_VARIABLE_ModuleInfo_38));
+#line 217 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_9 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv1_STATE_VARIABLE_Specs_40));
+#line 217 "introduce_parallelism.m"
+  }
+#line 217 "introduce_parallelism.m"
+}
+
+#line 206 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_pred_10_p_0(
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_11,
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredId_12,
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_PredTable_0_23,
+#line 206 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_PredTable_24,
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyPredIntroducedParallelism_0_25,
+#line 206 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyPredIntroducedParallelism_26,
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_27,
+#line 206 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_28,
+#line 206 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_29,
+#line 206 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_30)
+#line 206 "introduce_parallelism.m"
+{
+#line 213 "introduce_parallelism.m"
+  {
+#line 213 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 213 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_37_37 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+#line 213 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_38_38 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0;
+#line 213 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo0_17;
+#line 213 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcIds_18;
+#line 213 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcTable0_19;
+#line 213 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcTable_20;
+#line 213 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__AnyProcIntroducedParallelism_21;
+#line 213 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31;
+#line 214 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv0_PredInfo0_17;
+#line 217 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv8_ProcTable_20;
+#line 217 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv7_AnyProcIntroducedParallelism_21;
+#line 217 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv6_STATE_VARIABLE_ModuleInfo_28;
+#line 217 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv5_STATE_VARIABLE_Specs_30;
+
+#line 214 "introduce_parallelism.m"
+    {
+#line 214 "introduce_parallelism.m"
+      mercury__map__lookup_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_37_37, transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_38_38, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_PredTable_0_23, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredId_12)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv0_PredInfo0_17);
+    }
+#line 214 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo0_17 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv0_PredInfo0_17);
+#line 215 "introduce_parallelism.m"
+    {
+#line 215 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__ProcIds_18 = hlds__hlds_pred__pred_info_non_imported_procids_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo0_17);
+    }
+#line 216 "introduce_parallelism.m"
+    {
+#line 216 "introduce_parallelism.m"
+      hlds__hlds_pred__pred_info_get_procedures_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo0_17, &transform_hlds__implicit_parallelism__introduce_parallelism__ProcTable0_19);
+    }
+#line 217 "introduce_parallelism.m"
+    {
+#line 217 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 217 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, 0) = ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_6[0]));
+#line 217 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_pred_10_p_0_1));
+#line 217 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 217 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, 3) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_11));
+#line 217 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, 4) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo0_17));
+#line 217 "introduce_parallelism.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, 5) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredId_12));
+#line 217 "introduce_parallelism.m"
+    }
+#line 217 "introduce_parallelism.m"
+    {
+#line 217 "introduce_parallelism.m"
+      mercury__list__foldl4_10_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0, (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[3], (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[0], transform_hlds__implicit_parallelism__introduce_parallelism__V_31_31, transform_hlds__implicit_parallelism__introduce_parallelism__ProcIds_18, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ProcTable0_19)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv8_ProcTable_20, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv7_AnyProcIntroducedParallelism_21, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_27)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv6_STATE_VARIABLE_ModuleInfo_28, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_0_29)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv5_STATE_VARIABLE_Specs_30);
+    }
+#line 217 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__ProcTable_20 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv8_ProcTable_20);
+#line 217 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__AnyProcIntroducedParallelism_21 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv7_AnyProcIntroducedParallelism_21);
+#line 217 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_28 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv6_STATE_VARIABLE_ModuleInfo_28);
+#line 217 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_Specs_30 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv5_STATE_VARIABLE_Specs_30);
+#line 223 "introduce_parallelism.m"
+    if ((transform_hlds__implicit_parallelism__introduce_parallelism__AnyProcIntroducedParallelism_21 == (MR_Integer) 0))
+#line 222 "introduce_parallelism.m"
+      {
+#line 222 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_PredTable_24 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_PredTable_0_23;
+#line 222 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyPredIntroducedParallelism_26 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyPredIntroducedParallelism_0_25;
+#line 222 "introduce_parallelism.m"
+      }
+#line 223 "introduce_parallelism.m"
+    else
+#line 224 "introduce_parallelism.m"
+      {
+#line 224 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_22;
+
+#line 225 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_AnyPredIntroducedParallelism_26 = (MR_Integer) 1;
+#line 226 "introduce_parallelism.m"
+        {
+#line 226 "introduce_parallelism.m"
+          hlds__hlds_pred__pred_info_set_procedures_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__ProcTable_20, transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo0_17, &transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_22);
+        }
+#line 227 "introduce_parallelism.m"
+        {
+#line 227 "introduce_parallelism.m"
+          mercury__map__det_update_4_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_37_37, transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_38_38, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredId_12)), ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredInfo_22)), transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_PredTable_0_23, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_PredTable_24);
+#line 227 "introduce_parallelism.m"
+          return;
+        }
+#line 224 "introduce_parallelism.m"
+      }
+#line 213 "introduce_parallelism.m"
+  }
+#line 206 "introduce_parallelism.m"
+}
+
+#line 188 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__cpc_proc_is_in_module_3_p_0(
+#line 188 "introduce_parallelism.m"
+  MR_String transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_4,
+#line 188 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2,
+#line 188 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3)
+#line 188 "introduce_parallelism.m"
+{
+#line 193 "introduce_parallelism.m"
+  {
+#line 193 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 193 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 0)));
+#line 193 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CPC_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__2_2, (MR_Integer) 1)));
+#line 193 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_7;
+#line 193 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_8;
+#line 193 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__Name_11;
+#line 193 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__Arity_12;
+#line 193 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__Mode_13;
+
+#line 197 "introduce_parallelism.m"
+    if (((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5)) == (MR_mktag((MR_Integer) 0))))
+#line 195 "introduce_parallelism.m"
+      {
+#line 195 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__DefModule_10;
+#line 195 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9;
+
+#line 195 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 0)));
+#line 195 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__V_9_9 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 1)));
+#line 195 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__DefModule_10 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 2)));
+#line 195 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__Name_11 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 3)));
+#line 195 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__Arity_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 4)));
+#line 195 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__Mode_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 5)));
+#line 201 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_4, transform_hlds__implicit_parallelism__introduce_parallelism__DefModule_10) == 0);
+#line 195 "introduce_parallelism.m"
+      }
+#line 197 "introduce_parallelism.m"
+    else
+#line 198 "introduce_parallelism.m"
+      {
+#line 198 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__DefModule_16 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 2)));
+#line 198 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 0)));
+#line 198 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__V_15_15 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 1)));
+
+#line 198 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__Name_11 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 3)));
+#line 198 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__Arity_12 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 4)));
+#line 198 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__Mode_13 = ((MR_Integer) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__ProcLabel_5, (MR_Integer) 5)));
+#line 201 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = (strcmp(transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_4, transform_hlds__implicit_parallelism__introduce_parallelism__DefModule_16) == 0);
+#line 198 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 198 "introduce_parallelism.m"
+          {
+#line 199 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_8 = (MR_Integer) 0;
+#line 199 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 198 "introduce_parallelism.m"
+          }
+#line 198 "introduce_parallelism.m"
+      }
+#line 193 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 193 "introduce_parallelism.m"
+      {
+#line 202 "introduce_parallelism.m"
+        {
+#line 202 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 202 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_7, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Name_11));
+#line 202 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_7, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Arity_12));
+#line 202 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_7, 2) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredOrFunc_8));
+#line 202 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_7, 3) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Mode_13));
+#line 202 "introduce_parallelism.m"
+        }
+#line 193 "introduce_parallelism.m"
+        {
+#line 193 "introduce_parallelism.m"
+          MR_Word base;
+#line 193 "introduce_parallelism.m"
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 193 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__HeadVar__3_3 = base;
+#line 193 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__IMProcLabel_7));
+#line 193 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__CPC_6));
+#line 193 "introduce_parallelism.m"
+        }
+#line 193 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 193 "introduce_parallelism.m"
+      }
+#line 193 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 193 "introduce_parallelism.m"
+  }
+#line 188 "introduce_parallelism.m"
+}
+
+#line 112 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__do_apply_implicit_parallelism_transformation_4_p_0_2(
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2,
+#line 112 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3,
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_4,
+#line 112 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_5,
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_6,
+#line 112 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_7,
+#line 112 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_8,
+#line 112 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_9)
+#line 112 "introduce_parallelism.m"
+{
+#line 112 "introduce_parallelism.m"
+  {
+#line 112 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure = transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg;
+#line 112 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv4_STATE_VARIABLE_PredTable_24;
+#line 112 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv3_STATE_VARIABLE_AnyPredIntroducedParallelism_26;
+#line 112 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv2_STATE_VARIABLE_ModuleInfo_28;
+#line 112 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv1_STATE_VARIABLE_Specs_30;
+
+#line 112 "introduce_parallelism.m"
+    {
+#line 112 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__maybe_parallelise_pred_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2), &transform_hlds__implicit_parallelism__introduce_parallelism__conv4_STATE_VARIABLE_PredTable_24, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_4), &transform_hlds__implicit_parallelism__introduce_parallelism__conv3_STATE_VARIABLE_AnyPredIntroducedParallelism_26, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_6), &transform_hlds__implicit_parallelism__introduce_parallelism__conv2_STATE_VARIABLE_ModuleInfo_28, ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_8), &transform_hlds__implicit_parallelism__introduce_parallelism__conv1_STATE_VARIABLE_Specs_30);
+    }
+#line 112 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_3 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv4_STATE_VARIABLE_PredTable_24));
+#line 112 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_5 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv3_STATE_VARIABLE_AnyPredIntroducedParallelism_26));
+#line 112 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_7 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv2_STATE_VARIABLE_ModuleInfo_28));
+#line 112 "introduce_parallelism.m"
+    *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_9 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv1_STATE_VARIABLE_Specs_30));
+#line 112 "introduce_parallelism.m"
+  }
+#line 112 "introduce_parallelism.m"
+}
+
+#line 184 "introduce_parallelism.m"
+static MR_bool MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__do_apply_implicit_parallelism_transformation_4_p_0_1(
+#line 184 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg,
+#line 184 "introduce_parallelism.m"
+  MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1,
+#line 184 "introduce_parallelism.m"
+  MR_Box * transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2)
+#line 184 "introduce_parallelism.m"
+{
+#line 184 "introduce_parallelism.m"
+  {
+#line 184 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 184 "introduce_parallelism.m"
+    MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__closure = transform_hlds__implicit_parallelism__introduce_parallelism__closure_arg;
+#line 184 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__3_3;
+
+#line 184 "introduce_parallelism.m"
+    {
+#line 184 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = transform_hlds__implicit_parallelism__introduce_parallelism__cpc_proc_is_in_module_3_p_0(((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_1), &transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__3_3);
+    }
+#line 184 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 184 "introduce_parallelism.m"
+      {
+#line 184 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__wrapper_arg_2 = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__conv0_HeadVar__3_3));
+#line 184 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 184 "introduce_parallelism.m"
+      }
+#line 184 "introduce_parallelism.m"
+    return transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 184 "introduce_parallelism.m"
+  }
+#line 184 "introduce_parallelism.m"
+}
+
+#line 95 "introduce_parallelism.m"
+static void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__do_apply_implicit_parallelism_transformation_4_p_0(
+#line 95 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__SourceFileMap_5,
+#line 95 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__Specs_6,
+#line 95 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_22,
+#line 95 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_23)
+#line 95 "introduce_parallelism.m"
+{
+#line 99 "introduce_parallelism.m"
+  {
+#line 99 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 99 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Globals0_8;
+#line 99 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeFeedbackInfo_9;
+#line 99 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_10;
+#line 124 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_12;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_12_84;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_13_85;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_14_86;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_15_87;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__FeedbackInfo_11;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__FeedbackData_70;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Parameters_73;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__AssocList_74;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CandidateParConjsMap_75;
+#line 104 "introduce_parallelism.m"
+    MR_String transform_hlds__implicit_parallelism__introduce_parallelism__ModuleNameStr_79;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__CandidateParConjsAssocList_80;
+#line 104 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81;
+#line 168 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_71_71;
+#line 168 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_72_72;
+
+#line 100 "introduce_parallelism.m"
+    {
+#line 100 "introduce_parallelism.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_22, &transform_hlds__implicit_parallelism__introduce_parallelism__Globals0_8);
+    }
+#line 101 "introduce_parallelism.m"
+    {
+#line 101 "introduce_parallelism.m"
+      libs__globals__get_maybe_feedback_info_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__Globals0_8, &transform_hlds__implicit_parallelism__introduce_parallelism__MaybeFeedbackInfo_9);
+    }
+#line 102 "introduce_parallelism.m"
+    {
+#line 102 "introduce_parallelism.m"
+      hlds__hlds_module__module_info_get_name_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_22, &transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_10);
+    }
+#line 104 "introduce_parallelism.m"
+    transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = ((MR_tag((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__MaybeFeedbackInfo_9)) == (MR_mktag((MR_Integer) 1)));
+#line 104 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 104 "introduce_parallelism.m"
+      {
+#line 104 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__FeedbackInfo_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeFeedbackInfo_9, (MR_Integer) 0)));
+#line 168 "introduce_parallelism.m"
+        {
+#line 168 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__FeedbackData_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 168 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__FeedbackData_70, 0) = NULL;
+#line 168 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__FeedbackData_70, 1) = NULL;
+#line 168 "introduce_parallelism.m"
+        }
+#line 170 "introduce_parallelism.m"
+        {
+#line 170 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = mdbcomp__feedback__get_feedback_data_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__FeedbackInfo_11, transform_hlds__implicit_parallelism__introduce_parallelism__FeedbackData_70);
+        }
+#line 104 "introduce_parallelism.m"
+        if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 104 "introduce_parallelism.m"
+          {
+#line 171 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__Parameters_73 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__FeedbackData_70, (MR_Integer) 0)));
+#line 171 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__AssocList_74 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__FeedbackData_70, (MR_Integer) 1)));
+#line 183 "introduce_parallelism.m"
+            {
+#line 183 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__ModuleNameStr_79 = mdbcomp__prim_data__sym_name_to_string_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_10);
+            }
+#line 8278 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_12_84 = (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[1];
+#line 8280 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_13_85 = (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[2];
+#line 184 "introduce_parallelism.m"
+            {
+#line 184 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 184 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81, 0) = ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_3[0]));
+#line 184 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__do_apply_implicit_parallelism_transformation_4_p_0_1));
+#line 184 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 184 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81, 3) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ModuleNameStr_79));
+#line 184 "introduce_parallelism.m"
+            }
+#line 184 "introduce_parallelism.m"
+            {
+#line 184 "introduce_parallelism.m"
+              mercury__list__filter_map_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_12_84, transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_13_85, transform_hlds__implicit_parallelism__introduce_parallelism__V_81_81, transform_hlds__implicit_parallelism__introduce_parallelism__AssocList_74, &transform_hlds__implicit_parallelism__introduce_parallelism__CandidateParConjsAssocList_80);
+            }
+#line 8301 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_14_86 = (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0;
+#line 8303 "transform_hlds.implicit_parallelism.introduce_parallelism.c"
+            transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_15_87 = (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[2];
+#line 186 "introduce_parallelism.m"
+            {
+#line 186 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__CandidateParConjsMap_75 = mercury__map__from_assoc_list_1_f_0(transform_hlds__implicit_parallelism__introduce_parallelism__TypeCtorInfo_14_86, transform_hlds__implicit_parallelism__introduce_parallelism__TypeInfo_15_87, transform_hlds__implicit_parallelism__introduce_parallelism__CandidateParConjsAssocList_80);
+            }
+#line 175 "introduce_parallelism.m"
+            {
+#line 175 "introduce_parallelism.m"
+              transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 175 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_12, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Parameters_73));
+#line 175 "introduce_parallelism.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_12, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__CandidateParConjsMap_75));
+#line 175 "introduce_parallelism.m"
+            }
+#line 175 "introduce_parallelism.m"
+            transform_hlds__implicit_parallelism__introduce_parallelism__succeeded = MR_TRUE;
+#line 104 "introduce_parallelism.m"
+          }
+#line 104 "introduce_parallelism.m"
+      }
+#line 124 "introduce_parallelism.m"
+    if (transform_hlds__implicit_parallelism__introduce_parallelism__succeeded)
+#line 109 "introduce_parallelism.m"
+      {
+#line 109 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredIds_13;
+#line 109 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredTable0_14;
+#line 109 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredMap0_15;
+#line 109 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredMap_16;
+#line 109 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__AnyPredIntroducedParallelism_17;
+#line 109 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_24_24;
+#line 109 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25;
+#line 109 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_27_27;
+#line 112 "introduce_parallelism.m"
+        MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv8_PredMap_16;
+#line 112 "introduce_parallelism.m"
+        MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv7_AnyPredIntroducedParallelism_17;
+#line 112 "introduce_parallelism.m"
+        MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv6_STATE_VARIABLE_ModuleInfo_27_27;
+#line 112 "introduce_parallelism.m"
+        MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv5_Specs_6;
+
+#line 109 "introduce_parallelism.m"
+        {
+#line 109 "introduce_parallelism.m"
+          hlds__hlds_module__module_info_get_valid_predids_3_p_0(&transform_hlds__implicit_parallelism__introduce_parallelism__PredIds_13, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_22, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_24_24);
+        }
+#line 110 "introduce_parallelism.m"
+        {
+#line 110 "introduce_parallelism.m"
+          hlds__hlds_module__module_info_get_predicate_table_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_24_24, &transform_hlds__implicit_parallelism__introduce_parallelism__PredTable0_14);
+        }
+#line 111 "introduce_parallelism.m"
+        {
+#line 111 "introduce_parallelism.m"
+          hlds__pred_table__predicate_table_get_preds_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredTable0_14, &transform_hlds__implicit_parallelism__introduce_parallelism__PredMap0_15);
+        }
+#line 112 "introduce_parallelism.m"
+        {
+#line 112 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 112 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25, 0) = ((MR_Box) (&transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_4[0]));
+#line 112 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25, 1) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__do_apply_implicit_parallelism_transformation_4_p_0_2));
+#line 112 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 112 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25, 3) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ParallelismInfo_12));
+#line 112 "introduce_parallelism.m"
+        }
+#line 112 "introduce_parallelism.m"
+        {
+#line 112 "introduce_parallelism.m"
+          mercury__list__foldl4_10_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_1[0], (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, (MR_Word) &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[0], transform_hlds__implicit_parallelism__introduce_parallelism__V_25_25, transform_hlds__implicit_parallelism__introduce_parallelism__PredIds_13, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__PredMap0_15)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv8_PredMap_16, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv7_AnyPredIntroducedParallelism_17, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_24_24)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv6_STATE_VARIABLE_ModuleInfo_27_27, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &transform_hlds__implicit_parallelism__introduce_parallelism__conv5_Specs_6);
+        }
+#line 112 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__PredMap_16 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv8_PredMap_16);
+#line 112 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__AnyPredIntroducedParallelism_17 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv7_AnyPredIntroducedParallelism_17);
+#line 112 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_27_27 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv6_STATE_VARIABLE_ModuleInfo_27_27);
+#line 112 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__Specs_6 = ((MR_Word) transform_hlds__implicit_parallelism__introduce_parallelism__conv5_Specs_6);
+#line 118 "introduce_parallelism.m"
+        if ((transform_hlds__implicit_parallelism__introduce_parallelism__AnyPredIntroducedParallelism_17 == (MR_Integer) 0))
+#line 117 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_23 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_27_27;
+#line 118 "introduce_parallelism.m"
+        else
+#line 119 "introduce_parallelism.m"
+          {
+#line 119 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__PredTable_18;
+#line 119 "introduce_parallelism.m"
+            MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_29_29;
+
+#line 120 "introduce_parallelism.m"
+            {
+#line 120 "introduce_parallelism.m"
+              hlds__pred_table__predicate_table_set_preds_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredMap_16, transform_hlds__implicit_parallelism__introduce_parallelism__PredTable0_14, &transform_hlds__implicit_parallelism__introduce_parallelism__PredTable_18);
+            }
+#line 121 "introduce_parallelism.m"
+            {
+#line 121 "introduce_parallelism.m"
+              hlds__hlds_module__module_info_set_predicate_table_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__PredTable_18, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_27_27, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_29_29);
+            }
+#line 122 "introduce_parallelism.m"
+            {
+#line 122 "introduce_parallelism.m"
+              hlds__hlds_module__module_info_set_contains_par_conj_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_29_29, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_23);
+#line 122 "introduce_parallelism.m"
+              return;
+            }
+#line 119 "introduce_parallelism.m"
+          }
+#line 109 "introduce_parallelism.m"
+      }
+#line 124 "introduce_parallelism.m"
+    else
+#line 125 "introduce_parallelism.m"
+      {
+#line 125 "introduce_parallelism.m"
+        MR_String transform_hlds__implicit_parallelism__introduce_parallelism__ModuleFilename_19;
+#line 125 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Context_20;
+#line 125 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41;
+#line 125 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44;
+#line 125 "introduce_parallelism.m"
+        MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45;
+#line 125 "introduce_parallelism.m"
+        MR_Box transform_hlds__implicit_parallelism__introduce_parallelism__conv9_ModuleFilename_19;
+
+#line 125 "introduce_parallelism.m"
+        {
+#line 125 "introduce_parallelism.m"
+          mercury__map__lookup_3_p_0((MR_Word) &mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_sym_name_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, transform_hlds__implicit_parallelism__introduce_parallelism__SourceFileMap_5, ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ModuleName_10)), &transform_hlds__implicit_parallelism__introduce_parallelism__conv9_ModuleFilename_19);
+        }
+#line 125 "introduce_parallelism.m"
+        transform_hlds__implicit_parallelism__introduce_parallelism__ModuleFilename_19 = ((MR_String) transform_hlds__implicit_parallelism__introduce_parallelism__conv9_ModuleFilename_19);
+#line 126 "introduce_parallelism.m"
+        {
+#line 126 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__Context_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 126 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Context_20, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__ModuleFilename_19));
+#line 126 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__Context_20, 1) = ((MR_Box) ((MR_Integer) 1));
+#line 126 "introduce_parallelism.m"
+        }
+#line 131 "introduce_parallelism.m"
+        {
+#line 131 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 131 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__Context_20));
+#line 131 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__implicit_parallelism__introduce_parallelism_scalar_common_2[20])));
+#line 131 "introduce_parallelism.m"
+        }
+#line 130 "introduce_parallelism.m"
+        {
+#line 130 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 130 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_45_45));
+#line 130 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 130 "introduce_parallelism.m"
+        }
+#line 131 "introduce_parallelism.m"
+        {
+#line 131 "introduce_parallelism.m"
+          transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 131 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 131 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 12))));
+#line 131 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41, 2) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_44_44));
+#line 131 "introduce_parallelism.m"
+        }
+#line 130 "introduce_parallelism.m"
+        {
+#line 130 "introduce_parallelism.m"
+          MR_Word base;
+#line 130 "introduce_parallelism.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 130 "introduce_parallelism.m"
+          *transform_hlds__implicit_parallelism__introduce_parallelism__Specs_6 = base;
+#line 130 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__implicit_parallelism__introduce_parallelism__V_41_41));
+#line 130 "introduce_parallelism.m"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 130 "introduce_parallelism.m"
+        }
+#line 131 "introduce_parallelism.m"
+        *transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_23 = transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_22;
+#line 125 "introduce_parallelism.m"
+      }
+#line 99 "introduce_parallelism.m"
+  }
+#line 95 "introduce_parallelism.m"
+}
+
+#line 33 "introduce_parallelism.m"
+void MR_CALL 
+transform_hlds__implicit_parallelism__introduce_parallelism__apply_implicit_parallelism_transformation_4_p_0(
+#line 33 "introduce_parallelism.m"
+  MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_13,
+#line 33 "introduce_parallelism.m"
+  MR_Word * transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_14)
+#line 33 "introduce_parallelism.m"
+{
+#line 71 "introduce_parallelism.m"
+  {
+#line 71 "introduce_parallelism.m"
+    MR_bool transform_hlds__implicit_parallelism__introduce_parallelism__succeeded;
+#line 71 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Globals_7;
+#line 71 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__MaybeSourceFileMap_8;
+#line 71 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__SourceFileMap_9;
+#line 71 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__Specs_10;
+#line 71 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__NumErrors_12;
+#line 71 "introduce_parallelism.m"
+    MR_Word transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_21_21;
+#line 83 "introduce_parallelism.m"
+    MR_Integer transform_hlds__implicit_parallelism__introduce_parallelism__V_11_11;
+
+#line 72 "introduce_parallelism.m"
+    {
+#line 72 "introduce_parallelism.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_13, &transform_hlds__implicit_parallelism__introduce_parallelism__Globals_7);
+    }
+#line 73 "introduce_parallelism.m"
+    {
+#line 73 "introduce_parallelism.m"
+      libs__globals__io_get_maybe_source_file_map_3_p_0(&transform_hlds__implicit_parallelism__introduce_parallelism__MaybeSourceFileMap_8);
+    }
+#line 76 "introduce_parallelism.m"
+    if ((transform_hlds__implicit_parallelism__introduce_parallelism__MaybeSourceFileMap_8 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 77 "introduce_parallelism.m"
+      {
+#line 78 "introduce_parallelism.m"
+        {
+#line 78 "introduce_parallelism.m"
+          mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.implicit_parallelism.introduce_parallelism", (MR_String) "predicate \140transform_hlds.implicit_parallelism.introduce_parallelism.apply_implicit_parallelism_transformation\'/4", (MR_String) "could not retrieve the source file map");
+#line 78 "introduce_parallelism.m"
+          return;
+        }
+#line 77 "introduce_parallelism.m"
+      }
+#line 76 "introduce_parallelism.m"
+    else
+#line 75 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__SourceFileMap_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__implicit_parallelism__introduce_parallelism__MaybeSourceFileMap_8, (MR_Integer) 0)));
+#line 81 "introduce_parallelism.m"
+    {
+#line 81 "introduce_parallelism.m"
+      transform_hlds__implicit_parallelism__introduce_parallelism__do_apply_implicit_parallelism_transformation_4_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__SourceFileMap_9, &transform_hlds__implicit_parallelism__introduce_parallelism__Specs_10, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_0_13, &transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_21_21);
+    }
+#line 83 "introduce_parallelism.m"
+    {
+#line 83 "introduce_parallelism.m"
+      parse_tree__error_util__write_error_specs_8_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__Specs_10, transform_hlds__implicit_parallelism__introduce_parallelism__Globals_7, (MR_Integer) 0, &transform_hlds__implicit_parallelism__introduce_parallelism__V_11_11, (MR_Integer) 0, &transform_hlds__implicit_parallelism__introduce_parallelism__NumErrors_12);
+    }
+#line 84 "introduce_parallelism.m"
+    {
+#line 84 "introduce_parallelism.m"
+      hlds__hlds_module__module_info_incr_num_errors_3_p_0(transform_hlds__implicit_parallelism__introduce_parallelism__NumErrors_12, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_21_21, transform_hlds__implicit_parallelism__introduce_parallelism__STATE_VARIABLE_ModuleInfo_14);
+#line 84 "introduce_parallelism.m"
+      return;
+    }
+#line 71 "introduce_parallelism.m"
+  }
+#line 33 "introduce_parallelism.m"
+}
+
+void mercury__transform_hlds__implicit_parallelism__introduce_parallelism__init(void)
+{
+}
+
+void mercury__transform_hlds__implicit_parallelism__introduce_parallelism__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_candidate_par_conjunction_0);
+	MR_register_type_ctor_info(&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_find_first_goal_result_0);
+	MR_register_type_ctor_info(&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_intra_module_proc_label_0);
+	MR_register_type_ctor_info(&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_introduced_parallelism_0);
+	MR_register_type_ctor_info(&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_module_candidate_par_conjs_map_0);
+	MR_register_type_ctor_info(&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_par_conjunction_and_remaining_goals_0);
+	MR_register_type_ctor_info(&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_parallelism_info_0);
+	MR_register_type_ctor_info(&transform_hlds__implicit_parallelism__introduce_parallelism__transform_hlds__implicit_parallelism__introduce_parallelism__type_ctor_info_seq_conj_0);
+}
+
+void mercury__transform_hlds__implicit_parallelism__introduce_parallelism__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module transform_hlds.implicit_parallelism.introduce_parallelism. */

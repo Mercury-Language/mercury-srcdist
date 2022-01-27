@@ -1,0 +1,21 @@
+:- module svlist.
+:- interface.
+:- import_module list.
+:- pred delete(T, list.list(T), list.list(T)).
+:- mode delete((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode delete((builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode delete((builtin.in), (builtin.out), (builtin.in)) is multi.
+:- pred delete_elems(list.list(T), list.list(T), list.list(T)).
+:- mode delete_elems((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete_first(T, list.list(T), list.list(T)).
+:- mode delete_first((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred det_replace_nth(int, T, list.list(T), list.list(T)).
+:- mode det_replace_nth((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred replace(T, T, list.list(T), list.list(T)).
+:- mode replace((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- mode replace((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- pred replace_all(T, T, list.list(T), list.list(T)).
+:- mode replace_all((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred replace_first(T, T, list.list(T), list.list(T)).
+:- mode replace_first((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.

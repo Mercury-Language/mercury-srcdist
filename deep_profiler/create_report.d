@@ -1,0 +1,297 @@
+
+
+create_report.optdate create_report.trans_opt_date create_report.err create_report.c_date create_report.s_date create_report.pic_s_date create_report.il_date create_report.java_date : create_report.m \
+	analysis_utils.int \
+	apply_exclusion.int \
+	array.int \
+	builtin.int \
+	char.int \
+	cord.int \
+	coverage.int \
+	exclude.int \
+	float.int \
+	int.int \
+	list.int \
+	map.int \
+	maybe.int \
+	mdbcomp.int \
+	measurement_units.int \
+	measurements.int \
+	pair.int \
+	private_builtin.int \
+	profile.int \
+	program_representation_utils.int \
+	query.int \
+	recursion_patterns.int \
+	report.int \
+	require.int \
+	set.int \
+	string.int \
+	top_procs.int \
+	unit.int \
+	var_use_analysis.int \
+	mdbcomp.goal_path.int \
+	mdbcomp.program_representation.int \
+	assoc_list.int2 \
+	bimap.int2 \
+	bitmap.int2 \
+	bool.int2 \
+	construct.int2 \
+	deconstruct.int2 \
+	enum.int2 \
+	io.int2 \
+	ops.int2 \
+	pretty_printer.int2 \
+	random.int2 \
+	rtti_implementation.int2 \
+	set_ordlist.int2 \
+	stream.int2 \
+	term.int2 \
+	time.int2 \
+	tree234.int2 \
+	type_desc.int2 \
+	univ.int2 \
+	mdbcomp.feedback.int2 \
+	mdbcomp.prim_data.int2 \
+	mdbcomp.rtti_access.int2 \
+	mdbcomp.trace_counts.int2 \
+	mdbcomp.feedback.automatic_parallelism.int2
+
+create_report.pic_o create_report.$O : \
+	analysis_utils.mih \
+	apply_exclusion.mih \
+	array.mih \
+	assoc_list.mih \
+	bimap.mih \
+	bitmap.mih \
+	bool.mih \
+	builtin.mih \
+	char.mih \
+	construct.mih \
+	cord.mih \
+	coverage.mih \
+	deconstruct.mih \
+	enum.mih \
+	exclude.mih \
+	float.mih \
+	int.mih \
+	io.mih \
+	list.mih \
+	map.mih \
+	maybe.mih \
+	mdbcomp.mih \
+	measurement_units.mih \
+	measurements.mih \
+	ops.mih \
+	pair.mih \
+	pretty_printer.mih \
+	private_builtin.mih \
+	profile.mih \
+	program_representation_utils.mih \
+	query.mih \
+	random.mih \
+	recursion_patterns.mih \
+	report.mih \
+	require.mih \
+	rtti_implementation.mih \
+	set.mih \
+	set_ordlist.mih \
+	stream.mih \
+	string.mih \
+	term.mih \
+	time.mih \
+	top_procs.mih \
+	tree234.mih \
+	type_desc.mih \
+	unit.mih \
+	univ.mih \
+	var_use_analysis.mih \
+	mdbcomp.feedback.mih \
+	mdbcomp.goal_path.mih \
+	mdbcomp.prim_data.mih \
+	mdbcomp.program_representation.mih \
+	mdbcomp.rtti_access.mih \
+	mdbcomp.trace_counts.mih \
+	mdbcomp.feedback.automatic_parallelism.mih
+
+create_report.mh create_report.mih : create_report.c
+
+
+ifeq ($(findstring il,$(GRADE)),il)
+create_report.module_dep : create_report.il
+else
+ ifeq ($(findstring java,$(GRADE)),java)
+create_report.module_dep : jmercury/create_report.java
+ else
+create_report.module_dep : create_report.c
+ endif
+endif
+
+
+create_report.date create_report.date0 : create_report.m \
+	analysis_utils.int3 \
+	apply_exclusion.int3 \
+	array.int3 \
+	builtin.int3 \
+	char.int3 \
+	cord.int3 \
+	coverage.int3 \
+	exclude.int3 \
+	float.int3 \
+	int.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	mdbcomp.int3 \
+	measurement_units.int3 \
+	measurements.int3 \
+	pair.int3 \
+	private_builtin.int3 \
+	profile.int3 \
+	program_representation_utils.int3 \
+	query.int3 \
+	recursion_patterns.int3 \
+	report.int3 \
+	require.int3 \
+	set.int3 \
+	string.int3 \
+	top_procs.int3 \
+	unit.int3 \
+	var_use_analysis.int3 \
+	mdbcomp.goal_path.int3 \
+	mdbcomp.program_representation.int3 \
+	assoc_list.int3 \
+	bimap.int3 \
+	bitmap.int3 \
+	bool.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	enum.int3 \
+	io.int3 \
+	ops.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set_ordlist.int3 \
+	stream.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	univ.int3 \
+	mdbcomp.feedback.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.trace_counts.int3 \
+	mdbcomp.feedback.automatic_parallelism.int3
+
+create_report.date0 : create_report.m \
+	analysis_utils.int3 \
+	apply_exclusion.int3 \
+	array.int3 \
+	builtin.int3 \
+	char.int3 \
+	cord.int3 \
+	coverage.int3 \
+	exclude.int3 \
+	float.int3 \
+	int.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	mdbcomp.int3 \
+	measurement_units.int3 \
+	measurements.int3 \
+	pair.int3 \
+	private_builtin.int3 \
+	profile.int3 \
+	program_representation_utils.int3 \
+	query.int3 \
+	recursion_patterns.int3 \
+	report.int3 \
+	require.int3 \
+	set.int3 \
+	string.int3 \
+	top_procs.int3 \
+	unit.int3 \
+	var_use_analysis.int3 \
+	mdbcomp.goal_path.int3 \
+	mdbcomp.program_representation.int3 \
+	assoc_list.int3 \
+	bimap.int3 \
+	bitmap.int3 \
+	bool.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	enum.int3 \
+	io.int3 \
+	ops.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set_ordlist.int3 \
+	stream.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	univ.int3 \
+	mdbcomp.feedback.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.trace_counts.int3 \
+	mdbcomp.feedback.automatic_parallelism.int3
+
+
+
+create_report.$O :  \
+	mdbcomp.rtti_access.mh \
+	mdbcomp.rtti_access.mh \
+	time.mh \
+	time.mh \
+	bitmap.mh \
+	bitmap.mh \
+	string.mh \
+	time.mh \
+	io.mh \
+	io.mh \
+	mdbcomp.program_representation.mh \
+	mdbcomp.program_representation.mh \
+	array.mh \
+	array.mh \
+	profile.mh \
+	profile.mh
+
+
+
+create_report.pic_o :  \
+	mdbcomp.rtti_access.mh \
+	mdbcomp.rtti_access.mh \
+	time.mh \
+	time.mh \
+	bitmap.mh \
+	bitmap.mh \
+	string.mh \
+	time.mh \
+	io.mh \
+	io.mh \
+	mdbcomp.program_representation.mh \
+	mdbcomp.program_representation.mh \
+	array.mh \
+	array.mh \
+	profile.mh \
+	profile.mh
+
+
+create_report.int0 : create_report.date0
+	@:
+create_report.int : create_report.date
+	@:
+create_report.int2 : create_report.date
+	@:
+create_report.int3 : create_report.date3
+	@:
+create_report.opt : create_report.optdate
+	@:
+create_report.trans_opt : create_report.trans_opt_date
+	@:

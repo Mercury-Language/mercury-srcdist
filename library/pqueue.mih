@@ -1,0 +1,237 @@
+/*
+** Automatically generated from `pqueue.m'
+** by the Mercury compiler,
+** version 13.05.2-beta-2013-10-31, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module pqueue. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_pqueue
+#define MR_HEADER_GUARD_pqueue
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PQUEUE_DECL_GUARD
+#define PQUEUE_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "pqueue.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__pqueue__pqueue__type_ctor_info_pqueue_2;
+
+#line 96 "pqueue.m"
+void MR_CALL 
+mercury__pqueue____Compare____pqueue_2_0(
+#line 96 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 96 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 96 "pqueue.m"
+  MR_Word * mercury__pqueue__param_3,
+#line 96 "pqueue.m"
+  MR_Word mercury__pqueue__param_4,
+#line 96 "pqueue.m"
+  MR_Word mercury__pqueue__param_5);
+
+#line 96 "pqueue.m"
+MR_bool MR_CALL 
+mercury__pqueue____Unify____pqueue_2_0(
+#line 96 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 96 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 96 "pqueue.m"
+  MR_Word mercury__pqueue__param_3,
+#line 96 "pqueue.m"
+  MR_Word mercury__pqueue__param_4);
+
+#line 158 "pqueue.m"
+void MR_CALL 
+mercury__pqueue__remove_2_3_p_0(
+#line 158 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 158 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 158 "pqueue.m"
+  MR_Word mercury__pqueue__param_3,
+#line 158 "pqueue.m"
+  MR_Word mercury__pqueue__param_4,
+#line 158 "pqueue.m"
+  MR_Word * mercury__pqueue__param_5);
+
+#line 82 "pqueue.m"
+MR_Integer MR_CALL 
+mercury__pqueue__length_1_f_0(
+#line 82 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 82 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 82 "pqueue.m"
+  MR_Word mercury__pqueue__param_3);
+
+#line 76 "pqueue.m"
+MR_Word MR_CALL 
+mercury__pqueue__from_assoc_list_1_f_0(
+#line 76 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 76 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 76 "pqueue.m"
+  MR_Word mercury__pqueue__param_3);
+
+#line 71 "pqueue.m"
+void MR_CALL 
+mercury__pqueue__assoc_list_to_pqueue_2_p_0(
+#line 71 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 71 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 71 "pqueue.m"
+  MR_Word mercury__pqueue__param_3,
+#line 71 "pqueue.m"
+  MR_Word * mercury__pqueue__param_4);
+
+#line 70 "pqueue.m"
+MR_Word MR_CALL 
+mercury__pqueue__assoc_list_to_pqueue_1_f_0(
+#line 70 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 70 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 70 "pqueue.m"
+  MR_Word mercury__pqueue__param_3);
+
+#line 65 "pqueue.m"
+void MR_CALL 
+mercury__pqueue__to_assoc_list_2_p_0(
+#line 65 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 65 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 65 "pqueue.m"
+  MR_Word mercury__pqueue__param_3,
+#line 65 "pqueue.m"
+  MR_Word * mercury__pqueue__param_4);
+
+#line 64 "pqueue.m"
+MR_Word MR_CALL 
+mercury__pqueue__to_assoc_list_1_f_0(
+#line 64 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 64 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 64 "pqueue.m"
+  MR_Word mercury__pqueue__param_3);
+
+#line 58 "pqueue.m"
+void MR_CALL 
+mercury__pqueue__det_remove_4_p_0(
+#line 58 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 58 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 58 "pqueue.m"
+  MR_Box * mercury__pqueue__param_3,
+#line 58 "pqueue.m"
+  MR_Box * mercury__pqueue__param_4,
+#line 58 "pqueue.m"
+  MR_Word mercury__pqueue__param_5,
+#line 58 "pqueue.m"
+  MR_Word * mercury__pqueue__param_6);
+
+#line 53 "pqueue.m"
+MR_bool MR_CALL 
+mercury__pqueue__remove_4_p_0(
+#line 53 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 53 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 53 "pqueue.m"
+  MR_Box * mercury__pqueue__param_3,
+#line 53 "pqueue.m"
+  MR_Box * mercury__pqueue__param_4,
+#line 53 "pqueue.m"
+  MR_Word mercury__pqueue__param_5,
+#line 53 "pqueue.m"
+  MR_Word * mercury__pqueue__param_6);
+
+#line 47 "pqueue.m"
+void MR_CALL 
+mercury__pqueue__insert_4_p_0(
+#line 47 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 47 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 47 "pqueue.m"
+  MR_Box mercury__pqueue__param_3,
+#line 47 "pqueue.m"
+  MR_Box mercury__pqueue__param_4,
+#line 47 "pqueue.m"
+  MR_Word mercury__pqueue__param_5,
+#line 47 "pqueue.m"
+  MR_Word * mercury__pqueue__param_6);
+
+#line 46 "pqueue.m"
+MR_Word MR_CALL 
+mercury__pqueue__insert_3_f_0(
+#line 46 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 46 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 46 "pqueue.m"
+  MR_Word mercury__pqueue__param_3,
+#line 46 "pqueue.m"
+  MR_Box mercury__pqueue__param_4,
+#line 46 "pqueue.m"
+  MR_Box mercury__pqueue__param_5);
+
+#line 41 "pqueue.m"
+void MR_CALL 
+mercury__pqueue__init_1_p_0(
+#line 41 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 41 "pqueue.m"
+  MR_Word mercury__pqueue__param_2,
+#line 41 "pqueue.m"
+  MR_Word * mercury__pqueue__param_3);
+
+#line 40 "pqueue.m"
+MR_Word MR_CALL 
+mercury__pqueue__init_0_f_0(
+#line 40 "pqueue.m"
+  MR_Word mercury__pqueue__param_1,
+#line 40 "pqueue.m"
+  MR_Word mercury__pqueue__param_2);
+
+void mercury__pqueue__init(void);
+void mercury__pqueue__init_type_tables(void);
+void mercury__pqueue__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_pqueue */
+
+/* :- end_interface pqueue. */

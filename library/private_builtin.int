@@ -1,0 +1,129 @@
+:- module private_builtin.
+:- interface.
+:- import_module io.
+:- type base_typeclass_info.
+:- type float_box
+	--->	float_box(float).
+:- type heap_pointer.
+:- type sample_type_info
+	--->	sample_type_info(private_builtin.type_info).
+:- type sample_typeclass_info
+	--->	sample_typeclass_info(private_builtin.typeclass_info).
+:- type ticket == builtin.c_pointer.
+:- type ticket_counter == builtin.c_pointer.
+:- type type_ctor_info.
+:- type type_info.
+:- type typeclass_info.
+:- type mutvar(T)
+	--->	mutvar(builtin.c_pointer).
+:- type ref(T).
+:- type store_at_ref_type(T)
+	--->	store_at_ref_type(int).
+:- pred builtin_compare_character(builtin.comparison_result, character, character).
+:- mode builtin_compare_character((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred builtin_compare_float(builtin.comparison_result, float, float).
+:- mode builtin_compare_float((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred builtin_compare_int(builtin.comparison_result, int, int).
+:- mode builtin_compare_int((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred builtin_compare_non_canonical_type(builtin.comparison_result, T, T).
+:- mode builtin_compare_non_canonical_type((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred builtin_compare_pred(builtin.comparison_result, (pred), (pred)).
+:- mode builtin_compare_pred((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred builtin_compare_solver_type(builtin.comparison_result, T, T).
+:- mode builtin_compare_solver_type((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred builtin_compare_string(builtin.comparison_result, string, string).
+:- mode builtin_compare_string((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred builtin_compare_tuple(builtin.comparison_result, T, T).
+:- mode builtin_compare_tuple((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred builtin_compound_eq(T, T).
+:- mode builtin_compound_eq((builtin.in), (builtin.in)) is semidet.
+:- pred builtin_compound_lt(T, T).
+:- mode builtin_compound_lt((builtin.in), (builtin.in)) is semidet.
+:- pred builtin_int_gt(int, int).
+:- mode builtin_int_gt((builtin.in), (builtin.in)) is semidet.
+:- pred builtin_int_lt(int, int).
+:- mode builtin_int_lt((builtin.in), (builtin.in)) is semidet.
+:- pred builtin_unify_character(character, character).
+:- mode builtin_unify_character((builtin.in), (builtin.in)) is semidet.
+:- pred builtin_unify_float(float, float).
+:- mode builtin_unify_float((builtin.in), (builtin.in)) is semidet.
+:- pred builtin_unify_int(int, int).
+:- mode builtin_unify_int((builtin.in), (builtin.in)) is semidet.
+:- pred builtin_unify_pred((pred), (pred)).
+:- mode builtin_unify_pred((builtin.in), (builtin.in)) is semidet.
+:- pred builtin_unify_solver_type(T, T).
+:- mode builtin_unify_solver_type((builtin.in), (builtin.in)) is semidet.
+:- pred builtin_unify_string(string, string).
+:- mode builtin_unify_string((builtin.in), (builtin.in)) is semidet.
+:- pred builtin_unify_tuple(T, T).
+:- mode builtin_unify_tuple((builtin.in), (builtin.in)) is semidet.
+:- pred compare_error is erroneous.
+:- impure pred discard_ticket is det.
+:- impure pred free_heap(T).
+:- mode free_heap((builtin.di)) is det.
+:- impure pred gc_trace(private_builtin.mutvar(T)).
+:- mode gc_trace((builtin.in)) is det.
+:- impure pred imp is det.
+:- pred instance_constraint_from_typeclass_info(private_builtin.typeclass_info, int, private_builtin.typeclass_info).
+:- mode instance_constraint_from_typeclass_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred mark_hp(private_builtin.heap_pointer).
+:- mode mark_hp((builtin.out)) is det.
+:- impure pred mark_ticket_stack(private_builtin.ticket_counter).
+:- mode mark_ticket_stack((builtin.out)) is det.
+:- pred no_clauses(string).
+:- mode no_clauses((builtin.in)) is erroneous.
+:- impure pred nonvar(T).
+:- mode nonvar((builtin.ui)) is det.
+:- mode nonvar((builtin.in)) is det.
+:- mode nonvar((builtin.unused)) is failure.
+:- pred nyi_foreign_type_compare(builtin.comparison_result, T, T).
+:- mode nyi_foreign_type_compare((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred nyi_foreign_type_unify(T, T).
+:- mode nyi_foreign_type_unify((builtin.in), (builtin.in)) is semidet.
+:- pred pointer_equal(T, T).
+:- mode pointer_equal((builtin.in), (builtin.in)) is semidet.
+:- impure pred prune_ticket is det.
+:- impure pred prune_tickets_to(private_builtin.ticket_counter).
+:- mode prune_tickets_to((builtin.in)) is det.
+:- pred reclaim_heap_nondet_pragma_foreign_code is erroneous.
+:- impure pred reset_ticket_commit(private_builtin.ticket).
+:- mode reset_ticket_commit((builtin.in)) is det.
+:- impure pred reset_ticket_solve(private_builtin.ticket).
+:- mode reset_ticket_solve((builtin.in)) is det.
+:- impure pred reset_ticket_undo(private_builtin.ticket).
+:- mode reset_ticket_undo((builtin.in)) is det.
+:- impure pred restore_hp(private_builtin.heap_pointer).
+:- mode restore_hp((builtin.in)) is det.
+:- semipure pred semip is det.
+:- pred sorry(string).
+:- mode sorry((builtin.in)) is erroneous.
+:- pred store_at_ref(private_builtin.store_at_ref_type(T), T).
+:- mode store_at_ref((builtin.in), (builtin.in)) is det.
+:- impure pred store_at_ref_impure(private_builtin.store_at_ref_type(T), T).
+:- mode store_at_ref_impure((builtin.in), (builtin.in)) is det.
+:- impure pred store_ticket(private_builtin.ticket).
+:- mode store_ticket((builtin.out)) is det.
+:- pred superclass_from_typeclass_info(private_builtin.typeclass_info, int, private_builtin.typeclass_info).
+:- mode superclass_from_typeclass_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred trace_evaluate_runtime_condition is semidet.
+:- semipure pred trace_get_io_state(io.io).
+:- mode trace_get_io_state((builtin.uo)) is det.
+:- impure pred trace_set_io_state(io.io).
+:- mode trace_set_io_state((builtin.di)) is det.
+:- pred trailed_nondet_pragma_foreign_code is erroneous.
+:- pred type_info_from_typeclass_info(private_builtin.typeclass_info, int, private_builtin.type_info).
+:- mode type_info_from_typeclass_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred typed_compare(builtin.comparison_result, T1, T2).
+:- mode typed_compare((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred typed_unify(T1, T2).
+:- mode typed_unify((builtin.in), (builtin.in)) is semidet.
+:- mode typed_unify((builtin.in), (builtin.out)) is semidet.
+:- pred unconstrained_type_info_from_typeclass_info(private_builtin.typeclass_info, int, private_builtin.type_info).
+:- mode unconstrained_type_info_from_typeclass_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred unsafe_type_cast(T1, T2).
+:- mode unsafe_type_cast((builtin.in), (builtin.out)) is det.
+:- pred unused is det.
+:- impure pred var(T).
+:- mode var((builtin.ui)) is failure.
+:- mode var((builtin.in)) is failure.
+:- mode var((builtin.unused)) is det.

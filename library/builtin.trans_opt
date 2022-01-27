@@ -1,0 +1,61 @@
+:- module builtin.
+:- pragma termination_info(builtin.copy((builtin.ui), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(builtin.copy((builtin.in), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(builtin.unsafe_promise_unique((builtin.in)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(builtin.unsafe_promise_unique((builtin.in), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((builtin.false), infinite, cannot_loop).
+:- pragma termination_info(builtin.unsafe_cast_any_to_ground((builtin.ia)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(builtin.promise_only_solution((pred((builtin.out)) is cc_multi)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(builtin.promise_only_solution((pred((builtin.uo)) is cc_multi)) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info(builtin.promise_only_solution((pred((builtin.out)) is cc_nondet)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(builtin.promise_only_solution((pred((builtin.uo)) is cc_nondet)) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info(builtin.promise_only_solution_io(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(builtin.ordering((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(builtin.'@<'((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(builtin.'@=<'((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(builtin.'@>'((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(builtin.'@>='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info((builtin.semidet_succeed), finite(0, []), cannot_loop).
+:- pragma termination_info((builtin.semidet_fail), finite(0, []), cannot_loop).
+:- pragma termination_info((builtin.semidet_true), finite(0, []), cannot_loop).
+:- pragma termination_info((builtin.semidet_false), finite(0, []), cannot_loop).
+:- pragma termination_info(builtin.cc_multi_equal((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(builtin.cc_multi_equal((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((builtin.impure_true), finite(0, []), cannot_loop).
+:- pragma termination_info((builtin.semipure_true), finite(0, []), cannot_loop).
+:- pragma termination_info(builtin.dynamic_cast((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(builtin.get_one_solution((pred((builtin.out)) is cc_multi)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(builtin.get_one_solution((pred((builtin.out)) is cc_nondet)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(builtin.get_one_solution_io((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(builtin.call_rtti_generic_unify((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(builtin.call_rtti_generic_compare((builtin.out), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma exceptions(predicate, (builtin.copy), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.copy), 2, 1, will_not_throw).
+:- pragma exceptions(function, (builtin.unsafe_promise_unique), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.unsafe_promise_unique), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.false), 0, 0, will_not_throw).
+:- pragma exceptions(function, (builtin.unsafe_cast_any_to_ground), 2, 0, will_not_throw).
+:- pragma exceptions(function, (builtin.promise_only_solution), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (builtin.promise_only_solution), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (builtin.promise_only_solution), 2, 2, may_throw(user_exception)).
+:- pragma exceptions(function, (builtin.promise_only_solution), 2, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (builtin.promise_only_solution_io), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (builtin.ordering), 3, 0, conditional).
+:- pragma exceptions(predicate, (builtin.(@<)), 2, 0, conditional).
+:- pragma exceptions(predicate, (builtin.(@=<)), 2, 0, conditional).
+:- pragma exceptions(predicate, (builtin.(@>)), 2, 0, conditional).
+:- pragma exceptions(predicate, (builtin.(@>=)), 2, 0, conditional).
+:- pragma exceptions(predicate, (builtin.semidet_succeed), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.semidet_fail), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.semidet_true), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.semidet_false), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.cc_multi_equal), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.cc_multi_equal), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (builtin.impure_true), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.semipure_true), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.dynamic_cast), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (builtin.get_one_solution), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (builtin.get_one_solution), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (builtin.get_one_solution_io), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (builtin.call_rtti_generic_unify), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (builtin.call_rtti_generic_compare), 3, 0, may_throw(user_exception)).

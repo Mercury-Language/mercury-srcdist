@@ -1,0 +1,924 @@
+/*
+** Automatically generated from `version_hash_table.m'
+** by the Mercury compiler,
+** version 13.05.2-beta-2013-10-31, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module version_hash_table. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_version_hash_table
+#define MR_HEADER_GUARD_version_hash_table
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef VERSION_HASH_TABLE_DECL_GUARD
+#define VERSION_HASH_TABLE_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "version_hash_table.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__version_hash_table__version_hash_table__type_ctor_info_buckets_2;
+
+#line 44 "version_hash_table.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__version_hash_table__version_hash_table__type_ctor_info_hash_pred_1;
+
+#line 47 "version_hash_table.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__version_hash_table__version_hash_table__type_ctor_info_hash_table_alist_2;
+
+#line 50 "version_hash_table.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__version_hash_table__version_hash_table__type_ctor_info_version_hash_table_2;
+
+#line 246 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table____Compare____version_hash_table_2_0(
+#line 246 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 246 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 246 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_3,
+#line 246 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 246 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5);
+
+#line 246 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table____Unify____version_hash_table_2_0(
+#line 246 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 246 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 246 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 246 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4);
+
+#line 261 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table____Compare____hash_table_alist_2_0(
+#line 261 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 261 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 261 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_3,
+#line 261 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 261 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5);
+
+#line 261 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table____Unify____hash_table_alist_2_0(
+#line 261 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 261 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 261 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 261 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4);
+
+#line 34 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table____Compare____hash_pred_1_0(
+#line 34 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 34 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_2,
+#line 34 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 34 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4);
+
+#line 34 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table____Unify____hash_pred_1_0(
+#line 34 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 34 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 34 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3);
+
+#line 255 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table____Compare____buckets_2_0(
+#line 255 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 255 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 255 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_3,
+#line 255 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4,
+#line 255 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_5);
+
+#line 255 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table____Unify____buckets_2_0(
+#line 255 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 255 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 255 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_3,
+#line 255 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4);
+
+#line 844 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table__fold_p_4_p_5(
+#line 844 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 844 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 844 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 844 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 844 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 844 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 844 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 843 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table__fold_p_4_p_4(
+#line 843 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 843 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 843 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 843 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 843 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 843 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 843 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 842 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table__fold_p_4_p_3(
+#line 842 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 842 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 842 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 842 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 842 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 842 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 842 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 841 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__fold_p_4_p_2(
+#line 841 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 841 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 841 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 841 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 841 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 841 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 841 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 840 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__fold_p_4_p_1(
+#line 840 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 840 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 840 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 840 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 840 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 840 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 840 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 839 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__fold_p_4_p_0(
+#line 839 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 839 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 839 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 839 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 839 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 839 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 839 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 817 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__fold_f_4_p_1(
+#line 817 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 817 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 817 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 817 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 817 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 817 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 817 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 816 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__fold_f_4_p_0(
+#line 816 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 816 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 816 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 816 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 816 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 816 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 816 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 612 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__from_assoc_list_2_3_p_0(
+#line 612 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 612 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 612 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 612 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 612 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_5);
+
+#line 590 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__to_assoc_list_2_3_p_0(
+#line 590 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 590 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 590 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 590 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 590 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_5);
+
+#line 460 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table__alist_search_3_p_0(
+#line 460 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 460 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 460 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 460 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4,
+#line 460 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_5);
+
+#line 344 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__unsafe_hash_pred_cast_2_p_0(
+#line 344 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 344 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 344 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_3);
+
+#line 335 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__find_slot_2_4_p_0(
+#line 335 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 335 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 335 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_3,
+#line 335 "version_hash_table.m"
+  MR_Integer mercury__version_hash_table__param_4,
+#line 335 "version_hash_table.m"
+  MR_Integer * mercury__version_hash_table__param_5);
+
+#line 325 "version_hash_table.m"
+MR_Integer MR_CALL 
+mercury__version_hash_table__find_slot_2_f_0(
+#line 325 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 325 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 325 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 325 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4);
+
+#line 276 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__init_2_4_f_0(
+#line 276 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 276 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 276 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 276 "version_hash_table.m"
+  MR_Integer mercury__version_hash_table__param_4,
+#line 276 "version_hash_table.m"
+  MR_Float mercury__version_hash_table__param_5,
+#line 276 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_6);
+
+#line 218 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table__equal_2_p_0(
+#line 218 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 218 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 218 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 218 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4);
+
+#line 211 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table__fold_4_p_5(
+#line 211 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 211 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 211 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 211 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 211 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 211 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 211 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 210 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table__fold_4_p_4(
+#line 210 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 210 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 210 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 210 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 210 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 210 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 210 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 209 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table__fold_4_p_3(
+#line 209 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 209 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 209 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 209 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 209 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 209 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 209 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 208 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__fold_4_p_2(
+#line 208 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 208 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 208 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 208 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 208 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 208 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 208 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 207 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__fold_4_p_1(
+#line 207 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 207 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 207 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 207 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 207 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 207 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 207 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 206 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__fold_4_p_0(
+#line 206 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 206 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 206 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 206 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 206 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 206 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6,
+#line 206 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_7);
+
+#line 201 "version_hash_table.m"
+MR_Box MR_CALL 
+mercury__version_hash_table__fold_3_f_0(
+#line 201 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 201 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 201 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 201 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 201 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 201 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_6);
+
+#line 196 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__from_assoc_list_2_f_0(
+#line 196 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 196 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 196 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 196 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4);
+
+#line 189 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__from_assoc_list_4_f_0(
+#line 189 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 189 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 189 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 189 "version_hash_table.m"
+  MR_Integer mercury__version_hash_table__param_4,
+#line 189 "version_hash_table.m"
+  MR_Float mercury__version_hash_table__param_5,
+#line 189 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_6);
+
+#line 182 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__to_assoc_list_1_f_0(
+#line 182 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 182 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 182 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3);
+
+#line 178 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table__search_3_p_0(
+#line 178 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 178 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 178 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 178 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4,
+#line 178 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_5);
+
+#line 177 "version_hash_table.m"
+MR_bool MR_CALL 
+mercury__version_hash_table__search_2_f_0(
+#line 177 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 177 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 177 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 177 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4,
+#line 177 "version_hash_table.m"
+  MR_Box * mercury__version_hash_table__param_5);
+
+#line 173 "version_hash_table.m"
+MR_Box MR_CALL 
+mercury__version_hash_table__elem_2_f_0(
+#line 173 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 173 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 173 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_3,
+#line 173 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4);
+
+#line 168 "version_hash_table.m"
+MR_Box MR_CALL 
+mercury__version_hash_table__lookup_2_f_0(
+#line 168 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 168 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 168 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 168 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4);
+
+#line 162 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__delete_3_p_0(
+#line 162 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 162 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 162 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_3,
+#line 162 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 162 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_5);
+
+#line 161 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__delete_2_f_0(
+#line 161 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 161 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 161 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 161 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4);
+
+#line 153 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__det_update_4_p_0(
+#line 153 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 153 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 153 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_3,
+#line 153 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4,
+#line 153 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 153 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_6);
+
+#line 152 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__det_update_3_f_0(
+#line 152 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 152 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 152 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 152 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4,
+#line 152 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_5);
+
+#line 144 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__det_insert_4_p_0(
+#line 144 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 144 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 144 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_3,
+#line 144 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4,
+#line 144 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 144 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_6);
+
+#line 143 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__det_insert_3_f_0(
+#line 143 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 143 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 143 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 143 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4,
+#line 143 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_5);
+
+#line 137 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__f_101_108_101_109_32_58_61_3_f_0(
+#line 137 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 137 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 137 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_3,
+#line 137 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_4,
+#line 137 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_5);
+
+#line 130 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__set_4_p_0(
+#line 130 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 130 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 130 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_3,
+#line 130 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4,
+#line 130 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_5,
+#line 130 "version_hash_table.m"
+  MR_Word * mercury__version_hash_table__param_6);
+
+#line 129 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__set_3_f_0(
+#line 129 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 129 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 129 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 129 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_4,
+#line 129 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_5);
+
+#line 123 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__copy_1_f_0(
+#line 123 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 123 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 123 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3);
+
+#line 113 "version_hash_table.m"
+MR_Integer MR_CALL 
+mercury__version_hash_table__num_occupants_1_f_0(
+#line 113 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 113 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 113 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3);
+
+#line 109 "version_hash_table.m"
+MR_Integer MR_CALL 
+mercury__version_hash_table__num_buckets_1_f_0(
+#line 109 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 109 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 109 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3);
+
+#line 105 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__generic_hash_2_p_0(
+#line 105 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 105 "version_hash_table.m"
+  MR_Box mercury__version_hash_table__param_2,
+#line 105 "version_hash_table.m"
+  MR_Integer * mercury__version_hash_table__param_3);
+
+#line 104 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__float_hash_2_p_0(
+#line 104 "version_hash_table.m"
+  MR_Float mercury__version_hash_table__param_1,
+#line 104 "version_hash_table.m"
+  MR_Integer * mercury__version_hash_table__param_2);
+
+#line 103 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__char_hash_2_p_0(
+#line 103 "version_hash_table.m"
+  MR_Char mercury__version_hash_table__param_1,
+#line 103 "version_hash_table.m"
+  MR_Integer * mercury__version_hash_table__param_2);
+
+#line 102 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__string_hash_2_p_0(
+#line 102 "version_hash_table.m"
+  MR_String mercury__version_hash_table__param_1,
+#line 102 "version_hash_table.m"
+  MR_Integer * mercury__version_hash_table__param_2);
+
+#line 101 "version_hash_table.m"
+void MR_CALL 
+mercury__version_hash_table__int_hash_2_p_0(
+#line 101 "version_hash_table.m"
+  MR_Integer mercury__version_hash_table__param_1,
+#line 101 "version_hash_table.m"
+  MR_Integer * mercury__version_hash_table__param_2);
+
+#line 92 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__unsafe_new_default_1_f_0(
+#line 92 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 92 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 92 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3);
+
+#line 88 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__unsafe_init_default_1_f_0(
+#line 88 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 88 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 88 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3);
+
+#line 80 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__new_default_1_f_0(
+#line 80 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 80 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 80 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3);
+
+#line 76 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__init_default_1_f_0(
+#line 76 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 76 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 76 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3);
+
+#line 70 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__unsafe_new_3_f_0(
+#line 70 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 70 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 70 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 70 "version_hash_table.m"
+  MR_Integer mercury__version_hash_table__param_4,
+#line 70 "version_hash_table.m"
+  MR_Float mercury__version_hash_table__param_5);
+
+#line 66 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__unsafe_init_3_f_0(
+#line 66 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 66 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 66 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 66 "version_hash_table.m"
+  MR_Integer mercury__version_hash_table__param_4,
+#line 66 "version_hash_table.m"
+  MR_Float mercury__version_hash_table__param_5);
+
+#line 53 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__new_3_f_0(
+#line 53 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 53 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 53 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 53 "version_hash_table.m"
+  MR_Integer mercury__version_hash_table__param_4,
+#line 53 "version_hash_table.m"
+  MR_Float mercury__version_hash_table__param_5);
+
+#line 49 "version_hash_table.m"
+MR_Word MR_CALL 
+mercury__version_hash_table__init_3_f_0(
+#line 49 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_1,
+#line 49 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_2,
+#line 49 "version_hash_table.m"
+  MR_Word mercury__version_hash_table__param_3,
+#line 49 "version_hash_table.m"
+  MR_Integer mercury__version_hash_table__param_4,
+#line 49 "version_hash_table.m"
+  MR_Float mercury__version_hash_table__param_5);
+
+void mercury__version_hash_table__init(void);
+void mercury__version_hash_table__init_type_tables(void);
+void mercury__version_hash_table__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_version_hash_table */
+
+/* :- end_interface version_hash_table. */

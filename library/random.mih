@@ -1,0 +1,277 @@
+/*
+** Automatically generated from `random.m'
+** by the Mercury compiler,
+** version 13.05.2-beta-2013-10-31, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module random. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_random
+#define MR_HEADER_GUARD_random
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RANDOM_DECL_GUARD
+#define RANDOM_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "random.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__random__random__type_ctor_info_supply_0;
+
+#line 130 "random.m"
+void MR_CALL 
+mercury__random____Compare____supply_0_0(
+#line 130 "random.m"
+  MR_Word * mercury__random__param_1,
+#line 130 "random.m"
+  MR_Word mercury__random__param_2,
+#line 130 "random.m"
+  MR_Word mercury__random__param_3);
+
+#line 130 "random.m"
+MR_bool MR_CALL 
+mercury__random____Unify____supply_0_0(
+#line 130 "random.m"
+  MR_Word mercury__random__param_1,
+#line 130 "random.m"
+  MR_Word mercury__random__param_2);
+
+#line 212 "random.m"
+void MR_CALL 
+mercury__random__test_2_4_p_1(
+#line 212 "random.m"
+  MR_Integer mercury__random__param_1,
+#line 212 "random.m"
+  MR_Word * mercury__random__param_2,
+#line 212 "random.m"
+  MR_Word mercury__random__param_3,
+#line 212 "random.m"
+  MR_Word * mercury__random__param_4);
+
+#line 211 "random.m"
+void MR_CALL 
+mercury__random__test_2_4_p_0(
+#line 211 "random.m"
+  MR_Integer mercury__random__param_1,
+#line 211 "random.m"
+  MR_Word * mercury__random__param_2,
+#line 211 "random.m"
+  MR_Word mercury__random__param_3,
+#line 211 "random.m"
+  MR_Word * mercury__random__param_4);
+
+#line 187 "random.m"
+void MR_CALL 
+mercury__random__perform_sampling_6_p_1(
+#line 187 "random.m"
+  MR_Word mercury__random__param_1,
+#line 187 "random.m"
+  MR_Integer mercury__random__param_2,
+#line 187 "random.m"
+  MR_ArrayPtr mercury__random__param_3,
+#line 187 "random.m"
+  MR_Word mercury__random__param_4,
+#line 187 "random.m"
+  MR_Word * mercury__random__param_5,
+#line 187 "random.m"
+  MR_Word mercury__random__param_6,
+#line 187 "random.m"
+  MR_Word * mercury__random__param_7);
+
+#line 186 "random.m"
+void MR_CALL 
+mercury__random__perform_sampling_6_p_0(
+#line 186 "random.m"
+  MR_Word mercury__random__param_1,
+#line 186 "random.m"
+  MR_Integer mercury__random__param_2,
+#line 186 "random.m"
+  MR_ArrayPtr mercury__random__param_3,
+#line 186 "random.m"
+  MR_Word mercury__random__param_4,
+#line 186 "random.m"
+  MR_Word * mercury__random__param_5,
+#line 186 "random.m"
+  MR_Word mercury__random__param_6,
+#line 186 "random.m"
+  MR_Word * mercury__random__param_7);
+
+#line 133 "random.m"
+void MR_CALL 
+mercury__random__params_3_p_0(
+#line 133 "random.m"
+  MR_Integer * mercury__random__param_1,
+#line 133 "random.m"
+  MR_Integer * mercury__random__param_2,
+#line 133 "random.m"
+  MR_Integer * mercury__random__param_3);
+
+#line 121 "random.m"
+void MR_CALL 
+mercury__random__test_4_p_0(
+#line 121 "random.m"
+  MR_Integer mercury__random__param_1,
+#line 121 "random.m"
+  MR_Integer mercury__random__param_2,
+#line 121 "random.m"
+  MR_Word * mercury__random__param_3,
+#line 121 "random.m"
+  MR_Integer * mercury__random__param_4);
+
+#line 108 "random.m"
+void MR_CALL 
+mercury__random__permutation_4_p_1(
+#line 108 "random.m"
+  MR_Word mercury__random__param_1,
+#line 108 "random.m"
+  MR_Word mercury__random__param_2,
+#line 108 "random.m"
+  MR_Word * mercury__random__param_3,
+#line 108 "random.m"
+  MR_Word mercury__random__param_4,
+#line 108 "random.m"
+  MR_Word * mercury__random__param_5);
+
+#line 107 "random.m"
+void MR_CALL 
+mercury__random__permutation_4_p_0(
+#line 107 "random.m"
+  MR_Word mercury__random__param_1,
+#line 107 "random.m"
+  MR_Word mercury__random__param_2,
+#line 107 "random.m"
+  MR_Word * mercury__random__param_3,
+#line 107 "random.m"
+  MR_Word mercury__random__param_4,
+#line 107 "random.m"
+  MR_Word * mercury__random__param_5);
+
+#line 100 "random.m"
+void MR_CALL 
+mercury__random__randcount_3_p_1(
+#line 100 "random.m"
+  MR_Integer * mercury__random__param_1,
+#line 100 "random.m"
+  MR_Word mercury__random__param_2,
+#line 100 "random.m"
+  MR_Word * mercury__random__param_3);
+
+#line 99 "random.m"
+void MR_CALL 
+mercury__random__randcount_3_p_0(
+#line 99 "random.m"
+  MR_Integer * mercury__random__param_1,
+#line 99 "random.m"
+  MR_Word mercury__random__param_2,
+#line 99 "random.m"
+  MR_Word * mercury__random__param_3);
+
+#line 91 "random.m"
+void MR_CALL 
+mercury__random__randmax_3_p_1(
+#line 91 "random.m"
+  MR_Integer * mercury__random__param_1,
+#line 91 "random.m"
+  MR_Word mercury__random__param_2,
+#line 91 "random.m"
+  MR_Word * mercury__random__param_3);
+
+#line 90 "random.m"
+void MR_CALL 
+mercury__random__randmax_3_p_0(
+#line 90 "random.m"
+  MR_Integer * mercury__random__param_1,
+#line 90 "random.m"
+  MR_Word mercury__random__param_2,
+#line 90 "random.m"
+  MR_Word * mercury__random__param_3);
+
+#line 83 "random.m"
+void MR_CALL 
+mercury__random__random_5_p_1(
+#line 83 "random.m"
+  MR_Integer mercury__random__param_1,
+#line 83 "random.m"
+  MR_Integer mercury__random__param_2,
+#line 83 "random.m"
+  MR_Integer * mercury__random__param_3,
+#line 83 "random.m"
+  MR_Word mercury__random__param_4,
+#line 83 "random.m"
+  MR_Word * mercury__random__param_5);
+
+#line 82 "random.m"
+void MR_CALL 
+mercury__random__random_5_p_0(
+#line 82 "random.m"
+  MR_Integer mercury__random__param_1,
+#line 82 "random.m"
+  MR_Integer mercury__random__param_2,
+#line 82 "random.m"
+  MR_Integer * mercury__random__param_3,
+#line 82 "random.m"
+  MR_Word mercury__random__param_4,
+#line 82 "random.m"
+  MR_Word * mercury__random__param_5);
+
+#line 73 "random.m"
+void MR_CALL 
+mercury__random__random_3_p_1(
+#line 73 "random.m"
+  MR_Integer * mercury__random__param_1,
+#line 73 "random.m"
+  MR_Word mercury__random__param_2,
+#line 73 "random.m"
+  MR_Word * mercury__random__param_3);
+
+#line 72 "random.m"
+void MR_CALL 
+mercury__random__random_3_p_0(
+#line 72 "random.m"
+  MR_Integer * mercury__random__param_1,
+#line 72 "random.m"
+  MR_Word mercury__random__param_2,
+#line 72 "random.m"
+  MR_Word * mercury__random__param_3);
+
+#line 65 "random.m"
+void MR_CALL 
+mercury__random__init_2_p_0(
+#line 65 "random.m"
+  MR_Integer mercury__random__param_1,
+#line 65 "random.m"
+  MR_Word * mercury__random__param_2);
+
+void mercury__random__init(void);
+void mercury__random__init_type_tables(void);
+void mercury__random__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_random */
+
+/* :- end_interface random. */
