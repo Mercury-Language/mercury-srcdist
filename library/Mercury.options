@@ -1,0 +1,84 @@
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2002, 2004-2011 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+# Mercury.options - module-specific flags for Mmake and `mmc --make'.
+#-----------------------------------------------------------------------------#
+
+# Modules which use user-guided type specialization need to be compiled with
+# $(TYPE_SPEC_FLAGS) flags to make sure all calls to the builtin comparison
+# routines are inlined.
+TYPE_SPEC_FLAGS = --inline-vars-threshold 10000
+MCFLAGS-list += $(TYPE_SPEC_FLAGS)
+MCFLAGS-map += $(TYPE_SPEC_FLAGS)
+MCFLAGS-tree234 += $(TYPE_SPEC_FLAGS)
+MCFLAGS-set += $(TYPE_SPEC_FLAGS)
+MCFLAGS-set_ordlist += $(TYPE_SPEC_FLAGS)
+
+MCFLAGS-lexer += --optimize-constructor-last-call
+
+MCFLAGS-sparse_bitset   += --use-atomic-cells --optimize-constant-propagation
+MCFLAGS-tree_bitset     += --use-atomic-cells --optimize-constant-propagation
+
+# Speed up structure sharing analysis.
+MCFLAGS-set_ctree234            += --structure-sharing-widening 1
+MCFLAGS-set_tree234             += --structure-sharing-widening 1
+MCFLAGS-tree234                 += --structure-sharing-widening 1
+
+# Bug workarounds.
+MCFLAGS-std_util                += --no-halt-at-warn
+MCFLAGS-dir                     += --no-halt-at-warn
+MCFLAGS-exception               += --no-halt-at-warn
+
+# io.m uses library features that are supported by POSIX but which are not
+# part of ANSI C, such as `struct stat', fileno(), and putenv().
+# We need to pass --no-ansi to mgnuc to ensure that these are declared.
+MGNUCFLAGS-io                   += --no-ansi
+
+# This is needed to avoid errors on the calls that implement e.g. io.format/3
+# in terms of io.format/4, and string.format/2 in terms of string.format/3.
+# varset.trans_opt includes the relevant part of string.opt.
+MCFLAGS-io                      += --no-warn-unknown-format-calls
+MCFLAGS-stream                  += --no-warn-unknown-format-calls
+MCFLAGS-stream.string_writer    += --no-warn-unknown-format-calls
+MCFLAGS-string                  += --no-warn-unknown-format-calls
+
+MCFLAGS-mer_std                 += --no-warn-nothing-exported
+
+# Avoid warnings about insts with non-existent function symbols in their
+# bound lists.  The non-existent function symbols are used here to represent
+# insts for foreign types.
+MCFLAGS-array                   += --no-warn-insts-without-matching-type
+MCFLAGS-bitmap                  += --no-warn-insts-without-matching-type
+MCFLAGS-io                      += --no-warn-insts-without-matching-type
+
+# Avoid warnings about unused imports.
+MCFLAGS-builtin                 += --no-warn-unused-imports
+MCFLAGS-construct               += --no-warn-unused-imports
+MCFLAGS-deconstruct             += --no-warn-unused-imports
+MCFLAGS-int32                   += --no-warn-unused-imports
+MCFLAGS-int64                   += --no-warn-unused-imports
+MCFLAGS-library                 += --no-warn-unused-imports
+MCFLAGS-mer_std                 += --no-warn-unused-imports
+MCFLAGS-term_size_prof_builtin  += --no-warn-unused-imports
+MCFLAGS-uint64                  += --no-warn-unused-imports
+
+# In parallel, low level C grades that don't reserve a machine register for
+# the engine base (i.e. don't use gcc global registers) don't generate code
+# that assumes we cache the engine base address into a local variable
+# MR_local_thread_engine_base.  This module contains handwritten code
+# that jumps about a bit and maintaining MR_local_thread_engine_base in all
+# the right places is tricky (i.e. I gave up).
+MCFLAGS-thread                  += --no-local-thread-engine-base
+MCFLAGS-thread.semaphore        += --no-local-thread-engine-base
+
+# Work around a warning for termination analysis of the user defined equality
+# and comparison code for lazy values.
+MCFLAGS-lazy                    += --no-warn-non-term-special-preds
+
+# Keep all modules' contents in a consistent order, except these (for now).
+MCFLAGS-array                   += --no-warn-inconsistent-pred-order-clauses
+MCFLAGS-bt_array                += --no-warn-inconsistent-pred-order-clauses
+MCFLAGS-pprint                  += --no-warn-inconsistent-pred-order-clauses
+MCFLAGS-robdd                   += --no-warn-inconsistent-pred-order-clauses

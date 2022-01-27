@@ -1,0 +1,14 @@
+module(2, "string.to_string.m",
+	(string.to_string),
+	{string},
+	{builtin, deconstruct, ops, private_builtin},
+	{array, bitmap, int, pair, rtti_implementation, stream, term_io, type_desc, univ, version_array, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

@@ -1,0 +1,3 @@
+:- module injection.
+:- interface.
+:- type injection(K, V).

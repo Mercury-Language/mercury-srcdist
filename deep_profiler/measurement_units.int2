@@ -1,0 +1,14 @@
+:- module measurement_units.
+:- interface.
+:- type memory.
+:- type memory_units
+    --->    units_words 
+    ;       units_bytes .
+:- type num_decimal_places
+    --->    ndp_0 
+    ;       ndp_2 .
+:- type percent.
+:- type probability.
+:- type time.
+:- implementation.
+:- type probability == float.

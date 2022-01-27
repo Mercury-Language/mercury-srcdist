@@ -1,0 +1,130 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = stm
+MAYBE_J1 = -j1
+
+#-----------------------------------------------------------------------------#
+
+# please keep these lists sorted
+VALID_PROGS = \
+	basic				\
+	basic2				\
+	exception_propogate		\
+	nested				\
+	nested_or_else			\
+	atomic_or_else			\
+	atomic_or_else2			\
+	atomic_conj			\
+	atomic_ite			\
+	atomic_mvar			\
+	atomic_scope			\
+	par-asm_test7			\
+	par-asm_test8			\
+	par-asm_test9			\
+	par_test10			\
+	par_test8			\
+	par_test9			\
+	stmqueuetext
+
+INVALID_PROGS =
+
+# These tests require parallel execution with multiple engines.
+MULTI_PROGS =			\
+	conflict
+
+# These tests require debugging, which hasn't been implemented for
+# the MLDS backend.
+#
+LLDS_PROGS =
+
+ifeq "$(filter hl% java% csharp%,$(GRADE))" ""
+	PROGS0 = $(LLDS_PROGS)
+else
+	PROGS0 =
+endif
+
+ifneq "$(findstring par,$(GRADE))" ""
+	VALID_PROGS := $(VALID_PROGS) $(MULTI_PROGS)
+endif
+
+#ifneq "$(findstring decldebug,$(GRADE))" ""
+#	OBJ_PROGS =
+#	PROGS =
+#else
+	OBJ_PROGS =
+	PROGS = $(VALID_PROGS) $(INVALID_PROGS)
+#endif
+
+# `mmc --make' doesn't expect subdirectories to appear in targets.
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+OS_SUBDIR =
+else
+OS_SUBDIR = $(os_subdir)
+endif
+
+TARGET_OBJ_EXT = $(O)
+TARGET_OBJ_SUBDIR = $(OS_SUBDIR)
+OBJS =	$(OBJ_PROGS:%=$(TARGET_OBJ_SUBDIR)%.$(TARGET_OBJ_EXT))
+
+#-----------------------------------------------------------------------------#
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+$(VALID_PROGS:%=%.runtest): %.runtest: %.res ;
+$(INVALID_PROGS:%=%.runtest): %.runtest: %.err_res ;
+
+$(OBJ_PROGS:%=%.runtest): %.runtest: %.$(TARGET_OBJ_EXT) ;
+
+ifneq ($(MMAKE_USE_MMC_MAKE),yes)
+
+%.err: %.m
+	if $(MC) --errorcheck-only $(ALL_GRADEFLAGS) $(ALL_MCFLAGS) $* \
+		> $*.err 2>&1; \
+	then false; else true; fi
+
+else
+
+% XXX: with `mmake --use-mmc-make' the ".DEFAULT:" rule seems to take
+%	precedence over "%.err: %.m" rules.
+% XXX: the reason we run the $(MCM) command twice is to avoid
+%	doubled up error messages, once while making interface files,
+%	then the module proper.  The second time the command is run
+%	only one set of error messages should appear.
+$(addsuffix .err,$(PROGS)):
+	-$(MCM) $@
+	if $(MCM) -r $@ > /dev/null 2>&1 ; then false; else true; fi
+
+endif
+
+# Exercise multiple Mercury engines in lowlevel grades.
+ENGINES :=
+ifeq "$(filter hl% java% csharp%,$(GRADE))" ""
+	ENGINES := MERCURY_OPTIONS=-P8
+endif
+
+%.out: %
+	{ [ -f $*.inp ] && cat $*.inp; } | $(ENGINES) ./$< > $@ 2>&1 || \
+		{ grep . $@ /dev/null; exit 1; }
+
+#-----------------------------------------------------------------------------#
+
+printtests:
+	@echo $(PROGS)
+
+printobjs:
+	@echo $(OBJS)
+
+clean_local: clean_stm
+
+clean_stm:
+	rm -f *.err *.h
+
+#-----------------------------------------------------------------------------#
