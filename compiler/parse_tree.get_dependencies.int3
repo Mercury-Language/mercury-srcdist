@@ -1,0 +1,27 @@
+:- module (parse_tree.get_dependencies).
+:- interface.
+:- type implicit_avail_needs.
+:- type item_contents.
+:- type maybe_need_exception
+	where	type_is_abstract_enum(1).
+:- type maybe_need_io
+	where	type_is_abstract_enum(1).
+:- type maybe_need_stm
+	where	type_is_abstract_enum(1).
+:- type maybe_need_stream_format
+	where	type_is_abstract_enum(1).
+:- type maybe_need_string_format
+	where	type_is_abstract_enum(1).
+:- type maybe_need_tabling
+	where	type_is_abstract_enum(1).
+:- type maybe_need_tabling_statistics
+	where	type_is_abstract_enum(1).
+:- type_representation(implicit_avail_needs, is_word_aligned_ptr).
+:- type_representation(item_contents, is_word_aligned_ptr).
+:- type_representation(maybe_need_exception, du_repn(enum("dont_need_exception", "do_need_exception", [],  no_c_j_cs))).
+:- type_representation(maybe_need_io, du_repn(enum("dont_need_io", "do_need_io", [],  no_c_j_cs))).
+:- type_representation(maybe_need_stm, du_repn(enum("dont_need_stm", "do_need_stm", [],  no_c_j_cs))).
+:- type_representation(maybe_need_stream_format, du_repn(enum("dont_need_stream_format", "do_need_stream_format", [],  no_c_j_cs))).
+:- type_representation(maybe_need_string_format, du_repn(enum("dont_need_string_format", "do_need_string_format", [],  no_c_j_cs))).
+:- type_representation(maybe_need_tabling, du_repn(enum("dont_need_tabling", "do_need_tabling", [],  no_c_j_cs))).
+:- type_representation(maybe_need_tabling_statistics, du_repn(enum("dont_need_tabling_statistics", "do_need_tabling_statistics", [],  no_c_j_cs))).

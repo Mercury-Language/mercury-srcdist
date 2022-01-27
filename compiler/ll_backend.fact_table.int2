@@ -1,0 +1,8 @@
+:- module (ll_backend.fact_table).
+:- interface.
+:- type fact_table_arg_check_result
+    --->    fact_table_args_ok(ll_backend.fact_table.fact_table_gen_info)
+    ;       fact_table_args_not_ok(list.list(parse_tree.error_util.error_spec)).
+:- type fact_table_gen_info.
+:- type_representation(fact_table_gen_info, is_word_aligned_ptr).
+:- type_representation(fact_table_proc_map, is_eqv_to(map.map(hlds.hlds_pred.proc_id, ll_backend.fact_table.fact_table_proc_info))).

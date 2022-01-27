@@ -1,0 +1,22 @@
+:- module (libs.pickle).
+:- interface.
+:- use_module io.
+:- use_module type_desc.
+:- use_module univ.
+:- type pickler_pred == pred(io.binary_output_stream, libs.pickle.picklers, univ.univ, io.io, io.io).
+:- type picklers.
+:- type unpickle_handle.
+:- type unpickle_state.
+:- type unpickler_pred == pred(libs.pickle.unpicklers, libs.pickle.unpickle_handle, type_desc.type_desc, univ.univ, libs.pickle.unpickle_state, libs.pickle.unpickle_state).
+:- type unpicklers.
+:- inst (pickler_pred) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det).
+:- inst (unpickler_pred) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- type_representation(pickler_pred, is_eqv_to(pred(io.binary_output_stream, libs.pickle.picklers, univ.univ, io.io, io.io))).
+:- type_representation(picklers, du_repn(notag("picklers", map.map(type_desc.type_ctor_desc, libs.pickle.pickler_pred),  no_c_j_cs))).
+:- type_representation(unpickle_handle, is_eqv_to(bitmap.bitmap)).
+:- type_representation(unpickle_state, is_eqv_to(int)).
+:- type_representation(unpickler_pred, is_eqv_to(pred(libs.pickle.unpicklers, libs.pickle.unpickle_handle, type_desc.type_desc, univ.univ, libs.pickle.unpickle_state, libs.pickle.unpickle_state))).
+:- type_representation(unpicklers, du_repn(notag("unpicklers", map.map(type_desc.type_ctor_desc, libs.pickle.unpickler_pred),  no_c_j_cs))).
+:- implementation.
+:- type unpickle_handle == bitmap.bitmap.
+:- type unpickle_state == int.

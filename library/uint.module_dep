@@ -1,0 +1,13 @@
+module(1, "uint.m",
+	uint,
+	{},
+	{builtin, pretty_printer, private_builtin},
+	{builtin, exception, pretty_printer, private_builtin, require, string},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - uint, "C#" - uint, "Java" - uint},
+	no_foreign_export,
+	no_main
+).

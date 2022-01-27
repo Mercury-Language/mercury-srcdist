@@ -1,0 +1,6 @@
+:- module (parse_tree.prog_foreign_enum).
+:- interface.
+:- type for_fe_or_fee
+    --->    for_foreign_enum 
+    ;       for_foreign_export_enum .
+:- type_representation(for_fe_or_fee, du_repn(enum("for_foreign_enum", "for_foreign_export_enum", [],  no_c_j_cs))).

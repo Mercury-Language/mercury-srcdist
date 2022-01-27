@@ -1,0 +1,18 @@
+:- module (parse_tree.item_util).
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module one_or_more.
+:- use_module set.
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_foreign).
+:- use_module (parse_tree.prog_item).
+:- type maybe_include_implicit
+    --->    do_include_implicit 
+    ;       do_not_include_implicit .
+:- inst (item_decl_or_impl_pragma) for (parse_tree.prog_item).item/0 == bound(item_decl_pragma(ground) ; item_impl_pragma(ground)).
+:- type_representation(maybe_include_implicit, du_repn(enum("do_include_implicit", "do_not_include_implicit", [],  no_c_j_cs))).

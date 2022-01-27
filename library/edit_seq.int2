@@ -1,0 +1,22 @@
+:- module edit_seq.
+:- interface.
+:- use_module list.
+:- type change_hunk(T)
+    --->    change_hunk((edit_seq.ch_seq_a_start) :: int, (edit_seq.ch_seq_a_length) :: int, (edit_seq.ch_seq_b_start) :: int, (edit_seq.ch_seq_b_length) :: int, (edit_seq.ch_diff) :: edit_seq.diff_seq(T)).
+:- type diff(T)
+    --->    unchanged(T)
+    ;       deleted(T)
+    ;       inserted(T).
+:- type diff_seq(T) == list.list(edit_seq.diff(T)).
+:- type edit(T)
+    --->    delete(int)
+    ;       insert(int, T)
+    ;       replace(int, T).
+:- type edit_params
+    --->    edit_params((edit_seq.cost_of_delete) :: int, (edit_seq.cost_of_insert) :: int, (edit_seq.cost_of_replace) :: int).
+:- type edit_seq(T) == list.list(edit_seq.edit(T)).
+:- type_representation(diff_cord(V_1), is_eqv_to(cord.cord(edit_seq.diff(V_1)))).
+:- type_representation(diff_seq(V_1), is_eqv_to(list.list(edit_seq.diff(V_1)))).
+:- type_representation(dynprog_table(V_1), is_eqv_to(map.map(int, map.map(int, edit_seq.dynprog_entry(V_1))))).
+:- type_representation(edit_params, is_word_aligned_ptr).
+:- type_representation(edit_seq(V_1), is_eqv_to(list.list(edit_seq.edit(V_1)))).

@@ -1,0 +1,45 @@
+:- module time.
+
+:- pragma termination_info(time.asctime((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(time.c_clock((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(time.c_difftime((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(time.c_gmtime((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(time.c_localtime((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(time.c_mktime((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(time.c_time((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(time.c_times((builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((time.clk_tck) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(time.clock((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((time.clocks_per_sec) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(time.compare_time_t_reps((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(time.difftime((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(time.gmtime((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(time.int_to_maybe_dst((builtin.in)) = (builtin.out), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(time.localtime((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(time.maybe_dst_to_int((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(time.mktime((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(time.time((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(time.time_t_is_invalid((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(time.times((builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+
+:- pragma exceptions(function, (time.asctime), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (time.c_clock), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.c_difftime), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.c_gmtime), 10, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.c_localtime), 12, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.c_mktime), 12, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.c_time), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.c_times), 7, 0, will_not_throw).
+:- pragma exceptions(function, (time.clk_tck), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (time.clock), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (time.clocks_per_sec), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.compare_time_t_reps), 3, 0, will_not_throw).
+:- pragma exceptions(function, (time.difftime), 2, 0, will_not_throw).
+:- pragma exceptions(function, (time.gmtime), 1, 0, will_not_throw).
+:- pragma exceptions(function, (time.int_to_maybe_dst), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.localtime), 4, 0, will_not_throw).
+:- pragma exceptions(function, (time.maybe_dst_to_int), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.mktime), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.time), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (time.time_t_is_invalid), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.times), 4, 0, may_throw(user_exception)).
