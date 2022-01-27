@@ -1,0 +1,39 @@
+:- module (mdbcomp.trace_counts).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- type all_or_nonzero
+    --->    user_all 
+    ;       user_nonzero .
+:- type base_count_file_type
+    --->    base_count_file_type(mdbcomp.trace_counts.all_or_nonzero, string).
+:- type line_no_and_count
+    --->    line_no_and_count(((mdbcomp.trace_counts).line_number) :: int, ((mdbcomp.trace_counts).exec_count) :: int, ((mdbcomp.trace_counts).num_tests) :: int).
+:- type path_port
+    --->    port_only(mdbcomp.prim_data.trace_port)
+    ;       path_only(mdbcomp.goal_path.reverse_goal_path)
+    ;       port_and_path(mdbcomp.prim_data.trace_port, mdbcomp.goal_path.reverse_goal_path).
+:- type proc_label_in_context
+    --->    proc_label_in_context(((mdbcomp.trace_counts).context_module_symname) :: mdbcomp.sym_name.sym_name, ((mdbcomp.trace_counts).context_filename) :: string, ((mdbcomp.trace_counts).proc_label) :: mdbcomp.prim_data.proc_label).
+:- type proc_trace_counts == map.map(mdbcomp.trace_counts.path_port, mdbcomp.trace_counts.line_no_and_count).
+:- type read_trace_counts_list_result
+    --->    list_ok(mdbcomp.trace_counts.trace_count_file_type, mdbcomp.trace_counts.trace_counts)
+    ;       list_error_message(string).
+:- type read_trace_counts_result
+    --->    ok(mdbcomp.trace_counts.trace_count_file_type, mdbcomp.trace_counts.trace_counts)
+    ;       syntax_error(string)
+    ;       error_message(string)
+    ;       open_error(io.error)
+    ;       io_error(io.error).
+:- type trace_count_file_type
+    --->    single_file(mdbcomp.trace_counts.base_count_file_type)
+    ;       union_file(int, list.list(mdbcomp.trace_counts.trace_count_file_type))
+    ;       diff_file(mdbcomp.trace_counts.trace_count_file_type, mdbcomp.trace_counts.trace_count_file_type).
+:- type trace_counts == map.map(mdbcomp.trace_counts.proc_label_in_context, mdbcomp.trace_counts.proc_trace_counts).

@@ -1,0 +1,29 @@
+:- module stack.
+:- interface.
+:- import_module list.
+:- type stack(T).
+:- func depth(stack.stack(T)) = int.
+:- pred depth(stack.stack(T), int).
+:- mode depth((builtin.in), (builtin.out)) is det.
+:- pred det_pop(T, stack.stack(T), stack.stack(T)).
+:- mode det_pop((builtin.out), (builtin.in), (builtin.out)) is det.
+:- func det_top(stack.stack(T)) = T.
+:- pred det_top(stack.stack(T), T).
+:- mode det_top((builtin.in), (builtin.out)) is det.
+:- func init = stack.stack(T).
+:- pred init(stack.stack(T)).
+:- mode init((builtin.out)) is det.
+:- pred is_empty(stack.stack(T)).
+:- mode is_empty((builtin.in)) is semidet.
+:- pred is_full(stack.stack(T)).
+:- mode is_full((builtin.in)) is semidet.
+:- pred pop(T, stack.stack(T), stack.stack(T)).
+:- mode pop((builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- func push(stack.stack(T), T) = stack.stack(T).
+:- pred push(T, stack.stack(T), stack.stack(T)).
+:- mode push((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func push_list(stack.stack(T), list.list(T)) = stack.stack(T).
+:- pred push_list(list.list(T), stack.stack(T), stack.stack(T)).
+:- mode push_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred top(stack.stack(T), T).
+:- mode top((builtin.in), (builtin.out)) is semidet.

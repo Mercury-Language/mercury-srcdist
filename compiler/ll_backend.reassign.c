@@ -1,0 +1,1970 @@
+/*
+** Automatically generated from `reassign.m'
+** by the Mercury compiler,
+** version rotd-2017-01-16
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.reassign. */
+/* :- implementation. */
+
+/*
+INIT mercury__ll_backend__reassign__init
+ENDINIT
+*/
+
+#include "ll_backend.reassign.mih"
+
+
+#include "analysis.mih"
+#include "backend_libs.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "ll_backend.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.rtti.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.type_util.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "ll_backend.code_util.mih"
+#include "ll_backend.layout.mih"
+#include "ll_backend.llds.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+struct ll_backend__reassign__clobber_dependents_5_p_0_env_0_s {
+  MR_bool ll_backend__reassign__clobber_dependents_5_p_0_env_0__succeeded;
+  MR_Word ll_backend__reassign__clobber_dependents_5_p_0_env_0__SubLvals_10;
+  jmp_buf ll_backend__reassign__clobber_dependents_5_p_0_env_0__commit_0;
+  MR_Word ll_backend__reassign__clobber_dependents_5_p_0_env_0__SubLval_23;
+  MR_Box ll_backend__reassign__clobber_dependents_5_p_0_env_0__conv3_SubLval_23;
+};
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__reassign__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_lval_0__plain_ll_backend__llds__type_ctor_info_rval_0;
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__reassign__set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__reassign__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_lval_0__plain_set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0;
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__reassign__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_lval_0set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0;
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__reassign__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_lval_0ll_backend__llds__type_ctor_info_rval_0;
+
+static MR_bool MR_CALL 
+ll_backend__reassign____Unify____dependent_lval_map_0_0_10001(
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__reassign____Compare____dependent_lval_map_0_0_10001(
+  MR_Box * ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box ll_backend__reassign__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__reassign____Unify____known_contents_0_0_10001(
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__reassign____Compare____known_contents_0_0_10001(
+  MR_Box * ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box ll_backend__reassign__wrapper_arg_3);
+
+static void MR_CALL 
+ll_backend__reassign____Compare____known_contents_0_0(
+  MR_Word * ll_backend__reassign__HeadVar__1_1,
+  MR_Word ll_backend__reassign__HeadVar__2_2,
+  MR_Word ll_backend__reassign__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__reassign____Unify____known_contents_0_0(
+  MR_Word ll_backend__reassign__HeadVar__1_1,
+  MR_Word ll_backend__reassign__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__reassign____Compare____dependent_lval_map_0_0(
+  MR_Word * ll_backend__reassign__HeadVar__1_1,
+  MR_Word ll_backend__reassign__HeadVar__2_2,
+  MR_Word ll_backend__reassign__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__reassign____Unify____dependent_lval_map_0_0(
+  MR_Word ll_backend__reassign__HeadVar__1_1,
+  MR_Word ll_backend__reassign__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__reassign__make_dependent_4_p_0(
+  MR_Word ll_backend__reassign__Target_5,
+  MR_Word ll_backend__reassign__SubLval_6,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_10,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_11);
+
+static void MR_CALL 
+ll_backend__reassign__make_not_dependent_4_p_0(
+  MR_Word ll_backend__reassign__Target_5,
+  MR_Word ll_backend__reassign__SubLval_6,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_10,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_11);
+
+static void MR_CALL 
+ll_backend__reassign__record_known_6_p_0_4(
+  MR_Box ll_backend__reassign__closure_arg,
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box * ll_backend__reassign__wrapper_arg_3);
+
+static void MR_CALL 
+ll_backend__reassign__record_known_6_p_0_3(
+  MR_Box ll_backend__reassign__closure_arg,
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box * ll_backend__reassign__wrapper_arg_3);
+
+static void MR_CALL 
+ll_backend__reassign__record_known_6_p_0_2(
+  MR_Box ll_backend__reassign__closure_arg,
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box * ll_backend__reassign__wrapper_arg_3);
+
+static void MR_CALL 
+ll_backend__reassign__record_known_6_p_0_1(
+  MR_Box ll_backend__reassign__closure_arg,
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box * ll_backend__reassign__wrapper_arg_3);
+
+static void MR_CALL 
+ll_backend__reassign__record_known_6_p_0(
+  MR_Word ll_backend__reassign__TargetLval_7,
+  MR_Word ll_backend__reassign__SourceRval_8,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_13,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_14,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_15,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_16);
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependent_3_p_0(
+  MR_Word ll_backend__reassign__Dependent_4,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_6,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_7);
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0_1(
+  MR_Box ll_backend__reassign__closure_arg,
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box * ll_backend__reassign__wrapper_arg_3);
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0_2(
+  void * ll_backend__reassign__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0_4(
+  void * ll_backend__reassign__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0_3(
+  void * ll_backend__reassign__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0_5(
+  void * ll_backend__reassign__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0(
+  MR_Word ll_backend__reassign__Target_6,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_13,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_14,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_15,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_16);
+
+static MR_bool MR_CALL 
+ll_backend__reassign__no_implicit_alias_target_1_p_0(
+  MR_Word ll_backend__reassign__HeadVar__1_1);
+
+static void MR_CALL 
+ll_backend__reassign__update_embdedded_frame_2_7_p_0(
+  MR_Word ll_backend__reassign__StackId_8,
+  MR_Integer ll_backend__reassign__CurSlot_9,
+  MR_Integer ll_backend__reassign__LastSlot_10,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_14,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_15,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_16,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_17);
+
+static void MR_CALL 
+ll_backend__reassign__update_embdedded_frame_5_p_0(
+  MR_Word ll_backend__reassign__EmbeddedFrame_6,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_12,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_13,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_14,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_15);
+
+static void MR_CALL 
+ll_backend__reassign__remove_reassign_loop_5_p_0(
+  MR_Word ll_backend__reassign__HeadVar__1_1,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_RevInstrs_5);
+
+
+static /* final */ const MR_Box ll_backend__reassign_scalar_common_1[1][2];
+
+static /* final */ const MR_Box ll_backend__reassign_scalar_common_2[3][3];
+
+static /* final */ const MR_Box ll_backend__reassign_scalar_common_3[1][6];
+
+static /* final */ const MR_Box ll_backend__reassign_scalar_common_4[1][7];
+
+
+
+
+static /* final */ const MR_Box ll_backend__reassign_scalar_common_1[1][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__reassign_scalar_common_2[3][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0)),
+    ((MR_Box) (&ll_backend__reassign_scalar_common_1[0]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&ll_backend__reassign_scalar_common_3[0])),
+    ((MR_Box) (ll_backend__reassign__clobber_dependents_5_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__reassign_scalar_common_3[1][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0)),
+    ((MR_Box) (&ll_backend__reassign__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_lval_0__plain_ll_backend__llds__type_ctor_info_rval_0)),
+    ((MR_Box) (&ll_backend__reassign__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_lval_0__plain_ll_backend__llds__type_ctor_info_rval_0))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__reassign_scalar_common_4[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0)),
+    ((MR_Box) (&ll_backend__reassign__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_lval_0__plain_set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0)),
+    ((MR_Box) (&ll_backend__reassign__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_lval_0__plain_set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__reassign__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_lval_0__plain_ll_backend__llds__type_ctor_info_rval_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0,
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__reassign__set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__reassign__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_lval_0__plain_set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0,
+    (MR_PseudoTypeInfo) &ll_backend__reassign__set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__reassign__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_lval_0set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0,
+    (MR_TypeInfo) &ll_backend__reassign__set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__reassign__ll_backend__reassign__type_ctor_info_dependent_lval_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (ll_backend__reassign____Unify____dependent_lval_map_0_0_10001)),
+  ((MR_Box) (ll_backend__reassign____Compare____dependent_lval_map_0_0_10001)),
+  (MR_String) "ll_backend.reassign",
+  (MR_String) "dependent_lval_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &ll_backend__reassign__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_lval_0set_ordlist__ti_set_ordlist_1ll_backend__llds__type_ctor_info_lval_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__reassign__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_lval_0ll_backend__llds__type_ctor_info_rval_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0,
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__reassign__ll_backend__reassign__type_ctor_info_known_contents_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (ll_backend__reassign____Unify____known_contents_0_0_10001)),
+  ((MR_Box) (ll_backend__reassign____Compare____known_contents_0_0_10001)),
+  (MR_String) "ll_backend.reassign",
+  (MR_String) "known_contents",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &ll_backend__reassign__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_lval_0ll_backend__llds__type_ctor_info_rval_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static MR_bool MR_CALL 
+ll_backend__reassign____Unify____dependent_lval_map_0_0_10001(
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+
+    {
+      ll_backend__reassign__succeeded = ll_backend__reassign____Unify____dependent_lval_map_0_0(((MR_Word) ll_backend__reassign__wrapper_arg_1), ((MR_Word) ll_backend__reassign__wrapper_arg_2));
+    }
+    return ll_backend__reassign__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign____Compare____dependent_lval_map_0_0_10001(
+  MR_Box * ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box ll_backend__reassign__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__reassign__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__reassign____Compare____dependent_lval_map_0_0(&ll_backend__reassign__conv0_HeadVar__1_1, ((MR_Word) ll_backend__reassign__wrapper_arg_2), ((MR_Word) ll_backend__reassign__wrapper_arg_3));
+    }
+    *ll_backend__reassign__wrapper_arg_1 = ((MR_Box) (ll_backend__reassign__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__reassign____Unify____known_contents_0_0_10001(
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+
+    {
+      ll_backend__reassign__succeeded = ll_backend__reassign____Unify____known_contents_0_0(((MR_Word) ll_backend__reassign__wrapper_arg_1), ((MR_Word) ll_backend__reassign__wrapper_arg_2));
+    }
+    return ll_backend__reassign__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign____Compare____known_contents_0_0_10001(
+  MR_Box * ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box ll_backend__reassign__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__reassign__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__reassign____Compare____known_contents_0_0(&ll_backend__reassign__conv0_HeadVar__1_1, ((MR_Word) ll_backend__reassign__wrapper_arg_2), ((MR_Word) ll_backend__reassign__wrapper_arg_3));
+    }
+    *ll_backend__reassign__wrapper_arg_1 = ((MR_Box) (ll_backend__reassign__conv0_HeadVar__1_1));
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign____Compare____known_contents_0_0(
+  MR_Word * ll_backend__reassign__HeadVar__1_1,
+  MR_Word ll_backend__reassign__HeadVar__2_2,
+  MR_Word ll_backend__reassign__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+    MR_Word ll_backend__reassign__Cast_HeadVar1_4 = ll_backend__reassign__HeadVar__2_2;
+    MR_Word ll_backend__reassign__Cast_HeadVar2_5 = ll_backend__reassign__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__reassign_scalar_common_2[0], ll_backend__reassign__HeadVar__1_1, ((MR_Box) (ll_backend__reassign__Cast_HeadVar1_4)), ((MR_Box) (ll_backend__reassign__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__reassign____Unify____known_contents_0_0(
+  MR_Word ll_backend__reassign__HeadVar__1_1,
+  MR_Word ll_backend__reassign__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+    MR_Word ll_backend__reassign__Cast_HeadVar1_3 = ll_backend__reassign__HeadVar__1_1;
+    MR_Word ll_backend__reassign__Cast_HeadVar2_4 = ll_backend__reassign__HeadVar__2_2;
+
+    {
+      ll_backend__reassign__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__reassign_scalar_common_2[0], ((MR_Box) (ll_backend__reassign__Cast_HeadVar1_3)), ((MR_Box) (ll_backend__reassign__Cast_HeadVar2_4)));
+    }
+    return ll_backend__reassign__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign____Compare____dependent_lval_map_0_0(
+  MR_Word * ll_backend__reassign__HeadVar__1_1,
+  MR_Word ll_backend__reassign__HeadVar__2_2,
+  MR_Word ll_backend__reassign__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+    MR_Word ll_backend__reassign__Cast_HeadVar1_4 = ll_backend__reassign__HeadVar__2_2;
+    MR_Word ll_backend__reassign__Cast_HeadVar2_5 = ll_backend__reassign__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__reassign_scalar_common_2[1], ll_backend__reassign__HeadVar__1_1, ((MR_Box) (ll_backend__reassign__Cast_HeadVar1_4)), ((MR_Box) (ll_backend__reassign__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__reassign____Unify____dependent_lval_map_0_0(
+  MR_Word ll_backend__reassign__HeadVar__1_1,
+  MR_Word ll_backend__reassign__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+    MR_Word ll_backend__reassign__Cast_HeadVar1_3 = ll_backend__reassign__HeadVar__1_1;
+    MR_Word ll_backend__reassign__Cast_HeadVar2_4 = ll_backend__reassign__HeadVar__2_2;
+
+    {
+      ll_backend__reassign__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__reassign_scalar_common_2[1], ((MR_Box) (ll_backend__reassign__Cast_HeadVar1_3)), ((MR_Box) (ll_backend__reassign__Cast_HeadVar2_4)));
+    }
+    return ll_backend__reassign__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__make_dependent_4_p_0(
+  MR_Word ll_backend__reassign__Target_5,
+  MR_Word ll_backend__reassign__SubLval_6,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_10,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_11)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+    MR_Word ll_backend__reassign__DepLvals0_8;
+    MR_Box ll_backend__reassign__conv0_DepLvals0_8;
+
+    {
+      ll_backend__reassign__succeeded = mercury__map__search_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__reassign_scalar_common_1[0], ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_10, ((MR_Box) (ll_backend__reassign__SubLval_6)), &ll_backend__reassign__conv0_DepLvals0_8);
+    }
+    if (ll_backend__reassign__succeeded)
+      {
+        ll_backend__reassign__DepLvals0_8 = ((MR_Word) ll_backend__reassign__conv0_DepLvals0_8);
+        ll_backend__reassign__succeeded = MR_TRUE;
+      }
+    if (ll_backend__reassign__succeeded)
+      {
+        MR_Word ll_backend__reassign__TypeCtorInfo_17_17 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+        MR_Word ll_backend__reassign__DepLvals_9;
+
+        {
+          mercury__set__insert_3_p_0(ll_backend__reassign__TypeCtorInfo_17_17, ((MR_Box) (ll_backend__reassign__Target_5)), ll_backend__reassign__DepLvals0_8, &ll_backend__reassign__DepLvals_9);
+        }
+        {
+          mercury__map__det_update_4_p_0(ll_backend__reassign__TypeCtorInfo_17_17, (MR_Word) &ll_backend__reassign_scalar_common_1[0], ((MR_Box) (ll_backend__reassign__SubLval_6)), ((MR_Box) (ll_backend__reassign__DepLvals_9)), ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_10, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_11);
+        }
+      }
+    else
+      {
+        MR_Word ll_backend__reassign__TypeCtorInfo_19_19 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+        MR_Word ll_backend__reassign__DepLvals_14;
+
+        {
+          ll_backend__reassign__DepLvals_14 = mercury__set__make_singleton_set_1_f_0(ll_backend__reassign__TypeCtorInfo_19_19, ((MR_Box) (ll_backend__reassign__Target_5)));
+        }
+        {
+          mercury__map__det_insert_4_p_0(ll_backend__reassign__TypeCtorInfo_19_19, (MR_Word) &ll_backend__reassign_scalar_common_1[0], ((MR_Box) (ll_backend__reassign__SubLval_6)), ((MR_Box) (ll_backend__reassign__DepLvals_14)), ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_10, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_11);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__make_not_dependent_4_p_0(
+  MR_Word ll_backend__reassign__Target_5,
+  MR_Word ll_backend__reassign__SubLval_6,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_10,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_11)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+    MR_Word ll_backend__reassign__DepLvals0_8;
+    MR_Box ll_backend__reassign__conv0_DepLvals0_8;
+
+    {
+      ll_backend__reassign__succeeded = mercury__map__search_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__reassign_scalar_common_1[0], ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_10, ((MR_Box) (ll_backend__reassign__SubLval_6)), &ll_backend__reassign__conv0_DepLvals0_8);
+    }
+    if (ll_backend__reassign__succeeded)
+      {
+        ll_backend__reassign__DepLvals0_8 = ((MR_Word) ll_backend__reassign__conv0_DepLvals0_8);
+        ll_backend__reassign__succeeded = MR_TRUE;
+      }
+    if (ll_backend__reassign__succeeded)
+      {
+        MR_Word ll_backend__reassign__TypeCtorInfo_15_15 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+        MR_Word ll_backend__reassign__DepLvals_9;
+
+        {
+          mercury__set__delete_3_p_0(ll_backend__reassign__TypeCtorInfo_15_15, ((MR_Box) (ll_backend__reassign__Target_5)), ll_backend__reassign__DepLvals0_8, &ll_backend__reassign__DepLvals_9);
+        }
+        {
+          mercury__map__det_update_4_p_0(ll_backend__reassign__TypeCtorInfo_15_15, (MR_Word) &ll_backend__reassign_scalar_common_1[0], ((MR_Box) (ll_backend__reassign__SubLval_6)), ((MR_Box) (ll_backend__reassign__DepLvals_9)), ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_10, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_11);
+        }
+      }
+    else
+      *ll_backend__reassign__STATE_VARIABLE_DepLvalMap_11 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_10;
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__record_known_6_p_0_4(
+  MR_Box ll_backend__reassign__closure_arg,
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box * ll_backend__reassign__wrapper_arg_3)
+{
+  {
+    MR_Box ll_backend__reassign__closure = ll_backend__reassign__closure_arg;
+    MR_Word ll_backend__reassign__conv8_STATE_VARIABLE_DepLvalMap_11;
+
+    {
+      ll_backend__reassign__make_dependent_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__reassign__closure, (MR_Integer) 3))), ((MR_Word) ll_backend__reassign__wrapper_arg_1), ((MR_Word) ll_backend__reassign__wrapper_arg_2), &ll_backend__reassign__conv8_STATE_VARIABLE_DepLvalMap_11);
+    }
+    *ll_backend__reassign__wrapper_arg_3 = ((MR_Box) (ll_backend__reassign__conv8_STATE_VARIABLE_DepLvalMap_11));
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__record_known_6_p_0_3(
+  MR_Box ll_backend__reassign__closure_arg,
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box * ll_backend__reassign__wrapper_arg_3)
+{
+  {
+    MR_Box ll_backend__reassign__closure = ll_backend__reassign__closure_arg;
+    MR_Word ll_backend__reassign__conv6_STATE_VARIABLE_DepLvalMap_11;
+
+    {
+      ll_backend__reassign__make_not_dependent_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__reassign__closure, (MR_Integer) 3))), ((MR_Word) ll_backend__reassign__wrapper_arg_1), ((MR_Word) ll_backend__reassign__wrapper_arg_2), &ll_backend__reassign__conv6_STATE_VARIABLE_DepLvalMap_11);
+    }
+    *ll_backend__reassign__wrapper_arg_3 = ((MR_Box) (ll_backend__reassign__conv6_STATE_VARIABLE_DepLvalMap_11));
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__record_known_6_p_0_2(
+  MR_Box ll_backend__reassign__closure_arg,
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box * ll_backend__reassign__wrapper_arg_3)
+{
+  {
+    MR_Box ll_backend__reassign__closure = ll_backend__reassign__closure_arg;
+    MR_Word ll_backend__reassign__conv3_STATE_VARIABLE_DepLvalMap_11;
+
+    {
+      ll_backend__reassign__make_dependent_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__reassign__closure, (MR_Integer) 3))), ((MR_Word) ll_backend__reassign__wrapper_arg_1), ((MR_Word) ll_backend__reassign__wrapper_arg_2), &ll_backend__reassign__conv3_STATE_VARIABLE_DepLvalMap_11);
+    }
+    *ll_backend__reassign__wrapper_arg_3 = ((MR_Box) (ll_backend__reassign__conv3_STATE_VARIABLE_DepLvalMap_11));
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__record_known_6_p_0_1(
+  MR_Box ll_backend__reassign__closure_arg,
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box * ll_backend__reassign__wrapper_arg_3)
+{
+  {
+    MR_Box ll_backend__reassign__closure = ll_backend__reassign__closure_arg;
+    MR_Word ll_backend__reassign__conv1_STATE_VARIABLE_DepLvalMap_11;
+
+    {
+      ll_backend__reassign__make_not_dependent_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__reassign__closure, (MR_Integer) 3))), ((MR_Word) ll_backend__reassign__wrapper_arg_1), ((MR_Word) ll_backend__reassign__wrapper_arg_2), &ll_backend__reassign__conv1_STATE_VARIABLE_DepLvalMap_11);
+    }
+    *ll_backend__reassign__wrapper_arg_3 = ((MR_Box) (ll_backend__reassign__conv1_STATE_VARIABLE_DepLvalMap_11));
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__record_known_6_p_0(
+  MR_Word ll_backend__reassign__TargetLval_7,
+  MR_Word ll_backend__reassign__SourceRval_8,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_13,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_14,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_15,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_16)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+    MR_Word ll_backend__reassign__SourceSubLvals_11;
+
+    {
+      ll_backend__reassign__SourceSubLvals_11 = ll_backend__code_util__lvals_in_rval_1_f_0(ll_backend__reassign__SourceRval_8);
+    }
+    {
+      ll_backend__reassign__succeeded = mercury__list__member_2_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, ((MR_Box) (ll_backend__reassign__TargetLval_7)), ll_backend__reassign__SourceSubLvals_11);
+    }
+    if (ll_backend__reassign__succeeded)
+      {
+        *ll_backend__reassign__STATE_VARIABLE_DepLvalMap_16 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_15;
+        *ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_14 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_13;
+      }
+    else
+      {
+        MR_Word ll_backend__reassign__TypeCtorInfo_32_48;
+        MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_17_17;
+        MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_18_18;
+        MR_Word ll_backend__reassign__TargetSubLvals_33;
+        MR_Word ll_backend__reassign__SourceSubLvals_34;
+        MR_Word ll_backend__reassign__AllSubLvals_35;
+        MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_21_37;
+        MR_Word ll_backend__reassign__V_38_38;
+        MR_Word ll_backend__reassign__OldRval_31;
+        MR_Box ll_backend__reassign__conv0_OldRval_31;
+        MR_Box ll_backend__reassign__conv4_STATE_VARIABLE_DepLvalMap_18_18;
+        MR_Word ll_backend__reassign__SourceLval_12;
+
+        {
+          ll_backend__reassign__succeeded = mercury__map__search_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_13, ((MR_Box) (ll_backend__reassign__TargetLval_7)), &ll_backend__reassign__conv0_OldRval_31);
+        }
+        if (ll_backend__reassign__succeeded)
+          {
+            ll_backend__reassign__OldRval_31 = ((MR_Word) ll_backend__reassign__conv0_OldRval_31);
+            ll_backend__reassign__succeeded = MR_TRUE;
+          }
+        if (ll_backend__reassign__succeeded)
+          {
+            MR_Word ll_backend__reassign__OldSubLvals_32;
+            MR_Word ll_backend__reassign__V_36_36;
+            MR_Box ll_backend__reassign__conv2_STATE_VARIABLE_DepLvalMap_21_37;
+
+            {
+              ll_backend__reassign__OldSubLvals_32 = ll_backend__code_util__lvals_in_rval_1_f_0(ll_backend__reassign__OldRval_31);
+            }
+            {
+              ll_backend__reassign__V_36_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ll_backend__reassign__V_36_36, 0) = ((MR_Box) (&ll_backend__reassign_scalar_common_4[0]));
+              MR_hl_field(MR_mktag(0), ll_backend__reassign__V_36_36, 1) = ((MR_Box) (ll_backend__reassign__record_known_6_p_0_1));
+              MR_hl_field(MR_mktag(0), ll_backend__reassign__V_36_36, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(0), ll_backend__reassign__V_36_36, 3) = ((MR_Box) (ll_backend__reassign__TargetLval_7));
+            }
+            {
+              mercury__list__foldl_4_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__reassign_scalar_common_2[1], ll_backend__reassign__V_36_36, ll_backend__reassign__OldSubLvals_32, ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_15)), &ll_backend__reassign__conv2_STATE_VARIABLE_DepLvalMap_21_37);
+            }
+            ll_backend__reassign__STATE_VARIABLE_DepLvalMap_21_37 = ((MR_Word) ll_backend__reassign__conv2_STATE_VARIABLE_DepLvalMap_21_37);
+          }
+        else
+          ll_backend__reassign__STATE_VARIABLE_DepLvalMap_21_37 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_15;
+        {
+          ll_backend__reassign__TargetSubLvals_33 = ll_backend__code_util__lvals_in_lval_1_f_0(ll_backend__reassign__TargetLval_7);
+        }
+        {
+          ll_backend__reassign__SourceSubLvals_34 = ll_backend__code_util__lvals_in_rval_1_f_0(ll_backend__reassign__SourceRval_8);
+        }
+        ll_backend__reassign__TypeCtorInfo_32_48 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+        {
+          mercury__list__append_3_p_1(ll_backend__reassign__TypeCtorInfo_32_48, ll_backend__reassign__TargetSubLvals_33, ll_backend__reassign__SourceSubLvals_34, &ll_backend__reassign__AllSubLvals_35);
+        }
+        {
+          ll_backend__reassign__V_38_38 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__reassign__V_38_38, 0) = ((MR_Box) (&ll_backend__reassign_scalar_common_4[0]));
+          MR_hl_field(MR_mktag(0), ll_backend__reassign__V_38_38, 1) = ((MR_Box) (ll_backend__reassign__record_known_6_p_0_2));
+          MR_hl_field(MR_mktag(0), ll_backend__reassign__V_38_38, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), ll_backend__reassign__V_38_38, 3) = ((MR_Box) (ll_backend__reassign__TargetLval_7));
+        }
+        {
+          mercury__list__foldl_4_p_0(ll_backend__reassign__TypeCtorInfo_32_48, (MR_Word) &ll_backend__reassign_scalar_common_2[1], ll_backend__reassign__V_38_38, ll_backend__reassign__AllSubLvals_35, ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_DepLvalMap_21_37)), &ll_backend__reassign__conv4_STATE_VARIABLE_DepLvalMap_18_18);
+        }
+        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_18_18 = ((MR_Word) ll_backend__reassign__conv4_STATE_VARIABLE_DepLvalMap_18_18);
+        {
+          mercury__map__set_4_p_0(ll_backend__reassign__TypeCtorInfo_32_48, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__TargetLval_7)), ((MR_Box) (ll_backend__reassign__SourceRval_8)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_13, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_17_17);
+        }
+        ll_backend__reassign__succeeded = ((MR_tag((MR_Word) ll_backend__reassign__SourceRval_8)) == (MR_mktag((MR_Integer) 0)));
+        if (ll_backend__reassign__succeeded)
+          {
+            ll_backend__reassign__SourceLval_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__reassign__SourceRval_8, (MR_Integer) 0)));
+            {
+              MR_Word ll_backend__reassign__TypeCtorInfo_32_79;
+              MR_Word ll_backend__reassign__V_19_19;
+              MR_Word ll_backend__reassign__TargetSubLvals_64;
+              MR_Word ll_backend__reassign__SourceSubLvals_65;
+              MR_Word ll_backend__reassign__AllSubLvals_66;
+              MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_21_68;
+              MR_Word ll_backend__reassign__V_69_69;
+              MR_Word ll_backend__reassign__OldRval_62;
+              MR_Box ll_backend__reassign__conv5_OldRval_62;
+              MR_Box ll_backend__reassign__conv9_STATE_VARIABLE_DepLvalMap_16;
+
+              {
+                ll_backend__reassign__V_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), ll_backend__reassign__V_19_19, 0) = ((MR_Box) (ll_backend__reassign__TargetLval_7));
+              }
+              {
+                ll_backend__reassign__succeeded = mercury__map__search_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_17_17, ((MR_Box) (ll_backend__reassign__SourceLval_12)), &ll_backend__reassign__conv5_OldRval_62);
+              }
+              if (ll_backend__reassign__succeeded)
+                {
+                  ll_backend__reassign__OldRval_62 = ((MR_Word) ll_backend__reassign__conv5_OldRval_62);
+                  ll_backend__reassign__succeeded = MR_TRUE;
+                }
+              if (ll_backend__reassign__succeeded)
+                {
+                  MR_Word ll_backend__reassign__OldSubLvals_63;
+                  MR_Word ll_backend__reassign__V_67_67;
+                  MR_Box ll_backend__reassign__conv7_STATE_VARIABLE_DepLvalMap_21_68;
+
+                  {
+                    ll_backend__reassign__OldSubLvals_63 = ll_backend__code_util__lvals_in_rval_1_f_0(ll_backend__reassign__OldRval_62);
+                  }
+                  {
+                    ll_backend__reassign__V_67_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__reassign__V_67_67, 0) = ((MR_Box) (&ll_backend__reassign_scalar_common_4[0]));
+                    MR_hl_field(MR_mktag(0), ll_backend__reassign__V_67_67, 1) = ((MR_Box) (ll_backend__reassign__record_known_6_p_0_3));
+                    MR_hl_field(MR_mktag(0), ll_backend__reassign__V_67_67, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                    MR_hl_field(MR_mktag(0), ll_backend__reassign__V_67_67, 3) = ((MR_Box) (ll_backend__reassign__SourceLval_12));
+                  }
+                  {
+                    mercury__list__foldl_4_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__reassign_scalar_common_2[1], ll_backend__reassign__V_67_67, ll_backend__reassign__OldSubLvals_63, ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_DepLvalMap_18_18)), &ll_backend__reassign__conv7_STATE_VARIABLE_DepLvalMap_21_68);
+                  }
+                  ll_backend__reassign__STATE_VARIABLE_DepLvalMap_21_68 = ((MR_Word) ll_backend__reassign__conv7_STATE_VARIABLE_DepLvalMap_21_68);
+                }
+              else
+                ll_backend__reassign__STATE_VARIABLE_DepLvalMap_21_68 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_18_18;
+              {
+                ll_backend__reassign__TargetSubLvals_64 = ll_backend__code_util__lvals_in_lval_1_f_0(ll_backend__reassign__SourceLval_12);
+              }
+              {
+                ll_backend__reassign__SourceSubLvals_65 = ll_backend__code_util__lvals_in_rval_1_f_0(ll_backend__reassign__V_19_19);
+              }
+              ll_backend__reassign__TypeCtorInfo_32_79 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+              {
+                mercury__list__append_3_p_1(ll_backend__reassign__TypeCtorInfo_32_79, ll_backend__reassign__TargetSubLvals_64, ll_backend__reassign__SourceSubLvals_65, &ll_backend__reassign__AllSubLvals_66);
+              }
+              {
+                ll_backend__reassign__V_69_69 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), ll_backend__reassign__V_69_69, 0) = ((MR_Box) (&ll_backend__reassign_scalar_common_4[0]));
+                MR_hl_field(MR_mktag(0), ll_backend__reassign__V_69_69, 1) = ((MR_Box) (ll_backend__reassign__record_known_6_p_0_4));
+                MR_hl_field(MR_mktag(0), ll_backend__reassign__V_69_69, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                MR_hl_field(MR_mktag(0), ll_backend__reassign__V_69_69, 3) = ((MR_Box) (ll_backend__reassign__SourceLval_12));
+              }
+              {
+                mercury__list__foldl_4_p_0(ll_backend__reassign__TypeCtorInfo_32_79, (MR_Word) &ll_backend__reassign_scalar_common_2[1], ll_backend__reassign__V_69_69, ll_backend__reassign__AllSubLvals_66, ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_DepLvalMap_21_68)), &ll_backend__reassign__conv9_STATE_VARIABLE_DepLvalMap_16);
+              }
+              *ll_backend__reassign__STATE_VARIABLE_DepLvalMap_16 = ((MR_Word) ll_backend__reassign__conv9_STATE_VARIABLE_DepLvalMap_16);
+              {
+                mercury__map__set_4_p_0(ll_backend__reassign__TypeCtorInfo_32_79, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__SourceLval_12)), ((MR_Box) (ll_backend__reassign__V_19_19)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_17_17, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_14);
+              }
+            }
+          }
+        else
+          {
+            *ll_backend__reassign__STATE_VARIABLE_DepLvalMap_16 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_18_18;
+            *ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_14 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_17_17;
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependent_3_p_0(
+  MR_Word ll_backend__reassign__Dependent_4,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_6,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_7)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+
+    {
+      mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__Dependent_4)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_6, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_7);
+    }
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0_1(
+  MR_Box ll_backend__reassign__closure_arg,
+  MR_Box ll_backend__reassign__wrapper_arg_1,
+  MR_Box ll_backend__reassign__wrapper_arg_2,
+  MR_Box * ll_backend__reassign__wrapper_arg_3)
+{
+  {
+    MR_Box ll_backend__reassign__closure = ll_backend__reassign__closure_arg;
+    MR_Word ll_backend__reassign__conv1_STATE_VARIABLE_KnownContentsMap_7;
+
+    {
+      ll_backend__reassign__clobber_dependent_3_p_0(((MR_Word) ll_backend__reassign__wrapper_arg_1), ((MR_Word) ll_backend__reassign__wrapper_arg_2), &ll_backend__reassign__conv1_STATE_VARIABLE_KnownContentsMap_7);
+    }
+    *ll_backend__reassign__wrapper_arg_3 = ((MR_Box) (ll_backend__reassign__conv1_STATE_VARIABLE_KnownContentsMap_7));
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0_2(
+  void * ll_backend__reassign__env_ptr_arg)
+{
+  {
+    struct ll_backend__reassign__clobber_dependents_5_p_0_env_0_s * ll_backend__reassign__env_ptr = (struct ll_backend__reassign__clobber_dependents_5_p_0_env_0_s *) ll_backend__reassign__env_ptr_arg;
+
+    MR_builtin_longjmp((ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0_4(
+  void * ll_backend__reassign__env_ptr_arg)
+{
+  {
+    struct ll_backend__reassign__clobber_dependents_5_p_0_env_0_s * ll_backend__reassign__env_ptr = (struct ll_backend__reassign__clobber_dependents_5_p_0_env_0_s *) ll_backend__reassign__env_ptr_arg;
+
+    (ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__SubLval_23 = ((MR_Word) (ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__conv3_SubLval_23);
+    {
+      ll_backend__reassign__clobber_dependents_5_p_0_3(ll_backend__reassign__env_ptr);
+    }
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0_3(
+  void * ll_backend__reassign__env_ptr_arg)
+{
+  {
+    struct ll_backend__reassign__clobber_dependents_5_p_0_env_0_s * ll_backend__reassign__env_ptr = (struct ll_backend__reassign__clobber_dependents_5_p_0_env_0_s *) ll_backend__reassign__env_ptr_arg;
+
+    {
+      MR_Word ll_backend__reassign__V_12_12;
+
+      (ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__succeeded = ((((MR_tag((MR_Word) (ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__SubLval_23)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__SubLval_23, (MR_Integer) 0)))) == (MR_Integer) 10)));
+      if ((ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__succeeded)
+        {
+          ll_backend__reassign__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__SubLval_23, (MR_Integer) 1)));
+          {
+            ll_backend__reassign__clobber_dependents_5_p_0_2(ll_backend__reassign__env_ptr);
+          }
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0_5(
+  void * ll_backend__reassign__env_ptr_arg)
+{
+  {
+    struct ll_backend__reassign__clobber_dependents_5_p_0_env_0_s * ll_backend__reassign__env_ptr = (struct ll_backend__reassign__clobber_dependents_5_p_0_env_0_s *) ll_backend__reassign__env_ptr_arg;
+
+    if (MR_builtin_setjmp((ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__commit_0) == 0)
+      {
+        {
+          {
+            mercury__list__member_2_p_1((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, &(ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__conv3_SubLval_23, (ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__SubLvals_10, ll_backend__reassign__clobber_dependents_5_p_0_4, ll_backend__reassign__env_ptr);
+          }
+        }
+        (ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (ll_backend__reassign__env_ptr)->ll_backend__reassign__clobber_dependents_5_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__clobber_dependents_5_p_0(
+  MR_Word ll_backend__reassign__Target_6,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_13,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_14,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_15,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_16)
+{
+  {
+    struct ll_backend__reassign__clobber_dependents_5_p_0_env_0_s ll_backend__reassign__env;
+
+    {
+      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_18_18;
+      MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_19_19;
+      MR_Word ll_backend__reassign__V_20_20;
+      MR_Word ll_backend__reassign__DepLvals_9;
+      MR_Box ll_backend__reassign__conv0_DepLvals_9;
+
+      {
+        (ll_backend__reassign__env).ll_backend__reassign__clobber_dependents_5_p_0_env_0__succeeded = mercury__map__search_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__reassign_scalar_common_1[0], ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_15, ((MR_Box) (ll_backend__reassign__Target_6)), &ll_backend__reassign__conv0_DepLvals_9);
+      }
+      if ((ll_backend__reassign__env).ll_backend__reassign__clobber_dependents_5_p_0_env_0__succeeded)
+        {
+          ll_backend__reassign__DepLvals_9 = ((MR_Word) ll_backend__reassign__conv0_DepLvals_9);
+          (ll_backend__reassign__env).ll_backend__reassign__clobber_dependents_5_p_0_env_0__succeeded = MR_TRUE;
+        }
+      if ((ll_backend__reassign__env).ll_backend__reassign__clobber_dependents_5_p_0_env_0__succeeded)
+        {
+          MR_Word ll_backend__reassign__TypeCtorInfo_29_29 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+          MR_Box ll_backend__reassign__conv2_STATE_VARIABLE_KnownContentsMap_18_18;
+
+          {
+            mercury__set__fold_4_p_0(ll_backend__reassign__TypeCtorInfo_29_29, (MR_Word) &ll_backend__reassign_scalar_common_2[0], (MR_Word) &ll_backend__reassign_scalar_common_2[2], ll_backend__reassign__DepLvals_9, ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_13)), &ll_backend__reassign__conv2_STATE_VARIABLE_KnownContentsMap_18_18);
+          }
+          ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_18_18 = ((MR_Word) ll_backend__reassign__conv2_STATE_VARIABLE_KnownContentsMap_18_18);
+          {
+            mercury__map__delete_3_p_0(ll_backend__reassign__TypeCtorInfo_29_29, (MR_Word) &ll_backend__reassign_scalar_common_1[0], ((MR_Box) (ll_backend__reassign__Target_6)), ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_15, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_19_19);
+          }
+        }
+      else
+        {
+          ll_backend__reassign__STATE_VARIABLE_DepLvalMap_19_19 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_15;
+          ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_18_18 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_13;
+        }
+      {
+        ll_backend__reassign__V_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ll_backend__reassign__V_20_20, 0) = ((MR_Box) (ll_backend__reassign__Target_6));
+      }
+      {
+        (ll_backend__reassign__env).ll_backend__reassign__clobber_dependents_5_p_0_env_0__SubLvals_10 = ll_backend__code_util__lvals_in_rval_1_f_0(ll_backend__reassign__V_20_20);
+      }
+      {
+        ll_backend__reassign__clobber_dependents_5_p_0_5(&ll_backend__reassign__env);
+      }
+      if ((ll_backend__reassign__env).ll_backend__reassign__clobber_dependents_5_p_0_env_0__succeeded)
+        {
+          MR_Word ll_backend__reassign__TypeCtorInfo_33_33 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+
+          {
+            *ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_14 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_33_33, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+          }
+          {
+            *ll_backend__reassign__STATE_VARIABLE_DepLvalMap_16 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_33_33, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+          }
+        }
+      else
+        {
+          *ll_backend__reassign__STATE_VARIABLE_DepLvalMap_16 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_19_19;
+          *ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_14 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_18_18;
+        }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__reassign__no_implicit_alias_target_1_p_0(
+  MR_Word ll_backend__reassign__HeadVar__1_1)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+
+    switch (MR_tag((MR_Word) ll_backend__reassign__HeadVar__1_1)) {
+      default:
+        ll_backend__reassign__succeeded = MR_FALSE;
+        break;
+      case (MR_Integer) 1:
+        ll_backend__reassign__succeeded = MR_TRUE;
+        break;
+      case (MR_Integer) 2:
+        ll_backend__reassign__succeeded = MR_TRUE;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__HeadVar__1_1, (MR_Integer) 0)))) {
+          default:
+            ll_backend__reassign__succeeded = MR_FALSE;
+            break;
+          case (MR_Integer) 0:
+            ll_backend__reassign__succeeded = MR_TRUE;
+            break;
+          case (MR_Integer) 2:
+            ll_backend__reassign__succeeded = MR_TRUE;
+            break;
+        }
+        break;
+    }
+    return ll_backend__reassign__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__update_embdedded_frame_2_7_p_0(
+  MR_Word ll_backend__reassign__StackId_8,
+  MR_Integer ll_backend__reassign__CurSlot_9,
+  MR_Integer ll_backend__reassign__LastSlot_10,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_14,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_15,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_16,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_17)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__reassign__succeeded = (ll_backend__reassign__CurSlot_9 <= ll_backend__reassign__LastSlot_10);
+
+        if (ll_backend__reassign__succeeded)
+          {
+            MR_Word ll_backend__reassign__StackVar_13;
+            MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_18_18;
+            MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_19_19;
+            MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_20_20;
+            MR_Integer ll_backend__reassign__V_21_21;
+
+            {
+              ll_backend__reassign__StackVar_13 = ll_backend__llds__stack_slot_num_to_lval_2_f_0(ll_backend__reassign__StackId_8, ll_backend__reassign__CurSlot_9);
+            }
+            {
+              ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__StackVar_13, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_14, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_18_18, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_16, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_19_19);
+            }
+            {
+              mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__StackVar_13)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_18_18, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_20_20);
+            }
+            ll_backend__reassign__V_21_21 = (ll_backend__reassign__CurSlot_9 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Integer ll_backend__reassign__CurSlot__tmp_copy_9 = ll_backend__reassign__V_21_21;
+              MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0__tmp_copy_14 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_20_20;
+              MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0__tmp_copy_16 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_19_19;
+
+              ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_16 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0__tmp_copy_16;
+              ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_14 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0__tmp_copy_14;
+              ll_backend__reassign__CurSlot_9 = ll_backend__reassign__CurSlot__tmp_copy_9;
+            }
+            continue;
+          }
+        else
+          {
+            *ll_backend__reassign__STATE_VARIABLE_DepLvalMap_17 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_16;
+            *ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_15 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_14;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ll_backend__reassign__update_embdedded_frame_5_p_0(
+  MR_Word ll_backend__reassign__EmbeddedFrame_6,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_12,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_13,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_14,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_DepLvalMap_15)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+    MR_Word ll_backend__reassign__StackId_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__reassign__EmbeddedFrame_6, (MR_Integer) 0)));
+    MR_Integer ll_backend__reassign__FirstSlot_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__reassign__EmbeddedFrame_6, (MR_Integer) 1)));
+    MR_Integer ll_backend__reassign__LastSlot_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__reassign__EmbeddedFrame_6, (MR_Integer) 2)));
+
+    {
+      ll_backend__reassign__update_embdedded_frame_2_7_p_0(ll_backend__reassign__StackId_9, ll_backend__reassign__FirstSlot_10, ll_backend__reassign__LastSlot_11, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_12, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_13, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_14, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_15);
+    }
+  }
+}
+
+static void MR_CALL 
+ll_backend__reassign__remove_reassign_loop_5_p_0(
+  MR_Word ll_backend__reassign__HeadVar__1_1,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3,
+  MR_Word ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4,
+  MR_Word * ll_backend__reassign__STATE_VARIABLE_RevInstrs_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__reassign__succeeded;
+
+        if ((ll_backend__reassign__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *ll_backend__reassign__STATE_VARIABLE_RevInstrs_5 = ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4;
+        else
+          {
+            MR_Word ll_backend__reassign__Instr0_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__reassign__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ll_backend__reassign__Instrs0_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__reassign__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ll_backend__reassign__Uinstr0_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__reassign__Instr0_11, (MR_Integer) 0)));
+            MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162;
+            MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163;
+            MR_Word ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168;
+            MR_String ll_backend__reassign__V_17_17 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__reassign__Instr0_11, (MR_Integer) 1)));
+
+            switch (MR_tag((MR_Word) ll_backend__reassign__Uinstr0_16)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                    MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                  }
+                  ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2;
+                  ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  {
+                    ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                    MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                  }
+                  ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2;
+                  ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3;
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  {
+                    ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                    MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                  }
+                  ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2;
+                  ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3;
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      {
+                        mercury__require__unexpected_3_p_0((MR_String) "ll_backend.reassign", (MR_String) "predicate \140ll_backend.reassign.remove_reassign_loop\'/5", (MR_String) "block");
+                        return;
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      MR_Word ll_backend__reassign__Target_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+                      MR_Word ll_backend__reassign__Source_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 2)));
+                      MR_Word ll_backend__reassign__KnownContents_25;
+                      MR_Box ll_backend__reassign__conv0_KnownContents_25;
+
+                      {
+                        ll_backend__reassign__succeeded = mercury__map__search_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, ((MR_Box) (ll_backend__reassign__Target_23)), &ll_backend__reassign__conv0_KnownContents_25);
+                      }
+                      if (ll_backend__reassign__succeeded)
+                        {
+                          ll_backend__reassign__KnownContents_25 = ((MR_Word) ll_backend__reassign__conv0_KnownContents_25);
+                          ll_backend__reassign__succeeded = MR_TRUE;
+                        }
+                      if (ll_backend__reassign__succeeded)
+                        {
+                          ll_backend__reassign__succeeded = ll_backend__llds____Unify____rval_0_0(ll_backend__reassign__KnownContents_25, ll_backend__reassign__Source_24);
+                        }
+                      if (ll_backend__reassign__succeeded)
+                        {
+                          ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4;
+                          ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3;
+                          ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2;
+                        }
+                      else
+                        {
+                          MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_160_160;
+                          MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_161_161;
+
+                          {
+                            ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                            MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                          }
+                          {
+                            ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_23, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_160_160, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_161_161);
+                          }
+                          {
+                            ll_backend__reassign__succeeded = ll_backend__reassign__no_implicit_alias_target_1_p_0(ll_backend__reassign__Target_23);
+                          }
+                          if (ll_backend__reassign__succeeded)
+                            {
+                              ll_backend__reassign__record_known_6_p_0(ll_backend__reassign__Target_23, ll_backend__reassign__Source_24, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_160_160, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_161_161, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                            }
+                          else
+                            {
+                              ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_161_161;
+                              ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_160_160;
+                            }
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 2:
+                    {
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2;
+                      ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3;
+                    }
+                    break;
+                  case (MR_Integer) 3:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_175_175;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_175_175 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_175_175, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_175_175, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 4:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_178_178;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_178_178 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_178_178, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_178_178, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 5:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_181_181;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_181_181 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_181_181, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_181_181, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 6:
+                  case (MR_Integer) 7:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_184_184;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_184_184 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_184_184, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_184_184, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 8:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_187_187;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_187_187 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_187_187, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_187_187, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 9:
+                    {
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2;
+                      ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3;
+                    }
+                    break;
+                  case (MR_Integer) 10:
+                    {
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_240;
+                      MR_Word ll_backend__reassign__Target_241 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_241, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_240, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                      {
+                        mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__Target_241)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_240, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 11:
+                    {
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_236;
+                      MR_Word ll_backend__reassign__Target_237 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_237, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_236, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                      {
+                        mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__Target_237)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_236, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 12:
+                    {
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_139;
+                      MR_Word ll_backend__reassign__Target_170 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+                      MR_Word ll_backend__reassign__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 2)));
+                      MR_Word ll_backend__reassign__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 3)));
+                      MR_Word ll_backend__reassign__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 4)));
+                      MR_Word ll_backend__reassign__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 5)));
+                      MR_Word ll_backend__reassign__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 6)));
+                      MR_Word ll_backend__reassign__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 7)));
+                      MR_Word ll_backend__reassign__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 8)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_170, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_139, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                      {
+                        mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__Target_170)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_139, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 13:
+                    {
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_223;
+                      MR_Word ll_backend__reassign__Target_224 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_224, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_223, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                      {
+                        mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__Target_224)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_223, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 14:
+                    {
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_232;
+                      MR_Word ll_backend__reassign__Target_233 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_233, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_232, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                      {
+                        mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__Target_233)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_232, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 15:
+                    {
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2;
+                      ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3;
+                    }
+                    break;
+                  case (MR_Integer) 16:
+                    {
+                      MR_Word ll_backend__reassign__EmbeddedFrame_59 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 2)));
+                      MR_Word ll_backend__reassign__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__update_embdedded_frame_5_p_0(ll_backend__reassign__EmbeddedFrame_59, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 17:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_192_192;
+                      MR_Word ll_backend__reassign__TypeCtorInfo_193_193;
+                      MR_Word ll_backend__reassign__NumLval_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 4)));
+                      MR_Word ll_backend__reassign__AddrLval_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 5)));
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_126_126;
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_127_127;
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_128_128;
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_129_129;
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_130_130;
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_132_132;
+                      MR_Word ll_backend__reassign__EmbeddedFrame_171 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 2)));
+                      MR_Word ll_backend__reassign__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+                      MR_Word ll_backend__reassign__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 3)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__update_embdedded_frame_5_p_0(ll_backend__reassign__EmbeddedFrame_171, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_126_126, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_127_127);
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__NumLval_65, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_126_126, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_128_128, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_127_127, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_129_129);
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__AddrLval_66, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_128_128, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_130_130, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_129_129, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                      ll_backend__reassign__TypeCtorInfo_192_192 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      ll_backend__reassign__TypeCtorInfo_193_193 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0;
+                      {
+                        mercury__map__delete_3_p_0(ll_backend__reassign__TypeCtorInfo_192_192, ll_backend__reassign__TypeCtorInfo_193_193, ((MR_Box) (ll_backend__reassign__NumLval_65)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_130_130, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_132_132);
+                      }
+                      {
+                        mercury__map__delete_3_p_0(ll_backend__reassign__TypeCtorInfo_192_192, ll_backend__reassign__TypeCtorInfo_193_193, ((MR_Box) (ll_backend__reassign__AddrLval_66)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_132_132, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 18:
+                    {
+                      MR_Word ll_backend__reassign__EmbeddedFrame_231 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 2)));
+                      MR_Word ll_backend__reassign__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+                      MR_Word ll_backend__reassign__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 3)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__update_embdedded_frame_5_p_0(ll_backend__reassign__EmbeddedFrame_231, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 19:
+                    {
+                      MR_Word ll_backend__reassign__EmbeddedFrame_248 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 2)));
+                      MR_Word ll_backend__reassign__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__update_embdedded_frame_5_p_0(ll_backend__reassign__EmbeddedFrame_248, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 20:
+                    {
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_244;
+                      MR_Word ll_backend__reassign__Target_245 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_245, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_244, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                      {
+                        mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__Target_245)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_244, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 21:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_194_194;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_194_194 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_194_194, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_194_194, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 22:
+                    {
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_227;
+                      MR_Word ll_backend__reassign__Target_228 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_228, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_227, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                      {
+                        mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__Target_228)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_227, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 23:
+                  case (MR_Integer) 33:
+                  case (MR_Integer) 34:
+                    {
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2;
+                      ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3;
+                    }
+                    break;
+                  case (MR_Integer) 24:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_197_197;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_197_197 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_197_197, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_197_197, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 25:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_200_200;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_200_200 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_200_200, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_200_200, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 26:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_203_203;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_203_203 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_203_203, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_203_203, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 27:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_206_206;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_206_206 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_206_206, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_206_206, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 28:
+                    {
+                      MR_Word ll_backend__reassign__Target_172 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+                      MR_Integer ll_backend__reassign__V_90_90 = ((MR_Integer) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 2)));
+                      MR_Integer ll_backend__reassign__V_91_91 = ((MR_Integer) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 3)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_172, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 29:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_209_209;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_209_209 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_209_209, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_209_209, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 30:
+                    {
+                      MR_Word ll_backend__reassign__TypeCtorInfo_212_212;
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      ll_backend__reassign__TypeCtorInfo_212_212 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_212_212, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+                      }
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_212_212, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 31:
+                    {
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_215;
+                      MR_Word ll_backend__reassign__Target_216 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 2)));
+                      MR_Integer ll_backend__reassign__V_54_54 = ((MR_Integer) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_216, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_215, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                      {
+                        mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__Target_216)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_215, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 32:
+                    {
+                      MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_219;
+                      MR_Word ll_backend__reassign__Target_220 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 2)));
+                      MR_Word ll_backend__reassign__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 1)));
+                      MR_Word ll_backend__reassign__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__reassign__Uinstr0_16, (MR_Integer) 3)));
+
+                      {
+                        ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 0) = ((MR_Box) (ll_backend__reassign__Instr0_11));
+                        MR_hl_field(MR_mktag(1), ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168, 1) = ((MR_Box) (ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4));
+                      }
+                      {
+                        ll_backend__reassign__clobber_dependents_5_p_0(ll_backend__reassign__Target_220, ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_219, ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3, &ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163);
+                      }
+                      {
+                        mercury__map__delete_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0, ((MR_Box) (ll_backend__reassign__Target_220)), ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_139_219, &ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162);
+                      }
+                    }
+                    break;
+                }
+                break;
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word ll_backend__reassign__HeadVar__1__tmp_copy_1 = ll_backend__reassign__Instrs0_12;
+              MR_Word ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0__tmp_copy_2 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_162_162;
+              MR_Word ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0__tmp_copy_3 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_163_163;
+              MR_Word ll_backend__reassign__STATE_VARIABLE_RevInstrs_0__tmp_copy_4 = ll_backend__reassign__STATE_VARIABLE_RevInstrs_168_168;
+
+              ll_backend__reassign__STATE_VARIABLE_RevInstrs_0_4 = ll_backend__reassign__STATE_VARIABLE_RevInstrs_0__tmp_copy_4;
+              ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0_3 = ll_backend__reassign__STATE_VARIABLE_DepLvalMap_0__tmp_copy_3;
+              ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0_2 = ll_backend__reassign__STATE_VARIABLE_KnownContentsMap_0__tmp_copy_2;
+              ll_backend__reassign__HeadVar__1_1 = ll_backend__reassign__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+ll_backend__reassign__remove_reassign_2_p_0(
+  MR_Word ll_backend__reassign__Instrs0_3,
+  MR_Word * ll_backend__reassign__Instrs_4)
+{
+  {
+    MR_bool ll_backend__reassign__succeeded;
+    MR_Word ll_backend__reassign__TypeCtorInfo_9_9 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_lval_0;
+    MR_Word ll_backend__reassign__RevInstrs_5;
+    MR_Word ll_backend__reassign__V_6_6;
+    MR_Word ll_backend__reassign__V_7_7;
+
+    {
+      ll_backend__reassign__V_6_6 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_9_9, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_rval_0);
+    }
+    {
+      ll_backend__reassign__V_7_7 = mercury__map__init_0_f_0(ll_backend__reassign__TypeCtorInfo_9_9, (MR_Word) &ll_backend__reassign_scalar_common_1[0]);
+    }
+    {
+      ll_backend__reassign__remove_reassign_loop_5_p_0(ll_backend__reassign__Instrs0_3, ll_backend__reassign__V_6_6, ll_backend__reassign__V_7_7, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__reassign__RevInstrs_5);
+    }
+    {
+      mercury__list__reverse_2_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__reassign__RevInstrs_5, ll_backend__reassign__Instrs_4);
+    }
+  }
+}
+
+void mercury__ll_backend__reassign__init(void)
+{
+}
+
+void mercury__ll_backend__reassign__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&ll_backend__reassign__ll_backend__reassign__type_ctor_info_dependent_lval_map_0);
+	MR_register_type_ctor_info(&ll_backend__reassign__ll_backend__reassign__type_ctor_info_known_contents_0);
+}
+
+void mercury__ll_backend__reassign__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__ll_backend__reassign__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module ll_backend.reassign. */

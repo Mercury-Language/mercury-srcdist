@@ -1,0 +1,15711 @@
+/*
+** Automatically generated from `robdd.m'
+** by the Mercury compiler,
+** version rotd-2017-01-16
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module robdd. */
+/* :- implementation. */
+
+/*
+INIT mercury__robdd__init
+ENDINIT
+*/
+
+#include "robdd.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "benchmarking.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "calendar.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "dir.mih"
+#include "enum.mih"
+#include "erlang_rtti_implementation.mih"
+#include "exception.mih"
+#include "float.mih"
+#include "hash_table.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "lexer.mih"
+#include "list.mih"
+#include "map.mih"
+#include "math.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "mutvar.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parser.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_bbbtree.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "set_unordlist.mih"
+#include "solutions.mih"
+#include "sparse_bitset.mih"
+#include "std_util.mih"
+#include "stm_builtin.mih"
+#include "store.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "table_builtin.mih"
+#include "term.mih"
+#include "term_conversion.mih"
+#include "term_io.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "uint.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "version_array.mih"
+#include "stream.string_writer.mih"
+#include "string.format.mih"
+#include "string.parse_runtime.mih"
+#include "string.parse_util.mih"
+#include "string.to_string.mih"
+
+#line 428 "robdd.m"
+
+#define MR_ROBDD_CLEAR_CACHES
+#define MR_ROBDD_COMPUTED_TABLE
+#define MR_ROBDD_EQUAL_TEST
+#define MR_ROBDD_USE_ITE_CONSTANT
+#define MR_ROBDD_NEW
+#define MR_ROBDD_RESTRICT_SET
+
+#include "bryant.h"
+
+#ifdef  MR_HIGHLEVEL_DATA
+  typedef   MR_Box  MR_ROBDD_NODE_TYPE;
+#else
+  typedef   MR_Word MR_ROBDD_NODE_TYPE;
+#endif
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__term__pti_var_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_term__pti_var_1__pseudo_1;
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_entailment_result_1_0;
+
+static const MR_PseudoTypeInfo mercury__robdd__robdd__field_types_entailment_result_1_1[1];
+
+static const MR_ConstString mercury__robdd__robdd__field_names_entailment_result_1_1[1];
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_entailment_result_1_1;
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_entailment_result_1_0[1];
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_entailment_result_1_1[1];
+
+static const MR_DuPtagLayout mercury__robdd__robdd__du_ptag_ordered_entailment_result_1[2];
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_name_ordered_entailment_result_1[2];
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_entailment_result_1[2];
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_equiv_vars_1[1];
+
+static const MR_NotagFunctorDesc mercury__robdd__robdd__notag_functor_desc_equiv_vars_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_equiv_vars_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_entailment_result_1__pseudo_robdd__pti_equiv_vars_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_imp_res_2_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_entailment_result_1__pseudo_robdd__pti_imp_res_2_1__pseudo_1;
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_imp_res_2_1[1];
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_entailment_result_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_robdd__pti_entailment_result_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1;
+
+static const MR_NotagFunctorDesc mercury__robdd__robdd__notag_functor_desc_imp_res_2_1;
+
+static const MR_PseudoTypeInfo mercury__robdd__robdd__field_types_imp_vars_1_0[4];
+
+static const MR_ConstString mercury__robdd__robdd__field_names_imp_vars_1_0[4];
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_imp_vars_1_0;
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_imp_vars_1_0[1];
+
+static const MR_DuPtagLayout mercury__robdd__robdd__du_ptag_ordered_imp_vars_1[1];
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_name_ordered_imp_vars_1[1];
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_imp_vars_1[1];
+
+static const MR_PseudoTypeInfo mercury__robdd__robdd__field_types_implication_result_1_0[4];
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_implication_result_1_0;
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_implication_result_1_0[1];
+
+static const MR_DuPtagLayout mercury__robdd__robdd__du_ptag_ordered_implication_result_1[1];
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_name_ordered_implication_result_1[1];
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_implication_result_1[1];
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_leader_to_eqvclass_1[1];
+
+static const MR_NotagFunctorDesc mercury__robdd__robdd__notag_functor_desc_leader_to_eqvclass_1;
+
+static const MR_PseudoTypeInfo mercury__robdd__robdd__field_types_literal_1_0[1];
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_literal_1_0;
+
+static const MR_PseudoTypeInfo mercury__robdd__robdd__field_types_literal_1_1[1];
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_literal_1_1;
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_literal_1_0[1];
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_literal_1_1[1];
+
+static const MR_DuPtagLayout mercury__robdd__robdd__du_ptag_ordered_literal_1[2];
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_name_ordered_literal_1[2];
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_literal_1[2];
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_robdd_1[1];
+
+static const MR_NotagFunctorDesc mercury__robdd__robdd__notag_functor_desc_robdd_1;
+
+static const MR_FA_TypeInfo_Struct1 mercury__robdd__robdd__ti_robdd_1term__type_ctor_info_generic_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_robdd_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury__robdd__tree234__pti_tree234_2__pseudo_robdd__pti_robdd_1__pseudo_1__pseudo_robdd__pti_robdd_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__plain_bool__type_ctor_info_bool_0;
+
+static const MR_VA_PseudoTypeInfo_Struct3 mercury__robdd____vpti_pred_3__pseudo_term__pti_var_1__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+static const MR_ConstString mercury__robdd__robdd__type_class_id_var_names_intersectable_1[1];
+
+static const MR_TypeClassMethod mercury__robdd__robdd__type_class_id_method_ids_intersectable_1[1];
+
+static const MR_TypeClassId mercury__robdd__robdd__type_class_id_intersectable_1;
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____entailment_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____entailment_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____equiv_vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____equiv_vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____equivalent_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____equivalent_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____imp_map_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____imp_map_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____imp_res_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____imp_res_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____imp_res_2_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____imp_res_2_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____imp_vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____imp_vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____implication_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____implication_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____leader_map_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____leader_map_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____leader_to_eqvclass_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____leader_to_eqvclass_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____literal_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____literal_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____robdd_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_0_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__robdd____Compare____robdd_0_0_10001(
+  MR_Box * mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_cache_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____robdd_cache_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____var_cache_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____var_cache_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____vars_entailed_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____vars_entailed_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____write_var_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__robdd____Compare____write_var_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4);
+
+static MR_Box MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2_2_f_0_10001(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2);
+
+static MR_Box MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2_2_f_0_10001(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2);
+
+static MR_Box MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__entailment_result__arity1______robdd__intersection_2_2_f_0_10001(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2);
+
+static MR_Box MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____sparse_bitset__sparse_bitset__arity1______robdd__intersection_2_2_f_0_10001(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_53_95_95_49_95_95_104_111_50_48_51_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_53_95_95_49_95_95_104_111_50_48_50_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_53_95_95_49_95_95_104_111_50_48_49_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_56_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_27_27,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_36_36,
+  MR_Word mercury__robdd__LambdaHeadVar__1_18,
+  MR_Word mercury__robdd__LambdaHeadVar__2_19,
+  MR_Word * mercury__robdd__LambdaHeadVar__3_20);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_54_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_27_27,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_36_36,
+  MR_Word mercury__robdd__LambdaHeadVar__1_18,
+  MR_Word mercury__robdd__LambdaHeadVar__2_19,
+  MR_Word * mercury__robdd__LambdaHeadVar__3_20);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_52_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_27_27,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_36_36,
+  MR_Word mercury__robdd__LambdaHeadVar__1_18,
+  MR_Word mercury__robdd__LambdaHeadVar__2_19,
+  MR_Word * mercury__robdd__LambdaHeadVar__3_20);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_50_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_27_27,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_36_36,
+  MR_Word mercury__robdd__LambdaHeadVar__1_18,
+  MR_Word mercury__robdd__LambdaHeadVar__2_19,
+  MR_Word * mercury__robdd__LambdaHeadVar__3_20);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_57_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__V_70_70,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_51_51,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_57_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__V_70_70,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_51_51,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_56_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__V_70_70,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_51_51,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_56_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__V_70_70,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_51_51,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_60_60,
+  MR_Word mercury__robdd__V_61_61,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_60_60,
+  MR_Word mercury__robdd__V_61_61,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_60_60,
+  MR_Word mercury__robdd__V_61_61,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_60_60,
+  MR_Word mercury__robdd__V_61_61,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_57_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__2_17,
+  MR_Word mercury__robdd__LambdaHeadVar__3_18);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_56_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__2_17,
+  MR_Word mercury__robdd__LambdaHeadVar__3_18);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_55_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__2_17,
+  MR_Word mercury__robdd__LambdaHeadVar__3_18);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_54_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__2_17,
+  MR_Word mercury__robdd__LambdaHeadVar__3_18);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_53_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_47_47,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_49_49,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_58_58,
+  MR_Word mercury__robdd__V_65_65,
+  MR_Word mercury__robdd__V_68_68,
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_58_58,
+  MR_Word mercury__robdd__V_65_65,
+  MR_Word mercury__robdd__V_68_68,
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_48_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_58_58,
+  MR_Word mercury__robdd__V_65_65,
+  MR_Word mercury__robdd__V_68_68,
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_53_57_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_58_58,
+  MR_Word mercury__robdd__V_65_65,
+  MR_Word mercury__robdd__V_68_68,
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_51_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_75_75,
+  MR_Word mercury__robdd__V_91_91,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_110_116_101_114_115_101_99_116_95_108_111_111_112_95_95_104_111_49_50_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_53_93_95_48_5_p_in__map_0(
+  MR_Word mercury__robdd__V_49_49,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7,
+  MR_Word mercury__robdd__V_22_9,
+  MR_Word * mercury__robdd__V_23_10);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_50_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_73_73,
+  MR_Word mercury__robdd__V_87_87,
+  MR_Word mercury__robdd__V_88_88,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_44_32_49_51_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_44_32_49_50_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_34_34,
+  MR_Word mercury__robdd__V_35_35,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_49_48_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_57_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_50_51_44_32_50_52_44_32_50_53_93_95_48_4_p_in__list_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__V_47_47,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_49_49,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_6_p_in__tree234_0(
+  MR_Word mercury__robdd__V_93_93,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4,
+  MR_Word mercury__robdd__HeadVar__5_5,
+  MR_Word * mercury__robdd__HeadVar__6_6);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_53_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_59_59,
+  MR_Word mercury__robdd__HeadVar__2_2);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_104_111_54_57_95_95_91_52_44_32_53_93_95_48_4_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__IM_8,
+  MR_Word mercury__robdd__R0_9);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_104_111_54_56_95_95_91_52_44_32_53_93_95_48_4_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__IM_8,
+  MR_Word mercury__robdd__R0_9);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_104_111_54_55_95_95_91_52_44_32_53_93_95_48_4_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__IM_8,
+  MR_Word mercury__robdd__R0_9);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_55_44_32_56_44_32_57_93_95_48_2_f_in__list_0(
+  MR_Word mercury__robdd__V_20_20,
+  MR_Word mercury__robdd__V_21_21,
+  MR_Word mercury__robdd__HeadVar__2_2);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_55_44_32_56_44_32_57_93_95_48_2_f_in__list_0(
+  MR_Word mercury__robdd__V_20_20,
+  MR_Word mercury__robdd__V_21_21,
+  MR_Word mercury__robdd__HeadVar__2_2);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_51_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_2_f_in__list_0(
+  MR_Word mercury__robdd__V_16_16,
+  MR_Word mercury__robdd__HeadVar__2_2);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_53_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_3_f_in__list_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_41_41,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_53_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_49_49,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_53_55_95_95_91_49_44_32_52_44_32_53_93_95_48_4_p_in__list_0(
+  MR_Word mercury__robdd__V_18_18,
+  MR_Word mercury__robdd__V_19_19,
+  MR_Word mercury__robdd__HeadVar__2_2);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_53_54_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_44_32_56_93_95_48_6_p_in__list_0(
+  MR_Word mercury__robdd__V_30_30,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4,
+  MR_Word mercury__robdd__HeadVar__5_5,
+  MR_Word * mercury__robdd__HeadVar__6_6);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_51_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_47_47,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_51_51_95_95_91_49_44_32_51_44_32_52_93_95_48_4_p_in__list_0(
+  MR_Word mercury__robdd__V_18_18,
+  MR_Word mercury__robdd__HeadVar__2_2);
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_111_98_100_100_95_116_111_95_100_111_116_95_95_49_52_53_57_95_95_49_95_95_91_50_93_95_48_5_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_51,
+  MR_Word mercury__robdd__LambdaHeadVar__2_26);
+
+static MR_bool MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_101_115_116_114_105_99_116_95_102_105_108_116_101_114_95_95_49_49_56_52_95_95_49_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+static MR_Integer MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void);
+
+static MR_Integer MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_110_111_100_101_95_110_117_109_95_95_91_49_93_95_48_1_f_0(
+  MR_Word mercury__robdd__HeadVar__1_1);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_108_98_95_95_91_49_93_95_48_2_f_0(
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2);
+
+static MR_Word MR_CALL 
+mercury__robdd__IntroducedFrom__func__ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2__847__1_5_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_22,
+  MR_Word mercury__robdd__MapB_6,
+  MR_Word mercury__robdd__LambdaHeadVar__1_13,
+  MR_Word mercury__robdd__LambdaHeadVar__2_14,
+  MR_Word mercury__robdd__LambdaHeadVar__3_15);
+
+static MR_Word MR_CALL 
+mercury__robdd__IntroducedFrom__func__ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2__862__1_3_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_9,
+  MR_Word mercury__robdd__HeadVar__2_16,
+  MR_Word mercury__robdd__HeadVar__3_17);
+
+static void MR_CALL 
+mercury__robdd__IntroducedFrom__pred__print_robdd_2__973__1_5_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_44,
+  MR_Word mercury__robdd__Trues_7,
+  MR_Word mercury__robdd__LambdaHeadVar__1_25);
+
+static MR_Word MR_CALL 
+mercury__robdd__IntroducedFrom__func__imp_res_to_imp_map__780__1_4_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_18,
+  MR_Word mercury__robdd__LambdaHeadVar__1_10,
+  MR_Word mercury__robdd__LambdaHeadVar__2_11,
+  MR_Word mercury__robdd__LambdaHeadVar__3_12);
+
+static MR_Word MR_CALL 
+mercury__robdd__IntroducedFrom__func__merge_imp_res_2__761__1_7_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_28,
+  MR_Word mercury__robdd__EntailedVarsA_6,
+  MR_Word mercury__robdd__EntailedVarsB_7,
+  MR_Word mercury__robdd__ImpsA_8,
+  MR_Word mercury__robdd__ImpsB_9,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22);
+
+static void MR_CALL 
+mercury__robdd__IntroducedFrom__pred__rev_map__678__1_7_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_40,
+  MR_Word mercury__robdd__LambdaHeadVar__1_19,
+  MR_Word mercury__robdd__LambdaHeadVar__2_20,
+  MR_Word mercury__robdd__LambdaHeadVar__3_21,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_22,
+  MR_Word mercury__robdd__LambdaHeadVar__5_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__6_24);
+
+static void MR_CALL 
+mercury__robdd__IntroducedFrom__pred__rev_map__682__1_5_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_40,
+  MR_Word mercury__robdd__LambdaHeadVar__1_19,
+  MR_Word mercury__robdd__LambdaHeadVar__1_28,
+  MR_Word mercury__robdd__LambdaHeadVar__2_29,
+  MR_Word * mercury__robdd__LambdaHeadVar__3_30);
+
+static MR_bool MR_CALL 
+mercury__robdd__IntroducedFrom__pred__squeeze_equiv__1242__1_3_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_16,
+  MR_Word mercury__robdd__Max_6,
+  MR_Word mercury__robdd__LambdaHeadVar__1_12);
+
+static MR_bool MR_CALL 
+mercury__robdd__IntroducedFrom__pred__squeeze_equiv__1239__1_3_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_16,
+  MR_Word mercury__robdd__LeaderMap_4,
+  MR_Word mercury__robdd__LambdaHeadVar__1_10);
+
+static MR_bool MR_CALL 
+mercury__robdd__IntroducedFrom__pred__restrict_filter__1184__1_2_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_11,
+  MR_Word mercury__robdd__LambdaHeadVar__1_8);
+
+static MR_bool MR_CALL 
+mercury__robdd__minimal_model_2_6_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_21,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__R0_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__TrueVars_4,
+  MR_Word mercury__robdd__HeadVar__5_5,
+  MR_Word * mercury__robdd__FalseVars_6);
+
+static MR_Integer MR_CALL 
+mercury__robdd__node_num_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_3,
+  MR_Word mercury__robdd__HeadVar__1_1);
+
+static void MR_CALL 
+mercury__robdd__size_2_8_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_33,
+  MR_Word mercury__robdd__F_9,
+  MR_Integer mercury__robdd__Nodes0_10,
+  MR_Integer * mercury__robdd__Nodes_11,
+  MR_Integer mercury__robdd__Depth0_12,
+  MR_Integer * mercury__robdd__Depth_13,
+  MR_Integer mercury__robdd__Val0_14,
+  MR_Word mercury__robdd__Seen0_15,
+  MR_Word * mercury__robdd__Seen_16);
+
+static void MR_CALL 
+mercury__robdd__print_robdd_2_5_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_44,
+  MR_Word mercury__robdd__F_6,
+  MR_Word mercury__robdd__Trues_7,
+  MR_Word mercury__robdd__Falses_8);
+
+static MR_Word MR_CALL 
+mercury__robdd__f_101_108_101_109_32_58_61_3_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_13,
+  MR_Word mercury__robdd__V_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__Vs_3);
+
+static MR_Word MR_CALL 
+mercury__robdd__get_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_7,
+  MR_Word mercury__robdd__K_4,
+  MR_Word mercury__robdd__IM_5);
+
+static MR_Word MR_CALL 
+mercury__robdd__merge_imp_res_4_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_19,
+  MR_Word mercury__robdd__TVars_1,
+  MR_Word mercury__robdd__FVars_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word mercury__robdd__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__robdd__report_zero_constraint_0_p_0(void);
+
+static MR_Word MR_CALL 
+mercury__robdd__glb_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_4,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2);
+
+static MR_bool MR_CALL 
+mercury__robdd__squeeze_equiv_2_f_0_2(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+mercury__robdd__squeeze_equiv_2_f_0_1(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+mercury__robdd__restrict_filter_2_f_0_1(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1);
+
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_1[2][2];
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_2[1][3];
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_3[1][4];
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_4[3][5];
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_5[4][1];
+
+static /* final */ const MR_Integer mercury__robdd_scalar_common_6[1][2];
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_7[2][6];
+
+
+
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_1[2][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__robdd__robdd__type_ctor_info_robdd_1)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_generic_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_2[1][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__stream__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_3[1][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__output__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__robdd_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_4[3][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__string__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__robdd_scalar_common_3[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__character__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__robdd_scalar_common_3[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_character_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (&mercury__robdd_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__robdd__term__pti_var_1__pseudo_1))
+  },
+};
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_5[4][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) (((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (((MR_Integer) 0 | (((((MR_Integer) 0 << (MR_Integer) 1)) | (((((MR_Integer) 0 << (MR_Integer) 2)) | (((((MR_Integer) 0 << (MR_Integer) 3)) | (((MR_Integer) 0 << (MR_Integer) 4)))))))))))
+  },
+};
+
+static /* final */ const MR_Integer mercury__robdd_scalar_common_6[1][2] = {
+  /* row 0 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 33
+  },
+};
+
+static /* final */ const MR_Box mercury__robdd_scalar_common_7[2][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&mercury__robdd_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_term__pti_var_1__pseudo_1)),
+    ((MR_Box) (&mercury__robdd__term__pti_var_1__pseudo_1))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (&mercury__robdd_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__robdd__term__pti_var_1__pseudo_1)),
+    ((MR_Box) (&mercury__robdd__term__pti_var_1__pseudo_1))
+  },
+};
+
+
+
+#include "array.mh"
+#include "benchmarking.mh"
+#include "bitmap.mh"
+#include "builtin.mh"
+#include "char.mh"
+#include "construct.mh"
+#include "dir.mh"
+#include "exception.mh"
+#include "float.mh"
+#include "hash_table.mh"
+#include "int.mh"
+#include "io.mh"
+#include "math.mh"
+#include "pretty_printer.mh"
+#include "private_builtin.mh"
+#include "robdd.mh"
+#include "rtti_implementation.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "string.mh"
+#include "table_builtin.mh"
+#include "time.mh"
+#include "type_desc.mh"
+#include "uint.mh"
+#include "version_array.mh"
+#line 445 "robdd.m"
+
+#define NDEBUG
+#include "bryant.c"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__term__pti_var_1__pseudo_1 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_term__pti_var_1__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__robdd__term__pti_var_1__pseudo_1,
+    (MR_PseudoTypeInfo) &mercury__robdd__term__pti_var_1__pseudo_1
+  }
+};
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_entailment_result_1_0 = {
+  (MR_String) "all_vars",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__robdd__robdd__field_types_entailment_result_1_1[1] = {
+  (MR_PseudoTypeInfo) (MR_Integer) 1
+};
+
+static const MR_ConstString mercury__robdd__robdd__field_names_entailment_result_1_1[1] = {
+  (MR_String) "vars"
+};
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_entailment_result_1_1 = {
+  (MR_String) "some_vars",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mercury__robdd__robdd__field_types_entailment_result_1_1,
+  mercury__robdd__robdd__field_names_entailment_result_1_1,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_entailment_result_1_0[1] = {
+  &mercury__robdd__robdd__du_functor_desc_entailment_result_1_0
+};
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_entailment_result_1_1[1] = {
+  &mercury__robdd__robdd__du_functor_desc_entailment_result_1_1
+};
+
+static const MR_DuPtagLayout mercury__robdd__robdd__du_ptag_ordered_entailment_result_1[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    mercury__robdd__robdd__du_stag_ordered_entailment_result_1_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__robdd__robdd__du_stag_ordered_entailment_result_1_1
+  }
+};
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_name_ordered_entailment_result_1[2] = {
+  &mercury__robdd__robdd__du_functor_desc_entailment_result_1_0,
+  &mercury__robdd__robdd__du_functor_desc_entailment_result_1_1
+};
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_entailment_result_1[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_entailment_result_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__robdd____Unify____entailment_result_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____entailment_result_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "entailment_result",
+  {     mercury__robdd__robdd__du_name_ordered_entailment_result_1 },
+  {     mercury__robdd__robdd__du_ptag_ordered_entailment_result_1 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__robdd__robdd__functor_number_map_entailment_result_1
+};
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_equiv_vars_1[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc mercury__robdd__robdd__notag_functor_desc_equiv_vars_1 = {
+  (MR_String) "equiv_vars",
+  (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_term__pti_var_1__pseudo_1,
+  (MR_String) "leader_map",
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_equiv_vars_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG,
+  ((MR_Box) (mercury__robdd____Unify____equiv_vars_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____equiv_vars_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "equiv_vars",
+  {     &mercury__robdd__robdd__notag_functor_desc_equiv_vars_1 },
+  {     &mercury__robdd__robdd__notag_functor_desc_equiv_vars_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__robdd__robdd__functor_number_map_equiv_vars_1
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_equiv_vars_1__pseudo_1 = {
+  &mercury__robdd__robdd__type_ctor_info_equiv_vars_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_entailment_result_1__pseudo_robdd__pti_equiv_vars_1__pseudo_1 = {
+  &mercury__robdd__robdd__type_ctor_info_entailment_result_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_equiv_vars_1__pseudo_1
+  }
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_equivalent_result_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__robdd____Unify____equivalent_result_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____equivalent_result_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "equivalent_result",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_entailment_result_1__pseudo_robdd__pti_equiv_vars_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__robdd__term__pti_var_1__pseudo_1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__robdd__term__pti_var_1__pseudo_1,
+    (MR_PseudoTypeInfo) &mercury__robdd__sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1
+  }
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_imp_map_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__robdd____Unify____imp_map_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____imp_map_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "imp_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_imp_res_2_1__pseudo_1 = {
+  &mercury__robdd__robdd__type_ctor_info_imp_res_2_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_entailment_result_1__pseudo_robdd__pti_imp_res_2_1__pseudo_1 = {
+  &mercury__robdd__robdd__type_ctor_info_entailment_result_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_imp_res_2_1__pseudo_1
+  }
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_imp_res_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__robdd____Unify____imp_res_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____imp_res_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "imp_res",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_entailment_result_1__pseudo_robdd__pti_imp_res_2_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_imp_res_2_1[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_entailment_result_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1 = {
+  &mercury__robdd__robdd__type_ctor_info_entailment_result_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__robdd__sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_robdd__pti_entailment_result_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__robdd__term__pti_var_1__pseudo_1,
+    (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_entailment_result_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1
+  }
+};
+
+static const MR_NotagFunctorDesc mercury__robdd__robdd__notag_functor_desc_imp_res_2_1 = {
+  (MR_String) "imps",
+  (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_robdd__pti_entailment_result_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_imp_res_2_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG,
+  ((MR_Box) (mercury__robdd____Unify____imp_res_2_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____imp_res_2_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "imp_res_2",
+  {     &mercury__robdd__robdd__notag_functor_desc_imp_res_2_1 },
+  {     &mercury__robdd__robdd__notag_functor_desc_imp_res_2_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__robdd__robdd__functor_number_map_imp_res_2_1
+};
+
+static const MR_PseudoTypeInfo mercury__robdd__robdd__field_types_imp_vars_1_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1
+};
+
+static const MR_ConstString mercury__robdd__robdd__field_names_imp_vars_1_0[4] = {
+  (MR_String) "imps",
+  (MR_String) "rev_imps",
+  (MR_String) "dis_imps",
+  (MR_String) "rev_dis_imps"
+};
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_imp_vars_1_0 = {
+  (MR_String) "imp_vars",
+  (MR_Integer) 4,
+  (MR_Integer) 15,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__robdd__robdd__field_types_imp_vars_1_0,
+  mercury__robdd__robdd__field_names_imp_vars_1_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_imp_vars_1_0[1] = {
+  &mercury__robdd__robdd__du_functor_desc_imp_vars_1_0
+};
+
+static const MR_DuPtagLayout mercury__robdd__robdd__du_ptag_ordered_imp_vars_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__robdd__robdd__du_stag_ordered_imp_vars_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_name_ordered_imp_vars_1[1] = {
+  &mercury__robdd__robdd__du_functor_desc_imp_vars_1_0
+};
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_imp_vars_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_imp_vars_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__robdd____Unify____imp_vars_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____imp_vars_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "imp_vars",
+  {     mercury__robdd__robdd__du_name_ordered_imp_vars_1 },
+  {     mercury__robdd__robdd__du_ptag_ordered_imp_vars_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__robdd__robdd__functor_number_map_imp_vars_1
+};
+
+static const MR_PseudoTypeInfo mercury__robdd__robdd__field_types_implication_result_1_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_entailment_result_1__pseudo_robdd__pti_imp_res_2_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_entailment_result_1__pseudo_robdd__pti_imp_res_2_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_entailment_result_1__pseudo_robdd__pti_imp_res_2_1__pseudo_1,
+  (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_entailment_result_1__pseudo_robdd__pti_imp_res_2_1__pseudo_1
+};
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_implication_result_1_0 = {
+  (MR_String) "implication_result",
+  (MR_Integer) 4,
+  (MR_Integer) 15,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__robdd__robdd__field_types_implication_result_1_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_implication_result_1_0[1] = {
+  &mercury__robdd__robdd__du_functor_desc_implication_result_1_0
+};
+
+static const MR_DuPtagLayout mercury__robdd__robdd__du_ptag_ordered_implication_result_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__robdd__robdd__du_stag_ordered_implication_result_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_name_ordered_implication_result_1[1] = {
+  &mercury__robdd__robdd__du_functor_desc_implication_result_1_0
+};
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_implication_result_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_implication_result_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__robdd____Unify____implication_result_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____implication_result_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "implication_result",
+  {     mercury__robdd__robdd__du_name_ordered_implication_result_1 },
+  {     mercury__robdd__robdd__du_ptag_ordered_implication_result_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__robdd__robdd__functor_number_map_implication_result_1
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_leader_map_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__robdd____Unify____leader_map_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____leader_map_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "leader_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_term__pti_var_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_leader_to_eqvclass_1[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc mercury__robdd__robdd__notag_functor_desc_leader_to_eqvclass_1 = {
+  (MR_String) "leader_to_eqvclass",
+  (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_leader_to_eqvclass_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG,
+  ((MR_Box) (mercury__robdd____Unify____leader_to_eqvclass_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____leader_to_eqvclass_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "leader_to_eqvclass",
+  {     &mercury__robdd__robdd__notag_functor_desc_leader_to_eqvclass_1 },
+  {     &mercury__robdd__robdd__notag_functor_desc_leader_to_eqvclass_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__robdd__robdd__functor_number_map_leader_to_eqvclass_1
+};
+
+static const MR_PseudoTypeInfo mercury__robdd__robdd__field_types_literal_1_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__robdd__term__pti_var_1__pseudo_1
+};
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_literal_1_0 = {
+  (MR_String) "pos",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__robdd__robdd__field_types_literal_1_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__robdd__robdd__field_types_literal_1_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__robdd__term__pti_var_1__pseudo_1
+};
+
+static const MR_DuFunctorDesc mercury__robdd__robdd__du_functor_desc_literal_1_1 = {
+  (MR_String) "neg",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mercury__robdd__robdd__field_types_literal_1_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_literal_1_0[1] = {
+  &mercury__robdd__robdd__du_functor_desc_literal_1_0
+};
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_stag_ordered_literal_1_1[1] = {
+  &mercury__robdd__robdd__du_functor_desc_literal_1_1
+};
+
+static const MR_DuPtagLayout mercury__robdd__robdd__du_ptag_ordered_literal_1[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__robdd__robdd__du_stag_ordered_literal_1_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__robdd__robdd__du_stag_ordered_literal_1_1
+  }
+};
+
+static const MR_DuFunctorDescPtr mercury__robdd__robdd__du_name_ordered_literal_1[2] = {
+  &mercury__robdd__robdd__du_functor_desc_literal_1_1,
+  &mercury__robdd__robdd__du_functor_desc_literal_1_0
+};
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_literal_1[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_literal_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__robdd____Unify____literal_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____literal_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "literal",
+  {     mercury__robdd__robdd__du_name_ordered_literal_1 },
+  {     mercury__robdd__robdd__du_ptag_ordered_literal_1 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__robdd__robdd__functor_number_map_literal_1
+};
+
+static const MR_Integer mercury__robdd__robdd__functor_number_map_robdd_1[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc mercury__robdd__robdd__notag_functor_desc_robdd_1 = {
+  (MR_String) "robdd",
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_robdd_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (mercury__robdd____Unify____robdd_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____robdd_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "robdd",
+  {     &mercury__robdd__robdd__notag_functor_desc_robdd_1 },
+  {     &mercury__robdd__robdd__notag_functor_desc_robdd_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__robdd__robdd__functor_number_map_robdd_1
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury__robdd__robdd__ti_robdd_1term__type_ctor_info_generic_0 = {
+  &mercury__robdd__robdd__type_ctor_info_robdd_1,
+  {
+    (MR_TypeInfo) &mercury__term__term__type_ctor_info_generic_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_robdd_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mercury__robdd____Unify____robdd_0_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____robdd_0_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "robdd",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__robdd__robdd__ti_robdd_1term__type_ctor_info_generic_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__robdd__robdd__pti_robdd_1__pseudo_1 = {
+  &mercury__robdd__robdd__type_ctor_info_robdd_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury__robdd__tree234__pti_tree234_2__pseudo_robdd__pti_robdd_1__pseudo_1__pseudo_robdd__pti_robdd_1__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_robdd_1__pseudo_1,
+    (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_robdd_1__pseudo_1
+  }
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_robdd_cache_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__robdd____Unify____robdd_cache_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____robdd_cache_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "robdd_cache",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_robdd__pti_robdd_1__pseudo_1__pseudo_robdd__pti_robdd_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__plain_bool__type_ctor_info_bool_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__robdd__term__pti_var_1__pseudo_1,
+    (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_var_cache_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__robdd____Unify____var_cache_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____var_cache_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "var_cache",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__robdd__tree234__pti_tree234_2__pseudo_term__pti_var_1__pseudo_1__plain_bool__type_ctor_info_bool_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_vars_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__robdd____Unify____vars_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____vars_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "vars",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__robdd__sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_vars_entailed_result_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__robdd____Unify____vars_entailed_result_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____vars_entailed_result_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "vars_entailed_result",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__robdd__robdd__pti_entailment_result_1__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_term__pti_var_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_VA_PseudoTypeInfo_Struct3 mercury__robdd____vpti_pred_3__pseudo_term__pti_var_1__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 3,
+  {
+    (MR_PseudoTypeInfo) &mercury__robdd__term__pti_var_1__pseudo_1,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_write_var_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__robdd____Unify____write_var_1_0_10001)),
+  ((MR_Box) (mercury__robdd____Compare____write_var_1_0_10001)),
+  (MR_String) "robdd",
+  (MR_String) "write_var",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__robdd____vpti_pred_3__pseudo_term__pti_var_1__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_robdd__intersectable__arity1__robdd__imp_res_2__arity1__[6] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2_2_f_0_10001))
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_robdd__intersectable__arity1__robdd__leader_to_eqvclass__arity1__[6] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2_2_f_0_10001))
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__[6] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__entailment_result__arity1______robdd__intersection_2_2_f_0_10001))
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_robdd__intersectable__arity1__sparse_bitset__sparse_bitset__arity1__[6] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (mercury__robdd__ClassMethod_for_robdd__intersectable____sparse_bitset__sparse_bitset__arity1______robdd__intersection_2_2_f_0_10001))
+};
+
+static const MR_ConstString mercury__robdd__robdd__type_class_id_var_names_intersectable_1[1] = {
+  (MR_String) "T"
+};
+
+static const MR_TypeClassMethod mercury__robdd__robdd__type_class_id_method_ids_intersectable_1[1] = {
+  {
+    (MR_String) "intersection",
+    (MR_Integer) 3,
+    mercury__private_builtin__MR_FUNCTION
+  }
+};
+
+static const MR_TypeClassId mercury__robdd__robdd__type_class_id_intersectable_1 = {
+  (MR_String) "robdd",
+  (MR_String) "intersectable",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__robdd__robdd__type_class_id_var_names_intersectable_1,
+  mercury__robdd__robdd__type_class_id_method_ids_intersectable_1
+};
+
+const MR_TypeClassDeclStruct mercury__robdd__robdd__type_class_decl_intersectable_1 = {
+  &mercury__robdd__robdd__type_class_id_intersectable_1,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL
+};
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____entailment_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____entailment_result_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____entailment_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____entailment_result_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____equiv_vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____equiv_vars_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____equiv_vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____equiv_vars_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____equivalent_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____equivalent_result_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____equivalent_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____equivalent_result_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____imp_map_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____imp_map_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____imp_map_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____imp_map_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____imp_res_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____imp_res_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____imp_res_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____imp_res_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____imp_res_2_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____imp_res_2_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____imp_res_2_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____imp_res_2_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____imp_vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____imp_vars_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____imp_vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____imp_vars_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____implication_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____implication_result_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____implication_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____implication_result_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____leader_map_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____leader_map_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____leader_map_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____leader_map_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____leader_to_eqvclass_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____leader_to_eqvclass_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____leader_to_eqvclass_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____leader_to_eqvclass_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____literal_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____literal_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____literal_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____literal_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____robdd_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____robdd_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____robdd_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_0_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____robdd_0_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____robdd_0_0_10001(
+  MR_Box * mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____robdd_0_0(&mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    *mercury__robdd__wrapper_arg_1 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_cache_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____robdd_cache_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____robdd_cache_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____robdd_cache_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____var_cache_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____var_cache_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____var_cache_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____var_cache_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____vars_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____vars_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____vars_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____vars_entailed_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____vars_entailed_result_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____vars_entailed_result_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____vars_entailed_result_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd____Unify____write_var_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____write_var_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2), ((MR_Word) mercury__robdd__wrapper_arg_3));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd____Compare____write_var_1_0_10001(
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box * mercury__robdd__wrapper_arg_2,
+  MR_Box mercury__robdd__wrapper_arg_3,
+  MR_Box mercury__robdd__wrapper_arg_4)
+{
+  {
+    MR_Word mercury__robdd__conv0_HeadVar__1_1;
+
+    {
+      mercury__robdd____Compare____write_var_1_0(((MR_Word) mercury__robdd__wrapper_arg_1), &mercury__robdd__conv0_HeadVar__1_1, ((MR_Word) mercury__robdd__wrapper_arg_3), ((MR_Word) mercury__robdd__wrapper_arg_4));
+    }
+    *mercury__robdd__wrapper_arg_2 = ((MR_Box) (mercury__robdd__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_Box MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2_2_f_0_10001(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2)
+{
+  {
+    MR_Box mercury__robdd__wrapper_arg_3;
+    MR_Box mercury__robdd__closure;
+    MR_Word mercury__robdd__conv0_HeadVar__3_3;
+
+    mercury__robdd__closure = mercury__robdd__closure_arg;
+    {
+      mercury__robdd__conv0_HeadVar__3_3 = mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__closure, (MR_Integer) 1))), ((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2));
+    }
+    mercury__robdd__wrapper_arg_3 = ((MR_Box) (mercury__robdd__conv0_HeadVar__3_3));
+    return mercury__robdd__wrapper_arg_3;
+  }
+}
+
+static MR_Box MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2_2_f_0_10001(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2)
+{
+  {
+    MR_Box mercury__robdd__wrapper_arg_3;
+    MR_Box mercury__robdd__closure;
+    MR_Word mercury__robdd__conv0_HeadVar__3_3;
+
+    mercury__robdd__closure = mercury__robdd__closure_arg;
+    {
+      mercury__robdd__conv0_HeadVar__3_3 = mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__closure, (MR_Integer) 1))), ((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2));
+    }
+    mercury__robdd__wrapper_arg_3 = ((MR_Box) (mercury__robdd__conv0_HeadVar__3_3));
+    return mercury__robdd__wrapper_arg_3;
+  }
+}
+
+static MR_Box MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__entailment_result__arity1______robdd__intersection_2_2_f_0_10001(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2)
+{
+  {
+    MR_Box mercury__robdd__wrapper_arg_3;
+    MR_Box mercury__robdd__closure;
+    MR_Word mercury__robdd__conv0_HeadVar__3_3;
+
+    mercury__robdd__closure = mercury__robdd__closure_arg;
+    {
+      mercury__robdd__conv0_HeadVar__3_3 = mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__entailment_result__arity1______robdd__intersection_2_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__closure, (MR_Integer) 1))), ((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2));
+    }
+    mercury__robdd__wrapper_arg_3 = ((MR_Box) (mercury__robdd__conv0_HeadVar__3_3));
+    return mercury__robdd__wrapper_arg_3;
+  }
+}
+
+static MR_Box MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____sparse_bitset__sparse_bitset__arity1______robdd__intersection_2_2_f_0_10001(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1,
+  MR_Box mercury__robdd__wrapper_arg_2)
+{
+  {
+    MR_Box mercury__robdd__wrapper_arg_3;
+    MR_Box mercury__robdd__closure;
+    MR_Word mercury__robdd__conv0_HeadVar__3_3;
+
+    mercury__robdd__closure = mercury__robdd__closure_arg;
+    {
+      mercury__robdd__conv0_HeadVar__3_3 = mercury__robdd__ClassMethod_for_robdd__intersectable____sparse_bitset__sparse_bitset__arity1______robdd__intersection_2_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__closure, (MR_Integer) 1))), ((MR_Word) mercury__robdd__wrapper_arg_1), ((MR_Word) mercury__robdd__wrapper_arg_2));
+    }
+    mercury__robdd__wrapper_arg_3 = ((MR_Box) (mercury__robdd__conv0_HeadVar__3_3));
+    return mercury__robdd__wrapper_arg_3;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_53_95_95_49_95_95_104_111_50_48_51_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__LambdaHeadVar__3_23;
+    MR_Word mercury__robdd__V_24_24;
+    MR_Word mercury__robdd__V_25_25;
+    MR_Word mercury__robdd__V_26_26;
+    MR_Word mercury__robdd__V_48_48;
+    MR_Word mercury__robdd__V_49_49;
+
+    {
+      mercury__robdd__V_48_48 = mercury__robdd__zero_0_f_0(mercury__robdd__V_45_45);
+    }
+    {
+      mercury__robdd__V_49_49 = mercury__robdd__one_0_f_0(mercury__robdd__V_45_45);
+    }
+    {
+      mercury__robdd__V_25_25 = mercury__robdd__make_node_3_f_0(mercury__robdd__V_45_45, mercury__robdd__LambdaHeadVar__1_16, mercury__robdd__V_48_48, mercury__robdd__V_49_49);
+    }
+    {
+      mercury__robdd__V_26_26 = mercury__robdd__var_1_f_0(mercury__robdd__V_46_46, mercury__robdd__LambdaHeadVar__1_21);
+    }
+    {
+      mercury__robdd__V_24_24 = mercury__robdd__f_plus_2_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__V_25_25, mercury__robdd__V_26_26);
+    }
+    {
+      mercury__robdd__LambdaHeadVar__3_23 = mercury__robdd__f_times_2_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__LambdaHeadVar__2_22, mercury__robdd__V_24_24);
+    }
+    return mercury__robdd__LambdaHeadVar__3_23;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_53_95_95_49_95_95_104_111_50_48_50_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__LambdaHeadVar__3_23;
+    MR_Word mercury__robdd__V_24_24;
+    MR_Word mercury__robdd__V_25_25;
+    MR_Word mercury__robdd__V_26_26;
+    MR_Word mercury__robdd__V_48_48;
+    MR_Word mercury__robdd__V_49_49;
+
+    {
+      mercury__robdd__V_25_25 = mercury__robdd__var_1_f_0(mercury__robdd__V_45_45, mercury__robdd__LambdaHeadVar__1_16);
+    }
+    {
+      mercury__robdd__V_48_48 = mercury__robdd__zero_0_f_0(mercury__robdd__V_46_46);
+    }
+    {
+      mercury__robdd__V_49_49 = mercury__robdd__one_0_f_0(mercury__robdd__V_46_46);
+    }
+    {
+      mercury__robdd__V_26_26 = mercury__robdd__make_node_3_f_0(mercury__robdd__V_46_46, mercury__robdd__LambdaHeadVar__1_21, mercury__robdd__V_48_48, mercury__robdd__V_49_49);
+    }
+    {
+      mercury__robdd__V_24_24 = mercury__robdd__f_plus_2_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__V_25_25, mercury__robdd__V_26_26);
+    }
+    {
+      mercury__robdd__LambdaHeadVar__3_23 = mercury__robdd__f_times_2_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__LambdaHeadVar__2_22, mercury__robdd__V_24_24);
+    }
+    return mercury__robdd__LambdaHeadVar__3_23;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_53_95_95_49_95_95_104_111_50_48_49_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__LambdaHeadVar__3_23;
+    MR_Word mercury__robdd__V_24_24;
+    MR_Word mercury__robdd__V_25_25;
+    MR_Word mercury__robdd__V_26_26;
+    MR_Word mercury__robdd__V_48_48;
+    MR_Word mercury__robdd__V_49_49;
+    MR_Word mercury__robdd__V_51_51;
+    MR_Word mercury__robdd__V_52_52;
+
+    {
+      mercury__robdd__V_48_48 = mercury__robdd__zero_0_f_0(mercury__robdd__V_45_45);
+    }
+    {
+      mercury__robdd__V_49_49 = mercury__robdd__one_0_f_0(mercury__robdd__V_45_45);
+    }
+    {
+      mercury__robdd__V_25_25 = mercury__robdd__make_node_3_f_0(mercury__robdd__V_45_45, mercury__robdd__LambdaHeadVar__1_16, mercury__robdd__V_48_48, mercury__robdd__V_49_49);
+    }
+    {
+      mercury__robdd__V_51_51 = mercury__robdd__zero_0_f_0(mercury__robdd__V_46_46);
+    }
+    {
+      mercury__robdd__V_52_52 = mercury__robdd__one_0_f_0(mercury__robdd__V_46_46);
+    }
+    {
+      mercury__robdd__V_26_26 = mercury__robdd__make_node_3_f_0(mercury__robdd__V_46_46, mercury__robdd__LambdaHeadVar__1_21, mercury__robdd__V_51_51, mercury__robdd__V_52_52);
+    }
+    {
+      mercury__robdd__V_24_24 = mercury__robdd__f_plus_2_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__V_25_25, mercury__robdd__V_26_26);
+    }
+    {
+      mercury__robdd__LambdaHeadVar__3_23 = mercury__robdd__f_times_2_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__LambdaHeadVar__2_22, mercury__robdd__V_24_24);
+    }
+    return mercury__robdd__LambdaHeadVar__3_23;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_56_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_27_27,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_36_36,
+  MR_Word mercury__robdd__LambdaHeadVar__1_18,
+  MR_Word mercury__robdd__LambdaHeadVar__2_19,
+  MR_Word * mercury__robdd__LambdaHeadVar__3_20)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_71_71;
+    MR_Word mercury__robdd__V_72_72;
+    MR_Word mercury__robdd__V_73_73;
+
+    {
+      mercury__robdd__V_72_72 = mercury__robdd__var_1_f_0(mercury__robdd__V_39_39, mercury__robdd__V_36_36);
+    }
+    {
+      mercury__robdd__V_73_73 = mercury__robdd__var_1_f_0(mercury__robdd__V_40_40, mercury__robdd__LambdaHeadVar__1_18);
+    }
+    {
+      mercury__robdd__V_71_71 = mercury__robdd__f_plus_2_f_0(mercury__robdd__V_33_33, mercury__robdd__V_72_72, mercury__robdd__V_73_73);
+    }
+    {
+      *mercury__robdd__LambdaHeadVar__3_20 = mercury__robdd__f_times_2_f_0(mercury__robdd__V_33_33, mercury__robdd__LambdaHeadVar__2_19, mercury__robdd__V_71_71);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_54_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_27_27,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_36_36,
+  MR_Word mercury__robdd__LambdaHeadVar__1_18,
+  MR_Word mercury__robdd__LambdaHeadVar__2_19,
+  MR_Word * mercury__robdd__LambdaHeadVar__3_20)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      *mercury__robdd__LambdaHeadVar__3_20 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_53_95_95_49_95_95_104_111_50_48_49_95_95_91_52_44_32_53_93_95_48_6_f_0(mercury__robdd__V_39_39, mercury__robdd__V_40_40, mercury__robdd__V_33_33, mercury__robdd__V_36_36, mercury__robdd__LambdaHeadVar__1_18, mercury__robdd__LambdaHeadVar__2_19);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_52_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_27_27,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_36_36,
+  MR_Word mercury__robdd__LambdaHeadVar__1_18,
+  MR_Word mercury__robdd__LambdaHeadVar__2_19,
+  MR_Word * mercury__robdd__LambdaHeadVar__3_20)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      *mercury__robdd__LambdaHeadVar__3_20 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_53_95_95_49_95_95_104_111_50_48_50_95_95_91_52_44_32_53_93_95_48_6_f_0(mercury__robdd__V_39_39, mercury__robdd__V_40_40, mercury__robdd__V_33_33, mercury__robdd__V_36_36, mercury__robdd__LambdaHeadVar__1_18, mercury__robdd__LambdaHeadVar__2_19);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_50_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_27_27,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_36_36,
+  MR_Word mercury__robdd__LambdaHeadVar__1_18,
+  MR_Word mercury__robdd__LambdaHeadVar__2_19,
+  MR_Word * mercury__robdd__LambdaHeadVar__3_20)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      *mercury__robdd__LambdaHeadVar__3_20 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_53_95_95_49_95_95_104_111_50_48_51_95_95_91_52_44_32_53_93_95_48_6_f_0(mercury__robdd__V_39_39, mercury__robdd__V_40_40, mercury__robdd__V_33_33, mercury__robdd__V_36_36, mercury__robdd__LambdaHeadVar__1_18, mercury__robdd__LambdaHeadVar__2_19);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_57_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__V_70_70,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_51_51,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded = (mercury__robdd__V_11_11 == (MR_Integer) 0);
+
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__V_20_14 = mercury__robdd__V_19_13;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 1);
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_14_15;
+                MR_bool MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, (MR_Integer) 0)), (MR_Integer) 6)));
+                MR_Box mercury__robdd__conv1_V_14_15;
+
+                {
+                  mercury__robdd__succeeded = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_29), ((MR_Box) (mercury__robdd__V_10_10)), &mercury__robdd__conv1_V_14_15);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__V_14_15 = ((MR_Word) mercury__robdd__conv1_V_14_15);
+                    mercury__robdd__succeeded = MR_TRUE;
+                  }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_50_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__V_14_15, mercury__robdd__V_19_13, mercury__robdd__V_20_14);
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "sparse_bitset", (MR_String) "predicate \140sparse_bitset.fold_bits\'/7", (MR_String) "\140enum.from_int/1\' failed");
+                      return;
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__robdd__V_15_19 = (mercury__robdd__V_12_12 >> (MR_Integer) 1);
+                MR_Integer mercury__robdd__V_16_21;
+                MR_Integer mercury__robdd__V_17_22;
+                MR_Integer mercury__robdd__V_18_23;
+                MR_Integer mercury__robdd__V_26_24;
+                MR_Integer mercury__robdd__V_4_96 = ((MR_Integer) -1 << mercury__robdd__V_15_19);
+
+                mercury__robdd__V_16_21 = ~(mercury__robdd__V_4_96);
+                mercury__robdd__V_17_22 = (mercury__robdd__V_16_21 & mercury__robdd__V_11_11);
+                mercury__robdd__V_26_24 = (mercury__robdd__V_11_11 >> mercury__robdd__V_15_19);
+                mercury__robdd__V_18_23 = (mercury__robdd__V_16_21 & mercury__robdd__V_26_24);
+                switch (mercury__robdd__V_8_8) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mercury__robdd__V_27_27 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      MR_Word mercury__robdd__V_28_28;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_57_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_27_27, mercury__robdd__V_18_23, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_28_28);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_17_22;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_28_28;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mercury__robdd__V_30_25;
+                      MR_Integer mercury__robdd__V_31_26;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_57_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_10_10, mercury__robdd__V_17_22, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_30_25);
+                      }
+                      mercury__robdd__V_31_26 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_10__tmp_copy_10 = mercury__robdd__V_31_26;
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_18_23;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_30_25;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                        mercury__robdd__V_10_10 = mercury__robdd__V_10__tmp_copy_10;
+                      }
+                      continue;
+                    }
+                    break;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_57_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__V_70_70,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_51_51,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded = (mercury__robdd__V_11_11 == (MR_Integer) 0);
+
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__V_20_14 = mercury__robdd__V_19_13;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 1);
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_14_15;
+                MR_bool MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, (MR_Integer) 0)), (MR_Integer) 6)));
+                MR_Box mercury__robdd__conv1_V_14_15;
+
+                {
+                  mercury__robdd__succeeded = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_29), ((MR_Box) (mercury__robdd__V_10_10)), &mercury__robdd__conv1_V_14_15);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__V_14_15 = ((MR_Word) mercury__robdd__conv1_V_14_15);
+                    mercury__robdd__succeeded = MR_TRUE;
+                  }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_52_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__V_14_15, mercury__robdd__V_19_13, mercury__robdd__V_20_14);
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "sparse_bitset", (MR_String) "predicate \140sparse_bitset.fold_bits\'/7", (MR_String) "\140enum.from_int/1\' failed");
+                      return;
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__robdd__V_15_19 = (mercury__robdd__V_12_12 >> (MR_Integer) 1);
+                MR_Integer mercury__robdd__V_16_21;
+                MR_Integer mercury__robdd__V_17_22;
+                MR_Integer mercury__robdd__V_18_23;
+                MR_Integer mercury__robdd__V_26_24;
+                MR_Integer mercury__robdd__V_4_96 = ((MR_Integer) -1 << mercury__robdd__V_15_19);
+
+                mercury__robdd__V_16_21 = ~(mercury__robdd__V_4_96);
+                mercury__robdd__V_17_22 = (mercury__robdd__V_16_21 & mercury__robdd__V_11_11);
+                mercury__robdd__V_26_24 = (mercury__robdd__V_11_11 >> mercury__robdd__V_15_19);
+                mercury__robdd__V_18_23 = (mercury__robdd__V_16_21 & mercury__robdd__V_26_24);
+                switch (mercury__robdd__V_8_8) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mercury__robdd__V_27_27 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      MR_Word mercury__robdd__V_28_28;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_57_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_27_27, mercury__robdd__V_18_23, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_28_28);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_17_22;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_28_28;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mercury__robdd__V_30_25;
+                      MR_Integer mercury__robdd__V_31_26;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_57_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_10_10, mercury__robdd__V_17_22, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_30_25);
+                      }
+                      mercury__robdd__V_31_26 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_10__tmp_copy_10 = mercury__robdd__V_31_26;
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_18_23;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_30_25;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                        mercury__robdd__V_10_10 = mercury__robdd__V_10__tmp_copy_10;
+                      }
+                      continue;
+                    }
+                    break;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_56_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__V_70_70,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_51_51,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded = (mercury__robdd__V_11_11 == (MR_Integer) 0);
+
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__V_20_14 = mercury__robdd__V_19_13;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 1);
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_14_15;
+                MR_bool MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, (MR_Integer) 0)), (MR_Integer) 6)));
+                MR_Box mercury__robdd__conv1_V_14_15;
+
+                {
+                  mercury__robdd__succeeded = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_29), ((MR_Box) (mercury__robdd__V_10_10)), &mercury__robdd__conv1_V_14_15);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__V_14_15 = ((MR_Word) mercury__robdd__conv1_V_14_15);
+                    mercury__robdd__succeeded = MR_TRUE;
+                  }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_54_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__V_14_15, mercury__robdd__V_19_13, mercury__robdd__V_20_14);
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "sparse_bitset", (MR_String) "predicate \140sparse_bitset.fold_bits\'/7", (MR_String) "\140enum.from_int/1\' failed");
+                      return;
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__robdd__V_15_19 = (mercury__robdd__V_12_12 >> (MR_Integer) 1);
+                MR_Integer mercury__robdd__V_16_21;
+                MR_Integer mercury__robdd__V_17_22;
+                MR_Integer mercury__robdd__V_18_23;
+                MR_Integer mercury__robdd__V_26_24;
+                MR_Integer mercury__robdd__V_4_96 = ((MR_Integer) -1 << mercury__robdd__V_15_19);
+
+                mercury__robdd__V_16_21 = ~(mercury__robdd__V_4_96);
+                mercury__robdd__V_17_22 = (mercury__robdd__V_16_21 & mercury__robdd__V_11_11);
+                mercury__robdd__V_26_24 = (mercury__robdd__V_11_11 >> mercury__robdd__V_15_19);
+                mercury__robdd__V_18_23 = (mercury__robdd__V_16_21 & mercury__robdd__V_26_24);
+                switch (mercury__robdd__V_8_8) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mercury__robdd__V_27_27 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      MR_Word mercury__robdd__V_28_28;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_56_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_27_27, mercury__robdd__V_18_23, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_28_28);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_17_22;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_28_28;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mercury__robdd__V_30_25;
+                      MR_Integer mercury__robdd__V_31_26;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_56_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_10_10, mercury__robdd__V_17_22, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_30_25);
+                      }
+                      mercury__robdd__V_31_26 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_10__tmp_copy_10 = mercury__robdd__V_31_26;
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_18_23;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_30_25;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                        mercury__robdd__V_10_10 = mercury__robdd__V_10__tmp_copy_10;
+                      }
+                      continue;
+                    }
+                    break;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_56_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__V_70_70,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_51_51,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded = (mercury__robdd__V_11_11 == (MR_Integer) 0);
+
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__V_20_14 = mercury__robdd__V_19_13;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 1);
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_14_15;
+                MR_bool MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, (MR_Integer) 0)), (MR_Integer) 6)));
+                MR_Box mercury__robdd__conv1_V_14_15;
+
+                {
+                  mercury__robdd__succeeded = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_29), ((MR_Box) (mercury__robdd__V_10_10)), &mercury__robdd__conv1_V_14_15);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__V_14_15 = ((MR_Word) mercury__robdd__conv1_V_14_15);
+                    mercury__robdd__succeeded = MR_TRUE;
+                  }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_52_52_57_95_95_49_95_95_104_111_49_55_48_95_95_104_111_49_57_56_95_95_91_49_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_57_44_32_50_48_44_32_50_50_44_32_50_51_44_32_50_52_93_95_48_6_p_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__V_14_15, mercury__robdd__V_19_13, mercury__robdd__V_20_14);
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "sparse_bitset", (MR_String) "predicate \140sparse_bitset.fold_bits\'/7", (MR_String) "\140enum.from_int/1\' failed");
+                      return;
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__robdd__V_15_19 = (mercury__robdd__V_12_12 >> (MR_Integer) 1);
+                MR_Integer mercury__robdd__V_16_21;
+                MR_Integer mercury__robdd__V_17_22;
+                MR_Integer mercury__robdd__V_18_23;
+                MR_Integer mercury__robdd__V_26_24;
+                MR_Integer mercury__robdd__V_4_96 = ((MR_Integer) -1 << mercury__robdd__V_15_19);
+
+                mercury__robdd__V_16_21 = ~(mercury__robdd__V_4_96);
+                mercury__robdd__V_17_22 = (mercury__robdd__V_16_21 & mercury__robdd__V_11_11);
+                mercury__robdd__V_26_24 = (mercury__robdd__V_11_11 >> mercury__robdd__V_15_19);
+                mercury__robdd__V_18_23 = (mercury__robdd__V_16_21 & mercury__robdd__V_26_24);
+                switch (mercury__robdd__V_8_8) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mercury__robdd__V_27_27 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      MR_Word mercury__robdd__V_28_28;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_56_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_27_27, mercury__robdd__V_18_23, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_28_28);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_17_22;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_28_28;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mercury__robdd__V_30_25;
+                      MR_Integer mercury__robdd__V_31_26;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_56_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_69_69, mercury__robdd__V_70_70, mercury__robdd__V_42_42, mercury__robdd__V_48_48, mercury__robdd__V_51_51, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_10_10, mercury__robdd__V_17_22, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_30_25);
+                      }
+                      mercury__robdd__V_31_26 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_10__tmp_copy_10 = mercury__robdd__V_31_26;
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_18_23;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_30_25;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                        mercury__robdd__V_10_10 = mercury__robdd__V_10__tmp_copy_10;
+                      }
+                      continue;
+                    }
+                    break;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_60_60,
+  MR_Word mercury__robdd__V_61_61,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+        else
+          {
+            MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Integer mercury__robdd__V_22_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 0)));
+            MR_Integer mercury__robdd__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 1)));
+            MR_Integer mercury__robdd__V_18_18;
+            MR_Word mercury__robdd__V_19_19;
+
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0
+
+	MR_Integer Bits;
+
+		{
+
+    Bits = ML_BITS_PER_INT;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_18_18  = Bits;
+}
+            {
+              mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_56_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_60_60, mercury__robdd__V_61_61, mercury__robdd__V_33_33, mercury__robdd__V_39_39, mercury__robdd__V_42_42, mercury__robdd__TypeClassInfo_for_enum_20, (MR_Integer) 0, mercury__robdd__V_22_16, mercury__robdd__V_17_17, mercury__robdd__V_18_18, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_19_19);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_11_10;
+              MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_19_19;
+
+              mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+              mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_60_60,
+  MR_Word mercury__robdd__V_61_61,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+        else
+          {
+            MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Integer mercury__robdd__V_22_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 0)));
+            MR_Integer mercury__robdd__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 1)));
+            MR_Integer mercury__robdd__V_18_18;
+            MR_Word mercury__robdd__V_19_19;
+
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0
+
+	MR_Integer Bits;
+
+		{
+
+    Bits = ML_BITS_PER_INT;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_18_18  = Bits;
+}
+            {
+              mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_56_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_60_60, mercury__robdd__V_61_61, mercury__robdd__V_33_33, mercury__robdd__V_39_39, mercury__robdd__V_42_42, mercury__robdd__TypeClassInfo_for_enum_20, (MR_Integer) 0, mercury__robdd__V_22_16, mercury__robdd__V_17_17, mercury__robdd__V_18_18, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_19_19);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_11_10;
+              MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_19_19;
+
+              mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+              mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_60_60,
+  MR_Word mercury__robdd__V_61_61,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+        else
+          {
+            MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Integer mercury__robdd__V_22_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 0)));
+            MR_Integer mercury__robdd__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 1)));
+            MR_Integer mercury__robdd__V_18_18;
+            MR_Word mercury__robdd__V_19_19;
+
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0
+
+	MR_Integer Bits;
+
+		{
+
+    Bits = ML_BITS_PER_INT;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_18_18  = Bits;
+}
+            {
+              mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_57_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_60_60, mercury__robdd__V_61_61, mercury__robdd__V_33_33, mercury__robdd__V_39_39, mercury__robdd__V_42_42, mercury__robdd__TypeClassInfo_for_enum_20, (MR_Integer) 0, mercury__robdd__V_22_16, mercury__robdd__V_17_17, mercury__robdd__V_18_18, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_19_19);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_11_10;
+              MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_19_19;
+
+              mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+              mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_60_60,
+  MR_Word mercury__robdd__V_61_61,
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+        else
+          {
+            MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Integer mercury__robdd__V_22_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 0)));
+            MR_Integer mercury__robdd__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 1)));
+            MR_Integer mercury__robdd__V_18_18;
+            MR_Word mercury__robdd__V_19_19;
+
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0
+
+	MR_Integer Bits;
+
+		{
+
+    Bits = ML_BITS_PER_INT;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_18_18  = Bits;
+}
+            {
+              mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_49_95_95_104_111_49_57_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_53_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_60_60, mercury__robdd__V_61_61, mercury__robdd__V_33_33, mercury__robdd__V_39_39, mercury__robdd__V_42_42, mercury__robdd__TypeClassInfo_for_enum_20, (MR_Integer) 0, mercury__robdd__V_22_16, mercury__robdd__V_17_17, mercury__robdd__V_18_18, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_19_19);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_11_10;
+              MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_19_19;
+
+              mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+              mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_57_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__2_17,
+  MR_Word mercury__robdd__LambdaHeadVar__3_18)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__LambdaHeadVar__4_19;
+    MR_Word mercury__robdd__TypeCtorInfo_39_39 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_40_40;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_41 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_42;
+    MR_Word mercury__robdd__V_6_50;
+
+    {
+      mercury__robdd__TypeInfo_40_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_40_40, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_39_39));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_40_40, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_enum_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_41));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 2) = ((MR_Box) (mercury__robdd__TypeInfo_40_40));
+    }
+    mercury__robdd__V_6_50 = (MR_Word) mercury__robdd__LambdaHeadVar__2_17;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__V_45_45, mercury__robdd__V_46_46, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__LambdaHeadVar__1_16, mercury__robdd__TypeClassInfo_for_enum_42, mercury__robdd__V_6_50, mercury__robdd__LambdaHeadVar__3_18, &mercury__robdd__LambdaHeadVar__4_19);
+    }
+    return mercury__robdd__LambdaHeadVar__4_19;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_56_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__2_17,
+  MR_Word mercury__robdd__LambdaHeadVar__3_18)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__LambdaHeadVar__4_19;
+    MR_Word mercury__robdd__TypeCtorInfo_39_39 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_40_40;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_41 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_42;
+    MR_Word mercury__robdd__V_6_50;
+
+    {
+      mercury__robdd__TypeInfo_40_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_40_40, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_39_39));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_40_40, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_enum_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_41));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 2) = ((MR_Box) (mercury__robdd__TypeInfo_40_40));
+    }
+    mercury__robdd__V_6_50 = (MR_Word) mercury__robdd__LambdaHeadVar__2_17;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__V_45_45, mercury__robdd__V_46_46, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__LambdaHeadVar__1_16, mercury__robdd__TypeClassInfo_for_enum_42, mercury__robdd__V_6_50, mercury__robdd__LambdaHeadVar__3_18, &mercury__robdd__LambdaHeadVar__4_19);
+    }
+    return mercury__robdd__LambdaHeadVar__4_19;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_55_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__2_17,
+  MR_Word mercury__robdd__LambdaHeadVar__3_18)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__LambdaHeadVar__4_19;
+    MR_Word mercury__robdd__TypeCtorInfo_39_39 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_40_40;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_41 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_42;
+    MR_Word mercury__robdd__V_6_50;
+
+    {
+      mercury__robdd__TypeInfo_40_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_40_40, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_39_39));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_40_40, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_enum_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_41));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 2) = ((MR_Box) (mercury__robdd__TypeInfo_40_40));
+    }
+    mercury__robdd__V_6_50 = (MR_Word) mercury__robdd__LambdaHeadVar__2_17;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__V_45_45, mercury__robdd__V_46_46, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__LambdaHeadVar__1_16, mercury__robdd__TypeClassInfo_for_enum_42, mercury__robdd__V_6_50, mercury__robdd__LambdaHeadVar__3_18, &mercury__robdd__LambdaHeadVar__4_19);
+    }
+    return mercury__robdd__LambdaHeadVar__4_19;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_54_95_95_91_52_44_32_53_93_95_48_6_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__LambdaHeadVar__1_16,
+  MR_Word mercury__robdd__LambdaHeadVar__2_17,
+  MR_Word mercury__robdd__LambdaHeadVar__3_18)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__LambdaHeadVar__4_19;
+    MR_Word mercury__robdd__TypeCtorInfo_39_39 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_40_40;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_41 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_42;
+    MR_Word mercury__robdd__V_6_50;
+
+    {
+      mercury__robdd__TypeInfo_40_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_40_40, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_39_39));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_40_40, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_enum_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_41));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_42, 2) = ((MR_Box) (mercury__robdd__TypeInfo_40_40));
+    }
+    mercury__robdd__V_6_50 = (MR_Word) mercury__robdd__LambdaHeadVar__2_17;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_56_95_95_104_111_49_56_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_44_32_51_53_44_32_51_54_44_32_51_55_44_32_51_56_44_32_52_48_44_32_52_49_44_32_52_50_44_32_52_52_44_32_52_53_44_32_52_55_44_32_52_57_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__V_45_45, mercury__robdd__V_46_46, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__LambdaHeadVar__1_16, mercury__robdd__TypeClassInfo_for_enum_42, mercury__robdd__V_6_50, mercury__robdd__LambdaHeadVar__3_18, &mercury__robdd__LambdaHeadVar__4_19);
+    }
+    return mercury__robdd__LambdaHeadVar__4_19;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_53_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      *mercury__robdd__LambdaHeadVar__4_24 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_54_95_95_91_52_44_32_53_93_95_48_6_f_0(mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__V_40_40, mercury__robdd__LambdaHeadVar__1_21, mercury__robdd__LambdaHeadVar__2_22, mercury__robdd__LambdaHeadVar__3_23);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      *mercury__robdd__LambdaHeadVar__4_24 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_55_95_95_91_52_44_32_53_93_95_48_6_f_0(mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__V_40_40, mercury__robdd__LambdaHeadVar__1_21, mercury__robdd__LambdaHeadVar__2_22, mercury__robdd__LambdaHeadVar__3_23);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      *mercury__robdd__LambdaHeadVar__4_24 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_56_95_95_91_52_44_32_53_93_95_48_6_f_0(mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__V_40_40, mercury__robdd__LambdaHeadVar__1_21, mercury__robdd__LambdaHeadVar__2_22, mercury__robdd__LambdaHeadVar__3_23);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      *mercury__robdd__LambdaHeadVar__4_24 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_49_51_53_52_95_95_49_95_95_104_111_49_55_57_95_95_91_52_44_32_53_93_95_48_6_f_0(mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__V_40_40, mercury__robdd__LambdaHeadVar__1_21, mercury__robdd__LambdaHeadVar__2_22, mercury__robdd__LambdaHeadVar__3_23);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_47_47,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      *mercury__robdd__LambdaHeadVar__4_24 = mercury__robdd__IntroducedFrom__func__ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2__847__1_5_f_0(mercury__robdd__V_47_47, mercury__robdd__V_48_48, mercury__robdd__LambdaHeadVar__1_21, mercury__robdd__LambdaHeadVar__2_22, mercury__robdd__LambdaHeadVar__3_23);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_49_49,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22,
+  MR_Word mercury__robdd__LambdaHeadVar__3_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_24)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      *mercury__robdd__LambdaHeadVar__4_24 = mercury__robdd__IntroducedFrom__func__imp_res_to_imp_map__780__1_4_f_0(mercury__robdd__V_49_49, mercury__robdd__LambdaHeadVar__1_21, mercury__robdd__LambdaHeadVar__2_22, mercury__robdd__LambdaHeadVar__3_23);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_58_58,
+  MR_Word mercury__robdd__V_65_65,
+  MR_Word mercury__robdd__V_68_68,
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        switch (MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_12_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_13_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_17_15;
+              MR_Word mercury__robdd__V_18_16;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_12_11, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_17_15);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_10_9, mercury__robdd__V_11_10, mercury__robdd__V_17_15, &mercury__robdd__V_18_16);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_13_12;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_18_16;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word mercury__robdd__V_21_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_22_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_23_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_24_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_25_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_26_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_27_24 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_31_27;
+              MR_Word mercury__robdd__V_32_28;
+              MR_Word mercury__robdd__V_33_29;
+              MR_Word mercury__robdd__V_34_30;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_25_22, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_31_27);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_21_18, mercury__robdd__V_22_19, mercury__robdd__V_31_27, &mercury__robdd__V_32_28);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_26_23, mercury__robdd__V_32_28, &mercury__robdd__V_33_29);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_23_20, mercury__robdd__V_24_21, mercury__robdd__V_33_29, &mercury__robdd__V_34_30);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_27_24;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_34_30;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word mercury__robdd__V_37_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_38_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_39_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_40_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_41_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_42_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_43_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_44_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 7)));
+              MR_Word mercury__robdd__V_45_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 8)));
+              MR_Word mercury__robdd__V_46_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 9)));
+              MR_Word mercury__robdd__V_50_44;
+              MR_Word mercury__robdd__V_51_45;
+              MR_Word mercury__robdd__V_52_46;
+              MR_Word mercury__robdd__V_53_47;
+              MR_Word mercury__robdd__V_54_48;
+              MR_Word mercury__robdd__V_55_49;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_43_38, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_50_44);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_37_32, mercury__robdd__V_38_33, mercury__robdd__V_50_44, &mercury__robdd__V_51_45);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_44_39, mercury__robdd__V_51_45, &mercury__robdd__V_52_46);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_39_34, mercury__robdd__V_40_35, mercury__robdd__V_52_46, &mercury__robdd__V_53_47);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_45_40, mercury__robdd__V_53_47, &mercury__robdd__V_54_48);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_41_36, mercury__robdd__V_42_37, mercury__robdd__V_54_48, &mercury__robdd__V_55_49);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_46_41;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_55_49;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_58_58,
+  MR_Word mercury__robdd__V_65_65,
+  MR_Word mercury__robdd__V_68_68,
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        switch (MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_12_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_13_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_17_15;
+              MR_Word mercury__robdd__V_18_16;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_12_11, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_17_15);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_10_9, mercury__robdd__V_11_10, mercury__robdd__V_17_15, &mercury__robdd__V_18_16);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_13_12;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_18_16;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word mercury__robdd__V_21_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_22_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_23_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_24_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_25_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_26_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_27_24 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_31_27;
+              MR_Word mercury__robdd__V_32_28;
+              MR_Word mercury__robdd__V_33_29;
+              MR_Word mercury__robdd__V_34_30;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_25_22, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_31_27);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_21_18, mercury__robdd__V_22_19, mercury__robdd__V_31_27, &mercury__robdd__V_32_28);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_26_23, mercury__robdd__V_32_28, &mercury__robdd__V_33_29);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_23_20, mercury__robdd__V_24_21, mercury__robdd__V_33_29, &mercury__robdd__V_34_30);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_27_24;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_34_30;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word mercury__robdd__V_37_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_38_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_39_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_40_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_41_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_42_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_43_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_44_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 7)));
+              MR_Word mercury__robdd__V_45_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 8)));
+              MR_Word mercury__robdd__V_46_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 9)));
+              MR_Word mercury__robdd__V_50_44;
+              MR_Word mercury__robdd__V_51_45;
+              MR_Word mercury__robdd__V_52_46;
+              MR_Word mercury__robdd__V_53_47;
+              MR_Word mercury__robdd__V_54_48;
+              MR_Word mercury__robdd__V_55_49;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_43_38, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_50_44);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_37_32, mercury__robdd__V_38_33, mercury__robdd__V_50_44, &mercury__robdd__V_51_45);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_44_39, mercury__robdd__V_51_45, &mercury__robdd__V_52_46);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_39_34, mercury__robdd__V_40_35, mercury__robdd__V_52_46, &mercury__robdd__V_53_47);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_45_40, mercury__robdd__V_53_47, &mercury__robdd__V_54_48);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_41_36, mercury__robdd__V_42_37, mercury__robdd__V_54_48, &mercury__robdd__V_55_49);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_46_41;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_55_49;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_48_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_58_58,
+  MR_Word mercury__robdd__V_65_65,
+  MR_Word mercury__robdd__V_68_68,
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        switch (MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_12_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_13_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_17_15;
+              MR_Word mercury__robdd__V_18_16;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_48_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_12_11, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_17_15);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_10_9, mercury__robdd__V_11_10, mercury__robdd__V_17_15, &mercury__robdd__V_18_16);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_13_12;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_18_16;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word mercury__robdd__V_21_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_22_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_23_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_24_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_25_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_26_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_27_24 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_31_27;
+              MR_Word mercury__robdd__V_32_28;
+              MR_Word mercury__robdd__V_33_29;
+              MR_Word mercury__robdd__V_34_30;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_48_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_25_22, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_31_27);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_21_18, mercury__robdd__V_22_19, mercury__robdd__V_31_27, &mercury__robdd__V_32_28);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_48_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_26_23, mercury__robdd__V_32_28, &mercury__robdd__V_33_29);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_23_20, mercury__robdd__V_24_21, mercury__robdd__V_33_29, &mercury__robdd__V_34_30);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_27_24;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_34_30;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word mercury__robdd__V_37_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_38_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_39_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_40_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_41_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_42_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_43_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_44_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 7)));
+              MR_Word mercury__robdd__V_45_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 8)));
+              MR_Word mercury__robdd__V_46_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 9)));
+              MR_Word mercury__robdd__V_50_44;
+              MR_Word mercury__robdd__V_51_45;
+              MR_Word mercury__robdd__V_52_46;
+              MR_Word mercury__robdd__V_53_47;
+              MR_Word mercury__robdd__V_54_48;
+              MR_Word mercury__robdd__V_55_49;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_48_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_43_38, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_50_44);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_37_32, mercury__robdd__V_38_33, mercury__robdd__V_50_44, &mercury__robdd__V_51_45);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_48_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_44_39, mercury__robdd__V_51_45, &mercury__robdd__V_52_46);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_39_34, mercury__robdd__V_40_35, mercury__robdd__V_52_46, &mercury__robdd__V_53_47);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_48_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_45_40, mercury__robdd__V_53_47, &mercury__robdd__V_54_48);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_41_36, mercury__robdd__V_42_37, mercury__robdd__V_54_48, &mercury__robdd__V_55_49);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_46_41;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_55_49;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_53_57_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_58_58,
+  MR_Word mercury__robdd__V_65_65,
+  MR_Word mercury__robdd__V_68_68,
+  MR_Word mercury__robdd__V_69_69,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        switch (MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_12_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_13_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_17_15;
+              MR_Word mercury__robdd__V_18_16;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_53_57_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_12_11, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_17_15);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_53_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_10_9, mercury__robdd__V_11_10, mercury__robdd__V_17_15, &mercury__robdd__V_18_16);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_13_12;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_18_16;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word mercury__robdd__V_21_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_22_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_23_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_24_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_25_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_26_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_27_24 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_31_27;
+              MR_Word mercury__robdd__V_32_28;
+              MR_Word mercury__robdd__V_33_29;
+              MR_Word mercury__robdd__V_34_30;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_53_57_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_25_22, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_31_27);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_53_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_21_18, mercury__robdd__V_22_19, mercury__robdd__V_31_27, &mercury__robdd__V_32_28);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_53_57_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_26_23, mercury__robdd__V_32_28, &mercury__robdd__V_33_29);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_53_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_23_20, mercury__robdd__V_24_21, mercury__robdd__V_33_29, &mercury__robdd__V_34_30);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_27_24;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_34_30;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word mercury__robdd__V_37_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_38_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_39_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_40_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_41_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_42_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_43_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_44_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 7)));
+              MR_Word mercury__robdd__V_45_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 8)));
+              MR_Word mercury__robdd__V_46_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 9)));
+              MR_Word mercury__robdd__V_50_44;
+              MR_Word mercury__robdd__V_51_45;
+              MR_Word mercury__robdd__V_52_46;
+              MR_Word mercury__robdd__V_53_47;
+              MR_Word mercury__robdd__V_54_48;
+              MR_Word mercury__robdd__V_55_49;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_53_57_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_43_38, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_50_44);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_53_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_37_32, mercury__robdd__V_38_33, mercury__robdd__V_50_44, &mercury__robdd__V_51_45);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_53_57_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_44_39, mercury__robdd__V_51_45, &mercury__robdd__V_52_46);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_53_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_39_34, mercury__robdd__V_40_35, mercury__robdd__V_52_46, &mercury__robdd__V_53_47);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_53_57_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_45_40, mercury__robdd__V_53_47, &mercury__robdd__V_54_48);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_55_53_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_8_p_0(mercury__robdd__V_58_58, mercury__robdd__V_65_65, mercury__robdd__V_68_68, mercury__robdd__V_69_69, mercury__robdd__V_41_36, mercury__robdd__V_42_37, mercury__robdd__V_54_48, &mercury__robdd__V_55_49);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_46_41;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_55_49;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded = (mercury__robdd__V_11_11 == (MR_Integer) 0);
+
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__V_20_14 = mercury__robdd__V_19_13;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 1);
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_14_15;
+                MR_bool MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, (MR_Integer) 0)), (MR_Integer) 6)));
+                MR_Box mercury__robdd__conv1_V_14_15;
+
+                {
+                  mercury__robdd__succeeded = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_29), ((MR_Box) (mercury__robdd__V_10_10)), &mercury__robdd__conv1_V_14_15);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__V_14_15 = ((MR_Word) mercury__robdd__conv1_V_14_15);
+                    mercury__robdd__succeeded = MR_TRUE;
+                  }
+                if (mercury__robdd__succeeded)
+                  {
+                    MR_Word mercury__robdd__V_77_77;
+
+                    {
+                      mercury__robdd__V_77_77 = mercury__robdd__zero_0_f_0(mercury__robdd__V_48_48);
+                    }
+                    {
+                      *mercury__robdd__V_20_14 = mercury__robdd__make_node_3_f_0(mercury__robdd__V_48_48, mercury__robdd__V_14_15, mercury__robdd__V_19_13, mercury__robdd__V_77_77);
+                    }
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "sparse_bitset", (MR_String) "predicate \140sparse_bitset.fold_bits\'/7", (MR_String) "\140enum.from_int/1\' failed");
+                      return;
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__robdd__V_15_19 = (mercury__robdd__V_12_12 >> (MR_Integer) 1);
+                MR_Integer mercury__robdd__V_16_21;
+                MR_Integer mercury__robdd__V_17_22;
+                MR_Integer mercury__robdd__V_18_23;
+                MR_Integer mercury__robdd__V_26_24;
+                MR_Integer mercury__robdd__V_4_89 = ((MR_Integer) -1 << mercury__robdd__V_15_19);
+
+                mercury__robdd__V_16_21 = ~(mercury__robdd__V_4_89);
+                mercury__robdd__V_17_22 = (mercury__robdd__V_16_21 & mercury__robdd__V_11_11);
+                mercury__robdd__V_26_24 = (mercury__robdd__V_11_11 >> mercury__robdd__V_15_19);
+                mercury__robdd__V_18_23 = (mercury__robdd__V_16_21 & mercury__robdd__V_26_24);
+                switch (mercury__robdd__V_8_8) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mercury__robdd__V_27_27 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      MR_Word mercury__robdd__V_28_28;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_48_48, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_27_27, mercury__robdd__V_18_23, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_28_28);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_17_22;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_28_28;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mercury__robdd__V_30_25;
+                      MR_Integer mercury__robdd__V_31_26;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_48_48, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_10_10, mercury__robdd__V_17_22, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_30_25);
+                      }
+                      mercury__robdd__V_31_26 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_10__tmp_copy_10 = mercury__robdd__V_31_26;
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_18_23;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_30_25;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                        mercury__robdd__V_10_10 = mercury__robdd__V_10__tmp_copy_10;
+                      }
+                      continue;
+                    }
+                    break;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded = (mercury__robdd__V_11_11 == (MR_Integer) 0);
+
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__V_20_14 = mercury__robdd__V_19_13;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 1);
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_14_15;
+                MR_bool MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, (MR_Integer) 0)), (MR_Integer) 6)));
+                MR_Box mercury__robdd__conv1_V_14_15;
+
+                {
+                  mercury__robdd__succeeded = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_29), ((MR_Box) (mercury__robdd__V_10_10)), &mercury__robdd__conv1_V_14_15);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__V_14_15 = ((MR_Word) mercury__robdd__conv1_V_14_15);
+                    mercury__robdd__succeeded = MR_TRUE;
+                  }
+                if (mercury__robdd__succeeded)
+                  {
+                    MR_Word mercury__robdd__V_77_77;
+
+                    {
+                      mercury__robdd__V_77_77 = mercury__robdd__zero_0_f_0(mercury__robdd__V_48_48);
+                    }
+                    {
+                      *mercury__robdd__V_20_14 = mercury__robdd__make_node_3_f_0(mercury__robdd__V_48_48, mercury__robdd__V_14_15, mercury__robdd__V_77_77, mercury__robdd__V_19_13);
+                    }
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "sparse_bitset", (MR_String) "predicate \140sparse_bitset.fold_bits\'/7", (MR_String) "\140enum.from_int/1\' failed");
+                      return;
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__robdd__V_15_19 = (mercury__robdd__V_12_12 >> (MR_Integer) 1);
+                MR_Integer mercury__robdd__V_16_21;
+                MR_Integer mercury__robdd__V_17_22;
+                MR_Integer mercury__robdd__V_18_23;
+                MR_Integer mercury__robdd__V_26_24;
+                MR_Integer mercury__robdd__V_4_89 = ((MR_Integer) -1 << mercury__robdd__V_15_19);
+
+                mercury__robdd__V_16_21 = ~(mercury__robdd__V_4_89);
+                mercury__robdd__V_17_22 = (mercury__robdd__V_16_21 & mercury__robdd__V_11_11);
+                mercury__robdd__V_26_24 = (mercury__robdd__V_11_11 >> mercury__robdd__V_15_19);
+                mercury__robdd__V_18_23 = (mercury__robdd__V_16_21 & mercury__robdd__V_26_24);
+                switch (mercury__robdd__V_8_8) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mercury__robdd__V_27_27 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      MR_Word mercury__robdd__V_28_28;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_48_48, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_27_27, mercury__robdd__V_18_23, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_28_28);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_17_22;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_28_28;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mercury__robdd__V_30_25;
+                      MR_Integer mercury__robdd__V_31_26;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_48_48, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_10_10, mercury__robdd__V_17_22, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_30_25);
+                      }
+                      mercury__robdd__V_31_26 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_10__tmp_copy_10 = mercury__robdd__V_31_26;
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_18_23;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_30_25;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                        mercury__robdd__V_10_10 = mercury__robdd__V_10__tmp_copy_10;
+                      }
+                      continue;
+                    }
+                    break;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded = (mercury__robdd__V_11_11 == (MR_Integer) 0);
+
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__V_20_14 = mercury__robdd__V_19_13;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 1);
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_14_15;
+                MR_bool MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, (MR_Integer) 0)), (MR_Integer) 6)));
+                MR_Box mercury__robdd__conv1_V_14_15;
+
+                {
+                  mercury__robdd__succeeded = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_29), ((MR_Box) (mercury__robdd__V_10_10)), &mercury__robdd__conv1_V_14_15);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__V_14_15 = ((MR_Word) mercury__robdd__conv1_V_14_15);
+                    mercury__robdd__succeeded = MR_TRUE;
+                  }
+                if (mercury__robdd__succeeded)
+                  {
+                    MR_Word mercury__robdd__V_77_77;
+
+                    {
+                      mercury__robdd__V_77_77 = mercury__robdd__one_0_f_0(mercury__robdd__V_48_48);
+                    }
+                    {
+                      *mercury__robdd__V_20_14 = mercury__robdd__make_node_3_f_0(mercury__robdd__V_48_48, mercury__robdd__V_14_15, mercury__robdd__V_77_77, mercury__robdd__V_19_13);
+                    }
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "sparse_bitset", (MR_String) "predicate \140sparse_bitset.fold_bits\'/7", (MR_String) "\140enum.from_int/1\' failed");
+                      return;
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__robdd__V_15_19 = (mercury__robdd__V_12_12 >> (MR_Integer) 1);
+                MR_Integer mercury__robdd__V_16_21;
+                MR_Integer mercury__robdd__V_17_22;
+                MR_Integer mercury__robdd__V_18_23;
+                MR_Integer mercury__robdd__V_26_24;
+                MR_Integer mercury__robdd__V_4_89 = ((MR_Integer) -1 << mercury__robdd__V_15_19);
+
+                mercury__robdd__V_16_21 = ~(mercury__robdd__V_4_89);
+                mercury__robdd__V_17_22 = (mercury__robdd__V_16_21 & mercury__robdd__V_11_11);
+                mercury__robdd__V_26_24 = (mercury__robdd__V_11_11 >> mercury__robdd__V_15_19);
+                mercury__robdd__V_18_23 = (mercury__robdd__V_16_21 & mercury__robdd__V_26_24);
+                switch (mercury__robdd__V_8_8) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mercury__robdd__V_27_27 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      MR_Word mercury__robdd__V_28_28;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_48_48, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_27_27, mercury__robdd__V_18_23, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_28_28);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_17_22;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_28_28;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mercury__robdd__V_30_25;
+                      MR_Integer mercury__robdd__V_31_26;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_48_48, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_10_10, mercury__robdd__V_17_22, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_30_25);
+                      }
+                      mercury__robdd__V_31_26 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_10__tmp_copy_10 = mercury__robdd__V_31_26;
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_18_23;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_30_25;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                        mercury__robdd__V_10_10 = mercury__robdd__V_10__tmp_copy_10;
+                      }
+                      continue;
+                    }
+                    break;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_51_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_75_75,
+  MR_Word mercury__robdd__V_91_91,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        switch (MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_12_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_13_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_17_15;
+              MR_Word mercury__robdd__V_18_16;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_51_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_12_11, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_17_15);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_10_9, mercury__robdd__V_11_10, mercury__robdd__V_17_15, &mercury__robdd__V_18_16);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_13_12;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_18_16;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word mercury__robdd__V_21_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_22_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_23_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_24_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_25_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_26_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_27_24 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_31_27;
+              MR_Word mercury__robdd__V_32_28;
+              MR_Word mercury__robdd__V_33_29;
+              MR_Word mercury__robdd__V_34_30;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_51_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_25_22, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_31_27);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_21_18, mercury__robdd__V_22_19, mercury__robdd__V_31_27, &mercury__robdd__V_32_28);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_51_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_26_23, mercury__robdd__V_32_28, &mercury__robdd__V_33_29);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_23_20, mercury__robdd__V_24_21, mercury__robdd__V_33_29, &mercury__robdd__V_34_30);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_27_24;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_34_30;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word mercury__robdd__V_37_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_38_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_39_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_40_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_41_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_42_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_43_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_44_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 7)));
+              MR_Word mercury__robdd__V_45_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 8)));
+              MR_Word mercury__robdd__V_46_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 9)));
+              MR_Word mercury__robdd__V_50_44;
+              MR_Word mercury__robdd__V_51_45;
+              MR_Word mercury__robdd__V_52_46;
+              MR_Word mercury__robdd__V_53_47;
+              MR_Word mercury__robdd__V_54_48;
+              MR_Word mercury__robdd__V_55_49;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_51_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_43_38, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_50_44);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_37_32, mercury__robdd__V_38_33, mercury__robdd__V_50_44, &mercury__robdd__V_51_45);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_51_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_44_39, mercury__robdd__V_51_45, &mercury__robdd__V_52_46);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_39_34, mercury__robdd__V_40_35, mercury__robdd__V_52_46, &mercury__robdd__V_53_47);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_51_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_45_40, mercury__robdd__V_53_47, &mercury__robdd__V_54_48);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_75_75, mercury__robdd__V_91_91, mercury__robdd__V_41_36, mercury__robdd__V_42_37, mercury__robdd__V_54_48, &mercury__robdd__V_55_49);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_46_41;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_55_49;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded = (mercury__robdd__V_11_11 == (MR_Integer) 0);
+
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__V_20_14 = mercury__robdd__V_19_13;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 1);
+            if (mercury__robdd__succeeded)
+              {
+                MR_Box mercury__robdd__V_14_15;
+                MR_bool MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, (MR_Integer) 0)), (MR_Integer) 6)));
+
+                {
+                  mercury__robdd__succeeded = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_29), ((MR_Box) (mercury__robdd__V_10_10)), &mercury__robdd__V_14_15);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    *mercury__robdd__V_20_14 = base;
+                    MR_hl_field(MR_mktag(1), base, 0) = mercury__robdd__V_14_15;
+                    MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__robdd__V_19_13));
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "sparse_bitset", (MR_String) "predicate \140sparse_bitset.fold_bits\'/7", (MR_String) "\140enum.from_int/1\' failed");
+                      return;
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__robdd__V_15_19 = (mercury__robdd__V_12_12 >> (MR_Integer) 1);
+                MR_Integer mercury__robdd__V_16_21;
+                MR_Integer mercury__robdd__V_17_22;
+                MR_Integer mercury__robdd__V_18_23;
+                MR_Integer mercury__robdd__V_26_24;
+                MR_Integer mercury__robdd__V_4_79 = ((MR_Integer) -1 << mercury__robdd__V_15_19);
+
+                mercury__robdd__V_16_21 = ~(mercury__robdd__V_4_79);
+                mercury__robdd__V_17_22 = (mercury__robdd__V_16_21 & mercury__robdd__V_11_11);
+                mercury__robdd__V_26_24 = (mercury__robdd__V_11_11 >> mercury__robdd__V_15_19);
+                mercury__robdd__V_18_23 = (mercury__robdd__V_16_21 & mercury__robdd__V_26_24);
+                switch (mercury__robdd__V_8_8) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mercury__robdd__V_27_27 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      MR_Word mercury__robdd__V_28_28;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_27_27, mercury__robdd__V_18_23, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_28_28);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_17_22;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_28_28;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mercury__robdd__V_30_25;
+                      MR_Integer mercury__robdd__V_31_26;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_10_10, mercury__robdd__V_17_22, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_30_25);
+                      }
+                      mercury__robdd__V_31_26 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_10__tmp_copy_10 = mercury__robdd__V_31_26;
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_18_23;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_30_25;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                        mercury__robdd__V_10_10 = mercury__robdd__V_10__tmp_copy_10;
+                      }
+                      continue;
+                    }
+                    break;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_110_116_101_114_115_101_99_116_95_108_111_111_112_95_95_104_111_49_50_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_53_93_95_48_5_p_in__map_0(
+  MR_Word mercury__robdd__V_49_49,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7,
+  MR_Word mercury__robdd__V_22_9,
+  MR_Word * mercury__robdd__V_23_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__V_6_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          if ((mercury__robdd__V_7_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+            *mercury__robdd__V_23_10 = mercury__robdd__V_22_9;
+          else
+            *mercury__robdd__V_23_10 = mercury__robdd__V_22_9;
+        else
+          {
+            MR_Word mercury__robdd__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__V_6_6, (MR_Integer) 1)));
+            MR_Word mercury__robdd__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__V_6_6, (MR_Integer) 0)));
+
+            if ((mercury__robdd__V_7_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              *mercury__robdd__V_23_10 = mercury__robdd__V_22_9;
+            else
+              {
+                MR_Word mercury__robdd__V_14_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_32_32, (MR_Integer) 0)));
+                MR_Word mercury__robdd__V_15_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_32_32, (MR_Integer) 1)));
+                MR_Word mercury__robdd__V_25_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__V_7_7, (MR_Integer) 0)));
+                MR_Word mercury__robdd__V_19_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__V_7_7, (MR_Integer) 1)));
+                MR_Word mercury__robdd__V_17_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_25_21, (MR_Integer) 0)));
+                MR_Word mercury__robdd__V_18_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_25_21, (MR_Integer) 1)));
+                MR_Word mercury__robdd__V_20_25;
+                MR_Integer mercury__robdd__V_50_50 = (MR_Integer) mercury__robdd__V_14_19;
+                MR_Integer mercury__robdd__V_51_51 = (MR_Integer) mercury__robdd__V_17_23;
+
+                mercury__robdd__succeeded = (mercury__robdd__V_50_50 < mercury__robdd__V_51_51);
+                if (mercury__robdd__succeeded)
+                  mercury__robdd__V_20_25 = (MR_Integer) 1;
+                else
+                  {
+                    mercury__robdd__succeeded = (mercury__robdd__V_50_50 == mercury__robdd__V_51_51);
+                    if (mercury__robdd__succeeded)
+                      mercury__robdd__V_20_25 = (MR_Integer) 0;
+                    else
+                      mercury__robdd__V_20_25 = (MR_Integer) 2;
+                  }
+                switch (mercury__robdd__V_20_25) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__robdd__V_6__tmp_copy_6 = mercury__robdd__V_31_31;
+
+                        mercury__robdd__V_6_6 = mercury__robdd__V_6__tmp_copy_6;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mercury__robdd__V_21_26;
+                      MR_Word mercury__robdd__V_28_27;
+                      MR_Word mercury__robdd__V_29_28;
+
+                      {
+                        mercury__robdd__V_21_26 = mercury__robdd__IntroducedFrom__func__ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2__862__1_3_f_0(mercury__robdd__V_49_49, mercury__robdd__V_15_20, mercury__robdd__V_18_24);
+                      }
+                      {
+                        mercury__robdd__V_29_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), mercury__robdd__V_29_28, 0) = ((MR_Box) (mercury__robdd__V_14_19));
+                        MR_hl_field(MR_mktag(0), mercury__robdd__V_29_28, 1) = ((MR_Box) (mercury__robdd__V_21_26));
+                      }
+                      {
+                        mercury__robdd__V_28_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__robdd__V_28_27, 0) = ((MR_Box) (mercury__robdd__V_29_28));
+                        MR_hl_field(MR_mktag(1), mercury__robdd__V_28_27, 1) = ((MR_Box) (mercury__robdd__V_22_9));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__robdd__V_6__tmp_copy_6 = mercury__robdd__V_31_31;
+                        MR_Word mercury__robdd__V_7__tmp_copy_7 = mercury__robdd__V_19_22;
+                        MR_Word mercury__robdd__V_22__tmp_copy_9 = mercury__robdd__V_28_27;
+
+                        mercury__robdd__V_22_9 = mercury__robdd__V_22__tmp_copy_9;
+                        mercury__robdd__V_7_7 = mercury__robdd__V_7__tmp_copy_7;
+                        mercury__robdd__V_6_6 = mercury__robdd__V_6__tmp_copy_6;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 2:
+                    {
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__robdd__V_7__tmp_copy_7 = mercury__robdd__V_19_22;
+
+                        mercury__robdd__V_7_7 = mercury__robdd__V_7__tmp_copy_7;
+                      }
+                      continue;
+                    }
+                    break;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_50_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_73_73,
+  MR_Word mercury__robdd__V_87_87,
+  MR_Word mercury__robdd__V_88_88,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        switch (MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_12_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_13_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_17_15;
+              MR_Word mercury__robdd__V_18_16;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_50_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_93_95_48_4_p_in__tree234_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_12_11, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_17_15);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_10_9, mercury__robdd__V_11_10, mercury__robdd__V_17_15, &mercury__robdd__V_18_16);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_13_12;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_18_16;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word mercury__robdd__V_21_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_22_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_23_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_24_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_25_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_26_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_27_24 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_31_27;
+              MR_Word mercury__robdd__V_32_28;
+              MR_Word mercury__robdd__V_33_29;
+              MR_Word mercury__robdd__V_34_30;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_50_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_93_95_48_4_p_in__tree234_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_25_22, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_31_27);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_21_18, mercury__robdd__V_22_19, mercury__robdd__V_31_27, &mercury__robdd__V_32_28);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_50_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_93_95_48_4_p_in__tree234_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_26_23, mercury__robdd__V_32_28, &mercury__robdd__V_33_29);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_23_20, mercury__robdd__V_24_21, mercury__robdd__V_33_29, &mercury__robdd__V_34_30);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_27_24;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_34_30;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word mercury__robdd__V_37_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_38_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_39_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_40_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_41_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_42_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_43_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_44_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 7)));
+              MR_Word mercury__robdd__V_45_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 8)));
+              MR_Word mercury__robdd__V_46_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 9)));
+              MR_Word mercury__robdd__V_50_44;
+              MR_Word mercury__robdd__V_51_45;
+              MR_Word mercury__robdd__V_52_46;
+              MR_Word mercury__robdd__V_53_47;
+              MR_Word mercury__robdd__V_54_48;
+              MR_Word mercury__robdd__V_55_49;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_50_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_93_95_48_4_p_in__tree234_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_43_38, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_50_44);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_37_32, mercury__robdd__V_38_33, mercury__robdd__V_50_44, &mercury__robdd__V_51_45);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_50_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_93_95_48_4_p_in__tree234_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_44_39, mercury__robdd__V_51_45, &mercury__robdd__V_52_46);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_39_34, mercury__robdd__V_40_35, mercury__robdd__V_52_46, &mercury__robdd__V_53_47);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_50_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_93_95_48_4_p_in__tree234_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_45_40, mercury__robdd__V_53_47, &mercury__robdd__V_54_48);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_49_54_54_95_95_49_95_95_104_111_49_54_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_8_p_0(mercury__robdd__V_73_73, mercury__robdd__V_87_87, mercury__robdd__V_88_88, mercury__robdd__V_41_36, mercury__robdd__V_42_37, mercury__robdd__V_54_48, &mercury__robdd__V_55_49);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_46_41;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_55_49;
+
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_44_32_49_51_93_95_48_7_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_29,
+  MR_Word mercury__robdd__V_8_8,
+  MR_Integer mercury__robdd__V_10_10,
+  MR_Integer mercury__robdd__V_11_11,
+  MR_Integer mercury__robdd__V_12_12,
+  MR_Word mercury__robdd__V_19_13,
+  MR_Word * mercury__robdd__V_20_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded = (mercury__robdd__V_11_11 == (MR_Integer) 0);
+
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__V_20_14 = mercury__robdd__V_19_13;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 1);
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_14_15;
+                MR_bool MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, (MR_Integer) 0)), (MR_Integer) 6)));
+                MR_Box mercury__robdd__conv1_V_14_15;
+
+                {
+                  mercury__robdd__succeeded = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_29), ((MR_Box) (mercury__robdd__V_10_10)), &mercury__robdd__conv1_V_14_15);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__V_14_15 = ((MR_Word) mercury__robdd__conv1_V_14_15);
+                    mercury__robdd__succeeded = MR_TRUE;
+                  }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__IntroducedFrom__pred__rev_map__682__1_5_p_0(mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__V_14_15, mercury__robdd__V_19_13, mercury__robdd__V_20_14);
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "sparse_bitset", (MR_String) "predicate \140sparse_bitset.fold_bits\'/7", (MR_String) "\140enum.from_int/1\' failed");
+                      return;
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__robdd__V_15_19 = (mercury__robdd__V_12_12 >> (MR_Integer) 1);
+                MR_Integer mercury__robdd__V_16_21;
+                MR_Integer mercury__robdd__V_17_22;
+                MR_Integer mercury__robdd__V_18_23;
+                MR_Integer mercury__robdd__V_26_24;
+                MR_Integer mercury__robdd__V_4_47 = ((MR_Integer) -1 << mercury__robdd__V_15_19);
+
+                mercury__robdd__V_16_21 = ~(mercury__robdd__V_4_47);
+                mercury__robdd__V_17_22 = (mercury__robdd__V_16_21 & mercury__robdd__V_11_11);
+                mercury__robdd__V_26_24 = (mercury__robdd__V_11_11 >> mercury__robdd__V_15_19);
+                mercury__robdd__V_18_23 = (mercury__robdd__V_16_21 & mercury__robdd__V_26_24);
+                switch (mercury__robdd__V_8_8) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Integer mercury__robdd__V_27_27 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      MR_Word mercury__robdd__V_28_28;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_44_32_49_51_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_27_27, mercury__robdd__V_18_23, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_28_28);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_17_22;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_28_28;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                      }
+                      continue;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word mercury__robdd__V_30_25;
+                      MR_Integer mercury__robdd__V_31_26;
+
+                      {
+                        mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_44_32_49_51_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__TypeClassInfo_for_enum_29, mercury__robdd__V_8_8, mercury__robdd__V_10_10, mercury__robdd__V_17_22, mercury__robdd__V_15_19, mercury__robdd__V_19_13, &mercury__robdd__V_30_25);
+                      }
+                      mercury__robdd__V_31_26 = (mercury__robdd__V_10_10 + mercury__robdd__V_15_19);
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Integer mercury__robdd__V_10__tmp_copy_10 = mercury__robdd__V_31_26;
+                        MR_Integer mercury__robdd__V_11__tmp_copy_11 = mercury__robdd__V_18_23;
+                        MR_Integer mercury__robdd__V_12__tmp_copy_12 = mercury__robdd__V_15_19;
+                        MR_Word mercury__robdd__V_19__tmp_copy_13 = mercury__robdd__V_30_25;
+
+                        mercury__robdd__V_19_13 = mercury__robdd__V_19__tmp_copy_13;
+                        mercury__robdd__V_12_12 = mercury__robdd__V_12__tmp_copy_12;
+                        mercury__robdd__V_11_11 = mercury__robdd__V_11__tmp_copy_11;
+                        mercury__robdd__V_10_10 = mercury__robdd__V_10__tmp_copy_10;
+                      }
+                      continue;
+                    }
+                    break;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_44_32_49_50_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_34_34,
+  MR_Word mercury__robdd__V_35_35,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+        else
+          {
+            MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Integer mercury__robdd__V_22_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 0)));
+            MR_Integer mercury__robdd__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 1)));
+            MR_Integer mercury__robdd__V_18_18;
+            MR_Word mercury__robdd__V_19_19;
+
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_44_32_49_50_93_95_48_4_p_in__sparse_bitset_0
+
+	MR_Integer Bits;
+
+		{
+
+    Bits = ML_BITS_PER_INT;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_18_18  = Bits;
+}
+            {
+              mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_44_32_49_51_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_34_34, mercury__robdd__V_35_35, mercury__robdd__TypeClassInfo_for_enum_20, (MR_Integer) 0, mercury__robdd__V_22_16, mercury__robdd__V_17_17, mercury__robdd__V_18_18, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_19_19);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_11_10;
+              MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_19_19;
+
+              mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+              mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_49_48_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_57_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+    else
+      {
+        MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_15_13;
+        MR_Integer mercury__robdd__V_22_17;
+        MR_Integer mercury__robdd__V_18_18;
+        MR_Integer mercury__robdd__V_19_19;
+
+        {
+          mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_49_48_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_57_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__TypeClassInfo_for_enum_20, mercury__robdd__V_11_10, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_15_13);
+        }
+        mercury__robdd__V_22_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 0)));
+        mercury__robdd__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 1)));
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_49_48_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_57_93_95_48_4_p_in__sparse_bitset_0
+
+	MR_Integer Bits;
+
+		{
+
+    Bits = ML_BITS_PER_INT;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_19_19  = Bits;
+}
+        {
+          mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_50_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__TypeClassInfo_for_enum_20, (MR_Integer) 1, mercury__robdd__V_22_17, mercury__robdd__V_18_18, mercury__robdd__V_19_19, mercury__robdd__V_15_13, mercury__robdd__HeadVar__4_4);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_50_51_44_32_50_52_44_32_50_53_93_95_48_4_p_in__list_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__V_47_47,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_49_49,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+        else
+          {
+            MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word mercury__robdd__V_15_13;
+
+            {
+              mercury__robdd__V_15_13 = mercury__robdd__IntroducedFrom__func__merge_imp_res_2__761__1_7_f_0(mercury__robdd__V_45_45, mercury__robdd__V_46_46, mercury__robdd__V_47_47, mercury__robdd__V_48_48, mercury__robdd__V_49_49, mercury__robdd__V_10_9, mercury__robdd__HeadVar__3_3);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_11_10;
+              MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_15_13;
+
+              mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+              mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_6_p_in__tree234_0(
+  MR_Word mercury__robdd__V_93_93,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4,
+  MR_Word mercury__robdd__HeadVar__5_5,
+  MR_Word * mercury__robdd__HeadVar__6_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        switch (MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              *mercury__robdd__HeadVar__6_6 = mercury__robdd__HeadVar__5_5;
+              *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__robdd__V_15_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_16_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_17_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_18_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_25_21;
+              MR_Word mercury__robdd__V_26_22;
+              MR_Word mercury__robdd__V_27_23;
+              MR_Word mercury__robdd__V_28_24;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_6_p_in__tree234_0(mercury__robdd__V_93_93, mercury__robdd__V_17_15, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_25_21, mercury__robdd__HeadVar__5_5, &mercury__robdd__V_26_22);
+              }
+              {
+                mercury__robdd__IntroducedFrom__pred__rev_map__678__1_7_p_0(mercury__robdd__V_93_93, mercury__robdd__V_15_13, mercury__robdd__V_16_14, mercury__robdd__V_25_21, &mercury__robdd__V_27_23, mercury__robdd__V_26_22, &mercury__robdd__V_28_24);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_18_16;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_27_23;
+                MR_Word mercury__robdd__HeadVar__5__tmp_copy_5 = mercury__robdd__V_28_24;
+
+                mercury__robdd__HeadVar__5_5 = mercury__robdd__HeadVar__5__tmp_copy_5;
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word mercury__robdd__V_32_26 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_33_27 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_34_28 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_35_29 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_36_30 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_37_31 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_38_32 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_45_37;
+              MR_Word mercury__robdd__V_46_38;
+              MR_Word mercury__robdd__V_47_39;
+              MR_Word mercury__robdd__V_48_40;
+              MR_Word mercury__robdd__V_49_41;
+              MR_Word mercury__robdd__V_50_42;
+              MR_Word mercury__robdd__V_51_43;
+              MR_Word mercury__robdd__V_52_44;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_6_p_in__tree234_0(mercury__robdd__V_93_93, mercury__robdd__V_36_30, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_45_37, mercury__robdd__HeadVar__5_5, &mercury__robdd__V_46_38);
+              }
+              {
+                mercury__robdd__IntroducedFrom__pred__rev_map__678__1_7_p_0(mercury__robdd__V_93_93, mercury__robdd__V_32_26, mercury__robdd__V_33_27, mercury__robdd__V_45_37, &mercury__robdd__V_47_39, mercury__robdd__V_46_38, &mercury__robdd__V_48_40);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_6_p_in__tree234_0(mercury__robdd__V_93_93, mercury__robdd__V_37_31, mercury__robdd__V_47_39, &mercury__robdd__V_49_41, mercury__robdd__V_48_40, &mercury__robdd__V_50_42);
+              }
+              {
+                mercury__robdd__IntroducedFrom__pred__rev_map__678__1_7_p_0(mercury__robdd__V_93_93, mercury__robdd__V_34_28, mercury__robdd__V_35_29, mercury__robdd__V_49_41, &mercury__robdd__V_51_43, mercury__robdd__V_50_42, &mercury__robdd__V_52_44);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_38_32;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_51_43;
+                MR_Word mercury__robdd__HeadVar__5__tmp_copy_5 = mercury__robdd__V_52_44;
+
+                mercury__robdd__HeadVar__5_5 = mercury__robdd__HeadVar__5__tmp_copy_5;
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word mercury__robdd__V_56_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_57_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_58_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_59_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_60_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_61_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_62_52 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_63_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 7)));
+              MR_Word mercury__robdd__V_64_54 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 8)));
+              MR_Word mercury__robdd__V_65_55 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 9)));
+              MR_Word mercury__robdd__V_72_60;
+              MR_Word mercury__robdd__V_73_61;
+              MR_Word mercury__robdd__V_74_62;
+              MR_Word mercury__robdd__V_75_63;
+              MR_Word mercury__robdd__V_76_64;
+              MR_Word mercury__robdd__V_77_65;
+              MR_Word mercury__robdd__V_78_66;
+              MR_Word mercury__robdd__V_79_67;
+              MR_Word mercury__robdd__V_80_68;
+              MR_Word mercury__robdd__V_81_69;
+              MR_Word mercury__robdd__V_82_70;
+              MR_Word mercury__robdd__V_83_71;
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_6_p_in__tree234_0(mercury__robdd__V_93_93, mercury__robdd__V_62_52, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_72_60, mercury__robdd__HeadVar__5_5, &mercury__robdd__V_73_61);
+              }
+              {
+                mercury__robdd__IntroducedFrom__pred__rev_map__678__1_7_p_0(mercury__robdd__V_93_93, mercury__robdd__V_56_46, mercury__robdd__V_57_47, mercury__robdd__V_72_60, &mercury__robdd__V_74_62, mercury__robdd__V_73_61, &mercury__robdd__V_75_63);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_6_p_in__tree234_0(mercury__robdd__V_93_93, mercury__robdd__V_63_53, mercury__robdd__V_74_62, &mercury__robdd__V_76_64, mercury__robdd__V_75_63, &mercury__robdd__V_77_65);
+              }
+              {
+                mercury__robdd__IntroducedFrom__pred__rev_map__678__1_7_p_0(mercury__robdd__V_93_93, mercury__robdd__V_58_48, mercury__robdd__V_59_49, mercury__robdd__V_76_64, &mercury__robdd__V_78_66, mercury__robdd__V_77_65, &mercury__robdd__V_79_67);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_6_p_in__tree234_0(mercury__robdd__V_93_93, mercury__robdd__V_64_54, mercury__robdd__V_78_66, &mercury__robdd__V_80_68, mercury__robdd__V_79_67, &mercury__robdd__V_81_69);
+              }
+              {
+                mercury__robdd__IntroducedFrom__pred__rev_map__678__1_7_p_0(mercury__robdd__V_93_93, mercury__robdd__V_60_50, mercury__robdd__V_61_51, mercury__robdd__V_80_68, &mercury__robdd__V_82_70, mercury__robdd__V_81_69, &mercury__robdd__V_83_71);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_65_55;
+                MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_82_70;
+                MR_Word mercury__robdd__HeadVar__5__tmp_copy_5 = mercury__robdd__V_83_71;
+
+                mercury__robdd__HeadVar__5_5 = mercury__robdd__HeadVar__5__tmp_copy_5;
+                mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_53_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_93_95_48_4_p_in__tree234_0(
+  MR_Word mercury__robdd__V_59_59,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        switch (MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_12_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_13_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_53_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_59_59, mercury__robdd__V_12_11);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_111_98_100_100_95_116_111_95_100_111_116_95_95_49_52_53_57_95_95_49_95_95_91_50_93_95_48_5_p_0(mercury__robdd__V_59_59, mercury__robdd__V_11_10);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_13_12;
+
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word mercury__robdd__V_22_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_24_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_25_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+              MR_Word mercury__robdd__V_26_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_27_24 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_21_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_23_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_53_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_59_59, mercury__robdd__V_25_22);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_111_98_100_100_95_116_111_95_100_111_116_95_95_49_52_53_57_95_95_49_95_95_91_50_93_95_48_5_p_0(mercury__robdd__V_59_59, mercury__robdd__V_22_19);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_53_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_59_59, mercury__robdd__V_26_23);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_111_98_100_100_95_116_111_95_100_111_116_95_95_49_52_53_57_95_95_49_95_95_91_50_93_95_48_5_p_0(mercury__robdd__V_59_59, mercury__robdd__V_24_21);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_27_24;
+
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word mercury__robdd__V_38_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+              MR_Word mercury__robdd__V_40_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+              MR_Word mercury__robdd__V_42_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 5)));
+              MR_Word mercury__robdd__V_43_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 6)));
+              MR_Word mercury__robdd__V_44_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 7)));
+              MR_Word mercury__robdd__V_45_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 8)));
+              MR_Word mercury__robdd__V_46_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 9)));
+              MR_Word mercury__robdd__V_37_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+              MR_Word mercury__robdd__V_39_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+              MR_Word mercury__robdd__V_41_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__robdd__HeadVar__2_2, (MR_Integer) 4)));
+
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_53_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_59_59, mercury__robdd__V_43_38);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_111_98_100_100_95_116_111_95_100_111_116_95_95_49_52_53_57_95_95_49_95_95_91_50_93_95_48_5_p_0(mercury__robdd__V_59_59, mercury__robdd__V_38_33);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_53_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_59_59, mercury__robdd__V_44_39);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_111_98_100_100_95_116_111_95_100_111_116_95_95_49_52_53_57_95_95_49_95_95_91_50_93_95_48_5_p_0(mercury__robdd__V_59_59, mercury__robdd__V_40_35);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_53_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_59_59, mercury__robdd__V_45_40);
+              }
+              {
+                mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_111_98_100_100_95_116_111_95_100_111_116_95_95_49_52_53_57_95_95_49_95_95_91_50_93_95_48_5_p_0(mercury__robdd__V_59_59, mercury__robdd__V_42_37);
+              }
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_46_41;
+
+                mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+              }
+              continue;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_8_8;
+
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_33_33, mercury__robdd__V_40_40, mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__V_6_6, mercury__robdd__V_7_7, &mercury__robdd__V_8_8);
+    }
+    return mercury__robdd__V_8_8;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_8_8;
+
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_33_33, mercury__robdd__V_40_40, mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__V_6_6, mercury__robdd__V_7_7, &mercury__robdd__V_8_8);
+    }
+    return mercury__robdd__V_8_8;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_8_8;
+
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_54_48_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_33_33, mercury__robdd__V_40_40, mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__V_6_6, mercury__robdd__V_7_7, &mercury__robdd__V_8_8);
+    }
+    return mercury__robdd__V_8_8;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_44_44,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_8_8;
+
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_48_51_95_95_104_111_49_53_57_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_44_32_50_56_44_32_50_57_44_32_51_48_44_32_51_49_44_32_51_50_44_32_51_51_44_32_51_52_93_95_48_4_p_in__tree234_0(mercury__robdd__V_33_33, mercury__robdd__V_40_40, mercury__robdd__V_43_43, mercury__robdd__V_44_44, mercury__robdd__V_6_6, mercury__robdd__V_7_7, &mercury__robdd__V_8_8);
+    }
+    return mercury__robdd__V_8_8;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+    else
+      {
+        MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_15_13;
+        MR_Integer mercury__robdd__V_22_17;
+        MR_Integer mercury__robdd__V_18_18;
+        MR_Integer mercury__robdd__V_19_19;
+
+        {
+          mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__V_39_39, mercury__robdd__TypeClassInfo_for_enum_20, mercury__robdd__V_11_10, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_15_13);
+        }
+        mercury__robdd__V_22_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 0)));
+        mercury__robdd__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 1)));
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0
+
+	MR_Integer Bits;
+
+		{
+
+    Bits = ML_BITS_PER_INT;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_19_19  = Bits;
+}
+        {
+          mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_39_39, mercury__robdd__TypeClassInfo_for_enum_20, (MR_Integer) 1, mercury__robdd__V_22_17, mercury__robdd__V_18_18, mercury__robdd__V_19_19, mercury__robdd__V_15_13, mercury__robdd__HeadVar__4_4);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+    else
+      {
+        MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_15_13;
+        MR_Integer mercury__robdd__V_22_17;
+        MR_Integer mercury__robdd__V_18_18;
+        MR_Integer mercury__robdd__V_19_19;
+
+        {
+          mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__V_39_39, mercury__robdd__TypeClassInfo_for_enum_20, mercury__robdd__V_11_10, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_15_13);
+        }
+        mercury__robdd__V_22_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 0)));
+        mercury__robdd__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 1)));
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0
+
+	MR_Integer Bits;
+
+		{
+
+    Bits = ML_BITS_PER_INT;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_19_19  = Bits;
+}
+        {
+          mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_39_39, mercury__robdd__TypeClassInfo_for_enum_20, (MR_Integer) 1, mercury__robdd__V_22_17, mercury__robdd__V_18_18, mercury__robdd__V_19_19, mercury__robdd__V_15_13, mercury__robdd__HeadVar__4_4);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__TypeClassInfo_for_enum_20,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+    else
+      {
+        MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_15_13;
+        MR_Integer mercury__robdd__V_22_17;
+        MR_Integer mercury__robdd__V_18_18;
+        MR_Integer mercury__robdd__V_19_19;
+
+        {
+          mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__V_39_39, mercury__robdd__TypeClassInfo_for_enum_20, mercury__robdd__V_11_10, mercury__robdd__HeadVar__3_3, &mercury__robdd__V_15_13);
+        }
+        mercury__robdd__V_22_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 0)));
+        mercury__robdd__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__robdd__V_10_9, (MR_Integer) 1)));
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0
+
+	MR_Integer Bits;
+
+		{
+
+    Bits = ML_BITS_PER_INT;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_19_19  = Bits;
+}
+        {
+          mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_95_98_105_116_115_95_95_104_111_49_52_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_54_93_95_48_7_p_in__sparse_bitset_0(mercury__robdd__V_39_39, mercury__robdd__TypeClassInfo_for_enum_20, (MR_Integer) 1, mercury__robdd__V_22_17, mercury__robdd__V_18_18, mercury__robdd__V_19_19, mercury__robdd__V_15_13, mercury__robdd__HeadVar__4_4);
+        }
+      }
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_104_111_54_57_95_95_91_52_44_32_53_93_95_48_4_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__IM_8,
+  MR_Word mercury__robdd__R0_9)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__5_5;
+
+    {
+      mercury__robdd__HeadVar__5_5 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_50_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__V_45_45, mercury__robdd__V_46_46, mercury__robdd__IM_8, mercury__robdd__R0_9);
+    }
+    return mercury__robdd__HeadVar__5_5;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_104_111_54_56_95_95_91_52_44_32_53_93_95_48_4_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__IM_8,
+  MR_Word mercury__robdd__R0_9)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__5_5;
+
+    {
+      mercury__robdd__HeadVar__5_5 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_51_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__V_45_45, mercury__robdd__V_46_46, mercury__robdd__IM_8, mercury__robdd__R0_9);
+    }
+    return mercury__robdd__HeadVar__5_5;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_104_111_54_55_95_95_91_52_44_32_53_93_95_48_4_f_0(
+  MR_Word mercury__robdd__V_45_45,
+  MR_Word mercury__robdd__V_46_46,
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__IM_8,
+  MR_Word mercury__robdd__R0_9)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__5_5;
+
+    {
+      mercury__robdd__HeadVar__5_5 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_52_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__TypeInfo_for_T_32, mercury__robdd__V_45_45, mercury__robdd__V_46_46, mercury__robdd__IM_8, mercury__robdd__R0_9);
+    }
+    return mercury__robdd__HeadVar__5_5;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_55_44_32_56_44_32_57_93_95_48_2_f_in__list_0(
+  MR_Word mercury__robdd__V_20_20,
+  MR_Word mercury__robdd__V_21_21,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+
+    if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      mercury__robdd__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word mercury__robdd__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_8_8;
+        MR_Word mercury__robdd__V_9_9;
+        MR_Word mercury__robdd__V_29_29;
+        MR_Word mercury__robdd__V_30_30;
+
+        {
+          mercury__robdd__V_30_30 = mercury__robdd__value_1_f_0(mercury__robdd__V_20_20, mercury__robdd__V_21_21);
+        }
+        {
+          mercury__robdd__V_29_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_29_29, 0) = ((MR_Box) (mercury__robdd__V_30_30));
+        }
+        {
+          mercury__robdd__V_8_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mercury__robdd__V_8_8, 0) = ((MR_Box) (mercury__robdd__V_29_29));
+          MR_hl_field(MR_mktag(1), mercury__robdd__V_8_8, 1) = ((MR_Box) (mercury__robdd__V_6_6));
+        }
+        {
+          mercury__robdd__V_9_9 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_55_44_32_56_44_32_57_93_95_48_2_f_in__list_0(mercury__robdd__V_20_20, mercury__robdd__V_21_21, mercury__robdd__V_7_7);
+        }
+        {
+          mercury__robdd__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__3_3, 0) = ((MR_Box) (mercury__robdd__V_8_8));
+          MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__3_3, 1) = ((MR_Box) (mercury__robdd__V_9_9));
+        }
+      }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_55_44_32_56_44_32_57_93_95_48_2_f_in__list_0(
+  MR_Word mercury__robdd__V_20_20,
+  MR_Word mercury__robdd__V_21_21,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+
+    if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      mercury__robdd__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word mercury__robdd__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_8_8;
+        MR_Word mercury__robdd__V_9_9;
+        MR_Word mercury__robdd__V_37_37;
+        MR_Word mercury__robdd__V_38_38;
+
+        {
+          mercury__robdd__V_38_38 = mercury__robdd__value_1_f_0(mercury__robdd__V_20_20, mercury__robdd__V_21_21);
+        }
+        {
+          mercury__robdd__V_37_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mercury__robdd__V_37_37, 0) = ((MR_Box) (mercury__robdd__V_38_38));
+        }
+        {
+          mercury__robdd__V_8_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mercury__robdd__V_8_8, 0) = ((MR_Box) (mercury__robdd__V_37_37));
+          MR_hl_field(MR_mktag(1), mercury__robdd__V_8_8, 1) = ((MR_Box) (mercury__robdd__V_6_6));
+        }
+        {
+          mercury__robdd__V_9_9 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_55_44_32_56_44_32_57_93_95_48_2_f_in__list_0(mercury__robdd__V_20_20, mercury__robdd__V_21_21, mercury__robdd__V_7_7);
+        }
+        {
+          mercury__robdd__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__3_3, 0) = ((MR_Box) (mercury__robdd__V_8_8));
+          MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__3_3, 1) = ((MR_Box) (mercury__robdd__V_9_9));
+        }
+      }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_51_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_2_f_in__list_0(
+  MR_Word mercury__robdd__V_16_16,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+
+    if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      mercury__robdd__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word mercury__robdd__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_8_8;
+        MR_Word mercury__robdd__V_9_9;
+
+        {
+          mercury__robdd__V_8_8 = mercury__robdd__value_1_f_0(mercury__robdd__V_16_16, mercury__robdd__V_6_6);
+        }
+        {
+          mercury__robdd__V_9_9 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_51_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_2_f_in__list_0(mercury__robdd__V_16_16, mercury__robdd__V_7_7);
+        }
+        {
+          mercury__robdd__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__3_3, 0) = ((MR_Box) (mercury__robdd__V_8_8));
+          MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__3_3, 1) = ((MR_Box) (mercury__robdd__V_9_9));
+        }
+      }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_53_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_3_f_in__list_0(
+  MR_Word mercury__robdd__V_39_39,
+  MR_Word mercury__robdd__V_40_40,
+  MR_Word mercury__robdd__V_41_41,
+  MR_Word mercury__robdd__V_42_42,
+  MR_Word mercury__robdd__V_43_43,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_8_8;
+
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_50_51_44_32_50_52_44_32_50_53_93_95_48_4_p_in__list_0(mercury__robdd__V_39_39, mercury__robdd__V_40_40, mercury__robdd__V_41_41, mercury__robdd__V_42_42, mercury__robdd__V_43_43, mercury__robdd__V_6_6, mercury__robdd__V_7_7, &mercury__robdd__V_8_8);
+    }
+    return mercury__robdd__V_8_8;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_53_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_49_49,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_8_8;
+
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_51_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_49_44_32_50_50_44_32_50_52_44_32_50_53_44_32_50_54_44_32_50_55_93_95_48_4_p_in__tree234_0(mercury__robdd__V_33_33, mercury__robdd__V_49_49, mercury__robdd__V_6_6, mercury__robdd__V_7_7, &mercury__robdd__V_8_8);
+    }
+    return mercury__robdd__V_8_8;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_53_55_95_95_91_49_44_32_52_44_32_53_93_95_48_4_p_in__list_0(
+  MR_Word mercury__robdd__V_18_18,
+  MR_Word mercury__robdd__V_19_19,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+
+            {
+              mercury__robdd__IntroducedFrom__pred__print_robdd_2__973__1_5_p_0(mercury__robdd__V_18_18, mercury__robdd__V_19_19, mercury__robdd__V_10_9);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_11_10;
+
+              mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_53_54_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_44_32_56_93_95_48_6_p_in__list_0(
+  MR_Word mercury__robdd__V_30_30,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__HeadVar__4_4,
+  MR_Word mercury__robdd__HeadVar__5_5,
+  MR_Word * mercury__robdd__HeadVar__6_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *mercury__robdd__HeadVar__6_6 = mercury__robdd__HeadVar__5_5;
+            *mercury__robdd__HeadVar__4_4 = mercury__robdd__HeadVar__3_3;
+          }
+        else
+          {
+            MR_Word mercury__robdd__V_15_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word mercury__robdd__V_16_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word mercury__robdd__V_23_19;
+            MR_Word mercury__robdd__V_24_20;
+            MR_Word mercury__robdd__V_47_47;
+
+            {
+              mercury__robdd__V_47_47 = mercury__robdd__zero_0_f_0(mercury__robdd__V_30_30);
+            }
+            {
+              mercury__robdd__V_24_20 = mercury__robdd__make_node_3_f_0(mercury__robdd__V_30_30, mercury__robdd__V_15_13, mercury__robdd__V_47_47, mercury__robdd__HeadVar__5_5);
+            }
+            {
+              mercury__robdd__V_23_19 = mercury__robdd__make_node_3_f_0(mercury__robdd__V_30_30, mercury__robdd__V_15_13, mercury__robdd__HeadVar__5_5, mercury__robdd__HeadVar__3_3);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_16_14;
+              MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_23_19;
+              MR_Word mercury__robdd__HeadVar__5__tmp_copy_5 = mercury__robdd__V_24_20;
+
+              mercury__robdd__HeadVar__5_5 = mercury__robdd__HeadVar__5__tmp_copy_5;
+              mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+              mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_51_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_3_f_in__map_0(
+  MR_Word mercury__robdd__V_33_33,
+  MR_Word mercury__robdd__V_47_47,
+  MR_Word mercury__robdd__V_48_48,
+  MR_Word mercury__robdd__V_6_6,
+  MR_Word mercury__robdd__V_7_7)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_8_8;
+
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_49_50_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_44_32_49_56_44_32_49_57_44_32_50_48_44_32_50_51_44_32_50_52_44_32_50_53_44_32_50_54_93_95_48_4_p_in__tree234_0(mercury__robdd__V_33_33, mercury__robdd__V_47_47, mercury__robdd__V_48_48, mercury__robdd__V_6_6, mercury__robdd__V_7_7, &mercury__robdd__V_8_8);
+    }
+    return mercury__robdd__V_8_8;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_51_51_95_95_91_49_44_32_51_44_32_52_93_95_48_4_p_in__list_0(
+  MR_Word mercury__robdd__V_18_18,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Word mercury__robdd__V_10_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word mercury__robdd__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word mercury__robdd__V_52_52;
+            MR_Word mercury__robdd__V_53_53;
+            MR_String mercury__robdd__V_54_54;
+            MR_Word mercury__robdd__V_55_55;
+
+            {
+              mercury__robdd__V_54_54 = mercury__robdd__node_name_1_f_0(mercury__robdd__V_18_18, mercury__robdd__V_10_9);
+            }
+            {
+              mercury__robdd__V_53_53 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), mercury__robdd__V_53_53, 0) = ((MR_Box) (mercury__robdd__V_54_54));
+            }
+            mercury__robdd__V_55_55 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            {
+              mercury__robdd__V_52_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), mercury__robdd__V_52_52, 0) = ((MR_Box) (mercury__robdd__V_53_53));
+              MR_hl_field(MR_mktag(1), mercury__robdd__V_52_52, 1) = ((MR_Box) (mercury__robdd__V_55_55));
+            }
+            {
+              mercury__io__format_4_p_0((MR_String) "%s; ", mercury__robdd__V_52_52);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__V_11_10;
+
+              mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_111_98_100_100_95_116_111_95_100_111_116_95_95_49_52_53_57_95_95_49_95_95_91_50_93_95_48_5_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_51,
+  MR_Word mercury__robdd__LambdaHeadVar__2_26)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__io__write_string_3_p_0((MR_String) "{rank = same; ");
+    }
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_51_51_95_95_91_49_44_32_51_44_32_52_93_95_48_4_p_in__list_0(mercury__robdd__TypeInfo_for_T_51, mercury__robdd__LambdaHeadVar__2_26);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) "}\n");
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_101_115_116_114_105_99_116_95_102_105_108_116_101_114_95_95_49_49_56_52_95_95_49_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+{
+  {
+    return MR_TRUE;
+  }
+}
+
+static MR_Integer MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    return (MR_Integer) 1200;
+  }
+}
+
+static MR_Integer MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_110_111_100_101_95_110_117_109_95_95_91_49_93_95_48_1_f_0(
+  MR_Word mercury__robdd__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__TypeInfo_for_T_4;
+
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_110_111_100_101_95_110_117_109_95_95_91_49_93_95_48_1_f_0
+
+	MR_Word R;
+	MR_Integer N;
+
+	R =  mercury__robdd__HeadVar__1_1 ;
+		{
+
+    N = (MR_Integer) R;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__2_2  = N;
+}
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_108_98_95_95_91_49_93_95_48_2_f_0(
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__TypeInfo_for_T_5;
+
+{
+#define MR_PROC_LABEL mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_108_98_95_95_91_49_93_95_48_2_f_0
+
+	MR_Word X;
+	MR_Word Y;
+	MR_Word F;
+
+	X =  mercury__robdd__HeadVar__1_1 ;
+	Y =  mercury__robdd__HeadVar__2_2 ;
+		{
+
+    F = (MR_ROBDD_NODE_TYPE) MR_ROBDD_glb((MR_ROBDD_node *) X,
+        (MR_ROBDD_node *) Y);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__3_3  = F;
+}
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__IntroducedFrom__func__ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2__847__1_5_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_22,
+  MR_Word mercury__robdd__MapB_6,
+  MR_Word mercury__robdd__LambdaHeadVar__1_13,
+  MR_Word mercury__robdd__LambdaHeadVar__2_14,
+  MR_Word mercury__robdd__LambdaHeadVar__3_15)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__LambdaHeadVar__4_16;
+    MR_Word mercury__robdd__TypeInfo_30_30;
+    MR_Word mercury__robdd__TypeInfo_32_32;
+    MR_Word mercury__robdd__Vs_10;
+    MR_Word mercury__robdd__TypeCtorInfo_29_29 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeCtorInfo_31_31 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    MR_Word mercury__robdd__V_17_17;
+    MR_Word mercury__robdd__V_4_51;
+    MR_Word mercury__robdd__V_5_52;
+    MR_Word mercury__robdd__V_6_53;
+    MR_Box mercury__robdd__conv0_V_17_17;
+
+    {
+      mercury__robdd__TypeInfo_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_30, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_29_29));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_30, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_22));
+    }
+    {
+      mercury__robdd__TypeInfo_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_32, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_31_31));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_32, 1) = ((MR_Box) (mercury__robdd__TypeInfo_30_30));
+    }
+    {
+      mercury__robdd__succeeded = mercury__tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(mercury__robdd__TypeInfo_for_T_22, mercury__robdd__TypeInfo_30_30, mercury__robdd__TypeInfo_32_32, (MR_Word) mercury__robdd__MapB_6, mercury__robdd__LambdaHeadVar__1_13, &mercury__robdd__conv0_V_17_17);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        mercury__robdd__V_17_17 = ((MR_Word) mercury__robdd__conv0_V_17_17);
+        mercury__robdd__succeeded = MR_TRUE;
+      }
+    if (mercury__robdd__succeeded)
+      {
+        mercury__robdd__V_4_51 = (MR_Word) mercury__robdd__LambdaHeadVar__2_14;
+        mercury__robdd__V_5_52 = (MR_Word) mercury__robdd__V_17_17;
+        {
+          mercury__robdd__V_6_53 = mercury__sparse_bitset__intersect_2_2_f_0(mercury__robdd__V_4_51, mercury__robdd__V_5_52);
+        }
+        mercury__robdd__Vs_10 = (MR_Word) mercury__robdd__V_6_53;
+        mercury__robdd__succeeded = MR_TRUE;
+      }
+    if (mercury__robdd__succeeded)
+      {
+        MR_Word mercury__robdd__V_55_55 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        MR_Word mercury__robdd__V_2_58 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+        {
+          mercury__robdd__succeeded = mercury__sparse_bitset____Unify____sparse_bitset_1_0(mercury__robdd__TypeInfo_30_30, (MR_Word) mercury__robdd__Vs_10, (MR_Word) mercury__robdd__V_55_55);
+        }
+        if (mercury__robdd__succeeded)
+          mercury__robdd__LambdaHeadVar__4_16 = mercury__robdd__LambdaHeadVar__3_15;
+        else
+          {
+            MR_Word mercury__robdd__conv1_LambdaHeadVar__4_16;
+
+            {
+              mercury__tree234__set_4_p_0(mercury__robdd__TypeInfo_30_30, mercury__robdd__TypeInfo_32_32, ((MR_Box) (mercury__robdd__LambdaHeadVar__1_13)), ((MR_Box) (mercury__robdd__Vs_10)), (MR_Word) mercury__robdd__LambdaHeadVar__3_15, &mercury__robdd__conv1_LambdaHeadVar__4_16);
+            }
+            mercury__robdd__LambdaHeadVar__4_16 = (MR_Word) mercury__robdd__conv1_LambdaHeadVar__4_16;
+          }
+      }
+    else
+      mercury__robdd__LambdaHeadVar__4_16 = mercury__robdd__LambdaHeadVar__3_15;
+    return mercury__robdd__LambdaHeadVar__4_16;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__IntroducedFrom__func__ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2__862__1_3_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_9,
+  MR_Word mercury__robdd__HeadVar__2_16,
+  MR_Word mercury__robdd__HeadVar__3_17)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__4_18;
+    MR_Word mercury__robdd__TypeCtorInfo_19_19 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_20_20;
+    MR_Word mercury__robdd__TypeCtorInfo_21_21 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    MR_Word mercury__robdd__TypeInfo_22_22;
+    MR_Word mercury__robdd__TypeCtorInfo_23_23 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+    MR_Word mercury__robdd__TypeInfo_24_24;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_25;
+    MR_Word mercury__robdd__TypeClassInfo_for_intersectable_26;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_27 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_intersectable_28;
+    MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box);
+    MR_Box mercury__robdd__conv1_HeadVar__4_18;
+
+    {
+      mercury__robdd__TypeInfo_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_20_20, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_19_19));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_20_20, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_9));
+    }
+    {
+      mercury__robdd__TypeInfo_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_22_22, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_21_21));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_22_22, 1) = ((MR_Box) (mercury__robdd__TypeInfo_20_20));
+    }
+    {
+      mercury__robdd__TypeInfo_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_24_24, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_23_23));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_24_24, 1) = ((MR_Box) (mercury__robdd__TypeInfo_22_22));
+    }
+    mercury__robdd__BaseTypeClassInfo_for_intersectable_25 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__sparse_bitset__sparse_bitset__arity1__;
+    {
+      mercury__robdd__TypeClassInfo_for_intersectable_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_25));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, 1) = ((MR_Box) (mercury__robdd__TypeInfo_20_20));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, 2) = ((MR_Box) (mercury__robdd__TypeInfo_22_22));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_intersectable_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_28, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_27));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_28, 1) = ((MR_Box) (mercury__robdd__TypeClassInfo_for_intersectable_26));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_28, 2) = ((MR_Box) (mercury__robdd__TypeInfo_24_24));
+    }
+    mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_28, (MR_Integer) 0)), (MR_Integer) 5)));
+    {
+      mercury__robdd__conv1_HeadVar__4_18 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_28), ((MR_Box) (mercury__robdd__HeadVar__2_16)), ((MR_Box) (mercury__robdd__HeadVar__3_17)));
+    }
+    mercury__robdd__HeadVar__4_18 = ((MR_Word) mercury__robdd__conv1_HeadVar__4_18);
+    return mercury__robdd__HeadVar__4_18;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__IntroducedFrom__pred__print_robdd_2__973__1_5_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_44,
+  MR_Word mercury__robdd__Trues_7,
+  MR_Word mercury__robdd__LambdaHeadVar__1_25)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Char mercury__robdd__C_11;
+    MR_Integer mercury__robdd__N_12;
+    MR_Word mercury__robdd__V_29_29;
+    MR_Word mercury__robdd__V_30_30;
+    MR_Word mercury__robdd__V_31_31;
+    MR_Word mercury__robdd__V_32_32;
+    MR_Word mercury__robdd__V_33_33;
+    MR_Word mercury__robdd__TypeCtorInfo_47_47 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_48_48;
+    MR_Word mercury__robdd__V_4_73;
+
+    {
+      mercury__robdd__TypeInfo_48_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_48_48, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_47_47));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_48_48, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_44));
+    }
+    mercury__robdd__V_4_73 = (MR_Word) mercury__robdd__Trues_7;
+    {
+      mercury__robdd__succeeded = mercury__list__member_2_p_0(mercury__robdd__TypeInfo_48_48, ((MR_Box) (mercury__robdd__LambdaHeadVar__1_25)), (MR_Word) mercury__robdd__V_4_73);
+    }
+    if (mercury__robdd__succeeded)
+      mercury__robdd__C_11 = (MR_Char) 32;
+    else
+      mercury__robdd__C_11 = (MR_Char) 126;
+    mercury__robdd__N_12 = (MR_Integer) mercury__robdd__LambdaHeadVar__1_25;
+    {
+      mercury__robdd__V_30_30 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), mercury__robdd__V_30_30, 0) = ((MR_Box) (MR_Word) (mercury__robdd__C_11));
+    }
+    {
+      mercury__robdd__V_32_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), mercury__robdd__V_32_32, 0) = ((MR_Box) (mercury__robdd__N_12));
+    }
+    mercury__robdd__V_33_33 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__robdd__V_31_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), mercury__robdd__V_31_31, 0) = ((MR_Box) (mercury__robdd__V_32_32));
+      MR_hl_field(MR_mktag(1), mercury__robdd__V_31_31, 1) = ((MR_Box) (mercury__robdd__V_33_33));
+    }
+    {
+      mercury__robdd__V_29_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), mercury__robdd__V_29_29, 0) = ((MR_Box) (mercury__robdd__V_30_30));
+      MR_hl_field(MR_mktag(1), mercury__robdd__V_29_29, 1) = ((MR_Box) (mercury__robdd__V_31_31));
+    }
+    {
+      mercury__io__format_4_p_0((MR_String) " %c%02d", mercury__robdd__V_29_29);
+    }
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__IntroducedFrom__func__imp_res_to_imp_map__780__1_4_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_18,
+  MR_Word mercury__robdd__LambdaHeadVar__1_10,
+  MR_Word mercury__robdd__LambdaHeadVar__2_11,
+  MR_Word mercury__robdd__LambdaHeadVar__3_12)
+{
+  {
+    MR_bool mercury__robdd__succeeded = ((MR_tag((MR_Word) mercury__robdd__LambdaHeadVar__2_11)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word mercury__robdd__LambdaHeadVar__4_13;
+    MR_Word mercury__robdd__Vs_7;
+    MR_Word mercury__robdd__TypeCtorInfo_31_31;
+    MR_Word mercury__robdd__TypeInfo_32_32;
+    MR_Word mercury__robdd__V_38_38;
+    MR_Word mercury__robdd__V_2_41;
+
+    if (mercury__robdd__succeeded)
+      {
+        mercury__robdd__Vs_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__LambdaHeadVar__2_11, (MR_Integer) 0)));
+        mercury__robdd__TypeCtorInfo_31_31 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        mercury__robdd__V_2_41 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        {
+          mercury__robdd__TypeInfo_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_32, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_31_31));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_32, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_18));
+        }
+        mercury__robdd__V_38_38 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        {
+          mercury__robdd__succeeded = mercury__sparse_bitset____Unify____sparse_bitset_1_0(mercury__robdd__TypeInfo_32_32, (MR_Word) mercury__robdd__Vs_7, (MR_Word) mercury__robdd__V_38_38);
+        }
+        mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+      }
+    if (mercury__robdd__succeeded)
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_33_33 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_34_34;
+        MR_Word mercury__robdd__TypeCtorInfo_35_35;
+        MR_Word mercury__robdd__TypeInfo_36_36;
+        MR_Word mercury__robdd__conv0_LambdaHeadVar__4_13;
+
+        {
+          mercury__robdd__TypeInfo_34_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_34_34, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_33_33));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_34_34, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_18));
+        }
+        mercury__robdd__TypeCtorInfo_35_35 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+        {
+          mercury__robdd__TypeInfo_36_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_36_36, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_35_35));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_36_36, 1) = ((MR_Box) (mercury__robdd__TypeInfo_34_34));
+        }
+        {
+          mercury__tree234__set_4_p_0(mercury__robdd__TypeInfo_34_34, mercury__robdd__TypeInfo_36_36, ((MR_Box) (mercury__robdd__LambdaHeadVar__1_10)), ((MR_Box) (mercury__robdd__Vs_7)), (MR_Word) mercury__robdd__LambdaHeadVar__3_12, &mercury__robdd__conv0_LambdaHeadVar__4_13);
+        }
+        mercury__robdd__LambdaHeadVar__4_13 = (MR_Word) mercury__robdd__conv0_LambdaHeadVar__4_13;
+      }
+    else
+      mercury__robdd__LambdaHeadVar__4_13 = mercury__robdd__LambdaHeadVar__3_12;
+    return mercury__robdd__LambdaHeadVar__4_13;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__IntroducedFrom__func__merge_imp_res_2__761__1_7_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_28,
+  MR_Word mercury__robdd__EntailedVarsA_6,
+  MR_Word mercury__robdd__EntailedVarsB_7,
+  MR_Word mercury__robdd__ImpsA_8,
+  MR_Word mercury__robdd__ImpsB_9,
+  MR_Word mercury__robdd__LambdaHeadVar__1_21,
+  MR_Word mercury__robdd__LambdaHeadVar__2_22)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__LambdaHeadVar__3_23;
+    MR_Word mercury__robdd__TypeCtorInfo_49_49;
+    MR_Word mercury__robdd__TypeInfo_50_50;
+    MR_Word mercury__robdd__TypeCtorInfo_51_51;
+    MR_Word mercury__robdd__TypeInfo_52_52;
+    MR_Word mercury__robdd__TypeCtorInfo_53_53;
+    MR_Word mercury__robdd__TypeInfo_54_54;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_55;
+    MR_Word mercury__robdd__TypeClassInfo_for_intersectable_56;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_57;
+    MR_Word mercury__robdd__TypeClassInfo_for_intersectable_58;
+    MR_Word mercury__robdd__VsA_16;
+    MR_Word mercury__robdd__VsB_17;
+    MR_Word mercury__robdd__V_24_24;
+    MR_Word mercury__robdd__VsA0_18;
+    MR_Word mercury__robdd__TypeCtorInfo_37_37 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_38_38;
+    MR_Word mercury__robdd__TypeCtorInfo_39_39 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    MR_Word mercury__robdd__TypeInfo_40_40;
+    MR_Word mercury__robdd__TypeCtorInfo_41_41 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+    MR_Word mercury__robdd__TypeInfo_42_42;
+    MR_Box mercury__robdd__conv0_VsA0_18;
+    MR_Word mercury__robdd__VsB0_19;
+    MR_Word mercury__robdd__TypeCtorInfo_43_43;
+    MR_Word mercury__robdd__TypeInfo_44_44;
+    MR_Word mercury__robdd__TypeCtorInfo_45_45;
+    MR_Word mercury__robdd__TypeInfo_46_46;
+    MR_Word mercury__robdd__TypeCtorInfo_47_47;
+    MR_Word mercury__robdd__TypeInfo_48_48;
+    MR_Box mercury__robdd__conv1_VsB0_19;
+    MR_Box MR_CALL (* mercury__robdd__func_2)(MR_Box, MR_Box, MR_Box);
+    MR_Box mercury__robdd__conv3_V_24_24;
+    MR_Word mercury__robdd__conv4_LambdaHeadVar__3_23;
+
+    {
+      mercury__robdd__TypeInfo_38_38 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_38_38, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_37_37));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_38_38, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_28));
+    }
+    {
+      mercury__robdd__TypeInfo_40_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_40_40, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_39_39));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_40_40, 1) = ((MR_Box) (mercury__robdd__TypeInfo_38_38));
+    }
+    {
+      mercury__robdd__TypeInfo_42_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_42_42, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_41_41));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_42_42, 1) = ((MR_Box) (mercury__robdd__TypeInfo_40_40));
+    }
+    {
+      mercury__robdd__succeeded = mercury__tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(mercury__robdd__TypeInfo_for_T_28, mercury__robdd__TypeInfo_38_38, mercury__robdd__TypeInfo_42_42, (MR_Word) mercury__robdd__ImpsA_8, mercury__robdd__LambdaHeadVar__1_21, &mercury__robdd__conv0_VsA0_18);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        mercury__robdd__VsA0_18 = ((MR_Word) mercury__robdd__conv0_VsA0_18);
+        mercury__robdd__succeeded = MR_TRUE;
+      }
+    if (mercury__robdd__succeeded)
+      mercury__robdd__VsA_16 = mercury__robdd__VsA0_18;
+    else
+      mercury__robdd__VsA_16 = mercury__robdd__EntailedVarsA_6;
+    mercury__robdd__TypeCtorInfo_43_43 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    mercury__robdd__TypeCtorInfo_47_47 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+    mercury__robdd__TypeCtorInfo_45_45 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    {
+      mercury__robdd__TypeInfo_44_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_44_44, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_43_43));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_44_44, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_28));
+    }
+    {
+      mercury__robdd__TypeInfo_46_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_46_46, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_45_45));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_46_46, 1) = ((MR_Box) (mercury__robdd__TypeInfo_44_44));
+    }
+    {
+      mercury__robdd__TypeInfo_48_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_48_48, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_47_47));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_48_48, 1) = ((MR_Box) (mercury__robdd__TypeInfo_46_46));
+    }
+    {
+      mercury__robdd__succeeded = mercury__tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(mercury__robdd__TypeInfo_for_T_28, mercury__robdd__TypeInfo_44_44, mercury__robdd__TypeInfo_48_48, (MR_Word) mercury__robdd__ImpsB_9, mercury__robdd__LambdaHeadVar__1_21, &mercury__robdd__conv1_VsB0_19);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        mercury__robdd__VsB0_19 = ((MR_Word) mercury__robdd__conv1_VsB0_19);
+        mercury__robdd__succeeded = MR_TRUE;
+      }
+    if (mercury__robdd__succeeded)
+      mercury__robdd__VsB_17 = mercury__robdd__VsB0_19;
+    else
+      mercury__robdd__VsB_17 = mercury__robdd__EntailedVarsB_7;
+    mercury__robdd__BaseTypeClassInfo_for_intersectable_57 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__;
+    mercury__robdd__TypeCtorInfo_53_53 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+    mercury__robdd__TypeCtorInfo_51_51 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    mercury__robdd__TypeCtorInfo_49_49 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    {
+      mercury__robdd__TypeInfo_50_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_50_50, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_49_49));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_50_50, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_28));
+    }
+    {
+      mercury__robdd__TypeInfo_52_52 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_52_52, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_51_51));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_52_52, 1) = ((MR_Box) (mercury__robdd__TypeInfo_50_50));
+    }
+    {
+      mercury__robdd__TypeInfo_54_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_54_54, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_53_53));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_54_54, 1) = ((MR_Box) (mercury__robdd__TypeInfo_52_52));
+    }
+    mercury__robdd__BaseTypeClassInfo_for_intersectable_55 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__sparse_bitset__sparse_bitset__arity1__;
+    {
+      mercury__robdd__TypeClassInfo_for_intersectable_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_56, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_55));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_56, 1) = ((MR_Box) (mercury__robdd__TypeInfo_50_50));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_56, 2) = ((MR_Box) (mercury__robdd__TypeInfo_52_52));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_intersectable_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_58, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_57));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_58, 1) = ((MR_Box) (mercury__robdd__TypeClassInfo_for_intersectable_56));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_58, 2) = ((MR_Box) (mercury__robdd__TypeInfo_54_54));
+    }
+    mercury__robdd__func_2 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_58, (MR_Integer) 0)), (MR_Integer) 5)));
+    {
+      mercury__robdd__conv3_V_24_24 = mercury__robdd__func_2(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_58), ((MR_Box) (mercury__robdd__VsA_16)), ((MR_Box) (mercury__robdd__VsB_17)));
+    }
+    mercury__robdd__V_24_24 = ((MR_Word) mercury__robdd__conv3_V_24_24);
+    {
+      mercury__robdd__conv4_LambdaHeadVar__3_23 = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_101_108_101_109_32_58_61_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_f_0(mercury__robdd__TypeInfo_for_T_28, mercury__robdd__TypeInfo_50_50, mercury__robdd__TypeInfo_54_54, mercury__robdd__LambdaHeadVar__1_21, (MR_Word) mercury__robdd__LambdaHeadVar__2_22, ((MR_Box) (mercury__robdd__V_24_24)));
+    }
+    mercury__robdd__LambdaHeadVar__3_23 = (MR_Word) mercury__robdd__conv4_LambdaHeadVar__3_23;
+    return mercury__robdd__LambdaHeadVar__3_23;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__IntroducedFrom__pred__rev_map__678__1_7_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_40,
+  MR_Word mercury__robdd__LambdaHeadVar__1_19,
+  MR_Word mercury__robdd__LambdaHeadVar__2_20,
+  MR_Word mercury__robdd__LambdaHeadVar__3_21,
+  MR_Word * mercury__robdd__LambdaHeadVar__4_22,
+  MR_Word mercury__robdd__LambdaHeadVar__5_23,
+  MR_Word * mercury__robdd__LambdaHeadVar__6_24)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_41_41 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_42_42;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_43 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_44;
+    MR_Word mercury__robdd__V_3_60 = (MR_Word) mercury__robdd__LambdaHeadVar__3_21;
+    MR_Integer mercury__robdd__V_5_61;
+    MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box);
+    MR_Box mercury__robdd__conv1_V_5_61;
+
+    {
+      mercury__robdd__TypeInfo_42_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_42_42, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_41_41));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_42_42, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_40));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_enum_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_44, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_43));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_44, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_40));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_44, 2) = ((MR_Box) (mercury__robdd__TypeInfo_42_42));
+    }
+    mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_44, (MR_Integer) 0)), (MR_Integer) 5)));
+    {
+      mercury__robdd__conv1_V_5_61 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_44), ((MR_Box) (mercury__robdd__LambdaHeadVar__1_19)));
+    }
+    mercury__robdd__V_5_61 = ((MR_Integer) mercury__robdd__conv1_V_5_61);
+    {
+      mercury__robdd__succeeded = mercury__sparse_bitset__contains_search_nodes_2_p_0(mercury__robdd__V_3_60, mercury__robdd__V_5_61);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        *mercury__robdd__LambdaHeadVar__4_22 = mercury__robdd__LambdaHeadVar__3_21;
+        *mercury__robdd__LambdaHeadVar__6_24 = mercury__robdd__LambdaHeadVar__5_23;
+      }
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_45_45 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_46_46;
+        MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_49;
+        MR_Word mercury__robdd__TypeClassInfo_for_enum_50;
+        MR_Word mercury__robdd__DCG_1_17;
+        MR_Word mercury__robdd__V_6_78;
+        MR_Word mercury__robdd__V_4_84;
+        MR_Word mercury__robdd__V_5_85;
+        MR_Word mercury__robdd__V_6_86;
+        MR_Word mercury__robdd__conv2_DCG_1_17;
+
+        {
+          mercury__robdd__TypeInfo_46_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_46_46, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_45_45));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_46_46, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_40));
+        }
+        {
+          mercury__tree234__set_4_p_0(mercury__robdd__TypeInfo_46_46, mercury__robdd__TypeInfo_46_46, ((MR_Box) (mercury__robdd__LambdaHeadVar__1_19)), ((MR_Box) (mercury__robdd__LambdaHeadVar__1_19)), (MR_Word) mercury__robdd__LambdaHeadVar__5_23, &mercury__robdd__conv2_DCG_1_17);
+        }
+        mercury__robdd__DCG_1_17 = (MR_Word) mercury__robdd__conv2_DCG_1_17;
+        mercury__robdd__BaseTypeClassInfo_for_enum_49 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+        {
+          mercury__robdd__TypeClassInfo_for_enum_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_50, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_49));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_50, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_40));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_50, 2) = ((MR_Box) (mercury__robdd__TypeInfo_46_46));
+        }
+        mercury__robdd__V_6_78 = (MR_Word) mercury__robdd__LambdaHeadVar__2_20;
+        {
+          mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_108_95_112_114_101_100_95_95_104_111_49_49_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_48_44_32_49_50_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__TypeInfo_for_T_40, mercury__robdd__LambdaHeadVar__1_19, mercury__robdd__TypeClassInfo_for_enum_50, mercury__robdd__V_6_78, mercury__robdd__DCG_1_17, mercury__robdd__LambdaHeadVar__6_24);
+        }
+        mercury__robdd__V_4_84 = (MR_Word) mercury__robdd__LambdaHeadVar__3_21;
+        mercury__robdd__V_5_85 = (MR_Word) mercury__robdd__LambdaHeadVar__2_20;
+        {
+          mercury__robdd__V_6_86 = mercury__sparse_bitset__union_2_2_f_0(mercury__robdd__V_4_84, mercury__robdd__V_5_85);
+        }
+        *mercury__robdd__LambdaHeadVar__4_22 = (MR_Word) mercury__robdd__V_6_86;
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__IntroducedFrom__pred__rev_map__682__1_5_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_40,
+  MR_Word mercury__robdd__LambdaHeadVar__1_19,
+  MR_Word mercury__robdd__LambdaHeadVar__1_28,
+  MR_Word mercury__robdd__LambdaHeadVar__2_29,
+  MR_Word * mercury__robdd__LambdaHeadVar__3_30)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_47_47 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_48_48;
+    MR_Word mercury__robdd__conv0_LambdaHeadVar__3_30;
+
+    {
+      mercury__robdd__TypeInfo_48_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_48_48, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_47_47));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_48_48, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_40));
+    }
+    {
+      mercury__tree234__set_4_p_0(mercury__robdd__TypeInfo_48_48, mercury__robdd__TypeInfo_48_48, ((MR_Box) (mercury__robdd__LambdaHeadVar__1_28)), ((MR_Box) (mercury__robdd__LambdaHeadVar__1_19)), (MR_Word) mercury__robdd__LambdaHeadVar__2_29, &mercury__robdd__conv0_LambdaHeadVar__3_30);
+    }
+    *mercury__robdd__LambdaHeadVar__3_30 = (MR_Word) mercury__robdd__conv0_LambdaHeadVar__3_30;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd__IntroducedFrom__pred__squeeze_equiv__1242__1_3_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_16,
+  MR_Word mercury__robdd__Max_6,
+  MR_Word mercury__robdd__LambdaHeadVar__1_12)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_23_23;
+    MR_Integer mercury__robdd__V_26_26 = (MR_Integer) mercury__robdd__LambdaHeadVar__1_12;
+    MR_Integer mercury__robdd__V_27_27 = (MR_Integer) mercury__robdd__Max_6;
+
+    mercury__robdd__succeeded = (mercury__robdd__V_26_26 < mercury__robdd__V_27_27);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__V_23_23 = (MR_Integer) 1;
+    else
+      {
+        mercury__robdd__succeeded = (mercury__robdd__V_26_26 == mercury__robdd__V_27_27);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__V_23_23 = (MR_Integer) 0;
+        else
+          mercury__robdd__V_23_23 = (MR_Integer) 2;
+      }
+    mercury__robdd__succeeded = ((MR_Integer) 2 == mercury__robdd__V_23_23);
+    mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+    return mercury__robdd__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd__IntroducedFrom__pred__squeeze_equiv__1239__1_3_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_16,
+  MR_Word mercury__robdd__LeaderMap_4,
+  MR_Word mercury__robdd__LambdaHeadVar__1_10)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_19_19 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_20_20;
+    MR_Word mercury__robdd__L_8;
+    MR_Box mercury__robdd__conv0_L_8;
+    MR_Integer mercury__robdd__V_26_26;
+    MR_Integer mercury__robdd__V_27_27;
+
+    {
+      mercury__robdd__TypeInfo_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_20_20, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_19_19));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_20_20, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_16));
+    }
+    {
+      mercury__robdd__succeeded = mercury__tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__TypeInfo_20_20, mercury__robdd__TypeInfo_20_20, (MR_Word) mercury__robdd__LeaderMap_4, mercury__robdd__LambdaHeadVar__1_10, &mercury__robdd__conv0_L_8);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        mercury__robdd__L_8 = ((MR_Word) mercury__robdd__conv0_L_8);
+        mercury__robdd__succeeded = MR_TRUE;
+      }
+    if (mercury__robdd__succeeded)
+      {
+        mercury__robdd__V_26_26 = (MR_Integer) mercury__robdd__L_8;
+        mercury__robdd__V_27_27 = (MR_Integer) mercury__robdd__LambdaHeadVar__1_10;
+        mercury__robdd__succeeded = (mercury__robdd__V_26_26 == mercury__robdd__V_27_27);
+        mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+      }
+    mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+    return mercury__robdd__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd__IntroducedFrom__pred__restrict_filter__1184__1_2_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_11,
+  MR_Word mercury__robdd__LambdaHeadVar__1_8)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_114_101_115_116_114_105_99_116_95_102_105_108_116_101_114_95_95_49_49_56_52_95_95_49_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____sparse_bitset__sparse_bitset__arity1______robdd__intersection_2_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_4,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__V_4_5 = (MR_Word) mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__V_5_6 = (MR_Word) mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_6_7;
+
+    {
+      mercury__robdd__V_6_7 = mercury__sparse_bitset__intersect_2_2_f_0(mercury__robdd__V_4_5, mercury__robdd__V_5_6);
+    }
+    mercury__robdd__HeadVar__3_3 = (MR_Word) mercury__robdd__V_6_7;
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__entailment_result__arity1______robdd__intersection_2_2_f_0(
+  MR_Word mercury__robdd__TypeClassInfo_for_intersectable_20,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+
+    if ((mercury__robdd__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__2_2;
+    else
+      {
+        MR_Box mercury__robdd__V_21_21 = (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 0));
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__1_1;
+        else
+          {
+            MR_Box mercury__robdd__Vs1_18 = (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0));
+            MR_Box mercury__robdd__V_19_19;
+            MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_20, (MR_Integer) 0)), (MR_Integer) 5)));
+
+            {
+              mercury__robdd__V_19_19 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_20), mercury__robdd__V_21_21, mercury__robdd__Vs1_18);
+            }
+            {
+              mercury__robdd__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__3_3, 0) = mercury__robdd__V_19_19;
+            }
+          }
+      }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_22,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__MapA_5 = (MR_Word) mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__MapB_6 = (MR_Word) mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_11_11;
+    MR_Word mercury__robdd__V_18_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+    {
+      mercury__robdd__V_11_11 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_51_52_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_3_f_in__map_0(mercury__robdd__TypeInfo_for_T_22, mercury__robdd__TypeInfo_for_T_22, mercury__robdd__MapB_6, mercury__robdd__MapA_5, mercury__robdd__V_18_18);
+    }
+    mercury__robdd__HeadVar__3_3 = (MR_Word) mercury__robdd__V_11_11;
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_9,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__TypeCtorInfo_10_10 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_11_11;
+    MR_Word mercury__robdd__TypeCtorInfo_12_12 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    MR_Word mercury__robdd__TypeInfo_13_13;
+    MR_Word mercury__robdd__TypeCtorInfo_14_14 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+    MR_Word mercury__robdd__TypeInfo_15_15;
+    MR_Word mercury__robdd__MapA_5 = (MR_Word) mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__MapB_6 = (MR_Word) mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_7_7;
+    MR_Word mercury__robdd__V_9_55;
+    MR_Word mercury__robdd__V_10_56;
+    MR_Word mercury__robdd__V_12_57;
+    MR_Word mercury__robdd__V_11_60;
+    MR_Word mercury__robdd__V_5_72;
+    MR_Word mercury__robdd__V_5_79;
+    MR_Word mercury__robdd__conv0_V_9_55;
+    MR_Word mercury__robdd__conv1_V_10_56;
+    MR_Word mercury__robdd__conv2_V_7_7;
+
+    {
+      mercury__robdd__TypeInfo_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_11_11, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_10_10));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_11_11, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_9));
+    }
+    {
+      mercury__robdd__TypeInfo_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_13_13, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_12_12));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_13_13, 1) = ((MR_Box) (mercury__robdd__TypeInfo_11_11));
+    }
+    {
+      mercury__robdd__TypeInfo_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_15_15, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_14_14));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_15_15, 1) = ((MR_Box) (mercury__robdd__TypeInfo_13_13));
+    }
+    mercury__robdd__V_5_72 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__tree234__tree234_to_assoc_list_acc_3_p_0(mercury__robdd__TypeInfo_11_11, mercury__robdd__TypeInfo_15_15, (MR_Word) mercury__robdd__MapA_5, (MR_Word) mercury__robdd__V_5_72, &mercury__robdd__conv0_V_9_55);
+    }
+    mercury__robdd__V_9_55 = (MR_Word) mercury__robdd__conv0_V_9_55;
+    mercury__robdd__V_5_79 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__tree234__tree234_to_assoc_list_acc_3_p_0(mercury__robdd__TypeInfo_11_11, mercury__robdd__TypeInfo_15_15, (MR_Word) mercury__robdd__MapB_6, (MR_Word) mercury__robdd__V_5_79, &mercury__robdd__conv1_V_10_56);
+    }
+    mercury__robdd__V_10_56 = (MR_Word) mercury__robdd__conv1_V_10_56;
+    mercury__robdd__V_12_57 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_110_116_101_114_115_101_99_116_95_108_111_111_112_95_95_104_111_49_50_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_53_93_95_48_5_p_in__map_0(mercury__robdd__TypeInfo_for_T_9, mercury__robdd__V_9_55, mercury__robdd__V_10_56, mercury__robdd__V_12_57, &mercury__robdd__V_11_60);
+    }
+    {
+      mercury__tree234__from_rev_sorted_assoc_list_2_p_0(mercury__robdd__TypeInfo_11_11, mercury__robdd__TypeInfo_15_15, (MR_Word) mercury__robdd__V_11_60, &mercury__robdd__conv2_V_7_7);
+    }
+    mercury__robdd__V_7_7 = (MR_Word) mercury__robdd__conv2_V_7_7;
+    mercury__robdd__HeadVar__3_3 = (MR_Word) mercury__robdd__V_7_7;
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____write_var_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__Cast_HeadVar1_4 = mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Cast_HeadVar2_5 = mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_pred_3_p_0(mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__Cast_HeadVar1_4, (MR_Word) mercury__robdd__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____write_var_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__Cast_HeadVar1_3 = mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Cast_HeadVar2_4 = mercury__robdd__HeadVar__2_2;
+
+    {
+      mercury__robdd__succeeded = mercury__private_builtin__builtin_unify_pred_2_p_0((MR_Word) mercury__robdd__Cast_HeadVar1_3, (MR_Word) mercury__robdd__Cast_HeadVar2_4);
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____vars_entailed_result_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_7_7 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_8_8;
+    MR_Word mercury__robdd__TypeCtorInfo_9_9 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    MR_Word mercury__robdd__TypeInfo_10_10;
+    MR_Word mercury__robdd__Cast_HeadVar1_4 = mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Cast_HeadVar2_5 = mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__robdd__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_7_7));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+    }
+    {
+      mercury__robdd__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_10_10, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_9_9));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_10_10, 1) = ((MR_Box) (mercury__robdd__TypeInfo_8_8));
+    }
+    {
+      mercury__robdd____Compare____entailment_result_1_0(mercury__robdd__TypeInfo_10_10, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__Cast_HeadVar1_4, (MR_Word) mercury__robdd__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____vars_entailed_result_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_6_6 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_7_7;
+    MR_Word mercury__robdd__TypeCtorInfo_8_8 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    MR_Word mercury__robdd__TypeInfo_9_9;
+    MR_Word mercury__robdd__Cast_HeadVar1_3 = mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Cast_HeadVar2_4 = mercury__robdd__HeadVar__2_2;
+
+    {
+      mercury__robdd__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_6_6));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_5));
+    }
+    {
+      mercury__robdd__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_8_8));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 1) = ((MR_Box) (mercury__robdd__TypeInfo_7_7));
+    }
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____entailment_result_1_0(mercury__robdd__TypeInfo_9_9, (MR_Word) mercury__robdd__Cast_HeadVar1_3, (MR_Word) mercury__robdd__Cast_HeadVar2_4);
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____vars_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_7_7 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_8_8;
+    MR_Word mercury__robdd__Cast_HeadVar1_4 = mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Cast_HeadVar2_5 = mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__robdd__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_7_7));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+    }
+    {
+      mercury__sparse_bitset____Compare____sparse_bitset_1_0(mercury__robdd__TypeInfo_8_8, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__Cast_HeadVar1_4, (MR_Word) mercury__robdd__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____vars_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_6_6 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_7_7;
+    MR_Word mercury__robdd__Cast_HeadVar1_3 = mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Cast_HeadVar2_4 = mercury__robdd__HeadVar__2_2;
+
+    {
+      mercury__robdd__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_6_6));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_5));
+    }
+    {
+      mercury__robdd__succeeded = mercury__sparse_bitset____Unify____sparse_bitset_1_0(mercury__robdd__TypeInfo_7_7, (MR_Word) mercury__robdd__Cast_HeadVar1_3, (MR_Word) mercury__robdd__Cast_HeadVar2_4);
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____var_cache_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_7_7 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_8_8;
+    MR_Word mercury__robdd__TypeCtorInfo_9_9;
+    MR_Word mercury__robdd__Cast_HeadVar1_4 = mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Cast_HeadVar2_5 = mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__robdd__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_7_7));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+    }
+    mercury__robdd__TypeCtorInfo_9_9 = (MR_Word) &mercury__bool__bool__type_ctor_info_bool_0;
+    {
+      mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_8_8, mercury__robdd__TypeCtorInfo_9_9, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__Cast_HeadVar1_4, (MR_Word) mercury__robdd__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____var_cache_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_6_6 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_7_7;
+    MR_Word mercury__robdd__TypeCtorInfo_8_8 = (MR_Word) &mercury__bool__bool__type_ctor_info_bool_0;
+    MR_Word mercury__robdd__Cast_HeadVar1_3 = mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Cast_HeadVar2_4 = mercury__robdd__HeadVar__2_2;
+
+    {
+      mercury__robdd__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_6_6));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_5));
+    }
+    {
+      mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_7_7, mercury__robdd__TypeCtorInfo_8_8, (MR_Word) mercury__robdd__Cast_HeadVar1_3, (MR_Word) mercury__robdd__Cast_HeadVar2_4);
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____robdd_cache_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_7_7 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+    MR_Word mercury__robdd__TypeInfo_8_8;
+    MR_Word mercury__robdd__Cast_HeadVar1_4 = mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Cast_HeadVar2_5 = mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__robdd__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_7_7));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+    }
+    {
+      mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_8_8, mercury__robdd__TypeInfo_8_8, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__Cast_HeadVar1_4, (MR_Word) mercury__robdd__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_cache_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_6_6 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+    MR_Word mercury__robdd__TypeInfo_7_7;
+    MR_Word mercury__robdd__Cast_HeadVar1_3 = mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Cast_HeadVar2_4 = mercury__robdd__HeadVar__2_2;
+
+    {
+      mercury__robdd__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_6_6));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_5));
+    }
+    {
+      mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_7_7, mercury__robdd__TypeInfo_7_7, (MR_Word) mercury__robdd__Cast_HeadVar1_3, (MR_Word) mercury__robdd__Cast_HeadVar2_4);
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____robdd_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_8,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_6 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+    MR_Integer mercury__robdd__CastY_7 = (MR_Integer) mercury__robdd__HeadVar__3_3;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_6 == mercury__robdd__CastY_7);
+    if (mercury__robdd__succeeded)
+      *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer mercury__robdd__V_4_4 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+        MR_Integer mercury__robdd__V_5_5 = (MR_Integer) mercury__robdd__HeadVar__3_3;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_4_4 < mercury__robdd__V_5_5);
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_4_4 == mercury__robdd__V_5_5);
+            if (mercury__robdd__succeeded)
+              *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+            else
+              *mercury__robdd__HeadVar__1_1 = (MR_Integer) 2;
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_7,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_5 = (MR_Integer) mercury__robdd__HeadVar__1_1;
+    MR_Integer mercury__robdd__CastY_6 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_5 == mercury__robdd__CastY_6);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_3_3 = (MR_Integer) mercury__robdd__HeadVar__1_1;
+        MR_Integer mercury__robdd__V_4_4 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_3_3 == mercury__robdd__V_4_4);
+      }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____robdd_0_0(
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeInfo_6_6 = (MR_Word) &mercury__robdd_scalar_common_1[0];
+    MR_Word mercury__robdd__Cast_HeadVar1_4 = mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Cast_HeadVar2_5 = mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0(mercury__robdd__TypeInfo_6_6, mercury__robdd__HeadVar__1_1, ((MR_Box) (mercury__robdd__Cast_HeadVar1_4)), ((MR_Box) (mercury__robdd__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_0_0(
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__Cast_HeadVar1_3 = mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Cast_HeadVar2_4 = mercury__robdd__HeadVar__2_2;
+    MR_Integer mercury__robdd__CastX_8 = (MR_Integer) mercury__robdd__Cast_HeadVar1_3;
+    MR_Integer mercury__robdd__CastY_9 = (MR_Integer) mercury__robdd__Cast_HeadVar2_4;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_8 == mercury__robdd__CastY_9);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_6_6 = (MR_Integer) mercury__robdd__Cast_HeadVar1_3;
+        MR_Integer mercury__robdd__V_7_7 = (MR_Integer) mercury__robdd__Cast_HeadVar2_4;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_6_6 == mercury__robdd__V_7_7);
+      }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____literal_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_14,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_12 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+    MR_Integer mercury__robdd__CastY_13 = (MR_Integer) mercury__robdd__HeadVar__3_3;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_12 == mercury__robdd__CastY_13);
+    if (mercury__robdd__succeeded)
+      *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word mercury__robdd__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) mercury__robdd__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+          {
+            MR_Word mercury__robdd__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Integer mercury__robdd__V_21_21 = (MR_Integer) mercury__robdd__V_19_19;
+            MR_Integer mercury__robdd__V_22_22 = (MR_Integer) mercury__robdd__V_11_11;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_21_21 < mercury__robdd__V_22_22);
+            if (mercury__robdd__succeeded)
+              *mercury__robdd__HeadVar__1_1 = (MR_Integer) 1;
+            else
+              {
+                mercury__robdd__succeeded = (mercury__robdd__V_21_21 == mercury__robdd__V_22_22);
+                if (mercury__robdd__succeeded)
+                  *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+                else
+                  *mercury__robdd__HeadVar__1_1 = (MR_Integer) 2;
+              }
+          }
+        else
+          *mercury__robdd__HeadVar__1_1 = (MR_Integer) 2;
+      }
+    else
+      {
+        MR_Word mercury__robdd__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) mercury__robdd__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+          *mercury__robdd__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            MR_Word mercury__robdd__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Integer mercury__robdd__V_23_23 = (MR_Integer) mercury__robdd__V_20_20;
+            MR_Integer mercury__robdd__V_24_24 = (MR_Integer) mercury__robdd__V_5_5;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_23_23 < mercury__robdd__V_24_24);
+            if (mercury__robdd__succeeded)
+              *mercury__robdd__HeadVar__1_1 = (MR_Integer) 1;
+            else
+              {
+                mercury__robdd__succeeded = (mercury__robdd__V_23_23 == mercury__robdd__V_24_24);
+                if (mercury__robdd__succeeded)
+                  *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+                else
+                  *mercury__robdd__HeadVar__1_1 = (MR_Integer) 2;
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____literal_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_9,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_7 = (MR_Integer) mercury__robdd__HeadVar__1_1;
+    MR_Integer mercury__robdd__CastY_8 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_7 == mercury__robdd__CastY_8);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) mercury__robdd__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word mercury__robdd__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_6_6;
+        MR_Integer mercury__robdd__V_14_14;
+        MR_Integer mercury__robdd__V_15_15;
+
+        mercury__robdd__succeeded = ((MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (mercury__robdd__succeeded)
+          {
+            mercury__robdd__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            mercury__robdd__V_14_14 = (MR_Integer) mercury__robdd__V_5_5;
+            mercury__robdd__V_15_15 = (MR_Integer) mercury__robdd__V_6_6;
+            mercury__robdd__succeeded = (mercury__robdd__V_14_14 == mercury__robdd__V_15_15);
+          }
+      }
+    else
+      {
+        MR_Word mercury__robdd__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_4_4;
+        MR_Integer mercury__robdd__V_16_16;
+        MR_Integer mercury__robdd__V_17_17;
+
+        mercury__robdd__succeeded = ((MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+        if (mercury__robdd__succeeded)
+          {
+            mercury__robdd__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            mercury__robdd__V_16_16 = (MR_Integer) mercury__robdd__V_3_3;
+            mercury__robdd__V_17_17 = (MR_Integer) mercury__robdd__V_4_4;
+            mercury__robdd__succeeded = (mercury__robdd__V_16_16 == mercury__robdd__V_17_17);
+          }
+      }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____leader_to_eqvclass_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_8,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_6 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+    MR_Integer mercury__robdd__CastY_7 = (MR_Integer) mercury__robdd__HeadVar__3_3;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_6 == mercury__robdd__CastY_7);
+    if (mercury__robdd__succeeded)
+      *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_9_9 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_10_10;
+        MR_Word mercury__robdd__TypeCtorInfo_11_11;
+        MR_Word mercury__robdd__TypeInfo_12_12;
+        MR_Word mercury__robdd__V_4_4 = (MR_Word) mercury__robdd__HeadVar__2_2;
+        MR_Word mercury__robdd__V_5_5 = (MR_Word) mercury__robdd__HeadVar__3_3;
+
+        {
+          mercury__robdd__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_10_10, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_9_9));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_10_10, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_8));
+        }
+        mercury__robdd__TypeCtorInfo_11_11 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+        {
+          mercury__robdd__TypeInfo_12_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_12_12, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_11_11));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_12_12, 1) = ((MR_Box) (mercury__robdd__TypeInfo_10_10));
+        }
+        {
+          mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_10_10, mercury__robdd__TypeInfo_12_12, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__V_4_4, (MR_Word) mercury__robdd__V_5_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____leader_to_eqvclass_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_7,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_5 = (MR_Integer) mercury__robdd__HeadVar__1_1;
+    MR_Integer mercury__robdd__CastY_6 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_5 == mercury__robdd__CastY_6);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_8_8 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_9_9;
+        MR_Word mercury__robdd__TypeCtorInfo_10_10 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+        MR_Word mercury__robdd__TypeInfo_11_11;
+        MR_Word mercury__robdd__V_3_3 = (MR_Word) mercury__robdd__HeadVar__1_1;
+        MR_Word mercury__robdd__V_4_4 = (MR_Word) mercury__robdd__HeadVar__2_2;
+
+        {
+          mercury__robdd__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_8_8));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_7));
+        }
+        {
+          mercury__robdd__TypeInfo_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_11_11, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_10_10));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_11_11, 1) = ((MR_Box) (mercury__robdd__TypeInfo_9_9));
+        }
+        {
+          mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_9_9, mercury__robdd__TypeInfo_11_11, (MR_Word) mercury__robdd__V_3_3, (MR_Word) mercury__robdd__V_4_4);
+        }
+      }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____leader_map_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_7_7 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_8_8;
+    MR_Word mercury__robdd__Cast_HeadVar1_4 = mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Cast_HeadVar2_5 = mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__robdd__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_7_7));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+    }
+    {
+      mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_8_8, mercury__robdd__TypeInfo_8_8, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__Cast_HeadVar1_4, (MR_Word) mercury__robdd__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____leader_map_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_6_6 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_7_7;
+    MR_Word mercury__robdd__Cast_HeadVar1_3 = mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Cast_HeadVar2_4 = mercury__robdd__HeadVar__2_2;
+
+    {
+      mercury__robdd__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_6_6));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_5));
+    }
+    {
+      mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_7_7, mercury__robdd__TypeInfo_7_7, (MR_Word) mercury__robdd__Cast_HeadVar1_3, (MR_Word) mercury__robdd__Cast_HeadVar2_4);
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____implication_result_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_17,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_15 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+    MR_Integer mercury__robdd__CastY_16 = (MR_Integer) mercury__robdd__HeadVar__3_3;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_15 == mercury__robdd__CastY_16);
+    if (mercury__robdd__succeeded)
+      *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word mercury__robdd__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word mercury__robdd__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word mercury__robdd__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word mercury__robdd__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word mercury__robdd__V_12_12;
+        MR_Word mercury__robdd__TypeCtorInfo_18_18 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_imp_res_2_1;
+        MR_Word mercury__robdd__TypeInfo_19_19;
+
+        {
+          mercury__robdd__TypeInfo_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_19, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_18_18));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_19, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+        }
+        {
+          mercury__robdd____Compare____entailment_result_1_0(mercury__robdd__TypeInfo_19_19, &mercury__robdd__V_12_12, (MR_Word) mercury__robdd__V_4_4, (MR_Word) mercury__robdd__V_8_8);
+        }
+        mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 0);
+        mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__HeadVar__1_1 = mercury__robdd__V_12_12;
+        else
+          {
+            MR_Word mercury__robdd__V_13_13;
+            MR_Word mercury__robdd__TypeCtorInfo_22_22 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_imp_res_2_1;
+            MR_Word mercury__robdd__TypeInfo_23_23;
+
+            {
+              mercury__robdd__TypeInfo_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_23_23, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_22_22));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_23_23, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+            }
+            {
+              mercury__robdd____Compare____entailment_result_1_0(mercury__robdd__TypeInfo_23_23, &mercury__robdd__V_13_13, (MR_Word) mercury__robdd__V_5_5, (MR_Word) mercury__robdd__V_9_9);
+            }
+            mercury__robdd__succeeded = (mercury__robdd__V_13_13 == (MR_Integer) 0);
+            mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+            if (mercury__robdd__succeeded)
+              *mercury__robdd__HeadVar__1_1 = mercury__robdd__V_13_13;
+            else
+              {
+                MR_Word mercury__robdd__V_14_14;
+                MR_Word mercury__robdd__TypeCtorInfo_26_26 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_imp_res_2_1;
+                MR_Word mercury__robdd__TypeInfo_27_27;
+
+                {
+                  mercury__robdd__TypeInfo_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_27_27, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_26_26));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_27_27, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+                }
+                {
+                  mercury__robdd____Compare____entailment_result_1_0(mercury__robdd__TypeInfo_27_27, &mercury__robdd__V_14_14, (MR_Word) mercury__robdd__V_6_6, (MR_Word) mercury__robdd__V_10_10);
+                }
+                mercury__robdd__succeeded = (mercury__robdd__V_14_14 == (MR_Integer) 0);
+                mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+                if (mercury__robdd__succeeded)
+                  *mercury__robdd__HeadVar__1_1 = mercury__robdd__V_14_14;
+                else
+                  {
+                    MR_Word mercury__robdd__TypeCtorInfo_30_30 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_imp_res_2_1;
+                    MR_Word mercury__robdd__TypeInfo_31_31;
+
+                    {
+                      mercury__robdd__TypeInfo_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_31_31, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_30_30));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_31_31, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+                    }
+                    {
+                      mercury__robdd____Compare____entailment_result_1_0(mercury__robdd__TypeInfo_31_31, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__V_7_7, (MR_Word) mercury__robdd__V_11_11);
+                    }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____implication_result_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_13,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_11 = (MR_Integer) mercury__robdd__HeadVar__1_1;
+    MR_Integer mercury__robdd__CastY_12 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_11 == mercury__robdd__CastY_12);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_14_14 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_imp_res_2_1;
+        MR_Word mercury__robdd__TypeInfo_21_21;
+        MR_Word mercury__robdd__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word mercury__robdd__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word mercury__robdd__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word mercury__robdd__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+
+        {
+          mercury__robdd__TypeInfo_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_21_21, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_14_14));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_21_21, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_13));
+        }
+        {
+          mercury__robdd__succeeded = mercury__robdd____Unify____entailment_result_1_0(mercury__robdd__TypeInfo_21_21, (MR_Word) mercury__robdd__V_3_3, (MR_Word) mercury__robdd__V_7_7);
+        }
+        if (mercury__robdd__succeeded)
+          {
+            {
+              mercury__robdd__succeeded = mercury__robdd____Unify____entailment_result_1_0(mercury__robdd__TypeInfo_21_21, (MR_Word) mercury__robdd__V_4_4, (MR_Word) mercury__robdd__V_8_8);
+            }
+            if (mercury__robdd__succeeded)
+              {
+                {
+                  mercury__robdd__succeeded = mercury__robdd____Unify____entailment_result_1_0(mercury__robdd__TypeInfo_21_21, (MR_Word) mercury__robdd__V_5_5, (MR_Word) mercury__robdd__V_9_9);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__succeeded = mercury__robdd____Unify____entailment_result_1_0(mercury__robdd__TypeInfo_21_21, (MR_Word) mercury__robdd__V_6_6, (MR_Word) mercury__robdd__V_10_10);
+                  }
+              }
+          }
+      }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____imp_vars_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_17,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_15 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+    MR_Integer mercury__robdd__CastY_16 = (MR_Integer) mercury__robdd__HeadVar__3_3;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_15 == mercury__robdd__CastY_16);
+    if (mercury__robdd__succeeded)
+      *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word mercury__robdd__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word mercury__robdd__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word mercury__robdd__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word mercury__robdd__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word mercury__robdd__V_12_12;
+        MR_Word mercury__robdd__TypeCtorInfo_18_18 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_19_19;
+        MR_Word mercury__robdd__TypeCtorInfo_20_20 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+        MR_Word mercury__robdd__TypeInfo_21_21;
+
+        {
+          mercury__robdd__TypeInfo_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_19, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_18_18));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_19, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+        }
+        {
+          mercury__robdd__TypeInfo_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_21_21, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_20_20));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_21_21, 1) = ((MR_Box) (mercury__robdd__TypeInfo_19_19));
+        }
+        {
+          mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_19_19, mercury__robdd__TypeInfo_21_21, &mercury__robdd__V_12_12, (MR_Word) mercury__robdd__V_4_4, (MR_Word) mercury__robdd__V_8_8);
+        }
+        mercury__robdd__succeeded = (mercury__robdd__V_12_12 == (MR_Integer) 0);
+        mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+        if (mercury__robdd__succeeded)
+          *mercury__robdd__HeadVar__1_1 = mercury__robdd__V_12_12;
+        else
+          {
+            MR_Word mercury__robdd__V_13_13;
+            MR_Word mercury__robdd__TypeCtorInfo_24_24 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+            MR_Word mercury__robdd__TypeInfo_25_25;
+            MR_Word mercury__robdd__TypeCtorInfo_26_26 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+            MR_Word mercury__robdd__TypeInfo_27_27;
+
+            {
+              mercury__robdd__TypeInfo_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_25_25, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_24_24));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_25_25, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+            }
+            {
+              mercury__robdd__TypeInfo_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_27_27, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_26_26));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_27_27, 1) = ((MR_Box) (mercury__robdd__TypeInfo_25_25));
+            }
+            {
+              mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_25_25, mercury__robdd__TypeInfo_27_27, &mercury__robdd__V_13_13, (MR_Word) mercury__robdd__V_5_5, (MR_Word) mercury__robdd__V_9_9);
+            }
+            mercury__robdd__succeeded = (mercury__robdd__V_13_13 == (MR_Integer) 0);
+            mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+            if (mercury__robdd__succeeded)
+              *mercury__robdd__HeadVar__1_1 = mercury__robdd__V_13_13;
+            else
+              {
+                MR_Word mercury__robdd__V_14_14;
+                MR_Word mercury__robdd__TypeCtorInfo_30_30 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                MR_Word mercury__robdd__TypeInfo_31_31;
+                MR_Word mercury__robdd__TypeCtorInfo_32_32 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+                MR_Word mercury__robdd__TypeInfo_33_33;
+
+                {
+                  mercury__robdd__TypeInfo_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_31_31, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_30_30));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_31_31, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+                }
+                {
+                  mercury__robdd__TypeInfo_33_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_33_33, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_32_32));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_33_33, 1) = ((MR_Box) (mercury__robdd__TypeInfo_31_31));
+                }
+                {
+                  mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_31_31, mercury__robdd__TypeInfo_33_33, &mercury__robdd__V_14_14, (MR_Word) mercury__robdd__V_6_6, (MR_Word) mercury__robdd__V_10_10);
+                }
+                mercury__robdd__succeeded = (mercury__robdd__V_14_14 == (MR_Integer) 0);
+                mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+                if (mercury__robdd__succeeded)
+                  *mercury__robdd__HeadVar__1_1 = mercury__robdd__V_14_14;
+                else
+                  {
+                    MR_Word mercury__robdd__TypeCtorInfo_36_36 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                    MR_Word mercury__robdd__TypeInfo_37_37;
+                    MR_Word mercury__robdd__TypeCtorInfo_38_38;
+                    MR_Word mercury__robdd__TypeInfo_39_39;
+
+                    {
+                      mercury__robdd__TypeInfo_37_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_37_37, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_36_36));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_37_37, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+                    }
+                    mercury__robdd__TypeCtorInfo_38_38 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+                    {
+                      mercury__robdd__TypeInfo_39_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_39_39, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_38_38));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_39_39, 1) = ((MR_Box) (mercury__robdd__TypeInfo_37_37));
+                    }
+                    {
+                      mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_37_37, mercury__robdd__TypeInfo_39_39, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__V_7_7, (MR_Word) mercury__robdd__V_11_11);
+                    }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____imp_vars_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_13,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_11 = (MR_Integer) mercury__robdd__HeadVar__1_1;
+    MR_Integer mercury__robdd__CastY_12 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_11 == mercury__robdd__CastY_12);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_14_14 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeCtorInfo_16_16 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+        MR_Word mercury__robdd__TypeInfo_33_33;
+        MR_Word mercury__robdd__TypeInfo_35_35;
+        MR_Word mercury__robdd__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word mercury__robdd__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word mercury__robdd__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word mercury__robdd__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, (MR_Integer) 3)));
+
+        {
+          mercury__robdd__TypeInfo_33_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_33_33, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_14_14));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_33_33, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_13));
+        }
+        {
+          mercury__robdd__TypeInfo_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_35_35, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_16_16));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_35_35, 1) = ((MR_Box) (mercury__robdd__TypeInfo_33_33));
+        }
+        {
+          mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_33_33, mercury__robdd__TypeInfo_35_35, (MR_Word) mercury__robdd__V_3_3, (MR_Word) mercury__robdd__V_7_7);
+        }
+        if (mercury__robdd__succeeded)
+          {
+            {
+              mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_33_33, mercury__robdd__TypeInfo_35_35, (MR_Word) mercury__robdd__V_4_4, (MR_Word) mercury__robdd__V_8_8);
+            }
+            if (mercury__robdd__succeeded)
+              {
+                {
+                  mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_33_33, mercury__robdd__TypeInfo_35_35, (MR_Word) mercury__robdd__V_5_5, (MR_Word) mercury__robdd__V_9_9);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_33_33, mercury__robdd__TypeInfo_35_35, (MR_Word) mercury__robdd__V_6_6, (MR_Word) mercury__robdd__V_10_10);
+                  }
+              }
+          }
+      }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____imp_res_2_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_8,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_6 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+    MR_Integer mercury__robdd__CastY_7 = (MR_Integer) mercury__robdd__HeadVar__3_3;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_6 == mercury__robdd__CastY_7);
+    if (mercury__robdd__succeeded)
+      *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_9_9 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_10_10;
+        MR_Word mercury__robdd__TypeCtorInfo_11_11;
+        MR_Word mercury__robdd__TypeInfo_12_12;
+        MR_Word mercury__robdd__TypeCtorInfo_13_13;
+        MR_Word mercury__robdd__TypeInfo_14_14;
+        MR_Word mercury__robdd__V_4_4 = (MR_Word) mercury__robdd__HeadVar__2_2;
+        MR_Word mercury__robdd__V_5_5 = (MR_Word) mercury__robdd__HeadVar__3_3;
+
+        {
+          mercury__robdd__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_10_10, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_9_9));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_10_10, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_8));
+        }
+        mercury__robdd__TypeCtorInfo_13_13 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+        mercury__robdd__TypeCtorInfo_11_11 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+        {
+          mercury__robdd__TypeInfo_12_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_12_12, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_11_11));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_12_12, 1) = ((MR_Box) (mercury__robdd__TypeInfo_10_10));
+        }
+        {
+          mercury__robdd__TypeInfo_14_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_14_14, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_13_13));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_14_14, 1) = ((MR_Box) (mercury__robdd__TypeInfo_12_12));
+        }
+        {
+          mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_10_10, mercury__robdd__TypeInfo_14_14, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__V_4_4, (MR_Word) mercury__robdd__V_5_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____imp_res_2_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_7,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_5 = (MR_Integer) mercury__robdd__HeadVar__1_1;
+    MR_Integer mercury__robdd__CastY_6 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_5 == mercury__robdd__CastY_6);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_8_8 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_9_9;
+        MR_Word mercury__robdd__TypeCtorInfo_10_10 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+        MR_Word mercury__robdd__TypeInfo_11_11;
+        MR_Word mercury__robdd__TypeCtorInfo_12_12 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+        MR_Word mercury__robdd__TypeInfo_13_13;
+        MR_Word mercury__robdd__V_3_3 = (MR_Word) mercury__robdd__HeadVar__1_1;
+        MR_Word mercury__robdd__V_4_4 = (MR_Word) mercury__robdd__HeadVar__2_2;
+
+        {
+          mercury__robdd__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_8_8));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_7));
+        }
+        {
+          mercury__robdd__TypeInfo_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_11_11, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_10_10));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_11_11, 1) = ((MR_Box) (mercury__robdd__TypeInfo_9_9));
+        }
+        {
+          mercury__robdd__TypeInfo_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_13_13, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_12_12));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_13_13, 1) = ((MR_Box) (mercury__robdd__TypeInfo_11_11));
+        }
+        {
+          mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_9_9, mercury__robdd__TypeInfo_13_13, (MR_Word) mercury__robdd__V_3_3, (MR_Word) mercury__robdd__V_4_4);
+        }
+      }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____imp_res_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_7_7 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_imp_res_2_1;
+    MR_Word mercury__robdd__TypeInfo_8_8;
+    MR_Word mercury__robdd__Cast_HeadVar1_4 = mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Cast_HeadVar2_5 = mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__robdd__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_7_7));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+    }
+    {
+      mercury__robdd____Compare____entailment_result_1_0(mercury__robdd__TypeInfo_8_8, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__Cast_HeadVar1_4, (MR_Word) mercury__robdd__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____imp_res_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_6_6 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_imp_res_2_1;
+    MR_Word mercury__robdd__TypeInfo_7_7;
+    MR_Word mercury__robdd__Cast_HeadVar1_3 = mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Cast_HeadVar2_4 = mercury__robdd__HeadVar__2_2;
+
+    {
+      mercury__robdd__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_6_6));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_5));
+    }
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____entailment_result_1_0(mercury__robdd__TypeInfo_7_7, (MR_Word) mercury__robdd__Cast_HeadVar1_3, (MR_Word) mercury__robdd__Cast_HeadVar2_4);
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____imp_map_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_7_7 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_8_8;
+    MR_Word mercury__robdd__TypeCtorInfo_9_9;
+    MR_Word mercury__robdd__TypeInfo_10_10;
+    MR_Word mercury__robdd__Cast_HeadVar1_4 = mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Cast_HeadVar2_5 = mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__robdd__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_7_7));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+    }
+    mercury__robdd__TypeCtorInfo_9_9 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    {
+      mercury__robdd__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_10_10, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_9_9));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_10_10, 1) = ((MR_Box) (mercury__robdd__TypeInfo_8_8));
+    }
+    {
+      mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_8_8, mercury__robdd__TypeInfo_10_10, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__Cast_HeadVar1_4, (MR_Word) mercury__robdd__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____imp_map_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_6_6 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_7_7;
+    MR_Word mercury__robdd__TypeCtorInfo_8_8 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    MR_Word mercury__robdd__TypeInfo_9_9;
+    MR_Word mercury__robdd__Cast_HeadVar1_3 = mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Cast_HeadVar2_4 = mercury__robdd__HeadVar__2_2;
+
+    {
+      mercury__robdd__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_6_6));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_5));
+    }
+    {
+      mercury__robdd__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_8_8));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 1) = ((MR_Box) (mercury__robdd__TypeInfo_7_7));
+    }
+    {
+      mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_7_7, mercury__robdd__TypeInfo_9_9, (MR_Word) mercury__robdd__Cast_HeadVar1_3, (MR_Word) mercury__robdd__Cast_HeadVar2_4);
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____equivalent_result_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_7_7 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_equiv_vars_1;
+    MR_Word mercury__robdd__TypeInfo_8_8;
+    MR_Word mercury__robdd__Cast_HeadVar1_4 = mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Cast_HeadVar2_5 = mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__robdd__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_7_7));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+    }
+    {
+      mercury__robdd____Compare____entailment_result_1_0(mercury__robdd__TypeInfo_8_8, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__Cast_HeadVar1_4, (MR_Word) mercury__robdd__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____equivalent_result_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_6_6 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_equiv_vars_1;
+    MR_Word mercury__robdd__TypeInfo_7_7;
+    MR_Word mercury__robdd__Cast_HeadVar1_3 = mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Cast_HeadVar2_4 = mercury__robdd__HeadVar__2_2;
+
+    {
+      mercury__robdd__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_6_6));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_7_7, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_5));
+    }
+    {
+      mercury__robdd__succeeded = mercury__robdd____Unify____entailment_result_1_0(mercury__robdd__TypeInfo_7_7, (MR_Word) mercury__robdd__Cast_HeadVar1_3, (MR_Word) mercury__robdd__Cast_HeadVar2_4);
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____equiv_vars_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_8,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_6 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+    MR_Integer mercury__robdd__CastY_7 = (MR_Integer) mercury__robdd__HeadVar__3_3;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_6 == mercury__robdd__CastY_7);
+    if (mercury__robdd__succeeded)
+      *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_9_9 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_10_10;
+        MR_Word mercury__robdd__V_4_4 = (MR_Word) mercury__robdd__HeadVar__2_2;
+        MR_Word mercury__robdd__V_5_5 = (MR_Word) mercury__robdd__HeadVar__3_3;
+
+        {
+          mercury__robdd__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_10_10, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_9_9));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_10_10, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_8));
+        }
+        {
+          mercury__tree234____Compare____tree234_2_0(mercury__robdd__TypeInfo_10_10, mercury__robdd__TypeInfo_10_10, mercury__robdd__HeadVar__1_1, (MR_Word) mercury__robdd__V_4_4, (MR_Word) mercury__robdd__V_5_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____equiv_vars_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_7,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_5 = (MR_Integer) mercury__robdd__HeadVar__1_1;
+    MR_Integer mercury__robdd__CastY_6 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_5 == mercury__robdd__CastY_6);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_8_8 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_9_9;
+        MR_Word mercury__robdd__V_3_3 = (MR_Word) mercury__robdd__HeadVar__1_1;
+        MR_Word mercury__robdd__V_4_4 = (MR_Word) mercury__robdd__HeadVar__2_2;
+
+        {
+          mercury__robdd__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_8_8));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_7));
+        }
+        {
+          mercury__robdd__succeeded = mercury__tree234____Unify____tree234_2_0(mercury__robdd__TypeInfo_9_9, mercury__robdd__TypeInfo_9_9, (MR_Word) mercury__robdd__V_3_3, (MR_Word) mercury__robdd__V_4_4);
+        }
+      }
+    return mercury__robdd__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__robdd____Compare____entailment_result_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_10,
+  MR_Word * mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_8 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+    MR_Integer mercury__robdd__CastY_9 = (MR_Integer) mercury__robdd__HeadVar__3_3;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_8 == mercury__robdd__CastY_9);
+    if (mercury__robdd__succeeded)
+      *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((mercury__robdd__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *mercury__robdd__HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *mercury__robdd__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        MR_Box mercury__robdd__V_11_11 = (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0));
+
+        if ((mercury__robdd__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mercury__robdd__HeadVar__1_1 = (MR_Integer) 2;
+        else
+          {
+            MR_Box mercury__robdd__V_7_7 = (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__3_3, (MR_Integer) 0));
+
+            {
+              mercury__builtin__compare_3_p_0(mercury__robdd__TypeInfo_for_T_10, mercury__robdd__HeadVar__1_1, mercury__robdd__V_11_11, mercury__robdd__V_7_7);
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd____Unify____entailment_result_1_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_9,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__CastX_7 = (MR_Integer) mercury__robdd__HeadVar__1_1;
+    MR_Integer mercury__robdd__CastY_8 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+
+    mercury__robdd__succeeded = (mercury__robdd__CastX_7 == mercury__robdd__CastY_8);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+    if ((mercury__robdd__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Integer mercury__robdd__CastX_3 = (MR_Integer) mercury__robdd__HeadVar__1_1;
+        MR_Integer mercury__robdd__CastY_4 = (MR_Integer) mercury__robdd__HeadVar__2_2;
+
+        mercury__robdd__succeeded = (mercury__robdd__CastY_4 == mercury__robdd__CastX_3);
+      }
+    else
+      {
+        MR_Box mercury__robdd__V_5_5 = (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 0));
+        MR_Box mercury__robdd__V_6_6;
+
+        mercury__robdd__succeeded = ((MR_tag((MR_Word) mercury__robdd__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (mercury__robdd__succeeded)
+          {
+            mercury__robdd__V_6_6 = (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0));
+            {
+              mercury__robdd__succeeded = mercury__builtin__unify_2_p_0(mercury__robdd__TypeInfo_for_T_9, mercury__robdd__V_5_5, mercury__robdd__V_6_6);
+            }
+          }
+      }
+    return mercury__robdd__succeeded;
+  }
+}
+
+MR_Box MR_CALL 
+mercury__robdd__intersection_2_f_0(
+  MR_Word mercury__robdd__TypeClassInfo_for_intersectable_4,
+  MR_Box mercury__robdd__HeadVar__1_1,
+  MR_Box mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Box mercury__robdd__HeadVar__3_3;
+    MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_4, (MR_Integer) 0)), (MR_Integer) 5)));
+
+    {
+      mercury__robdd__HeadVar__3_3 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_4), mercury__robdd__HeadVar__1_1, mercury__robdd__HeadVar__2_2);
+    }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd__minimal_model_2_6_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_21,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__R0_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__TrueVars_4,
+  MR_Word mercury__robdd__HeadVar__5_5,
+  MR_Word * mercury__robdd__FalseVars_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *mercury__robdd__TrueVars_4 = mercury__robdd__HeadVar__3_3;
+            *mercury__robdd__FalseVars_6 = mercury__robdd__HeadVar__5_5;
+            mercury__robdd__succeeded = MR_TRUE;
+          }
+        else
+          {
+            MR_Word mercury__robdd__V_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word mercury__robdd__Vs_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word mercury__robdd__R1_17;
+            MR_Word mercury__robdd__V_30_30;
+            MR_Integer mercury__robdd__CastX_34;
+            MR_Integer mercury__robdd__CastY_35;
+
+            {
+              mercury__robdd__R1_17 = mercury__robdd__var_restrict_false_2_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__V_10, mercury__robdd__R0_2);
+            }
+            {
+              mercury__robdd__V_30_30 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_21);
+            }
+            mercury__robdd__CastX_34 = (MR_Integer) mercury__robdd__R1_17;
+            mercury__robdd__CastY_35 = (MR_Integer) mercury__robdd__V_30_30;
+            mercury__robdd__succeeded = (mercury__robdd__CastX_34 == mercury__robdd__CastY_35);
+            if (mercury__robdd__succeeded)
+              mercury__robdd__succeeded = MR_TRUE;
+            else
+              {
+                MR_Integer mercury__robdd__V_32_32 = (MR_Integer) mercury__robdd__R1_17;
+                MR_Integer mercury__robdd__V_33_33 = (MR_Integer) mercury__robdd__V_30_30;
+
+                mercury__robdd__succeeded = (mercury__robdd__V_32_32 == mercury__robdd__V_33_33);
+              }
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_22_22;
+                MR_Word mercury__robdd__TypeInfo_23_23;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_24;
+                MR_Word mercury__robdd__TypeClassInfo_for_enum_25;
+                MR_Word mercury__robdd__R2_18;
+                MR_Word mercury__robdd__V_19_19;
+                MR_Word mercury__robdd__V_6_46;
+                MR_Integer mercury__robdd__V_9_48;
+                MR_Word mercury__robdd__V_5_49;
+                MR_Word mercury__robdd__V_31_31;
+                MR_Integer mercury__robdd__CastX_38;
+                MR_Integer mercury__robdd__CastY_39;
+                MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box);
+                MR_Box mercury__robdd__conv1_V_9_48;
+
+                {
+                  mercury__robdd__R2_18 = mercury__robdd__var_restrict_true_2_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__V_10, mercury__robdd__R0_2);
+                }
+                {
+                  mercury__robdd__V_31_31 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_21);
+                }
+                mercury__robdd__CastX_38 = (MR_Integer) mercury__robdd__R2_18;
+                mercury__robdd__CastY_39 = (MR_Integer) mercury__robdd__V_31_31;
+                mercury__robdd__succeeded = (mercury__robdd__CastX_38 == mercury__robdd__CastY_39);
+                if (mercury__robdd__succeeded)
+                  mercury__robdd__succeeded = MR_TRUE;
+                else
+                  {
+                    MR_Integer mercury__robdd__V_36_36 = (MR_Integer) mercury__robdd__R2_18;
+                    MR_Integer mercury__robdd__V_37_37 = (MR_Integer) mercury__robdd__V_31_31;
+
+                    mercury__robdd__succeeded = (mercury__robdd__V_36_36 == mercury__robdd__V_37_37);
+                  }
+                mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__BaseTypeClassInfo_for_enum_24 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                    mercury__robdd__TypeCtorInfo_22_22 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                    mercury__robdd__V_6_46 = (MR_Word) mercury__robdd__HeadVar__3_3;
+                    {
+                      mercury__robdd__TypeInfo_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_23_23, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_22_22));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_23_23, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_21));
+                    }
+                    {
+                      mercury__robdd__TypeClassInfo_for_enum_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_25, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_24));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_25, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_21));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_25, 2) = ((MR_Box) (mercury__robdd__TypeInfo_23_23));
+                    }
+                    mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_25, (MR_Integer) 0)), (MR_Integer) 5)));
+                    {
+                      mercury__robdd__conv1_V_9_48 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_25), ((MR_Box) (mercury__robdd__V_10)));
+                    }
+                    mercury__robdd__V_9_48 = ((MR_Integer) mercury__robdd__conv1_V_9_48);
+                    {
+                      mercury__sparse_bitset__insert_2_3_p_0(mercury__robdd__V_6_46, mercury__robdd__V_9_48, &mercury__robdd__V_5_49);
+                    }
+                    mercury__robdd__V_19_19 = (MR_Word) mercury__robdd__V_5_49;
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__robdd__HeadVar__1__tmp_copy_1 = mercury__robdd__Vs_11;
+                      MR_Word mercury__robdd__R0__tmp_copy_2 = mercury__robdd__R2_18;
+                      MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_19_19;
+
+                      mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                      mercury__robdd__R0_2 = mercury__robdd__R0__tmp_copy_2;
+                      mercury__robdd__HeadVar__1_1 = mercury__robdd__HeadVar__1__tmp_copy_1;
+                    }
+                    continue;
+                  }
+              }
+            else
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_26_26 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                MR_Word mercury__robdd__TypeInfo_27_27;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_28 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                MR_Word mercury__robdd__TypeClassInfo_for_enum_29;
+                MR_Word mercury__robdd__V_20_20;
+                MR_Word mercury__robdd__V_6_56 = (MR_Word) mercury__robdd__HeadVar__5_5;
+                MR_Integer mercury__robdd__V_9_58;
+                MR_Word mercury__robdd__V_5_59;
+                MR_Box MR_CALL (* mercury__robdd__func_2)(MR_Box, MR_Box);
+                MR_Box mercury__robdd__conv3_V_9_58;
+
+                {
+                  mercury__robdd__TypeInfo_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_27_27, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_26_26));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_27_27, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_21));
+                }
+                {
+                  mercury__robdd__TypeClassInfo_for_enum_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_28));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_21));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, 2) = ((MR_Box) (mercury__robdd__TypeInfo_27_27));
+                }
+                mercury__robdd__func_2 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_29, (MR_Integer) 0)), (MR_Integer) 5)));
+                {
+                  mercury__robdd__conv3_V_9_58 = mercury__robdd__func_2(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_29), ((MR_Box) (mercury__robdd__V_10)));
+                }
+                mercury__robdd__V_9_58 = ((MR_Integer) mercury__robdd__conv3_V_9_58);
+                {
+                  mercury__sparse_bitset__insert_2_3_p_0(mercury__robdd__V_6_56, mercury__robdd__V_9_58, &mercury__robdd__V_5_59);
+                }
+                mercury__robdd__V_20_20 = (MR_Word) mercury__robdd__V_5_59;
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__robdd__HeadVar__1__tmp_copy_1 = mercury__robdd__Vs_11;
+                  MR_Word mercury__robdd__R0__tmp_copy_2 = mercury__robdd__R1_17;
+                  MR_Word mercury__robdd__HeadVar__5__tmp_copy_5 = mercury__robdd__V_20_20;
+
+                  mercury__robdd__HeadVar__5_5 = mercury__robdd__HeadVar__5__tmp_copy_5;
+                  mercury__robdd__R0_2 = mercury__robdd__R0__tmp_copy_2;
+                  mercury__robdd__HeadVar__1_1 = mercury__robdd__HeadVar__1__tmp_copy_1;
+                }
+                continue;
+              }
+          }
+        return mercury__robdd__succeeded;
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+mercury__robdd__labelling_2_6_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_28,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__R0_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__TrueVars_4,
+  MR_Word mercury__robdd__HeadVar__5_5,
+  MR_Word * mercury__robdd__FalseVars_6,
+  MR_Cont mercury__robdd__cont,
+  void * mercury__robdd__cont_env_ptr)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *mercury__robdd__TrueVars_4 = mercury__robdd__HeadVar__3_3;
+            *mercury__robdd__FalseVars_6 = mercury__robdd__HeadVar__5_5;
+            {
+              mercury__robdd__cont(mercury__robdd__cont_env_ptr);
+            }
+          }
+        else
+          {
+            MR_Word mercury__robdd__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word mercury__robdd__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 0)));
+
+            {
+              MR_Word mercury__robdd__TypeCtorInfo_29_29;
+              MR_Word mercury__robdd__TypeInfo_30_30;
+              MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_31;
+              MR_Word mercury__robdd__TypeClassInfo_for_enum_32;
+              MR_Word mercury__robdd__R_17;
+              MR_Word mercury__robdd__V_18_18;
+              MR_Word mercury__robdd__V_6_51;
+              MR_Integer mercury__robdd__V_9_53;
+              MR_Word mercury__robdd__V_5_54;
+              MR_Word mercury__robdd__V_37_37;
+              MR_Integer mercury__robdd__CastX_43;
+              MR_Integer mercury__robdd__CastY_44;
+              MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box);
+              MR_Box mercury__robdd__conv1_V_9_53;
+
+              {
+                mercury__robdd__R_17 = mercury__robdd__var_restrict_false_2_f_0(mercury__robdd__TypeInfo_for_T_28, mercury__robdd__V_40_40, mercury__robdd__R0_2);
+              }
+              {
+                mercury__robdd__V_37_37 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_28);
+              }
+              mercury__robdd__CastX_43 = (MR_Integer) mercury__robdd__R_17;
+              mercury__robdd__CastY_44 = (MR_Integer) mercury__robdd__V_37_37;
+              mercury__robdd__succeeded = (mercury__robdd__CastX_43 == mercury__robdd__CastY_44);
+              if (mercury__robdd__succeeded)
+                mercury__robdd__succeeded = MR_TRUE;
+              else
+                {
+                  MR_Integer mercury__robdd__V_41_41 = (MR_Integer) mercury__robdd__R_17;
+                  MR_Integer mercury__robdd__V_42_42 = (MR_Integer) mercury__robdd__V_37_37;
+
+                  mercury__robdd__succeeded = (mercury__robdd__V_41_41 == mercury__robdd__V_42_42);
+                }
+              mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+              if (mercury__robdd__succeeded)
+                {
+                  mercury__robdd__BaseTypeClassInfo_for_enum_31 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                  mercury__robdd__TypeCtorInfo_29_29 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                  mercury__robdd__V_6_51 = (MR_Word) mercury__robdd__HeadVar__5_5;
+                  {
+                    mercury__robdd__TypeInfo_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_30, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_29_29));
+                    MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_30, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_28));
+                  }
+                  {
+                    mercury__robdd__TypeClassInfo_for_enum_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_32, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_31));
+                    MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_32, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_28));
+                    MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_32, 2) = ((MR_Box) (mercury__robdd__TypeInfo_30_30));
+                  }
+                  mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_32, (MR_Integer) 0)), (MR_Integer) 5)));
+                  {
+                    mercury__robdd__conv1_V_9_53 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_32), ((MR_Box) (mercury__robdd__V_40_40)));
+                  }
+                  mercury__robdd__V_9_53 = ((MR_Integer) mercury__robdd__conv1_V_9_53);
+                  {
+                    mercury__sparse_bitset__insert_2_3_p_0(mercury__robdd__V_6_51, mercury__robdd__V_9_53, &mercury__robdd__V_5_54);
+                  }
+                  mercury__robdd__V_18_18 = (MR_Word) mercury__robdd__V_5_54;
+                  {
+                    mercury__robdd__labelling_2_6_p_0(mercury__robdd__TypeInfo_for_T_28, mercury__robdd__V_39_39, mercury__robdd__R_17, mercury__robdd__HeadVar__3_3, mercury__robdd__TrueVars_4, mercury__robdd__V_18_18, mercury__robdd__FalseVars_6, mercury__robdd__cont, mercury__robdd__cont_env_ptr);
+                  }
+                }
+            }
+            {
+              MR_Word mercury__robdd__TypeCtorInfo_33_33;
+              MR_Word mercury__robdd__TypeInfo_34_34;
+              MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_35;
+              MR_Word mercury__robdd__TypeClassInfo_for_enum_36;
+              MR_Word mercury__robdd__R_26;
+              MR_Word mercury__robdd__V_27_27;
+              MR_Word mercury__robdd__V_6_65;
+              MR_Integer mercury__robdd__V_9_67;
+              MR_Word mercury__robdd__V_5_68;
+              MR_Word mercury__robdd__V_38_38;
+              MR_Integer mercury__robdd__CastX_57;
+              MR_Integer mercury__robdd__CastY_58;
+              MR_Box MR_CALL (* mercury__robdd__func_2)(MR_Box, MR_Box);
+              MR_Box mercury__robdd__conv3_V_9_67;
+
+              {
+                mercury__robdd__R_26 = mercury__robdd__var_restrict_true_2_f_0(mercury__robdd__TypeInfo_for_T_28, mercury__robdd__V_40_40, mercury__robdd__R0_2);
+              }
+              {
+                mercury__robdd__V_38_38 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_28);
+              }
+              mercury__robdd__CastX_57 = (MR_Integer) mercury__robdd__R_26;
+              mercury__robdd__CastY_58 = (MR_Integer) mercury__robdd__V_38_38;
+              mercury__robdd__succeeded = (mercury__robdd__CastX_57 == mercury__robdd__CastY_58);
+              if (mercury__robdd__succeeded)
+                mercury__robdd__succeeded = MR_TRUE;
+              else
+                {
+                  MR_Integer mercury__robdd__V_55_55 = (MR_Integer) mercury__robdd__R_26;
+                  MR_Integer mercury__robdd__V_56_56 = (MR_Integer) mercury__robdd__V_38_38;
+
+                  mercury__robdd__succeeded = (mercury__robdd__V_55_55 == mercury__robdd__V_56_56);
+                }
+              mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+              if (mercury__robdd__succeeded)
+                {
+                  mercury__robdd__BaseTypeClassInfo_for_enum_35 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                  mercury__robdd__TypeCtorInfo_33_33 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                  mercury__robdd__V_6_65 = (MR_Word) mercury__robdd__HeadVar__3_3;
+                  {
+                    mercury__robdd__TypeInfo_34_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_34_34, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_33_33));
+                    MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_34_34, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_28));
+                  }
+                  {
+                    mercury__robdd__TypeClassInfo_for_enum_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_36, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_35));
+                    MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_36, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_28));
+                    MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_36, 2) = ((MR_Box) (mercury__robdd__TypeInfo_34_34));
+                  }
+                  mercury__robdd__func_2 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_36, (MR_Integer) 0)), (MR_Integer) 5)));
+                  {
+                    mercury__robdd__conv3_V_9_67 = mercury__robdd__func_2(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_36), ((MR_Box) (mercury__robdd__V_40_40)));
+                  }
+                  mercury__robdd__V_9_67 = ((MR_Integer) mercury__robdd__conv3_V_9_67);
+                  {
+                    mercury__sparse_bitset__insert_2_3_p_0(mercury__robdd__V_6_65, mercury__robdd__V_9_67, &mercury__robdd__V_5_68);
+                  }
+                  mercury__robdd__V_27_27 = (MR_Word) mercury__robdd__V_5_68;
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word mercury__robdd__HeadVar__1__tmp_copy_1 = mercury__robdd__V_39_39;
+                    MR_Word mercury__robdd__R0__tmp_copy_2 = mercury__robdd__R_26;
+                    MR_Word mercury__robdd__HeadVar__3__tmp_copy_3 = mercury__robdd__V_27_27;
+
+                    mercury__robdd__HeadVar__3_3 = mercury__robdd__HeadVar__3__tmp_copy_3;
+                    mercury__robdd__R0_2 = mercury__robdd__R0__tmp_copy_2;
+                    mercury__robdd__HeadVar__1_1 = mercury__robdd__HeadVar__1__tmp_copy_1;
+                  }
+                  continue;
+                }
+            }
+          }
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+mercury__robdd__write_edge_5_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_26,
+  MR_Word mercury__robdd__R0_6,
+  MR_Word mercury__robdd__R1_7,
+  MR_Word mercury__robdd__Arc_8)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__R1_7);
+    }
+    if (mercury__robdd__succeeded)
+      {
+      }
+    else
+      {
+        MR_String mercury__robdd__V_15_15;
+        MR_String mercury__robdd__V_18_18;
+        MR_String mercury__robdd__V_21_21;
+        MR_String mercury__robdd__V_24_24;
+
+        {
+          mercury__robdd__V_15_15 = mercury__robdd__node_name_1_f_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__R0_6);
+        }
+        mercury__robdd__succeeded = (mercury__robdd__Arc_8 == (MR_Integer) 1);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__V_18_18 = (MR_String) "f0";
+        else
+          mercury__robdd__V_18_18 = (MR_String) "f2";
+        {
+          mercury__robdd__V_21_21 = mercury__robdd__node_name_1_f_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__R1_7);
+        }
+        mercury__robdd__succeeded = (mercury__robdd__Arc_8 == (MR_Integer) 1);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__V_24_24 = (MR_String) "t";
+        else
+          mercury__robdd__V_24_24 = (MR_String) "f";
+        {
+          mercury__io__write_string_3_p_0((MR_String) "\"");
+        }
+        {
+          mercury__io__write_string_3_p_0(mercury__robdd__V_15_15);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) "\":");
+        }
+        {
+          mercury__io__write_string_3_p_0(mercury__robdd__V_18_18);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) " -> \"");
+        }
+        {
+          mercury__io__write_string_3_p_0(mercury__robdd__V_21_21);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) "\":f1 [label=\"");
+        }
+        {
+          mercury__io__write_string_3_p_0(mercury__robdd__V_24_24);
+        }
+        {
+          mercury__io__write_string_3_p_0((MR_String) "\"];\n");
+        }
+      }
+  }
+}
+
+MR_String MR_CALL 
+mercury__robdd__terminal_name_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_4,
+  MR_Word mercury__robdd__R_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_String mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_5_5;
+    MR_Integer mercury__robdd__CastX_9;
+    MR_Integer mercury__robdd__CastY_10;
+
+    {
+      mercury__robdd__V_5_5 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_4);
+    }
+    mercury__robdd__CastX_9 = (MR_Integer) mercury__robdd__R_3;
+    mercury__robdd__CastY_10 = (MR_Integer) mercury__robdd__V_5_5;
+    mercury__robdd__succeeded = (mercury__robdd__CastX_9 == mercury__robdd__CastY_10);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_7_7 = (MR_Integer) mercury__robdd__R_3;
+        MR_Integer mercury__robdd__V_8_8 = (MR_Integer) mercury__robdd__V_5_5;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_7_7 == mercury__robdd__V_8_8);
+      }
+    if (mercury__robdd__succeeded)
+      mercury__robdd__HeadVar__2_2 = (MR_String) "0";
+    else
+      {
+        MR_Word mercury__robdd__V_6_6;
+        MR_Integer mercury__robdd__CastX_13;
+        MR_Integer mercury__robdd__CastY_14;
+
+        {
+          mercury__robdd__V_6_6 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_4);
+        }
+        mercury__robdd__CastX_13 = (MR_Integer) mercury__robdd__R_3;
+        mercury__robdd__CastY_14 = (MR_Integer) mercury__robdd__V_6_6;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_13 == mercury__robdd__CastY_14);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_11_11 = (MR_Integer) mercury__robdd__R_3;
+            MR_Integer mercury__robdd__V_12_12 = (MR_Integer) mercury__robdd__V_6_6;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_11_11 == mercury__robdd__V_12_12);
+          }
+        if (mercury__robdd__succeeded)
+          mercury__robdd__HeadVar__2_2 = (MR_String) "1";
+        else
+          mercury__robdd__HeadVar__2_2 = (MR_String) "";
+      }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+static MR_Integer MR_CALL 
+mercury__robdd__node_num_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_3,
+  MR_Word mercury__robdd__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Integer mercury__robdd__HeadVar__2_2;
+
+    {
+      mercury__robdd__HeadVar__2_2 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_110_111_100_101_95_110_117_109_95_95_91_49_93_95_48_1_f_0(mercury__robdd__HeadVar__1_1);
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_String MR_CALL 
+mercury__robdd__node_name_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_9,
+  MR_Word mercury__robdd__R_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_String mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_10_10;
+    MR_Integer mercury__robdd__CastX_22;
+    MR_Integer mercury__robdd__CastY_23;
+
+    {
+      mercury__robdd__V_10_10 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_9);
+    }
+    mercury__robdd__CastX_22 = (MR_Integer) mercury__robdd__R_3;
+    mercury__robdd__CastY_23 = (MR_Integer) mercury__robdd__V_10_10;
+    mercury__robdd__succeeded = (mercury__robdd__CastX_22 == mercury__robdd__CastY_23);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_20_20 = (MR_Integer) mercury__robdd__R_3;
+        MR_Integer mercury__robdd__V_21_21 = (MR_Integer) mercury__robdd__V_10_10;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_20_20 == mercury__robdd__V_21_21);
+      }
+    if (mercury__robdd__succeeded)
+      mercury__robdd__HeadVar__2_2 = (MR_String) "true";
+    else
+      {
+        MR_Word mercury__robdd__V_11_11;
+        MR_Integer mercury__robdd__CastX_26;
+        MR_Integer mercury__robdd__CastY_27;
+
+        {
+          mercury__robdd__V_11_11 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_9);
+        }
+        mercury__robdd__CastX_26 = (MR_Integer) mercury__robdd__R_3;
+        mercury__robdd__CastY_27 = (MR_Integer) mercury__robdd__V_11_11;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_26 == mercury__robdd__CastY_27);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_24_24 = (MR_Integer) mercury__robdd__R_3;
+            MR_Integer mercury__robdd__V_25_25 = (MR_Integer) mercury__robdd__V_11_11;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_24_24 == mercury__robdd__V_25_25);
+          }
+        if (mercury__robdd__succeeded)
+          mercury__robdd__HeadVar__2_2 = (MR_String) "false";
+        else
+          {
+            MR_Integer mercury__robdd__V_7_7;
+            MR_String mercury__robdd__V_12_12;
+            MR_Word mercury__robdd__V_18_18;
+            MR_Word mercury__robdd__V_7_31;
+            MR_Word mercury__robdd__V_8_32;
+            MR_Word mercury__robdd__TypeInfo_for_T_39;
+
+{
+#define MR_PROC_LABEL mercury__robdd__node_name_1_f_0
+
+	MR_Word R;
+	MR_Integer N;
+
+	R =  mercury__robdd__R_3 ;
+		{
+
+    N = (MR_Integer) R;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_7_7  = N;
+}
+            mercury__robdd__V_18_18 = (MR_Word) &mercury__robdd_scalar_common_5[3];
+            mercury__robdd__V_7_31 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            mercury__robdd__V_8_32 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            {
+              mercury__string__format__format_signed_int_component_5_p_0(mercury__robdd__V_18_18, mercury__robdd__V_7_31, mercury__robdd__V_8_32, mercury__robdd__V_7_7, &mercury__robdd__V_12_12);
+            }
+            {
+              mercury__string__append_3_p_2((MR_String) "node", mercury__robdd__V_12_12, &mercury__robdd__HeadVar__2_2);
+            }
+          }
+      }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+void MR_CALL 
+mercury__robdd__write_node_4_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_29,
+  MR_Word mercury__robdd__R_5,
+  MR_Word mercury__robdd__WV_6)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_String mercury__robdd__V_15_15;
+    MR_String mercury__robdd__V_18_18;
+    MR_Word mercury__robdd__V_19_19;
+    MR_Word mercury__robdd__V_21_21;
+    MR_String mercury__robdd__V_25_25;
+    MR_Word mercury__robdd__V_26_26;
+    void MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *);
+    MR_Box mercury__robdd__conv1_DCG_2_9;
+
+    {
+      mercury__robdd__V_15_15 = mercury__robdd__node_name_1_f_0(mercury__robdd__TypeInfo_for_T_29, mercury__robdd__R_5);
+    }
+    {
+      mercury__robdd__V_19_19 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_29, mercury__robdd__R_5);
+    }
+    {
+      mercury__robdd__V_18_18 = mercury__robdd__terminal_name_1_f_0(mercury__robdd__TypeInfo_for_T_29, mercury__robdd__V_19_19);
+    }
+    {
+      mercury__io__write_string_3_p_0(mercury__robdd__V_15_15);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) " [label=\"<f0> ");
+    }
+    {
+      mercury__io__write_string_3_p_0(mercury__robdd__V_18_18);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) "|<f1> ");
+    }
+    {
+      mercury__robdd__V_21_21 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_29, mercury__robdd__R_5);
+    }
+    mercury__robdd__func_0 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), mercury__robdd__WV_6, (MR_Integer) 1)));
+    {
+      mercury__robdd__func_0(((MR_Box) mercury__robdd__WV_6), ((MR_Box) (mercury__robdd__V_21_21)), ((MR_Box) ((MR_Integer) 0)), &mercury__robdd__conv1_DCG_2_9);
+    }
+    {
+      mercury__robdd__V_26_26 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_29, mercury__robdd__R_5);
+    }
+    {
+      mercury__robdd__V_25_25 = mercury__robdd__terminal_name_1_f_0(mercury__robdd__TypeInfo_for_T_29, mercury__robdd__V_26_26);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) "|<f2> ");
+    }
+    {
+      mercury__io__write_string_3_p_0(mercury__robdd__V_25_25);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) "\"];\n");
+    }
+  }
+}
+
+void MR_CALL 
+mercury__robdd__robdd_to_dot_2_8_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_32,
+  MR_Word mercury__robdd__Robdd_9,
+  MR_Word mercury__robdd__WV_10,
+  MR_Word mercury__robdd__Seen0_11,
+  MR_Word * mercury__robdd__Seen_12,
+  MR_Word mercury__robdd__Ranks0_13,
+  MR_Word * mercury__robdd__Ranks_14)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__Robdd_9);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        *mercury__robdd__Seen_12 = mercury__robdd__Seen0_11;
+        *mercury__robdd__Ranks_14 = mercury__robdd__Ranks0_13;
+      }
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_33_33 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+        MR_Word mercury__robdd__TypeInfo_34_34;
+
+        {
+          mercury__robdd__TypeInfo_34_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_34_34, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_33_33));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_34_34, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+        }
+        {
+          mercury__robdd__succeeded = mercury__set_bbbtree__member_2_p_0(mercury__robdd__TypeInfo_34_34, ((MR_Box) (mercury__robdd__Robdd_9)), (MR_Word) mercury__robdd__Seen0_11);
+        }
+        if (mercury__robdd__succeeded)
+          {
+            *mercury__robdd__Seen_12 = mercury__robdd__Seen0_11;
+            *mercury__robdd__Ranks_14 = mercury__robdd__Ranks0_13;
+          }
+        else
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_35_35;
+            MR_Word mercury__robdd__TypeInfo_36_36;
+            MR_Word mercury__robdd__TypeCtorInfo_37_37;
+            MR_Word mercury__robdd__TypeInfo_38_38;
+            MR_Word mercury__robdd__Seen1_15;
+            MR_Word mercury__robdd__Ranks1_16;
+            MR_Word mercury__robdd__Seen2_17;
+            MR_Word mercury__robdd__Ranks2_18;
+            MR_Word mercury__robdd__V_25_25;
+            MR_Word mercury__robdd__V_26_26;
+            MR_Word mercury__robdd__V_27_27;
+            MR_Word mercury__robdd__V_29_29;
+            MR_Word mercury__robdd__V_31_31;
+            MR_Word mercury__robdd__V_9_46;
+            MR_Word mercury__robdd__conv0_V_9_46;
+            MR_Word mercury__robdd__conv1_Ranks_14;
+
+            {
+              mercury__robdd__V_25_25 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__Robdd_9);
+            }
+            {
+              mercury__robdd__robdd_to_dot_2_8_p_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__V_25_25, mercury__robdd__WV_10, mercury__robdd__Seen0_11, &mercury__robdd__Seen1_15, mercury__robdd__Ranks0_13, &mercury__robdd__Ranks1_16);
+            }
+            {
+              mercury__robdd__V_26_26 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__Robdd_9);
+            }
+            {
+              mercury__robdd__robdd_to_dot_2_8_p_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__V_26_26, mercury__robdd__WV_10, mercury__robdd__Seen1_15, &mercury__robdd__Seen2_17, mercury__robdd__Ranks1_16, &mercury__robdd__Ranks2_18);
+            }
+            {
+              mercury__robdd__write_node_4_p_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__Robdd_9, mercury__robdd__WV_10);
+            }
+            {
+              mercury__robdd__V_27_27 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__Robdd_9);
+            }
+            {
+              mercury__robdd__write_edge_5_p_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__Robdd_9, mercury__robdd__V_27_27, (MR_Integer) 1);
+            }
+            {
+              mercury__robdd__V_29_29 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__Robdd_9);
+            }
+            {
+              mercury__robdd__write_edge_5_p_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__Robdd_9, mercury__robdd__V_29_29, (MR_Integer) 0);
+            }
+            mercury__robdd__TypeCtorInfo_35_35 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+            {
+              mercury__robdd__TypeInfo_36_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_36_36, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_35_35));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_36_36, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+            }
+            {
+              mercury__set_bbbtree__insert_r_4_p_0(mercury__robdd__TypeInfo_36_36, (MR_Word) mercury__robdd__Seen2_17, ((MR_Box) (mercury__robdd__Robdd_9)), &mercury__robdd__conv0_V_9_46, (MR_Integer) 5);
+            }
+            mercury__robdd__V_9_46 = (MR_Word) mercury__robdd__conv0_V_9_46;
+            *mercury__robdd__Seen_12 = mercury__robdd__V_9_46;
+            {
+              mercury__robdd__V_31_31 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_32, mercury__robdd__Robdd_9);
+            }
+            mercury__robdd__TypeCtorInfo_37_37 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+            {
+              mercury__robdd__TypeInfo_38_38 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_38_38, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_37_37));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_38_38, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_32));
+            }
+            {
+              mercury__multi_map__set_4_p_0(mercury__robdd__TypeInfo_38_38, mercury__robdd__TypeInfo_36_36, ((MR_Box) (mercury__robdd__V_31_31)), ((MR_Box) (mercury__robdd__Robdd_9)), (MR_Word) mercury__robdd__Ranks2_18, &mercury__robdd__conv1_Ranks_14);
+            }
+            *mercury__robdd__Ranks_14 = (MR_Word) mercury__robdd__conv1_Ranks_14;
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd__vars_are_constrained_2_2_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_13,
+  MR_Word mercury__robdd__F_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Word mercury__robdd__V_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word mercury__robdd__Vs1_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 1)));
+
+            {
+              mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__F_1);
+            }
+            if (mercury__robdd__succeeded)
+              mercury__robdd__succeeded = MR_FALSE;
+            else
+              {
+                MR_Word mercury__robdd__R_8;
+                MR_Word mercury__robdd__Vs2_9;
+                MR_Word mercury__robdd__V_10_10;
+                MR_Integer mercury__robdd__V_16_16;
+                MR_Integer mercury__robdd__V_17_17;
+
+                {
+                  mercury__robdd__V_10_10 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__F_1);
+                }
+                mercury__robdd__V_16_16 = (MR_Integer) mercury__robdd__V_10_10;
+                mercury__robdd__V_17_17 = (MR_Integer) mercury__robdd__V_6;
+                mercury__robdd__succeeded = (mercury__robdd__V_16_16 < mercury__robdd__V_17_17);
+                if (mercury__robdd__succeeded)
+                  mercury__robdd__R_8 = (MR_Integer) 1;
+                else
+                  {
+                    mercury__robdd__succeeded = (mercury__robdd__V_16_16 == mercury__robdd__V_17_17);
+                    if (mercury__robdd__succeeded)
+                      mercury__robdd__R_8 = (MR_Integer) 0;
+                    else
+                      mercury__robdd__R_8 = (MR_Integer) 2;
+                  }
+                switch (mercury__robdd__R_8) {
+                  default:
+                    mercury__robdd__succeeded = MR_FALSE;
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      mercury__robdd__Vs2_9 = mercury__robdd__HeadVar__2_2;
+                      mercury__robdd__succeeded = MR_TRUE;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      mercury__robdd__Vs2_9 = mercury__robdd__Vs1_7;
+                      mercury__robdd__succeeded = MR_TRUE;
+                    }
+                    break;
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    {
+                      MR_Word mercury__robdd__V_12_12;
+
+                      {
+                        mercury__robdd__V_12_12 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__F_1);
+                      }
+                      {
+                        mercury__robdd__succeeded = mercury__robdd__vars_are_constrained_2_2_p_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__V_12_12, mercury__robdd__Vs2_9);
+                      }
+                    }
+                    if (!(mercury__robdd__succeeded))
+                      {
+                        MR_Word mercury__robdd__V_11_11;
+
+                        {
+                          mercury__robdd__V_11_11 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__F_1);
+                        }
+                        /* direct tailcall eliminated */
+                        {
+                          MR_Word mercury__robdd__F__tmp_copy_1 = mercury__robdd__V_11_11;
+                          MR_Word mercury__robdd__HeadVar__2__tmp_copy_2 = mercury__robdd__Vs2_9;
+
+                          mercury__robdd__HeadVar__2_2 = mercury__robdd__HeadVar__2__tmp_copy_2;
+                          mercury__robdd__F_1 = mercury__robdd__F__tmp_copy_1;
+                        }
+                        continue;
+                      }
+                  }
+              }
+          }
+        return mercury__robdd__succeeded;
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__robdd__size_2_8_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_33,
+  MR_Word mercury__robdd__F_9,
+  MR_Integer mercury__robdd__Nodes0_10,
+  MR_Integer * mercury__robdd__Nodes_11,
+  MR_Integer mercury__robdd__Depth0_12,
+  MR_Integer * mercury__robdd__Depth_13,
+  MR_Integer mercury__robdd__Val0_14,
+  MR_Word mercury__robdd__Seen0_15,
+  MR_Word * mercury__robdd__Seen_16)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_33, mercury__robdd__F_9);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        *mercury__robdd__Nodes_11 = mercury__robdd__Nodes0_10;
+        *mercury__robdd__Depth_13 = mercury__robdd__Depth0_12;
+        *mercury__robdd__Seen_16 = mercury__robdd__Seen0_15;
+      }
+    else
+      {
+        MR_Integer mercury__robdd__V_24_24;
+        MR_Word mercury__robdd__V_25_25;
+
+        {
+          mercury__robdd__V_25_25 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_33, mercury__robdd__F_9);
+        }
+        mercury__robdd__V_24_24 = (MR_Integer) mercury__robdd__V_25_25;
+        mercury__robdd__succeeded = (mercury__robdd__V_24_24 <= mercury__robdd__Val0_14);
+        if (mercury__robdd__succeeded)
+          {
+            {
+              mercury__require__error_1_p_0((MR_String) "robdd invariant broken (possible loop)");
+              return;
+            }
+          }
+        else
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_34_34 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+            MR_Word mercury__robdd__TypeInfo_35_35;
+
+            {
+              mercury__robdd__TypeInfo_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_35_35, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_34_34));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_35_35, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_33));
+            }
+            {
+              mercury__robdd__succeeded = mercury__set_bbbtree__member_2_p_0(mercury__robdd__TypeInfo_35_35, ((MR_Box) (mercury__robdd__F_9)), (MR_Word) mercury__robdd__Seen0_15);
+            }
+            if (mercury__robdd__succeeded)
+              {
+                *mercury__robdd__Nodes_11 = mercury__robdd__Nodes0_10;
+                *mercury__robdd__Depth_13 = mercury__robdd__Depth0_12;
+                *mercury__robdd__Seen_16 = mercury__robdd__Seen0_15;
+              }
+            else
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_36_36;
+                MR_Word mercury__robdd__TypeInfo_37_37;
+                MR_Integer mercury__robdd__Val_17;
+                MR_Integer mercury__robdd__Nodes1_18;
+                MR_Integer mercury__robdd__Depth1_19;
+                MR_Word mercury__robdd__Seen1_20;
+                MR_Integer mercury__robdd__Depth2_21;
+                MR_Word mercury__robdd__Seen2_22;
+                MR_Integer mercury__robdd__Max_23;
+                MR_Word mercury__robdd__V_27_27;
+                MR_Word mercury__robdd__V_28_28;
+                MR_Integer mercury__robdd__V_29_29;
+                MR_Word mercury__robdd__V_31_31;
+                MR_Word mercury__robdd__V_9_50;
+                MR_Word mercury__robdd__conv0_V_9_50;
+
+                {
+                  mercury__robdd__V_27_27 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_33, mercury__robdd__F_9);
+                }
+                mercury__robdd__Val_17 = (MR_Integer) mercury__robdd__V_27_27;
+                {
+                  mercury__robdd__V_28_28 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_33, mercury__robdd__F_9);
+                }
+                mercury__robdd__V_29_29 = (mercury__robdd__Nodes0_10 + (MR_Integer) 1);
+                {
+                  mercury__robdd__size_2_8_p_0(mercury__robdd__TypeInfo_for_T_33, mercury__robdd__V_28_28, mercury__robdd__V_29_29, &mercury__robdd__Nodes1_18, mercury__robdd__Depth0_12, &mercury__robdd__Depth1_19, mercury__robdd__Val_17, mercury__robdd__Seen0_15, &mercury__robdd__Seen1_20);
+                }
+                {
+                  mercury__robdd__V_31_31 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_33, mercury__robdd__F_9);
+                }
+                {
+                  mercury__robdd__size_2_8_p_0(mercury__robdd__TypeInfo_for_T_33, mercury__robdd__V_31_31, mercury__robdd__Nodes1_18, mercury__robdd__Nodes_11, mercury__robdd__Depth0_12, &mercury__robdd__Depth2_21, mercury__robdd__Val_17, mercury__robdd__Seen1_20, &mercury__robdd__Seen2_22);
+                }
+                mercury__robdd__succeeded = (mercury__robdd__Depth1_19 > mercury__robdd__Depth2_21);
+                if (mercury__robdd__succeeded)
+                  mercury__robdd__Max_23 = mercury__robdd__Depth1_19;
+                else
+                  mercury__robdd__Max_23 = mercury__robdd__Depth2_21;
+                *mercury__robdd__Depth_13 = (mercury__robdd__Max_23 + (MR_Integer) 1);
+                mercury__robdd__TypeCtorInfo_36_36 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                {
+                  mercury__robdd__TypeInfo_37_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_37_37, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_36_36));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_37_37, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_33));
+                }
+                {
+                  mercury__set_bbbtree__insert_r_4_p_0(mercury__robdd__TypeInfo_37_37, (MR_Word) mercury__robdd__Seen2_22, ((MR_Box) (mercury__robdd__F_9)), &mercury__robdd__conv0_V_9_50, (MR_Integer) 5);
+                }
+                mercury__robdd__V_9_50 = (MR_Word) mercury__robdd__conv0_V_9_50;
+                *mercury__robdd__Seen_16 = mercury__robdd__V_9_50;
+              }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+mercury__robdd__add_equivalences_2_6_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_84,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__Trues_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word * mercury__robdd__R_4,
+  MR_Word mercury__robdd__STATE_VARIABLE_Cache_0_5,
+  MR_Word * mercury__robdd__STATE_VARIABLE_Cache_6)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    if ((mercury__robdd__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *mercury__robdd__R_4 = mercury__robdd__HeadVar__3_3;
+        *mercury__robdd__STATE_VARIABLE_Cache_6 = mercury__robdd__STATE_VARIABLE_Cache_0_5;
+      }
+    else
+      {
+        MR_Word mercury__robdd__Var_12;
+        MR_Word mercury__robdd__LeaderVar_13;
+        MR_Word mercury__robdd__Vs_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_123_123;
+
+        mercury__robdd__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_24_24, (MR_Integer) 0)));
+        mercury__robdd__LeaderVar_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_24_24, (MR_Integer) 1)));
+        {
+          mercury__robdd__V_123_123 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_84);
+        }
+        {
+          mercury__robdd__succeeded = mercury__robdd____Unify____robdd_1_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3, mercury__robdd__V_123_123);
+        }
+        if (mercury__robdd__succeeded)
+          {
+            {
+              *mercury__robdd__R_4 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_84);
+            }
+            *mercury__robdd__STATE_VARIABLE_Cache_6 = mercury__robdd__STATE_VARIABLE_Cache_0_5;
+          }
+        else
+          {
+            MR_Word mercury__robdd__R1_19;
+            MR_Word mercury__robdd__TypeCtorInfo_85_85 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+            MR_Word mercury__robdd__TypeInfo_86_86;
+            MR_Box mercury__robdd__conv0_R1_19;
+
+            {
+              mercury__robdd__TypeInfo_86_86 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_86_86, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_85_85));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_86_86, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+            }
+            {
+              mercury__robdd__succeeded = mercury__map__elem_2_f_0(mercury__robdd__TypeInfo_86_86, mercury__robdd__TypeInfo_86_86, ((MR_Box) (mercury__robdd__HeadVar__3_3)), (MR_Word) mercury__robdd__STATE_VARIABLE_Cache_0_5, &mercury__robdd__conv0_R1_19);
+            }
+            if (mercury__robdd__succeeded)
+              {
+                mercury__robdd__R1_19 = ((MR_Word) mercury__robdd__conv0_R1_19);
+                mercury__robdd__succeeded = MR_TRUE;
+              }
+            if (mercury__robdd__succeeded)
+              {
+                *mercury__robdd__R_4 = mercury__robdd__R1_19;
+                *mercury__robdd__STATE_VARIABLE_Cache_6 = mercury__robdd__STATE_VARIABLE_Cache_0_5;
+              }
+            else
+              {
+                MR_Word mercury__robdd__V_124_124;
+
+                {
+                  mercury__robdd__V_124_124 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_84);
+                }
+                {
+                  mercury__robdd__succeeded = mercury__robdd____Unify____robdd_1_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3, mercury__robdd__V_124_124);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    MR_Word mercury__robdd__TypeCtorInfo_87_87;
+                    MR_Word mercury__robdd__TypeInfo_88_88;
+                    MR_Word mercury__robdd__conv1_STATE_VARIABLE_Cache_6;
+
+                    {
+                      *mercury__robdd__R_4 = mercury__robdd__make_equiv_2_2_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__1_1, mercury__robdd__Trues_2);
+                    }
+                    mercury__robdd__TypeCtorInfo_87_87 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                    {
+                      mercury__robdd__TypeInfo_88_88 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_88_88, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_87_87));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_88_88, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                    }
+                    {
+                      mercury__robdd__conv1_STATE_VARIABLE_Cache_6 = mercury__map__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_88_88, mercury__robdd__TypeInfo_88_88, ((MR_Box) (mercury__robdd__HeadVar__3_3)), (MR_Word) mercury__robdd__STATE_VARIABLE_Cache_0_5, ((MR_Box) (*mercury__robdd__R_4)));
+                    }
+                    *mercury__robdd__STATE_VARIABLE_Cache_6 = (MR_Word) mercury__robdd__conv1_STATE_VARIABLE_Cache_6;
+                  }
+                else
+                  {
+                    MR_Word mercury__robdd__V_29_29;
+                    MR_Word mercury__robdd__V_125_125;
+                    MR_Integer mercury__robdd__V_131_131;
+                    MR_Integer mercury__robdd__V_132_132;
+
+                    {
+                      mercury__robdd__V_29_29 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3);
+                    }
+                    mercury__robdd__V_131_131 = (MR_Integer) mercury__robdd__V_29_29;
+                    mercury__robdd__V_132_132 = (MR_Integer) mercury__robdd__Var_12;
+                    mercury__robdd__succeeded = (mercury__robdd__V_131_131 < mercury__robdd__V_132_132);
+                    if (mercury__robdd__succeeded)
+                      mercury__robdd__V_125_125 = (MR_Integer) 1;
+                    else
+                      {
+                        mercury__robdd__succeeded = (mercury__robdd__V_131_131 == mercury__robdd__V_132_132);
+                        if (mercury__robdd__succeeded)
+                          mercury__robdd__V_125_125 = (MR_Integer) 0;
+                        else
+                          mercury__robdd__V_125_125 = (MR_Integer) 2;
+                      }
+                    mercury__robdd__succeeded = ((MR_Integer) 1 == mercury__robdd__V_125_125);
+                    if (mercury__robdd__succeeded)
+                      {
+                        MR_Word mercury__robdd__TypeCtorInfo_91_91;
+                        MR_Word mercury__robdd__TypeInfo_92_92;
+                        MR_Word mercury__robdd__Rtr_20;
+                        MR_Word mercury__robdd__Rfa_21;
+                        MR_Word mercury__robdd__V_31_31;
+                        MR_Word mercury__robdd__STATE_VARIABLE_Cache_32_32;
+                        MR_Word mercury__robdd__V_35_35;
+                        MR_Word mercury__robdd__STATE_VARIABLE_Cache_36_36;
+                        MR_Word mercury__robdd__V_38_38;
+                        MR_Word mercury__robdd__conv2_STATE_VARIABLE_Cache_6;
+
+                        {
+                          mercury__robdd__V_31_31 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3);
+                        }
+                        {
+                          mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__1_1, mercury__robdd__Trues_2, mercury__robdd__V_31_31, &mercury__robdd__Rtr_20, mercury__robdd__STATE_VARIABLE_Cache_0_5, &mercury__robdd__STATE_VARIABLE_Cache_32_32);
+                        }
+                        {
+                          mercury__robdd__V_35_35 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3);
+                        }
+                        {
+                          mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__1_1, mercury__robdd__Trues_2, mercury__robdd__V_35_35, &mercury__robdd__Rfa_21, mercury__robdd__STATE_VARIABLE_Cache_32_32, &mercury__robdd__STATE_VARIABLE_Cache_36_36);
+                        }
+                        {
+                          mercury__robdd__V_38_38 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3);
+                        }
+                        {
+                          *mercury__robdd__R_4 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__V_38_38, mercury__robdd__Rtr_20, mercury__robdd__Rfa_21);
+                        }
+                        mercury__robdd__TypeCtorInfo_91_91 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                        {
+                          mercury__robdd__TypeInfo_92_92 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_92_92, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_91_91));
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_92_92, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                        }
+                        {
+                          mercury__robdd__conv2_STATE_VARIABLE_Cache_6 = mercury__map__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_92_92, mercury__robdd__TypeInfo_92_92, ((MR_Box) (mercury__robdd__HeadVar__3_3)), (MR_Word) mercury__robdd__STATE_VARIABLE_Cache_36_36, ((MR_Box) (*mercury__robdd__R_4)));
+                        }
+                        *mercury__robdd__STATE_VARIABLE_Cache_6 = (MR_Word) mercury__robdd__conv2_STATE_VARIABLE_Cache_6;
+                      }
+                    else
+                      {
+                        MR_Word mercury__robdd__TypeInfo_94_94;
+                        MR_Word mercury__robdd__TypeCtorInfo_93_93;
+                        MR_Word mercury__robdd__V_41_41;
+                        MR_Word mercury__robdd__V_126_126;
+                        MR_Integer mercury__robdd__V_133_133;
+                        MR_Integer mercury__robdd__V_134_134;
+
+                        {
+                          mercury__robdd__V_41_41 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3);
+                        }
+                        mercury__robdd__TypeCtorInfo_93_93 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                        mercury__robdd__V_133_133 = (MR_Integer) mercury__robdd__Var_12;
+                        mercury__robdd__V_134_134 = (MR_Integer) mercury__robdd__V_41_41;
+                        {
+                          mercury__robdd__TypeInfo_94_94 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_94_94, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_93_93));
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_94_94, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                        }
+                        mercury__robdd__succeeded = (mercury__robdd__V_133_133 < mercury__robdd__V_134_134);
+                        if (mercury__robdd__succeeded)
+                          mercury__robdd__V_126_126 = (MR_Integer) 1;
+                        else
+                          {
+                            mercury__robdd__succeeded = (mercury__robdd__V_133_133 == mercury__robdd__V_134_134);
+                            if (mercury__robdd__succeeded)
+                              mercury__robdd__V_126_126 = (MR_Integer) 0;
+                            else
+                              mercury__robdd__V_126_126 = (MR_Integer) 2;
+                          }
+                        mercury__robdd__succeeded = ((MR_Integer) 1 == mercury__robdd__V_126_126);
+                        if (mercury__robdd__succeeded)
+                          {
+                            MR_Integer mercury__robdd__V_135_135 = (MR_Integer) mercury__robdd__LeaderVar_13;
+                            MR_Integer mercury__robdd__V_136_136 = (MR_Integer) mercury__robdd__Var_12;
+
+                            mercury__robdd__succeeded = (mercury__robdd__V_135_135 == mercury__robdd__V_136_136);
+                            if (mercury__robdd__succeeded)
+                              {
+                                MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_97 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                                MR_Word mercury__robdd__TypeClassInfo_for_enum_98;
+                                MR_Word mercury__robdd__TypeCtorInfo_99_99;
+                                MR_Word mercury__robdd__TypeInfo_100_100;
+                                MR_Word mercury__robdd__V_42_42;
+                                MR_Word mercury__robdd__STATE_VARIABLE_Cache_43_43;
+                                MR_Word mercury__robdd__STATE_VARIABLE_Cache_44_44;
+                                MR_Word mercury__robdd__Rtr_66;
+                                MR_Word mercury__robdd__Rfa_67;
+                                MR_Word mercury__robdd__conv3_STATE_VARIABLE_Cache_6;
+
+                                {
+                                  mercury__robdd__TypeClassInfo_for_enum_98 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_98, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_97));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_98, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_98, 2) = ((MR_Box) (mercury__robdd__TypeInfo_94_94));
+                                }
+                                {
+                                  mercury__robdd__V_42_42 = mercury__sparse_bitset__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__TypeClassInfo_for_enum_98, mercury__robdd__Trues_2, mercury__robdd__Var_12);
+                                }
+                                {
+                                  mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Vs_14, mercury__robdd__V_42_42, mercury__robdd__HeadVar__3_3, &mercury__robdd__Rtr_66, mercury__robdd__STATE_VARIABLE_Cache_0_5, &mercury__robdd__STATE_VARIABLE_Cache_43_43);
+                                }
+                                {
+                                  mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Vs_14, mercury__robdd__Trues_2, mercury__robdd__HeadVar__3_3, &mercury__robdd__Rfa_67, mercury__robdd__STATE_VARIABLE_Cache_43_43, &mercury__robdd__STATE_VARIABLE_Cache_44_44);
+                                }
+                                {
+                                  *mercury__robdd__R_4 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Var_12, mercury__robdd__Rtr_66, mercury__robdd__Rfa_67);
+                                }
+                                mercury__robdd__TypeCtorInfo_99_99 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                                {
+                                  mercury__robdd__TypeInfo_100_100 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_100_100, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_99_99));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_100_100, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                }
+                                {
+                                  mercury__robdd__conv3_STATE_VARIABLE_Cache_6 = mercury__map__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_100_100, mercury__robdd__TypeInfo_100_100, ((MR_Box) (mercury__robdd__HeadVar__3_3)), (MR_Word) mercury__robdd__STATE_VARIABLE_Cache_44_44, ((MR_Box) (*mercury__robdd__R_4)));
+                                }
+                                *mercury__robdd__STATE_VARIABLE_Cache_6 = (MR_Word) mercury__robdd__conv3_STATE_VARIABLE_Cache_6;
+                              }
+                            else
+                              {
+                                MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_103 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                                MR_Word mercury__robdd__TypeClassInfo_for_enum_104;
+
+                                {
+                                  mercury__robdd__TypeClassInfo_for_enum_104 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_104, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_103));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_104, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_104, 2) = ((MR_Box) (mercury__robdd__TypeInfo_94_94));
+                                }
+                                {
+                                  mercury__robdd__succeeded = mercury__sparse_bitset__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_99_111_110_116_97_105_110_115_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__TypeClassInfo_for_enum_104, mercury__robdd__Trues_2, mercury__robdd__LeaderVar_13);
+                                }
+                                if (mercury__robdd__succeeded)
+                                  {
+                                    MR_Word mercury__robdd__TypeCtorInfo_105_105;
+                                    MR_Word mercury__robdd__TypeInfo_106_106;
+                                    MR_Word mercury__robdd__STATE_VARIABLE_Cache_46_46;
+                                    MR_Word mercury__robdd__V_47_47;
+                                    MR_Word mercury__robdd__Rtr_68;
+                                    MR_Word mercury__robdd__conv4_STATE_VARIABLE_Cache_6;
+
+                                    {
+                                      mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Vs_14, mercury__robdd__Trues_2, mercury__robdd__HeadVar__3_3, &mercury__robdd__Rtr_68, mercury__robdd__STATE_VARIABLE_Cache_0_5, &mercury__robdd__STATE_VARIABLE_Cache_46_46);
+                                    }
+                                    {
+                                      mercury__robdd__V_47_47 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_84);
+                                    }
+                                    {
+                                      *mercury__robdd__R_4 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Var_12, mercury__robdd__Rtr_68, mercury__robdd__V_47_47);
+                                    }
+                                    mercury__robdd__TypeCtorInfo_105_105 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                                    {
+                                      mercury__robdd__TypeInfo_106_106 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_106_106, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_105_105));
+                                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_106_106, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                    }
+                                    {
+                                      mercury__robdd__conv4_STATE_VARIABLE_Cache_6 = mercury__map__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_106_106, mercury__robdd__TypeInfo_106_106, ((MR_Box) (mercury__robdd__HeadVar__3_3)), (MR_Word) mercury__robdd__STATE_VARIABLE_Cache_46_46, ((MR_Box) (*mercury__robdd__R_4)));
+                                    }
+                                    *mercury__robdd__STATE_VARIABLE_Cache_6 = (MR_Word) mercury__robdd__conv4_STATE_VARIABLE_Cache_6;
+                                  }
+                                else
+                                  {
+                                    MR_Word mercury__robdd__TypeCtorInfo_107_107;
+                                    MR_Word mercury__robdd__TypeInfo_108_108;
+                                    MR_Word mercury__robdd__STATE_VARIABLE_Cache_49_49;
+                                    MR_Word mercury__robdd__V_50_50;
+                                    MR_Word mercury__robdd__Rfa_69;
+                                    MR_Word mercury__robdd__conv5_STATE_VARIABLE_Cache_6;
+
+                                    {
+                                      mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Vs_14, mercury__robdd__Trues_2, mercury__robdd__HeadVar__3_3, &mercury__robdd__Rfa_69, mercury__robdd__STATE_VARIABLE_Cache_0_5, &mercury__robdd__STATE_VARIABLE_Cache_49_49);
+                                    }
+                                    {
+                                      mercury__robdd__V_50_50 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_84);
+                                    }
+                                    {
+                                      *mercury__robdd__R_4 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Var_12, mercury__robdd__V_50_50, mercury__robdd__Rfa_69);
+                                    }
+                                    mercury__robdd__TypeCtorInfo_107_107 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                                    {
+                                      mercury__robdd__TypeInfo_108_108 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_108_108, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_107_107));
+                                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_108_108, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                    }
+                                    {
+                                      mercury__robdd__conv5_STATE_VARIABLE_Cache_6 = mercury__map__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_108_108, mercury__robdd__TypeInfo_108_108, ((MR_Box) (mercury__robdd__HeadVar__3_3)), (MR_Word) mercury__robdd__STATE_VARIABLE_Cache_49_49, ((MR_Box) (*mercury__robdd__R_4)));
+                                    }
+                                    *mercury__robdd__STATE_VARIABLE_Cache_6 = (MR_Word) mercury__robdd__conv5_STATE_VARIABLE_Cache_6;
+                                  }
+                              }
+                          }
+                        else
+                          {
+                            MR_Integer mercury__robdd__V_137_137 = (MR_Integer) mercury__robdd__LeaderVar_13;
+                            MR_Integer mercury__robdd__V_138_138 = (MR_Integer) mercury__robdd__Var_12;
+
+                            mercury__robdd__succeeded = (mercury__robdd__V_137_137 == mercury__robdd__V_138_138);
+                            if (mercury__robdd__succeeded)
+                              {
+                                MR_Word mercury__robdd__TypeCtorInfo_109_109 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                                MR_Word mercury__robdd__TypeInfo_110_110;
+                                MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_111 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                                MR_Word mercury__robdd__TypeClassInfo_for_enum_112;
+                                MR_Word mercury__robdd__TypeCtorInfo_113_113;
+                                MR_Word mercury__robdd__TypeInfo_114_114;
+                                MR_Word mercury__robdd__V_52_52;
+                                MR_Word mercury__robdd__V_53_53;
+                                MR_Word mercury__robdd__STATE_VARIABLE_Cache_54_54;
+                                MR_Word mercury__robdd__V_55_55;
+                                MR_Word mercury__robdd__STATE_VARIABLE_Cache_56_56;
+                                MR_Word mercury__robdd__Rtr_74;
+                                MR_Word mercury__robdd__Rfa_75;
+                                MR_Word mercury__robdd__conv6_STATE_VARIABLE_Cache_6;
+
+                                {
+                                  mercury__robdd__TypeInfo_110_110 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_110_110, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_109_109));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_110_110, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                }
+                                {
+                                  mercury__robdd__TypeClassInfo_for_enum_112 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_112, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_111));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_112, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_112, 2) = ((MR_Box) (mercury__robdd__TypeInfo_110_110));
+                                }
+                                {
+                                  mercury__robdd__V_52_52 = mercury__sparse_bitset__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__TypeClassInfo_for_enum_112, mercury__robdd__Trues_2, mercury__robdd__Var_12);
+                                }
+                                {
+                                  mercury__robdd__V_53_53 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3);
+                                }
+                                {
+                                  mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Vs_14, mercury__robdd__V_52_52, mercury__robdd__V_53_53, &mercury__robdd__Rtr_74, mercury__robdd__STATE_VARIABLE_Cache_0_5, &mercury__robdd__STATE_VARIABLE_Cache_54_54);
+                                }
+                                {
+                                  mercury__robdd__V_55_55 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3);
+                                }
+                                {
+                                  mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Vs_14, mercury__robdd__Trues_2, mercury__robdd__V_55_55, &mercury__robdd__Rfa_75, mercury__robdd__STATE_VARIABLE_Cache_54_54, &mercury__robdd__STATE_VARIABLE_Cache_56_56);
+                                }
+                                {
+                                  *mercury__robdd__R_4 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Var_12, mercury__robdd__Rtr_74, mercury__robdd__Rfa_75);
+                                }
+                                mercury__robdd__TypeCtorInfo_113_113 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                                {
+                                  mercury__robdd__TypeInfo_114_114 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_114_114, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_113_113));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_114_114, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                }
+                                {
+                                  mercury__robdd__conv6_STATE_VARIABLE_Cache_6 = mercury__map__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_114_114, mercury__robdd__TypeInfo_114_114, ((MR_Box) (mercury__robdd__HeadVar__3_3)), (MR_Word) mercury__robdd__STATE_VARIABLE_Cache_56_56, ((MR_Box) (*mercury__robdd__R_4)));
+                                }
+                                *mercury__robdd__STATE_VARIABLE_Cache_6 = (MR_Word) mercury__robdd__conv6_STATE_VARIABLE_Cache_6;
+                              }
+                            else
+                              {
+                                MR_Word mercury__robdd__TypeCtorInfo_115_115 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                                MR_Word mercury__robdd__TypeInfo_116_116;
+                                MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_117 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                                MR_Word mercury__robdd__TypeClassInfo_for_enum_118;
+
+                                {
+                                  mercury__robdd__TypeInfo_116_116 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_116_116, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_115_115));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_116_116, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                }
+                                {
+                                  mercury__robdd__TypeClassInfo_for_enum_118 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_118, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_117));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_118, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_118, 2) = ((MR_Box) (mercury__robdd__TypeInfo_116_116));
+                                }
+                                {
+                                  mercury__robdd__succeeded = mercury__sparse_bitset__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_99_111_110_116_97_105_110_115_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__TypeClassInfo_for_enum_118, mercury__robdd__Trues_2, mercury__robdd__LeaderVar_13);
+                                }
+                                if (mercury__robdd__succeeded)
+                                  {
+                                    MR_Word mercury__robdd__TypeCtorInfo_119_119;
+                                    MR_Word mercury__robdd__TypeInfo_120_120;
+                                    MR_Word mercury__robdd__V_58_58;
+                                    MR_Word mercury__robdd__STATE_VARIABLE_Cache_59_59;
+                                    MR_Word mercury__robdd__V_60_60;
+                                    MR_Word mercury__robdd__Rtr_76;
+                                    MR_Word mercury__robdd__conv7_STATE_VARIABLE_Cache_6;
+
+                                    {
+                                      mercury__robdd__V_58_58 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3);
+                                    }
+                                    {
+                                      mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Vs_14, mercury__robdd__Trues_2, mercury__robdd__V_58_58, &mercury__robdd__Rtr_76, mercury__robdd__STATE_VARIABLE_Cache_0_5, &mercury__robdd__STATE_VARIABLE_Cache_59_59);
+                                    }
+                                    {
+                                      mercury__robdd__V_60_60 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_84);
+                                    }
+                                    {
+                                      *mercury__robdd__R_4 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Var_12, mercury__robdd__Rtr_76, mercury__robdd__V_60_60);
+                                    }
+                                    mercury__robdd__TypeCtorInfo_119_119 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                                    {
+                                      mercury__robdd__TypeInfo_120_120 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_120_120, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_119_119));
+                                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_120_120, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                    }
+                                    {
+                                      mercury__robdd__conv7_STATE_VARIABLE_Cache_6 = mercury__map__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_120_120, mercury__robdd__TypeInfo_120_120, ((MR_Box) (mercury__robdd__HeadVar__3_3)), (MR_Word) mercury__robdd__STATE_VARIABLE_Cache_59_59, ((MR_Box) (*mercury__robdd__R_4)));
+                                    }
+                                    *mercury__robdd__STATE_VARIABLE_Cache_6 = (MR_Word) mercury__robdd__conv7_STATE_VARIABLE_Cache_6;
+                                  }
+                                else
+                                  {
+                                    MR_Word mercury__robdd__TypeCtorInfo_121_121;
+                                    MR_Word mercury__robdd__TypeInfo_122_122;
+                                    MR_Word mercury__robdd__V_62_62;
+                                    MR_Word mercury__robdd__STATE_VARIABLE_Cache_63_63;
+                                    MR_Word mercury__robdd__V_64_64;
+                                    MR_Word mercury__robdd__Rfa_77;
+                                    MR_Word mercury__robdd__conv8_STATE_VARIABLE_Cache_6;
+
+                                    {
+                                      mercury__robdd__V_62_62 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__HeadVar__3_3);
+                                    }
+                                    {
+                                      mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Vs_14, mercury__robdd__Trues_2, mercury__robdd__V_62_62, &mercury__robdd__Rfa_77, mercury__robdd__STATE_VARIABLE_Cache_0_5, &mercury__robdd__STATE_VARIABLE_Cache_63_63);
+                                    }
+                                    {
+                                      mercury__robdd__V_64_64 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_84);
+                                    }
+                                    {
+                                      *mercury__robdd__R_4 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_84, mercury__robdd__Var_12, mercury__robdd__V_64_64, mercury__robdd__Rfa_77);
+                                    }
+                                    mercury__robdd__TypeCtorInfo_121_121 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                                    {
+                                      mercury__robdd__TypeInfo_122_122 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_122_122, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_121_121));
+                                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_122_122, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_84));
+                                    }
+                                    {
+                                      mercury__robdd__conv8_STATE_VARIABLE_Cache_6 = mercury__map__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_122_122, mercury__robdd__TypeInfo_122_122, ((MR_Box) (mercury__robdd__HeadVar__3_3)), (MR_Word) mercury__robdd__STATE_VARIABLE_Cache_63_63, ((MR_Box) (*mercury__robdd__R_4)));
+                                    }
+                                    *mercury__robdd__STATE_VARIABLE_Cache_6 = (MR_Word) mercury__robdd__conv8_STATE_VARIABLE_Cache_6;
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__make_equiv_2_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_22,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__Trues_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+
+    if ((mercury__robdd__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        mercury__robdd__HeadVar__3_3 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_22);
+      }
+    else
+      {
+        MR_Word mercury__robdd__Var_5;
+        MR_Word mercury__robdd__LeaderVar_6;
+        MR_Word mercury__robdd__Vs_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word mercury__robdd__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer mercury__robdd__V_33_33;
+        MR_Integer mercury__robdd__V_34_34;
+
+        mercury__robdd__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_12_12, (MR_Integer) 0)));
+        mercury__robdd__LeaderVar_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_12_12, (MR_Integer) 1)));
+        mercury__robdd__V_33_33 = (MR_Integer) mercury__robdd__Var_5;
+        mercury__robdd__V_34_34 = (MR_Integer) mercury__robdd__LeaderVar_6;
+        mercury__robdd__succeeded = (mercury__robdd__V_33_33 == mercury__robdd__V_34_34);
+        if (mercury__robdd__succeeded)
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_23_23 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+            MR_Word mercury__robdd__TypeInfo_24_24;
+            MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_25 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+            MR_Word mercury__robdd__TypeClassInfo_for_enum_26;
+            MR_Word mercury__robdd__V_13_13;
+            MR_Word mercury__robdd__V_14_14;
+            MR_Word mercury__robdd__V_15_15;
+            MR_Word mercury__robdd__V_6_41;
+            MR_Integer mercury__robdd__V_9_43;
+            MR_Word mercury__robdd__V_5_44;
+            MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box);
+            MR_Box mercury__robdd__conv1_V_9_43;
+
+            {
+              mercury__robdd__TypeInfo_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_24_24, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_23_23));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_24_24, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_22));
+            }
+            {
+              mercury__robdd__TypeClassInfo_for_enum_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_26, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_25));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_26, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_22));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_26, 2) = ((MR_Box) (mercury__robdd__TypeInfo_24_24));
+            }
+            mercury__robdd__V_6_41 = (MR_Word) mercury__robdd__Trues_2;
+            mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_26, (MR_Integer) 0)), (MR_Integer) 5)));
+            {
+              mercury__robdd__conv1_V_9_43 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_26), ((MR_Box) (mercury__robdd__Var_5)));
+            }
+            mercury__robdd__V_9_43 = ((MR_Integer) mercury__robdd__conv1_V_9_43);
+            {
+              mercury__sparse_bitset__insert_2_3_p_0(mercury__robdd__V_6_41, mercury__robdd__V_9_43, &mercury__robdd__V_5_44);
+            }
+            mercury__robdd__V_14_14 = (MR_Word) mercury__robdd__V_5_44;
+            {
+              mercury__robdd__V_13_13 = mercury__robdd__make_equiv_2_2_f_0(mercury__robdd__TypeInfo_for_T_22, mercury__robdd__Vs_7, mercury__robdd__V_14_14);
+            }
+            {
+              mercury__robdd__V_15_15 = mercury__robdd__make_equiv_2_2_f_0(mercury__robdd__TypeInfo_for_T_22, mercury__robdd__Vs_7, mercury__robdd__Trues_2);
+            }
+            {
+              mercury__robdd__HeadVar__3_3 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_22, mercury__robdd__Var_5, mercury__robdd__V_13_13, mercury__robdd__V_15_15);
+            }
+          }
+        else
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_27_27 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+            MR_Word mercury__robdd__TypeInfo_28_28;
+            MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_29 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+            MR_Word mercury__robdd__TypeClassInfo_for_enum_30;
+            MR_Word mercury__robdd__V_3_46 = (MR_Word) mercury__robdd__Trues_2;
+            MR_Integer mercury__robdd__V_5_47;
+            MR_Box MR_CALL (* mercury__robdd__func_2)(MR_Box, MR_Box);
+            MR_Box mercury__robdd__conv3_V_5_47;
+
+            {
+              mercury__robdd__TypeInfo_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_28_28, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_27_27));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_28_28, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_22));
+            }
+            {
+              mercury__robdd__TypeClassInfo_for_enum_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_30, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_29));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_30, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_22));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_30, 2) = ((MR_Box) (mercury__robdd__TypeInfo_28_28));
+            }
+            mercury__robdd__func_2 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_30, (MR_Integer) 0)), (MR_Integer) 5)));
+            {
+              mercury__robdd__conv3_V_5_47 = mercury__robdd__func_2(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_30), ((MR_Box) (mercury__robdd__LeaderVar_6)));
+            }
+            mercury__robdd__V_5_47 = ((MR_Integer) mercury__robdd__conv3_V_5_47);
+            {
+              mercury__robdd__succeeded = mercury__sparse_bitset__contains_search_nodes_2_p_0(mercury__robdd__V_3_46, mercury__robdd__V_5_47);
+            }
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_16_16;
+                MR_Word mercury__robdd__V_17_17;
+
+                {
+                  mercury__robdd__V_16_16 = mercury__robdd__make_equiv_2_2_f_0(mercury__robdd__TypeInfo_for_T_22, mercury__robdd__Vs_7, mercury__robdd__Trues_2);
+                }
+                {
+                  mercury__robdd__V_17_17 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_22);
+                }
+                {
+                  mercury__robdd__HeadVar__3_3 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_22, mercury__robdd__Var_5, mercury__robdd__V_16_16, mercury__robdd__V_17_17);
+                }
+              }
+            else
+              {
+                MR_Integer mercury__robdd__VarNum_10 = (MR_Integer) mercury__robdd__Var_5;
+                MR_Integer mercury__robdd__LeaderVarNum_11 = (MR_Integer) mercury__robdd__LeaderVar_6;
+                MR_Word mercury__robdd__V_20_20;
+                MR_Word mercury__robdd__V_21_21;
+
+                mercury__robdd__succeeded = (mercury__robdd__LeaderVarNum_11 < mercury__robdd__VarNum_10);
+                if (mercury__robdd__succeeded)
+                  {
+                  }
+                else
+                  {
+                    mercury__require__error_1_p_0((MR_String) "make_equiv_2: unordered vars");
+                  }
+                {
+                  mercury__robdd__V_20_20 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_22);
+                }
+                {
+                  mercury__robdd__V_21_21 = mercury__robdd__make_equiv_2_2_f_0(mercury__robdd__TypeInfo_for_T_22, mercury__robdd__Vs_7, mercury__robdd__Trues_2);
+                }
+                {
+                  mercury__robdd__HeadVar__3_3 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_22, mercury__robdd__Var_5, mercury__robdd__V_20_20, mercury__robdd__V_21_21);
+                }
+              }
+          }
+      }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+void MR_CALL 
+mercury__robdd__filter_2_8_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_31,
+  MR_Word mercury__robdd__P_9,
+  MR_Word mercury__robdd__D_10,
+  MR_Word mercury__robdd__F0_11,
+  MR_Word * mercury__robdd__F_12,
+  MR_Word mercury__robdd__SeenVars0_13,
+  MR_Word * mercury__robdd__SeenVars_14,
+  MR_Word mercury__robdd__SeenNodes0_15,
+  MR_Word * mercury__robdd__SeenNodes_16)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__F0_11);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        *mercury__robdd__F_12 = mercury__robdd__F0_11;
+        *mercury__robdd__SeenVars_14 = mercury__robdd__SeenVars0_13;
+        *mercury__robdd__SeenNodes_16 = mercury__robdd__SeenNodes0_15;
+      }
+    else
+      {
+        MR_Word mercury__robdd__V_26_26;
+        MR_bool MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box);
+
+        {
+          mercury__robdd__V_26_26 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__F0_11);
+        }
+        mercury__robdd__func_0 = ((MR_bool MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), mercury__robdd__D_10, (MR_Integer) 1)));
+        {
+          mercury__robdd__succeeded = mercury__robdd__func_0(((MR_Box) mercury__robdd__D_10), ((MR_Box) (mercury__robdd__V_26_26)));
+        }
+        mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+        if (mercury__robdd__succeeded)
+          {
+            *mercury__robdd__F_12 = mercury__robdd__F0_11;
+            *mercury__robdd__SeenVars_14 = mercury__robdd__SeenVars0_13;
+            *mercury__robdd__SeenNodes_16 = mercury__robdd__SeenNodes0_15;
+          }
+        else
+          {
+            MR_Word mercury__robdd__F1_17;
+            MR_Word mercury__robdd__TypeCtorInfo_32_32 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+            MR_Word mercury__robdd__TypeInfo_33_33;
+            MR_Box mercury__robdd__conv1_F1_17;
+
+            {
+              mercury__robdd__TypeInfo_33_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_33_33, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_32_32));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_33_33, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_31));
+            }
+            {
+              mercury__robdd__succeeded = mercury__tree234__search_3_p_0(mercury__robdd__TypeInfo_33_33, mercury__robdd__TypeInfo_33_33, (MR_Word) mercury__robdd__SeenNodes0_15, ((MR_Box) (mercury__robdd__F0_11)), &mercury__robdd__conv1_F1_17);
+            }
+            if (mercury__robdd__succeeded)
+              {
+                mercury__robdd__F1_17 = ((MR_Word) mercury__robdd__conv1_F1_17);
+                mercury__robdd__succeeded = MR_TRUE;
+              }
+            if (mercury__robdd__succeeded)
+              {
+                *mercury__robdd__F_12 = mercury__robdd__F1_17;
+                *mercury__robdd__SeenVars_14 = mercury__robdd__SeenVars0_13;
+                *mercury__robdd__SeenNodes_16 = mercury__robdd__SeenNodes0_15;
+              }
+            else
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_43_43;
+                MR_Word mercury__robdd__TypeInfo_44_44;
+                MR_Word mercury__robdd__Ftrue_18;
+                MR_Word mercury__robdd__SeenVars1_19;
+                MR_Word mercury__robdd__SeenNodes1_20;
+                MR_Word mercury__robdd__Ffalse_21;
+                MR_Word mercury__robdd__SeenVars2_22;
+                MR_Word mercury__robdd__SeenNodes2_23;
+                MR_Word mercury__robdd__V_24;
+                MR_Word mercury__robdd__V_27_27;
+                MR_Word mercury__robdd__V_28_28;
+                MR_Word mercury__robdd__SeenF_25;
+                MR_Word mercury__robdd__TypeCtorInfo_34_34;
+                MR_Word mercury__robdd__TypeInfo_35_35;
+                MR_Word mercury__robdd__TypeCtorInfo_36_36;
+                MR_Box mercury__robdd__conv2_SeenF_25;
+                MR_Word mercury__robdd__conv4_SeenNodes_16;
+
+                {
+                  mercury__robdd__V_27_27 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__F0_11);
+                }
+                {
+                  mercury__robdd__filter_2_8_p_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__P_9, mercury__robdd__D_10, mercury__robdd__V_27_27, &mercury__robdd__Ftrue_18, mercury__robdd__SeenVars0_13, &mercury__robdd__SeenVars1_19, mercury__robdd__SeenNodes0_15, &mercury__robdd__SeenNodes1_20);
+                }
+                {
+                  mercury__robdd__V_28_28 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__F0_11);
+                }
+                {
+                  mercury__robdd__filter_2_8_p_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__P_9, mercury__robdd__D_10, mercury__robdd__V_28_28, &mercury__robdd__Ffalse_21, mercury__robdd__SeenVars1_19, &mercury__robdd__SeenVars2_22, mercury__robdd__SeenNodes1_20, &mercury__robdd__SeenNodes2_23);
+                }
+                {
+                  mercury__robdd__V_24 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__F0_11);
+                }
+                mercury__robdd__TypeCtorInfo_34_34 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                mercury__robdd__TypeCtorInfo_36_36 = (MR_Word) &mercury__bool__bool__type_ctor_info_bool_0;
+                {
+                  mercury__robdd__TypeInfo_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_35_35, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_34_34));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_35_35, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_31));
+                }
+                {
+                  mercury__robdd__succeeded = mercury__tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__TypeInfo_35_35, mercury__robdd__TypeCtorInfo_36_36, mercury__robdd__SeenVars0_13, mercury__robdd__V_24, &mercury__robdd__conv2_SeenF_25);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    mercury__robdd__SeenF_25 = ((MR_Word) mercury__robdd__conv2_SeenF_25);
+                    mercury__robdd__succeeded = MR_TRUE;
+                  }
+                if (mercury__robdd__succeeded)
+                  {
+                    *mercury__robdd__SeenVars_14 = mercury__robdd__SeenVars2_22;
+                    switch (mercury__robdd__SeenF_25) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          *mercury__robdd__F_12 = mercury__robdd__f_plus_2_f_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__Ftrue_18, mercury__robdd__Ffalse_21);
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          *mercury__robdd__F_12 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__V_24, mercury__robdd__Ftrue_18, mercury__robdd__Ffalse_21);
+                        }
+                        break;
+                    }
+                  }
+                else
+                  {
+                    MR_bool MR_CALL (* mercury__robdd__func_3)(MR_Box, MR_Box) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), mercury__robdd__P_9, (MR_Integer) 1)));
+
+                    {
+                      mercury__robdd__succeeded = mercury__robdd__func_3(((MR_Box) mercury__robdd__P_9), ((MR_Box) (mercury__robdd__V_24)));
+                    }
+                    if (mercury__robdd__succeeded)
+                      {
+                        MR_Word mercury__robdd__TypeCtorInfo_37_37;
+                        MR_Word mercury__robdd__TypeInfo_38_38;
+                        MR_Word mercury__robdd__TypeCtorInfo_39_39;
+
+                        {
+                          *mercury__robdd__F_12 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__V_24, mercury__robdd__Ftrue_18, mercury__robdd__Ffalse_21);
+                        }
+                        mercury__robdd__TypeCtorInfo_37_37 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                        {
+                          mercury__robdd__TypeInfo_38_38 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_38_38, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_37_37));
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_38_38, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_31));
+                        }
+                        mercury__robdd__TypeCtorInfo_39_39 = (MR_Word) &mercury__bool__bool__type_ctor_info_bool_0;
+                        {
+                          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__TypeInfo_38_38, mercury__robdd__TypeCtorInfo_39_39, mercury__robdd__V_24, ((MR_Box) ((MR_Integer) 1)), mercury__robdd__SeenVars2_22, mercury__robdd__SeenVars_14);
+                        }
+                      }
+                    else
+                      {
+                        MR_Word mercury__robdd__TypeCtorInfo_40_40;
+                        MR_Word mercury__robdd__TypeInfo_41_41;
+                        MR_Word mercury__robdd__TypeCtorInfo_42_42;
+
+                        {
+                          *mercury__robdd__F_12 = mercury__robdd__f_plus_2_f_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__Ftrue_18, mercury__robdd__Ffalse_21);
+                        }
+                        mercury__robdd__TypeCtorInfo_40_40 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                        {
+                          mercury__robdd__TypeInfo_41_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_41_41, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_40_40));
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_41_41, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_31));
+                        }
+                        mercury__robdd__TypeCtorInfo_42_42 = (MR_Word) &mercury__bool__bool__type_ctor_info_bool_0;
+                        {
+                          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(mercury__robdd__TypeInfo_for_T_31, mercury__robdd__TypeInfo_41_41, mercury__robdd__TypeCtorInfo_42_42, mercury__robdd__V_24, ((MR_Box) ((MR_Integer) 0)), mercury__robdd__SeenVars2_22, mercury__robdd__SeenVars_14);
+                        }
+                      }
+                  }
+                mercury__robdd__TypeCtorInfo_43_43 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                {
+                  mercury__robdd__TypeInfo_44_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_44_44, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_43_43));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_44_44, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_31));
+                }
+                {
+                  mercury__map__det_insert_4_p_0(mercury__robdd__TypeInfo_44_44, mercury__robdd__TypeInfo_44_44, ((MR_Box) (mercury__robdd__F0_11)), ((MR_Box) (*mercury__robdd__F_12)), (MR_Word) mercury__robdd__SeenNodes2_23, &mercury__robdd__conv4_SeenNodes_16);
+                }
+                *mercury__robdd__SeenNodes_16 = (MR_Word) mercury__robdd__conv4_SeenNodes_16;
+              }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+mercury__robdd__restrict_true_false_vars_2_6_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_26,
+  MR_Word mercury__robdd__TrueVars0_7,
+  MR_Word mercury__robdd__FalseVars0_8,
+  MR_Word mercury__robdd__R0_9,
+  MR_Word * mercury__robdd__R_10,
+  MR_Word mercury__robdd__Seen0_11,
+  MR_Word * mercury__robdd__Seen_12)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__R0_9);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        *mercury__robdd__R_10 = mercury__robdd__R0_9;
+        *mercury__robdd__Seen_12 = mercury__robdd__Seen0_11;
+      }
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_27_27 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_28_28;
+        MR_Word mercury__robdd__V_38_38;
+        MR_Word mercury__robdd__V_2_41 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+        {
+          mercury__robdd__TypeInfo_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_28_28, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_27_27));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_28_28, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_26));
+        }
+        mercury__robdd__V_38_38 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        {
+          mercury__robdd__succeeded = mercury__sparse_bitset____Unify____sparse_bitset_1_0(mercury__robdd__TypeInfo_28_28, (MR_Word) mercury__robdd__TrueVars0_7, (MR_Word) mercury__robdd__V_38_38);
+        }
+        if (mercury__robdd__succeeded)
+          {
+            mercury__robdd__succeeded = mercury__sparse_bitset____Unify____sparse_bitset_1_0(mercury__robdd__TypeInfo_28_28, (MR_Word) mercury__robdd__FalseVars0_8, (MR_Word) mercury__robdd__V_38_38);
+          }
+        if (mercury__robdd__succeeded)
+          {
+            *mercury__robdd__R_10 = mercury__robdd__R0_9;
+            *mercury__robdd__Seen_12 = mercury__robdd__Seen0_11;
+          }
+        else
+          {
+            MR_Word mercury__robdd__R1_13;
+            MR_Word mercury__robdd__TypeCtorInfo_29_29 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+            MR_Word mercury__robdd__TypeInfo_30_30;
+            MR_Box mercury__robdd__conv0_R1_13;
+
+            {
+              mercury__robdd__TypeInfo_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_30, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_29_29));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_30, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_26));
+            }
+            {
+              mercury__robdd__succeeded = mercury__tree234__search_3_p_0(mercury__robdd__TypeInfo_30_30, mercury__robdd__TypeInfo_30_30, (MR_Word) mercury__robdd__Seen0_11, ((MR_Box) (mercury__robdd__R0_9)), &mercury__robdd__conv0_R1_13);
+            }
+            if (mercury__robdd__succeeded)
+              {
+                mercury__robdd__R1_13 = ((MR_Word) mercury__robdd__conv0_R1_13);
+                mercury__robdd__succeeded = MR_TRUE;
+              }
+            if (mercury__robdd__succeeded)
+              {
+                *mercury__robdd__R_10 = mercury__robdd__R1_13;
+                *mercury__robdd__Seen_12 = mercury__robdd__Seen0_11;
+              }
+            else
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_31_31;
+                MR_Word mercury__robdd__TypeInfo_32_32;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_33;
+                MR_Word mercury__robdd__TypeClassInfo_for_enum_34;
+                MR_Word mercury__robdd__TypeCtorInfo_35_35;
+                MR_Word mercury__robdd__TypeInfo_36_36;
+                MR_Word mercury__robdd__Var_14;
+                MR_Word mercury__robdd__TrueVars_15;
+                MR_Word mercury__robdd__FalseVars_16;
+                MR_Word mercury__robdd__Seen2_17;
+                MR_Word mercury__robdd__V_4_51;
+                MR_Word mercury__robdd__V_6_52;
+                MR_Integer mercury__robdd__V_7_53;
+                MR_Word mercury__robdd__V_4_55;
+                MR_Word mercury__robdd__V_6_56;
+                MR_Integer mercury__robdd__V_7_57;
+                MR_Box MR_CALL (* mercury__robdd__func_1)(MR_Box, MR_Box);
+                MR_Box mercury__robdd__conv2_V_7_53;
+                MR_Box MR_CALL (* mercury__robdd__func_3)(MR_Box, MR_Box);
+                MR_Box mercury__robdd__conv4_V_7_57;
+                MR_Word mercury__robdd__V_3_59;
+                MR_Integer mercury__robdd__V_5_60;
+                MR_Box MR_CALL (* mercury__robdd__func_5)(MR_Box, MR_Box);
+                MR_Box mercury__robdd__conv6_V_5_60;
+                MR_Word mercury__robdd__conv9_Seen_12;
+
+                {
+                  mercury__robdd__Var_14 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__R0_9);
+                }
+                mercury__robdd__BaseTypeClassInfo_for_enum_33 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                mercury__robdd__TypeCtorInfo_31_31 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                {
+                  mercury__robdd__TypeInfo_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_32, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_31_31));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_32, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_26));
+                }
+                {
+                  mercury__robdd__TypeClassInfo_for_enum_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_34, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_33));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_34, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_26));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_34, 2) = ((MR_Box) (mercury__robdd__TypeInfo_32_32));
+                }
+                mercury__robdd__V_4_51 = (MR_Word) mercury__robdd__TrueVars0_7;
+                mercury__robdd__func_1 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_34, (MR_Integer) 0)), (MR_Integer) 5)));
+                {
+                  mercury__robdd__conv2_V_7_53 = mercury__robdd__func_1(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_34), ((MR_Box) (mercury__robdd__Var_14)));
+                }
+                mercury__robdd__V_7_53 = ((MR_Integer) mercury__robdd__conv2_V_7_53);
+                {
+                  mercury__robdd__V_6_52 = mercury__sparse_bitset__remove_leq_2_2_f_0(mercury__robdd__V_4_51, mercury__robdd__V_7_53);
+                }
+                mercury__robdd__TrueVars_15 = (MR_Word) mercury__robdd__V_6_52;
+                mercury__robdd__V_4_55 = (MR_Word) mercury__robdd__FalseVars0_8;
+                mercury__robdd__func_3 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_34, (MR_Integer) 0)), (MR_Integer) 5)));
+                {
+                  mercury__robdd__conv4_V_7_57 = mercury__robdd__func_3(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_34), ((MR_Box) (mercury__robdd__Var_14)));
+                }
+                mercury__robdd__V_7_57 = ((MR_Integer) mercury__robdd__conv4_V_7_57);
+                {
+                  mercury__robdd__V_6_56 = mercury__sparse_bitset__remove_leq_2_2_f_0(mercury__robdd__V_4_55, mercury__robdd__V_7_57);
+                }
+                mercury__robdd__FalseVars_16 = (MR_Word) mercury__robdd__V_6_56;
+                mercury__robdd__V_3_59 = (MR_Word) mercury__robdd__TrueVars0_7;
+                mercury__robdd__func_5 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_34, (MR_Integer) 0)), (MR_Integer) 5)));
+                {
+                  mercury__robdd__conv6_V_5_60 = mercury__robdd__func_5(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_34), ((MR_Box) (mercury__robdd__Var_14)));
+                }
+                mercury__robdd__V_5_60 = ((MR_Integer) mercury__robdd__conv6_V_5_60);
+                {
+                  mercury__robdd__succeeded = mercury__sparse_bitset__contains_search_nodes_2_p_0(mercury__robdd__V_3_59, mercury__robdd__V_5_60);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    MR_Word mercury__robdd__V_21_21;
+
+                    {
+                      mercury__robdd__V_21_21 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__R0_9);
+                    }
+                    {
+                      mercury__robdd__restrict_true_false_vars_2_6_p_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__TrueVars_15, mercury__robdd__FalseVars_16, mercury__robdd__V_21_21, mercury__robdd__R_10, mercury__robdd__Seen0_11, &mercury__robdd__Seen2_17);
+                    }
+                  }
+                else
+                  {
+                    MR_Word mercury__robdd__V_3_62 = (MR_Word) mercury__robdd__FalseVars0_8;
+                    MR_Integer mercury__robdd__V_5_63;
+                    MR_Box MR_CALL (* mercury__robdd__func_7)(MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_34, (MR_Integer) 0)), (MR_Integer) 5)));
+                    MR_Box mercury__robdd__conv8_V_5_63;
+
+                    {
+                      mercury__robdd__conv8_V_5_63 = mercury__robdd__func_7(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_34), ((MR_Box) (mercury__robdd__Var_14)));
+                    }
+                    mercury__robdd__V_5_63 = ((MR_Integer) mercury__robdd__conv8_V_5_63);
+                    {
+                      mercury__robdd__succeeded = mercury__sparse_bitset__contains_search_nodes_2_p_0(mercury__robdd__V_3_62, mercury__robdd__V_5_63);
+                    }
+                    if (mercury__robdd__succeeded)
+                      {
+                        MR_Word mercury__robdd__V_22_22;
+
+                        {
+                          mercury__robdd__V_22_22 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__R0_9);
+                        }
+                        {
+                          mercury__robdd__restrict_true_false_vars_2_6_p_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__TrueVars_15, mercury__robdd__FalseVars_16, mercury__robdd__V_22_22, mercury__robdd__R_10, mercury__robdd__Seen0_11, &mercury__robdd__Seen2_17);
+                        }
+                      }
+                    else
+                      {
+                        MR_Word mercury__robdd__R_tr_18;
+                        MR_Word mercury__robdd__Seen1_19;
+                        MR_Word mercury__robdd__R_fa_20;
+                        MR_Word mercury__robdd__V_23_23;
+                        MR_Word mercury__robdd__V_24_24;
+                        MR_Word mercury__robdd__V_25_25;
+
+                        {
+                          mercury__robdd__V_23_23 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__R0_9);
+                        }
+                        {
+                          mercury__robdd__restrict_true_false_vars_2_6_p_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__TrueVars_15, mercury__robdd__FalseVars_16, mercury__robdd__V_23_23, &mercury__robdd__R_tr_18, mercury__robdd__Seen0_11, &mercury__robdd__Seen1_19);
+                        }
+                        {
+                          mercury__robdd__V_24_24 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__R0_9);
+                        }
+                        {
+                          mercury__robdd__restrict_true_false_vars_2_6_p_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__TrueVars_15, mercury__robdd__FalseVars_16, mercury__robdd__V_24_24, &mercury__robdd__R_fa_20, mercury__robdd__Seen1_19, &mercury__robdd__Seen2_17);
+                        }
+                        {
+                          mercury__robdd__V_25_25 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__R0_9);
+                        }
+                        {
+                          *mercury__robdd__R_10 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_26, mercury__robdd__V_25_25, mercury__robdd__R_tr_18, mercury__robdd__R_fa_20);
+                        }
+                      }
+                  }
+                mercury__robdd__TypeCtorInfo_35_35 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                {
+                  mercury__robdd__TypeInfo_36_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_36_36, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_35_35));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_36_36, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_26));
+                }
+                {
+                  mercury__map__det_insert_4_p_0(mercury__robdd__TypeInfo_36_36, mercury__robdd__TypeInfo_36_36, ((MR_Box) (mercury__robdd__R0_9)), ((MR_Box) (*mercury__robdd__R_10)), (MR_Word) mercury__robdd__Seen2_17, &mercury__robdd__conv9_Seen_12);
+                }
+                *mercury__robdd__Seen_12 = (MR_Word) mercury__robdd__conv9_Seen_12;
+              }
+          }
+      }
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__at_most_one_of_2_3_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_29,
+  MR_Word mercury__robdd__Vars_5,
+  MR_Word mercury__robdd__OneOf0_6,
+  MR_Word mercury__robdd__NoneOf0_7)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__R_8;
+    MR_Word mercury__robdd__TypeCtorInfo_30_30 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_31_31;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_32;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_33;
+    MR_Word mercury__robdd__V_16_16;
+    MR_Word mercury__robdd__V_23_23;
+    MR_Word mercury__robdd__V_10_39;
+    MR_Word mercury__robdd__V_6_58;
+    MR_Word mercury__robdd__conv0_V_23_23;
+    MR_Word mercury__robdd__conv1_V_16_16;
+    MR_Word mercury__robdd__V_14_14;
+
+    {
+      mercury__robdd__TypeInfo_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_31_31, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_30_30));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_31_31, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_29));
+    }
+    mercury__robdd__BaseTypeClassInfo_for_enum_32 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    {
+      mercury__robdd__TypeClassInfo_for_enum_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_33, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_32));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_33, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_29));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_33, 2) = ((MR_Box) (mercury__robdd__TypeInfo_31_31));
+    }
+    mercury__robdd__V_10_39 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    mercury__robdd__V_6_58 = (MR_Word) mercury__robdd__Vars_5;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_49_48_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_57_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__TypeClassInfo_for_enum_33, mercury__robdd__V_6_58, (MR_Word) mercury__robdd__V_10_39, &mercury__robdd__conv0_V_23_23);
+    }
+    mercury__robdd__V_23_23 = (MR_Word) mercury__robdd__conv0_V_23_23;
+    {
+      mercury__list__reverse_2_p_0(mercury__robdd__TypeInfo_31_31, (MR_Word) mercury__robdd__V_23_23, &mercury__robdd__conv1_V_16_16);
+    }
+    mercury__robdd__V_16_16 = (MR_Word) mercury__robdd__conv1_V_16_16;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_53_54_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_44_32_56_93_95_48_6_p_in__list_0(mercury__robdd__TypeInfo_for_T_29, mercury__robdd__V_16_16, mercury__robdd__OneOf0_6, &mercury__robdd__R_8, mercury__robdd__NoneOf0_7, &mercury__robdd__V_14_14);
+    }
+    return mercury__robdd__R_8;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__make_node_3_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__4_4;
+    MR_Word mercury__robdd__TypeInfo_for_T_6;
+
+{
+#define MR_PROC_LABEL mercury__robdd__make_node_3_f_0
+
+	MR_Word Var;
+	MR_Word Then;
+	MR_Word Else;
+	MR_Word Node;
+
+	Var =  mercury__robdd__HeadVar__1_1 ;
+	Then =  mercury__robdd__HeadVar__2_2 ;
+	Else =  mercury__robdd__HeadVar__3_3 ;
+		{
+
+    Node = (MR_ROBDD_NODE_TYPE) MR_ROBDD_make_node((int) Var,
+        (MR_ROBDD_node *) Then, (MR_ROBDD_node *) Else);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__4_4  = Node;
+}
+    return mercury__robdd__HeadVar__4_4;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__print_robdd_2_5_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_44,
+  MR_Word mercury__robdd__F_6,
+  MR_Word mercury__robdd__Trues_7,
+  MR_Word mercury__robdd__Falses_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+        MR_Word mercury__robdd__V_52_52;
+        MR_Integer mercury__robdd__CastX_74;
+        MR_Integer mercury__robdd__CastY_75;
+
+        {
+          mercury__robdd__V_52_52 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_44);
+        }
+        mercury__robdd__CastX_74 = (MR_Integer) mercury__robdd__F_6;
+        mercury__robdd__CastY_75 = (MR_Integer) mercury__robdd__V_52_52;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_74 == mercury__robdd__CastY_75);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_72_72 = (MR_Integer) mercury__robdd__F_6;
+            MR_Integer mercury__robdd__V_73_73 = (MR_Integer) mercury__robdd__V_52_52;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_72_72 == mercury__robdd__V_73_73);
+          }
+        if (mercury__robdd__succeeded)
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_45_45 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+            MR_Word mercury__robdd__TypeInfo_46_46;
+            MR_Word mercury__robdd__All_9;
+            MR_Word mercury__robdd__V_4_79;
+            MR_Word mercury__robdd__V_5_80;
+            MR_Word mercury__robdd__V_3_85;
+            MR_Integer mercury__robdd__V_5_88;
+            MR_Word mercury__robdd__conv0_V_3_85;
+            MR_Word mercury__robdd__conv1_All_9;
+
+            {
+              mercury__robdd__TypeInfo_46_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_46_46, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_45_45));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_46_46, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_44));
+            }
+            mercury__robdd__V_4_79 = (MR_Word) mercury__robdd__Trues_7;
+            mercury__robdd__V_5_80 = (MR_Word) mercury__robdd__Falses_8;
+            {
+              mercury__list__append_3_p_1(mercury__robdd__TypeInfo_46_46, (MR_Word) mercury__robdd__V_5_80, (MR_Word) mercury__robdd__V_4_79, &mercury__robdd__conv0_V_3_85);
+            }
+            mercury__robdd__V_3_85 = (MR_Word) mercury__robdd__conv0_V_3_85;
+            {
+              mercury__list__length_acc_3_p_0(mercury__robdd__TypeInfo_46_46, (MR_Word) mercury__robdd__V_3_85, (MR_Integer) 0, &mercury__robdd__V_5_88);
+            }
+            {
+              mercury__list__merge_sort_and_remove_dups_2_3_p_0(mercury__robdd__TypeInfo_46_46, mercury__robdd__V_5_88, (MR_Word) mercury__robdd__V_3_85, &mercury__robdd__conv1_All_9);
+            }
+            mercury__robdd__All_9 = (MR_Word) mercury__robdd__conv1_All_9;
+            {
+              mercury__io__write_string_3_p_0((MR_String) "(");
+            }
+            {
+              mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_53_55_95_95_91_49_44_32_52_44_32_53_93_95_48_4_p_in__list_0(mercury__robdd__TypeInfo_for_T_44, mercury__robdd__Trues_7, mercury__robdd__All_9);
+            }
+            {
+              mercury__io__write_string_3_p_0((MR_String) ")\n");
+            }
+          }
+        else
+          {
+            MR_Word mercury__robdd__V_53_53;
+            MR_Integer mercury__robdd__CastX_96;
+            MR_Integer mercury__robdd__CastY_97;
+
+            {
+              mercury__robdd__V_53_53 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_44);
+            }
+            mercury__robdd__CastX_96 = (MR_Integer) mercury__robdd__F_6;
+            mercury__robdd__CastY_97 = (MR_Integer) mercury__robdd__V_53_53;
+            mercury__robdd__succeeded = (mercury__robdd__CastX_96 == mercury__robdd__CastY_97);
+            if (mercury__robdd__succeeded)
+              mercury__robdd__succeeded = MR_TRUE;
+            else
+              {
+                MR_Integer mercury__robdd__V_94_94 = (MR_Integer) mercury__robdd__F_6;
+                MR_Integer mercury__robdd__V_95_95 = (MR_Integer) mercury__robdd__V_53_53;
+
+                mercury__robdd__succeeded = (mercury__robdd__V_94_94 == mercury__robdd__V_95_95);
+              }
+            mercury__robdd__succeeded = !(mercury__robdd__succeeded);
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_50_50;
+                MR_Word mercury__robdd__TypeInfo_51_51;
+                MR_Word mercury__robdd__V_35_35;
+                MR_Word mercury__robdd__V_36_36;
+                MR_Word mercury__robdd__V_37_37;
+                MR_Word mercury__robdd__V_38_38;
+                MR_Word mercury__robdd__V_39_39;
+                MR_Word mercury__robdd__V_40_40;
+                MR_Word mercury__robdd__conv2_V_36_36;
+                MR_Word mercury__robdd__conv3_V_39_39;
+
+                {
+                  mercury__robdd__V_35_35 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_44, mercury__robdd__F_6);
+                }
+                mercury__robdd__TypeCtorInfo_50_50 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                {
+                  mercury__robdd__TypeInfo_51_51 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_51_51, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_50_50));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_51_51, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_44));
+                }
+                {
+                  mercury__robdd__V_37_37 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_44, mercury__robdd__F_6);
+                }
+                {
+                  mercury__robdd__conv2_V_36_36 = mercury__set_unordlist__insert_2_f_0(mercury__robdd__TypeInfo_51_51, (MR_Word) mercury__robdd__Trues_7, ((MR_Box) (mercury__robdd__V_37_37)));
+                }
+                mercury__robdd__V_36_36 = (MR_Word) mercury__robdd__conv2_V_36_36;
+                {
+                  mercury__robdd__print_robdd_2_5_p_0(mercury__robdd__TypeInfo_for_T_44, mercury__robdd__V_35_35, mercury__robdd__V_36_36, mercury__robdd__Falses_8);
+                }
+                {
+                  mercury__robdd__V_38_38 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_44, mercury__robdd__F_6);
+                }
+                {
+                  mercury__robdd__V_40_40 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_44, mercury__robdd__F_6);
+                }
+                {
+                  mercury__robdd__conv3_V_39_39 = mercury__set_unordlist__insert_2_f_0(mercury__robdd__TypeInfo_51_51, (MR_Word) mercury__robdd__Falses_8, ((MR_Box) (mercury__robdd__V_40_40)));
+                }
+                mercury__robdd__V_39_39 = (MR_Word) mercury__robdd__conv3_V_39_39;
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__robdd__F__tmp_copy_6 = mercury__robdd__V_38_38;
+                  MR_Word mercury__robdd__Falses__tmp_copy_8 = mercury__robdd__V_39_39;
+
+                  mercury__robdd__Falses_8 = mercury__robdd__Falses__tmp_copy_8;
+                  mercury__robdd__F_6 = mercury__robdd__F__tmp_copy_6;
+                }
+                continue;
+              }
+            else
+              {
+              }
+          }
+      }
+      break;
+    }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__fa_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_3,
+  MR_Word mercury__robdd__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__TypeInfo_for_T_4;
+
+{
+#define MR_PROC_LABEL mercury__robdd__fa_1_f_0
+
+	MR_Word F;
+	MR_Word Fa;
+
+	F =  mercury__robdd__HeadVar__1_1 ;
+		{
+
+    Fa = (MR_ROBDD_NODE_TYPE) ((MR_ROBDD_node *) F)->fa;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__2_2  = Fa;
+}
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__tr_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_3,
+  MR_Word mercury__robdd__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__TypeInfo_for_T_4;
+
+{
+#define MR_PROC_LABEL mercury__robdd__tr_1_f_0
+
+	MR_Word F;
+	MR_Word Tr;
+
+	F =  mercury__robdd__HeadVar__1_1 ;
+		{
+
+    Tr = (MR_ROBDD_NODE_TYPE) ((MR_ROBDD_node *) F)->tr;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__2_2  = Tr;
+}
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__value_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_3,
+  MR_Word mercury__robdd__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__TypeInfo_for_T_4;
+
+{
+#define MR_PROC_LABEL mercury__robdd__value_1_f_0
+
+	MR_Word F;
+	MR_Word Value;
+
+	F =  mercury__robdd__HeadVar__1_1 ;
+		{
+
+    Value = (MR_ROBDD_NODE_TYPE) ((MR_ROBDD_node *) F)->value;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__2_2  = Value;
+}
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__f_101_108_101_109_32_58_61_3_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_13,
+  MR_Word mercury__robdd__V_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__Vs_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__4_4;
+
+    if ((mercury__robdd__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      mercury__robdd__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word mercury__robdd__TypeCtorInfo_14_14;
+        MR_Word mercury__robdd__TypeInfo_15_15;
+        MR_Word mercury__robdd__TypeCtorInfo_16_16;
+        MR_Word mercury__robdd__TypeInfo_17_17;
+        MR_Word mercury__robdd__TypeCtorInfo_18_18;
+        MR_Word mercury__robdd__TypeInfo_19_19;
+        MR_Word mercury__robdd__M0_8;
+        MR_Word mercury__robdd__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_11_11;
+        MR_Word mercury__robdd__V_12_12;
+        MR_Word mercury__robdd__conv0_V_12_12;
+
+        mercury__robdd__M0_8 = (MR_Word) mercury__robdd__V_10_10;
+        mercury__robdd__TypeCtorInfo_14_14 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        {
+          mercury__robdd__TypeInfo_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_15_15, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_14_14));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_15_15, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_13));
+        }
+        mercury__robdd__TypeCtorInfo_18_18 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+        mercury__robdd__TypeCtorInfo_16_16 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+        {
+          mercury__robdd__TypeInfo_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_17_17, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_16_16));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_17_17, 1) = ((MR_Box) (mercury__robdd__TypeInfo_15_15));
+        }
+        {
+          mercury__robdd__TypeInfo_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_19, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_18_18));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_19, 1) = ((MR_Box) (mercury__robdd__TypeInfo_17_17));
+        }
+        {
+          mercury__tree234__set_4_p_0(mercury__robdd__TypeInfo_15_15, mercury__robdd__TypeInfo_19_19, ((MR_Box) (mercury__robdd__V_1)), ((MR_Box) (mercury__robdd__Vs_3)), (MR_Word) mercury__robdd__M0_8, &mercury__robdd__conv0_V_12_12);
+        }
+        mercury__robdd__V_12_12 = (MR_Word) mercury__robdd__conv0_V_12_12;
+        mercury__robdd__V_11_11 = (MR_Word) mercury__robdd__V_12_12;
+        {
+          mercury__robdd__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__4_4, 0) = ((MR_Box) (mercury__robdd__V_11_11));
+        }
+      }
+    return mercury__robdd__HeadVar__4_4;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__get_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_7,
+  MR_Word mercury__robdd__K_4,
+  MR_Word mercury__robdd__IM_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__TypeInfo_9_9;
+    MR_Word mercury__robdd__Vs_6;
+    MR_Word mercury__robdd__TypeCtorInfo_8_8 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeCtorInfo_10_10 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+    MR_Word mercury__robdd__TypeInfo_11_11;
+    MR_Box mercury__robdd__conv0_Vs_6;
+
+    {
+      mercury__robdd__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_8_8));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_9_9, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_7));
+    }
+    {
+      mercury__robdd__TypeInfo_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_11_11, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_10_10));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_11_11, 1) = ((MR_Box) (mercury__robdd__TypeInfo_9_9));
+    }
+    {
+      mercury__robdd__succeeded = mercury__tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(mercury__robdd__TypeInfo_for_T_7, mercury__robdd__TypeInfo_9_9, mercury__robdd__TypeInfo_11_11, (MR_Word) mercury__robdd__IM_5, mercury__robdd__K_4, &mercury__robdd__conv0_Vs_6);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        mercury__robdd__Vs_6 = ((MR_Word) mercury__robdd__conv0_Vs_6);
+        mercury__robdd__succeeded = MR_TRUE;
+      }
+    if (mercury__robdd__succeeded)
+      {
+        MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_14 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+        MR_Word mercury__robdd__TypeClassInfo_for_enum_15;
+        MR_Word mercury__robdd__V_6_36;
+        MR_Integer mercury__robdd__V_9_38;
+        MR_Word mercury__robdd__V_5_39;
+        MR_Box MR_CALL (* mercury__robdd__func_1)(MR_Box, MR_Box);
+        MR_Box mercury__robdd__conv2_V_9_38;
+
+        {
+          mercury__robdd__TypeClassInfo_for_enum_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_15, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_14));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_15, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_7));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_15, 2) = ((MR_Box) (mercury__robdd__TypeInfo_9_9));
+        }
+        mercury__robdd__V_6_36 = (MR_Word) mercury__robdd__Vs_6;
+        mercury__robdd__func_1 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_15, (MR_Integer) 0)), (MR_Integer) 5)));
+        {
+          mercury__robdd__conv2_V_9_38 = mercury__robdd__func_1(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_15), ((MR_Box) (mercury__robdd__K_4)));
+        }
+        mercury__robdd__V_9_38 = ((MR_Integer) mercury__robdd__conv2_V_9_38);
+        {
+          mercury__sparse_bitset__insert_2_3_p_0(mercury__robdd__V_6_36, mercury__robdd__V_9_38, &mercury__robdd__V_5_39);
+        }
+        mercury__robdd__HeadVar__3_3 = (MR_Word) mercury__robdd__V_5_39;
+      }
+    else
+      {
+        MR_Word mercury__robdd__V_2_40 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+        mercury__robdd__HeadVar__3_3 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+void MR_CALL 
+mercury__robdd__remove_implications_2_7_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_59,
+  MR_Word mercury__robdd__ImpRes_8,
+  MR_Word mercury__robdd__True_9,
+  MR_Word mercury__robdd__False_10,
+  MR_Word mercury__robdd__R0_11,
+  MR_Word * mercury__robdd__R_12,
+  MR_Word mercury__robdd__DCG_0_20,
+  MR_Word * mercury__robdd__DCG_7_27)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        {
+          mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+        }
+        if (mercury__robdd__succeeded)
+          {
+            *mercury__robdd__R_12 = mercury__robdd__R0_11;
+            *mercury__robdd__DCG_7_27 = mercury__robdd__DCG_0_20;
+          }
+        else
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_60_60;
+            MR_Word mercury__robdd__TypeInfo_61_61;
+            MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_62;
+            MR_Word mercury__robdd__TypeClassInfo_for_enum_63;
+            MR_Word mercury__robdd__V_28_28;
+            MR_Word mercury__robdd__V_3_75;
+            MR_Integer mercury__robdd__V_5_76;
+            MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box);
+            MR_Box mercury__robdd__conv1_V_5_76;
+
+            {
+              mercury__robdd__V_28_28 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+            }
+            mercury__robdd__BaseTypeClassInfo_for_enum_62 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+            mercury__robdd__TypeCtorInfo_60_60 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+            mercury__robdd__V_3_75 = (MR_Word) mercury__robdd__True_9;
+            {
+              mercury__robdd__TypeInfo_61_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_61_61, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_60_60));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_61_61, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_59));
+            }
+            {
+              mercury__robdd__TypeClassInfo_for_enum_63 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_63, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_62));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_63, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_59));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_63, 2) = ((MR_Box) (mercury__robdd__TypeInfo_61_61));
+            }
+            mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_63, (MR_Integer) 0)), (MR_Integer) 5)));
+            {
+              mercury__robdd__conv1_V_5_76 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_63), ((MR_Box) (mercury__robdd__V_28_28)));
+            }
+            mercury__robdd__V_5_76 = ((MR_Integer) mercury__robdd__conv1_V_5_76);
+            {
+              mercury__robdd__succeeded = mercury__sparse_bitset__contains_search_nodes_2_p_0(mercury__robdd__V_3_75, mercury__robdd__V_5_76);
+            }
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_29_29;
+
+                {
+                  mercury__robdd__V_29_29 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+                }
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__robdd__R0__tmp_copy_11 = mercury__robdd__V_29_29;
+
+                  mercury__robdd__R0_11 = mercury__robdd__R0__tmp_copy_11;
+                }
+                continue;
+              }
+            else
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_64_64;
+                MR_Word mercury__robdd__TypeInfo_65_65;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_66;
+                MR_Word mercury__robdd__TypeClassInfo_for_enum_67;
+                MR_Word mercury__robdd__V_30_30;
+                MR_Word mercury__robdd__V_3_78;
+                MR_Integer mercury__robdd__V_5_79;
+                MR_Box MR_CALL (* mercury__robdd__func_2)(MR_Box, MR_Box);
+                MR_Box mercury__robdd__conv3_V_5_79;
+
+                {
+                  mercury__robdd__V_30_30 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+                }
+                mercury__robdd__BaseTypeClassInfo_for_enum_66 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                mercury__robdd__TypeCtorInfo_64_64 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                mercury__robdd__V_3_78 = (MR_Word) mercury__robdd__False_10;
+                {
+                  mercury__robdd__TypeInfo_65_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_65_65, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_64_64));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_65_65, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_59));
+                }
+                {
+                  mercury__robdd__TypeClassInfo_for_enum_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_67, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_66));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_67, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_59));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_67, 2) = ((MR_Box) (mercury__robdd__TypeInfo_65_65));
+                }
+                mercury__robdd__func_2 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_67, (MR_Integer) 0)), (MR_Integer) 5)));
+                {
+                  mercury__robdd__conv3_V_5_79 = mercury__robdd__func_2(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_67), ((MR_Box) (mercury__robdd__V_30_30)));
+                }
+                mercury__robdd__V_5_79 = ((MR_Integer) mercury__robdd__conv3_V_5_79);
+                {
+                  mercury__robdd__succeeded = mercury__sparse_bitset__contains_search_nodes_2_p_0(mercury__robdd__V_3_78, mercury__robdd__V_5_79);
+                }
+                if (mercury__robdd__succeeded)
+                  {
+                    MR_Word mercury__robdd__V_31_31;
+
+                    {
+                      mercury__robdd__V_31_31 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+                    }
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__robdd__R0__tmp_copy_11 = mercury__robdd__V_31_31;
+
+                      mercury__robdd__R0_11 = mercury__robdd__R0__tmp_copy_11;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    MR_Word mercury__robdd__R1_13;
+                    MR_Word mercury__robdd__DCG_3_23 = mercury__robdd__DCG_0_20;
+                    MR_Word mercury__robdd__TypeCtorInfo_68_68 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                    MR_Word mercury__robdd__TypeInfo_69_69;
+                    MR_Box mercury__robdd__conv4_R1_13;
+
+                    {
+                      mercury__robdd__TypeInfo_69_69 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_69_69, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_68_68));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_69_69, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_59));
+                    }
+                    {
+                      mercury__robdd__succeeded = mercury__tree234__search_3_p_0(mercury__robdd__TypeInfo_69_69, mercury__robdd__TypeInfo_69_69, (MR_Word) mercury__robdd__DCG_3_23, ((MR_Box) (mercury__robdd__R0_11)), &mercury__robdd__conv4_R1_13);
+                    }
+                    if (mercury__robdd__succeeded)
+                      {
+                        mercury__robdd__R1_13 = ((MR_Word) mercury__robdd__conv4_R1_13);
+                        mercury__robdd__succeeded = MR_TRUE;
+                      }
+                    if (mercury__robdd__succeeded)
+                      {
+                        *mercury__robdd__R_12 = mercury__robdd__R1_13;
+                        *mercury__robdd__DCG_7_27 = mercury__robdd__DCG_3_23;
+                      }
+                    else
+                      {
+                        MR_Word mercury__robdd__TypeCtorInfo_70_70 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                        MR_Word mercury__robdd__TypeInfo_71_71;
+                        MR_Word mercury__robdd__TypeCtorInfo_72_72;
+                        MR_Word mercury__robdd__TypeInfo_73_73;
+                        MR_Word mercury__robdd__TrueT_14;
+                        MR_Word mercury__robdd__FalseT_15;
+                        MR_Word mercury__robdd__RT_16;
+                        MR_Word mercury__robdd__TrueF_17;
+                        MR_Word mercury__robdd__FalseF_18;
+                        MR_Word mercury__robdd__RF_19;
+                        MR_Word mercury__robdd__DCG_5_25;
+                        MR_Word mercury__robdd__DCG_6_26;
+                        MR_Word mercury__robdd__V_32_32;
+                        MR_Word mercury__robdd__V_33_33;
+                        MR_Word mercury__robdd__V_34_34;
+                        MR_Word mercury__robdd__V_35_35;
+                        MR_Word mercury__robdd__V_36_36;
+                        MR_Word mercury__robdd__V_37_37;
+                        MR_Word mercury__robdd__V_38_38;
+                        MR_Word mercury__robdd__V_39_39;
+                        MR_Word mercury__robdd__V_40_40;
+                        MR_Word mercury__robdd__V_41_41;
+                        MR_Word mercury__robdd__V_42_42;
+                        MR_Word mercury__robdd__V_43_43;
+                        MR_Word mercury__robdd__V_44_44;
+                        MR_Word mercury__robdd__V_45_45;
+                        MR_Word mercury__robdd__V_46_46;
+                        MR_Word mercury__robdd__V_4_89;
+                        MR_Word mercury__robdd__V_5_90;
+                        MR_Word mercury__robdd__V_6_91;
+                        MR_Word mercury__robdd__V_4_92;
+                        MR_Word mercury__robdd__V_5_93;
+                        MR_Word mercury__robdd__V_6_94;
+                        MR_Word mercury__robdd__V_47_47;
+                        MR_Word mercury__robdd__V_48_48;
+                        MR_Word mercury__robdd__V_49_49;
+                        MR_Word mercury__robdd__V_50_50;
+                        MR_Word mercury__robdd__V_51_51;
+                        MR_Word mercury__robdd__V_52_52;
+                        MR_Word mercury__robdd__V_53_53;
+                        MR_Word mercury__robdd__V_54_54;
+                        MR_Word mercury__robdd__V_55_55;
+                        MR_Word mercury__robdd__conv5_TrueF_17;
+                        MR_Word mercury__robdd__V_56_56;
+                        MR_Word mercury__robdd__V_57_57;
+                        MR_Word mercury__robdd__V_58_58;
+                        MR_Word mercury__robdd__conv6_FalseF_18;
+                        MR_Word mercury__robdd__conv7_DCG_7_27;
+
+                        {
+                          mercury__robdd__TypeInfo_71_71 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_71_71, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_70_70));
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_71_71, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_59));
+                        }
+                        mercury__robdd__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 0)));
+                        mercury__robdd__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 1)));
+                        mercury__robdd__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 2)));
+                        mercury__robdd__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 3)));
+                        {
+                          mercury__robdd__V_34_34 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+                        }
+                        {
+                          mercury__robdd__V_32_32 = mercury__robdd__get_2_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__V_34_34, mercury__robdd__V_33_33);
+                        }
+                        mercury__robdd__V_4_89 = (MR_Word) mercury__robdd__True_9;
+                        mercury__robdd__V_5_90 = (MR_Word) mercury__robdd__V_32_32;
+                        {
+                          mercury__robdd__V_6_91 = mercury__sparse_bitset__union_2_2_f_0(mercury__robdd__V_4_89, mercury__robdd__V_5_90);
+                        }
+                        mercury__robdd__TrueT_14 = (MR_Word) mercury__robdd__V_6_91;
+                        mercury__robdd__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 0)));
+                        mercury__robdd__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 1)));
+                        mercury__robdd__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 2)));
+                        mercury__robdd__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 3)));
+                        {
+                          mercury__robdd__V_37_37 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+                        }
+                        {
+                          mercury__robdd__V_35_35 = mercury__robdd__get_2_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__V_37_37, mercury__robdd__V_36_36);
+                        }
+                        mercury__robdd__V_4_92 = (MR_Word) mercury__robdd__False_10;
+                        mercury__robdd__V_5_93 = (MR_Word) mercury__robdd__V_35_35;
+                        {
+                          mercury__robdd__V_6_94 = mercury__sparse_bitset__union_2_2_f_0(mercury__robdd__V_4_92, mercury__robdd__V_5_93);
+                        }
+                        mercury__robdd__FalseT_15 = (MR_Word) mercury__robdd__V_6_94;
+                        {
+                          mercury__robdd__V_38_38 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+                        }
+                        {
+                          mercury__robdd__remove_implications_2_7_p_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__ImpRes_8, mercury__robdd__TrueT_14, mercury__robdd__FalseT_15, mercury__robdd__V_38_38, &mercury__robdd__RT_16, mercury__robdd__DCG_0_20, &mercury__robdd__DCG_5_25);
+                        }
+                        mercury__robdd__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 0)));
+                        mercury__robdd__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 1)));
+                        mercury__robdd__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 2)));
+                        mercury__robdd__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 3)));
+                        {
+                          mercury__robdd__V_41_41 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+                        }
+                        {
+                          mercury__robdd__V_39_39 = mercury__robdd__get_2_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__V_41_41, mercury__robdd__V_40_40);
+                        }
+                        {
+                          mercury__robdd__conv5_TrueF_17 = mercury__sparse_bitset__union_2_f_0(mercury__robdd__TypeInfo_71_71, (MR_Word) mercury__robdd__True_9, (MR_Word) mercury__robdd__V_39_39);
+                        }
+                        mercury__robdd__TrueF_17 = (MR_Word) mercury__robdd__conv5_TrueF_17;
+                        mercury__robdd__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 0)));
+                        mercury__robdd__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 1)));
+                        mercury__robdd__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 2)));
+                        mercury__robdd__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_8, (MR_Integer) 3)));
+                        {
+                          mercury__robdd__V_44_44 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+                        }
+                        {
+                          mercury__robdd__V_42_42 = mercury__robdd__get_2_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__V_44_44, mercury__robdd__V_43_43);
+                        }
+                        {
+                          mercury__robdd__conv6_FalseF_18 = mercury__sparse_bitset__union_2_f_0(mercury__robdd__TypeInfo_71_71, (MR_Word) mercury__robdd__False_10, (MR_Word) mercury__robdd__V_42_42);
+                        }
+                        mercury__robdd__FalseF_18 = (MR_Word) mercury__robdd__conv6_FalseF_18;
+                        {
+                          mercury__robdd__V_45_45 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+                        }
+                        {
+                          mercury__robdd__remove_implications_2_7_p_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__ImpRes_8, mercury__robdd__TrueF_17, mercury__robdd__FalseF_18, mercury__robdd__V_45_45, &mercury__robdd__RF_19, mercury__robdd__DCG_5_25, &mercury__robdd__DCG_6_26);
+                        }
+                        {
+                          mercury__robdd__V_46_46 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__R0_11);
+                        }
+                        {
+                          *mercury__robdd__R_12 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_59, mercury__robdd__V_46_46, mercury__robdd__RT_16, mercury__robdd__RF_19);
+                        }
+                        mercury__robdd__TypeCtorInfo_72_72 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+                        {
+                          mercury__robdd__TypeInfo_73_73 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_73_73, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_72_72));
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_73_73, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_59));
+                        }
+                        {
+                          mercury__robdd__conv7_DCG_7_27 = mercury__map__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_73_73, mercury__robdd__TypeInfo_73_73, ((MR_Box) (mercury__robdd__R0_11)), (MR_Word) mercury__robdd__DCG_6_26, ((MR_Box) (*mercury__robdd__R_12)));
+                        }
+                        *mercury__robdd__DCG_7_27 = (MR_Word) mercury__robdd__conv7_DCG_7_27;
+                      }
+                  }
+              }
+          }
+      }
+      break;
+    }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__imp_res_to_imp_map_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_18,
+  MR_Word mercury__robdd__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+
+    if ((mercury__robdd__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word mercury__robdd__IRMap_3;
+        MR_Word mercury__robdd__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_14_14;
+
+        mercury__robdd__IRMap_3 = (MR_Word) mercury__robdd__V_8_8;
+        mercury__robdd__V_14_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        {
+          mercury__robdd__HeadVar__2_2 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_53_56_95_95_91_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_3_f_in__map_0(mercury__robdd__TypeInfo_for_T_18, mercury__robdd__TypeInfo_for_T_18, mercury__robdd__IRMap_3, mercury__robdd__V_14_14);
+        }
+      }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__implication_result_to_imp_vars_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_13,
+  MR_Word mercury__robdd__ImpRes_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__ImpVars_4;
+    MR_Word mercury__robdd__I0_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_3, (MR_Integer) 0)));
+    MR_Word mercury__robdd__RI0_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_3, (MR_Integer) 1)));
+    MR_Word mercury__robdd__DI0_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_3, (MR_Integer) 2)));
+    MR_Word mercury__robdd__RDI0_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpRes_3, (MR_Integer) 3)));
+    MR_Word mercury__robdd__I_9;
+    MR_Word mercury__robdd__RI_10;
+    MR_Word mercury__robdd__DI_11;
+    MR_Word mercury__robdd__RDI_12;
+
+    {
+      mercury__robdd__I_9 = mercury__robdd__imp_res_to_imp_map_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__I0_5);
+    }
+    {
+      mercury__robdd__RI_10 = mercury__robdd__imp_res_to_imp_map_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__RI0_6);
+    }
+    {
+      mercury__robdd__DI_11 = mercury__robdd__imp_res_to_imp_map_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__DI0_7);
+    }
+    {
+      mercury__robdd__RDI_12 = mercury__robdd__imp_res_to_imp_map_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__RDI0_8);
+    }
+    {
+      mercury__robdd__ImpVars_4 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__ImpVars_4, 0) = ((MR_Box) (mercury__robdd__I_9));
+      MR_hl_field(MR_mktag(0), mercury__robdd__ImpVars_4, 1) = ((MR_Box) (mercury__robdd__RI_10));
+      MR_hl_field(MR_mktag(0), mercury__robdd__ImpVars_4, 2) = ((MR_Box) (mercury__robdd__DI_11));
+      MR_hl_field(MR_mktag(0), mercury__robdd__ImpVars_4, 3) = ((MR_Box) (mercury__robdd__RDI_12));
+    }
+    return mercury__robdd__ImpVars_4;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__merge_imp_res_4_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_19,
+  MR_Word mercury__robdd__TVars_1,
+  MR_Word mercury__robdd__FVars_2,
+  MR_Word mercury__robdd__HeadVar__3_3,
+  MR_Word mercury__robdd__HeadVar__4_4)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__5_5;
+
+    if ((mercury__robdd__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((mercury__robdd__HeadVar__4_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        mercury__robdd__HeadVar__5_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      else
+        mercury__robdd__HeadVar__5_5 = mercury__robdd__HeadVar__4_4;
+    else
+      {
+        MR_Word mercury__robdd__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__3_3, (MR_Integer) 0)));
+
+        if ((mercury__robdd__HeadVar__4_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          mercury__robdd__HeadVar__5_5 = mercury__robdd__HeadVar__3_3;
+        else
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_29_43 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+            MR_Word mercury__robdd__TypeInfo_30_44;
+            MR_Word mercury__robdd__TypeCtorInfo_31_45;
+            MR_Word mercury__robdd__TypeInfo_32_46;
+            MR_Word mercury__robdd__TypeCtorInfo_33_47;
+            MR_Word mercury__robdd__TypeInfo_34_48;
+            MR_Word mercury__robdd__ImpsB_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__4_4, (MR_Integer) 0)));
+            MR_Word mercury__robdd__V_18_18;
+            MR_Word mercury__robdd__ImpsA_23 = (MR_Word) mercury__robdd__V_20_20;
+            MR_Word mercury__robdd__ImpsB_24 = (MR_Word) mercury__robdd__ImpsB_17;
+            MR_Word mercury__robdd__Imps_25;
+            MR_Word mercury__robdd__KeysA_26;
+            MR_Word mercury__robdd__KeysB_27;
+            MR_Word mercury__robdd__Keys_28;
+            MR_Word mercury__robdd__V_40_40;
+            MR_Word mercury__robdd__V_5_79;
+            MR_Word mercury__robdd__V_5_87;
+            MR_Word mercury__robdd__conv0_KeysA_26;
+            MR_Word mercury__robdd__conv1_KeysB_27;
+
+            {
+              mercury__robdd__TypeInfo_30_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_44, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_29_43));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_44, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_19));
+            }
+            mercury__robdd__TypeCtorInfo_33_47 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+            mercury__robdd__TypeCtorInfo_31_45 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+            {
+              mercury__robdd__TypeInfo_32_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_46, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_31_45));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_46, 1) = ((MR_Box) (mercury__robdd__TypeInfo_30_44));
+            }
+            {
+              mercury__robdd__TypeInfo_34_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_34_48, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_33_47));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_34_48, 1) = ((MR_Box) (mercury__robdd__TypeInfo_32_46));
+            }
+            mercury__robdd__V_5_79 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            {
+              mercury__tree234__keys_acc_3_p_0(mercury__robdd__TypeInfo_30_44, mercury__robdd__TypeInfo_34_48, (MR_Word) mercury__robdd__ImpsA_23, (MR_Word) mercury__robdd__V_5_79, &mercury__robdd__conv0_KeysA_26);
+            }
+            mercury__robdd__KeysA_26 = (MR_Word) mercury__robdd__conv0_KeysA_26;
+            mercury__robdd__V_5_87 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            {
+              mercury__tree234__keys_acc_3_p_0(mercury__robdd__TypeInfo_30_44, mercury__robdd__TypeInfo_34_48, (MR_Word) mercury__robdd__ImpsB_24, (MR_Word) mercury__robdd__V_5_87, &mercury__robdd__conv1_KeysB_27);
+            }
+            mercury__robdd__KeysB_27 = (MR_Word) mercury__robdd__conv1_KeysB_27;
+            {
+              mercury__list__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_109_101_114_103_101_95_97_110_100_95_114_101_109_111_118_101_95_100_117_112_115_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(mercury__robdd__TypeInfo_for_T_19, mercury__robdd__TypeInfo_30_44, mercury__robdd__KeysA_26, mercury__robdd__KeysB_27, &mercury__robdd__Keys_28);
+            }
+            mercury__robdd__V_40_40 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            {
+              mercury__robdd__Imps_25 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_53_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_3_f_in__list_0(mercury__robdd__TypeInfo_for_T_19, mercury__robdd__TVars_1, mercury__robdd__FVars_2, mercury__robdd__ImpsA_23, mercury__robdd__ImpsB_24, mercury__robdd__Keys_28, mercury__robdd__V_40_40);
+            }
+            mercury__robdd__V_18_18 = (MR_Word) mercury__robdd__Imps_25;
+            {
+              mercury__robdd__HeadVar__5_5 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__5_5, 0) = ((MR_Box) (mercury__robdd__V_18_18));
+            }
+          }
+      }
+    return mercury__robdd__HeadVar__5_5;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__implications_2_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_38,
+  MR_Word mercury__robdd__R_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__Imps_4;
+    MR_Word mercury__robdd__RevImps_5;
+    MR_Word mercury__robdd__DisImps_6;
+    MR_Word mercury__robdd__RevDisImps_7;
+    MR_Word mercury__robdd__V_45_45;
+    MR_Integer mercury__robdd__CastX_49;
+    MR_Integer mercury__robdd__CastY_50;
+
+    {
+      mercury__robdd__V_45_45 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_38);
+    }
+    mercury__robdd__CastX_49 = (MR_Integer) mercury__robdd__R_3;
+    mercury__robdd__CastY_50 = (MR_Integer) mercury__robdd__V_45_45;
+    mercury__robdd__succeeded = (mercury__robdd__CastX_49 == mercury__robdd__CastY_50);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_47_47 = (MR_Integer) mercury__robdd__R_3;
+        MR_Integer mercury__robdd__V_48_48 = (MR_Integer) mercury__robdd__V_45_45;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_47_47 == mercury__robdd__V_48_48);
+      }
+    if (mercury__robdd__succeeded)
+      {
+        MR_Word mercury__robdd__V_24_24 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        MR_Word mercury__robdd__V_25_25 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+        mercury__robdd__Imps_4 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__robdd_scalar_common_5[2]);
+        mercury__robdd__RevImps_5 = mercury__robdd__Imps_4;
+        mercury__robdd__DisImps_6 = mercury__robdd__Imps_4;
+        mercury__robdd__RevDisImps_7 = mercury__robdd__Imps_4;
+      }
+    else
+      {
+        MR_Word mercury__robdd__V_46_46;
+        MR_Integer mercury__robdd__CastX_55;
+        MR_Integer mercury__robdd__CastY_56;
+
+        {
+          mercury__robdd__V_46_46 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_38);
+        }
+        mercury__robdd__CastX_55 = (MR_Integer) mercury__robdd__R_3;
+        mercury__robdd__CastY_56 = (MR_Integer) mercury__robdd__V_46_46;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_55 == mercury__robdd__CastY_56);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_53_53 = (MR_Integer) mercury__robdd__R_3;
+            MR_Integer mercury__robdd__V_54_54 = (MR_Integer) mercury__robdd__V_46_46;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_53_53 == mercury__robdd__V_54_54);
+          }
+        if (mercury__robdd__succeeded)
+          {
+            mercury__robdd__Imps_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            mercury__robdd__RevImps_5 = mercury__robdd__Imps_4;
+            mercury__robdd__DisImps_6 = mercury__robdd__Imps_4;
+            mercury__robdd__RevDisImps_7 = mercury__robdd__Imps_4;
+          }
+        else
+          {
+            MR_Word mercury__robdd__TTVars_8;
+            MR_Word mercury__robdd__FFVars_9;
+            MR_Word mercury__robdd__TFVars_10;
+            MR_Word mercury__robdd__FTVars_11;
+            MR_Word mercury__robdd__Imps0_12;
+            MR_Word mercury__robdd__RevImps0_13;
+            MR_Word mercury__robdd__DisImps0_14;
+            MR_Word mercury__robdd__RevDisImps0_15;
+            MR_Word mercury__robdd__Imps1_16;
+            MR_Word mercury__robdd__RevImps1_17;
+            MR_Word mercury__robdd__DisImps1_18;
+            MR_Word mercury__robdd__RevDisImps1_19;
+            MR_Word mercury__robdd__Imps2_20;
+            MR_Word mercury__robdd__RevImps2_21;
+            MR_Word mercury__robdd__DisImps2_22;
+            MR_Word mercury__robdd__RevDisImps2_23;
+            MR_Word mercury__robdd__V_26_26;
+            MR_Word mercury__robdd__V_27_27;
+            MR_Word mercury__robdd__V_28_28;
+            MR_Word mercury__robdd__V_29_29;
+            MR_Word mercury__robdd__V_30_30;
+            MR_Word mercury__robdd__V_31_31;
+            MR_Word mercury__robdd__V_32_32;
+            MR_Word mercury__robdd__V_33_33;
+            MR_Word mercury__robdd__V_34_34;
+            MR_Word mercury__robdd__V_35_35;
+            MR_Word mercury__robdd__V_36_36;
+            MR_Word mercury__robdd__V_37_37;
+
+            {
+              mercury__robdd__V_26_26 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__TTVars_8 = mercury__robdd__vars_entailed_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__V_26_26);
+            }
+            {
+              mercury__robdd__V_27_27 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__FFVars_9 = mercury__robdd__vars_disentailed_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__V_27_27);
+            }
+            {
+              mercury__robdd__V_28_28 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__TFVars_10 = mercury__robdd__vars_disentailed_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__V_28_28);
+            }
+            {
+              mercury__robdd__V_29_29 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__FTVars_11 = mercury__robdd__vars_entailed_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__V_29_29);
+            }
+            {
+              mercury__robdd__V_31_31 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__V_30_30 = mercury__robdd__implications_2_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__V_31_31);
+            }
+            mercury__robdd__Imps0_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_30_30, (MR_Integer) 0)));
+            mercury__robdd__RevImps0_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_30_30, (MR_Integer) 1)));
+            mercury__robdd__DisImps0_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_30_30, (MR_Integer) 2)));
+            mercury__robdd__RevDisImps0_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_30_30, (MR_Integer) 3)));
+            {
+              mercury__robdd__V_33_33 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__V_32_32 = mercury__robdd__implications_2_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__V_33_33);
+            }
+            mercury__robdd__Imps1_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_32_32, (MR_Integer) 0)));
+            mercury__robdd__RevImps1_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_32_32, (MR_Integer) 1)));
+            mercury__robdd__DisImps1_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_32_32, (MR_Integer) 2)));
+            mercury__robdd__RevDisImps1_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_32_32, (MR_Integer) 3)));
+            {
+              mercury__robdd__Imps2_20 = mercury__robdd__merge_imp_res_4_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__TTVars_8, mercury__robdd__FTVars_11, mercury__robdd__Imps0_12, mercury__robdd__Imps1_16);
+            }
+            {
+              mercury__robdd__RevImps2_21 = mercury__robdd__merge_imp_res_4_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__TFVars_10, mercury__robdd__FFVars_9, mercury__robdd__RevImps0_13, mercury__robdd__RevImps1_17);
+            }
+            {
+              mercury__robdd__DisImps2_22 = mercury__robdd__merge_imp_res_4_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__TFVars_10, mercury__robdd__FFVars_9, mercury__robdd__DisImps0_14, mercury__robdd__DisImps1_18);
+            }
+            {
+              mercury__robdd__RevDisImps2_23 = mercury__robdd__merge_imp_res_4_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__TTVars_8, mercury__robdd__FTVars_11, mercury__robdd__RevDisImps0_15, mercury__robdd__RevDisImps1_19);
+            }
+            {
+              mercury__robdd__V_34_34 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__R_3);
+            }
+            if ((mercury__robdd__Imps2_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              mercury__robdd__Imps_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            else
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_14_65;
+                MR_Word mercury__robdd__TypeInfo_15_66;
+                MR_Word mercury__robdd__TypeCtorInfo_16_67;
+                MR_Word mercury__robdd__TypeInfo_17_68;
+                MR_Word mercury__robdd__TypeCtorInfo_18_69;
+                MR_Word mercury__robdd__TypeInfo_19_70;
+                MR_Word mercury__robdd__M0_60;
+                MR_Word mercury__robdd__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__Imps2_20, (MR_Integer) 0)));
+                MR_Word mercury__robdd__V_63_63;
+                MR_Word mercury__robdd__V_64_64;
+                MR_Word mercury__robdd__conv0_V_64_64;
+
+                mercury__robdd__M0_60 = (MR_Word) mercury__robdd__V_62_62;
+                mercury__robdd__TypeCtorInfo_14_65 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                {
+                  mercury__robdd__TypeInfo_15_66 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_15_66, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_14_65));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_15_66, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_38));
+                }
+                mercury__robdd__TypeCtorInfo_18_69 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+                mercury__robdd__TypeCtorInfo_16_67 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+                {
+                  mercury__robdd__TypeInfo_17_68 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_17_68, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_16_67));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_17_68, 1) = ((MR_Box) (mercury__robdd__TypeInfo_15_66));
+                }
+                {
+                  mercury__robdd__TypeInfo_19_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_70, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_18_69));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_70, 1) = ((MR_Box) (mercury__robdd__TypeInfo_17_68));
+                }
+                {
+                  mercury__tree234__set_4_p_0(mercury__robdd__TypeInfo_15_66, mercury__robdd__TypeInfo_19_70, ((MR_Box) (mercury__robdd__V_34_34)), ((MR_Box) (mercury__robdd__TTVars_8)), (MR_Word) mercury__robdd__M0_60, &mercury__robdd__conv0_V_64_64);
+                }
+                mercury__robdd__V_64_64 = (MR_Word) mercury__robdd__conv0_V_64_64;
+                mercury__robdd__V_63_63 = (MR_Word) mercury__robdd__V_64_64;
+                {
+                  mercury__robdd__Imps_4 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), mercury__robdd__Imps_4, 0) = ((MR_Box) (mercury__robdd__V_63_63));
+                }
+              }
+            {
+              mercury__robdd__V_35_35 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__RevImps_5 = mercury__robdd__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__V_35_35, mercury__robdd__RevImps2_21, mercury__robdd__FFVars_9);
+            }
+            {
+              mercury__robdd__V_36_36 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__DisImps_6 = mercury__robdd__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__V_36_36, mercury__robdd__DisImps2_22, mercury__robdd__TFVars_10);
+            }
+            {
+              mercury__robdd__V_37_37 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__RevDisImps_7 = mercury__robdd__f_101_108_101_109_32_58_61_3_f_0(mercury__robdd__TypeInfo_for_T_38, mercury__robdd__V_37_37, mercury__robdd__RevDisImps2_23, mercury__robdd__FTVars_11);
+            }
+          }
+      }
+    {
+      mercury__robdd__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, 0) = ((MR_Box) (mercury__robdd__Imps_4));
+      MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, 1) = ((MR_Box) (mercury__robdd__RevImps_5));
+      MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, 2) = ((MR_Box) (mercury__robdd__DisImps_6));
+      MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, 3) = ((MR_Box) (mercury__robdd__RevDisImps_7));
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__rev_map_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_40,
+  MR_Word mercury__robdd__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+
+    if ((mercury__robdd__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word mercury__robdd__EQ0_3;
+        MR_Word mercury__robdd__EQ_4;
+        MR_Word mercury__robdd__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word mercury__robdd__V_12_12;
+        MR_Word mercury__robdd__V_14_14;
+        MR_Word mercury__robdd__V_15_15;
+        MR_Word mercury__robdd__V_2_59;
+        MR_Word mercury__robdd__V_10_10;
+
+        mercury__robdd__EQ0_3 = (MR_Word) mercury__robdd__V_11_11;
+        mercury__robdd__V_2_59 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        mercury__robdd__V_14_14 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        mercury__robdd__V_15_15 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        {
+          mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_6_p_in__tree234_0(mercury__robdd__TypeInfo_for_T_40, mercury__robdd__EQ0_3, mercury__robdd__V_14_14, &mercury__robdd__V_10_10, mercury__robdd__V_15_15, &mercury__robdd__EQ_4);
+        }
+        mercury__robdd__V_12_12 = (MR_Word) mercury__robdd__EQ_4;
+        {
+          mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, 0) = ((MR_Box) (mercury__robdd__V_12_12));
+        }
+      }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__equivalent_vars_2_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_25,
+  MR_Word mercury__robdd__R_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__EQ_4;
+    MR_Word mercury__robdd__V_47_47;
+    MR_Integer mercury__robdd__CastX_51;
+    MR_Integer mercury__robdd__CastY_52;
+
+    {
+      mercury__robdd__V_47_47 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_25);
+    }
+    mercury__robdd__CastX_51 = (MR_Integer) mercury__robdd__R_3;
+    mercury__robdd__CastY_52 = (MR_Integer) mercury__robdd__V_47_47;
+    mercury__robdd__succeeded = (mercury__robdd__CastX_51 == mercury__robdd__CastY_52);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_49_49 = (MR_Integer) mercury__robdd__R_3;
+        MR_Integer mercury__robdd__V_50_50 = (MR_Integer) mercury__robdd__V_47_47;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_49_49 == mercury__robdd__V_50_50);
+      }
+    if (mercury__robdd__succeeded)
+      {
+        MR_Word mercury__robdd__V_10_10 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        MR_Word mercury__robdd__V_11_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+        mercury__robdd__EQ_4 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__robdd_scalar_common_5[1]);
+      }
+    else
+      {
+        MR_Word mercury__robdd__V_48_48;
+        MR_Integer mercury__robdd__CastX_57;
+        MR_Integer mercury__robdd__CastY_58;
+
+        {
+          mercury__robdd__V_48_48 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_25);
+        }
+        mercury__robdd__CastX_57 = (MR_Integer) mercury__robdd__R_3;
+        mercury__robdd__CastY_58 = (MR_Integer) mercury__robdd__V_48_48;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_57 == mercury__robdd__CastY_58);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_55_55 = (MR_Integer) mercury__robdd__R_3;
+            MR_Integer mercury__robdd__V_56_56 = (MR_Integer) mercury__robdd__V_48_48;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_55_55 == mercury__robdd__V_56_56);
+          }
+        if (mercury__robdd__succeeded)
+          mercury__robdd__EQ_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_30_30 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+            MR_Word mercury__robdd__TypeInfo_31_31;
+            MR_Word mercury__robdd__TypeCtorInfo_32_32 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+            MR_Word mercury__robdd__TypeInfo_33_33;
+            MR_Word mercury__robdd__TypeCtorInfo_34_34 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+            MR_Word mercury__robdd__TypeInfo_35_35;
+            MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_36;
+            MR_Word mercury__robdd__TypeClassInfo_for_intersectable_37;
+            MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_38 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__;
+            MR_Word mercury__robdd__TypeClassInfo_for_intersectable_39;
+            MR_Word mercury__robdd__TypeCtorInfo_40_40;
+            MR_Word mercury__robdd__TypeInfo_41_41;
+            MR_Word mercury__robdd__TypeInfo_42_42;
+            MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_43;
+            MR_Word mercury__robdd__TypeClassInfo_for_intersectable_44;
+            MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_45;
+            MR_Word mercury__robdd__TypeClassInfo_for_intersectable_46;
+            MR_Word mercury__robdd__EQVars_5;
+            MR_Word mercury__robdd__EQ0_6;
+            MR_Word mercury__robdd__V_12_12;
+            MR_Word mercury__robdd__V_13_13;
+            MR_Word mercury__robdd__V_14_14;
+            MR_Word mercury__robdd__V_15_15;
+            MR_Word mercury__robdd__V_16_16;
+            MR_Word mercury__robdd__V_17_17;
+            MR_Word mercury__robdd__V_18_18;
+            MR_Word mercury__robdd__V_19_19;
+            MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box);
+            MR_Box mercury__robdd__conv1_EQVars_5;
+            MR_Box MR_CALL (* mercury__robdd__func_2)(MR_Box, MR_Box, MR_Box);
+            MR_Box mercury__robdd__conv3_EQ0_6;
+
+            {
+              mercury__robdd__TypeInfo_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_31_31, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_30_30));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_31_31, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_25));
+            }
+            {
+              mercury__robdd__TypeInfo_33_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_33_33, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_32_32));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_33_33, 1) = ((MR_Box) (mercury__robdd__TypeInfo_31_31));
+            }
+            {
+              mercury__robdd__TypeInfo_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_35_35, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_34_34));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_35_35, 1) = ((MR_Box) (mercury__robdd__TypeInfo_33_33));
+            }
+            mercury__robdd__BaseTypeClassInfo_for_intersectable_36 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__sparse_bitset__sparse_bitset__arity1__;
+            {
+              mercury__robdd__TypeClassInfo_for_intersectable_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_37, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_36));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_37, 1) = ((MR_Box) (mercury__robdd__TypeInfo_31_31));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_37, 2) = ((MR_Box) (mercury__robdd__TypeInfo_33_33));
+            }
+            {
+              mercury__robdd__TypeClassInfo_for_intersectable_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_39, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_38));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_39, 1) = ((MR_Box) (mercury__robdd__TypeClassInfo_for_intersectable_37));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_39, 2) = ((MR_Box) (mercury__robdd__TypeInfo_35_35));
+            }
+            {
+              mercury__robdd__V_13_13 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__V_12_12 = mercury__robdd__vars_entailed_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__V_13_13);
+            }
+            {
+              mercury__robdd__V_15_15 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__V_14_14 = mercury__robdd__vars_disentailed_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__V_15_15);
+            }
+            mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_39, (MR_Integer) 0)), (MR_Integer) 5)));
+            {
+              mercury__robdd__conv1_EQVars_5 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_39), ((MR_Box) (mercury__robdd__V_12_12)), ((MR_Box) (mercury__robdd__V_14_14)));
+            }
+            mercury__robdd__EQVars_5 = ((MR_Word) mercury__robdd__conv1_EQVars_5);
+            mercury__robdd__BaseTypeClassInfo_for_intersectable_45 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__;
+            mercury__robdd__TypeCtorInfo_40_40 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_leader_to_eqvclass_1;
+            {
+              mercury__robdd__TypeInfo_41_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_41_41, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_40_40));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_41_41, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_25));
+            }
+            {
+              mercury__robdd__TypeInfo_42_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_42_42, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_34_34));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_42_42, 1) = ((MR_Box) (mercury__robdd__TypeInfo_41_41));
+            }
+            mercury__robdd__BaseTypeClassInfo_for_intersectable_43 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__robdd__leader_to_eqvclass__arity1__;
+            {
+              mercury__robdd__TypeClassInfo_for_intersectable_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_44, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_43));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_44, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_25));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_44, 2) = ((MR_Box) (mercury__robdd__TypeInfo_41_41));
+            }
+            {
+              mercury__robdd__TypeClassInfo_for_intersectable_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_46, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_45));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_46, 1) = ((MR_Box) (mercury__robdd__TypeClassInfo_for_intersectable_44));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_46, 2) = ((MR_Box) (mercury__robdd__TypeInfo_42_42));
+            }
+            {
+              mercury__robdd__V_17_17 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__V_16_16 = mercury__robdd__equivalent_vars_2_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__V_17_17);
+            }
+            {
+              mercury__robdd__V_19_19 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__V_18_18 = mercury__robdd__equivalent_vars_2_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__V_19_19);
+            }
+            mercury__robdd__func_2 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_46, (MR_Integer) 0)), (MR_Integer) 5)));
+            {
+              mercury__robdd__conv3_EQ0_6 = mercury__robdd__func_2(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_46), ((MR_Box) (mercury__robdd__V_16_16)), ((MR_Box) (mercury__robdd__V_18_18)));
+            }
+            mercury__robdd__EQ0_6 = ((MR_Word) mercury__robdd__conv3_EQ0_6);
+            if ((mercury__robdd__EQVars_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                {
+                  mercury__require__error_1_p_0((MR_String) "equivalent_vars: unexpected result");
+                }
+              }
+            else
+              {
+                MR_Word mercury__robdd__Vars_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__EQVars_5, (MR_Integer) 0)));
+                MR_Word mercury__robdd__V_60_60 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                MR_Word mercury__robdd__V_2_63 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                {
+                  mercury__robdd__succeeded = mercury__sparse_bitset____Unify____sparse_bitset_1_0(mercury__robdd__TypeInfo_31_31, (MR_Word) mercury__robdd__Vars_7, (MR_Word) mercury__robdd__V_60_60);
+                }
+                if (mercury__robdd__succeeded)
+                  mercury__robdd__EQ_4 = mercury__robdd__EQ0_6;
+                else
+                if ((mercury__robdd__EQ0_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  {
+                    {
+                      mercury__require__error_1_p_0((MR_String) "equivalent_vars: unexpected result");
+                    }
+                  }
+                else
+                  {
+                    MR_Word mercury__robdd__M0_8;
+                    MR_Word mercury__robdd__M_9;
+                    MR_Word mercury__robdd__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__EQ0_6, (MR_Integer) 0)));
+                    MR_Word mercury__robdd__V_21_21;
+                    MR_Word mercury__robdd__V_22_22;
+                    MR_Word mercury__robdd__conv4_M_9;
+
+                    mercury__robdd__M0_8 = (MR_Word) mercury__robdd__V_20_20;
+                    {
+                      mercury__robdd__V_21_21 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__R_3);
+                    }
+                    {
+                      mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_4_p_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__TypeInfo_31_31, mercury__robdd__TypeInfo_33_33, mercury__robdd__V_21_21, ((MR_Box) (mercury__robdd__Vars_7)), (MR_Word) mercury__robdd__M0_8, &mercury__robdd__conv4_M_9);
+                    }
+                    mercury__robdd__M_9 = (MR_Word) mercury__robdd__conv4_M_9;
+                    mercury__robdd__V_22_22 = (MR_Word) mercury__robdd__M_9;
+                    {
+                      mercury__robdd__EQ_4 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__robdd__EQ_4, 0) = ((MR_Box) (mercury__robdd__V_22_22));
+                    }
+                  }
+              }
+          }
+      }
+    return mercury__robdd__EQ_4;
+  }
+}
+
+static void MR_CALL 
+mercury__robdd__report_zero_constraint_0_p_0(void)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__robdd__report_zero_constraint_0_p_0
+
+
+		{
+
+    fprintf(stderr, "Zero constraint!!!\n");
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__robdd__glb_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_4,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__robdd__HeadVar__3_3 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_108_98_95_95_91_49_93_95_48_2_f_0(mercury__robdd__HeadVar__1_1, mercury__robdd__HeadVar__2_2);
+    }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+void MR_CALL 
+mercury__robdd__clear_caches_0_p_0(void)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__robdd__clear_caches_0_p_0
+
+
+		{
+
+    MR_ROBDD_init_caches();
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+  }
+}
+
+void MR_CALL 
+mercury__robdd__clear_caches_2_p_0(void)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+
+    {
+      mercury__robdd__clear_caches_0_p_0();
+    }
+  }
+}
+
+void MR_CALL 
+mercury__robdd__minimal_model_4_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_17,
+  MR_Word mercury__robdd__Vars_5,
+  MR_Word mercury__robdd__R_6,
+  MR_Word * mercury__robdd__TrueVars_7,
+  MR_Word * mercury__robdd__FalseVars_8,
+  MR_Cont mercury__robdd__cont,
+  void * mercury__robdd__cont_env_ptr)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+        MR_Word mercury__robdd__V_25_25;
+        MR_Word mercury__robdd__TypeCtorInfo_18_18 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+        MR_Word mercury__robdd__TypeInfo_19_19;
+        MR_Word mercury__robdd__V_2_28 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+        {
+          mercury__robdd__TypeInfo_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_19, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_18_18));
+          MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_19, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+        }
+        mercury__robdd__V_25_25 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        {
+          mercury__robdd__succeeded = mercury__sparse_bitset____Unify____sparse_bitset_1_0(mercury__robdd__TypeInfo_19_19, (MR_Word) mercury__robdd__Vars_5, (MR_Word) mercury__robdd__V_25_25);
+        }
+        if (mercury__robdd__succeeded)
+          {
+            *mercury__robdd__TrueVars_7 = mercury__robdd__V_25_25;
+            *mercury__robdd__FalseVars_8 = mercury__robdd__V_25_25;
+            {
+              mercury__robdd__cont(mercury__robdd__cont_env_ptr);
+            }
+          }
+        else
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_20_20 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+            MR_Word mercury__robdd__TypeInfo_21_21;
+            MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_22 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+            MR_Word mercury__robdd__TypeClassInfo_for_enum_23;
+            MR_Word mercury__robdd__TrueVars0_9;
+            MR_Word mercury__robdd__FalseVars0_10;
+            MR_Word mercury__robdd__V_11_11;
+            MR_Word mercury__robdd__V_12_12;
+            MR_Word mercury__robdd__V_10_38;
+            MR_Word mercury__robdd__V_6_57;
+            MR_Word mercury__robdd__V_2_76;
+            MR_Word mercury__robdd__conv0_V_11_11;
+
+            {
+              mercury__robdd__TypeInfo_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_21_21, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_20_20));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_21_21, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+            }
+            {
+              mercury__robdd__TypeClassInfo_for_enum_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_23, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_22));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_23, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_23, 2) = ((MR_Box) (mercury__robdd__TypeInfo_21_21));
+            }
+            mercury__robdd__V_10_38 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            mercury__robdd__V_6_57 = (MR_Word) mercury__robdd__Vars_5;
+            {
+              mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_49_48_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_57_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__TypeClassInfo_for_enum_23, mercury__robdd__V_6_57, (MR_Word) mercury__robdd__V_10_38, &mercury__robdd__conv0_V_11_11);
+            }
+            mercury__robdd__V_11_11 = (MR_Word) mercury__robdd__conv0_V_11_11;
+            mercury__robdd__V_2_76 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            mercury__robdd__V_12_12 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            {
+              mercury__robdd__succeeded = mercury__robdd__minimal_model_2_6_p_0(mercury__robdd__TypeInfo_for_T_17, mercury__robdd__V_11_11, mercury__robdd__R_6, mercury__robdd__V_12_12, &mercury__robdd__TrueVars0_9, mercury__robdd__V_12_12, &mercury__robdd__FalseVars0_10);
+            }
+            if (mercury__robdd__succeeded)
+              {
+                *mercury__robdd__TrueVars_7 = mercury__robdd__TrueVars0_9;
+                *mercury__robdd__FalseVars_8 = mercury__robdd__FalseVars0_10;
+                {
+                  mercury__robdd__cont(mercury__robdd__cont_env_ptr);
+                }
+                {
+                  MR_Word mercury__robdd__V_14_14;
+                  MR_Word mercury__robdd__V_15_15;
+                  MR_Word mercury__robdd__V_16_16;
+                  MR_Word mercury__robdd__V_81_81;
+                  MR_Word mercury__robdd__V_82_82;
+
+                  {
+                    mercury__robdd__V_16_16 = mercury__robdd__conj_vars_1_f_0(mercury__robdd__TypeInfo_for_T_17, mercury__robdd__TrueVars0_9);
+                  }
+                  {
+                    mercury__robdd__V_81_81 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_17);
+                  }
+                  {
+                    mercury__robdd__V_82_82 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_17);
+                  }
+                  {
+                    mercury__robdd__V_15_15 = mercury__robdd__ite_3_f_0(mercury__robdd__TypeInfo_for_T_17, mercury__robdd__V_16_16, mercury__robdd__V_81_81, mercury__robdd__V_82_82);
+                  }
+                  {
+                    mercury__robdd__V_14_14 = mercury__robdd__f_times_2_f_0(mercury__robdd__TypeInfo_for_T_17, mercury__robdd__R_6, mercury__robdd__V_15_15);
+                  }
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word mercury__robdd__R__tmp_copy_6 = mercury__robdd__V_14_14;
+
+                    mercury__robdd__R_6 = mercury__robdd__R__tmp_copy_6;
+                  }
+                  continue;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+mercury__robdd__labelling_4_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_12,
+  MR_Word mercury__robdd__Vars_5,
+  MR_Word mercury__robdd__R_6,
+  MR_Word * mercury__robdd__TrueVars_7,
+  MR_Word * mercury__robdd__FalseVars_8,
+  MR_Cont mercury__robdd__cont,
+  void * mercury__robdd__cont_env_ptr)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_13_13 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_14_14;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_15 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_16;
+    MR_Word mercury__robdd__V_9_9;
+    MR_Word mercury__robdd__V_10_10;
+    MR_Word mercury__robdd__V_10_20;
+    MR_Word mercury__robdd__V_6_39;
+    MR_Word mercury__robdd__V_2_58;
+    MR_Word mercury__robdd__conv0_V_9_9;
+
+    {
+      mercury__robdd__TypeInfo_14_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_14_14, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_13_13));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_14_14, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_12));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_enum_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_16, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_15));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_16, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_12));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_16, 2) = ((MR_Box) (mercury__robdd__TypeInfo_14_14));
+    }
+    mercury__robdd__V_10_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    mercury__robdd__V_6_39 = (MR_Word) mercury__robdd__Vars_5;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_49_48_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_57_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__TypeClassInfo_for_enum_16, mercury__robdd__V_6_39, (MR_Word) mercury__robdd__V_10_20, &mercury__robdd__conv0_V_9_9);
+    }
+    mercury__robdd__V_9_9 = (MR_Word) mercury__robdd__conv0_V_9_9;
+    mercury__robdd__V_2_58 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    mercury__robdd__V_10_10 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    {
+      mercury__robdd__labelling_2_6_p_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__V_9_9, mercury__robdd__R_6, mercury__robdd__V_10_10, mercury__robdd__TrueVars_7, mercury__robdd__V_10_10, mercury__robdd__FalseVars_8, mercury__robdd__cont, mercury__robdd__cont_env_ptr);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd__vars_are_constrained_2_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word mercury__robdd__F_3,
+  MR_Word mercury__robdd__Vs_4)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_7_7 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_8_8;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_9 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_10;
+    MR_Word mercury__robdd__V_5_5;
+    MR_Word mercury__robdd__V_10_14;
+    MR_Word mercury__robdd__V_6_33;
+    MR_Word mercury__robdd__conv0_V_5_5;
+
+    {
+      mercury__robdd__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_7_7));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_enum_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_10, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_9));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_10, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_10, 2) = ((MR_Box) (mercury__robdd__TypeInfo_8_8));
+    }
+    mercury__robdd__V_10_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    mercury__robdd__V_6_33 = (MR_Word) mercury__robdd__Vs_4;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_49_48_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_57_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__TypeClassInfo_for_enum_10, mercury__robdd__V_6_33, (MR_Word) mercury__robdd__V_10_14, &mercury__robdd__conv0_V_5_5);
+    }
+    mercury__robdd__V_5_5 = (MR_Word) mercury__robdd__conv0_V_5_5;
+    {
+      mercury__robdd__succeeded = mercury__robdd__vars_are_constrained_2_2_p_0(mercury__robdd__TypeInfo_for_T_6, mercury__robdd__F_3, mercury__robdd__V_5_5);
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd__var_is_constrained_2_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_9,
+  MR_Word mercury__robdd__F_3,
+  MR_Word mercury__robdd__V_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__robdd__succeeded;
+
+        {
+          mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_9, mercury__robdd__F_3);
+        }
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_FALSE;
+        else
+          {
+            MR_Word mercury__robdd__R_5;
+            MR_Word mercury__robdd__V_6_6;
+            MR_Integer mercury__robdd__V_12_12;
+            MR_Integer mercury__robdd__V_13_13;
+
+            {
+              mercury__robdd__V_6_6 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_9, mercury__robdd__F_3);
+            }
+            mercury__robdd__V_12_12 = (MR_Integer) mercury__robdd__V_6_6;
+            mercury__robdd__V_13_13 = (MR_Integer) mercury__robdd__V_4;
+            mercury__robdd__succeeded = (mercury__robdd__V_12_12 < mercury__robdd__V_13_13);
+            if (mercury__robdd__succeeded)
+              mercury__robdd__R_5 = (MR_Integer) 1;
+            else
+              {
+                mercury__robdd__succeeded = (mercury__robdd__V_12_12 == mercury__robdd__V_13_13);
+                if (mercury__robdd__succeeded)
+                  mercury__robdd__R_5 = (MR_Integer) 0;
+                else
+                  mercury__robdd__R_5 = (MR_Integer) 2;
+              }
+            switch (mercury__robdd__R_5) {
+              default:
+                mercury__robdd__succeeded = MR_FALSE;
+                break;
+              case (MR_Integer) 1:
+                {
+                  {
+                    MR_Word mercury__robdd__V_8_8;
+
+                    {
+                      mercury__robdd__V_8_8 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_9, mercury__robdd__F_3);
+                    }
+                    {
+                      mercury__robdd__succeeded = mercury__robdd__var_is_constrained_2_p_0(mercury__robdd__TypeInfo_for_T_9, mercury__robdd__V_8_8, mercury__robdd__V_4);
+                    }
+                  }
+                  if (!(mercury__robdd__succeeded))
+                    {
+                      MR_Word mercury__robdd__V_7_7;
+
+                      {
+                        mercury__robdd__V_7_7 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_9, mercury__robdd__F_3);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__robdd__F__tmp_copy_3 = mercury__robdd__V_7_7;
+
+                        mercury__robdd__F_3 = mercury__robdd__F__tmp_copy_3;
+                      }
+                      continue;
+                    }
+                }
+                break;
+              case (MR_Integer) 0:
+                mercury__robdd__succeeded = MR_TRUE;
+                break;
+            }
+          }
+        return mercury__robdd__succeeded;
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+mercury__robdd__size_4_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_17,
+  MR_Word mercury__robdd__F_5,
+  MR_Integer * mercury__robdd__Nodes_6,
+  MR_Integer * mercury__robdd__Depth_7,
+  MR_Word * mercury__robdd__Vars_8)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeCtorInfo_18_18 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_robdd_1;
+    MR_Word mercury__robdd__TypeInfo_19_19;
+    MR_Word mercury__robdd__TypeCtorInfo_20_20;
+    MR_Word mercury__robdd__TypeInfo_21_21;
+    MR_Word mercury__robdd__Seen_9;
+    MR_Word mercury__robdd__V_13_13;
+    MR_Word mercury__robdd__V_14_14;
+    MR_Word mercury__robdd__V_16_16;
+    MR_Word mercury__robdd__V_5_29;
+    MR_Integer mercury__robdd__V_5_36;
+    MR_Word mercury__robdd__conv0_V_16_16;
+
+    {
+      mercury__robdd__TypeInfo_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_19, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_18_18));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_19_19, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+    }
+    mercury__robdd__V_13_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__robdd__size_2_8_p_0(mercury__robdd__TypeInfo_for_T_17, mercury__robdd__F_5, (MR_Integer) 0, mercury__robdd__Nodes_6, (MR_Integer) 0, mercury__robdd__Depth_7, (MR_Integer) 0, mercury__robdd__V_13_13, &mercury__robdd__Seen_9);
+    }
+    mercury__robdd__TypeCtorInfo_20_20 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    {
+      mercury__robdd__TypeInfo_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_21_21, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_20_20));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_21_21, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_17));
+    }
+    mercury__robdd__V_5_29 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__set_bbbtree__to_sorted_list2_3_p_1(mercury__robdd__TypeInfo_19_19, (MR_Word) mercury__robdd__Seen_9, (MR_Word) mercury__robdd__V_5_29, &mercury__robdd__conv0_V_16_16);
+    }
+    mercury__robdd__V_16_16 = (MR_Word) mercury__robdd__conv0_V_16_16;
+    {
+      mercury__robdd__V_14_14 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_51_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_2_f_in__list_0(mercury__robdd__TypeInfo_for_T_17, mercury__robdd__V_16_16);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__robdd__TypeInfo_21_21, (MR_Word) mercury__robdd__V_14_14, (MR_Integer) 0, &mercury__robdd__V_5_36);
+    }
+    {
+      mercury__list__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_109_101_114_103_101_95_115_111_114_116_95_97_110_100_95_114_101_109_111_118_101_95_100_117_112_115_95_50_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(mercury__robdd__TypeInfo_for_T_17, mercury__robdd__TypeInfo_21_21, mercury__robdd__V_5_36, mercury__robdd__V_14_14, mercury__robdd__Vars_8);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__robdd__size_3_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_8,
+  MR_Word mercury__robdd__F_4,
+  MR_Integer * mercury__robdd__Nodes_5,
+  MR_Integer * mercury__robdd__Depth_6)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_7_7;
+
+    {
+      mercury__robdd__size_4_p_0(mercury__robdd__TypeInfo_for_T_8, mercury__robdd__F_4, mercury__robdd__Nodes_5, mercury__robdd__Depth_6, &mercury__robdd__V_7_7);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd__is_terminal_1_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_2,
+  MR_Word mercury__robdd__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeInfo_for_T_3;
+
+{
+#define MR_PROC_LABEL mercury__robdd__is_terminal_1_p_0
+
+	MR_Word F;
+	MR_bool SUCCESS_INDICATOR;
+
+	F =  mercury__robdd__HeadVar__1_1 ;
+		{
+
+    SUCCESS_INDICATOR = MR_ROBDD_IS_TERMINAL(F);
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	}
+mercury__robdd__succeeded  = SUCCESS_INDICATOR;
+}
+    return mercury__robdd__succeeded;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__rename_vars_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_13,
+  MR_Word mercury__robdd__Subst_4,
+  MR_Word mercury__robdd__F_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__F_5);
+    }
+    if (mercury__robdd__succeeded)
+      mercury__robdd__HeadVar__3_3 = mercury__robdd__F_5;
+    else
+      {
+        MR_Word mercury__robdd__V_6_6;
+        MR_Word mercury__robdd__V_7_7;
+        MR_Word mercury__robdd__V_8_8;
+        MR_Word mercury__robdd__V_9_9;
+        MR_Word mercury__robdd__V_10_10;
+        MR_Word mercury__robdd__V_11_11;
+        MR_Word mercury__robdd__V_12_12;
+        MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box);
+        MR_Box mercury__robdd__conv1_V_7_7;
+
+        {
+          mercury__robdd__V_8_8 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__F_5);
+        }
+        mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), mercury__robdd__Subst_4, (MR_Integer) 1)));
+        {
+          mercury__robdd__conv1_V_7_7 = mercury__robdd__func_0(((MR_Box) mercury__robdd__Subst_4), ((MR_Box) (mercury__robdd__V_8_8)));
+        }
+        mercury__robdd__V_7_7 = ((MR_Word) mercury__robdd__conv1_V_7_7);
+        {
+          mercury__robdd__V_6_6 = mercury__robdd__var_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__V_7_7);
+        }
+        {
+          mercury__robdd__V_10_10 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__F_5);
+        }
+        {
+          mercury__robdd__V_9_9 = mercury__robdd__rename_vars_2_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__Subst_4, mercury__robdd__V_10_10);
+        }
+        {
+          mercury__robdd__V_12_12 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__F_5);
+        }
+        {
+          mercury__robdd__V_11_11 = mercury__robdd__rename_vars_2_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__Subst_4, mercury__robdd__V_12_12);
+        }
+        {
+          mercury__robdd__HeadVar__3_3 = mercury__robdd__ite_3_f_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__V_6_6, mercury__robdd__V_9_9, mercury__robdd__V_11_11);
+        }
+      }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+void MR_CALL 
+mercury__robdd__robdd_to_dot_4_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_51,
+  MR_Word mercury__robdd__Robdd_5,
+  MR_Word mercury__robdd__WV_6)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__Ranks0_7;
+    MR_Word mercury__robdd__Ranks_9;
+    MR_Word mercury__robdd__V_19_19;
+    MR_Word mercury__robdd__V_8_8;
+
+    {
+      mercury__io__write_string_3_p_0((MR_String) "digraph G{\n    center=true;\n    size=\"7,11\";\n    ordering=out;\n    node [shape=record,height=.1];\n    concentrate=true;\n");
+    }
+    mercury__robdd__Ranks0_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    mercury__robdd__V_19_19 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__robdd__robdd_to_dot_2_8_p_0(mercury__robdd__TypeInfo_for_T_51, mercury__robdd__Robdd_5, mercury__robdd__WV_6, mercury__robdd__V_19_19, &mercury__robdd__V_8_8, mercury__robdd__Ranks0_7, &mercury__robdd__Ranks_9);
+    }
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_53_95_95_91_49_44_32_50_44_32_51_44_32_53_44_32_54_44_32_55_93_95_48_4_p_in__tree234_0(mercury__robdd__TypeInfo_for_T_51, mercury__robdd__Ranks_9);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) "}\n");
+    }
+  }
+}
+
+void MR_CALL 
+mercury__robdd__robdd_to_dot_5_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_21,
+  MR_Word mercury__robdd__Robdd_6,
+  MR_Word mercury__robdd__WV_7,
+  MR_String mercury__robdd__Filename_8)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__Result_9;
+
+    {
+      mercury__io__tell_4_p_0(mercury__robdd__Filename_8, &mercury__robdd__Result_9);
+    }
+    if ((mercury__robdd__Result_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__robdd__robdd_to_dot_4_p_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__Robdd_6, mercury__robdd__WV_7);
+        }
+        {
+          mercury__io__told_2_p_0();
+        }
+      }
+    else
+      {
+        MR_Word mercury__robdd__Err_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__Result_9, (MR_Integer) 0)));
+        MR_Word mercury__robdd__StdErr_11;
+        MR_String mercury__robdd__V_20_20;
+        MR_Box mercury__robdd__V_5_32;
+        MR_Box mercury__robdd__V_8_33;
+        MR_Box mercury__robdd__V_5_54;
+        MR_Box mercury__robdd__V_8_55;
+        MR_Box mercury__robdd__V_5_77;
+        MR_Box mercury__robdd__V_8_78;
+        MR_Word mercury__robdd__V_8_43;
+        MR_String mercury__robdd__V_6_47;
+        MR_Word mercury__robdd__V_8_65;
+        MR_String mercury__robdd__V_6_69;
+        MR_Word mercury__robdd__V_8_88;
+        MR_String mercury__robdd__V_6_92;
+
+{
+#define MR_PROC_LABEL mercury__robdd__robdd_to_dot_5_p_0
+
+	MercuryFilePtr Stream;
+
+		{
+
+    Stream = &mercury_stderr;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_5_32  = (MR_Box) Stream;
+}
+        mercury__robdd__StdErr_11 = (MR_Word) mercury__robdd__V_5_32;
+{
+#define MR_PROC_LABEL mercury__robdd__robdd_to_dot_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Char Character;
+	MR_Integer Error;
+
+	Stream = (MercuryFilePtr) mercury__robdd__V_5_32 ;
+	Character =  (MR_Char) 10 ;
+		{
+
+    Error = 0;
+    if (Character <= 0x7f) {
+        if (MR_PUTCH(*Stream, Character) < 0) {
+            Error = errno;
+        } else if (Character == '\n') {
+            MR_line_number(*Stream)++;
+        }
+    } else {
+        char    buf[5];
+        size_t  len;
+        size_t  i;
+        len = MR_utf8_encode(buf, Character);
+        for (i = 0; i < len; i++) {
+            if (MR_PUTCH(*Stream, buf[i]) < 0) {
+                Error = errno;
+                break;
+            }
+        }
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	MR_MAYBE_BOX_FOREIGN_TYPE(MR_Integer, Error, mercury__robdd__V_8_33 );
+}
+{
+#define MR_PROC_LABEL mercury__robdd__robdd_to_dot_5_p_0
+
+	MR_Integer Error;
+	MR_bool SUCCESS_INDICATOR;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__robdd__V_8_33 , Error);
+		{
+
+    /* This works for errno and Win32 error values (ERROR_SUCCESS == 0). */
+    SUCCESS_INDICATOR = (Error == 0) ? MR_TRUE : MR_FALSE;
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	}
+mercury__robdd__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_FALSE;
+        else
+          {
+{
+#define MR_PROC_LABEL mercury__robdd__robdd_to_dot_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__robdd__V_8_33 , Error);
+	Msg0 =  (MR_String) "error writing to output file: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_6_47  = Msg;
+}
+            mercury__robdd__succeeded = MR_TRUE;
+          }
+        if (mercury__robdd__succeeded)
+          {
+            mercury__robdd__V_8_43 = (MR_Word) mercury__robdd__V_6_47;
+            mercury__robdd__succeeded = MR_TRUE;
+          }
+        if (mercury__robdd__succeeded)
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_10_44 = (MR_Word) &mercury__io__io__type_ctor_info_error_0;
+
+            {
+              mercury__exception__throw_1_p_0(mercury__robdd__TypeCtorInfo_10_44, ((MR_Box) (mercury__robdd__V_8_43)));
+              return;
+            }
+          }
+        else
+          {
+          }
+        mercury__robdd__V_20_20 = (MR_String) mercury__robdd__Err_10;
+        mercury__robdd__V_5_54 = (MR_Box) mercury__robdd__StdErr_11;
+{
+#define MR_PROC_LABEL mercury__robdd__robdd_to_dot_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_String Message;
+	MR_Integer Error;
+
+	Stream = (MercuryFilePtr) mercury__robdd__V_5_54 ;
+	Message =  mercury__robdd__V_20_20 ;
+		{
+
+    const char *s = Message;
+    if (ML_fprintf(Stream, "%s", s) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+        while (*s) {
+            if (*s++ == '\n') {
+                MR_line_number(*Stream)++;
+            }
+        }
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	MR_MAYBE_BOX_FOREIGN_TYPE(MR_Integer, Error, mercury__robdd__V_8_55 );
+}
+{
+#define MR_PROC_LABEL mercury__robdd__robdd_to_dot_5_p_0
+
+	MR_Integer Error;
+	MR_bool SUCCESS_INDICATOR;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__robdd__V_8_55 , Error);
+		{
+
+    /* This works for errno and Win32 error values (ERROR_SUCCESS == 0). */
+    SUCCESS_INDICATOR = (Error == 0) ? MR_TRUE : MR_FALSE;
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	}
+mercury__robdd__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_FALSE;
+        else
+          {
+{
+#define MR_PROC_LABEL mercury__robdd__robdd_to_dot_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__robdd__V_8_55 , Error);
+	Msg0 =  (MR_String) "error writing to output file: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_6_69  = Msg;
+}
+            mercury__robdd__succeeded = MR_TRUE;
+          }
+        if (mercury__robdd__succeeded)
+          {
+            mercury__robdd__V_8_65 = (MR_Word) mercury__robdd__V_6_69;
+            mercury__robdd__succeeded = MR_TRUE;
+          }
+        if (mercury__robdd__succeeded)
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_10_66 = (MR_Word) &mercury__io__io__type_ctor_info_error_0;
+
+            {
+              mercury__exception__throw_1_p_0(mercury__robdd__TypeCtorInfo_10_66, ((MR_Box) (mercury__robdd__V_8_65)));
+              return;
+            }
+          }
+        else
+          {
+          }
+        mercury__robdd__V_5_77 = (MR_Box) mercury__robdd__StdErr_11;
+{
+#define MR_PROC_LABEL mercury__robdd__robdd_to_dot_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Char Character;
+	MR_Integer Error;
+
+	Stream = (MercuryFilePtr) mercury__robdd__V_5_77 ;
+	Character =  (MR_Char) 10 ;
+		{
+
+    Error = 0;
+    if (Character <= 0x7f) {
+        if (MR_PUTCH(*Stream, Character) < 0) {
+            Error = errno;
+        } else if (Character == '\n') {
+            MR_line_number(*Stream)++;
+        }
+    } else {
+        char    buf[5];
+        size_t  len;
+        size_t  i;
+        len = MR_utf8_encode(buf, Character);
+        for (i = 0; i < len; i++) {
+            if (MR_PUTCH(*Stream, buf[i]) < 0) {
+                Error = errno;
+                break;
+            }
+        }
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	MR_MAYBE_BOX_FOREIGN_TYPE(MR_Integer, Error, mercury__robdd__V_8_78 );
+}
+{
+#define MR_PROC_LABEL mercury__robdd__robdd_to_dot_5_p_0
+
+	MR_Integer Error;
+	MR_bool SUCCESS_INDICATOR;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__robdd__V_8_78 , Error);
+		{
+
+    /* This works for errno and Win32 error values (ERROR_SUCCESS == 0). */
+    SUCCESS_INDICATOR = (Error == 0) ? MR_TRUE : MR_FALSE;
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	}
+mercury__robdd__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_FALSE;
+        else
+          {
+{
+#define MR_PROC_LABEL mercury__robdd__robdd_to_dot_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__robdd__V_8_78 , Error);
+	Msg0 =  (MR_String) "error writing to output file: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__V_6_92  = Msg;
+}
+            mercury__robdd__succeeded = MR_TRUE;
+          }
+        if (mercury__robdd__succeeded)
+          {
+            mercury__robdd__V_8_88 = (MR_Word) mercury__robdd__V_6_92;
+            mercury__robdd__succeeded = MR_TRUE;
+          }
+        if (mercury__robdd__succeeded)
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_10_89 = (MR_Word) &mercury__io__io__type_ctor_info_error_0;
+
+            {
+              mercury__exception__throw_1_p_0(mercury__robdd__TypeCtorInfo_10_89, ((MR_Box) (mercury__robdd__V_8_88)));
+              return;
+            }
+          }
+        else
+          {
+          }
+      }
+  }
+}
+
+void MR_CALL 
+mercury__robdd__print_robdd_3_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_13,
+  MR_Word mercury__robdd__F_4)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_16_16;
+    MR_Integer mercury__robdd__CastX_20;
+    MR_Integer mercury__robdd__CastY_21;
+
+    {
+      mercury__robdd__V_16_16 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_13);
+    }
+    mercury__robdd__CastX_20 = (MR_Integer) mercury__robdd__F_4;
+    mercury__robdd__CastY_21 = (MR_Integer) mercury__robdd__V_16_16;
+    mercury__robdd__succeeded = (mercury__robdd__CastX_20 == mercury__robdd__CastY_21);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_18_18 = (MR_Integer) mercury__robdd__F_4;
+        MR_Integer mercury__robdd__V_19_19 = (MR_Integer) mercury__robdd__V_16_16;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_18_18 == mercury__robdd__V_19_19);
+      }
+    if (mercury__robdd__succeeded)
+      {
+        {
+          mercury__io__write_string_3_p_0((MR_String) "TRUE\n");
+        }
+      }
+    else
+      {
+        MR_Word mercury__robdd__V_17_17;
+        MR_Integer mercury__robdd__CastX_24;
+        MR_Integer mercury__robdd__CastY_25;
+
+        {
+          mercury__robdd__V_17_17 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_13);
+        }
+        mercury__robdd__CastX_24 = (MR_Integer) mercury__robdd__F_4;
+        mercury__robdd__CastY_25 = (MR_Integer) mercury__robdd__V_17_17;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_24 == mercury__robdd__CastY_25);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_22_22 = (MR_Integer) mercury__robdd__F_4;
+            MR_Integer mercury__robdd__V_23_23 = (MR_Integer) mercury__robdd__V_17_17;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_22_22 == mercury__robdd__V_23_23);
+          }
+        if (mercury__robdd__succeeded)
+          {
+            {
+              mercury__io__write_string_3_p_0((MR_String) "FALSE\n");
+            }
+          }
+        else
+          {
+            MR_Word mercury__robdd__Falses_6 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            MR_Word mercury__robdd__V_2_26 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+            {
+              mercury__robdd__print_robdd_2_5_p_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__F_4, mercury__robdd__Falses_6, mercury__robdd__Falses_6);
+            }
+          }
+      }
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__dnf_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_25,
+  MR_Word mercury__robdd__R_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_30_30;
+    MR_Integer mercury__robdd__CastX_34;
+    MR_Integer mercury__robdd__CastY_35;
+
+    {
+      mercury__robdd__V_30_30 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_25);
+    }
+    mercury__robdd__CastX_34 = (MR_Integer) mercury__robdd__R_3;
+    mercury__robdd__CastY_35 = (MR_Integer) mercury__robdd__V_30_30;
+    mercury__robdd__succeeded = (mercury__robdd__CastX_34 == mercury__robdd__CastY_35);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_32_32 = (MR_Integer) mercury__robdd__R_3;
+        MR_Integer mercury__robdd__V_33_33 = (MR_Integer) mercury__robdd__V_30_30;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_32_32 == mercury__robdd__V_33_33);
+      }
+    if (mercury__robdd__succeeded)
+      mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word mercury__robdd__V_31_31;
+        MR_Integer mercury__robdd__CastX_38;
+        MR_Integer mercury__robdd__CastY_39;
+
+        {
+          mercury__robdd__V_31_31 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_25);
+        }
+        mercury__robdd__CastX_38 = (MR_Integer) mercury__robdd__R_3;
+        mercury__robdd__CastY_39 = (MR_Integer) mercury__robdd__V_31_31;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_38 == mercury__robdd__CastY_39);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_36_36 = (MR_Integer) mercury__robdd__R_3;
+            MR_Integer mercury__robdd__V_37_37 = (MR_Integer) mercury__robdd__V_31_31;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_36_36 == mercury__robdd__V_37_37);
+          }
+        if (mercury__robdd__succeeded)
+          {
+            MR_Word mercury__robdd__V_5_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            MR_Word mercury__robdd__V_6_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+            mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__robdd_scalar_common_1[1]);
+          }
+        else
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_26_26 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_literal_1;
+            MR_Word mercury__robdd__TypeInfo_27_27;
+            MR_Word mercury__robdd__TypeCtorInfo_28_28 = (MR_Word) &mercury__list__list__type_ctor_info_list_1;
+            MR_Word mercury__robdd__TypeInfo_29_29;
+            MR_Word mercury__robdd__V_7_7;
+            MR_Word mercury__robdd__V_13_13;
+            MR_Word mercury__robdd__V_14_14;
+            MR_Word mercury__robdd__V_15_15;
+            MR_Word mercury__robdd__V_21_21;
+            MR_Word mercury__robdd__V_22_22;
+            MR_Word mercury__robdd__conv0_HeadVar__2_2;
+
+            {
+              mercury__robdd__TypeInfo_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_27_27, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_26_26));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_27_27, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_25));
+            }
+            {
+              mercury__robdd__TypeInfo_29_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_29_29, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_28_28));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_29_29, 1) = ((MR_Box) (mercury__robdd__TypeInfo_27_27));
+            }
+            {
+              mercury__robdd__V_14_14 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__V_13_13 = mercury__robdd__dnf_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__V_14_14);
+            }
+            {
+              mercury__robdd__V_7_7 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_55_44_32_56_44_32_57_93_95_48_2_f_in__list_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__R_3, mercury__robdd__V_13_13);
+            }
+            {
+              mercury__robdd__V_22_22 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__V_21_21 = mercury__robdd__dnf_1_f_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__V_22_22);
+            }
+            {
+              mercury__robdd__V_15_15 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_55_44_32_56_44_32_57_93_95_48_2_f_in__list_0(mercury__robdd__TypeInfo_for_T_25, mercury__robdd__R_3, mercury__robdd__V_21_21);
+            }
+            {
+              mercury__list__append_3_p_1(mercury__robdd__TypeInfo_29_29, (MR_Word) mercury__robdd__V_7_7, (MR_Word) mercury__robdd__V_15_15, &mercury__robdd__conv0_HeadVar__2_2);
+            }
+            mercury__robdd__HeadVar__2_2 = (MR_Word) mercury__robdd__conv0_HeadVar__2_2;
+          }
+      }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__remove_implications_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_11,
+  MR_Word mercury__robdd__ImpRes_4,
+  MR_Word mercury__robdd__R0_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__R_6;
+    MR_Word mercury__robdd__V_8_8 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    MR_Word mercury__robdd__V_10_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    MR_Word mercury__robdd__V_2_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    MR_Word mercury__robdd__V_7_7;
+
+    {
+      mercury__robdd__remove_implications_2_7_p_0(mercury__robdd__TypeInfo_for_T_11, mercury__robdd__ImpRes_4, mercury__robdd__V_8_8, mercury__robdd__V_8_8, mercury__robdd__R0_5, &mercury__robdd__R_6, mercury__robdd__V_10_10, &mercury__robdd__V_7_7);
+    }
+    return mercury__robdd__R_6;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__add_implications_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_21,
+  MR_Word mercury__robdd__ImpVars_4,
+  MR_Word mercury__robdd__R_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__Imps_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpVars_4, (MR_Integer) 0)));
+    MR_Word mercury__robdd__RevImps_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpVars_4, (MR_Integer) 1)));
+    MR_Word mercury__robdd__DisImps_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpVars_4, (MR_Integer) 2)));
+    MR_Word mercury__robdd__RevDisImps_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__ImpVars_4, (MR_Integer) 3)));
+    MR_Word mercury__robdd__V_12_12;
+    MR_Word mercury__robdd__V_15_15;
+    MR_Word mercury__robdd__V_18_18;
+
+    {
+      mercury__robdd__V_12_12 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_108_95_95_104_111_57_49_95_95_91_50_44_32_51_44_32_52_44_32_54_44_32_55_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_93_95_48_3_f_in__map_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__TypeInfo_for_T_21, mercury__robdd__TypeInfo_for_T_21, mercury__robdd__TypeInfo_for_T_21, mercury__robdd__Imps_6, mercury__robdd__R_5);
+    }
+    {
+      mercury__robdd__V_15_15 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_104_111_54_57_95_95_91_52_44_32_53_93_95_48_4_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__TypeInfo_for_T_21, mercury__robdd__TypeInfo_for_T_21, mercury__robdd__RevImps_7, mercury__robdd__V_12_12);
+    }
+    {
+      mercury__robdd__V_18_18 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_104_111_54_56_95_95_91_52_44_32_53_93_95_48_4_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__TypeInfo_for_T_21, mercury__robdd__TypeInfo_for_T_21, mercury__robdd__DisImps_8, mercury__robdd__V_15_15);
+    }
+    {
+      mercury__robdd__HeadVar__3_3 = mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_97_100_100_95_105_109_112_108_105_99_97_116_105_111_110_115_95_50_95_95_104_111_54_55_95_95_91_52_44_32_53_93_95_48_4_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__TypeInfo_for_T_21, mercury__robdd__TypeInfo_for_T_21, mercury__robdd__RevDisImps_9, mercury__robdd__V_18_18);
+    }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__add_equivalences_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_11,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__R0_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__R_6;
+    MR_Word mercury__robdd__TypeCtorInfo_12_12 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_13_13;
+    MR_Word mercury__robdd__LeaderMap_4 = (MR_Word) mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__V_8_8;
+    MR_Word mercury__robdd__V_9_9;
+    MR_Word mercury__robdd__V_10_10;
+    MR_Word mercury__robdd__V_5_22;
+    MR_Word mercury__robdd__V_2_25;
+    MR_Word mercury__robdd__conv0_V_8_8;
+    MR_Word mercury__robdd__V_7_7;
+
+    {
+      mercury__robdd__TypeInfo_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_13_13, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_12_12));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_13_13, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_11));
+    }
+    mercury__robdd__V_5_22 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__tree234__tree234_to_assoc_list_acc_3_p_0(mercury__robdd__TypeInfo_13_13, mercury__robdd__TypeInfo_13_13, (MR_Word) mercury__robdd__LeaderMap_4, (MR_Word) mercury__robdd__V_5_22, &mercury__robdd__conv0_V_8_8);
+    }
+    mercury__robdd__V_8_8 = (MR_Word) mercury__robdd__conv0_V_8_8;
+    mercury__robdd__V_2_25 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    mercury__robdd__V_9_9 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    mercury__robdd__V_10_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__robdd__add_equivalences_2_6_p_0(mercury__robdd__TypeInfo_for_T_11, mercury__robdd__V_8_8, mercury__robdd__V_9_9, mercury__robdd__R0_5, &mercury__robdd__R_6, mercury__robdd__V_10_10, &mercury__robdd__V_7_7);
+    }
+    return mercury__robdd__R_6;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__make_equiv_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word mercury__robdd__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__TypeCtorInfo_7_7 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_8_8;
+    MR_Word mercury__robdd__LeaderMap_3 = (MR_Word) mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__V_4_4;
+    MR_Word mercury__robdd__V_5_5;
+    MR_Word mercury__robdd__V_5_15;
+    MR_Word mercury__robdd__V_2_18;
+    MR_Word mercury__robdd__conv0_V_4_4;
+
+    {
+      mercury__robdd__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_7_7));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_8_8, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_6));
+    }
+    mercury__robdd__V_5_15 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__tree234__tree234_to_assoc_list_acc_3_p_0(mercury__robdd__TypeInfo_8_8, mercury__robdd__TypeInfo_8_8, (MR_Word) mercury__robdd__LeaderMap_3, (MR_Word) mercury__robdd__V_5_15, &mercury__robdd__conv0_V_4_4);
+    }
+    mercury__robdd__V_4_4 = (MR_Word) mercury__robdd__conv0_V_4_4;
+    mercury__robdd__V_2_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    mercury__robdd__V_5_5 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    {
+      mercury__robdd__HeadVar__2_2 = mercury__robdd__make_equiv_2_2_f_0(mercury__robdd__TypeInfo_for_T_6, mercury__robdd__V_4_4, mercury__robdd__V_5_5);
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd__squeeze_equiv_2_f_0_2(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Box mercury__robdd__closure = mercury__robdd__closure_arg;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__IntroducedFrom__pred__squeeze_equiv__1242__1_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__closure, (MR_Integer) 4))), ((MR_Word) mercury__robdd__wrapper_arg_1));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd__squeeze_equiv_2_f_0_1(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Box mercury__robdd__closure = mercury__robdd__closure_arg;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__IntroducedFrom__pred__squeeze_equiv__1239__1_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__closure, (MR_Integer) 4))), ((MR_Word) mercury__robdd__wrapper_arg_1));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__squeeze_equiv_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_16,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__R0_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__LeaderMap_4 = (MR_Word) mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__Max_6;
+    MR_Word mercury__robdd__TypeCtorInfo_17_17 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_18_18;
+    MR_Box mercury__robdd__conv0_Max_6;
+
+    {
+      mercury__robdd__TypeInfo_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_18_18, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_17_17));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_18_18, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_16));
+    }
+    {
+      mercury__robdd__succeeded = mercury__tree234__max_key_1_f_0(mercury__robdd__TypeInfo_18_18, mercury__robdd__TypeInfo_18_18, (MR_Word) mercury__robdd__LeaderMap_4, &mercury__robdd__conv0_Max_6);
+    }
+    if (mercury__robdd__succeeded)
+      {
+        mercury__robdd__Max_6 = ((MR_Word) mercury__robdd__conv0_Max_6);
+        mercury__robdd__succeeded = MR_TRUE;
+      }
+    if (mercury__robdd__succeeded)
+      {
+        MR_Word mercury__robdd__V_9_9;
+        MR_Word mercury__robdd__V_11_11;
+        MR_Word mercury__robdd__V_34_34;
+        MR_Word mercury__robdd__V_35_35;
+        MR_Word mercury__robdd__V_32_32;
+        MR_Word mercury__robdd__V_33_33;
+
+        {
+          mercury__robdd__V_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_9_9, 0) = ((MR_Box) (&mercury__robdd_scalar_common_7[0]));
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_9_9, 1) = ((MR_Box) (mercury__robdd__squeeze_equiv_2_f_0_1));
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_9_9, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_9_9, 3) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_16));
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_9_9, 4) = ((MR_Box) (mercury__robdd__LeaderMap_4));
+        }
+        {
+          mercury__robdd__V_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_11_11, 0) = ((MR_Box) (&mercury__robdd_scalar_common_7[1]));
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_11_11, 1) = ((MR_Box) (mercury__robdd__squeeze_equiv_2_f_0_2));
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_11_11, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_11_11, 3) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_16));
+          MR_hl_field(MR_mktag(0), mercury__robdd__V_11_11, 4) = ((MR_Box) (mercury__robdd__Max_6));
+        }
+        mercury__robdd__V_34_34 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        mercury__robdd__V_35_35 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        {
+          mercury__robdd__filter_2_8_p_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__V_9_9, mercury__robdd__V_11_11, mercury__robdd__R0_5, &mercury__robdd__HeadVar__3_3, mercury__robdd__V_34_34, &mercury__robdd__V_32_32, mercury__robdd__V_35_35, &mercury__robdd__V_33_33);
+        }
+      }
+    else
+      mercury__robdd__HeadVar__3_3 = mercury__robdd__R0_5;
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__restrict_true_false_vars_3_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_11,
+  MR_Word mercury__robdd__TrueVars_5,
+  MR_Word mercury__robdd__FalseVars_6,
+  MR_Word mercury__robdd__R0_7)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__R_8;
+    MR_Word mercury__robdd__V_10_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    MR_Word mercury__robdd__V_9_9;
+
+    {
+      mercury__robdd__restrict_true_false_vars_2_6_p_0(mercury__robdd__TypeInfo_for_T_11, mercury__robdd__TrueVars_5, mercury__robdd__FalseVars_6, mercury__robdd__R0_7, &mercury__robdd__R_8, mercury__robdd__V_10_10, &mercury__robdd__V_9_9);
+    }
+    return mercury__robdd__R_8;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__restrict_filter_3_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_13,
+  MR_Word mercury__robdd__P_5,
+  MR_Word mercury__robdd__D_6,
+  MR_Word mercury__robdd__F0_7)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__F_8;
+    MR_Word mercury__robdd__V_11_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    MR_Word mercury__robdd__V_12_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    MR_Word mercury__robdd__V_9_9;
+    MR_Word mercury__robdd__V_10_10;
+
+    {
+      mercury__robdd__filter_2_8_p_0(mercury__robdd__TypeInfo_for_T_13, mercury__robdd__P_5, mercury__robdd__D_6, mercury__robdd__F0_7, &mercury__robdd__F_8, mercury__robdd__V_11_11, &mercury__robdd__V_9_9, mercury__robdd__V_12_12, &mercury__robdd__V_10_10);
+    }
+    return mercury__robdd__F_8;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__robdd__restrict_filter_2_f_0_1(
+  MR_Box mercury__robdd__closure_arg,
+  MR_Box mercury__robdd__wrapper_arg_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Box mercury__robdd__closure = mercury__robdd__closure_arg;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__IntroducedFrom__pred__restrict_filter__1184__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__closure, (MR_Integer) 3))), ((MR_Word) mercury__robdd__wrapper_arg_1));
+    }
+    return mercury__robdd__succeeded;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__restrict_filter_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_11,
+  MR_Word mercury__robdd__P_4,
+  MR_Word mercury__robdd__F0_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__V_7_7;
+    MR_Word mercury__robdd__V_18_18;
+    MR_Word mercury__robdd__V_19_19;
+    MR_Word mercury__robdd__V_16_16;
+    MR_Word mercury__robdd__V_17_17;
+
+    {
+      mercury__robdd__V_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__V_7_7, 0) = ((MR_Box) (&mercury__robdd_scalar_common_4[2]));
+      MR_hl_field(MR_mktag(0), mercury__robdd__V_7_7, 1) = ((MR_Box) (mercury__robdd__restrict_filter_2_f_0_1));
+      MR_hl_field(MR_mktag(0), mercury__robdd__V_7_7, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), mercury__robdd__V_7_7, 3) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_11));
+    }
+    mercury__robdd__V_18_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    mercury__robdd__V_19_19 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    {
+      mercury__robdd__filter_2_8_p_0(mercury__robdd__TypeInfo_for_T_11, mercury__robdd__P_4, mercury__robdd__V_7_7, mercury__robdd__F0_5, &mercury__robdd__HeadVar__3_3, mercury__robdd__V_18_18, &mercury__robdd__V_16_16, mercury__robdd__V_19_19, &mercury__robdd__V_17_17);
+    }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__restrict_threshold_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_4,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__TypeInfo_for_T_5;
+
+{
+#define MR_PROC_LABEL mercury__robdd__restrict_threshold_2_f_0
+
+	MR_Word V;
+	MR_Word F;
+	MR_Word R;
+
+	V =  mercury__robdd__HeadVar__1_1 ;
+	F =  mercury__robdd__HeadVar__2_2 ;
+		{
+
+    R = (MR_ROBDD_NODE_TYPE) MR_ROBDD_restrictThresh(V,
+        (MR_ROBDD_node *) F);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__3_3  = R;
+}
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__restrict_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_4,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__TypeInfo_for_T_5;
+
+{
+#define MR_PROC_LABEL mercury__robdd__restrict_2_f_0
+
+	MR_Word V;
+	MR_Word F;
+	MR_Word R;
+
+	V =  mercury__robdd__HeadVar__1_1 ;
+	F =  mercury__robdd__HeadVar__2_2 ;
+		{
+
+    R = (MR_ROBDD_NODE_TYPE) MR_ROBDD_restrict(V, (MR_ROBDD_node *) F);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__3_3  = R;
+}
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__extract_implications_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__R_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_4_4;
+    MR_Word mercury__robdd__I0_8;
+    MR_Word mercury__robdd__RI0_9;
+    MR_Word mercury__robdd__DI0_10;
+    MR_Word mercury__robdd__RDI0_11;
+    MR_Word mercury__robdd__I_12;
+    MR_Word mercury__robdd__RI_13;
+    MR_Word mercury__robdd__DI_14;
+    MR_Word mercury__robdd__RDI_15;
+
+    {
+      mercury__robdd__V_4_4 = mercury__robdd__implications_2_1_f_0(mercury__robdd__TypeInfo_for_T_5, mercury__robdd__R_3);
+    }
+    mercury__robdd__I0_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_4_4, (MR_Integer) 0)));
+    mercury__robdd__RI0_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_4_4, (MR_Integer) 1)));
+    mercury__robdd__DI0_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_4_4, (MR_Integer) 2)));
+    mercury__robdd__RDI0_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__robdd__V_4_4, (MR_Integer) 3)));
+    {
+      mercury__robdd__I_12 = mercury__robdd__imp_res_to_imp_map_1_f_0(mercury__robdd__TypeInfo_for_T_5, mercury__robdd__I0_8);
+    }
+    {
+      mercury__robdd__RI_13 = mercury__robdd__imp_res_to_imp_map_1_f_0(mercury__robdd__TypeInfo_for_T_5, mercury__robdd__RI0_9);
+    }
+    {
+      mercury__robdd__DI_14 = mercury__robdd__imp_res_to_imp_map_1_f_0(mercury__robdd__TypeInfo_for_T_5, mercury__robdd__DI0_10);
+    }
+    {
+      mercury__robdd__RDI_15 = mercury__robdd__imp_res_to_imp_map_1_f_0(mercury__robdd__TypeInfo_for_T_5, mercury__robdd__RDI0_11);
+    }
+    {
+      mercury__robdd__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, 0) = ((MR_Box) (mercury__robdd__I_12));
+      MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, 1) = ((MR_Box) (mercury__robdd__RI_13));
+      MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, 2) = ((MR_Box) (mercury__robdd__DI_14));
+      MR_hl_field(MR_mktag(0), mercury__robdd__HeadVar__2_2, 3) = ((MR_Box) (mercury__robdd__RDI_15));
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__equivalent_vars_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__R_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_4_4;
+
+    {
+      mercury__robdd__V_4_4 = mercury__robdd__equivalent_vars_2_1_f_0(mercury__robdd__TypeInfo_for_T_5, mercury__robdd__R_3);
+    }
+    {
+      mercury__robdd__HeadVar__2_2 = mercury__robdd__rev_map_1_f_0(mercury__robdd__TypeInfo_for_T_5, mercury__robdd__V_4_4);
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+void MR_CALL 
+mercury__robdd__definite_vars_3_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_21,
+  MR_Word mercury__robdd__R_4,
+  MR_Word * mercury__robdd__T_5,
+  MR_Word * mercury__robdd__F_6)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__V_32_32;
+    MR_Integer mercury__robdd__CastX_38;
+    MR_Integer mercury__robdd__CastY_39;
+
+    {
+      mercury__robdd__V_32_32 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_21);
+    }
+    mercury__robdd__CastX_38 = (MR_Integer) mercury__robdd__R_4;
+    mercury__robdd__CastY_39 = (MR_Integer) mercury__robdd__V_32_32;
+    mercury__robdd__succeeded = (mercury__robdd__CastX_38 == mercury__robdd__CastY_39);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_36_36 = (MR_Integer) mercury__robdd__R_4;
+        MR_Integer mercury__robdd__V_37_37 = (MR_Integer) mercury__robdd__V_32_32;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_36_36 == mercury__robdd__V_37_37);
+      }
+    if (mercury__robdd__succeeded)
+      {
+        MR_Word mercury__robdd__V_13_13 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        MR_Word mercury__robdd__V_2_42 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+        *mercury__robdd__T_5 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__robdd_scalar_common_5[0]);
+        *mercury__robdd__F_6 = *mercury__robdd__T_5;
+      }
+    else
+      {
+        MR_Word mercury__robdd__V_33_33;
+        MR_Integer mercury__robdd__CastX_48;
+        MR_Integer mercury__robdd__CastY_49;
+
+        {
+          mercury__robdd__V_33_33 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_21);
+        }
+        mercury__robdd__CastX_48 = (MR_Integer) mercury__robdd__R_4;
+        mercury__robdd__CastY_49 = (MR_Integer) mercury__robdd__V_33_33;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_48 == mercury__robdd__CastY_49);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_46_46 = (MR_Integer) mercury__robdd__R_4;
+            MR_Integer mercury__robdd__V_47_47 = (MR_Integer) mercury__robdd__V_33_33;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_46_46 == mercury__robdd__V_47_47);
+          }
+        if (mercury__robdd__succeeded)
+          {
+            *mercury__robdd__T_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            *mercury__robdd__F_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+        else
+          {
+            MR_Word mercury__robdd__TypeCtorInfo_22_22;
+            MR_Word mercury__robdd__TypeInfo_23_23;
+            MR_Word mercury__robdd__TypeCtorInfo_24_24;
+            MR_Word mercury__robdd__TypeInfo_25_25;
+            MR_Word mercury__robdd__TypeCtorInfo_26_26;
+            MR_Word mercury__robdd__TypeInfo_27_27;
+            MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_28;
+            MR_Word mercury__robdd__TypeClassInfo_for_intersectable_29;
+            MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_30;
+            MR_Word mercury__robdd__TypeClassInfo_for_intersectable_31;
+            MR_Word mercury__robdd__T_tr_7;
+            MR_Word mercury__robdd__F_tr_8;
+            MR_Word mercury__robdd__T_fa_9;
+            MR_Word mercury__robdd__F_fa_10;
+            MR_Word mercury__robdd__T0_11;
+            MR_Word mercury__robdd__F0_12;
+            MR_Word mercury__robdd__V_15_15;
+            MR_Word mercury__robdd__V_16_16;
+            MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box);
+            MR_Box mercury__robdd__conv1_T0_11;
+            MR_Box MR_CALL (* mercury__robdd__func_2)(MR_Box, MR_Box, MR_Box);
+            MR_Box mercury__robdd__conv3_F0_12;
+            MR_Word mercury__robdd__V_17_17;
+            MR_Word mercury__robdd__V_34_34;
+            MR_Integer mercury__robdd__CastX_52;
+            MR_Integer mercury__robdd__CastY_53;
+
+            {
+              mercury__robdd__V_15_15 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__R_4);
+            }
+            {
+              mercury__robdd__definite_vars_3_p_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__V_15_15, &mercury__robdd__T_tr_7, &mercury__robdd__F_tr_8);
+            }
+            {
+              mercury__robdd__V_16_16 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__R_4);
+            }
+            {
+              mercury__robdd__definite_vars_3_p_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__V_16_16, &mercury__robdd__T_fa_9, &mercury__robdd__F_fa_10);
+            }
+            mercury__robdd__BaseTypeClassInfo_for_intersectable_30 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__;
+            mercury__robdd__TypeCtorInfo_26_26 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+            mercury__robdd__TypeCtorInfo_24_24 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+            mercury__robdd__TypeCtorInfo_22_22 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+            {
+              mercury__robdd__TypeInfo_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_23_23, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_22_22));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_23_23, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_21));
+            }
+            {
+              mercury__robdd__TypeInfo_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_25_25, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_24_24));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_25_25, 1) = ((MR_Box) (mercury__robdd__TypeInfo_23_23));
+            }
+            {
+              mercury__robdd__TypeInfo_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_27_27, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_26_26));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_27_27, 1) = ((MR_Box) (mercury__robdd__TypeInfo_25_25));
+            }
+            mercury__robdd__BaseTypeClassInfo_for_intersectable_28 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__sparse_bitset__sparse_bitset__arity1__;
+            {
+              mercury__robdd__TypeClassInfo_for_intersectable_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_29, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_28));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_29, 1) = ((MR_Box) (mercury__robdd__TypeInfo_23_23));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_29, 2) = ((MR_Box) (mercury__robdd__TypeInfo_25_25));
+            }
+            {
+              mercury__robdd__TypeClassInfo_for_intersectable_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_31, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_30));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_31, 1) = ((MR_Box) (mercury__robdd__TypeClassInfo_for_intersectable_29));
+              MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_31, 2) = ((MR_Box) (mercury__robdd__TypeInfo_27_27));
+            }
+            mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_31, (MR_Integer) 0)), (MR_Integer) 5)));
+            {
+              mercury__robdd__conv1_T0_11 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_31), ((MR_Box) (mercury__robdd__T_tr_7)), ((MR_Box) (mercury__robdd__T_fa_9)));
+            }
+            mercury__robdd__T0_11 = ((MR_Word) mercury__robdd__conv1_T0_11);
+            mercury__robdd__func_2 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_31, (MR_Integer) 0)), (MR_Integer) 5)));
+            {
+              mercury__robdd__conv3_F0_12 = mercury__robdd__func_2(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_31), ((MR_Box) (mercury__robdd__F_tr_8)), ((MR_Box) (mercury__robdd__F_fa_10)));
+            }
+            mercury__robdd__F0_12 = ((MR_Word) mercury__robdd__conv3_F0_12);
+            {
+              mercury__robdd__V_17_17 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__R_4);
+            }
+            {
+              mercury__robdd__V_34_34 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_21);
+            }
+            mercury__robdd__CastX_52 = (MR_Integer) mercury__robdd__V_17_17;
+            mercury__robdd__CastY_53 = (MR_Integer) mercury__robdd__V_34_34;
+            mercury__robdd__succeeded = (mercury__robdd__CastX_52 == mercury__robdd__CastY_53);
+            if (mercury__robdd__succeeded)
+              mercury__robdd__succeeded = MR_TRUE;
+            else
+              {
+                MR_Integer mercury__robdd__V_50_50 = (MR_Integer) mercury__robdd__V_17_17;
+                MR_Integer mercury__robdd__V_51_51 = (MR_Integer) mercury__robdd__V_34_34;
+
+                mercury__robdd__succeeded = (mercury__robdd__V_50_50 == mercury__robdd__V_51_51);
+              }
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__V_18_18;
+
+                {
+                  mercury__robdd__V_18_18 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__R_4);
+                }
+                if ((mercury__robdd__T0_11 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  *mercury__robdd__T_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                else
+                  {
+                    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_60 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                    MR_Word mercury__robdd__TypeClassInfo_for_enum_61;
+                    MR_Word mercury__robdd__Vs_55 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__T0_11, (MR_Integer) 0)));
+                    MR_Word mercury__robdd__V_57_57;
+                    MR_Word mercury__robdd__V_6_68;
+                    MR_Integer mercury__robdd__V_9_70;
+                    MR_Word mercury__robdd__V_5_71;
+                    MR_Box MR_CALL (* mercury__robdd__func_4)(MR_Box, MR_Box);
+                    MR_Box mercury__robdd__conv5_V_9_70;
+
+                    {
+                      mercury__robdd__TypeClassInfo_for_enum_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_61, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_60));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_61, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_21));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_61, 2) = ((MR_Box) (mercury__robdd__TypeInfo_23_23));
+                    }
+                    mercury__robdd__V_6_68 = (MR_Word) mercury__robdd__Vs_55;
+                    mercury__robdd__func_4 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_61, (MR_Integer) 0)), (MR_Integer) 5)));
+                    {
+                      mercury__robdd__conv5_V_9_70 = mercury__robdd__func_4(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_61), ((MR_Box) (mercury__robdd__V_18_18)));
+                    }
+                    mercury__robdd__V_9_70 = ((MR_Integer) mercury__robdd__conv5_V_9_70);
+                    {
+                      mercury__sparse_bitset__insert_2_3_p_0(mercury__robdd__V_6_68, mercury__robdd__V_9_70, &mercury__robdd__V_5_71);
+                    }
+                    mercury__robdd__V_57_57 = (MR_Word) mercury__robdd__V_5_71;
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      *mercury__robdd__T_5 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__robdd__V_57_57));
+                    }
+                  }
+                *mercury__robdd__F_6 = mercury__robdd__F0_12;
+              }
+            else
+              {
+                MR_Word mercury__robdd__V_19_19;
+                MR_Word mercury__robdd__V_35_35;
+                MR_Integer mercury__robdd__CastX_74;
+                MR_Integer mercury__robdd__CastY_75;
+
+                {
+                  mercury__robdd__V_19_19 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__R_4);
+                }
+                {
+                  mercury__robdd__V_35_35 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_21);
+                }
+                mercury__robdd__CastX_74 = (MR_Integer) mercury__robdd__V_19_19;
+                mercury__robdd__CastY_75 = (MR_Integer) mercury__robdd__V_35_35;
+                mercury__robdd__succeeded = (mercury__robdd__CastX_74 == mercury__robdd__CastY_75);
+                if (mercury__robdd__succeeded)
+                  mercury__robdd__succeeded = MR_TRUE;
+                else
+                  {
+                    MR_Integer mercury__robdd__V_72_72 = (MR_Integer) mercury__robdd__V_19_19;
+                    MR_Integer mercury__robdd__V_73_73 = (MR_Integer) mercury__robdd__V_35_35;
+
+                    mercury__robdd__succeeded = (mercury__robdd__V_72_72 == mercury__robdd__V_73_73);
+                  }
+                if (mercury__robdd__succeeded)
+                  {
+                    MR_Word mercury__robdd__V_20_20;
+
+                    *mercury__robdd__T_5 = mercury__robdd__T0_11;
+                    {
+                      mercury__robdd__V_20_20 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_21, mercury__robdd__R_4);
+                    }
+                    if ((mercury__robdd__F0_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                      *mercury__robdd__F_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                    else
+                      {
+                        MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_82 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                        MR_Word mercury__robdd__TypeClassInfo_for_enum_83;
+                        MR_Word mercury__robdd__Vs_77 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__F0_12, (MR_Integer) 0)));
+                        MR_Word mercury__robdd__V_79_79;
+                        MR_Word mercury__robdd__V_6_90;
+                        MR_Integer mercury__robdd__V_9_92;
+                        MR_Word mercury__robdd__V_5_93;
+                        MR_Box MR_CALL (* mercury__robdd__func_6)(MR_Box, MR_Box);
+                        MR_Box mercury__robdd__conv7_V_9_92;
+
+                        {
+                          mercury__robdd__TypeClassInfo_for_enum_83 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_83, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_82));
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_83, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_21));
+                          MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_83, 2) = ((MR_Box) (mercury__robdd__TypeInfo_23_23));
+                        }
+                        mercury__robdd__V_6_90 = (MR_Word) mercury__robdd__Vs_77;
+                        mercury__robdd__func_6 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_83, (MR_Integer) 0)), (MR_Integer) 5)));
+                        {
+                          mercury__robdd__conv7_V_9_92 = mercury__robdd__func_6(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_83), ((MR_Box) (mercury__robdd__V_20_20)));
+                        }
+                        mercury__robdd__V_9_92 = ((MR_Integer) mercury__robdd__conv7_V_9_92);
+                        {
+                          mercury__sparse_bitset__insert_2_3_p_0(mercury__robdd__V_6_90, mercury__robdd__V_9_92, &mercury__robdd__V_5_93);
+                        }
+                        mercury__robdd__V_79_79 = (MR_Word) mercury__robdd__V_5_93;
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          *mercury__robdd__F_6 = base;
+                          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__robdd__V_79_79));
+                        }
+                      }
+                  }
+                else
+                  {
+                    *mercury__robdd__T_5 = mercury__robdd__T0_11;
+                    *mercury__robdd__F_6 = mercury__robdd__F0_12;
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__vars_disentailed_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_16,
+  MR_Word mercury__robdd__R_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_37_37;
+    MR_Integer mercury__robdd__CastX_42;
+    MR_Integer mercury__robdd__CastY_43;
+
+    {
+      mercury__robdd__V_37_37 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_16);
+    }
+    mercury__robdd__CastX_42 = (MR_Integer) mercury__robdd__R_3;
+    mercury__robdd__CastY_43 = (MR_Integer) mercury__robdd__V_37_37;
+    mercury__robdd__succeeded = (mercury__robdd__CastX_42 == mercury__robdd__CastY_43);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_40_40 = (MR_Integer) mercury__robdd__R_3;
+        MR_Integer mercury__robdd__V_41_41 = (MR_Integer) mercury__robdd__V_37_37;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_40_40 == mercury__robdd__V_41_41);
+      }
+    if (mercury__robdd__succeeded)
+      {
+        MR_Word mercury__robdd__V_4_4 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        MR_Word mercury__robdd__V_2_46 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+        mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__robdd_scalar_common_5[0]);
+      }
+    else
+      {
+        MR_Word mercury__robdd__V_38_38;
+        MR_Integer mercury__robdd__CastX_49;
+        MR_Integer mercury__robdd__CastY_50;
+
+        {
+          mercury__robdd__V_38_38 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_16);
+        }
+        mercury__robdd__CastX_49 = (MR_Integer) mercury__robdd__R_3;
+        mercury__robdd__CastY_50 = (MR_Integer) mercury__robdd__V_38_38;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_49 == mercury__robdd__CastY_50);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_47_47 = (MR_Integer) mercury__robdd__R_3;
+            MR_Integer mercury__robdd__V_48_48 = (MR_Integer) mercury__robdd__V_38_38;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_47_47 == mercury__robdd__V_48_48);
+          }
+        if (mercury__robdd__succeeded)
+          mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word mercury__robdd__V_5_5;
+            MR_Word mercury__robdd__V_39_39;
+            MR_Integer mercury__robdd__CastX_53;
+            MR_Integer mercury__robdd__CastY_54;
+
+            {
+              mercury__robdd__V_5_5 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__V_39_39 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_16);
+            }
+            mercury__robdd__CastX_53 = (MR_Integer) mercury__robdd__V_5_5;
+            mercury__robdd__CastY_54 = (MR_Integer) mercury__robdd__V_39_39;
+            mercury__robdd__succeeded = (mercury__robdd__CastX_53 == mercury__robdd__CastY_54);
+            if (mercury__robdd__succeeded)
+              mercury__robdd__succeeded = MR_TRUE;
+            else
+              {
+                MR_Integer mercury__robdd__V_51_51 = (MR_Integer) mercury__robdd__V_5_5;
+                MR_Integer mercury__robdd__V_52_52 = (MR_Integer) mercury__robdd__V_39_39;
+
+                mercury__robdd__succeeded = (mercury__robdd__V_51_51 == mercury__robdd__V_52_52);
+              }
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_17_17 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                MR_Word mercury__robdd__TypeInfo_18_18;
+                MR_Word mercury__robdd__TypeCtorInfo_19_19 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+                MR_Word mercury__robdd__TypeInfo_20_20;
+                MR_Word mercury__robdd__TypeCtorInfo_21_21 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+                MR_Word mercury__robdd__TypeInfo_22_22;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_23;
+                MR_Word mercury__robdd__TypeClassInfo_for_intersectable_24;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_25 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__;
+                MR_Word mercury__robdd__TypeClassInfo_for_intersectable_26;
+                MR_Word mercury__robdd__V_6_6;
+                MR_Word mercury__robdd__V_7_7;
+                MR_Word mercury__robdd__V_8_8;
+                MR_Word mercury__robdd__V_9_9;
+                MR_Word mercury__robdd__V_10_10;
+                MR_Word mercury__robdd__V_11_11;
+                MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box);
+                MR_Box mercury__robdd__conv1_V_6_6;
+
+                {
+                  mercury__robdd__TypeInfo_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_18_18, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_17_17));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_18_18, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_16));
+                }
+                {
+                  mercury__robdd__TypeInfo_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_20_20, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_19_19));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_20_20, 1) = ((MR_Box) (mercury__robdd__TypeInfo_18_18));
+                }
+                {
+                  mercury__robdd__TypeInfo_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_22_22, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_21_21));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_22_22, 1) = ((MR_Box) (mercury__robdd__TypeInfo_20_20));
+                }
+                mercury__robdd__BaseTypeClassInfo_for_intersectable_23 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__sparse_bitset__sparse_bitset__arity1__;
+                {
+                  mercury__robdd__TypeClassInfo_for_intersectable_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_24, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_23));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_24, 1) = ((MR_Box) (mercury__robdd__TypeInfo_18_18));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_24, 2) = ((MR_Box) (mercury__robdd__TypeInfo_20_20));
+                }
+                {
+                  mercury__robdd__TypeClassInfo_for_intersectable_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_25));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, 1) = ((MR_Box) (mercury__robdd__TypeClassInfo_for_intersectable_24));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, 2) = ((MR_Box) (mercury__robdd__TypeInfo_22_22));
+                }
+                {
+                  mercury__robdd__V_8_8 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+                }
+                {
+                  mercury__robdd__V_7_7 = mercury__robdd__vars_disentailed_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__V_8_8);
+                }
+                {
+                  mercury__robdd__V_10_10 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+                }
+                {
+                  mercury__robdd__V_9_9 = mercury__robdd__vars_disentailed_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__V_10_10);
+                }
+                mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, (MR_Integer) 0)), (MR_Integer) 5)));
+                {
+                  mercury__robdd__conv1_V_6_6 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_26), ((MR_Box) (mercury__robdd__V_7_7)), ((MR_Box) (mercury__robdd__V_9_9)));
+                }
+                mercury__robdd__V_6_6 = ((MR_Word) mercury__robdd__conv1_V_6_6);
+                {
+                  mercury__robdd__V_11_11 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+                }
+                if ((mercury__robdd__V_6_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                else
+                  {
+                    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_61 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                    MR_Word mercury__robdd__TypeClassInfo_for_enum_62;
+                    MR_Word mercury__robdd__Vs_56 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__V_6_6, (MR_Integer) 0)));
+                    MR_Word mercury__robdd__V_58_58;
+                    MR_Word mercury__robdd__V_6_69;
+                    MR_Integer mercury__robdd__V_9_71;
+                    MR_Word mercury__robdd__V_5_72;
+                    MR_Box MR_CALL (* mercury__robdd__func_2)(MR_Box, MR_Box);
+                    MR_Box mercury__robdd__conv3_V_9_71;
+
+                    {
+                      mercury__robdd__TypeClassInfo_for_enum_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_62, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_61));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_62, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_16));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_62, 2) = ((MR_Box) (mercury__robdd__TypeInfo_18_18));
+                    }
+                    mercury__robdd__V_6_69 = (MR_Word) mercury__robdd__Vs_56;
+                    mercury__robdd__func_2 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_62, (MR_Integer) 0)), (MR_Integer) 5)));
+                    {
+                      mercury__robdd__conv3_V_9_71 = mercury__robdd__func_2(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_62), ((MR_Box) (mercury__robdd__V_11_11)));
+                    }
+                    mercury__robdd__V_9_71 = ((MR_Integer) mercury__robdd__conv3_V_9_71);
+                    {
+                      mercury__sparse_bitset__insert_2_3_p_0(mercury__robdd__V_6_69, mercury__robdd__V_9_71, &mercury__robdd__V_5_72);
+                    }
+                    mercury__robdd__V_58_58 = (MR_Word) mercury__robdd__V_5_72;
+                    {
+                      mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, 0) = ((MR_Box) (mercury__robdd__V_58_58));
+                    }
+                  }
+              }
+            else
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_27_27 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                MR_Word mercury__robdd__TypeInfo_28_28;
+                MR_Word mercury__robdd__TypeCtorInfo_29_29 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+                MR_Word mercury__robdd__TypeInfo_30_30;
+                MR_Word mercury__robdd__TypeCtorInfo_31_31 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+                MR_Word mercury__robdd__TypeInfo_32_32;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_33;
+                MR_Word mercury__robdd__TypeClassInfo_for_intersectable_34;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_35 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__;
+                MR_Word mercury__robdd__TypeClassInfo_for_intersectable_36;
+                MR_Word mercury__robdd__V_12_12;
+                MR_Word mercury__robdd__V_13_13;
+                MR_Word mercury__robdd__V_14_14;
+                MR_Word mercury__robdd__V_15_15;
+                MR_Box MR_CALL (* mercury__robdd__func_4)(MR_Box, MR_Box, MR_Box);
+                MR_Box mercury__robdd__conv5_HeadVar__2_2;
+
+                {
+                  mercury__robdd__TypeInfo_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_28_28, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_27_27));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_28_28, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_16));
+                }
+                {
+                  mercury__robdd__TypeInfo_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_30, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_29_29));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_30, 1) = ((MR_Box) (mercury__robdd__TypeInfo_28_28));
+                }
+                {
+                  mercury__robdd__TypeInfo_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_32, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_31_31));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_32, 1) = ((MR_Box) (mercury__robdd__TypeInfo_30_30));
+                }
+                mercury__robdd__BaseTypeClassInfo_for_intersectable_33 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__sparse_bitset__sparse_bitset__arity1__;
+                {
+                  mercury__robdd__TypeClassInfo_for_intersectable_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_34, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_33));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_34, 1) = ((MR_Box) (mercury__robdd__TypeInfo_28_28));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_34, 2) = ((MR_Box) (mercury__robdd__TypeInfo_30_30));
+                }
+                {
+                  mercury__robdd__TypeClassInfo_for_intersectable_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_36, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_35));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_36, 1) = ((MR_Box) (mercury__robdd__TypeClassInfo_for_intersectable_34));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_36, 2) = ((MR_Box) (mercury__robdd__TypeInfo_32_32));
+                }
+                {
+                  mercury__robdd__V_13_13 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+                }
+                {
+                  mercury__robdd__V_12_12 = mercury__robdd__vars_disentailed_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__V_13_13);
+                }
+                {
+                  mercury__robdd__V_15_15 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+                }
+                {
+                  mercury__robdd__V_14_14 = mercury__robdd__vars_disentailed_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__V_15_15);
+                }
+                mercury__robdd__func_4 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_36, (MR_Integer) 0)), (MR_Integer) 5)));
+                {
+                  mercury__robdd__conv5_HeadVar__2_2 = mercury__robdd__func_4(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_36), ((MR_Box) (mercury__robdd__V_12_12)), ((MR_Box) (mercury__robdd__V_14_14)));
+                }
+                mercury__robdd__HeadVar__2_2 = ((MR_Word) mercury__robdd__conv5_HeadVar__2_2);
+              }
+          }
+      }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__vars_entailed_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_16,
+  MR_Word mercury__robdd__R_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_37_37;
+    MR_Integer mercury__robdd__CastX_42;
+    MR_Integer mercury__robdd__CastY_43;
+
+    {
+      mercury__robdd__V_37_37 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_16);
+    }
+    mercury__robdd__CastX_42 = (MR_Integer) mercury__robdd__R_3;
+    mercury__robdd__CastY_43 = (MR_Integer) mercury__robdd__V_37_37;
+    mercury__robdd__succeeded = (mercury__robdd__CastX_42 == mercury__robdd__CastY_43);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__robdd__V_40_40 = (MR_Integer) mercury__robdd__R_3;
+        MR_Integer mercury__robdd__V_41_41 = (MR_Integer) mercury__robdd__V_37_37;
+
+        mercury__robdd__succeeded = (mercury__robdd__V_40_40 == mercury__robdd__V_41_41);
+      }
+    if (mercury__robdd__succeeded)
+      {
+        MR_Word mercury__robdd__V_4_4 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        MR_Word mercury__robdd__V_2_46 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+        mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__robdd_scalar_common_5[0]);
+      }
+    else
+      {
+        MR_Word mercury__robdd__V_38_38;
+        MR_Integer mercury__robdd__CastX_49;
+        MR_Integer mercury__robdd__CastY_50;
+
+        {
+          mercury__robdd__V_38_38 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_16);
+        }
+        mercury__robdd__CastX_49 = (MR_Integer) mercury__robdd__R_3;
+        mercury__robdd__CastY_50 = (MR_Integer) mercury__robdd__V_38_38;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_49 == mercury__robdd__CastY_50);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_47_47 = (MR_Integer) mercury__robdd__R_3;
+            MR_Integer mercury__robdd__V_48_48 = (MR_Integer) mercury__robdd__V_38_38;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_47_47 == mercury__robdd__V_48_48);
+          }
+        if (mercury__robdd__succeeded)
+          mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word mercury__robdd__V_5_5;
+            MR_Word mercury__robdd__V_39_39;
+            MR_Integer mercury__robdd__CastX_53;
+            MR_Integer mercury__robdd__CastY_54;
+
+            {
+              mercury__robdd__V_5_5 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+            }
+            {
+              mercury__robdd__V_39_39 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_16);
+            }
+            mercury__robdd__CastX_53 = (MR_Integer) mercury__robdd__V_5_5;
+            mercury__robdd__CastY_54 = (MR_Integer) mercury__robdd__V_39_39;
+            mercury__robdd__succeeded = (mercury__robdd__CastX_53 == mercury__robdd__CastY_54);
+            if (mercury__robdd__succeeded)
+              mercury__robdd__succeeded = MR_TRUE;
+            else
+              {
+                MR_Integer mercury__robdd__V_51_51 = (MR_Integer) mercury__robdd__V_5_5;
+                MR_Integer mercury__robdd__V_52_52 = (MR_Integer) mercury__robdd__V_39_39;
+
+                mercury__robdd__succeeded = (mercury__robdd__V_51_51 == mercury__robdd__V_52_52);
+              }
+            if (mercury__robdd__succeeded)
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_17_17 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                MR_Word mercury__robdd__TypeInfo_18_18;
+                MR_Word mercury__robdd__TypeCtorInfo_19_19 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+                MR_Word mercury__robdd__TypeInfo_20_20;
+                MR_Word mercury__robdd__TypeCtorInfo_21_21 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+                MR_Word mercury__robdd__TypeInfo_22_22;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_23;
+                MR_Word mercury__robdd__TypeClassInfo_for_intersectable_24;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_25 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__;
+                MR_Word mercury__robdd__TypeClassInfo_for_intersectable_26;
+                MR_Word mercury__robdd__V_6_6;
+                MR_Word mercury__robdd__V_7_7;
+                MR_Word mercury__robdd__V_8_8;
+                MR_Word mercury__robdd__V_9_9;
+                MR_Word mercury__robdd__V_10_10;
+                MR_Word mercury__robdd__V_11_11;
+                MR_Box MR_CALL (* mercury__robdd__func_0)(MR_Box, MR_Box, MR_Box);
+                MR_Box mercury__robdd__conv1_V_6_6;
+
+                {
+                  mercury__robdd__TypeInfo_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_18_18, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_17_17));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_18_18, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_16));
+                }
+                {
+                  mercury__robdd__TypeInfo_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_20_20, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_19_19));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_20_20, 1) = ((MR_Box) (mercury__robdd__TypeInfo_18_18));
+                }
+                {
+                  mercury__robdd__TypeInfo_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_22_22, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_21_21));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_22_22, 1) = ((MR_Box) (mercury__robdd__TypeInfo_20_20));
+                }
+                mercury__robdd__BaseTypeClassInfo_for_intersectable_23 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__sparse_bitset__sparse_bitset__arity1__;
+                {
+                  mercury__robdd__TypeClassInfo_for_intersectable_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_24, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_23));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_24, 1) = ((MR_Box) (mercury__robdd__TypeInfo_18_18));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_24, 2) = ((MR_Box) (mercury__robdd__TypeInfo_20_20));
+                }
+                {
+                  mercury__robdd__TypeClassInfo_for_intersectable_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_25));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, 1) = ((MR_Box) (mercury__robdd__TypeClassInfo_for_intersectable_24));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, 2) = ((MR_Box) (mercury__robdd__TypeInfo_22_22));
+                }
+                {
+                  mercury__robdd__V_8_8 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+                }
+                {
+                  mercury__robdd__V_7_7 = mercury__robdd__vars_entailed_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__V_8_8);
+                }
+                {
+                  mercury__robdd__V_10_10 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+                }
+                {
+                  mercury__robdd__V_9_9 = mercury__robdd__vars_entailed_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__V_10_10);
+                }
+                mercury__robdd__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_26, (MR_Integer) 0)), (MR_Integer) 5)));
+                {
+                  mercury__robdd__conv1_V_6_6 = mercury__robdd__func_0(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_26), ((MR_Box) (mercury__robdd__V_7_7)), ((MR_Box) (mercury__robdd__V_9_9)));
+                }
+                mercury__robdd__V_6_6 = ((MR_Word) mercury__robdd__conv1_V_6_6);
+                {
+                  mercury__robdd__V_11_11 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+                }
+                if ((mercury__robdd__V_6_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                else
+                  {
+                    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_61 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+                    MR_Word mercury__robdd__TypeClassInfo_for_enum_62;
+                    MR_Word mercury__robdd__Vs_56 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__robdd__V_6_6, (MR_Integer) 0)));
+                    MR_Word mercury__robdd__V_58_58;
+                    MR_Word mercury__robdd__V_6_69;
+                    MR_Integer mercury__robdd__V_9_71;
+                    MR_Word mercury__robdd__V_5_72;
+                    MR_Box MR_CALL (* mercury__robdd__func_2)(MR_Box, MR_Box);
+                    MR_Box mercury__robdd__conv3_V_9_71;
+
+                    {
+                      mercury__robdd__TypeClassInfo_for_enum_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_62, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_61));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_62, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_16));
+                      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_62, 2) = ((MR_Box) (mercury__robdd__TypeInfo_18_18));
+                    }
+                    mercury__robdd__V_6_69 = (MR_Word) mercury__robdd__Vs_56;
+                    mercury__robdd__func_2 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_62, (MR_Integer) 0)), (MR_Integer) 5)));
+                    {
+                      mercury__robdd__conv3_V_9_71 = mercury__robdd__func_2(((MR_Box) mercury__robdd__TypeClassInfo_for_enum_62), ((MR_Box) (mercury__robdd__V_11_11)));
+                    }
+                    mercury__robdd__V_9_71 = ((MR_Integer) mercury__robdd__conv3_V_9_71);
+                    {
+                      mercury__sparse_bitset__insert_2_3_p_0(mercury__robdd__V_6_69, mercury__robdd__V_9_71, &mercury__robdd__V_5_72);
+                    }
+                    mercury__robdd__V_58_58 = (MR_Word) mercury__robdd__V_5_72;
+                    {
+                      mercury__robdd__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__robdd__HeadVar__2_2, 0) = ((MR_Box) (mercury__robdd__V_58_58));
+                    }
+                  }
+              }
+            else
+              {
+                MR_Word mercury__robdd__TypeCtorInfo_27_27 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+                MR_Word mercury__robdd__TypeInfo_28_28;
+                MR_Word mercury__robdd__TypeCtorInfo_29_29 = (MR_Word) &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1;
+                MR_Word mercury__robdd__TypeInfo_30_30;
+                MR_Word mercury__robdd__TypeCtorInfo_31_31 = (MR_Word) &mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+                MR_Word mercury__robdd__TypeInfo_32_32;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_33;
+                MR_Word mercury__robdd__TypeClassInfo_for_intersectable_34;
+                MR_Word mercury__robdd__BaseTypeClassInfo_for_intersectable_35 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__;
+                MR_Word mercury__robdd__TypeClassInfo_for_intersectable_36;
+                MR_Word mercury__robdd__V_12_12;
+                MR_Word mercury__robdd__V_13_13;
+                MR_Word mercury__robdd__V_14_14;
+                MR_Word mercury__robdd__V_15_15;
+                MR_Box MR_CALL (* mercury__robdd__func_4)(MR_Box, MR_Box, MR_Box);
+                MR_Box mercury__robdd__conv5_HeadVar__2_2;
+
+                {
+                  mercury__robdd__TypeInfo_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_28_28, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_27_27));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_28_28, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_16));
+                }
+                {
+                  mercury__robdd__TypeInfo_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_30, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_29_29));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_30_30, 1) = ((MR_Box) (mercury__robdd__TypeInfo_28_28));
+                }
+                {
+                  mercury__robdd__TypeInfo_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_32, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_31_31));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_32_32, 1) = ((MR_Box) (mercury__robdd__TypeInfo_30_30));
+                }
+                mercury__robdd__BaseTypeClassInfo_for_intersectable_33 = (MR_Word) base_typeclass_info_robdd__intersectable__arity1__sparse_bitset__sparse_bitset__arity1__;
+                {
+                  mercury__robdd__TypeClassInfo_for_intersectable_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_34, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_33));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_34, 1) = ((MR_Box) (mercury__robdd__TypeInfo_28_28));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_34, 2) = ((MR_Box) (mercury__robdd__TypeInfo_30_30));
+                }
+                {
+                  mercury__robdd__TypeClassInfo_for_intersectable_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_36, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_intersectable_35));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_36, 1) = ((MR_Box) (mercury__robdd__TypeClassInfo_for_intersectable_34));
+                  MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_36, 2) = ((MR_Box) (mercury__robdd__TypeInfo_32_32));
+                }
+                {
+                  mercury__robdd__V_13_13 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+                }
+                {
+                  mercury__robdd__V_12_12 = mercury__robdd__vars_entailed_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__V_13_13);
+                }
+                {
+                  mercury__robdd__V_15_15 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__R_3);
+                }
+                {
+                  mercury__robdd__V_14_14 = mercury__robdd__vars_entailed_1_f_0(mercury__robdd__TypeInfo_for_T_16, mercury__robdd__V_15_15);
+                }
+                mercury__robdd__func_4 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_intersectable_36, (MR_Integer) 0)), (MR_Integer) 5)));
+                {
+                  mercury__robdd__conv5_HeadVar__2_2 = mercury__robdd__func_4(((MR_Box) mercury__robdd__TypeClassInfo_for_intersectable_36), ((MR_Box) (mercury__robdd__V_12_12)), ((MR_Box) (mercury__robdd__V_14_14)));
+                }
+                mercury__robdd__HeadVar__2_2 = ((MR_Word) mercury__robdd__conv5_HeadVar__2_2);
+              }
+          }
+      }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd__var_entailed_2_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_3,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeInfo_for_T_4;
+
+{
+#define MR_PROC_LABEL mercury__robdd__var_entailed_2_p_0
+
+	MR_Word F;
+	MR_Word V;
+	MR_bool SUCCESS_INDICATOR;
+
+	F =  mercury__robdd__HeadVar__1_1 ;
+	V =  mercury__robdd__HeadVar__2_2 ;
+		{
+
+    SUCCESS_INDICATOR = MR_ROBDD_var_entailed((MR_ROBDD_node *) F,
+        (int) V);
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	}
+mercury__robdd__succeeded  = SUCCESS_INDICATOR;
+}
+    return mercury__robdd__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__robdd__entails_2_p_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_3,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__TypeInfo_for_T_4;
+
+{
+#define MR_PROC_LABEL mercury__robdd__entails_2_p_0
+
+	MR_Word X;
+	MR_Word Y;
+	MR_bool SUCCESS_INDICATOR;
+
+	X =  mercury__robdd__HeadVar__1_1 ;
+	Y =  mercury__robdd__HeadVar__2_2 ;
+		{
+
+    SUCCESS_INDICATOR = (MR_ROBDD_ite_constant((MR_ROBDD_node *) X,
+        (MR_ROBDD_node *) Y, MR_ROBDD_one) == MR_ROBDD_one);
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	}
+mercury__robdd__succeeded  = SUCCESS_INDICATOR;
+}
+    return mercury__robdd__succeeded;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__var_restrict_false_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_14,
+  MR_Word mercury__robdd__V_4,
+  MR_Word mercury__robdd__F0_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__F_6;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+    }
+    if (mercury__robdd__succeeded)
+      mercury__robdd__F_6 = mercury__robdd__F0_5;
+    else
+      {
+        MR_Word mercury__robdd__R_7;
+        MR_Word mercury__robdd__V_8_8;
+        MR_Integer mercury__robdd__V_17_17;
+        MR_Integer mercury__robdd__V_18_18;
+
+        {
+          mercury__robdd__V_8_8 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+        }
+        mercury__robdd__V_17_17 = (MR_Integer) mercury__robdd__V_8_8;
+        mercury__robdd__V_18_18 = (MR_Integer) mercury__robdd__V_4;
+        mercury__robdd__succeeded = (mercury__robdd__V_17_17 < mercury__robdd__V_18_18);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__R_7 = (MR_Integer) 1;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_17_17 == mercury__robdd__V_18_18);
+            if (mercury__robdd__succeeded)
+              mercury__robdd__R_7 = (MR_Integer) 0;
+            else
+              mercury__robdd__R_7 = (MR_Integer) 2;
+          }
+        switch (mercury__robdd__R_7) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__robdd__V_9_9;
+              MR_Word mercury__robdd__V_10_10;
+              MR_Word mercury__robdd__V_11_11;
+              MR_Word mercury__robdd__V_12_12;
+              MR_Word mercury__robdd__V_13_13;
+
+              {
+                mercury__robdd__V_9_9 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+              }
+              {
+                mercury__robdd__V_11_11 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+              }
+              {
+                mercury__robdd__V_10_10 = mercury__robdd__var_restrict_false_2_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__V_4, mercury__robdd__V_11_11);
+              }
+              {
+                mercury__robdd__V_13_13 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+              }
+              {
+                mercury__robdd__V_12_12 = mercury__robdd__var_restrict_false_2_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__V_4, mercury__robdd__V_13_13);
+              }
+              {
+                mercury__robdd__F_6 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__V_9_9, mercury__robdd__V_10_10, mercury__robdd__V_12_12);
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            {
+              mercury__robdd__F_6 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+            }
+            break;
+          case (MR_Integer) 2:
+            mercury__robdd__F_6 = mercury__robdd__F0_5;
+            break;
+        }
+      }
+    return mercury__robdd__F_6;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__var_restrict_true_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_14,
+  MR_Word mercury__robdd__V_4,
+  MR_Word mercury__robdd__F0_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__F_6;
+
+    {
+      mercury__robdd__succeeded = mercury__robdd__is_terminal_1_p_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+    }
+    if (mercury__robdd__succeeded)
+      mercury__robdd__F_6 = mercury__robdd__F0_5;
+    else
+      {
+        MR_Word mercury__robdd__R_7;
+        MR_Word mercury__robdd__V_8_8;
+        MR_Integer mercury__robdd__V_17_17;
+        MR_Integer mercury__robdd__V_18_18;
+
+        {
+          mercury__robdd__V_8_8 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+        }
+        mercury__robdd__V_17_17 = (MR_Integer) mercury__robdd__V_8_8;
+        mercury__robdd__V_18_18 = (MR_Integer) mercury__robdd__V_4;
+        mercury__robdd__succeeded = (mercury__robdd__V_17_17 < mercury__robdd__V_18_18);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__R_7 = (MR_Integer) 1;
+        else
+          {
+            mercury__robdd__succeeded = (mercury__robdd__V_17_17 == mercury__robdd__V_18_18);
+            if (mercury__robdd__succeeded)
+              mercury__robdd__R_7 = (MR_Integer) 0;
+            else
+              mercury__robdd__R_7 = (MR_Integer) 2;
+          }
+        switch (mercury__robdd__R_7) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__robdd__V_9_9;
+              MR_Word mercury__robdd__V_10_10;
+              MR_Word mercury__robdd__V_11_11;
+              MR_Word mercury__robdd__V_12_12;
+              MR_Word mercury__robdd__V_13_13;
+
+              {
+                mercury__robdd__V_9_9 = mercury__robdd__value_1_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+              }
+              {
+                mercury__robdd__V_11_11 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+              }
+              {
+                mercury__robdd__V_10_10 = mercury__robdd__var_restrict_true_2_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__V_4, mercury__robdd__V_11_11);
+              }
+              {
+                mercury__robdd__V_13_13 = mercury__robdd__fa_1_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+              }
+              {
+                mercury__robdd__V_12_12 = mercury__robdd__var_restrict_true_2_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__V_4, mercury__robdd__V_13_13);
+              }
+              {
+                mercury__robdd__F_6 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__V_9_9, mercury__robdd__V_10_10, mercury__robdd__V_12_12);
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            {
+              mercury__robdd__F_6 = mercury__robdd__tr_1_f_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__F0_5);
+            }
+            break;
+          case (MR_Integer) 2:
+            mercury__robdd__F_6 = mercury__robdd__F0_5;
+            break;
+        }
+      }
+    return mercury__robdd__F_6;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__at_most_one_of_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word mercury__robdd__Vars_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_4_4;
+    MR_Word mercury__robdd__V_5_5;
+
+    {
+      mercury__robdd__V_4_4 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_6);
+    }
+    {
+      mercury__robdd__V_5_5 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_6);
+    }
+    {
+      mercury__robdd__HeadVar__2_2 = mercury__robdd__at_most_one_of_2_3_f_0(mercury__robdd__TypeInfo_for_T_6, mercury__robdd__Vars_3, mercury__robdd__V_4_4, mercury__robdd__V_5_5);
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__disj_vars_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_14,
+  MR_Word mercury__robdd__Vars_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__TypeCtorInfo_15_15 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_16_16;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_17 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_18;
+    MR_Word mercury__robdd__V_11_11;
+    MR_Word mercury__robdd__V_6_24;
+
+    {
+      mercury__robdd__TypeInfo_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_16_16, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_15_15));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_16_16, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_14));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_enum_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_18, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_17));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_18, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_14));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_18, 2) = ((MR_Box) (mercury__robdd__TypeInfo_16_16));
+    }
+    {
+      mercury__robdd__V_11_11 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_14);
+    }
+    mercury__robdd__V_6_24 = (MR_Word) mercury__robdd__Vars_3;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_52_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__TypeClassInfo_for_enum_18, mercury__robdd__V_6_24, mercury__robdd__V_11_11, &mercury__robdd__HeadVar__2_2);
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__conj_not_vars_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_14,
+  MR_Word mercury__robdd__Vars_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__TypeCtorInfo_15_15 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_16_16;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_17 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_18;
+    MR_Word mercury__robdd__V_11_11;
+    MR_Word mercury__robdd__V_6_24;
+
+    {
+      mercury__robdd__TypeInfo_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_16_16, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_15_15));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_16_16, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_14));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_enum_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_18, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_17));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_18, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_14));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_18, 2) = ((MR_Box) (mercury__robdd__TypeInfo_16_16));
+    }
+    {
+      mercury__robdd__V_11_11 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_14);
+    }
+    mercury__robdd__V_6_24 = (MR_Word) mercury__robdd__Vars_3;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_51_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__TypeClassInfo_for_enum_18, mercury__robdd__V_6_24, mercury__robdd__V_11_11, &mercury__robdd__HeadVar__2_2);
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__conj_vars_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_14,
+  MR_Word mercury__robdd__Vars_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__TypeCtorInfo_15_15 = (MR_Word) &mercury__term__term__type_ctor_info_var_1;
+    MR_Word mercury__robdd__TypeInfo_16_16;
+    MR_Word mercury__robdd__BaseTypeClassInfo_for_enum_17 = (MR_Word) base_typeclass_info_enum__enum__arity1__term__var__arity1__;
+    MR_Word mercury__robdd__TypeClassInfo_for_enum_18;
+    MR_Word mercury__robdd__V_11_11;
+    MR_Word mercury__robdd__V_6_24;
+
+    {
+      mercury__robdd__TypeInfo_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_16_16, 0) = ((MR_Box) (mercury__robdd__TypeCtorInfo_15_15));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeInfo_16_16, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_14));
+    }
+    {
+      mercury__robdd__TypeClassInfo_for_enum_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_18, 0) = ((MR_Box) (mercury__robdd__BaseTypeClassInfo_for_enum_17));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_18, 1) = ((MR_Box) (mercury__robdd__TypeInfo_for_T_14));
+      MR_hl_field(MR_mktag(0), mercury__robdd__TypeClassInfo_for_enum_18, 2) = ((MR_Box) (mercury__robdd__TypeInfo_16_16));
+    }
+    {
+      mercury__robdd__V_11_11 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_14);
+    }
+    mercury__robdd__V_6_24 = (MR_Word) mercury__robdd__Vars_3;
+    {
+      mercury__robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_102_111_108_100_114_95_112_114_101_100_95_95_104_111_56_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_51_44_32_49_53_93_95_48_4_p_in__sparse_bitset_0(mercury__robdd__TypeInfo_for_T_14, mercury__robdd__TypeClassInfo_for_enum_18, mercury__robdd__V_6_24, mercury__robdd__V_11_11, &mercury__robdd__HeadVar__2_2);
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__imp_vars_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_12,
+  MR_Word mercury__robdd__VarA_4,
+  MR_Word mercury__robdd__VarB_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__F_6;
+    MR_Word mercury__robdd__R_7;
+    MR_Integer mercury__robdd__V_15_15 = (MR_Integer) mercury__robdd__VarA_4;
+    MR_Integer mercury__robdd__V_16_16 = (MR_Integer) mercury__robdd__VarB_5;
+
+    mercury__robdd__succeeded = (mercury__robdd__V_15_15 < mercury__robdd__V_16_16);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__R_7 = (MR_Integer) 1;
+    else
+      {
+        mercury__robdd__succeeded = (mercury__robdd__V_15_15 == mercury__robdd__V_16_16);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__R_7 = (MR_Integer) 0;
+        else
+          mercury__robdd__R_7 = (MR_Integer) 2;
+      }
+    switch (mercury__robdd__R_7) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__robdd__V_10_10;
+          MR_Word mercury__robdd__V_11_11;
+
+          {
+            mercury__robdd__V_10_10 = mercury__robdd__var_1_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarB_5);
+          }
+          {
+            mercury__robdd__V_11_11 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__F_6 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarA_4, mercury__robdd__V_10_10, mercury__robdd__V_11_11);
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          mercury__robdd__F_6 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word mercury__robdd__V_8_8;
+          MR_Word mercury__robdd__V_9_9;
+          MR_Word mercury__robdd__V_21_21;
+          MR_Word mercury__robdd__V_22_22;
+
+          {
+            mercury__robdd__V_8_8 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_21_21 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_22_22 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_9_9 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarA_4, mercury__robdd__V_21_21, mercury__robdd__V_22_22);
+          }
+          {
+            mercury__robdd__F_6 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarB_5, mercury__robdd__V_8_8, mercury__robdd__V_9_9);
+          }
+        }
+        break;
+    }
+    return mercury__robdd__F_6;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__neq_vars_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_12,
+  MR_Word mercury__robdd__VarA_4,
+  MR_Word mercury__robdd__VarB_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__F_6;
+    MR_Word mercury__robdd__R_7;
+    MR_Integer mercury__robdd__V_15_15 = (MR_Integer) mercury__robdd__VarA_4;
+    MR_Integer mercury__robdd__V_16_16 = (MR_Integer) mercury__robdd__VarB_5;
+
+    mercury__robdd__succeeded = (mercury__robdd__V_15_15 < mercury__robdd__V_16_16);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__R_7 = (MR_Integer) 1;
+    else
+      {
+        mercury__robdd__succeeded = (mercury__robdd__V_15_15 == mercury__robdd__V_16_16);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__R_7 = (MR_Integer) 0;
+        else
+          mercury__robdd__R_7 = (MR_Integer) 2;
+      }
+    switch (mercury__robdd__R_7) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__robdd__V_10_10;
+          MR_Word mercury__robdd__V_11_11;
+          MR_Word mercury__robdd__V_21_21;
+          MR_Word mercury__robdd__V_22_22;
+
+          {
+            mercury__robdd__V_21_21 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_22_22 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_10_10 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarB_5, mercury__robdd__V_21_21, mercury__robdd__V_22_22);
+          }
+          {
+            mercury__robdd__V_11_11 = mercury__robdd__var_1_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarB_5);
+          }
+          {
+            mercury__robdd__F_6 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarA_4, mercury__robdd__V_10_10, mercury__robdd__V_11_11);
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          mercury__robdd__F_6 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word mercury__robdd__V_8_8;
+          MR_Word mercury__robdd__V_9_9;
+          MR_Word mercury__robdd__V_24_24;
+          MR_Word mercury__robdd__V_25_25;
+
+          {
+            mercury__robdd__V_24_24 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_25_25 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_8_8 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarA_4, mercury__robdd__V_24_24, mercury__robdd__V_25_25);
+          }
+          {
+            mercury__robdd__V_9_9 = mercury__robdd__var_1_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarA_4);
+          }
+          {
+            mercury__robdd__F_6 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarB_5, mercury__robdd__V_8_8, mercury__robdd__V_9_9);
+          }
+        }
+        break;
+    }
+    return mercury__robdd__F_6;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__eq_vars_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_12,
+  MR_Word mercury__robdd__VarA_4,
+  MR_Word mercury__robdd__VarB_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__F_6;
+    MR_Word mercury__robdd__R_7;
+    MR_Integer mercury__robdd__V_15_15 = (MR_Integer) mercury__robdd__VarA_4;
+    MR_Integer mercury__robdd__V_16_16 = (MR_Integer) mercury__robdd__VarB_5;
+
+    mercury__robdd__succeeded = (mercury__robdd__V_15_15 < mercury__robdd__V_16_16);
+    if (mercury__robdd__succeeded)
+      mercury__robdd__R_7 = (MR_Integer) 1;
+    else
+      {
+        mercury__robdd__succeeded = (mercury__robdd__V_15_15 == mercury__robdd__V_16_16);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__R_7 = (MR_Integer) 0;
+        else
+          mercury__robdd__R_7 = (MR_Integer) 2;
+      }
+    switch (mercury__robdd__R_7) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__robdd__V_10_10;
+          MR_Word mercury__robdd__V_11_11;
+          MR_Word mercury__robdd__V_21_21;
+          MR_Word mercury__robdd__V_22_22;
+
+          {
+            mercury__robdd__V_10_10 = mercury__robdd__var_1_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarB_5);
+          }
+          {
+            mercury__robdd__V_21_21 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_22_22 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_11_11 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarB_5, mercury__robdd__V_21_21, mercury__robdd__V_22_22);
+          }
+          {
+            mercury__robdd__F_6 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarA_4, mercury__robdd__V_10_10, mercury__robdd__V_11_11);
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          mercury__robdd__F_6 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word mercury__robdd__V_8_8;
+          MR_Word mercury__robdd__V_9_9;
+          MR_Word mercury__robdd__V_24_24;
+          MR_Word mercury__robdd__V_25_25;
+
+          {
+            mercury__robdd__V_8_8 = mercury__robdd__var_1_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarA_4);
+          }
+          {
+            mercury__robdd__V_24_24 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_25_25 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_12);
+          }
+          {
+            mercury__robdd__V_9_9 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarA_4, mercury__robdd__V_24_24, mercury__robdd__V_25_25);
+          }
+          {
+            mercury__robdd__F_6 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_12, mercury__robdd__VarB_5, mercury__robdd__V_8_8, mercury__robdd__V_9_9);
+          }
+        }
+        break;
+    }
+    return mercury__robdd__F_6;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__ite_var_3_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__4_4;
+    MR_Word mercury__robdd__TypeInfo_for_T_6;
+
+{
+#define MR_PROC_LABEL mercury__robdd__ite_var_3_f_0
+
+	MR_Word V;
+	MR_Word G;
+	MR_Word H;
+	MR_Word ITE;
+
+	V =  mercury__robdd__HeadVar__1_1 ;
+	G =  mercury__robdd__HeadVar__2_2 ;
+	H =  mercury__robdd__HeadVar__3_3 ;
+		{
+
+    ITE = (MR_ROBDD_NODE_TYPE) MR_ROBDD_ite_var(V, (MR_ROBDD_node *) G,
+        (MR_ROBDD_node *) H);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__4_4  = ITE;
+}
+    return mercury__robdd__HeadVar__4_4;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__not_var_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word mercury__robdd__V_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_4_4;
+    MR_Word mercury__robdd__V_5_5;
+
+    {
+      mercury__robdd__V_4_4 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_6);
+    }
+    {
+      mercury__robdd__V_5_5 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_6);
+    }
+    {
+      mercury__robdd__HeadVar__2_2 = mercury__robdd__make_node_3_f_0(mercury__robdd__TypeInfo_for_T_6, mercury__robdd__V_3, mercury__robdd__V_4_4, mercury__robdd__V_5_5);
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__var_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_3,
+  MR_Word mercury__robdd__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__TypeInfo_for_T_4;
+
+{
+#define MR_PROC_LABEL mercury__robdd__var_1_f_0
+
+	MR_Word V;
+	MR_Word F;
+
+	V =  mercury__robdd__HeadVar__1_1 ;
+		{
+
+    F = (MR_ROBDD_NODE_TYPE) MR_ROBDD_variableRep(V);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__2_2  = F;
+}
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__f_126_1_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_6,
+  MR_Word mercury__robdd__F_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__2_2;
+    MR_Word mercury__robdd__V_4_4;
+    MR_Word mercury__robdd__V_5_5;
+
+    {
+      mercury__robdd__V_4_4 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_6);
+    }
+    {
+      mercury__robdd__V_5_5 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_6);
+    }
+    {
+      mercury__robdd__HeadVar__2_2 = mercury__robdd__ite_3_f_0(mercury__robdd__TypeInfo_for_T_6, mercury__robdd__F_3, mercury__robdd__V_4_4, mercury__robdd__V_5_5);
+    }
+    return mercury__robdd__HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__f_61_92_61_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_7,
+  MR_Word mercury__robdd__F_4,
+  MR_Word mercury__robdd__G_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__V_6_6;
+    MR_Word mercury__robdd__V_9_9;
+    MR_Word mercury__robdd__V_10_10;
+
+    {
+      mercury__robdd__V_9_9 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_7);
+    }
+    {
+      mercury__robdd__V_10_10 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_7);
+    }
+    {
+      mercury__robdd__V_6_6 = mercury__robdd__ite_3_f_0(mercury__robdd__TypeInfo_for_T_7, mercury__robdd__G_5, mercury__robdd__V_9_9, mercury__robdd__V_10_10);
+    }
+    {
+      mercury__robdd__HeadVar__3_3 = mercury__robdd__ite_3_f_0(mercury__robdd__TypeInfo_for_T_7, mercury__robdd__F_4, mercury__robdd__V_6_6, mercury__robdd__G_5);
+    }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__f_61_58_61_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_7,
+  MR_Word mercury__robdd__F_4,
+  MR_Word mercury__robdd__G_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__V_6_6;
+    MR_Word mercury__robdd__V_9_9;
+    MR_Word mercury__robdd__V_10_10;
+
+    {
+      mercury__robdd__V_9_9 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_7);
+    }
+    {
+      mercury__robdd__V_10_10 = mercury__robdd__one_0_f_0(mercury__robdd__TypeInfo_for_T_7);
+    }
+    {
+      mercury__robdd__V_6_6 = mercury__robdd__ite_3_f_0(mercury__robdd__TypeInfo_for_T_7, mercury__robdd__G_5, mercury__robdd__V_9_9, mercury__robdd__V_10_10);
+    }
+    {
+      mercury__robdd__HeadVar__3_3 = mercury__robdd__ite_3_f_0(mercury__robdd__TypeInfo_for_T_7, mercury__robdd__F_4, mercury__robdd__G_5, mercury__robdd__V_6_6);
+    }
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__f_less_or_equal_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_4,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__TypeInfo_for_T_5;
+
+{
+#define MR_PROC_LABEL mercury__robdd__f_less_or_equal_2_f_0
+
+	MR_Word X;
+	MR_Word Y;
+	MR_Word F;
+
+	X =  mercury__robdd__HeadVar__1_1 ;
+	Y =  mercury__robdd__HeadVar__2_2 ;
+		{
+
+    F = (MR_ROBDD_NODE_TYPE) MR_ROBDD_implies((MR_ROBDD_node *) X,
+        (MR_ROBDD_node *) Y);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__3_3  = F;
+}
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__f_plus_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_4,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__3_3;
+    MR_Word mercury__robdd__TypeInfo_for_T_5;
+
+{
+#define MR_PROC_LABEL mercury__robdd__f_plus_2_f_0
+
+	MR_Word X;
+	MR_Word Y;
+	MR_Word F;
+
+	X =  mercury__robdd__HeadVar__1_1 ;
+	Y =  mercury__robdd__HeadVar__2_2 ;
+		{
+
+    F = (MR_ROBDD_NODE_TYPE) MR_ROBDD_lub((MR_ROBDD_node *) X,
+        (MR_ROBDD_node *) Y);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__3_3  = F;
+}
+    return mercury__robdd__HeadVar__3_3;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__f_times_2_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_7,
+  MR_Word mercury__robdd__X_4,
+  MR_Word mercury__robdd__Y_5)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__R_6;
+    MR_Word mercury__robdd__TypeInfo_for_T_18;
+
+{
+#define MR_PROC_LABEL mercury__robdd__f_times_2_f_0
+
+	MR_Word X;
+	MR_Word Y;
+	MR_Word F;
+
+	X =  mercury__robdd__X_4 ;
+	Y =  mercury__robdd__Y_5 ;
+		{
+
+    F = (MR_ROBDD_NODE_TYPE) MR_ROBDD_glb((MR_ROBDD_node *) X,
+        (MR_ROBDD_node *) Y);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__R_6  = F;
+}
+    {
+      MR_Word mercury__robdd__V_8_8;
+      MR_Integer mercury__robdd__CastX_12;
+      MR_Integer mercury__robdd__CastY_13;
+
+      {
+        mercury__robdd__V_8_8 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_7);
+      }
+      mercury__robdd__CastX_12 = (MR_Integer) mercury__robdd__X_4;
+      mercury__robdd__CastY_13 = (MR_Integer) mercury__robdd__V_8_8;
+      mercury__robdd__succeeded = (mercury__robdd__CastX_12 == mercury__robdd__CastY_13);
+      if (mercury__robdd__succeeded)
+        mercury__robdd__succeeded = MR_TRUE;
+      else
+        {
+          MR_Integer mercury__robdd__V_10_10 = (MR_Integer) mercury__robdd__X_4;
+          MR_Integer mercury__robdd__V_11_11 = (MR_Integer) mercury__robdd__V_8_8;
+
+          mercury__robdd__succeeded = (mercury__robdd__V_10_10 == mercury__robdd__V_11_11);
+        }
+    }
+    if (!(mercury__robdd__succeeded))
+      {
+        MR_Word mercury__robdd__V_9_9;
+        MR_Integer mercury__robdd__CastX_16;
+        MR_Integer mercury__robdd__CastY_17;
+
+        {
+          mercury__robdd__V_9_9 = mercury__robdd__zero_0_f_0(mercury__robdd__TypeInfo_for_T_7);
+        }
+        mercury__robdd__CastX_16 = (MR_Integer) mercury__robdd__Y_5;
+        mercury__robdd__CastY_17 = (MR_Integer) mercury__robdd__V_9_9;
+        mercury__robdd__succeeded = (mercury__robdd__CastX_16 == mercury__robdd__CastY_17);
+        if (mercury__robdd__succeeded)
+          mercury__robdd__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer mercury__robdd__V_14_14 = (MR_Integer) mercury__robdd__Y_5;
+            MR_Integer mercury__robdd__V_15_15 = (MR_Integer) mercury__robdd__V_9_9;
+
+            mercury__robdd__succeeded = (mercury__robdd__V_14_14 == mercury__robdd__V_15_15);
+          }
+      }
+    if (mercury__robdd__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__robdd__f_times_2_f_0
+
+
+		{
+
+    fprintf(stderr, "Zero constraint!!!\n");
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      }
+    else
+      {
+      }
+    return mercury__robdd__R_6;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__ite_3_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_5,
+  MR_Word mercury__robdd__HeadVar__1_1,
+  MR_Word mercury__robdd__HeadVar__2_2,
+  MR_Word mercury__robdd__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__4_4;
+    MR_Word mercury__robdd__TypeInfo_for_T_6;
+
+{
+#define MR_PROC_LABEL mercury__robdd__ite_3_f_0
+
+	MR_Word F;
+	MR_Word G;
+	MR_Word H;
+	MR_Word ITE;
+
+	F =  mercury__robdd__HeadVar__1_1 ;
+	G =  mercury__robdd__HeadVar__2_2 ;
+	H =  mercury__robdd__HeadVar__3_3 ;
+		{
+
+    ITE = (MR_ROBDD_NODE_TYPE) MR_ROBDD_ite((MR_ROBDD_node *) F,
+        (MR_ROBDD_node *) G, (MR_ROBDD_node *) H);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__4_4  = ITE;
+}
+    return mercury__robdd__HeadVar__4_4;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__zero_0_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__TypeInfo_for_T_3;
+
+{
+#define MR_PROC_LABEL mercury__robdd__zero_0_f_0
+
+	MR_Word F;
+
+		{
+
+    F = (MR_ROBDD_NODE_TYPE) MR_ROBDD_falseVar();
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__1_1  = F;
+}
+    return mercury__robdd__HeadVar__1_1;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__one_0_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__1_1;
+    MR_Word mercury__robdd__TypeInfo_for_T_3;
+
+{
+#define MR_PROC_LABEL mercury__robdd__one_0_f_0
+
+	MR_Word F;
+
+		{
+
+    F = (MR_ROBDD_NODE_TYPE) MR_ROBDD_trueVar();
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__robdd__HeadVar__1_1  = F;
+}
+    return mercury__robdd__HeadVar__1_1;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__robdd__empty_vars_set_0_f_0(
+  MR_Word mercury__robdd__TypeInfo_for_T_2)
+{
+  {
+    MR_bool mercury__robdd__succeeded;
+    MR_Word mercury__robdd__HeadVar__1_1 = (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    MR_Word mercury__robdd__V_2_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+    return mercury__robdd__HeadVar__1_1;
+  }
+}
+
+void mercury__robdd__init(void)
+{
+}
+
+void mercury__robdd__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_entailment_result_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_equiv_vars_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_equivalent_result_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_imp_map_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_imp_res_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_imp_res_2_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_imp_vars_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_implication_result_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_leader_map_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_leader_to_eqvclass_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_literal_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_robdd_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_robdd_0);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_robdd_cache_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_var_cache_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_vars_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_vars_entailed_result_1);
+	MR_register_type_ctor_info(&mercury__robdd__robdd__type_ctor_info_write_var_1);
+}
+
+void mercury__robdd__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__robdd__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module robdd. */

@@ -1,0 +1,208 @@
+/*
+** Automatically generated from `ml_util.m'
+** by the Mercury compiler,
+** version rotd-2017-01-16
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.ml_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_util
+#define MR_HEADER_GUARD_ml_backend__ml_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_UTIL_DECL_GUARD
+#define ML_BACKEND__ML_UTIL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+MR_bool MR_CALL 
+ml_backend__ml_util__code_address_is_for_this_function_3_p_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2,
+  MR_Word ml_backend__ml_util__param_3);
+
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_contains_foreign_code_2_p_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_contains_outline_foreign_proc_2_p_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_is_commit_type_var_1_p_0(
+  MR_Word ml_backend__ml_util__param_1);
+
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_is_function_1_p_0(
+  MR_Word ml_backend__ml_util__param_1);
+
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_is_public_1_p_0(
+  MR_Word ml_backend__ml_util__param_1);
+
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_is_type_1_p_0(
+  MR_Word ml_backend__ml_util__param_1);
+
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_is_type_ctor_info_1_p_0(
+  MR_Word ml_backend__ml_util__param_1);
+
+MR_bool MR_CALL 
+ml_backend__ml_util__defns_contain_main_1_p_0(
+  MR_Word ml_backend__ml_util__param_1);
+
+void MR_CALL 
+ml_backend__ml_util__has_foreign_languages_2_p_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word * ml_backend__ml_util__param_2);
+
+void MR_CALL 
+ml_backend__ml_util__statement_contains_statement_2_p_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word * ml_backend__ml_util__param_2,
+  MR_Cont ml_backend__ml_util__param_3,
+  void * ml_backend__ml_util__param_4);
+
+void MR_CALL 
+ml_backend__ml_util__stmt_contains_statement_2_p_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word * ml_backend__ml_util__param_2,
+  MR_Cont ml_backend__ml_util__param_3,
+  void * ml_backend__ml_util__param_4);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__defn_contains_var_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__defns_contains_var_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_array_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2,
+  MR_Word ml_backend__ml_util__param_3);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_bool_1_f_0(
+  MR_Word ml_backend__ml_util__param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_boxed_int_1_f_0(
+  MR_Integer ml_backend__ml_util__param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_builtin_const_1_f_0(
+  MR_String ml_backend__ml_util__param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_foreign_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_String ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_int_1_f_0(
+  MR_Integer ml_backend__ml_util__param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_maybe_3_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2,
+  MR_Word ml_backend__ml_util__param_3,
+  MR_Word ml_backend__ml_util__param_4);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_null_pointer_1_f_0(
+  MR_Word ml_backend__ml_util__param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_reserved_address_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_string_1_f_0(
+  MR_String ml_backend__ml_util__param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__initializer_contains_var_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__lval_contains_var_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__lvals_contains_var_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__maybe_rval_contains_var_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__rval_contains_var_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__rvals_contains_var_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__statement_contains_var_2_f_0(
+  MR_Word ml_backend__ml_util__param_1,
+  MR_Word ml_backend__ml_util__param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_util__wrap_init_obj_1_f_0(
+  MR_Word ml_backend__ml_util__param_1);
+
+void mercury__ml_backend__ml_util__init(void);
+void mercury__ml_backend__ml_util__init_type_tables(void);
+void mercury__ml_backend__ml_util__init_debugger(void);
+const char *mercury__ml_backend__ml_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.ml_util */
+
+/* :- end_interface ml_backend.ml_util. */

@@ -1,0 +1,12 @@
+:- module (hlds.mark_tail_calls).
+:- interface.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.compiler_util).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type maybe_changed
+    --->    not_changed 
+    ;       maybe_changed .

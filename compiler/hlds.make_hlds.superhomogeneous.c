@@ -1,0 +1,9687 @@
+/*
+** Automatically generated from `superhomogeneous.m'
+** by the Mercury compiler,
+** version rotd-2017-01-16
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.make_hlds.superhomogeneous. */
+/* :- implementation. */
+
+/*
+INIT mercury__hlds__make_hlds__superhomogeneous__init
+ENDINIT
+*/
+
+#include "hlds.make_hlds.superhomogeneous.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.mode_util.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.from_ground_term_util.mih"
+#include "hlds.goal_util.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_out.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.make_goal.mih"
+#include "hlds.make_hlds.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "term_io.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.equiv_type.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.parse_dcg_goal.mih"
+#include "parse_tree.parse_goal.mih"
+#include "parse_tree.parse_inst_mode_name.mih"
+#include "parse_tree.parse_sym_name.mih"
+#include "parse_tree.parse_tree_out_info.mih"
+#include "parse_tree.parse_tree_out_term.mih"
+#include "parse_tree.parse_type_name.mih"
+#include "parse_tree.parse_types.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_mode.mih"
+#include "parse_tree.prog_out.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_util.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "hlds.hlds_out.hlds_out_goal.mih"
+#include "hlds.hlds_out.hlds_out_util.mih"
+#include "hlds.make_hlds.add_class.mih"
+#include "hlds.make_hlds.add_pred.mih"
+#include "hlds.make_hlds.add_special_pred.mih"
+#include "hlds.make_hlds.field_access.mih"
+#include "hlds.make_hlds.goal_expr_to_goal.mih"
+#include "hlds.make_hlds.make_hlds_passes.mih"
+#include "hlds.make_hlds.qual_info.mih"
+#include "hlds.make_hlds.state_var.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__superhomogeneous__cord__pti_cord_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__superhomogeneous__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_inst_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__superhomogeneous__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_inst_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__superhomogeneous__term__pti_term_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__superhomogeneous__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_arg_context_0_0[2];
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_arg_context_0_1[1];
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_1;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__list__ti_list_1hlds__hlds_goal__type_ctor_info_unify_sub_context_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_arg_context_0_2[3];
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_2;
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_arg_context_0_0[1];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_arg_context_0_1[1];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_arg_context_0_2[1];
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_arg_context_0[3];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_arg_context_0[3];
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_arg_context_0[3];
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__cord__ti_cord_1hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_expansion_0_0[2];
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_expansion_0_0;
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_expansion_0_0[1];
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_expansion_0[1];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_expansion_0[1];
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_expansion_0[1];
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_lambda_arg_0_0[7];
+
+static const MR_ConstString hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_names_lambda_arg_0_0[7];
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_lambda_arg_0_0;
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_lambda_arg_0_0[1];
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_lambda_arg_0[1];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_lambda_arg_0[1];
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_arg_0[1];
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_kind_0_0;
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_kind_0_1;
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_value_ordered_lambda_arg_kind_0[2];
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_name_ordered_lambda_arg_kind_0[2];
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_arg_kind_0[2];
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_mode_presence_0_0;
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_mode_presence_0_1;
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_value_ordered_lambda_arg_mode_presence_0[2];
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_name_ordered_lambda_arg_mode_presence_0[2];
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_arg_mode_presence_0[2];
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_body_kind_0_0;
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_body_kind_0_1;
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_value_ordered_lambda_body_kind_0[2];
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_name_ordered_lambda_body_kind_0[2];
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_body_kind_0[2];
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__list__ti_list_1hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__list__ti_list_1parse_tree__error_util__type_ctor_info_error_spec_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__parse_tree__maybe_error__ti_maybe1_1parse_tree__prog_data__type_ctor_info_determinism_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_lambda_head_0_0[8];
+
+static const MR_DuArgLocn hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_locns_lambda_head_0_0[8];
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_lambda_head_0_0;
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_lambda_head_0_0[1];
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_lambda_head_0[1];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_lambda_head_0[1];
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_head_0[1];
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_dcg_vars_0_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_maybe_dcg_vars_0_1[2];
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_dcg_vars_0_1;
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_dcg_vars_0_0[1];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_dcg_vars_0_1[1];
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_maybe_dcg_vars_0[2];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_maybe_dcg_vars_0[2];
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_maybe_dcg_vars_0[2];
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_fgti_var_size_0_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_maybe_fgti_var_size_0_1[2];
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_fgti_var_size_0_1;
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_fgti_var_size_0_0[1];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_fgti_var_size_0_1[1];
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_maybe_fgti_var_size_0[2];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_maybe_fgti_var_size_0[2];
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_maybe_fgti_var_size_0[2];
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____arg_context_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____arg_context_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____expansion_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____expansion_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_kind_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_kind_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_mode_presence_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_mode_presence_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_body_kind_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_body_kind_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_head_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_head_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____maybe_dcg_vars_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____maybe_dcg_vars_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____maybe_fgti_var_size_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____maybe_fgti_var_size_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_112_117_114_105_116_121_95_97_110_110_111_116_97_116_105_111_110_95_95_91_49_93_95_48_3_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Term0_4,
+  MR_Word * hlds__make_hlds__superhomogeneous__Purity_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__Term_6);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_112_108_105_116_95_108_97_115_116_95_116_119_111_95_95_91_49_93_95_48_6_p_0(
+  MR_Box hlds__make_hlds__superhomogeneous__Element1_7,
+  MR_Box hlds__make_hlds__superhomogeneous__Element2_8,
+  MR_Word hlds__make_hlds__superhomogeneous__Elements3plus_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__Main_10,
+  MR_Box * hlds__make_hlds__superhomogeneous__LastButOne_11,
+  MR_Box * hlds__make_hlds__superhomogeneous__Last_12);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_121_98_101_95_117_110_114_97_118_101_108_95_115_112_101_99_105_97_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVar_23,
+  MR_String hlds__make_hlds__superhomogeneous__YAtom_24,
+  MR_Word hlds__make_hlds__superhomogeneous__YArgTerms_25,
+  MR_Word hlds__make_hlds__superhomogeneous__YFunctorContext_26,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_27,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_28,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_29,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_30,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_32,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_114_97_118_101_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVar_23,
+  MR_Word hlds__make_hlds__superhomogeneous__YFunctor_24,
+  MR_Word hlds__make_hlds__superhomogeneous__YArgTerms0_25,
+  MR_Word hlds__make_hlds__superhomogeneous__YFunctorContext_26,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_27,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_28,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_29,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_30,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_32,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_62,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_63,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_64,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_65,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_66,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_67,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_68,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_69,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_70,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_71,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_72,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_73);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_97_115_115_105_102_121_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVar_21,
+  MR_Word hlds__make_hlds__superhomogeneous__YTerm_22,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_23,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_25,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_28,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_41,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_42,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_43,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_44,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_45,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_46,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_47,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_48,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_49,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_50,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_51,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_52);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_97_115_115_105_102_121_95_117_110_114_97_118_101_108_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XTerm_21,
+  MR_Word hlds__make_hlds__superhomogeneous__YTerm_22,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_23,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_25,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_28,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_55,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_56,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_57,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_58,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_59,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_60,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_61,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_62,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_63,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_64,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_65,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_66);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LHSVar_21,
+  MR_Word hlds__make_hlds__superhomogeneous__RHS0_22,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_23,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_25,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_28,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_36,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_37,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_38,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_39,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_40,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_41,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_42,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_43,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_44,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_45,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_46,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_47);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_117_110_114_97_118_101_108_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LHS0_21,
+  MR_Word hlds__make_hlds__superhomogeneous__RHS0_22,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_23,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_25,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_28,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_37,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_38,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_39,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_40,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_41,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_42,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_43,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_44,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_45,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_46,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_47,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_48);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_53_93_95_48_19_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVar_20,
+  MR_Word hlds__make_hlds__superhomogeneous__YTerm_21,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_22,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgContext_23,
+  MR_Integer hlds__make_hlds__superhomogeneous__ArgNum_25,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_26,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_42,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_43,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_44,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_45,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_46,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_47,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_48,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_49,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_50,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_51,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_52,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_53);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_119_105_116_104_95_99_111_110_116_101_120_116_115_95_95_91_53_93_95_48_18_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVars_19,
+  MR_Word hlds__make_hlds__superhomogeneous__YTerms_20,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgContexts_21,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_22,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansions_24,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_40,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_41,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_42,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_43,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_44,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_45,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_46,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_47,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_48,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_49,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_50,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_51);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_119_105_116_104_95_102_114_101_115_104_95_118_97_114_115_95_95_91_52_93_95_48_20_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3,
+  MR_Integer hlds__make_hlds__superhomogeneous__HeadVar__5_5,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SeenXVars_0_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__7_7,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__8_8,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_11,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_12,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_13,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_14,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_15,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_16,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_17,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_18,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_19,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_20);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_95_91_53_93_95_48_19_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__4_4,
+  MR_Integer hlds__make_hlds__superhomogeneous__HeadVar__6_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__7_7,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_8,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_9,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_10,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_11,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_12,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_13,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_14,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_15,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_16,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_17,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_18,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_19);
+
+static MR_String MR_CALL 
+hlds__make_hlds__superhomogeneous__IntroducedFrom__func__build_lambda_expression__1808__1_3_f_0(
+  MR_Word hlds__make_hlds__superhomogeneous__InstVarSet_47,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_105,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_212);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____maybe_fgti_var_size_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____maybe_fgti_var_size_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____maybe_dcg_vars_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____maybe_dcg_vars_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_head_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_head_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_body_kind_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_body_kind_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_mode_presence_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_mode_presence_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_kind_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_kind_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____expansion_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____expansion_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__make_fresh_arg_var_no_svar_5_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Arg_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__Var_7,
+  MR_Word hlds__make_hlds__superhomogeneous__Vars0_8,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_12,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_13);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__make_fresh_arg_vars_subst_svars_loop_9_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_0_2,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_3,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_4,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_5,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_7,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_8,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_9);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__qualify_lambda_arg_modes_8_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__3_3,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__4_4,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_0_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_6,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_7,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_8);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__superhomogeneous__qualify_lambda_arg_modes_if_not_opt_imported_7_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__qualify_lambda_arg_modes_if_not_opt_imported_7_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs0_8,
+  MR_Word * hlds__make_hlds__superhomogeneous__LambdaArgs_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__Modes_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_17,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_18,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_19,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_20);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__partition_args_and_lambda_vars_7_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__ModuleInfo_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__4_4,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__5_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__6_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__7_7);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0_3(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0_2(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LHSVar_20,
+  MR_Word hlds__make_hlds__superhomogeneous__UnificationPurity_21,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_22,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_23,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__LambdaHead_25,
+  MR_Word hlds__make_hlds__superhomogeneous__MaybeBodyGoal_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_27,
+  MR_Word hlds__make_hlds__superhomogeneous__OutsideSVarState_28,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_92,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_93,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_94,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_95,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_96,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_97,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_98,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_99,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_100,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_101);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_detism_3_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__VarSet_4,
+  MR_Word hlds__make_hlds__superhomogeneous__DetismTerm_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__MaybeDetism_6);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_arg_11_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Kind_12,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerm_13,
+  MR_Word * hlds__make_hlds__superhomogeneous__LambdaArg_14,
+  MR_Integer hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_0_36,
+  MR_Integer * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_37,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_38,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_39,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_0_40,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_41,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_0_42,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_43);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_args_11_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__3_3,
+  MR_Integer hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_0_4,
+  MR_Integer * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_5,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_7,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_0_8,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_9,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_0_10,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_11);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__superhomogeneous__project_lambda_arg_mode_1_f_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LambdaArg_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__superhomogeneous__project_lambda_var_1_f_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LambdaArg_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__superhomogeneous__project_lambda_arg_term_1_f_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LambdaArg_3);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__classify_lambda_arg_modes_present_absent_3_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__3_3);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_args_pred_7_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Context_8,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerms_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__LambdaArgs_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_21,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_22,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_23,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_24);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_args_func_8_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Context_9,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerms_10,
+  MR_Word hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm_11,
+  MR_Word * hlds__make_hlds__superhomogeneous__LambdaArgs_12,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_27,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_28,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_29);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_purity_pf_args_det_term_7_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_8,
+  MR_Word hlds__make_hlds__superhomogeneous__MaybeDCGVars_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_64,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_65);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_expr_19_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVar_20,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_21,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_22,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_23,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_25,
+  MR_Word hlds__make_hlds__superhomogeneous__MaybeLambdaBody_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_27,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_46,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_47,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_48,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_49,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_50,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_51,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_52,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_53,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_54,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_55,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_56);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_ordinary_cons_id_6_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Functor_7,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgTerms_8,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__ConsId_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_24,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_25);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__project_expansion_goals_2_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word * hlds__make_hlds__superhomogeneous__GoalCord_4);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_loop_5_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_0_2,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_3,
+  MR_Integer hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_0_4,
+  MR_Integer * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_5);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_6_p_0_2(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_6_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_6_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_7,
+  MR_Word hlds__make_hlds__superhomogeneous__TermVar_8,
+  MR_Word hlds__make_hlds__superhomogeneous__BaseGoal_9,
+  MR_Integer hlds__make_hlds__superhomogeneous__BaseGoalSize_10,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgExpansions_11,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_12);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_expansions_before_goal_top_not_fgti_4_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_expansions_before_goal_top_not_fgti_4_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_5,
+  MR_Word hlds__make_hlds__superhomogeneous__Expansions_6,
+  MR_Word hlds__make_hlds__superhomogeneous__BaseGoal_7,
+  MR_Word * hlds__make_hlds__superhomogeneous__Goal_8);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_expansion_before_goal_top_not_fgti_4_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_5,
+  MR_Word hlds__make_hlds__superhomogeneous__Expansion_6,
+  MR_Word hlds__make_hlds__superhomogeneous__BaseGoal_7,
+  MR_Word * hlds__make_hlds__superhomogeneous__Goal_8);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__mark_nonlocals_in_ground_term_initial_2_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__expansion_to_goal_cord_wrap_if_fgti_3_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_4,
+  MR_Word hlds__make_hlds__superhomogeneous__Expansion_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__MaybeWrappedGoalCord_6);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__expansion_to_goal_wrap_if_fgti_3_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_4,
+  MR_Word hlds__make_hlds__superhomogeneous__Expansion_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__Goal_6);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_arg_unifications_with_contexts_18_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_arg_unifications_18_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_2);
+
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_1[103][2];
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_2[1][6];
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_3[4][5];
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_4[4][3];
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_5[8][1];
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_6[1][7];
+
+
+/* sealed */ struct hlds__make_hlds__superhomogeneous__vector_common_type_7_0_s {
+  const MR_String hlds__make_hlds__superhomogeneous__vector_common_type_7_0__vct_7_f_0;
+};
+
+static /* final */ const struct hlds__make_hlds__superhomogeneous__vector_common_type_7_0_s hlds__make_hlds__superhomogeneous_vector_common_7[32];
+
+
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_1[103][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_term_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_term_1)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_generic_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_sub_context_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is too big to be represented on this machine."))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[10]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[9])))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[12]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[9])))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "<lambda expression head> :- <lambda expression body>"))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[14]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[13])))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "can be used only in expressions of the form"))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[16]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[15])))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in a field update expression:"))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[18]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "operator"))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[20]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[19])))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "^"))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[22]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[21])))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "of the"))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[24]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[23])))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "On the right hand side"))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[26]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[25])))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in a field selection expression:"))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[28]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[20]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[29])))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[22]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[30])))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[24]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[31])))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[26]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[32])))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "must have at least arguments."))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[34]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[9])))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "that is defined by a DCG clause"))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[36]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[35])))
+  },
+  /* row 38 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: the head of a lambda expression"))
+  },
+  /* row 39 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[38]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[37])))
+  },
+  /* row 40 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "in clauses for functions."))
+  },
+  /* row 41 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[40]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[9])))
+  },
+  /* row 42 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: DCG notation is not allowed"))
+  },
+  /* row 43 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[42]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[41])))
+  },
+  /* row 44 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "impure"))
+  },
+  /* row 45 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[44]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[13])))
+  },
+  /* row 46 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "or"))
+  },
+  /* row 47 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[46]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[45])))
+  },
+  /* row 48 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "semipure"))
+  },
+  /* row 49 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[48]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[47])))
+  },
+  /* row 50 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "or one of those forms preceded by either"))
+  },
+  /* row 51 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[50]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[49])))
+  },
+  /* row 52 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[51])))
+  },
+  /* row 53 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) ","))
+  },
+  /* row 54 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[53]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[52])))
+  },
+  /* row 55 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "any_func(<args>) = <retarg>"))
+  },
+  /* row 56 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[55]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[54])))
+  },
+  /* row 57 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[56])))
+  },
+  /* row 58 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "func(<args>) = <retarg>"))
+  },
+  /* row 59 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[58]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[57])))
+  },
+  /* row 60 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[59])))
+  },
+  /* row 61 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "any_func(<args>) = <retarg> is <determinism>"))
+  },
+  /* row 62 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[61]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[60])))
+  },
+  /* row 63 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[62])))
+  },
+  /* row 64 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "func(<args>) = <retarg> is <determinism>"))
+  },
+  /* row 65 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[64]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[63])))
+  },
+  /* row 66 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[65])))
+  },
+  /* row 67 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "any_pred(<args>) is <determinism>"))
+  },
+  /* row 68 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[67]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[66])))
+  },
+  /* row 69 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[68])))
+  },
+  /* row 70 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "pred(<args>) is <determinism>"))
+  },
+  /* row 71 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[70]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[69])))
+  },
+  /* row 72 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "should have one of the following forms:"))
+  },
+  /* row 73 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[72]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[71])))
+  },
+  /* row 74 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: the clause head part of a lambda expression"))
+  },
+  /* row 75 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[74]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[73])))
+  },
+  /* row 76 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "some but not all arguments have modes."))
+  },
+  /* row 77 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[76]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[9])))
+  },
+  /* row 78 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: in head of lambda expression:"))
+  },
+  /* row 79 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[78]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[77])))
+  },
+  /* row 80 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "none of the arguments have modes."))
+  },
+  /* row 81 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[80]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[9])))
+  },
+  /* row 82 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: in head of predicate lambda expression:"))
+  },
+  /* row 83 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[82]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[81])))
+  },
+  /* row 84 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is not a valid determinism."))
+  },
+  /* row 85 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[84]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[9])))
+  },
+  /* row 86 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "are inconsistent."))
+  },
+  /* row 87 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[86]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[9])))
+  },
+  /* row 88 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: the integer literal"))
+  },
+  /* row 89 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 90 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In the body of lambda expression:"))
+  },
+  /* row 91 */
+  {
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_5[0])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 92 */
+  {
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_5[2])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 93 */
+  {
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_5[4])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 94 */
+  {
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_5[5])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 95 */
+  {
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_5[6])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 96 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In the"))
+  },
+  /* row 97 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "argument of the lambda expression:"))
+  },
+  /* row 98 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[97]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 99 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error:"))
+  },
+  /* row 100 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: the constraints on the inst"))
+  },
+  /* row 101 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error: the clause neck operator"))
+  },
+  /* row 102 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "In explicit type qualification:"))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_2[1][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_info_0)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_expansion_0)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__cord__pti_cord_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_3[4][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_expansion_0)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__cord__pti_cord_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__term__pti_term_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_4[4][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_3[0])),
+    ((MR_Box) (hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_6_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_3[1])),
+    ((MR_Box) (hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_3[2])),
+    ((MR_Box) (hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_3[3])),
+    ((MR_Box) (hlds__make_hlds__superhomogeneous__qualify_lambda_arg_modes_if_not_opt_imported_7_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_5[8][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[39])))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_String) "::"))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[43])))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[75])))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[79])))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[83])))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) ((MR_Integer) 5))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__superhomogeneous_scalar_common_6[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_inst_var_type_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_var_name_print_0)),
+    ((MR_Box) (&hlds__make_hlds__superhomogeneous__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_inst_var_type_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+};
+
+
+static /* final */ const struct hlds__make_hlds__superhomogeneous__vector_common_type_7_0_s hlds__make_hlds__superhomogeneous_vector_common_7[32] = {
+  /* row 0 */   {     NULL },
+  /* row 1 */   {     (MR_String) "\100" },
+  /* row 2 */   {     (MR_String) "is" },
+  /* row 3 */   {     NULL },
+  /* row 4 */   {     NULL },
+  /* row 5 */   {     (MR_String) "else" },
+  /* row 6 */   {     NULL },
+  /* row 7 */   {     (MR_String) "-->" },
+  /* row 8 */   {     (MR_String) "with_type" },
+  /* row 9 */   {     NULL },
+  /* row 10 */   {     NULL },
+  /* row 11 */   {     NULL },
+  /* row 12 */   {     NULL },
+  /* row 13 */   {     (MR_String) ":-" },
+  /* row 14 */   {     NULL },
+  /* row 15 */   {     NULL },
+  /* row 16 */   {     NULL },
+  /* row 17 */   {     NULL },
+  /* row 18 */   {     NULL },
+  /* row 19 */   {     NULL },
+  /* row 20 */   {     NULL },
+  /* row 21 */   {     NULL },
+  /* row 22 */   {     NULL },
+  /* row 23 */   {     NULL },
+  /* row 24 */   {     NULL },
+  /* row 25 */   {     NULL },
+  /* row 26 */   {     (MR_String) ";" },
+  /* row 27 */   {     (MR_String) ":" },
+  /* row 28 */   {     (MR_String) "=" },
+  /* row 29 */   {     (MR_String) ":=" },
+  /* row 30 */   {     NULL },
+  /* row 31 */   {     (MR_String) "^" },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__superhomogeneous__cord__pti_cord_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__superhomogeneous__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_inst_var_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__superhomogeneous__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_inst_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__superhomogeneous__term__pti_term_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_term_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__superhomogeneous__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_arg_context_0_0[2] = {
+  (MR_PseudoTypeInfo) &mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_pred_or_func_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_0 = {
+  (MR_String) "ac_head",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_arg_context_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_arg_context_0_1[1] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_call_id_0
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_1 = {
+  (MR_String) "ac_call",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_arg_context_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__list__ti_list_1hlds__hlds_goal__type_ctor_info_unify_sub_context_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_sub_context_0
+  }
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_arg_context_0_2[3] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_main_context_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__list__ti_list_1hlds__hlds_goal__type_ctor_info_unify_sub_context_0
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_2 = {
+  (MR_String) "ac_functor",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_arg_context_0_2,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_arg_context_0_0[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_0
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_arg_context_0_1[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_1
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_arg_context_0_2[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_2
+};
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_arg_context_0[3] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_arg_context_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_arg_context_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_arg_context_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_arg_context_0[3] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_1,
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_2,
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_arg_context_0_0
+};
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_arg_context_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_arg_context_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Unify____arg_context_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Compare____arg_context_0_0_10001)),
+  (MR_String) "hlds.make_hlds.superhomogeneous",
+  (MR_String) "arg_context",
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_arg_context_0 },
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_arg_context_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_arg_context_0
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__cord__ti_cord_1hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_expansion_0_0[2] = {
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_maybe_fgti_var_size_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__cord__ti_cord_1hlds__hlds_goal__type_ctor_info_hlds_goal_0
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_expansion_0_0 = {
+  (MR_String) "expansion",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_expansion_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_expansion_0_0[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_expansion_0_0
+};
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_expansion_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_expansion_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_expansion_0[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_expansion_0_0
+};
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_expansion_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_expansion_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Unify____expansion_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Compare____expansion_0_0_10001)),
+  (MR_String) "hlds.make_hlds.superhomogeneous",
+  (MR_String) "expansion",
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_expansion_0 },
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_expansion_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_expansion_0
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_term_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_lambda_arg_0_0[7] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_kind_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__term__ti_term_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_mode_presence_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0,
+  (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_context_0
+};
+
+static const MR_ConstString hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_names_lambda_arg_0_0[7] = {
+  (MR_String) "la_arg_num",
+  (MR_String) "la_kind",
+  (MR_String) "la_arg_term",
+  (MR_String) "la_arg_var",
+  (MR_String) "la_arg_mode_presence",
+  (MR_String) "la_arg_mode",
+  (MR_String) "la_arg_mode_context"
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_lambda_arg_0_0 = {
+  (MR_String) "lambda_arg",
+  (MR_Integer) 7,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_lambda_arg_0_0,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_names_lambda_arg_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_lambda_arg_0_0[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_lambda_arg_0_0
+};
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_lambda_arg_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_lambda_arg_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_lambda_arg_0[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_lambda_arg_0_0
+};
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_arg_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Unify____lambda_arg_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Compare____lambda_arg_0_0_10001)),
+  (MR_String) "hlds.make_hlds.superhomogeneous",
+  (MR_String) "lambda_arg",
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_lambda_arg_0 },
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_lambda_arg_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_arg_0
+};
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_kind_0_0 = {
+  (MR_String) "lambda_arg_ordinary",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_kind_0_1 = {
+  (MR_String) "lambda_arg_func_result",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_value_ordered_lambda_arg_kind_0[2] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_kind_0_0,
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_kind_0_1
+};
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_name_ordered_lambda_arg_kind_0[2] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_kind_0_1,
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_kind_0_0
+};
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_arg_kind_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_kind_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Unify____lambda_arg_kind_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Compare____lambda_arg_kind_0_0_10001)),
+  (MR_String) "hlds.make_hlds.superhomogeneous",
+  (MR_String) "lambda_arg_kind",
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_name_ordered_lambda_arg_kind_0 },
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_value_ordered_lambda_arg_kind_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_arg_kind_0
+};
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_mode_presence_0_0 = {
+  (MR_String) "lam_absent",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_mode_presence_0_1 = {
+  (MR_String) "lam_present",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_value_ordered_lambda_arg_mode_presence_0[2] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_mode_presence_0_0,
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_mode_presence_0_1
+};
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_name_ordered_lambda_arg_mode_presence_0[2] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_mode_presence_0_0,
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_arg_mode_presence_0_1
+};
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_arg_mode_presence_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_mode_presence_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Unify____lambda_arg_mode_presence_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Compare____lambda_arg_mode_presence_0_0_10001)),
+  (MR_String) "hlds.make_hlds.superhomogeneous",
+  (MR_String) "lambda_arg_mode_presence",
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_name_ordered_lambda_arg_mode_presence_0 },
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_value_ordered_lambda_arg_mode_presence_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_arg_mode_presence_0
+};
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_body_kind_0_0 = {
+  (MR_String) "lambda_body_ordinary",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_body_kind_0_1 = {
+  (MR_String) "lambda_body_dcg",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_value_ordered_lambda_body_kind_0[2] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_body_kind_0_0,
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_body_kind_0_1
+};
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_name_ordered_lambda_body_kind_0[2] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_body_kind_0_1,
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_functor_desc_lambda_body_kind_0_0
+};
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_body_kind_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_body_kind_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Unify____lambda_body_kind_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Compare____lambda_body_kind_0_0_10001)),
+  (MR_String) "hlds.make_hlds.superhomogeneous",
+  (MR_String) "lambda_body_kind",
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_name_ordered_lambda_body_kind_0 },
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__enum_value_ordered_lambda_body_kind_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_body_kind_0
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__list__ti_list_1hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__list__ti_list_1parse_tree__error_util__type_ctor_info_error_spec_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__superhomogeneous__parse_tree__maybe_error__ti_maybe1_1parse_tree__prog_data__type_ctor_info_determinism_0 = {
+  &parse_tree__maybe_error__parse_tree__maybe_error__type_ctor_info_maybe1_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0
+  }
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_lambda_head_0_0[8] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_purity_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ho_groundness_0,
+  (MR_PseudoTypeInfo) &mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_pred_or_func_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_lambda_eval_method_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__list__ti_list_1hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__list__ti_list_1parse_tree__error_util__type_ctor_info_error_spec_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__list__ti_list_1parse_tree__error_util__type_ctor_info_error_spec_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__parse_tree__maybe_error__ti_maybe1_1parse_tree__prog_data__type_ctor_info_determinism_0
+};
+
+static const MR_DuArgLocn hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_locns_lambda_head_0_0[8] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 2,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 3,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 3,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 4,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 5,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_lambda_head_0_0 = {
+  (MR_String) "lambda_head",
+  (MR_Integer) 8,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_lambda_head_0_0,
+  NULL,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_locns_lambda_head_0_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_lambda_head_0_0[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_lambda_head_0_0
+};
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_lambda_head_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_lambda_head_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_lambda_head_0[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_lambda_head_0_0
+};
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_head_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_head_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Unify____lambda_head_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Compare____lambda_head_0_0_10001)),
+  (MR_String) "hlds.make_hlds.superhomogeneous",
+  (MR_String) "lambda_head",
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_lambda_head_0 },
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_lambda_head_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_lambda_head_0
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_dcg_vars_0_0 = {
+  (MR_String) "no_dcg_vars",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_maybe_dcg_vars_0_1[2] = {
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_dcg_vars_0_1 = {
+  (MR_String) "dcg_vars",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_maybe_dcg_vars_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_dcg_vars_0_0[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_dcg_vars_0_0
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_dcg_vars_0_1[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_dcg_vars_0_1
+};
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_maybe_dcg_vars_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_dcg_vars_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_dcg_vars_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_maybe_dcg_vars_0[2] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_dcg_vars_0_1,
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_dcg_vars_0_0
+};
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_maybe_dcg_vars_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_maybe_dcg_vars_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Unify____maybe_dcg_vars_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Compare____maybe_dcg_vars_0_0_10001)),
+  (MR_String) "hlds.make_hlds.superhomogeneous",
+  (MR_String) "maybe_dcg_vars",
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_maybe_dcg_vars_0 },
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_maybe_dcg_vars_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_maybe_dcg_vars_0
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_fgti_var_size_0_0 = {
+  (MR_String) "not_fgti",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_maybe_fgti_var_size_0_1[2] = {
+  (MR_PseudoTypeInfo) &hlds__make_hlds__superhomogeneous__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_fgti_var_size_0_1 = {
+  (MR_String) "fgti_var_size",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__field_types_maybe_fgti_var_size_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_fgti_var_size_0_0[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_fgti_var_size_0_0
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_fgti_var_size_0_1[1] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_fgti_var_size_0_1
+};
+
+static const MR_DuPtagLayout hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_maybe_fgti_var_size_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_fgti_var_size_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_stag_ordered_maybe_fgti_var_size_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_maybe_fgti_var_size_0[2] = {
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_fgti_var_size_0_1,
+  &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_functor_desc_maybe_fgti_var_size_0_0
+};
+
+static const MR_Integer hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_maybe_fgti_var_size_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_maybe_fgti_var_size_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Unify____maybe_fgti_var_size_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__superhomogeneous____Compare____maybe_fgti_var_size_0_0_10001)),
+  (MR_String) "hlds.make_hlds.superhomogeneous",
+  (MR_String) "maybe_fgti_var_size",
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_name_ordered_maybe_fgti_var_size_0 },
+  {     hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__du_ptag_ordered_maybe_fgti_var_size_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__functor_number_map_maybe_fgti_var_size_0
+};
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____arg_context_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    {
+      hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous____Unify____arg_context_0_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2));
+    }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____arg_context_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3)
+{
+  {
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1;
+
+    {
+      hlds__make_hlds__superhomogeneous____Compare____arg_context_0_0(&hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1, ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_3));
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_1 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____expansion_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    {
+      hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous____Unify____expansion_0_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2));
+    }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____expansion_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3)
+{
+  {
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1;
+
+    {
+      hlds__make_hlds__superhomogeneous____Compare____expansion_0_0(&hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1, ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_3));
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_1 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    {
+      hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous____Unify____lambda_arg_0_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2));
+    }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3)
+{
+  {
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1;
+
+    {
+      hlds__make_hlds__superhomogeneous____Compare____lambda_arg_0_0(&hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1, ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_3));
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_1 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_kind_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    {
+      hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous____Unify____lambda_arg_kind_0_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2));
+    }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_kind_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3)
+{
+  {
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1;
+
+    {
+      hlds__make_hlds__superhomogeneous____Compare____lambda_arg_kind_0_0(&hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1, ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_3));
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_1 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_mode_presence_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    {
+      hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous____Unify____lambda_arg_mode_presence_0_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2));
+    }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_mode_presence_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3)
+{
+  {
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1;
+
+    {
+      hlds__make_hlds__superhomogeneous____Compare____lambda_arg_mode_presence_0_0(&hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1, ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_3));
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_1 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_body_kind_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    {
+      hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous____Unify____lambda_body_kind_0_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2));
+    }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_body_kind_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3)
+{
+  {
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1;
+
+    {
+      hlds__make_hlds__superhomogeneous____Compare____lambda_body_kind_0_0(&hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1, ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_3));
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_1 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_head_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    {
+      hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous____Unify____lambda_head_0_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2));
+    }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_head_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3)
+{
+  {
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1;
+
+    {
+      hlds__make_hlds__superhomogeneous____Compare____lambda_head_0_0(&hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1, ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_3));
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_1 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____maybe_dcg_vars_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    {
+      hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous____Unify____maybe_dcg_vars_0_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2));
+    }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____maybe_dcg_vars_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3)
+{
+  {
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1;
+
+    {
+      hlds__make_hlds__superhomogeneous____Compare____maybe_dcg_vars_0_0(&hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1, ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_3));
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_1 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____maybe_fgti_var_size_0_0_10001(
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    {
+      hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous____Unify____maybe_fgti_var_size_0_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2));
+    }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____maybe_fgti_var_size_0_0_10001(
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_3)
+{
+  {
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1;
+
+    {
+      hlds__make_hlds__superhomogeneous____Compare____maybe_fgti_var_size_0_0(&hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1, ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_2), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_3));
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_1 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_HeadVar__1_1));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_112_117_114_105_116_121_95_97_110_110_111_116_97_116_105_111_110_95_95_91_49_93_95_48_3_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Term0_4,
+  MR_Word * hlds__make_hlds__superhomogeneous__Purity_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__Term_6)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__Term0_4)) == (MR_mktag((MR_Integer) 0)));
+    MR_Word hlds__make_hlds__superhomogeneous__Term1_8;
+    MR_Word hlds__make_hlds__superhomogeneous__Purity0_10;
+    MR_String hlds__make_hlds__superhomogeneous__PurityName_7;
+    MR_Word hlds__make_hlds__superhomogeneous__V_11_11;
+    MR_Word hlds__make_hlds__superhomogeneous__V_12_12;
+    MR_Word hlds__make_hlds__superhomogeneous__V_13_13;
+    MR_Word hlds__make_hlds__superhomogeneous__V_9_9;
+
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        hlds__make_hlds__superhomogeneous__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Term0_4, (MR_Integer) 0)));
+        hlds__make_hlds__superhomogeneous__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Term0_4, (MR_Integer) 1)));
+        hlds__make_hlds__superhomogeneous__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Term0_4, (MR_Integer) 2)));
+        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_11_11)) == (MR_mktag((MR_Integer) 0)));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__PurityName_7 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_11_11, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_12_12)) == (MR_mktag((MR_Integer) 1)));
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__Term1_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_12_12, (MR_Integer) 0)));
+                hlds__make_hlds__superhomogeneous__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_12_12, (MR_Integer) 1)));
+                hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_13_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__succeeded = parse_tree__prog_out__purity_name_2_p_1(&hlds__make_hlds__superhomogeneous__Purity0_10, hlds__make_hlds__superhomogeneous__PurityName_7);
+                  }
+              }
+          }
+      }
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        *hlds__make_hlds__superhomogeneous__Purity_5 = hlds__make_hlds__superhomogeneous__Purity0_10;
+        *hlds__make_hlds__superhomogeneous__Term_6 = hlds__make_hlds__superhomogeneous__Term1_8;
+      }
+    else
+      {
+        *hlds__make_hlds__superhomogeneous__Purity_5 = (MR_Integer) 0;
+        *hlds__make_hlds__superhomogeneous__Term_6 = hlds__make_hlds__superhomogeneous__Term0_4;
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_112_108_105_116_95_108_97_115_116_95_116_119_111_95_95_91_49_93_95_48_6_p_0(
+  MR_Box hlds__make_hlds__superhomogeneous__Element1_7,
+  MR_Box hlds__make_hlds__superhomogeneous__Element2_8,
+  MR_Word hlds__make_hlds__superhomogeneous__Elements3plus_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__Main_10,
+  MR_Box * hlds__make_hlds__superhomogeneous__LastButOne_11,
+  MR_Box * hlds__make_hlds__superhomogeneous__Last_12)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if ((hlds__make_hlds__superhomogeneous__Elements3plus_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *hlds__make_hlds__superhomogeneous__Main_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *hlds__make_hlds__superhomogeneous__LastButOne_11 = hlds__make_hlds__superhomogeneous__Element1_7;
+        *hlds__make_hlds__superhomogeneous__Last_12 = hlds__make_hlds__superhomogeneous__Element2_8;
+      }
+    else
+      {
+        MR_Box hlds__make_hlds__superhomogeneous__Element3_13 = (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Elements3plus_9, (MR_Integer) 0));
+        MR_Word hlds__make_hlds__superhomogeneous__Elements4plus_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Elements3plus_9, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__MainTail_15;
+
+        {
+          hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_112_108_105_116_95_108_97_115_116_95_116_119_111_95_95_91_49_93_95_48_6_p_0(hlds__make_hlds__superhomogeneous__Element2_8, hlds__make_hlds__superhomogeneous__Element3_13, hlds__make_hlds__superhomogeneous__Elements4plus_14, &hlds__make_hlds__superhomogeneous__MainTail_15, hlds__make_hlds__superhomogeneous__LastButOne_11, hlds__make_hlds__superhomogeneous__Last_12);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *hlds__make_hlds__superhomogeneous__Main_10 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = hlds__make_hlds__superhomogeneous__Element1_7;
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MainTail_15));
+        }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_121_98_101_95_117_110_114_97_118_101_108_95_115_112_101_99_105_97_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVar_23,
+  MR_String hlds__make_hlds__superhomogeneous__YAtom_24,
+  MR_Word hlds__make_hlds__superhomogeneous__YArgTerms_25,
+  MR_Word hlds__make_hlds__superhomogeneous__YFunctorContext_26,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_27,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_28,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_29,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_30,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_32,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__slot_0;
+    MR_String hlds__make_hlds__superhomogeneous__str_1;
+
+    /* hashed string jump switch */
+    /* compute the hash value of the input string */
+    hlds__make_hlds__superhomogeneous__slot_0 = ((MR_hash_string5(hlds__make_hlds__superhomogeneous__YAtom_24)) & (MR_Integer) 31);
+    /* no collisions; no hash chain loop */
+    /* lookup the string for this hash slot */
+    hlds__make_hlds__superhomogeneous__str_1 = ((&hlds__make_hlds__superhomogeneous_vector_common_7[0 + hlds__make_hlds__superhomogeneous__slot_0]))->hlds__make_hlds__superhomogeneous__vector_common_type_7_0__vct_7_f_0;
+    /* did we find a match? */
+    if ((((hlds__make_hlds__superhomogeneous__str_1 != NULL)) && ((strcmp(hlds__make_hlds__superhomogeneous__str_1, hlds__make_hlds__superhomogeneous__YAtom_24) == 0))))
+      {
+        /* we found a match; dispatch to the corresponding code */
+        switch (hlds__make_hlds__superhomogeneous__slot_0) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            {
+              /* case "@" */
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_479_479;
+                MR_Word hlds__make_hlds__superhomogeneous__LVal_48;
+                MR_Word hlds__make_hlds__superhomogeneous__RVal_49;
+                MR_Word hlds__make_hlds__superhomogeneous__ExpansionL_50;
+                MR_Word hlds__make_hlds__superhomogeneous__ExpansionR_51;
+                MR_Word hlds__make_hlds__superhomogeneous__GoalCordL_53;
+                MR_Word hlds__make_hlds__superhomogeneous__GoalCordR_55;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_366_366;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_367_367;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_368_368;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_369_369;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_370_370;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_371_371;
+                MR_Word hlds__make_hlds__superhomogeneous__V_378_378;
+                MR_Word hlds__make_hlds__superhomogeneous__V_379_379;
+                MR_Word hlds__make_hlds__superhomogeneous__V_900_900;
+                MR_Word hlds__make_hlds__superhomogeneous__V_902_902;
+                MR_Word hlds__make_hlds__superhomogeneous__V_52_52;
+                MR_Word hlds__make_hlds__superhomogeneous__V_54_54;
+
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YArgTerms_25)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__LVal_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_902_902 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_902_902)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__RVal_49 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_902_902, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_900_900 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_902_902, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_900_900 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            {
+                              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__LVal_48, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__ExpansionL_50, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_366_366, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_367_367, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_368_368, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_369_369, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_370_370, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_371_371);
+                            }
+                            {
+                              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__RVal_49, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__ExpansionR_51, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_366_366, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_367_367, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_368_368, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_369_369, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_370_370, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_371_371, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+                            }
+                            hlds__make_hlds__superhomogeneous__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ExpansionL_50, (MR_Integer) 0)));
+                            hlds__make_hlds__superhomogeneous__GoalCordL_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ExpansionL_50, (MR_Integer) 1)));
+                            hlds__make_hlds__superhomogeneous__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ExpansionR_51, (MR_Integer) 0)));
+                            hlds__make_hlds__superhomogeneous__GoalCordR_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ExpansionR_51, (MR_Integer) 1)));
+                            hlds__make_hlds__superhomogeneous__V_378_378 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                            hlds__make_hlds__superhomogeneous__TypeCtorInfo_479_479 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+                            {
+                              hlds__make_hlds__superhomogeneous__V_379_379 = mercury__cord__f_43_43_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_479_479, hlds__make_hlds__superhomogeneous__GoalCordL_53, hlds__make_hlds__superhomogeneous__GoalCordR_55);
+                            }
+                            {
+                              MR_Word base;
+                              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                              *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+                              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_378_378));
+                              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_379_379));
+                            }
+                            hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                          }
+                      }
+                  }
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              /* case "is" */
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__YTerm_136;
+                MR_Word hlds__make_hlds__superhomogeneous__V_164_164;
+
+                {
+                  hlds__make_hlds__superhomogeneous__V_164_164 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_164_164, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YAtom_24));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__YTerm_136 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_136, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_164_164));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_136, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YArgTerms_25));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_136, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YFunctorContext_26));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__parse_lambda_expr_19_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__Purity_30, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__YTerm_136, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), hlds__make_hlds__superhomogeneous__Expansion_32, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+                }
+                *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142;
+                hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              /* case "else" */
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_480_746;
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_481_747;
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_482_748;
+                MR_Word hlds__make_hlds__superhomogeneous__CondThenTerm0_61;
+                MR_Word hlds__make_hlds__superhomogeneous__V_313_313;
+                MR_Word hlds__make_hlds__superhomogeneous__V_314_314;
+                MR_Word hlds__make_hlds__superhomogeneous__V_315_315;
+                MR_String hlds__make_hlds__superhomogeneous__V_316_316;
+                MR_Word hlds__make_hlds__superhomogeneous__V_317_317;
+                MR_Word hlds__make_hlds__superhomogeneous__V_318_318;
+                MR_Word hlds__make_hlds__superhomogeneous__V_319_319;
+                MR_String hlds__make_hlds__superhomogeneous__V_320_320;
+                MR_Word hlds__make_hlds__superhomogeneous__V_321_321;
+                MR_Word hlds__make_hlds__superhomogeneous__V_322_322;
+                MR_Word hlds__make_hlds__superhomogeneous__V_323_323;
+                MR_Word hlds__make_hlds__superhomogeneous__V_324_324;
+                MR_Word hlds__make_hlds__superhomogeneous__CondTerm_686;
+                MR_Word hlds__make_hlds__superhomogeneous__MaybeVarsCond_687;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_325_716;
+                MR_Word hlds__make_hlds__superhomogeneous__ContextPieces_745;
+                MR_Word hlds__make_hlds__superhomogeneous__ElseTerm0_820;
+                MR_Word hlds__make_hlds__superhomogeneous__CondTerm0_821;
+                MR_Word hlds__make_hlds__superhomogeneous__ThenTerm0_822;
+                MR_Word hlds__make_hlds__superhomogeneous__V_66_66;
+                MR_Word hlds__make_hlds__superhomogeneous__V_65_65;
+
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YArgTerms_25)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__CondThenTerm0_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_313_313 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_313_313)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__ElseTerm0_820 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_313_313, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_314_314 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_313_313, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_314_314 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__CondThenTerm0_61)) == (MR_mktag((MR_Integer) 0)));
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              {
+                                hlds__make_hlds__superhomogeneous__V_315_315 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__CondThenTerm0_61, (MR_Integer) 0)));
+                                hlds__make_hlds__superhomogeneous__V_317_317 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__CondThenTerm0_61, (MR_Integer) 1)));
+                                hlds__make_hlds__superhomogeneous__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__CondThenTerm0_61, (MR_Integer) 2)));
+                                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_315_315)) == (MR_mktag((MR_Integer) 0)));
+                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                  {
+                                    hlds__make_hlds__superhomogeneous__V_316_316 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_315_315, (MR_Integer) 0)));
+                                    hlds__make_hlds__superhomogeneous__succeeded = (strcmp(hlds__make_hlds__superhomogeneous__V_316_316, (MR_String) "if") == 0);
+                                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                                      {
+                                        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_317_317)) == (MR_mktag((MR_Integer) 1)));
+                                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                                          {
+                                            hlds__make_hlds__superhomogeneous__V_318_318 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_317_317, (MR_Integer) 0)));
+                                            hlds__make_hlds__superhomogeneous__V_324_324 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_317_317, (MR_Integer) 1)));
+                                            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_324_324 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                                              {
+                                                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_318_318)) == (MR_mktag((MR_Integer) 0)));
+                                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                  {
+                                                    hlds__make_hlds__superhomogeneous__V_319_319 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_318_318, (MR_Integer) 0)));
+                                                    hlds__make_hlds__superhomogeneous__V_321_321 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_318_318, (MR_Integer) 1)));
+                                                    hlds__make_hlds__superhomogeneous__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_318_318, (MR_Integer) 2)));
+                                                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_319_319)) == (MR_mktag((MR_Integer) 0)));
+                                                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                      {
+                                                        hlds__make_hlds__superhomogeneous__V_320_320 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_319_319, (MR_Integer) 0)));
+                                                        hlds__make_hlds__superhomogeneous__succeeded = (strcmp(hlds__make_hlds__superhomogeneous__V_320_320, (MR_String) "then") == 0);
+                                                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                          {
+                                                            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_321_321)) == (MR_mktag((MR_Integer) 1)));
+                                                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                              {
+                                                                hlds__make_hlds__superhomogeneous__CondTerm0_821 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_321_321, (MR_Integer) 0)));
+                                                                hlds__make_hlds__superhomogeneous__V_322_322 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_321_321, (MR_Integer) 1)));
+                                                                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_322_322)) == (MR_mktag((MR_Integer) 1)));
+                                                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                                  {
+                                                                    hlds__make_hlds__superhomogeneous__ThenTerm0_822 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_322_322, (MR_Integer) 0)));
+                                                                    hlds__make_hlds__superhomogeneous__V_323_323 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_322_322, (MR_Integer) 1)));
+                                                                    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_323_323 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                                      {
+                                                                        hlds__make_hlds__superhomogeneous__TypeCtorInfo_480_746 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+                                                                        hlds__make_hlds__superhomogeneous__TypeCtorInfo_481_747 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                                                                        {
+                                                                          mercury__term__coerce_2_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_480_746, hlds__make_hlds__superhomogeneous__TypeCtorInfo_481_747, hlds__make_hlds__superhomogeneous__CondTerm0_821, &hlds__make_hlds__superhomogeneous__CondTerm_686);
+                                                                        }
+                                                                        hlds__make_hlds__superhomogeneous__TypeCtorInfo_482_748 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+                                                                        {
+                                                                          hlds__make_hlds__superhomogeneous__ContextPieces_745 = mercury__cord__init_0_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_482_748);
+                                                                        }
+                                                                        {
+                                                                          parse_tree__parse_goal__parse_some_vars_goal_5_p_0(hlds__make_hlds__superhomogeneous__CondTerm_686, hlds__make_hlds__superhomogeneous__ContextPieces_745, &hlds__make_hlds__superhomogeneous__MaybeVarsCond_687, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_325_716);
+                                                                        }
+                                                                        if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__MaybeVarsCond_687)) == (MR_mktag((MR_Integer) 0))))
+                                                                          {
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__VarsCondSpecs_566 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__MaybeVarsCond_687, (MR_Integer) 0)));
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__V_568_568;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__V_569_569;
+
+                                                                            {
+                                                                              *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, hlds__make_hlds__superhomogeneous__VarsCondSpecs_566, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__V_569_569 = hlds__make_goal__true_goal_with_context_1_f_0(hlds__make_hlds__superhomogeneous__Context_27);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__V_568_568 = mercury__cord__singleton_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_569_569)));
+                                                                            }
+                                                                            {
+                                                                              MR_Word base;
+                                                                              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                                                              *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+                                                                              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                                              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_568_568));
+                                                                            }
+                                                                            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142;
+                                                                            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144;
+                                                                            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_325_716;
+                                                                            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148;
+                                                                            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150;
+                                                                          }
+                                                                        else
+                                                                          {
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_483_624;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__Vars_572 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeVarsCond_687, (MR_Integer) 0)));
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__StateVars_573 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeVarsCond_687, (MR_Integer) 1)));
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__CondParseTree_574 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeVarsCond_687, (MR_Integer) 2)));
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__BeforeInsideSVarState_576;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__EmptySubst_577;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__CondGoal_578;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__AfterCondInsideSVarState_579;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__ThenTerm_580;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState0_581;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__ThenExpansion_582;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState_583;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__ThenGoalInfo_584;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__ThenGoal0_585;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__AfterThenSVarState_586;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__ElseTerm_587;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__AfterElseSVarState0_588;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__ElseExpansion_589;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__AfterElseSVarState_590;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__ElseGoalInfo_591;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__ElseGoal0_592;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__ThenGoal_593;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__ElseGoal_594;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__GoalExpr_596;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_597;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__Goal_598;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_330_599;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_332_601;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_333_602;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_334_603;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_335_604;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_336_605;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_337_606;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_338_607;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_339_608;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_340_609;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_341_610;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_342_611;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_343_612;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__V_613_613;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_345_614;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_346_615;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_347_616;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_348_617;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_351_618;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__V_619_619;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__V_621_621;
+                                                                            MR_Word hlds__make_hlds__superhomogeneous__V_623_623;
+
+                                                                            {
+                                                                              hlds__make_hlds__state_var__svar_prepare_for_local_state_vars_7_p_0(hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_325_716, hlds__make_hlds__superhomogeneous__StateVars_573, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, &hlds__make_hlds__superhomogeneous__BeforeInsideSVarState_576, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_330_599);
+                                                                            }
+                                                                            hlds__make_hlds__superhomogeneous__TypeInfo_483_624 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0];
+                                                                            {
+                                                                              mercury__map__init_1_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_483_624, hlds__make_hlds__superhomogeneous__TypeInfo_483_624, &hlds__make_hlds__superhomogeneous__EmptySubst_577);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__goal_expr_to_goal__transform_parse_tree_goal_to_hlds_16_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__CondParseTree_574, hlds__make_hlds__superhomogeneous__EmptySubst_577, &hlds__make_hlds__superhomogeneous__CondGoal_578, hlds__make_hlds__superhomogeneous__BeforeInsideSVarState_576, &hlds__make_hlds__superhomogeneous__AfterCondInsideSVarState_579, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_332_601, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_325_716, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_333_602, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_334_603, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_335_604, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_330_599, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_336_605);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__ThenTerm0_822, &hlds__make_hlds__superhomogeneous__ThenTerm_580, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_333_602, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_337_606, hlds__make_hlds__superhomogeneous__AfterCondInsideSVarState_579, &hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState0_581, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_336_605, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_338_607);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_97_115_115_105_102_121_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__ThenTerm_580, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__ThenExpansion_582, hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState0_581, &hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState_583, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_332_601, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_339_608, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_337_606, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_340_609, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_334_603, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_341_610, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_335_604, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_342_611, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_338_607, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_343_612);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__V_613_613 = mercury__term__get_term_context_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_480_746, hlds__make_hlds__superhomogeneous__ThenTerm_580);
+                                                                            }
+                                                                            {
+                                                                              hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__V_613_613, &hlds__make_hlds__superhomogeneous__ThenGoalInfo_584);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__expansion_to_goal_wrap_if_fgti_3_p_0(hlds__make_hlds__superhomogeneous__ThenGoalInfo_584, hlds__make_hlds__superhomogeneous__ThenExpansion_582, &hlds__make_hlds__superhomogeneous__ThenGoal0_585);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__state_var__svar_finish_local_state_vars_4_p_0(hlds__make_hlds__superhomogeneous__StateVars_573, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState_583, &hlds__make_hlds__superhomogeneous__AfterThenSVarState_586);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__ElseTerm0_820, &hlds__make_hlds__superhomogeneous__ElseTerm_587, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_340_609, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_345_614, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, &hlds__make_hlds__superhomogeneous__AfterElseSVarState0_588, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_343_612, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_346_615);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_97_115_115_105_102_121_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__ElseTerm_587, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__ElseExpansion_589, hlds__make_hlds__superhomogeneous__AfterElseSVarState0_588, &hlds__make_hlds__superhomogeneous__AfterElseSVarState_590, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_339_608, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_347_616, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_345_614, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_348_617, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_341_610, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_342_611, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_346_615, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_351_618);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__V_619_619 = mercury__term__get_term_context_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_480_746, hlds__make_hlds__superhomogeneous__ElseTerm_587);
+                                                                            }
+                                                                            {
+                                                                              hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__V_619_619, &hlds__make_hlds__superhomogeneous__ElseGoalInfo_591);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__expansion_to_goal_wrap_if_fgti_3_p_0(hlds__make_hlds__superhomogeneous__ElseGoalInfo_591, hlds__make_hlds__superhomogeneous__ElseExpansion_589, &hlds__make_hlds__superhomogeneous__ElseGoal0_592);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__state_var__svar_finish_if_then_else_18_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__StateVars_573, hlds__make_hlds__superhomogeneous__ThenGoal0_585, &hlds__make_hlds__superhomogeneous__ThenGoal_593, hlds__make_hlds__superhomogeneous__ElseGoal0_592, &hlds__make_hlds__superhomogeneous__ElseGoal_594, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, hlds__make_hlds__superhomogeneous__AfterCondInsideSVarState_579, hlds__make_hlds__superhomogeneous__AfterThenSVarState_586, hlds__make_hlds__superhomogeneous__AfterElseSVarState_590, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_348_617, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_347_616, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_351_618, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__V_621_621 = mercury__list__f_43_43_2_f_0(hlds__make_hlds__superhomogeneous__TypeInfo_483_624, hlds__make_hlds__superhomogeneous__StateVars_573, hlds__make_hlds__superhomogeneous__Vars_572);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__GoalExpr_596 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+                                                                              MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_596, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                                                                              MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_596, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_621_621));
+                                                                              MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_596, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__CondGoal_578));
+                                                                              MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_596, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ThenGoal_593));
+                                                                              MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_596, 4) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ElseGoal_594));
+                                                                            }
+                                                                            {
+                                                                              hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__Context_27, &hlds__make_hlds__superhomogeneous__GoalInfo_597);
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__Goal_598 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                                                              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal_598, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalExpr_596));
+                                                                              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal_598, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalInfo_597));
+                                                                            }
+                                                                            {
+                                                                              hlds__make_hlds__superhomogeneous__V_623_623 = mercury__cord__singleton_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_598)));
+                                                                            }
+                                                                            {
+                                                                              MR_Word base;
+                                                                              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                                                              *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+                                                                              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                                              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_623_623));
+                                                                            }
+                                                                          }
+                                                                        hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                                                      }
+                                                                  }
+                                                              }
+                                                          }
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              /* case "-->" */
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_131;
+                MR_Word hlds__make_hlds__superhomogeneous__BodyGoalTerm_132;
+                MR_Word hlds__make_hlds__superhomogeneous__V_171_171;
+                MR_Word hlds__make_hlds__superhomogeneous__V_172_172;
+
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YArgTerms_25)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_131 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_171_171 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_171_171)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__BodyGoalTerm_132 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_171_171, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_172_172 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_171_171, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_172_172 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                  }
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    MR_Word hlds__make_hlds__superhomogeneous__V_173_173;
+                    MR_Tuple hlds__make_hlds__superhomogeneous__V_179_179;
+
+                    {
+                      hlds__make_hlds__superhomogeneous__V_179_179 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_179_179, 0) = ((MR_Box) ((MR_Integer) 1));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_179_179, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__BodyGoalTerm_132));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_173_173 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_173_173, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_179_179));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__parse_lambda_expr_19_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__Purity_30, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_131, hlds__make_hlds__superhomogeneous__V_173_173, hlds__make_hlds__superhomogeneous__Expansion_32, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+                    }
+                  }
+                else
+                  {
+                    MR_Word hlds__make_hlds__superhomogeneous__Pieces_133;
+                    MR_Word hlds__make_hlds__superhomogeneous__Msg_134;
+                    MR_Word hlds__make_hlds__superhomogeneous__Spec_135;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_182_182;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_183_183;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_196_196;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_197_197;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_201_201;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_207_207;
+
+                    {
+                      hlds__make_hlds__superhomogeneous__V_183_183 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_183_183, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                      MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_183_183, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YAtom_24));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_182_182 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_182_182, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_183_183));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_182_182, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[17])));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__Pieces_133 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Pieces_133, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[101])));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Pieces_133, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_182_182));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_197_197 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_197_197, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Pieces_133));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_196_196 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_196_196, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_197_197));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_196_196, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__Msg_134 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_134, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YFunctorContext_26));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_134, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_196_196));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_201_201 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_201_201, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_134));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_201_201, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__Spec_135 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_135, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_135, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_135, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_201_201));
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_135));
+                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152));
+                    }
+                    {
+                      hlds__make_hlds__qual_info__qual_info_set_found_syntax_error_3_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151);
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_207_207 = mercury__cord__empty_0_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0);
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+                      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_207_207));
+                    }
+                    *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148;
+                    *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146;
+                    *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144;
+                  }
+                *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142;
+                hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+              }
+            }
+            break;
+          case (MR_Integer) 8:
+          case (MR_Integer) 27:
+            {
+              /* case ":", "with_type" */
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_474_474;
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_475_475;
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_476_476;
+                MR_Word hlds__make_hlds__superhomogeneous__RValTerm_39;
+                MR_Word hlds__make_hlds__superhomogeneous__DeclTypeTerm0_40;
+                MR_Word hlds__make_hlds__superhomogeneous__DeclTypeTerm1_41;
+                MR_Word hlds__make_hlds__superhomogeneous__ContextPieces_42;
+                MR_Word hlds__make_hlds__superhomogeneous__GenericVarSet_43;
+                MR_Word hlds__make_hlds__superhomogeneous__DeclTypeResult_44;
+                MR_Word hlds__make_hlds__superhomogeneous__V_380_380;
+                MR_Word hlds__make_hlds__superhomogeneous__V_381_381;
+                MR_Word hlds__make_hlds__superhomogeneous__V_382_382;
+                MR_String hlds__make_hlds__superhomogeneous__V_383_383;
+                MR_Word hlds__make_hlds__superhomogeneous__V_384_384;
+                MR_Word hlds__make_hlds__superhomogeneous__V_385_385;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_387_387;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_388_388;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_389_389;
+
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YArgTerms_25)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__RValTerm_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_380_380 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_380_380)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__DeclTypeTerm0_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_380_380, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_381_381 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_380_380, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_381_381 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            hlds__make_hlds__superhomogeneous__TypeCtorInfo_474_474 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+                            hlds__make_hlds__superhomogeneous__TypeCtorInfo_475_475 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                            {
+                              mercury__term__coerce_2_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_474_474, hlds__make_hlds__superhomogeneous__TypeCtorInfo_475_475, hlds__make_hlds__superhomogeneous__DeclTypeTerm0_40, &hlds__make_hlds__superhomogeneous__DeclTypeTerm1_41);
+                            }
+                            hlds__make_hlds__superhomogeneous__TypeCtorInfo_476_476 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+                            hlds__make_hlds__superhomogeneous__V_383_383 = (MR_String) "In explicit type qualification:";
+                            hlds__make_hlds__superhomogeneous__V_382_382 = (MR_Word) MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[102]);
+                            {
+                              hlds__make_hlds__superhomogeneous__ContextPieces_42 = mercury__cord__singleton_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_476_476, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_382_382)));
+                            }
+                            {
+                              mercury__varset__coerce_2_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_474_474, hlds__make_hlds__superhomogeneous__TypeCtorInfo_475_475, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, &hlds__make_hlds__superhomogeneous__GenericVarSet_43);
+                            }
+                            hlds__make_hlds__superhomogeneous__V_385_385 = (MR_Integer) 5;
+                            hlds__make_hlds__superhomogeneous__V_384_384 = (MR_Word) MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_5[7]);
+                            {
+                              parse_tree__parse_type_name__parse_type_5_p_0(hlds__make_hlds__superhomogeneous__V_384_384, hlds__make_hlds__superhomogeneous__GenericVarSet_43, hlds__make_hlds__superhomogeneous__ContextPieces_42, hlds__make_hlds__superhomogeneous__DeclTypeTerm1_41, &hlds__make_hlds__superhomogeneous__DeclTypeResult_44);
+                            }
+                            if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__DeclTypeResult_44)) == (MR_mktag((MR_Integer) 0))))
+                              {
+                                MR_Word hlds__make_hlds__superhomogeneous__DeclTypeSpecs_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__DeclTypeResult_44, (MR_Integer) 0)));
+
+                                {
+                                  hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_389_389 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, hlds__make_hlds__superhomogeneous__DeclTypeSpecs_47, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152);
+                                }
+                                hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_387_387 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148;
+                                hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_388_388 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150;
+                              }
+                            else
+                              {
+                                MR_Word hlds__make_hlds__superhomogeneous__DeclType_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__DeclTypeResult_44, (MR_Integer) 0)));
+                                MR_Word hlds__make_hlds__superhomogeneous__DeclVarSet_46;
+
+                                {
+                                  mercury__varset__coerce_2_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_474_474, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, &hlds__make_hlds__superhomogeneous__DeclVarSet_46);
+                                }
+                                {
+                                  hlds__make_hlds__qual_info__process_type_qualification_10_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__DeclType_45, hlds__make_hlds__superhomogeneous__DeclVarSet_46, hlds__make_hlds__superhomogeneous__YFunctorContext_26, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_387_387, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_388_388, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_389_389);
+                                }
+                              }
+                            {
+                              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__RValTerm_39, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, hlds__make_hlds__superhomogeneous__Expansion_32, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_387_387, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_388_388, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_389_389, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+                            }
+                            hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                          }
+                      }
+                  }
+              }
+            }
+            break;
+          case (MR_Integer) 13:
+            {
+              /* case ":-" */
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_515;
+                MR_Word hlds__make_hlds__superhomogeneous__BodyGoalTerm_516;
+                MR_Word hlds__make_hlds__superhomogeneous__V_490_490;
+                MR_Word hlds__make_hlds__superhomogeneous__V_491_491;
+
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YArgTerms_25)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_515 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_490_490 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_490_490)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__BodyGoalTerm_516 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_490_490, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_491_491 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_490_490, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_491_491 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                  }
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    MR_Word hlds__make_hlds__superhomogeneous__V_492_492;
+                    MR_Tuple hlds__make_hlds__superhomogeneous__V_493_493;
+
+                    {
+                      hlds__make_hlds__superhomogeneous__V_493_493 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_493_493, 0) = ((MR_Box) ((MR_Integer) 0));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_493_493, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__BodyGoalTerm_516));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_492_492 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_492_492, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_493_493));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__parse_lambda_expr_19_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__Purity_30, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_515, hlds__make_hlds__superhomogeneous__V_492_492, hlds__make_hlds__superhomogeneous__Expansion_32, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+                    }
+                  }
+                else
+                  {
+                    MR_Word hlds__make_hlds__superhomogeneous__Pieces_496;
+                    MR_Word hlds__make_hlds__superhomogeneous__Msg_497;
+                    MR_Word hlds__make_hlds__superhomogeneous__Spec_498;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_501_501;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_502_502;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_504_504;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_505_505;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_509_509;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_513_513;
+
+                    {
+                      hlds__make_hlds__superhomogeneous__V_502_502 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_502_502, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                      MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_502_502, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YAtom_24));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_501_501 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_501_501, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_502_502));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_501_501, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[17])));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__Pieces_496 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Pieces_496, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[101])));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Pieces_496, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_501_501));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_505_505 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_505_505, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Pieces_496));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_504_504 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_504_504, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_505_505));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_504_504, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__Msg_497 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_497, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YFunctorContext_26));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_497, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_504_504));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_509_509 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_509_509, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_497));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_509_509, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__Spec_498 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_498, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_498, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_498, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_509_509));
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_498));
+                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152));
+                    }
+                    {
+                      hlds__make_hlds__qual_info__qual_info_set_found_syntax_error_3_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151);
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_513_513 = mercury__cord__empty_0_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0);
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+                      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_513_513));
+                    }
+                    *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148;
+                    *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146;
+                    *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144;
+                  }
+                *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142;
+                hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+              }
+            }
+            break;
+          case (MR_Integer) 26:
+            {
+              /* case ";" */
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_480_480;
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_481_481;
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_482_482;
+                MR_Word hlds__make_hlds__superhomogeneous__ElseTerm0_62;
+                MR_Word hlds__make_hlds__superhomogeneous__CondTerm0_63;
+                MR_Word hlds__make_hlds__superhomogeneous__ThenTerm0_64;
+                MR_Word hlds__make_hlds__superhomogeneous__CondTerm_68;
+                MR_Word hlds__make_hlds__superhomogeneous__MaybeVarsCond_69;
+                MR_Word hlds__make_hlds__superhomogeneous__V_306_306;
+                MR_Word hlds__make_hlds__superhomogeneous__V_307_307;
+                MR_Word hlds__make_hlds__superhomogeneous__V_308_308;
+                MR_String hlds__make_hlds__superhomogeneous__V_309_309;
+                MR_Word hlds__make_hlds__superhomogeneous__V_310_310;
+                MR_Word hlds__make_hlds__superhomogeneous__V_311_311;
+                MR_Word hlds__make_hlds__superhomogeneous__V_312_312;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_325_325;
+                MR_Word hlds__make_hlds__superhomogeneous__CondThenTerm0_396;
+                MR_Word hlds__make_hlds__superhomogeneous__ContextPieces_397;
+                MR_Word hlds__make_hlds__superhomogeneous__V_67_67;
+
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YArgTerms_25)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__CondThenTerm0_396 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_306_306 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_306_306)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__ElseTerm0_62 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_306_306, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_307_307 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_306_306, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_307_307 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__CondThenTerm0_396)) == (MR_mktag((MR_Integer) 0)));
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              {
+                                hlds__make_hlds__superhomogeneous__V_308_308 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__CondThenTerm0_396, (MR_Integer) 0)));
+                                hlds__make_hlds__superhomogeneous__V_310_310 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__CondThenTerm0_396, (MR_Integer) 1)));
+                                hlds__make_hlds__superhomogeneous__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__CondThenTerm0_396, (MR_Integer) 2)));
+                                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_308_308)) == (MR_mktag((MR_Integer) 0)));
+                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                  {
+                                    hlds__make_hlds__superhomogeneous__V_309_309 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_308_308, (MR_Integer) 0)));
+                                    hlds__make_hlds__superhomogeneous__succeeded = (strcmp(hlds__make_hlds__superhomogeneous__V_309_309, (MR_String) "->") == 0);
+                                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                                      {
+                                        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_310_310)) == (MR_mktag((MR_Integer) 1)));
+                                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                                          {
+                                            hlds__make_hlds__superhomogeneous__CondTerm0_63 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_310_310, (MR_Integer) 0)));
+                                            hlds__make_hlds__superhomogeneous__V_311_311 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_310_310, (MR_Integer) 1)));
+                                            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_311_311)) == (MR_mktag((MR_Integer) 1)));
+                                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                                              {
+                                                hlds__make_hlds__superhomogeneous__ThenTerm0_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_311_311, (MR_Integer) 0)));
+                                                hlds__make_hlds__superhomogeneous__V_312_312 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_311_311, (MR_Integer) 1)));
+                                                hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_312_312 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                  {
+                                                    hlds__make_hlds__superhomogeneous__TypeCtorInfo_480_480 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+                                                    hlds__make_hlds__superhomogeneous__TypeCtorInfo_481_481 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+                                                    {
+                                                      mercury__term__coerce_2_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_480_480, hlds__make_hlds__superhomogeneous__TypeCtorInfo_481_481, hlds__make_hlds__superhomogeneous__CondTerm0_63, &hlds__make_hlds__superhomogeneous__CondTerm_68);
+                                                    }
+                                                    hlds__make_hlds__superhomogeneous__TypeCtorInfo_482_482 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+                                                    {
+                                                      hlds__make_hlds__superhomogeneous__ContextPieces_397 = mercury__cord__init_0_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_482_482);
+                                                    }
+                                                    {
+                                                      parse_tree__parse_goal__parse_some_vars_goal_5_p_0(hlds__make_hlds__superhomogeneous__CondTerm_68, hlds__make_hlds__superhomogeneous__ContextPieces_397, &hlds__make_hlds__superhomogeneous__MaybeVarsCond_69, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_325_325);
+                                                    }
+                                                    if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__MaybeVarsCond_69)) == (MR_mktag((MR_Integer) 0))))
+                                                      {
+                                                        MR_Word hlds__make_hlds__superhomogeneous__VarsCondSpecs_97 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__MaybeVarsCond_69, (MR_Integer) 0)));
+                                                        MR_Word hlds__make_hlds__superhomogeneous__V_328_328;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__V_329_329;
+
+                                                        {
+                                                          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, hlds__make_hlds__superhomogeneous__VarsCondSpecs_97, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_329_329 = hlds__make_goal__true_goal_with_context_1_f_0(hlds__make_hlds__superhomogeneous__Context_27);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_328_328 = mercury__cord__singleton_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_329_329)));
+                                                        }
+                                                        {
+                                                          MR_Word base;
+                                                          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                                          *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+                                                          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_328_328));
+                                                        }
+                                                        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142;
+                                                        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144;
+                                                        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_325_325;
+                                                        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148;
+                                                        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150;
+                                                      }
+                                                    else
+                                                      {
+                                                        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_483_483;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__Vars_70 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeVarsCond_69, (MR_Integer) 0)));
+                                                        MR_Word hlds__make_hlds__superhomogeneous__StateVars_71 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeVarsCond_69, (MR_Integer) 1)));
+                                                        MR_Word hlds__make_hlds__superhomogeneous__CondParseTree_72 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeVarsCond_69, (MR_Integer) 2)));
+                                                        MR_Word hlds__make_hlds__superhomogeneous__BeforeInsideSVarState_74;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__EmptySubst_75;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__CondGoal_76;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__AfterCondInsideSVarState_77;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__ThenTerm_78;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState0_79;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__ThenExpansion_80;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState_81;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__ThenGoalInfo_82;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__ThenGoal0_83;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__AfterThenSVarState_84;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__ElseTerm_85;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__AfterElseSVarState0_86;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__ElseExpansion_87;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__AfterElseSVarState_88;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__ElseGoalInfo_89;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__ElseGoal0_90;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__ThenGoal_91;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__ElseGoal_92;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__GoalExpr_94;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_95;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__Goal_96;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_330_330;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_332_332;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_333_333;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_334_334;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_335_335;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_336_336;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_337_337;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_338_338;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_339_339;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_340_340;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_341_341;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_342_342;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_343_343;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__V_344_344;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_345_345;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_346_346;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_347_347;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_348_348;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_351_351;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__V_352_352;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__V_358_358;
+                                                        MR_Word hlds__make_hlds__superhomogeneous__V_360_360;
+
+                                                        {
+                                                          hlds__make_hlds__state_var__svar_prepare_for_local_state_vars_7_p_0(hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_325_325, hlds__make_hlds__superhomogeneous__StateVars_71, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, &hlds__make_hlds__superhomogeneous__BeforeInsideSVarState_74, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_330_330);
+                                                        }
+                                                        hlds__make_hlds__superhomogeneous__TypeInfo_483_483 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0];
+                                                        {
+                                                          mercury__map__init_1_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_483_483, hlds__make_hlds__superhomogeneous__TypeInfo_483_483, &hlds__make_hlds__superhomogeneous__EmptySubst_75);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__goal_expr_to_goal__transform_parse_tree_goal_to_hlds_16_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__CondParseTree_72, hlds__make_hlds__superhomogeneous__EmptySubst_75, &hlds__make_hlds__superhomogeneous__CondGoal_76, hlds__make_hlds__superhomogeneous__BeforeInsideSVarState_74, &hlds__make_hlds__superhomogeneous__AfterCondInsideSVarState_77, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_332_332, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_325_325, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_333_333, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_334_334, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_335_335, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_330_330, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_336_336);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__ThenTerm0_64, &hlds__make_hlds__superhomogeneous__ThenTerm_78, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_333_333, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_337_337, hlds__make_hlds__superhomogeneous__AfterCondInsideSVarState_77, &hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState0_79, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_336_336, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_338_338);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_97_115_115_105_102_121_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__ThenTerm_78, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__ThenExpansion_80, hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState0_79, &hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState_81, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_332_332, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_339_339, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_337_337, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_340_340, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_334_334, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_341_341, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_335_335, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_342_342, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_338_338, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_343_343);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_344_344 = mercury__term__get_term_context_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_480_480, hlds__make_hlds__superhomogeneous__ThenTerm_78);
+                                                        }
+                                                        {
+                                                          hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__V_344_344, &hlds__make_hlds__superhomogeneous__ThenGoalInfo_82);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__expansion_to_goal_wrap_if_fgti_3_p_0(hlds__make_hlds__superhomogeneous__ThenGoalInfo_82, hlds__make_hlds__superhomogeneous__ThenExpansion_80, &hlds__make_hlds__superhomogeneous__ThenGoal0_83);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__state_var__svar_finish_local_state_vars_4_p_0(hlds__make_hlds__superhomogeneous__StateVars_71, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, hlds__make_hlds__superhomogeneous__AfterThenInsideSVarState_81, &hlds__make_hlds__superhomogeneous__AfterThenSVarState_84);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__ElseTerm0_62, &hlds__make_hlds__superhomogeneous__ElseTerm_85, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_340_340, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_345_345, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, &hlds__make_hlds__superhomogeneous__AfterElseSVarState0_86, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_343_343, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_346_346);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_97_115_115_105_102_121_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__ElseTerm_85, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__ElseExpansion_87, hlds__make_hlds__superhomogeneous__AfterElseSVarState0_86, &hlds__make_hlds__superhomogeneous__AfterElseSVarState_88, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_339_339, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_347_347, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_345_345, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_348_348, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_341_341, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_342_342, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_346_346, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_351_351);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_352_352 = mercury__term__get_term_context_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_480_480, hlds__make_hlds__superhomogeneous__ElseTerm_85);
+                                                        }
+                                                        {
+                                                          hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__V_352_352, &hlds__make_hlds__superhomogeneous__ElseGoalInfo_89);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__expansion_to_goal_wrap_if_fgti_3_p_0(hlds__make_hlds__superhomogeneous__ElseGoalInfo_89, hlds__make_hlds__superhomogeneous__ElseExpansion_87, &hlds__make_hlds__superhomogeneous__ElseGoal0_90);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__state_var__svar_finish_if_then_else_18_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__StateVars_71, hlds__make_hlds__superhomogeneous__ThenGoal0_83, &hlds__make_hlds__superhomogeneous__ThenGoal_91, hlds__make_hlds__superhomogeneous__ElseGoal0_90, &hlds__make_hlds__superhomogeneous__ElseGoal_92, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, hlds__make_hlds__superhomogeneous__AfterCondInsideSVarState_77, hlds__make_hlds__superhomogeneous__AfterThenSVarState_84, hlds__make_hlds__superhomogeneous__AfterElseSVarState_88, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_348_348, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_347_347, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_351_351, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_358_358 = mercury__list__f_43_43_2_f_0(hlds__make_hlds__superhomogeneous__TypeInfo_483_483, hlds__make_hlds__superhomogeneous__StateVars_71, hlds__make_hlds__superhomogeneous__Vars_70);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__GoalExpr_94 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+                                                          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_94, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                                                          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_94, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_358_358));
+                                                          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_94, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__CondGoal_76));
+                                                          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_94, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ThenGoal_91));
+                                                          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_94, 4) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ElseGoal_92));
+                                                        }
+                                                        {
+                                                          hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__Context_27, &hlds__make_hlds__superhomogeneous__GoalInfo_95);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__Goal_96 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal_96, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalExpr_94));
+                                                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal_96, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalInfo_95));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_360_360 = mercury__cord__singleton_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_96)));
+                                                        }
+                                                        {
+                                                          MR_Word base;
+                                                          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                                          *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+                                                          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_360_360));
+                                                        }
+                                                      }
+                                                    hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+            }
+            break;
+          case (MR_Integer) 28:
+            {
+              /* case "=" */
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__FuncArgsTerm_137;
+                MR_String hlds__make_hlds__superhomogeneous__FuncTermFunctor_139;
+                MR_Word hlds__make_hlds__superhomogeneous__V_154_154;
+                MR_Word hlds__make_hlds__superhomogeneous__V_155_155;
+                MR_Word hlds__make_hlds__superhomogeneous__V_156_156;
+                MR_Word hlds__make_hlds__superhomogeneous__V_157_157;
+                MR_Word hlds__make_hlds__superhomogeneous__V_158_158;
+                MR_Word hlds__make_hlds__superhomogeneous__YTerm_470;
+                MR_Word hlds__make_hlds__superhomogeneous___ReturnArgModeTerm_138;
+                MR_Word hlds__make_hlds__superhomogeneous__V_140_140;
+                MR_Word hlds__make_hlds__superhomogeneous__V_141_141;
+
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YArgTerms_25)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__FuncArgsTerm_137 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_154_154 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_154_154)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous___ReturnArgModeTerm_138 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_154_154, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_155_155 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_154_154, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_155_155 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__FuncArgsTerm_137)) == (MR_mktag((MR_Integer) 0)));
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              {
+                                hlds__make_hlds__superhomogeneous__V_156_156 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FuncArgsTerm_137, (MR_Integer) 0)));
+                                hlds__make_hlds__superhomogeneous__V_140_140 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FuncArgsTerm_137, (MR_Integer) 1)));
+                                hlds__make_hlds__superhomogeneous__V_141_141 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FuncArgsTerm_137, (MR_Integer) 2)));
+                                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_156_156)) == (MR_mktag((MR_Integer) 0)));
+                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                  {
+                                    hlds__make_hlds__superhomogeneous__FuncTermFunctor_139 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_156_156, (MR_Integer) 0)));
+                                    if ((strcmp(hlds__make_hlds__superhomogeneous__FuncTermFunctor_139, (MR_String) "func") == 0))
+                                      hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                    else
+                                    if ((strcmp(hlds__make_hlds__superhomogeneous__FuncTermFunctor_139, (MR_String) "any_func") == 0))
+                                      hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                    else
+                                      hlds__make_hlds__superhomogeneous__succeeded = MR_FALSE;
+                                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                                      {
+                                        hlds__make_hlds__superhomogeneous__V_158_158 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                        {
+                                          hlds__make_hlds__superhomogeneous__V_157_157 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_157_157, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YAtom_24));
+                                        }
+                                        {
+                                          hlds__make_hlds__superhomogeneous__YTerm_470 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_470, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_157_157));
+                                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_470, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YArgTerms_25));
+                                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_470, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YFunctorContext_26));
+                                        }
+                                        {
+                                          hlds__make_hlds__superhomogeneous__parse_lambda_expr_19_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__Purity_30, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__YTerm_470, hlds__make_hlds__superhomogeneous__V_158_158, hlds__make_hlds__superhomogeneous__Expansion_32, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+                                        }
+                                        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142;
+                                        hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+            }
+            break;
+          case (MR_Integer) 29:
+            {
+              /* case ":=" */
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_488_488;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldDescrTerm_116;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldValueTerm0_117;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldValueTerm_119;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldValueVar_120;
+                MR_Word hlds__make_hlds__superhomogeneous__InnerFunctor_121;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldSubContext_122;
+                MR_Word hlds__make_hlds__superhomogeneous__SetGoal_123;
+                MR_Word hlds__make_hlds__superhomogeneous__TermArgContext_124;
+                MR_Integer hlds__make_hlds__superhomogeneous__TermArgNumber_125;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldArgContext_126;
+                MR_Integer hlds__make_hlds__superhomogeneous__FieldArgNumber_127;
+                MR_Word hlds__make_hlds__superhomogeneous__ArgContexts_128;
+                MR_Word hlds__make_hlds__superhomogeneous__InputFieldArgExpansions_129;
+                MR_Word hlds__make_hlds__superhomogeneous__V_208_208;
+                MR_Word hlds__make_hlds__superhomogeneous__V_209_209;
+                MR_Word hlds__make_hlds__superhomogeneous__V_210_210;
+                MR_String hlds__make_hlds__superhomogeneous__V_211_211;
+                MR_Word hlds__make_hlds__superhomogeneous__V_212_212;
+                MR_Word hlds__make_hlds__superhomogeneous__V_213_213;
+                MR_Word hlds__make_hlds__superhomogeneous__V_214_214;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_230_230;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_231_231;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_232_232;
+                MR_Word hlds__make_hlds__superhomogeneous__V_233_233;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_234_234;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_235_235;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_236_236;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_237_237;
+                MR_Word hlds__make_hlds__superhomogeneous__V_238_238;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_239_239;
+                MR_Word hlds__make_hlds__superhomogeneous__V_240_240;
+                MR_Word hlds__make_hlds__superhomogeneous__V_241_241;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_242_242;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_243_243;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_244_244;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_245_245;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_246_246;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_247_247;
+                MR_Word hlds__make_hlds__superhomogeneous__V_248_248;
+                MR_Word hlds__make_hlds__superhomogeneous__V_249_249;
+                MR_Word hlds__make_hlds__superhomogeneous__V_250_250;
+                MR_Word hlds__make_hlds__superhomogeneous__V_251_251;
+                MR_Word hlds__make_hlds__superhomogeneous__V_252_252;
+                MR_Word hlds__make_hlds__superhomogeneous__V_253_253;
+                MR_Word hlds__make_hlds__superhomogeneous__V_260_260;
+                MR_Word hlds__make_hlds__superhomogeneous__V_261_261;
+                MR_Word hlds__make_hlds__superhomogeneous__V_262_262;
+                MR_Word hlds__make_hlds__superhomogeneous__V_263_263;
+                MR_Word hlds__make_hlds__superhomogeneous__V_264_264;
+                MR_Word hlds__make_hlds__superhomogeneous__V_265_265;
+                MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_414;
+                MR_Word hlds__make_hlds__superhomogeneous__Goal_415;
+                MR_Word hlds__make_hlds__superhomogeneous__InputTerm_416;
+                MR_Word hlds__make_hlds__superhomogeneous__InputTermVar_417;
+                MR_Word hlds__make_hlds__superhomogeneous__Functor_418;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldNames_426;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldNameContextPieces_441;
+                MR_Word hlds__make_hlds__superhomogeneous__MaybeFieldNames_442;
+                MR_Word hlds__make_hlds__superhomogeneous__InputTerm0_450;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldNameTerm_451;
+                MR_Word hlds__make_hlds__superhomogeneous__V_118_118;
+
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YArgTerms_25)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__FieldDescrTerm_116 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_208_208 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_208_208)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__FieldValueTerm0_117 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_208_208, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_209_209 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_208_208, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_209_209 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__FieldDescrTerm_116)) == (MR_mktag((MR_Integer) 0)));
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              {
+                                hlds__make_hlds__superhomogeneous__V_210_210 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FieldDescrTerm_116, (MR_Integer) 0)));
+                                hlds__make_hlds__superhomogeneous__V_212_212 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FieldDescrTerm_116, (MR_Integer) 1)));
+                                hlds__make_hlds__superhomogeneous__V_118_118 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FieldDescrTerm_116, (MR_Integer) 2)));
+                                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_210_210)) == (MR_mktag((MR_Integer) 0)));
+                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                  {
+                                    hlds__make_hlds__superhomogeneous__V_211_211 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_210_210, (MR_Integer) 0)));
+                                    hlds__make_hlds__superhomogeneous__succeeded = (strcmp(hlds__make_hlds__superhomogeneous__V_211_211, (MR_String) "^") == 0);
+                                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                                      {
+                                        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_212_212)) == (MR_mktag((MR_Integer) 1)));
+                                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                                          {
+                                            hlds__make_hlds__superhomogeneous__InputTerm0_450 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_212_212, (MR_Integer) 0)));
+                                            hlds__make_hlds__superhomogeneous__V_213_213 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_212_212, (MR_Integer) 1)));
+                                            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_213_213)) == (MR_mktag((MR_Integer) 1)));
+                                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                                              {
+                                                hlds__make_hlds__superhomogeneous__FieldNameTerm_451 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_213_213, (MR_Integer) 0)));
+                                                hlds__make_hlds__superhomogeneous__V_214_214 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_213_213, (MR_Integer) 1)));
+                                                hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_214_214 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                  {
+                                                    hlds__make_hlds__superhomogeneous__FieldNameContextPieces_441 = (MR_Word) MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[27]);
+                                                    {
+                                                      hlds__make_hlds__field_access__parse_field_list_4_p_0(hlds__make_hlds__superhomogeneous__FieldNameTerm_451, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, hlds__make_hlds__superhomogeneous__FieldNameContextPieces_441, &hlds__make_hlds__superhomogeneous__MaybeFieldNames_442);
+                                                    }
+                                                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__MaybeFieldNames_442)) == (MR_mktag((MR_Integer) 1)));
+                                                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                      {
+                                                        hlds__make_hlds__superhomogeneous__FieldNames_426 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeFieldNames_442, (MR_Integer) 0)));
+                                                        {
+                                                          hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__InputTerm0_450, &hlds__make_hlds__superhomogeneous__InputTerm_416, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_230_230, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_231_231, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_232_232);
+                                                        }
+                                                        hlds__make_hlds__superhomogeneous__V_233_233 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__make_fresh_arg_var_no_svar_5_p_0(hlds__make_hlds__superhomogeneous__InputTerm_416, &hlds__make_hlds__superhomogeneous__InputTermVar_417, hlds__make_hlds__superhomogeneous__V_233_233, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_230_230, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_234_234);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__FieldValueTerm0_117, &hlds__make_hlds__superhomogeneous__FieldValueTerm_119, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_234_234, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_235_235, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_231_231, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_236_236, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_232_232, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_237_237);
+                                                        }
+                                                        hlds__make_hlds__superhomogeneous__V_240_240 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_238_238 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_238_238, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__InputTermVar_417));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_238_238, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_240_240));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__make_fresh_arg_var_no_svar_5_p_0(hlds__make_hlds__superhomogeneous__FieldValueTerm_119, &hlds__make_hlds__superhomogeneous__FieldValueVar_120, hlds__make_hlds__superhomogeneous__V_238_238, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_235_235, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_239_239);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__field_access__expand_set_field_function_call_22_p_0(hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__FieldNames_426, hlds__make_hlds__superhomogeneous__FieldValueVar_120, hlds__make_hlds__superhomogeneous__InputTermVar_417, hlds__make_hlds__superhomogeneous__XVar_23, &hlds__make_hlds__superhomogeneous__Functor_418, &hlds__make_hlds__superhomogeneous__V_241_241, &hlds__make_hlds__superhomogeneous__SetGoal_123, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_236_236, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_242_242, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_243_243, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_239_239, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_244_244, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_245_245, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_246_246, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_237_237, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_247_247);
+                                                        }
+                                                        hlds__make_hlds__superhomogeneous__InnerFunctor_121 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_241_241, (MR_Integer) 0)));
+                                                        hlds__make_hlds__superhomogeneous__FieldSubContext_122 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_241_241, (MR_Integer) 1)));
+                                                        hlds__make_hlds__superhomogeneous__TermArgNumber_125 = (MR_Integer) 1;
+                                                        hlds__make_hlds__superhomogeneous__FieldArgNumber_127 = (MR_Integer) 2;
+                                                        hlds__make_hlds__superhomogeneous__V_251_251 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                                        hlds__make_hlds__superhomogeneous__V_261_261 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                                        hlds__make_hlds__superhomogeneous__V_263_263 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__TermArgContext_124 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                                                          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__TermArgContext_124, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Functor_418));
+                                                          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__TermArgContext_124, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MainContext_28));
+                                                          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__TermArgContext_124, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SubContext_29));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__FieldArgContext_126 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                                                          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__FieldArgContext_126, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__InnerFunctor_121));
+                                                          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__FieldArgContext_126, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MainContext_28));
+                                                          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__FieldArgContext_126, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__FieldSubContext_122));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_248_248 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_248_248, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__TermArgNumber_125));
+                                                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_248_248, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__TermArgContext_124));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_250_250 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_250_250, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__FieldArgNumber_127));
+                                                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_250_250, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__FieldArgContext_126));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_249_249 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_249_249, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_250_250));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_249_249, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_251_251));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__ArgContexts_128 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__ArgContexts_128, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_248_248));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__ArgContexts_128, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_249_249));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_260_260 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_260_260, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__FieldValueVar_120));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_260_260, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_261_261));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_252_252 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_252_252, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__InputTermVar_417));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_252_252, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_260_260));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_262_262 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_262_262, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__FieldValueTerm_119));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_262_262, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_263_263));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_253_253 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_253_253, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__InputTerm_416));
+                                                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_253_253, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_262_262));
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_119_105_116_104_95_99_111_110_116_101_120_116_115_95_95_91_53_93_95_48_18_p_0(hlds__make_hlds__superhomogeneous__V_252_252, hlds__make_hlds__superhomogeneous__V_253_253, hlds__make_hlds__superhomogeneous__ArgContexts_128, hlds__make_hlds__superhomogeneous__Context_27, &hlds__make_hlds__superhomogeneous__InputFieldArgExpansions_129, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_242_242, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_243_243, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_244_244, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_245_245, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_246_246, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_247_247, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+                                                        }
+                                                        {
+                                                          hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__Context_27, &hlds__make_hlds__superhomogeneous__GoalInfo_414);
+                                                        }
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__insert_expansions_before_goal_top_not_fgti_4_p_0(hlds__make_hlds__superhomogeneous__GoalInfo_414, hlds__make_hlds__superhomogeneous__InputFieldArgExpansions_129, hlds__make_hlds__superhomogeneous__SetGoal_123, &hlds__make_hlds__superhomogeneous__Goal_415);
+                                                        }
+                                                        hlds__make_hlds__superhomogeneous__V_264_264 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                                        hlds__make_hlds__superhomogeneous__TypeCtorInfo_488_488 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+                                                        {
+                                                          hlds__make_hlds__superhomogeneous__V_265_265 = mercury__cord__singleton_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_488_488, ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_415)));
+                                                        }
+                                                        {
+                                                          MR_Word base;
+                                                          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                                          *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+                                                          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_264_264));
+                                                          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_265_265));
+                                                        }
+                                                        hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+            }
+            break;
+          case (MR_Integer) 31:
+            {
+              /* case "^" */
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_487_487;
+                MR_Word hlds__make_hlds__superhomogeneous__InputTerm0_98;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldNameTerm_99;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldNameContextPieces_100;
+                MR_Word hlds__make_hlds__superhomogeneous__MaybeFieldNames_101;
+                MR_Word hlds__make_hlds__superhomogeneous__FieldNames_102;
+                MR_Word hlds__make_hlds__superhomogeneous__InputTerm_103;
+                MR_Word hlds__make_hlds__superhomogeneous__InputTermVar_104;
+                MR_Word hlds__make_hlds__superhomogeneous__Functor_105;
+                MR_Word hlds__make_hlds__superhomogeneous__GetGoal_107;
+                MR_Word hlds__make_hlds__superhomogeneous__ArgContext_108;
+                MR_Word hlds__make_hlds__superhomogeneous__InputArgExpansion_109;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_286_286;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_287_287;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_288_288;
+                MR_Word hlds__make_hlds__superhomogeneous__V_289_289;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_290_290;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_291_291;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_292_292;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_293_293;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_294_294;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_295_295;
+                MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_296_296;
+                MR_Integer hlds__make_hlds__superhomogeneous__V_297_297;
+                MR_Word hlds__make_hlds__superhomogeneous__V_304_304;
+                MR_Word hlds__make_hlds__superhomogeneous__V_305_305;
+                MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_400;
+                MR_Word hlds__make_hlds__superhomogeneous__Goal_401;
+                MR_Word hlds__make_hlds__superhomogeneous__V_905_905;
+                MR_Word hlds__make_hlds__superhomogeneous__V_907_907;
+                MR_Word hlds__make_hlds__superhomogeneous__V_106_106;
+
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YArgTerms_25)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__InputTerm0_98 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_907_907 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_25, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_907_907)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__FieldNameTerm_99 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_907_907, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_905_905 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_907_907, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_905_905 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            hlds__make_hlds__superhomogeneous__FieldNameContextPieces_100 = (MR_Word) MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[33]);
+                            {
+                              hlds__make_hlds__field_access__parse_field_list_4_p_0(hlds__make_hlds__superhomogeneous__FieldNameTerm_99, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, hlds__make_hlds__superhomogeneous__FieldNameContextPieces_100, &hlds__make_hlds__superhomogeneous__MaybeFieldNames_101);
+                            }
+                            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__MaybeFieldNames_101)) == (MR_mktag((MR_Integer) 1)));
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              {
+                                hlds__make_hlds__superhomogeneous__FieldNames_102 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeFieldNames_101, (MR_Integer) 0)));
+                                {
+                                  hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__InputTerm0_98, &hlds__make_hlds__superhomogeneous__InputTerm_103, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_146, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_286_286, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_142, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_287_287, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_152, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_288_288);
+                                }
+                                hlds__make_hlds__superhomogeneous__V_289_289 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                {
+                                  hlds__make_hlds__superhomogeneous__make_fresh_arg_var_no_svar_5_p_0(hlds__make_hlds__superhomogeneous__InputTerm_103, &hlds__make_hlds__superhomogeneous__InputTermVar_104, hlds__make_hlds__superhomogeneous__V_289_289, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_286_286, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_290_290);
+                                }
+                                {
+                                  hlds__make_hlds__field_access__expand_get_field_function_call_22_p_0(hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__FieldNames_102, hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__InputTermVar_104, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__Functor_105, &hlds__make_hlds__superhomogeneous__V_106_106, &hlds__make_hlds__superhomogeneous__GetGoal_107, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_287_287, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_291_291, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_144, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_292_292, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_290_290, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_293_293, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_148, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_294_294, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_150, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_295_295, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_288_288, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_296_296);
+                                }
+                                hlds__make_hlds__superhomogeneous__V_297_297 = (MR_Integer) 1;
+                                {
+                                  hlds__make_hlds__superhomogeneous__ArgContext_108 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                                  MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_108, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Functor_105));
+                                  MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_108, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MainContext_28));
+                                  MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_108, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SubContext_29));
+                                }
+                                {
+                                  hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_53_93_95_48_19_p_0(hlds__make_hlds__superhomogeneous__InputTermVar_104, hlds__make_hlds__superhomogeneous__InputTerm_103, hlds__make_hlds__superhomogeneous__YFunctorContext_26, hlds__make_hlds__superhomogeneous__ArgContext_108, hlds__make_hlds__superhomogeneous__V_297_297, &hlds__make_hlds__superhomogeneous__InputArgExpansion_109, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_291_291, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_143, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_292_292, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_293_293, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_294_294, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_295_295, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_296_296, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_153);
+                                }
+                                {
+                                  hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__Context_27, &hlds__make_hlds__superhomogeneous__GoalInfo_400);
+                                }
+                                {
+                                  hlds__make_hlds__superhomogeneous__insert_expansion_before_goal_top_not_fgti_4_p_0(hlds__make_hlds__superhomogeneous__GoalInfo_400, hlds__make_hlds__superhomogeneous__InputArgExpansion_109, hlds__make_hlds__superhomogeneous__GetGoal_107, &hlds__make_hlds__superhomogeneous__Goal_401);
+                                }
+                                hlds__make_hlds__superhomogeneous__V_304_304 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                hlds__make_hlds__superhomogeneous__TypeCtorInfo_487_487 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+                                {
+                                  hlds__make_hlds__superhomogeneous__V_305_305 = mercury__cord__singleton_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_487_487, ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_401)));
+                                }
+                                {
+                                  MR_Word base;
+                                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                                  *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+                                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_304_304));
+                                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_305_305));
+                                }
+                                hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                              }
+                          }
+                      }
+                  }
+              }
+            }
+            break;
+        }
+        /* jump out of search loop */
+        goto label_0;
+      }
+    hlds__make_hlds__superhomogeneous__succeeded = MR_FALSE;
+  label_0:;
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_114_97_118_101_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVar_23,
+  MR_Word hlds__make_hlds__superhomogeneous__YFunctor_24,
+  MR_Word hlds__make_hlds__superhomogeneous__YArgTerms0_25,
+  MR_Word hlds__make_hlds__superhomogeneous__YFunctorContext_26,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_27,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_28,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_29,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_30,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_32,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_62,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_63,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_64,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_65,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_66,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_67,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_68,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_69,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_70,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_71,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_72,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_73)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__YArgTerms_39;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_74_74;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_75_75;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_76_76;
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionPrime_41;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_77_77;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_78_78;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_79_79;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_80_80;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_81_81;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_82_82;
+    MR_String hlds__make_hlds__superhomogeneous__YAtom_40;
+
+    {
+      hlds__make_hlds__state_var__substitute_state_var_mappings_8_p_0(hlds__make_hlds__superhomogeneous__YArgTerms0_25, &hlds__make_hlds__superhomogeneous__YArgTerms_39, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_66, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_74_74, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_62, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_75_75, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_72, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_76_76);
+    }
+    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YFunctor_24)) == (MR_mktag((MR_Integer) 0)));
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        hlds__make_hlds__superhomogeneous__YAtom_40 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YFunctor_24, (MR_Integer) 0)));
+        {
+          hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_121_98_101_95_117_110_114_97_118_101_108_95_115_112_101_99_105_97_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__YAtom_40, hlds__make_hlds__superhomogeneous__YArgTerms_39, hlds__make_hlds__superhomogeneous__YFunctorContext_26, hlds__make_hlds__superhomogeneous__Context_27, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__ExpansionPrime_41, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_75_75, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_77_77, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_64, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_78_78, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_74_74, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_79_79, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_68, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_80_80, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_70, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_81_81, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_76_76, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_82_82);
+        }
+      }
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_73 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_82_82;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_71 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_81_81;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_69 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_80_80;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_67 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_79_79;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_65 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_78_78;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_63 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_77_77;
+        *hlds__make_hlds__superhomogeneous__Expansion_32 = hlds__make_hlds__superhomogeneous__ExpansionPrime_41;
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTerms_50;
+        MR_Word hlds__make_hlds__superhomogeneous__ConsId_52;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_91_91;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_92_92;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_93_93;
+        MR_Word hlds__make_hlds__superhomogeneous__FunctorName_48;
+        MR_Word hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTermsPrime_49;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_86_86;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_87_87;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_88_88;
+        MR_String hlds__make_hlds__superhomogeneous__YAtom_128;
+        MR_Word hlds__make_hlds__superhomogeneous__ModuleNameTerm_42;
+        MR_Word hlds__make_hlds__superhomogeneous__NameArgsTerm_43;
+        MR_Word hlds__make_hlds__superhomogeneous__V_83_83;
+        MR_Word hlds__make_hlds__superhomogeneous__V_84_84;
+
+        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YFunctor_24)) == (MR_mktag((MR_Integer) 0)));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__YAtom_128 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YFunctor_24, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous__succeeded = (strcmp(hlds__make_hlds__superhomogeneous__YAtom_128, (MR_String) ".") == 0);
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YArgTerms_39)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__ModuleNameTerm_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_39, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YArgTerms_39, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_83_83)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__NameArgsTerm_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_83_83, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_84_84 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_83_83, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_84_84 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                  }
+              }
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_141_141;
+                MR_String hlds__make_hlds__superhomogeneous__Name_44;
+                MR_Word hlds__make_hlds__superhomogeneous__NameArgTerms_45;
+                MR_Word hlds__make_hlds__superhomogeneous__ModuleName_47;
+                MR_Word hlds__make_hlds__superhomogeneous__V_85_85;
+                MR_Word hlds__make_hlds__superhomogeneous__V_46_46;
+
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__NameArgsTerm_43)) == (MR_mktag((MR_Integer) 0)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__NameArgsTerm_43, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__NameArgTerms_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__NameArgsTerm_43, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__NameArgsTerm_43, (MR_Integer) 2)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_85_85)) == (MR_mktag((MR_Integer) 0)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__Name_44 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_85_85, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__TypeCtorInfo_141_141 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+                        {
+                          hlds__make_hlds__superhomogeneous__succeeded = parse_tree__parse_sym_name__try_parse_symbol_name_2_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_141_141, hlds__make_hlds__superhomogeneous__ModuleNameTerm_42, &hlds__make_hlds__superhomogeneous__ModuleName_47);
+                        }
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            {
+                              hlds__make_hlds__superhomogeneous__FunctorName_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__FunctorName_48, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ModuleName_47));
+                              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__FunctorName_48, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Name_44));
+                            }
+                            {
+                              hlds__make_hlds__state_var__substitute_state_var_mappings_8_p_0(hlds__make_hlds__superhomogeneous__NameArgTerms_45, &hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTermsPrime_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_74_74, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_86_86, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_75_75, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_87_87, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_76_76, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_88_88);
+                            }
+                            hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                          }
+                      }
+                  }
+              }
+            else
+              {
+                {
+                  hlds__make_hlds__superhomogeneous__FunctorName_48 = mdbcomp__sym_name__string_to_sym_name_sep_2_f_0(hlds__make_hlds__superhomogeneous__YAtom_128, (MR_String) "__");
+                }
+                hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTermsPrime_49 = hlds__make_hlds__superhomogeneous__YArgTerms_39;
+                hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_88_88 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_76_76;
+                hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_86_86 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_74_74;
+                hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_87_87 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_75_75;
+                hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+              }
+          }
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            MR_Integer hlds__make_hlds__superhomogeneous__Arity_51;
+            MR_Word hlds__make_hlds__superhomogeneous__V_90_90;
+
+            hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_91_91 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_88_88;
+            hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_93_93 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_86_86;
+            hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_92_92 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_87_87;
+            hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTerms_50 = hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTermsPrime_49;
+            {
+              mercury__list__length_2_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[2], hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTerms_50, &hlds__make_hlds__superhomogeneous__Arity_51);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__V_90_90 = parse_tree__prog_data__cons_id_dummy_type_ctor_0_f_0();
+            }
+            {
+              hlds__make_hlds__superhomogeneous__ConsId_52 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ConsId_52, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+              MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ConsId_52, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__FunctorName_48));
+              MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ConsId_52, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Arity_51));
+              MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ConsId_52, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_90_90));
+            }
+          }
+        else
+          {
+            {
+              hlds__make_hlds__superhomogeneous__parse_ordinary_cons_id_6_p_0(hlds__make_hlds__superhomogeneous__YFunctor_24, hlds__make_hlds__superhomogeneous__YArgTerms_39, hlds__make_hlds__superhomogeneous__YFunctorContext_26, &hlds__make_hlds__superhomogeneous__ConsId_52, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_76_76, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_91_91);
+            }
+            hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTerms_50 = hlds__make_hlds__superhomogeneous__YArgTerms_39;
+            hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_93_93 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_74_74;
+            hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_92_92 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_75_75;
+          }
+        if ((hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTerms_50 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__FunctorGoal_53;
+            MR_Word hlds__make_hlds__superhomogeneous__Goal_54;
+            MR_Word hlds__make_hlds__superhomogeneous__V_121_121;
+            MR_Word hlds__make_hlds__superhomogeneous__V_125_125;
+            MR_Word hlds__make_hlds__superhomogeneous__V_127_127;
+
+            {
+              hlds__make_hlds__superhomogeneous__V_121_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_121_121, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ConsId_52));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_121_121, 1) = ((MR_Box) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_121_121, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              hlds__make_hlds__qual_info__make_atomic_unification_9_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__V_121_121, hlds__make_hlds__superhomogeneous__YFunctorContext_26, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__FunctorGoal_53, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_70, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_71);
+            }
+            {
+              hlds__hlds_goal__goal_set_purity_3_p_0(hlds__make_hlds__superhomogeneous__Purity_30, hlds__make_hlds__superhomogeneous__FunctorGoal_53, &hlds__make_hlds__superhomogeneous__Goal_54);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__V_125_125 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_125_125, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__XVar_23));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_125_125, 1) = ((MR_Box) ((MR_Integer) 1));
+            }
+            {
+              hlds__make_hlds__superhomogeneous__V_127_127 = mercury__cord__singleton_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_54)));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_125_125));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_127_127));
+            }
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_63 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_92_92;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_65 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_64;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_67 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_93_93;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_69 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_68;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_73 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_91_91;
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__ArgContext_57;
+
+            {
+              hlds__make_hlds__superhomogeneous__ArgContext_57 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_57, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ConsId_52));
+              MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_57, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MainContext_28));
+              MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_57, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SubContext_29));
+            }
+            switch (hlds__make_hlds__superhomogeneous__Purity_30) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 2:
+              case (MR_Integer) 1:
+                {
+                  MR_Word hlds__make_hlds__superhomogeneous__Goal0_61;
+                  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_101_101;
+                  MR_Word hlds__make_hlds__superhomogeneous__V_103_103;
+                  MR_Word hlds__make_hlds__superhomogeneous__V_107_107;
+                  MR_Word hlds__make_hlds__superhomogeneous__FunctorGoal_131;
+                  MR_Word hlds__make_hlds__superhomogeneous__Goal_132;
+                  MR_Word hlds__make_hlds__superhomogeneous__YVars_133;
+                  MR_Word hlds__make_hlds__superhomogeneous__ArgExpansions_134;
+                  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_135;
+
+                  {
+                    hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_119_105_116_104_95_102_114_101_115_104_95_118_97_114_115_95_95_91_52_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTerms_50, hlds__make_hlds__superhomogeneous__YFunctorContext_26, hlds__make_hlds__superhomogeneous__ArgContext_57, (MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &hlds__make_hlds__superhomogeneous__YVars_133, &hlds__make_hlds__superhomogeneous__ArgExpansions_134, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_92_92, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_63, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_64, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_65, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_93_93, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_67, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_68, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_69, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_70, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_101_101, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_91_91, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_73);
+                  }
+                  {
+                    hlds__make_hlds__superhomogeneous__V_103_103 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_103_103, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ConsId_52));
+                    MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_103_103, 1) = ((MR_Box) ((MR_Integer) 0));
+                    MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_103_103, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YVars_133));
+                  }
+                  {
+                    hlds__make_hlds__qual_info__make_atomic_unification_9_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__V_103_103, hlds__make_hlds__superhomogeneous__YFunctorContext_26, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__FunctorGoal_131, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_101_101, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_71);
+                  }
+                  {
+                    hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__Context_27, &hlds__make_hlds__superhomogeneous__GoalInfo_135);
+                  }
+                  {
+                    hlds__make_hlds__superhomogeneous__insert_expansions_before_goal_top_not_fgti_4_p_0(hlds__make_hlds__superhomogeneous__GoalInfo_135, hlds__make_hlds__superhomogeneous__ArgExpansions_134, hlds__make_hlds__superhomogeneous__FunctorGoal_131, &hlds__make_hlds__superhomogeneous__Goal0_61);
+                  }
+                  {
+                    hlds__hlds_goal__goal_set_purity_3_p_0(hlds__make_hlds__superhomogeneous__Purity_30, hlds__make_hlds__superhomogeneous__Goal0_61, &hlds__make_hlds__superhomogeneous__Goal_132);
+                  }
+                  {
+                    hlds__make_hlds__superhomogeneous__V_107_107 = mercury__cord__singleton_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_132)));
+                  }
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    *hlds__make_hlds__superhomogeneous__Expansion_32 = base;
+                    MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_107_107));
+                  }
+                }
+                break;
+              case (MR_Integer) 0:
+                {
+                  MR_Word hlds__make_hlds__superhomogeneous__YVars_58;
+                  MR_Word hlds__make_hlds__superhomogeneous__ArgExpansions_59;
+                  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_60;
+                  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_115_115;
+                  MR_Word hlds__make_hlds__superhomogeneous__V_117_117;
+                  MR_Word hlds__make_hlds__superhomogeneous__FunctorGoal_130;
+
+                  {
+                    hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_119_105_116_104_95_102_114_101_115_104_95_118_97_114_115_95_95_91_52_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__MaybeQualifiedYArgTerms_50, hlds__make_hlds__superhomogeneous__YFunctorContext_26, hlds__make_hlds__superhomogeneous__ArgContext_57, (MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &hlds__make_hlds__superhomogeneous__YVars_58, &hlds__make_hlds__superhomogeneous__ArgExpansions_59, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_92_92, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_63, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_64, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_65, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_93_93, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_67, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_68, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_69, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_70, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_115_115, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_91_91, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_73);
+                  }
+                  {
+                    hlds__make_hlds__superhomogeneous__V_117_117 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_117_117, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ConsId_52));
+                    MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_117_117, 1) = ((MR_Box) ((MR_Integer) 0));
+                    MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_117_117, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YVars_58));
+                  }
+                  {
+                    hlds__make_hlds__qual_info__make_atomic_unification_9_p_0(hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__V_117_117, hlds__make_hlds__superhomogeneous__YFunctorContext_26, hlds__make_hlds__superhomogeneous__MainContext_28, hlds__make_hlds__superhomogeneous__SubContext_29, hlds__make_hlds__superhomogeneous__Purity_30, &hlds__make_hlds__superhomogeneous__FunctorGoal_130, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_115_115, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_71);
+                  }
+                  {
+                    hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__Context_27, &hlds__make_hlds__superhomogeneous__GoalInfo_60);
+                  }
+                  {
+                    hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_6_p_0(hlds__make_hlds__superhomogeneous__GoalInfo_60, hlds__make_hlds__superhomogeneous__XVar_23, hlds__make_hlds__superhomogeneous__FunctorGoal_130, (MR_Integer) 1, hlds__make_hlds__superhomogeneous__ArgExpansions_59, hlds__make_hlds__superhomogeneous__Expansion_32);
+                  }
+                }
+                break;
+            }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_97_115_115_105_102_121_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVar_21,
+  MR_Word hlds__make_hlds__superhomogeneous__YTerm_22,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_23,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_25,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_28,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_41,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_42,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_43,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_44,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_45,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_46,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_47,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_48,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_49,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_50,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_51,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_52)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YTerm_22)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__YFunctor_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__YArgTerms_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__YFunctorContext_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 2)));
+
+        {
+          hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_114_97_118_101_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(hlds__make_hlds__superhomogeneous__XVar_21, hlds__make_hlds__superhomogeneous__YFunctor_38, hlds__make_hlds__superhomogeneous__YArgTerms_39, hlds__make_hlds__superhomogeneous__YFunctorContext_40, hlds__make_hlds__superhomogeneous__Context_23, hlds__make_hlds__superhomogeneous__MainContext_24, hlds__make_hlds__superhomogeneous__SubContext_25, hlds__make_hlds__superhomogeneous__Purity_26, hlds__make_hlds__superhomogeneous__Expansion_28, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_41, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_44, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_45, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_46, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_47, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_48, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_50, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_51, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_52);
+        }
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__YVar_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__Goal_37;
+        MR_Word hlds__make_hlds__superhomogeneous__V_59_59;
+        MR_Word hlds__make_hlds__superhomogeneous__V_62_62;
+        MR_Word hlds__make_hlds__superhomogeneous__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 1)));
+
+        {
+          hlds__make_hlds__superhomogeneous__V_59_59 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_59_59, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YVar_35));
+        }
+        {
+          hlds__make_hlds__qual_info__make_atomic_unification_9_p_0(hlds__make_hlds__superhomogeneous__XVar_21, hlds__make_hlds__superhomogeneous__V_59_59, hlds__make_hlds__superhomogeneous__Context_23, hlds__make_hlds__superhomogeneous__MainContext_24, hlds__make_hlds__superhomogeneous__SubContext_25, hlds__make_hlds__superhomogeneous__Purity_26, &hlds__make_hlds__superhomogeneous__Goal_37, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_50);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_62_62 = mercury__cord__singleton_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_37)));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          *hlds__make_hlds__superhomogeneous__Expansion_28 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_62_62));
+        }
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_42 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_41;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_44 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_43;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_46 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_45;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_48 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_47;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_52 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_51;
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_97_115_115_105_102_121_95_117_110_114_97_118_101_108_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XTerm_21,
+  MR_Word hlds__make_hlds__superhomogeneous__YTerm_22,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_23,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_25,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_28,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_55,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_56,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_57,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_58,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_59,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_60,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_61,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_62,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_63,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_64,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_65,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_66)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__XTerm_21)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__V_108_108 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__XTerm_21, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_109_109 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__XTerm_21, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_110_110 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__XTerm_21, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YTerm_22)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__TmpVar_48;
+            MR_Word hlds__make_hlds__superhomogeneous__ExpansionX_49;
+            MR_Word hlds__make_hlds__superhomogeneous__ExpansionY_50;
+            MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_51;
+            MR_Word hlds__make_hlds__superhomogeneous__MaybeWrappedGoalCordX_52;
+            MR_Word hlds__make_hlds__superhomogeneous__MaybeWrappedGoalCordY_53;
+            MR_Word hlds__make_hlds__superhomogeneous__GoalCord_54;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_67_67;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_68_68;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_69_69;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_70_70;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_71_71;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_72_72;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_73_73;
+            MR_Word hlds__make_hlds__superhomogeneous__YFunctor_99 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__YArgTerms_100 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__YFunctorContext_101 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 2)));
+
+            {
+              mercury__varset__new_var_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, &hlds__make_hlds__superhomogeneous__TmpVar_48, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_59, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_67_67);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_114_97_118_101_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(hlds__make_hlds__superhomogeneous__TmpVar_48, hlds__make_hlds__superhomogeneous__V_110_110, hlds__make_hlds__superhomogeneous__V_109_109, hlds__make_hlds__superhomogeneous__V_108_108, hlds__make_hlds__superhomogeneous__Context_23, hlds__make_hlds__superhomogeneous__MainContext_24, hlds__make_hlds__superhomogeneous__SubContext_25, hlds__make_hlds__superhomogeneous__Purity_26, &hlds__make_hlds__superhomogeneous__ExpansionX_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_55, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_68_68, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_57, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_69_69, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_67_67, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_70_70, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_61, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_71_71, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_63, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_72_72, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_65, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_73_73);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_114_97_118_101_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(hlds__make_hlds__superhomogeneous__TmpVar_48, hlds__make_hlds__superhomogeneous__YFunctor_99, hlds__make_hlds__superhomogeneous__YArgTerms_100, hlds__make_hlds__superhomogeneous__YFunctorContext_101, hlds__make_hlds__superhomogeneous__Context_23, hlds__make_hlds__superhomogeneous__MainContext_24, hlds__make_hlds__superhomogeneous__SubContext_25, hlds__make_hlds__superhomogeneous__Purity_26, &hlds__make_hlds__superhomogeneous__ExpansionY_50, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_68_68, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_56, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_69_69, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_58, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_70_70, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_60, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_71_71, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_62, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_72_72, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_64, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_73_73, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_66);
+            }
+            {
+              hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__Context_23, &hlds__make_hlds__superhomogeneous__GoalInfo_51);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__expansion_to_goal_cord_wrap_if_fgti_3_p_0(hlds__make_hlds__superhomogeneous__GoalInfo_51, hlds__make_hlds__superhomogeneous__ExpansionX_49, &hlds__make_hlds__superhomogeneous__MaybeWrappedGoalCordX_52);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__expansion_to_goal_cord_wrap_if_fgti_3_p_0(hlds__make_hlds__superhomogeneous__GoalInfo_51, hlds__make_hlds__superhomogeneous__ExpansionY_50, &hlds__make_hlds__superhomogeneous__MaybeWrappedGoalCordY_53);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__GoalCord_54 = mercury__cord__f_43_43_2_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, hlds__make_hlds__superhomogeneous__MaybeWrappedGoalCordX_52, hlds__make_hlds__superhomogeneous__MaybeWrappedGoalCordY_53);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *hlds__make_hlds__superhomogeneous__Expansion_28 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalCord_54));
+            }
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__YVar_98 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 1)));
+
+            {
+              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_114_97_118_101_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(hlds__make_hlds__superhomogeneous__YVar_98, hlds__make_hlds__superhomogeneous__V_110_110, hlds__make_hlds__superhomogeneous__V_109_109, hlds__make_hlds__superhomogeneous__V_108_108, hlds__make_hlds__superhomogeneous__Context_23, hlds__make_hlds__superhomogeneous__MainContext_24, hlds__make_hlds__superhomogeneous__SubContext_25, hlds__make_hlds__superhomogeneous__Purity_26, hlds__make_hlds__superhomogeneous__Expansion_28, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_55, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_56, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_57, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_58, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_59, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_60, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_61, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_62, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_63, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_64, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_65, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_66);
+            }
+          }
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__V_112_112 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__XTerm_21, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_111_111 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__XTerm_21, (MR_Integer) 1)));
+
+        if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YTerm_22)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__YFunctor_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__YArgTerms_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__YFunctorContext_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 2)));
+
+            {
+              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_114_97_118_101_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(hlds__make_hlds__superhomogeneous__V_112_112, hlds__make_hlds__superhomogeneous__YFunctor_41, hlds__make_hlds__superhomogeneous__YArgTerms_42, hlds__make_hlds__superhomogeneous__YFunctorContext_43, hlds__make_hlds__superhomogeneous__Context_23, hlds__make_hlds__superhomogeneous__MainContext_24, hlds__make_hlds__superhomogeneous__SubContext_25, hlds__make_hlds__superhomogeneous__Purity_26, hlds__make_hlds__superhomogeneous__Expansion_28, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_55, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_56, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_57, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_58, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_59, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_60, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_61, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_62, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_63, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_64, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_65, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_66);
+            }
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__YVar_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__Goal_39;
+            MR_Word hlds__make_hlds__superhomogeneous__V_93_93;
+            MR_Word hlds__make_hlds__superhomogeneous__V_96_96;
+            MR_Word hlds__make_hlds__superhomogeneous__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YTerm_22, (MR_Integer) 1)));
+
+            {
+              hlds__make_hlds__superhomogeneous__V_93_93 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_93_93, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YVar_37));
+            }
+            {
+              hlds__make_hlds__qual_info__make_atomic_unification_9_p_0(hlds__make_hlds__superhomogeneous__V_112_112, hlds__make_hlds__superhomogeneous__V_93_93, hlds__make_hlds__superhomogeneous__Context_23, hlds__make_hlds__superhomogeneous__MainContext_24, hlds__make_hlds__superhomogeneous__SubContext_25, hlds__make_hlds__superhomogeneous__Purity_26, &hlds__make_hlds__superhomogeneous__Goal_39, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_63, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_64);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__V_96_96 = mercury__cord__singleton_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_39)));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *hlds__make_hlds__superhomogeneous__Expansion_28 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_96_96));
+            }
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_56 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_55;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_58 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_57;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_60 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_59;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_62 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_61;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_66 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_65;
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LHSVar_21,
+  MR_Word hlds__make_hlds__superhomogeneous__RHS0_22,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_23,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_25,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_28,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_36,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_37,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_38,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_39,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_40,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_41,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_42,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_43,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_44,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_45,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_46,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_47)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__RHS_35;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_48_48;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_49_49;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_50_50;
+
+    {
+      hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__RHS0_22, &hlds__make_hlds__superhomogeneous__RHS_35, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_40, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_48_48, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_36, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_49_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_46, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_50_50);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_97_115_115_105_102_121_95_117_110_114_97_118_101_108_95_118_97_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__LHSVar_21, hlds__make_hlds__superhomogeneous__RHS_35, hlds__make_hlds__superhomogeneous__Context_23, hlds__make_hlds__superhomogeneous__MainContext_24, hlds__make_hlds__superhomogeneous__SubContext_25, hlds__make_hlds__superhomogeneous__Purity_26, hlds__make_hlds__superhomogeneous__Expansion_28, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_49_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_37, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_38, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_39, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_48_48, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_41, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_44, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_45, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_50_50, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_47);
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_117_110_114_97_118_101_108_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LHS0_21,
+  MR_Word hlds__make_hlds__superhomogeneous__RHS0_22,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_23,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_25,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_28,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_37,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_38,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_39,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_40,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_41,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_42,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_43,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_44,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_45,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_46,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_47,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_48)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__LHS_35;
+    MR_Word hlds__make_hlds__superhomogeneous__RHS_36;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_49_49;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_50_50;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_51_51;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_52_52;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_53_53;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_54_54;
+
+    {
+      hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__LHS0_21, &hlds__make_hlds__superhomogeneous__LHS_35, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_41, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_49_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_37, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_50_50, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_47, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_51_51);
+    }
+    {
+      hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__RHS0_22, &hlds__make_hlds__superhomogeneous__RHS_36, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_49_49, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_52_52, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_50_50, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_53_53, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_51_51, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_54_54);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_108_97_115_115_105_102_121_95_117_110_114_97_118_101_108_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__LHS_35, hlds__make_hlds__superhomogeneous__RHS_36, hlds__make_hlds__superhomogeneous__Context_23, hlds__make_hlds__superhomogeneous__MainContext_24, hlds__make_hlds__superhomogeneous__SubContext_25, hlds__make_hlds__superhomogeneous__Purity_26, hlds__make_hlds__superhomogeneous__Expansion_28, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_53_53, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_38, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_39, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_40, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_52_52, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_44, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_45, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_46, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_54_54, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_48);
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_53_93_95_48_19_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVar_20,
+  MR_Word hlds__make_hlds__superhomogeneous__YTerm_21,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_22,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgContext_23,
+  MR_Integer hlds__make_hlds__superhomogeneous__ArgNum_25,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_26,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_42,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_43,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_44,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_45,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_46,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_47,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_48,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_49,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_50,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_51,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_52,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_53)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YTerm_21)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__YFunctor_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_21, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__YArgTerms_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_21, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__YFunctorContext_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__YTerm_21, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__MainContext_65;
+        MR_Word hlds__make_hlds__superhomogeneous__SubContext_66;
+
+        switch (MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__ArgContext_23)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word hlds__make_hlds__superhomogeneous__PredOrFunc_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 0)));
+              MR_Integer hlds__make_hlds__superhomogeneous__Arity_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 1)));
+
+              hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__PredOrFunc_74 == (MR_Integer) 1);
+              if (hlds__make_hlds__superhomogeneous__succeeded)
+                hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__ArgNum_25 == hlds__make_hlds__superhomogeneous__Arity_75);
+              if (hlds__make_hlds__superhomogeneous__succeeded)
+                hlds__make_hlds__superhomogeneous__MainContext_65 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+              else
+                {
+                  hlds__make_hlds__superhomogeneous__MainContext_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MainContext_65, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgNum_25));
+                }
+              hlds__make_hlds__superhomogeneous__SubContext_66 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word hlds__make_hlds__superhomogeneous__PredId_76 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 0)));
+
+              {
+                hlds__make_hlds__superhomogeneous__MainContext_65 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__MainContext_65, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__PredId_76));
+                MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__MainContext_65, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgNum_25));
+              }
+              hlds__make_hlds__superhomogeneous__SubContext_66 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word hlds__make_hlds__superhomogeneous__ConsId_77 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 0)));
+              MR_Word hlds__make_hlds__superhomogeneous__SubContexts0_78;
+              MR_Word hlds__make_hlds__superhomogeneous__SubContext_79;
+
+              hlds__make_hlds__superhomogeneous__MainContext_65 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 1)));
+              hlds__make_hlds__superhomogeneous__SubContexts0_78 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 2)));
+              {
+                hlds__make_hlds__superhomogeneous__SubContext_79 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__SubContext_79, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ConsId_77));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__SubContext_79, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgNum_25));
+              }
+              {
+                hlds__make_hlds__superhomogeneous__SubContext_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__SubContext_66, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SubContext_79));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__SubContext_66, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SubContexts0_78));
+              }
+            }
+            break;
+        }
+        {
+          hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_114_97_118_101_108_95_118_97_114_95_102_117_110_99_116_111_114_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_57_93_95_48_22_p_0(hlds__make_hlds__superhomogeneous__XVar_20, hlds__make_hlds__superhomogeneous__YFunctor_39, hlds__make_hlds__superhomogeneous__YArgTerms_40, hlds__make_hlds__superhomogeneous__YFunctorContext_41, hlds__make_hlds__superhomogeneous__Context_22, hlds__make_hlds__superhomogeneous__MainContext_65, hlds__make_hlds__superhomogeneous__SubContext_66, (MR_Integer) 0, hlds__make_hlds__superhomogeneous__Expansion_26, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_44, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_45, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_46, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_47, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_48, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_50, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_51, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_52, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_53);
+        }
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__YVar_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YTerm_21, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__YVarContext_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YTerm_21, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__GoalCord_35;
+
+        {
+          hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0], ((MR_Box) (hlds__make_hlds__superhomogeneous__XVar_20)), ((MR_Box) (hlds__make_hlds__superhomogeneous__YVar_33)));
+        }
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            {
+              hlds__make_hlds__superhomogeneous__GoalCord_35 = mercury__cord__init_0_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0);
+            }
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_51 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_50;
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__MainContext_36;
+            MR_Word hlds__make_hlds__superhomogeneous__SubContext_37;
+            MR_Word hlds__make_hlds__superhomogeneous__Goal_38;
+            MR_Word hlds__make_hlds__superhomogeneous__V_61_61;
+
+            switch (MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__ArgContext_23)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word hlds__make_hlds__superhomogeneous__PredOrFunc_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 0)));
+                  MR_Integer hlds__make_hlds__superhomogeneous__Arity_85 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 1)));
+
+                  hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__PredOrFunc_84 == (MR_Integer) 1);
+                  if (hlds__make_hlds__superhomogeneous__succeeded)
+                    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__ArgNum_25 == hlds__make_hlds__superhomogeneous__Arity_85);
+                  if (hlds__make_hlds__superhomogeneous__succeeded)
+                    hlds__make_hlds__superhomogeneous__MainContext_36 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+                  else
+                    {
+                      hlds__make_hlds__superhomogeneous__MainContext_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MainContext_36, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgNum_25));
+                    }
+                  hlds__make_hlds__superhomogeneous__SubContext_37 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word hlds__make_hlds__superhomogeneous__PredId_86 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 0)));
+
+                  {
+                    hlds__make_hlds__superhomogeneous__MainContext_36 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__MainContext_36, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__PredId_86));
+                    MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__MainContext_36, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgNum_25));
+                  }
+                  hlds__make_hlds__superhomogeneous__SubContext_37 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word hlds__make_hlds__superhomogeneous__ConsId_87 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 0)));
+                  MR_Word hlds__make_hlds__superhomogeneous__SubContexts0_88;
+                  MR_Word hlds__make_hlds__superhomogeneous__SubContext_89;
+
+                  hlds__make_hlds__superhomogeneous__MainContext_36 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 1)));
+                  hlds__make_hlds__superhomogeneous__SubContexts0_88 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__ArgContext_23, (MR_Integer) 2)));
+                  {
+                    hlds__make_hlds__superhomogeneous__SubContext_89 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__SubContext_89, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ConsId_87));
+                    MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__SubContext_89, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgNum_25));
+                  }
+                  {
+                    hlds__make_hlds__superhomogeneous__SubContext_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__SubContext_37, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SubContext_89));
+                    MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__SubContext_37, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SubContexts0_88));
+                  }
+                }
+                break;
+            }
+            {
+              hlds__make_hlds__superhomogeneous__V_61_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_61_61, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__YVar_33));
+            }
+            {
+              hlds__make_hlds__qual_info__make_atomic_unification_9_p_0(hlds__make_hlds__superhomogeneous__XVar_20, hlds__make_hlds__superhomogeneous__V_61_61, hlds__make_hlds__superhomogeneous__YVarContext_34, hlds__make_hlds__superhomogeneous__MainContext_36, hlds__make_hlds__superhomogeneous__SubContext_37, (MR_Integer) 0, &hlds__make_hlds__superhomogeneous__Goal_38, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_50, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_51);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__GoalCord_35 = mercury__cord__singleton_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_38)));
+            }
+          }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          *hlds__make_hlds__superhomogeneous__Expansion_26 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalCord_35));
+        }
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_43 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_42;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_45 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_44;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_47 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_46;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_49 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_48;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_53 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_52;
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_119_105_116_104_95_99_111_110_116_101_120_116_115_95_95_91_53_93_95_48_18_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVars_19,
+  MR_Word hlds__make_hlds__superhomogeneous__YTerms_20,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgContexts_21,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_22,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansions_24,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_40,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_41,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_42,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_43,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_44,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_45,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_46,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_47,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_48,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_49,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_50,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_51)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__XVars_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__YTerms_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__ArgContexts_21 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      }
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        *hlds__make_hlds__superhomogeneous__Expansions_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_51 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_50;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_49 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_48;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_47 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_46;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_45 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_44;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_43 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_42;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_41 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_40;
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__HeadXVar_31;
+        MR_Word hlds__make_hlds__superhomogeneous__TailXVars_32;
+        MR_Word hlds__make_hlds__superhomogeneous__HeadYTerm_33;
+        MR_Word hlds__make_hlds__superhomogeneous__TailYTerms_34;
+        MR_Integer hlds__make_hlds__superhomogeneous__HeadArgNumber_35;
+        MR_Word hlds__make_hlds__superhomogeneous__HeadArgContext_36;
+        MR_Word hlds__make_hlds__superhomogeneous__TailArgContexts_37;
+        MR_Word hlds__make_hlds__superhomogeneous__V_52_52;
+
+        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__XVars_19)) == (MR_mktag((MR_Integer) 1)));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__HeadXVar_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__XVars_19, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous__TailXVars_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__XVars_19, (MR_Integer) 1)));
+            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__YTerms_20)) == (MR_mktag((MR_Integer) 1)));
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__HeadYTerm_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YTerms_20, (MR_Integer) 0)));
+                hlds__make_hlds__superhomogeneous__TailYTerms_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__YTerms_20, (MR_Integer) 1)));
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__ArgContexts_21)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__ArgContexts_21, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__TailArgContexts_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__ArgContexts_21, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__HeadArgNumber_35 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_52_52, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__HeadArgContext_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_52_52, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                  }
+              }
+          }
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__HeadExpansion_38;
+            MR_Word hlds__make_hlds__superhomogeneous__TailExpansions_39;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_53_53;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_54_54;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_55_55;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_56_56;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_57_57;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_58_58;
+
+            {
+              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_53_93_95_48_19_p_0(hlds__make_hlds__superhomogeneous__HeadXVar_31, hlds__make_hlds__superhomogeneous__HeadYTerm_33, hlds__make_hlds__superhomogeneous__Context_22, hlds__make_hlds__superhomogeneous__HeadArgContext_36, hlds__make_hlds__superhomogeneous__HeadArgNumber_35, &hlds__make_hlds__superhomogeneous__HeadExpansion_38, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_40, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_53_53, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_42, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_54_54, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_44, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_55_55, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_46, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_56_56, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_48, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_57_57, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_50, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_58_58);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_119_105_116_104_95_99_111_110_116_101_120_116_115_95_95_91_53_93_95_48_18_p_0(hlds__make_hlds__superhomogeneous__TailXVars_32, hlds__make_hlds__superhomogeneous__TailYTerms_34, hlds__make_hlds__superhomogeneous__TailArgContexts_37, hlds__make_hlds__superhomogeneous__Context_22, &hlds__make_hlds__superhomogeneous__TailExpansions_39, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_53_53, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_41, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_54_54, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_55_55, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_45, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_56_56, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_47, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_57_57, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_58_58, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_51);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *hlds__make_hlds__superhomogeneous__Expansions_24 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__HeadExpansion_38));
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__TailExpansions_39));
+            }
+          }
+        else
+          {
+            {
+              mercury__require__unexpected_3_p_0((MR_String) "hlds.make_hlds.superhomogeneous", (MR_String) "predicate \140hlds.make_hlds.superhomogeneous.do_arg_unifications_with_contexts\'/18", (MR_String) "length mismatch");
+              return;
+            }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_119_105_116_104_95_102_114_101_115_104_95_118_97_114_115_95_95_91_52_93_95_48_20_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3,
+  MR_Integer hlds__make_hlds__superhomogeneous__HeadVar__5_5,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SeenXVars_0_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__7_7,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__8_8,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_11,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_12,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_13,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_14,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_15,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_16,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_17,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_18,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_19,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_20)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *hlds__make_hlds__superhomogeneous__HeadVar__7_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *hlds__make_hlds__superhomogeneous__HeadVar__8_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_20 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_19;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_18 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_17;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_16 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_15;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_14 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_13;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_12 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_11;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_10 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_9;
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__YTerm_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__YTerms_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__XVar_51;
+        MR_Word hlds__make_hlds__superhomogeneous__XVars_52;
+        MR_Word hlds__make_hlds__superhomogeneous__Expansion_53;
+        MR_Word hlds__make_hlds__superhomogeneous__Expansions_54;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_74_74;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SeenXVars_75_75;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_76_76;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_77_77;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_78_78;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_79_79;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_80_80;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_81_81;
+        MR_Integer hlds__make_hlds__superhomogeneous__V_82_82;
+
+        {
+          hlds__make_hlds__superhomogeneous__make_fresh_arg_var_no_svar_5_p_0(hlds__make_hlds__superhomogeneous__YTerm_44, &hlds__make_hlds__superhomogeneous__XVar_51, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SeenXVars_0_6, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_13, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_74_74);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SeenXVars_75_75 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SeenXVars_75_75, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__XVar_51));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SeenXVars_75_75, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SeenXVars_0_6));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_53_93_95_48_19_p_0(hlds__make_hlds__superhomogeneous__XVar_51, hlds__make_hlds__superhomogeneous__YTerm_44, hlds__make_hlds__superhomogeneous__HeadVar__2_2, hlds__make_hlds__superhomogeneous__HeadVar__3_3, hlds__make_hlds__superhomogeneous__HeadVar__5_5, &hlds__make_hlds__superhomogeneous__Expansion_53, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_9, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_76_76, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_11, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_77_77, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_74_74, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_78_78, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_15, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_79_79, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_17, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_80_80, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_19, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_81_81);
+        }
+        hlds__make_hlds__superhomogeneous__V_82_82 = (hlds__make_hlds__superhomogeneous__HeadVar__5_5 + (MR_Integer) 1);
+        {
+          hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_119_105_116_104_95_102_114_101_115_104_95_118_97_114_115_95_95_91_52_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__YTerms_45, hlds__make_hlds__superhomogeneous__HeadVar__2_2, hlds__make_hlds__superhomogeneous__HeadVar__3_3, hlds__make_hlds__superhomogeneous__V_82_82, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SeenXVars_75_75, &hlds__make_hlds__superhomogeneous__XVars_52, &hlds__make_hlds__superhomogeneous__Expansions_54, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_76_76, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_10, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_77_77, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_12, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_78_78, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_14, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_79_79, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_16, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_80_80, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_18, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_81_81, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_20);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *hlds__make_hlds__superhomogeneous__HeadVar__7_7 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__XVar_51));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__XVars_52));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *hlds__make_hlds__superhomogeneous__HeadVar__8_8 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Expansion_53));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Expansions_54));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_95_91_53_93_95_48_19_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__4_4,
+  MR_Integer hlds__make_hlds__superhomogeneous__HeadVar__6_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__7_7,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_8,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_9,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_10,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_11,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_12,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_13,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_14,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_15,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_16,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_17,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_18,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_19)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((hlds__make_hlds__superhomogeneous__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        {
+          *hlds__make_hlds__superhomogeneous__HeadVar__7_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_19 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_18;
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_17 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_16;
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_15 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_14;
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_13 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_12;
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_11 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_10;
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_9 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_8;
+        }
+      else
+        {
+          *hlds__make_hlds__superhomogeneous__HeadVar__7_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "hlds.make_hlds.superhomogeneous", (MR_String) "predicate \140hlds.make_hlds.superhomogeneous.do_arg_unifications\'/19", (MR_String) "length mismatch");
+            return;
+          }
+        }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__V_138_138 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_139_139 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+
+        if ((hlds__make_hlds__superhomogeneous__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *hlds__make_hlds__superhomogeneous__HeadVar__7_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            {
+              mercury__require__unexpected_3_p_0((MR_String) "hlds.make_hlds.superhomogeneous", (MR_String) "predicate \140hlds.make_hlds.superhomogeneous.do_arg_unifications\'/19", (MR_String) "length mismatch");
+              return;
+            }
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__YTerm_98 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__YTerms_99 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__Expansion_104;
+            MR_Word hlds__make_hlds__superhomogeneous__Expansions_105;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_124_124;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_125_125;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_126_126;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_127_127;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_128_128;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_129_129;
+            MR_Integer hlds__make_hlds__superhomogeneous__V_130_130;
+
+            {
+              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_53_93_95_48_19_p_0(hlds__make_hlds__superhomogeneous__V_139_139, hlds__make_hlds__superhomogeneous__YTerm_98, hlds__make_hlds__superhomogeneous__HeadVar__3_3, hlds__make_hlds__superhomogeneous__HeadVar__4_4, hlds__make_hlds__superhomogeneous__HeadVar__6_6, &hlds__make_hlds__superhomogeneous__Expansion_104, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_8, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_124_124, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_10, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_125_125, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_12, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_126_126, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_14, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_127_127, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_16, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_128_128, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_18, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_129_129);
+            }
+            hlds__make_hlds__superhomogeneous__V_130_130 = (hlds__make_hlds__superhomogeneous__HeadVar__6_6 + (MR_Integer) 1);
+            {
+              hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_95_91_53_93_95_48_19_p_0(hlds__make_hlds__superhomogeneous__V_138_138, hlds__make_hlds__superhomogeneous__YTerms_99, hlds__make_hlds__superhomogeneous__HeadVar__3_3, hlds__make_hlds__superhomogeneous__HeadVar__4_4, hlds__make_hlds__superhomogeneous__V_130_130, &hlds__make_hlds__superhomogeneous__Expansions_105, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_124_124, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_9, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_125_125, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_11, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_126_126, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_13, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_127_127, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_15, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_128_128, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_17, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_129_129, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_19);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *hlds__make_hlds__superhomogeneous__HeadVar__7_7 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Expansion_104));
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Expansions_105));
+            }
+          }
+      }
+  }
+}
+
+static MR_String MR_CALL 
+hlds__make_hlds__superhomogeneous__IntroducedFrom__func__build_lambda_expression__1808__1_3_f_0(
+  MR_Word hlds__make_hlds__superhomogeneous__InstVarSet_47,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_105,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_212)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_String hlds__make_hlds__superhomogeneous__HeadVar__4_213;
+
+    {
+      hlds__make_hlds__superhomogeneous__HeadVar__4_213 = parse_tree__parse_tree_out_term__mercury_var_to_string_3_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0, hlds__make_hlds__superhomogeneous__InstVarSet_47, hlds__make_hlds__superhomogeneous__HeadVar__2_105, hlds__make_hlds__superhomogeneous__HeadVar__3_212);
+    }
+    return hlds__make_hlds__superhomogeneous__HeadVar__4_213;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____maybe_fgti_var_size_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_13 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_14 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__3_3;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_13 == hlds__make_hlds__superhomogeneous__CastY_14);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((hlds__make_hlds__superhomogeneous__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        MR_Integer hlds__make_hlds__superhomogeneous__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+
+        if ((hlds__make_hlds__superhomogeneous__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 2;
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Integer hlds__make_hlds__superhomogeneous__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_12_12;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0], &hlds__make_hlds__superhomogeneous__V_12_12, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_18_18)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_10_10)));
+            }
+            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_12_12 == (MR_Integer) 0);
+            hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_12_12;
+            else
+              {
+                mercury__private_builtin__builtin_compare_int_3_p_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__V_17_17, hlds__make_hlds__superhomogeneous__V_11_11);
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____maybe_fgti_var_size_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_9 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__1_1;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_10 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_9 == hlds__make_hlds__superhomogeneous__CastY_10);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+    else
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Integer hlds__make_hlds__superhomogeneous__CastX_3 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__1_1;
+        MR_Integer hlds__make_hlds__superhomogeneous__CastY_4 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+
+        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastY_4 == hlds__make_hlds__superhomogeneous__CastX_3);
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_11_11;
+        MR_Word hlds__make_hlds__superhomogeneous__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_7_7;
+        MR_Integer hlds__make_hlds__superhomogeneous__V_8_8;
+
+        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+            hlds__make_hlds__superhomogeneous__TypeInfo_11_11 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0];
+            {
+              hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_11_11, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_5_5)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_7_7)));
+            }
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_6_6 == hlds__make_hlds__superhomogeneous__V_8_8);
+          }
+      }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____maybe_dcg_vars_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_13 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_14 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__3_3;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_13 == hlds__make_hlds__superhomogeneous__CastY_14);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((hlds__make_hlds__superhomogeneous__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+
+        if ((hlds__make_hlds__superhomogeneous__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 2;
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_12_12;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0], &hlds__make_hlds__superhomogeneous__V_12_12, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_18_18)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_10_10)));
+            }
+            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_12_12 == (MR_Integer) 0);
+            hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_12_12;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0], hlds__make_hlds__superhomogeneous__HeadVar__1_1, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_17_17)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_11_11)));
+                }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____maybe_dcg_vars_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_9 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__1_1;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_10 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_9 == hlds__make_hlds__superhomogeneous__CastY_10);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+    else
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Integer hlds__make_hlds__superhomogeneous__CastX_3 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__1_1;
+        MR_Integer hlds__make_hlds__superhomogeneous__CastY_4 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+
+        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastY_4 == hlds__make_hlds__superhomogeneous__CastX_3);
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_11_11;
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_12_12;
+        MR_Word hlds__make_hlds__superhomogeneous__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_7_7;
+        MR_Word hlds__make_hlds__superhomogeneous__V_8_8;
+
+        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+            hlds__make_hlds__superhomogeneous__TypeInfo_11_11 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0];
+            {
+              hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_11_11, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_5_5)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_7_7)));
+            }
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__TypeInfo_12_12 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0];
+                {
+                  hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_12_12, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_6_6)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_8_8)));
+                }
+              }
+          }
+      }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_head_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_26 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_27 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__3_3;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_26 == hlds__make_hlds__superhomogeneous__CastY_27);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__V_4_4 = ((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)))) & (MR_Integer) 3);
+        MR_Word hlds__make_hlds__superhomogeneous__V_5_5 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word hlds__make_hlds__superhomogeneous__V_6_6 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+        MR_Word hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_12_12 = ((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)))) & (MR_Integer) 3);
+        MR_Word hlds__make_hlds__superhomogeneous__V_13_13 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word hlds__make_hlds__superhomogeneous__V_14_14 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+        MR_Word hlds__make_hlds__superhomogeneous__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_20_20;
+        MR_Integer hlds__make_hlds__superhomogeneous__V_35_35 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_4_4;
+        MR_Integer hlds__make_hlds__superhomogeneous__V_36_36 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_12_12;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&hlds__make_hlds__superhomogeneous__V_20_20, hlds__make_hlds__superhomogeneous__V_35_35, hlds__make_hlds__superhomogeneous__V_36_36);
+        }
+        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_20_20 == (MR_Integer) 0);
+        hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_20_20;
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__V_21_21;
+            MR_Integer hlds__make_hlds__superhomogeneous__V_37_37 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_5_5;
+            MR_Integer hlds__make_hlds__superhomogeneous__V_38_38 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_13_13;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&hlds__make_hlds__superhomogeneous__V_21_21, hlds__make_hlds__superhomogeneous__V_37_37, hlds__make_hlds__superhomogeneous__V_38_38);
+            }
+            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_21_21 == (MR_Integer) 0);
+            hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_21_21;
+            else
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__V_22_22;
+                MR_Integer hlds__make_hlds__superhomogeneous__V_39_39 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_6_6;
+                MR_Integer hlds__make_hlds__superhomogeneous__V_40_40 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_14_14;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&hlds__make_hlds__superhomogeneous__V_22_22, hlds__make_hlds__superhomogeneous__V_39_39, hlds__make_hlds__superhomogeneous__V_40_40);
+                }
+                hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_22_22 == (MR_Integer) 0);
+                hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_22_22;
+                else
+                  {
+                    MR_Word hlds__make_hlds__superhomogeneous__V_23_23;
+
+                    {
+                      mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[6], &hlds__make_hlds__superhomogeneous__V_23_23, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_8_8)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_16_16)));
+                    }
+                    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_23_23 == (MR_Integer) 0);
+                    hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_23_23;
+                    else
+                      {
+                        MR_Word hlds__make_hlds__superhomogeneous__V_24_24;
+
+                        {
+                          mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[7], &hlds__make_hlds__superhomogeneous__V_24_24, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_9_9)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_17_17)));
+                        }
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_24_24 == (MR_Integer) 0);
+                        hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_24_24;
+                        else
+                          {
+                            MR_Word hlds__make_hlds__superhomogeneous__V_25_25;
+
+                            {
+                              mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[7], &hlds__make_hlds__superhomogeneous__V_25_25, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_10_10)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_18_18)));
+                            }
+                            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_25_25 == (MR_Integer) 0);
+                            hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_25_25;
+                            else
+                              {
+                                {
+                                  mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[8], hlds__make_hlds__superhomogeneous__HeadVar__1_1, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_11_11)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_19_19)));
+                                }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_head_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_19 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__1_1;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_20 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_19 == hlds__make_hlds__superhomogeneous__CastY_20);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_21_21;
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_22_22;
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_23_23;
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_24_24;
+        MR_Word hlds__make_hlds__superhomogeneous__V_3_3 = ((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)))) & (MR_Integer) 3);
+        MR_Word hlds__make_hlds__superhomogeneous__V_4_4 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word hlds__make_hlds__superhomogeneous__V_5_5 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+        MR_Word hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_11_11 = ((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)))) & (MR_Integer) 3);
+        MR_Word hlds__make_hlds__superhomogeneous__V_12_12 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word hlds__make_hlds__superhomogeneous__V_13_13 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+        MR_Word hlds__make_hlds__superhomogeneous__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 5)));
+
+        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_3_3 == hlds__make_hlds__superhomogeneous__V_11_11);
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_4_4 == hlds__make_hlds__superhomogeneous__V_12_12);
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_5_5 == hlds__make_hlds__superhomogeneous__V_13_13);
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__TypeInfo_21_21 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[6];
+                    {
+                      hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_21_21, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_7_7)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_15_15)));
+                    }
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__TypeInfo_22_22 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[7];
+                        {
+                          hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_22_22, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_8_8)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_16_16)));
+                        }
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            hlds__make_hlds__superhomogeneous__TypeInfo_23_23 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[7];
+                            {
+                              hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_23_23, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_9_9)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_17_17)));
+                            }
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              {
+                                hlds__make_hlds__superhomogeneous__TypeInfo_24_24 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[8];
+                                {
+                                  hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_24_24, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_10_10)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_18_18)));
+                                }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_body_kind_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__Cast_HeadVar1_4 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+    MR_Integer hlds__make_hlds__superhomogeneous__Cast_HeadVar2_5 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__Cast_HeadVar1_4, hlds__make_hlds__superhomogeneous__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_body_kind_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__HeadVar__2_1 == hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_mode_presence_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__Cast_HeadVar1_4 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+    MR_Integer hlds__make_hlds__superhomogeneous__Cast_HeadVar2_5 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__Cast_HeadVar1_4, hlds__make_hlds__superhomogeneous__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_mode_presence_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__HeadVar__2_1 == hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_kind_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__Cast_HeadVar1_4 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+    MR_Integer hlds__make_hlds__superhomogeneous__Cast_HeadVar2_5 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__Cast_HeadVar1_4, hlds__make_hlds__superhomogeneous__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_kind_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__HeadVar__2_1 == hlds__make_hlds__superhomogeneous__HeadVar__2_2);
+
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____lambda_arg_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_24 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_25 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__3_3;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_24 == hlds__make_hlds__superhomogeneous__CastY_25);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer hlds__make_hlds__superhomogeneous__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 6)));
+        MR_Integer hlds__make_hlds__superhomogeneous__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 6)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_18_18;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&hlds__make_hlds__superhomogeneous__V_18_18, hlds__make_hlds__superhomogeneous__V_4_4, hlds__make_hlds__superhomogeneous__V_11_11);
+        }
+        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_18_18 == (MR_Integer) 0);
+        hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_18_18;
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__V_19_19;
+            MR_Integer hlds__make_hlds__superhomogeneous__V_33_33 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_5_5;
+            MR_Integer hlds__make_hlds__superhomogeneous__V_34_34 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_12_12;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&hlds__make_hlds__superhomogeneous__V_19_19, hlds__make_hlds__superhomogeneous__V_33_33, hlds__make_hlds__superhomogeneous__V_34_34);
+            }
+            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_19_19 == (MR_Integer) 0);
+            hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_19_19;
+            else
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__V_20_20;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[2], &hlds__make_hlds__superhomogeneous__V_20_20, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_6_6)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_13_13)));
+                }
+                hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_20_20 == (MR_Integer) 0);
+                hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_20_20;
+                else
+                  {
+                    MR_Word hlds__make_hlds__superhomogeneous__V_21_21;
+
+                    {
+                      mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0], &hlds__make_hlds__superhomogeneous__V_21_21, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_7_7)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_14_14)));
+                    }
+                    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_21_21 == (MR_Integer) 0);
+                    hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_21_21;
+                    else
+                      {
+                        MR_Word hlds__make_hlds__superhomogeneous__V_22_22;
+                        MR_Integer hlds__make_hlds__superhomogeneous__V_35_35 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_8_8;
+                        MR_Integer hlds__make_hlds__superhomogeneous__V_36_36 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_15_15;
+
+                        {
+                          mercury__private_builtin__builtin_compare_int_3_p_0(&hlds__make_hlds__superhomogeneous__V_22_22, hlds__make_hlds__superhomogeneous__V_35_35, hlds__make_hlds__superhomogeneous__V_36_36);
+                        }
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_22_22 == (MR_Integer) 0);
+                        hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_22_22;
+                        else
+                          {
+                            MR_Word hlds__make_hlds__superhomogeneous__V_23_23;
+
+                            {
+                              parse_tree__prog_data____Compare____mer_mode_0_0(&hlds__make_hlds__superhomogeneous__V_23_23, hlds__make_hlds__superhomogeneous__V_9_9, hlds__make_hlds__superhomogeneous__V_16_16);
+                            }
+                            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_23_23 == (MR_Integer) 0);
+                            hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_23_23;
+                            else
+                              {
+                                mercury__term____Compare____context_0_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__V_10_10, hlds__make_hlds__superhomogeneous__V_17_17);
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____lambda_arg_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_17 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__1_1;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_18 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_17 == hlds__make_hlds__superhomogeneous__CastY_18);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_19_19;
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_20_20;
+        MR_Integer hlds__make_hlds__superhomogeneous__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 6)));
+        MR_Integer hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 6)));
+
+        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_3_3 == hlds__make_hlds__superhomogeneous__V_10_10);
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_4_4 == hlds__make_hlds__superhomogeneous__V_11_11);
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__TypeInfo_19_19 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[2];
+                {
+                  hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_19_19, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_5_5)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_12_12)));
+                }
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__TypeInfo_20_20 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0];
+                    {
+                      hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_20_20, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_6_6)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_13_13)));
+                    }
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_7_7 == hlds__make_hlds__superhomogeneous__V_14_14);
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            {
+                              hlds__make_hlds__superhomogeneous__succeeded = parse_tree__prog_data____Unify____mer_mode_0_0(hlds__make_hlds__superhomogeneous__V_8_8, hlds__make_hlds__superhomogeneous__V_15_15);
+                            }
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              {
+                                hlds__make_hlds__superhomogeneous__succeeded = mercury__term____Unify____context_0_0(hlds__make_hlds__superhomogeneous__V_9_9, hlds__make_hlds__superhomogeneous__V_16_16);
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____expansion_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_9 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_10 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__3_3;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_9 == hlds__make_hlds__superhomogeneous__CastY_10);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_8_8;
+
+        {
+          hlds__make_hlds__superhomogeneous____Compare____maybe_fgti_var_size_0_0(&hlds__make_hlds__superhomogeneous__V_8_8, hlds__make_hlds__superhomogeneous__V_4_4, hlds__make_hlds__superhomogeneous__V_6_6);
+        }
+        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_8_8 == (MR_Integer) 0);
+        hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_8_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[1], hlds__make_hlds__superhomogeneous__HeadVar__1_1, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_5_5)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_7_7)));
+            }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____expansion_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_7 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__1_1;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_8 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_7 == hlds__make_hlds__superhomogeneous__CastY_8);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_9_9;
+        MR_Word hlds__make_hlds__superhomogeneous__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__superhomogeneous____Unify____maybe_fgti_var_size_0_0(hlds__make_hlds__superhomogeneous__V_3_3, hlds__make_hlds__superhomogeneous__V_5_5);
+        }
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__TypeInfo_9_9 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[1];
+            {
+              hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_9_9, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_4_4)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_6_6)));
+            }
+          }
+      }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____arg_context_0_0(
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_43 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_44 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__3_3;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_43 == hlds__make_hlds__superhomogeneous__CastY_44);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Integer hlds__make_hlds__superhomogeneous__V_55_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Integer hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word hlds__make_hlds__superhomogeneous__V_8_8;
+                  MR_Integer hlds__make_hlds__superhomogeneous__V_57_57 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_56_56;
+                  MR_Integer hlds__make_hlds__superhomogeneous__V_58_58 = (MR_Integer) hlds__make_hlds__superhomogeneous__V_6_6;
+
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(&hlds__make_hlds__superhomogeneous__V_8_8, hlds__make_hlds__superhomogeneous__V_57_57, hlds__make_hlds__superhomogeneous__V_58_58);
+                  }
+                  hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_8_8 == (MR_Integer) 0);
+                  hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                  if (hlds__make_hlds__superhomogeneous__succeeded)
+                    *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_8_8;
+                  else
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__V_55_55, hlds__make_hlds__superhomogeneous__V_7_7);
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word hlds__make_hlds__superhomogeneous__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    hlds__hlds_pred____Compare____call_id_0_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__V_51_51, hlds__make_hlds__superhomogeneous__V_21_21);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 2)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word hlds__make_hlds__superhomogeneous__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word hlds__make_hlds__superhomogeneous__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word hlds__make_hlds__superhomogeneous__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 2)));
+                  MR_Word hlds__make_hlds__superhomogeneous__V_41_41;
+
+                  {
+                    parse_tree__prog_data____Compare____cons_id_0_0(&hlds__make_hlds__superhomogeneous__V_41_41, hlds__make_hlds__superhomogeneous__V_54_54, hlds__make_hlds__superhomogeneous__V_38_38);
+                  }
+                  hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_41_41 == (MR_Integer) 0);
+                  hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                  if (hlds__make_hlds__superhomogeneous__succeeded)
+                    *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_41_41;
+                  else
+                    {
+                      MR_Word hlds__make_hlds__superhomogeneous__V_42_42;
+
+                      {
+                        hlds__hlds_goal____Compare____unify_main_context_0_0(&hlds__make_hlds__superhomogeneous__V_42_42, hlds__make_hlds__superhomogeneous__V_53_53, hlds__make_hlds__superhomogeneous__V_39_39);
+                      }
+                      hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_42_42 == (MR_Integer) 0);
+                      hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+                      if (hlds__make_hlds__superhomogeneous__succeeded)
+                        *hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__V_42_42;
+                      else
+                        {
+                          {
+                            mercury__builtin__compare_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[5], hlds__make_hlds__superhomogeneous__HeadVar__1_1, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_52_52)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_40_40)));
+                          }
+                        }
+                    }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____arg_context_0_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastX_15 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__1_1;
+    MR_Integer hlds__make_hlds__superhomogeneous__CastY_16 = (MR_Integer) hlds__make_hlds__superhomogeneous__HeadVar__2_2;
+
+    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__CastX_15 == hlds__make_hlds__superhomogeneous__CastY_16);
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer hlds__make_hlds__superhomogeneous__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_5_5;
+            MR_Integer hlds__make_hlds__superhomogeneous__V_6_6;
+
+            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+                hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+                hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_3_3 == hlds__make_hlds__superhomogeneous__V_5_5);
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_4_4 == hlds__make_hlds__superhomogeneous__V_6_6);
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_8_8;
+
+            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+                {
+                  hlds__make_hlds__superhomogeneous__succeeded = hlds__hlds_pred____Unify____call_id_0_0(hlds__make_hlds__superhomogeneous__V_7_7, hlds__make_hlds__superhomogeneous__V_8_8);
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_20_20;
+            MR_Word hlds__make_hlds__superhomogeneous__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 2)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_12_12;
+            MR_Word hlds__make_hlds__superhomogeneous__V_13_13;
+            MR_Word hlds__make_hlds__superhomogeneous__V_14_14;
+
+            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+                hlds__make_hlds__superhomogeneous__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+                hlds__make_hlds__superhomogeneous__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 2)));
+                {
+                  hlds__make_hlds__superhomogeneous__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(hlds__make_hlds__superhomogeneous__V_9_9, hlds__make_hlds__superhomogeneous__V_12_12);
+                }
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    {
+                      hlds__make_hlds__superhomogeneous__succeeded = hlds__hlds_goal____Unify____unify_main_context_0_0(hlds__make_hlds__superhomogeneous__V_10_10, hlds__make_hlds__superhomogeneous__V_13_13);
+                    }
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__TypeInfo_20_20 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[5];
+                        {
+                          hlds__make_hlds__superhomogeneous__succeeded = mercury__builtin__unify_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_20_20, ((MR_Box) (hlds__make_hlds__superhomogeneous__V_11_11)), ((MR_Box) (hlds__make_hlds__superhomogeneous__V_14_14)));
+                        }
+                      }
+                  }
+              }
+          }
+          break;
+      }
+    return hlds__make_hlds__superhomogeneous__succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__make_fresh_arg_var_no_svar_5_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Arg_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__Var_7,
+  MR_Word hlds__make_hlds__superhomogeneous__Vars0_8,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_12,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_13)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__Arg_6)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word hlds__make_hlds__superhomogeneous__ArgVar_10;
+    MR_Word hlds__make_hlds__superhomogeneous__V_11_11;
+    MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_15_15;
+
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        hlds__make_hlds__superhomogeneous__ArgVar_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Arg_6, (MR_Integer) 0)));
+        hlds__make_hlds__superhomogeneous__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Arg_6, (MR_Integer) 1)));
+        hlds__make_hlds__superhomogeneous__TypeInfo_15_15 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0];
+        {
+          hlds__make_hlds__superhomogeneous__succeeded = mercury__list__member_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_15_15, ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgVar_10)), hlds__make_hlds__superhomogeneous__Vars0_8);
+        }
+        hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+      }
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        *hlds__make_hlds__superhomogeneous__Var_7 = hlds__make_hlds__superhomogeneous__ArgVar_10;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_13 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_12;
+      }
+    else
+      {
+        {
+          mercury__varset__new_var_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, hlds__make_hlds__superhomogeneous__Var_7, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_12, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_13);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__make_fresh_arg_vars_subst_svars_loop_9_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_0_2,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_3,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_4,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_5,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_7,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_8,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_9)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+        if ((hlds__make_hlds__superhomogeneous__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_9 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_8;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_7 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_6;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_5 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_4;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_3 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_0_2;
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__Arg_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__Args_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__Var_28;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_37_37;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_38_38;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_39_39;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_40_40;
+            MR_Word hlds__make_hlds__superhomogeneous__Arg_57;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_25_60;
+            MR_Word hlds__make_hlds__superhomogeneous__ArgVar_58;
+            MR_Word hlds__make_hlds__superhomogeneous__V_59_59;
+            MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_29_64;
+
+            {
+              hlds__make_hlds__state_var__substitute_state_var_mapping_8_p_0(hlds__make_hlds__superhomogeneous__Arg_22, &hlds__make_hlds__superhomogeneous__Arg_57, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_4, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_25_60, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_6, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_38_38, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_8, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_39_39);
+            }
+            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__Arg_57)) == (MR_mktag((MR_Integer) 1)));
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__ArgVar_58 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Arg_57, (MR_Integer) 0)));
+                hlds__make_hlds__superhomogeneous__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Arg_57, (MR_Integer) 1)));
+                hlds__make_hlds__superhomogeneous__TypeInfo_29_64 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0];
+                {
+                  hlds__make_hlds__superhomogeneous__succeeded = mercury__list__member_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_29_64, ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgVar_58)), hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_0_2);
+                }
+                hlds__make_hlds__superhomogeneous__succeeded = !(hlds__make_hlds__superhomogeneous__succeeded);
+              }
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__Var_28 = hlds__make_hlds__superhomogeneous__ArgVar_58;
+                hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_37_37 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_25_60;
+              }
+            else
+              {
+                {
+                  mercury__varset__new_var_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, &hlds__make_hlds__superhomogeneous__Var_28, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_25_60, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_37_37);
+                }
+              }
+            {
+              hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_40_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_40_40, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Var_28));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_40_40, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_0_2));
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1__tmp_copy_1 = hlds__make_hlds__superhomogeneous__Args_23;
+              MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_0__tmp_copy_2 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_40_40;
+              MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0__tmp_copy_4 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_37_37;
+              MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0__tmp_copy_6 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_38_38;
+              MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0__tmp_copy_8 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_39_39;
+
+              hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_8 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0__tmp_copy_8;
+              hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_6 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0__tmp_copy_6;
+              hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_4 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0__tmp_copy_4;
+              hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_0_2 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_RevVars_0__tmp_copy_2;
+              hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__qualify_lambda_arg_modes_8_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__3_3,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__4_4,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_0_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_6,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_7,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_8)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *hlds__make_hlds__superhomogeneous__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *hlds__make_hlds__superhomogeneous__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_8 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_7;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_6 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_0_5;
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaArg0_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs0_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaArg_19;
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs_20;
+        MR_Word hlds__make_hlds__superhomogeneous__Mode_21;
+        MR_Word hlds__make_hlds__superhomogeneous__Modes_22;
+        MR_Integer hlds__make_hlds__superhomogeneous__ArgNum_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg0_17, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__Kind_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg0_17, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__ProgArgTerm_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg0_17, (MR_Integer) 2)));
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaVar_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg0_17, (MR_Integer) 3)));
+        MR_Word hlds__make_hlds__superhomogeneous__PresentOrAbsent_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg0_17, (MR_Integer) 4)));
+        MR_Word hlds__make_hlds__superhomogeneous__Mode0_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg0_17, (MR_Integer) 5)));
+        MR_Word hlds__make_hlds__superhomogeneous__ModeContext_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg0_17, (MR_Integer) 6)));
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_36_36;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_37_37;
+
+        {
+          parse_tree__module_qual__qualify_lambda_mode_8_p_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__ModeContext_31, hlds__make_hlds__superhomogeneous__Mode0_30, &hlds__make_hlds__superhomogeneous__Mode_21, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_0_5, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_36_36, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_7, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_37_37);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__LambdaArg_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_19, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgNum_25));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_19, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Kind_26));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_19, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ProgArgTerm_27));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_19, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaVar_28));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_19, 4) = ((MR_Box) (hlds__make_hlds__superhomogeneous__PresentOrAbsent_29));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_19, 5) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Mode_21));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_19, 6) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ModeContext_31));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__qualify_lambda_arg_modes_8_p_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__LambdaArgs0_18, &hlds__make_hlds__superhomogeneous__LambdaArgs_20, &hlds__make_hlds__superhomogeneous__Modes_22, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_36_36, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_MQInfo_6, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_37_37, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_8);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *hlds__make_hlds__superhomogeneous__HeadVar__3_3 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaArg_19));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaArgs_20));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *hlds__make_hlds__superhomogeneous__HeadVar__4_4 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Mode_21));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Modes_22));
+        }
+      }
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__superhomogeneous__qualify_lambda_arg_modes_if_not_opt_imported_7_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1)
+{
+  {
+    MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2;
+    MR_Box hlds__make_hlds__superhomogeneous__closure = hlds__make_hlds__superhomogeneous__closure_arg;
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_Mode_4;
+
+    {
+      hlds__make_hlds__superhomogeneous__conv0_Mode_4 = hlds__make_hlds__superhomogeneous__project_lambda_arg_mode_1_f_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1));
+    }
+    hlds__make_hlds__superhomogeneous__wrapper_arg_2 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_Mode_4));
+    return hlds__make_hlds__superhomogeneous__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__qualify_lambda_arg_modes_if_not_opt_imported_7_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs0_8,
+  MR_Word * hlds__make_hlds__superhomogeneous__LambdaArgs_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__Modes_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_17,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_18,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_19,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_20)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__MaybeOptImported_13;
+
+    {
+      hlds__make_hlds__qual_info__qual_info_get_maybe_opt_imported_2_p_0(hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_17, &hlds__make_hlds__superhomogeneous__MaybeOptImported_13);
+    }
+    switch (hlds__make_hlds__superhomogeneous__MaybeOptImported_13) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word hlds__make_hlds__superhomogeneous__MQInfo0_15;
+          MR_Word hlds__make_hlds__superhomogeneous__MQInfo_16;
+
+          {
+            hlds__make_hlds__qual_info__qual_info_get_mq_info_2_p_0(hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_17, &hlds__make_hlds__superhomogeneous__MQInfo0_15);
+          }
+          {
+            hlds__make_hlds__superhomogeneous__qualify_lambda_arg_modes_8_p_0((MR_Integer) 0, hlds__make_hlds__superhomogeneous__LambdaArgs0_8, hlds__make_hlds__superhomogeneous__LambdaArgs_9, hlds__make_hlds__superhomogeneous__Modes_10, hlds__make_hlds__superhomogeneous__MQInfo0_15, &hlds__make_hlds__superhomogeneous__MQInfo_16, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_19, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_20);
+          }
+          {
+            hlds__make_hlds__qual_info__qual_info_set_mq_info_3_p_0(hlds__make_hlds__superhomogeneous__MQInfo_16, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_17, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_18);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          *hlds__make_hlds__superhomogeneous__LambdaArgs_9 = hlds__make_hlds__superhomogeneous__LambdaArgs0_8;
+          {
+            *hlds__make_hlds__superhomogeneous__Modes_10 = mercury__list__map_2_f_0((MR_Word) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0, (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_4[3], *hlds__make_hlds__superhomogeneous__LambdaArgs_9);
+          }
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_18 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_17;
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_20 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_19;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__partition_args_and_lambda_vars_7_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__ModuleInfo_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__3_3,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__4_4,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__5_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__6_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__7_7)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((hlds__make_hlds__superhomogeneous__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        {
+          *hlds__make_hlds__superhomogeneous__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *hlds__make_hlds__superhomogeneous__HeadVar__5_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *hlds__make_hlds__superhomogeneous__HeadVar__6_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *hlds__make_hlds__superhomogeneous__HeadVar__7_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        }
+      else
+        {
+          {
+            mercury__require__unexpected_2_p_0((MR_String) "predicate \140hlds.make_hlds.superhomogeneous.partition_args_and_lambda_vars\'/7", (MR_String) "mismatched lists");
+            return;
+          }
+        }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+
+        if ((hlds__make_hlds__superhomogeneous__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              mercury__require__unexpected_2_p_0((MR_String) "predicate \140hlds.make_hlds.superhomogeneous.partition_args_and_lambda_vars\'/7", (MR_String) "mismatched lists");
+              return;
+            }
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__ArgTerm_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__ArgTerms_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__InputArgTermsTail_36;
+            MR_Word hlds__make_hlds__superhomogeneous__OutputArgTermsTail_37;
+            MR_Word hlds__make_hlds__superhomogeneous__InputLambdaVarsTail_38;
+            MR_Word hlds__make_hlds__superhomogeneous__OutputLambdaVarsTail_39;
+            MR_Word hlds__make_hlds__superhomogeneous__LambdaVar_43;
+            MR_Word hlds__make_hlds__superhomogeneous__Mode_45;
+            MR_Integer hlds__make_hlds__superhomogeneous___ArgNum_40;
+            MR_Word hlds__make_hlds__superhomogeneous___Kind_41;
+            MR_Word hlds__make_hlds__superhomogeneous___SupersededArgTerm_42;
+            MR_Word hlds__make_hlds__superhomogeneous___PresentOrAbsent_44;
+            MR_Word hlds__make_hlds__superhomogeneous___ModeContext_46;
+            MR_Word hlds__make_hlds__superhomogeneous__V_51_51;
+            MR_Word hlds__make_hlds__superhomogeneous__V_52_52;
+
+            {
+              hlds__make_hlds__superhomogeneous__partition_args_and_lambda_vars_7_p_0(hlds__make_hlds__superhomogeneous__ModuleInfo_1, hlds__make_hlds__superhomogeneous__V_47_47, hlds__make_hlds__superhomogeneous__ArgTerms_31, &hlds__make_hlds__superhomogeneous__InputArgTermsTail_36, &hlds__make_hlds__superhomogeneous__OutputArgTermsTail_37, &hlds__make_hlds__superhomogeneous__InputLambdaVarsTail_38, &hlds__make_hlds__superhomogeneous__OutputLambdaVarsTail_39);
+            }
+            hlds__make_hlds__superhomogeneous___ArgNum_40 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_48_48, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous___Kind_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_48_48, (MR_Integer) 1)));
+            hlds__make_hlds__superhomogeneous___SupersededArgTerm_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_48_48, (MR_Integer) 2)));
+            hlds__make_hlds__superhomogeneous__LambdaVar_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_48_48, (MR_Integer) 3)));
+            hlds__make_hlds__superhomogeneous___PresentOrAbsent_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_48_48, (MR_Integer) 4)));
+            hlds__make_hlds__superhomogeneous__Mode_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_48_48, (MR_Integer) 5)));
+            hlds__make_hlds__superhomogeneous___ModeContext_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_48_48, (MR_Integer) 6)));
+            {
+              hlds__make_hlds__superhomogeneous__succeeded = check_hlds__mode_util__mode_get_insts_semidet_4_p_0(hlds__make_hlds__superhomogeneous__ModuleInfo_1, hlds__make_hlds__superhomogeneous__Mode_45, &hlds__make_hlds__superhomogeneous__V_51_51, &hlds__make_hlds__superhomogeneous__V_52_52);
+            }
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__succeeded = check_hlds__mode_util__mode_is_output_2_p_0(hlds__make_hlds__superhomogeneous__ModuleInfo_1, hlds__make_hlds__superhomogeneous__Mode_45);
+              }
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                *hlds__make_hlds__superhomogeneous__HeadVar__4_4 = hlds__make_hlds__superhomogeneous__InputArgTermsTail_36;
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *hlds__make_hlds__superhomogeneous__HeadVar__5_5 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgTerm_30));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__OutputArgTermsTail_37));
+                }
+                *hlds__make_hlds__superhomogeneous__HeadVar__6_6 = hlds__make_hlds__superhomogeneous__InputLambdaVarsTail_38;
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *hlds__make_hlds__superhomogeneous__HeadVar__7_7 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaVar_43));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__OutputLambdaVarsTail_39));
+                }
+              }
+            else
+              {
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *hlds__make_hlds__superhomogeneous__HeadVar__4_4 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgTerm_30));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__InputArgTermsTail_36));
+                }
+                *hlds__make_hlds__superhomogeneous__HeadVar__5_5 = hlds__make_hlds__superhomogeneous__OutputArgTermsTail_37;
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *hlds__make_hlds__superhomogeneous__HeadVar__6_6 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaVar_43));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__InputLambdaVarsTail_38));
+                }
+                *hlds__make_hlds__superhomogeneous__HeadVar__7_7 = hlds__make_hlds__superhomogeneous__OutputLambdaVarsTail_39;
+              }
+          }
+      }
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0_3(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1)
+{
+  {
+    MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2;
+    MR_Box hlds__make_hlds__superhomogeneous__closure = hlds__make_hlds__superhomogeneous__closure_arg;
+    MR_Word hlds__make_hlds__superhomogeneous__conv3_LambdaVar_4;
+
+    {
+      hlds__make_hlds__superhomogeneous__conv3_LambdaVar_4 = hlds__make_hlds__superhomogeneous__project_lambda_var_1_f_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1));
+    }
+    hlds__make_hlds__superhomogeneous__wrapper_arg_2 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv3_LambdaVar_4));
+    return hlds__make_hlds__superhomogeneous__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0_2(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1)
+{
+  {
+    MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2;
+    MR_Box hlds__make_hlds__superhomogeneous__closure = hlds__make_hlds__superhomogeneous__closure_arg;
+    MR_Word hlds__make_hlds__superhomogeneous__conv2_ArgTerm_4;
+
+    {
+      hlds__make_hlds__superhomogeneous__conv2_ArgTerm_4 = hlds__make_hlds__superhomogeneous__project_lambda_arg_term_1_f_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1));
+    }
+    hlds__make_hlds__superhomogeneous__wrapper_arg_2 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv2_ArgTerm_4));
+    return hlds__make_hlds__superhomogeneous__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1)
+{
+  {
+    MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_2;
+    MR_Box hlds__make_hlds__superhomogeneous__closure = hlds__make_hlds__superhomogeneous__closure_arg;
+    MR_String hlds__make_hlds__superhomogeneous__conv0_HeadVar__4_213;
+
+    {
+      hlds__make_hlds__superhomogeneous__conv0_HeadVar__4_213 = hlds__make_hlds__superhomogeneous__IntroducedFrom__func__build_lambda_expression__1808__1_3_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__closure, (MR_Integer) 4))), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1));
+    }
+    hlds__make_hlds__superhomogeneous__wrapper_arg_2 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_HeadVar__4_213));
+    return hlds__make_hlds__superhomogeneous__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LHSVar_20,
+  MR_Word hlds__make_hlds__superhomogeneous__UnificationPurity_21,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_22,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_23,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__LambdaHead_25,
+  MR_Word hlds__make_hlds__superhomogeneous__MaybeBodyGoal_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_27,
+  MR_Word hlds__make_hlds__superhomogeneous__OutsideSVarState_28,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_92,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_93,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_94,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_95,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_96,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_97,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_98,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_99,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_100,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_101)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_218_218;
+    MR_Word hlds__make_hlds__superhomogeneous__LambdaPurity_34 = ((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_25, (MR_Integer) 0)))) & (MR_Integer) 3);
+    MR_Word hlds__make_hlds__superhomogeneous__Groundness_35 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_25, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+    MR_Word hlds__make_hlds__superhomogeneous__PredOrFunc_36 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_25, (MR_Integer) 0)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+    MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs0_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_25, (MR_Integer) 2)));
+    MR_Word hlds__make_hlds__superhomogeneous__BadModeSpecs_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_25, (MR_Integer) 3)));
+    MR_Word hlds__make_hlds__superhomogeneous__SVarSpecs_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_25, (MR_Integer) 4)));
+    MR_Word hlds__make_hlds__superhomogeneous__MaybeDetism_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_25, (MR_Integer) 5)));
+    MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs1_42;
+    MR_Word hlds__make_hlds__superhomogeneous__Modes_43;
+    MR_Word hlds__make_hlds__superhomogeneous__InconsistentVars_44;
+    MR_Word hlds__make_hlds__superhomogeneous__Detism_52;
+    MR_Word hlds__make_hlds__superhomogeneous__BodyGoal_54;
+    MR_Word hlds__make_hlds__superhomogeneous__ArgSpecs_56;
+    MR_Word hlds__make_hlds__superhomogeneous__Goal_59;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_102_102;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_103_103;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_128_128;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_129_129;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_130_130;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_132_132;
+    MR_Word hlds__make_hlds__superhomogeneous__V_206_206;
+
+    {
+      hlds__make_hlds__superhomogeneous__qualify_lambda_arg_modes_if_not_opt_imported_7_p_0(hlds__make_hlds__superhomogeneous__LambdaArgs0_38, &hlds__make_hlds__superhomogeneous__LambdaArgs1_42, &hlds__make_hlds__superhomogeneous__Modes_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_98, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_102_102, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_100, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_103_103);
+    }
+    {
+      parse_tree__prog_mode__inconsistent_constrained_inst_vars_in_modes_2_p_0(hlds__make_hlds__superhomogeneous__Modes_43, &hlds__make_hlds__superhomogeneous__InconsistentVars_44);
+    }
+    if ((hlds__make_hlds__superhomogeneous__InconsistentVars_44 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_128_128 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_103_103;
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_210_210;
+        MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_211_211;
+        MR_Word hlds__make_hlds__superhomogeneous__InstVarSet_47;
+        MR_Word hlds__make_hlds__superhomogeneous__InconsistentVarStrs_48;
+        MR_Word hlds__make_hlds__superhomogeneous__InconsistentVarPieces_49;
+        MR_Word hlds__make_hlds__superhomogeneous__InconsistentVarMsg_50;
+        MR_Word hlds__make_hlds__superhomogeneous__InconsistentVarSpec_51;
+        MR_Word hlds__make_hlds__superhomogeneous__V_104_104;
+        MR_Word hlds__make_hlds__superhomogeneous__V_106_106;
+        MR_Word hlds__make_hlds__superhomogeneous__V_109_109;
+        MR_Word hlds__make_hlds__superhomogeneous__V_110_110;
+        MR_String hlds__make_hlds__superhomogeneous__V_111_111;
+        MR_Word hlds__make_hlds__superhomogeneous__V_114_114;
+        MR_Word hlds__make_hlds__superhomogeneous__V_121_121;
+        MR_Word hlds__make_hlds__superhomogeneous__V_122_122;
+        MR_Word hlds__make_hlds__superhomogeneous__V_126_126;
+        MR_Box hlds__make_hlds__superhomogeneous__conv1_V_111_111;
+
+        {
+          mercury__varset__coerce_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_94, &hlds__make_hlds__superhomogeneous__InstVarSet_47);
+        }
+        hlds__make_hlds__superhomogeneous__TypeInfo_210_210 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[4];
+        hlds__make_hlds__superhomogeneous__TypeCtorInfo_211_211 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+        {
+          hlds__make_hlds__superhomogeneous__V_104_104 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_104_104, 0) = ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_6[0]));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_104_104, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0_1));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_104_104, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_104_104, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__InstVarSet_47));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_104_104, 4) = ((MR_Box) ((MR_Integer) 0));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__InconsistentVarStrs_48 = mercury__list__map_2_f_0(hlds__make_hlds__superhomogeneous__TypeInfo_210_210, hlds__make_hlds__superhomogeneous__TypeCtorInfo_211_211, hlds__make_hlds__superhomogeneous__V_104_104, hlds__make_hlds__superhomogeneous__InconsistentVars_44);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__conv1_V_111_111 = parse_tree__error_util__choose_number_3_f_0(hlds__make_hlds__superhomogeneous__TypeInfo_210_210, hlds__make_hlds__superhomogeneous__TypeCtorInfo_211_211, hlds__make_hlds__superhomogeneous__InconsistentVars_44, ((MR_Box) ((MR_String) "variable")), ((MR_Box) ((MR_String) "variables")));
+        }
+        hlds__make_hlds__superhomogeneous__V_111_111 = ((MR_String) hlds__make_hlds__superhomogeneous__conv1_V_111_111);
+        {
+          hlds__make_hlds__superhomogeneous__V_110_110 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_110_110, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_110_110, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_111_111));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_114_114 = parse_tree__error_util__list_to_quoted_pieces_1_f_0(hlds__make_hlds__superhomogeneous__InconsistentVarStrs_48);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_109_109 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_109_109, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_110_110));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_109_109, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_114_114));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_106_106 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_106_106, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[100])));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_106_106, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_109_109));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__InconsistentVarPieces_49 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, hlds__make_hlds__superhomogeneous__V_106_106, (MR_Word) MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[87]));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_122_122 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_122_122, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__InconsistentVarPieces_49));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_121_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_121_121, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_122_122));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_121_121, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__InconsistentVarMsg_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__InconsistentVarMsg_50, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_22));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__InconsistentVarMsg_50, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_121_121));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_126_126 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_126_126, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__InconsistentVarMsg_50));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_126_126, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__InconsistentVarSpec_51 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__InconsistentVarSpec_51, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__InconsistentVarSpec_51, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__InconsistentVarSpec_51, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_126_126));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_128_128 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_128_128, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__InconsistentVarSpec_51));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_128_128, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_103_103));
+        }
+      }
+    if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__MaybeDetism_41)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__DetismSpecs_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__MaybeDetism_41, (MR_Integer) 0)));
+
+        {
+          hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_129_129 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, hlds__make_hlds__superhomogeneous__DetismSpecs_53, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_128_128);
+        }
+        hlds__make_hlds__superhomogeneous__Detism_52 = (MR_Integer) 0;
+      }
+    else
+      {
+        hlds__make_hlds__superhomogeneous__Detism_52 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeDetism_41, (MR_Integer) 0)));
+        hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_129_129 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_128_128;
+      }
+    if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__MaybeBodyGoal_26)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__BodyGoalSpecs_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__MaybeBodyGoal_26, (MR_Integer) 0)));
+
+        {
+          hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_130_130 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, hlds__make_hlds__superhomogeneous__BodyGoalSpecs_55, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_129_129);
+        }
+        {
+          hlds__make_hlds__qual_info__qual_info_set_found_syntax_error_3_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_102_102, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_132_132);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__BodyGoal_54 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__BodyGoal_54, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__BodyGoal_54, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_22));
+        }
+      }
+    else
+      {
+        hlds__make_hlds__superhomogeneous__BodyGoal_54 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeBodyGoal_26, (MR_Integer) 0)));
+        hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_132_132 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_102_102;
+        hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_130_130 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_129_129;
+      }
+    hlds__make_hlds__superhomogeneous__TypeCtorInfo_218_218 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0;
+    {
+      hlds__make_hlds__superhomogeneous__ArgSpecs_56 = mercury__list__f_43_43_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_218_218, hlds__make_hlds__superhomogeneous__BadModeSpecs_39, hlds__make_hlds__superhomogeneous__SVarSpecs_40);
+    }
+    if ((hlds__make_hlds__superhomogeneous__ArgSpecs_56 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_219_219 = (MR_Word) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0;
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_220_220 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[2];
+        MR_Word hlds__make_hlds__superhomogeneous__TypeInfo_223_223;
+        MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_236_236;
+        MR_Word hlds__make_hlds__superhomogeneous__ArgTerms1_61;
+        MR_Word hlds__make_hlds__superhomogeneous__ArgTerms_62;
+        MR_Word hlds__make_hlds__superhomogeneous__FinalSVarMap_63;
+        MR_Word hlds__make_hlds__superhomogeneous__InitialSVarState_64;
+        MR_Word hlds__make_hlds__superhomogeneous__NonOutputArgs_65;
+        MR_Word hlds__make_hlds__superhomogeneous__OutputArgs_66;
+        MR_Word hlds__make_hlds__superhomogeneous__NonOutputLambdaVars_67;
+        MR_Word hlds__make_hlds__superhomogeneous__OutputLambdaVars_68;
+        MR_Integer hlds__make_hlds__superhomogeneous__NumArgs_69;
+        MR_Word hlds__make_hlds__superhomogeneous__ArgContext_70;
+        MR_Word hlds__make_hlds__superhomogeneous__HeadBefore0_71;
+        MR_Word hlds__make_hlds__superhomogeneous__HeadBefore_72;
+        MR_Word hlds__make_hlds__superhomogeneous__Substitution_73;
+        MR_Word hlds__make_hlds__superhomogeneous__Body_74;
+        MR_Word hlds__make_hlds__superhomogeneous__HeadAfter0_75;
+        MR_Word hlds__make_hlds__superhomogeneous__HeadAfter_76;
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaVars_77;
+        MR_Word hlds__make_hlds__superhomogeneous__FinalSVarState_80;
+        MR_Word hlds__make_hlds__superhomogeneous__HLDS_Goal0_81;
+        MR_Word hlds__make_hlds__superhomogeneous__QuantifiedArgTerms_82;
+        MR_Word hlds__make_hlds__superhomogeneous__QuantifiedVars0_84;
+        MR_Word hlds__make_hlds__superhomogeneous__QuantifiedVars_85;
+        MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_86;
+        MR_Word hlds__make_hlds__superhomogeneous__HLDS_GoalExpr_87;
+        MR_Word hlds__make_hlds__superhomogeneous__HLDS_Goal_88;
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaNonLocals_90;
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaRHS_91;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_135_135;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_136_136;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_137_137;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_138_138;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_139_139;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_140_140;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_141_141;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_142_142;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_144_144;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145_145;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_146_146;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_147_147;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_148_148;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_149_149;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_151_151;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_154_154;
+        MR_Word hlds__make_hlds__superhomogeneous__V_192_192;
+        MR_Word hlds__make_hlds__superhomogeneous__V_194_194;
+        MR_Word hlds__make_hlds__superhomogeneous__V_195_195;
+        MR_Word hlds__make_hlds__superhomogeneous__V_197_197;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_LambdaGoalVars_198_198;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_LambdaGoalVars_199_199;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_LambdaGoalVars_200_200;
+
+        {
+          hlds__make_hlds__superhomogeneous__ArgTerms1_61 = mercury__list__map_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_219_219, hlds__make_hlds__superhomogeneous__TypeInfo_220_220, (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_4[1], hlds__make_hlds__superhomogeneous__LambdaArgs1_42);
+        }
+        {
+          hlds__make_hlds__state_var__svar_prepare_for_lambda_head_10_p_0(hlds__make_hlds__superhomogeneous__Context_22, hlds__make_hlds__superhomogeneous__ArgTerms1_61, &hlds__make_hlds__superhomogeneous__ArgTerms_62, &hlds__make_hlds__superhomogeneous__FinalSVarMap_63, hlds__make_hlds__superhomogeneous__OutsideSVarState_28, &hlds__make_hlds__superhomogeneous__InitialSVarState_64, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_94, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_135_135, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_130_130, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_136_136);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__partition_args_and_lambda_vars_7_p_0(hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_96, hlds__make_hlds__superhomogeneous__LambdaArgs1_42, hlds__make_hlds__superhomogeneous__ArgTerms_62, &hlds__make_hlds__superhomogeneous__NonOutputArgs_65, &hlds__make_hlds__superhomogeneous__OutputArgs_66, &hlds__make_hlds__superhomogeneous__NonOutputLambdaVars_67, &hlds__make_hlds__superhomogeneous__OutputLambdaVars_68);
+        }
+        {
+          mercury__list__length_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_220_220, hlds__make_hlds__superhomogeneous__ArgTerms_62, &hlds__make_hlds__superhomogeneous__NumArgs_69);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__ArgContext_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ArgContext_70, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__PredOrFunc_36));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ArgContext_70, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__NumArgs_69));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__HeadBefore0_71 = hlds__make_goal__true_goal_with_context_1_f_0(hlds__make_hlds__superhomogeneous__Context_22);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__insert_arg_unifications_18_p_0(hlds__make_hlds__superhomogeneous__NonOutputLambdaVars_67, hlds__make_hlds__superhomogeneous__NonOutputArgs_65, hlds__make_hlds__superhomogeneous__Context_22, hlds__make_hlds__superhomogeneous__ArgContext_70, hlds__make_hlds__superhomogeneous__HeadBefore0_71, &hlds__make_hlds__superhomogeneous__HeadBefore_72, hlds__make_hlds__superhomogeneous__InitialSVarState_64, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_137_137, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_92, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_138_138, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_135_135, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_139_139, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_96, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_140_140, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_132_132, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_141_141, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_136_136, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_142_142);
+        }
+        hlds__make_hlds__superhomogeneous__TypeInfo_223_223 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0];
+        {
+          mercury__map__init_1_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_223_223, hlds__make_hlds__superhomogeneous__TypeInfo_223_223, &hlds__make_hlds__superhomogeneous__Substitution_73);
+        }
+        {
+          hlds__make_hlds__goal_expr_to_goal__transform_parse_tree_goal_to_hlds_16_p_0((MR_Integer) 0, hlds__make_hlds__superhomogeneous__BodyGoal_54, hlds__make_hlds__superhomogeneous__Substitution_73, &hlds__make_hlds__superhomogeneous__Body_74, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_137_137, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_144_144, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_138_138, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145_145, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_139_139, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_146_146, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_140_140, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_147_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_141_141, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_148_148, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_142_142, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_149_149);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__HeadAfter0_75 = hlds__make_goal__true_goal_with_context_1_f_0(hlds__make_hlds__superhomogeneous__Context_22);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__insert_arg_unifications_18_p_0(hlds__make_hlds__superhomogeneous__OutputLambdaVars_68, hlds__make_hlds__superhomogeneous__OutputArgs_66, hlds__make_hlds__superhomogeneous__Context_22, hlds__make_hlds__superhomogeneous__ArgContext_70, hlds__make_hlds__superhomogeneous__HeadAfter0_75, &hlds__make_hlds__superhomogeneous__HeadAfter_76, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_144_144, &hlds__make_hlds__superhomogeneous__FinalSVarState_80, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_145_145, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_151_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_146_146, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_95, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_147_147, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_97, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_148_148, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_154_154, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_149_149, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_101);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__LambdaVars_77 = mercury__list__map_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_219_219, hlds__make_hlds__superhomogeneous__TypeInfo_223_223, (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_4[2], hlds__make_hlds__superhomogeneous__LambdaArgs1_42);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_195_195 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_195_195, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__HeadAfter_76));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_195_195, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_194_194 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_194_194, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Body_74));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_194_194, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_195_195));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_192_192 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_192_192, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__HeadBefore_72));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_192_192, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_194_194));
+        }
+        {
+          hlds__make_hlds__state_var__svar_finish_lambda_body_8_p_0(hlds__make_hlds__superhomogeneous__Context_22, hlds__make_hlds__superhomogeneous__FinalSVarMap_63, hlds__make_hlds__superhomogeneous__V_192_192, &hlds__make_hlds__superhomogeneous__HLDS_Goal0_81, hlds__make_hlds__superhomogeneous__InitialSVarState_64, hlds__make_hlds__superhomogeneous__FinalSVarState_80, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_151_151, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_93);
+        }
+        switch (hlds__make_hlds__superhomogeneous__PredOrFunc_36) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            {
+              MR_Word hlds__make_hlds__superhomogeneous___ReturnValTerm_83;
+              MR_Box hlds__make_hlds__superhomogeneous__conv4__ReturnValTerm_83;
+
+              {
+                parse_tree__prog_util__pred_args_to_func_args_3_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_220_220, hlds__make_hlds__superhomogeneous__ArgTerms_62, &hlds__make_hlds__superhomogeneous__QuantifiedArgTerms_82, &hlds__make_hlds__superhomogeneous__conv4__ReturnValTerm_83);
+              }
+              hlds__make_hlds__superhomogeneous___ReturnValTerm_83 = ((MR_Word) hlds__make_hlds__superhomogeneous__conv4__ReturnValTerm_83);
+            }
+            break;
+          case (MR_Integer) 0:
+            hlds__make_hlds__superhomogeneous__QuantifiedArgTerms_82 = hlds__make_hlds__superhomogeneous__ArgTerms_62;
+            break;
+        }
+        hlds__make_hlds__superhomogeneous__TypeCtorInfo_236_236 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+        {
+          mercury__term__vars_list_2_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_236_236, hlds__make_hlds__superhomogeneous__QuantifiedArgTerms_82, &hlds__make_hlds__superhomogeneous__QuantifiedVars0_84);
+        }
+        {
+          mercury__list__sort_and_remove_dups_2_p_0(hlds__make_hlds__superhomogeneous__TypeInfo_223_223, hlds__make_hlds__superhomogeneous__QuantifiedVars0_84, &hlds__make_hlds__superhomogeneous__QuantifiedVars_85);
+        }
+        {
+          hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__Context_22, &hlds__make_hlds__superhomogeneous__GoalInfo_86);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_197_197 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_197_197, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__QuantifiedVars_85));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__HLDS_GoalExpr_87 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__HLDS_GoalExpr_87, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__HLDS_GoalExpr_87, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_197_197));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__HLDS_GoalExpr_87, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__HLDS_Goal0_81));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__HLDS_Goal_88 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HLDS_Goal_88, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__HLDS_GoalExpr_87));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HLDS_Goal_88, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalInfo_86));
+        }
+        {
+          hlds__goal_util__goal_vars_2_p_0(hlds__make_hlds__superhomogeneous__HLDS_Goal_88, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_LambdaGoalVars_198_198);
+        }
+        {
+          parse_tree__set_of_var__delete_list_3_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_236_236, hlds__make_hlds__superhomogeneous__LambdaVars_77, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_LambdaGoalVars_198_198, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_LambdaGoalVars_199_199);
+        }
+        {
+          parse_tree__set_of_var__delete_list_3_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_236_236, hlds__make_hlds__superhomogeneous__QuantifiedVars_85, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_LambdaGoalVars_199_199, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_LambdaGoalVars_200_200);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__LambdaNonLocals_90 = parse_tree__set_of_var__to_sorted_list_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_236_236, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_LambdaGoalVars_200_200);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__LambdaRHS_91 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__LambdaRHS_91, 0) = ((MR_Box) ((hlds__make_hlds__superhomogeneous__LambdaPurity_34 | ((((hlds__make_hlds__superhomogeneous__Groundness_35 << (MR_Integer) 2)) | ((hlds__make_hlds__superhomogeneous__PredOrFunc_36 << (MR_Integer) 3)))))));
+          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__LambdaRHS_91, 1) = (MR_Integer) 0;
+          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__LambdaRHS_91, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaNonLocals_90));
+          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__LambdaRHS_91, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaVars_77));
+          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__LambdaRHS_91, 4) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Modes_43));
+          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__LambdaRHS_91, 5) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Detism_52));
+          MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__LambdaRHS_91, 6) = ((MR_Box) (hlds__make_hlds__superhomogeneous__HLDS_Goal_88));
+        }
+        {
+          hlds__make_hlds__qual_info__make_atomic_unification_9_p_0(hlds__make_hlds__superhomogeneous__LHSVar_20, hlds__make_hlds__superhomogeneous__LambdaRHS_91, hlds__make_hlds__superhomogeneous__Context_22, hlds__make_hlds__superhomogeneous__MainContext_23, hlds__make_hlds__superhomogeneous__SubContext_24, hlds__make_hlds__superhomogeneous__UnificationPurity_21, &hlds__make_hlds__superhomogeneous__Goal_59, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_154_154, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_99);
+        }
+      }
+    else
+      {
+        {
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_101 = mercury__list__f_43_43_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_218_218, hlds__make_hlds__superhomogeneous__ArgSpecs_56, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_130_130);
+        }
+        {
+          hlds__make_hlds__qual_info__qual_info_set_found_syntax_error_3_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_132_132, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_99);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__Goal_59 = hlds__make_goal__true_goal_with_context_1_f_0(hlds__make_hlds__superhomogeneous__Context_22);
+        }
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_93 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_92;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_95 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_94;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_97 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_96;
+      }
+    {
+      hlds__make_hlds__superhomogeneous__V_206_206 = mercury__cord__singleton_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_59)));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *hlds__make_hlds__superhomogeneous__Expansion_27 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_206_206));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_detism_3_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__VarSet_4,
+  MR_Word hlds__make_hlds__superhomogeneous__DetismTerm_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__MaybeDetism_6)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__DetismTerm_5)) == (MR_mktag((MR_Integer) 0)));
+    MR_Word hlds__make_hlds__superhomogeneous__Detism_9;
+    MR_String hlds__make_hlds__superhomogeneous__DetString_7;
+    MR_Word hlds__make_hlds__superhomogeneous__V_15_15;
+    MR_Word hlds__make_hlds__superhomogeneous__V_16_16;
+    MR_Word hlds__make_hlds__superhomogeneous__V_8_8;
+
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        hlds__make_hlds__superhomogeneous__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__DetismTerm_5, (MR_Integer) 0)));
+        hlds__make_hlds__superhomogeneous__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__DetismTerm_5, (MR_Integer) 1)));
+        hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__DetismTerm_5, (MR_Integer) 2)));
+        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_16_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_15_15)) == (MR_mktag((MR_Integer) 0)));
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__DetString_7 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_15_15, (MR_Integer) 0)));
+                {
+                  hlds__make_hlds__superhomogeneous__succeeded = parse_tree__parse_inst_mode_name__standard_det_2_p_0(hlds__make_hlds__superhomogeneous__DetString_7, &hlds__make_hlds__superhomogeneous__Detism_9);
+                }
+              }
+          }
+      }
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+        *hlds__make_hlds__superhomogeneous__MaybeDetism_6 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Detism_9));
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_38_38 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+        MR_Word hlds__make_hlds__superhomogeneous__GenericVarSet_10;
+        MR_String hlds__make_hlds__superhomogeneous__TermStr_11;
+        MR_Word hlds__make_hlds__superhomogeneous__Pieces_12;
+        MR_Word hlds__make_hlds__superhomogeneous__Msg_13;
+        MR_Word hlds__make_hlds__superhomogeneous__Spec_14;
+        MR_Word hlds__make_hlds__superhomogeneous__V_19_19;
+        MR_Word hlds__make_hlds__superhomogeneous__V_20_20;
+        MR_Word hlds__make_hlds__superhomogeneous__V_27_27;
+        MR_Word hlds__make_hlds__superhomogeneous__V_28_28;
+        MR_Word hlds__make_hlds__superhomogeneous__V_29_29;
+        MR_Word hlds__make_hlds__superhomogeneous__V_33_33;
+        MR_Word hlds__make_hlds__superhomogeneous__V_35_35;
+
+        {
+          mercury__varset__coerce_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, hlds__make_hlds__superhomogeneous__TypeCtorInfo_38_38, hlds__make_hlds__superhomogeneous__VarSet_4, &hlds__make_hlds__superhomogeneous__GenericVarSet_10);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__TermStr_11 = parse_tree__parse_tree_out_term__describe_error_term_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_38_38, hlds__make_hlds__superhomogeneous__GenericVarSet_10, hlds__make_hlds__superhomogeneous__DetismTerm_5);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_20_20 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_20_20, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_20_20, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__TermStr_11));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_19_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_19_19, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_20_20));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_19_19, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[85])));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__Pieces_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Pieces_12, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[99])));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Pieces_12, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_19_19));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_27_27 = mercury__term__get_term_context_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_38_38, hlds__make_hlds__superhomogeneous__DetismTerm_5);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_29_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_29_29, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Pieces_12));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_28_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_28_28, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_29_29));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_28_28, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__Msg_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_13, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_27_27));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_13, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_28_28));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_33_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_33_33, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_13));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_33_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__Spec_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_14, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_14, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_33_33));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_35_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_35_35, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_14));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_35_35, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          *hlds__make_hlds__superhomogeneous__MaybeDetism_6 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_35_35));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_arg_11_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Kind_12,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerm_13,
+  MR_Word * hlds__make_hlds__superhomogeneous__LambdaArg_14,
+  MR_Integer hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_0_36,
+  MR_Integer * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_37,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_38,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_39,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_0_40,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_41,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_0_42,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_43)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__ArgModeTerm_13)) == (MR_mktag((MR_Integer) 0)));
+    MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_73_73;
+    MR_Word hlds__make_hlds__superhomogeneous__ArgTerm_22;
+    MR_Word hlds__make_hlds__superhomogeneous__PresentOrAbsent_23;
+    MR_Word hlds__make_hlds__superhomogeneous__ModeContext_24;
+    MR_Word hlds__make_hlds__superhomogeneous__Mode_29;
+    MR_Word hlds__make_hlds__superhomogeneous__ProgArgTerm_31;
+    MR_String hlds__make_hlds__superhomogeneous__LambdaVarName_34;
+    MR_Word hlds__make_hlds__superhomogeneous__LambdaVar_35;
+    MR_String hlds__make_hlds__superhomogeneous__V_63_63;
+    MR_Word hlds__make_hlds__superhomogeneous__ArgTermPrime_19;
+    MR_Word hlds__make_hlds__superhomogeneous__ModeTerm_20;
+    MR_Word hlds__make_hlds__superhomogeneous__V_44_44;
+    MR_String hlds__make_hlds__superhomogeneous__V_45_45;
+    MR_Word hlds__make_hlds__superhomogeneous__V_46_46;
+    MR_Word hlds__make_hlds__superhomogeneous__V_47_47;
+    MR_Word hlds__make_hlds__superhomogeneous__V_48_48;
+    MR_Word hlds__make_hlds__superhomogeneous__V_21_21;
+    MR_Word hlds__make_hlds__superhomogeneous__StateVar_32;
+    MR_Word hlds__make_hlds__superhomogeneous__StateVarContext_33;
+
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        hlds__make_hlds__superhomogeneous__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ArgModeTerm_13, (MR_Integer) 0)));
+        hlds__make_hlds__superhomogeneous__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ArgModeTerm_13, (MR_Integer) 1)));
+        hlds__make_hlds__superhomogeneous__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ArgModeTerm_13, (MR_Integer) 2)));
+        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_44_44)) == (MR_mktag((MR_Integer) 0)));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__V_45_45 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_44_44, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous__succeeded = (strcmp(hlds__make_hlds__superhomogeneous__V_45_45, (MR_String) "::") == 0);
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_46_46)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__ArgTermPrime_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_46_46, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_46_46, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_47_47)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__ModeTerm_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_47_47, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_47_47, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_48_48 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                  }
+              }
+          }
+      }
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_67_67;
+        MR_Word hlds__make_hlds__superhomogeneous__ContextPieces_25;
+        MR_Word hlds__make_hlds__superhomogeneous__GenericVarSet_26;
+        MR_Word hlds__make_hlds__superhomogeneous__MaybeMode0_27;
+        MR_Word hlds__make_hlds__superhomogeneous__V_49_49;
+        MR_Word hlds__make_hlds__superhomogeneous__V_52_52;
+        MR_Word hlds__make_hlds__superhomogeneous__V_53_53;
+
+        hlds__make_hlds__superhomogeneous__ArgTerm_22 = hlds__make_hlds__superhomogeneous__ArgTermPrime_19;
+        hlds__make_hlds__superhomogeneous__PresentOrAbsent_23 = (MR_Integer) 1;
+        hlds__make_hlds__superhomogeneous__TypeCtorInfo_67_67 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+        {
+          hlds__make_hlds__superhomogeneous__ModeContext_24 = mercury__term__get_term_context_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_67_67, hlds__make_hlds__superhomogeneous__ModeTerm_20);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_53_53 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_53_53, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_53_53, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_0_36));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_52_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_52_52, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_53_53));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_52_52, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[98])));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_49_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_49_49, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[96])));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_49_49, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_52_52));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__ContextPieces_25 = mercury__cord__from_list_1_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, hlds__make_hlds__superhomogeneous__V_49_49);
+        }
+        {
+          mercury__varset__coerce_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, hlds__make_hlds__superhomogeneous__TypeCtorInfo_67_67, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_38, &hlds__make_hlds__superhomogeneous__GenericVarSet_26);
+        }
+        {
+          parse_tree__parse_inst_mode_name__parse_mode_5_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), hlds__make_hlds__superhomogeneous__GenericVarSet_26, hlds__make_hlds__superhomogeneous__ContextPieces_25, hlds__make_hlds__superhomogeneous__ModeTerm_20, &hlds__make_hlds__superhomogeneous__MaybeMode0_27);
+        }
+        if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__MaybeMode0_27)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__ModeSpecs_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__MaybeMode0_27, (MR_Integer) 0)));
+
+            {
+              *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_41 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, hlds__make_hlds__superhomogeneous__ModeSpecs_30, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_0_40);
+            }
+            switch (hlds__make_hlds__superhomogeneous__Kind_12) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                {
+                  parse_tree__prog_mode__out_mode_1_p_0(&hlds__make_hlds__superhomogeneous__Mode_29);
+                }
+                break;
+              case (MR_Integer) 0:
+                {
+                  parse_tree__prog_mode__in_mode_1_p_0(&hlds__make_hlds__superhomogeneous__Mode_29);
+                }
+                break;
+            }
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__Mode0_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeMode0_27, (MR_Integer) 0)));
+
+            {
+              parse_tree__prog_mode__constrain_inst_vars_in_mode_2_p_0(hlds__make_hlds__superhomogeneous__Mode0_28, &hlds__make_hlds__superhomogeneous__Mode_29);
+            }
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_41 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_0_40;
+          }
+      }
+    else
+      {
+        hlds__make_hlds__superhomogeneous__ArgTerm_22 = hlds__make_hlds__superhomogeneous__ArgModeTerm_13;
+        hlds__make_hlds__superhomogeneous__PresentOrAbsent_23 = (MR_Integer) 0;
+        switch (hlds__make_hlds__superhomogeneous__Kind_12) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            {
+              parse_tree__prog_mode__out_mode_1_p_0(&hlds__make_hlds__superhomogeneous__Mode_29);
+            }
+            break;
+          case (MR_Integer) 0:
+            {
+              parse_tree__prog_mode__in_mode_1_p_0(&hlds__make_hlds__superhomogeneous__Mode_29);
+            }
+            break;
+        }
+        {
+          hlds__make_hlds__superhomogeneous__ModeContext_24 = mercury__term__get_term_context_1_f_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, hlds__make_hlds__superhomogeneous__ArgModeTerm_13);
+        }
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_41 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_0_40;
+      }
+    hlds__make_hlds__superhomogeneous__TypeCtorInfo_73_73 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    {
+      mercury__term__coerce_2_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, hlds__make_hlds__superhomogeneous__TypeCtorInfo_73_73, hlds__make_hlds__superhomogeneous__ArgTerm_22, &hlds__make_hlds__superhomogeneous__ProgArgTerm_31);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__succeeded = hlds__make_hlds__state_var__is_term_a_bang_state_pair_3_p_0(hlds__make_hlds__superhomogeneous__ProgArgTerm_31, &hlds__make_hlds__superhomogeneous__StateVar_32, &hlds__make_hlds__superhomogeneous__StateVarContext_33);
+    }
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      switch (hlds__make_hlds__superhomogeneous__Kind_12) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 1:
+          {
+            hlds__make_hlds__state_var__report_illegal_func_svar_result_5_p_0(hlds__make_hlds__superhomogeneous__StateVarContext_33, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_38, hlds__make_hlds__superhomogeneous__StateVar_32, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_0_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_43);
+          }
+          break;
+        case (MR_Integer) 0:
+          {
+            hlds__make_hlds__state_var__report_illegal_bang_svar_lambda_arg_5_p_0(hlds__make_hlds__superhomogeneous__StateVarContext_33, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_38, hlds__make_hlds__superhomogeneous__StateVar_32, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_0_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_43);
+          }
+          break;
+      }
+    else
+      *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_43 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_0_42;
+    {
+      hlds__make_hlds__superhomogeneous__V_63_63 = mercury__string__int_to_string_1_f_0(hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_0_36);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__LambdaVarName_34 = mercury__string__f_43_43_2_f_0((MR_String) "LambdaHeadVar__", hlds__make_hlds__superhomogeneous__V_63_63);
+    }
+    {
+      mercury__varset__new_named_var_4_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_73_73, hlds__make_hlds__superhomogeneous__LambdaVarName_34, &hlds__make_hlds__superhomogeneous__LambdaVar_35, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_38, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_39);
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+      *hlds__make_hlds__superhomogeneous__LambdaArg_14 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_0_36));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Kind_12));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ProgArgTerm_31));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaVar_35));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (hlds__make_hlds__superhomogeneous__PresentOrAbsent_23));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Mode_29));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ModeContext_24));
+    }
+    *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_37 = (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_0_36 + (MR_Integer) 1);
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_args_11_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__3_3,
+  MR_Integer hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_0_4,
+  MR_Integer * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_5,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_6,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_7,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_0_8,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_9,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_0_10,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_11)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *hlds__make_hlds__superhomogeneous__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_11 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_0_10;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_9 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_0_8;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_7 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_6;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_5 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_0_4;
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__HeadArgModeTerm_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__TailArgModeTerms_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__HeadLambdaArg_28;
+        MR_Word hlds__make_hlds__superhomogeneous__TailLambdaArgs_29;
+        MR_Integer hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_42_42;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_43_43;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_44_44;
+        MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_45_45;
+
+        {
+          hlds__make_hlds__superhomogeneous__parse_lambda_arg_11_p_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__HeadArgModeTerm_26, &hlds__make_hlds__superhomogeneous__HeadLambdaArg_28, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_0_4, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_42_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_6, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_43_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_0_8, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_44_44, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_0_10, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_45_45);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__parse_lambda_args_11_p_0(hlds__make_hlds__superhomogeneous__HeadVar__1_1, hlds__make_hlds__superhomogeneous__TailArgModeTerms_27, &hlds__make_hlds__superhomogeneous__TailLambdaArgs_29, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_42_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ArgNum_5, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_43_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_7, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_44_44, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_9, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_45_45, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_11);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *hlds__make_hlds__superhomogeneous__HeadVar__3_3 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__HeadLambdaArg_28));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__TailLambdaArgs_29));
+        }
+      }
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__superhomogeneous__project_lambda_arg_mode_1_f_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LambdaArg_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__Mode_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 5)));
+    MR_Integer hlds__make_hlds__superhomogeneous__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 0)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 1)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 2)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 3)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 4)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 6)));
+
+    return hlds__make_hlds__superhomogeneous__Mode_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__superhomogeneous__project_lambda_var_1_f_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LambdaArg_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__LambdaVar_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 3)));
+    MR_Integer hlds__make_hlds__superhomogeneous__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 0)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 1)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 2)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 4)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 5)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 6)));
+
+    return hlds__make_hlds__superhomogeneous__LambdaVar_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__superhomogeneous__project_lambda_arg_term_1_f_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LambdaArg_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__ArgTerm_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 2)));
+    MR_Integer hlds__make_hlds__superhomogeneous__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 0)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 1)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 3)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 4)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 5)));
+    MR_Word hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_3, (MR_Integer) 6)));
+
+    return hlds__make_hlds__superhomogeneous__ArgTerm_4;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__classify_lambda_arg_modes_present_absent_3_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__2_2,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__3_3)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *hlds__make_hlds__superhomogeneous__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *hlds__make_hlds__superhomogeneous__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaArg_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__PresentArgsTail_8;
+        MR_Word hlds__make_hlds__superhomogeneous__AbsentArgsTail_9;
+        MR_Word hlds__make_hlds__superhomogeneous__PresentOrAbsent_14;
+        MR_Integer hlds__make_hlds__superhomogeneous__V_10_10;
+        MR_Word hlds__make_hlds__superhomogeneous__V_11_11;
+        MR_Word hlds__make_hlds__superhomogeneous__V_12_12;
+        MR_Word hlds__make_hlds__superhomogeneous__V_13_13;
+        MR_Word hlds__make_hlds__superhomogeneous__V_15_15;
+        MR_Word hlds__make_hlds__superhomogeneous__V_16_16;
+
+        {
+          hlds__make_hlds__superhomogeneous__classify_lambda_arg_modes_present_absent_3_p_0(hlds__make_hlds__superhomogeneous__LambdaArgs_5, &hlds__make_hlds__superhomogeneous__PresentArgsTail_8, &hlds__make_hlds__superhomogeneous__AbsentArgsTail_9);
+        }
+        hlds__make_hlds__superhomogeneous__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_4, (MR_Integer) 0)));
+        hlds__make_hlds__superhomogeneous__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_4, (MR_Integer) 1)));
+        hlds__make_hlds__superhomogeneous__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_4, (MR_Integer) 2)));
+        hlds__make_hlds__superhomogeneous__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_4, (MR_Integer) 3)));
+        hlds__make_hlds__superhomogeneous__PresentOrAbsent_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_4, (MR_Integer) 4)));
+        hlds__make_hlds__superhomogeneous__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_4, (MR_Integer) 5)));
+        hlds__make_hlds__superhomogeneous__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaArg_4, (MR_Integer) 6)));
+        switch (hlds__make_hlds__superhomogeneous__PresentOrAbsent_14) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              *hlds__make_hlds__superhomogeneous__HeadVar__2_2 = hlds__make_hlds__superhomogeneous__PresentArgsTail_8;
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *hlds__make_hlds__superhomogeneous__HeadVar__3_3 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaArg_4));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__AbsentArgsTail_9));
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *hlds__make_hlds__superhomogeneous__HeadVar__2_2 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaArg_4));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__PresentArgsTail_8));
+              }
+              *hlds__make_hlds__superhomogeneous__HeadVar__3_3 = hlds__make_hlds__superhomogeneous__AbsentArgsTail_9;
+            }
+            break;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_args_pred_7_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Context_8,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerms_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__LambdaArgs_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_21,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_22,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_23,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_24)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__PresentArgs_15;
+    MR_Word hlds__make_hlds__superhomogeneous__AbsentArgs_16;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_30_30;
+    MR_Integer hlds__make_hlds__superhomogeneous__V_14_14;
+
+    {
+      hlds__make_hlds__superhomogeneous__parse_lambda_args_11_p_0((MR_Integer) 0, hlds__make_hlds__superhomogeneous__ArgModeTerms_9, hlds__make_hlds__superhomogeneous__LambdaArgs_10, (MR_Integer) 1, &hlds__make_hlds__superhomogeneous__V_14_14, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_21, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_22, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_30_30, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_24);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__classify_lambda_arg_modes_present_absent_3_p_0(*hlds__make_hlds__superhomogeneous__LambdaArgs_10, &hlds__make_hlds__superhomogeneous__PresentArgs_15, &hlds__make_hlds__superhomogeneous__AbsentArgs_16);
+    }
+    if ((hlds__make_hlds__superhomogeneous__AbsentArgs_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_23 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_30_30;
+    else
+    if ((hlds__make_hlds__superhomogeneous__PresentArgs_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__Msg_39;
+        MR_Word hlds__make_hlds__superhomogeneous__Spec_40;
+        MR_Word hlds__make_hlds__superhomogeneous__V_54_54;
+
+        {
+          hlds__make_hlds__superhomogeneous__Msg_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_39, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_8));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_39, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[95])));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_54_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_54_54, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_39));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_54_54, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__Spec_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_40, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_40, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_40, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_54_54));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_23 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_40));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_30_30));
+        }
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__Msg_63;
+        MR_Word hlds__make_hlds__superhomogeneous__Spec_64;
+        MR_Word hlds__make_hlds__superhomogeneous__V_78_78;
+
+        {
+          hlds__make_hlds__superhomogeneous__Msg_63 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_63, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_8));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_63, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[94])));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_78_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_78_78, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_63));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_78_78, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__Spec_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_64, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_64, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_64, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_78_78));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_23 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_64));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_30_30));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_args_func_8_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Context_9,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerms_10,
+  MR_Word hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm_11,
+  MR_Word * hlds__make_hlds__superhomogeneous__LambdaArgs_12,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_27,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_28,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_29)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__OrdinaryLambdaArgs_16;
+    MR_Integer hlds__make_hlds__superhomogeneous__ResultArgNum_17;
+    MR_Word hlds__make_hlds__superhomogeneous__FuncRetLambdaArg_18;
+    MR_Word hlds__make_hlds__superhomogeneous__PresentArgs_20;
+    MR_Word hlds__make_hlds__superhomogeneous__AbsentArgs_21;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_34_34;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_35_35;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_36_36;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_39_39;
+    MR_Word hlds__make_hlds__superhomogeneous__V_41_41;
+    MR_Integer hlds__make_hlds__superhomogeneous__V_19_19;
+
+    {
+      hlds__make_hlds__superhomogeneous__parse_lambda_args_11_p_0((MR_Integer) 0, hlds__make_hlds__superhomogeneous__ArgModeTerms_10, &hlds__make_hlds__superhomogeneous__OrdinaryLambdaArgs_16, (MR_Integer) 1, &hlds__make_hlds__superhomogeneous__ResultArgNum_17, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_26, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_34_34, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_35_35, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_36_36);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__parse_lambda_arg_11_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm_11, &hlds__make_hlds__superhomogeneous__FuncRetLambdaArg_18, hlds__make_hlds__superhomogeneous__ResultArgNum_17, &hlds__make_hlds__superhomogeneous__V_19_19, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_34_34, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_27, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_35_35, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_39_39, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_36_36, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarSpecs_29);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__V_41_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_41_41, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__FuncRetLambdaArg_18));
+      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_41_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      *hlds__make_hlds__superhomogeneous__LambdaArgs_12 = mercury__list__f_43_43_2_f_0((MR_Word) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0, hlds__make_hlds__superhomogeneous__OrdinaryLambdaArgs_16, hlds__make_hlds__superhomogeneous__V_41_41);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__classify_lambda_arg_modes_present_absent_3_p_0(*hlds__make_hlds__superhomogeneous__LambdaArgs_12, &hlds__make_hlds__superhomogeneous__PresentArgs_20, &hlds__make_hlds__superhomogeneous__AbsentArgs_21);
+    }
+    if ((hlds__make_hlds__superhomogeneous__AbsentArgs_21 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_28 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_39_39;
+    else
+    if ((hlds__make_hlds__superhomogeneous__PresentArgs_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_28 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_39_39;
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__Msg_51;
+        MR_Word hlds__make_hlds__superhomogeneous__Spec_52;
+        MR_Word hlds__make_hlds__superhomogeneous__V_66_66;
+
+        {
+          hlds__make_hlds__superhomogeneous__Msg_51 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_51, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_9));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_51, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[94])));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_66_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_66_66, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_51));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_66_66, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__Spec_52 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_52, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_52, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_52, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_66_66));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_28 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_52));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_BadModeSpecs_39_39));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_purity_pf_args_det_term_7_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_8,
+  MR_Word hlds__make_hlds__superhomogeneous__MaybeDCGVars_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_64,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_65)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_311_311 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+    MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_312_312 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+    MR_Word hlds__make_hlds__superhomogeneous__GenericPurityPFArgsDetTerm_13;
+    MR_Word hlds__make_hlds__superhomogeneous__LambdaPurity_14;
+    MR_Word hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15;
+    MR_Word hlds__make_hlds__superhomogeneous__DetismTerm_17;
+    MR_Word hlds__make_hlds__superhomogeneous__Context_21;
+    MR_Word hlds__make_hlds__superhomogeneous__Groundness_22;
+    MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerms0_23;
+    MR_Word hlds__make_hlds__superhomogeneous__MaybeFuncRetArgModeTerm_24;
+    MR_Word hlds__make_hlds__superhomogeneous__BeforeIsTerm_16;
+    MR_String hlds__make_hlds__superhomogeneous__BeforeIsFunctor_19;
+    MR_Word hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_20;
+    MR_Word hlds__make_hlds__superhomogeneous__V_66_66;
+    MR_String hlds__make_hlds__superhomogeneous__V_67_67;
+    MR_Word hlds__make_hlds__superhomogeneous__V_68_68;
+    MR_Word hlds__make_hlds__superhomogeneous__V_69_69;
+    MR_Word hlds__make_hlds__superhomogeneous__V_70_70;
+    MR_Word hlds__make_hlds__superhomogeneous__V_71_71;
+    MR_Word hlds__make_hlds__superhomogeneous__V_18_18;
+
+    {
+      mercury__term__coerce_2_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_311_311, hlds__make_hlds__superhomogeneous__TypeCtorInfo_312_312, hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_8, &hlds__make_hlds__superhomogeneous__GenericPurityPFArgsDetTerm_13);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_115_101_95_112_117_114_105_116_121_95_97_110_110_111_116_97_116_105_111_110_95_95_91_49_93_95_48_3_p_0(hlds__make_hlds__superhomogeneous__GenericPurityPFArgsDetTerm_13, &hlds__make_hlds__superhomogeneous__LambdaPurity_14, &hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15);
+    }
+    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15)) == (MR_mktag((MR_Integer) 0)));
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        hlds__make_hlds__superhomogeneous__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15, (MR_Integer) 0)));
+        hlds__make_hlds__superhomogeneous__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15, (MR_Integer) 1)));
+        hlds__make_hlds__superhomogeneous__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15, (MR_Integer) 2)));
+        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_66_66)) == (MR_mktag((MR_Integer) 0)));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__V_67_67 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_66_66, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous__succeeded = (strcmp(hlds__make_hlds__superhomogeneous__V_67_67, (MR_String) "is") == 0);
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_68_68)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__BeforeIsTerm_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_68_68, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_68_68, (MR_Integer) 1)));
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_69_69)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__DetismTerm_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_69_69, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_69_69, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_70_70 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__BeforeIsTerm_16)) == (MR_mktag((MR_Integer) 0)));
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              {
+                                hlds__make_hlds__superhomogeneous__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__BeforeIsTerm_16, (MR_Integer) 0)));
+                                hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__BeforeIsTerm_16, (MR_Integer) 1)));
+                                hlds__make_hlds__superhomogeneous__Context_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__BeforeIsTerm_16, (MR_Integer) 2)));
+                                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_71_71)) == (MR_mktag((MR_Integer) 0)));
+                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                  {
+                                    hlds__make_hlds__superhomogeneous__BeforeIsFunctor_19 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_71_71, (MR_Integer) 0)));
+                                    if ((strcmp(hlds__make_hlds__superhomogeneous__BeforeIsFunctor_19, (MR_String) "=") == 0))
+                                      {
+                                        MR_Word hlds__make_hlds__superhomogeneous__FuncArgsTerm_25;
+                                        MR_Word hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm0_26;
+                                        MR_String hlds__make_hlds__superhomogeneous__FuncTermFunctor_27;
+                                        MR_Word hlds__make_hlds__superhomogeneous__V_72_72;
+                                        MR_Word hlds__make_hlds__superhomogeneous__V_73_73;
+                                        MR_Word hlds__make_hlds__superhomogeneous__V_74_74;
+                                        MR_Word hlds__make_hlds__superhomogeneous__V_28_28;
+
+                                        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_20)) == (MR_mktag((MR_Integer) 1)));
+                                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                                          {
+                                            hlds__make_hlds__superhomogeneous__FuncArgsTerm_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_20, (MR_Integer) 0)));
+                                            hlds__make_hlds__superhomogeneous__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_20, (MR_Integer) 1)));
+                                            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_72_72)) == (MR_mktag((MR_Integer) 1)));
+                                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                                              {
+                                                hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm0_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_72_72, (MR_Integer) 0)));
+                                                hlds__make_hlds__superhomogeneous__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_72_72, (MR_Integer) 1)));
+                                                hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_73_73 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                  {
+                                                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__FuncArgsTerm_25)) == (MR_mktag((MR_Integer) 0)));
+                                                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                      {
+                                                        hlds__make_hlds__superhomogeneous__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FuncArgsTerm_25, (MR_Integer) 0)));
+                                                        hlds__make_hlds__superhomogeneous__ArgModeTerms0_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FuncArgsTerm_25, (MR_Integer) 1)));
+                                                        hlds__make_hlds__superhomogeneous__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FuncArgsTerm_25, (MR_Integer) 2)));
+                                                        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_74_74)) == (MR_mktag((MR_Integer) 0)));
+                                                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                          {
+                                                            hlds__make_hlds__superhomogeneous__FuncTermFunctor_27 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_74_74, (MR_Integer) 0)));
+                                                            if ((strcmp(hlds__make_hlds__superhomogeneous__FuncTermFunctor_27, (MR_String) "func") == 0))
+                                                              {
+                                                                hlds__make_hlds__superhomogeneous__Groundness_22 = (MR_Integer) 0;
+                                                                hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                                              }
+                                                            else
+                                                            if ((strcmp(hlds__make_hlds__superhomogeneous__FuncTermFunctor_27, (MR_String) "any_func") == 0))
+                                                              {
+                                                                hlds__make_hlds__superhomogeneous__Groundness_22 = (MR_Integer) 1;
+                                                                hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                                              }
+                                                            else
+                                                              hlds__make_hlds__superhomogeneous__succeeded = MR_FALSE;
+                                                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                                                              {
+                                                                {
+                                                                  hlds__make_hlds__superhomogeneous__MaybeFuncRetArgModeTerm_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                                                                  MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeFuncRetArgModeTerm_24, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm0_26));
+                                                                }
+                                                                hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                                              }
+                                                          }
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      }
+                                    else
+                                    if ((strcmp(hlds__make_hlds__superhomogeneous__BeforeIsFunctor_19, (MR_String) "pred") == 0))
+                                      {
+                                        hlds__make_hlds__superhomogeneous__Groundness_22 = (MR_Integer) 0;
+                                        hlds__make_hlds__superhomogeneous__ArgModeTerms0_23 = hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_20;
+                                        hlds__make_hlds__superhomogeneous__MaybeFuncRetArgModeTerm_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                        hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                      }
+                                    else
+                                    if ((strcmp(hlds__make_hlds__superhomogeneous__BeforeIsFunctor_19, (MR_String) "any_pred") == 0))
+                                      {
+                                        hlds__make_hlds__superhomogeneous__Groundness_22 = (MR_Integer) 1;
+                                        hlds__make_hlds__superhomogeneous__ArgModeTerms0_23 = hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_20;
+                                        hlds__make_hlds__superhomogeneous__MaybeFuncRetArgModeTerm_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                        hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                      }
+                                    else
+                                      hlds__make_hlds__superhomogeneous__succeeded = MR_FALSE;
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__MaybeDetism_29;
+
+        {
+          hlds__make_hlds__superhomogeneous__parse_lambda_detism_3_p_0(hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62, hlds__make_hlds__superhomogeneous__DetismTerm_17, &hlds__make_hlds__superhomogeneous__MaybeDetism_29);
+        }
+        if ((hlds__make_hlds__superhomogeneous__MaybeDCGVars_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          if ((hlds__make_hlds__superhomogeneous__MaybeFuncRetArgModeTerm_24 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+            {
+              MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs_32;
+              MR_Word hlds__make_hlds__superhomogeneous__BadModeSpecs_33;
+              MR_Word hlds__make_hlds__superhomogeneous__SVarSpecs_34;
+              MR_Word hlds__make_hlds__superhomogeneous__LambdaHead_35;
+
+              {
+                hlds__make_hlds__superhomogeneous__parse_lambda_args_pred_7_p_0(hlds__make_hlds__superhomogeneous__Context_21, hlds__make_hlds__superhomogeneous__ArgModeTerms0_23, &hlds__make_hlds__superhomogeneous__LambdaArgs_32, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63, &hlds__make_hlds__superhomogeneous__BadModeSpecs_33, &hlds__make_hlds__superhomogeneous__SVarSpecs_34);
+              }
+              mercury__private_builtin__dummy_var = (MR_Integer) 0;
+              {
+                hlds__make_hlds__superhomogeneous__LambdaHead_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_35, 0) = ((MR_Box) ((hlds__make_hlds__superhomogeneous__LambdaPurity_14 | ((((hlds__make_hlds__superhomogeneous__Groundness_22 << (MR_Integer) 2)) | (((MR_Integer) 0 << (MR_Integer) 3)))))));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_35, 1) = (MR_Integer) 0;
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_35, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaArgs_32));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_35, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__BadModeSpecs_33));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_35, 4) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SVarSpecs_34));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_35, 5) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MaybeDetism_29));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                *hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaHead_35));
+              }
+            }
+          else
+            {
+              MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs_240;
+              MR_Word hlds__make_hlds__superhomogeneous__BadModeSpecs_241;
+              MR_Word hlds__make_hlds__superhomogeneous__SVarSpecs_242;
+              MR_Word hlds__make_hlds__superhomogeneous__LambdaHead_243;
+              MR_Word hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm_343 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeFuncRetArgModeTerm_24, (MR_Integer) 0)));
+
+              {
+                hlds__make_hlds__superhomogeneous__parse_lambda_args_func_8_p_0(hlds__make_hlds__superhomogeneous__Context_21, hlds__make_hlds__superhomogeneous__ArgModeTerms0_23, hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm_343, &hlds__make_hlds__superhomogeneous__LambdaArgs_240, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63, &hlds__make_hlds__superhomogeneous__BadModeSpecs_241, &hlds__make_hlds__superhomogeneous__SVarSpecs_242);
+              }
+              mercury__private_builtin__dummy_var = (MR_Integer) 0;
+              {
+                hlds__make_hlds__superhomogeneous__LambdaHead_243 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_243, 0) = ((MR_Box) ((hlds__make_hlds__superhomogeneous__LambdaPurity_14 | ((((hlds__make_hlds__superhomogeneous__Groundness_22 << (MR_Integer) 2)) | (((MR_Integer) 1 << (MR_Integer) 3)))))));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_243, 1) = (MR_Integer) 0;
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_243, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaArgs_240));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_243, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__BadModeSpecs_241));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_243, 4) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SVarSpecs_242));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_243, 5) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MaybeDetism_29));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                *hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaHead_243));
+              }
+            }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__V_348_348 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeDCGVars_9, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__V_349_349 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeDCGVars_9, (MR_Integer) 0)));
+
+            if ((hlds__make_hlds__superhomogeneous__MaybeFuncRetArgModeTerm_24 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                if ((hlds__make_hlds__superhomogeneous__ArgModeTerms0_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  {
+                    MR_Word hlds__make_hlds__superhomogeneous__Msg_40;
+                    MR_Word hlds__make_hlds__superhomogeneous__Spec_41;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_127_127;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_129_129;
+                    MR_Word hlds__make_hlds__superhomogeneous__V_130_130;
+
+                    {
+                      hlds__make_hlds__superhomogeneous__Msg_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_40, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_21));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_40, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[91])));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_127_127 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_127_127, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_40));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_127_127, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__Spec_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_41, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+                      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_41, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_127_127));
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_130_130 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0, hlds__make_hlds__superhomogeneous__MaybeDetism_29);
+                    }
+                    {
+                      hlds__make_hlds__superhomogeneous__V_129_129 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_129_129, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_41));
+                      MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_129_129, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_130_130));
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                      *hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10 = base;
+                      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_129_129));
+                    }
+                    *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62;
+                  }
+                else
+                  {
+                    MR_Word hlds__make_hlds__superhomogeneous__V_350_350 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__ArgModeTerms0_23, (MR_Integer) 1)));
+                    MR_Word hlds__make_hlds__superhomogeneous__V_351_351 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__ArgModeTerms0_23, (MR_Integer) 0)));
+
+                    if ((hlds__make_hlds__superhomogeneous__V_350_350 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                      {
+                        MR_Word hlds__make_hlds__superhomogeneous__Msg_317;
+                        MR_Word hlds__make_hlds__superhomogeneous__Spec_318;
+                        MR_Word hlds__make_hlds__superhomogeneous__V_324_324;
+                        MR_Word hlds__make_hlds__superhomogeneous__V_326_326;
+                        MR_Word hlds__make_hlds__superhomogeneous__V_327_327;
+
+                        {
+                          hlds__make_hlds__superhomogeneous__Msg_317 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_317, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_21));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_317, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[91])));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__V_324_324 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_324_324, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_317));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_324_324, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__Spec_318 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_318, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_318, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_318, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_324_324));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__V_327_327 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0, hlds__make_hlds__superhomogeneous__MaybeDetism_29);
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__V_326_326 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_326_326, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_318));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_326_326, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_327_327));
+                        }
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                          *hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10 = base;
+                          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_326_326));
+                        }
+                        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62;
+                      }
+                    else
+                      {
+                        MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerm2_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_350_350, (MR_Integer) 0)));
+                        MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerms3plus_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_350_350, (MR_Integer) 1)));
+                        MR_Word hlds__make_hlds__superhomogeneous__NonDCGArgModeTerms_45;
+                        MR_Word hlds__make_hlds__superhomogeneous__DCGModeTerm0_46;
+                        MR_Word hlds__make_hlds__superhomogeneous__DCGModeTermN_47;
+                        MR_Word hlds__make_hlds__superhomogeneous__DCGContext0_48;
+                        MR_Word hlds__make_hlds__superhomogeneous__DCGContextN_49;
+                        MR_Word hlds__make_hlds__superhomogeneous__DCGVarTerm0_50;
+                        MR_Word hlds__make_hlds__superhomogeneous__DCGVarTermN_51;
+                        MR_Word hlds__make_hlds__superhomogeneous__GenericDCGVarTerm0_52;
+                        MR_Word hlds__make_hlds__superhomogeneous__GenericDCGVarTermN_53;
+                        MR_Word hlds__make_hlds__superhomogeneous__DCGArgModeTerm0_54;
+                        MR_Word hlds__make_hlds__superhomogeneous__DCGArgModeTermN_55;
+                        MR_Word hlds__make_hlds__superhomogeneous__V_95_95;
+                        MR_Word hlds__make_hlds__superhomogeneous__V_97_97;
+                        MR_Word hlds__make_hlds__superhomogeneous__V_98_98;
+                        MR_Word hlds__make_hlds__superhomogeneous__V_102_102;
+                        MR_Word hlds__make_hlds__superhomogeneous__V_103_103;
+                        MR_Word hlds__make_hlds__superhomogeneous__V_105_105;
+                        MR_Word hlds__make_hlds__superhomogeneous__V_106_106;
+                        MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerms_225;
+                        MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs_226;
+                        MR_Word hlds__make_hlds__superhomogeneous__BadModeSpecs_227;
+                        MR_Word hlds__make_hlds__superhomogeneous__SVarSpecs_228;
+                        MR_Word hlds__make_hlds__superhomogeneous__LambdaHead_229;
+                        MR_Box hlds__make_hlds__superhomogeneous__conv1_DCGModeTerm0_46;
+                        MR_Box hlds__make_hlds__superhomogeneous__conv0_DCGModeTermN_47;
+
+                        {
+                          hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_112_108_105_116_95_108_97_115_116_95_116_119_111_95_95_91_49_93_95_48_6_p_0(((MR_Box) (hlds__make_hlds__superhomogeneous__V_351_351)), ((MR_Box) (hlds__make_hlds__superhomogeneous__ArgModeTerm2_43)), hlds__make_hlds__superhomogeneous__ArgModeTerms3plus_44, &hlds__make_hlds__superhomogeneous__NonDCGArgModeTerms_45, &hlds__make_hlds__superhomogeneous__conv1_DCGModeTerm0_46, &hlds__make_hlds__superhomogeneous__conv0_DCGModeTermN_47);
+                        }
+                        hlds__make_hlds__superhomogeneous__DCGModeTerm0_46 = ((MR_Word) hlds__make_hlds__superhomogeneous__conv1_DCGModeTerm0_46);
+                        hlds__make_hlds__superhomogeneous__DCGModeTermN_47 = ((MR_Word) hlds__make_hlds__superhomogeneous__conv0_DCGModeTermN_47);
+                        {
+                          hlds__make_hlds__superhomogeneous__DCGContext0_48 = mercury__term__get_term_context_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_312_312, hlds__make_hlds__superhomogeneous__DCGModeTerm0_46);
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__DCGContextN_49 = mercury__term__get_term_context_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_312_312, hlds__make_hlds__superhomogeneous__DCGModeTermN_47);
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__DCGVarTerm0_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__DCGVarTerm0_50, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_349_349));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__DCGVarTerm0_50, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__DCGContext0_48));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__DCGVarTermN_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__DCGVarTermN_51, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_348_348));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__DCGVarTermN_51, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__DCGContextN_49));
+                        }
+                        {
+                          mercury__term__coerce_2_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_311_311, hlds__make_hlds__superhomogeneous__TypeCtorInfo_312_312, hlds__make_hlds__superhomogeneous__DCGVarTerm0_50, &hlds__make_hlds__superhomogeneous__GenericDCGVarTerm0_52);
+                        }
+                        {
+                          mercury__term__coerce_2_p_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_311_311, hlds__make_hlds__superhomogeneous__TypeCtorInfo_312_312, hlds__make_hlds__superhomogeneous__DCGVarTermN_51, &hlds__make_hlds__superhomogeneous__GenericDCGVarTermN_53);
+                        }
+                        hlds__make_hlds__superhomogeneous__V_95_95 = (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_5[1];
+                        {
+                          hlds__make_hlds__superhomogeneous__V_98_98 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_98_98, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__DCGModeTerm0_46));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_98_98, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__V_97_97 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_97_97, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GenericDCGVarTerm0_52));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_97_97, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_98_98));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__DCGArgModeTerm0_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__DCGArgModeTerm0_54, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_95_95));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__DCGArgModeTerm0_54, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_97_97));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__DCGArgModeTerm0_54, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__DCGContext0_48));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__V_103_103 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_103_103, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__DCGModeTermN_47));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_103_103, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__V_102_102 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_102_102, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GenericDCGVarTermN_53));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_102_102, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_103_103));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__DCGArgModeTermN_55 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__DCGArgModeTermN_55, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_95_95));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__DCGArgModeTermN_55, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_102_102));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__DCGArgModeTermN_55, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__DCGContextN_49));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__V_106_106 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_106_106, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__DCGArgModeTermN_55));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_106_106, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__V_105_105 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_105_105, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__DCGArgModeTerm0_54));
+                          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_105_105, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_106_106));
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__ArgModeTerms_225 = mercury__list__f_43_43_2_f_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[3], hlds__make_hlds__superhomogeneous__NonDCGArgModeTerms_45, hlds__make_hlds__superhomogeneous__V_105_105);
+                        }
+                        {
+                          hlds__make_hlds__superhomogeneous__parse_lambda_args_pred_7_p_0(hlds__make_hlds__superhomogeneous__Context_21, hlds__make_hlds__superhomogeneous__ArgModeTerms_225, &hlds__make_hlds__superhomogeneous__LambdaArgs_226, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63, &hlds__make_hlds__superhomogeneous__BadModeSpecs_227, &hlds__make_hlds__superhomogeneous__SVarSpecs_228);
+                        }
+                        mercury__private_builtin__dummy_var = (MR_Integer) 0;
+                        {
+                          hlds__make_hlds__superhomogeneous__LambdaHead_229 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_229, 0) = ((MR_Box) ((hlds__make_hlds__superhomogeneous__LambdaPurity_14 | ((((hlds__make_hlds__superhomogeneous__Groundness_22 << (MR_Integer) 2)) | (((MR_Integer) 0 << (MR_Integer) 3)))))));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_229, 1) = (MR_Integer) 0;
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_229, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaArgs_226));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_229, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__BadModeSpecs_227));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_229, 4) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SVarSpecs_228));
+                          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_229, 5) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MaybeDetism_29));
+                        }
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          *hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10 = base;
+                          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaHead_229));
+                        }
+                      }
+                  }
+              }
+            else
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__V_88_88;
+                MR_Word hlds__make_hlds__superhomogeneous__V_90_90;
+                MR_Word hlds__make_hlds__superhomogeneous__V_91_91;
+                MR_Word hlds__make_hlds__superhomogeneous__Msg_245;
+                MR_Word hlds__make_hlds__superhomogeneous__Spec_246;
+
+                {
+                  hlds__make_hlds__superhomogeneous__Msg_245 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_245, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_21));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_245, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[92])));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__V_88_88 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_88_88, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_245));
+                  MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_88_88, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__Spec_246 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_246, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_246, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_246, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_88_88));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__V_91_91 = parse_tree__maybe_error__get_any_errors1_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0, hlds__make_hlds__superhomogeneous__MaybeDetism_29);
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__V_90_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_90_90, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_246));
+                  MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_90_90, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_91_91));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  *hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_90_90));
+                }
+                *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62;
+              }
+          }
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_65 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_64;
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__Context_296;
+        MR_Word hlds__make_hlds__superhomogeneous__Groundness_297;
+        MR_Word hlds__make_hlds__superhomogeneous__ArgModeTerms_302;
+        MR_Word hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm_310;
+        MR_Word hlds__make_hlds__superhomogeneous__V_133_133;
+        MR_Word hlds__make_hlds__superhomogeneous__V_134_134;
+        MR_Word hlds__make_hlds__superhomogeneous__V_135_135;
+        MR_Word hlds__make_hlds__superhomogeneous__V_136_136;
+        MR_String hlds__make_hlds__superhomogeneous__BeforeIsFunctor_262;
+        MR_Word hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_263;
+        MR_Word hlds__make_hlds__superhomogeneous__FuncArgsTerm_264;
+        MR_String hlds__make_hlds__superhomogeneous__FuncTermFunctor_265;
+        MR_Word hlds__make_hlds__superhomogeneous__V_59_59;
+
+        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15)) == (MR_mktag((MR_Integer) 0)));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__V_133_133 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_263 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15, (MR_Integer) 1)));
+            hlds__make_hlds__superhomogeneous__Context_296 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15, (MR_Integer) 2)));
+            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_133_133)) == (MR_mktag((MR_Integer) 0)));
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__BeforeIsFunctor_262 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_133_133, (MR_Integer) 0)));
+                hlds__make_hlds__superhomogeneous__succeeded = (strcmp(hlds__make_hlds__superhomogeneous__BeforeIsFunctor_262, (MR_String) "=") == 0);
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_263)) == (MR_mktag((MR_Integer) 1)));
+                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                      {
+                        hlds__make_hlds__superhomogeneous__FuncArgsTerm_264 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_263, (MR_Integer) 0)));
+                        hlds__make_hlds__superhomogeneous__V_134_134 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__BeforeIsArgTerms_263, (MR_Integer) 1)));
+                        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_134_134)) == (MR_mktag((MR_Integer) 1)));
+                        if (hlds__make_hlds__superhomogeneous__succeeded)
+                          {
+                            hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm_310 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_134_134, (MR_Integer) 0)));
+                            hlds__make_hlds__superhomogeneous__V_135_135 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_134_134, (MR_Integer) 1)));
+                            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__V_135_135 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                            if (hlds__make_hlds__superhomogeneous__succeeded)
+                              {
+                                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__FuncArgsTerm_264)) == (MR_mktag((MR_Integer) 0)));
+                                if (hlds__make_hlds__superhomogeneous__succeeded)
+                                  {
+                                    hlds__make_hlds__superhomogeneous__V_136_136 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FuncArgsTerm_264, (MR_Integer) 0)));
+                                    hlds__make_hlds__superhomogeneous__ArgModeTerms_302 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FuncArgsTerm_264, (MR_Integer) 1)));
+                                    hlds__make_hlds__superhomogeneous__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__FuncArgsTerm_264, (MR_Integer) 2)));
+                                    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_136_136)) == (MR_mktag((MR_Integer) 0)));
+                                    if (hlds__make_hlds__superhomogeneous__succeeded)
+                                      {
+                                        hlds__make_hlds__superhomogeneous__FuncTermFunctor_265 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_136_136, (MR_Integer) 0)));
+                                        if ((strcmp(hlds__make_hlds__superhomogeneous__FuncTermFunctor_265, (MR_String) "func") == 0))
+                                          {
+                                            hlds__make_hlds__superhomogeneous__Groundness_297 = (MR_Integer) 0;
+                                            hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                          }
+                                        else
+                                        if ((strcmp(hlds__make_hlds__superhomogeneous__FuncTermFunctor_265, (MR_String) "any_func") == 0))
+                                          {
+                                            hlds__make_hlds__superhomogeneous__Groundness_297 = (MR_Integer) 1;
+                                            hlds__make_hlds__superhomogeneous__succeeded = MR_TRUE;
+                                          }
+                                        else
+                                          hlds__make_hlds__superhomogeneous__succeeded = MR_FALSE;
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            if ((hlds__make_hlds__superhomogeneous__MaybeDCGVars_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__LambdaArgs_267;
+                MR_Word hlds__make_hlds__superhomogeneous__BadModeSpecs_268;
+                MR_Word hlds__make_hlds__superhomogeneous__SVarSpecs_269;
+                MR_Word hlds__make_hlds__superhomogeneous__LambdaHead_270;
+
+                {
+                  hlds__make_hlds__superhomogeneous__parse_lambda_args_func_8_p_0(hlds__make_hlds__superhomogeneous__Context_296, hlds__make_hlds__superhomogeneous__ArgModeTerms_302, hlds__make_hlds__superhomogeneous__FuncRetArgModeTerm_310, &hlds__make_hlds__superhomogeneous__LambdaArgs_267, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63, &hlds__make_hlds__superhomogeneous__BadModeSpecs_268, &hlds__make_hlds__superhomogeneous__SVarSpecs_269);
+                }
+                mercury__private_builtin__dummy_var = (MR_Integer) 0;
+                {
+                  hlds__make_hlds__superhomogeneous__LambdaHead_270 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_270, 0) = ((MR_Box) ((hlds__make_hlds__superhomogeneous__LambdaPurity_14 | ((((hlds__make_hlds__superhomogeneous__Groundness_297 << (MR_Integer) 2)) | (((MR_Integer) 1 << (MR_Integer) 3)))))));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_270, 1) = (MR_Integer) 0;
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_270, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaArgs_267));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_270, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__BadModeSpecs_268));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_270, 4) = ((MR_Box) (hlds__make_hlds__superhomogeneous__SVarSpecs_269));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__LambdaHead_270, 5) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_5[3])));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  *hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LambdaHead_270));
+                }
+              }
+            else
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__V_150_150;
+                MR_Word hlds__make_hlds__superhomogeneous__V_152_152;
+                MR_Word hlds__make_hlds__superhomogeneous__Msg_272;
+                MR_Word hlds__make_hlds__superhomogeneous__Spec_273;
+
+                {
+                  hlds__make_hlds__superhomogeneous__Msg_272 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_272, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_296));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_272, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[92])));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__V_150_150 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_150_150, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_272));
+                  MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_150_150, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__Spec_273 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_273, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_273, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_273, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_150_150));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__V_152_152 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_152_152, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_273));
+                  MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_152_152, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  *hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_152_152));
+                }
+                *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62;
+              }
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_65 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_64;
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__V_213_213;
+            MR_Word hlds__make_hlds__superhomogeneous__V_219_219;
+            MR_Word hlds__make_hlds__superhomogeneous__V_223_223;
+            MR_Word hlds__make_hlds__superhomogeneous__Msg_292;
+            MR_Word hlds__make_hlds__superhomogeneous__Spec_293;
+
+            {
+              hlds__make_hlds__superhomogeneous__V_213_213 = mercury__term__get_term_context_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_312_312, hlds__make_hlds__superhomogeneous__PFArgsDetTerm_15);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__Msg_292 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_292, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_213_213));
+              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_292, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[93])));
+            }
+            {
+              hlds__make_hlds__superhomogeneous__V_219_219 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_219_219, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_292));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_219_219, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              hlds__make_hlds__superhomogeneous__Spec_293 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_293, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_293, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_293, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_219_219));
+            }
+            {
+              hlds__make_hlds__qual_info__qual_info_set_found_syntax_error_3_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_64, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_65);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__V_223_223 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_223_223, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_293));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_223_223, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+              *hlds__make_hlds__superhomogeneous__MaybeLambdaHead_10 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_223_223));
+            }
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_63 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_62;
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_lambda_expr_19_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVar_20,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_21,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_22,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_23,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_25,
+  MR_Word hlds__make_hlds__superhomogeneous__MaybeLambdaBody_26,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_27,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_46,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_47,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_48,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_49,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_50,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_51,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_52,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_53,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_54,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_55,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_56)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__MaybeBodyGoal_35;
+    MR_Word hlds__make_hlds__superhomogeneous__MaybeDCGVars_36;
+    MR_Word hlds__make_hlds__superhomogeneous__MaybeLambdaHead_43;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_61_61;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_62_62;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_63_63;
+
+    if ((hlds__make_hlds__superhomogeneous__MaybeLambdaBody_26 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TrueGoal_34;
+
+        {
+          hlds__make_hlds__superhomogeneous__TrueGoal_34 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__TrueGoal_34, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__TrueGoal_34, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_22));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__MaybeBodyGoal_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeBodyGoal_35, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__TrueGoal_34));
+        }
+        hlds__make_hlds__superhomogeneous__MaybeDCGVars_36 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_61_61 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_49;
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaBodyKind_37;
+        MR_Word hlds__make_hlds__superhomogeneous__BodyGoalTerm_38;
+        MR_Word hlds__make_hlds__superhomogeneous__ContextPieces_39;
+        MR_Word hlds__make_hlds__superhomogeneous__GenericBodyGoalTerm_40;
+        MR_Tuple hlds__make_hlds__superhomogeneous__V_57_57 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeLambdaBody_26, (MR_Integer) 0)));
+
+        hlds__make_hlds__superhomogeneous__LambdaBodyKind_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_57_57, (MR_Integer) 0)));
+        hlds__make_hlds__superhomogeneous__BodyGoalTerm_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_57_57, (MR_Integer) 1)));
+        {
+          hlds__make_hlds__superhomogeneous__ContextPieces_39 = mercury__cord__singleton_1_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0, ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[90]))));
+        }
+        {
+          mercury__term__coerce_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, (MR_Word) &mercury__term__term__type_ctor_info_generic_0, hlds__make_hlds__superhomogeneous__BodyGoalTerm_38, &hlds__make_hlds__superhomogeneous__GenericBodyGoalTerm_40);
+        }
+        switch (hlds__make_hlds__superhomogeneous__LambdaBodyKind_37) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            {
+              MR_Word hlds__make_hlds__superhomogeneous__DCGVar0_41;
+              MR_Word hlds__make_hlds__superhomogeneous__DCGVarN_42;
+
+              {
+                parse_tree__parse_dcg_goal__parse_dcg_pred_goal_7_p_0(hlds__make_hlds__superhomogeneous__GenericBodyGoalTerm_40, hlds__make_hlds__superhomogeneous__ContextPieces_39, &hlds__make_hlds__superhomogeneous__MaybeBodyGoal_35, &hlds__make_hlds__superhomogeneous__DCGVar0_41, &hlds__make_hlds__superhomogeneous__DCGVarN_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_49, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_61_61);
+              }
+              {
+                hlds__make_hlds__superhomogeneous__MaybeDCGVars_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeDCGVars_36, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__DCGVar0_41));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeDCGVars_36, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__DCGVarN_42));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            {
+              {
+                parse_tree__parse_goal__parse_goal_5_p_0(hlds__make_hlds__superhomogeneous__GenericBodyGoalTerm_40, hlds__make_hlds__superhomogeneous__ContextPieces_39, &hlds__make_hlds__superhomogeneous__MaybeBodyGoal_35, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_49, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_61_61);
+              }
+              hlds__make_hlds__superhomogeneous__MaybeDCGVars_36 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            }
+            break;
+        }
+      }
+    {
+      hlds__make_hlds__superhomogeneous__parse_lambda_purity_pf_args_det_term_7_p_0(hlds__make_hlds__superhomogeneous__PurityPFArgsDetTerm_25, hlds__make_hlds__superhomogeneous__MaybeDCGVars_36, &hlds__make_hlds__superhomogeneous__MaybeLambdaHead_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_61_61, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_62_62, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_53, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_63_63);
+    }
+    if (((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__MaybeLambdaHead_43)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaHeadSpecs_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__MaybeLambdaHead_43, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_73_73;
+
+        {
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_56 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, hlds__make_hlds__superhomogeneous__LambdaHeadSpecs_44, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_55);
+        }
+        {
+          hlds__make_hlds__qual_info__qual_info_set_found_syntax_error_3_p_0((MR_Integer) 1, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_63_63, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_54);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_73_73 = mercury__cord__empty_0_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          *hlds__make_hlds__superhomogeneous__Expansion_27 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_73_73));
+        }
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_48 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_47;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_50 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_62_62;
+        *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_52 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_51;
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__LambdaHead_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeLambdaHead_43, (MR_Integer) 0)));
+
+        {
+          hlds__make_hlds__superhomogeneous__build_lambda_expression_19_p_0(hlds__make_hlds__superhomogeneous__XVar_20, hlds__make_hlds__superhomogeneous__Purity_21, hlds__make_hlds__superhomogeneous__Context_22, hlds__make_hlds__superhomogeneous__MainContext_23, hlds__make_hlds__superhomogeneous__SubContext_24, hlds__make_hlds__superhomogeneous__LambdaHead_45, hlds__make_hlds__superhomogeneous__MaybeBodyGoal_35, hlds__make_hlds__superhomogeneous__Expansion_27, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_46, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_47, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_48, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_62_62, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_50, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_51, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_52, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_63_63, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_54, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_55, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_56);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__parse_ordinary_cons_id_6_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Functor_7,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgTerms_8,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__ConsId_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_24,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_25)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    switch (MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__Functor_7)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_String hlds__make_hlds__superhomogeneous__Name_12 = ((MR_String) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Functor_7, (MR_Integer) 0)));
+          MR_Integer hlds__make_hlds__superhomogeneous__Arity_13;
+          MR_Word hlds__make_hlds__superhomogeneous__V_47_47;
+          MR_Word hlds__make_hlds__superhomogeneous__V_48_48;
+
+          {
+            mercury__list__length_2_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[2], hlds__make_hlds__superhomogeneous__ArgTerms_8, &hlds__make_hlds__superhomogeneous__Arity_13);
+          }
+          {
+            hlds__make_hlds__superhomogeneous__V_47_47 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_47_47, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Name_12));
+          }
+          {
+            hlds__make_hlds__superhomogeneous__V_48_48 = parse_tree__prog_data__cons_id_dummy_type_ctor_0_f_0();
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+            *hlds__make_hlds__superhomogeneous__ConsId_10 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_47_47));
+            MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Arity_13));
+            MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_48_48));
+          }
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_25 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_24;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Integer hlds__make_hlds__superhomogeneous__Int_14 = ((MR_Integer) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Functor_7, (MR_Integer) 0)));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *hlds__make_hlds__superhomogeneous__ConsId_10 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Int_14));
+          }
+          *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_25 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_24;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word hlds__make_hlds__superhomogeneous__Base_15 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__Functor_7, (MR_Integer) 0)));
+          MR_Word hlds__make_hlds__superhomogeneous__Integer_16 = ((MR_Word) (MR_hl_field(MR_mktag(2), hlds__make_hlds__superhomogeneous__Functor_7, (MR_Integer) 1)));
+          MR_Integer hlds__make_hlds__superhomogeneous__Int_49;
+
+          {
+            hlds__make_hlds__superhomogeneous__succeeded = parse_tree__prog_util__source_integer_to_int_3_p_0(hlds__make_hlds__superhomogeneous__Base_15, hlds__make_hlds__superhomogeneous__Integer_16, &hlds__make_hlds__superhomogeneous__Int_49);
+          }
+          if (hlds__make_hlds__superhomogeneous__succeeded)
+            {
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *hlds__make_hlds__superhomogeneous__ConsId_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Int_49));
+              }
+              *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_25 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_24;
+            }
+          else
+            {
+              MR_String hlds__make_hlds__superhomogeneous__BasePrefix_17;
+              MR_String hlds__make_hlds__superhomogeneous__IntString_18;
+              MR_Word hlds__make_hlds__superhomogeneous__Pieces_19;
+              MR_Word hlds__make_hlds__superhomogeneous__Msg_20;
+              MR_Word hlds__make_hlds__superhomogeneous__Spec_21;
+              MR_Integer hlds__make_hlds__superhomogeneous__V_26_26;
+              MR_Word hlds__make_hlds__superhomogeneous__V_29_29;
+              MR_Word hlds__make_hlds__superhomogeneous__V_30_30;
+              MR_String hlds__make_hlds__superhomogeneous__V_31_31;
+              MR_Word hlds__make_hlds__superhomogeneous__V_38_38;
+              MR_Word hlds__make_hlds__superhomogeneous__V_39_39;
+              MR_Word hlds__make_hlds__superhomogeneous__V_43_43;
+
+              {
+                hlds__make_hlds__superhomogeneous__BasePrefix_17 = mercury__term_io__integer_base_prefix_1_f_0(hlds__make_hlds__superhomogeneous__Base_15);
+              }
+              {
+                hlds__make_hlds__superhomogeneous__V_26_26 = mercury__term_io__integer_base_int_1_f_0(hlds__make_hlds__superhomogeneous__Base_15);
+              }
+              {
+                hlds__make_hlds__superhomogeneous__IntString_18 = mercury__integer__to_base_string_2_f_0(hlds__make_hlds__superhomogeneous__Integer_16, hlds__make_hlds__superhomogeneous__V_26_26);
+              }
+              {
+                hlds__make_hlds__superhomogeneous__V_31_31 = mercury__string__f_43_43_2_f_0(hlds__make_hlds__superhomogeneous__BasePrefix_17, hlds__make_hlds__superhomogeneous__IntString_18);
+              }
+              {
+                hlds__make_hlds__superhomogeneous__V_30_30 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_30_30, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__V_30_30, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_31_31));
+              }
+              {
+                hlds__make_hlds__superhomogeneous__V_29_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_29_29, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_30_30));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_29_29, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__superhomogeneous_scalar_common_1[11])));
+              }
+              {
+                hlds__make_hlds__superhomogeneous__Pieces_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Pieces_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[88])));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__Pieces_19, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_29_29));
+              }
+              {
+                hlds__make_hlds__superhomogeneous__V_39_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_39_39, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Pieces_19));
+              }
+              {
+                hlds__make_hlds__superhomogeneous__V_38_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_38_38, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_39_39));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_38_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                hlds__make_hlds__superhomogeneous__Msg_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_20, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Context_9));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Msg_20, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_38_38));
+              }
+              {
+                hlds__make_hlds__superhomogeneous__V_43_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_43_43, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Msg_20));
+                MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_43_43, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                hlds__make_hlds__superhomogeneous__Spec_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_21, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_21, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4))));
+                MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Spec_21, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_43_43));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_25 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Spec_21));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_24));
+              }
+              *hlds__make_hlds__superhomogeneous__ConsId_10 = (MR_Word) MR_mkword(MR_mktag(3), &hlds__make_hlds__superhomogeneous_scalar_common_1[89]);
+            }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__Functor_7, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_String hlds__make_hlds__superhomogeneous__String_22 = ((MR_String) (MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__Functor_7, (MR_Integer) 1)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *hlds__make_hlds__superhomogeneous__ConsId_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__String_22));
+              }
+              *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_25 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_24;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Float hlds__make_hlds__superhomogeneous__Float_23 = MR_unbox_float((MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__Functor_7, (MR_Integer) 1)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *hlds__make_hlds__superhomogeneous__ConsId_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+                MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(hlds__make_hlds__superhomogeneous__Float_23);
+              }
+              *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_25 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_24;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String hlds__make_hlds__superhomogeneous__Name_51 = ((MR_String) (MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__Functor_7, (MR_Integer) 1)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *hlds__make_hlds__superhomogeneous__ConsId_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 10));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Name_51));
+              }
+              *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_25 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_24;
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__project_expansion_goals_2_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word * hlds__make_hlds__superhomogeneous__GoalCord_4)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+
+    *hlds__make_hlds__superhomogeneous__GoalCord_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_loop_5_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_0_2,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_3,
+  MR_Integer hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_0_4,
+  MR_Integer * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+        if ((hlds__make_hlds__superhomogeneous__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_5 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_0_4;
+            *hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_3 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_0_2;
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__Expansion_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__Expansions_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__MaybeFGTI_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Expansion_12, (MR_Integer) 0)));
+            MR_Integer hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_24_24;
+            MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_25_25;
+            MR_Word hlds__make_hlds__superhomogeneous__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Expansion_12, (MR_Integer) 1)));
+
+            if ((hlds__make_hlds__superhomogeneous__MaybeFGTI_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_25_25 = (MR_Integer) 0;
+                hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_24_24 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_0_4;
+              }
+            else
+              {
+                MR_Integer hlds__make_hlds__superhomogeneous__Size_19 = ((MR_Integer) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeFGTI_16, (MR_Integer) 1)));
+                MR_Word hlds__make_hlds__superhomogeneous__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeFGTI_16, (MR_Integer) 0)));
+
+                hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_24_24 = (hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_0_4 + hlds__make_hlds__superhomogeneous__Size_19);
+                hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_25_25 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_0_2;
+              }
+            /* direct tailcall eliminated */
+            {
+              MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1__tmp_copy_1 = hlds__make_hlds__superhomogeneous__Expansions_13;
+              MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_0__tmp_copy_2 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_25_25;
+              MR_Integer hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_0__tmp_copy_4 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_24_24;
+
+              hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_0_4 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_TotalSize_0__tmp_copy_4;
+              hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_0_2 = hlds__make_hlds__superhomogeneous__STATE_VARIABLE_AllFGTI_0__tmp_copy_2;
+              hlds__make_hlds__superhomogeneous__HeadVar__1_1 = hlds__make_hlds__superhomogeneous__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_6_p_0_2(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_Box hlds__make_hlds__superhomogeneous__closure = hlds__make_hlds__superhomogeneous__closure_arg;
+    MR_Word hlds__make_hlds__superhomogeneous__conv1_GoalCord_4;
+
+    {
+      hlds__make_hlds__superhomogeneous__project_expansion_goals_2_p_0(((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), &hlds__make_hlds__superhomogeneous__conv1_GoalCord_4);
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_2 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv1_GoalCord_4));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_6_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_Box hlds__make_hlds__superhomogeneous__closure = hlds__make_hlds__superhomogeneous__closure_arg;
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6;
+
+    {
+      hlds__make_hlds__superhomogeneous__expansion_to_goal_cord_wrap_if_fgti_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__closure, (MR_Integer) 3))), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), &hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6);
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_2 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_6_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_7,
+  MR_Word hlds__make_hlds__superhomogeneous__TermVar_8,
+  MR_Word hlds__make_hlds__superhomogeneous__BaseGoal_9,
+  MR_Integer hlds__make_hlds__superhomogeneous__BaseGoalSize_10,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgExpansions_11,
+  MR_Word * hlds__make_hlds__superhomogeneous__Expansion_12)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__AllFGTI_13;
+    MR_Integer hlds__make_hlds__superhomogeneous__TotalSize_14;
+
+    {
+      hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_loop_5_p_0(hlds__make_hlds__superhomogeneous__ArgExpansions_11, (MR_Integer) 1, &hlds__make_hlds__superhomogeneous__AllFGTI_13, hlds__make_hlds__superhomogeneous__BaseGoalSize_10, &hlds__make_hlds__superhomogeneous__TotalSize_14);
+    }
+    switch (hlds__make_hlds__superhomogeneous__AllFGTI_13) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_30_30;
+          MR_Word hlds__make_hlds__superhomogeneous__ArgGoalCords_15;
+          MR_Word hlds__make_hlds__superhomogeneous__ArgGoalsCord_16;
+          MR_Word hlds__make_hlds__superhomogeneous__GoalCord_17;
+          MR_Word hlds__make_hlds__superhomogeneous__V_21_21;
+
+          {
+            hlds__make_hlds__superhomogeneous__V_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_21_21, 0) = ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_2[0]));
+            MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_21_21, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__append_expansions_after_goal_top_ftgi_6_p_0_1));
+            MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_21_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_21_21, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalInfo_7));
+          }
+          {
+            mercury__list__map_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_expansion_0, (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[1], hlds__make_hlds__superhomogeneous__V_21_21, hlds__make_hlds__superhomogeneous__ArgExpansions_11, &hlds__make_hlds__superhomogeneous__ArgGoalCords_15);
+          }
+          hlds__make_hlds__superhomogeneous__TypeCtorInfo_30_30 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+          {
+            hlds__make_hlds__superhomogeneous__ArgGoalsCord_16 = mercury__cord__cord_list_to_cord_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_30_30, hlds__make_hlds__superhomogeneous__ArgGoalCords_15);
+          }
+          {
+            hlds__make_hlds__superhomogeneous__GoalCord_17 = mercury__cord__cons_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_30_30, ((MR_Box) (hlds__make_hlds__superhomogeneous__BaseGoal_9)), hlds__make_hlds__superhomogeneous__ArgGoalsCord_16);
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            *hlds__make_hlds__superhomogeneous__Expansion_12 = base;
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalCord_17));
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_35_35;
+          MR_Word hlds__make_hlds__superhomogeneous__V_20_20;
+          MR_Word hlds__make_hlds__superhomogeneous__ArgGoalCords_23;
+          MR_Word hlds__make_hlds__superhomogeneous__ArgGoalsCord_24;
+          MR_Word hlds__make_hlds__superhomogeneous__GoalCord_25;
+
+          {
+            mercury__list__map_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_expansion_0, (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[1], (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_4[0], hlds__make_hlds__superhomogeneous__ArgExpansions_11, &hlds__make_hlds__superhomogeneous__ArgGoalCords_23);
+          }
+          hlds__make_hlds__superhomogeneous__TypeCtorInfo_35_35 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+          {
+            hlds__make_hlds__superhomogeneous__ArgGoalsCord_24 = mercury__cord__cord_list_to_cord_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_35_35, hlds__make_hlds__superhomogeneous__ArgGoalCords_23);
+          }
+          {
+            hlds__make_hlds__superhomogeneous__GoalCord_25 = mercury__cord__cons_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_35_35, ((MR_Box) (hlds__make_hlds__superhomogeneous__BaseGoal_9)), hlds__make_hlds__superhomogeneous__ArgGoalsCord_24);
+          }
+          {
+            hlds__make_hlds__superhomogeneous__V_20_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_20_20, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__TermVar_8));
+            MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_20_20, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__TotalSize_14));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            *hlds__make_hlds__superhomogeneous__Expansion_12 = base;
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_20_20));
+            MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalCord_25));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_expansions_before_goal_top_not_fgti_4_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_Box hlds__make_hlds__superhomogeneous__closure = hlds__make_hlds__superhomogeneous__closure_arg;
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6;
+
+    {
+      hlds__make_hlds__superhomogeneous__expansion_to_goal_cord_wrap_if_fgti_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__closure, (MR_Integer) 3))), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), &hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6);
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_2 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_expansions_before_goal_top_not_fgti_4_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_5,
+  MR_Word hlds__make_hlds__superhomogeneous__Expansions_6,
+  MR_Word hlds__make_hlds__superhomogeneous__BaseGoal_7,
+  MR_Word * hlds__make_hlds__superhomogeneous__Goal_8)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_18;
+    MR_Word hlds__make_hlds__superhomogeneous__BaseGoals_9;
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoalCords_10;
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoals_11;
+    MR_Word hlds__make_hlds__superhomogeneous__V_12_12;
+    MR_Word hlds__make_hlds__superhomogeneous__V_13_13;
+
+    {
+      hlds__hlds_goal__goal_to_conj_list_2_p_0(hlds__make_hlds__superhomogeneous__BaseGoal_7, &hlds__make_hlds__superhomogeneous__BaseGoals_9);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__V_12_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_12_12, 0) = ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_2[0]));
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_12_12, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__insert_expansions_before_goal_top_not_fgti_4_p_0_1));
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_12_12, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_12_12, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalInfo_5));
+    }
+    {
+      mercury__list__map_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_expansion_0, (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[1], hlds__make_hlds__superhomogeneous__V_12_12, hlds__make_hlds__superhomogeneous__Expansions_6, &hlds__make_hlds__superhomogeneous__ExpansionGoalCords_10);
+    }
+    hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_18 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+    {
+      hlds__make_hlds__superhomogeneous__ExpansionGoals_11 = mercury__cord__cord_list_to_list_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_18, hlds__make_hlds__superhomogeneous__ExpansionGoalCords_10);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__V_13_13 = mercury__list__f_43_43_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_18, hlds__make_hlds__superhomogeneous__ExpansionGoals_11, hlds__make_hlds__superhomogeneous__BaseGoals_9);
+    }
+    {
+      hlds__hlds_goal__conj_list_to_goal_3_p_0(hlds__make_hlds__superhomogeneous__V_13_13, hlds__make_hlds__superhomogeneous__GoalInfo_5, hlds__make_hlds__superhomogeneous__Goal_8);
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_expansion_before_goal_top_not_fgti_4_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_5,
+  MR_Word hlds__make_hlds__superhomogeneous__Expansion_6,
+  MR_Word hlds__make_hlds__superhomogeneous__BaseGoal_7,
+  MR_Word * hlds__make_hlds__superhomogeneous__Goal_8)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_13_13;
+    MR_Word hlds__make_hlds__superhomogeneous__BaseGoals_9;
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoalCord_10;
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoals_11;
+    MR_Word hlds__make_hlds__superhomogeneous__V_12_12;
+
+    {
+      hlds__hlds_goal__goal_to_conj_list_2_p_0(hlds__make_hlds__superhomogeneous__BaseGoal_7, &hlds__make_hlds__superhomogeneous__BaseGoals_9);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__expansion_to_goal_cord_wrap_if_fgti_3_p_0(hlds__make_hlds__superhomogeneous__GoalInfo_5, hlds__make_hlds__superhomogeneous__Expansion_6, &hlds__make_hlds__superhomogeneous__ExpansionGoalCord_10);
+    }
+    hlds__make_hlds__superhomogeneous__TypeCtorInfo_13_13 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+    {
+      hlds__make_hlds__superhomogeneous__ExpansionGoals_11 = mercury__cord__list_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_13_13, hlds__make_hlds__superhomogeneous__ExpansionGoalCord_10);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__V_12_12 = mercury__list__f_43_43_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_13_13, hlds__make_hlds__superhomogeneous__ExpansionGoals_11, hlds__make_hlds__superhomogeneous__BaseGoals_9);
+    }
+    {
+      hlds__hlds_goal__conj_list_to_goal_3_p_0(hlds__make_hlds__superhomogeneous__V_12_12, hlds__make_hlds__superhomogeneous__GoalInfo_5, hlds__make_hlds__superhomogeneous__Goal_8);
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__mark_nonlocals_in_ground_term_initial_2_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__HeadVar__1_1,
+  MR_Word * hlds__make_hlds__superhomogeneous__HeadVar__2_2)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+
+    if ((hlds__make_hlds__superhomogeneous__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *hlds__make_hlds__superhomogeneous__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__Goal0_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__Goals0_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__Goal_5;
+        MR_Word hlds__make_hlds__superhomogeneous__Goals_6;
+        MR_Word hlds__make_hlds__superhomogeneous__GoalExpr_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal0_3, (MR_Integer) 0)));
+        MR_Word hlds__make_hlds__superhomogeneous__GoalInfo0_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal0_3, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__LHSVar_9;
+        MR_Word hlds__make_hlds__superhomogeneous__RHSVars_16;
+        MR_Word hlds__make_hlds__superhomogeneous__RHS_10;
+        MR_Word hlds__make_hlds__superhomogeneous__V_11_11;
+        MR_Word hlds__make_hlds__superhomogeneous__V_12_12;
+        MR_Word hlds__make_hlds__superhomogeneous__V_13_13;
+        MR_Word hlds__make_hlds__superhomogeneous__V_14_14;
+        MR_Word hlds__make_hlds__superhomogeneous__V_15_15;
+
+        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__GoalExpr_7)) == (MR_mktag((MR_Integer) 1)));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__LHSVar_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__GoalExpr_7, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous__RHS_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__GoalExpr_7, (MR_Integer) 1)));
+            hlds__make_hlds__superhomogeneous__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__GoalExpr_7, (MR_Integer) 2)));
+            hlds__make_hlds__superhomogeneous__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__GoalExpr_7, (MR_Integer) 3)));
+            hlds__make_hlds__superhomogeneous__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__GoalExpr_7, (MR_Integer) 4)));
+            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__RHS_10)) == (MR_mktag((MR_Integer) 1)));
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__RHS_10, (MR_Integer) 0)));
+                hlds__make_hlds__superhomogeneous__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__RHS_10, (MR_Integer) 1)));
+                hlds__make_hlds__superhomogeneous__RHSVars_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__RHS_10, (MR_Integer) 2)));
+              }
+          }
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__NonLocals_17;
+            MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_18;
+            MR_Word hlds__make_hlds__superhomogeneous__V_19_19;
+
+            {
+              hlds__make_hlds__superhomogeneous__V_19_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_19_19, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__LHSVar_9));
+              MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_19_19, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__RHSVars_16));
+            }
+            {
+              parse_tree__set_of_var__list_to_set_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, hlds__make_hlds__superhomogeneous__V_19_19, &hlds__make_hlds__superhomogeneous__NonLocals_17);
+            }
+            {
+              hlds__hlds_goal__goal_info_set_nonlocals_3_p_0(hlds__make_hlds__superhomogeneous__NonLocals_17, hlds__make_hlds__superhomogeneous__GoalInfo0_8, &hlds__make_hlds__superhomogeneous__GoalInfo_18);
+            }
+            {
+              hlds__make_hlds__superhomogeneous__Goal_5 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal_5, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalExpr_7));
+              MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal_5, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalInfo_18));
+            }
+          }
+        else
+          {
+            {
+              mercury__require__unexpected_3_p_0((MR_String) "hlds.make_hlds.superhomogeneous", (MR_String) "predicate \140hlds.make_hlds.superhomogeneous.mark_nonlocals_in_ground_term_initial\'/2", (MR_String) "wrong shape goal");
+              return;
+            }
+          }
+        {
+          hlds__make_hlds__superhomogeneous__mark_nonlocals_in_ground_term_initial_2_p_0(hlds__make_hlds__superhomogeneous__Goals0_4, &hlds__make_hlds__superhomogeneous__Goals_6);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *hlds__make_hlds__superhomogeneous__HeadVar__2_2 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Goal_5));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Goals_6));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__expansion_to_goal_cord_wrap_if_fgti_3_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_4,
+  MR_Word hlds__make_hlds__superhomogeneous__Expansion_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__MaybeWrappedGoalCord_6)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__MaybeFGTI_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Expansion_5, (MR_Integer) 0)));
+    MR_Word hlds__make_hlds__superhomogeneous__GoalCord_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Expansion_5, (MR_Integer) 1)));
+    MR_Word hlds__make_hlds__superhomogeneous__TermVar_9;
+    MR_Integer hlds__make_hlds__superhomogeneous__Size_10;
+    MR_Integer hlds__make_hlds__superhomogeneous__Threshold_11;
+    MR_Word hlds__make_hlds__superhomogeneous__V_20_20;
+
+    hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__MaybeFGTI_7)) == (MR_mktag((MR_Integer) 1)));
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        hlds__make_hlds__superhomogeneous__TermVar_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeFGTI_7, (MR_Integer) 0)));
+        hlds__make_hlds__superhomogeneous__Size_10 = ((MR_Integer) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeFGTI_7, (MR_Integer) 1)));
+        {
+          hlds__make_hlds__superhomogeneous__V_20_20 = libs__globals__get_maybe_from_ground_term_threshold_0_f_0();
+        }
+        hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_20_20)) == (MR_mktag((MR_Integer) 1)));
+        if (hlds__make_hlds__superhomogeneous__succeeded)
+          {
+            hlds__make_hlds__superhomogeneous__Threshold_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_20_20, (MR_Integer) 0)));
+            hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__Size_10 >= hlds__make_hlds__superhomogeneous__Threshold_11);
+          }
+      }
+    if (hlds__make_hlds__superhomogeneous__succeeded)
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_24_24 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+        MR_Word hlds__make_hlds__superhomogeneous__Goals_12;
+        MR_Word hlds__make_hlds__superhomogeneous__MarkedGoalInfo_13;
+        MR_Word hlds__make_hlds__superhomogeneous__MarkedGoals_14;
+        MR_Word hlds__make_hlds__superhomogeneous__ConjGoalExpr_15;
+        MR_Word hlds__make_hlds__superhomogeneous__ConjGoal_16;
+        MR_Word hlds__make_hlds__superhomogeneous__Reason_17;
+        MR_Word hlds__make_hlds__superhomogeneous__ScopeGoalExpr_18;
+        MR_Word hlds__make_hlds__superhomogeneous__ScopeGoal_19;
+        MR_Word hlds__make_hlds__superhomogeneous__V_21_21;
+
+        {
+          hlds__make_hlds__superhomogeneous__Goals_12 = mercury__cord__list_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_24_24, hlds__make_hlds__superhomogeneous__GoalCord_8);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__V_21_21 = parse_tree__set_of_var__make_singleton_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, hlds__make_hlds__superhomogeneous__TermVar_9);
+        }
+        {
+          hlds__hlds_goal__goal_info_set_nonlocals_3_p_0(hlds__make_hlds__superhomogeneous__V_21_21, hlds__make_hlds__superhomogeneous__GoalInfo_4, &hlds__make_hlds__superhomogeneous__MarkedGoalInfo_13);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__mark_nonlocals_in_ground_term_initial_2_p_0(hlds__make_hlds__superhomogeneous__Goals_12, &hlds__make_hlds__superhomogeneous__MarkedGoals_14);
+        }
+        {
+          hlds__make_hlds__superhomogeneous__ConjGoalExpr_15 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ConjGoalExpr_15, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ConjGoalExpr_15, 1) = ((MR_Box) ((MR_Integer) 0));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ConjGoalExpr_15, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MarkedGoals_14));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__ConjGoal_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ConjGoal_16, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ConjGoalExpr_15));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ConjGoal_16, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MarkedGoalInfo_13));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__Reason_17 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__Reason_17, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__Reason_17, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__TermVar_9));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__Reason_17, 2) = ((MR_Box) ((MR_Integer) 0));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__ScopeGoalExpr_18 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ScopeGoalExpr_18, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ScopeGoalExpr_18, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Reason_17));
+          MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ScopeGoalExpr_18, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ConjGoal_16));
+        }
+        {
+          hlds__make_hlds__superhomogeneous__ScopeGoal_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ScopeGoal_19, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ScopeGoalExpr_18));
+          MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ScopeGoal_19, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MarkedGoalInfo_13));
+        }
+        {
+          *hlds__make_hlds__superhomogeneous__MaybeWrappedGoalCord_6 = mercury__cord__singleton_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_24_24, ((MR_Box) (hlds__make_hlds__superhomogeneous__ScopeGoal_19)));
+        }
+      }
+    else
+      *hlds__make_hlds__superhomogeneous__MaybeWrappedGoalCord_6 = hlds__make_hlds__superhomogeneous__GoalCord_8;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__expansion_to_goal_wrap_if_fgti_3_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_4,
+  MR_Word hlds__make_hlds__superhomogeneous__Expansion_5,
+  MR_Word * hlds__make_hlds__superhomogeneous__Goal_6)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__MaybeFGTI_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Expansion_5, (MR_Integer) 0)));
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoalCord_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Expansion_5, (MR_Integer) 1)));
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoals_9;
+
+    {
+      hlds__make_hlds__superhomogeneous__ExpansionGoals_9 = mercury__cord__list_1_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, hlds__make_hlds__superhomogeneous__ExpansionGoalCord_8);
+    }
+    if ((hlds__make_hlds__superhomogeneous__ExpansionGoals_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__V_34_34;
+
+        {
+          hlds__make_hlds__superhomogeneous__V_34_34 = hlds__make_goal__true_goal_expr_0_f_0();
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          *hlds__make_hlds__superhomogeneous__Goal_6 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__V_34_34));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalInfo_4));
+        }
+      }
+    else
+      {
+        MR_Word hlds__make_hlds__superhomogeneous__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__ExpansionGoals_9, (MR_Integer) 1)));
+        MR_Word hlds__make_hlds__superhomogeneous__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__ExpansionGoals_9, (MR_Integer) 0)));
+
+        if ((hlds__make_hlds__superhomogeneous__V_38_38 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoalExpr_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_39_39, (MR_Integer) 0)));
+            MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoalInfo0_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_39_39, (MR_Integer) 1)));
+            MR_Word hlds__make_hlds__superhomogeneous__Context_13;
+            MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoalInfo_14;
+
+            {
+              hlds__make_hlds__superhomogeneous__Context_13 = hlds__hlds_goal__goal_info_get_context_1_f_0(hlds__make_hlds__superhomogeneous__GoalInfo_4);
+            }
+            {
+              hlds__hlds_goal__goal_info_set_context_3_p_0(hlds__make_hlds__superhomogeneous__Context_13, hlds__make_hlds__superhomogeneous__ExpansionGoalInfo0_12, &hlds__make_hlds__superhomogeneous__ExpansionGoalInfo_14);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *hlds__make_hlds__superhomogeneous__Goal_6 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ExpansionGoalExpr_11));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ExpansionGoalInfo_14));
+            }
+          }
+        else
+          {
+            MR_Word hlds__make_hlds__superhomogeneous__TermVar_18;
+            MR_Integer hlds__make_hlds__superhomogeneous__Size_19;
+            MR_Integer hlds__make_hlds__superhomogeneous__Threshold_20;
+            MR_Word hlds__make_hlds__superhomogeneous__V_28_28;
+
+            hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__MaybeFGTI_7)) == (MR_mktag((MR_Integer) 1)));
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                hlds__make_hlds__superhomogeneous__TermVar_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeFGTI_7, (MR_Integer) 0)));
+                hlds__make_hlds__superhomogeneous__Size_19 = ((MR_Integer) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__MaybeFGTI_7, (MR_Integer) 1)));
+                {
+                  hlds__make_hlds__superhomogeneous__V_28_28 = libs__globals__get_maybe_from_ground_term_threshold_0_f_0();
+                }
+                hlds__make_hlds__superhomogeneous__succeeded = ((MR_tag((MR_Word) hlds__make_hlds__superhomogeneous__V_28_28)) == (MR_mktag((MR_Integer) 1)));
+                if (hlds__make_hlds__superhomogeneous__succeeded)
+                  {
+                    hlds__make_hlds__superhomogeneous__Threshold_20 = ((MR_Integer) (MR_hl_field(MR_mktag(1), hlds__make_hlds__superhomogeneous__V_28_28, (MR_Integer) 0)));
+                    hlds__make_hlds__superhomogeneous__succeeded = (hlds__make_hlds__superhomogeneous__Size_19 >= hlds__make_hlds__superhomogeneous__Threshold_20);
+                  }
+              }
+            if (hlds__make_hlds__superhomogeneous__succeeded)
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__MarkedGoalInfo_21;
+                MR_Word hlds__make_hlds__superhomogeneous__MarkedGoals_22;
+                MR_Word hlds__make_hlds__superhomogeneous__ConjGoalExpr_23;
+                MR_Word hlds__make_hlds__superhomogeneous__ConjGoal_24;
+                MR_Word hlds__make_hlds__superhomogeneous__Reason_25;
+                MR_Word hlds__make_hlds__superhomogeneous__GoalExpr_26;
+                MR_Word hlds__make_hlds__superhomogeneous__V_29_29;
+
+                {
+                  hlds__make_hlds__superhomogeneous__V_29_29 = parse_tree__set_of_var__make_singleton_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, hlds__make_hlds__superhomogeneous__TermVar_18);
+                }
+                {
+                  hlds__hlds_goal__goal_info_set_nonlocals_3_p_0(hlds__make_hlds__superhomogeneous__V_29_29, hlds__make_hlds__superhomogeneous__GoalInfo_4, &hlds__make_hlds__superhomogeneous__MarkedGoalInfo_21);
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__mark_nonlocals_in_ground_term_initial_2_p_0(hlds__make_hlds__superhomogeneous__ExpansionGoals_9, &hlds__make_hlds__superhomogeneous__MarkedGoals_22);
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__ConjGoalExpr_23 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ConjGoalExpr_23, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ConjGoalExpr_23, 1) = ((MR_Box) ((MR_Integer) 0));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__ConjGoalExpr_23, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MarkedGoals_22));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__ConjGoal_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ConjGoal_24, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ConjGoalExpr_23));
+                  MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__ConjGoal_24, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MarkedGoalInfo_21));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__Reason_25 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__Reason_25, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__Reason_25, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__TermVar_18));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__Reason_25, 2) = ((MR_Box) ((MR_Integer) 0));
+                }
+                {
+                  hlds__make_hlds__superhomogeneous__GoalExpr_26 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_26, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_26, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__Reason_25));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_26, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ConjGoal_24));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  *hlds__make_hlds__superhomogeneous__Goal_6 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalExpr_26));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__MarkedGoalInfo_21));
+                }
+              }
+            else
+              {
+                MR_Word hlds__make_hlds__superhomogeneous__GoalExpr_35;
+
+                {
+                  hlds__make_hlds__superhomogeneous__GoalExpr_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_35, 1) = ((MR_Box) ((MR_Integer) 0));
+                  MR_hl_field(MR_mktag(3), hlds__make_hlds__superhomogeneous__GoalExpr_35, 2) = ((MR_Box) (hlds__make_hlds__superhomogeneous__ExpansionGoals_9));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  *hlds__make_hlds__superhomogeneous__Goal_6 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalExpr_35));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalInfo_4));
+                }
+              }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__superhomogeneous__make_fresh_arg_vars_subst_svars_8_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__Args_9,
+  MR_Word * hlds__make_hlds__superhomogeneous__Vars_10,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_15,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_16,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_17,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_18,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_19,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_20)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__RevVars_14;
+
+    {
+      hlds__make_hlds__superhomogeneous__make_fresh_arg_vars_subst_svars_loop_9_p_0(hlds__make_hlds__superhomogeneous__Args_9, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &hlds__make_hlds__superhomogeneous__RevVars_14, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_15, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_16, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_17, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_18, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_19, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_20);
+    }
+    {
+      mercury__list__reverse_2_p_0((MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[0], hlds__make_hlds__superhomogeneous__RevVars_14, hlds__make_hlds__superhomogeneous__Vars_10);
+    }
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__superhomogeneous__unravel_unification_19_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__LHS0_20,
+  MR_Word hlds__make_hlds__superhomogeneous__RHS0_21,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_22,
+  MR_Word hlds__make_hlds__superhomogeneous__MainContext_23,
+  MR_Word hlds__make_hlds__superhomogeneous__SubContext_24,
+  MR_Word hlds__make_hlds__superhomogeneous__Purity_25,
+  MR_Word * hlds__make_hlds__superhomogeneous__Goal_26,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_36,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_37,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_38,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_39,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_40,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_41,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_42,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_43,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_44,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_45,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_46,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_47)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__Expansion_34;
+    MR_Word hlds__make_hlds__superhomogeneous__GoalInfo_35;
+
+    {
+      hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_117_110_114_97_118_101_108_95_117_110_105_102_105_99_97_116_105_111_110_95_95_91_55_93_95_48_20_p_0(hlds__make_hlds__superhomogeneous__LHS0_20, hlds__make_hlds__superhomogeneous__RHS0_21, hlds__make_hlds__superhomogeneous__Context_22, hlds__make_hlds__superhomogeneous__MainContext_23, hlds__make_hlds__superhomogeneous__SubContext_24, hlds__make_hlds__superhomogeneous__Purity_25, &hlds__make_hlds__superhomogeneous__Expansion_34, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_36, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_37, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_38, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_39, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_40, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_41, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_44, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_45, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_46, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_47);
+    }
+    {
+      hlds__hlds_goal__goal_info_init_2_p_0(hlds__make_hlds__superhomogeneous__Context_22, &hlds__make_hlds__superhomogeneous__GoalInfo_35);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__expansion_to_goal_wrap_if_fgti_3_p_0(hlds__make_hlds__superhomogeneous__GoalInfo_35, hlds__make_hlds__superhomogeneous__Expansion_34, hlds__make_hlds__superhomogeneous__Goal_26);
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_arg_unifications_with_contexts_18_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_Box hlds__make_hlds__superhomogeneous__closure = hlds__make_hlds__superhomogeneous__closure_arg;
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6;
+
+    {
+      hlds__make_hlds__superhomogeneous__expansion_to_goal_cord_wrap_if_fgti_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__closure, (MR_Integer) 3))), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), &hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6);
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_2 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6));
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_arg_unifications_with_contexts_18_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVars_19,
+  MR_Word hlds__make_hlds__superhomogeneous__XArgTerms0_20,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgContexts_21,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_22,
+  MR_Word hlds__make_hlds__superhomogeneous__Goal0_23,
+  MR_Word * hlds__make_hlds__superhomogeneous__Goal_24,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_35,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_36,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_37,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_38,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_39,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_40,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_41,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_42,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_43,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_44,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_45,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_46)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_70;
+    MR_Word hlds__make_hlds__superhomogeneous__XArgTerms_31;
+    MR_Word hlds__make_hlds__superhomogeneous__Expansions_32;
+    MR_Word hlds__make_hlds__superhomogeneous__GoalInfo0_34;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_47_47;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_48_48;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_49_49;
+    MR_Word hlds__make_hlds__superhomogeneous__BaseGoals_61;
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoalCords_62;
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoals_63;
+    MR_Word hlds__make_hlds__superhomogeneous__V_64_64;
+    MR_Word hlds__make_hlds__superhomogeneous__V_65_65;
+    MR_Word hlds__make_hlds__superhomogeneous__V_33_33;
+
+    {
+      hlds__make_hlds__state_var__substitute_state_var_mappings_8_p_0(hlds__make_hlds__superhomogeneous__XArgTerms0_20, &hlds__make_hlds__superhomogeneous__XArgTerms_31, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_39, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_47_47, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_35, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_48_48, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_45, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_49_49);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_119_105_116_104_95_99_111_110_116_101_120_116_115_95_95_91_53_93_95_48_18_p_0(hlds__make_hlds__superhomogeneous__XVars_19, hlds__make_hlds__superhomogeneous__XArgTerms_31, hlds__make_hlds__superhomogeneous__ArgContexts_21, hlds__make_hlds__superhomogeneous__Context_22, &hlds__make_hlds__superhomogeneous__Expansions_32, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_48_48, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_36, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_37, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_38, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_47_47, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_40, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_41, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_44, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_49_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_46);
+    }
+    hlds__make_hlds__superhomogeneous__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal0_23, (MR_Integer) 0)));
+    hlds__make_hlds__superhomogeneous__GoalInfo0_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal0_23, (MR_Integer) 1)));
+    {
+      hlds__hlds_goal__goal_to_conj_list_2_p_0(hlds__make_hlds__superhomogeneous__Goal0_23, &hlds__make_hlds__superhomogeneous__BaseGoals_61);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__V_64_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_64_64, 0) = ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_2[0]));
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_64_64, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__insert_arg_unifications_with_contexts_18_p_0_1));
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_64_64, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_64_64, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalInfo0_34));
+    }
+    {
+      mercury__list__map_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_expansion_0, (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[1], hlds__make_hlds__superhomogeneous__V_64_64, hlds__make_hlds__superhomogeneous__Expansions_32, &hlds__make_hlds__superhomogeneous__ExpansionGoalCords_62);
+    }
+    hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_70 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+    {
+      hlds__make_hlds__superhomogeneous__ExpansionGoals_63 = mercury__cord__cord_list_to_list_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_70, hlds__make_hlds__superhomogeneous__ExpansionGoalCords_62);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__V_65_65 = mercury__list__f_43_43_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_70, hlds__make_hlds__superhomogeneous__ExpansionGoals_63, hlds__make_hlds__superhomogeneous__BaseGoals_61);
+    }
+    {
+      hlds__hlds_goal__conj_list_to_goal_3_p_0(hlds__make_hlds__superhomogeneous__V_65_65, hlds__make_hlds__superhomogeneous__GoalInfo0_34, hlds__make_hlds__superhomogeneous__Goal_24);
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_arg_unifications_18_p_0_1(
+  MR_Box hlds__make_hlds__superhomogeneous__closure_arg,
+  MR_Box hlds__make_hlds__superhomogeneous__wrapper_arg_1,
+  MR_Box * hlds__make_hlds__superhomogeneous__wrapper_arg_2)
+{
+  {
+    MR_Box hlds__make_hlds__superhomogeneous__closure = hlds__make_hlds__superhomogeneous__closure_arg;
+    MR_Word hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6;
+
+    {
+      hlds__make_hlds__superhomogeneous__expansion_to_goal_cord_wrap_if_fgti_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__closure, (MR_Integer) 3))), ((MR_Word) hlds__make_hlds__superhomogeneous__wrapper_arg_1), &hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6);
+    }
+    *hlds__make_hlds__superhomogeneous__wrapper_arg_2 = ((MR_Box) (hlds__make_hlds__superhomogeneous__conv0_MaybeWrappedGoalCord_6));
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_arg_unifications_18_p_0(
+  MR_Word hlds__make_hlds__superhomogeneous__XVars_19,
+  MR_Word hlds__make_hlds__superhomogeneous__XArgTerms0_20,
+  MR_Word hlds__make_hlds__superhomogeneous__Context_21,
+  MR_Word hlds__make_hlds__superhomogeneous__ArgContext_22,
+  MR_Word hlds__make_hlds__superhomogeneous__Goal0_23,
+  MR_Word * hlds__make_hlds__superhomogeneous__Goal_24,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_35,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_36,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_37,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_38,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_39,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_40,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_41,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_42,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_43,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_44,
+  MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_45,
+  MR_Word * hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_46)
+{
+  {
+    MR_bool hlds__make_hlds__superhomogeneous__succeeded;
+    MR_Word hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_71;
+    MR_Word hlds__make_hlds__superhomogeneous__XArgTerms_31;
+    MR_Word hlds__make_hlds__superhomogeneous__Expansions_32;
+    MR_Word hlds__make_hlds__superhomogeneous__GoalInfo0_34;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_47_47;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_48_48;
+    MR_Word hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_49_49;
+    MR_Word hlds__make_hlds__superhomogeneous__BaseGoals_62;
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoalCords_63;
+    MR_Word hlds__make_hlds__superhomogeneous__ExpansionGoals_64;
+    MR_Word hlds__make_hlds__superhomogeneous__V_65_65;
+    MR_Word hlds__make_hlds__superhomogeneous__V_66_66;
+    MR_Word hlds__make_hlds__superhomogeneous__V_33_33;
+
+    {
+      hlds__make_hlds__state_var__substitute_state_var_mappings_8_p_0(hlds__make_hlds__superhomogeneous__XArgTerms0_20, &hlds__make_hlds__superhomogeneous__XArgTerms_31, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_0_39, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_47_47, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_0_35, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_48_48, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_0_45, &hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_49_49);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_97_114_103_95_117_110_105_102_105_99_97_116_105_111_110_115_95_95_91_53_93_95_48_19_p_0(hlds__make_hlds__superhomogeneous__XVars_19, hlds__make_hlds__superhomogeneous__XArgTerms_31, hlds__make_hlds__superhomogeneous__Context_21, hlds__make_hlds__superhomogeneous__ArgContext_22, (MR_Integer) 1, &hlds__make_hlds__superhomogeneous__Expansions_32, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_48_48, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarState_36, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_0_37, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_SVarStore_38, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_47_47, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_VarSet_40, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_0_41, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_ModuleInfo_42, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_0_43, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_QualInfo_44, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_49_49, hlds__make_hlds__superhomogeneous__STATE_VARIABLE_Specs_46);
+    }
+    hlds__make_hlds__superhomogeneous__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal0_23, (MR_Integer) 0)));
+    hlds__make_hlds__superhomogeneous__GoalInfo0_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__Goal0_23, (MR_Integer) 1)));
+    {
+      hlds__hlds_goal__goal_to_conj_list_2_p_0(hlds__make_hlds__superhomogeneous__Goal0_23, &hlds__make_hlds__superhomogeneous__BaseGoals_62);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__V_65_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_65_65, 0) = ((MR_Box) (&hlds__make_hlds__superhomogeneous_scalar_common_2[0]));
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_65_65, 1) = ((MR_Box) (hlds__make_hlds__superhomogeneous__insert_arg_unifications_18_p_0_1));
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_65_65, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), hlds__make_hlds__superhomogeneous__V_65_65, 3) = ((MR_Box) (hlds__make_hlds__superhomogeneous__GoalInfo0_34));
+    }
+    {
+      mercury__list__map_3_p_0((MR_Word) &hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_expansion_0, (MR_Word) &hlds__make_hlds__superhomogeneous_scalar_common_1[1], hlds__make_hlds__superhomogeneous__V_65_65, hlds__make_hlds__superhomogeneous__Expansions_32, &hlds__make_hlds__superhomogeneous__ExpansionGoalCords_63);
+    }
+    hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_71 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+    {
+      hlds__make_hlds__superhomogeneous__ExpansionGoals_64 = mercury__cord__cord_list_to_list_1_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_71, hlds__make_hlds__superhomogeneous__ExpansionGoalCords_63);
+    }
+    {
+      hlds__make_hlds__superhomogeneous__V_66_66 = mercury__list__f_43_43_2_f_0(hlds__make_hlds__superhomogeneous__TypeCtorInfo_18_71, hlds__make_hlds__superhomogeneous__ExpansionGoals_64, hlds__make_hlds__superhomogeneous__BaseGoals_62);
+    }
+    {
+      hlds__hlds_goal__conj_list_to_goal_3_p_0(hlds__make_hlds__superhomogeneous__V_66_66, hlds__make_hlds__superhomogeneous__GoalInfo0_34, hlds__make_hlds__superhomogeneous__Goal_24);
+    }
+  }
+}
+
+void mercury__hlds__make_hlds__superhomogeneous__init(void)
+{
+}
+
+void mercury__hlds__make_hlds__superhomogeneous__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_arg_context_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_expansion_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_kind_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_arg_mode_presence_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_body_kind_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_lambda_head_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_maybe_dcg_vars_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_maybe_fgti_var_size_0);
+}
+
+void mercury__hlds__make_hlds__superhomogeneous__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__hlds__make_hlds__superhomogeneous__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module hlds.make_hlds.superhomogeneous. */
