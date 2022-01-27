@@ -1,0 +1,3 @@
+:- module (string.format).
+:- pragma exceptions(predicate, ((string.format).format_impl), 3, 0, may_throw(user_exception)).
+:- pragma termination_info((string.format).format_impl((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).

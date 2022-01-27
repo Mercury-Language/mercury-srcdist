@@ -1,0 +1,6 @@
+:- module unit.
+:- interface.
+:- type unit
+	--->	unit .
+:- type unit(T)
+	--->	unit1 .

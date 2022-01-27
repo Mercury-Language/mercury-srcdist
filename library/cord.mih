@@ -1,0 +1,1291 @@
+/*
+** Automatically generated from `cord.m'
+** by the Mercury compiler,
+** version rotd-2014-11-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module cord. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_cord
+#define MR_HEADER_GUARD_cord
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CORD_DECL_GUARD
+#define CORD_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "cord.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__cord__cord__type_ctor_info_cord_1;
+
+#line 45 "cord.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__cord__cord__type_ctor_info_cord_node_1;
+
+#line 240 "cord.m"
+void MR_CALL 
+mercury__cord____Compare____cord_node_1_0(
+#line 240 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 240 "cord.m"
+  MR_Word * mercury__cord__param_2,
+#line 240 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 240 "cord.m"
+  MR_Word mercury__cord__param_4);
+
+#line 240 "cord.m"
+MR_bool MR_CALL 
+mercury__cord____Unify____cord_node_1_0(
+#line 240 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 240 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 240 "cord.m"
+  MR_Word mercury__cord__param_3);
+
+#line 236 "cord.m"
+void MR_CALL 
+mercury__cord____Compare____cord_1_0(
+#line 236 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 236 "cord.m"
+  MR_Word * mercury__cord__param_2,
+#line 236 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 236 "cord.m"
+  MR_Word mercury__cord__param_4);
+
+#line 236 "cord.m"
+MR_bool MR_CALL 
+mercury__cord____Unify____cord_1_0(
+#line 236 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 236 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 236 "cord.m"
+  MR_Word mercury__cord__param_3);
+
+#line 826 "cord.m"
+void MR_CALL 
+mercury__cord__map_foldl3_node_9_p_0(
+#line 826 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 826 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 826 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 826 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 826 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 826 "cord.m"
+  MR_Word mercury__cord__param_6,
+#line 826 "cord.m"
+  MR_Word mercury__cord__param_7,
+#line 826 "cord.m"
+  MR_Word * mercury__cord__param_8,
+#line 826 "cord.m"
+  MR_Box mercury__cord__param_9,
+#line 826 "cord.m"
+  MR_Box * mercury__cord__param_10,
+#line 826 "cord.m"
+  MR_Box mercury__cord__param_11,
+#line 826 "cord.m"
+  MR_Box * mercury__cord__param_12,
+#line 826 "cord.m"
+  MR_Box mercury__cord__param_13,
+#line 826 "cord.m"
+  MR_Box * mercury__cord__param_14);
+
+#line 807 "cord.m"
+void MR_CALL 
+mercury__cord__map_foldl2_node_7_p_0(
+#line 807 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 807 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 807 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 807 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 807 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 807 "cord.m"
+  MR_Word mercury__cord__param_6,
+#line 807 "cord.m"
+  MR_Word * mercury__cord__param_7,
+#line 807 "cord.m"
+  MR_Box mercury__cord__param_8,
+#line 807 "cord.m"
+  MR_Box * mercury__cord__param_9,
+#line 807 "cord.m"
+  MR_Box mercury__cord__param_10,
+#line 807 "cord.m"
+  MR_Box * mercury__cord__param_11);
+
+#line 789 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__map_foldl_node_5_p_5(
+#line 789 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 789 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 789 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 789 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 789 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 789 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 789 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 789 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 787 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__map_foldl_node_5_p_4(
+#line 787 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 787 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 787 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 787 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 787 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 787 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 787 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 787 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 785 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__map_foldl_node_5_p_3(
+#line 785 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 785 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 785 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 785 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 785 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 785 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 785 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 785 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 783 "cord.m"
+void MR_CALL 
+mercury__cord__map_foldl_node_5_p_2(
+#line 783 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 783 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 783 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 783 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 783 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 783 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 783 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 783 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 781 "cord.m"
+void MR_CALL 
+mercury__cord__map_foldl_node_5_p_1(
+#line 781 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 781 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 781 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 781 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 781 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 781 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 781 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 781 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 779 "cord.m"
+void MR_CALL 
+mercury__cord__map_foldl_node_5_p_0(
+#line 779 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 779 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 779 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 779 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 779 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 779 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 779 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 779 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 752 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldr_node_pred_5_p_5(
+#line 752 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 752 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 752 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 752 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 752 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 752 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 752 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 750 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldr_node_pred_5_p_4(
+#line 750 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 750 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 750 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 750 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 750 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 750 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 750 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 748 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldr_node_pred_5_p_3(
+#line 748 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 748 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 748 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 748 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 748 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 748 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 748 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 747 "cord.m"
+void MR_CALL 
+mercury__cord__foldr_node_pred_5_p_2(
+#line 747 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 747 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 747 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 747 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 747 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 747 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 747 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 745 "cord.m"
+void MR_CALL 
+mercury__cord__foldr_node_pred_5_p_1(
+#line 745 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 745 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 745 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 745 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 745 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 745 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 745 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 744 "cord.m"
+void MR_CALL 
+mercury__cord__foldr_node_pred_5_p_0(
+#line 744 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 744 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 744 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 744 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 744 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 744 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 744 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 720 "cord.m"
+void MR_CALL 
+mercury__cord__foldr_node_5_p_0(
+#line 720 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 720 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 720 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 720 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 720 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 720 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 720 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 693 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldl_node_pred_5_p_5(
+#line 693 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 693 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 693 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 693 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 693 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 693 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 693 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 691 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldl_node_pred_5_p_4(
+#line 691 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 691 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 691 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 691 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 691 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 691 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 691 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 689 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldl_node_pred_5_p_3(
+#line 689 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 689 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 689 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 689 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 689 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 689 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 689 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 688 "cord.m"
+void MR_CALL 
+mercury__cord__foldl_node_pred_5_p_2(
+#line 688 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 688 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 688 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 688 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 688 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 688 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 688 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 686 "cord.m"
+void MR_CALL 
+mercury__cord__foldl_node_pred_5_p_1(
+#line 686 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 686 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 686 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 686 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 686 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 686 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 686 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 685 "cord.m"
+void MR_CALL 
+mercury__cord__foldl_node_pred_5_p_0(
+#line 685 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 685 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 685 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 685 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 685 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 685 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 685 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 661 "cord.m"
+void MR_CALL 
+mercury__cord__foldl_node_5_p_0(
+#line 661 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 661 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 661 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 661 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 661 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 661 "cord.m"
+  MR_Box mercury__cord__param_6,
+#line 661 "cord.m"
+  MR_Box * mercury__cord__param_7);
+
+#line 616 "cord.m"
+void MR_CALL 
+mercury__cord__filter_node_4_p_0(
+#line 616 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 616 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 616 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 616 "cord.m"
+  MR_Word * mercury__cord__param_4,
+#line 616 "cord.m"
+  MR_Word * mercury__cord__param_5);
+
+#line 582 "cord.m"
+void MR_CALL 
+mercury__cord__filter_node_3_p_0(
+#line 582 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 582 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 582 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 582 "cord.m"
+  MR_Word * mercury__cord__param_4);
+
+#line 556 "cord.m"
+void MR_CALL 
+mercury__cord__map_pred_node_3_p_0(
+#line 556 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 556 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 556 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 556 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 556 "cord.m"
+  MR_Word * mercury__cord__param_5);
+
+#line 538 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__map_node_2_f_0(
+#line 538 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 538 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 538 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 538 "cord.m"
+  MR_Word mercury__cord__param_4);
+
+#line 512 "cord.m"
+void MR_CALL 
+mercury__cord__member_node_2_p_0(
+#line 512 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 512 "cord.m"
+  MR_Box * mercury__cord__param_2,
+#line 512 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 512 "cord.m"
+  MR_Cont mercury__cord__param_4,
+#line 512 "cord.m"
+  void * mercury__cord__param_5);
+
+#line 484 "cord.m"
+void MR_CALL 
+mercury__cord__get_last_node_2_p_0(
+#line 484 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 484 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 484 "cord.m"
+  MR_Box * mercury__cord__param_3);
+
+#line 467 "cord.m"
+void MR_CALL 
+mercury__cord__get_first_node_2_p_0(
+#line 467 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 467 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 467 "cord.m"
+  MR_Box * mercury__cord__param_3);
+
+#line 432 "cord.m"
+void MR_CALL 
+mercury__cord__split_last_node_3_p_0(
+#line 432 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 432 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 432 "cord.m"
+  MR_Word * mercury__cord__param_3,
+#line 432 "cord.m"
+  MR_Box * mercury__cord__param_4);
+
+#line 399 "cord.m"
+void MR_CALL 
+mercury__cord__head_tail_node_3_p_0(
+#line 399 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 399 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 399 "cord.m"
+  MR_Box * mercury__cord__param_3,
+#line 399 "cord.m"
+  MR_Word * mercury__cord__param_4);
+
+#line 389 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__cord_list_to_list_2_2_f_0(
+#line 389 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 389 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 389 "cord.m"
+  MR_Word mercury__cord__param_3);
+
+#line 275 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__condense_2_1_f_0(
+#line 275 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 275 "cord.m"
+  MR_Word mercury__cord__param_2);
+
+#line 227 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__equal_2_p_0(
+#line 227 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 227 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 227 "cord.m"
+  MR_Word mercury__cord__param_3);
+
+#line 217 "cord.m"
+void MR_CALL 
+mercury__cord__map_foldl3_9_p_0(
+#line 217 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 217 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 217 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 217 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 217 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 217 "cord.m"
+  MR_Word mercury__cord__param_6,
+#line 217 "cord.m"
+  MR_Word mercury__cord__param_7,
+#line 217 "cord.m"
+  MR_Word * mercury__cord__param_8,
+#line 217 "cord.m"
+  MR_Box mercury__cord__param_9,
+#line 217 "cord.m"
+  MR_Box * mercury__cord__param_10,
+#line 217 "cord.m"
+  MR_Box mercury__cord__param_11,
+#line 217 "cord.m"
+  MR_Box * mercury__cord__param_12,
+#line 217 "cord.m"
+  MR_Box mercury__cord__param_13,
+#line 217 "cord.m"
+  MR_Box * mercury__cord__param_14);
+
+#line 211 "cord.m"
+void MR_CALL 
+mercury__cord__map_foldl2_7_p_0(
+#line 211 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 211 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 211 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 211 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 211 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 211 "cord.m"
+  MR_Word mercury__cord__param_6,
+#line 211 "cord.m"
+  MR_Word * mercury__cord__param_7,
+#line 211 "cord.m"
+  MR_Box mercury__cord__param_8,
+#line 211 "cord.m"
+  MR_Box * mercury__cord__param_9,
+#line 211 "cord.m"
+  MR_Box mercury__cord__param_10,
+#line 211 "cord.m"
+  MR_Box * mercury__cord__param_11);
+
+#line 206 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__map_foldl_5_p_5(
+#line 206 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 206 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 206 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 206 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 206 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 206 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 206 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 206 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 204 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__map_foldl_5_p_4(
+#line 204 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 204 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 204 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 204 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 204 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 204 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 204 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 204 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 202 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__map_foldl_5_p_3(
+#line 202 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 202 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 202 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 202 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 202 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 202 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 202 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 202 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 200 "cord.m"
+void MR_CALL 
+mercury__cord__map_foldl_5_p_2(
+#line 200 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 200 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 200 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 200 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 200 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 200 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 200 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 200 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 198 "cord.m"
+void MR_CALL 
+mercury__cord__map_foldl_5_p_1(
+#line 198 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 198 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 198 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 198 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 198 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 198 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 198 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 198 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 196 "cord.m"
+void MR_CALL 
+mercury__cord__map_foldl_5_p_0(
+#line 196 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 196 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 196 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 196 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 196 "cord.m"
+  MR_Word mercury__cord__param_5,
+#line 196 "cord.m"
+  MR_Word * mercury__cord__param_6,
+#line 196 "cord.m"
+  MR_Box mercury__cord__param_7,
+#line 196 "cord.m"
+  MR_Box * mercury__cord__param_8);
+
+#line 186 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldr_pred_4_p_5(
+#line 186 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 186 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 186 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 186 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 186 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 186 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 185 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldr_pred_4_p_4(
+#line 185 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 185 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 185 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 185 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 185 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 185 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 184 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldr_pred_4_p_3(
+#line 184 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 184 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 184 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 184 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 184 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 184 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 183 "cord.m"
+void MR_CALL 
+mercury__cord__foldr_pred_4_p_2(
+#line 183 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 183 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 183 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 183 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 183 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 183 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 182 "cord.m"
+void MR_CALL 
+mercury__cord__foldr_pred_4_p_1(
+#line 182 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 182 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 182 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 182 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 182 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 182 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 181 "cord.m"
+void MR_CALL 
+mercury__cord__foldr_pred_4_p_0(
+#line 181 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 181 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 181 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 181 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 181 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 181 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 179 "cord.m"
+MR_Box MR_CALL 
+mercury__cord__foldr_3_f_0(
+#line 179 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 179 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 179 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 179 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 179 "cord.m"
+  MR_Box mercury__cord__param_5);
+
+#line 175 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldl_pred_4_p_5(
+#line 175 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 175 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 175 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 175 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 175 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 175 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 174 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldl_pred_4_p_4(
+#line 174 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 174 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 174 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 174 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 174 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 174 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 173 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__foldl_pred_4_p_3(
+#line 173 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 173 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 173 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 173 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 173 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 173 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 172 "cord.m"
+void MR_CALL 
+mercury__cord__foldl_pred_4_p_2(
+#line 172 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 172 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 172 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 172 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 172 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 172 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 171 "cord.m"
+void MR_CALL 
+mercury__cord__foldl_pred_4_p_1(
+#line 171 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 171 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 171 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 171 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 171 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 171 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 170 "cord.m"
+void MR_CALL 
+mercury__cord__foldl_pred_4_p_0(
+#line 170 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 170 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 170 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 170 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 170 "cord.m"
+  MR_Box mercury__cord__param_5,
+#line 170 "cord.m"
+  MR_Box * mercury__cord__param_6);
+
+#line 168 "cord.m"
+MR_Box MR_CALL 
+mercury__cord__foldl_3_f_0(
+#line 168 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 168 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 168 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 168 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 168 "cord.m"
+  MR_Box mercury__cord__param_5);
+
+#line 163 "cord.m"
+void MR_CALL 
+mercury__cord__filter_4_p_0(
+#line 163 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 163 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 163 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 163 "cord.m"
+  MR_Word * mercury__cord__param_4,
+#line 163 "cord.m"
+  MR_Word * mercury__cord__param_5);
+
+#line 153 "cord.m"
+void MR_CALL 
+mercury__cord__filter_3_p_0(
+#line 153 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 153 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 153 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 153 "cord.m"
+  MR_Word * mercury__cord__param_4);
+
+#line 144 "cord.m"
+void MR_CALL 
+mercury__cord__map_pred_3_p_0(
+#line 144 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 144 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 144 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 144 "cord.m"
+  MR_Word mercury__cord__param_4,
+#line 144 "cord.m"
+  MR_Word * mercury__cord__param_5);
+
+#line 143 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__map_2_f_0(
+#line 143 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 143 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 143 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 143 "cord.m"
+  MR_Word mercury__cord__param_4);
+
+#line 139 "cord.m"
+void MR_CALL 
+mercury__cord__member_2_p_0(
+#line 139 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 139 "cord.m"
+  MR_Box * mercury__cord__param_2,
+#line 139 "cord.m"
+  MR_Word mercury__cord__param_3,
+#line 139 "cord.m"
+  MR_Cont mercury__cord__param_4,
+#line 139 "cord.m"
+  void * mercury__cord__param_5);
+
+#line 135 "cord.m"
+MR_Integer MR_CALL 
+mercury__cord__length_1_f_0(
+#line 135 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 135 "cord.m"
+  MR_Word mercury__cord__param_2);
+
+#line 130 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__get_last_2_p_0(
+#line 130 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 130 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 130 "cord.m"
+  MR_Box * mercury__cord__param_3);
+
+#line 125 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__get_first_2_p_0(
+#line 125 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 125 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 125 "cord.m"
+  MR_Box * mercury__cord__param_3);
+
+#line 120 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__split_last_3_p_0(
+#line 120 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 120 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 120 "cord.m"
+  MR_Word * mercury__cord__param_3,
+#line 120 "cord.m"
+  MR_Box * mercury__cord__param_4);
+
+#line 113 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__head_tail_3_p_0(
+#line 113 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 113 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 113 "cord.m"
+  MR_Box * mercury__cord__param_3,
+#line 113 "cord.m"
+  MR_Word * mercury__cord__param_4);
+
+#line 106 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__cord_list_to_list_1_f_0(
+#line 106 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 106 "cord.m"
+  MR_Word mercury__cord__param_2);
+
+#line 102 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__cord_list_to_cord_1_f_0(
+#line 102 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 102 "cord.m"
+  MR_Word mercury__cord__param_2);
+
+#line 98 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__f_43_43_2_f_0(
+#line 98 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 98 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 98 "cord.m"
+  MR_Word mercury__cord__param_3);
+
+#line 93 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__snoc_2_f_0(
+#line 93 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 93 "cord.m"
+  MR_Word mercury__cord__param_2,
+#line 93 "cord.m"
+  MR_Box mercury__cord__param_3);
+
+#line 88 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__cons_2_f_0(
+#line 88 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 88 "cord.m"
+  MR_Box mercury__cord__param_2,
+#line 88 "cord.m"
+  MR_Word mercury__cord__param_3);
+
+#line 83 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__condense_1_f_0(
+#line 83 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 83 "cord.m"
+  MR_Word mercury__cord__param_2);
+
+#line 77 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__from_list_1_f_0(
+#line 77 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 77 "cord.m"
+  MR_Word mercury__cord__param_2);
+
+#line 72 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__singleton_1_f_0(
+#line 72 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 72 "cord.m"
+  MR_Box mercury__cord__param_2);
+
+#line 68 "cord.m"
+MR_bool MR_CALL 
+mercury__cord__is_empty_1_p_0(
+#line 68 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 68 "cord.m"
+  MR_Word mercury__cord__param_2);
+
+#line 64 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__rev_list_1_f_0(
+#line 64 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 64 "cord.m"
+  MR_Word mercury__cord__param_2);
+
+#line 60 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__list_1_f_0(
+#line 60 "cord.m"
+  MR_Word mercury__cord__param_1,
+#line 60 "cord.m"
+  MR_Word mercury__cord__param_2);
+
+#line 51 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__empty_0_f_0(
+#line 51 "cord.m"
+  MR_Word mercury__cord__param_1);
+
+#line 45 "cord.m"
+MR_Word MR_CALL 
+mercury__cord__init_0_f_0(
+#line 45 "cord.m"
+  MR_Word mercury__cord__param_1);
+
+void mercury__cord__init(void);
+void mercury__cord__init_type_tables(void);
+void mercury__cord__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_cord */
+
+/* :- end_interface cord. */

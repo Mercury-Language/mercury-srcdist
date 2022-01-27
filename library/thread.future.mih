@@ -1,0 +1,202 @@
+/*
+** Automatically generated from `thread.future.m'
+** by the Mercury compiler,
+** version rotd-2014-11-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module thread.future. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_thread__future
+#define MR_HEADER_GUARD_thread__future
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef THREAD__FUTURE_DECL_GUARD
+#define THREAD__FUTURE_DECL_GUARD
+#include "thread.mih"
+
+#endif
+
+
+
+
+#line 43 "thread.future.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__thread__future__thread__future__type_ctor_info_future_1;
+
+#line 46 "thread.future.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__thread__future__thread__future__type_ctor_info_future_io_1;
+
+#line 49 "thread.future.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__thread__future__thread__future__type_ctor_info_ok_or_exception_1;
+
+#line 52 "thread.future.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__thread__future__thread__future__type_ctor_info_ready_0;
+
+#line 177 "thread.future.m"
+void MR_CALL 
+mercury__thread__future____Compare____ready_0_0(
+#line 177 "thread.future.m"
+  MR_Word * mercury__thread__future__param_1,
+#line 177 "thread.future.m"
+  MR_Word mercury__thread__future__param_2,
+#line 177 "thread.future.m"
+  MR_Word mercury__thread__future__param_3);
+
+#line 177 "thread.future.m"
+MR_bool MR_CALL 
+mercury__thread__future____Unify____ready_0_0(
+#line 177 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 177 "thread.future.m"
+  MR_Word mercury__thread__future__param_2);
+
+#line 115 "thread.future.m"
+void MR_CALL 
+mercury__thread__future____Compare____ok_or_exception_1_0(
+#line 115 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 115 "thread.future.m"
+  MR_Word * mercury__thread__future__param_2,
+#line 115 "thread.future.m"
+  MR_Word mercury__thread__future__param_3,
+#line 115 "thread.future.m"
+  MR_Word mercury__thread__future__param_4);
+
+#line 115 "thread.future.m"
+MR_bool MR_CALL 
+mercury__thread__future____Unify____ok_or_exception_1_0(
+#line 115 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 115 "thread.future.m"
+  MR_Word mercury__thread__future__param_2,
+#line 115 "thread.future.m"
+  MR_Word mercury__thread__future__param_3);
+
+#line 167 "thread.future.m"
+void MR_CALL 
+mercury__thread__future____Compare____future_io_1_0(
+#line 167 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 167 "thread.future.m"
+  MR_Word * mercury__thread__future__param_2,
+#line 167 "thread.future.m"
+  MR_Word mercury__thread__future__param_3,
+#line 167 "thread.future.m"
+  MR_Word mercury__thread__future__param_4);
+
+#line 167 "thread.future.m"
+MR_bool MR_CALL 
+mercury__thread__future____Unify____future_io_1_0(
+#line 167 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 167 "thread.future.m"
+  MR_Word mercury__thread__future__param_2,
+#line 167 "thread.future.m"
+  MR_Word mercury__thread__future__param_3);
+
+#line 112 "thread.future.m"
+void MR_CALL 
+mercury__thread__future____Compare____future_1_0(
+#line 112 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 112 "thread.future.m"
+  MR_Word * mercury__thread__future__param_2,
+#line 112 "thread.future.m"
+  MR_Word mercury__thread__future__param_3,
+#line 112 "thread.future.m"
+  MR_Word mercury__thread__future__param_4);
+
+#line 112 "thread.future.m"
+MR_bool MR_CALL 
+mercury__thread__future____Unify____future_1_0(
+#line 112 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 112 "thread.future.m"
+  MR_Word mercury__thread__future__param_2,
+#line 112 "thread.future.m"
+  MR_Word mercury__thread__future__param_3);
+
+#line 231 "thread.future.m"
+void MR_CALL 
+mercury__thread__future__wait_2_p_0(
+#line 231 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 231 "thread.future.m"
+  MR_Word mercury__thread__future__param_2,
+#line 231 "thread.future.m"
+  MR_Box * mercury__thread__future__param_3);
+
+#line 100 "thread.future.m"
+void MR_CALL 
+mercury__thread__future__wait_4_p_0(
+#line 100 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 100 "thread.future.m"
+  MR_Word mercury__thread__future__param_2,
+#line 100 "thread.future.m"
+  MR_Box * mercury__thread__future__param_3);
+
+#line 95 "thread.future.m"
+void MR_CALL 
+mercury__thread__future__signal_4_p_0(
+#line 95 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 95 "thread.future.m"
+  MR_Word mercury__thread__future__param_2,
+#line 95 "thread.future.m"
+  MR_Box mercury__thread__future__param_3);
+
+#line 88 "thread.future.m"
+void MR_CALL 
+mercury__thread__future__init_3_p_0(
+#line 88 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 88 "thread.future.m"
+  MR_Word * mercury__thread__future__param_2);
+
+#line 72 "thread.future.m"
+MR_Box MR_CALL 
+mercury__thread__future__wait_1_f_0(
+#line 72 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 72 "thread.future.m"
+  MR_Word mercury__thread__future__param_2);
+
+#line 68 "thread.future.m"
+MR_Word MR_CALL 
+mercury__thread__future__future_1_f_0(
+#line 68 "thread.future.m"
+  MR_Word mercury__thread__future__param_1,
+#line 68 "thread.future.m"
+  MR_Word mercury__thread__future__param_2);
+
+void mercury__thread__future__init(void);
+void mercury__thread__future__init_type_tables(void);
+void mercury__thread__future__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_thread.future */
+
+/* :- end_interface thread.future. */

@@ -1,0 +1,5 @@
+:- module (check_hlds.simplify).
+:- interface.
+:- include_module ((check_hlds.simplify).simplify_tasks).
+:- include_module ((check_hlds.simplify).simplify_proc).
+:- include_module ((check_hlds.simplify).format_call).

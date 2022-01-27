@@ -1,0 +1,7 @@
+:- module (ml_backend.add_trail_ops).
+:- interface.
+:- import_module bool.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- pred add_trail_ops(bool.bool, bool.bool, hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode add_trail_ops((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

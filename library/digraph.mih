@@ -1,0 +1,1256 @@
+/*
+** Automatically generated from `digraph.m'
+** by the Mercury compiler,
+** version rotd-2014-11-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module digraph. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_digraph
+#define MR_HEADER_GUARD_digraph
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef DIGRAPH_DECL_GUARD
+#define DIGRAPH_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "digraph.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__digraph__digraph__type_ctor_info_clique_map_1;
+
+#line 45 "digraph.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__digraph__digraph__type_ctor_info_digraph_1;
+
+#line 48 "digraph.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__digraph__digraph__type_ctor_info_digraph_key_1;
+
+#line 51 "digraph.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__digraph__digraph__type_ctor_info_digraph_key_set_1;
+
+#line 54 "digraph.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__digraph__digraph__type_ctor_info_key_map_1;
+
+#line 57 "digraph.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__digraph__digraph__type_ctor_info_key_set_map_1;
+
+#line 60 "digraph.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__enum__arity1__digraph__digraph_key__arity1__[7];
+
+#line 340 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph__ClassMethod_for_enum__enum____digraph__digraph_key__arity1______enum__from_int_1_1_f_0(
+#line 340 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 340 "digraph.m"
+  MR_Integer mercury__digraph__param_2,
+#line 340 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 339 "digraph.m"
+MR_Integer MR_CALL 
+mercury__digraph__ClassMethod_for_enum__enum____digraph__digraph_key__arity1______enum__to_int_1_1_f_0(
+#line 339 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 339 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 364 "digraph.m"
+void MR_CALL 
+mercury__digraph____Compare____key_set_map_1_0(
+#line 364 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 364 "digraph.m"
+  MR_Word * mercury__digraph__param_2,
+#line 364 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 364 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 364 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph____Unify____key_set_map_1_0(
+#line 364 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 364 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 364 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 363 "digraph.m"
+void MR_CALL 
+mercury__digraph____Compare____key_map_1_0(
+#line 363 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 363 "digraph.m"
+  MR_Word * mercury__digraph__param_2,
+#line 363 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 363 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 363 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph____Unify____key_map_1_0(
+#line 363 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 363 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 363 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 46 "digraph.m"
+void MR_CALL 
+mercury__digraph____Compare____digraph_key_set_1_0(
+#line 46 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 46 "digraph.m"
+  MR_Word * mercury__digraph__param_2,
+#line 46 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 46 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 46 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph____Unify____digraph_key_set_1_0(
+#line 46 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 46 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 46 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 335 "digraph.m"
+void MR_CALL 
+mercury__digraph____Compare____digraph_key_1_0(
+#line 335 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 335 "digraph.m"
+  MR_Word * mercury__digraph__param_2,
+#line 335 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 335 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 335 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph____Unify____digraph_key_1_0(
+#line 335 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 335 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 335 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 343 "digraph.m"
+void MR_CALL 
+mercury__digraph____Compare____digraph_1_0(
+#line 343 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 343 "digraph.m"
+  MR_Word * mercury__digraph__param_2,
+#line 343 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 343 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 343 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph____Unify____digraph_1_0(
+#line 343 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 343 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 343 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 889 "digraph.m"
+void MR_CALL 
+mercury__digraph____Compare____clique_map_1_0(
+#line 889 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 889 "digraph.m"
+  MR_Word * mercury__digraph__param_2,
+#line 889 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 889 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 889 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph____Unify____clique_map_1_0(
+#line 889 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 889 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 889 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 1116 "digraph.m"
+void MR_CALL 
+mercury__digraph__traverse_children_6_p_1(
+#line 1116 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 1116 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 1116 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 1116 "digraph.m"
+  MR_Box mercury__digraph__param_4,
+#line 1116 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 1116 "digraph.m"
+  MR_Word mercury__digraph__param_6,
+#line 1116 "digraph.m"
+  MR_Box mercury__digraph__param_7,
+#line 1116 "digraph.m"
+  MR_Box * mercury__digraph__param_8);
+
+#line 1114 "digraph.m"
+void MR_CALL 
+mercury__digraph__traverse_children_6_p_0(
+#line 1114 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 1114 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 1114 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 1114 "digraph.m"
+  MR_Box mercury__digraph__param_4,
+#line 1114 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 1114 "digraph.m"
+  MR_Word mercury__digraph__param_6,
+#line 1114 "digraph.m"
+  MR_Box mercury__digraph__param_7,
+#line 1114 "digraph.m"
+  MR_Box * mercury__digraph__param_8);
+
+#line 1098 "digraph.m"
+void MR_CALL 
+mercury__digraph__traverse_2_6_p_1(
+#line 1098 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 1098 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 1098 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 1098 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 1098 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 1098 "digraph.m"
+  MR_Word mercury__digraph__param_6,
+#line 1098 "digraph.m"
+  MR_Box mercury__digraph__param_7,
+#line 1098 "digraph.m"
+  MR_Box * mercury__digraph__param_8);
+
+#line 1096 "digraph.m"
+void MR_CALL 
+mercury__digraph__traverse_2_6_p_0(
+#line 1096 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 1096 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 1096 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 1096 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 1096 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 1096 "digraph.m"
+  MR_Word mercury__digraph__param_6,
+#line 1096 "digraph.m"
+  MR_Box mercury__digraph__param_7,
+#line 1096 "digraph.m"
+  MR_Box * mercury__digraph__param_8);
+
+#line 1012 "digraph.m"
+void MR_CALL 
+mercury__digraph__detect_fake_reflexives_5_p_0(
+#line 1012 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 1012 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 1012 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 1012 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 1012 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 1012 "digraph.m"
+  MR_Word * mercury__digraph__param_6);
+
+#line 961 "digraph.m"
+void MR_CALL 
+mercury__digraph__atsort_2_5_p_0(
+#line 961 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 961 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 961 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 961 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 961 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 961 "digraph.m"
+  MR_Word * mercury__digraph__param_6);
+
+#line 933 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph__check_tsort_3_p_0(
+#line 933 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 933 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 933 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 933 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 911 "digraph.m"
+void MR_CALL 
+mercury__digraph__make_reduced_graph_4_p_0(
+#line 911 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 911 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 911 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 911 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 911 "digraph.m"
+  MR_Word * mercury__digraph__param_5);
+
+#line 894 "digraph.m"
+void MR_CALL 
+mercury__digraph__make_clique_map_6_p_0(
+#line 894 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 894 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 894 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 894 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 894 "digraph.m"
+  MR_Word * mercury__digraph__param_5,
+#line 894 "digraph.m"
+  MR_Word mercury__digraph__param_6,
+#line 894 "digraph.m"
+  MR_Word * mercury__digraph__param_7);
+
+#line 854 "digraph.m"
+void MR_CALL 
+mercury__digraph__cliques_2_5_p_0(
+#line 854 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 854 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 854 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 854 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 854 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 854 "digraph.m"
+  MR_Word * mercury__digraph__param_6);
+
+#line 774 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph__is_dag_2_5_p_0(
+#line 774 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 774 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 774 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 774 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 774 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 774 "digraph.m"
+  MR_Word * mercury__digraph__param_6);
+
+#line 664 "digraph.m"
+void MR_CALL 
+mercury__digraph__keys_2_p_0(
+#line 664 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 664 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 664 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 639 "digraph.m"
+void MR_CALL 
+mercury__digraph__dfs_2_6_p_0(
+#line 639 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 639 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 639 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 639 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 639 "digraph.m"
+  MR_Word * mercury__digraph__param_5,
+#line 639 "digraph.m"
+  MR_Word mercury__digraph__param_6,
+#line 639 "digraph.m"
+  MR_Word * mercury__digraph__param_7);
+
+#line 578 "digraph.m"
+void MR_CALL 
+mercury__digraph__to_key_assoc_list_2_4_p_0(
+#line 578 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 578 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 578 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 578 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 578 "digraph.m"
+  MR_Word * mercury__digraph__param_5);
+
+#line 552 "digraph.m"
+void MR_CALL 
+mercury__digraph__to_assoc_list_2_5_p_0(
+#line 552 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 552 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 552 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 552 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 552 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 552 "digraph.m"
+  MR_Word * mercury__digraph__param_6);
+
+#line 321 "digraph.m"
+void MR_CALL 
+mercury__digraph__traverse_5_p_1(
+#line 321 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 321 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 321 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 321 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 321 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 321 "digraph.m"
+  MR_Box mercury__digraph__param_6,
+#line 321 "digraph.m"
+  MR_Box * mercury__digraph__param_7);
+
+#line 319 "digraph.m"
+void MR_CALL 
+mercury__digraph__traverse_5_p_0(
+#line 319 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 319 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 319 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 319 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 319 "digraph.m"
+  MR_Word mercury__digraph__param_5,
+#line 319 "digraph.m"
+  MR_Box mercury__digraph__param_6,
+#line 319 "digraph.m"
+  MR_Box * mercury__digraph__param_7);
+
+#line 311 "digraph.m"
+void MR_CALL 
+mercury__digraph__rtc_2_p_0(
+#line 311 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 311 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 311 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 310 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__rtc_1_f_0(
+#line 310 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 310 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 305 "digraph.m"
+void MR_CALL 
+mercury__digraph__tc_2_p_0(
+#line 305 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 305 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 305 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 304 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__tc_1_f_0(
+#line 304 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 304 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 300 "digraph.m"
+void MR_CALL 
+mercury__digraph__sc_2_p_0(
+#line 300 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 300 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 300 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 299 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__sc_1_f_0(
+#line 299 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 299 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 294 "digraph.m"
+void MR_CALL 
+mercury__digraph__atsort_2_p_0(
+#line 294 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 294 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 294 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 293 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__atsort_1_f_0(
+#line 293 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 293 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 288 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph__tsort_2_p_0(
+#line 288 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 288 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 288 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 282 "digraph.m"
+void MR_CALL 
+mercury__digraph__reduced_3_p_0(
+#line 282 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 282 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 282 "digraph.m"
+  MR_Word * mercury__digraph__param_3,
+#line 282 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 277 "digraph.m"
+void MR_CALL 
+mercury__digraph__reduced_2_p_0(
+#line 277 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 277 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 277 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 276 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__reduced_1_f_0(
+#line 276 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 276 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 271 "digraph.m"
+void MR_CALL 
+mercury__digraph__cliques_2_p_0(
+#line 271 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 271 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 271 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 270 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__cliques_1_f_0(
+#line 270 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 270 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 264 "digraph.m"
+void MR_CALL 
+mercury__digraph__components_2_p_0(
+#line 264 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 264 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 264 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 263 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__components_1_f_0(
+#line 263 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 263 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 258 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph__is_dag_1_p_0(
+#line 258 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 258 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 253 "digraph.m"
+void MR_CALL 
+mercury__digraph__compose_3_p_0(
+#line 253 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 253 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 253 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 253 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 252 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__compose_2_f_0(
+#line 252 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 252 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 252 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 246 "digraph.m"
+void MR_CALL 
+mercury__digraph__inverse_2_p_0(
+#line 246 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 246 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 246 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 245 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__inverse_1_f_0(
+#line 245 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 245 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 239 "digraph.m"
+void MR_CALL 
+mercury__digraph__vertices_2_p_0(
+#line 239 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 239 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 239 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 238 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__vertices_1_f_0(
+#line 238 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 238 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 230 "digraph.m"
+void MR_CALL 
+mercury__digraph__dfsrev_5_p_0(
+#line 230 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 230 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 230 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 230 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 230 "digraph.m"
+  MR_Word * mercury__digraph__param_5,
+#line 230 "digraph.m"
+  MR_Word * mercury__digraph__param_6);
+
+#line 222 "digraph.m"
+void MR_CALL 
+mercury__digraph__dfs_5_p_0(
+#line 222 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 222 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 222 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 222 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 222 "digraph.m"
+  MR_Word * mercury__digraph__param_5,
+#line 222 "digraph.m"
+  MR_Word * mercury__digraph__param_6);
+
+#line 213 "digraph.m"
+void MR_CALL 
+mercury__digraph__dfsrev_2_p_0(
+#line 213 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 213 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 213 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 212 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__dfsrev_1_f_0(
+#line 212 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 212 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 207 "digraph.m"
+void MR_CALL 
+mercury__digraph__dfs_2_p_0(
+#line 207 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 207 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 207 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 206 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__dfs_1_f_0(
+#line 206 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 206 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 197 "digraph.m"
+void MR_CALL 
+mercury__digraph__dfsrev_3_p_0(
+#line 197 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 197 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 197 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 197 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 196 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__dfsrev_2_f_0(
+#line 196 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 196 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 196 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 189 "digraph.m"
+void MR_CALL 
+mercury__digraph__dfs_3_p_0(
+#line 189 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 189 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 189 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 189 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 188 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__dfs_2_f_0(
+#line 188 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 188 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 188 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 180 "digraph.m"
+void MR_CALL 
+mercury__digraph__from_assoc_list_2_p_0(
+#line 180 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 180 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 180 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 179 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__from_assoc_list_1_f_0(
+#line 179 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 179 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 174 "digraph.m"
+void MR_CALL 
+mercury__digraph__to_key_assoc_list_2_p_0(
+#line 174 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 174 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 174 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 172 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__to_key_assoc_list_1_f_0(
+#line 172 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 172 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 167 "digraph.m"
+void MR_CALL 
+mercury__digraph__to_assoc_list_2_p_0(
+#line 167 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 167 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 167 "digraph.m"
+  MR_Word * mercury__digraph__param_3);
+
+#line 166 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__to_assoc_list_1_f_0(
+#line 166 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 166 "digraph.m"
+  MR_Word mercury__digraph__param_2);
+
+#line 158 "digraph.m"
+void MR_CALL 
+mercury__digraph__lookup_key_set_to_3_p_0(
+#line 158 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 158 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 158 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 158 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 157 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__lookup_key_set_to_2_f_0(
+#line 157 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 157 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 157 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 152 "digraph.m"
+void MR_CALL 
+mercury__digraph__lookup_to_3_p_0(
+#line 152 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 152 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 152 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 152 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 151 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__lookup_to_2_f_0(
+#line 151 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 151 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 151 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 145 "digraph.m"
+void MR_CALL 
+mercury__digraph__lookup_key_set_from_3_p_0(
+#line 145 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 145 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 145 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 145 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 144 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__lookup_key_set_from_2_f_0(
+#line 144 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 144 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 144 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 139 "digraph.m"
+void MR_CALL 
+mercury__digraph__lookup_from_3_p_0(
+#line 139 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 139 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 139 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 139 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 138 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__lookup_from_2_f_0(
+#line 138 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 138 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 138 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 133 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph__is_edge_rev_3_p_1(
+#line 133 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 133 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 133 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 133 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 132 "digraph.m"
+void MR_CALL 
+mercury__digraph__is_edge_rev_3_p_0(
+#line 132 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 132 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 132 "digraph.m"
+  MR_Word * mercury__digraph__param_3,
+#line 132 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 132 "digraph.m"
+  MR_Cont mercury__digraph__param_5,
+#line 132 "digraph.m"
+  void * mercury__digraph__param_6);
+
+#line 126 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph__is_edge_3_p_1(
+#line 126 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 126 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 126 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 126 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 125 "digraph.m"
+void MR_CALL 
+mercury__digraph__is_edge_3_p_0(
+#line 125 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 125 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 125 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 125 "digraph.m"
+  MR_Word * mercury__digraph__param_4,
+#line 125 "digraph.m"
+  MR_Cont mercury__digraph__param_5,
+#line 125 "digraph.m"
+  void * mercury__digraph__param_6);
+
+#line 118 "digraph.m"
+void MR_CALL 
+mercury__digraph__delete_assoc_list_3_p_0(
+#line 118 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 118 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 118 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 118 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 116 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__delete_assoc_list_2_f_0(
+#line 116 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 116 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 116 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 111 "digraph.m"
+void MR_CALL 
+mercury__digraph__delete_edge_4_p_0(
+#line 111 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 111 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 111 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 111 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 111 "digraph.m"
+  MR_Word * mercury__digraph__param_5);
+
+#line 110 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__delete_edge_3_f_0(
+#line 110 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 110 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 110 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 110 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 104 "digraph.m"
+void MR_CALL 
+mercury__digraph__add_assoc_list_3_p_0(
+#line 104 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 104 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 104 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 104 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 102 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__add_assoc_list_2_f_0(
+#line 102 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 102 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 102 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 98 "digraph.m"
+void MR_CALL 
+mercury__digraph__add_vertex_pair_3_p_0(
+#line 98 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 98 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 98 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 98 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 97 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__add_vertex_pair_2_f_0(
+#line 97 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 97 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 97 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 92 "digraph.m"
+void MR_CALL 
+mercury__digraph__add_vertices_and_edge_4_p_0(
+#line 92 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 92 "digraph.m"
+  MR_Box mercury__digraph__param_2,
+#line 92 "digraph.m"
+  MR_Box mercury__digraph__param_3,
+#line 92 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 92 "digraph.m"
+  MR_Word * mercury__digraph__param_5);
+
+#line 91 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__add_vertices_and_edge_3_f_0(
+#line 91 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 91 "digraph.m"
+  MR_Box mercury__digraph__param_2,
+#line 91 "digraph.m"
+  MR_Box mercury__digraph__param_3,
+#line 91 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 80 "digraph.m"
+void MR_CALL 
+mercury__digraph__add_edge_4_p_0(
+#line 80 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 80 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 80 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 80 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 80 "digraph.m"
+  MR_Word * mercury__digraph__param_5);
+
+#line 79 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__add_edge_3_f_0(
+#line 79 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 79 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 79 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 79 "digraph.m"
+  MR_Word mercury__digraph__param_4);
+
+#line 74 "digraph.m"
+void MR_CALL 
+mercury__digraph__lookup_vertex_3_p_0(
+#line 74 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 74 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 74 "digraph.m"
+  MR_Word mercury__digraph__param_3,
+#line 74 "digraph.m"
+  MR_Box * mercury__digraph__param_4);
+
+#line 73 "digraph.m"
+MR_Box MR_CALL 
+mercury__digraph__lookup_vertex_2_f_0(
+#line 73 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 73 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 73 "digraph.m"
+  MR_Word mercury__digraph__param_3);
+
+#line 69 "digraph.m"
+void MR_CALL 
+mercury__digraph__lookup_key_3_p_0(
+#line 69 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 69 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 69 "digraph.m"
+  MR_Box mercury__digraph__param_3,
+#line 69 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 68 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__lookup_key_2_f_0(
+#line 68 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 68 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 68 "digraph.m"
+  MR_Box mercury__digraph__param_3);
+
+#line 63 "digraph.m"
+MR_bool MR_CALL 
+mercury__digraph__search_key_3_p_0(
+#line 63 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 63 "digraph.m"
+  MR_Word mercury__digraph__param_2,
+#line 63 "digraph.m"
+  MR_Box mercury__digraph__param_3,
+#line 63 "digraph.m"
+  MR_Word * mercury__digraph__param_4);
+
+#line 57 "digraph.m"
+void MR_CALL 
+mercury__digraph__add_vertex_4_p_0(
+#line 57 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 57 "digraph.m"
+  MR_Box mercury__digraph__param_2,
+#line 57 "digraph.m"
+  MR_Word * mercury__digraph__param_3,
+#line 57 "digraph.m"
+  MR_Word mercury__digraph__param_4,
+#line 57 "digraph.m"
+  MR_Word * mercury__digraph__param_5);
+
+#line 51 "digraph.m"
+void MR_CALL 
+mercury__digraph__init_1_p_0(
+#line 51 "digraph.m"
+  MR_Word mercury__digraph__param_1,
+#line 51 "digraph.m"
+  MR_Word * mercury__digraph__param_2);
+
+#line 50 "digraph.m"
+MR_Word MR_CALL 
+mercury__digraph__init_0_f_0(
+#line 50 "digraph.m"
+  MR_Word mercury__digraph__param_1);
+
+void mercury__digraph__init(void);
+void mercury__digraph__init_type_tables(void);
+void mercury__digraph__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_digraph */
+
+/* :- end_interface digraph. */

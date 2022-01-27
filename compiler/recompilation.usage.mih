@@ -1,0 +1,285 @@
+/*
+** Automatically generated from `recompilation.usage.m'
+** by the Mercury compiler,
+** version rotd-2014-11-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module recompilation.usage. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_recompilation__usage
+#define MR_HEADER_GUARD_recompilation__usage
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RECOMPILATION__USAGE_DECL_GUARD
+#define RECOMPILATION__USAGE_DECL_GUARD
+#include "recompilation.mih"
+
+#endif
+
+
+
+
+#line 43 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_imported_item_set_0;
+
+#line 46 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_imported_items_0;
+
+#line 49 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_module_imported_items_0;
+
+#line 52 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_recompilation_usage_info_0;
+
+#line 55 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_record_resolved_item_1;
+
+#line 58 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_resolved_functor_0;
+
+#line 61 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_resolved_functor_map_0;
+
+#line 64 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_resolved_functor_set_0;
+
+#line 67 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_resolved_item_list_1;
+
+#line 70 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_resolved_item_map_1;
+
+#line 73 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_resolved_item_set_1;
+
+#line 76 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_resolved_pred_or_func_map_0;
+
+#line 79 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_resolved_pred_or_func_set_0;
+
+#line 82 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_resolved_used_items_0;
+
+#line 85 "recompilation.usage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__usage__recompilation__usage__type_ctor_info_write_resolved_item_1;
+
+#line 37 "recompilation.usage.m"
+void MR_CALL 
+recompilation__usage____Compare____resolved_used_items_0_0(
+#line 37 "recompilation.usage.m"
+  MR_Word * recompilation__usage__param_1,
+#line 37 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2,
+#line 37 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3);
+
+#line 37 "recompilation.usage.m"
+MR_bool MR_CALL 
+recompilation__usage____Unify____resolved_used_items_0_0(
+#line 37 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 37 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2);
+
+#line 41 "recompilation.usage.m"
+void MR_CALL 
+recompilation__usage____Compare____resolved_pred_or_func_set_0_0(
+#line 41 "recompilation.usage.m"
+  MR_Word * recompilation__usage__param_1,
+#line 41 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2,
+#line 41 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3);
+
+#line 41 "recompilation.usage.m"
+MR_bool MR_CALL 
+recompilation__usage____Unify____resolved_pred_or_func_set_0_0(
+#line 41 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 41 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2);
+
+#line 43 "recompilation.usage.m"
+void MR_CALL 
+recompilation__usage____Compare____resolved_pred_or_func_map_0_0(
+#line 43 "recompilation.usage.m"
+  MR_Word * recompilation__usage__param_1,
+#line 43 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2,
+#line 43 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3);
+
+#line 43 "recompilation.usage.m"
+MR_bool MR_CALL 
+recompilation__usage____Unify____resolved_pred_or_func_map_0_0(
+#line 43 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 43 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2);
+
+#line 51 "recompilation.usage.m"
+void MR_CALL 
+recompilation__usage____Compare____resolved_item_set_1_0(
+#line 51 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 51 "recompilation.usage.m"
+  MR_Word * recompilation__usage__param_2,
+#line 51 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3,
+#line 51 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_4);
+
+#line 51 "recompilation.usage.m"
+MR_bool MR_CALL 
+recompilation__usage____Unify____resolved_item_set_1_0(
+#line 51 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 51 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2,
+#line 51 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3);
+
+#line 58 "recompilation.usage.m"
+void MR_CALL 
+recompilation__usage____Compare____resolved_item_map_1_0(
+#line 58 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 58 "recompilation.usage.m"
+  MR_Word * recompilation__usage__param_2,
+#line 58 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3,
+#line 58 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_4);
+
+#line 58 "recompilation.usage.m"
+MR_bool MR_CALL 
+recompilation__usage____Unify____resolved_item_map_1_0(
+#line 58 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 58 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2,
+#line 58 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3);
+
+#line 56 "recompilation.usage.m"
+void MR_CALL 
+recompilation__usage____Compare____resolved_item_list_1_0(
+#line 56 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 56 "recompilation.usage.m"
+  MR_Word * recompilation__usage__param_2,
+#line 56 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3,
+#line 56 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_4);
+
+#line 56 "recompilation.usage.m"
+MR_bool MR_CALL 
+recompilation__usage____Unify____resolved_item_list_1_0(
+#line 56 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 56 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2,
+#line 56 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3);
+
+#line 48 "recompilation.usage.m"
+void MR_CALL 
+recompilation__usage____Compare____resolved_functor_set_0_0(
+#line 48 "recompilation.usage.m"
+  MR_Word * recompilation__usage__param_1,
+#line 48 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2,
+#line 48 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3);
+
+#line 48 "recompilation.usage.m"
+MR_bool MR_CALL 
+recompilation__usage____Unify____resolved_functor_set_0_0(
+#line 48 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 48 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2);
+
+#line 49 "recompilation.usage.m"
+void MR_CALL 
+recompilation__usage____Compare____resolved_functor_map_0_0(
+#line 49 "recompilation.usage.m"
+  MR_Word * recompilation__usage__param_1,
+#line 49 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2,
+#line 49 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3);
+
+#line 49 "recompilation.usage.m"
+MR_bool MR_CALL 
+recompilation__usage____Unify____resolved_functor_map_0_0(
+#line 49 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 49 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2);
+
+#line 60 "recompilation.usage.m"
+void MR_CALL 
+recompilation__usage____Compare____resolved_functor_0_0(
+#line 60 "recompilation.usage.m"
+  MR_Word * recompilation__usage__param_1,
+#line 60 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2,
+#line 60 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3);
+
+#line 60 "recompilation.usage.m"
+MR_bool MR_CALL 
+recompilation__usage____Unify____resolved_functor_0_0(
+#line 60 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 60 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2);
+
+#line 82 "recompilation.usage.m"
+MR_Integer MR_CALL 
+recompilation__usage__usage_file_version_number_0_f_0(void);
+
+#line 75 "recompilation.usage.m"
+void MR_CALL 
+recompilation__usage__write_usage_file_5_p_0(
+#line 75 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_1,
+#line 75 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_2,
+#line 75 "recompilation.usage.m"
+  MR_Word recompilation__usage__param_3);
+
+void mercury__recompilation__usage__init(void);
+void mercury__recompilation__usage__init_type_tables(void);
+void mercury__recompilation__usage__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_recompilation.usage */
+
+/* :- end_interface recompilation.usage. */

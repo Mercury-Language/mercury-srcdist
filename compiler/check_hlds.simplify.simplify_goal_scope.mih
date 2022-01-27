@@ -1,0 +1,92 @@
+/*
+** Automatically generated from `simplify_goal_scope.m'
+** by the Mercury compiler,
+** version rotd-2014-11-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.simplify.simplify_goal_scope. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__simplify__simplify_goal_scope
+#define MR_HEADER_GUARD_check_hlds__simplify__simplify_goal_scope
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__SIMPLIFY__SIMPLIFY_GOAL_SCOPE_DECL_GUARD
+#define CHECK_HLDS__SIMPLIFY__SIMPLIFY_GOAL_SCOPE_DECL_GUARD
+#include "check_hlds.mih"
+#include "check_hlds.simplify.mih"
+
+#endif
+
+
+
+
+#line 44 "check_hlds.simplify.simplify_goal_scope.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_goal_scope__check_hlds__simplify__simplify_goal_scope__type_ctor_info_var_to_arg_map_0;
+
+#line 37 "simplify_goal_scope.m"
+void MR_CALL 
+check_hlds__simplify__simplify_goal_scope__try_to_merge_nested_scopes_4_p_0(
+#line 37 "simplify_goal_scope.m"
+  MR_Word check_hlds__simplify__simplify_goal_scope__param_1,
+#line 37 "simplify_goal_scope.m"
+  MR_Word check_hlds__simplify__simplify_goal_scope__param_2,
+#line 37 "simplify_goal_scope.m"
+  MR_Word check_hlds__simplify__simplify_goal_scope__param_3,
+#line 37 "simplify_goal_scope.m"
+  MR_Word * check_hlds__simplify__simplify_goal_scope__param_4);
+
+#line 26 "simplify_goal_scope.m"
+void MR_CALL 
+check_hlds__simplify__simplify_goal_scope__simplify_goal_scope_10_p_0(
+#line 26 "simplify_goal_scope.m"
+  MR_Word check_hlds__simplify__simplify_goal_scope__param_1,
+#line 26 "simplify_goal_scope.m"
+  MR_Word * check_hlds__simplify__simplify_goal_scope__param_2,
+#line 26 "simplify_goal_scope.m"
+  MR_Word check_hlds__simplify__simplify_goal_scope__param_3,
+#line 26 "simplify_goal_scope.m"
+  MR_Word * check_hlds__simplify__simplify_goal_scope__param_4,
+#line 26 "simplify_goal_scope.m"
+  MR_Word check_hlds__simplify__simplify_goal_scope__param_5,
+#line 26 "simplify_goal_scope.m"
+  MR_Word check_hlds__simplify__simplify_goal_scope__param_6,
+#line 26 "simplify_goal_scope.m"
+  MR_Word check_hlds__simplify__simplify_goal_scope__param_7,
+#line 26 "simplify_goal_scope.m"
+  MR_Word * check_hlds__simplify__simplify_goal_scope__param_8,
+#line 26 "simplify_goal_scope.m"
+  MR_Word check_hlds__simplify__simplify_goal_scope__param_9,
+#line 26 "simplify_goal_scope.m"
+  MR_Word * check_hlds__simplify__simplify_goal_scope__param_10);
+
+void mercury__check_hlds__simplify__simplify_goal_scope__init(void);
+void mercury__check_hlds__simplify__simplify_goal_scope__init_type_tables(void);
+void mercury__check_hlds__simplify__simplify_goal_scope__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.simplify.simplify_goal_scope */
+
+/* :- end_interface check_hlds.simplify.simplify_goal_scope. */

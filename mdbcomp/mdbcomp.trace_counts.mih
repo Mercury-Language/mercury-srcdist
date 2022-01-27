@@ -1,0 +1,407 @@
+/*
+** Automatically generated from `trace_counts.m'
+** by the Mercury compiler,
+** version rotd-2014-11-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdbcomp.trace_counts. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdbcomp__trace_counts
+#define MR_HEADER_GUARD_mdbcomp__trace_counts
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__TRACE_COUNTS_DECL_GUARD
+#define MDBCOMP__TRACE_COUNTS_DECL_GUARD
+#include "mdbcomp.mih"
+
+#endif
+
+
+
+
+#line 43 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_all_or_nonzero_0;
+
+#line 46 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_base_count_file_type_0;
+
+#line 49 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_line_no_and_count_0;
+
+#line 52 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_path_port_0;
+
+#line 55 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_proc_label_in_context_0;
+
+#line 58 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_proc_trace_counts_0;
+
+#line 61 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_read_trace_counts_list_result_0;
+
+#line 64 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_read_trace_counts_result_0;
+
+#line 67 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_trace_count_file_type_0;
+
+#line 70 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_trace_count_syntax_error_0;
+
+#line 73 "mdbcomp.trace_counts.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__trace_counts__mdbcomp__trace_counts__type_ctor_info_trace_counts_0;
+
+#line 66 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts____Compare____trace_counts_0_0(
+#line 66 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_1,
+#line 66 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 66 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_3);
+
+#line 66 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts____Unify____trace_counts_0_0(
+#line 66 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 66 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 48 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts____Compare____trace_count_file_type_0_0(
+#line 48 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_1,
+#line 48 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 48 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_3);
+
+#line 48 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts____Unify____trace_count_file_type_0_0(
+#line 48 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 48 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 102 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts____Compare____read_trace_counts_result_0_0(
+#line 102 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_1,
+#line 102 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 102 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_3);
+
+#line 102 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts____Unify____read_trace_counts_result_0_0(
+#line 102 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 102 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 116 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts____Compare____read_trace_counts_list_result_0_0(
+#line 116 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_1,
+#line 116 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 116 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_3);
+
+#line 116 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts____Unify____read_trace_counts_list_result_0_0(
+#line 116 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 116 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 75 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts____Compare____proc_trace_counts_0_0(
+#line 75 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_1,
+#line 75 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 75 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_3);
+
+#line 75 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts____Unify____proc_trace_counts_0_0(
+#line 75 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 75 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 68 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts____Compare____proc_label_in_context_0_0(
+#line 68 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_1,
+#line 68 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 68 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_3);
+
+#line 68 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts____Unify____proc_label_in_context_0_0(
+#line 68 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 68 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 77 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts____Compare____path_port_0_0(
+#line 77 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_1,
+#line 77 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 77 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_3);
+
+#line 77 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts____Unify____path_port_0_0(
+#line 77 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 77 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 82 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts____Compare____line_no_and_count_0_0(
+#line 82 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_1,
+#line 82 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 82 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_3);
+
+#line 82 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts____Unify____line_no_and_count_0_0(
+#line 82 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 82 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 43 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts____Compare____base_count_file_type_0_0(
+#line 43 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_1,
+#line 43 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 43 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_3);
+
+#line 43 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts____Unify____base_count_file_type_0_0(
+#line 43 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 43 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 34 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts____Compare____all_or_nonzero_0_0(
+#line 34 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_1,
+#line 34 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 34 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_3);
+
+#line 34 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts____Unify____all_or_nonzero_0_0(
+#line 34 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 34 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 182 "trace_counts.m"
+MR_Integer MR_CALL 
+mdbcomp__trace_counts__num_tests_for_file_type_1_f_0(
+#line 182 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1);
+
+#line 177 "trace_counts.m"
+MR_Integer MR_CALL 
+mdbcomp__trace_counts__calc_num_tests_1_f_0(
+#line 177 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1);
+
+#line 171 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__restrict_trace_counts_to_module_3_p_0(
+#line 171 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 171 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 171 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_3);
+
+#line 169 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__string_to_trace_port_2_p_1(
+#line 169 "trace_counts.m"
+  MR_String * mdbcomp__trace_counts__param_1,
+#line 169 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 168 "trace_counts.m"
+MR_bool MR_CALL 
+mdbcomp__trace_counts__string_to_trace_port_2_p_0(
+#line 168 "trace_counts.m"
+  MR_String mdbcomp__trace_counts__param_1,
+#line 168 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_2);
+
+#line 165 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__write_proc_label_3_p_0(
+#line 165 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1);
+
+#line 160 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__write_trace_counts_to_file_6_p_0(
+#line 160 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 160 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 160 "trace_counts.m"
+  MR_String mdbcomp__trace_counts__param_3,
+#line 160 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_4);
+
+#line 151 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__read_and_union_trace_counts_8_p_0(
+#line 151 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 151 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 151 "trace_counts.m"
+  MR_Integer * mdbcomp__trace_counts__param_3,
+#line 151 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_4,
+#line 151 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_5,
+#line 151 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_6);
+
+#line 134 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__read_trace_counts_source_4_p_0(
+#line 134 "trace_counts.m"
+  MR_String mdbcomp__trace_counts__param_1,
+#line 134 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_2);
+
+#line 127 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__read_trace_counts_list_5_p_0(
+#line 127 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 127 "trace_counts.m"
+  MR_String mdbcomp__trace_counts__param_2,
+#line 127 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_3);
+
+#line 113 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__read_trace_counts_4_p_0(
+#line 113 "trace_counts.m"
+  MR_String mdbcomp__trace_counts__param_1,
+#line 113 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_2);
+
+#line 97 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__diff_trace_counts_3_p_0(
+#line 97 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 97 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 97 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_3);
+
+#line 94 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__sum_trace_counts_3_p_0(
+#line 94 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 94 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2,
+#line 94 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_3);
+
+#line 91 "trace_counts.m"
+void MR_CALL 
+mdbcomp__trace_counts__summarize_trace_counts_list_2_p_0(
+#line 91 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 91 "trace_counts.m"
+  MR_Word * mdbcomp__trace_counts__param_2);
+
+#line 89 "trace_counts.m"
+MR_Word MR_CALL 
+mdbcomp__trace_counts__make_path_port_2_f_0(
+#line 89 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 89 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+#line 63 "trace_counts.m"
+MR_Word MR_CALL 
+mdbcomp__trace_counts__sum_trace_count_file_type_2_f_0(
+#line 63 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_1,
+#line 63 "trace_counts.m"
+  MR_Word mdbcomp__trace_counts__param_2);
+
+void mercury__mdbcomp__trace_counts__init(void);
+void mercury__mdbcomp__trace_counts__init_type_tables(void);
+void mercury__mdbcomp__trace_counts__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdbcomp.trace_counts */
+
+/* :- end_interface mdbcomp.trace_counts. */

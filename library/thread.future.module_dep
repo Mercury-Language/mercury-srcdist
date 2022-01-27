@@ -1,0 +1,13 @@
+module(1, "thread.future.m",
+	(thread.future),
+	{thread},
+	{builtin, private_builtin},
+	{builtin, exception, mutvar, (thread.semaphore), exception, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (thread.future), "C#" - (thread.future), "Java" - (thread.future), "Erlang" - (thread.future), "C" - (thread.future)},
+	no_foreign_export,
+	no_main
+).

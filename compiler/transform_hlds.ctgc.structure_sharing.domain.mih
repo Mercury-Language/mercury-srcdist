@@ -1,0 +1,473 @@
+/*
+** Automatically generated from `structure_sharing.domain.m'
+** by the Mercury compiler,
+** version rotd-2014-11-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.ctgc.structure_sharing.domain. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__ctgc__structure_sharing__domain
+#define MR_HEADER_GUARD_transform_hlds__ctgc__structure_sharing__domain
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CTGC__STRUCTURE_SHARING__DOMAIN_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__STRUCTURE_SHARING__DOMAIN_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.ctgc.mih"
+#include "transform_hlds.ctgc.structure_sharing.mih"
+
+#endif
+
+
+
+
+#line 45 "transform_hlds.ctgc.structure_sharing.domain.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_data_set_0;
+
+#line 48 "transform_hlds.ctgc.structure_sharing.domain.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_projection_type_0;
+
+#line 51 "transform_hlds.ctgc.structure_sharing.domain.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_selector_sharing_set_0;
+
+#line 54 "transform_hlds.ctgc.structure_sharing.domain.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0;
+
+#line 57 "transform_hlds.ctgc.structure_sharing.domain.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0;
+
+#line 60 "transform_hlds.ctgc.structure_sharing.domain.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_table_0;
+
+#line 63 "transform_hlds.ctgc.structure_sharing.domain.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_set_0;
+
+#line 228 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain____Compare____sharing_as_table_0_0(
+#line 228 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 228 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 228 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3);
+
+#line 228 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain____Unify____sharing_as_table_0_0(
+#line 228 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 228 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2);
+
+#line 230 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain____Compare____sharing_as_and_status_0_0(
+#line 230 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 230 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 230 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3);
+
+#line 230 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain____Unify____sharing_as_and_status_0_0(
+#line 230 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 230 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2);
+
+#line 326 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain____Compare____sharing_as_0_0(
+#line 326 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 326 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 326 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3);
+
+#line 326 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain____Unify____sharing_as_0_0(
+#line 326 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 326 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2);
+
+#line 295 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__load_structure_sharing_table_1_f_0(
+#line 295 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1);
+
+#line 289 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__bottom_sharing_is_safe_approximation_by_args_3_p_0(
+#line 289 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 289 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 289 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3);
+
+#line 283 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__bottom_sharing_is_safe_approximation_3_p_0(
+#line 283 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 283 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 283 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3);
+
+#line 276 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__lookup_sharing_or_predict_6_p_0(
+#line 276 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 276 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 276 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 276 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_4,
+#line 276 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_5,
+#line 276 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_6);
+
+#line 257 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__lookup_sharing_and_comb_9_p_0(
+#line 257 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 257 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 257 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 257 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_4,
+#line 257 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_5,
+#line 257 "structure_sharing.domain.m"
+  MR_Integer transform_hlds__ctgc__structure_sharing__domain__param_6,
+#line 257 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_7,
+#line 257 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_8,
+#line 257 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_9);
+
+#line 248 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_table_set_4_p_0(
+#line 248 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 248 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 248 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 248 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_4);
+
+#line 243 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_table_search_3_p_0(
+#line 243 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 243 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 243 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_3);
+
+#line 238 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_table_init_0_f_0(void);
+
+#line 214 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__to_structure_sharing_domain_1_f_0(
+#line 214 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1);
+
+#line 213 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__from_structure_sharing_domain_1_f_0(
+#line 213 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1);
+
+#line 207 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__apply_widening_6_p_0(
+#line 207 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 207 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 207 "structure_sharing.domain.m"
+  MR_Integer transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 207 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_4,
+#line 207 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_5,
+#line 207 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_6);
+
+#line 190 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__extend_datastructs_4_f_0(
+#line 190 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 190 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 190 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 190 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_4);
+
+#line 188 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__extend_datastruct_4_f_0(
+#line 188 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 188 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 188 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 188 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_4);
+
+#line 179 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_least_upper_bound_of_list_3_f_0(
+#line 179 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 179 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 179 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3);
+
+#line 177 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_least_upper_bound_4_f_0(
+#line 177 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 177 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 177 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 177 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_4);
+
+#line 172 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_and_status_is_subsumed_by_4_p_0(
+#line 172 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 172 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 172 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 172 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_4);
+
+#line 169 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_is_subsumed_by_4_p_0(
+#line 169 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 169 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 169 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 169 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_4);
+
+#line 157 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__add_foreign_proc_sharing_9_p_0(
+#line 157 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 157 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 157 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 157 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_4,
+#line 157 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_5,
+#line 157 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_6,
+#line 157 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_7,
+#line 157 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_8,
+#line 157 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_9);
+
+#line 149 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__add_unify_sharing_5_f_0(
+#line 149 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 149 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 149 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 149 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_4,
+#line 149 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_5);
+
+#line 143 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_comb_4_f_0(
+#line 143 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 143 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 143 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 143 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_4);
+
+#line 125 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_rename_using_module_info_8_p_0(
+#line 125 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 125 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 125 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 125 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_4,
+#line 125 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_5,
+#line 125 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_6,
+#line 125 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_7,
+#line 125 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_8);
+
+#line 112 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_rename_4_p_0(
+#line 112 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 112 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 112 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_3,
+#line 112 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_4);
+
+#line 104 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_project_set_3_p_0(
+#line 104 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 104 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 104 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_3);
+
+#line 103 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_project_2_f_0(
+#line 103 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 103 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2);
+
+#line 101 "structure_sharing.domain.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_project_3_p_0(
+#line 101 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 101 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2,
+#line 101 "structure_sharing.domain.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__domain__param_3);
+
+#line 92 "structure_sharing.domain.m"
+MR_String MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_short_description_1_f_0(
+#line 92 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1);
+
+#line 88 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_size_1_f_0(
+#line 88 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 88 "structure_sharing.domain.m"
+  MR_Integer * transform_hlds__ctgc__structure_sharing__domain__param_2);
+
+#line 84 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_is_top_1_p_0(
+#line 84 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1);
+
+#line 82 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_top_sharing_accumulate_2_f_0(
+#line 82 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1,
+#line 82 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_2);
+
+#line 81 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_top_sharing_1_f_0(
+#line 81 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1);
+
+#line 80 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_top_no_feedback_0_f_0(void);
+
+#line 75 "structure_sharing.domain.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_is_bottom_1_p_0(
+#line 75 "structure_sharing.domain.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__domain__param_1);
+
+#line 74 "structure_sharing.domain.m"
+MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__domain__sharing_as_init_0_f_0(void);
+
+void mercury__transform_hlds__ctgc__structure_sharing__domain__init(void);
+void mercury__transform_hlds__ctgc__structure_sharing__domain__init_type_tables(void);
+void mercury__transform_hlds__ctgc__structure_sharing__domain__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.ctgc.structure_sharing.domain */
+
+/* :- end_interface transform_hlds.ctgc.structure_sharing.domain. */

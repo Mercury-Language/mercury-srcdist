@@ -1,0 +1,1336 @@
+/*
+** Automatically generated from `robdd.m'
+** by the Mercury compiler,
+** version rotd-2014-11-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module robdd. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_robdd
+#define MR_HEADER_GUARD_robdd
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ROBDD_DECL_GUARD
+#define ROBDD_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_entailment_result_1;
+
+#line 45 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_equiv_vars_1;
+
+#line 48 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_equivalent_result_1;
+
+#line 51 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_imp_map_1;
+
+#line 54 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_imp_res_1;
+
+#line 57 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_imp_res_2_1;
+
+#line 60 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_imp_vars_1;
+
+#line 63 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_implication_result_1;
+
+#line 66 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_leader_map_1;
+
+#line 69 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_leader_to_eqvclass_1;
+
+#line 72 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_literal_1;
+
+#line 75 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_robdd_1;
+
+#line 78 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_robdd_0;
+
+#line 81 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_robdd_cache_1;
+
+#line 84 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_var_cache_1;
+
+#line 87 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_vars_1;
+
+#line 90 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_vars_entailed_result_1;
+
+#line 93 "robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__robdd__robdd__type_ctor_info_write_var_1;
+
+#line 96 "robdd.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_robdd__intersectable__arity1__robdd__imp_res_2__arity1__[6];
+
+#line 99 "robdd.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_robdd__intersectable__arity1__robdd__leader_to_eqvclass__arity1__[6];
+
+#line 102 "robdd.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_robdd__intersectable__arity1__robdd__entailment_result__arity1__[6];
+
+#line 105 "robdd.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_robdd__intersectable__arity1__sparse_bitset__sparse_bitset__arity1__[6];
+
+#line 108 "robdd.mih.tmp"
+extern const MR_TypeClassDeclStruct mercury__robdd__robdd__type_class_decl_intersectable_1;
+
+#line 835 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____sparse_bitset__sparse_bitset__arity1______robdd__intersection_2_2_f_0(
+#line 835 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 835 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 835 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 839 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__entailment_result__arity1______robdd__intersection_2_2_f_0(
+#line 839 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 839 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 839 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 846 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2_2_f_0(
+#line 846 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 846 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 846 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 861 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2_2_f_0(
+#line 861 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 861 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 861 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 333 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____write_var_1_0(
+#line 333 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 333 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 333 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 333 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 333 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____write_var_1_0(
+#line 333 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 333 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 333 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 178 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____vars_entailed_result_1_0(
+#line 178 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 178 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 178 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 178 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 178 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____vars_entailed_result_1_0(
+#line 178 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 178 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 178 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 65 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____vars_1_0(
+#line 65 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 65 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 65 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 65 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 65 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____vars_1_0(
+#line 65 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 65 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 65 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 1190 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____var_cache_1_0(
+#line 1190 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1190 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 1190 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 1190 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 1190 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____var_cache_1_0(
+#line 1190 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1190 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1190 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 1189 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____robdd_cache_1_0(
+#line 1189 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1189 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 1189 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 1189 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 1189 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_cache_1_0(
+#line 1189 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1189 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1189 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 419 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____robdd_1_0(
+#line 419 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 419 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 419 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 419 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 419 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_1_0(
+#line 419 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 419 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 419 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 63 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____robdd_0_0(
+#line 63 "robdd.m"
+  MR_Word * mercury__robdd__param_1,
+#line 63 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 63 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 63 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____robdd_0_0(
+#line 63 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 63 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 301 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____literal_1_0(
+#line 301 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 301 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 301 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 301 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 301 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____literal_1_0(
+#line 301 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 301 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 301 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 625 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____leader_to_eqvclass_1_0(
+#line 625 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 625 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 625 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 625 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 625 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____leader_to_eqvclass_1_0(
+#line 625 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 625 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 625 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 204 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____leader_map_1_0(
+#line 204 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 204 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 204 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 204 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 204 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____leader_map_1_0(
+#line 204 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 204 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 204 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 691 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____implication_result_1_0(
+#line 691 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 691 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 691 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 691 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 691 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____implication_result_1_0(
+#line 691 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 691 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 691 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 226 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____imp_vars_1_0(
+#line 226 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 226 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 226 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 226 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 226 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____imp_vars_1_0(
+#line 226 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 226 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 226 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 700 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____imp_res_2_1_0(
+#line 700 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 700 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 700 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 700 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 700 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____imp_res_2_1_0(
+#line 700 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 700 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 700 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 699 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____imp_res_1_0(
+#line 699 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 699 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 699 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 699 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 699 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____imp_res_1_0(
+#line 699 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 699 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 699 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 224 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____imp_map_1_0(
+#line 224 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 224 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 224 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 224 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 224 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____imp_map_1_0(
+#line 224 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 224 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 224 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 211 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____equivalent_result_1_0(
+#line 211 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 211 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 211 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 211 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 211 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____equivalent_result_1_0(
+#line 211 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 211 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 211 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 206 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____equiv_vars_1_0(
+#line 206 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 206 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 206 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 206 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 206 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____equiv_vars_1_0(
+#line 206 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 206 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 206 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 174 "robdd.m"
+void MR_CALL 
+mercury__robdd____Compare____entailment_result_1_0(
+#line 174 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 174 "robdd.m"
+  MR_Word * mercury__robdd__param_2,
+#line 174 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 174 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 174 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd____Unify____entailment_result_1_0(
+#line 174 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 174 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 174 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 1547 "robdd.m"
+void MR_CALL 
+mercury__robdd__labelling_2_6_p_0(
+#line 1547 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1547 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1547 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 1547 "robdd.m"
+  MR_Word mercury__robdd__param_4,
+#line 1547 "robdd.m"
+  MR_Word * mercury__robdd__param_5,
+#line 1547 "robdd.m"
+  MR_Word mercury__robdd__param_6,
+#line 1547 "robdd.m"
+  MR_Word * mercury__robdd__param_7,
+#line 1547 "robdd.m"
+  MR_Cont mercury__robdd__param_8,
+#line 1547 "robdd.m"
+  void * mercury__robdd__param_9);
+
+#line 1531 "robdd.m"
+void MR_CALL 
+mercury__robdd__write_edge_5_p_0(
+#line 1531 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1531 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1531 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 1531 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 1520 "robdd.m"
+MR_String MR_CALL 
+mercury__robdd__terminal_name_1_f_0(
+#line 1520 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1520 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 1501 "robdd.m"
+MR_String MR_CALL 
+mercury__robdd__node_name_1_f_0(
+#line 1501 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1501 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 1491 "robdd.m"
+void MR_CALL 
+mercury__robdd__write_node_4_p_0(
+#line 1491 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1491 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1491 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 1468 "robdd.m"
+void MR_CALL 
+mercury__robdd__robdd_to_dot_2_8_p_0(
+#line 1468 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1468 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1468 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 1468 "robdd.m"
+  MR_Word mercury__robdd__param_4,
+#line 1468 "robdd.m"
+  MR_Word * mercury__robdd__param_5,
+#line 1468 "robdd.m"
+  MR_Word mercury__robdd__param_6,
+#line 1468 "robdd.m"
+  MR_Word * mercury__robdd__param_7);
+
+#line 1413 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd__vars_are_constrained_2_2_p_0(
+#line 1413 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1413 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1413 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 1275 "robdd.m"
+void MR_CALL 
+mercury__robdd__add_equivalences_2_6_p_0(
+#line 1275 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1275 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1275 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 1275 "robdd.m"
+  MR_Word mercury__robdd__param_4,
+#line 1275 "robdd.m"
+  MR_Word * mercury__robdd__param_5,
+#line 1275 "robdd.m"
+  MR_Word mercury__robdd__param_6,
+#line 1275 "robdd.m"
+  MR_Word * mercury__robdd__param_7);
+
+#line 1251 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__make_equiv_2_2_f_0(
+#line 1251 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1251 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1251 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 1194 "robdd.m"
+void MR_CALL 
+mercury__robdd__filter_2_8_p_0(
+#line 1194 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1194 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1194 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 1194 "robdd.m"
+  MR_Word mercury__robdd__param_4,
+#line 1194 "robdd.m"
+  MR_Word * mercury__robdd__param_5,
+#line 1194 "robdd.m"
+  MR_Word mercury__robdd__param_6,
+#line 1194 "robdd.m"
+  MR_Word * mercury__robdd__param_7,
+#line 1194 "robdd.m"
+  MR_Word mercury__robdd__param_8,
+#line 1194 "robdd.m"
+  MR_Word * mercury__robdd__param_9);
+
+#line 1144 "robdd.m"
+void MR_CALL 
+mercury__robdd__restrict_true_false_vars_2_6_p_0(
+#line 1144 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1144 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1144 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 1144 "robdd.m"
+  MR_Word mercury__robdd__param_4,
+#line 1144 "robdd.m"
+  MR_Word * mercury__robdd__param_5,
+#line 1144 "robdd.m"
+  MR_Word mercury__robdd__param_6,
+#line 1144 "robdd.m"
+  MR_Word * mercury__robdd__param_7);
+
+#line 1083 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__at_most_one_of_2_3_f_0(
+#line 1083 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1083 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1083 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 1083 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 1024 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__make_node_3_f_0(
+#line 1024 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 1024 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 1024 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 1024 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 880 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__fa_1_f_0(
+#line 880 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 880 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 879 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__tr_1_f_0(
+#line 879 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 879 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 878 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__value_1_f_0(
+#line 878 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 878 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 831 "robdd.m"
+MR_Box MR_CALL 
+mercury__robdd__intersection_2_f_0(
+#line 831 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 831 "robdd.m"
+  MR_Box mercury__robdd__param_2,
+#line 831 "robdd.m"
+  MR_Box mercury__robdd__param_3);
+
+#line 794 "robdd.m"
+void MR_CALL 
+mercury__robdd__remove_implications_2_7_p_0(
+#line 794 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 794 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 794 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 794 "robdd.m"
+  MR_Word mercury__robdd__param_4,
+#line 794 "robdd.m"
+  MR_Word mercury__robdd__param_5,
+#line 794 "robdd.m"
+  MR_Word * mercury__robdd__param_6,
+#line 794 "robdd.m"
+  MR_Word mercury__robdd__param_7,
+#line 794 "robdd.m"
+  MR_Word * mercury__robdd__param_8);
+
+#line 776 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__imp_res_to_imp_map_1_f_0(
+#line 776 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 776 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 766 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__implication_result_to_imp_vars_1_f_0(
+#line 766 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 766 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 703 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__implications_2_1_f_0(
+#line 703 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 703 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 671 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__rev_map_1_f_0(
+#line 671 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 671 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 627 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__equivalent_vars_2_1_f_0(
+#line 627 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 627 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 401 "robdd.m"
+void MR_CALL 
+mercury__robdd__clear_caches_0_p_0(void);
+
+#line 399 "robdd.m"
+void MR_CALL 
+mercury__robdd__clear_caches_2_p_0(void);
+
+#line 388 "robdd.m"
+void MR_CALL 
+mercury__robdd__minimal_model_4_p_0(
+#line 388 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 388 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 388 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 388 "robdd.m"
+  MR_Word * mercury__robdd__param_4,
+#line 388 "robdd.m"
+  MR_Word * mercury__robdd__param_5,
+#line 388 "robdd.m"
+  MR_Cont mercury__robdd__param_6,
+#line 388 "robdd.m"
+  void * mercury__robdd__param_7);
+
+#line 374 "robdd.m"
+void MR_CALL 
+mercury__robdd__labelling_4_p_0(
+#line 374 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 374 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 374 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 374 "robdd.m"
+  MR_Word * mercury__robdd__param_4,
+#line 374 "robdd.m"
+  MR_Word * mercury__robdd__param_5,
+#line 374 "robdd.m"
+  MR_Cont mercury__robdd__param_6,
+#line 374 "robdd.m"
+  void * mercury__robdd__param_7);
+
+#line 359 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd__vars_are_constrained_2_p_0(
+#line 359 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 359 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 359 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 355 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd__var_is_constrained_2_p_0(
+#line 355 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 355 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 355 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 351 "robdd.m"
+void MR_CALL 
+mercury__robdd__size_4_p_0(
+#line 351 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 351 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 351 "robdd.m"
+  MR_Integer * mercury__robdd__param_3,
+#line 351 "robdd.m"
+  MR_Integer * mercury__robdd__param_4,
+#line 351 "robdd.m"
+  MR_Word * mercury__robdd__param_5);
+
+#line 346 "robdd.m"
+void MR_CALL 
+mercury__robdd__size_3_p_0(
+#line 346 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 346 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 346 "robdd.m"
+  MR_Integer * mercury__robdd__param_3,
+#line 346 "robdd.m"
+  MR_Integer * mercury__robdd__param_4);
+
+#line 342 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd__is_terminal_1_p_0(
+#line 342 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 342 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 338 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__rename_vars_2_f_0(
+#line 338 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 338 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 338 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 330 "robdd.m"
+void MR_CALL 
+mercury__robdd__robdd_to_dot_4_p_0(
+#line 330 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 330 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 330 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 322 "robdd.m"
+void MR_CALL 
+mercury__robdd__robdd_to_dot_5_p_0(
+#line 322 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 322 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 322 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 322 "robdd.m"
+  MR_String mercury__robdd__param_4);
+
+#line 315 "robdd.m"
+void MR_CALL 
+mercury__robdd__print_robdd_3_p_0(
+#line 315 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 315 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 307 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__dnf_1_f_0(
+#line 307 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 307 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 297 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__remove_implications_2_f_0(
+#line 297 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 297 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 297 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 290 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__add_implications_2_f_0(
+#line 290 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 290 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 290 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 283 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__add_equivalences_2_f_0(
+#line 283 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 283 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 283 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 276 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__make_equiv_1_f_0(
+#line 276 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 276 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 269 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__squeeze_equiv_2_f_0(
+#line 269 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 269 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 269 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 262 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__restrict_true_false_vars_3_f_0(
+#line 262 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 262 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 262 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 262 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 259 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__restrict_filter_3_f_0(
+#line 259 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 259 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 259 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 259 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 249 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__restrict_filter_2_f_0(
+#line 249 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 249 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 249 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 244 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__restrict_threshold_2_f_0(
+#line 244 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 244 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 244 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 240 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__restrict_2_f_0(
+#line 240 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 240 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 240 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 234 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__extract_implications_1_f_0(
+#line 234 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 234 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 213 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__equivalent_vars_1_f_0(
+#line 213 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 213 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 191 "robdd.m"
+void MR_CALL 
+mercury__robdd__definite_vars_3_p_0(
+#line 191 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 191 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 191 "robdd.m"
+  MR_Word * mercury__robdd__param_3,
+#line 191 "robdd.m"
+  MR_Word * mercury__robdd__param_4);
+
+#line 186 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__vars_disentailed_1_f_0(
+#line 186 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 186 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 182 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__vars_entailed_1_f_0(
+#line 182 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 182 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 172 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd__var_entailed_2_p_0(
+#line 172 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 172 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 172 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 168 "robdd.m"
+MR_bool MR_CALL 
+mercury__robdd__entails_2_p_0(
+#line 168 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 168 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 168 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 158 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__var_restrict_false_2_f_0(
+#line 158 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 158 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 158 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 154 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__var_restrict_true_2_f_0(
+#line 154 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 154 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 154 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 150 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__at_most_one_of_1_f_0(
+#line 150 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 150 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 145 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__disj_vars_1_f_0(
+#line 145 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 145 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 141 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__conj_not_vars_1_f_0(
+#line 141 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 141 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 137 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__conj_vars_1_f_0(
+#line 137 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 137 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 133 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__imp_vars_2_f_0(
+#line 133 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 133 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 133 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 129 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__neq_vars_2_f_0(
+#line 129 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 129 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 129 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 125 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__eq_vars_2_f_0(
+#line 125 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 125 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 125 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 121 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__ite_var_3_f_0(
+#line 121 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 121 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 121 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 121 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 117 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__not_var_1_f_0(
+#line 117 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 117 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 109 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__var_1_f_0(
+#line 109 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 109 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 103 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__f_126_1_f_0(
+#line 103 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 103 "robdd.m"
+  MR_Word mercury__robdd__param_2);
+
+#line 99 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__f_61_92_61_2_f_0(
+#line 99 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 99 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 99 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 95 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__f_61_58_61_2_f_0(
+#line 95 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 95 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 95 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 91 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__f_less_or_equal_2_f_0(
+#line 91 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 91 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 91 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 87 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__f_plus_2_f_0(
+#line 87 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 87 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 87 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 83 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__f_times_2_f_0(
+#line 83 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 83 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 83 "robdd.m"
+  MR_Word mercury__robdd__param_3);
+
+#line 76 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__ite_3_f_0(
+#line 76 "robdd.m"
+  MR_Word mercury__robdd__param_1,
+#line 76 "robdd.m"
+  MR_Word mercury__robdd__param_2,
+#line 76 "robdd.m"
+  MR_Word mercury__robdd__param_3,
+#line 76 "robdd.m"
+  MR_Word mercury__robdd__param_4);
+
+#line 72 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__zero_0_f_0(
+#line 72 "robdd.m"
+  MR_Word mercury__robdd__param_1);
+
+#line 71 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__one_0_f_0(
+#line 71 "robdd.m"
+  MR_Word mercury__robdd__param_1);
+
+#line 67 "robdd.m"
+MR_Word MR_CALL 
+mercury__robdd__empty_vars_set_0_f_0(
+#line 67 "robdd.m"
+  MR_Word mercury__robdd__param_1);
+
+void mercury__robdd__init(void);
+void mercury__robdd__init_type_tables(void);
+void mercury__robdd__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_robdd */
+
+/* :- end_interface robdd. */

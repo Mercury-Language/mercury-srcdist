@@ -1,0 +1,63 @@
+/*
+** Automatically generated from `implementation_defined_literals.m'
+** by the Mercury compiler,
+** version rotd-2014-11-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.implementation_defined_literals. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__implementation_defined_literals
+#define MR_HEADER_GUARD_check_hlds__implementation_defined_literals
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__IMPLEMENTATION_DEFINED_LITERALS_DECL_GUARD
+#define CHECK_HLDS__IMPLEMENTATION_DEFINED_LITERALS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+#line 43 "check_hlds.implementation_defined_literals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__implementation_defined_literals__check_hlds__implementation_defined_literals__type_ctor_info_subst_literals_info_0;
+
+#line 24 "implementation_defined_literals.m"
+void MR_CALL 
+check_hlds__implementation_defined_literals__subst_impl_defined_literals_2_p_0(
+#line 24 "implementation_defined_literals.m"
+  MR_Word check_hlds__implementation_defined_literals__param_1,
+#line 24 "implementation_defined_literals.m"
+  MR_Word * check_hlds__implementation_defined_literals__param_2);
+
+void mercury__check_hlds__implementation_defined_literals__init(void);
+void mercury__check_hlds__implementation_defined_literals__init_type_tables(void);
+void mercury__check_hlds__implementation_defined_literals__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.implementation_defined_literals */
+
+/* :- end_interface check_hlds.implementation_defined_literals. */

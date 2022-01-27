@@ -1,0 +1,498 @@
+/*
+** Automatically generated from `elds.m'
+** by the Mercury compiler,
+** version rotd-2014-11-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module erl_backend.elds. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_erl_backend__elds
+#define MR_HEADER_GUARD_erl_backend__elds
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ERL_BACKEND__ELDS_DECL_GUARD
+#define ERL_BACKEND__ELDS_DECL_GUARD
+#include "erl_backend.mih"
+
+#endif
+
+
+
+
+#line 43 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_0;
+
+#line 46 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_binop_0;
+
+#line 49 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_body_0;
+
+#line 52 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_call_target_0;
+
+#line 55 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_case_0;
+
+#line 58 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_catch_0;
+
+#line 61 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_clause_0;
+
+#line 64 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_defn_0;
+
+#line 67 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_expr_0;
+
+#line 70 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_foreign_export_defn_0;
+
+#line 73 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_rtti_defn_0;
+
+#line 76 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_rtti_id_0;
+
+#line 79 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_term_0;
+
+#line 82 "erl_backend.elds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__elds__erl_backend__elds__type_ctor_info_elds_unop_0;
+
+#line 261 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_unop_0_0(
+#line 261 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 261 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 261 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 261 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_unop_0_0(
+#line 261 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 261 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 211 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_term_0_0(
+#line 211 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 211 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 211 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 211 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_term_0_0(
+#line 211 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 211 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 110 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_rtti_id_0_0(
+#line 110 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 110 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 110 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 110 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_rtti_id_0_0(
+#line 110 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 110 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 100 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_rtti_defn_0_0(
+#line 100 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 100 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 100 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 100 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_rtti_defn_0_0(
+#line 100 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 100 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 91 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_foreign_export_defn_0_0(
+#line 91 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 91 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 91 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 91 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_foreign_export_defn_0_0(
+#line 91 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 91 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 136 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_expr_0_0(
+#line 136 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 136 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 136 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 136 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_expr_0_0(
+#line 136 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 136 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 73 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_defn_0_0(
+#line 73 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 73 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 73 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 73 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_defn_0_0(
+#line 73 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 73 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 128 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_clause_0_0(
+#line 128 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 128 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 128 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 128 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_clause_0_0(
+#line 128 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 128 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 258 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_catch_0_0(
+#line 258 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 258 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 258 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 258 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_catch_0_0(
+#line 258 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 258 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 255 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_case_0_0(
+#line 255 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 255 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 255 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 255 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_case_0_0(
+#line 255 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 255 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 250 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_call_target_0_0(
+#line 250 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 250 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 250 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 250 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_call_target_0_0(
+#line 250 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 250 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 83 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_body_0_0(
+#line 83 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 83 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 83 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 83 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_body_0_0(
+#line 83 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 83 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 267 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_binop_0_0(
+#line 267 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 267 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 267 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 267 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_binop_0_0(
+#line 267 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 267 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 43 "elds.m"
+void MR_CALL 
+erl_backend__elds____Compare____elds_0_0(
+#line 43 "elds.m"
+  MR_Word * erl_backend__elds__param_1,
+#line 43 "elds.m"
+  MR_Word erl_backend__elds__param_2,
+#line 43 "elds.m"
+  MR_Word erl_backend__elds__param_3);
+
+#line 43 "elds.m"
+MR_bool MR_CALL 
+erl_backend__elds____Unify____elds_0_0(
+#line 43 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 43 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 381 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__make_enum_alternative_1_f_0(
+#line 381 "elds.m"
+  MR_String erl_backend__elds__param_1);
+
+#line 371 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__tuple_or_single_expr_1_f_0(
+#line 371 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 365 "elds.m"
+MR_Integer MR_CALL 
+erl_backend__elds__elds_clause_arity_1_f_0(
+#line 365 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 363 "elds.m"
+MR_Integer MR_CALL 
+erl_backend__elds__elds_body_arity_1_f_0(
+#line 363 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 361 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__det_expr_1_f_0(
+#line 361 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 355 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__expr_or_void_1_f_0(
+#line 355 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 347 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__maybe_join_exprs1_2_f_0(
+#line 347 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 347 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 340 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__maybe_join_exprs_2_f_0(
+#line 340 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 340 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 333 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__join_exprs_2_f_0(
+#line 333 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 333 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 328 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__expr_to_term_1_f_0(
+#line 328 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 324 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__exprs_from_fixed_vars_1_f_0(
+#line 324 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 323 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__terms_from_fixed_vars_1_f_0(
+#line 323 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 321 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__exprs_from_vars_1_f_0(
+#line 321 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 320 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__expr_from_var_1_f_0(
+#line 320 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 318 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__terms_from_vars_1_f_0(
+#line 318 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 317 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__term_from_var_1_f_0(
+#line 317 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 315 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__var_eq_false_1_f_0(
+#line 315 "elds.m"
+  MR_Word erl_backend__elds__param_1);
+
+#line 313 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__elds_call_self_0_f_0(void);
+
+#line 312 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__elds_call_element_2_f_0(
+#line 312 "elds.m"
+  MR_Word erl_backend__elds__param_1,
+#line 312 "elds.m"
+  MR_Integer erl_backend__elds__param_2);
+
+#line 311 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__elds_call_builtin_2_f_0(
+#line 311 "elds.m"
+  MR_String erl_backend__elds__param_1,
+#line 311 "elds.m"
+  MR_Word erl_backend__elds__param_2);
+
+#line 309 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__elds_commit_marker_0_f_0(void);
+
+#line 304 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__elds_empty_tuple_0_f_0(void);
+
+#line 303 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__elds_throw_atom_0_f_0(void);
+
+#line 302 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__elds_fail_0_f_0(void);
+
+#line 301 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__elds_false_0_f_0(void);
+
+#line 300 "elds.m"
+MR_Word MR_CALL 
+erl_backend__elds__elds_true_0_f_0(void);
+
+void mercury__erl_backend__elds__init(void);
+void mercury__erl_backend__elds__init_type_tables(void);
+void mercury__erl_backend__elds__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_erl_backend.elds */
+
+/* :- end_interface erl_backend.elds. */

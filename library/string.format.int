@@ -1,0 +1,5 @@
+:- module (string.format).
+:- interface.
+:- import_module list.
+:- pred format_impl(string, list.list(string.poly_type), string).
+:- mode format_impl((builtin.in), (builtin.in), (builtin.out)) is det.

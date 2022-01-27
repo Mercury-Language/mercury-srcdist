@@ -1,0 +1,7 @@
+:- module (transform_hlds.accumulator).
+:- interface.
+:- import_module univ.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- pred accu_transform_proc(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, univ.univ, univ.univ).
+:- mode accu_transform_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

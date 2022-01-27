@@ -1,0 +1,9 @@
+:- module string.
+:- interface.
+:- include_module (string.builder).
+:- include_module (string.format).
+:- include_module (string.to_string).
+:- type justified_column.
+:- type line.
+:- type poly_type.
+:- type text_file.

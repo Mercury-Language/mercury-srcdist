@@ -1,0 +1,13 @@
+module(1, "digraph.m",
+	digraph,
+	{},
+	{builtin, assoc_list, enum, list, map, pair, set, sparse_bitset, private_builtin},
+	{builtin, assoc_list, enum, list, map, pair, set, sparse_bitset, bimap, int, require, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
