@@ -1,0 +1,29 @@
+:- module (parse_tree.prog_foreign).
+:- interface.
+:- use_module bool.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.file_names).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_foreign).
+:- type foreign_body_code
+    --->    foreign_body_code(((parse_tree.prog_foreign).fbody_lang) :: libs.globals.foreign_language, ((parse_tree.prog_foreign).fbody_code) :: parse_tree.prog_data_foreign.foreign_literal_or_include, ((parse_tree.prog_foreign).fbody_context) :: parse_tree.prog_data.prog_context).
+:- type foreign_decl_code
+    --->    foreign_decl_code(((parse_tree.prog_foreign).fdecl_lang) :: libs.globals.foreign_language, ((parse_tree.prog_foreign).fdecl_is_local) :: parse_tree.prog_data_foreign.foreign_decl_is_local, ((parse_tree.prog_foreign).fdecl_code) :: parse_tree.prog_data_foreign.foreign_literal_or_include, ((parse_tree.prog_foreign).fdecl_context) :: parse_tree.prog_data.prog_context).
+:- type foreign_export_decl
+    --->    foreign_export_decl(((parse_tree.prog_foreign).fexp_decl_lang) :: libs.globals.foreign_language, ((parse_tree.prog_foreign).fexp_decl_ret_type) :: string, ((parse_tree.prog_foreign).fexp_decl_func_name) :: string, ((parse_tree.prog_foreign).fexp_decl_arg_decls) :: string).
+:- type foreign_export_decls
+    --->    foreign_export_decls(((parse_tree.prog_foreign).fexp_decls_codes) :: list.list(parse_tree.prog_foreign.foreign_decl_code), ((parse_tree.prog_foreign).fexp_decls_list) :: list.list(parse_tree.prog_foreign.foreign_export_decl)).
+:- type foreign_export_defn
+    --->    foreign_export_defn(string).
+:- type foreign_export_defns == list.list(parse_tree.prog_foreign.foreign_export_defn).
+:- inst (lang_gen_ext_file) for (libs.globals).foreign_language/0 == bound(lang_c ; lang_csharp).
+:- type_representation(foreign_body_code, is_word_aligned_ptr).
+:- type_representation(foreign_decl_code, is_word_aligned_ptr).
+:- type_representation(foreign_export_decl, is_word_aligned_ptr).
+:- type_representation(foreign_export_decls, is_word_aligned_ptr).
+:- type_representation(foreign_export_defn, du_repn(notag("foreign_export_defn", string,  no_c_j_cs))).
+:- type_representation(foreign_export_defns, is_eqv_to(list.list(parse_tree.prog_foreign.foreign_export_defn))).

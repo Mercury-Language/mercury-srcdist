@@ -1,0 +1,8 @@
+:- module (check_hlds.inst_match).
+:- interface.
+:- type ground_matches_bound
+    --->    ground_matches_bound_if_complete 
+    ;       ground_matches_bound_always .
+:- type_representation(expansions, is_eqv_to(set_tree234.set_tree234(check_hlds.inst_match.inst_match_inputs))).
+:- type_representation(ground_matches_bound, du_repn(enum("ground_matches_bound_if_complete", "ground_matches_bound_always", [],  no_c_j_cs))).
+:- type_representation(inst_matches_pred, is_eqv_to(pred(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, maybe.maybe(parse_tree.prog_data.mer_type), check_hlds.inst_match.inst_match_info, check_hlds.inst_match.inst_match_info))).

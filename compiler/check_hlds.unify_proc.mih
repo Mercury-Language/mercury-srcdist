@@ -1,0 +1,104 @@
+/*
+** Automatically generated from `unify_proc.m'
+** by the Mercury compiler,
+** version rotd-2021-04-24
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.unify_proc.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__unify_proc
+#define MR_HEADER_GUARD_check_hlds__unify_proc
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__UNIFY_PROC_DECL_GUARD
+#define CHECK_HLDS__UNIFY_PROC_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_args_locn_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_bulk_comparability_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_compare_conjoin_kind_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_compare_how_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_linear_or_quad_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_maybe_all_args_in_word_so_far_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_maybe_allow_packed_unify_compare_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_maybe_compare_constants_as_ints_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_maybe_give_vars_types_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_maybe_packable_args_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_maybe_packed_word_ops_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_spec_pred_defn_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_uc_options_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_uc_params_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_unify_how_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__unify_proc__check_hlds__unify_proc__type_ctor_info_unify_proc_info_0;
+
+void MR_CALL 
+check_hlds__unify_proc__generate_clauses_for_special_pred_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__unify_proc____Compare____spec_pred_defn_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__unify_proc____Unify____spec_pred_defn_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__unify_proc__init(void);
+void mercury__check_hlds__unify_proc__init_type_tables(void);
+void mercury__check_hlds__unify_proc__init_debugger(void);
+const char *mercury__check_hlds__unify_proc__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.unify_proc
+
+// :- end_interface check_hlds.unify_proc.

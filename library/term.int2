@@ -1,0 +1,53 @@
+:- module term.
+:- interface.
+:- use_module enum.
+:- use_module map.
+:- type const
+    --->    atom(string)
+    ;       integer((term.integer_base) :: term.integer_base, (term.integer_value) :: integer.integer, (term.integer_signedness) :: term.signedness, (term.integer_size) :: term.integer_size)
+    ;       string(string)
+    ;       float(float)
+    ;       implementation_defined(string).
+:- type context
+    --->    context(string, int).
+:- type generic
+    --->    generic .
+:- type integer_base
+    --->    base_2 
+    ;       base_8 
+    ;       base_10 
+    ;       base_16 .
+:- type integer_size
+    --->    size_word 
+    ;       size_8_bit 
+    ;       size_16_bit 
+    ;       size_32_bit 
+    ;       size_64_bit .
+:- type renaming == term.renaming(term.generic).
+:- type renaming(T) == map.map(term.var(T), term.var(T)).
+:- type signedness
+    --->    signed 
+    ;       unsigned .
+:- type substitution == term.substitution(term.generic).
+:- type substitution(T) == map.map(term.var(T), term.term(T)).
+:- type term == term.term(term.generic).
+:- type term(T)
+    --->    functor(term.const, list.list(term.term(T)), term.context)
+    ;       variable(term.var(T), term.context).
+:- type var == term.var(term.generic).
+:- type var(T).
+:- type var_supply(T).
+:- instance (enum.enum(term.var(V_1))).
+:- type_representation(context, is_word_aligned_ptr).
+:- type_representation(generic, du_repn(direct_dummy("generic",  no_c_j_cs))).
+:- type_representation(integer_base, du_repn(enum("base_2", "base_8", ["base_10", "base_16"],  no_c_j_cs))).
+:- type_representation(integer_size, du_repn(enum("size_word", "size_8_bit", ["size_16_bit", "size_32_bit", "size_64_bit"],  no_c_j_cs))).
+:- type_representation(renaming, is_eqv_to(term.renaming(term.generic))).
+:- type_representation(renaming(V_1), is_eqv_to(map.map(term.var(V_1), term.var(V_1)))).
+:- type_representation(signedness, du_repn(enum("signed", "unsigned", [],  no_c_j_cs))).
+:- type_representation(substitution, is_eqv_to(term.substitution(term.generic))).
+:- type_representation(substitution(V_1), is_eqv_to(map.map(term.var(V_1), term.term(V_1)))).
+:- type_representation(term, is_eqv_to(term.term(term.generic))).
+:- type_representation(var, is_eqv_to(term.var(term.generic))).
+:- type_representation(var(V_1), du_repn(notag("var", int,  no_c_j_cs))).
+:- type_representation(var_supply(V_1), du_repn(notag("var_supply", int,  no_c_j_cs))).

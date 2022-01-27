@@ -1,0 +1,38 @@
+:- module (mdb.declarative_edt).
+:- interface.
+:- type find_origin_response
+    --->    not_found 
+    ;       origin(mdb.declarative_edt.suspect_id, mdbcomp.program_representation.arg_pos, mdbcomp.program_representation.term_path, mdb.declarative_edt.subterm_mode)
+    ;       primitive_op(mdb.declarative_edt.suspect_id, string, int, mdb.declarative_edt.primitive_op_type, bool.bool)
+    ;       require_explicit_subtree 
+    ;       require_explicit_supertree .
+:- type maybe_found_descendant
+    --->    found(mdb.declarative_edt.suspect_id)
+    ;       not_found 
+    ;       require_explicit_subtree(mdb.declarative_edt.suspect_id).
+:- type primitive_op_type
+    --->    primop_foreign_proc 
+    ;       primop_builtin_call 
+    ;       primop_untraced_call 
+    ;       primop_unification .
+:- type search_space(T).
+:- type subterm_mode
+    --->    subterm_in 
+    ;       subterm_out .
+:- type subterm_origin(T)
+    --->    origin_output(T, mdbcomp.program_representation.arg_pos, mdbcomp.program_representation.term_path)
+    ;       origin_input(mdbcomp.program_representation.arg_pos, mdbcomp.program_representation.term_path)
+    ;       origin_primitive_op(string, int, mdb.declarative_edt.primitive_op_type)
+    ;       origin_not_found 
+    ;       origin_require_explicit_subtree .
+:- type suspect_id.
+:- type weighting_heuristic
+    --->    number_of_events 
+    ;       suspicion .
+:- typeclass mercury_edt(S, T).
+:- type_representation(primitive_op_type, du_repn(enum("primop_foreign_proc", "primop_builtin_call", ["primop_untraced_call", "primop_unification"],  no_c_j_cs))).
+:- type_representation(subterm_mode, du_repn(enum("subterm_in", "subterm_out", [],  no_c_j_cs))).
+:- type_representation(suspect_id, is_eqv_to(int)).
+:- type_representation(weighting_heuristic, du_repn(enum("number_of_events", "suspicion", [],  no_c_j_cs))).
+:- implementation.
+:- type suspect_id == int.

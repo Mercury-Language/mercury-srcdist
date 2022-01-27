@@ -1,0 +1,18 @@
+:- module (transform_hlds.direct_arg_in_out).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- pred daio_may_introduce_calls(string, string, parse_tree.prog_data.arity).
+:- mode daio_may_introduce_calls((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred do_direct_arg_in_out_transform_in_module(hlds.hlds_module.direct_arg_proc_map, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec)).
+:- mode do_direct_arg_in_out_transform_in_module((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred find_and_record_any_direct_arg_in_out_posns(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.vartypes.vartypes, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode find_and_record_any_direct_arg_in_out_posns((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- typeclass goal_like(G).
