@@ -1,0 +1,188 @@
+/*
+** Automatically generated from `version_bitmap.m'
+** by the Mercury compiler,
+** version rotd-2021-12-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module version_bitmap.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_version_bitmap
+#define MR_HEADER_GUARD_version_bitmap
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef VERSION_BITMAP_DECL_GUARD
+#define VERSION_BITMAP_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__version_bitmap__version_bitmap__type_ctor_info_version_bitmap_0;
+
+void MR_CALL 
+mercury__version_bitmap__clear_3_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__version_bitmap__flip_3_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+MR_bool MR_CALL 
+mercury__version_bitmap__is_clear_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__version_bitmap__is_set_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__version_bitmap__resize_4_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__version_bitmap__set_3_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__version_bitmap__unsafe_rewind_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+MR_Word MR_CALL 
+mercury__version_bitmap__bit_2_f_0(
+  MR_Integer param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__f_98_105_116_32_58_61_3_f_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Word param_3);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__clear_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__clear_filler_bits_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__complement_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__complement_2_2_f_0(
+  MR_Integer param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__copy_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__difference_2_f_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__flip_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__init_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__intersect_2_f_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_Integer MR_CALL 
+mercury__version_bitmap__num_bits_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__resize_3_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__set_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__union_2_f_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__unsafe_rewind_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__version_bitmap__xor_2_f_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__version_bitmap____Compare____version_bitmap_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__version_bitmap____Unify____version_bitmap_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void mercury__version_bitmap__init(void);
+void mercury__version_bitmap__init_type_tables(void);
+void mercury__version_bitmap__init_debugger(void);
+const char *mercury__version_bitmap__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_version_bitmap
+
+// :- end_interface version_bitmap.

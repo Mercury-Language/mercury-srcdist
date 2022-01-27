@@ -1,0 +1,4 @@
+:- module (check_hlds.typecheck).
+:- interface.
+:- type_representation(cons_type_assign_set, is_eqv_to(list(cons_type_assign))).
+:- type_representation(invariant_set, is_eqv_to(set(tvar))).
