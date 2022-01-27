@@ -1,0 +1,29 @@
+:- module (ml_backend.mlds_to_java_name).
+:- interface.
+:- use_module io.
+:- use_module parse_tree.
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_java_util).
+:- use_module (parse_tree.prog_data).
+:- pred mlds_output_proc_label_for_java(io.text_output_stream, ml_backend.mlds.mlds_proc_label, io.io, io.io).
+:- mode mlds_output_proc_label_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_class_name_arity_for_java(io.text_output_stream, ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity, io.io, io.io).
+:- mode output_class_name_arity_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_field_var_name_for_java(io.text_output_stream, ml_backend.mlds.mlds_field_var_name, io.io, io.io).
+:- mode output_field_var_name_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_function_name_for_java(io.text_output_stream, ml_backend.mlds.mlds_function_name, io.io, io.io).
+:- mode output_function_name_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_global_var_name_for_java(io.text_output_stream, ml_backend.mlds.mlds_global_var_name, io.io, io.io).
+:- mode output_global_var_name_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_local_var_name_for_java(io.text_output_stream, ml_backend.mlds.mlds_local_var_name, io.io, io.io).
+:- mode output_local_var_name_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_maybe_qualified_function_name_for_java(ml_backend.mlds_to_java_util.java_out_info, io.text_output_stream, ml_backend.mlds.qual_function_name, io.io, io.io).
+:- mode output_maybe_qualified_function_name_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_maybe_qualified_global_var_name_for_java(ml_backend.mlds_to_java_util.java_out_info, io.text_output_stream, ml_backend.mlds.qual_global_var_name, io.io, io.io).
+:- mode output_maybe_qualified_global_var_name_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_qual_name_prefix_java(io.text_output_stream, ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_qual_kind, io.io, io.io).
+:- mode output_qual_name_prefix_java((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_unqual_class_name_for_java(io.text_output_stream, ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity, io.io, io.io).
+:- mode output_unqual_class_name_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred qual_class_name_to_string_for_java(ml_backend.mlds.qual_class_name, parse_tree.prog_data.arity, string).
+:- mode qual_class_name_to_string_for_java((builtin.in), (builtin.in), (builtin.out)) is det.

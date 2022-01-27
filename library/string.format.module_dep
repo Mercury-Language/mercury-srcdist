@@ -1,0 +1,14 @@
+module(2, "string.format.m",
+	(string.format),
+	{string},
+	{builtin, list, private_builtin, (string.parse_util)},
+	{bool, exception, float, int, int16, int32, int64, int8, integer, require, uint, uint16, uint32, uint64, uint8, (string.parse_runtime)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (string.format), "C#" - (string.format), "Java" - (string.format)},
+	no_foreign_export,
+	no_main,
+	{}
+).
