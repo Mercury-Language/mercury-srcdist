@@ -1,0 +1,167 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1995-2000, 2002-2003, 2005, 2007, 2009-2010, 2012 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public Licence - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# Mmake - this is Mmake file for building the Mercury profiler
+
+MERCURY_DIR=..
+LINK_STATIC=yes
+include $(MERCURY_DIR)/Mmake.common
+
+# Module-specific options should go in Mercury.options so they can be found
+# by `mmc --make'.
+include Mercury.options
+
+MAIN_TARGET=all
+MERCURY_MAIN_MODULES=mercury_profile
+
+PDBS = $(patsubst %,%.pdb,$(MERCURY_MAIN_MODULES))
+
+VPATH = $(LIBRARY_DIR) $(SSDB_DIR)
+
+#-----------------------------------------------------------------------------#
+
+MLFLAGS += --shared
+MCFLAGS += --flags PROF_FLAGS $(CONFIG_OVERRIDE)
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: all
+all:	mercury_profile $(TAGS_FILE_EXISTS)
+
+.PHONY: depend
+depend:	mercury_profile.depend
+
+# XXX We should list atsort_callgraph along with demangle_test, in both
+# the aux and depend_aux targets, but now it is too late; due to bitrot,
+# it does not compile anymore.
+#
+# NOTE: if you add any programs here, you will need to modify the rule
+# for dep_profiler_aux in ../Mmakefile, and the rules for os, cs, css and javas
+# below.
+aux:	demangle_test
+
+depend_aux: demangle_test.depend
+
+mercury_profile.depend: PROF_FLAGS
+demangle_test.depend: PROF_FLAGS
+
+#-----------------------------------------------------------------------------#
+
+# Add some additional dependencies, so that Mmake knows to remake the
+# profiler if one of the libraries changes.
+
+ifeq ("$(filter csharp% java%,$(GRADE))","")
+mercury_profile: $(RUNTIME_DIR)/lib$(RT_LIB_NAME).$A
+mercury_profile: $(LIBRARY_DIR)/lib$(STD_LIB_NAME).$A
+# XXX Should also depend on $(BOEHM_GC_DIR)/libgc(_prof).$A, but only
+# if in .gc(.prof) grade.
+endif
+
+$(cs_subdir)mercury_profile_init.c: $(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+
+ifneq ("$(filter csharp% java%,$(GRADE))","")
+MLOBJS =
+endif
+
+# Tell the C# compiler where the stdlib assembly is.
+#
+ifneq ("$(filter csharp%,$(GRADE))","")
+CSCFLAGS=-lib:../library -r:mer_std.dll
+endif
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: check
+check:	mercury_profile.check
+
+.PHONY: ints
+ints:	mercury_profile.ints
+
+#-----------------------------------------------------------------------------#
+
+tags:	.profiler_tags
+
+.profiler_tags: $(MTAGS) $(wildcard *.m) $(wildcard $(LIBRARY_DIR)/*.m)
+	$(MTAGS) *.m $(LIBRARY_DIR)/*.m
+	@touch .profiler_tags
+
+.PHONY: tags_file_exists
+tags_file_exists:
+	@if test ! -f tags; \
+	then \
+		echo making tags; \
+		$(MTAGS) *.m $(LIBRARY_DIR)/*.m ; \
+		touch .profiler_tags ; \
+	fi
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: dates
+dates:
+	touch $(mercury_profile.dates)
+
+#-----------------------------------------------------------------------------#
+
+# The documentation of the reason for this set of rules
+# can be found in library/Mmakefile.
+
+.PHONY: os cs css javas
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+os:	mercury_profile.os
+cs:	mercury_profile.cs
+css:	mercury_profile.css
+javas:	mercury_profile.javas
+else
+ifneq ($(origin mercury_profile.os),undefined)
+os:	$(mercury_profile.os)
+cs:	$(mercury_profile.cs)
+css:	$(mercury_profile.css)
+javas:	$(mercury_profile.javas)
+else
+os:
+	mmake depend; mmake os
+
+cs:
+	mmake depend; mmake cs
+
+css:
+	mmake depend; mmake css
+
+javas:
+	mmake depend; mmake javas
+endif
+endif
+
+#-----------------------------------------------------------------------------#
+
+realclean_local:
+	rm -f tags PROF_FLAGS PROF_FLAGS.date
+	rm -f $(PDBS) vc*.pdb
+
+#-----------------------------------------------------------------------------#
+
+# Installation targets
+
+.PHONY: install
+install: install_profiler
+
+.PHONY: install_profiler
+install_profiler: mercury_profile
+	-[ -d $(INSTALL_MERC_BIN_DIR) ] || mkdir -p $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mercury_profile$(EXT_FOR_EXE)` $(INSTALL_MERC_BIN_DIR)
+ifeq ($(findstring java,$(GRADE)),java)
+	cp `vpath_find mercury_profile.jar` $(INSTALL_MERC_BIN_DIR)
+endif
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: uninstall
+uninstall:
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mercury_profile$(EXT_FOR_EXE)
+
+#-----------------------------------------------------------------------------#
