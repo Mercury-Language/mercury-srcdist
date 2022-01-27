@@ -1,0 +1,22 @@
+:- module (parse_tree.prog_io_inst_mode_name).
+:- interface.
+:- import_module list.
+:- import_module term.
+:- import_module (parse_tree.prog_data).
+:- type allow_constrained_inst_var
+    --->    allow_constrained_inst_var 
+    ;       no_allow_constrained_inst_var .
+:- pred convert_inst(parse_tree.prog_io_inst_mode_name.allow_constrained_inst_var, term.term, parse_tree.prog_data.mer_inst).
+:- mode convert_inst((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred convert_inst_list(parse_tree.prog_io_inst_mode_name.allow_constrained_inst_var, list.list(term.term), list.list(parse_tree.prog_data.mer_inst)).
+:- mode convert_inst_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred convert_mode(parse_tree.prog_io_inst_mode_name.allow_constrained_inst_var, term.term, parse_tree.prog_data.mer_mode).
+:- mode convert_mode((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred convert_mode_list(parse_tree.prog_io_inst_mode_name.allow_constrained_inst_var, list.list(term.term), list.list(parse_tree.prog_data.mer_mode)).
+:- mode convert_mode_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred is_known_inst_name(string).
+:- mode is_known_inst_name((builtin.in)) is semidet.
+:- pred is_known_mode_name(string).
+:- mode is_known_mode_name((builtin.in)) is semidet.
+:- pred standard_det(string, parse_tree.prog_data.determinism).
+:- mode standard_det((builtin.in), (builtin.out)) is semidet.

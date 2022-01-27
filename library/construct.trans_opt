@@ -1,0 +1,35 @@
+:- module construct.
+
+:- pragma termination_info(construct.construct((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(construct.construct_tuple((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(construct.construct_tuple_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(construct.det_num_functors((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(construct.find_functor((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(construct.find_functor_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(construct.get_functor((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(construct.get_functor_internal((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(construct.get_functor_lex((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(construct.get_functor_ordinal((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(construct.get_functor_ordinal((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(construct.get_functor_with_names((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(construct.get_functor_with_names_internal((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(construct.null((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(construct.null_to_no((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(construct.num_functors((builtin.in)) = (builtin.out), infinite, cannot_loop).
+
+:- pragma exceptions(function, (construct.construct), 4, 0, will_not_throw).
+:- pragma exceptions(function, (construct.construct_tuple), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (construct.construct_tuple_2), 4, 0, will_not_throw).
+:- pragma exceptions(function, (construct.det_num_functors), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (construct.find_functor), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (construct.find_functor_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (construct.get_functor), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (construct.get_functor_internal), 5, 0, will_not_throw).
+:- pragma exceptions(function, (construct.get_functor_lex), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (construct.get_functor_ordinal), 3, 0, will_not_throw).
+:- pragma exceptions(function, (construct.get_functor_ordinal), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (construct.get_functor_with_names), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (construct.get_functor_with_names_internal), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, (construct.null), 1, 0, will_not_throw).
+:- pragma exceptions(function, (construct.null_to_no), 2, 0, will_not_throw).
+:- pragma exceptions(function, (construct.num_functors), 2, 0, will_not_throw).

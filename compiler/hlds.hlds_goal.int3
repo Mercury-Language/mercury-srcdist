@@ -1,0 +1,121 @@
+:- module (hlds.hlds_goal).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module pair.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module term.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_rename).
+:- import_module (parse_tree.set_of_var).
+:- type atomic_goal_type
+	where	type_is_abstract_enum(2).
+:- type atomic_interface_vars.
+:- type builtin_state
+	where	type_is_abstract_enum(2).
+:- type call_unify_context.
+:- type can_cgc
+	where	type_is_abstract_enum(1).
+:- type case.
+:- type case_id.
+:- type cast_kind
+	where	type_is_abstract_enum(2).
+:- type catch_part.
+:- type cell_is_unique
+	where	type_is_abstract_enum(1).
+:- type cell_to_reuse.
+:- type conj_type
+	where	type_is_abstract_enum(1).
+:- type construct_sub_info.
+:- type contains_trace_goal
+	where	type_is_abstract_enum(1).
+:- type ctgc_goal_info.
+:- type dp_coverage_goal_info.
+:- type dp_goal_info.
+:- type force_pruning
+	where	type_is_abstract_enum(1).
+:- type foreign_arg.
+:- type from_ground_term_kind
+	where	type_is_abstract_enum(2).
+:- type generic_call.
+:- type goal_feature
+	where	type_is_abstract_enum(5).
+:- type goal_is_mdprof_inst
+	where	type_is_abstract_enum(1).
+:- type goal_trivial
+	where	type_is_abstract_enum(1).
+:- type hlds_goal.
+:- type hlds_goal_code_gen_info.
+:- type hlds_goal_expr.
+:- type hlds_goal_info.
+:- type hlds_goals.
+:- type ho_values.
+:- type how_to_construct.
+:- type incremental_rename_map.
+:- type is_conditional
+	where	type_is_abstract_enum(1).
+:- type is_exist_constr
+	where	type_is_abstract_enum(1).
+:- type is_first_disjunct
+	where	type_is_abstract_enum(1).
+:- type lc_use_parent_stack
+	where	type_is_abstract_enum(1).
+:- type missed_message.
+:- type mode_constr_goal_info.
+:- type needs_update
+	where	type_is_abstract_enum(1).
+:- type port_counts_give_coverage_after
+	where	type_is_abstract_enum(1).
+:- type promise_solutions_kind
+	where	type_is_abstract_enum(2).
+:- type rbmm_goal_info.
+:- type removable
+	where	type_is_abstract_enum(1).
+:- type reuse_description.
+:- type scope_reason.
+:- type short_reuse_description.
+:- type shorthand_goal_expr.
+:- type tagged_case.
+:- type term_size_value.
+:- type trace_mutable_var_hlds.
+:- type try_io_state_vars.
+:- type uni_mode.
+:- type unification.
+:- type unify_context.
+:- type unify_main_context.
+:- type unify_mode.
+:- type unify_rhs.
+:- type unify_sub_context.
+:- type unify_sub_contexts.
+:- inst (goal_expr_conj) == bound(conj(ground, ground)).
+:- inst (goal_expr_disj) == bound(disj(ground)).
+:- inst (goal_expr_foreign_proc) == bound(call_foreign_proc(ground, ground, ground, ground, ground, ground, ground)).
+:- inst (goal_expr_generic_call) == bound(generic_call(ground, ground, ground, ground, ground)).
+:- inst (goal_expr_ite) == bound(if_then_else(ground, ground, ground, ground)).
+:- inst (goal_expr_neg) == bound(negation(ground)).
+:- inst (goal_expr_parallel_conj) == bound(conj(bound(parallel_conj), ground)).
+:- inst (goal_expr_plain_call) == bound(plain_call(ground, ground, ground, ground, ground, ground)).
+:- inst (goal_expr_plain_conj) == bound(conj(bound(plain_conj), ground)).
+:- inst (goal_expr_scope) == bound(scope(ground, ground)).
+:- inst (goal_expr_shorthand) == bound(shorthand(ground)).
+:- inst (goal_expr_switch) == bound(switch(ground, ground, ground)).
+:- inst (goal_expr_unify) == bound(unify(ground, ground, ground, ground, ground)).
+:- inst (goal_plain_call) == bound(hlds_goal(((hlds.hlds_goal).goal_expr_plain_call), ground)).
+:- inst (rhs_lambda_goal) == bound(rhs_lambda_goal(ground, ground, ground, ground, ground, ground, ground, ground, ground)).
+:- inst (unification_assign) == bound(assign(ground, ground)).
+:- inst (unification_complicated_unify) == bound(complicated_unify(ground, ground, ground)).
+:- inst (unification_construct) == bound(construct(ground, ground, ground, ground, ground, ground, ground)).
+:- inst (unification_deconstruct) == bound(deconstruct(ground, ground, ground, ground, ground, ground)).
+:- inst (unification_simple_test) == bound(simple_test(ground, ground)).

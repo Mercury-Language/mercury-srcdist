@@ -1,0 +1,59 @@
+:- module (transform_hlds.term_constr_util).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.vartypes).
+:- import_module (libs.lp_rational).
+:- import_module (libs.polyhedron).
+:- import_module (parse_tree.prog_data).
+:- import_module (transform_hlds.term_constr_data).
+:- import_module (transform_hlds.term_constr_main_types).
+:- type var_substitution == map.map(transform_hlds.term_constr_data.size_var, transform_hlds.term_constr_data.size_var).
+:- pred add_context_to_constr_termination_info(maybe.maybe(parse_tree.prog_data.pragma_termination_info), parse_tree.prog_data.prog_context, maybe.maybe(transform_hlds.term_constr_main_types.constr_termination_info)).
+:- mode add_context_to_constr_termination_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred change_procs_constr_arg_size_info(list.list(hlds.hlds_pred.proc_id), bool.bool, transform_hlds.term_constr_main_types.constr_arg_size_info, hlds.hlds_pred.proc_table, hlds.hlds_pred.proc_table).
+:- mode change_procs_constr_arg_size_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred change_procs_constr_termination_info(list.list(hlds.hlds_pred.proc_id), bool.bool, transform_hlds.term_constr_main_types.constr_termination_info, hlds.hlds_pred.proc_table, hlds.hlds_pred.proc_table).
+:- mode change_procs_constr_termination_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func create_nonneg_constraints(transform_hlds.term_constr_data.size_var_map, transform_hlds.term_constr_data.zero_vars) = libs.lp_rational.constraints.
+:- func create_var_substitution(transform_hlds.term_constr_data.size_vars, transform_hlds.term_constr_data.size_vars) = transform_hlds.term_constr_util.var_substitution.
+:- pred dump_size_vars(transform_hlds.term_constr_data.size_vars, transform_hlds.term_constr_data.size_varset, io.io, io.io).
+:- mode dump_size_vars((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred dump_size_varset(transform_hlds.term_constr_data.size_varset, io.io, io.io).
+:- mode dump_size_varset((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func find_zero_size_vars(hlds.hlds_module.module_info, transform_hlds.term_constr_data.size_var_map, hlds.vartypes.vartypes) = transform_hlds.term_constr_data.zero_vars.
+:- func get_abstract_proc(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id) = transform_hlds.term_constr_data.abstract_proc.
+:- func get_abstract_scc(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_proc_id)) = transform_hlds.term_constr_data.abstract_scc.
+:- pred is_zero_size_var(transform_hlds.term_constr_data.zero_vars, transform_hlds.term_constr_data.size_var).
+:- mode is_zero_size_var((builtin.in), (builtin.in)) is semidet.
+:- func lookup_proc_constr_arg_size_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id) = maybe.maybe(transform_hlds.term_constr_main_types.constr_arg_size_info).
+:- func make_arg_constraints(transform_hlds.term_constr_data.size_vars, transform_hlds.term_constr_data.zero_vars) = libs.lp_rational.constraints.
+:- pred make_size_var_map(list.list(parse_tree.prog_data.prog_var), transform_hlds.term_constr_data.size_varset, transform_hlds.term_constr_data.size_var_map).
+:- mode make_size_var_map((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred make_size_var_map(list.list(parse_tree.prog_data.prog_var), transform_hlds.term_constr_data.size_varset, transform_hlds.term_constr_data.size_varset, transform_hlds.term_constr_data.size_var_map).
+:- mode make_size_var_map((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred maybe_write_proc_name(hlds.hlds_pred.pred_proc_id, string, hlds.hlds_module.module_info, int, io.io, io.io).
+:- mode maybe_write_proc_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_scc_procs(list.list(hlds.hlds_pred.pred_proc_id), hlds.hlds_module.module_info, int, io.io, io.io).
+:- mode maybe_write_scc_procs((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_trace(bool.bool, pred(io.io, io.io), io.io, io.io).
+:- mode maybe_write_trace((builtin.in), builtin.in((pred((builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_trace_nl(bool.bool, pred(io.io, io.io), bool.bool, io.io, io.io).
+:- mode maybe_write_trace_nl((builtin.in), builtin.in((pred((builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func prog_var_to_size_var(transform_hlds.term_constr_data.size_var_map, parse_tree.prog_data.prog_var) = transform_hlds.term_constr_data.size_var.
+:- func prog_vars_to_size_vars(transform_hlds.term_constr_data.size_var_map, parse_tree.prog_data.prog_vars) = transform_hlds.term_constr_data.size_vars.
+:- pred set_pred_proc_ids_constr_arg_size_info(list.list(hlds.hlds_pred.pred_proc_id), transform_hlds.term_constr_main_types.constr_arg_size_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode set_pred_proc_ids_constr_arg_size_info((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func substitute_size_vars(libs.lp_rational.constraints, map.map(transform_hlds.term_constr_data.size_var, transform_hlds.term_constr_data.size_var)) = libs.lp_rational.constraints.
+:- pred update_arg_size_info(hlds.hlds_pred.pred_proc_id, libs.polyhedron.polyhedron, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode update_arg_size_info((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred write_size_vars(transform_hlds.term_constr_data.size_varset, transform_hlds.term_constr_data.size_vars, io.io, io.io).
+:- mode write_size_vars((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

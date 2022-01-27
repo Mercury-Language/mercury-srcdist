@@ -1,0 +1,20 @@
+:- module (parse_tree.prog_io_type_defn).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.maybe_error).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io_iom).
+:- pred parse_solver_type_defn_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, int, parse_tree.maybe_error.maybe1(parse_tree.prog_io_iom.item_or_marker)).
+:- mode parse_solver_type_defn_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_type_decl_where_part_if_present(parse_tree.prog_data.is_solver_type, mdbcomp.sym_name.module_name, varset.varset, term.term, term.term, parse_tree.maybe_error.maybe3(maybe.maybe(parse_tree.prog_data.solver_type_details), maybe.maybe(parse_tree.prog_data.unify_compare), maybe.maybe(list.list(parse_tree.prog_data.sym_name_and_arity)))).
+:- mode parse_type_decl_where_part_if_present((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred parse_type_defn_head(mdbcomp.sym_name.module_name, varset.varset, term.term, parse_tree.maybe_error.maybe2(mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.type_param))).
+:- mode parse_type_defn_head((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_type_defn_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, int, parse_tree.prog_data.is_solver_type, parse_tree.maybe_error.maybe1(parse_tree.prog_io_iom.item_or_marker)).
+:- mode parse_type_defn_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_where_unify_compare(mdbcomp.sym_name.module_name, varset.varset, term.term, parse_tree.maybe_error.maybe1(maybe.maybe(parse_tree.prog_data.unify_compare))).
+:- mode parse_where_unify_compare((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

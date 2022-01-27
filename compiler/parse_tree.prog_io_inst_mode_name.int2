@@ -1,0 +1,8 @@
+:- module (parse_tree.prog_io_inst_mode_name).
+:- interface.
+:- import_module list.
+:- import_module term.
+:- import_module (parse_tree.prog_data).
+:- type allow_constrained_inst_var
+    --->    allow_constrained_inst_var 
+    ;       no_allow_constrained_inst_var .

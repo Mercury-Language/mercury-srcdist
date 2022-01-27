@@ -1,0 +1,4 @@
+:- module (parse_tree.prog_io_sym_name).
+:- interface.
+:- type maybe_functor.
+:- type maybe_functor(T).

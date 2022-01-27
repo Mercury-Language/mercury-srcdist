@@ -1,0 +1,19 @@
+:- module (parse_tree.prog_io_type_name).
+:- interface.
+:- import_module cord.
+:- import_module list.
+:- import_module term.
+:- import_module varset.
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.maybe_error).
+:- import_module (parse_tree.prog_data).
+:- pred is_known_type_name(string).
+:- mode is_known_type_name((builtin.in)) is semidet.
+:- pred maybe_parse_type(term.term, parse_tree.prog_data.mer_type).
+:- mode maybe_parse_type((builtin.in), (builtin.out)) is semidet.
+:- pred maybe_parse_types(list.list(term.term), list.list(parse_tree.prog_data.mer_type)).
+:- mode maybe_parse_types((builtin.in), (builtin.out)) is semidet.
+:- pred parse_type(term.term, varset.varset, cord.cord(parse_tree.error_util.format_component), parse_tree.maybe_error.maybe1(parse_tree.prog_data.mer_type)).
+:- mode parse_type((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_types(list.list(term.term), varset.varset, cord.cord(parse_tree.error_util.format_component), parse_tree.maybe_error.maybe1(list.list(parse_tree.prog_data.mer_type))).
+:- mode parse_types((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
