@@ -1,0 +1,13 @@
+module(1, "thread.barrier.m",
+	(thread.barrier),
+	{thread},
+	{builtin, io, private_builtin},
+	{builtin, io, int, require, string, unit, (thread.mvar), private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

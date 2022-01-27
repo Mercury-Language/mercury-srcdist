@@ -1,0 +1,19 @@
+:- module (string.parse_util).
+:- use_module array, assoc_list, bitmap, bool, builtin, char, deconstruct, float, int, integer, list, maybe, ops, pair, pretty_printer, private_builtin, require, std_util, type_desc, univ, version_array, (string.format), (string.to_string).
+:- pred (string.parse_util).get_number_prefix_loop(list.list(character), list.list(character), int, int).
+:- mode (string.parse_util).get_number_prefix_loop((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+(string.parse_util).get_number_prefix(STATE_VARIABLE_Chars_0_6, STATE_VARIABLE_Chars_7, N_5) :-
+    V_9 = 0 : int,
+    (string.parse_util).get_number_prefix_loop(STATE_VARIABLE_Chars_0_6, STATE_VARIABLE_Chars_7, V_9, N_5).
+:- pragma exceptions(function, ((string.parse_util).string_format_error_to_msg), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.parse_util).gather_non_percent_chars), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.parse_util).gather_flag_chars), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.parse_util).get_number_prefix), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.parse_util).get_nonzero_number_prefix), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.parse_util).get_number_prefix_loop), 4, 0, may_throw(user_exception)).
+:- pragma termination_info((string.parse_util).string_format_error_to_msg((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((string.parse_util).gather_non_percent_chars((builtin.in), (builtin.out), (builtin.out)), finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info((string.parse_util).gather_flag_chars((builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(0, [yes, no, yes, no]), cannot_loop).
+:- pragma termination_info((string.parse_util).get_number_prefix((builtin.in), (builtin.out), (builtin.out)), finite(0, [yes, no, no]), can_loop).
+:- pragma termination_info((string.parse_util).get_nonzero_number_prefix((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.parse_util).get_number_prefix_loop((builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(0, [yes, no, yes, no]), can_loop).

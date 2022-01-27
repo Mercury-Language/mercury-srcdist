@@ -1,0 +1,181 @@
+mer_std.trans_opt_date : \
+	builtin.trans_opt \
+	library.trans_opt \
+	private_builtin.trans_opt
+
+mer_std.optdate mer_std.trans_opt_date mer_std.err mer_std.c_date mer_std.s_date mer_std.pic_s_date mer_std.il_date mer_std.java_date : mer_std.m \
+	builtin.int \
+	library.int \
+	private_builtin.int
+
+mer_std.$O :  \
+	array.mh \
+	assoc_list.mh \
+	benchmarking.mh \
+	bitmap.mh \
+	bool.mh \
+	builtin.mh \
+	calendar.mh \
+	char.mh \
+	construct.mh \
+	cord.mh \
+	deconstruct.mh \
+	dir.mh \
+	enum.mh \
+	erlang_rtti_implementation.mh \
+	exception.mh \
+	float.mh \
+	int.mh \
+	integer.mh \
+	io.mh \
+	lexer.mh \
+	library.mh \
+	list.mh \
+	map.mh \
+	math.mh \
+	maybe.mh \
+	mutvar.mh \
+	ops.mh \
+	pair.mh \
+	parser.mh \
+	pretty_printer.mh \
+	private_builtin.mh \
+	random.mh \
+	require.mh \
+	rtti_implementation.mh \
+	set.mh \
+	set_ordlist.mh \
+	set_tree234.mh \
+	solutions.mh \
+	std_util.mh \
+	stm_builtin.mh \
+	store.mh \
+	stream.mh \
+	string.mh \
+	table_builtin.mh \
+	term.mh \
+	term_conversion.mh \
+	term_io.mh \
+	time.mh \
+	tree234.mh \
+	type_desc.mh \
+	unit.mh \
+	univ.mh \
+	varset.mh \
+	version_array.mh \
+	stream.string_writer.mh \
+	string.format.mh \
+	string.parse_runtime.mh \
+	string.parse_util.mh \
+	string.to_string.mh
+
+mer_std.trans_opt_date mer_std.err mer_std.c_date mer_std.s_date mer_std.pic_s_date mer_std.il_date mer_std.java_date :  \
+	mer_std.opt \
+	builtin.opt \
+	library.opt \
+	private_builtin.opt
+
+mer_std.err mer_std.c_date mer_std.s_date mer_std.pic_s_date mer_std.il_date mer_std.java_date :  \
+	mer_std.trans_opt \
+	builtin.trans_opt \
+	library.trans_opt \
+	private_builtin.trans_opt
+
+mer_std.pic_o mer_std.$O : \
+	array.mih \
+	assoc_list.mih \
+	benchmarking.mih \
+	bitmap.mih \
+	bool.mih \
+	builtin.mih \
+	calendar.mih \
+	char.mih \
+	construct.mih \
+	cord.mih \
+	deconstruct.mih \
+	dir.mih \
+	enum.mih \
+	erlang_rtti_implementation.mih \
+	exception.mih \
+	float.mih \
+	int.mih \
+	integer.mih \
+	io.mih \
+	lexer.mih \
+	library.mih \
+	list.mih \
+	map.mih \
+	math.mih \
+	maybe.mih \
+	mutvar.mih \
+	ops.mih \
+	pair.mih \
+	parser.mih \
+	pretty_printer.mih \
+	private_builtin.mih \
+	random.mih \
+	require.mih \
+	rtti_implementation.mih \
+	set.mih \
+	set_ordlist.mih \
+	set_tree234.mih \
+	solutions.mih \
+	std_util.mih \
+	stm_builtin.mih \
+	store.mih \
+	stream.mih \
+	string.mih \
+	table_builtin.mih \
+	term.mih \
+	term_conversion.mih \
+	term_io.mih \
+	time.mih \
+	tree234.mih \
+	type_desc.mih \
+	unit.mih \
+	univ.mih \
+	varset.mih \
+	version_array.mih \
+	stream.string_writer.mih \
+	string.format.mih \
+	string.parse_runtime.mih \
+	string.parse_util.mih \
+	string.to_string.mih
+
+mer_std.mh mer_std.mih : mer_std.c
+
+
+ifeq ($(findstring il,$(GRADE)),il)
+mer_std.module_dep : mer_std.il
+else
+ ifeq ($(findstring java,$(GRADE)),java)
+mer_std.module_dep : jmercury/mer_std.java
+ else
+mer_std.module_dep : mer_std.c
+ endif
+endif
+
+
+mer_std.date mer_std.date0 : mer_std.m \
+	builtin.int3 \
+	library.int3 \
+	private_builtin.int3
+
+mer_std.date0 : mer_std.m \
+	builtin.int3 \
+	library.int3 \
+	private_builtin.int3
+
+
+mer_std.int0 : mer_std.date0
+	@:
+mer_std.int : mer_std.date
+	@:
+mer_std.int2 : mer_std.date
+	@:
+mer_std.int3 : mer_std.date3
+	@:
+mer_std.opt : mer_std.optdate
+	@:
+mer_std.trans_opt : mer_std.trans_opt_date
+	@:

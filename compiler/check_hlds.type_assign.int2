@@ -1,0 +1,18 @@
+:- module (check_hlds.type_assign).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type args_type_assign
+	--->	args_type_assign(((check_hlds.type_assign).ata_caller_arg_assign) :: check_hlds.type_assign.type_assign, ((check_hlds.type_assign).ata_callee_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.type_assign).ata_callee_constraints) :: hlds.hlds_data.hlds_constraints).
+:- type args_type_assign_set == list.list(check_hlds.type_assign.args_type_assign).
+:- type type_assign
+	--->	type_assign(((check_hlds.type_assign).ta_var_types) :: parse_tree.prog_data.vartypes, ((check_hlds.type_assign).ta_type_varset) :: parse_tree.prog_data.tvarset, ((check_hlds.type_assign).ta_head_type_params) :: hlds.hlds_pred.head_type_params, ((check_hlds.type_assign).ta_type_bindings) :: parse_tree.prog_data.tsubst, ((check_hlds.type_assign).ta_class_constraints) :: hlds.hlds_data.hlds_constraints, ((check_hlds.type_assign).ta_constraint_proof_map) :: hlds.hlds_data.constraint_proof_map, ((check_hlds.type_assign).ta_constraint_map) :: hlds.hlds_data.constraint_map).
+:- type type_assign_set == list.list(check_hlds.type_assign.type_assign).

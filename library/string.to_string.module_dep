@@ -1,0 +1,13 @@
+module(1, "string.to_string.m",
+	(string.to_string),
+	{string},
+	{builtin, deconstruct, ops, private_builtin},
+	{builtin, deconstruct, ops, array, bitmap, bool, float, int, integer, maybe, pair, std_util, type_desc, univ, version_array, private_builtin, stream, (string.format), (string.parse_util), rtti_implementation, term_io},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

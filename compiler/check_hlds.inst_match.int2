@@ -1,0 +1,10 @@
+:- module (check_hlds.inst_match).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- type ground_matches_bound
+	--->	ground_matches_bound_if_complete 
+	;	ground_matches_bound_always .
