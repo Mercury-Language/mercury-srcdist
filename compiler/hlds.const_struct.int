@@ -1,0 +1,35 @@
+:- module (hlds.const_struct).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module (libs.globals).
+:- import_module (parse_tree.prog_data).
+:- type const_instance_id
+    --->    ciid(int, parse_tree.prog_data.prog_constraint, list.list(parse_tree.prog_data.prog_constraint)).
+:- type const_instance_map == map.map(hlds.const_struct.const_instance_id, int).
+:- type const_struct
+    --->    const_struct(((hlds.const_struct).cs_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.const_struct).cs_args) :: list.list(hlds.const_struct.const_struct_arg), ((hlds.const_struct).cs_term_type) :: parse_tree.prog_data.mer_type, ((hlds.const_struct).cs_term_inst) :: parse_tree.prog_data.mer_inst).
+:- type const_struct_arg
+    --->    csa_const_struct(int)
+    ;       csa_constant(parse_tree.prog_data.cons_id, parse_tree.prog_data.mer_type).
+:- type const_struct_db.
+:- pred const_struct_db_get_ground_term_enabled(hlds.const_struct.const_struct_db, bool.bool).
+:- mode const_struct_db_get_ground_term_enabled((builtin.in), (builtin.out)) is det.
+:- pred const_struct_db_get_poly_enabled(hlds.const_struct.const_struct_db, bool.bool).
+:- mode const_struct_db_get_poly_enabled((builtin.in), (builtin.out)) is det.
+:- pred const_struct_db_get_structs(hlds.const_struct.const_struct_db, assoc_list.assoc_list(int, hlds.const_struct.const_struct)).
+:- mode const_struct_db_get_structs((builtin.in), (builtin.out)) is det.
+:- pred const_struct_db_init(libs.globals.globals, hlds.const_struct.const_struct_db).
+:- mode const_struct_db_init((builtin.in), (builtin.out)) is det.
+:- pred delete_const_struct(int, hlds.const_struct.const_struct_db, hlds.const_struct.const_struct_db).
+:- mode delete_const_struct((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert_constant_instance(hlds.const_struct.const_instance_id, int, hlds.const_struct.const_struct_db, hlds.const_struct.const_struct_db).
+:- mode insert_constant_instance((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_const_struct_num(hlds.const_struct.const_struct_db, int, hlds.const_struct.const_struct).
+:- mode lookup_const_struct_num((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_insert_const_struct(hlds.const_struct.const_struct, int, hlds.const_struct.const_struct_db, hlds.const_struct.const_struct_db).
+:- mode lookup_insert_const_struct((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred search_for_constant_instance(hlds.const_struct.const_struct_db, hlds.const_struct.const_instance_id, int).
+:- mode search_for_constant_instance((builtin.in), (builtin.in), (builtin.out)) is semidet.

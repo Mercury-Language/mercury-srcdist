@@ -1,0 +1,95 @@
+:- module require.
+:- use_module builtin.
+:- use_module exception.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module string.
+:- use_module type_desc.
+:- use_module (string.format).
+:- use_module (string.parse_util).
+require.sorry(V_4, V_5) = V_6 :-
+    require.sorry(V_4, V_5).
+require.sorry(V_5, V_6, V_7) = V_8 :-
+    require.sorry(V_5, V_6, V_7).
+require.unexpected(V_4, V_5) = V_6 :-
+    require.unexpected(V_4, V_5).
+require.unexpected(V_5, V_6, V_7) = V_8 :-
+    require.unexpected(V_5, V_6, V_7).
+require.require(V_3, V_4) :-
+    (if
+      call(V_3)
+    then
+      true
+    else
+      require.error(V_4)
+    ).
+require.expect(V_4, V_5, V_6) :-
+    (if
+      call(V_4)
+    then
+      true
+    else
+      require.unexpected(V_5, V_6)
+    ).
+require.expect(V_5, V_6, V_7, V_8) :-
+    (if
+      call(V_5)
+    then
+      true
+    else
+      require.unexpected(V_6, V_7, V_8)
+    ).
+require.expect_not(V_4, V_5, V_6) :-
+    (if
+      call(V_4)
+    then
+      require.unexpected(V_5, V_6)
+    else
+      true
+    ).
+require.expect_not(V_5, V_6, V_7, V_8) :-
+    (if
+      call(V_5)
+    then
+      require.unexpected(V_6, V_7, V_8)
+    else
+      true
+    ).
+:- pragma exceptions(predicate, (require.error), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (require.func_error), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.error), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (require.func_error), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (require.sorry), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.sorry), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (require.sorry), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.sorry), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (require.unexpected), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.unexpected), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (require.unexpected), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.unexpected), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.require), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.expect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.expect), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.expect_not), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.expect_not), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.report_lookup_error), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (require.report_lookup_error), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(require.error((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(require.func_error((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(require.error((builtin.in), (builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(require.func_error((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(require.sorry((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(require.sorry((builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(require.sorry((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(require.sorry((builtin.in), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(require.unexpected((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(require.unexpected((builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(require.unexpected((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(require.unexpected((builtin.in), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(require.require(((pred) is semidet), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(require.expect(((pred) is semidet), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(require.expect(((pred) is semidet), (builtin.in), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(require.expect_not(((pred) is semidet), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(require.expect_not(((pred) is semidet), (builtin.in), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(require.report_lookup_error((builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(require.report_lookup_error((builtin.in), (builtin.in), (builtin.unused)), infinite, can_loop).

@@ -1,0 +1,15 @@
+:- module (parse_tree.status).
+:- interface.
+:- type import_locn
+	where	type_is_abstract_enum(2).
+:- type import_status.
+:- type int_for_opt_module_section.
+:- type int_module_section.
+:- type item_status.
+:- type module_section
+	where	type_is_abstract_enum(1).
+:- type need_qualifier
+	where	type_is_abstract_enum(1).
+:- type opt_module_section.
+:- type src_module_section
+	where	type_is_abstract_enum(2).

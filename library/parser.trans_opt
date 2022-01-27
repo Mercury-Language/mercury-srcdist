@@ -1,0 +1,31 @@
+:- module parser.
+:- pragma termination_info(parser.read_term((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_with_op_table((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_filename((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_filename_with_op_table((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_from_string((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_from_string_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_from_substring((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_from_substring_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.parse_tokens((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.parse_tokens_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.check_for_errors((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.parse_whole_term((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.init_parser_state((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.final_parser_state((builtin.in), (builtin.out)), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(parser.parser_state_get_varset((builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma exceptions(predicate, (parser.read_term), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_with_op_table), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_filename), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_filename_with_op_table), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_from_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_from_string_with_op_table), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_from_substring), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_from_substring_with_op_table), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.parse_tokens), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.parse_tokens_with_op_table), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.check_for_errors), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.parse_whole_term), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.init_parser_state), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (parser.final_parser_state), 2, 0, will_not_throw).
+:- pragma exceptions(function, (parser.parser_state_get_varset), 2, 0, will_not_throw).

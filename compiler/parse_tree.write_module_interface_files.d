@@ -1,0 +1,387 @@
+
+
+parse_tree.write_module_interface_files.optdate parse_tree.write_module_interface_files.trans_opt_date write_module_interface_files.err parse_tree.write_module_interface_files.c_date parse_tree.write_module_interface_files.s_date parse_tree.write_module_interface_files.pic_s_date parse_tree.write_module_interface_files.il_date parse_tree.write_module_interface_files.java_date : write_module_interface_files.m \
+	parse_tree.int0 \
+	assoc_list.int \
+	bool.int \
+	builtin.int \
+	cord.int \
+	getopt_io.int \
+	int.int \
+	io.int \
+	libs.int \
+	list.int \
+	map.int \
+	maybe.int \
+	mdbcomp.int \
+	multi_map.int \
+	pair.int \
+	private_builtin.int \
+	recompilation.int \
+	require.int \
+	set.int \
+	string.int \
+	term.int \
+	libs.file_util.int \
+	libs.globals.int \
+	libs.options.int \
+	libs.timestamp.int \
+	mdbcomp.sym_name.int \
+	parse_tree.check_raw_comp_unit.int \
+	parse_tree.comp_unit_interface.int \
+	parse_tree.error_util.int \
+	parse_tree.file_kind.int \
+	parse_tree.file_names.int \
+	parse_tree.item_util.int \
+	parse_tree.mercury_to_mercury.int \
+	parse_tree.module_cmds.int \
+	parse_tree.module_imports.int \
+	parse_tree.module_qual.int \
+	parse_tree.modules.int \
+	parse_tree.prog_data.int \
+	parse_tree.prog_item.int \
+	parse_tree.prog_mutable.int \
+	parse_tree.prog_type.int \
+	parse_tree.read_modules.int \
+	parse_tree.status.int \
+	recompilation.version.int \
+	array.int2 \
+	bimap.int2 \
+	bitmap.int2 \
+	char.int2 \
+	check_hlds.int2 \
+	construct.int2 \
+	deconstruct.int2 \
+	enum.int2 \
+	hlds.int2 \
+	integer.int2 \
+	ops.int2 \
+	pretty_printer.int2 \
+	random.int2 \
+	rtti_implementation.int2 \
+	set_ordlist.int2 \
+	sparse_bitset.int2 \
+	stream.int2 \
+	time.int2 \
+	tree234.int2 \
+	type_desc.int2 \
+	unit.int2 \
+	univ.int2 \
+	varset.int2 \
+	libs.rat.int2 \
+	libs.trace_params.int2 \
+	mdbcomp.feedback.int2 \
+	mdbcomp.goal_path.int2 \
+	mdbcomp.prim_data.int2 \
+	mdbcomp.program_representation.int2 \
+	mdbcomp.rtti_access.int2 \
+	mdbcomp.trace_counts.int2 \
+	parse_tree.prog_io_error.int2 \
+	parse_tree.prog_io_util.int2 \
+	parse_tree.set_of_var.int2 \
+	mdbcomp.feedback.automatic_parallelism.int2
+
+parse_tree.write_module_interface_files.pic_o parse_tree.write_module_interface_files.$O : \
+	array.mih \
+	assoc_list.mih \
+	bimap.mih \
+	bitmap.mih \
+	bool.mih \
+	builtin.mih \
+	char.mih \
+	check_hlds.mih \
+	construct.mih \
+	cord.mih \
+	deconstruct.mih \
+	enum.mih \
+	getopt_io.mih \
+	hlds.mih \
+	int.mih \
+	integer.mih \
+	io.mih \
+	libs.mih \
+	list.mih \
+	map.mih \
+	maybe.mih \
+	mdbcomp.mih \
+	multi_map.mih \
+	ops.mih \
+	pair.mih \
+	parse_tree.mih \
+	pretty_printer.mih \
+	private_builtin.mih \
+	random.mih \
+	recompilation.mih \
+	require.mih \
+	rtti_implementation.mih \
+	set.mih \
+	set_ordlist.mih \
+	sparse_bitset.mih \
+	stream.mih \
+	string.mih \
+	term.mih \
+	time.mih \
+	tree234.mih \
+	type_desc.mih \
+	unit.mih \
+	univ.mih \
+	varset.mih \
+	libs.file_util.mih \
+	libs.globals.mih \
+	libs.options.mih \
+	libs.rat.mih \
+	libs.timestamp.mih \
+	libs.trace_params.mih \
+	mdbcomp.feedback.mih \
+	mdbcomp.goal_path.mih \
+	mdbcomp.prim_data.mih \
+	mdbcomp.program_representation.mih \
+	mdbcomp.rtti_access.mih \
+	mdbcomp.sym_name.mih \
+	mdbcomp.trace_counts.mih \
+	parse_tree.check_raw_comp_unit.mih \
+	parse_tree.comp_unit_interface.mih \
+	parse_tree.error_util.mih \
+	parse_tree.file_kind.mih \
+	parse_tree.file_names.mih \
+	parse_tree.item_util.mih \
+	parse_tree.mercury_to_mercury.mih \
+	parse_tree.module_cmds.mih \
+	parse_tree.module_imports.mih \
+	parse_tree.module_qual.mih \
+	parse_tree.modules.mih \
+	parse_tree.prog_data.mih \
+	parse_tree.prog_io_error.mih \
+	parse_tree.prog_io_util.mih \
+	parse_tree.prog_item.mih \
+	parse_tree.prog_mutable.mih \
+	parse_tree.prog_type.mih \
+	parse_tree.read_modules.mih \
+	parse_tree.set_of_var.mih \
+	parse_tree.status.mih \
+	recompilation.version.mih \
+	mdbcomp.feedback.automatic_parallelism.mih
+
+parse_tree.write_module_interface_files.mh parse_tree.write_module_interface_files.mih : parse_tree.write_module_interface_files.c
+
+
+ifeq ($(findstring il,$(GRADE)),il)
+parse_tree.write_module_interface_files.module_dep : parse_tree.write_module_interface_files.il
+else
+ ifeq ($(findstring java,$(GRADE)),java)
+parse_tree.write_module_interface_files.module_dep : jmercury/parse_tree__write_module_interface_files.java
+ else
+parse_tree.write_module_interface_files.module_dep : parse_tree.write_module_interface_files.c
+ endif
+endif
+
+
+parse_tree.write_module_interface_files.date parse_tree.write_module_interface_files.date0 \
+	parse_tree.date : write_module_interface_files.m \
+	parse_tree.int0 \
+	assoc_list.int3 \
+	bool.int3 \
+	builtin.int3 \
+	cord.int3 \
+	getopt_io.int3 \
+	int.int3 \
+	io.int3 \
+	libs.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	mdbcomp.int3 \
+	multi_map.int3 \
+	pair.int3 \
+	private_builtin.int3 \
+	recompilation.int3 \
+	require.int3 \
+	set.int3 \
+	string.int3 \
+	term.int3 \
+	libs.file_util.int3 \
+	libs.globals.int3 \
+	libs.options.int3 \
+	libs.timestamp.int3 \
+	mdbcomp.sym_name.int3 \
+	parse_tree.check_raw_comp_unit.int3 \
+	parse_tree.comp_unit_interface.int3 \
+	parse_tree.error_util.int3 \
+	parse_tree.file_kind.int3 \
+	parse_tree.file_names.int3 \
+	parse_tree.item_util.int3 \
+	parse_tree.mercury_to_mercury.int3 \
+	parse_tree.module_cmds.int3 \
+	parse_tree.module_imports.int3 \
+	parse_tree.module_qual.int3 \
+	parse_tree.modules.int3 \
+	parse_tree.prog_data.int3 \
+	parse_tree.prog_item.int3 \
+	parse_tree.prog_mutable.int3 \
+	parse_tree.prog_type.int3 \
+	parse_tree.read_modules.int3 \
+	parse_tree.status.int3 \
+	recompilation.version.int3 \
+	array.int3 \
+	bimap.int3 \
+	bitmap.int3 \
+	char.int3 \
+	check_hlds.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	enum.int3 \
+	hlds.int3 \
+	integer.int3 \
+	ops.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set_ordlist.int3 \
+	sparse_bitset.int3 \
+	stream.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	unit.int3 \
+	univ.int3 \
+	varset.int3 \
+	libs.rat.int3 \
+	libs.trace_params.int3 \
+	mdbcomp.feedback.int3 \
+	mdbcomp.goal_path.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.program_representation.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.trace_counts.int3 \
+	parse_tree.prog_io_error.int3 \
+	parse_tree.prog_io_util.int3 \
+	parse_tree.set_of_var.int3 \
+	mdbcomp.feedback.automatic_parallelism.int3
+
+parse_tree.write_module_interface_files.date0 \
+	parse_tree.date0 : write_module_interface_files.m \
+	assoc_list.int3 \
+	bool.int3 \
+	builtin.int3 \
+	cord.int3 \
+	getopt_io.int3 \
+	int.int3 \
+	io.int3 \
+	libs.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	mdbcomp.int3 \
+	multi_map.int3 \
+	pair.int3 \
+	private_builtin.int3 \
+	recompilation.int3 \
+	require.int3 \
+	set.int3 \
+	string.int3 \
+	term.int3 \
+	libs.file_util.int3 \
+	libs.globals.int3 \
+	libs.options.int3 \
+	libs.timestamp.int3 \
+	mdbcomp.sym_name.int3 \
+	parse_tree.check_raw_comp_unit.int3 \
+	parse_tree.comp_unit_interface.int3 \
+	parse_tree.error_util.int3 \
+	parse_tree.file_kind.int3 \
+	parse_tree.file_names.int3 \
+	parse_tree.item_util.int3 \
+	parse_tree.mercury_to_mercury.int3 \
+	parse_tree.module_cmds.int3 \
+	parse_tree.module_imports.int3 \
+	parse_tree.module_qual.int3 \
+	parse_tree.modules.int3 \
+	parse_tree.prog_data.int3 \
+	parse_tree.prog_item.int3 \
+	parse_tree.prog_mutable.int3 \
+	parse_tree.prog_type.int3 \
+	parse_tree.read_modules.int3 \
+	parse_tree.status.int3 \
+	recompilation.version.int3 \
+	array.int3 \
+	bimap.int3 \
+	bitmap.int3 \
+	char.int3 \
+	check_hlds.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	enum.int3 \
+	hlds.int3 \
+	integer.int3 \
+	ops.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set_ordlist.int3 \
+	sparse_bitset.int3 \
+	stream.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	unit.int3 \
+	univ.int3 \
+	varset.int3 \
+	libs.rat.int3 \
+	libs.trace_params.int3 \
+	mdbcomp.feedback.int3 \
+	mdbcomp.goal_path.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.program_representation.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.trace_counts.int3 \
+	parse_tree.prog_io_error.int3 \
+	parse_tree.prog_io_util.int3 \
+	parse_tree.set_of_var.int3 \
+	mdbcomp.feedback.automatic_parallelism.int3
+
+
+
+parse_tree.write_module_interface_files.$O :  \
+	io.mh \
+	string.mh \
+	time.mh \
+	mdbcomp.rtti_access.mh
+
+
+
+parse_tree.write_module_interface_files.pic_o :  \
+	io.mh \
+	string.mh \
+	time.mh \
+	mdbcomp.rtti_access.mh
+
+
+parse_tree.write_module_interface_files.int0 : parse_tree.write_module_interface_files.date0
+	@:
+parse_tree.write_module_interface_files.int : parse_tree.write_module_interface_files.date
+	@:
+parse_tree.write_module_interface_files.int2 : parse_tree.write_module_interface_files.date
+	@:
+parse_tree.write_module_interface_files.int3 : parse_tree.write_module_interface_files.date3
+	@:
+parse_tree.write_module_interface_files.opt : parse_tree.write_module_interface_files.optdate
+	@:
+parse_tree.write_module_interface_files.trans_opt : parse_tree.write_module_interface_files.trans_opt_date
+	@:
+
+parse_tree.write_module_interface_files.date0 : write_module_interface_files.m
+	$(MCPI) $(ALL_GRADEFLAGS) $(ALL_MCPIFLAGS) parse_tree.write_module_interface_files
+parse_tree.write_module_interface_files.date : write_module_interface_files.m
+	$(MCI) $(ALL_GRADEFLAGS) $(ALL_MCIFLAGS) parse_tree.write_module_interface_files
+parse_tree.write_module_interface_files.date3 : write_module_interface_files.m
+	$(MCSI) $(ALL_GRADEFLAGS) $(ALL_MCSIFLAGS) parse_tree.write_module_interface_files
+parse_tree.write_module_interface_files.optdate : write_module_interface_files.m
+	$(MCOI) $(ALL_GRADEFLAGS) $(ALL_MCOIFLAGS) parse_tree.write_module_interface_files
+parse_tree.write_module_interface_files.trans_opt_date : write_module_interface_files.m
+	$(MCTOI) $(ALL_GRADEFLAGS) $(ALL_MCTOIFLAGS) parse_tree.write_module_interface_files
+parse_tree.write_module_interface_files.c_date : write_module_interface_files.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) parse_tree.write_module_interface_files $(ERR_REDIRECT)
+parse_tree.write_module_interface_files.il_date : write_module_interface_files.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --il-only parse_tree.write_module_interface_files $(ERR_REDIRECT)
+parse_tree.write_module_interface_files.java_date : write_module_interface_files.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --java-only parse_tree.write_module_interface_files $(ERR_REDIRECT)

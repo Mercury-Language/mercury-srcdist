@@ -1,0 +1,238 @@
+:- module char.
+:- use_module builtin.
+:- use_module enum.
+:- use_module int.
+:- use_module list.
+:- use_module pretty_printer.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module term_io.
+:- instance (enum.enum(character)).
+:- pragma foreign_import_module("C", char).
+:- pragma foreign_import_module("C#", char).
+:- pragma foreign_import_module("Java", char).
+:- pragma foreign_import_module("Erlang", char).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pred char.int_to_extended_digit(int, character).
+:- mode char.int_to_extended_digit((builtin.in), (builtin.out)) is semidet.
+:- mode char.int_to_extended_digit((builtin.out), (builtin.in)) is semidet.
+char.to_int(V_3) = V_4 :-
+    char.to_int(V_3, V_4).
+:- pragma foreign_proc("C", char.to_int(Character :: (builtin.out), Int :: (builtin.in)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Character = Int;
+    SUCCESS_INDICATOR = (Character >= 0 && Character <= 0x10ffff);
+").
+:- pragma foreign_proc("C", char.to_int(Character :: (builtin.in), Int :: (builtin.in)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    SUCCESS_INDICATOR = ((MR_UnsignedChar) Character == Int);
+").
+:- pragma foreign_proc("C", char.to_int(Character :: (builtin.in), Int :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Int = (MR_UnsignedChar) Character;
+").
+char.from_int(V_3, V_4) :-
+    char.to_int(V_4, V_3).
+char.det_from_int(V_3) = V_4 :-
+    char.det_from_int(V_3, V_4).
+char.max_char_value = V_2 :-
+    char.max_char_value(V_2).
+:- pragma foreign_proc("C", char.max_char_value(Max :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Max = 0x10ffff;
+").
+char.min_char_value = V_2 :-
+    char.min_char_value(V_2).
+char.min_char_value(0).
+char.to_upper(V_3) = V_4 :-
+    char.to_upper(V_3, V_4).
+char.to_upper(V_3, V_4) :-
+    (if
+      char.lower_upper(V_3, V_5)
+    then
+      V_4 = V_5
+    else
+      V_4 = V_3
+    ).
+char.to_lower(V_3) = V_4 :-
+    char.to_lower(V_3, V_4).
+char.to_lower(V_3, V_4) :-
+    (if
+      char.lower_upper(V_5, V_3)
+    then
+      V_4 = V_5
+    else
+      V_4 = V_3
+    ).
+char.is_upper(V_2) :-
+    (if
+      char.lower_upper(V_3, V_2)
+    then
+      true
+    else
+      fail
+    ).
+char.is_lower(V_2) :-
+    char.lower_upper(V_2, V_3).
+char.is_alpha_or_underscore(V_2) :-
+    (if
+      V_2 = ('_') : character
+    then
+      true
+    else
+      char.is_alpha(V_2)
+    ).
+char.is_digit(V_2) :-
+    char.is_decimal_digit(V_2).
+char.is_binary_digit('0').
+char.is_binary_digit('1').
+char.int_to_binary_digit(0, '0').
+char.int_to_binary_digit(1, '1').
+char.binary_digit_to_int('0', 0).
+char.binary_digit_to_int('1', 1).
+char.char_to_doc(V_3) = pretty_printer.str(V_4) :-
+    V_4 = term_io.quoted_char(V_3).
+char.is_hex_digit(V_3, V_4) :-
+    char.hex_digit_to_int(V_3, V_4).
+char.int_to_hex_char(V_3, V_4) :-
+    char.int_to_hex_digit(V_3, V_4).
+char.digit_to_int(V_3, V_4) :-
+    (if
+      char.lower_upper(V_3, V_5)
+    then
+      char.int_to_extended_digit(V_4, V_5)
+    else
+      char.int_to_extended_digit(V_4, V_3)
+    ).
+char.int_to_digit(V_3, V_4) :-
+    char.int_to_extended_digit(V_3, V_4).
+char.det_int_to_digit(V_3) = V_4 :-
+    char.det_int_to_digit(V_3, V_4).
+:- pragma exceptions(function, (char.to_int), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.to_int), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.to_int), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (char.to_int), 2, 2, will_not_throw).
+:- pragma exceptions(predicate, (char.from_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (char.det_from_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.det_from_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (char.max_char_value), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.max_char_value), 1, 0, will_not_throw).
+:- pragma exceptions(function, (char.min_char_value), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.min_char_value), 1, 0, will_not_throw).
+:- pragma exceptions(function, (char.to_upper), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.to_upper), 2, 0, will_not_throw).
+:- pragma exceptions(function, (char.to_lower), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.to_lower), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.lower_upper), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.lower_upper), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (char.is_whitespace), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_upper), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_lower), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_alpha), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_alnum), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_alpha_or_underscore), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_alnum_or_underscore), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_digit), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_binary_digit), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_octal_digit), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_decimal_digit), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_hex_digit), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_base_digit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.int_to_binary_digit), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.int_to_octal_digit), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.int_to_decimal_digit), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.int_to_hex_digit), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.base_int_to_digit), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (char.det_base_int_to_digit), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.binary_digit_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (char.det_binary_digit_to_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.octal_digit_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (char.det_octal_digit_to_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.decimal_digit_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (char.det_decimal_digit_to_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.hex_digit_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (char.det_hex_digit_to_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.base_digit_to_int), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (char.det_base_digit_to_int), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (char.char_to_doc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.to_utf8), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.to_utf16), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.is_surrogate), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_leading_surrogate), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_trailing_surrogate), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_noncharacter), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.is_hex_digit), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.int_to_hex_char), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.digit_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.int_to_digit), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.int_to_digit), 2, 1, will_not_throw).
+:- pragma exceptions(function, (char.det_int_to_digit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.det_int_to_digit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (char.int_to_extended_digit), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (char.int_to_extended_digit), 2, 1, will_not_throw).
+:- pragma termination_info(char.to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(char.to_int((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(char.to_int((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.to_int((builtin.out), (builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(char.from_int((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(char.det_from_int((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(char.det_from_int((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((char.max_char_value) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(char.max_char_value((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((char.min_char_value) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.min_char_value((builtin.out)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.to_upper((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(char.to_upper((builtin.in), (builtin.out)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(char.to_lower((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(char.to_lower((builtin.in), (builtin.out)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(char.lower_upper((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.lower_upper((builtin.out), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.is_whitespace((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_upper((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_lower((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_alpha((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_alnum((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_alpha_or_underscore((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_alnum_or_underscore((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_digit((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_binary_digit((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_octal_digit((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_decimal_digit((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_hex_digit((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_base_digit((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(char.int_to_binary_digit((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.int_to_octal_digit((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.int_to_decimal_digit((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.int_to_hex_digit((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.base_int_to_digit((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(char.det_base_int_to_digit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(char.binary_digit_to_int((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.det_binary_digit_to_int((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(char.octal_digit_to_int((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.det_octal_digit_to_int((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(char.decimal_digit_to_int((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.det_decimal_digit_to_int((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(char.hex_digit_to_int((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.det_hex_digit_to_int((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(char.base_digit_to_int((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(char.det_base_digit_to_int((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(char.char_to_doc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(char.to_utf8((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(char.to_utf16((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(char.is_surrogate((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_leading_surrogate((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_trailing_surrogate((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_noncharacter((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(char.is_hex_digit((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.int_to_hex_char((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.digit_to_int((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.int_to_digit((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.int_to_digit((builtin.out), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.det_int_to_digit((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(char.det_int_to_digit((builtin.in), (builtin.out)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(char.int_to_extended_digit((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.int_to_extended_digit((builtin.out), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(char.'ClassMethod_for_enum__enum____character__arity0______enum__to_int_1'((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(char.'ClassMethod_for_enum__enum____character__arity0______enum__from_int_1'((builtin.in)) = (builtin.out), infinite, cannot_loop).

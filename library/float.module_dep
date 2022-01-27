@@ -1,0 +1,13 @@
+module(1, "float.m",
+	float,
+	{},
+	{builtin, pretty_printer, private_builtin},
+	{builtin, exception, int, math, pretty_printer, private_builtin, string},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - float, "C#" - float, "Java" - float, "IL" - float, "Erlang" - float, "C" - float},
+	no_foreign_export,
+	no_main
+).

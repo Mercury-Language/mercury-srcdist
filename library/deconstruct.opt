@@ -1,0 +1,94 @@
+:- module deconstruct.
+:- use_module builtin.
+:- use_module construct.
+:- use_module erlang_rtti_implementation.
+:- use_module int.
+:- use_module list.
+:- use_module maybe.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module type_desc.
+:- use_module univ.
+:- pred deconstruct.deconstruct_du_2(T_1, deconstruct.noncanon_handling, int, int, list.list(univ.univ)).
+:- mode deconstruct.deconstruct_du_2((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- mode deconstruct.deconstruct_du_2((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)) is cc_nondet.
+:- mode deconstruct.deconstruct_du_2((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is cc_nondet.
+deconstruct.deconstruct_du(V_6, V_7, V_8, V_9, V_10) :-
+    (if
+      erlang_rtti_implementation.is_erlang_backend
+    then
+      erlang_rtti_implementation.deconstruct_du(V_6, V_7, V_8, V_9, V_10)
+    else
+      deconstruct.deconstruct_du_2(V_6, V_7, V_8, V_9, V_10)
+    ).
+:- pragma exceptions(predicate, (deconstruct.functor), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.functor), 4, 1, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.functor), 4, 2, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.functor), 4, 3, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.functor_number), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.functor_number_cc), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.arg), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.arg), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.arg), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.arg_cc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.named_arg), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.named_arg), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.named_arg), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.named_arg_cc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.det_arg), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.det_arg), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.det_arg), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.det_arg), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.det_named_arg), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.det_named_arg), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.det_named_arg), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.det_named_arg), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.deconstruct), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.deconstruct), 5, 1, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.deconstruct), 5, 2, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.deconstruct), 5, 3, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.deconstruct_du), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.deconstruct_du), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.deconstruct_du), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.limited_deconstruct), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.limited_deconstruct), 6, 1, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.limited_deconstruct_cc), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (deconstruct.deconstruct_du_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.deconstruct_du_2), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (deconstruct.deconstruct_du_2), 5, 2, may_throw(user_exception)).
+:- pragma termination_info(deconstruct.functor((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.functor((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.functor((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.functor((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.functor_number((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.functor_number_cc((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.arg((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.arg((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.arg((builtin.in), builtin.in((deconstruct.canonicalize_or_do_not_allow)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.arg_cc((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.named_arg((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.named_arg((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.named_arg((builtin.in), builtin.in((deconstruct.canonicalize_or_do_not_allow)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.named_arg_cc((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.det_arg((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.det_arg((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.det_arg((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.det_arg((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.det_named_arg((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.det_named_arg((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.det_named_arg((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.det_named_arg((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.deconstruct((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.deconstruct((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.deconstruct((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.deconstruct((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.deconstruct_du((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.deconstruct_du((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.deconstruct_du((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.limited_deconstruct((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.limited_deconstruct((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.limited_deconstruct_cc((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(deconstruct.deconstruct_du_2((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.deconstruct_du_2((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(deconstruct.deconstruct_du_2((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).

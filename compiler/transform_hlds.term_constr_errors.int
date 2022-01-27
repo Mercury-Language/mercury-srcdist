@@ -1,0 +1,19 @@
+:- module (transform_hlds.term_constr_errors).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module pair.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type error == pair.pair(parse_tree.prog_data.prog_context, transform_hlds.term_constr_errors.termination2_error).
+:- type term2_errors == list.list(transform_hlds.term_constr_errors.error).
+:- type termination2_error
+    --->    imported_pred 
+    ;       can_loop_proc_called(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+    ;       cond_not_satisfied 
+    ;       horder_call 
+    ;       does_not_term_pragma(hlds.hlds_pred.pred_id)
+    ;       foreign_proc_called(hlds.hlds_pred.pred_proc_id).
+:- pred report_termination2_errors(list.list(hlds.hlds_pred.pred_proc_id), transform_hlds.term_constr_errors.term2_errors, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode report_termination2_errors((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

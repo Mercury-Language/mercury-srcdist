@@ -1,0 +1,56 @@
+:- module bool.
+:- use_module builtin.
+:- use_module enum.
+:- use_module list.
+:- use_module private_builtin.
+:- instance (enum.enum(bool.bool)).
+bool.(V_4 or V_5) = V_6 :-
+    bool.or(V_4, V_5, V_6).
+bool.or(bool.yes, V_4, bool.yes).
+bool.or(bool.no, V_5, V_5).
+bool.or_list(V_3) = V_4 :-
+    bool.or_list(V_3, V_4).
+bool.(V_4 and V_5) = V_6 :-
+    bool.and(V_4, V_5, V_6).
+bool.and(bool.no, V_4, bool.no).
+bool.and(bool.yes, V_5, V_5).
+bool.and_list(V_3) = V_4 :-
+    bool.and_list(V_3, V_4).
+bool.(not V_3) = V_4 :-
+    bool.not(V_3, V_4).
+bool.not(bool.no, bool.yes).
+bool.not(bool.yes, bool.no).
+bool.pred_to_bool(V_3) = V_2 :-
+    (if
+      call(V_3)
+    then
+      V_2 = bool.yes : bool.bool
+    else
+      V_2 = bool.no : bool.bool
+    ).
+:- pragma exceptions(function, (bool.(or)), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bool.(or)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bool.or_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bool.or_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bool.(and)), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bool.(and)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bool.and_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bool.and_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bool.(not)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bool.(not)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bool.xor), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bool.pred_to_bool), 2, 0, may_throw(user_exception)).
+:- pragma termination_info(bool.or((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bool.or((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bool.or_list((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.or_list((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.and((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bool.and((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bool.and_list((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.and_list((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.not((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.not((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.xor((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(bool.pred_to_bool(((pred) is semidet)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bool.'ClassMethod_for_enum__enum____bool__bool__arity0______enum__to_int_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.'ClassMethod_for_enum__enum____bool__bool__arity0______enum__from_int_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).

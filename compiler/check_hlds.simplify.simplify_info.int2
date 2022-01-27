@@ -1,0 +1,20 @@
+:- module ((check_hlds.simplify).simplify_info).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (hlds.vartypes).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module ((check_hlds.simplify).simplify_tasks).
+:- type innermost_proc
+    --->    imp_whole_proc 
+    ;       imp_lambda(parse_tree.prog_data.prog_context).
+:- type simplify_info.
+:- type simplify_nested_context
+    --->    simplify_nested_context((((check_hlds.simplify).simplify_info).snc_inside_dupl_for_switch) :: bool.bool, (((check_hlds.simplify).simplify_info).snc_num_enclosing_lambdas) :: int, (((check_hlds.simplify).simplify_info).snc_proc_is_model_non) :: maybe.maybe(check_hlds.simplify.simplify_info.innermost_proc)).

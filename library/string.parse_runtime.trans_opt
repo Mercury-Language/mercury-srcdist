@@ -1,0 +1,3 @@
+:- module (string.parse_runtime).
+:- pragma termination_info((string.parse_runtime).parse_format_string((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma exceptions(predicate, ((string.parse_runtime).parse_format_string), 5, 0, may_throw(user_exception)).

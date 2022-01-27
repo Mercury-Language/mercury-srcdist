@@ -1,0 +1,13 @@
+module(1, "bitmap.m",
+	bitmap,
+	{},
+	{bool, builtin, list, private_builtin},
+	{bool, builtin, char, exception, int, list, private_builtin, string},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - bitmap, "C#" - bitmap, "Java" - bitmap, "IL" - bitmap, "Erlang" - bitmap, "C" - bitmap},
+	no_foreign_export,
+	no_main
+).
