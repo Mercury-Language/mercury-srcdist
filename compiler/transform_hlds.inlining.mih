@@ -1,0 +1,181 @@
+/*
+** Automatically generated from `inlining.m'
+** by the Mercury compiler,
+** version rotd-2013-10-01, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.inlining. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__inlining
+#define MR_HEADER_GUARD_transform_hlds__inlining
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__INLINING_DECL_GUARD
+#define TRANSFORM_HLDS__INLINING_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "transform_hlds.inlining.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__inlining__transform_hlds__inlining__type_ctor_info_inline_info_0;
+
+#line 45 "transform_hlds.inlining.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__inlining__transform_hlds__inlining__type_ctor_info_inline_params_0;
+
+#line 142 "inlining.m"
+MR_bool MR_CALL 
+transform_hlds__inlining__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_110_95_105_110_108_105_110_101_95_112_114_111_99_95_95_91_53_93_95_48_6_p_0(
+#line 142 "inlining.m"
+  MR_Word transform_hlds__inlining__param_1,
+#line 142 "inlining.m"
+  MR_Integer transform_hlds__inlining__param_2,
+#line 142 "inlining.m"
+  MR_Word transform_hlds__inlining__param_3,
+#line 142 "inlining.m"
+  MR_Word transform_hlds__inlining__param_4,
+#line 142 "inlining.m"
+  MR_Word transform_hlds__inlining__param_5);
+
+#line 142 "inlining.m"
+MR_bool MR_CALL 
+transform_hlds__inlining__can_inline_proc_6_p_0(
+#line 142 "inlining.m"
+  MR_Word transform_hlds__inlining__param_1,
+#line 142 "inlining.m"
+  MR_Integer transform_hlds__inlining__param_2,
+#line 142 "inlining.m"
+  MR_Word transform_hlds__inlining__param_3,
+#line 142 "inlining.m"
+  MR_Word transform_hlds__inlining__param_4,
+#line 142 "inlining.m"
+  MR_Word transform_hlds__inlining__param_5,
+#line 142 "inlining.m"
+  MR_Word transform_hlds__inlining__param_6);
+
+#line 132 "inlining.m"
+void MR_CALL 
+transform_hlds__inlining__rename_goal_11_p_0(
+#line 132 "inlining.m"
+  MR_Word transform_hlds__inlining__param_1,
+#line 132 "inlining.m"
+  MR_Word transform_hlds__inlining__param_2,
+#line 132 "inlining.m"
+  MR_Word transform_hlds__inlining__param_3,
+#line 132 "inlining.m"
+  MR_Word transform_hlds__inlining__param_4,
+#line 132 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_5,
+#line 132 "inlining.m"
+  MR_Word transform_hlds__inlining__param_6,
+#line 132 "inlining.m"
+  MR_Word transform_hlds__inlining__param_7,
+#line 132 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_8,
+#line 132 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_9,
+#line 132 "inlining.m"
+  MR_Word transform_hlds__inlining__param_10,
+#line 132 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_11);
+
+#line 124 "inlining.m"
+void MR_CALL 
+transform_hlds__inlining__get_type_substitution_5_p_0(
+#line 124 "inlining.m"
+  MR_Word transform_hlds__inlining__param_1,
+#line 124 "inlining.m"
+  MR_Word transform_hlds__inlining__param_2,
+#line 124 "inlining.m"
+  MR_Word transform_hlds__inlining__param_3,
+#line 124 "inlining.m"
+  MR_Word transform_hlds__inlining__param_4,
+#line 124 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_5);
+
+#line 113 "inlining.m"
+void MR_CALL 
+transform_hlds__inlining__do_inline_call_13_p_0(
+#line 113 "inlining.m"
+  MR_Word transform_hlds__inlining__param_1,
+#line 113 "inlining.m"
+  MR_Word transform_hlds__inlining__param_2,
+#line 113 "inlining.m"
+  MR_Word transform_hlds__inlining__param_3,
+#line 113 "inlining.m"
+  MR_Word transform_hlds__inlining__param_4,
+#line 113 "inlining.m"
+  MR_Word transform_hlds__inlining__param_5,
+#line 113 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_6,
+#line 113 "inlining.m"
+  MR_Word transform_hlds__inlining__param_7,
+#line 113 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_8,
+#line 113 "inlining.m"
+  MR_Word transform_hlds__inlining__param_9,
+#line 113 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_10,
+#line 113 "inlining.m"
+  MR_Word transform_hlds__inlining__param_11,
+#line 113 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_12,
+#line 113 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_13);
+
+#line 102 "inlining.m"
+MR_bool MR_CALL 
+transform_hlds__inlining__is_simple_goal_2_p_0(
+#line 102 "inlining.m"
+  MR_Word transform_hlds__inlining__param_1,
+#line 102 "inlining.m"
+  MR_Integer transform_hlds__inlining__param_2);
+
+#line 100 "inlining.m"
+MR_bool MR_CALL 
+transform_hlds__inlining__is_simple_clause_list_2_p_0(
+#line 100 "inlining.m"
+  MR_Word transform_hlds__inlining__param_1,
+#line 100 "inlining.m"
+  MR_Integer transform_hlds__inlining__param_2);
+
+#line 96 "inlining.m"
+void MR_CALL 
+transform_hlds__inlining__inlining_2_p_0(
+#line 96 "inlining.m"
+  MR_Word transform_hlds__inlining__param_1,
+#line 96 "inlining.m"
+  MR_Word * transform_hlds__inlining__param_2);
+
+void mercury__transform_hlds__inlining__init(void);
+void mercury__transform_hlds__inlining__init_type_tables(void);
+void mercury__transform_hlds__inlining__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.inlining */
+
+/* :- end_interface transform_hlds.inlining. */

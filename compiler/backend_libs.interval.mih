@@ -1,0 +1,491 @@
+/*
+** Automatically generated from `interval.m'
+** by the Mercury compiler,
+** version rotd-2013-10-01, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module backend_libs.interval. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_backend_libs__interval
+#define MR_HEADER_GUARD_backend_libs__interval
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKEND_LIBS__INTERVAL_DECL_GUARD
+#define BACKEND_LIBS__INTERVAL_DECL_GUARD
+#include "backend_libs.mih"
+
+#endif
+
+
+
+
+#line 42 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_anchor_0;
+
+#line 45 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_anchor_follow_info_0;
+
+#line 48 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_branch_construct_0;
+
+#line 51 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_branch_end_info_0;
+
+#line 54 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_insert_map_0;
+
+#line 57 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_insert_spec_0;
+
+#line 60 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_interval_id_0;
+
+#line 63 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_interval_info_0;
+
+#line 66 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_interval_params_0;
+
+#line 69 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_interval_var_info_0;
+
+#line 72 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_maybe_needs_flush_0;
+
+#line 75 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_rename_map_0;
+
+#line 78 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_resume_save_status_0;
+
+#line 81 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_save_point_0;
+
+#line 84 "backend_libs.interval.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_save_point_type_0;
+
+#line 87 "backend_libs.interval.mih.tmp"
+extern const MR_TypeClassDeclStruct backend_libs__interval__backend_libs__interval__type_class_decl_build_interval_info_acc_1;
+
+#line 54 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____save_point_type_0_0(
+#line 54 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 54 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 54 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 54 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____save_point_type_0_0(
+#line 54 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 54 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 58 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____save_point_0_0(
+#line 58 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 58 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 58 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 58 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____save_point_0_0(
+#line 58 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 58 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 71 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____resume_save_status_0_0(
+#line 71 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 71 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 71 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 71 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____resume_save_status_0_0(
+#line 71 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 71 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 154 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____rename_map_0_0(
+#line 154 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 154 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 154 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 154 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____rename_map_0_0(
+#line 154 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 154 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 135 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____maybe_needs_flush_0_0(
+#line 135 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 135 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 135 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 135 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____maybe_needs_flush_0_0(
+#line 135 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 135 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 107 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____interval_params_0_0(
+#line 107 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 107 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 107 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 107 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____interval_params_0_0(
+#line 107 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 107 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 114 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____interval_info_0_0(
+#line 114 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 114 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 114 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 114 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____interval_info_0_0(
+#line 114 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 114 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 83 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____interval_id_0_0(
+#line 83 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 83 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 83 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 83 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____interval_id_0_0(
+#line 83 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 83 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 93 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____insert_spec_0_0(
+#line 93 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 93 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 93 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 93 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____insert_spec_0_0(
+#line 93 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 93 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 99 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____insert_map_0_0(
+#line 99 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 99 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 99 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 99 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____insert_map_0_0(
+#line 99 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 99 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 86 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____branch_end_info_0_0(
+#line 86 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 86 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 86 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 86 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____branch_end_info_0_0(
+#line 86 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 86 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 64 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____branch_construct_0_0(
+#line 64 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 64 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 64 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 64 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____branch_construct_0_0(
+#line 64 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 64 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 101 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____anchor_follow_info_0_0(
+#line 101 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 101 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 101 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 101 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____anchor_follow_info_0_0(
+#line 101 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 101 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 75 "interval.m"
+void MR_CALL 
+backend_libs__interval____Compare____anchor_0_0(
+#line 75 "interval.m"
+  MR_Word * backend_libs__interval__param_1,
+#line 75 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 75 "interval.m"
+  MR_Word backend_libs__interval__param_3);
+
+#line 75 "interval.m"
+MR_bool MR_CALL 
+backend_libs__interval____Unify____anchor_0_0(
+#line 75 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 75 "interval.m"
+  MR_Word backend_libs__interval__param_2);
+
+#line 182 "interval.m"
+MR_Integer MR_CALL 
+backend_libs__interval__interval_id_to_int_1_f_0(
+#line 182 "interval.m"
+  MR_Word backend_libs__interval__param_1);
+
+#line 180 "interval.m"
+void MR_CALL 
+backend_libs__interval__write_int_list_3_p_0(
+#line 180 "interval.m"
+  MR_Word backend_libs__interval__param_1);
+
+#line 178 "interval.m"
+void MR_CALL 
+backend_libs__interval__dump_interval_info_3_p_0(
+#line 178 "interval.m"
+  MR_Word backend_libs__interval__param_1);
+
+#line 175 "interval.m"
+void MR_CALL 
+backend_libs__interval__apply_headvar_correction_4_p_0(
+#line 175 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 175 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 175 "interval.m"
+  MR_Word backend_libs__interval__param_3,
+#line 175 "interval.m"
+  MR_Word * backend_libs__interval__param_4);
+
+#line 161 "interval.m"
+void MR_CALL 
+backend_libs__interval__make_inserted_goal_9_p_0(
+#line 161 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 161 "interval.m"
+  MR_Word * backend_libs__interval__param_2,
+#line 161 "interval.m"
+  MR_Word backend_libs__interval__param_3,
+#line 161 "interval.m"
+  MR_Word * backend_libs__interval__param_4,
+#line 161 "interval.m"
+  MR_Word backend_libs__interval__param_5,
+#line 161 "interval.m"
+  MR_Word * backend_libs__interval__param_6,
+#line 161 "interval.m"
+  MR_Word backend_libs__interval__param_7,
+#line 161 "interval.m"
+  MR_Word backend_libs__interval__param_8,
+#line 161 "interval.m"
+  MR_Word * backend_libs__interval__param_9);
+
+#line 156 "interval.m"
+void MR_CALL 
+backend_libs__interval__record_decisions_in_goal_10_p_0(
+#line 156 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 156 "interval.m"
+  MR_Word * backend_libs__interval__param_2,
+#line 156 "interval.m"
+  MR_Word backend_libs__interval__param_3,
+#line 156 "interval.m"
+  MR_Word * backend_libs__interval__param_4,
+#line 156 "interval.m"
+  MR_Word backend_libs__interval__param_5,
+#line 156 "interval.m"
+  MR_Word * backend_libs__interval__param_6,
+#line 156 "interval.m"
+  MR_Word backend_libs__interval__param_7,
+#line 156 "interval.m"
+  MR_Word * backend_libs__interval__param_8,
+#line 156 "interval.m"
+  MR_Word backend_libs__interval__param_9,
+#line 156 "interval.m"
+  MR_Word backend_libs__interval__param_10);
+
+#line 151 "interval.m"
+void MR_CALL 
+backend_libs__interval__delete_interval_vars_5_p_0(
+#line 151 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 151 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 151 "interval.m"
+  MR_Word * backend_libs__interval__param_3,
+#line 151 "interval.m"
+  MR_Word backend_libs__interval__param_4,
+#line 151 "interval.m"
+  MR_Word * backend_libs__interval__param_5);
+
+#line 148 "interval.m"
+void MR_CALL 
+backend_libs__interval__record_interval_vars_4_p_0(
+#line 148 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 148 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 148 "interval.m"
+  MR_Word backend_libs__interval__param_3,
+#line 148 "interval.m"
+  MR_Word * backend_libs__interval__param_4);
+
+#line 145 "interval.m"
+void MR_CALL 
+backend_libs__interval__build_interval_info_in_goal_5_p_0(
+#line 145 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 145 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 145 "interval.m"
+  MR_Word backend_libs__interval__param_3,
+#line 145 "interval.m"
+  MR_Word * backend_libs__interval__param_4,
+#line 145 "interval.m"
+  MR_Box backend_libs__interval__param_5,
+#line 145 "interval.m"
+  MR_Box * backend_libs__interval__param_6);
+
+#line 140 "interval.m"
+void MR_CALL 
+backend_libs__interval__use_cell_8_p_0(
+#line 140 "interval.m"
+  MR_Word backend_libs__interval__param_1,
+#line 140 "interval.m"
+  MR_Word backend_libs__interval__param_2,
+#line 140 "interval.m"
+  MR_Word backend_libs__interval__param_3,
+#line 140 "interval.m"
+  MR_Word backend_libs__interval__param_4,
+#line 140 "interval.m"
+  MR_Word backend_libs__interval__param_5,
+#line 140 "interval.m"
+  MR_Word backend_libs__interval__param_6,
+#line 140 "interval.m"
+  MR_Word * backend_libs__interval__param_7,
+#line 140 "interval.m"
+  MR_Box backend_libs__interval__param_8,
+#line 140 "interval.m"
+  MR_Box * backend_libs__interval__param_9);
+
+void mercury__backend_libs__interval__init(void);
+void mercury__backend_libs__interval__init_type_tables(void);
+void mercury__backend_libs__interval__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_backend_libs.interval */
+
+/* :- end_interface backend_libs.interval. */

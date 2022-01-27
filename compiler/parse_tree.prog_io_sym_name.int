@@ -1,0 +1,34 @@
+:- module (parse_tree.prog_io_sym_name).
+:- interface.
+:- import_module list.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io_util).
+:- pred parse_implicitly_qualified_sym_name_and_args(mdbcomp.prim_data.module_name, term.term(T), varset.varset, list.list(parse_tree.error_util.format_component), parse_tree.prog_io_util.maybe_functor(T)).
+:- mode parse_implicitly_qualified_sym_name_and_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_implicitly_qualified_symbol_name(mdbcomp.prim_data.module_name, varset.varset, term.term, parse_tree.prog_io_util.maybe1(mdbcomp.prim_data.sym_name)).
+:- mode parse_implicitly_qualified_symbol_name((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_implicitly_qualified_symbol_name_specifier(mdbcomp.prim_data.module_name, varset.varset, term.term, parse_tree.prog_io_util.maybe1(parse_tree.prog_data.sym_name_specifier)).
+:- mode parse_implicitly_qualified_symbol_name_specifier((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_sym_name_and_args(term.term(T), varset.varset, list.list(parse_tree.error_util.format_component), parse_tree.prog_io_util.maybe_functor(T)).
+:- mode parse_sym_name_and_args((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_symbol_name(varset.varset(T), term.term(T), parse_tree.prog_io_util.maybe1(mdbcomp.prim_data.sym_name)).
+:- mode parse_symbol_name((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_symbol_name_specifier(varset.varset, term.term, parse_tree.prog_io_util.maybe1(parse_tree.prog_data.sym_name_specifier)).
+:- mode parse_symbol_name_specifier((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func root_module_name = mdbcomp.prim_data.module_name.
+:- pred try_parse_implicitly_qualified_sym_name_and_args(mdbcomp.prim_data.module_name, term.term(T), mdbcomp.prim_data.sym_name, list.list(term.term(T))).
+:- mode try_parse_implicitly_qualified_sym_name_and_args((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred try_parse_implicitly_qualified_sym_name_and_no_args(mdbcomp.prim_data.module_name, term.term(T), mdbcomp.prim_data.sym_name).
+:- mode try_parse_implicitly_qualified_sym_name_and_no_args((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred try_parse_sym_name_and_args(term.term(T), mdbcomp.prim_data.sym_name, list.list(term.term(T))).
+:- mode try_parse_sym_name_and_args((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred try_parse_sym_name_and_args_from_f_args(term.const, list.list(term.term(T)), mdbcomp.prim_data.sym_name, list.list(term.term(T))).
+:- mode try_parse_sym_name_and_args_from_f_args((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred try_parse_sym_name_and_no_args(term.term(T), mdbcomp.prim_data.sym_name).
+:- mode try_parse_sym_name_and_no_args((builtin.in), (builtin.out)) is semidet.
+:- pred try_parse_symbol_name(term.term(T), mdbcomp.prim_data.sym_name).
+:- mode try_parse_symbol_name((builtin.in), (builtin.out)) is semidet.

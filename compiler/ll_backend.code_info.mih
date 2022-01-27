@@ -1,0 +1,2394 @@
+/*
+** Automatically generated from `code_info.m'
+** by the Mercury compiler,
+** version rotd-2013-10-01, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.code_info. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__code_info
+#define MR_HEADER_GUARD_ll_backend__code_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__CODE_INFO_DECL_GUARD
+#define LL_BACKEND__CODE_INFO_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_branch_end_0;
+
+#line 45 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_branch_end_info_0;
+
+#line 48 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_call_direction_0;
+
+#line 51 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_code_info_0;
+
+#line 54 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_code_info_component_0;
+
+#line 57 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_code_info_loc_dep_0;
+
+#line 60 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_code_info_persistent_0;
+
+#line 63 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_code_info_static_0;
+
+#line 66 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_commit_hijack_info_0;
+
+#line 69 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_condition_env_0;
+
+#line 72 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_curfr_vs_maxfr_0;
+
+#line 75 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_det_commit_info_0;
+
+#line 78 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_disj_hijack_info_0;
+
+#line 81 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_fail_info_0;
+
+#line 84 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_hijack_allowed_0;
+
+#line 87 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_ite_hijack_info_0;
+
+#line 90 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_ite_hijack_type_0;
+
+#line 93 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_ite_region_info_0;
+
+#line 96 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_position_info_0;
+
+#line 99 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_redoip_update_0;
+
+#line 102 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_region_commit_stack_frame_0;
+
+#line 105 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_resume_map_0;
+
+#line 108 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_resume_point_info_0;
+
+#line 111 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_resume_point_known_0;
+
+#line 114 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_semi_commit_info_0;
+
+#line 117 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_simple_neg_info_0;
+
+#line 120 "ll_backend.code_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_temp_slot_persistence_0;
+
+#line 3539 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_115_104_111_117_108_100_95_97_100_100_95_114_101_103_105_111_110_95_111_112_115_95_95_91_50_93_95_48_2_f_0(
+#line 3539 "code_info.m"
+  MR_Word ll_backend__code_info__param_1);
+
+#line 3534 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_115_104_111_117_108_100_95_97_100_100_95_116_114_97_105_108_95_111_112_115_95_95_91_50_93_95_48_2_f_0(
+#line 3534 "code_info.m"
+  MR_Word ll_backend__code_info__param_1);
+
+#line 1575 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_101_112_97_114_101_95_102_111_114_95_115_101_109_105_95_99_111_109_109_105_116_95_95_91_51_93_95_48_8_p_0(
+#line 1575 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1575 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1575 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1575 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 1575 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5,
+#line 1575 "code_info.m"
+  MR_Word ll_backend__code_info__param_6,
+#line 1575 "code_info.m"
+  MR_Word * ll_backend__code_info__param_7);
+
+#line 1558 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_101_112_97_114_101_95_102_111_114_95_100_101_116_95_99_111_109_109_105_116_95_95_91_51_93_95_48_8_p_0(
+#line 1558 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1558 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1558 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1558 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 1558 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5,
+#line 1558 "code_info.m"
+  MR_Word ll_backend__code_info__param_6,
+#line 1558 "code_info.m"
+  MR_Word * ll_backend__code_info__param_7);
+
+#line 4469 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____temp_slot_persistence_0_0(
+#line 4469 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 4469 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 4469 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 4469 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____temp_slot_persistence_0_0(
+#line 4469 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4469 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 2151 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____simple_neg_info_0_0(
+#line 2151 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 2151 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 2151 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 2151 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____simple_neg_info_0_0(
+#line 2151 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 2151 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 2262 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____semi_commit_info_0_0(
+#line 2262 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 2262 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 2262 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 2262 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____semi_commit_info_0_0(
+#line 2262 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 2262 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 1696 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____resume_point_info_0_0(
+#line 1696 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1696 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1696 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 1696 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____resume_point_info_0_0(
+#line 1696 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1696 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 1705 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____resume_map_0_0(
+#line 1705 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1705 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1705 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 1705 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____resume_map_0_0(
+#line 1705 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1705 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 1320 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____position_info_0_0(
+#line 1320 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1320 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1320 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 1320 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____position_info_0_0(
+#line 1320 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1320 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 1906 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____ite_hijack_info_0_0(
+#line 1906 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1906 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1906 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 1906 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____ite_hijack_info_0_0(
+#line 1906 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1906 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 1674 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____fail_info_0_0(
+#line 1674 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1674 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1674 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 1674 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____fail_info_0_0(
+#line 1674 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1674 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 1729 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____disj_hijack_info_0_0(
+#line 1729 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1729 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1729 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 1729 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____disj_hijack_info_0_0(
+#line 1729 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1729 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 2185 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____det_commit_info_0_0(
+#line 2185 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 2185 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 2185 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 2185 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____det_commit_info_0_0(
+#line 2185 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 2185 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 4764 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____code_info_component_0_0(
+#line 4764 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 4764 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 4764 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 4764 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____code_info_component_0_0(
+#line 4764 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4764 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 335 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____code_info_0_0(
+#line 335 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 335 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 335 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 335 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____code_info_0_0(
+#line 335 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 335 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 3815 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____call_direction_0_0(
+#line 3815 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 3815 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3815 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 3815 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____call_direction_0_0(
+#line 3815 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3815 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 1327 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____branch_end_info_0_0(
+#line 1327 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1327 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1327 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 1327 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____branch_end_info_0_0(
+#line 1327 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1327 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 1298 "code_info.m"
+void MR_CALL 
+ll_backend__code_info____Compare____branch_end_0_0(
+#line 1298 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1298 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1298 "code_info.m"
+  MR_Word ll_backend__code_info__param_3);
+
+#line 1298 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____branch_end_0_0(
+#line 1298 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1298 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 4775 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__output_code_info_4_p_0(
+#line 4775 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4775 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 4762 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info__should_trace_code_gen_1_p_0(
+#line 4762 "code_info.m"
+  MR_Word ll_backend__code_info__param_1);
+
+#line 4508 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_variable_slot_3_p_0(
+#line 4508 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4508 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 4508 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 4502 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__release_several_temp_slots_4_p_0(
+#line 4502 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4502 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 4502 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 4502 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 4495 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__acquire_several_temp_slots_8_p_0(
+#line 4495 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4495 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 4495 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 4495 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 4495 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_5,
+#line 4495 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_6,
+#line 4495 "code_info.m"
+  MR_Word ll_backend__code_info__param_7,
+#line 4495 "code_info.m"
+  MR_Word * ll_backend__code_info__param_8);
+
+#line 4482 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__release_temp_slot_4_p_0(
+#line 4482 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4482 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 4482 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 4482 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 4476 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__acquire_temp_slot_5_p_0(
+#line 4476 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4476 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 4476 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 4476 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 4476 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 4463 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_total_stackslot_count_2_p_0(
+#line 4463 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4463 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_2);
+
+#line 4336 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__generate_return_live_lvalues_5_p_0(
+#line 4336 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4336 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 4336 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 4336 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 4336 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 4333 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__generate_call_vn_livevals_4_p_0(
+#line 4333 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 4333 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 4333 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 4333 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3863 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__magically_put_var_in_unused_reg_3_p_0(
+#line 3863 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3863 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3863 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3861 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__max_reg_in_use_3_p_0(
+#line 3861 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3861 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_2,
+#line 3861 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_3);
+
+#line 3858 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__save_variables_on_stack_4_p_0(
+#line 3858 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3858 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3858 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3858 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3855 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__save_variables_5_p_0(
+#line 3855 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3855 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3855 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3855 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3855 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3853 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__clobber_regs_3_p_0(
+#line 3853 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3853 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3853 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3851 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__clear_all_registers_3_p_0(
+#line 3851 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3851 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3851 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3844 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__unlock_regs_2_p_0(
+#line 3844 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3844 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 3841 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__lock_regs_5_p_0(
+#line 3841 "code_info.m"
+  MR_Integer ll_backend__code_info__param_1,
+#line 3841 "code_info.m"
+  MR_Integer ll_backend__code_info__param_2,
+#line 3841 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3841 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3841 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3838 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__setup_return_5_p_0(
+#line 3838 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3838 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3838 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3838 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3838 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3832 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__setup_call_6_p_0(
+#line 3832 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3832 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3832 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3832 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 3832 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 3832 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6);
+
+#line 3813 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__clear_r1_3_p_0(
+#line 3813 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 3813 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3813 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3811 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__reserve_r1_3_p_0(
+#line 3811 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 3811 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3811 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3809 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__release_reg_3_p_0(
+#line 3809 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3809 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3809 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3806 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__acquire_reg_4_p_0(
+#line 3806 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3806 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3806 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3806 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3803 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__acquire_reg_not_in_storemap_5_p_0(
+#line 3803 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3803 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3803 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3803 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3803 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3800 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__acquire_reg_for_var_5_p_0(
+#line 3800 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3800 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3800 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3800 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3800 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3797 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__materialize_vars_in_lval_5_p_0(
+#line 3797 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3797 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3797 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3797 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3797 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3794 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__produce_variable_in_reg_or_stack_5_p_0(
+#line 3794 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3794 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3794 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3794 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3794 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3791 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__produce_variable_in_reg_5_p_0(
+#line 3791 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3791 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3791 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3791 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3791 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3788 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__produce_variable_5_p_0(
+#line 3788 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3788 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3788 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3788 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3788 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3785 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__place_var_5_p_0(
+#line 3785 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3785 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3785 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3785 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3785 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3782 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__save_reused_cell_fields_6_p_0(
+#line 3782 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3782 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3782 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3782 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 3782 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 3782 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6);
+
+#line 3777 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__assign_cell_to_var_11_p_0(
+#line 3777 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3777 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3777 "code_info.m"
+  MR_Integer ll_backend__code_info__param_3,
+#line 3777 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3777 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 3777 "code_info.m"
+  MR_Word ll_backend__code_info__param_6,
+#line 3777 "code_info.m"
+  MR_Word ll_backend__code_info__param_7,
+#line 3777 "code_info.m"
+  MR_Word ll_backend__code_info__param_8,
+#line 3777 "code_info.m"
+  MR_Word * ll_backend__code_info__param_9,
+#line 3777 "code_info.m"
+  MR_Word ll_backend__code_info__param_10,
+#line 3777 "code_info.m"
+  MR_Word * ll_backend__code_info__param_11);
+
+#line 3770 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__assign_field_lval_expr_to_var_6_p_0(
+#line 3770 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3770 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3770 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3770 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 3770 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 3770 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6);
+
+#line 3767 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__reassign_mkword_hole_var_6_p_0(
+#line 3767 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3767 "code_info.m"
+  MR_Integer ll_backend__code_info__param_2,
+#line 3767 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3767 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 3767 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 3767 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6);
+
+#line 3764 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__assign_expr_to_var_5_p_0(
+#line 3764 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3764 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3764 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3764 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3764 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3761 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__assign_const_to_var_4_p_0(
+#line 3761 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3761 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3761 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3761 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3758 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__assign_lval_to_var_5_p_0(
+#line 3758 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3758 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3758 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3758 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3758 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3755 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__assign_var_to_var_4_p_0(
+#line 3755 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3755 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3755 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3755 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3752 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_var_location_4_p_0(
+#line 3752 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3752 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3752 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3752 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3749 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__variable_locations_2_p_0(
+#line 3749 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3749 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 3539 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__should_add_region_ops_2_f_0(
+#line 3539 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3539 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 3534 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__should_add_trail_ops_2_f_0(
+#line 3534 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3534 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 3528 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_discard_and_release_ticket_4_p_0(
+#line 3528 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3528 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3528 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3528 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3524 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_reset_discard_and_release_ticket_5_p_0(
+#line 3524 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3524 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3524 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3524 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3524 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3521 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_reset_and_discard_ticket_3_p_0(
+#line 3521 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3521 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3521 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3517 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_reset_prune_and_release_ticket_5_p_0(
+#line 3517 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3517 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3517 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3517 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3517 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3514 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_reset_and_prune_ticket_3_p_0(
+#line 3514 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3514 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3514 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3511 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_release_ticket_3_p_0(
+#line 3511 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3511 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3511 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3508 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_reset_ticket_3_p_0(
+#line 3508 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3508 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3508 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3505 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_save_ticket_5_p_0(
+#line 3505 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3505 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3505 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3505 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3505 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3502 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__discard_and_release_ticket_4_p_0(
+#line 3502 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3502 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3502 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3502 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3499 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__reset_discard_and_release_ticket_5_p_0(
+#line 3499 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3499 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3499 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3499 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3499 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3496 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__reset_and_discard_ticket_3_p_0(
+#line 3496 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3496 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3496 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3493 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__reset_prune_and_release_ticket_5_p_0(
+#line 3493 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3493 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3493 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3493 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3493 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3490 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__reset_and_prune_ticket_3_p_0(
+#line 3490 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3490 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3490 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3488 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__release_ticket_3_p_0(
+#line 3488 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3488 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3488 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3486 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__reset_ticket_3_p_0(
+#line 3486 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3486 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3486 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3483 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__save_ticket_4_p_0(
+#line 3483 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 3483 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3483 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3483 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3480 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_restore_and_release_hp_4_p_0(
+#line 3480 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3480 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3480 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3480 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3477 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_release_hp_3_p_0(
+#line 3477 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3477 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3477 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3475 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_restore_hp_2_p_0(
+#line 3475 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3475 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 3472 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_save_hp_5_p_0(
+#line 3472 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3472 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3472 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 3472 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 3472 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 3469 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__restore_and_release_hp_4_p_0(
+#line 3469 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3469 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3469 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3469 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3467 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__release_hp_3_p_0(
+#line 3467 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3467 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3467 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3465 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__restore_hp_2_p_0(
+#line 3465 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3465 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 3462 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__save_hp_4_p_0(
+#line 3462 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 3462 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 3462 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3462 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3354 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__pickup_zombies_3_p_0(
+#line 3354 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 3354 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3354 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3351 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__maybe_make_vars_forward_dead_4_p_0(
+#line 3351 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3351 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3351 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 3351 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 3348 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__make_vars_forward_dead_3_p_0(
+#line 3348 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3348 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3348 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 3346 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info__variable_is_forward_live_2_p_0(
+#line 3346 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3346 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 3344 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_known_variables_2_p_0(
+#line 3344 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3344 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 3341 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__add_forward_live_vars_3_p_0(
+#line 3341 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 3341 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 3341 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 1665 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__resume_point_stack_addr_2_p_0(
+#line 1665 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1665 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 1659 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__resume_point_vars_2_p_0(
+#line 1659 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1659 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 1654 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__generate_resume_point_4_p_0(
+#line 1654 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1654 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 1654 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1654 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 1649 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__make_resume_point_6_p_0(
+#line 1649 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1649 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1649 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1649 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 1649 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 1649 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6);
+
+#line 1642 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__flush_resume_vars_to_stack_3_p_0(
+#line 1642 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1642 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1642 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 1636 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__produce_vars_5_p_0(
+#line 1636 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1636 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 1636 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 1636 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 1636 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 1632 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__may_use_nondet_tailcall_2_p_0(
+#line 1632 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1632 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 1625 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info__failure_is_direct_branch_2_p_0(
+#line 1625 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1625 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 1619 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__fail_if_rval_is_false_4_p_0(
+#line 1619 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1619 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 1619 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1619 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 1613 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__generate_failure_3_p_0(
+#line 1613 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1613 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1613 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 1607 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_resume_point_and_frame_to_unknown_2_p_0(
+#line 1607 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1607 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 1600 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_resume_point_to_unknown_2_p_0(
+#line 1600 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1600 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 1594 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__top_resume_point_2_p_0(
+#line 1594 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1594 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 1589 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__pop_resume_point_2_p_0(
+#line 1589 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1589 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 1586 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__effect_resume_point_5_p_0(
+#line 1586 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1586 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1586 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 1586 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 1586 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 1579 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__generate_semi_commit_4_p_0(
+#line 1579 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1579 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 1579 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1579 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 1575 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__prepare_for_semi_commit_8_p_0(
+#line 1575 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1575 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1575 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1575 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 1575 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5,
+#line 1575 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6,
+#line 1575 "code_info.m"
+  MR_Word ll_backend__code_info__param_7,
+#line 1575 "code_info.m"
+  MR_Word * ll_backend__code_info__param_8);
+
+#line 1562 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__generate_det_commit_4_p_0(
+#line 1562 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1562 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 1562 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1562 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 1558 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__prepare_for_det_commit_8_p_0(
+#line 1558 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1558 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1558 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1558 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 1558 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5,
+#line 1558 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6,
+#line 1558 "code_info.m"
+  MR_Word ll_backend__code_info__param_7,
+#line 1558 "code_info.m"
+  MR_Word * ll_backend__code_info__param_8);
+
+#line 1545 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__leave_simple_neg_4_p_0(
+#line 1545 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1545 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1545 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1545 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 1542 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__enter_simple_neg_5_p_0(
+#line 1542 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1542 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1542 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 1542 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 1542 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 1529 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__ite_enter_then_6_p_0(
+#line 1529 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1529 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1529 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 1529 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 1529 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 1529 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6);
+
+#line 1525 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__prepare_for_ite_hijack_6_p_0(
+#line 1525 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1525 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1525 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 1525 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 1525 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 1525 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6);
+
+#line 1504 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__undo_disj_hijack_4_p_0(
+#line 1504 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1504 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 1504 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1504 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 1500 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__prepare_for_disj_hijack_5_p_0(
+#line 1500 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1500 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 1500 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 1500 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 1500 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 1314 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__save_hp_in_branch_6_p_0(
+#line 1314 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 1314 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 1314 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1314 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 1314 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 1314 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6);
+
+#line 1311 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__after_all_branches_4_p_0(
+#line 1311 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1311 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1311 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 1311 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 1308 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__generate_branch_end_6_p_0(
+#line 1308 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1308 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1308 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 1308 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 1308 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 1308 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6);
+
+#line 1305 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__reset_resume_known_3_p_0(
+#line 1305 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1305 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1305 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 1302 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__reset_to_position_3_p_0(
+#line 1302 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1302 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 1302 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 1300 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__remember_position_2_p_0(
+#line 1300 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 1300 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 989 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__add_alloc_site_info_6_p_0(
+#line 989 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 989 "code_info.m"
+  MR_String ll_backend__code_info__param_2,
+#line 989 "code_info.m"
+  MR_Integer ll_backend__code_info__param_3,
+#line 989 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4,
+#line 989 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 989 "code_info.m"
+  MR_Word * ll_backend__code_info__param_6);
+
+#line 986 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__add_vector_static_cell_5_p_0(
+#line 986 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 986 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 986 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3,
+#line 986 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 986 "code_info.m"
+  MR_Word * ll_backend__code_info__param_5);
+
+#line 983 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__add_scalar_static_cell_natural_types_4_p_0(
+#line 983 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 983 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 983 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 983 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 980 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__add_scalar_static_cell_4_p_0(
+#line 980 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 980 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 980 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 980 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 977 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_threadscope_rev_string_table_3_p_0(
+#line 977 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 977 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2,
+#line 977 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_3);
+
+#line 974 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__add_threadscope_string_4_p_0(
+#line 974 "code_info.m"
+  MR_String ll_backend__code_info__param_1,
+#line 974 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_2,
+#line 974 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 974 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 971 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__add_closure_layout_3_p_0(
+#line 971 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 971 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 971 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 968 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_next_closure_seq_no_3_p_0(
+#line 968 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_1,
+#line 968 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 968 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 966 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_cur_proc_label_2_p_0(
+#line 966 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 966 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 962 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__add_trace_layout_for_label_9_p_0(
+#line 962 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 962 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 962 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 962 "code_info.m"
+  MR_Word ll_backend__code_info__param_4,
+#line 962 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 962 "code_info.m"
+  MR_Word ll_backend__code_info__param_6,
+#line 962 "code_info.m"
+  MR_Word ll_backend__code_info__param_7,
+#line 962 "code_info.m"
+  MR_Word ll_backend__code_info__param_8,
+#line 962 "code_info.m"
+  MR_Word * ll_backend__code_info__param_9);
+
+#line 960 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__succip_is_used_2_p_0(
+#line 960 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 960 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 955 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_next_label_3_p_0(
+#line 955 "code_info.m"
+  MR_Word * ll_backend__code_info__param_1,
+#line 955 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 955 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 950 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__make_proc_entry_label_5_f_0(
+#line 950 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 950 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 950 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 950 "code_info.m"
+  MR_Integer ll_backend__code_info__param_4,
+#line 950 "code_info.m"
+  MR_Word ll_backend__code_info__param_5);
+
+#line 929 "code_info.m"
+MR_String MR_CALL 
+ll_backend__code_info__variable_name_2_f_0(
+#line 929 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 929 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 927 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__current_resume_point_vars_1_f_0(
+#line 927 "code_info.m"
+  MR_Word ll_backend__code_info__param_1);
+
+#line 922 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__get_pred_proc_arginfo_3_f_0(
+#line 922 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 922 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 922 "code_info.m"
+  MR_Integer ll_backend__code_info__param_3);
+
+#line 918 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__get_arginfo_1_f_0(
+#line 918 "code_info.m"
+  MR_Word ll_backend__code_info__param_1);
+
+#line 914 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__get_headvars_1_f_0(
+#line 914 "code_info.m"
+  MR_Word ll_backend__code_info__param_1);
+
+#line 910 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__get_proc_model_1_f_0(
+#line 910 "code_info.m"
+  MR_Word ll_backend__code_info__param_1);
+
+#line 906 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__filter_region_vars_2_f_0(
+#line 906 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 906 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 904 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__lookup_cheaper_tag_test_2_f_0(
+#line 904 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 904 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 902 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__lookup_type_defn_2_f_0(
+#line 902 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 902 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 895 "code_info.m"
+MR_bool MR_CALL 
+ll_backend__code_info__search_type_defn_3_p_0(
+#line 895 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 895 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 895 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 888 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__variable_is_of_dummy_type_2_f_0(
+#line 888 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 888 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 886 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__variable_type_2_f_0(
+#line 886 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 886 "code_info.m"
+  MR_Word ll_backend__code_info__param_2);
+
+#line 882 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__body_typeinfo_liveness_1_f_0(
+#line 882 "code_info.m"
+  MR_Word ll_backend__code_info__param_1);
+
+#line 876 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__post_goal_update_3_p_0(
+#line 876 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 876 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 876 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 869 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__pre_goal_update_4_p_0(
+#line 869 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 869 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 869 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 869 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 862 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_follow_vars_3_p_0(
+#line 862 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 862 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 862 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 858 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_next_non_reserved_3_p_0(
+#line 858 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 858 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 858 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_3);
+
+#line 853 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_follow_var_map_2_p_0(
+#line 853 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 853 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 848 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_stack_slots_2_p_0(
+#line 848 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 848 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 256 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_out_of_line_code_2_p_0(
+#line 256 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 256 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 253 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__add_out_of_line_code_3_p_0(
+#line 253 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 253 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 253 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 251 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_const_struct_map_2_p_0(
+#line 251 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 251 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 248 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_containing_goal_map_det_2_p_0(
+#line 248 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 248 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 245 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_containing_goal_map_2_p_0(
+#line 245 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 245 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 243 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_lcmc_null_2_p_0(
+#line 243 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 243 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 241 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_auto_comments_2_p_0(
+#line 241 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 241 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 239 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_opt_region_ops_2_p_0(
+#line 239 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 239 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 237 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_opt_trail_ops_2_p_0(
+#line 237 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 237 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 234 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_used_env_vars_3_p_0(
+#line 234 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 234 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 234 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 232 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_used_env_vars_2_p_0(
+#line 232 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 232 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 229 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_alloc_sites_3_p_0(
+#line 229 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 229 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 229 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 226 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_alloc_sites_2_p_0(
+#line 226 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 226 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 223 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_static_cell_info_3_p_0(
+#line 223 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 223 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 223 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 221 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_static_cell_info_2_p_0(
+#line 221 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 221 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 219 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_created_temp_frame_2_p_0(
+#line 219 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 219 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 213 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_max_reg_in_use_at_trace_4_p_0(
+#line 213 "code_info.m"
+  MR_Integer ll_backend__code_info__param_1,
+#line 213 "code_info.m"
+  MR_Integer ll_backend__code_info__param_2,
+#line 213 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 213 "code_info.m"
+  MR_Word * ll_backend__code_info__param_4);
+
+#line 211 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_max_reg_in_use_at_trace_3_p_0(
+#line 211 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 211 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_2,
+#line 211 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_3);
+
+#line 208 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_closure_layouts_2_p_0(
+#line 208 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 208 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 203 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_proc_trace_events_3_p_0(
+#line 203 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 203 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 203 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 201 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_proc_trace_events_2_p_0(
+#line 201 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 201 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 199 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_layout_info_2_p_0(
+#line 199 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 199 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 194 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_succip_used_2_p_0(
+#line 194 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 194 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 190 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_label_counter_2_p_0(
+#line 190 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 190 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 186 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_par_conj_depth_3_p_0(
+#line 186 "code_info.m"
+  MR_Integer ll_backend__code_info__param_1,
+#line 186 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 186 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 182 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_par_conj_depth_2_p_0(
+#line 182 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 182 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_2);
+
+#line 178 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_instmap_3_p_0(
+#line 178 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 178 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 178 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 173 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_instmap_2_p_0(
+#line 173 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 173 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 167 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__set_forward_live_vars_3_p_0(
+#line 167 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 167 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 167 "code_info.m"
+  MR_Word * ll_backend__code_info__param_3);
+
+#line 163 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_forward_live_vars_2_p_0(
+#line 163 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 163 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 159 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_emit_region_ops_2_p_0(
+#line 159 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 159 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 157 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_emit_trail_ops_2_p_0(
+#line 157 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 157 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 155 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_maybe_trace_info_2_p_0(
+#line 155 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 155 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 153 "code_info.m"
+MR_Word MR_CALL 
+ll_backend__code_info__get_var_types_1_f_0(
+#line 153 "code_info.m"
+  MR_Word ll_backend__code_info__param_1);
+
+#line 151 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_varset_2_p_0(
+#line 151 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 151 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 147 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_proc_info_2_p_0(
+#line 147 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 147 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 143 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_pred_info_2_p_0(
+#line 143 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 143 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 138 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_proc_id_2_p_0(
+#line 138 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 138 "code_info.m"
+  MR_Integer * ll_backend__code_info__param_2);
+
+#line 134 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_pred_id_2_p_0(
+#line 134 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 134 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 130 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_module_info_2_p_0(
+#line 130 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 130 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 126 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_exprn_opts_2_p_0(
+#line 126 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 126 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 122 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__get_globals_2_p_0(
+#line 122 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 122 "code_info.m"
+  MR_Word * ll_backend__code_info__param_2);
+
+#line 114 "code_info.m"
+void MR_CALL 
+ll_backend__code_info__code_info_init_16_p_0(
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_1,
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_2,
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_3,
+#line 114 "code_info.m"
+  MR_Integer ll_backend__code_info__param_4,
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_5,
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_6,
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_7,
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_8,
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_9,
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_10,
+#line 114 "code_info.m"
+  MR_Word * ll_backend__code_info__param_11,
+#line 114 "code_info.m"
+  MR_Word * ll_backend__code_info__param_12,
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_13,
+#line 114 "code_info.m"
+  MR_Word ll_backend__code_info__param_14,
+#line 114 "code_info.m"
+  MR_Integer ll_backend__code_info__param_15,
+#line 114 "code_info.m"
+  MR_Word * ll_backend__code_info__param_16);
+
+void mercury__ll_backend__code_info__init(void);
+void mercury__ll_backend__code_info__init_type_tables(void);
+void mercury__ll_backend__code_info__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.code_info */
+
+/* :- end_interface ll_backend.code_info. */

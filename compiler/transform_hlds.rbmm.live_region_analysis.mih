@@ -1,0 +1,82 @@
+/*
+** Automatically generated from `rbmm.live_region_analysis.m'
+** by the Mercury compiler,
+** version rotd-2013-10-01, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.rbmm.live_region_analysis. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__rbmm__live_region_analysis
+#define MR_HEADER_GUARD_transform_hlds__rbmm__live_region_analysis
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__RBMM__LIVE_REGION_ANALYSIS_DECL_GUARD
+#define TRANSFORM_HLDS__RBMM__LIVE_REGION_ANALYSIS_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.rbmm.mih"
+
+#endif
+
+
+
+
+#line 29 "rbmm.live_region_analysis.m"
+void MR_CALL 
+transform_hlds__rbmm__live_region_analysis__live_region_analysis_13_p_0(
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word transform_hlds__rbmm__live_region_analysis__param_1,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word transform_hlds__rbmm__live_region_analysis__param_2,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word transform_hlds__rbmm__live_region_analysis__param_3,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word transform_hlds__rbmm__live_region_analysis__param_4,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word transform_hlds__rbmm__live_region_analysis__param_5,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word * transform_hlds__rbmm__live_region_analysis__param_6,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word * transform_hlds__rbmm__live_region_analysis__param_7,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word * transform_hlds__rbmm__live_region_analysis__param_8,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word * transform_hlds__rbmm__live_region_analysis__param_9,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word * transform_hlds__rbmm__live_region_analysis__param_10,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word * transform_hlds__rbmm__live_region_analysis__param_11,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word * transform_hlds__rbmm__live_region_analysis__param_12,
+#line 29 "rbmm.live_region_analysis.m"
+  MR_Word * transform_hlds__rbmm__live_region_analysis__param_13);
+
+void mercury__transform_hlds__rbmm__live_region_analysis__init(void);
+void mercury__transform_hlds__rbmm__live_region_analysis__init_type_tables(void);
+void mercury__transform_hlds__rbmm__live_region_analysis__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.rbmm.live_region_analysis */
+
+/* :- end_interface transform_hlds.rbmm.live_region_analysis. */

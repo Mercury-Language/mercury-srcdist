@@ -1,0 +1,19 @@
+:- module (ll_backend.basic_block).
+:- interface.
+:- import_module bool.
+:- import_module counter.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- type block_info
+	--->	block_info(((ll_backend.basic_block).bi_starting_label) :: ll_backend.llds.label, ((ll_backend.basic_block).bi_label_instr) :: ll_backend.llds.instruction, ((ll_backend.basic_block).bi_later_instrs) :: list.list(ll_backend.llds.instruction), ((ll_backend.basic_block).bi_num_later_instrs) :: int, ((ll_backend.basic_block).bi_fallen_into) :: bool.bool, ((ll_backend.basic_block).bi_jump_dests) :: list.list(ll_backend.llds.label), ((ll_backend.basic_block).bi_fall_dest) :: maybe.maybe(ll_backend.llds.label)).
+:- type block_map == map.map(ll_backend.llds.label, ll_backend.basic_block.block_info).
+:- pred create_basic_blocks(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), mdbcomp.prim_data.proc_label, counter.counter, counter.counter, set.set(ll_backend.llds.label), list.list(ll_backend.llds.label), ll_backend.basic_block.block_map).
+:- mode create_basic_blocks((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred extend_basic_blocks(list.list(ll_backend.llds.label), list.list(ll_backend.llds.label), ll_backend.basic_block.block_map, ll_backend.basic_block.block_map, set.set(ll_backend.llds.label)).
+:- mode extend_basic_blocks((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in)) is det.
+:- pred flatten_basic_blocks(list.list(ll_backend.llds.label), ll_backend.basic_block.block_map, list.list(ll_backend.llds.instruction), int).
+:- mode flatten_basic_blocks((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

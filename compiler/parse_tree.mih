@@ -1,0 +1,50 @@
+/*
+** Automatically generated from `parse_tree.m'
+** by the Mercury compiler,
+** version rotd-2013-10-01, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree
+#define MR_HEADER_GUARD_parse_tree
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE_DECL_GUARD
+#define PARSE_TREE_DECL_GUARD
+
+#endif
+
+
+
+
+void mercury__parse_tree__init(void);
+void mercury__parse_tree__init_type_tables(void);
+void mercury__parse_tree__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree */
+
+/* :- end_interface parse_tree. */

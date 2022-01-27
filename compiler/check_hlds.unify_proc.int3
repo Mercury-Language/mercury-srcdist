@@ -1,0 +1,5 @@
+:- module (check_hlds.unify_proc).
+:- interface.
+:- type proc_requests.
+:- type req_queue.
+:- type unify_proc_id.

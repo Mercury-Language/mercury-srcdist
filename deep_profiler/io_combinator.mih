@@ -1,0 +1,1250 @@
+/*
+** Automatically generated from `io_combinator.m'
+** by the Mercury compiler,
+** version rotd-2013-10-01, configured for x86_64-apple-darwin12.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module io_combinator. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_io_combinator
+#define MR_HEADER_GUARD_io_combinator
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO_COMBINATOR_DECL_GUARD
+#define IO_COMBINATOR_DECL_GUARD
+
+#endif
+
+
+
+
+#line 699 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_13_17_p_0(
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_21,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_22,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_23,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_24,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_25,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_26,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_27,
+#line 699 "io_combinator.m"
+  MR_Word io_combinator__param_28,
+#line 699 "io_combinator.m"
+  MR_Word * io_combinator__param_29);
+
+#line 666 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_12_16_p_0(
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_21,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_22,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_23,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_24,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_25,
+#line 666 "io_combinator.m"
+  MR_Word io_combinator__param_26,
+#line 666 "io_combinator.m"
+  MR_Word * io_combinator__param_27);
+
+#line 636 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_11_15_p_0(
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_21,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_22,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_23,
+#line 636 "io_combinator.m"
+  MR_Word io_combinator__param_24,
+#line 636 "io_combinator.m"
+  MR_Word * io_combinator__param_25);
+
+#line 608 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_10_14_p_0(
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_21,
+#line 608 "io_combinator.m"
+  MR_Word io_combinator__param_22,
+#line 608 "io_combinator.m"
+  MR_Word * io_combinator__param_23);
+
+#line 582 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_9_13_p_0(
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 582 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 582 "io_combinator.m"
+  MR_Word * io_combinator__param_21);
+
+#line 558 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_8_12_p_0(
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 558 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 558 "io_combinator.m"
+  MR_Word * io_combinator__param_19);
+
+#line 536 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_7_11_p_0(
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 536 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 536 "io_combinator.m"
+  MR_Word * io_combinator__param_17);
+
+#line 516 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_6_10_p_0(
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 516 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 516 "io_combinator.m"
+  MR_Word * io_combinator__param_15);
+
+#line 498 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_5_9_p_0(
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 498 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 498 "io_combinator.m"
+  MR_Word * io_combinator__param_13);
+
+#line 482 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_4_8_p_0(
+#line 482 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 482 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 482 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 482 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 482 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 482 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 482 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 482 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 482 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 482 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 482 "io_combinator.m"
+  MR_Word * io_combinator__param_11);
+
+#line 468 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_3_7_p_0(
+#line 468 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 468 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 468 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 468 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 468 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 468 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 468 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 468 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 468 "io_combinator.m"
+  MR_Word * io_combinator__param_9);
+
+#line 456 "io_combinator.m"
+void MR_CALL 
+io_combinator__maybe_error_sequence_2_6_p_0(
+#line 456 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 456 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 456 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 456 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 456 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 456 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 456 "io_combinator.m"
+  MR_Word * io_combinator__param_7);
+
+#line 434 "io_combinator.m"
+void MR_CALL 
+io_combinator__res_sequence_11_15_p_0(
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_21,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_22,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_23,
+#line 434 "io_combinator.m"
+  MR_Word io_combinator__param_24,
+#line 434 "io_combinator.m"
+  MR_Word * io_combinator__param_25);
+
+#line 406 "io_combinator.m"
+void MR_CALL 
+io_combinator__res_sequence_10_14_p_0(
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_21,
+#line 406 "io_combinator.m"
+  MR_Word io_combinator__param_22,
+#line 406 "io_combinator.m"
+  MR_Word * io_combinator__param_23);
+
+#line 380 "io_combinator.m"
+void MR_CALL 
+io_combinator__res_sequence_9_13_p_0(
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 380 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 380 "io_combinator.m"
+  MR_Word * io_combinator__param_21);
+
+#line 356 "io_combinator.m"
+void MR_CALL 
+io_combinator__res_sequence_8_12_p_0(
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 356 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 356 "io_combinator.m"
+  MR_Word * io_combinator__param_19);
+
+#line 334 "io_combinator.m"
+void MR_CALL 
+io_combinator__res_sequence_7_11_p_0(
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 334 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 334 "io_combinator.m"
+  MR_Word * io_combinator__param_17);
+
+#line 314 "io_combinator.m"
+void MR_CALL 
+io_combinator__res_sequence_6_10_p_0(
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 314 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 314 "io_combinator.m"
+  MR_Word * io_combinator__param_15);
+
+#line 296 "io_combinator.m"
+void MR_CALL 
+io_combinator__res_sequence_5_9_p_0(
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 296 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 296 "io_combinator.m"
+  MR_Word * io_combinator__param_13);
+
+#line 280 "io_combinator.m"
+void MR_CALL 
+io_combinator__res_sequence_4_8_p_0(
+#line 280 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 280 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 280 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 280 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 280 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 280 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 280 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 280 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 280 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 280 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 280 "io_combinator.m"
+  MR_Word * io_combinator__param_11);
+
+#line 266 "io_combinator.m"
+void MR_CALL 
+io_combinator__res_sequence_3_7_p_0(
+#line 266 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 266 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 266 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 266 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 266 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 266 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 266 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 266 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 266 "io_combinator.m"
+  MR_Word * io_combinator__param_9);
+
+#line 254 "io_combinator.m"
+void MR_CALL 
+io_combinator__res_sequence_2_6_p_0(
+#line 254 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 254 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 254 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 254 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 254 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 254 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 254 "io_combinator.m"
+  MR_Word * io_combinator__param_7);
+
+#line 232 "io_combinator.m"
+void MR_CALL 
+io_combinator__sequence_11_15_p_0(
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_21,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_22,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_23,
+#line 232 "io_combinator.m"
+  MR_Word io_combinator__param_24,
+#line 232 "io_combinator.m"
+  MR_Word * io_combinator__param_25);
+
+#line 204 "io_combinator.m"
+void MR_CALL 
+io_combinator__sequence_10_14_p_0(
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_21,
+#line 204 "io_combinator.m"
+  MR_Word io_combinator__param_22,
+#line 204 "io_combinator.m"
+  MR_Word * io_combinator__param_23);
+
+#line 178 "io_combinator.m"
+void MR_CALL 
+io_combinator__sequence_9_13_p_0(
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_19,
+#line 178 "io_combinator.m"
+  MR_Word io_combinator__param_20,
+#line 178 "io_combinator.m"
+  MR_Word * io_combinator__param_21);
+
+#line 154 "io_combinator.m"
+void MR_CALL 
+io_combinator__sequence_8_12_p_0(
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_17,
+#line 154 "io_combinator.m"
+  MR_Word io_combinator__param_18,
+#line 154 "io_combinator.m"
+  MR_Word * io_combinator__param_19);
+
+#line 132 "io_combinator.m"
+void MR_CALL 
+io_combinator__sequence_7_11_p_0(
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_15,
+#line 132 "io_combinator.m"
+  MR_Word io_combinator__param_16,
+#line 132 "io_combinator.m"
+  MR_Word * io_combinator__param_17);
+
+#line 112 "io_combinator.m"
+void MR_CALL 
+io_combinator__sequence_6_10_p_0(
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_13,
+#line 112 "io_combinator.m"
+  MR_Word io_combinator__param_14,
+#line 112 "io_combinator.m"
+  MR_Word * io_combinator__param_15);
+
+#line 94 "io_combinator.m"
+void MR_CALL 
+io_combinator__sequence_5_9_p_0(
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_11,
+#line 94 "io_combinator.m"
+  MR_Word io_combinator__param_12,
+#line 94 "io_combinator.m"
+  MR_Word * io_combinator__param_13);
+
+#line 78 "io_combinator.m"
+void MR_CALL 
+io_combinator__sequence_4_8_p_0(
+#line 78 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 78 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 78 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 78 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 78 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 78 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 78 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 78 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 78 "io_combinator.m"
+  MR_Word io_combinator__param_9,
+#line 78 "io_combinator.m"
+  MR_Word io_combinator__param_10,
+#line 78 "io_combinator.m"
+  MR_Word * io_combinator__param_11);
+
+#line 64 "io_combinator.m"
+void MR_CALL 
+io_combinator__sequence_3_7_p_0(
+#line 64 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 64 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 64 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 64 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 64 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 64 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 64 "io_combinator.m"
+  MR_Word io_combinator__param_7,
+#line 64 "io_combinator.m"
+  MR_Word io_combinator__param_8,
+#line 64 "io_combinator.m"
+  MR_Word * io_combinator__param_9);
+
+#line 52 "io_combinator.m"
+void MR_CALL 
+io_combinator__sequence_2_6_p_0(
+#line 52 "io_combinator.m"
+  MR_Word io_combinator__param_1,
+#line 52 "io_combinator.m"
+  MR_Word io_combinator__param_2,
+#line 52 "io_combinator.m"
+  MR_Word io_combinator__param_3,
+#line 52 "io_combinator.m"
+  MR_Word io_combinator__param_4,
+#line 52 "io_combinator.m"
+  MR_Word io_combinator__param_5,
+#line 52 "io_combinator.m"
+  MR_Word io_combinator__param_6,
+#line 52 "io_combinator.m"
+  MR_Word * io_combinator__param_7);
+
+void mercury__io_combinator__init(void);
+void mercury__io_combinator__init_type_tables(void);
+void mercury__io_combinator__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_io_combinator */
+
+/* :- end_interface io_combinator. */
