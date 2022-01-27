@@ -1,0 +1,264 @@
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1995-2003, 2005-2012 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public Licence - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# Mmake - this is Mmake file for building the Mercury compiler 
+
+MERCURY_DIR=..
+LINK_STATIC=yes
+include $(MERCURY_DIR)/Mmake.common
+
+# Override the settings in ../Mmake.workspace so that in debugging grades we
+# do not include mer_mdbcomp.init twice in the list of files passed to mkinit.
+#
+C2INITFLAGS = \
+	--trace-init-file $(BROWSER_DIR)/$(BROWSER_LIB_NAME).init \
+	--ssdb-init-file $(SSDB_DIR)/$(SSDB_LIB_NAME).init
+
+-include Mmake.compiler.params
+
+# Override the default rule in `mmake --use-mmc-make' that asks `mmc' to
+# create a missing optional params file for us.
+Mmake.compiler.params:
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+MAIN_TARGET=all
+
+MERCURY_MAIN_MODULES = top_level
+
+VPATH = \
+	$(LIBRARY_DIR) \
+	$(MDBCOMP_DIR) \
+	$(BROWSER_DIR) \
+	$(SSDB_DIR)
+
+#-----------------------------------------------------------------------------#
+
+MCFLAGS	     += --flags COMP_FLAGS $(CONFIG_OVERRIDE)
+
+ifeq ("$(filter il% csharp% java% erlang%,$(GRADE))","")
+MLOBJS       := ../trace/lib$(EVENTSPEC_LIB_NAME).$A \
+		$(MLOBJS)
+MLLIBS       += $(THREAD_LIBS)
+else
+MLOBJS =
+endif
+
+ALL_MLLIBS    = $(MLLIBS) $(EXTRA_MLLIBS)
+MLFLAGS      += --shared
+C2INITARGS   += $(MDBCOMP_DIR)/$(MDBCOMP_LIB_NAME).init
+
+
+# Work-around for a fixed limit: on alpha-dec-osf3.2, if we compile with
+# `-O5', then when linking mercury_compile we get an error message of the form
+#
+#   /usr/bin/ld:
+#	Too many GOT entries in object file '/usr/lib/cmplrs/cc/libexc_init.a';
+#	Found 8190 (6660 locals + 1530 globals) but max is 8189
+#
+# unless we link it statically.
+#
+ifeq ($(FULLARCH),alpha-dec-osf3.2)
+MLFLAGS += --static
+MCFLAGS += --linkage static
+endif
+
+# -Xmx256m doesn't always seem to be enough memory to build the compiler.
+# This bumps up the memory when building the compiler if the javac executable
+# accepts the -J-Xmx flag, without bumping up the memory requirements in
+# general.
+ifneq ("$(findstring -J\"-Xmx,$(JAVACFLAGS))","")
+JAVACFLAGS   += -J\"-Xmx2048m\"
+endif
+
+# The default C stack size of 1Mb on Windows is not enough to compile the
+# standard library in the hlc.gc grade using a Mercury compiler built in
+# the hlc.gc grade with MinGW64.
+# XXX we must match against the full architecture string here since we only
+# want to pass --stack to the linker for MinGW64 GCC.
+# When we support the 64-bit version of the Microsoft toolchain, we will
+# need to do something different here.
+#
+ifeq ($(FULLARCH),x86_64-w64-mingw32)
+LDFLAGS += -Wl,--stack=8388608
+endif
+
+#-----------------------------------------------------------------------------#
+
+# targets
+
+# specify the name of the top-level module to build
+MC_PROG = top_level
+
+# mercury_compile
+
+.PHONY: depend
+depend:		$(MC_PROG).depend
+
+$(MC_PROG).depend: Mercury.modules COMP_FLAGS 
+
+# This directory contains source files for which the module
+# name doesn't match the file name, so smart recompilation
+# won't work without the Mercury.modules file.
+.PHONY: Mercury.modules
+Mercury.modules: COMP_FLAGS
+	$(MC) $(ALL_GRADEFLAGS) $(ALL_MCFLAGS) -f *.m
+
+.PHONY: all
+all:		mercury $(TAGS_FILE_EXISTS)
+
+.PHONY: mercury
+mercury:	mercury_compile
+
+# The executable was previous known as `mercury_compile',
+# but now we generate it as `top_level'.  For compatibility with
+# various existing code, we make links to the old names.
+
+LN = ln
+
+ifneq ("$(EXT_FOR_EXE)","")
+.PHONY: mercury_compile
+mercury_compile: mercury_compile$(EXT_FOR_EXE)
+endif
+
+mercury_compile$(EXT_FOR_EXE): $(MC_PROG)$(EXT_FOR_EXE)
+	rm -f mercury_compile$(EXT_FOR_EXE)
+	$(LN) $(MC_PROG)$(EXT_FOR_EXE) mercury_compile$(EXT_FOR_EXE) || \
+		cp $(MC_PROG)$(EXT_FOR_EXE) mercury_compile$(EXT_FOR_EXE)
+ifeq ($(findstring il,$(GRADE)),il)        
+	# set the stack size to 100M -- the default of 1M is too low
+	-editbin /nologo /stack:100000000 mercury_compile$(EXT_FOR_EXE)
+	cp ../browser/*.dll .
+endif
+
+#-----------------------------------------------------------------------------#
+
+# Tell the C# compiler where the stdlib and mdbcomp assemblies are.
+#
+ifneq ("$(filter csharp%,$(GRADE))","")
+CSCFLAGS=-lib:../library -r:mer_std.dll -lib:../mdbcomp -r:mer_mdbcomp.dll
+endif
+
+#-----------------------------------------------------------------------------#
+
+# Add some additional dependencies, so that Mmake knows to remake the
+# compiler if one of the libraries changes.
+
+ifeq ($(findstring il,$(GRADE)),il)        
+CSCFLAGS=/lib
+
+# This line works around an Mmake bug: mmake doesn't record
+# dependencies properly with --transitive-intermodule-optimization
+%.il: opts
+else
+ifeq ("$(filter csharp% java% erlang%,$(GRADE))","")
+$(MC_PROG): $(RUNTIME_DIR)/lib$(RT_LIB_NAME).$A
+$(MC_PROG): $(LIBRARY_DIR)/lib$(STD_LIB_NAME).$A
+$(MC_PROG): $(MDBCOMP_DIR)/lib$(MDBCOMP_LIB_NAME).$A
+$(MC_PROG): $(BROWSER_DIR)/lib$(BROWSER_LIB_NAME).$A
+$(MC_PROG): $(SSDB_DIR)/lib$(SSDB_LIB_NAME).$A
+$(MC_PROG): $(TRACE_DIR)/lib$(TRACE_LIB_NAME).$A
+$(MC_PROG): $(TRACE_DIR)/lib$(EVENTSPEC_LIB_NAME).$A
+# XXX should also depend on $(BOEHM_GC_DIR)/libgc(_prof).$A, but only
+# if in .gc(.prof) grade
+endif
+endif
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: check
+check:	$(MC_PROG).check
+
+.PHONY: ints 
+int3s:	$(MC_PROG).int3s
+
+.PHONY: ints 
+ints:	$(MC_PROG).ints
+
+#-----------------------------------------------------------------------------#
+
+# We need the shenanigans with .compiler_tags to avoid situations in which an
+# "mmake tags" in this directory does nothing even in the absence of a tags
+# file in this directory, because mmake uses VPATH to find ../library/tags
+# and believes it to be the tags file we are asking for.
+
+.PHONY: tags
+tags:	.compiler_tags
+
+.compiler_tags:	$(MTAGS) \
+		$(wildcard *.m) \
+		$(wildcard $(LIBRARY_DIR)/*.m) \
+		$(wildcard $(MDBCOMP_DIR)/*.m)
+	$(MTAGS) $(MTAGSFLAGS) *.m $(LIBRARY_DIR)/*.m $(MDBCOMP_DIR)/*.m
+	@touch .compiler_tags
+
+.PHONY: tags_file_exists
+tags_file_exists:
+	@if test ! -f tags; then echo making tags; \
+	$(MTAGS) $(MTAGSFLAGS) *.m $(LIBRARY_DIR)/*.m $(MDBCOMP_DIR)/*.m; \
+	touch .compiler_tags; \
+	fi
+
+$(MC_PROG).stats: source_stats.awk $($(MC_PROG).ms)
+	awk -f `vpath_find source_stats.awk` \
+		`vpath_find $($(MC_PROG).ms)` > $@
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: dates
+dates:
+	touch $($(MC_PROG).dates)
+
+#-----------------------------------------------------------------------------#
+
+# Note that the cs and os targets don't build top_level_init.{c,o}
+.PHONY: os cs ils
+ifneq ($(MMAKE_USE_MMC_MAKE),yes)
+os: $($(MC_PROG).os)
+cs: $($(MC_PROG).cs)
+ils: $($(MC_PROG).ils)
+opts: $($(MC_PROG).opts)
+else
+os: $(MC_PROG).os
+cs: $(MC_PROG).cs
+ils: $(MC_PROG).ils
+opts: $(MC_PROG).opts
+endif
+
+#-----------------------------------------------------------------------------#
+
+clean_local:
+	rm -f ../main.$O $(PREPROCESSED_M_FILES) $(PP_DATE_FILES)
+
+realclean_local:
+	rm -f tags $(MC_PROG).stats Mercury.modules \
+		COMP_FLAGS COMP_FLAGS.date mercury_compile$(EXT_FOR_EXE)
+
+#-----------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------#
+
+# Installation targets
+
+.PHONY: install
+install: install_mercury
+
+.PHONY: install_all
+install_all: install_mercury
+
+.PHONY: install_mercury
+install_mercury: install_compiler
+	
+.PHONY: install_dirs
+install_dirs:
+	-[ -d $(INSTALL_MERC_BIN_DIR) ] || mkdir -p $(INSTALL_MERC_BIN_DIR)
+
+.PHONY: install_compiler
+install_compiler: mercury_compile install_dirs
+	cp `vpath_find mercury_compile$(EXT_FOR_EXE)` $(INSTALL_MERC_BIN_DIR)
+
+#-----------------------------------------------------------------------------#

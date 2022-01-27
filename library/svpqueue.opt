@@ -1,0 +1,10 @@
+:- module svpqueue.
+:- use_module builtin, pqueue, private_builtin.
+svpqueue.insert(K_5, V_6, STATE_VARIABLE_PQ_0_8, STATE_VARIABLE_PQ_9) :-
+    pqueue.insert(K_5, V_6, STATE_VARIABLE_PQ_0_8, STATE_VARIABLE_PQ_9).
+svpqueue.remove(K_5, V_6, STATE_VARIABLE_PQ_0_8, STATE_VARIABLE_PQ_9) :-
+    pqueue.remove(K_5, V_6, STATE_VARIABLE_PQ_0_8, STATE_VARIABLE_PQ_9).
+:- pragma exceptions(predicate, (svpqueue.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svpqueue.remove), 4, 0, may_throw(user_exception)).
+:- pragma termination_info(svpqueue.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svpqueue.remove((builtin.out), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

@@ -1,0 +1,25 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_10)
+ restricted \write18 enabled.
+entering extended mode
+(./faq.texi_pp (./texinfo.tex Loading texinfo [version 2008-04-18.10]: pdf,
+fonts, page headings, tables, conditionals, indexing, sectioning, toc,
+environments, defuns, macros, cross references, insertions,
+(/opt/local/share/texmf/tex/generic/epsf/epsf.tex
+This is `epsf.tex' v2.7.3 <23 July 2005>
+) localization, formatting, and turning on texinfo input format.) [1] [2]
+[-1] Chapter 1 Chapter 2 [1] [2] Chapter 3 Chapter 4 [3] )
+Output written on faq.dvi (6 pages, 9980 bytes).
+Transcript written on faq.log.
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_10)
+ restricted \write18 enabled.
+entering extended mode
+(./faq.texi_pp (./texinfo.tex Loading texinfo [version 2008-04-18.10]: pdf,
+fonts, page headings, tables, conditionals, indexing, sectioning, toc,
+environments, defuns, macros, cross references, insertions,
+(/opt/local/share/texmf/tex/generic/epsf/epsf.tex
+This is `epsf.tex' v2.7.3 <23 July 2005>
+) localization, formatting, and turning on texinfo input format.) (./faq.aux)
+[1] [2] (./faq.toc) [-1] Chapter 1 Chapter 2 [1] [2] Chapter 3 Chapter 4
+[3] )
+Output written on faq.dvi (6 pages, 11308 bytes).
+Transcript written on faq.log.

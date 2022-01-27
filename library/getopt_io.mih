@@ -1,0 +1,468 @@
+/*
+** Automatically generated from `getopt_io.m'
+** by the Mercury compiler,
+** version 13.05.1, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module getopt_io. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_getopt_io
+#define MR_HEADER_GUARD_getopt_io
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef GETOPT_IO_DECL_GUARD
+#define GETOPT_IO_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "getopt_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__getopt_io__getopt_io__type_ctor_info_maybe_option_table_1;
+
+#line 44 "getopt_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__getopt_io__getopt_io__type_ctor_info_option_data_0;
+
+#line 47 "getopt_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__getopt_io__getopt_io__type_ctor_info_option_ops_1;
+
+#line 50 "getopt_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__getopt_io__getopt_io__type_ctor_info_option_ops_internal_1;
+
+#line 53 "getopt_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__getopt_io__getopt_io__type_ctor_info_option_ops_special_1;
+
+#line 56 "getopt_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__getopt_io__getopt_io__type_ctor_info_option_ops_track_1;
+
+#line 59 "getopt_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__getopt_io__getopt_io__type_ctor_info_option_table_1;
+
+#line 62 "getopt_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__getopt_io__getopt_io__type_ctor_info_special_data_0;
+
+#line 251 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io____Compare____special_data_0_0(
+#line 251 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_1,
+#line 251 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 251 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3);
+
+#line 251 "getopt_io.m"
+MR_bool MR_CALL 
+mercury__getopt_io____Unify____special_data_0_0(
+#line 251 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 251 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2);
+
+#line 258 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io____Compare____option_table_1_0(
+#line 258 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 258 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_2,
+#line 258 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3,
+#line 258 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_4);
+
+#line 258 "getopt_io.m"
+MR_bool MR_CALL 
+mercury__getopt_io____Unify____option_table_1_0(
+#line 258 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 258 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 258 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3);
+
+#line 192 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io____Compare____option_ops_track_1_0(
+#line 192 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 192 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_2,
+#line 192 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3,
+#line 192 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_4);
+
+#line 192 "getopt_io.m"
+MR_bool MR_CALL 
+mercury__getopt_io____Unify____option_ops_track_1_0(
+#line 192 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 192 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 192 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3);
+
+#line 310 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io____Compare____option_ops_special_1_0(
+#line 310 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 310 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_2,
+#line 310 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3,
+#line 310 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_4);
+
+#line 310 "getopt_io.m"
+MR_bool MR_CALL 
+mercury__getopt_io____Unify____option_ops_special_1_0(
+#line 310 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 310 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 310 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3);
+
+#line 324 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io____Compare____option_ops_internal_1_0(
+#line 324 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 324 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_2,
+#line 324 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3,
+#line 324 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_4);
+
+#line 324 "getopt_io.m"
+MR_bool MR_CALL 
+mercury__getopt_io____Unify____option_ops_internal_1_0(
+#line 324 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 324 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 324 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3);
+
+#line 164 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io____Compare____option_ops_1_0(
+#line 164 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 164 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_2,
+#line 164 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3,
+#line 164 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_4);
+
+#line 164 "getopt_io.m"
+MR_bool MR_CALL 
+mercury__getopt_io____Unify____option_ops_1_0(
+#line 164 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 164 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 164 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3);
+
+#line 237 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io____Compare____option_data_0_0(
+#line 237 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_1,
+#line 237 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 237 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3);
+
+#line 237 "getopt_io.m"
+MR_bool MR_CALL 
+mercury__getopt_io____Unify____option_data_0_0(
+#line 237 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 237 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2);
+
+#line 260 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io____Compare____maybe_option_table_1_0(
+#line 260 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 260 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_2,
+#line 260 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3,
+#line 260 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_4);
+
+#line 260 "getopt_io.m"
+MR_bool MR_CALL 
+mercury__getopt_io____Unify____maybe_option_table_1_0(
+#line 260 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 260 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 260 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3);
+
+#line 396 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__process_arguments_11_p_0(
+#line 396 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 396 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 396 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_3,
+#line 396 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_4,
+#line 396 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_5,
+#line 396 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_6,
+#line 396 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_7,
+#line 396 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_8,
+#line 396 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_9,
+#line 396 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_10);
+
+#line 292 "getopt_io.m"
+MR_Word MR_CALL 
+mercury__getopt_io__lookup_accumulating_option_2_f_0(
+#line 292 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 292 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 292 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3);
+
+#line 290 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__lookup_accumulating_option_3_p_0(
+#line 290 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 290 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 290 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3,
+#line 290 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_4);
+
+#line 287 "getopt_io.m"
+MR_Word MR_CALL 
+mercury__getopt_io__lookup_maybe_string_option_2_f_0(
+#line 287 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 287 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 287 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3);
+
+#line 285 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__lookup_maybe_string_option_3_p_0(
+#line 285 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 285 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 285 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3,
+#line 285 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_4);
+
+#line 282 "getopt_io.m"
+MR_Word MR_CALL 
+mercury__getopt_io__lookup_maybe_int_option_2_f_0(
+#line 282 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 282 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 282 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3);
+
+#line 280 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__lookup_maybe_int_option_3_p_0(
+#line 280 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 280 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 280 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3,
+#line 280 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_4);
+
+#line 278 "getopt_io.m"
+MR_String MR_CALL 
+mercury__getopt_io__lookup_string_option_2_f_0(
+#line 278 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 278 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 278 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3);
+
+#line 276 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__lookup_string_option_3_p_0(
+#line 276 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 276 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 276 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3,
+#line 276 "getopt_io.m"
+  MR_String * mercury__getopt_io__param_4);
+
+#line 274 "getopt_io.m"
+MR_Integer MR_CALL 
+mercury__getopt_io__lookup_int_option_2_f_0(
+#line 274 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 274 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 274 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3);
+
+#line 272 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__lookup_int_option_3_p_0(
+#line 272 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 272 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 272 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3,
+#line 272 "getopt_io.m"
+  MR_Integer * mercury__getopt_io__param_4);
+
+#line 270 "getopt_io.m"
+MR_Word MR_CALL 
+mercury__getopt_io__lookup_bool_option_2_f_0(
+#line 270 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 270 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 270 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3);
+
+#line 268 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__lookup_bool_option_3_p_0(
+#line 268 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 268 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 268 "getopt_io.m"
+  MR_Box mercury__getopt_io__param_3,
+#line 268 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_4);
+
+#line 160 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__init_option_table_multi_2_p_0(
+#line 160 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 160 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 160 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_3);
+
+#line 156 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__init_option_table_2_p_0(
+#line 156 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 156 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 156 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_3);
+
+#line 150 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__process_options_track_9_p_0(
+#line 150 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 150 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 150 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3,
+#line 150 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_4,
+#line 150 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_5,
+#line 150 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_6,
+#line 150 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_7,
+#line 150 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_8);
+
+#line 143 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__process_options_7_p_0(
+#line 143 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 143 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 143 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3,
+#line 143 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_4,
+#line 143 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_5,
+#line 143 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_6);
+
+#line 139 "getopt_io.m"
+void MR_CALL 
+mercury__getopt_io__process_options_6_p_0(
+#line 139 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_1,
+#line 139 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_2,
+#line 139 "getopt_io.m"
+  MR_Word mercury__getopt_io__param_3,
+#line 139 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_4,
+#line 139 "getopt_io.m"
+  MR_Word * mercury__getopt_io__param_5);
+
+void mercury__getopt_io__init(void);
+void mercury__getopt_io__init_type_tables(void);
+void mercury__getopt_io__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_getopt_io */
+
+/* :- end_interface getopt_io. */

@@ -1,0 +1,310 @@
+/*
+** Automatically generated from `bit_buffer.write.m'
+** by the Mercury compiler,
+** version 13.05.1, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module bit_buffer.write. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_bit_buffer__write
+#define MR_HEADER_GUARD_bit_buffer__write
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BIT_BUFFER__WRITE_DECL_GUARD
+#define BIT_BUFFER__WRITE_DECL_GUARD
+#include "bit_buffer.mih"
+
+#endif
+
+
+
+
+#line 42 "bit_buffer.write.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__bit_buffer__write__bit_buffer__write__type_ctor_info_io_write_buffer_0;
+
+#line 45 "bit_buffer.write.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__bit_buffer__write__bit_buffer__write__type_ctor_info_write_buffer_2;
+
+#line 48 "bit_buffer.write.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__bit_buffer__write__bit_buffer__write__type_ctor_info_write_buffer_0;
+
+#line 163 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write____Compare____write_buffer_2_0(
+#line 163 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 163 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2,
+#line 163 "bit_buffer.write.m"
+  MR_Word * mercury__bit_buffer__write__param_3,
+#line 163 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_4,
+#line 163 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_5);
+
+#line 163 "bit_buffer.write.m"
+MR_bool MR_CALL 
+mercury__bit_buffer__write____Unify____write_buffer_2_0(
+#line 163 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 163 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2,
+#line 163 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_3,
+#line 163 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_4);
+
+#line 34 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write____Compare____write_buffer_0_0(
+#line 34 "bit_buffer.write.m"
+  MR_Word * mercury__bit_buffer__write__param_1,
+#line 34 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2,
+#line 34 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_3);
+
+#line 34 "bit_buffer.write.m"
+MR_bool MR_CALL 
+mercury__bit_buffer__write____Unify____write_buffer_0_0(
+#line 34 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 34 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2);
+
+#line 35 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write____Compare____io_write_buffer_0_0(
+#line 35 "bit_buffer.write.m"
+  MR_Word * mercury__bit_buffer__write__param_1,
+#line 35 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2,
+#line 35 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_3);
+
+#line 35 "bit_buffer.write.m"
+MR_bool MR_CALL 
+mercury__bit_buffer__write____Unify____io_write_buffer_0_0(
+#line 35 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 35 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2);
+
+#line 362 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__store_full_buffer_2_p_0(
+#line 362 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 362 "bit_buffer.write.m"
+  MR_Box mercury__bit_buffer__write__param_2,
+#line 362 "bit_buffer.write.m"
+  MR_Box * mercury__bit_buffer__write__param_3);
+
+#line 322 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__flush_chunk_to_stream_2_p_0(
+#line 322 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 322 "bit_buffer.write.m"
+  MR_Box mercury__bit_buffer__write__param_2,
+#line 322 "bit_buffer.write.m"
+  MR_Box * mercury__bit_buffer__write__param_3);
+
+#line 287 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__make_room_2_p_0(
+#line 287 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 287 "bit_buffer.write.m"
+  MR_Box mercury__bit_buffer__write__param_2,
+#line 287 "bit_buffer.write.m"
+  MR_Box * mercury__bit_buffer__write__param_3);
+
+#line 276 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__maybe_make_room_2_p_0(
+#line 276 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 276 "bit_buffer.write.m"
+  MR_Box mercury__bit_buffer__write__param_2,
+#line 276 "bit_buffer.write.m"
+  MR_Box * mercury__bit_buffer__write__param_3);
+
+#line 227 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__put_bitmap_2_5_p_0(
+#line 227 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 227 "bit_buffer.write.m"
+  MR_Box mercury__bit_buffer__write__param_2,
+#line 227 "bit_buffer.write.m"
+  MR_Integer mercury__bit_buffer__write__param_3,
+#line 227 "bit_buffer.write.m"
+  MR_Integer mercury__bit_buffer__write__param_4,
+#line 227 "bit_buffer.write.m"
+  MR_Box mercury__bit_buffer__write__param_5,
+#line 227 "bit_buffer.write.m"
+  MR_Box * mercury__bit_buffer__write__param_6);
+
+#line 124 "bit_buffer.write.m"
+MR_Box MR_CALL 
+mercury__bit_buffer__write__finalize_to_bitmap_1_f_0(
+#line 124 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1);
+
+#line 118 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__finalize_3_p_0(
+#line 118 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 118 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2,
+#line 118 "bit_buffer.write.m"
+  MR_Box * mercury__bit_buffer__write__param_3,
+#line 118 "bit_buffer.write.m"
+  MR_Box * mercury__bit_buffer__write__param_4);
+
+#line 111 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__flush_2_p_0(
+#line 111 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 111 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2,
+#line 111 "bit_buffer.write.m"
+  MR_Word * mercury__bit_buffer__write__param_3);
+
+#line 103 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__put_bitmap_5_p_0(
+#line 103 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 103 "bit_buffer.write.m"
+  MR_Box mercury__bit_buffer__write__param_2,
+#line 103 "bit_buffer.write.m"
+  MR_Integer mercury__bit_buffer__write__param_3,
+#line 103 "bit_buffer.write.m"
+  MR_Integer mercury__bit_buffer__write__param_4,
+#line 103 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_5,
+#line 103 "bit_buffer.write.m"
+  MR_Word * mercury__bit_buffer__write__param_6);
+
+#line 98 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__put_bitmap_3_p_0(
+#line 98 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 98 "bit_buffer.write.m"
+  MR_Box mercury__bit_buffer__write__param_2,
+#line 98 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_3,
+#line 98 "bit_buffer.write.m"
+  MR_Word * mercury__bit_buffer__write__param_4);
+
+#line 90 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__put_byte_3_p_0(
+#line 90 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 90 "bit_buffer.write.m"
+  MR_Integer mercury__bit_buffer__write__param_2,
+#line 90 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_3,
+#line 90 "bit_buffer.write.m"
+  MR_Word * mercury__bit_buffer__write__param_4);
+
+#line 82 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__put_bits_4_p_0(
+#line 82 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 82 "bit_buffer.write.m"
+  MR_Integer mercury__bit_buffer__write__param_2,
+#line 82 "bit_buffer.write.m"
+  MR_Integer mercury__bit_buffer__write__param_3,
+#line 82 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_4,
+#line 82 "bit_buffer.write.m"
+  MR_Word * mercury__bit_buffer__write__param_5);
+
+#line 74 "bit_buffer.write.m"
+void MR_CALL 
+mercury__bit_buffer__write__put_bit_3_p_0(
+#line 74 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 74 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2,
+#line 74 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_3,
+#line 74 "bit_buffer.write.m"
+  MR_Word * mercury__bit_buffer__write__param_4);
+
+#line 68 "bit_buffer.write.m"
+MR_Integer MR_CALL 
+mercury__bit_buffer__write__num_bits_to_byte_boundary_1_f_0(
+#line 68 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 68 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2,
+#line 68 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_3);
+
+#line 62 "bit_buffer.write.m"
+MR_Integer MR_CALL 
+mercury__bit_buffer__write__num_buffered_bits_1_f_0(
+#line 62 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 62 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_2,
+#line 62 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_3);
+
+#line 57 "bit_buffer.write.m"
+MR_Word MR_CALL 
+mercury__bit_buffer__write__new_bitmap_builder_1_f_0(
+#line 57 "bit_buffer.write.m"
+  MR_Integer mercury__bit_buffer__write__param_1);
+
+#line 49 "bit_buffer.write.m"
+MR_Word MR_CALL 
+mercury__bit_buffer__write__new_3_f_0(
+#line 49 "bit_buffer.write.m"
+  MR_Word mercury__bit_buffer__write__param_1,
+#line 49 "bit_buffer.write.m"
+  MR_Integer mercury__bit_buffer__write__param_2,
+#line 49 "bit_buffer.write.m"
+  MR_Box mercury__bit_buffer__write__param_3,
+#line 49 "bit_buffer.write.m"
+  MR_Box mercury__bit_buffer__write__param_4);
+
+void mercury__bit_buffer__write__init(void);
+void mercury__bit_buffer__write__init_type_tables(void);
+void mercury__bit_buffer__write__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_bit_buffer.write */
+
+/* :- end_interface bit_buffer.write. */

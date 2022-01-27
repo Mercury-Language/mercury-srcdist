@@ -1,0 +1,6 @@
+:- module (analysis.file).
+:- interface.
+:- import_module (libs.globals).
+:- implementation.
+:- type dummy_answer
+	--->	dummy_answer .

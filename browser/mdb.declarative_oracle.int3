@@ -1,0 +1,4 @@
+:- module (mdb.declarative_oracle).
+:- interface.
+:- type oracle_state.
+:- type oracle_response(T).
