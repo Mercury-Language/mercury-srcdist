@@ -1,0 +1,143 @@
+:- module uint32.
+
+:- pragma termination_info(uint32.'*'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'+'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'+'((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'+'((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'-'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'-'((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'-'((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'//'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'/\\'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint32.'<<'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'=<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint32.'>'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint32.'>='((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint32.'>>'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.'\\'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint32.'\\/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.bit_is_clear((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint32.bit_is_set((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint32.cast_from_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.cast_from_int32((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.cast_from_uint((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.cast_from_uint64((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.cast_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.cast_to_uint((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.cast_to_uint64((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.clear_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.det_from_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.det_from_uint((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.div((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.even((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(uint32.flip_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.from_bytes_be((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.from_bytes_le((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.from_int((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(uint32.from_uint((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(uint32.max((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((uint32.max_uint32) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(uint32.min((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(uint32.minus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.mod((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.num_leading_zeros((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.num_ones((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.num_trailing_zeros((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.num_zeros((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint32.odd((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(uint32.plus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.rem((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.reverse_bits((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.reverse_bytes((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.rotate_left((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.rotate_right((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.set_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.times((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.uint32_to_doc((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.unchecked_bit_is_clear((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint32.unchecked_bit_is_set((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint32.unchecked_clear_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.unchecked_flip_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.unchecked_left_shift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.unchecked_rem((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.unchecked_right_shift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.unchecked_rotate_left((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.unchecked_rotate_right((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint32.unchecked_set_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.xor((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.xor((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint32.xor((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+
+:- pragma exceptions(function, (uint32.(*)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.(+)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.(+)), 2, 1, will_not_throw).
+:- pragma exceptions(function, (uint32.(+)), 2, 2, will_not_throw).
+:- pragma exceptions(function, (uint32.(-)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.(-)), 2, 1, will_not_throw).
+:- pragma exceptions(function, (uint32.(-)), 2, 2, will_not_throw).
+:- pragma exceptions(function, (uint32.(/)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.(//)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.(/\)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint32.(<)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.(<<)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (uint32.(=<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint32.(>)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint32.(>=)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.(>>)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.(\)), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.(\/)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint32.bit_is_clear), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (uint32.bit_is_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.cast_from_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.cast_from_int32), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.cast_from_uint), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.cast_from_uint64), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.cast_to_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.cast_to_uint), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.cast_to_uint64), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.clear_bit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.det_from_int), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.det_from_uint), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.(div)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (uint32.even), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.flip_bit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.from_bytes_be), 4, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.from_bytes_le), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint32.from_int), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint32.from_uint), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.max), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.max_uint32), 0, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.min), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.minus), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.(mod)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.num_leading_zeros), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.num_ones), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.num_trailing_zeros), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.num_zeros), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint32.odd), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.plus), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.(rem)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.reverse_bits), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.reverse_bytes), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.rotate_left), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.rotate_right), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.set_bit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint32.times), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.uint32_to_doc), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint32.unchecked_bit_is_clear), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint32.unchecked_bit_is_set), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.unchecked_clear_bit), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.unchecked_flip_bit), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.unchecked_left_shift), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.unchecked_quotient), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.unchecked_rem), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.unchecked_right_shift), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.unchecked_rotate_left), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.unchecked_rotate_right), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.unchecked_set_bit), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.xor), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint32.xor), 2, 1, will_not_throw).
+:- pragma exceptions(function, (uint32.xor), 2, 2, will_not_throw).

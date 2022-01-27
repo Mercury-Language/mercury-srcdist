@@ -1,0 +1,29 @@
+:- module ((parse_tree.module_qual).collect_mq_info).
+:- interface.
+:- use_module (parse_tree.prog_item).
+:- type int3_role
+    --->    int3_as_src 
+    ;       int3_as_direct_int(parse_tree.prog_item.read_why_int3).
+:- type mq_section
+    --->    mq_section_exported 
+    ;       mq_section_local 
+    ;       mq_section_imported(parse_tree.prog_item.import_locn)
+    ;       mq_section_abstract_imported .
+:- type section_mq_info(MS) == pred(MS, parse_tree.module_qual.collect_mq_info.mq_section, parse_tree.module_qual.id_set.module_permissions).
+:- inst (section_mq_info) == (pred((builtin.in), (builtin.out), (builtin.out)) is det).
+:- pred collect_mq_info_in_ancestor_int_spec(parse_tree.prog_item.ancestor_int_spec, parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info).
+:- mode collect_mq_info_in_ancestor_int_spec((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred collect_mq_info_in_direct_int1_spec(parse_tree.prog_item.direct_int1_spec, parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info).
+:- mode collect_mq_info_in_direct_int1_spec((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred collect_mq_info_in_direct_int3_spec(parse_tree.prog_item.direct_int3_spec, parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info).
+:- mode collect_mq_info_in_direct_int3_spec((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred collect_mq_info_in_parse_tree_int0(parse_tree.prog_item.read_why_int0, parse_tree.prog_item.parse_tree_int0, parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info).
+:- mode collect_mq_info_in_parse_tree_int0((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred collect_mq_info_in_parse_tree_int3(parse_tree.module_qual.collect_mq_info.int3_role, parse_tree.prog_item.parse_tree_int3, parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info).
+:- mode collect_mq_info_in_parse_tree_int3((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred collect_mq_info_in_parse_tree_module_src(parse_tree.prog_item.parse_tree_module_src, parse_tree.module_qual.mq_info, parse_tree.module_qual.mq_info).
+:- mode collect_mq_info_in_parse_tree_module_src((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred int_section_mq_info(parse_tree.prog_item.int_module_section, parse_tree.module_qual.collect_mq_info.mq_section, parse_tree.module_qual.id_set.module_permissions).
+:- mode int_section_mq_info((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred src_section_mq_info(parse_tree.prog_item.src_module_section, parse_tree.module_qual.collect_mq_info.mq_section, parse_tree.module_qual.id_set.module_permissions).
+:- mode src_section_mq_info((builtin.in), (builtin.out), (builtin.out)) is det.

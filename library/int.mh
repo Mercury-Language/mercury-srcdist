@@ -1,0 +1,38 @@
+// Automatically generated from `int.m'
+// by the Mercury compiler,
+// version DEV
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef INT_MH
+#define INT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef INT_DECL_GUARD
+#define INT_DECL_GUARD
+
+    #include <limits.h>
+
+    #define ML_BITS_PER_INT     (sizeof(MR_Integer) * CHAR_BIT)
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* INT_MH */

@@ -1,0 +1,306 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = tabling
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+SIMPLE_NONLOOP_PROGS = \
+	boyer \
+	expand \
+	expand_bitmap \
+	expand_float \
+	expand_poly \
+	expand_tuple \
+	expand_tuple2 \
+	fast_loose \
+	fib \
+	fib_float \
+	fib_int16 \
+	fib_int32 \
+	fib_int64 \
+	fib_int8 \
+	fib_list \
+	fib_stats \
+	fib_string \
+	fib_uint \
+	fib_uint16 \
+	fib_uint32 \
+	fib_uint64 \
+	fib_uint8 \
+	loopcheck_no_loop \
+	loopcheck_nondet_no_loop \
+	mercury_java_parser_dead_proc_elim_bug \
+	mercury_java_parser_dead_proc_elim_bug2 \
+	oota \
+	pack_args_memo \
+	reset_stats_intermod \
+	specified_hidden_arg \
+	table_foreign_enum \
+	table_foreign_output \
+	table_subtype_du \
+	table_subtype_enum \
+	test_enum \
+	test_packed \
+	unused_args
+
+# Tabling of nondet predicates and deep profiling are (currently)
+# incompatible.
+ifeq "$(findstring profdeep,$(GRADE))" ""
+	BROKEN_FOR_PROFDEEP_NONLOOP_PROGS = \
+		memo_non
+else
+	BROKEN_FOR_PROFDEEP_NONLOOP_PROGS =
+endif
+
+NONLOOP_SPECIFIED_PROGS0 = \
+	specified \
+	specified_stats
+
+# The above test uses the '--allow-table-reset' option which is not
+# implemented for the MLDS backend.
+#
+ifeq "$(findstring hl,$(GRADE))" ""
+	NONLOOP_SPECIFIED_PROGS1 = $(NONLOOP_SPECIFIED_PROGS0)
+else
+	NONLOOP_SPECIFIED_PROGS1 =
+endif
+
+# The overhead caused by profiling causes this test to fail in some of the
+# profiling grades, so we disable it in all of them.
+#
+ifeq "$(findstring prof,$(GRADE))" ""
+	NONLOOP_SPECIFIED_PROGS2 = $(NONLOOP_SPECIFIED_PROGS1)
+else
+	NONLOOP_SPECIFIED_PROGS2 =
+endif
+
+# We also don't enable it in term-size profiling grades.
+#
+ifeq "$(findstring tsc,$(GRADE))" ""
+	NONLOOP_SPECIFIED_PROGS3 = $(NONLOOP_SPECIFIED_PROGS2)
+else
+	NONLOOP_SPECIFIED_PROGS3 =
+endif
+
+ifeq "$(findstring tsw,$(GRADE))" ""
+	NONLOOP_SPECIFIED_PROGS = $(NONLOOP_SPECIFIED_PROGS3)
+else
+	NONLOOP_SPECIFIED_PROGS =
+endif
+
+SIMPLE_LOOP_PROGS = \
+	loopcheck \
+	loopcheck_nondet \
+	tc_loop \
+	tc_memo \
+	tc_memo2
+
+MAYBE_MINIMAL_NONLOOP_PROGS = \
+	combine \
+	completed_consumer_in_solutions \
+	consumer_in_commit \
+	consumer_in_solutions \
+	coup \
+	coup2 \
+	coup3 \
+	coup4 \
+	coup_det_frame \
+	coup_no_commit \
+	coup_non_tabled_frame \
+	generator_in_commit \
+	mday \
+	repeat \
+	rotate \
+	rotate2 \
+	seq \
+	seq2 \
+	seq3 \
+	seq4 \
+	sg \
+	tc_minimal \
+	tc_minimal2
+
+# Minimal model tests don't yet work in own stack (mmos) grades.
+# Since in most cases the symptom of failure is an infinite loop,
+# we don't want to execute these tests in such grades.
+ifneq "$(findstring mmos,$(GRADE))" ""
+	MINIMAL_NONLOOP_PROGS =
+else
+	MINIMAL_NONLOOP_PROGS = $(MAYBE_MINIMAL_NONLOOP_PROGS)
+endif
+
+MINIMAL_LOOP_PROGS =
+
+# The following programs do not work:
+#	semidet_minimal.m
+#	tc_minimal_semidet.m
+
+ALL_SIMPLE_PROGS = \
+	$(SIMPLE_NONLOOP_PROGS) \
+	$(BROKEN_FOR_PROFDEEP_NONLOOP_PROGS) \
+	$(NONLOOP_SPECIFIED_PROGS) \
+	$(SIMPLE_LOOP_PROGS)
+
+ALL_MINIMAL_PROGS = $(MINIMAL_NONLOOP_PROGS)
+
+ifneq "$(findstring .gc,$(GRADE))" ""
+	# The substitution is there to avoid unwanted "mm" matches from "rbmm".
+	ifneq "$(findstring mm,$(subst rbmm,x,$(GRADE)))" ""
+		PROGS0 = $(ALL_SIMPLE_PROGS) $(ALL_MINIMAL_PROGS)
+		NONLOOP_PROGS = $(SIMPLE_NONLOOP_PROGS) \
+				$(MINIMAL_NONLOOP_PROGS)
+	else
+		PROGS0 = $(ALL_SIMPLE_PROGS)
+		NONLOOP_PROGS = $(SIMPLE_NONLOOP_PROGS)
+	endif
+else
+	PROGS0 =
+endif
+
+# Tabling is disabled in all .par grades due to the lack of synchronization on
+# table updates.
+ifeq "$(findstring .par,$(GRADE))" ""
+	PROGS1 = $(PROGS0)
+else
+	PROGS1 =
+endif
+
+# Disable these tests in MLDS grades (C, C# and Java)
+# with high level data representation, because tabling is not implemented
+# for high level data representation.
+ifneq "$(findstring java,$(GRADE))$(findstring csharp,$(GRADE))" ""
+	# This is either the C# grade or the Java grade.
+	PROGS =
+else
+	# This is a C grade.
+	PROGS = $(PROGS1)
+endif
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+%.runtest: %.res ;
+
+#-----------------------------------------------------------------------------#
+
+# Some test cases are expected to abort.
+# We also need to pipe the output for these test cases through sed to avoid
+# hard-coding dependencies on particular line numbers in the standard library
+# source code.
+
+tc_loop.out: tc_loop
+	if ./$< > $@.tmp 2>&1; then \
+		grep . $@.tmp; \
+		exit 1; \
+	else \
+		sed	-e 's/exception.m:[0-9]*/exception.m:NNNN/g' \
+			-e 's/require.m:[0-9]*/require.m:NNNN/g' \
+			-e 's/std_util.m:[0-9]*/std_util.m:NNNN/g' \
+			< $@.tmp > $@; \
+		rm -f $@.tmp; \
+	fi
+
+tc_memo.out: tc_memo
+	if ./$< > $@.tmp 2>&1; then \
+		grep . $@.tmp; \
+		exit 1; \
+	else \
+		sed	-e 's/exception.m:[0-9]*/exception.m:NNNN/g' \
+			-e 's/require.m:[0-9]*/require.m:NNNN/g' \
+			-e 's/std_util.m:[0-9]*/std_util.m:NNNN/g' \
+			< $@.tmp > $@; \
+		rm -f $@.tmp; \
+	fi
+
+tc_memo2.out: tc_memo2
+	if ./$< > $@.tmp 2>&1; then \
+		grep . $@.tmp; \
+		exit 1; \
+	else \
+		sed	-e 's/exception.m:[0-9]*/exception.m:NNNN/g' \
+			-e 's/require.m:[0-9]*/require.m:NNNN/g' \
+			-e 's/std_util.m:[0-9]*/std_util.m:NNNN/g' \
+			< $@.tmp > $@; \
+		rm -f $@.tmp; \
+	fi
+
+loopcheck.out: loopcheck
+	if test -s loopcheck.err; then \
+		cat loopcheck.err > loopcheck.out; \
+		exit 1; \
+	elif ./$< > $@.tmp 2>&1; then \
+		grep . $@.tmp; \
+		exit 1; \
+	else \
+		sed	-e 's/exception.m:[0-9]*/exception.m:NNNN/g' \
+			-e 's/require.m:[0-9]*/require.m:NNNN/g' \
+			< $@.tmp > $@; \
+		rm -f $@.tmp; \
+	fi
+
+loopcheck_nondet.out: loopcheck_nondet
+	if test -s loopcheck_nondet.err; then \
+		cat loopcheck_nondet.err > loopcheck_nondet.out; \
+		exit 1; \
+	elif ./$< > $@.tmp 2>&1; then \
+		grep . $@.tmp; \
+		exit 1; \
+	else \
+		sed	-e 's/exception.m:[0-9]*/exception.m:NNNN/g' \
+			-e 's/require.m:[0-9]*/require.m:NNNN/g' \
+			< $@.tmp > $@; \
+		rm -f $@.tmp; \
+	fi
+
+consumer_in_solutions.out: consumer_in_solutions
+	if ./$< > $@.tmp 2>&1; then \
+		grep . $@.tmp; \
+		exit 1; \
+	else \
+		mv $@.tmp $@ ; \
+	fi
+
+specified_stats.out: specified_stats
+	if ./$< > $@.tmp 2>&1; then \
+		sed     -e 's/(100.00\%)/(NNN\%)/' \
+			-e 's/ ([1-9][0-9]\.[0-9][0-9]\%)/(NNN\%)/' \
+			-e 's/  ([0-9]\.[0-9][0-9]\%)/(NNN\%)/' \
+			-e 's/[1-9],[0-9][0-9][0-9],[0-9][0-9][0-9]/      NNN/' \
+			-e 's/  [1-9][0-9][0-9],[0-9][0-9][0-9]/      NNN/' \
+			-e 's/   [1-9][0-9],[0-9][0-9][0-9]/      NNN/' \
+			-e 's/    [1-9],[0-9][0-9][0-9]/      NNN/' \
+			-e 's/      [1-9][0-9][0-9]/      NNN/' \
+			-e 's/       [1-9][0-9]/      NNN/' \
+			-e 's/        [0-9]/      NNN/' \
+			< $@.tmp > $@; \
+		rm -f $@.tmp; \
+	else \
+		grep . $@.tmp; \
+		exit 1; \
+	fi
+
+.PHONY: echo_progs
+echo_progs:
+	@echo $(PROGS)
+
+.PHONY: echo_nonloop_progs
+echo_nonloop_progs:
+	@echo $(NONLOOP_PROGS)
+
+.PHONY: echo_minimal_nonloop_progs
+echo_minimal_nonloop_progs:
+	@echo $(MINIMAL_NONLOOP_PROGS)
+
+.PHONY: echo_simple_nonloop_progs
+echo_simple_nonloop_progs:
+	@echo $(SIMPLE_NONLOOP_PROGS)
+
+#-----------------------------------------------------------------------------#

@@ -1,0 +1,10 @@
+:- module (check_hlds.typecheck_debug).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (check_hlds.type_assign).
+:- use_module (check_hlds.typecheck_info).
+:- use_module (parse_tree.prog_data).
+:- pred type_checkpoint(string, check_hlds.typecheck_info.typecheck_info, parse_tree.prog_data.prog_varset, check_hlds.type_assign.type_assign_set, io.io, io.io).
+:- mode type_checkpoint((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
