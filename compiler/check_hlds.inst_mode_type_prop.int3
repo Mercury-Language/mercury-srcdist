@@ -1,0 +1,4 @@
+:- module (check_hlds.inst_mode_type_prop).
+:- interface.
+:- type tprop_args.
+:- type tprop_context.

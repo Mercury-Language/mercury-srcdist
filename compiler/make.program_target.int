@@ -1,0 +1,7 @@
+:- module (make.program_target).
+:- interface.
+:- use_module (libs.maybe_succeeded).
+:- pred make_linked_target(libs.globals.globals, make.linked_target_file, libs.maybe_succeeded.maybe_succeeded, make.make_info, make.make_info, io.io, io.io).
+:- mode make_linked_target((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_misc_target(libs.globals.globals, pair.pair(mdbcomp.sym_name.module_name, make.misc_target_type), libs.maybe_succeeded.maybe_succeeded, make.make_info, make.make_info, io.io, io.io).
+:- mode make_misc_target((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

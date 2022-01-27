@@ -1,0 +1,144 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = general
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+# Any program added here should also be added to the `.cvsignore' file.
+
+ORDINARY_PROGS = \
+	arithmetic			\
+	array_binsearch			\
+	array_test			\
+	base_string_to_int_test		\
+	base_string_to_integer		\
+	commit_bug			\
+	commit_bug_2			\
+	complex_failure			\
+	det_complicated_unify		\
+	determinism_inlining		\
+	disj_disj			\
+	do_while			\
+	double_error			\
+	double_error2			\
+	duplicate_label			\
+	fail_detism			\
+	float_roundtrip			\
+	float_test			\
+	frameopt_mkframe_bug		\
+	hello_again			\
+	higher_order			\
+	hlc_name_mangling		\
+	ho_spec_branch_bug		\
+	intermod_type			\
+	interpreter			\
+	io_foldl			\
+	io_regression			\
+	liveness			\
+	liveness2			\
+	map_equal			\
+	mode_inf			\
+	mode_inf_bug			\
+	mode_inference_reorder		\
+	mu				\
+	nasty_nondet			\
+	nondet_disj			\
+	nondet_ite			\
+	nondet_ite_2			\
+	nondet_ite_3			\
+	nondet_ite_4			\
+	nondetlive			\
+	parse_list			\
+	partition			\
+	petdr1				\
+	prune_switch			\
+	read_dir_regression		\
+	read_line_as_string		\
+	semi_fail_in_non_ite		\
+	semidet_lambda			\
+	semidet_map			\
+	set_test			\
+	state_vars_tests		\
+	state_vars_typeclasses		\
+	string_foldl_substring		\
+	string_foldr_substring		\
+	string_format_special_floats	\
+	string_format_test		\
+	string_format_test_2		\
+	string_format_test_3		\
+	string_replace			\
+	string_test			\
+	string_test_2			\
+	string_to_float			\
+	test_parsing_utils		\
+	test_string_to_int_overflow	\
+	test_univ			\
+	unreachable			\
+	unsafe_uniqueness
+
+EXCEPTION_PROGS = \
+	environment			\
+	map_corresponding 		\
+	unused_arg_determinism
+
+# dnf.m does not work in non-gc grades, because it uses `pragma memo'
+# (i.e. tabling) and tabling is not yet implemented for non-gc grades.
+#
+# The problem for state_var_trace is lack of needed reordering by the
+# unique mode system.
+
+ifneq "$(findstring profdeep,$(GRADE))" ""
+	PROGS = $(ORDINARY_PROGS)
+else
+	PROGS = $(ORDINARY_PROGS) $(EXCEPTION_PROGS)
+endif
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+# Module-specific options should go in Mercury.options so they can be found
+# by `mmc --make'.
+include Mercury.options
+
+%.runtest: %.res ;
+
+#-----------------------------------------------------------------------------#
+#
+# Some test cases need special handling.
+#
+
+# string_format_test_2 and string_format_test_3 are expected to fail
+# (string.format should call error/1 for these test cases)
+# so we need to ignore the exit status; hence the leading `-'.
+# Also we pipe the output through sed to avoid hard-coding
+# dependencies on particular line numbers in the standard library
+# source code.
+string_format_test_2.out: string_format_test_2
+	-./string_format_test_2 2>&1 | \
+		sed -e 's/io.m:[0-9]*/io.m:NNNN/g' \
+		    -e 's/string.m:[0-9]*/string.m:NNNN/g' \
+		    -e 's/require.m:[0-9]*/require.m:NNNN/g' \
+		    -e 's/exception.m:[0-9]*/exception.m:NNNN/g' \
+		    -e '/at\ mercury/d' \
+		    -e '/jmercury/d' \
+		| tr -d '\r' > string_format_test_2.out
+
+string_format_test_3.out: string_format_test_3
+	-./string_format_test_3 2>&1 | \
+		sed -e 's/io.m:[0-9]*/io.m:NNNN/g' \
+		    -e 's/string.m:[0-9]*/string.m:NNNN/g' \
+		    -e 's/require.m:[0-9]*/require.m:NNNN/g' \
+		    -e 's/exception.m:[0-9]*/exception.m:NNNN/g' \
+		    -e '/at\ mercury/d' \
+		    -e '/jmercury/d' \
+		| tr -d '\r' > string_format_test_3.out
+
+	# io_foldl `cat's its input to its output.
+io_foldl.out: io_foldl io_foldl.exp
+	./io_foldl < io_foldl.exp > io_foldl.out 2>&1
+
+#-----------------------------------------------------------------------------#

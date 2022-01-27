@@ -1,0 +1,4 @@
+:- module par_builtin.
+:- interface.
+:- type future(T).
+:- type loop_control.
