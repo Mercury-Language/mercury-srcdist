@@ -1,0 +1,9 @@
+:- module ((transform_hlds.ctgc).structure_sharing).
+:- interface.
+:- include_module (((transform_hlds.ctgc).structure_sharing).analysis).
+:- include_module (((transform_hlds.ctgc).structure_sharing).domain).
+:- import_module hlds.
+:- import_module ll_backend.
+:- implementation.
+:- import_module hlds.
+:- import_module ll_backend.

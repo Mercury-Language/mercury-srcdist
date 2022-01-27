@@ -1,0 +1,1202 @@
+/*
+** Automatically generated from `assoc_list.m'
+** by the Mercury compiler,
+** version 14.01.1, configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module assoc_list. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_assoc_list
+#define MR_HEADER_GUARD_assoc_list
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ASSOC_LIST_DECL_GUARD
+#define ASSOC_LIST_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "assoc_list.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__assoc_list__assoc_list__type_ctor_info_assoc_list_2;
+
+#line 44 "assoc_list.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__assoc_list__assoc_list__type_ctor_info_assoc_list_1;
+
+#line 27 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list____Compare____assoc_list_2_0(
+#line 27 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 27 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 27 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_3,
+#line 27 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 27 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5);
+
+#line 27 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list____Unify____assoc_list_2_0(
+#line 27 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 27 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 27 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 27 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4);
+
+#line 29 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list____Compare____assoc_list_1_0(
+#line 29 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 29 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_2,
+#line 29 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 29 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4);
+
+#line 29 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list____Unify____assoc_list_1_0(
+#line 29 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 29 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 29 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3);
+
+#line 221 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl3_values_8_p_7(
+#line 221 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 221 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 221 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 221 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 221 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 221 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 221 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_7,
+#line 221 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_8,
+#line 221 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_9,
+#line 221 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_10,
+#line 221 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_11,
+#line 221 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_12,
+#line 221 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_13,
+#line 221 "assoc_list.m"
+  MR_Cont mercury__assoc_list__param_14,
+#line 221 "assoc_list.m"
+  void * mercury__assoc_list__param_15);
+
+#line 219 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl3_values_8_p_6(
+#line 219 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 219 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 219 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 219 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 219 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 219 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 219 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_7,
+#line 219 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_8,
+#line 219 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_9,
+#line 219 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_10,
+#line 219 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_11,
+#line 219 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_12,
+#line 219 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_13,
+#line 219 "assoc_list.m"
+  MR_Cont mercury__assoc_list__param_14,
+#line 219 "assoc_list.m"
+  void * mercury__assoc_list__param_15);
+
+#line 217 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl3_values_8_p_5(
+#line 217 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 217 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 217 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 217 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 217 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 217 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 217 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_7,
+#line 217 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_8,
+#line 217 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_9,
+#line 217 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_10,
+#line 217 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_11,
+#line 217 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_12,
+#line 217 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_13);
+
+#line 215 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl3_values_8_p_4(
+#line 215 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 215 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 215 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 215 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 215 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 215 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 215 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_7,
+#line 215 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_8,
+#line 215 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_9,
+#line 215 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_10,
+#line 215 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_11,
+#line 215 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_12,
+#line 215 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_13);
+
+#line 213 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl3_values_8_p_3(
+#line 213 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 213 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 213 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 213 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 213 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 213 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 213 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_7,
+#line 213 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_8,
+#line 213 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_9,
+#line 213 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_10,
+#line 213 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_11,
+#line 213 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_12,
+#line 213 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_13);
+
+#line 211 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl3_values_8_p_2(
+#line 211 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 211 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 211 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 211 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 211 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 211 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 211 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_7,
+#line 211 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_8,
+#line 211 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_9,
+#line 211 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_10,
+#line 211 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_11,
+#line 211 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_12,
+#line 211 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_13);
+
+#line 209 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl3_values_8_p_1(
+#line 209 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 209 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 209 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 209 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 209 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 209 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 209 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_7,
+#line 209 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_8,
+#line 209 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_9,
+#line 209 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_10,
+#line 209 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_11,
+#line 209 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_12,
+#line 209 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_13);
+
+#line 207 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl3_values_8_p_0(
+#line 207 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 207 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 207 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 207 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 207 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 207 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 207 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_7,
+#line 207 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_8,
+#line 207 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_9,
+#line 207 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_10,
+#line 207 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_11,
+#line 207 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_12,
+#line 207 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_13);
+
+#line 200 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl2_values_6_p_7(
+#line 200 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 200 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 200 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 200 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 200 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 200 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 200 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_7,
+#line 200 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_8,
+#line 200 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_9,
+#line 200 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_10,
+#line 200 "assoc_list.m"
+  MR_Cont mercury__assoc_list__param_11,
+#line 200 "assoc_list.m"
+  void * mercury__assoc_list__param_12);
+
+#line 198 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl2_values_6_p_6(
+#line 198 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 198 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 198 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 198 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 198 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 198 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 198 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_7,
+#line 198 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_8,
+#line 198 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_9,
+#line 198 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_10,
+#line 198 "assoc_list.m"
+  MR_Cont mercury__assoc_list__param_11,
+#line 198 "assoc_list.m"
+  void * mercury__assoc_list__param_12);
+
+#line 196 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl2_values_6_p_5(
+#line 196 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 196 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 196 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 196 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 196 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 196 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 196 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_7,
+#line 196 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_8,
+#line 196 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_9,
+#line 196 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_10);
+
+#line 194 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl2_values_6_p_4(
+#line 194 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 194 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 194 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 194 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 194 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 194 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 194 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_7,
+#line 194 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_8,
+#line 194 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_9,
+#line 194 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_10);
+
+#line 192 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl2_values_6_p_3(
+#line 192 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 192 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 192 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 192 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 192 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 192 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 192 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_7,
+#line 192 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_8,
+#line 192 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_9,
+#line 192 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_10);
+
+#line 190 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl2_values_6_p_2(
+#line 190 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 190 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 190 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 190 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 190 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 190 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 190 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_7,
+#line 190 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_8,
+#line 190 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_9,
+#line 190 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_10);
+
+#line 188 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl2_values_6_p_1(
+#line 188 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 188 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 188 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 188 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 188 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 188 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 188 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_7,
+#line 188 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_8,
+#line 188 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_9,
+#line 188 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_10);
+
+#line 186 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl2_values_6_p_0(
+#line 186 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 186 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 186 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 186 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 186 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 186 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_6,
+#line 186 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_7,
+#line 186 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_8,
+#line 186 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_9,
+#line 186 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_10);
+
+#line 179 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl_values_4_p_7(
+#line 179 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 179 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 179 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 179 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 179 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 179 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 179 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7,
+#line 179 "assoc_list.m"
+  MR_Cont mercury__assoc_list__param_8,
+#line 179 "assoc_list.m"
+  void * mercury__assoc_list__param_9);
+
+#line 177 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl_values_4_p_6(
+#line 177 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 177 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 177 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 177 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 177 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 177 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 177 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7,
+#line 177 "assoc_list.m"
+  MR_Cont mercury__assoc_list__param_8,
+#line 177 "assoc_list.m"
+  void * mercury__assoc_list__param_9);
+
+#line 175 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl_values_4_p_5(
+#line 175 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 175 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 175 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 175 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 175 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 175 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 175 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 173 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl_values_4_p_4(
+#line 173 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 173 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 173 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 173 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 173 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 173 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 173 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 171 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl_values_4_p_3(
+#line 171 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 171 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 171 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 171 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 171 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 171 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 171 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 169 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl_values_4_p_2(
+#line 169 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 169 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 169 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 169 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 169 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 169 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 169 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 167 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl_values_4_p_1(
+#line 167 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 167 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 167 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 167 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 167 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 167 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 167 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 165 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl_values_4_p_0(
+#line 165 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 165 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 165 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 165 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 165 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 165 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 165 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 157 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl_keys_4_p_7(
+#line 157 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 157 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 157 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 157 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 157 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 157 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 157 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7,
+#line 157 "assoc_list.m"
+  MR_Cont mercury__assoc_list__param_8,
+#line 157 "assoc_list.m"
+  void * mercury__assoc_list__param_9);
+
+#line 155 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl_keys_4_p_6(
+#line 155 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 155 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 155 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 155 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 155 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 155 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 155 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7,
+#line 155 "assoc_list.m"
+  MR_Cont mercury__assoc_list__param_8,
+#line 155 "assoc_list.m"
+  void * mercury__assoc_list__param_9);
+
+#line 153 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl_keys_4_p_5(
+#line 153 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 153 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 153 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 153 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 153 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 153 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 153 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 151 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl_keys_4_p_4(
+#line 151 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 151 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 151 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 151 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 151 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 151 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 151 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 149 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__foldl_keys_4_p_3(
+#line 149 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 149 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 149 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 149 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 149 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 149 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 149 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 147 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl_keys_4_p_2(
+#line 147 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 147 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 147 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 147 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 147 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 147 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 147 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 145 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl_keys_4_p_1(
+#line 145 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 145 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 145 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 145 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 145 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 145 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 145 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 143 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__foldl_keys_4_p_0(
+#line 143 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 143 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 143 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 143 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 143 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 143 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_6,
+#line 143 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_7);
+
+#line 135 "assoc_list.m"
+MR_Word MR_CALL 
+mercury__assoc_list__merge_2_f_0(
+#line 135 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 135 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 135 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 135 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4);
+
+#line 133 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__merge_3_p_0(
+#line 133 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 133 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 133 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 133 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 133 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_5);
+
+#line 125 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__filter_4_p_0(
+#line 125 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 125 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 125 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 125 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 125 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_5,
+#line 125 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_6);
+
+#line 117 "assoc_list.m"
+MR_Word MR_CALL 
+mercury__assoc_list__negated_filter_2_f_0(
+#line 117 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 117 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 117 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 117 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4);
+
+#line 115 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__negated_filter_3_p_0(
+#line 115 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 115 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 115 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 115 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 115 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_5);
+
+#line 108 "assoc_list.m"
+MR_Word MR_CALL 
+mercury__assoc_list__filter_2_f_0(
+#line 108 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 108 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 108 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 108 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4);
+
+#line 106 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__filter_3_p_0(
+#line 106 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 106 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 106 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 106 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 106 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_5);
+
+#line 99 "assoc_list.m"
+MR_Word MR_CALL 
+mercury__assoc_list__map_values_2_f_0(
+#line 99 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 99 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 99 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 99 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 99 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5);
+
+#line 97 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__map_values_3_p_0(
+#line 97 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 97 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 97 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 97 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 97 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 97 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_6);
+
+#line 92 "assoc_list.m"
+MR_Word MR_CALL 
+mercury__assoc_list__map_values_only_2_f_0(
+#line 92 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 92 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 92 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 92 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 92 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5);
+
+#line 90 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__map_values_only_3_p_0(
+#line 90 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 90 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 90 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 90 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 90 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 90 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_6);
+
+#line 85 "assoc_list.m"
+MR_Word MR_CALL 
+mercury__assoc_list__map_keys_only_2_f_0(
+#line 85 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 85 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 85 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 85 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 85 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5);
+
+#line 83 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__map_keys_only_3_p_0(
+#line 83 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 83 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 83 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 83 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 83 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_5,
+#line 83 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_6);
+
+#line 78 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__remove_4_p_0(
+#line 78 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 78 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 78 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 78 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_4,
+#line 78 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_5,
+#line 78 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_6);
+
+#line 72 "assoc_list.m"
+MR_Box MR_CALL 
+mercury__assoc_list__det_elem_2_f_0(
+#line 72 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 72 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 72 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_3,
+#line 72 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4);
+
+#line 67 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__elem_2_f_0(
+#line 67 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 67 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 67 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_3,
+#line 67 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 67 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_5);
+
+#line 63 "assoc_list.m"
+MR_bool MR_CALL 
+mercury__assoc_list__search_3_p_0(
+#line 63 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 63 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 63 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 63 "assoc_list.m"
+  MR_Box mercury__assoc_list__param_4,
+#line 63 "assoc_list.m"
+  MR_Box * mercury__assoc_list__param_5);
+
+#line 57 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__keys_and_values_3_p_0(
+#line 57 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 57 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 57 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 57 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_4,
+#line 57 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_5);
+
+#line 52 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__values_2_p_0(
+#line 52 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 52 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 52 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 52 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_4);
+
+#line 51 "assoc_list.m"
+MR_Word MR_CALL 
+mercury__assoc_list__values_1_f_0(
+#line 51 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 51 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 51 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3);
+
+#line 47 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__keys_2_p_0(
+#line 47 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 47 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 47 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 47 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_4);
+
+#line 46 "assoc_list.m"
+MR_Word MR_CALL 
+mercury__assoc_list__keys_1_f_0(
+#line 46 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 46 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 46 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3);
+
+#line 41 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__from_corresponding_lists_3_p_0(
+#line 41 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 41 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 41 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 41 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4,
+#line 41 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_5);
+
+#line 39 "assoc_list.m"
+MR_Word MR_CALL 
+mercury__assoc_list__from_corresponding_lists_2_f_0(
+#line 39 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 39 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 39 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 39 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_4);
+
+#line 34 "assoc_list.m"
+void MR_CALL 
+mercury__assoc_list__reverse_members_2_p_0(
+#line 34 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 34 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 34 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3,
+#line 34 "assoc_list.m"
+  MR_Word * mercury__assoc_list__param_4);
+
+#line 33 "assoc_list.m"
+MR_Word MR_CALL 
+mercury__assoc_list__reverse_members_1_f_0(
+#line 33 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_1,
+#line 33 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_2,
+#line 33 "assoc_list.m"
+  MR_Word mercury__assoc_list__param_3);
+
+void mercury__assoc_list__init(void);
+void mercury__assoc_list__init_type_tables(void);
+void mercury__assoc_list__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_assoc_list */
+
+/* :- end_interface assoc_list. */

@@ -1,0 +1,1052 @@
+/*
+** Automatically generated from `profiling_builtin.m'
+** by the Mercury compiler,
+** version 14.01.1, configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module profiling_builtin. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_profiling_builtin
+#define MR_HEADER_GUARD_profiling_builtin
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PROFILING_BUILTIN_DECL_GUARD
+#define PROFILING_BUILTIN_DECL_GUARD
+#line 260 "profiling_builtin.m"
+
+#ifndef MR_DEEP_PROFILING_GUARD
+#define MR_DEEP_PROFILING_GUARD
+
+  #ifdef    MR_DEEP_PROFILING
+
+  #include "mercury_deep_profiling.h"
+  #include "mercury_deep_rec_depth_actions.h"
+  #include "mercury_ho_call.h"
+  #include <stdio.h>
+
+  #endif    /* MR_DEEP_PROFILING */
+
+#endif  /* MR_DEEP_PROFILING_GUARD */
+
+#endif
+
+
+
+
+#line 56 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_dynamic_0;
+
+#line 59 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_2_0;
+
+#line 62 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_3_0;
+
+#line 65 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_4_0;
+
+#line 68 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_5_0;
+
+#line 71 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_6_0;
+
+#line 74 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_7_0;
+
+#line 77 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_8_0;
+
+#line 80 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_9_0;
+
+#line 83 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_proc_dynamic_0;
+
+#line 86 "profiling_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_proc_layout_0;
+
+#line 256 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____proc_layout_0_0(
+#line 256 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 256 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2,
+#line 256 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_3);
+
+#line 256 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____proc_layout_0_0(
+#line 256 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 256 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 257 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____proc_dynamic_0_0(
+#line 257 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 257 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2,
+#line 257 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_3);
+
+#line 257 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____proc_dynamic_0_0(
+#line 257 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 257 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 139 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_9_0_0(
+#line 139 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 139 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 139 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_3);
+
+#line 139 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_9_0_0(
+#line 139 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_1,
+#line 139 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2);
+
+#line 136 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_8_0_0(
+#line 136 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 136 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 136 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_3);
+
+#line 136 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_8_0_0(
+#line 136 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_1,
+#line 136 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2);
+
+#line 133 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_7_0_0(
+#line 133 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 133 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 133 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_3);
+
+#line 133 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_7_0_0(
+#line 133 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_1,
+#line 133 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2);
+
+#line 130 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_6_0_0(
+#line 130 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 130 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 130 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_3);
+
+#line 130 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_6_0_0(
+#line 130 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_1,
+#line 130 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2);
+
+#line 127 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_5_0_0(
+#line 127 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 127 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 127 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_3);
+
+#line 127 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_5_0_0(
+#line 127 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_1,
+#line 127 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2);
+
+#line 124 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_4_0_0(
+#line 124 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 124 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 124 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_3);
+
+#line 124 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_4_0_0(
+#line 124 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_1,
+#line 124 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2);
+
+#line 121 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_3_0_0(
+#line 121 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 121 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 121 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_3);
+
+#line 121 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_3_0_0(
+#line 121 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_1,
+#line 121 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2);
+
+#line 118 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_2_0_0(
+#line 118 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 118 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 118 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_3);
+
+#line 118 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_2_0_0(
+#line 118 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_1,
+#line 118 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2);
+
+#line 258 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_dynamic_0_0(
+#line 258 "profiling_builtin.m"
+  MR_Word * mercury__profiling_builtin__param_1,
+#line 258 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2,
+#line 258 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_3);
+
+#line 258 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_dynamic_0_0(
+#line 258 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 258 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 238 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_9_11_p_0(
+#line 238 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 238 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 238 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 238 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 238 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 238 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6,
+#line 238 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_7,
+#line 238 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_8,
+#line 238 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_9,
+#line 238 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_10,
+#line 238 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_11);
+
+#line 234 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_8_10_p_0(
+#line 234 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 234 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 234 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 234 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 234 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 234 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6,
+#line 234 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_7,
+#line 234 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_8,
+#line 234 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_9,
+#line 234 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_10);
+
+#line 230 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_7_9_p_0(
+#line 230 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 230 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 230 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 230 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 230 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 230 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6,
+#line 230 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_7,
+#line 230 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_8,
+#line 230 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_9);
+
+#line 226 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_6_8_p_0(
+#line 226 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 226 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 226 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 226 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 226 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 226 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6,
+#line 226 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_7,
+#line 226 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_8);
+
+#line 222 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_5_7_p_0(
+#line 222 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 222 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 222 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 222 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 222 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 222 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6,
+#line 222 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_7);
+
+#line 218 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_4_6_p_0(
+#line 218 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 218 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 218 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 218 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 218 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 218 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6);
+
+#line 214 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_3_5_p_0(
+#line 214 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 214 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 214 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 214 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 214 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5);
+
+#line 211 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_2_4_p_0(
+#line 211 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 211 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 211 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 211 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4);
+
+#line 208 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_1_3_p_0(
+#line 208 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 208 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_2,
+#line 208 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3);
+
+#line 204 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_9_11_p_0(
+#line 204 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 204 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 204 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 204 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 204 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 204 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6,
+#line 204 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_7,
+#line 204 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_8,
+#line 204 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_9,
+#line 204 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_10,
+#line 204 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_11);
+
+#line 200 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_8_10_p_0(
+#line 200 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 200 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 200 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 200 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 200 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 200 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6,
+#line 200 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_7,
+#line 200 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_8,
+#line 200 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_9,
+#line 200 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_10);
+
+#line 196 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_7_9_p_0(
+#line 196 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 196 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 196 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 196 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 196 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 196 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6,
+#line 196 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_7,
+#line 196 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_8,
+#line 196 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_9);
+
+#line 192 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_6_8_p_0(
+#line 192 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 192 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 192 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 192 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 192 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 192 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6,
+#line 192 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_7,
+#line 192 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_8);
+
+#line 188 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_5_7_p_0(
+#line 188 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 188 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 188 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 188 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 188 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 188 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6,
+#line 188 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_7);
+
+#line 184 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_4_6_p_0(
+#line 184 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 184 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 184 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 184 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 184 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5,
+#line 184 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_6);
+
+#line 180 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_3_5_p_0(
+#line 180 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 180 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 180 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 180 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4,
+#line 180 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_5);
+
+#line 177 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_2_4_p_0(
+#line 177 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 177 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 177 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3,
+#line 177 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_4);
+
+#line 174 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_1_3_p_0(
+#line 174 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 174 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_2,
+#line 174 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3);
+
+#line 170 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_9_11_p_0(
+#line 170 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 170 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 170 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_3,
+#line 170 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_4,
+#line 170 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_5,
+#line 170 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_6,
+#line 170 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_7,
+#line 170 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_8,
+#line 170 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_9,
+#line 170 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_10,
+#line 170 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_11);
+
+#line 166 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_8_10_p_0(
+#line 166 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 166 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 166 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_3,
+#line 166 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_4,
+#line 166 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_5,
+#line 166 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_6,
+#line 166 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_7,
+#line 166 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_8,
+#line 166 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_9,
+#line 166 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_10);
+
+#line 162 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_7_9_p_0(
+#line 162 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 162 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 162 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_3,
+#line 162 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_4,
+#line 162 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_5,
+#line 162 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_6,
+#line 162 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_7,
+#line 162 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_8,
+#line 162 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_9);
+
+#line 158 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_6_8_p_0(
+#line 158 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 158 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 158 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_3,
+#line 158 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_4,
+#line 158 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_5,
+#line 158 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_6,
+#line 158 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_7,
+#line 158 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_8);
+
+#line 154 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_5_7_p_0(
+#line 154 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 154 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 154 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_3,
+#line 154 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_4,
+#line 154 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_5,
+#line 154 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_6,
+#line 154 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_7);
+
+#line 151 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_4_6_p_0(
+#line 151 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 151 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 151 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_3,
+#line 151 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_4,
+#line 151 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_5,
+#line 151 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_6);
+
+#line 148 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_3_5_p_0(
+#line 148 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 148 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 148 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_3,
+#line 148 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_4,
+#line 148 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_5);
+
+#line 145 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_2_4_p_0(
+#line 145 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 145 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 145 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_3,
+#line 145 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_4);
+
+#line 142 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_1_3_p_0(
+#line 142 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 142 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_2,
+#line 142 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_3);
+
+#line 116 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__increment_dynamic_coverage_point_count_1_p_0(
+#line 116 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_1);
+
+#line 113 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__increment_static_coverage_point_count_2_p_0(
+#line 113 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 113 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_2);
+
+#line 108 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__reset_activation_info_sr_1_p_0(
+#line 108 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1);
+
+#line 106 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__reset_activation_info_ac_2_p_0(
+#line 106 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_1,
+#line 106 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 104 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__rezero_activation_info_sr_0_p_0(void);
+
+#line 102 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__rezero_activation_info_ac_0_p_0(void);
+
+#line 100 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_and_zero_activation_info_sr_1_p_0(
+#line 100 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_1);
+
+#line 97 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__save_and_zero_activation_info_ac_2_p_0(
+#line 97 "profiling_builtin.m"
+  MR_Integer * mercury__profiling_builtin__param_1,
+#line 97 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_2);
+
+#line 94 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin__non_fail_port_code_sr_3_p_0(
+#line 94 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 94 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2,
+#line 94 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_3);
+
+#line 91 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin__non_fail_port_code_ac_2_p_0(
+#line 91 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 91 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 88 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin__non_redo_port_code_sr_2_p_0(
+#line 88 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 88 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 85 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin__non_redo_port_code_ac_2_p_0(
+#line 85 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 85 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 82 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__non_exit_port_code_sr_3_p_0(
+#line 82 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 82 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2,
+#line 82 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_3);
+
+#line 79 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__non_exit_port_code_ac_2_p_0(
+#line 79 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 79 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 76 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__non_call_port_code_sr_5_p_0(
+#line 76 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 76 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_2,
+#line 76 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_3,
+#line 76 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_4,
+#line 76 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_5);
+
+#line 73 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__non_call_port_code_ac_4_p_0(
+#line 73 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 73 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_2,
+#line 73 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_3,
+#line 73 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_4);
+
+#line 70 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin__semi_fail_port_code_sr_3_p_0(
+#line 70 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 70 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2,
+#line 70 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_3);
+
+#line 67 "profiling_builtin.m"
+MR_bool MR_CALL 
+mercury__profiling_builtin__semi_fail_port_code_ac_2_p_0(
+#line 67 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 67 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 64 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__semi_exit_port_code_sr_3_p_0(
+#line 64 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 64 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2,
+#line 64 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_3);
+
+#line 61 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__semi_exit_port_code_ac_2_p_0(
+#line 61 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 61 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 58 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__semi_call_port_code_sr_4_p_0(
+#line 58 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 58 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_2,
+#line 58 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_3,
+#line 58 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_4);
+
+#line 55 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__semi_call_port_code_ac_3_p_0(
+#line 55 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 55 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_2,
+#line 55 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_3);
+
+#line 52 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__det_exit_port_code_sr_3_p_0(
+#line 52 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 52 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2,
+#line 52 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_3);
+
+#line 49 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__det_exit_port_code_ac_2_p_0(
+#line 49 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 49 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_2);
+
+#line 46 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__det_call_port_code_sr_4_p_0(
+#line 46 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 46 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_2,
+#line 46 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_3,
+#line 46 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_4);
+
+#line 43 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__det_call_port_code_ac_3_p_0(
+#line 43 "profiling_builtin.m"
+  MR_Box mercury__profiling_builtin__param_1,
+#line 43 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_2,
+#line 43 "profiling_builtin.m"
+  MR_Box * mercury__profiling_builtin__param_3);
+
+#line 41 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_tail_call_1_p_0(
+#line 41 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_1);
+
+#line 39 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_callback_1_p_0(
+#line 39 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_1);
+
+#line 37 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_method_call_3_p_0(
+#line 37 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_1,
+#line 37 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2,
+#line 37 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_3);
+
+#line 35 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_ho_call_2_p_0(
+#line 35 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_1,
+#line 35 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2);
+
+#line 33 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_special_call_2_p_0(
+#line 33 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_1,
+#line 33 "profiling_builtin.m"
+  MR_Word mercury__profiling_builtin__param_2);
+
+#line 31 "profiling_builtin.m"
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_normal_call_1_p_0(
+#line 31 "profiling_builtin.m"
+  MR_Integer mercury__profiling_builtin__param_1);
+
+void mercury__profiling_builtin__init(void);
+void mercury__profiling_builtin__init_type_tables(void);
+void mercury__profiling_builtin__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_profiling_builtin */
+
+/* :- end_interface profiling_builtin. */

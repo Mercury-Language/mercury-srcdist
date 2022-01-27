@@ -1,0 +1,375 @@
+/*
+** Automatically generated from `erl_code_util.m'
+** by the Mercury compiler,
+** version 14.01.1, configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module erl_backend.erl_code_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_erl_backend__erl_code_util
+#define MR_HEADER_GUARD_erl_backend__erl_code_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ERL_BACKEND__ERL_CODE_UTIL_DECL_GUARD
+#define ERL_BACKEND__ERL_CODE_UTIL_DECL_GUARD
+#include "erl_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "erl_backend.erl_code_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__erl_code_util__erl_backend__erl_code_util__type_ctor_info_erl_gen_info_0;
+
+#line 45 "erl_backend.erl_code_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct erl_backend__erl_code_util__erl_backend__erl_code_util__type_ctor_info_opt_dummy_args_0;
+
+#line 95 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util____Compare____opt_dummy_args_0_0(
+#line 95 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_1,
+#line 95 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 95 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3);
+
+#line 95 "erl_code_util.m"
+MR_bool MR_CALL 
+erl_backend__erl_code_util____Unify____opt_dummy_args_0_0(
+#line 95 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 95 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2);
+
+#line 231 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util____Compare____erl_gen_info_0_0(
+#line 231 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_1,
+#line 231 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 231 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3);
+
+#line 231 "erl_code_util.m"
+MR_bool MR_CALL 
+erl_backend__erl_code_util____Unify____erl_gen_info_0_0(
+#line 231 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 231 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2);
+
+#line 206 "erl_code_util.m"
+MR_Integer MR_CALL 
+erl_backend__erl_code_util__erl_base_typeclass_info_method_offset_0_f_0(void);
+
+#line 202 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__maybe_simplify_nested_cases_2_p_0(
+#line 202 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 202 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2);
+
+#line 195 "erl_code_util.m"
+MR_Integer MR_CALL 
+erl_backend__erl_code_util__erl_expr_size_1_f_0(
+#line 195 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1);
+
+#line 189 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_expr_vars_2_p_0(
+#line 189 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 189 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2);
+
+#line 182 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_rename_vars_in_expr_except_5_p_0(
+#line 182 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 182 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 182 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_3,
+#line 182 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_4,
+#line 182 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_5);
+
+#line 174 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_rename_vars_in_expr_3_p_0(
+#line 174 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 174 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 174 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_3);
+
+#line 165 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_create_renaming_4_p_0(
+#line 165 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 165 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2,
+#line 165 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3,
+#line 165 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_4);
+
+#line 158 "erl_code_util.m"
+MR_Word MR_CALL 
+erl_backend__erl_code_util__erl_var_or_dummy_replacement_4_f_0(
+#line 158 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 158 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 158 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3,
+#line 158 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_4);
+
+#line 150 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_bind_unbound_vars_6_p_0(
+#line 150 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 150 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 150 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3,
+#line 150 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_4,
+#line 150 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_5,
+#line 150 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_6);
+
+#line 135 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_bound_nonlocals_in_goal_4_p_0(
+#line 135 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 135 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 135 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3,
+#line 135 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_4);
+
+#line 128 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_fix_success_expr_6_p_0(
+#line 128 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 128 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 128 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3,
+#line 128 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_4,
+#line 128 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_5,
+#line 128 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_6);
+
+#line 113 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_arg_list_arg_modes_7_p_0(
+#line 113 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 113 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 113 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3,
+#line 113 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_4,
+#line 113 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_5,
+#line 113 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_6,
+#line 113 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_7,
+#line 113 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_8);
+
+#line 107 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_arg_list_7_p_0(
+#line 107 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 107 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 107 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3,
+#line 107 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_4,
+#line 107 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_5,
+#line 107 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_6,
+#line 107 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_7,
+#line 107 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_8);
+
+#line 88 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_env_vars_2_p_0(
+#line 88 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 88 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2);
+
+#line 83 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_add_env_var_name_3_p_0(
+#line 83 "erl_code_util.m"
+  MR_String erl_backend__erl_code_util__param_1,
+#line 83 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 83 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_3);
+
+#line 77 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_variable_type_3_p_0(
+#line 77 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 77 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 77 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_3);
+
+#line 72 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_variable_types_3_p_0(
+#line 72 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 72 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 72 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_3);
+
+#line 67 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_new_anonymous_vars_4_p_0(
+#line 67 "erl_code_util.m"
+  MR_Integer erl_backend__erl_code_util__param_1,
+#line 67 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2,
+#line 67 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3,
+#line 67 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_4);
+
+#line 61 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_new_vars_4_p_0(
+#line 61 "erl_code_util.m"
+  MR_Integer erl_backend__erl_code_util__param_1,
+#line 61 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2,
+#line 61 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3,
+#line 61 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_4);
+
+#line 56 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_new_named_var_4_p_0(
+#line 56 "erl_code_util.m"
+  MR_String erl_backend__erl_code_util__param_1,
+#line 56 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2,
+#line 56 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_3,
+#line 56 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_4);
+
+#line 52 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_output_vars_2_p_0(
+#line 52 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 52 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2);
+
+#line 51 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_input_vars_2_p_0(
+#line 51 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 51 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2);
+
+#line 50 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_var_types_2_p_0(
+#line 50 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 50 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2);
+
+#line 49 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_varset_2_p_0(
+#line 49 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 49 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2);
+
+#line 47 "erl_code_util.m"
+void MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_get_module_info_2_p_0(
+#line 47 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 47 "erl_code_util.m"
+  MR_Word * erl_backend__erl_code_util__param_2);
+
+#line 45 "erl_code_util.m"
+MR_Word MR_CALL 
+erl_backend__erl_code_util__erl_gen_info_init_3_f_0(
+#line 45 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_1,
+#line 45 "erl_code_util.m"
+  MR_Word erl_backend__erl_code_util__param_2,
+#line 45 "erl_code_util.m"
+  MR_Integer erl_backend__erl_code_util__param_3);
+
+void mercury__erl_backend__erl_code_util__init(void);
+void mercury__erl_backend__erl_code_util__init_type_tables(void);
+void mercury__erl_backend__erl_code_util__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_erl_backend.erl_code_util */
+
+/* :- end_interface erl_backend.erl_code_util. */

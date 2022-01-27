@@ -1,0 +1,5060 @@
+/*
+** Automatically generated from `string.m'
+** by the Mercury compiler,
+** version 14.01.1, configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module string. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_string
+#define MR_HEADER_GUARD_string
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef STRING_DECL_GUARD
+#define STRING_DECL_GUARD
+#line 4168 "string.m"
+
+#include <ctype.h>
+#include <string.h>
+#include <stdio.h>
+
+#include "mercury_string.h"   /* for MR_allocate_aligned_string*() etc. */
+#include "mercury_tags.h" /* for MR_list_cons*() */
+
+/*
+** The following macro should expand to MR_TRUE if the C grades should 
+** implement string.format using C's sprintf function.
+** Setting it to MR_FALSE will cause string.format to use the Mercury
+** implementation of string formatting in C grades.
+*/
+#define ML_USE_SPRINTF MR_TRUE
+
+
+#line 4836 "string.m"
+
+#ifdef MR_USE_GCC_GLOBAL_REGISTERS
+    /*
+    ** GNU C version egcs-1.1.2 crashes with `fixed or forbidden register
+    ** spilled' in grade asm_fast.gc.tr.debug if we write this inline.
+    */
+    extern void MR_set_code_unit(MR_String str, MR_Integer ind, char ch);
+#else
+    #define MR_set_code_unit(str, ind, ch) \
+        ((str)[ind] = (ch))
+#endif
+
+#endif
+
+
+
+
+#line 71 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_flags_0;
+
+#line 74 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_justified_column_0;
+
+#line 77 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_justify_sense_0;
+
+#line 80 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_line_0;
+
+#line 83 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_maybe_precision_0;
+
+#line 86 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_maybe_width_0;
+
+#line 89 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_poly_type_0;
+
+#line 92 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_revstrings_0;
+
+#line 95 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_spec_0;
+
+#line 98 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_spec_case_0;
+
+#line 101 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_specifier_0;
+
+#line 104 "string.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__string__string__type_ctor_info_text_file_0;
+
+#line 6742 "string.m"
+MR_Integer MR_CALL 
+mercury__string__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_99_111_109_109_97_95_112_114_105_111_114_105_116_121_95_95_91_49_93_95_48_1_f_0(void);
+
+#line 6511 "string.m"
+void MR_CALL 
+mercury__string__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_109_101_95_112_114_105_118_97_116_101_95_98_117_105_108_116_105_110_95_116_121_112_101_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0(void);
+
+#line 6506 "string.m"
+void MR_CALL 
+mercury__string__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_109_101_95_118_101_114_115_105_111_110_95_97_114_114_97_121_95_101_108_101_109_95_116_121_112_101_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0(void);
+
+#line 6502 "string.m"
+void MR_CALL 
+mercury__string__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_109_101_95_97_114_114_97_121_95_101_108_101_109_95_116_121_112_101_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0(void);
+
+#line 3210 "string.m"
+MR_String MR_CALL 
+mercury__string__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_107_101_95_102_111_114_109_97_116_95_100_111_116_110_101_116_95_95_91_49_44_32_52_93_95_48_5_f_0(
+#line 3210 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3210 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3210 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 73 "string.m"
+void MR_CALL 
+mercury__string____Compare____text_file_0_0(
+#line 73 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 73 "string.m"
+  MR_Word mercury__string__param_2,
+#line 73 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 73 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____text_file_0_0(
+#line 73 "string.m"
+  MR_Word mercury__string__param_1,
+#line 73 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 2684 "string.m"
+void MR_CALL 
+mercury__string____Compare____specifier_0_0(
+#line 2684 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 2684 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2684 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 2684 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____specifier_0_0(
+#line 2684 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2684 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 2863 "string.m"
+void MR_CALL 
+mercury__string____Compare____spec_case_0_0(
+#line 2863 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 2863 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2863 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 2863 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____spec_case_0_0(
+#line 2863 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2863 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 2834 "string.m"
+void MR_CALL 
+mercury__string____Compare____spec_0_0(
+#line 2834 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 2834 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2834 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 2834 "string.m"
+void MR_CALL 
+mercury__string____Index____spec_0_0(
+#line 2834 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2834 "string.m"
+  MR_Integer * mercury__string__param_2);
+
+#line 2834 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____spec_0_0(
+#line 2834 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2834 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 6386 "string.m"
+void MR_CALL 
+mercury__string____Compare____revstrings_0_0(
+#line 6386 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 6386 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6386 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 6386 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____revstrings_0_0(
+#line 6386 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6386 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 1060 "string.m"
+void MR_CALL 
+mercury__string____Compare____poly_type_0_0(
+#line 1060 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 1060 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1060 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 1060 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____poly_type_0_0(
+#line 1060 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1060 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 3339 "string.m"
+void MR_CALL 
+mercury__string____Compare____maybe_width_0_0(
+#line 3339 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 3339 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3339 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 3339 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____maybe_width_0_0(
+#line 3339 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3339 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 3340 "string.m"
+void MR_CALL 
+mercury__string____Compare____maybe_precision_0_0(
+#line 3340 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 3340 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3340 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 3340 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____maybe_precision_0_0(
+#line 3340 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3340 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 66 "string.m"
+void MR_CALL 
+mercury__string____Compare____line_0_0(
+#line 66 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 66 "string.m"
+  MR_Word mercury__string__param_2,
+#line 66 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 66 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____line_0_0(
+#line 66 "string.m"
+  MR_Word mercury__string__param_1,
+#line 66 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 6955 "string.m"
+void MR_CALL 
+mercury__string____Compare____justify_sense_0_0(
+#line 6955 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 6955 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6955 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 6955 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____justify_sense_0_0(
+#line 6955 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6955 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 1091 "string.m"
+void MR_CALL 
+mercury__string____Compare____justified_column_0_0(
+#line 1091 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 1091 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1091 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 1091 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____justified_column_0_0(
+#line 1091 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1091 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 3338 "string.m"
+void MR_CALL 
+mercury__string____Compare____flags_0_0(
+#line 3338 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 3338 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3338 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 3338 "string.m"
+MR_bool MR_CALL 
+mercury__string____Unify____flags_0_0(
+#line 3338 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3338 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 7098 "string.m"
+MR_Word MR_CALL 
+mercury__string__break_up_string_reverse_3_f_0(
+#line 7098 "string.m"
+  MR_String mercury__string__param_1,
+#line 7098 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 7098 "string.m"
+  MR_Word mercury__string__param_3);
+
+#line 7019 "string.m"
+void MR_CALL 
+mercury__string__word_wrap_2_7_p_0(
+#line 7019 "string.m"
+  MR_Word mercury__string__param_1,
+#line 7019 "string.m"
+  MR_String mercury__string__param_2,
+#line 7019 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 7019 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 7019 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 7019 "string.m"
+  MR_Word mercury__string__param_6,
+#line 7019 "string.m"
+  MR_String * mercury__string__param_7);
+
+#line 6996 "string.m"
+void MR_CALL 
+mercury__string__max_str_length_3_p_0(
+#line 6996 "string.m"
+  MR_String mercury__string__param_1,
+#line 6996 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 6996 "string.m"
+  MR_Integer * mercury__string__param_3);
+
+#line 6992 "string.m"
+MR_String MR_CALL 
+mercury__string__lpad_3_f_0(
+#line 6992 "string.m"
+  MR_Char mercury__string__param_1,
+#line 6992 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 6992 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 6988 "string.m"
+MR_String MR_CALL 
+mercury__string__rpad_3_f_0(
+#line 6988 "string.m"
+  MR_Char mercury__string__param_1,
+#line 6988 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 6988 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 6983 "string.m"
+MR_Word MR_CALL 
+mercury__string__pad_column_2_f_0(
+#line 6983 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 6983 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 6959 "string.m"
+MR_Word MR_CALL 
+mercury__string__find_max_length_with_limit_1_f_0(
+#line 6959 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 6947 "string.m"
+MR_Integer MR_CALL 
+mercury__string__find_max_length_1_f_0(
+#line 6947 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 6943 "string.m"
+MR_String MR_CALL 
+mercury__string__join_rev_columns_3_f_0(
+#line 6943 "string.m"
+  MR_String mercury__string__param_1,
+#line 6943 "string.m"
+  MR_String mercury__string__param_2,
+#line 6943 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 6904 "string.m"
+void MR_CALL 
+mercury__string__pad_row_6_p_0(
+#line 6904 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6904 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6904 "string.m"
+  MR_String mercury__string__param_3,
+#line 6904 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 6904 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 6904 "string.m"
+  MR_String * mercury__string__param_6);
+
+#line 6890 "string.m"
+void MR_CALL 
+mercury__string__get_next_line_3_p_0(
+#line 6890 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6890 "string.m"
+  MR_Word * mercury__string__param_2,
+#line 6890 "string.m"
+  MR_Word * mercury__string__param_3);
+
+#line 6883 "string.m"
+MR_bool MR_CALL 
+mercury__string__all_empty_1_p_0(
+#line 6883 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 6870 "string.m"
+void MR_CALL 
+mercury__string__generate_rows_6_p_0(
+#line 6870 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6870 "string.m"
+  MR_String mercury__string__param_2,
+#line 6870 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6870 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6870 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6870 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6864 "string.m"
+MR_Word MR_CALL 
+mercury__string__project_column_strings_1_f_0(
+#line 6864 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 6822 "string.m"
+void MR_CALL 
+mercury__string__det_dynamic_cast_2_p_0(
+#line 6822 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6822 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6822 "string.m"
+  MR_Box mercury__string__param_3,
+#line 6822 "string.m"
+  MR_Box * mercury__string__param_4);
+
+#line 6814 "string.m"
+void MR_CALL 
+mercury__string__private_builtin_type_info_to_revstrings_3_p_0(
+#line 6814 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6814 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6814 "string.m"
+  MR_Word * mercury__string__param_3);
+
+#line 6789 "string.m"
+void MR_CALL 
+mercury__string__type_ctor_desc_to_revstrings_3_p_0(
+#line 6789 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6789 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6789 "string.m"
+  MR_Word * mercury__string__param_3);
+
+#line 6783 "string.m"
+void MR_CALL 
+mercury__string__type_desc_to_revstrings_3_p_0(
+#line 6783 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6783 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6783 "string.m"
+  MR_Word * mercury__string__param_3);
+
+#line 6775 "string.m"
+void MR_CALL 
+mercury__string__version_array_to_revstrings_5_p_3(
+#line 6775 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6775 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6775 "string.m"
+  MR_Box mercury__string__param_3,
+#line 6775 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6775 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6773 "string.m"
+void MR_CALL 
+mercury__string__version_array_to_revstrings_5_p_2(
+#line 6773 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6773 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6773 "string.m"
+  MR_Box mercury__string__param_3,
+#line 6773 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6773 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6772 "string.m"
+void MR_CALL 
+mercury__string__version_array_to_revstrings_5_p_1(
+#line 6772 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6772 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6772 "string.m"
+  MR_Box mercury__string__param_3,
+#line 6772 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6772 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6771 "string.m"
+void MR_CALL 
+mercury__string__version_array_to_revstrings_5_p_0(
+#line 6771 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6771 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6771 "string.m"
+  MR_Box mercury__string__param_3,
+#line 6771 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6771 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6761 "string.m"
+void MR_CALL 
+mercury__string__array_to_revstrings_5_p_3(
+#line 6761 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6761 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6761 "string.m"
+  MR_ArrayPtr mercury__string__param_3,
+#line 6761 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6761 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6759 "string.m"
+void MR_CALL 
+mercury__string__array_to_revstrings_5_p_2(
+#line 6759 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6759 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6759 "string.m"
+  MR_ArrayPtr mercury__string__param_3,
+#line 6759 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6759 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6758 "string.m"
+void MR_CALL 
+mercury__string__array_to_revstrings_5_p_1(
+#line 6758 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6758 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6758 "string.m"
+  MR_ArrayPtr mercury__string__param_3,
+#line 6758 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6758 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6757 "string.m"
+void MR_CALL 
+mercury__string__array_to_revstrings_5_p_0(
+#line 6757 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6757 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6757 "string.m"
+  MR_ArrayPtr mercury__string__param_3,
+#line 6757 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6757 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6742 "string.m"
+MR_Integer MR_CALL 
+mercury__string__comma_priority_1_f_0(void);
+
+#line 6736 "string.m"
+void MR_CALL 
+mercury__string__arg_to_revstrings_5_p_3(
+#line 6736 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6736 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6736 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6736 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6735 "string.m"
+void MR_CALL 
+mercury__string__arg_to_revstrings_5_p_2(
+#line 6735 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6735 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6735 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6735 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6734 "string.m"
+void MR_CALL 
+mercury__string__arg_to_revstrings_5_p_1(
+#line 6734 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6734 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6734 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6734 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6733 "string.m"
+void MR_CALL 
+mercury__string__arg_to_revstrings_5_p_0(
+#line 6733 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6733 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6733 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6733 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6723 "string.m"
+void MR_CALL 
+mercury__string__term_args_to_revstrings_5_p_3(
+#line 6723 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6723 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6723 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6723 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6721 "string.m"
+void MR_CALL 
+mercury__string__term_args_to_revstrings_5_p_2(
+#line 6721 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6721 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6721 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6721 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6720 "string.m"
+void MR_CALL 
+mercury__string__term_args_to_revstrings_5_p_1(
+#line 6720 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6720 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6720 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6720 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6719 "string.m"
+void MR_CALL 
+mercury__string__term_args_to_revstrings_5_p_0(
+#line 6719 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6719 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6719 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6719 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6694 "string.m"
+void MR_CALL 
+mercury__string__univ_list_tail_to_revstrings_5_p_3(
+#line 6694 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6694 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6694 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6694 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6692 "string.m"
+void MR_CALL 
+mercury__string__univ_list_tail_to_revstrings_5_p_2(
+#line 6692 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6692 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6692 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6692 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6691 "string.m"
+void MR_CALL 
+mercury__string__univ_list_tail_to_revstrings_5_p_1(
+#line 6691 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6691 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6691 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6691 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6690 "string.m"
+void MR_CALL 
+mercury__string__univ_list_tail_to_revstrings_5_p_0(
+#line 6690 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6690 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6690 "string.m"
+  MR_Word mercury__string__param_3,
+#line 6690 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 6682 "string.m"
+void MR_CALL 
+mercury__string__adjust_priority_3_p_0(
+#line 6682 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 6682 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6682 "string.m"
+  MR_Integer * mercury__string__param_3);
+
+#line 6672 "string.m"
+void MR_CALL 
+mercury__string__maybe_add_revstring_5_p_0(
+#line 6672 "string.m"
+  MR_String mercury__string__param_1,
+#line 6672 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 6672 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6672 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6672 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6643 "string.m"
+void MR_CALL 
+mercury__string__plain_term_to_revstrings_7_p_3(
+#line 6643 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6643 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 6643 "string.m"
+  MR_String mercury__string__param_3,
+#line 6643 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6643 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6643 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6641 "string.m"
+void MR_CALL 
+mercury__string__plain_term_to_revstrings_7_p_2(
+#line 6641 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6641 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 6641 "string.m"
+  MR_String mercury__string__param_3,
+#line 6641 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6641 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6641 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6639 "string.m"
+void MR_CALL 
+mercury__string__plain_term_to_revstrings_7_p_1(
+#line 6639 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6639 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 6639 "string.m"
+  MR_String mercury__string__param_3,
+#line 6639 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6639 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6639 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6637 "string.m"
+void MR_CALL 
+mercury__string__plain_term_to_revstrings_7_p_0(
+#line 6637 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6637 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 6637 "string.m"
+  MR_String mercury__string__param_3,
+#line 6637 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6637 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6637 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6524 "string.m"
+void MR_CALL 
+mercury__string__ordinary_term_to_revstrings_6_p_3(
+#line 6524 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6524 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6524 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6524 "string.m"
+  MR_Box mercury__string__param_4,
+#line 6524 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6524 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6522 "string.m"
+void MR_CALL 
+mercury__string__ordinary_term_to_revstrings_6_p_2(
+#line 6522 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6522 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6522 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6522 "string.m"
+  MR_Box mercury__string__param_4,
+#line 6522 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6522 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6520 "string.m"
+void MR_CALL 
+mercury__string__ordinary_term_to_revstrings_6_p_1(
+#line 6520 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6520 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6520 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6520 "string.m"
+  MR_Box mercury__string__param_4,
+#line 6520 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6520 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6518 "string.m"
+void MR_CALL 
+mercury__string__ordinary_term_to_revstrings_6_p_0(
+#line 6518 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6518 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6518 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6518 "string.m"
+  MR_Box mercury__string__param_4,
+#line 6518 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6518 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6511 "string.m"
+void MR_CALL 
+mercury__string__same_private_builtin_type_2_p_0(
+#line 6511 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 6506 "string.m"
+void MR_CALL 
+mercury__string__same_version_array_elem_type_2_p_0(
+#line 6506 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 6502 "string.m"
+void MR_CALL 
+mercury__string__same_array_elem_type_2_p_0(
+#line 6502 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 6425 "string.m"
+void MR_CALL 
+mercury__string__value_to_revstrings_prio_6_p_3(
+#line 6425 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6425 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6425 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6425 "string.m"
+  MR_Box mercury__string__param_4,
+#line 6425 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6425 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6423 "string.m"
+void MR_CALL 
+mercury__string__value_to_revstrings_prio_6_p_2(
+#line 6423 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6423 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6423 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6423 "string.m"
+  MR_Box mercury__string__param_4,
+#line 6423 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6423 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6422 "string.m"
+void MR_CALL 
+mercury__string__value_to_revstrings_prio_6_p_1(
+#line 6422 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6422 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6422 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6422 "string.m"
+  MR_Box mercury__string__param_4,
+#line 6422 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6422 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6421 "string.m"
+void MR_CALL 
+mercury__string__value_to_revstrings_prio_6_p_0(
+#line 6421 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6421 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6421 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6421 "string.m"
+  MR_Box mercury__string__param_4,
+#line 6421 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6421 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6413 "string.m"
+void MR_CALL 
+mercury__string__value_to_revstrings_5_p_3(
+#line 6413 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6413 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6413 "string.m"
+  MR_Box mercury__string__param_3,
+#line 6413 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6413 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6411 "string.m"
+void MR_CALL 
+mercury__string__value_to_revstrings_5_p_2(
+#line 6411 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6411 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6411 "string.m"
+  MR_Box mercury__string__param_3,
+#line 6411 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6411 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6410 "string.m"
+void MR_CALL 
+mercury__string__value_to_revstrings_5_p_1(
+#line 6410 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6410 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6410 "string.m"
+  MR_Box mercury__string__param_3,
+#line 6410 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6410 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6409 "string.m"
+void MR_CALL 
+mercury__string__value_to_revstrings_5_p_0(
+#line 6409 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6409 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6409 "string.m"
+  MR_Box mercury__string__param_3,
+#line 6409 "string.m"
+  MR_Word mercury__string__param_4,
+#line 6409 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 6390 "string.m"
+void MR_CALL 
+mercury__string__add_revstring_3_p_0(
+#line 6390 "string.m"
+  MR_String mercury__string__param_1,
+#line 6390 "string.m"
+  MR_Word mercury__string__param_2,
+#line 6390 "string.m"
+  MR_Word * mercury__string__param_3);
+
+#line 6368 "string.m"
+void MR_CALL 
+mercury__string__suffix_length_2_4_p_0(
+#line 6368 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6368 "string.m"
+  MR_String mercury__string__param_2,
+#line 6368 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6368 "string.m"
+  MR_Integer * mercury__string__param_4);
+
+#line 6349 "string.m"
+void MR_CALL 
+mercury__string__prefix_length_2_4_p_0(
+#line 6349 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6349 "string.m"
+  MR_String mercury__string__param_2,
+#line 6349 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6349 "string.m"
+  MR_Integer * mercury__string__param_4);
+
+#line 6283 "string.m"
+MR_Word MR_CALL 
+mercury__string__split_at_string_4_f_0(
+#line 6283 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 6283 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 6283 "string.m"
+  MR_String mercury__string__param_3,
+#line 6283 "string.m"
+  MR_String mercury__string__param_4);
+
+#line 6247 "string.m"
+void MR_CALL 
+mercury__string__split_at_separator_2_6_p_0(
+#line 6247 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6247 "string.m"
+  MR_String mercury__string__param_2,
+#line 6247 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6247 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 6247 "string.m"
+  MR_Word mercury__string__param_5,
+#line 6247 "string.m"
+  MR_Word * mercury__string__param_6);
+
+#line 6224 "string.m"
+void MR_CALL 
+mercury__string__next_boundary_4_p_0(
+#line 6224 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6224 "string.m"
+  MR_String mercury__string__param_2,
+#line 6224 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6224 "string.m"
+  MR_Integer * mercury__string__param_4);
+
+#line 6204 "string.m"
+void MR_CALL 
+mercury__string__words_2_4_p_0(
+#line 6204 "string.m"
+  MR_Word mercury__string__param_1,
+#line 6204 "string.m"
+  MR_String mercury__string__param_2,
+#line 6204 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 6204 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 5615 "string.m"
+void MR_CALL 
+mercury__string__convert_endpoints_4_p_0(
+#line 5615 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 5615 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 5615 "string.m"
+  MR_Integer * mercury__string__param_3,
+#line 5615 "string.m"
+  MR_Integer * mercury__string__param_4);
+
+#line 5510 "string.m"
+MR_Word MR_CALL 
+mercury__string__strchars_3_f_0(
+#line 5510 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 5510 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 5510 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 5489 "string.m"
+void MR_CALL 
+mercury__string__mercury_append_3_p_3(
+#line 5489 "string.m"
+  MR_String * mercury__string__param_1,
+#line 5489 "string.m"
+  MR_String * mercury__string__param_2,
+#line 5489 "string.m"
+  MR_String mercury__string__param_3,
+#line 5489 "string.m"
+  MR_Cont mercury__string__param_4,
+#line 5489 "string.m"
+  void * mercury__string__param_5);
+
+#line 5488 "string.m"
+void MR_CALL 
+mercury__string__mercury_append_3_p_2(
+#line 5488 "string.m"
+  MR_String mercury__string__param_1,
+#line 5488 "string.m"
+  MR_String mercury__string__param_2,
+#line 5488 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 5487 "string.m"
+MR_bool MR_CALL 
+mercury__string__mercury_append_3_p_1(
+#line 5487 "string.m"
+  MR_String mercury__string__param_1,
+#line 5487 "string.m"
+  MR_String * mercury__string__param_2,
+#line 5487 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 5486 "string.m"
+MR_bool MR_CALL 
+mercury__string__mercury_append_3_p_0(
+#line 5486 "string.m"
+  MR_String mercury__string__param_1,
+#line 5486 "string.m"
+  MR_String mercury__string__param_2,
+#line 5486 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 5444 "string.m"
+void MR_CALL 
+mercury__string__append_ooi_3_5_p_0(
+#line 5444 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 5444 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 5444 "string.m"
+  MR_String * mercury__string__param_3,
+#line 5444 "string.m"
+  MR_String * mercury__string__param_4,
+#line 5444 "string.m"
+  MR_String mercury__string__param_5);
+
+#line 5429 "string.m"
+void MR_CALL 
+mercury__string__append_ooi_2_5_p_0(
+#line 5429 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 5429 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 5429 "string.m"
+  MR_String * mercury__string__param_3,
+#line 5429 "string.m"
+  MR_String * mercury__string__param_4,
+#line 5429 "string.m"
+  MR_String mercury__string__param_5,
+#line 5429 "string.m"
+  MR_Cont mercury__string__param_6,
+#line 5429 "string.m"
+  void * mercury__string__param_7);
+
+#line 5423 "string.m"
+void MR_CALL 
+mercury__string__append_ooi_3_p_0(
+#line 5423 "string.m"
+  MR_String * mercury__string__param_1,
+#line 5423 "string.m"
+  MR_String * mercury__string__param_2,
+#line 5423 "string.m"
+  MR_String mercury__string__param_3,
+#line 5423 "string.m"
+  MR_Cont mercury__string__param_4,
+#line 5423 "string.m"
+  void * mercury__string__param_5);
+
+#line 5384 "string.m"
+void MR_CALL 
+mercury__string__append_iio_3_p_0(
+#line 5384 "string.m"
+  MR_String mercury__string__param_1,
+#line 5384 "string.m"
+  MR_String mercury__string__param_2,
+#line 5384 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 5330 "string.m"
+MR_bool MR_CALL 
+mercury__string__append_ioi_3_p_0(
+#line 5330 "string.m"
+  MR_String mercury__string__param_1,
+#line 5330 "string.m"
+  MR_String * mercury__string__param_2,
+#line 5330 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 5284 "string.m"
+MR_bool MR_CALL 
+mercury__string__append_iii_3_p_0(
+#line 5284 "string.m"
+  MR_String mercury__string__param_1,
+#line 5284 "string.m"
+  MR_String mercury__string__param_2,
+#line 5284 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 5211 "string.m"
+MR_bool MR_CALL 
+mercury__string__codepoint_offset_2_5_p_0(
+#line 5211 "string.m"
+  MR_String mercury__string__param_1,
+#line 5211 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 5211 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 5211 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 5211 "string.m"
+  MR_Integer * mercury__string__param_5);
+
+#line 5187 "string.m"
+void MR_CALL 
+mercury__string__count_utf8_code_units_2_3_p_0(
+#line 5187 "string.m"
+  MR_Char mercury__string__param_1,
+#line 5187 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 5187 "string.m"
+  MR_Integer * mercury__string__param_3);
+
+#line 5122 "string.m"
+void MR_CALL 
+mercury__string__count_codepoints_2_4_p_0(
+#line 5122 "string.m"
+  MR_String mercury__string__param_1,
+#line 5122 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 5122 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 5122 "string.m"
+  MR_Integer * mercury__string__param_4);
+
+#line 4983 "string.m"
+void MR_CALL 
+mercury__string__unsafe_set_char_2_4_p_0(
+#line 4983 "string.m"
+  MR_Char mercury__string__param_1,
+#line 4983 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 4983 "string.m"
+  MR_String mercury__string__param_3,
+#line 4983 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 4872 "string.m"
+MR_bool MR_CALL 
+mercury__string__set_char_2_4_p_0(
+#line 4872 "string.m"
+  MR_Char mercury__string__param_1,
+#line 4872 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 4872 "string.m"
+  MR_String mercury__string__param_3,
+#line 4872 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 4569 "string.m"
+MR_bool MR_CALL 
+mercury__string__unsafe_index_2_3_p_0(
+#line 4569 "string.m"
+  MR_String mercury__string__param_1,
+#line 4569 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 4569 "string.m"
+  MR_Char * mercury__string__param_3);
+
+#line 4533 "string.m"
+MR_bool MR_CALL 
+mercury__string__index_check_2_p_0(
+#line 4533 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 4533 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 4485 "string.m"
+MR_bool MR_CALL 
+mercury__string__contains_char_3_p_0(
+#line 4485 "string.m"
+  MR_String mercury__string__param_1,
+#line 4485 "string.m"
+  MR_Char mercury__string__param_2,
+#line 4485 "string.m"
+  MR_Integer mercury__string__param_3);
+
+#line 4282 "string.m"
+void MR_CALL 
+mercury__string__lowlevel_float_to_string_2_p_0(
+#line 4282 "string.m"
+  MR_Float mercury__string__param_1,
+#line 4282 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 4266 "string.m"
+MR_Integer MR_CALL 
+mercury__string__max_precision_0_f_0(void);
+
+#line 4259 "string.m"
+MR_Integer MR_CALL 
+mercury__string__min_precision_0_f_0(void);
+
+#line 4242 "string.m"
+MR_String MR_CALL 
+mercury__string__float_to_string_2_2_f_0(
+#line 4242 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 4242 "string.m"
+  MR_Float mercury__string__param_2);
+
+#line 4153 "string.m"
+MR_String MR_CALL 
+mercury__string__format_inf_2_f_0(
+#line 4153 "string.m"
+  MR_Float mercury__string__param_1,
+#line 4153 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 4148 "string.m"
+MR_String MR_CALL 
+mercury__string__format_nan_1_f_0(
+#line 4148 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 4143 "string.m"
+MR_bool MR_CALL 
+mercury__string__is_exponent_1_p_0(
+#line 4143 "string.m"
+  MR_Char mercury__string__param_1);
+
+#line 4139 "string.m"
+MR_bool MR_CALL 
+mercury__string__is_decimal_point_1_p_0(
+#line 4139 "string.m"
+  MR_Char mercury__string__param_1);
+
+#line 4128 "string.m"
+void MR_CALL 
+mercury__string__split_at_decimal_point_3_p_0(
+#line 4128 "string.m"
+  MR_String mercury__string__param_1,
+#line 4128 "string.m"
+  MR_String * mercury__string__param_2,
+#line 4128 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 4121 "string.m"
+void MR_CALL 
+mercury__string__split_at_exponent_3_p_0(
+#line 4121 "string.m"
+  MR_String mercury__string__param_1,
+#line 4121 "string.m"
+  MR_String * mercury__string__param_2,
+#line 4121 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 4074 "string.m"
+MR_String MR_CALL 
+mercury__string__change_precision_2_f_0(
+#line 4074 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 4074 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 4041 "string.m"
+MR_String MR_CALL 
+mercury__string__calculate_base_unsafe_2_f_0(
+#line 4041 "string.m"
+  MR_String mercury__string__param_1,
+#line 4041 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 4018 "string.m"
+MR_Integer MR_CALL 
+mercury__string__find_non_zero_pos_2_f_0(
+#line 4018 "string.m"
+  MR_Word mercury__string__param_1,
+#line 4018 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 4006 "string.m"
+MR_Integer MR_CALL 
+mercury__string__decimal_pos_1_f_0(
+#line 4006 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 3992 "string.m"
+MR_Word MR_CALL 
+mercury__string__remove_zeros_1_f_0(
+#line 3992 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 3980 "string.m"
+MR_String MR_CALL 
+mercury__string__remove_trailing_zeros_1_f_0(
+#line 3980 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 3961 "string.m"
+MR_Integer MR_CALL 
+mercury__string__size_of_required_exponent_2_f_0(
+#line 3961 "string.m"
+  MR_String mercury__string__param_1,
+#line 3961 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 3921 "string.m"
+MR_String MR_CALL 
+mercury__string__change_to_e_notation_3_f_0(
+#line 3921 "string.m"
+  MR_String mercury__string__param_1,
+#line 3921 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 3921 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 3865 "string.m"
+MR_String MR_CALL 
+mercury__string__change_to_g_notation_4_f_0(
+#line 3865 "string.m"
+  MR_String mercury__string__param_1,
+#line 3865 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 3865 "string.m"
+  MR_String mercury__string__param_3,
+#line 3865 "string.m"
+  MR_Word mercury__string__param_4);
+
+#line 3807 "string.m"
+MR_String MR_CALL 
+mercury__string__convert_float_to_string_1_f_0(
+#line 3807 "string.m"
+  MR_Float mercury__string__param_1);
+
+#line 3782 "string.m"
+MR_String MR_CALL 
+mercury__string__get_capital_hex_int_1_f_0(
+#line 3782 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 3761 "string.m"
+MR_String MR_CALL 
+mercury__string__get_hex_int_1_f_0(
+#line 3761 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 3747 "string.m"
+MR_String MR_CALL 
+mercury__string__to_capital_hex_1_f_0(
+#line 3747 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 3733 "string.m"
+MR_String MR_CALL 
+mercury__string__to_hex_1_f_0(
+#line 3733 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 3719 "string.m"
+MR_String MR_CALL 
+mercury__string__to_octal_1_f_0(
+#line 3719 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 3701 "string.m"
+MR_String MR_CALL 
+mercury__string__justify_string_3_f_0(
+#line 3701 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3701 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3701 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 3682 "string.m"
+MR_String MR_CALL 
+mercury__string__add_float_prefix_if_needed_4_f_0(
+#line 3682 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3682 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3682 "string.m"
+  MR_Float mercury__string__param_3,
+#line 3682 "string.m"
+  MR_String mercury__string__param_4);
+
+#line 3663 "string.m"
+MR_String MR_CALL 
+mercury__string__add_int_prefix_if_needed_4_f_0(
+#line 3663 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3663 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3663 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 3663 "string.m"
+  MR_String mercury__string__param_4);
+
+#line 3611 "string.m"
+MR_String MR_CALL 
+mercury__string__format_scientific_number_6_f_0(
+#line 3611 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3611 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3611 "string.m"
+  MR_Word mercury__string__param_3,
+#line 3611 "string.m"
+  MR_Word mercury__string__param_4,
+#line 3611 "string.m"
+  MR_Float mercury__string__param_5,
+#line 3611 "string.m"
+  MR_String mercury__string__param_6);
+
+#line 3563 "string.m"
+MR_String MR_CALL 
+mercury__string__format_scientific_number_g_6_f_0(
+#line 3563 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3563 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3563 "string.m"
+  MR_Word mercury__string__param_3,
+#line 3563 "string.m"
+  MR_Word mercury__string__param_4,
+#line 3563 "string.m"
+  MR_Float mercury__string__param_5,
+#line 3563 "string.m"
+  MR_String mercury__string__param_6);
+
+#line 3509 "string.m"
+MR_String MR_CALL 
+mercury__string__format_float_5_f_0(
+#line 3509 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3509 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3509 "string.m"
+  MR_Word mercury__string__param_3,
+#line 3509 "string.m"
+  MR_Word mercury__string__param_4,
+#line 3509 "string.m"
+  MR_Float mercury__string__param_5);
+
+#line 3414 "string.m"
+MR_String MR_CALL 
+mercury__string__format_unsigned_int_7_f_0(
+#line 3414 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3414 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3414 "string.m"
+  MR_Word mercury__string__param_3,
+#line 3414 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 3414 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 3414 "string.m"
+  MR_Word mercury__string__param_6,
+#line 3414 "string.m"
+  MR_String mercury__string__param_7);
+
+#line 3364 "string.m"
+MR_String MR_CALL 
+mercury__string__format_int_4_f_0(
+#line 3364 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3364 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3364 "string.m"
+  MR_Word mercury__string__param_3,
+#line 3364 "string.m"
+  MR_Integer mercury__string__param_4);
+
+#line 3352 "string.m"
+MR_String MR_CALL 
+mercury__string__format_string_4_f_0(
+#line 3352 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3352 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3352 "string.m"
+  MR_Word mercury__string__param_3,
+#line 3352 "string.m"
+  MR_String mercury__string__param_4);
+
+#line 3344 "string.m"
+MR_String MR_CALL 
+mercury__string__format_char_3_f_0(
+#line 3344 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3344 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3344 "string.m"
+  MR_Char mercury__string__param_3);
+
+#line 3320 "string.m"
+MR_String MR_CALL 
+mercury__string__native_format_char_2_f_0(
+#line 3320 "string.m"
+  MR_String mercury__string__param_1,
+#line 3320 "string.m"
+  MR_Char mercury__string__param_2);
+
+#line 3300 "string.m"
+MR_String MR_CALL 
+mercury__string__native_format_string_2_f_0(
+#line 3300 "string.m"
+  MR_String mercury__string__param_1,
+#line 3300 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 3280 "string.m"
+MR_String MR_CALL 
+mercury__string__native_format_int_2_f_0(
+#line 3280 "string.m"
+  MR_String mercury__string__param_1,
+#line 3280 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 3260 "string.m"
+MR_String MR_CALL 
+mercury__string__native_format_float_2_f_0(
+#line 3260 "string.m"
+  MR_String mercury__string__param_1,
+#line 3260 "string.m"
+  MR_Float mercury__string__param_2);
+
+#line 3241 "string.m"
+MR_String MR_CALL 
+mercury__string__int_length_modifer_0_f_0(void);
+
+#line 3210 "string.m"
+MR_String MR_CALL 
+mercury__string__make_format_dotnet_5_f_0(
+#line 3210 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3210 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3210 "string.m"
+  MR_Word mercury__string__param_3,
+#line 3210 "string.m"
+  MR_String mercury__string__param_4,
+#line 3210 "string.m"
+  MR_String mercury__string__param_5);
+
+#line 3185 "string.m"
+MR_String MR_CALL 
+mercury__string__make_format_sprintf_5_f_0(
+#line 3185 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3185 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3185 "string.m"
+  MR_Word mercury__string__param_3,
+#line 3185 "string.m"
+  MR_String mercury__string__param_4,
+#line 3185 "string.m"
+  MR_String mercury__string__param_5);
+
+#line 3159 "string.m"
+MR_bool MR_CALL 
+mercury__string__using_sprintf_for_string_1_p_0(
+#line 3159 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 3145 "string.m"
+MR_bool MR_CALL 
+mercury__string__using_sprintf_for_char_1_p_0(
+#line 3145 "string.m"
+  MR_Char mercury__string__param_1);
+
+#line 3121 "string.m"
+MR_bool MR_CALL 
+mercury__string__using_sprintf_0_p_0(void);
+
+#line 3101 "string.m"
+MR_String MR_CALL 
+mercury__string__make_format_5_f_0(
+#line 3101 "string.m"
+  MR_Word mercury__string__param_1,
+#line 3101 "string.m"
+  MR_Word mercury__string__param_2,
+#line 3101 "string.m"
+  MR_Word mercury__string__param_3,
+#line 3101 "string.m"
+  MR_String mercury__string__param_4,
+#line 3101 "string.m"
+  MR_String mercury__string__param_5);
+
+#line 3092 "string.m"
+MR_Word MR_CALL 
+mercury__string__conv_1_f_0(
+#line 3092 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 2931 "string.m"
+MR_String MR_CALL 
+mercury__string__specifier_to_string_1_f_0(
+#line 2931 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 2920 "string.m"
+void MR_CALL 
+mercury__string__zero_or_more_occurences_3_p_0(
+#line 2920 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2920 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2920 "string.m"
+  MR_Word mercury__string__param_3,
+#line 2920 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 2912 "string.m"
+MR_bool MR_CALL 
+mercury__string__digit_2_p_0(
+#line 2912 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2912 "string.m"
+  MR_Word * mercury__string__param_2);
+
+#line 2903 "string.m"
+MR_bool MR_CALL 
+mercury__string__non_zero_digit_2_p_0(
+#line 2903 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2903 "string.m"
+  MR_Word * mercury__string__param_2);
+
+#line 2871 "string.m"
+MR_bool MR_CALL 
+mercury__string__spec_5_p_0(
+#line 2871 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 2871 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2871 "string.m"
+  MR_Word * mercury__string__param_3,
+#line 2871 "string.m"
+  MR_Word mercury__string__param_4,
+#line 2871 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 2807 "string.m"
+MR_bool MR_CALL 
+mercury__string__prec_5_p_0(
+#line 2807 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 2807 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2807 "string.m"
+  MR_Word * mercury__string__param_3,
+#line 2807 "string.m"
+  MR_Word mercury__string__param_4,
+#line 2807 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 2784 "string.m"
+MR_bool MR_CALL 
+mercury__string__width_5_p_0(
+#line 2784 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 2784 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2784 "string.m"
+  MR_Word * mercury__string__param_3,
+#line 2784 "string.m"
+  MR_Word mercury__string__param_4,
+#line 2784 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 2774 "string.m"
+MR_bool MR_CALL 
+mercury__string__flag_1_p_0(
+#line 2774 "string.m"
+  MR_Char mercury__string__param_1);
+
+#line 2759 "string.m"
+MR_bool MR_CALL 
+mercury__string__flags_3_p_0(
+#line 2759 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 2759 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2759 "string.m"
+  MR_Word * mercury__string__param_3);
+
+#line 2746 "string.m"
+void MR_CALL 
+mercury__string__optional_6_p_0(
+#line 2746 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2746 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2746 "string.m"
+  MR_Word mercury__string__param_3,
+#line 2746 "string.m"
+  MR_Word mercury__string__param_4,
+#line 2746 "string.m"
+  MR_Word * mercury__string__param_5,
+#line 2746 "string.m"
+  MR_Box mercury__string__param_6,
+#line 2746 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 2746 "string.m"
+  MR_Box mercury__string__param_8,
+#line 2746 "string.m"
+  MR_Box * mercury__string__param_9);
+
+#line 2731 "string.m"
+MR_bool MR_CALL 
+mercury__string__conversion_specification_5_p_0(
+#line 2731 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 2731 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2731 "string.m"
+  MR_Word * mercury__string__param_3,
+#line 2731 "string.m"
+  MR_Word mercury__string__param_4,
+#line 2731 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 2713 "string.m"
+void MR_CALL 
+mercury__string__other_3_p_0(
+#line 2713 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 2713 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2713 "string.m"
+  MR_Word * mercury__string__param_3);
+
+#line 2697 "string.m"
+void MR_CALL 
+mercury__string__format_string_to_specifiers_5_p_0(
+#line 2697 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 2697 "string.m"
+  MR_Word mercury__string__param_2,
+#line 2697 "string.m"
+  MR_Word * mercury__string__param_3,
+#line 2697 "string.m"
+  MR_Word mercury__string__param_4,
+#line 2697 "string.m"
+  MR_Word * mercury__string__param_5);
+
+#line 2649 "string.m"
+MR_bool MR_CALL 
+mercury__string__sub_string_search_start_2_6_p_0(
+#line 2649 "string.m"
+  MR_String mercury__string__param_1,
+#line 2649 "string.m"
+  MR_String mercury__string__param_2,
+#line 2649 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 2649 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 2649 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 2649 "string.m"
+  MR_Integer * mercury__string__param_6);
+
+#line 2556 "string.m"
+void MR_CALL 
+mercury__string__hash3_loop_5_p_0(
+#line 2556 "string.m"
+  MR_String mercury__string__param_1,
+#line 2556 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 2556 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 2556 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 2556 "string.m"
+  MR_Integer * mercury__string__param_5);
+
+#line 2538 "string.m"
+void MR_CALL 
+mercury__string__hash2_loop_5_p_0(
+#line 2538 "string.m"
+  MR_String mercury__string__param_1,
+#line 2538 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 2538 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 2538 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 2538 "string.m"
+  MR_Integer * mercury__string__param_5);
+
+#line 2520 "string.m"
+void MR_CALL 
+mercury__string__hash_loop_5_p_0(
+#line 2520 "string.m"
+  MR_String mercury__string__param_1,
+#line 2520 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 2520 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 2520 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 2520 "string.m"
+  MR_Integer * mercury__string__param_5);
+
+#line 2501 "string.m"
+MR_String MR_CALL 
+mercury__string__join_list_2_2_f_0(
+#line 2501 "string.m"
+  MR_String mercury__string__param_1,
+#line 2501 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 2153 "string.m"
+MR_bool MR_CALL 
+mercury__string__all_match_2_3_p_0(
+#line 2153 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2153 "string.m"
+  MR_String mercury__string__param_2,
+#line 2153 "string.m"
+  MR_Integer mercury__string__param_3);
+
+#line 2127 "string.m"
+void MR_CALL 
+mercury__string__char_list_to_lower_2_p_0(
+#line 2127 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2127 "string.m"
+  MR_Word * mercury__string__param_2);
+
+#line 2115 "string.m"
+void MR_CALL 
+mercury__string__char_list_to_upper_2_p_0(
+#line 2115 "string.m"
+  MR_Word mercury__string__param_1,
+#line 2115 "string.m"
+  MR_Word * mercury__string__param_2);
+
+#line 1968 "string.m"
+void MR_CALL 
+mercury__string__to_code_unit_list_2_4_p_0(
+#line 1968 "string.m"
+  MR_String mercury__string__param_1,
+#line 1968 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 1968 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 1968 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 1638 "string.m"
+void MR_CALL 
+mercury__string__to_char_list_2_2_p_0(
+#line 1638 "string.m"
+  MR_String mercury__string__param_1,
+#line 1638 "string.m"
+  MR_Word * mercury__string__param_2);
+
+#line 1592 "string.m"
+void MR_CALL 
+mercury__string__int_to_base_string_group_2_6_p_0(
+#line 1592 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 1592 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 1592 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 1592 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1592 "string.m"
+  MR_String mercury__string__param_5,
+#line 1592 "string.m"
+  MR_String * mercury__string__param_6);
+
+#line 1575 "string.m"
+void MR_CALL 
+mercury__string__int_to_base_string_group_1_5_p_0(
+#line 1575 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 1575 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 1575 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 1575 "string.m"
+  MR_String mercury__string__param_4,
+#line 1575 "string.m"
+  MR_String * mercury__string__param_5);
+
+#line 1511 "string.m"
+void MR_CALL 
+mercury__string__int_to_base_string_2_4_p_0(
+#line 1511 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 1511 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 1511 "string.m"
+  MR_Word mercury__string__param_3,
+#line 1511 "string.m"
+  MR_Word * mercury__string__param_4);
+
+#line 1497 "string.m"
+void MR_CALL 
+mercury__string__int_to_base_string_1_3_p_0(
+#line 1497 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 1497 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 1497 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 1466 "string.m"
+void MR_CALL 
+mercury__string__suffix_2_ioii_4_p_0(
+#line 1466 "string.m"
+  MR_String mercury__string__param_1,
+#line 1466 "string.m"
+  MR_String * mercury__string__param_2,
+#line 1466 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 1466 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1466 "string.m"
+  MR_Cont mercury__string__param_5,
+#line 1466 "string.m"
+  void * mercury__string__param_6);
+
+#line 1454 "string.m"
+MR_bool MR_CALL 
+mercury__string__suffix_2_iiii_5_p_0(
+#line 1454 "string.m"
+  MR_String mercury__string__param_1,
+#line 1454 "string.m"
+  MR_String mercury__string__param_2,
+#line 1454 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 1454 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1454 "string.m"
+  MR_Integer mercury__string__param_5);
+
+#line 1433 "string.m"
+void MR_CALL 
+mercury__string__prefix_2_ioi_3_p_0(
+#line 1433 "string.m"
+  MR_String mercury__string__param_1,
+#line 1433 "string.m"
+  MR_String * mercury__string__param_2,
+#line 1433 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 1433 "string.m"
+  MR_Cont mercury__string__param_4,
+#line 1433 "string.m"
+  void * mercury__string__param_5);
+
+#line 1422 "string.m"
+MR_bool MR_CALL 
+mercury__string__prefix_2_iii_3_p_0(
+#line 1422 "string.m"
+  MR_String mercury__string__param_1,
+#line 1422 "string.m"
+  MR_String mercury__string__param_2,
+#line 1422 "string.m"
+  MR_Integer mercury__string__param_3);
+
+#line 1325 "string.m"
+void MR_CALL 
+mercury__string__foldr_between_2_6_p_4(
+#line 1325 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1325 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1325 "string.m"
+  MR_String mercury__string__param_3,
+#line 1325 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1325 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1325 "string.m"
+  MR_Box mercury__string__param_6,
+#line 1325 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 1325 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 1325 "string.m"
+  void * mercury__string__param_9);
+
+#line 1323 "string.m"
+void MR_CALL 
+mercury__string__foldr_between_2_6_p_3(
+#line 1323 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1323 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1323 "string.m"
+  MR_String mercury__string__param_3,
+#line 1323 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1323 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1323 "string.m"
+  MR_Box mercury__string__param_6,
+#line 1323 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 1323 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 1323 "string.m"
+  void * mercury__string__param_9);
+
+#line 1321 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldr_between_2_6_p_2(
+#line 1321 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1321 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1321 "string.m"
+  MR_String mercury__string__param_3,
+#line 1321 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1321 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1321 "string.m"
+  MR_Box mercury__string__param_6,
+#line 1321 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 1319 "string.m"
+void MR_CALL 
+mercury__string__foldr_between_2_6_p_1(
+#line 1319 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1319 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1319 "string.m"
+  MR_String mercury__string__param_3,
+#line 1319 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1319 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1319 "string.m"
+  MR_Box mercury__string__param_6,
+#line 1319 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 1317 "string.m"
+void MR_CALL 
+mercury__string__foldr_between_2_6_p_0(
+#line 1317 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1317 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1317 "string.m"
+  MR_String mercury__string__param_3,
+#line 1317 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1317 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1317 "string.m"
+  MR_Box mercury__string__param_6,
+#line 1317 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 1285 "string.m"
+void MR_CALL 
+mercury__string__foldl2_between_2_8_p_5(
+#line 1285 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1285 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1285 "string.m"
+  MR_Word mercury__string__param_3,
+#line 1285 "string.m"
+  MR_String mercury__string__param_4,
+#line 1285 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1285 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 1285 "string.m"
+  MR_Box mercury__string__param_7,
+#line 1285 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 1285 "string.m"
+  MR_Box mercury__string__param_9,
+#line 1285 "string.m"
+  MR_Box * mercury__string__param_10,
+#line 1285 "string.m"
+  MR_Cont mercury__string__param_11,
+#line 1285 "string.m"
+  void * mercury__string__param_12);
+
+#line 1283 "string.m"
+void MR_CALL 
+mercury__string__foldl2_between_2_8_p_4(
+#line 1283 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1283 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1283 "string.m"
+  MR_Word mercury__string__param_3,
+#line 1283 "string.m"
+  MR_String mercury__string__param_4,
+#line 1283 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1283 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 1283 "string.m"
+  MR_Box mercury__string__param_7,
+#line 1283 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 1283 "string.m"
+  MR_Box mercury__string__param_9,
+#line 1283 "string.m"
+  MR_Box * mercury__string__param_10,
+#line 1283 "string.m"
+  MR_Cont mercury__string__param_11,
+#line 1283 "string.m"
+  void * mercury__string__param_12);
+
+#line 1281 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldl2_between_2_8_p_3(
+#line 1281 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1281 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1281 "string.m"
+  MR_Word mercury__string__param_3,
+#line 1281 "string.m"
+  MR_String mercury__string__param_4,
+#line 1281 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1281 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 1281 "string.m"
+  MR_Box mercury__string__param_7,
+#line 1281 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 1281 "string.m"
+  MR_Box mercury__string__param_9,
+#line 1281 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 1279 "string.m"
+void MR_CALL 
+mercury__string__foldl2_between_2_8_p_2(
+#line 1279 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1279 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1279 "string.m"
+  MR_Word mercury__string__param_3,
+#line 1279 "string.m"
+  MR_String mercury__string__param_4,
+#line 1279 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1279 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 1279 "string.m"
+  MR_Box mercury__string__param_7,
+#line 1279 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 1279 "string.m"
+  MR_Box mercury__string__param_9,
+#line 1279 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 1277 "string.m"
+void MR_CALL 
+mercury__string__foldl2_between_2_8_p_1(
+#line 1277 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1277 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1277 "string.m"
+  MR_Word mercury__string__param_3,
+#line 1277 "string.m"
+  MR_String mercury__string__param_4,
+#line 1277 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1277 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 1277 "string.m"
+  MR_Box mercury__string__param_7,
+#line 1277 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 1277 "string.m"
+  MR_Box mercury__string__param_9,
+#line 1277 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 1275 "string.m"
+void MR_CALL 
+mercury__string__foldl2_between_2_8_p_0(
+#line 1275 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1275 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1275 "string.m"
+  MR_Word mercury__string__param_3,
+#line 1275 "string.m"
+  MR_String mercury__string__param_4,
+#line 1275 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1275 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 1275 "string.m"
+  MR_Box mercury__string__param_7,
+#line 1275 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 1275 "string.m"
+  MR_Box mercury__string__param_9,
+#line 1275 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 1258 "string.m"
+void MR_CALL 
+mercury__string__foldl_between_2_6_p_4(
+#line 1258 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1258 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1258 "string.m"
+  MR_String mercury__string__param_3,
+#line 1258 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1258 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1258 "string.m"
+  MR_Box mercury__string__param_6,
+#line 1258 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 1258 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 1258 "string.m"
+  void * mercury__string__param_9);
+
+#line 1256 "string.m"
+void MR_CALL 
+mercury__string__foldl_between_2_6_p_3(
+#line 1256 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1256 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1256 "string.m"
+  MR_String mercury__string__param_3,
+#line 1256 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1256 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1256 "string.m"
+  MR_Box mercury__string__param_6,
+#line 1256 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 1256 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 1256 "string.m"
+  void * mercury__string__param_9);
+
+#line 1254 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldl_between_2_6_p_2(
+#line 1254 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1254 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1254 "string.m"
+  MR_String mercury__string__param_3,
+#line 1254 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1254 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1254 "string.m"
+  MR_Box mercury__string__param_6,
+#line 1254 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 1252 "string.m"
+void MR_CALL 
+mercury__string__foldl_between_2_6_p_1(
+#line 1252 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1252 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1252 "string.m"
+  MR_String mercury__string__param_3,
+#line 1252 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1252 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1252 "string.m"
+  MR_Box mercury__string__param_6,
+#line 1252 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 1250 "string.m"
+void MR_CALL 
+mercury__string__foldl_between_2_6_p_0(
+#line 1250 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1250 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1250 "string.m"
+  MR_String mercury__string__param_3,
+#line 1250 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1250 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1250 "string.m"
+  MR_Box mercury__string__param_6,
+#line 1250 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 1201 "string.m"
+MR_bool MR_CALL 
+mercury__string__accumulate_negative_int_4_p_0(
+#line 1201 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 1201 "string.m"
+  MR_Char mercury__string__param_2,
+#line 1201 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 1201 "string.m"
+  MR_Integer * mercury__string__param_4);
+
+#line 1193 "string.m"
+MR_bool MR_CALL 
+mercury__string__accumulate_int_4_p_0(
+#line 1193 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 1193 "string.m"
+  MR_Char mercury__string__param_2,
+#line 1193 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 1193 "string.m"
+  MR_Integer * mercury__string__param_4);
+
+#line 1163 "string.m"
+MR_Word MR_CALL 
+mercury__string__replace_all_2_6_f_0(
+#line 1163 "string.m"
+  MR_String mercury__string__param_1,
+#line 1163 "string.m"
+  MR_String mercury__string__param_2,
+#line 1163 "string.m"
+  MR_String mercury__string__param_3,
+#line 1163 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 1163 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 1163 "string.m"
+  MR_Word mercury__string__param_6);
+
+#line 1114 "string.m"
+MR_Word MR_CALL 
+mercury__string__string_to_doc_1_f_0(
+#line 1114 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 1110 "string.m"
+MR_String MR_CALL 
+mercury__string__word_wrap_separator_3_f_0(
+#line 1110 "string.m"
+  MR_String mercury__string__param_1,
+#line 1110 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 1110 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 1102 "string.m"
+MR_String MR_CALL 
+mercury__string__word_wrap_2_f_0(
+#line 1102 "string.m"
+  MR_String mercury__string__param_1,
+#line 1102 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 1088 "string.m"
+MR_String MR_CALL 
+mercury__string__format_table_max_2_f_0(
+#line 1088 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1088 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 1083 "string.m"
+MR_String MR_CALL 
+mercury__string__format_table_2_f_0(
+#line 1083 "string.m"
+  MR_Word mercury__string__param_1,
+#line 1083 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 1057 "string.m"
+void MR_CALL 
+mercury__string__format_3_p_0(
+#line 1057 "string.m"
+  MR_String mercury__string__param_1,
+#line 1057 "string.m"
+  MR_Word mercury__string__param_2,
+#line 1057 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 1056 "string.m"
+MR_String MR_CALL 
+mercury__string__format_2_f_0(
+#line 1056 "string.m"
+  MR_String mercury__string__param_1,
+#line 1056 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 1003 "string.m"
+MR_bool MR_CALL 
+mercury__string__sub_string_search_start_4_p_0(
+#line 1003 "string.m"
+  MR_String mercury__string__param_1,
+#line 1003 "string.m"
+  MR_String mercury__string__param_2,
+#line 1003 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 1003 "string.m"
+  MR_Integer * mercury__string__param_4);
+
+#line 996 "string.m"
+MR_bool MR_CALL 
+mercury__string__sub_string_search_3_p_0(
+#line 996 "string.m"
+  MR_String mercury__string__param_1,
+#line 996 "string.m"
+  MR_String mercury__string__param_2,
+#line 996 "string.m"
+  MR_Integer * mercury__string__param_3);
+
+#line 989 "string.m"
+MR_Integer MR_CALL 
+mercury__string__hash3_1_f_0(
+#line 989 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 988 "string.m"
+MR_Integer MR_CALL 
+mercury__string__hash2_1_f_0(
+#line 988 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 984 "string.m"
+void MR_CALL 
+mercury__string__hash_2_p_0(
+#line 984 "string.m"
+  MR_String mercury__string__param_1,
+#line 984 "string.m"
+  MR_Integer * mercury__string__param_2);
+
+#line 983 "string.m"
+MR_Integer MR_CALL 
+mercury__string__hash_1_f_0(
+#line 983 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 979 "string.m"
+MR_String MR_CALL 
+mercury__string__join_list_2_f_0(
+#line 979 "string.m"
+  MR_String mercury__string__param_1,
+#line 979 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 973 "string.m"
+void MR_CALL 
+mercury__string__append_list_2_p_0(
+#line 973 "string.m"
+  MR_Word mercury__string__param_1,
+#line 973 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 972 "string.m"
+MR_String MR_CALL 
+mercury__string__append_list_1_f_0(
+#line 972 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 967 "string.m"
+void MR_CALL 
+mercury__string__unsafe_substring_4_p_0(
+#line 967 "string.m"
+  MR_String mercury__string__param_1,
+#line 967 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 967 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 967 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 965 "string.m"
+MR_String MR_CALL 
+mercury__string__unsafe_substring_3_f_0(
+#line 965 "string.m"
+  MR_String mercury__string__param_1,
+#line 965 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 965 "string.m"
+  MR_Integer mercury__string__param_3);
+
+#line 957 "string.m"
+void MR_CALL 
+mercury__string__unsafe_between_4_p_0(
+#line 957 "string.m"
+  MR_String mercury__string__param_1,
+#line 957 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 957 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 957 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 955 "string.m"
+MR_String MR_CALL 
+mercury__string__unsafe_between_3_f_0(
+#line 955 "string.m"
+  MR_String mercury__string__param_1,
+#line 955 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 955 "string.m"
+  MR_Integer mercury__string__param_3);
+
+#line 942 "string.m"
+void MR_CALL 
+mercury__string__between_codepoints_4_p_0(
+#line 942 "string.m"
+  MR_String mercury__string__param_1,
+#line 942 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 942 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 942 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 940 "string.m"
+MR_String MR_CALL 
+mercury__string__between_codepoints_3_f_0(
+#line 940 "string.m"
+  MR_String mercury__string__param_1,
+#line 940 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 940 "string.m"
+  MR_Integer mercury__string__param_3);
+
+#line 930 "string.m"
+void MR_CALL 
+mercury__string__substring_4_p_0(
+#line 930 "string.m"
+  MR_String mercury__string__param_1,
+#line 930 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 930 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 930 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 929 "string.m"
+MR_String MR_CALL 
+mercury__string__substring_3_f_0(
+#line 929 "string.m"
+  MR_String mercury__string__param_1,
+#line 929 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 929 "string.m"
+  MR_Integer mercury__string__param_3);
+
+#line 922 "string.m"
+void MR_CALL 
+mercury__string__between_4_p_0(
+#line 922 "string.m"
+  MR_String mercury__string__param_1,
+#line 922 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 922 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 922 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 921 "string.m"
+MR_String MR_CALL 
+mercury__string__between_3_f_0(
+#line 921 "string.m"
+  MR_String mercury__string__param_1,
+#line 921 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 921 "string.m"
+  MR_Integer mercury__string__param_3);
+
+#line 911 "string.m"
+void MR_CALL 
+mercury__string__right_by_codepoint_3_p_0(
+#line 911 "string.m"
+  MR_String mercury__string__param_1,
+#line 911 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 911 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 910 "string.m"
+MR_String MR_CALL 
+mercury__string__right_by_codepoint_2_f_0(
+#line 910 "string.m"
+  MR_String mercury__string__param_1,
+#line 910 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 902 "string.m"
+void MR_CALL 
+mercury__string__right_3_p_0(
+#line 902 "string.m"
+  MR_String mercury__string__param_1,
+#line 902 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 902 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 901 "string.m"
+MR_String MR_CALL 
+mercury__string__right_2_f_0(
+#line 901 "string.m"
+  MR_String mercury__string__param_1,
+#line 901 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 894 "string.m"
+void MR_CALL 
+mercury__string__left_by_codepoint_3_p_0(
+#line 894 "string.m"
+  MR_String mercury__string__param_1,
+#line 894 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 894 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 893 "string.m"
+MR_String MR_CALL 
+mercury__string__left_by_codepoint_2_f_0(
+#line 893 "string.m"
+  MR_String mercury__string__param_1,
+#line 893 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 885 "string.m"
+void MR_CALL 
+mercury__string__left_3_p_0(
+#line 885 "string.m"
+  MR_String mercury__string__param_1,
+#line 885 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 885 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 884 "string.m"
+MR_String MR_CALL 
+mercury__string__left_2_f_0(
+#line 884 "string.m"
+  MR_String mercury__string__param_1,
+#line 884 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 876 "string.m"
+void MR_CALL 
+mercury__string__split_by_codepoint_4_p_0(
+#line 876 "string.m"
+  MR_String mercury__string__param_1,
+#line 876 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 876 "string.m"
+  MR_String * mercury__string__param_3,
+#line 876 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 868 "string.m"
+void MR_CALL 
+mercury__string__split_4_p_0(
+#line 868 "string.m"
+  MR_String mercury__string__param_1,
+#line 868 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 868 "string.m"
+  MR_String * mercury__string__param_3,
+#line 868 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 861 "string.m"
+MR_Word MR_CALL 
+mercury__string__split_at_string_2_f_0(
+#line 861 "string.m"
+  MR_String mercury__string__param_1,
+#line 861 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 851 "string.m"
+MR_Word MR_CALL 
+mercury__string__split_at_char_2_f_0(
+#line 851 "string.m"
+  MR_Char mercury__string__param_1,
+#line 851 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 846 "string.m"
+MR_Word MR_CALL 
+mercury__string__split_at_separator_2_f_0(
+#line 846 "string.m"
+  MR_Word mercury__string__param_1,
+#line 846 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 834 "string.m"
+MR_Word MR_CALL 
+mercury__string__words_1_f_0(
+#line 834 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 829 "string.m"
+MR_Word MR_CALL 
+mercury__string__words_separator_2_f_0(
+#line 829 "string.m"
+  MR_Word mercury__string__param_1,
+#line 829 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 815 "string.m"
+void MR_CALL 
+mercury__string__foldr_substring_6_p_4(
+#line 815 "string.m"
+  MR_Word mercury__string__param_1,
+#line 815 "string.m"
+  MR_Word mercury__string__param_2,
+#line 815 "string.m"
+  MR_String mercury__string__param_3,
+#line 815 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 815 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 815 "string.m"
+  MR_Box mercury__string__param_6,
+#line 815 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 815 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 815 "string.m"
+  void * mercury__string__param_9);
+
+#line 813 "string.m"
+void MR_CALL 
+mercury__string__foldr_substring_6_p_3(
+#line 813 "string.m"
+  MR_Word mercury__string__param_1,
+#line 813 "string.m"
+  MR_Word mercury__string__param_2,
+#line 813 "string.m"
+  MR_String mercury__string__param_3,
+#line 813 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 813 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 813 "string.m"
+  MR_Box mercury__string__param_6,
+#line 813 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 813 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 813 "string.m"
+  void * mercury__string__param_9);
+
+#line 811 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldr_substring_6_p_2(
+#line 811 "string.m"
+  MR_Word mercury__string__param_1,
+#line 811 "string.m"
+  MR_Word mercury__string__param_2,
+#line 811 "string.m"
+  MR_String mercury__string__param_3,
+#line 811 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 811 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 811 "string.m"
+  MR_Box mercury__string__param_6,
+#line 811 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 809 "string.m"
+void MR_CALL 
+mercury__string__foldr_substring_6_p_1(
+#line 809 "string.m"
+  MR_Word mercury__string__param_1,
+#line 809 "string.m"
+  MR_Word mercury__string__param_2,
+#line 809 "string.m"
+  MR_String mercury__string__param_3,
+#line 809 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 809 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 809 "string.m"
+  MR_Box mercury__string__param_6,
+#line 809 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 807 "string.m"
+void MR_CALL 
+mercury__string__foldr_substring_6_p_0(
+#line 807 "string.m"
+  MR_Word mercury__string__param_1,
+#line 807 "string.m"
+  MR_Word mercury__string__param_2,
+#line 807 "string.m"
+  MR_String mercury__string__param_3,
+#line 807 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 807 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 807 "string.m"
+  MR_Box mercury__string__param_6,
+#line 807 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 805 "string.m"
+MR_Box MR_CALL 
+mercury__string__foldr_substring_5_f_0(
+#line 805 "string.m"
+  MR_Word mercury__string__param_1,
+#line 805 "string.m"
+  MR_Word mercury__string__param_2,
+#line 805 "string.m"
+  MR_String mercury__string__param_3,
+#line 805 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 805 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 805 "string.m"
+  MR_Box mercury__string__param_6);
+
+#line 797 "string.m"
+void MR_CALL 
+mercury__string__foldl2_substring_8_p_5(
+#line 797 "string.m"
+  MR_Word mercury__string__param_1,
+#line 797 "string.m"
+  MR_Word mercury__string__param_2,
+#line 797 "string.m"
+  MR_Word mercury__string__param_3,
+#line 797 "string.m"
+  MR_String mercury__string__param_4,
+#line 797 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 797 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 797 "string.m"
+  MR_Box mercury__string__param_7,
+#line 797 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 797 "string.m"
+  MR_Box mercury__string__param_9,
+#line 797 "string.m"
+  MR_Box * mercury__string__param_10,
+#line 797 "string.m"
+  MR_Cont mercury__string__param_11,
+#line 797 "string.m"
+  void * mercury__string__param_12);
+
+#line 795 "string.m"
+void MR_CALL 
+mercury__string__foldl2_substring_8_p_4(
+#line 795 "string.m"
+  MR_Word mercury__string__param_1,
+#line 795 "string.m"
+  MR_Word mercury__string__param_2,
+#line 795 "string.m"
+  MR_Word mercury__string__param_3,
+#line 795 "string.m"
+  MR_String mercury__string__param_4,
+#line 795 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 795 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 795 "string.m"
+  MR_Box mercury__string__param_7,
+#line 795 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 795 "string.m"
+  MR_Box mercury__string__param_9,
+#line 795 "string.m"
+  MR_Box * mercury__string__param_10,
+#line 795 "string.m"
+  MR_Cont mercury__string__param_11,
+#line 795 "string.m"
+  void * mercury__string__param_12);
+
+#line 793 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldl2_substring_8_p_3(
+#line 793 "string.m"
+  MR_Word mercury__string__param_1,
+#line 793 "string.m"
+  MR_Word mercury__string__param_2,
+#line 793 "string.m"
+  MR_Word mercury__string__param_3,
+#line 793 "string.m"
+  MR_String mercury__string__param_4,
+#line 793 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 793 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 793 "string.m"
+  MR_Box mercury__string__param_7,
+#line 793 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 793 "string.m"
+  MR_Box mercury__string__param_9,
+#line 793 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 791 "string.m"
+void MR_CALL 
+mercury__string__foldl2_substring_8_p_2(
+#line 791 "string.m"
+  MR_Word mercury__string__param_1,
+#line 791 "string.m"
+  MR_Word mercury__string__param_2,
+#line 791 "string.m"
+  MR_Word mercury__string__param_3,
+#line 791 "string.m"
+  MR_String mercury__string__param_4,
+#line 791 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 791 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 791 "string.m"
+  MR_Box mercury__string__param_7,
+#line 791 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 791 "string.m"
+  MR_Box mercury__string__param_9,
+#line 791 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 789 "string.m"
+void MR_CALL 
+mercury__string__foldl2_substring_8_p_1(
+#line 789 "string.m"
+  MR_Word mercury__string__param_1,
+#line 789 "string.m"
+  MR_Word mercury__string__param_2,
+#line 789 "string.m"
+  MR_Word mercury__string__param_3,
+#line 789 "string.m"
+  MR_String mercury__string__param_4,
+#line 789 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 789 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 789 "string.m"
+  MR_Box mercury__string__param_7,
+#line 789 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 789 "string.m"
+  MR_Box mercury__string__param_9,
+#line 789 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 787 "string.m"
+void MR_CALL 
+mercury__string__foldl2_substring_8_p_0(
+#line 787 "string.m"
+  MR_Word mercury__string__param_1,
+#line 787 "string.m"
+  MR_Word mercury__string__param_2,
+#line 787 "string.m"
+  MR_Word mercury__string__param_3,
+#line 787 "string.m"
+  MR_String mercury__string__param_4,
+#line 787 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 787 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 787 "string.m"
+  MR_Box mercury__string__param_7,
+#line 787 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 787 "string.m"
+  MR_Box mercury__string__param_9,
+#line 787 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 778 "string.m"
+void MR_CALL 
+mercury__string__foldl_substring_6_p_4(
+#line 778 "string.m"
+  MR_Word mercury__string__param_1,
+#line 778 "string.m"
+  MR_Word mercury__string__param_2,
+#line 778 "string.m"
+  MR_String mercury__string__param_3,
+#line 778 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 778 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 778 "string.m"
+  MR_Box mercury__string__param_6,
+#line 778 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 778 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 778 "string.m"
+  void * mercury__string__param_9);
+
+#line 776 "string.m"
+void MR_CALL 
+mercury__string__foldl_substring_6_p_3(
+#line 776 "string.m"
+  MR_Word mercury__string__param_1,
+#line 776 "string.m"
+  MR_Word mercury__string__param_2,
+#line 776 "string.m"
+  MR_String mercury__string__param_3,
+#line 776 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 776 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 776 "string.m"
+  MR_Box mercury__string__param_6,
+#line 776 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 776 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 776 "string.m"
+  void * mercury__string__param_9);
+
+#line 774 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldl_substring_6_p_2(
+#line 774 "string.m"
+  MR_Word mercury__string__param_1,
+#line 774 "string.m"
+  MR_Word mercury__string__param_2,
+#line 774 "string.m"
+  MR_String mercury__string__param_3,
+#line 774 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 774 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 774 "string.m"
+  MR_Box mercury__string__param_6,
+#line 774 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 772 "string.m"
+void MR_CALL 
+mercury__string__foldl_substring_6_p_1(
+#line 772 "string.m"
+  MR_Word mercury__string__param_1,
+#line 772 "string.m"
+  MR_Word mercury__string__param_2,
+#line 772 "string.m"
+  MR_String mercury__string__param_3,
+#line 772 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 772 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 772 "string.m"
+  MR_Box mercury__string__param_6,
+#line 772 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 770 "string.m"
+void MR_CALL 
+mercury__string__foldl_substring_6_p_0(
+#line 770 "string.m"
+  MR_Word mercury__string__param_1,
+#line 770 "string.m"
+  MR_Word mercury__string__param_2,
+#line 770 "string.m"
+  MR_String mercury__string__param_3,
+#line 770 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 770 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 770 "string.m"
+  MR_Box mercury__string__param_6,
+#line 770 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 768 "string.m"
+MR_Box MR_CALL 
+mercury__string__foldl_substring_5_f_0(
+#line 768 "string.m"
+  MR_Word mercury__string__param_1,
+#line 768 "string.m"
+  MR_Word mercury__string__param_2,
+#line 768 "string.m"
+  MR_String mercury__string__param_3,
+#line 768 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 768 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 768 "string.m"
+  MR_Box mercury__string__param_6);
+
+#line 760 "string.m"
+void MR_CALL 
+mercury__string__foldr_between_6_p_4(
+#line 760 "string.m"
+  MR_Word mercury__string__param_1,
+#line 760 "string.m"
+  MR_Word mercury__string__param_2,
+#line 760 "string.m"
+  MR_String mercury__string__param_3,
+#line 760 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 760 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 760 "string.m"
+  MR_Box mercury__string__param_6,
+#line 760 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 760 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 760 "string.m"
+  void * mercury__string__param_9);
+
+#line 758 "string.m"
+void MR_CALL 
+mercury__string__foldr_between_6_p_3(
+#line 758 "string.m"
+  MR_Word mercury__string__param_1,
+#line 758 "string.m"
+  MR_Word mercury__string__param_2,
+#line 758 "string.m"
+  MR_String mercury__string__param_3,
+#line 758 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 758 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 758 "string.m"
+  MR_Box mercury__string__param_6,
+#line 758 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 758 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 758 "string.m"
+  void * mercury__string__param_9);
+
+#line 756 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldr_between_6_p_2(
+#line 756 "string.m"
+  MR_Word mercury__string__param_1,
+#line 756 "string.m"
+  MR_Word mercury__string__param_2,
+#line 756 "string.m"
+  MR_String mercury__string__param_3,
+#line 756 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 756 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 756 "string.m"
+  MR_Box mercury__string__param_6,
+#line 756 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 754 "string.m"
+void MR_CALL 
+mercury__string__foldr_between_6_p_1(
+#line 754 "string.m"
+  MR_Word mercury__string__param_1,
+#line 754 "string.m"
+  MR_Word mercury__string__param_2,
+#line 754 "string.m"
+  MR_String mercury__string__param_3,
+#line 754 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 754 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 754 "string.m"
+  MR_Box mercury__string__param_6,
+#line 754 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 752 "string.m"
+void MR_CALL 
+mercury__string__foldr_between_6_p_0(
+#line 752 "string.m"
+  MR_Word mercury__string__param_1,
+#line 752 "string.m"
+  MR_Word mercury__string__param_2,
+#line 752 "string.m"
+  MR_String mercury__string__param_3,
+#line 752 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 752 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 752 "string.m"
+  MR_Box mercury__string__param_6,
+#line 752 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 750 "string.m"
+MR_Box MR_CALL 
+mercury__string__foldr_between_5_f_0(
+#line 750 "string.m"
+  MR_Word mercury__string__param_1,
+#line 750 "string.m"
+  MR_Word mercury__string__param_2,
+#line 750 "string.m"
+  MR_String mercury__string__param_3,
+#line 750 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 750 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 750 "string.m"
+  MR_Box mercury__string__param_6);
+
+#line 742 "string.m"
+void MR_CALL 
+mercury__string__foldr_4_p_4(
+#line 742 "string.m"
+  MR_Word mercury__string__param_1,
+#line 742 "string.m"
+  MR_Word mercury__string__param_2,
+#line 742 "string.m"
+  MR_String mercury__string__param_3,
+#line 742 "string.m"
+  MR_Box mercury__string__param_4,
+#line 742 "string.m"
+  MR_Box * mercury__string__param_5,
+#line 742 "string.m"
+  MR_Cont mercury__string__param_6,
+#line 742 "string.m"
+  void * mercury__string__param_7);
+
+#line 741 "string.m"
+void MR_CALL 
+mercury__string__foldr_4_p_3(
+#line 741 "string.m"
+  MR_Word mercury__string__param_1,
+#line 741 "string.m"
+  MR_Word mercury__string__param_2,
+#line 741 "string.m"
+  MR_String mercury__string__param_3,
+#line 741 "string.m"
+  MR_Box mercury__string__param_4,
+#line 741 "string.m"
+  MR_Box * mercury__string__param_5,
+#line 741 "string.m"
+  MR_Cont mercury__string__param_6,
+#line 741 "string.m"
+  void * mercury__string__param_7);
+
+#line 740 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldr_4_p_2(
+#line 740 "string.m"
+  MR_Word mercury__string__param_1,
+#line 740 "string.m"
+  MR_Word mercury__string__param_2,
+#line 740 "string.m"
+  MR_String mercury__string__param_3,
+#line 740 "string.m"
+  MR_Box mercury__string__param_4,
+#line 740 "string.m"
+  MR_Box * mercury__string__param_5);
+
+#line 739 "string.m"
+void MR_CALL 
+mercury__string__foldr_4_p_1(
+#line 739 "string.m"
+  MR_Word mercury__string__param_1,
+#line 739 "string.m"
+  MR_Word mercury__string__param_2,
+#line 739 "string.m"
+  MR_String mercury__string__param_3,
+#line 739 "string.m"
+  MR_Box mercury__string__param_4,
+#line 739 "string.m"
+  MR_Box * mercury__string__param_5);
+
+#line 738 "string.m"
+void MR_CALL 
+mercury__string__foldr_4_p_0(
+#line 738 "string.m"
+  MR_Word mercury__string__param_1,
+#line 738 "string.m"
+  MR_Word mercury__string__param_2,
+#line 738 "string.m"
+  MR_String mercury__string__param_3,
+#line 738 "string.m"
+  MR_Box mercury__string__param_4,
+#line 738 "string.m"
+  MR_Box * mercury__string__param_5);
+
+#line 736 "string.m"
+MR_Box MR_CALL 
+mercury__string__foldr_3_f_0(
+#line 736 "string.m"
+  MR_Word mercury__string__param_1,
+#line 736 "string.m"
+  MR_Word mercury__string__param_2,
+#line 736 "string.m"
+  MR_String mercury__string__param_3,
+#line 736 "string.m"
+  MR_Box mercury__string__param_4);
+
+#line 730 "string.m"
+void MR_CALL 
+mercury__string__foldl2_between_8_p_5(
+#line 730 "string.m"
+  MR_Word mercury__string__param_1,
+#line 730 "string.m"
+  MR_Word mercury__string__param_2,
+#line 730 "string.m"
+  MR_Word mercury__string__param_3,
+#line 730 "string.m"
+  MR_String mercury__string__param_4,
+#line 730 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 730 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 730 "string.m"
+  MR_Box mercury__string__param_7,
+#line 730 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 730 "string.m"
+  MR_Box mercury__string__param_9,
+#line 730 "string.m"
+  MR_Box * mercury__string__param_10,
+#line 730 "string.m"
+  MR_Cont mercury__string__param_11,
+#line 730 "string.m"
+  void * mercury__string__param_12);
+
+#line 728 "string.m"
+void MR_CALL 
+mercury__string__foldl2_between_8_p_4(
+#line 728 "string.m"
+  MR_Word mercury__string__param_1,
+#line 728 "string.m"
+  MR_Word mercury__string__param_2,
+#line 728 "string.m"
+  MR_Word mercury__string__param_3,
+#line 728 "string.m"
+  MR_String mercury__string__param_4,
+#line 728 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 728 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 728 "string.m"
+  MR_Box mercury__string__param_7,
+#line 728 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 728 "string.m"
+  MR_Box mercury__string__param_9,
+#line 728 "string.m"
+  MR_Box * mercury__string__param_10,
+#line 728 "string.m"
+  MR_Cont mercury__string__param_11,
+#line 728 "string.m"
+  void * mercury__string__param_12);
+
+#line 726 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldl2_between_8_p_3(
+#line 726 "string.m"
+  MR_Word mercury__string__param_1,
+#line 726 "string.m"
+  MR_Word mercury__string__param_2,
+#line 726 "string.m"
+  MR_Word mercury__string__param_3,
+#line 726 "string.m"
+  MR_String mercury__string__param_4,
+#line 726 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 726 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 726 "string.m"
+  MR_Box mercury__string__param_7,
+#line 726 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 726 "string.m"
+  MR_Box mercury__string__param_9,
+#line 726 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 724 "string.m"
+void MR_CALL 
+mercury__string__foldl2_between_8_p_2(
+#line 724 "string.m"
+  MR_Word mercury__string__param_1,
+#line 724 "string.m"
+  MR_Word mercury__string__param_2,
+#line 724 "string.m"
+  MR_Word mercury__string__param_3,
+#line 724 "string.m"
+  MR_String mercury__string__param_4,
+#line 724 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 724 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 724 "string.m"
+  MR_Box mercury__string__param_7,
+#line 724 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 724 "string.m"
+  MR_Box mercury__string__param_9,
+#line 724 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 722 "string.m"
+void MR_CALL 
+mercury__string__foldl2_between_8_p_1(
+#line 722 "string.m"
+  MR_Word mercury__string__param_1,
+#line 722 "string.m"
+  MR_Word mercury__string__param_2,
+#line 722 "string.m"
+  MR_Word mercury__string__param_3,
+#line 722 "string.m"
+  MR_String mercury__string__param_4,
+#line 722 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 722 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 722 "string.m"
+  MR_Box mercury__string__param_7,
+#line 722 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 722 "string.m"
+  MR_Box mercury__string__param_9,
+#line 722 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 720 "string.m"
+void MR_CALL 
+mercury__string__foldl2_between_8_p_0(
+#line 720 "string.m"
+  MR_Word mercury__string__param_1,
+#line 720 "string.m"
+  MR_Word mercury__string__param_2,
+#line 720 "string.m"
+  MR_Word mercury__string__param_3,
+#line 720 "string.m"
+  MR_String mercury__string__param_4,
+#line 720 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 720 "string.m"
+  MR_Integer mercury__string__param_6,
+#line 720 "string.m"
+  MR_Box mercury__string__param_7,
+#line 720 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 720 "string.m"
+  MR_Box mercury__string__param_9,
+#line 720 "string.m"
+  MR_Box * mercury__string__param_10);
+
+#line 710 "string.m"
+void MR_CALL 
+mercury__string__foldl_between_6_p_4(
+#line 710 "string.m"
+  MR_Word mercury__string__param_1,
+#line 710 "string.m"
+  MR_Word mercury__string__param_2,
+#line 710 "string.m"
+  MR_String mercury__string__param_3,
+#line 710 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 710 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 710 "string.m"
+  MR_Box mercury__string__param_6,
+#line 710 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 710 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 710 "string.m"
+  void * mercury__string__param_9);
+
+#line 708 "string.m"
+void MR_CALL 
+mercury__string__foldl_between_6_p_3(
+#line 708 "string.m"
+  MR_Word mercury__string__param_1,
+#line 708 "string.m"
+  MR_Word mercury__string__param_2,
+#line 708 "string.m"
+  MR_String mercury__string__param_3,
+#line 708 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 708 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 708 "string.m"
+  MR_Box mercury__string__param_6,
+#line 708 "string.m"
+  MR_Box * mercury__string__param_7,
+#line 708 "string.m"
+  MR_Cont mercury__string__param_8,
+#line 708 "string.m"
+  void * mercury__string__param_9);
+
+#line 706 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldl_between_6_p_2(
+#line 706 "string.m"
+  MR_Word mercury__string__param_1,
+#line 706 "string.m"
+  MR_Word mercury__string__param_2,
+#line 706 "string.m"
+  MR_String mercury__string__param_3,
+#line 706 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 706 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 706 "string.m"
+  MR_Box mercury__string__param_6,
+#line 706 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 704 "string.m"
+void MR_CALL 
+mercury__string__foldl_between_6_p_1(
+#line 704 "string.m"
+  MR_Word mercury__string__param_1,
+#line 704 "string.m"
+  MR_Word mercury__string__param_2,
+#line 704 "string.m"
+  MR_String mercury__string__param_3,
+#line 704 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 704 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 704 "string.m"
+  MR_Box mercury__string__param_6,
+#line 704 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 702 "string.m"
+void MR_CALL 
+mercury__string__foldl_between_6_p_0(
+#line 702 "string.m"
+  MR_Word mercury__string__param_1,
+#line 702 "string.m"
+  MR_Word mercury__string__param_2,
+#line 702 "string.m"
+  MR_String mercury__string__param_3,
+#line 702 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 702 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 702 "string.m"
+  MR_Box mercury__string__param_6,
+#line 702 "string.m"
+  MR_Box * mercury__string__param_7);
+
+#line 700 "string.m"
+MR_Box MR_CALL 
+mercury__string__foldl_between_5_f_0(
+#line 700 "string.m"
+  MR_Word mercury__string__param_1,
+#line 700 "string.m"
+  MR_Word mercury__string__param_2,
+#line 700 "string.m"
+  MR_String mercury__string__param_3,
+#line 700 "string.m"
+  MR_Integer mercury__string__param_4,
+#line 700 "string.m"
+  MR_Integer mercury__string__param_5,
+#line 700 "string.m"
+  MR_Box mercury__string__param_6);
+
+#line 691 "string.m"
+void MR_CALL 
+mercury__string__foldl2_6_p_5(
+#line 691 "string.m"
+  MR_Word mercury__string__param_1,
+#line 691 "string.m"
+  MR_Word mercury__string__param_2,
+#line 691 "string.m"
+  MR_Word mercury__string__param_3,
+#line 691 "string.m"
+  MR_String mercury__string__param_4,
+#line 691 "string.m"
+  MR_Box mercury__string__param_5,
+#line 691 "string.m"
+  MR_Box * mercury__string__param_6,
+#line 691 "string.m"
+  MR_Box mercury__string__param_7,
+#line 691 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 691 "string.m"
+  MR_Cont mercury__string__param_9,
+#line 691 "string.m"
+  void * mercury__string__param_10);
+
+#line 689 "string.m"
+void MR_CALL 
+mercury__string__foldl2_6_p_4(
+#line 689 "string.m"
+  MR_Word mercury__string__param_1,
+#line 689 "string.m"
+  MR_Word mercury__string__param_2,
+#line 689 "string.m"
+  MR_Word mercury__string__param_3,
+#line 689 "string.m"
+  MR_String mercury__string__param_4,
+#line 689 "string.m"
+  MR_Box mercury__string__param_5,
+#line 689 "string.m"
+  MR_Box * mercury__string__param_6,
+#line 689 "string.m"
+  MR_Box mercury__string__param_7,
+#line 689 "string.m"
+  MR_Box * mercury__string__param_8,
+#line 689 "string.m"
+  MR_Cont mercury__string__param_9,
+#line 689 "string.m"
+  void * mercury__string__param_10);
+
+#line 687 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldl2_6_p_3(
+#line 687 "string.m"
+  MR_Word mercury__string__param_1,
+#line 687 "string.m"
+  MR_Word mercury__string__param_2,
+#line 687 "string.m"
+  MR_Word mercury__string__param_3,
+#line 687 "string.m"
+  MR_String mercury__string__param_4,
+#line 687 "string.m"
+  MR_Box mercury__string__param_5,
+#line 687 "string.m"
+  MR_Box * mercury__string__param_6,
+#line 687 "string.m"
+  MR_Box mercury__string__param_7,
+#line 687 "string.m"
+  MR_Box * mercury__string__param_8);
+
+#line 685 "string.m"
+void MR_CALL 
+mercury__string__foldl2_6_p_2(
+#line 685 "string.m"
+  MR_Word mercury__string__param_1,
+#line 685 "string.m"
+  MR_Word mercury__string__param_2,
+#line 685 "string.m"
+  MR_Word mercury__string__param_3,
+#line 685 "string.m"
+  MR_String mercury__string__param_4,
+#line 685 "string.m"
+  MR_Box mercury__string__param_5,
+#line 685 "string.m"
+  MR_Box * mercury__string__param_6,
+#line 685 "string.m"
+  MR_Box mercury__string__param_7,
+#line 685 "string.m"
+  MR_Box * mercury__string__param_8);
+
+#line 683 "string.m"
+void MR_CALL 
+mercury__string__foldl2_6_p_1(
+#line 683 "string.m"
+  MR_Word mercury__string__param_1,
+#line 683 "string.m"
+  MR_Word mercury__string__param_2,
+#line 683 "string.m"
+  MR_Word mercury__string__param_3,
+#line 683 "string.m"
+  MR_String mercury__string__param_4,
+#line 683 "string.m"
+  MR_Box mercury__string__param_5,
+#line 683 "string.m"
+  MR_Box * mercury__string__param_6,
+#line 683 "string.m"
+  MR_Box mercury__string__param_7,
+#line 683 "string.m"
+  MR_Box * mercury__string__param_8);
+
+#line 681 "string.m"
+void MR_CALL 
+mercury__string__foldl2_6_p_0(
+#line 681 "string.m"
+  MR_Word mercury__string__param_1,
+#line 681 "string.m"
+  MR_Word mercury__string__param_2,
+#line 681 "string.m"
+  MR_Word mercury__string__param_3,
+#line 681 "string.m"
+  MR_String mercury__string__param_4,
+#line 681 "string.m"
+  MR_Box mercury__string__param_5,
+#line 681 "string.m"
+  MR_Box * mercury__string__param_6,
+#line 681 "string.m"
+  MR_Box mercury__string__param_7,
+#line 681 "string.m"
+  MR_Box * mercury__string__param_8);
+
+#line 675 "string.m"
+void MR_CALL 
+mercury__string__foldl_4_p_4(
+#line 675 "string.m"
+  MR_Word mercury__string__param_1,
+#line 675 "string.m"
+  MR_Word mercury__string__param_2,
+#line 675 "string.m"
+  MR_String mercury__string__param_3,
+#line 675 "string.m"
+  MR_Box mercury__string__param_4,
+#line 675 "string.m"
+  MR_Box * mercury__string__param_5,
+#line 675 "string.m"
+  MR_Cont mercury__string__param_6,
+#line 675 "string.m"
+  void * mercury__string__param_7);
+
+#line 674 "string.m"
+void MR_CALL 
+mercury__string__foldl_4_p_3(
+#line 674 "string.m"
+  MR_Word mercury__string__param_1,
+#line 674 "string.m"
+  MR_Word mercury__string__param_2,
+#line 674 "string.m"
+  MR_String mercury__string__param_3,
+#line 674 "string.m"
+  MR_Box mercury__string__param_4,
+#line 674 "string.m"
+  MR_Box * mercury__string__param_5,
+#line 674 "string.m"
+  MR_Cont mercury__string__param_6,
+#line 674 "string.m"
+  void * mercury__string__param_7);
+
+#line 673 "string.m"
+MR_bool MR_CALL 
+mercury__string__foldl_4_p_2(
+#line 673 "string.m"
+  MR_Word mercury__string__param_1,
+#line 673 "string.m"
+  MR_Word mercury__string__param_2,
+#line 673 "string.m"
+  MR_String mercury__string__param_3,
+#line 673 "string.m"
+  MR_Box mercury__string__param_4,
+#line 673 "string.m"
+  MR_Box * mercury__string__param_5);
+
+#line 672 "string.m"
+void MR_CALL 
+mercury__string__foldl_4_p_1(
+#line 672 "string.m"
+  MR_Word mercury__string__param_1,
+#line 672 "string.m"
+  MR_Word mercury__string__param_2,
+#line 672 "string.m"
+  MR_String mercury__string__param_3,
+#line 672 "string.m"
+  MR_Box mercury__string__param_4,
+#line 672 "string.m"
+  MR_Box * mercury__string__param_5);
+
+#line 671 "string.m"
+void MR_CALL 
+mercury__string__foldl_4_p_0(
+#line 671 "string.m"
+  MR_Word mercury__string__param_1,
+#line 671 "string.m"
+  MR_Word mercury__string__param_2,
+#line 671 "string.m"
+  MR_String mercury__string__param_3,
+#line 671 "string.m"
+  MR_Box mercury__string__param_4,
+#line 671 "string.m"
+  MR_Box * mercury__string__param_5);
+
+#line 669 "string.m"
+MR_Box MR_CALL 
+mercury__string__foldl_3_f_0(
+#line 669 "string.m"
+  MR_Word mercury__string__param_1,
+#line 669 "string.m"
+  MR_Word mercury__string__param_2,
+#line 669 "string.m"
+  MR_String mercury__string__param_3,
+#line 669 "string.m"
+  MR_Box mercury__string__param_4);
+
+#line 655 "string.m"
+void MR_CALL 
+mercury__string__unsafe_set_char_4_p_0(
+#line 655 "string.m"
+  MR_Char mercury__string__param_1,
+#line 655 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 655 "string.m"
+  MR_String mercury__string__param_3,
+#line 655 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 650 "string.m"
+MR_String MR_CALL 
+mercury__string__unsafe_set_char_3_f_0(
+#line 650 "string.m"
+  MR_Char mercury__string__param_1,
+#line 650 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 650 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 636 "string.m"
+void MR_CALL 
+mercury__string__det_set_char_4_p_0(
+#line 636 "string.m"
+  MR_Char mercury__string__param_1,
+#line 636 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 636 "string.m"
+  MR_String mercury__string__param_3,
+#line 636 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 634 "string.m"
+MR_String MR_CALL 
+mercury__string__det_set_char_3_f_0(
+#line 634 "string.m"
+  MR_Char mercury__string__param_1,
+#line 634 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 634 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 623 "string.m"
+MR_bool MR_CALL 
+mercury__string__set_char_4_p_0(
+#line 623 "string.m"
+  MR_Char mercury__string__param_1,
+#line 623 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 623 "string.m"
+  MR_String mercury__string__param_3,
+#line 623 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 613 "string.m"
+MR_Integer MR_CALL 
+mercury__string__suffix_length_2_f_0(
+#line 613 "string.m"
+  MR_Word mercury__string__param_1,
+#line 613 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 606 "string.m"
+MR_Integer MR_CALL 
+mercury__string__prefix_length_2_f_0(
+#line 606 "string.m"
+  MR_Word mercury__string__param_1,
+#line 606 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 599 "string.m"
+MR_String MR_CALL 
+mercury__string__rstrip_pred_2_f_0(
+#line 599 "string.m"
+  MR_Word mercury__string__param_1,
+#line 599 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 592 "string.m"
+MR_String MR_CALL 
+mercury__string__lstrip_pred_2_f_0(
+#line 592 "string.m"
+  MR_Word mercury__string__param_1,
+#line 592 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 586 "string.m"
+MR_String MR_CALL 
+mercury__string__strip_1_f_0(
+#line 586 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 580 "string.m"
+MR_String MR_CALL 
+mercury__string__rstrip_1_f_0(
+#line 580 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 575 "string.m"
+MR_String MR_CALL 
+mercury__string__lstrip_1_f_0(
+#line 575 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 570 "string.m"
+MR_String MR_CALL 
+mercury__string__chomp_1_f_0(
+#line 570 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 565 "string.m"
+void MR_CALL 
+mercury__string__unsafe_index_code_unit_3_p_0(
+#line 565 "string.m"
+  MR_String mercury__string__param_1,
+#line 565 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 565 "string.m"
+  MR_Integer * mercury__string__param_3);
+
+#line 557 "string.m"
+MR_bool MR_CALL 
+mercury__string__unsafe_prev_index_4_p_0(
+#line 557 "string.m"
+  MR_String mercury__string__param_1,
+#line 557 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 557 "string.m"
+  MR_Integer * mercury__string__param_3,
+#line 557 "string.m"
+  MR_Char * mercury__string__param_4);
+
+#line 548 "string.m"
+MR_bool MR_CALL 
+mercury__string__prev_index_4_p_0(
+#line 548 "string.m"
+  MR_String mercury__string__param_1,
+#line 548 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 548 "string.m"
+  MR_Integer * mercury__string__param_3,
+#line 548 "string.m"
+  MR_Char * mercury__string__param_4);
+
+#line 540 "string.m"
+MR_bool MR_CALL 
+mercury__string__unsafe_index_next_4_p_0(
+#line 540 "string.m"
+  MR_String mercury__string__param_1,
+#line 540 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 540 "string.m"
+  MR_Integer * mercury__string__param_3,
+#line 540 "string.m"
+  MR_Char * mercury__string__param_4);
+
+#line 531 "string.m"
+MR_bool MR_CALL 
+mercury__string__index_next_4_p_0(
+#line 531 "string.m"
+  MR_String mercury__string__param_1,
+#line 531 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 531 "string.m"
+  MR_Integer * mercury__string__param_3,
+#line 531 "string.m"
+  MR_Char * mercury__string__param_4);
+
+#line 524 "string.m"
+MR_Char MR_CALL 
+mercury__string__unsafe_elem_2_f_0(
+#line 524 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 524 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 519 "string.m"
+void MR_CALL 
+mercury__string__unsafe_index_3_p_0(
+#line 519 "string.m"
+  MR_String mercury__string__param_1,
+#line 519 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 519 "string.m"
+  MR_Char * mercury__string__param_3);
+
+#line 518 "string.m"
+MR_Char MR_CALL 
+mercury__string__unsafe_index_2_f_0(
+#line 518 "string.m"
+  MR_String mercury__string__param_1,
+#line 518 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 508 "string.m"
+MR_Char MR_CALL 
+mercury__string__elem_2_f_0(
+#line 508 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 508 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 503 "string.m"
+void MR_CALL 
+mercury__string__det_index_3_p_0(
+#line 503 "string.m"
+  MR_String mercury__string__param_1,
+#line 503 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 503 "string.m"
+  MR_Char * mercury__string__param_3);
+
+#line 502 "string.m"
+MR_Char MR_CALL 
+mercury__string__det_index_2_f_0(
+#line 502 "string.m"
+  MR_String mercury__string__param_1,
+#line 502 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 493 "string.m"
+MR_bool MR_CALL 
+mercury__string__index_3_p_0(
+#line 493 "string.m"
+  MR_String mercury__string__param_1,
+#line 493 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 493 "string.m"
+  MR_Char * mercury__string__param_3);
+
+#line 484 "string.m"
+MR_bool MR_CALL 
+mercury__string__contains_char_2_p_0(
+#line 484 "string.m"
+  MR_String mercury__string__param_1,
+#line 484 "string.m"
+  MR_Char mercury__string__param_2);
+
+#line 479 "string.m"
+void MR_CALL 
+mercury__string__duplicate_char_3_p_0(
+#line 479 "string.m"
+  MR_Char mercury__string__param_1,
+#line 479 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 479 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 478 "string.m"
+MR_String MR_CALL 
+mercury__string__duplicate_char_2_f_0(
+#line 478 "string.m"
+  MR_Char mercury__string__param_1,
+#line 478 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 472 "string.m"
+void MR_CALL 
+mercury__string__pad_right_4_p_0(
+#line 472 "string.m"
+  MR_String mercury__string__param_1,
+#line 472 "string.m"
+  MR_Char mercury__string__param_2,
+#line 472 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 472 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 471 "string.m"
+MR_String MR_CALL 
+mercury__string__pad_right_3_f_0(
+#line 471 "string.m"
+  MR_String mercury__string__param_1,
+#line 471 "string.m"
+  MR_Char mercury__string__param_2,
+#line 471 "string.m"
+  MR_Integer mercury__string__param_3);
+
+#line 464 "string.m"
+void MR_CALL 
+mercury__string__pad_left_4_p_0(
+#line 464 "string.m"
+  MR_String mercury__string__param_1,
+#line 464 "string.m"
+  MR_Char mercury__string__param_2,
+#line 464 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 464 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 463 "string.m"
+MR_String MR_CALL 
+mercury__string__pad_left_3_f_0(
+#line 463 "string.m"
+  MR_String mercury__string__param_1,
+#line 463 "string.m"
+  MR_Char mercury__string__param_2,
+#line 463 "string.m"
+  MR_Integer mercury__string__param_3);
+
+#line 455 "string.m"
+MR_bool MR_CALL 
+mercury__string__all_match_2_p_0(
+#line 455 "string.m"
+  MR_Word mercury__string__param_1,
+#line 455 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 448 "string.m"
+MR_bool MR_CALL 
+mercury__string__is_all_digits_1_p_0(
+#line 448 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 444 "string.m"
+MR_bool MR_CALL 
+mercury__string__is_all_alnum_or_underscore_1_p_0(
+#line 444 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 439 "string.m"
+MR_bool MR_CALL 
+mercury__string__is_all_alpha_or_underscore_1_p_0(
+#line 439 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 434 "string.m"
+MR_bool MR_CALL 
+mercury__string__is_all_alpha_1_p_0(
+#line 434 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 430 "string.m"
+MR_bool MR_CALL 
+mercury__string__to_float_2_p_0(
+#line 430 "string.m"
+  MR_String mercury__string__param_1,
+#line 430 "string.m"
+  MR_Float * mercury__string__param_2);
+
+#line 425 "string.m"
+MR_Float MR_CALL 
+mercury__string__det_to_float_1_f_0(
+#line 425 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 420 "string.m"
+MR_Integer MR_CALL 
+mercury__string__det_base_string_to_int_2_f_0(
+#line 420 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 420 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 413 "string.m"
+MR_bool MR_CALL 
+mercury__string__base_string_to_int_3_p_0(
+#line 413 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 413 "string.m"
+  MR_String mercury__string__param_2,
+#line 413 "string.m"
+  MR_Integer * mercury__string__param_3);
+
+#line 404 "string.m"
+MR_bool MR_CALL 
+mercury__string__to_int_2_p_0(
+#line 404 "string.m"
+  MR_String mercury__string__param_1,
+#line 404 "string.m"
+  MR_Integer * mercury__string__param_2);
+
+#line 397 "string.m"
+MR_Integer MR_CALL 
+mercury__string__det_to_int_1_f_0(
+#line 397 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 391 "string.m"
+MR_bool MR_CALL 
+mercury__string__from_code_unit_list_2_p_0(
+#line 391 "string.m"
+  MR_Word mercury__string__param_1,
+#line 391 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 385 "string.m"
+void MR_CALL 
+mercury__string__to_code_unit_list_2_p_0(
+#line 385 "string.m"
+  MR_String mercury__string__param_1,
+#line 385 "string.m"
+  MR_Word * mercury__string__param_2);
+
+#line 380 "string.m"
+MR_bool MR_CALL 
+mercury__string__semidet_from_rev_char_list_2_p_0(
+#line 380 "string.m"
+  MR_Word mercury__string__param_1,
+#line 380 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 373 "string.m"
+void MR_CALL 
+mercury__string__from_rev_char_list_2_p_0(
+#line 373 "string.m"
+  MR_Word mercury__string__param_1,
+#line 373 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 372 "string.m"
+MR_String MR_CALL 
+mercury__string__from_rev_char_list_1_f_0(
+#line 372 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 364 "string.m"
+MR_bool MR_CALL 
+mercury__string__semidet_from_char_list_2_p_0(
+#line 364 "string.m"
+  MR_Word mercury__string__param_1,
+#line 364 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 357 "string.m"
+void MR_CALL 
+mercury__string__from_char_list_2_p_1(
+#line 357 "string.m"
+  MR_Word * mercury__string__param_1,
+#line 357 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 356 "string.m"
+void MR_CALL 
+mercury__string__from_char_list_2_p_0(
+#line 356 "string.m"
+  MR_Word mercury__string__param_1,
+#line 356 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 354 "string.m"
+MR_String MR_CALL 
+mercury__string__from_char_list_1_f_0(
+#line 354 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 347 "string.m"
+void MR_CALL 
+mercury__string__to_char_list_2_p_1(
+#line 347 "string.m"
+  MR_String * mercury__string__param_1,
+#line 347 "string.m"
+  MR_Word mercury__string__param_2);
+
+#line 346 "string.m"
+void MR_CALL 
+mercury__string__to_char_list_2_p_0(
+#line 346 "string.m"
+  MR_String mercury__string__param_1,
+#line 346 "string.m"
+  MR_Word * mercury__string__param_2);
+
+#line 344 "string.m"
+MR_Word MR_CALL 
+mercury__string__to_char_list_1_f_0(
+#line 344 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 337 "string.m"
+void MR_CALL 
+mercury__string__uncapitalize_first_2_p_0(
+#line 337 "string.m"
+  MR_String mercury__string__param_1,
+#line 337 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 336 "string.m"
+MR_String MR_CALL 
+mercury__string__uncapitalize_first_1_f_0(
+#line 336 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 331 "string.m"
+void MR_CALL 
+mercury__string__capitalize_first_2_p_0(
+#line 331 "string.m"
+  MR_String mercury__string__param_1,
+#line 331 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 330 "string.m"
+MR_String MR_CALL 
+mercury__string__capitalize_first_1_f_0(
+#line 330 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 325 "string.m"
+MR_bool MR_CALL 
+mercury__string__to_upper_2_p_1(
+#line 325 "string.m"
+  MR_String mercury__string__param_1,
+#line 325 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 324 "string.m"
+void MR_CALL 
+mercury__string__to_upper_2_p_0(
+#line 324 "string.m"
+  MR_String mercury__string__param_1,
+#line 324 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 322 "string.m"
+MR_String MR_CALL 
+mercury__string__to_upper_1_f_0(
+#line 322 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 317 "string.m"
+MR_bool MR_CALL 
+mercury__string__to_lower_2_p_1(
+#line 317 "string.m"
+  MR_String mercury__string__param_1,
+#line 317 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 316 "string.m"
+void MR_CALL 
+mercury__string__to_lower_2_p_0(
+#line 316 "string.m"
+  MR_String mercury__string__param_1,
+#line 316 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 314 "string.m"
+MR_String MR_CALL 
+mercury__string__to_lower_1_f_0(
+#line 314 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 308 "string.m"
+void MR_CALL 
+mercury__string__replace_all_4_p_0(
+#line 308 "string.m"
+  MR_String mercury__string__param_1,
+#line 308 "string.m"
+  MR_String mercury__string__param_2,
+#line 308 "string.m"
+  MR_String mercury__string__param_3,
+#line 308 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 306 "string.m"
+MR_String MR_CALL 
+mercury__string__replace_all_3_f_0(
+#line 306 "string.m"
+  MR_String mercury__string__param_1,
+#line 306 "string.m"
+  MR_String mercury__string__param_2,
+#line 306 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 299 "string.m"
+MR_bool MR_CALL 
+mercury__string__replace_4_p_0(
+#line 299 "string.m"
+  MR_String mercury__string__param_1,
+#line 299 "string.m"
+  MR_String mercury__string__param_2,
+#line 299 "string.m"
+  MR_String mercury__string__param_3,
+#line 299 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 292 "string.m"
+void MR_CALL 
+mercury__string__first_char_3_p_4(
+#line 292 "string.m"
+  MR_String * mercury__string__param_1,
+#line 292 "string.m"
+  MR_Char mercury__string__param_2,
+#line 292 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 291 "string.m"
+MR_bool MR_CALL 
+mercury__string__first_char_3_p_3(
+#line 291 "string.m"
+  MR_String mercury__string__param_1,
+#line 291 "string.m"
+  MR_Char * mercury__string__param_2,
+#line 291 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 290 "string.m"
+MR_bool MR_CALL 
+mercury__string__first_char_3_p_2(
+#line 290 "string.m"
+  MR_String mercury__string__param_1,
+#line 290 "string.m"
+  MR_Char mercury__string__param_2,
+#line 290 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 289 "string.m"
+MR_bool MR_CALL 
+mercury__string__first_char_3_p_1(
+#line 289 "string.m"
+  MR_String mercury__string__param_1,
+#line 289 "string.m"
+  MR_Char * mercury__string__param_2,
+#line 289 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 288 "string.m"
+MR_bool MR_CALL 
+mercury__string__first_char_3_p_0(
+#line 288 "string.m"
+  MR_String mercury__string__param_1,
+#line 288 "string.m"
+  MR_Char mercury__string__param_2,
+#line 288 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 276 "string.m"
+MR_String MR_CALL 
+mercury__string__from_c_pointer_1_f_0(
+#line 276 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 272 "string.m"
+void MR_CALL 
+mercury__string__c_pointer_to_string_2_p_0(
+#line 272 "string.m"
+  MR_Word mercury__string__param_1,
+#line 272 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 271 "string.m"
+MR_String MR_CALL 
+mercury__string__c_pointer_to_string_1_f_0(
+#line 271 "string.m"
+  MR_Word mercury__string__param_1);
+
+#line 266 "string.m"
+MR_String MR_CALL 
+mercury__string__from_float_1_f_0(
+#line 266 "string.m"
+  MR_Float mercury__string__param_1);
+
+#line 262 "string.m"
+void MR_CALL 
+mercury__string__float_to_string_2_p_0(
+#line 262 "string.m"
+  MR_Float mercury__string__param_1,
+#line 262 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 261 "string.m"
+MR_String MR_CALL 
+mercury__string__float_to_string_1_f_0(
+#line 261 "string.m"
+  MR_Float mercury__string__param_1);
+
+#line 251 "string.m"
+MR_String MR_CALL 
+mercury__string__int_to_base_string_group_4_f_0(
+#line 251 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 251 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 251 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 251 "string.m"
+  MR_String mercury__string__param_4);
+
+#line 240 "string.m"
+void MR_CALL 
+mercury__string__int_to_base_string_3_p_0(
+#line 240 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 240 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 240 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 239 "string.m"
+MR_String MR_CALL 
+mercury__string__int_to_base_string_2_f_0(
+#line 239 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 239 "string.m"
+  MR_Integer mercury__string__param_2);
+
+#line 233 "string.m"
+MR_String MR_CALL 
+mercury__string__int_to_string_thousands_1_f_0(
+#line 233 "string.m"
+  MR_Integer mercury__string__param_1);
+
+#line 229 "string.m"
+MR_String MR_CALL 
+mercury__string__from_int_1_f_0(
+#line 229 "string.m"
+  MR_Integer mercury__string__param_1);
+
+#line 225 "string.m"
+void MR_CALL 
+mercury__string__int_to_string_2_p_0(
+#line 225 "string.m"
+  MR_Integer mercury__string__param_1,
+#line 225 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 224 "string.m"
+MR_String MR_CALL 
+mercury__string__int_to_string_1_f_0(
+#line 224 "string.m"
+  MR_Integer mercury__string__param_1);
+
+#line 220 "string.m"
+MR_String MR_CALL 
+mercury__string__from_char_1_f_0(
+#line 220 "string.m"
+  MR_Char mercury__string__param_1);
+
+#line 216 "string.m"
+MR_bool MR_CALL 
+mercury__string__char_to_string_2_p_1(
+#line 216 "string.m"
+  MR_Char * mercury__string__param_1,
+#line 216 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 215 "string.m"
+void MR_CALL 
+mercury__string__char_to_string_2_p_0(
+#line 215 "string.m"
+  MR_Char mercury__string__param_1,
+#line 215 "string.m"
+  MR_String * mercury__string__param_2);
+
+#line 213 "string.m"
+MR_String MR_CALL 
+mercury__string__char_to_string_1_f_0(
+#line 213 "string.m"
+  MR_Char mercury__string__param_1);
+
+#line 208 "string.m"
+void MR_CALL 
+mercury__string__string_ops_noncanon_4_p_3(
+#line 208 "string.m"
+  MR_Word mercury__string__param_1,
+#line 208 "string.m"
+  MR_Word mercury__string__param_2,
+#line 208 "string.m"
+  MR_Box mercury__string__param_3,
+#line 208 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 206 "string.m"
+void MR_CALL 
+mercury__string__string_ops_noncanon_4_p_2(
+#line 206 "string.m"
+  MR_Word mercury__string__param_1,
+#line 206 "string.m"
+  MR_Word mercury__string__param_2,
+#line 206 "string.m"
+  MR_Box mercury__string__param_3,
+#line 206 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 205 "string.m"
+void MR_CALL 
+mercury__string__string_ops_noncanon_4_p_1(
+#line 205 "string.m"
+  MR_Word mercury__string__param_1,
+#line 205 "string.m"
+  MR_Word mercury__string__param_2,
+#line 205 "string.m"
+  MR_Box mercury__string__param_3,
+#line 205 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 204 "string.m"
+void MR_CALL 
+mercury__string__string_ops_noncanon_4_p_0(
+#line 204 "string.m"
+  MR_Word mercury__string__param_1,
+#line 204 "string.m"
+  MR_Word mercury__string__param_2,
+#line 204 "string.m"
+  MR_Box mercury__string__param_3,
+#line 204 "string.m"
+  MR_String * mercury__string__param_4);
+
+#line 188 "string.m"
+MR_String MR_CALL 
+mercury__string__string_ops_2_f_0(
+#line 188 "string.m"
+  MR_Word mercury__string__param_1,
+#line 188 "string.m"
+  MR_Box mercury__string__param_2);
+
+#line 184 "string.m"
+MR_String MR_CALL 
+mercury__string__string_1_f_0(
+#line 184 "string.m"
+  MR_Word mercury__string__param_1,
+#line 184 "string.m"
+  MR_Box mercury__string__param_2);
+
+#line 179 "string.m"
+void MR_CALL 
+mercury__string__suffix_2_p_1(
+#line 179 "string.m"
+  MR_String mercury__string__param_1,
+#line 179 "string.m"
+  MR_String * mercury__string__param_2,
+#line 179 "string.m"
+  MR_Cont mercury__string__param_3,
+#line 179 "string.m"
+  void * mercury__string__param_4);
+
+#line 178 "string.m"
+MR_bool MR_CALL 
+mercury__string__suffix_2_p_0(
+#line 178 "string.m"
+  MR_String mercury__string__param_1,
+#line 178 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 172 "string.m"
+void MR_CALL 
+mercury__string__prefix_2_p_1(
+#line 172 "string.m"
+  MR_String mercury__string__param_1,
+#line 172 "string.m"
+  MR_String * mercury__string__param_2,
+#line 172 "string.m"
+  MR_Cont mercury__string__param_3,
+#line 172 "string.m"
+  void * mercury__string__param_4);
+
+#line 171 "string.m"
+MR_bool MR_CALL 
+mercury__string__prefix_2_p_0(
+#line 171 "string.m"
+  MR_String mercury__string__param_1,
+#line 171 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 165 "string.m"
+MR_String MR_CALL 
+mercury__string__remove_prefix_if_present_2_f_0(
+#line 165 "string.m"
+  MR_String mercury__string__param_1,
+#line 165 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 160 "string.m"
+MR_bool MR_CALL 
+mercury__string__remove_prefix_3_p_0(
+#line 160 "string.m"
+  MR_String mercury__string__param_1,
+#line 160 "string.m"
+  MR_String mercury__string__param_2,
+#line 160 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 154 "string.m"
+MR_String MR_CALL 
+mercury__string__remove_suffix_if_present_2_f_0(
+#line 154 "string.m"
+  MR_String mercury__string__param_1,
+#line 154 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 149 "string.m"
+MR_String MR_CALL 
+mercury__string__det_remove_suffix_2_f_0(
+#line 149 "string.m"
+  MR_String mercury__string__param_1,
+#line 149 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 143 "string.m"
+MR_bool MR_CALL 
+mercury__string__remove_suffix_3_p_0(
+#line 143 "string.m"
+  MR_String mercury__string__param_1,
+#line 143 "string.m"
+  MR_String mercury__string__param_2,
+#line 143 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 137 "string.m"
+MR_String MR_CALL 
+mercury__string__f_43_43_2_f_0(
+#line 137 "string.m"
+  MR_String mercury__string__param_1,
+#line 137 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 126 "string.m"
+void MR_CALL 
+mercury__string__append_3_p_3(
+#line 126 "string.m"
+  MR_String * mercury__string__param_1,
+#line 126 "string.m"
+  MR_String * mercury__string__param_2,
+#line 126 "string.m"
+  MR_String mercury__string__param_3,
+#line 126 "string.m"
+  MR_Cont mercury__string__param_4,
+#line 126 "string.m"
+  void * mercury__string__param_5);
+
+#line 125 "string.m"
+void MR_CALL 
+mercury__string__append_3_p_2(
+#line 125 "string.m"
+  MR_String mercury__string__param_1,
+#line 125 "string.m"
+  MR_String mercury__string__param_2,
+#line 125 "string.m"
+  MR_String * mercury__string__param_3);
+
+#line 124 "string.m"
+MR_bool MR_CALL 
+mercury__string__append_3_p_1(
+#line 124 "string.m"
+  MR_String mercury__string__param_1,
+#line 124 "string.m"
+  MR_String * mercury__string__param_2,
+#line 124 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 123 "string.m"
+MR_bool MR_CALL 
+mercury__string__append_3_p_0(
+#line 123 "string.m"
+  MR_String mercury__string__param_1,
+#line 123 "string.m"
+  MR_String mercury__string__param_2,
+#line 123 "string.m"
+  MR_String mercury__string__param_3);
+
+#line 120 "string.m"
+MR_String MR_CALL 
+mercury__string__append_2_f_0(
+#line 120 "string.m"
+  MR_String mercury__string__param_1,
+#line 120 "string.m"
+  MR_String mercury__string__param_2);
+
+#line 115 "string.m"
+MR_bool MR_CALL 
+mercury__string__codepoint_offset_4_p_0(
+#line 115 "string.m"
+  MR_String mercury__string__param_1,
+#line 115 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 115 "string.m"
+  MR_Integer mercury__string__param_3,
+#line 115 "string.m"
+  MR_Integer * mercury__string__param_4);
+
+#line 106 "string.m"
+MR_bool MR_CALL 
+mercury__string__codepoint_offset_3_p_0(
+#line 106 "string.m"
+  MR_String mercury__string__param_1,
+#line 106 "string.m"
+  MR_Integer mercury__string__param_2,
+#line 106 "string.m"
+  MR_Integer * mercury__string__param_3);
+
+#line 100 "string.m"
+MR_Integer MR_CALL 
+mercury__string__count_utf8_code_units_1_f_0(
+#line 100 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 95 "string.m"
+void MR_CALL 
+mercury__string__count_codepoints_2_p_0(
+#line 95 "string.m"
+  MR_String mercury__string__param_1,
+#line 95 "string.m"
+  MR_Integer * mercury__string__param_2);
+
+#line 94 "string.m"
+MR_Integer MR_CALL 
+mercury__string__count_codepoints_1_f_0(
+#line 94 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 90 "string.m"
+void MR_CALL 
+mercury__string__count_code_units_2_p_0(
+#line 90 "string.m"
+  MR_String mercury__string__param_1,
+#line 90 "string.m"
+  MR_Integer * mercury__string__param_2);
+
+#line 89 "string.m"
+MR_Integer MR_CALL 
+mercury__string__count_code_units_1_f_0(
+#line 89 "string.m"
+  MR_String mercury__string__param_1);
+
+#line 85 "string.m"
+void MR_CALL 
+mercury__string__length_2_p_1(
+#line 85 "string.m"
+  MR_String mercury__string__param_1,
+#line 85 "string.m"
+  MR_Integer * mercury__string__param_2);
+
+#line 84 "string.m"
+void MR_CALL 
+mercury__string__length_2_p_0(
+#line 84 "string.m"
+  MR_String mercury__string__param_1,
+#line 84 "string.m"
+  MR_Integer * mercury__string__param_2);
+
+#line 82 "string.m"
+MR_Integer MR_CALL 
+mercury__string__length_1_f_0(
+#line 82 "string.m"
+  MR_String mercury__string__param_1);
+
+void mercury__string__init(void);
+void mercury__string__init_type_tables(void);
+void mercury__string__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_string */
+
+/* :- end_interface string. */

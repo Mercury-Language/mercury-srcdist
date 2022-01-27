@@ -1,0 +1,59 @@
+/*
+** Automatically generated from `unused_imports.m'
+** by the Mercury compiler,
+** version 14.01.1, configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.unused_imports. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__unused_imports
+#define MR_HEADER_GUARD_check_hlds__unused_imports
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__UNUSED_IMPORTS_DECL_GUARD
+#define CHECK_HLDS__UNUSED_IMPORTS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "unused_imports.m"
+void MR_CALL 
+check_hlds__unused_imports__unused_imports_4_p_0(
+#line 42 "unused_imports.m"
+  MR_Word check_hlds__unused_imports__param_1,
+#line 42 "unused_imports.m"
+  MR_Word * check_hlds__unused_imports__param_2);
+
+void mercury__check_hlds__unused_imports__init(void);
+void mercury__check_hlds__unused_imports__init_type_tables(void);
+void mercury__check_hlds__unused_imports__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.unused_imports */
+
+/* :- end_interface check_hlds.unused_imports. */

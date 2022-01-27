@@ -1,0 +1,171 @@
+/*
+** Automatically generated from `goal_store.m'
+** by the Mercury compiler,
+** version 14.01.1, configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.goal_store. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__goal_store
+#define MR_HEADER_GUARD_transform_hlds__goal_store
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__GOAL_STORE_DECL_GUARD
+#define TRANSFORM_HLDS__GOAL_STORE_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "transform_hlds.goal_store.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__goal_store__transform_hlds__goal_store__type_ctor_info_goal_store_1;
+
+#line 45 "transform_hlds.goal_store.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__goal_store__transform_hlds__goal_store__type_ctor_info_stored_goal_0;
+
+#line 31 "goal_store.m"
+void MR_CALL 
+transform_hlds__goal_store____Compare____stored_goal_0_0(
+#line 31 "goal_store.m"
+  MR_Word * transform_hlds__goal_store__param_1,
+#line 31 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_2,
+#line 31 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_3);
+
+#line 31 "goal_store.m"
+MR_bool MR_CALL 
+transform_hlds__goal_store____Unify____stored_goal_0_0(
+#line 31 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_1,
+#line 31 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_2);
+
+#line 63 "goal_store.m"
+void MR_CALL 
+transform_hlds__goal_store____Compare____goal_store_1_0(
+#line 63 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_1,
+#line 63 "goal_store.m"
+  MR_Word * transform_hlds__goal_store__param_2,
+#line 63 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_3,
+#line 63 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_4);
+
+#line 63 "goal_store.m"
+MR_bool MR_CALL 
+transform_hlds__goal_store____Unify____goal_store_1_0(
+#line 63 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_1,
+#line 63 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_2,
+#line 63 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_3);
+
+#line 47 "goal_store.m"
+void MR_CALL 
+transform_hlds__goal_store__goal_store_all_ancestors_6_p_0(
+#line 47 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_1,
+#line 47 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_2,
+#line 47 "goal_store.m"
+  MR_Box transform_hlds__goal_store__param_3,
+#line 47 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_4,
+#line 47 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_5,
+#line 47 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_6,
+#line 47 "goal_store.m"
+  MR_Word * transform_hlds__goal_store__param_7);
+
+#line 44 "goal_store.m"
+void MR_CALL 
+transform_hlds__goal_store__goal_store_member_3_p_0(
+#line 44 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_1,
+#line 44 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_2,
+#line 44 "goal_store.m"
+  MR_Box * transform_hlds__goal_store__param_3,
+#line 44 "goal_store.m"
+  MR_Word * transform_hlds__goal_store__param_4,
+#line 44 "goal_store.m"
+  MR_Cont transform_hlds__goal_store__param_5,
+#line 44 "goal_store.m"
+  void * transform_hlds__goal_store__param_6);
+
+#line 42 "goal_store.m"
+void MR_CALL 
+transform_hlds__goal_store__goal_store_lookup_3_p_0(
+#line 42 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_1,
+#line 42 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_2,
+#line 42 "goal_store.m"
+  MR_Box transform_hlds__goal_store__param_3,
+#line 42 "goal_store.m"
+  MR_Word * transform_hlds__goal_store__param_4);
+
+#line 39 "goal_store.m"
+void MR_CALL 
+transform_hlds__goal_store__goal_store_det_insert_4_p_0(
+#line 39 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_1,
+#line 39 "goal_store.m"
+  MR_Box transform_hlds__goal_store__param_2,
+#line 39 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_3,
+#line 39 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_4,
+#line 39 "goal_store.m"
+  MR_Word * transform_hlds__goal_store__param_5);
+
+#line 37 "goal_store.m"
+MR_Word MR_CALL 
+transform_hlds__goal_store__goal_store_init_0_f_0(
+#line 37 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_1);
+
+#line 36 "goal_store.m"
+void MR_CALL 
+transform_hlds__goal_store__goal_store_init_1_p_0(
+#line 36 "goal_store.m"
+  MR_Word transform_hlds__goal_store__param_1,
+#line 36 "goal_store.m"
+  MR_Word * transform_hlds__goal_store__param_2);
+
+void mercury__transform_hlds__goal_store__init(void);
+void mercury__transform_hlds__goal_store__init_type_tables(void);
+void mercury__transform_hlds__goal_store__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.goal_store */
+
+/* :- end_interface transform_hlds.goal_store. */

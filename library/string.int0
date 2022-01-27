@@ -1,0 +1,693 @@
+:- module string.
+:- interface.
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C#", string).
+:- pragma foreign_import_module("Java", string).
+:- pragma foreign_import_module("IL", string).
+:- pragma foreign_import_module("Erlang", string).
+:- include_module (string.builder).
+:- import_module assoc_list.
+:- import_module char.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module maybe.
+:- import_module ops.
+:- import_module pretty_printer.
+:- type justified_column
+	--->	left(list.list(string))
+	;	right(list.list(string)).
+:- type line
+	--->	line(string).
+:- type poly_type
+	--->	f(float)
+	;	i(int)
+	;	s(string)
+	;	c(char.char).
+:- type text_file
+	--->	text_file(string).
+:- pragma obsolete((string.foldl2_substring)/8).
+:- pragma obsolete((string.foldl_substring)/5).
+:- pragma obsolete((string.foldl_substring)/6).
+:- pragma obsolete((string.foldr_substring)/5).
+:- pragma obsolete((string.foldr_substring)/6).
+:- pragma obsolete((string.substring)/3).
+:- pragma obsolete((string.substring)/4).
+:- pragma obsolete((string.unsafe_substring)/3).
+:- pragma obsolete((string.unsafe_substring)/4).
+:- func ++(string, string) = string.
+:- mode ++((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred all_match((pred char.char), string).
+:- mode all_match(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- func append(string, string) = string.
+:- mode append((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred append(string, string, string).
+:- mode append((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- mode append((builtin.in), (builtin.uo), (builtin.in)) is semidet.
+:- mode append((builtin.in), (builtin.in), (builtin.uo)) is det.
+:- mode append((builtin.out), (builtin.out), (builtin.in)) is multi.
+:- func append_list(list.list(string)) = string.
+:- mode append_list((builtin.in)) = (builtin.uo) is det.
+:- pred append_list(list.list(string), string).
+:- mode append_list((builtin.in), (builtin.uo)) is det.
+:- pred base_string_to_int(int, string, int).
+:- mode base_string_to_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func between(string, int, int) = string.
+:- mode between((builtin.in), (builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred between(string, int, int, string).
+:- mode between((builtin.in), (builtin.in), (builtin.in), (builtin.uo)) is det.
+:- func between_codepoints(string, int, int) = string.
+:- mode between_codepoints((builtin.in), (builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred between_codepoints(string, int, int, string).
+:- mode between_codepoints((builtin.in), (builtin.in), (builtin.in), (builtin.uo)) is det.
+:- func c_pointer_to_string(builtin.c_pointer) = string.
+:- mode c_pointer_to_string((builtin.in)) = (builtin.uo) is det.
+:- pred c_pointer_to_string(builtin.c_pointer, string).
+:- mode c_pointer_to_string((builtin.in), (builtin.uo)) is det.
+:- func capitalize_first(string) = string.
+:- pred capitalize_first(string, string).
+:- mode capitalize_first((builtin.in), (builtin.out)) is det.
+:- func char_to_string(char.char) = string.
+:- mode char_to_string((builtin.in)) = (builtin.uo) is det.
+:- pred char_to_string(char.char, string).
+:- mode char_to_string((builtin.in), (builtin.uo)) is det.
+:- mode char_to_string((builtin.out), (builtin.in)) is semidet.
+:- func chomp(string) = string.
+:- pred codepoint_offset(string, int, int).
+:- mode codepoint_offset((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred codepoint_offset(string, int, int, int).
+:- mode codepoint_offset((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred contains_char(string, char.char).
+:- mode contains_char((builtin.in), (builtin.in)) is semidet.
+:- func count_code_units(string) = int.
+:- pred count_code_units(string, int).
+:- mode count_code_units((builtin.in), (builtin.out)) is det.
+:- func count_codepoints(string) = int.
+:- pred count_codepoints(string, int).
+:- mode count_codepoints((builtin.in), (builtin.out)) is det.
+:- func count_utf8_code_units(string) = int.
+:- func det_base_string_to_int(int, string) = int.
+:- func det_index(string, int) = char.char.
+:- pred det_index(string, int, char.char).
+:- mode det_index((builtin.in), (builtin.in), (builtin.uo)) is det.
+:- func det_remove_suffix(string, string) = string.
+:- func det_set_char(char.char, int, string) = string.
+:- pred det_set_char(char.char, int, string, string).
+:- mode det_set_char((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_to_float(string) = float.
+:- func det_to_int(string) = int.
+:- func duplicate_char(char.char, int) = string.
+:- mode duplicate_char((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred duplicate_char(char.char, int, string).
+:- mode duplicate_char((builtin.in), (builtin.in), (builtin.uo)) is det.
+:- func elem(int, string) = char.char.
+:- pred first_char(string, char.char, string).
+:- mode first_char((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- mode first_char((builtin.in), (builtin.uo), (builtin.in)) is semidet.
+:- mode first_char((builtin.in), (builtin.in), (builtin.uo)) is semidet.
+:- mode first_char((builtin.in), (builtin.uo), (builtin.uo)) is semidet.
+:- mode first_char((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- func float_to_string(float) = string.
+:- mode float_to_string((builtin.in)) = (builtin.uo) is det.
+:- pred float_to_string(float, string).
+:- mode float_to_string((builtin.in), (builtin.uo)) is det.
+:- func foldl((func(char.char, A) = A), string, A) = A.
+:- pred foldl(pred(char.char, A, A), string, A, A).
+:- mode foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode foldl((pred((builtin.in), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- pred foldl2(pred(char.char, A, A, B, B), string, A, A, B, B).
+:- mode foldl2((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi.
+:- pred foldl2_between(pred(char.char, A, A, B, B), string, int, int, A, A, B, B).
+:- mode foldl2_between((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2_between((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2_between((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl2_between((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl2_between((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode foldl2_between((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi.
+:- pred foldl2_substring(pred(char.char, A, A, B, B), string, int, int, A, A, B, B).
+:- mode foldl2_substring((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2_substring((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2_substring((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl2_substring((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl2_substring((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode foldl2_substring((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi.
+:- func foldl_between((func(char.char, A) = A), string, int, int, A) = A.
+:- pred foldl_between(pred(char.char, A, A), string, int, int, A, A).
+:- mode foldl_between((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl_between((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl_between((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl_between((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode foldl_between((pred((builtin.in), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- func foldl_substring((func(char.char, A) = A), string, int, int, A) = A.
+:- pred foldl_substring(pred(char.char, A, A), string, int, int, A, A).
+:- mode foldl_substring((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl_substring((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl_substring((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl_substring((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode foldl_substring((pred((builtin.in), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- func foldr((func(char.char, T) = T), string, T) = T.
+:- pred foldr(pred(char.char, T, T), string, T, T).
+:- mode foldr((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldr((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldr((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode foldr((pred((builtin.in), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- func foldr_between((func(char.char, T) = T), string, int, int, T) = T.
+:- pred foldr_between(pred(char.char, T, T), string, int, int, T, T).
+:- mode foldr_between((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldr_between((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldr_between((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr_between((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode foldr_between((pred((builtin.in), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- func foldr_substring((func(char.char, T) = T), string, int, int, T) = T.
+:- pred foldr_substring(pred(char.char, T, T), string, int, int, T, T).
+:- mode foldr_substring((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldr_substring((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldr_substring((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr_substring((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode foldr_substring((pred((builtin.in), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- func format(string, list.list(string.poly_type)) = string.
+:- pred format(string, list.list(string.poly_type), string).
+:- mode format((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func format_table(list.list(string.justified_column), string) = string.
+:- func format_table_max(assoc_list.assoc_list(string.justified_column, maybe.maybe(int)), string) = string.
+:- func from_c_pointer(builtin.c_pointer) = string.
+:- mode from_c_pointer((builtin.in)) = (builtin.uo) is det.
+:- func from_char(char.char) = string.
+:- mode from_char((builtin.in)) = (builtin.uo) is det.
+:- func from_char_list(list.list(char.char)) = string.
+:- mode from_char_list((builtin.in)) = (builtin.uo) is det.
+:- pred from_char_list(list.list(char.char), string).
+:- mode from_char_list((builtin.in), (builtin.uo)) is det.
+:- mode from_char_list((builtin.out), (builtin.in)) is det.
+:- pred from_code_unit_list(list.list(int), string).
+:- mode from_code_unit_list((builtin.in), (builtin.uo)) is semidet.
+:- func from_float(float) = string.
+:- mode from_float((builtin.in)) = (builtin.uo) is det.
+:- func from_int(int) = string.
+:- mode from_int((builtin.in)) = (builtin.uo) is det.
+:- func from_rev_char_list(list.list(char.char)) = string.
+:- mode from_rev_char_list((builtin.in)) = (builtin.uo) is det.
+:- pred from_rev_char_list(list.list(char.char), string).
+:- mode from_rev_char_list((builtin.in), (builtin.uo)) is det.
+:- func hash(string) = int.
+:- pred hash(string, int).
+:- mode hash((builtin.in), (builtin.out)) is det.
+:- func hash2(string) = int.
+:- func hash3(string) = int.
+:- pred index(string, int, char.char).
+:- mode index((builtin.in), (builtin.in), (builtin.uo)) is semidet.
+:- pred index_next(string, int, int, char.char).
+:- mode index_next((builtin.in), (builtin.in), (builtin.out), (builtin.uo)) is semidet.
+:- func int_to_base_string(int, int) = string.
+:- mode int_to_base_string((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred int_to_base_string(int, int, string).
+:- mode int_to_base_string((builtin.in), (builtin.in), (builtin.uo)) is det.
+:- func int_to_base_string_group(int, int, int, string) = string.
+:- mode int_to_base_string_group((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func int_to_string(int) = string.
+:- mode int_to_string((builtin.in)) = (builtin.uo) is det.
+:- pred int_to_string(int, string).
+:- mode int_to_string((builtin.in), (builtin.uo)) is det.
+:- func int_to_string_thousands(int) = string.
+:- mode int_to_string_thousands((builtin.in)) = (builtin.uo) is det.
+:- pred is_all_alnum_or_underscore(string).
+:- mode is_all_alnum_or_underscore((builtin.in)) is semidet.
+:- pred is_all_alpha(string).
+:- mode is_all_alpha((builtin.in)) is semidet.
+:- pred is_all_alpha_or_underscore(string).
+:- mode is_all_alpha_or_underscore((builtin.in)) is semidet.
+:- pred is_all_digits(string).
+:- mode is_all_digits((builtin.in)) is semidet.
+:- func join_list(string, list.list(string)) = string.
+:- mode join_list((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func left(string, int) = string.
+:- mode left((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred left(string, int, string).
+:- mode left((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func left_by_codepoint(string, int) = string.
+:- mode left_by_codepoint((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred left_by_codepoint(string, int, string).
+:- mode left_by_codepoint((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func length(string) = int.
+:- mode length((builtin.in)) = (builtin.uo) is det.
+:- pred length(string, int).
+:- mode length((builtin.in), (builtin.uo)) is det.
+:- mode length((builtin.ui), (builtin.uo)) is det.
+:- func lstrip(string) = string.
+:- func lstrip_pred((pred char.char), string) = string.
+:- mode lstrip_pred(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out) is det.
+:- func pad_left(string, char.char, int) = string.
+:- pred pad_left(string, char.char, int, string).
+:- mode pad_left((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func pad_right(string, char.char, int) = string.
+:- pred pad_right(string, char.char, int, string).
+:- mode pad_right((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prefix(string, string).
+:- mode prefix((builtin.in), (builtin.in)) is semidet.
+:- mode prefix((builtin.in), (builtin.out)) is multi.
+:- func prefix_length((pred char.char), string) = int.
+:- mode prefix_length(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out) is det.
+:- pred prev_index(string, int, int, char.char).
+:- mode prev_index((builtin.in), (builtin.in), (builtin.out), (builtin.uo)) is semidet.
+:- pred remove_prefix(string, string, string).
+:- mode remove_prefix((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func remove_prefix_if_present(string, string) = string.
+:- pred remove_suffix(string, string, string).
+:- mode remove_suffix((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func remove_suffix_if_present(string, string) = string.
+:- pred replace(string, string, string, string).
+:- mode replace((builtin.in), (builtin.in), (builtin.in), (builtin.uo)) is semidet.
+:- func replace_all(string, string, string) = string.
+:- mode replace_all((builtin.in), (builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred replace_all(string, string, string, string).
+:- mode replace_all((builtin.in), (builtin.in), (builtin.in), (builtin.uo)) is det.
+:- func right(string, int) = string.
+:- mode right((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred right(string, int, string).
+:- mode right((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func right_by_codepoint(string, int) = string.
+:- mode right_by_codepoint((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred right_by_codepoint(string, int, string).
+:- mode right_by_codepoint((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func rstrip(string) = string.
+:- func rstrip_pred((pred char.char), string) = string.
+:- mode rstrip_pred(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out) is det.
+:- pred semidet_from_char_list(list.list(char.char), string).
+:- mode semidet_from_char_list((builtin.in), (builtin.uo)) is semidet.
+:- pred semidet_from_rev_char_list(list.list(char.char), string).
+:- mode semidet_from_rev_char_list((builtin.in), (builtin.uo)) is semidet.
+:- pred set_char(char.char, int, string, string).
+:- mode set_char((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred split(string, int, string, string).
+:- mode split((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func split_at_char(char.char, string) = list.list(string).
+:- func split_at_separator((pred char.char), string) = list.list(string).
+:- mode split_at_separator((pred((builtin.in)) is semidet), (builtin.in)) = (builtin.out) is det.
+:- func split_at_string(string, string) = list.list(string).
+:- pred split_by_codepoint(string, int, string, string).
+:- mode split_by_codepoint((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func string(T) = string.
+:- func string_ops(ops.table, T) = string.
+:- pred string_ops_noncanon(deconstruct.noncanon_handling, ops.table, T, string).
+:- mode string_ops_noncanon(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode string_ops_noncanon(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode string_ops_noncanon(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode string_ops_noncanon((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- func string_to_doc(string) = pretty_printer.doc.
+:- func strip(string) = string.
+:- pred sub_string_search(string, string, int).
+:- mode sub_string_search((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred sub_string_search_start(string, string, int, int).
+:- mode sub_string_search_start((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func substring(string, int, int) = string.
+:- mode substring((builtin.in), (builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred substring(string, int, int, string).
+:- mode substring((builtin.in), (builtin.in), (builtin.in), (builtin.uo)) is det.
+:- pred suffix(string, string).
+:- mode suffix((builtin.in), (builtin.in)) is semidet.
+:- mode suffix((builtin.in), (builtin.out)) is multi.
+:- func suffix_length((pred char.char), string) = int.
+:- mode suffix_length(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out) is det.
+:- func to_char_list(string) = list.list(char.char).
+:- pred to_char_list(string, list.list(char.char)).
+:- mode to_char_list((builtin.in), (builtin.out)) is det.
+:- mode to_char_list((builtin.uo), (builtin.in)) is det.
+:- pred to_code_unit_list(string, list.list(int)).
+:- mode to_code_unit_list((builtin.in), (builtin.out)) is det.
+:- pred to_float(string, float).
+:- mode to_float((builtin.in), (builtin.out)) is semidet.
+:- pred to_int(string, int).
+:- mode to_int((builtin.in), (builtin.out)) is semidet.
+:- func to_lower(string) = string.
+:- mode to_lower((builtin.in)) = (builtin.uo) is det.
+:- pred to_lower(string, string).
+:- mode to_lower((builtin.in), (builtin.uo)) is det.
+:- mode to_lower((builtin.in), (builtin.in)) is semidet.
+:- func to_upper(string) = string.
+:- mode to_upper((builtin.in)) = (builtin.uo) is det.
+:- pred to_upper(string, string).
+:- mode to_upper((builtin.in), (builtin.uo)) is det.
+:- mode to_upper((builtin.in), (builtin.in)) is semidet.
+:- func uncapitalize_first(string) = string.
+:- pred uncapitalize_first(string, string).
+:- mode uncapitalize_first((builtin.in), (builtin.out)) is det.
+:- func unsafe_between(string, int, int) = string.
+:- mode unsafe_between((builtin.in), (builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred unsafe_between(string, int, int, string).
+:- mode unsafe_between((builtin.in), (builtin.in), (builtin.in), (builtin.uo)) is det.
+:- func unsafe_elem(int, string) = char.char.
+:- func unsafe_index(string, int) = char.char.
+:- pred unsafe_index(string, int, char.char).
+:- mode unsafe_index((builtin.in), (builtin.in), (builtin.uo)) is det.
+:- pred unsafe_index_code_unit(string, int, int).
+:- mode unsafe_index_code_unit((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred unsafe_index_next(string, int, int, char.char).
+:- mode unsafe_index_next((builtin.in), (builtin.in), (builtin.out), (builtin.uo)) is semidet.
+:- pred unsafe_prev_index(string, int, int, char.char).
+:- mode unsafe_prev_index((builtin.in), (builtin.in), (builtin.out), (builtin.uo)) is semidet.
+:- func unsafe_set_char(char.char, int, string) = string.
+:- mode unsafe_set_char((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred unsafe_set_char(char.char, int, string, string).
+:- mode unsafe_set_char((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func unsafe_substring(string, int, int) = string.
+:- mode unsafe_substring((builtin.in), (builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred unsafe_substring(string, int, int, string).
+:- mode unsafe_substring((builtin.in), (builtin.in), (builtin.in), (builtin.uo)) is det.
+:- func word_wrap(string, int) = string.
+:- func word_wrap_separator(string, int, string) = string.
+:- func words(string) = list.list(string).
+:- func words_separator((pred char.char), string) = list.list(string).
+:- mode words_separator((pred((builtin.in)) is semidet), (builtin.in)) = (builtin.out) is det.
+:- implementation.
+:- import_module array.
+:- import_module assoc_list.
+:- import_module bitmap.
+:- import_module bool.
+:- import_module char.
+:- import_module deconstruct.
+:- import_module float.
+:- import_module int.
+:- import_module integer.
+:- import_module list.
+:- import_module maybe.
+:- import_module maybe.
+:- import_module ops.
+:- import_module pair.
+:- import_module pretty_printer.
+:- import_module require.
+:- import_module std_util.
+:- import_module type_desc.
+:- import_module univ.
+:- import_module version_array.
+:- use_module rtti_implementation.
+:- use_module term_io.
+:- type flags == list.list(char.char).
+:- type justify_sense
+	--->	just_left 
+	;	just_right .
+:- type maybe_precision == maybe.maybe(int).
+:- type maybe_width == maybe.maybe(int).
+:- type revstrings == list.list(string).
+:- type spec
+	--->	d(int)
+	;	i(int)
+	;	o(int)
+	;	u(int)
+	;	x(int)
+	;	cX(int)
+	;	p(int)
+	;	e(float)
+	;	cE(float)
+	;	f(float)
+	;	cF(float)
+	;	g(float)
+	;	cG(float)
+	;	c(char.char)
+	;	s(string)
+	;	percent .
+:- type spec_case
+	--->	spec_is_capital 
+	;	spec_is_not_capital .
+:- type specifier
+	--->	spec_conv((string.flags) :: list.list(char.char), (string.width) :: maybe.maybe(list.list(char.char)), (string.precision) :: maybe.maybe(list.list(char.char)), (string.spec) :: string.spec)
+	;	spec_string(list.list(char.char)).
+:- pred accumulate_int(int, char.char, int, int).
+:- mode accumulate_int((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred accumulate_negative_int(int, char.char, int, int).
+:- mode accumulate_negative_int((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func add_float_prefix_if_needed(string.flags, bool.bool, float, string) = string.
+:- func add_int_prefix_if_needed(string.flags, bool.bool, int, string) = string.
+:- pred add_revstring(string, string.revstrings, string.revstrings).
+:- mode add_revstring((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred adjust_priority(ops.priority, ops.assoc, ops.priority).
+:- mode adjust_priority((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred all_empty(list.list(list.list(string))).
+:- mode all_empty((builtin.in)) is semidet.
+:- pred all_match_2((pred char.char), string, int).
+:- mode all_match_2(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in)) is semidet.
+:- pred append_iii(string, string, string).
+:- mode append_iii((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred append_iio(string, string, string).
+:- mode append_iio((builtin.in), (builtin.in), (builtin.uo)) is det.
+:- pred append_ioi(string, string, string).
+:- mode append_ioi((builtin.in), (builtin.uo), (builtin.in)) is semidet.
+:- pred append_ooi(string, string, string).
+:- mode append_ooi((builtin.out), (builtin.out), (builtin.in)) is multi.
+:- pred append_ooi_2(int, int, string, string, string).
+:- mode append_ooi_2((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in)) is multi.
+:- pred append_ooi_3(int, int, string, string, string).
+:- mode append_ooi_3((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in)) is det.
+:- pred arg_to_revstrings(deconstruct.noncanon_handling, ops.table, univ.univ, string.revstrings, string.revstrings).
+:- mode arg_to_revstrings(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode arg_to_revstrings(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode arg_to_revstrings(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode arg_to_revstrings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred array_to_revstrings(deconstruct.noncanon_handling, ops.table, array.array(T), string.revstrings, string.revstrings).
+:- mode array_to_revstrings(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode array_to_revstrings(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode array_to_revstrings(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode array_to_revstrings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- func break_up_string_reverse(string, int, list.list(string)) = list.list(string).
+:- func calculate_base_unsafe(string, int) = string.
+:- func change_precision(int, string) = string.
+:- func change_to_e_notation(string, int, string) = string.
+:- func change_to_g_notation(string, int, string, string.flags) = string.
+:- pred char_list_to_lower(list.list(char.char), list.list(char.char)).
+:- mode char_list_to_lower((builtin.in), (builtin.out)) is det.
+:- pred char_list_to_upper(list.list(char.char), list.list(char.char)).
+:- mode char_list_to_upper((builtin.in), (builtin.out)) is det.
+:- pred codepoint_offset_2(string, int, int, int, int).
+:- mode codepoint_offset_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func comma_priority(ops.table) = ops.priority.
+:- pred contains_char(string, char.char, int).
+:- mode contains_char((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- func conv(maybe.maybe(list.list(character))) = maybe.maybe(int).
+:- pred conversion_specification(string.specifier, list.list(string.poly_type), list.list(string.poly_type), list.list(char.char), list.list(char.char)).
+:- mode conversion_specification((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred convert_endpoints(int, int, int, int).
+:- mode convert_endpoints((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func convert_float_to_string(float) = string.
+:- pred count_codepoints_2(string, int, int, int).
+:- mode count_codepoints_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred count_utf8_code_units_2(char.char, int, int).
+:- mode count_utf8_code_units_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func decimal_pos(string) = int.
+:- pred det_dynamic_cast(T1, T2).
+:- mode det_dynamic_cast((builtin.in), (builtin.out)) is det.
+:- pred digit(list.list(char.char), list.list(char.char)).
+:- mode digit((builtin.in), (builtin.out)) is semidet.
+:- func find_max_length(string.justified_column) = int.
+:- func find_max_length_with_limit(pair.pair(string.justified_column, maybe.maybe(int))) = pair.pair(string.justify_sense, int).
+:- func find_non_zero_pos(list.list(char.char), int) = int.
+:- pred flag(char.char).
+:- mode flag((builtin.in)) is semidet.
+:- pred flags(list.list(char.char), list.list(char.char), list.list(char.char)).
+:- mode flags((builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- func float_to_string_2(int, float) = string is det.
+:- pred foldl2_between_2(pred(char.char, A, A, B, B), string, int, int, A, A, B, B).
+:- mode foldl2_between_2((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2_between_2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2_between_2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl2_between_2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl2_between_2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode foldl2_between_2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi.
+:- pred foldl_between_2(pred(char.char, A, A), string, int, int, A, A).
+:- mode foldl_between_2((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl_between_2((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl_between_2((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl_between_2((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode foldl_between_2((pred((builtin.in), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- pred foldr_between_2(pred(char.char, T, T), string, int, int, T, T).
+:- mode foldr_between_2((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldr_between_2((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldr_between_2((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr_between_2((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode foldr_between_2((pred((builtin.in), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- func format_char(string.flags, string.maybe_width, char.char) = string.
+:- func format_float(string.flags, string.spec_case, string.maybe_width, string.maybe_precision, float) = string.
+:- func format_inf(float, string.spec_case) = string.
+:- func format_int(string.flags, string.maybe_width, string.maybe_precision, int) = string.
+:- func format_nan(string.spec_case) = string.
+:- func format_scientific_number(string.flags, string.spec_case, string.maybe_width, string.maybe_precision, float, string) = string.
+:- func format_scientific_number_g(string.flags, string.spec_case, string.maybe_width, string.maybe_precision, float, string) = string.
+:- func format_string(string.flags, string.maybe_width, string.maybe_precision, string) = string.
+:- pred format_string_to_specifiers(list.list(string.specifier), list.list(string.poly_type), list.list(string.poly_type), list.list(char.char), list.list(char.char)).
+:- mode format_string_to_specifiers((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func format_unsigned_int(string.flags, string.maybe_width, string.maybe_precision, int, int, bool.bool, string) = string.
+:- pred generate_rows(assoc_list.assoc_list(string.justify_sense, int), string, int, list.list(list.list(string)), list.list(string), list.list(string)).
+:- mode generate_rows((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func get_capital_hex_int(integer.integer) = string.
+:- func get_hex_int(integer.integer) = string.
+:- pred get_next_line(list.list(list.list(string)), list.list(string), list.list(list.list(string))).
+:- mode get_next_line((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred hash2_loop(string, int, int, int, int).
+:- mode hash2_loop((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred hash3_loop(string, int, int, int, int).
+:- mode hash3_loop((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred hash_loop(string, int, int, int, int).
+:- mode hash_loop((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred index_check(int, int).
+:- mode index_check((builtin.in), (builtin.in)) is semidet.
+:- func int_length_modifer = string.
+:- pred int_to_base_string_1(int, int, string).
+:- mode int_to_base_string_1((builtin.in), (builtin.in), (builtin.uo)) is det.
+:- pred int_to_base_string_2(int, int, list.list(char.char), list.list(char.char)).
+:- mode int_to_base_string_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred int_to_base_string_group_1(int, int, int, string, string).
+:- mode int_to_base_string_group_1((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.uo)) is det.
+:- pred int_to_base_string_group_2(int, int, int, int, string, string).
+:- mode int_to_base_string_group_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.uo)) is det.
+:- pred is_decimal_point(char.char).
+:- mode is_decimal_point((builtin.in)) is semidet.
+:- pred is_exponent(char.char).
+:- mode is_exponent((builtin.in)) is semidet.
+:- func join_list_2(string, list.list(string)) = string.
+:- mode join_list_2((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func join_rev_columns(string, string, string) = string.
+:- func justify_string(string.flags, string.maybe_width, string) = string.
+:- pred lowlevel_float_to_string(float, string).
+:- mode lowlevel_float_to_string((builtin.in), (builtin.uo)) is det.
+:- func lpad(char.char, int, string) = string.
+:- func make_format(list.list(char.char), maybe.maybe(list.list(char.char)), maybe.maybe(list.list(char.char)), string, string) = string.
+:- func make_format_dotnet(list.list(char.char), maybe.maybe(list.list(char.char)), maybe.maybe(list.list(char.char)), string, string) = string.
+:- func make_format_sprintf(list.list(char.char), maybe.maybe(list.list(char.char)), maybe.maybe(list.list(char.char)), string, string) = string.
+:- func max_precision = int.
+:- pred max_str_length(string, int, int).
+:- mode max_str_length((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_add_revstring(string, ops.priority, ops.priority, string.revstrings, string.revstrings).
+:- mode maybe_add_revstring((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mercury_append(string, string, string).
+:- mode mercury_append((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- mode mercury_append((builtin.in), (builtin.uo), (builtin.in)) is semidet.
+:- mode mercury_append((builtin.in), (builtin.in), (builtin.uo)) is det.
+:- mode mercury_append((builtin.uo), (builtin.uo), (builtin.in)) is multi.
+:- func min_precision = int.
+:- func native_format_char(string, char.char) = string.
+:- func native_format_float(string, float) = string.
+:- func native_format_int(string, int) = string.
+:- func native_format_string(string, string) = string.
+:- pred next_boundary((pred char.char), string, int, int).
+:- mode next_boundary(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred non_zero_digit(list.list(char.char), list.list(char.char)).
+:- mode non_zero_digit((builtin.in), (builtin.out)) is semidet.
+:- pred optional(pred(T, U, U, V, V), maybe.maybe(T), U, U, V, V).
+:- mode optional(builtin.in((pred((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ordinary_term_to_revstrings(deconstruct.noncanon_handling, ops.table, ops.priority, T, string.revstrings, string.revstrings).
+:- mode ordinary_term_to_revstrings(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode ordinary_term_to_revstrings(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode ordinary_term_to_revstrings(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode ordinary_term_to_revstrings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred other(list.list(char.char), list.list(char.char), list.list(char.char)).
+:- mode other((builtin.out), (builtin.in), (builtin.out)) is det.
+:- func pad_column(int, string.justified_column) = list.list(string).
+:- pred pad_row(assoc_list.assoc_list(string.justify_sense, int), list.list(string), string, int, int, string).
+:- mode pad_row((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred plain_term_to_revstrings(deconstruct.noncanon_handling, ops.table, ops.priority, string, list.list(univ.univ), string.revstrings, string.revstrings).
+:- mode plain_term_to_revstrings(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode plain_term_to_revstrings(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode plain_term_to_revstrings(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode plain_term_to_revstrings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred prec(list.list(char.char), list.list(string.poly_type), list.list(string.poly_type), list.list(char.char), list.list(char.char)).
+:- mode prec((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred prefix_2_iii(string, string, int).
+:- mode prefix_2_iii((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred prefix_2_ioi(string, string, int).
+:- mode prefix_2_ioi((builtin.in), (builtin.out), (builtin.in)) is multi.
+:- pred prefix_length_2((pred char.char), string, int, int).
+:- mode prefix_length_2(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred private_builtin_type_info_to_revstrings(private_builtin.type_info, string.revstrings, string.revstrings).
+:- mode private_builtin_type_info_to_revstrings((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func project_column_strings(pair.pair(string.justified_column, maybe.maybe(int))) = list.list(string).
+:- func remove_trailing_zeros(string) = string.
+:- func remove_zeros(list.list(char.char)) = list.list(char.char).
+:- func replace_all_2(string, string, string, int, int, list.list(string)) = list.list(string).
+:- func rpad(char.char, int, string) = string.
+:- pred same_array_elem_type(array.array(T), T).
+:- mode same_array_elem_type((builtin.unused), (builtin.unused)) is det.
+:- pred same_private_builtin_type(private_builtin.type_info, T).
+:- mode same_private_builtin_type((builtin.unused), (builtin.unused)) is det.
+:- pred same_version_array_elem_type(version_array.version_array(T), T).
+:- mode same_version_array_elem_type((builtin.unused), (builtin.unused)) is det.
+:- pred set_char_2(char.char, int, string, string).
+:- mode set_char_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func size_of_required_exponent(string, int) = int.
+:- pred spec(string.spec, list.list(string.poly_type), list.list(string.poly_type), list.list(char.char), list.list(char.char)).
+:- mode spec((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- func specifier_to_string(string.specifier) = string.
+:- pred split_at_decimal_point(string, string, string).
+:- mode split_at_decimal_point((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred split_at_exponent(string, string, string).
+:- mode split_at_exponent((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred split_at_separator_2((pred char.char), string, int, int, list.list(string), list.list(string)).
+:- mode split_at_separator_2(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func split_at_string(int, int, string, string) = list.list(string).
+:- func strchars(int, int, string) = list.list(char.char).
+:- pred sub_string_search_start_2(string, string, int, int, int, int).
+:- mode sub_string_search_start_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred suffix_2_iiii(string, string, int, int, int).
+:- mode suffix_2_iiii((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred suffix_2_ioii(string, string, int, int).
+:- mode suffix_2_ioii((builtin.in), (builtin.out), (builtin.in), (builtin.in)) is multi.
+:- pred suffix_length_2((pred char.char), string, int, int).
+:- mode suffix_length_2(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term_args_to_revstrings(deconstruct.noncanon_handling, ops.table, list.list(univ.univ), string.revstrings, string.revstrings).
+:- mode term_args_to_revstrings(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode term_args_to_revstrings(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode term_args_to_revstrings(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode term_args_to_revstrings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- func to_capital_hex(integer.integer) = string.
+:- pred to_char_list_2(string, list.list(char.char)).
+:- mode to_char_list_2((builtin.in), (builtin.out)) is det.
+:- pred to_code_unit_list_2(string, int, int, list.list(int)).
+:- mode to_code_unit_list_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func to_hex(integer.integer) = string.
+:- func to_octal(integer.integer) = string.
+:- pred type_ctor_desc_to_revstrings(type_desc.type_ctor_desc, string.revstrings, string.revstrings).
+:- mode type_ctor_desc_to_revstrings((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_desc_to_revstrings(type_desc.type_desc, string.revstrings, string.revstrings).
+:- mode type_desc_to_revstrings((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred univ_list_tail_to_revstrings(deconstruct.noncanon_handling, ops.table, univ.univ, string.revstrings, string.revstrings).
+:- mode univ_list_tail_to_revstrings(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode univ_list_tail_to_revstrings(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode univ_list_tail_to_revstrings(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode univ_list_tail_to_revstrings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred unsafe_index_2(string, int, char.char).
+:- mode unsafe_index_2((builtin.in), (builtin.in), (builtin.uo)) is semidet.
+:- pred unsafe_set_char_2(char.char, int, string, string).
+:- mode unsafe_set_char_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred using_sprintf is semidet.
+:- pred using_sprintf_for_char(char.char).
+:- mode using_sprintf_for_char((builtin.in)) is semidet.
+:- pred using_sprintf_for_string(string).
+:- mode using_sprintf_for_string((builtin.in)) is semidet.
+:- pred value_to_revstrings(deconstruct.noncanon_handling, ops.table, T, string.revstrings, string.revstrings).
+:- mode value_to_revstrings(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode value_to_revstrings(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode value_to_revstrings(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode value_to_revstrings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred value_to_revstrings_prio(deconstruct.noncanon_handling, ops.table, ops.priority, T, string.revstrings, string.revstrings).
+:- mode value_to_revstrings_prio(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode value_to_revstrings_prio(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode value_to_revstrings_prio(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode value_to_revstrings_prio((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred version_array_to_revstrings(deconstruct.noncanon_handling, ops.table, version_array.version_array(T), string.revstrings, string.revstrings).
+:- mode version_array_to_revstrings(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode version_array_to_revstrings(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode version_array_to_revstrings(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode version_array_to_revstrings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred width(list.list(char.char), list.list(string.poly_type), list.list(string.poly_type), list.list(char.char), list.list(char.char)).
+:- mode width((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred word_wrap_2(list.list(string), string, int, int, int, list.list(string), string).
+:- mode word_wrap_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred words_2((pred char.char), string, int, list.list(string)).
+:- mode words_2(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred zero_or_more_occurences(pred(list.list(T), list.list(T)), list.list(T), list.list(T)).
+:- mode zero_or_more_occurences(builtin.in((pred((builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)) is det.

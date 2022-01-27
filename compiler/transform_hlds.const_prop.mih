@@ -1,0 +1,81 @@
+/*
+** Automatically generated from `const_prop.m'
+** by the Mercury compiler,
+** version 14.01.1, configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.const_prop. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__const_prop
+#define MR_HEADER_GUARD_transform_hlds__const_prop
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CONST_PROP_DECL_GUARD
+#define TRANSFORM_HLDS__CONST_PROP_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "transform_hlds.const_prop.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__const_prop__transform_hlds__const_prop__type_ctor_info_arg_hlds_info_0;
+
+#line 45 "transform_hlds.const_prop.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__const_prop__transform_hlds__const_prop__type_ctor_info_arg_val_0;
+
+#line 43 "const_prop.m"
+MR_bool MR_CALL 
+transform_hlds__const_prop__evaluate_call_10_p_0(
+#line 43 "const_prop.m"
+  MR_String transform_hlds__const_prop__param_1,
+#line 43 "const_prop.m"
+  MR_String transform_hlds__const_prop__param_2,
+#line 43 "const_prop.m"
+  MR_Integer transform_hlds__const_prop__param_3,
+#line 43 "const_prop.m"
+  MR_Word transform_hlds__const_prop__param_4,
+#line 43 "const_prop.m"
+  MR_Word transform_hlds__const_prop__param_5,
+#line 43 "const_prop.m"
+  MR_Word transform_hlds__const_prop__param_6,
+#line 43 "const_prop.m"
+  MR_Word transform_hlds__const_prop__param_7,
+#line 43 "const_prop.m"
+  MR_Word * transform_hlds__const_prop__param_8,
+#line 43 "const_prop.m"
+  MR_Word transform_hlds__const_prop__param_9,
+#line 43 "const_prop.m"
+  MR_Word * transform_hlds__const_prop__param_10);
+
+void mercury__transform_hlds__const_prop__init(void);
+void mercury__transform_hlds__const_prop__init_type_tables(void);
+void mercury__transform_hlds__const_prop__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.const_prop */
+
+/* :- end_interface transform_hlds.const_prop. */

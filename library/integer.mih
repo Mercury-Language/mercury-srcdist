@@ -1,0 +1,507 @@
+/*
+** Automatically generated from `integer.m'
+** by the Mercury compiler,
+** version 14.01.1, configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module integer. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_integer
+#define MR_HEADER_GUARD_integer
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef INTEGER_DECL_GUARD
+#define INTEGER_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "integer.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__integer__integer__type_ctor_info_digit_0;
+
+#line 44 "integer.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__integer__integer__type_ctor_info_integer_0;
+
+#line 47 "integer.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__integer__integer__type_ctor_info_sign_0;
+
+#line 175 "integer.m"
+void MR_CALL 
+mercury__integer____Compare____sign_0_0(
+#line 175 "integer.m"
+  MR_Word * mercury__integer__param_1,
+#line 175 "integer.m"
+  MR_Integer mercury__integer__param_2,
+#line 175 "integer.m"
+  MR_Integer mercury__integer__param_3);
+
+#line 175 "integer.m"
+MR_bool MR_CALL 
+mercury__integer____Unify____sign_0_0(
+#line 175 "integer.m"
+  MR_Integer mercury__integer__param_1,
+#line 175 "integer.m"
+  MR_Integer mercury__integer__param_2);
+
+#line 178 "integer.m"
+void MR_CALL 
+mercury__integer____Compare____integer_0_0(
+#line 178 "integer.m"
+  MR_Word * mercury__integer__param_1,
+#line 178 "integer.m"
+  MR_Word mercury__integer__param_2,
+#line 178 "integer.m"
+  MR_Word mercury__integer__param_3);
+
+#line 178 "integer.m"
+MR_bool MR_CALL 
+mercury__integer____Unify____integer_0_0(
+#line 178 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 178 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 176 "integer.m"
+void MR_CALL 
+mercury__integer____Compare____digit_0_0(
+#line 176 "integer.m"
+  MR_Word * mercury__integer__param_1,
+#line 176 "integer.m"
+  MR_Integer mercury__integer__param_2,
+#line 176 "integer.m"
+  MR_Integer mercury__integer__param_3);
+
+#line 176 "integer.m"
+MR_bool MR_CALL 
+mercury__integer____Unify____digit_0_0(
+#line 176 "integer.m"
+  MR_Integer mercury__integer__param_1,
+#line 176 "integer.m"
+  MR_Integer mercury__integer__param_2);
+
+#line 1030 "integer.m"
+MR_bool MR_CALL 
+mercury__integer__string_to_integer_1_f_0(
+#line 1030 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 1030 "integer.m"
+  MR_Word * mercury__integer__param_2);
+
+#line 987 "integer.m"
+MR_Float MR_CALL 
+mercury__integer__float_list_3_f_0(
+#line 987 "integer.m"
+  MR_Float mercury__integer__param_1,
+#line 987 "integer.m"
+  MR_Float mercury__integer__param_2,
+#line 987 "integer.m"
+  MR_Word mercury__integer__param_3);
+
+#line 936 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_pow_2_f_0(
+#line 936 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 936 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 762 "integer.m"
+void MR_CALL 
+mercury__integer__big_quot_rem_4_p_0(
+#line 762 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 762 "integer.m"
+  MR_Word mercury__integer__param_2,
+#line 762 "integer.m"
+  MR_Word * mercury__integer__param_3,
+#line 762 "integer.m"
+  MR_Word * mercury__integer__param_4);
+
+#line 747 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__pos_mul_2_f_0(
+#line 747 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 747 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 627 "integer.m"
+MR_Integer MR_CALL 
+mercury__integer__integer_signum_1_f_0(
+#line 627 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 623 "integer.m"
+MR_Integer MR_CALL 
+mercury__integer__signum_1_f_0(
+#line 623 "integer.m"
+  MR_Integer mercury__integer__param_1);
+
+#line 600 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__int_to_integer_1_f_0(
+#line 600 "integer.m"
+  MR_Integer mercury__integer__param_1);
+
+#line 560 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_plus_2_f_0(
+#line 560 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 560 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 550 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_cmp_2_f_0(
+#line 550 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 550 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 346 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_mod_2_f_0(
+#line 346 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 346 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 336 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_div_2_f_0(
+#line 336 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 336 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 331 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_rem_2_f_0(
+#line 331 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 331 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 326 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_quot_2_f_0(
+#line 326 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 326 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 322 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_sign_2_f_0(
+#line 322 "integer.m"
+  MR_Integer mercury__integer__param_1,
+#line 322 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 316 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_mul_2_f_0(
+#line 316 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 316 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 311 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_neg_1_f_0(
+#line 311 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 303 "integer.m"
+MR_bool MR_CALL 
+mercury__integer__big_isnegative_1_p_0(
+#line 303 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 297 "integer.m"
+void MR_CALL 
+mercury__integer__neg_list_2_p_0(
+#line 297 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 297 "integer.m"
+  MR_Word * mercury__integer__param_2);
+
+#line 293 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__big_abs_1_f_0(
+#line 293 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 181 "integer.m"
+MR_Integer MR_CALL 
+mercury__integer__base_0_f_0(void);
+
+#line 102 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__one_0_f_0(void);
+
+#line 100 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__zero_0_f_0(void);
+
+#line 98 "integer.m"
+MR_Integer MR_CALL 
+mercury__integer__int_1_f_0(
+#line 98 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 97 "integer.m"
+MR_Float MR_CALL 
+mercury__integer__float_1_f_0(
+#line 97 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 95 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__pow_2_f_0(
+#line 95 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 95 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 93 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__abs_1_f_0(
+#line 93 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 91 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_92_1_f_0(
+#line 91 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 89 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__xor_2_f_0(
+#line 89 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 89 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 87 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_92_47_2_f_0(
+#line 87 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 87 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 85 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_47_92_2_f_0(
+#line 85 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 85 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 83 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_62_62_2_f_0(
+#line 83 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 83 "integer.m"
+  MR_Integer mercury__integer__param_2);
+
+#line 81 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_60_60_2_f_0(
+#line 81 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 81 "integer.m"
+  MR_Integer mercury__integer__param_2);
+
+#line 78 "integer.m"
+void MR_CALL 
+mercury__integer__divide_with_rem_4_p_0(
+#line 78 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 78 "integer.m"
+  MR_Word mercury__integer__param_2,
+#line 78 "integer.m"
+  MR_Word * mercury__integer__param_3,
+#line 78 "integer.m"
+  MR_Word * mercury__integer__param_4);
+
+#line 73 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__mod_2_f_0(
+#line 73 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 73 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 71 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__rem_2_f_0(
+#line 71 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 71 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 69 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__div_2_f_0(
+#line 69 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 69 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 67 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_47_47_2_f_0(
+#line 67 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 67 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 65 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_times_2_f_0(
+#line 65 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 65 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 63 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_minus_2_f_0(
+#line 63 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 63 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 61 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_plus_2_f_0(
+#line 61 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 61 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 59 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_minus_1_f_0(
+#line 59 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 57 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__f_plus_1_f_0(
+#line 57 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 55 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__det_from_base_string_2_f_0(
+#line 55 "integer.m"
+  MR_Integer mercury__integer__param_1,
+#line 55 "integer.m"
+  MR_String mercury__integer__param_2);
+
+#line 51 "integer.m"
+MR_bool MR_CALL 
+mercury__integer__from_base_string_2_f_0(
+#line 51 "integer.m"
+  MR_Integer mercury__integer__param_1,
+#line 51 "integer.m"
+  MR_String mercury__integer__param_2,
+#line 51 "integer.m"
+  MR_Word * mercury__integer__param_3);
+
+#line 43 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__det_from_string_1_f_0(
+#line 43 "integer.m"
+  MR_String mercury__integer__param_1);
+
+#line 41 "integer.m"
+MR_bool MR_CALL 
+mercury__integer__from_string_1_f_0(
+#line 41 "integer.m"
+  MR_String mercury__integer__param_1,
+#line 41 "integer.m"
+  MR_Word * mercury__integer__param_2);
+
+#line 39 "integer.m"
+MR_String MR_CALL 
+mercury__integer__to_string_1_f_0(
+#line 39 "integer.m"
+  MR_Word mercury__integer__param_1);
+
+#line 37 "integer.m"
+MR_Word MR_CALL 
+mercury__integer__integer_1_f_0(
+#line 37 "integer.m"
+  MR_Integer mercury__integer__param_1);
+
+#line 35 "integer.m"
+MR_bool MR_CALL 
+mercury__integer__f_greater_or_equal_2_p_0(
+#line 35 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 35 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 33 "integer.m"
+MR_bool MR_CALL 
+mercury__integer__f_less_or_equal_2_p_0(
+#line 33 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 33 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 31 "integer.m"
+MR_bool MR_CALL 
+mercury__integer__f_greater_than_2_p_0(
+#line 31 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 31 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+#line 29 "integer.m"
+MR_bool MR_CALL 
+mercury__integer__f_less_than_2_p_0(
+#line 29 "integer.m"
+  MR_Word mercury__integer__param_1,
+#line 29 "integer.m"
+  MR_Word mercury__integer__param_2);
+
+void mercury__integer__init(void);
+void mercury__integer__init_type_tables(void);
+void mercury__integer__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_integer */
+
+/* :- end_interface integer. */

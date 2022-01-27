@@ -1,0 +1,772 @@
+/*
+** Automatically generated from `instmap.m'
+** by the Mercury compiler,
+** version 14.01.1, configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.instmap. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__instmap
+#define MR_HEADER_GUARD_hlds__instmap
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__INSTMAP_DECL_GUARD
+#define HLDS__INSTMAP_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "hlds.instmap.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__instmap__hlds__instmap__type_ctor_info_arm_instmap_0;
+
+#line 45 "hlds.instmap.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__instmap__hlds__instmap__type_ctor_info_instmap_0;
+
+#line 48 "hlds.instmap.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__instmap__hlds__instmap__type_ctor_info_instmap_delta_0;
+
+#line 51 "hlds.instmap.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__instmap__hlds__instmap__type_ctor_info_instmapping_0;
+
+#line 54 "hlds.instmap.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__instmap__hlds__instmap__type_ctor_info_overlay_how_0;
+
+#line 313 "instmap.m"
+void MR_CALL 
+hlds__instmap__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_102_121_95_105_110_115_116_109_97_112_95_100_101_108_116_97_95_95_91_49_93_95_48_7_p_0(
+#line 313 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 313 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 313 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 313 "instmap.m"
+  MR_Word * hlds__instmap__param_4,
+#line 313 "instmap.m"
+  MR_Word hlds__instmap__param_5,
+#line 313 "instmap.m"
+  MR_Word * hlds__instmap__param_6);
+
+#line 209 "instmap.m"
+void MR_CALL 
+hlds__instmap____Compare____overlay_how_0_0(
+#line 209 "instmap.m"
+  MR_Word * hlds__instmap__param_1,
+#line 209 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 209 "instmap.m"
+  MR_Word hlds__instmap__param_3);
+
+#line 209 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap____Unify____overlay_how_0_0(
+#line 209 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 209 "instmap.m"
+  MR_Word hlds__instmap__param_2);
+
+#line 386 "instmap.m"
+void MR_CALL 
+hlds__instmap____Compare____instmap_delta_0_0(
+#line 386 "instmap.m"
+  MR_Word * hlds__instmap__param_1,
+#line 386 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 386 "instmap.m"
+  MR_Word hlds__instmap__param_3);
+
+#line 386 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap____Unify____instmap_delta_0_0(
+#line 386 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 386 "instmap.m"
+  MR_Word hlds__instmap__param_2);
+
+#line 388 "instmap.m"
+void MR_CALL 
+hlds__instmap____Compare____instmap_0_0(
+#line 388 "instmap.m"
+  MR_Word * hlds__instmap__param_1,
+#line 388 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 388 "instmap.m"
+  MR_Word hlds__instmap__param_3);
+
+#line 388 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap____Unify____instmap_0_0(
+#line 388 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 388 "instmap.m"
+  MR_Word hlds__instmap__param_2);
+
+#line 244 "instmap.m"
+void MR_CALL 
+hlds__instmap____Compare____arm_instmap_0_0(
+#line 244 "instmap.m"
+  MR_Word * hlds__instmap__param_1,
+#line 244 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 244 "instmap.m"
+  MR_Word hlds__instmap__param_3);
+
+#line 244 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap____Unify____arm_instmap_0_0(
+#line 244 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 244 "instmap.m"
+  MR_Word hlds__instmap__param_2);
+
+#line 360 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap__var_is_bound_in_instmap_delta_4_p_0(
+#line 360 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 360 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 360 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 360 "instmap.m"
+  MR_Word hlds__instmap__param_4);
+
+#line 350 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap__var_is_any_in_instmap_3_p_0(
+#line 350 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 350 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 350 "instmap.m"
+  MR_Word hlds__instmap__param_3);
+
+#line 347 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap__var_is_ground_in_instmap_3_p_0(
+#line 347 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 347 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 347 "instmap.m"
+  MR_Word hlds__instmap__param_3);
+
+#line 342 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_map_foldl_5_p_0(
+#line 342 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 342 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 342 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 342 "instmap.m"
+  MR_Word * hlds__instmap__param_4,
+#line 342 "instmap.m"
+  MR_Box hlds__instmap__param_5,
+#line 342 "instmap.m"
+  MR_Box * hlds__instmap__param_6);
+
+#line 337 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_to_assoc_list_2_p_0(
+#line 337 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 337 "instmap.m"
+  MR_Word * hlds__instmap__param_2);
+
+#line 334 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_to_assoc_list_2_p_0(
+#line 334 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 334 "instmap.m"
+  MR_Word * hlds__instmap__param_2);
+
+#line 329 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_apply_sub_4_p_0(
+#line 329 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 329 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 329 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 329 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 326 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_apply_sub_4_p_0(
+#line 326 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 326 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 326 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 326 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 313 "instmap.m"
+void MR_CALL 
+hlds__instmap__unify_instmap_delta_7_p_0(
+#line 313 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 313 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 313 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 313 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 313 "instmap.m"
+  MR_Word * hlds__instmap__param_5,
+#line 313 "instmap.m"
+  MR_Word hlds__instmap__param_6,
+#line 313 "instmap.m"
+  MR_Word * hlds__instmap__param_7);
+
+#line 303 "instmap.m"
+void MR_CALL 
+hlds__instmap__merge_instmap_deltas_7_p_0(
+#line 303 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 303 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 303 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 303 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 303 "instmap.m"
+  MR_Word * hlds__instmap__param_5,
+#line 303 "instmap.m"
+  MR_Word hlds__instmap__param_6,
+#line 303 "instmap.m"
+  MR_Word * hlds__instmap__param_7);
+
+#line 292 "instmap.m"
+void MR_CALL 
+hlds__instmap__merge_instmap_delta_8_p_0(
+#line 292 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 292 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 292 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 292 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 292 "instmap.m"
+  MR_Word hlds__instmap__param_5,
+#line 292 "instmap.m"
+  MR_Word * hlds__instmap__param_6,
+#line 292 "instmap.m"
+  MR_Word hlds__instmap__param_7,
+#line 292 "instmap.m"
+  MR_Word * hlds__instmap__param_8);
+
+#line 283 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap__instmap_delta_no_output_vars_5_p_0(
+#line 283 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 283 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 283 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 283 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 283 "instmap.m"
+  MR_Word hlds__instmap__param_5);
+
+#line 275 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_delete_vars_3_p_0(
+#line 275 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 275 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 275 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 270 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_restrict_3_p_0(
+#line 270 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 270 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 270 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 264 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_merge_5_p_0(
+#line 264 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 264 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 264 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 264 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 264 "instmap.m"
+  MR_Word * hlds__instmap__param_5);
+
+#line 255 "instmap.m"
+void MR_CALL 
+hlds__instmap__make_arm_instmaps_for_cases_3_p_0(
+#line 255 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 255 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 255 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 253 "instmap.m"
+void MR_CALL 
+hlds__instmap__make_arm_instmaps_for_goals_3_p_0(
+#line 253 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 253 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 253 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 241 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_restrict_3_p_0(
+#line 241 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 241 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 241 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 235 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_apply_instmap_delta_4_p_0(
+#line 235 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 235 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 235 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 235 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 229 "instmap.m"
+void MR_CALL 
+hlds__instmap__apply_instmap_delta_sv_3_p_0(
+#line 229 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 229 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 229 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 223 "instmap.m"
+void MR_CALL 
+hlds__instmap__apply_instmap_delta_3_p_0(
+#line 223 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 223 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 223 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 217 "instmap.m"
+void MR_CALL 
+hlds__instmap__compute_instmap_delta_4_p_0(
+#line 217 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 217 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 217 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 217 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 204 "instmap.m"
+void MR_CALL 
+hlds__instmap__pre_lambda_update_5_p_0(
+#line 204 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 204 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 204 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 204 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 204 "instmap.m"
+  MR_Word * hlds__instmap__param_5);
+
+#line 197 "instmap.m"
+void MR_CALL 
+hlds__instmap__bind_var_to_functors_8_p_0(
+#line 197 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 197 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 197 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 197 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 197 "instmap.m"
+  MR_Word hlds__instmap__param_5,
+#line 197 "instmap.m"
+  MR_Word * hlds__instmap__param_6,
+#line 197 "instmap.m"
+  MR_Word hlds__instmap__param_7,
+#line 197 "instmap.m"
+  MR_Word * hlds__instmap__param_8);
+
+#line 194 "instmap.m"
+void MR_CALL 
+hlds__instmap__bind_var_to_functor_7_p_0(
+#line 194 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 194 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 194 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 194 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 194 "instmap.m"
+  MR_Word * hlds__instmap__param_5,
+#line 194 "instmap.m"
+  MR_Word hlds__instmap__param_6,
+#line 194 "instmap.m"
+  MR_Word * hlds__instmap__param_7);
+
+#line 189 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_bind_var_to_functors_9_p_0(
+#line 189 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 189 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 189 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 189 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 189 "instmap.m"
+  MR_Word hlds__instmap__param_5,
+#line 189 "instmap.m"
+  MR_Word hlds__instmap__param_6,
+#line 189 "instmap.m"
+  MR_Word * hlds__instmap__param_7,
+#line 189 "instmap.m"
+  MR_Word hlds__instmap__param_8,
+#line 189 "instmap.m"
+  MR_Word * hlds__instmap__param_9);
+
+#line 185 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_bind_var_to_functor_8_p_0(
+#line 185 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 185 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 185 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 185 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 185 "instmap.m"
+  MR_Word hlds__instmap__param_5,
+#line 185 "instmap.m"
+  MR_Word * hlds__instmap__param_6,
+#line 185 "instmap.m"
+  MR_Word hlds__instmap__param_7,
+#line 185 "instmap.m"
+  MR_Word * hlds__instmap__param_8);
+
+#line 179 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_set_vars_same_4_p_0(
+#line 179 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 179 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 179 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 179 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 176 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_set_var_4_p_0(
+#line 176 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 176 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 176 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 176 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 173 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_set_vars_same_4_p_0(
+#line 173 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 173 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 173 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 173 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 171 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_set_vars_corresponding_4_p_0(
+#line 171 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 171 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 171 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 171 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 169 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_set_vars_3_p_0(
+#line 169 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 169 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 169 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 163 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_set_var_4_p_0(
+#line 163 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 163 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 163 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 163 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 158 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_insert_var_4_p_0(
+#line 158 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 158 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 158 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 158 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 152 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_lookup_vars_3_p_0(
+#line 152 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 152 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 152 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 146 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_lookup_var_3_p_0(
+#line 146 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 146 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 146 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 140 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap__instmap_delta_search_var_3_p_0(
+#line 140 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 140 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 140 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 135 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_lookup_var_3_p_0(
+#line 135 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 135 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 135 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 128 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_changed_vars_5_p_0(
+#line 128 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 128 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 128 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 128 "instmap.m"
+  MR_Word hlds__instmap__param_4,
+#line 128 "instmap.m"
+  MR_Word * hlds__instmap__param_5);
+
+#line 114 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_bound_vars_3_p_0(
+#line 114 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 114 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 114 "instmap.m"
+  MR_Word * hlds__instmap__param_3);
+
+#line 108 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_changed_vars_2_p_0(
+#line 108 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 108 "instmap.m"
+  MR_Word * hlds__instmap__param_2);
+
+#line 99 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_vars_list_2_p_0(
+#line 99 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 99 "instmap.m"
+  MR_Word * hlds__instmap__param_2);
+
+#line 95 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_vars_2_p_0(
+#line 95 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 95 "instmap.m"
+  MR_Word * hlds__instmap__param_2);
+
+#line 89 "instmap.m"
+MR_Word MR_CALL 
+hlds__instmap__instmap_delta_bind_vars_1_f_0(
+#line 89 "instmap.m"
+  MR_Word hlds__instmap__param_1);
+
+#line 88 "instmap.m"
+MR_Word MR_CALL 
+hlds__instmap__instmap_delta_bind_var_1_f_0(
+#line 88 "instmap.m"
+  MR_Word hlds__instmap__param_1);
+
+#line 87 "instmap.m"
+MR_Word MR_CALL 
+hlds__instmap__instmap_delta_bind_no_var_0_f_0(void);
+
+#line 84 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_from_mode_list_4_p_0(
+#line 84 "instmap.m"
+  MR_Word hlds__instmap__param_1,
+#line 84 "instmap.m"
+  MR_Word hlds__instmap__param_2,
+#line 84 "instmap.m"
+  MR_Word hlds__instmap__param_3,
+#line 84 "instmap.m"
+  MR_Word * hlds__instmap__param_4);
+
+#line 81 "instmap.m"
+MR_Word MR_CALL 
+hlds__instmap__instmap_delta_from_assoc_list_1_f_0(
+#line 81 "instmap.m"
+  MR_Word hlds__instmap__param_1);
+
+#line 78 "instmap.m"
+MR_Word MR_CALL 
+hlds__instmap__instmap_from_assoc_list_1_f_0(
+#line 78 "instmap.m"
+  MR_Word hlds__instmap__param_1);
+
+#line 76 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap__instmap_delta_is_unreachable_1_p_0(
+#line 76 "instmap.m"
+  MR_Word hlds__instmap__param_1);
+
+#line 72 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap__instmap_delta_is_reachable_1_p_0(
+#line 72 "instmap.m"
+  MR_Word hlds__instmap__param_1);
+
+#line 64 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap__instmap_is_unreachable_1_p_0(
+#line 64 "instmap.m"
+  MR_Word hlds__instmap__param_1);
+
+#line 60 "instmap.m"
+MR_bool MR_CALL 
+hlds__instmap__instmap_is_reachable_1_p_0(
+#line 60 "instmap.m"
+  MR_Word hlds__instmap__param_1);
+
+#line 52 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_init_unreachable_1_p_0(
+#line 52 "instmap.m"
+  MR_Word * hlds__instmap__param_1);
+
+#line 48 "instmap.m"
+void MR_CALL 
+hlds__instmap__instmap_delta_init_reachable_1_p_0(
+#line 48 "instmap.m"
+  MR_Word * hlds__instmap__param_1);
+
+#line 44 "instmap.m"
+void MR_CALL 
+hlds__instmap__init_unreachable_1_p_0(
+#line 44 "instmap.m"
+  MR_Word * hlds__instmap__param_1);
+
+#line 40 "instmap.m"
+void MR_CALL 
+hlds__instmap__init_reachable_1_p_0(
+#line 40 "instmap.m"
+  MR_Word * hlds__instmap__param_1);
+
+void mercury__hlds__instmap__init(void);
+void mercury__hlds__instmap__init_type_tables(void);
+void mercury__hlds__instmap__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.instmap */
+
+/* :- end_interface hlds.instmap. */

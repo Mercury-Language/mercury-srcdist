@@ -1,0 +1,79 @@
+:- module rtti_implementation.
+:- pragma termination_info(rtti_implementation.get_type_info((builtin.unused)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.generic_unify((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(rtti_implementation.generic_compare((builtin.out), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(rtti_implementation.compare_type_infos((builtin.out), (builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(rtti_implementation.get_type_ctor_info((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_name_and_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.pseudo_type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.is_univ_pseudo_type_info((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.is_exist_pseudo_type_info((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.construct((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.construct_tuple_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.functor_number_cc((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.univ_named_arg((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.univ_named_arg((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.univ_named_arg((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_info_num_functors((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_info_get_functor((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_info_get_functor_with_names((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_info_get_functor_ordinal((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_info_get_functor_lex((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.get_functor_impl((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.collapse_equivalences((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.univ_named_arg_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.univ_named_arg_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.univ_named_arg_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_arity((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.get_type_ctor_rep((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_module_name((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_name((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_search_functor_number_map((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma exceptions(function, (rtti_implementation.get_type_info), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtti_implementation.generic_unify), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.generic_compare), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.compare_type_infos), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtti_implementation.get_type_ctor_info), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtti_implementation.type_ctor_and_args), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_ctor_name_and_arity), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtti_implementation.pseudo_type_ctor_and_args), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.is_univ_pseudo_type_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.is_exist_pseudo_type_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtti_implementation.construct), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtti_implementation.construct_tuple_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.functor_number_cc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.univ_named_arg), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.univ_named_arg), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.univ_named_arg), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_info_num_functors), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_info_get_functor), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_info_get_functor_with_names), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_info_get_functor_ordinal), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_info_get_functor_lex), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.get_functor_impl), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtti_implementation.collapse_equivalences), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct_2), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct_2), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct_2), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct_2), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.univ_named_arg_2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.univ_named_arg_2), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.univ_named_arg_2), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(function, (rtti_implementation.type_ctor_arity), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtti_implementation.get_type_ctor_rep), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtti_implementation.type_ctor_module_name), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtti_implementation.type_ctor_name), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtti_implementation.type_ctor_search_functor_number_map), 3, 0, may_throw(user_exception)).
