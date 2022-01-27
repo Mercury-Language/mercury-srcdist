@@ -1,0 +1,16 @@
+:- module (ll_backend.prog_rep_tables).
+:- interface.
+:- import_module list.
+:- import_module (parse_tree.prog_data).
+:- type string_table_info.
+:- type type_table_info.
+:- pred get_string_table_contents(ll_backend.prog_rep_tables.string_table_info, list.list(string), int).
+:- mode get_string_table_contents((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_type_table_contents(ll_backend.prog_rep_tables.type_table_info, int, list.list(int)).
+:- mode get_type_table_contents((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func init_string_table_info = ll_backend.prog_rep_tables.string_table_info.
+:- func init_type_table_info = ll_backend.prog_rep_tables.type_table_info.
+:- pred lookup_string_in_table(string, int, ll_backend.prog_rep_tables.string_table_info, ll_backend.prog_rep_tables.string_table_info).
+:- mode lookup_string_in_table((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred lookup_type_in_table(parse_tree.prog_data.mer_type, int, ll_backend.prog_rep_tables.string_table_info, ll_backend.prog_rep_tables.string_table_info, ll_backend.prog_rep_tables.type_table_info, ll_backend.prog_rep_tables.type_table_info).
+:- mode lookup_type_in_table((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

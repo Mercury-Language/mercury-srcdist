@@ -1,0 +1,6 @@
+:- module mode_robdd.
+:- interface.
+:- include_module (mode_robdd.tfeirn).
+:- include_module (mode_robdd.equiv_vars).
+:- include_module (mode_robdd.implications).
+:- type mode_robdd(T).

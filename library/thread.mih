@@ -1,0 +1,174 @@
+/*
+** Automatically generated from `thread.m'
+** by the Mercury compiler,
+** version rotd-2015-02-20
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module thread. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_thread
+#define MR_HEADER_GUARD_thread
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef THREAD_DECL_GUARD
+#define THREAD_DECL_GUARD
+
+#ifndef MR_HIGHLEVEL_CODE
+  #if (!defined(MR_EXEC_TRACE) && !defined(MR_DEEP_PROFILING)) || !defined(MR_USE_GCC_NONLOCAL_GOTOS)
+    /*
+    ** In calling thread.yield, semaphore.wait or semaphore.signal, the
+    ** calling context may need to suspend and yield to another context.
+    ** This is implemented by setting the resume address of the context to an
+    ** auxiliary function outside of the foreign_proc.  This breaks when
+    ** execution tracing or deep profiling are enabled as code inserted at the
+    ** end of the foreign_proc won't be executed.  In those cases we rely on
+    ** the gcc extension that allows us to take the address of labels within
+    ** the foreign_proc, so the context will resume back inside the
+    ** foreign_proc.
+    **
+    ** XXX implement those procedures as :- external procedures so that the
+    ** transforms won't be applied
+    */
+    #define ML_THREAD_AVOID_LABEL_ADDRS
+  #endif
+#endif
+
+
+/*
+INIT mercury_sys_init_thread_modules
+*/
+
+#ifndef MR_HIGHLEVEL_CODE
+    MR_define_extern_entry(mercury__thread__spawn_begin_thread);
+    MR_declare_label(mercury__thread__spawn_end_thread);
+    MR_define_extern_entry(mercury__thread__yield_resume);
+#endif
+
+
+#if defined(MR_THREAD_SAFE)
+  #include  <pthread.h>
+
+  MR_bool ML_create_exclusive_thread(MR_Word goal, MR_String *thread_id);
+  void *ML_exclusive_thread_wrapper(void *arg);
+
+  typedef struct ML_ThreadWrapperArgs ML_ThreadWrapperArgs;
+  struct ML_ThreadWrapperArgs {
+        MercurySem          sem;
+        MR_Word             goal;
+        MR_ThreadLocalMuts  *thread_local_mutables;
+        MR_bool             thread_started;
+        MR_String           thread_id;
+  };
+#endif /* MR_THREAD_SAFE */
+
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__thread__type_ctor_info_thread_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__thread__type_ctor_info_thread_id_0;
+
+void MR_CALL 
+mercury__thread__call_back_to_mercury_4_p_0(
+  MR_Word mercury__thread__param_1,
+  MR_String mercury__thread__param_2);
+
+MR_bool MR_CALL 
+mercury__thread__can_spawn_0_p_0(void);
+
+MR_bool MR_CALL 
+mercury__thread__can_spawn_context_0_p_0(void);
+
+MR_bool MR_CALL 
+mercury__thread__can_spawn_native_0_p_0(void);
+
+void MR_CALL 
+mercury__thread__spawn_3_p_0(
+  MR_Word mercury__thread__param_1);
+
+void MR_CALL 
+mercury__thread__spawn_4_p_0(
+  MR_Word mercury__thread__param_1,
+  MR_Word * mercury__thread__param_2);
+
+void MR_CALL 
+mercury__thread__spawn_context_4_p_0(
+  MR_Word mercury__thread__param_1,
+  MR_Word * mercury__thread__param_2);
+
+void MR_CALL 
+mercury__thread__spawn_context_2_5_p_0(
+  MR_Word mercury__thread__param_1,
+  MR_Word * mercury__thread__param_2,
+  MR_String * mercury__thread__param_3);
+
+void MR_CALL 
+mercury__thread__spawn_native_4_p_0(
+  MR_Word mercury__thread__param_1,
+  MR_Word * mercury__thread__param_2);
+
+void MR_CALL 
+mercury__thread__spawn_native_2_5_p_0(
+  MR_Word mercury__thread__param_1,
+  MR_Word * mercury__thread__param_2,
+  MR_String * mercury__thread__param_3);
+
+void MR_CALL 
+mercury__thread__yield_2_p_0(void);
+
+void MR_CALL 
+mercury__thread____Compare____thread_0_0(
+  MR_Word * mercury__thread__param_1,
+  MR_Word mercury__thread__param_2,
+  MR_Word mercury__thread__param_3);
+
+void MR_CALL 
+mercury__thread____Compare____thread_id_0_0(
+  MR_Word * mercury__thread__param_1,
+  MR_String mercury__thread__param_2,
+  MR_String mercury__thread__param_3);
+
+MR_bool MR_CALL 
+mercury__thread____Unify____thread_0_0(
+  MR_Word mercury__thread__param_1,
+  MR_Word mercury__thread__param_2);
+
+MR_bool MR_CALL 
+mercury__thread____Unify____thread_id_0_0(
+  MR_String mercury__thread__param_1,
+  MR_String mercury__thread__param_2);
+
+void mercury__thread__init(void);
+void mercury__thread__init_type_tables(void);
+void mercury__thread__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_thread */
+
+/* :- end_interface thread. */

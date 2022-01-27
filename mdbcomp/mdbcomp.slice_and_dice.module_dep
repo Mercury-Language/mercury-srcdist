@@ -1,0 +1,13 @@
+module(1, "slice_and_dice.m",
+	(mdbcomp.slice_and_dice),
+	{mdbcomp},
+	{builtin, io, map, maybe, (mdbcomp.prim_data), (mdbcomp.trace_counts), private_builtin},
+	{builtin, io, map, maybe, (mdbcomp.prim_data), (mdbcomp.trace_counts), float, int, list, pair, require, set, string, (mdbcomp.goal_path), (mdbcomp.rtti_access), (mdbcomp.sym_name), private_builtin, stream, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdbcomp.slice_and_dice), "C" - (mdbcomp.slice_and_dice)},
+	contains_foreign_export,
+	no_main
+).

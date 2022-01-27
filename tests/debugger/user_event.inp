@@ -1,0 +1,22 @@
+echo on
+register --quiet
+break user_event nonexistent_event_name
+break user_event nonexistent_set_name nodiag_fail
+break user_event nodiag_fail
+break_print -b0 !arg_b
+user
+print *
+browse !test_list
+p
+^2^1
+p
+quit
+user
+vars
+print *
+print !arg_b
+user
+print *
+condition -b0 !arg_b = 1
+continue
+continue -S

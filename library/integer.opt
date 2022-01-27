@@ -1,0 +1,235 @@
+:- module integer.
+:- use_module builtin, char, exception, float, int, list, math, private_builtin, require, string.
+:- type integer.sign == int.
+:- type integer.printbase
+	--->	printbase(int).
+:- type integer.integer
+	--->	i(int, list.list(int)).
+:- type integer.digit == int.
+:- func (integer.base) = int.
+:- mode (integer.base) = (builtin.out) is det.
+:- func integer.big_abs(integer.integer) = integer.integer.
+:- mode integer.big_abs((builtin.in)) = (builtin.out) is det.
+:- pred integer.neg_list(list.list(int), list.list(int)).
+:- mode integer.neg_list((builtin.in), (builtin.out)) is det.
+:- func integer.big_neg(integer.integer) = integer.integer.
+:- mode integer.big_neg((builtin.in)) = (builtin.out) is det.
+:- func integer.big_mul(integer.integer, integer.integer) = integer.integer.
+:- mode integer.big_mul((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func integer.big_quot(integer.integer, integer.integer) = integer.integer.
+:- mode integer.big_quot((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func integer.big_rem(integer.integer, integer.integer) = integer.integer.
+:- mode integer.big_rem((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func integer.big_div(integer.integer, integer.integer) = integer.integer.
+:- mode integer.big_div((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func integer.big_mod(integer.integer, integer.integer) = integer.integer.
+:- mode integer.big_mod((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func integer.big_cmp(integer.integer, integer.integer) = builtin.comparison_result.
+:- mode integer.big_cmp((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func integer.big_plus(integer.integer, integer.integer) = integer.integer.
+:- mode integer.big_plus((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func integer.int_to_integer(int) = integer.integer.
+:- mode integer.int_to_integer((builtin.in)) = (builtin.out) is det.
+:- pred integer.big_quot_rem(integer.integer, integer.integer, integer.integer, integer.integer).
+:- mode integer.big_quot_rem((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func integer.float_list(float, float, list.list(int)) = float.
+:- mode integer.float_list((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func integer.string_to_integer(list.list(character)) = integer.integer.
+:- mode integer.string_to_integer((builtin.in)) = (builtin.out) is semidet.
+integer.(X_3 < Y_4) :-
+    C_5 = integer.big_cmp(X_3, Y_4),
+    C_5 = builtin.(<) : builtin.comparison_result.
+integer.(X_3 > Y_4) :-
+    C_5 = integer.big_cmp(X_3, Y_4),
+    C_5 = builtin.(>) : builtin.comparison_result.
+integer.(X_3 =< Y_4) :-
+    C_5 = integer.big_cmp(X_3, Y_4),
+    ( % disjunction
+      C_5 = builtin.(<) : builtin.comparison_result
+    ;
+      C_5 = builtin.(=) : builtin.comparison_result
+    ).
+integer.(X_3 >= Y_4) :-
+    C_5 = integer.big_cmp(X_3, Y_4),
+    ( % disjunction
+      C_5 = builtin.(>) : builtin.comparison_result
+    ;
+      C_5 = builtin.(=) : builtin.comparison_result
+    ).
+integer.integer(N_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = integer.int_to_integer(N_3).
+integer.to_string(Integer_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = integer.to_base_string(Integer_3, V_4),
+    V_4 = 10 : int.
+integer.from_string(S_3, Big_4) :-
+    string.to_char_list(S_3, Cs_5),
+    Big_4 = integer.string_to_integer(Cs_5).
+integer.from_string(S_3) = Big_4 :-
+    integer.from_string(S_3, Big_4).
+integer.from_base_string(Base_4, String_5) = Integer_6 :-
+    integer.from_base_string(Base_4, String_5, Integer_6).
+integer.(+ X_3) = X_3.
+integer.(- X_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = integer.big_neg(X_3).
+integer.(X_4 + Y_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = integer.big_plus(X_4, Y_5).
+integer.(X_4 - Y_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = integer.big_plus(X_4, V_6),
+    V_6 = integer.big_neg(Y_5).
+integer.(X_4 * Y_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = integer.big_mul(X_4, Y_5).
+integer.(X_4 // Y_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = integer.big_quot(X_4, Y_5).
+integer.(X_4 div Y_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = integer.big_div(X_4, Y_5).
+integer.(X_4 rem Y_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = integer.big_rem(X_4, Y_5).
+integer.(X_4 mod Y_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = integer.big_mod(X_4, Y_5).
+integer.divide_with_rem(X_5, Y_6, Quotient_7, Remainder_8) :-
+    integer.big_quot_rem(X_5, Y_6, Quotient_7, Remainder_8).
+integer.(\ X_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = integer.big_neg(V_4),
+    V_4 = integer.big_plus(X_3, V_5),
+    V_5 = integer.one.
+integer.abs(N_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = integer.big_abs(N_3).
+integer.float(integer.i(V_3, List_4)) = HeadVar__2_2 :-
+    HeadVar__2_2 = integer.float_list(V_5, V_7, List_4),
+    V_5 = float.float(V_6),
+    V_6 = integer.base,
+    V_7 = 0.0 : float.
+integer.int(Integer_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = integer.det_to_int(Integer_3).
+integer.zero = integer.i(V_2, V_3) :-
+    V_2 = 0 : int,
+    V_3 = list.[] : list.list(int).
+integer.one = HeadVar__1_1 :-
+    (
+    % from_ground_term [HeadVar__1_1, initial]
+      ( % conjunction
+        HeadVar__1_1 = integer.i(V_2, V_3) : integer.integer
+        ,
+        V_2 = 1 : int
+        ,
+        V_3 = list.[V_4 | V_5] : list.list(int)
+        ,
+        V_4 = 1 : int
+        ,
+        V_5 = list.[] : list.list(int)
+      )
+    ).
+integer.base = 16384.
+integer.big_neg(integer.i(S_3, Digits0_4)) = integer.i(V_6, Digits_5) :-
+    V_6 = int.(- S_3),
+    integer.neg_list(Digits0_4, Digits_5).
+integer.big_quot(X_4, Y_5) = Quot_6 :-
+    integer.big_quot_rem(X_4, Y_5, Quot_6, _Rem_7).
+integer.big_rem(X_4, Y_5) = Rem_6 :-
+    integer.big_quot_rem(X_4, Y_5, _Quot_7, Rem_6).
+integer.big_cmp(X_4, Y_5) = Result_6 :-
+    builtin.compare(Result_6, X_4, Y_5).
+:- pragma exceptions(predicate, (integer.(<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (integer.(>)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (integer.(=<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (integer.(>=)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.integer), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.to_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.to_base_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (integer.from_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.from_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.det_from_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (integer.from_base_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.from_base_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.det_from_base_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(+)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.(-)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.(+)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(-)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(*)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(//)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(div)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(rem)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(mod)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (integer.divide_with_rem), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(<<)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(>>)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(/\)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(\/)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.xor), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(\)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.abs), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.pow), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.float), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (integer.to_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.det_to_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.zero), 1, 0, will_not_throw).
+:- pragma exceptions(function, (integer.one), 1, 0, will_not_throw).
+:- pragma exceptions(function, (integer.base), 1, 0, will_not_throw).
+:- pragma exceptions(function, (integer.big_abs), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (integer.neg_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.big_neg), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.big_mul), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_quot), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_rem), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_div), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_mod), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_cmp), 3, 0, will_not_throw).
+:- pragma exceptions(function, (integer.big_plus), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.int_to_integer), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (integer.big_quot_rem), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.float_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.string_to_integer), 2, 0, may_throw(user_exception)).
+:- pragma termination_info(integer.'<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.'>'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.'=<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.'>='((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.integer((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.to_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.to_base_string((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.from_string((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(integer.from_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.det_from_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.from_base_string((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(integer.from_base_string((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.det_from_base_string((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'+'((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(integer.'-'((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.'+'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'-'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'*'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'//'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.div((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.rem((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.mod((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.divide_with_rem((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(integer.'<<'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'>>'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'/\\'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'\\/'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.xor((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'\\'((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.abs((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.pow((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.float((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(integer.to_int((builtin.in), (builtin.out)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(integer.det_to_int((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(integer.int((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info((integer.zero) = (builtin.out), finite(2, [no]), cannot_loop).
+:- pragma termination_info((integer.one) = (builtin.out), finite(4, [no]), cannot_loop).
+:- pragma termination_info((integer.base) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(integer.big_abs((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.neg_list((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(integer.big_neg((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.big_mul((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_quot((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_rem((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_div((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_mod((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_cmp((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(integer.big_plus((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.int_to_integer((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_quot_rem((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(integer.float_list((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(integer.string_to_integer((builtin.in)) = (builtin.out), infinite, can_loop).

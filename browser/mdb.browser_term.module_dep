@@ -1,0 +1,13 @@
+module(1, "browser_term.m",
+	(mdb.browser_term),
+	{mdb},
+	{builtin, bool, list, maybe, univ, private_builtin},
+	{builtin, bool, list, maybe, univ, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.browser_term), "C" - (mdb.browser_term)},
+	contains_foreign_export,
+	no_main
+).

@@ -1,0 +1,4 @@
+:- module (ml_backend.ml_lookup_switch).
+:- interface.
+:- type ml_lookup_switch_info(Key).
+:- type ml_several_soln_lookup_vars.
