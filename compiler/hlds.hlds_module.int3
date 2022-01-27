@@ -1,0 +1,44 @@
+:- module (hlds.hlds_module).
+:- interface.
+:- type avail_module.
+:- type avail_module_entry.
+:- type avail_module_map.
+:- type complexity_arg_info.
+:- type complexity_arg_kind
+	where	type_is_abstract_enum(2).
+:- type complexity_proc_info.
+:- type complexity_proc_map.
+:- type direct_arg_map.
+:- type exported_enum_info.
+:- type module_info.
+:- type oisu_map.
+:- type oisu_preds.
+:- type pragma_exported_proc.
+:- type proc_analysis_kind
+	where	type_is_abstract_enum(3).
+:- type table_struct_info.
+:- type table_struct_map.
+:- type type_ctor_gen_info.
+:- type type_repn_decision_data.
+:- type type_spec_info.
+:- type unused_arg_info.
+:- type_representation(avail_module, is_word_aligned_ptr).
+:- type_representation(avail_module_entry, is_word_aligned_ptr).
+:- type_representation(avail_module_map, is_eqv_to(map(module_name, hlds.hlds_module.avail_module_entry))).
+:- type_representation(complexity_arg_info, is_word_aligned_ptr).
+:- type_representation(complexity_arg_kind, du_repn(enum("complexity_input_variable_size", "complexity_input_fixed_size", ["complexity_output"],  no_c_j_cs))).
+:- type_representation(complexity_proc_info, is_word_aligned_ptr).
+:- type_representation(complexity_proc_map, is_eqv_to(map(string, int))).
+:- type_representation(direct_arg_map, is_eqv_to(map(type_ctor, list(sym_name_arity)))).
+:- type_representation(exported_enum_info, is_word_aligned_ptr).
+:- type_representation(module_info, is_word_aligned_ptr).
+:- type_representation(oisu_map, is_eqv_to(map(type_ctor, hlds.hlds_module.oisu_preds))).
+:- type_representation(oisu_preds, is_word_aligned_ptr).
+:- type_representation(pragma_exported_proc, is_word_aligned_ptr).
+:- type_representation(proc_analysis_kind, du_repn(enum("pak_exception", "pak_trailing", ["pak_mm_tabling", "pak_termination", "pak_termination2", "pak_structure_sharing", "pak_structure_reuse"],  no_c_j_cs))).
+:- type_representation(table_struct_info, is_word_aligned_ptr).
+:- type_representation(table_struct_map, is_eqv_to(map(pred_proc_id, hlds.hlds_module.table_struct_info))).
+:- type_representation(type_ctor_gen_info, is_word_aligned_ptr).
+:- type_representation(type_repn_decision_data, is_word_aligned_ptr).
+:- type_representation(type_spec_info, is_word_aligned_ptr).
+:- type_representation(unused_arg_info, is_eqv_to(map(pred_proc_id, list(int)))).

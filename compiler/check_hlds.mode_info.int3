@@ -1,0 +1,42 @@
+:- module (check_hlds.mode_info).
+:- interface.
+:- type call_context.
+:- type debug_flags.
+:- type had_from_ground_term_scope
+	where	type_is_abstract_enum(1).
+:- type how_to_check_goal
+	where	type_is_abstract_enum(1).
+:- type in_dupl_for_switch
+	where	type_is_abstract_enum(1).
+:- type in_from_ground_term_scope
+	where	type_is_abstract_enum(1).
+:- type in_promise_purity_scope
+	where	type_is_abstract_enum(1).
+:- type locked_vars.
+:- type make_ground_terms_unique
+	where	type_is_abstract_enum(1).
+:- type may_change_called_proc
+	where	type_is_abstract_enum(1).
+:- type mode_call_id.
+:- type mode_context.
+:- type mode_info.
+:- type par_conj_mode_check.
+:- type par_conj_mode_check_stack.
+:- type pred_var_multimode_map.
+:- type side
+	where	type_is_abstract_enum(1).
+:- type var_lock_reason.
+:- type_representation(debug_flags, is_word_aligned_ptr).
+:- type_representation(had_from_ground_term_scope, du_repn(enum("had_from_ground_term_scope", "did_not_have_from_ground_term_scope", [],  no_c_j_cs))).
+:- type_representation(how_to_check_goal, du_repn(enum("check_modes", "check_unique_modes", [],  no_c_j_cs))).
+:- type_representation(in_dupl_for_switch, du_repn(enum("in_dupl_for_switch", "not_in_dupl_for_switch", [],  no_c_j_cs))).
+:- type_representation(in_from_ground_term_scope, du_repn(enum("in_from_ground_term_scope", "not_in_from_ground_term_scope", [],  no_c_j_cs))).
+:- type_representation(in_promise_purity_scope, du_repn(enum("in_promise_purity_scope", "not_in_promise_purity_scope", [],  no_c_j_cs))).
+:- type_representation(locked_vars, is_eqv_to(assoc_list(check_hlds.mode_info.var_lock_reason, set_of_progvar))).
+:- type_representation(make_ground_terms_unique, du_repn(enum("make_ground_terms_unique", "do_not_make_ground_terms_unique", [],  no_c_j_cs))).
+:- type_representation(may_change_called_proc, du_repn(enum("may_change_called_proc", "may_not_change_called_proc", [],  no_c_j_cs))).
+:- type_representation(mode_info, is_word_aligned_ptr).
+:- type_representation(par_conj_mode_check, is_word_aligned_ptr).
+:- type_representation(par_conj_mode_check_stack, is_eqv_to(list(check_hlds.mode_info.par_conj_mode_check))).
+:- type_representation(pred_var_multimode_map, is_eqv_to(map(prog_var, pred_var_multimode_pred_error))).
+:- type_representation(side, du_repn(enum("left", "right", [],  no_c_j_cs))).

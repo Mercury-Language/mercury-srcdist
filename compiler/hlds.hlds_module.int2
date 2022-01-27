@@ -1,0 +1,68 @@
+:- module (hlds.hlds_module).
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- type avail_module
+    --->    avail_module(parse_tree.prog_item.module_section, parse_tree.prog_item.import_or_use, parse_tree.prog_data.prog_context).
+:- type avail_module_entry
+    --->    avail_module_entry(parse_tree.prog_item.module_section, parse_tree.prog_item.import_or_use, list.list(hlds.hlds_module.avail_module)).
+:- type avail_module_map == map.map(mdbcomp.sym_name.module_name, hlds.hlds_module.avail_module_entry).
+:- type complexity_arg_info
+    --->    complexity_arg_info(((hlds.hlds_module).complexity_arg_name) :: maybe.maybe(string), ((hlds.hlds_module).complexity_arg_kind) :: hlds.hlds_module.complexity_arg_kind).
+:- type complexity_arg_kind
+    --->    complexity_input_variable_size 
+    ;       complexity_input_fixed_size 
+    ;       complexity_output .
+:- type complexity_proc_info
+    --->    complexity_proc_info(((hlds.hlds_module).complexity_proc_num) :: int, ((hlds.hlds_module).complexity_proc_name) :: string, ((hlds.hlds_module).complexity_proc_args) :: list.list(hlds.hlds_module.complexity_arg_info)).
+:- type complexity_proc_map == map.map(string, int).
+:- type direct_arg_map == map.map(parse_tree.prog_data.type_ctor, list.list(parse_tree.prog_data.sym_name_arity)).
+:- type exported_enum_info
+    --->    exported_enum_info(((hlds.hlds_module).eei_type_ctor) :: parse_tree.prog_data.type_ctor, ((hlds.hlds_module).eei_constants) :: list.list(hlds.hlds_data.constructor_repn), ((hlds.hlds_module).eei_language) :: libs.globals.foreign_language, ((hlds.hlds_module).eei_name_map) :: map.map(string, string), ((hlds.hlds_module).eei_context) :: parse_tree.prog_data.prog_context).
+:- type module_info.
+:- type oisu_map == map.map(parse_tree.prog_data.type_ctor, hlds.hlds_module.oisu_preds).
+:- type oisu_preds
+    --->    oisu_preds(((hlds.hlds_module).op_creators) :: list.list(hlds.hlds_pred.pred_id), ((hlds.hlds_module).op_mutators) :: list.list(hlds.hlds_pred.pred_id), ((hlds.hlds_module).op_destructors) :: list.list(hlds.hlds_pred.pred_id)).
+:- type pragma_exported_proc
+    --->    pragma_exported_proc(libs.globals.foreign_language, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, string, parse_tree.prog_data.prog_context).
+:- type proc_analysis_kind
+    --->    pak_exception 
+    ;       pak_trailing 
+    ;       pak_mm_tabling 
+    ;       pak_termination 
+    ;       pak_termination2 
+    ;       pak_structure_sharing 
+    ;       pak_structure_reuse .
+:- type table_struct_info
+    --->    table_struct_info(((hlds.hlds_module).table_struct_proc) :: hlds.hlds_pred.proc_table_struct_info, ((hlds.hlds_module).table_struct_attrs) :: parse_tree.prog_data_pragma.table_attributes).
+:- type table_struct_map == map.map(hlds.hlds_pred.pred_proc_id, hlds.hlds_module.table_struct_info).
+:- type type_ctor_gen_info
+    --->    type_ctor_gen_info(parse_tree.prog_data.type_ctor, mdbcomp.sym_name.module_name, string, int, hlds.status.type_status, hlds.hlds_data.hlds_type_defn, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id).
+:- type type_repn_decision_data
+    --->    type_repn_decision_data(((hlds.hlds_module).trdd_type_repns) :: parse_tree.prog_item.type_ctor_repn_map, ((hlds.hlds_module).trdd_direct_arg_map) :: hlds.hlds_module.direct_arg_map, ((hlds.hlds_module).trdd_foreign_enums) :: list.list({hlds.status.item_mercury_status, parse_tree.prog_item.item_foreign_enum_info}), ((hlds.hlds_module).trdd_foreign_exports) :: list.list(parse_tree.prog_item.item_foreign_export_enum_info)).
+:- type type_spec_info
+    --->    type_spec_info(((hlds.hlds_module).user_req_procs) :: set.set(hlds.hlds_pred.pred_proc_id), ((hlds.hlds_module).must_process_preds) :: set.set(hlds.hlds_pred.pred_id), ((hlds.hlds_module).user_to_process_map) :: multi_map.multi_map(hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_id), ((hlds.hlds_module).pragma_map) :: multi_map.multi_map(hlds.hlds_pred.pred_id, parse_tree.prog_item.pragma_info_type_spec)).
+:- type unused_arg_info == map.map(hlds.hlds_pred.pred_proc_id, list.list(int)).
+:- type_representation(avail_module, is_word_aligned_ptr).
+:- type_representation(avail_module_entry, is_word_aligned_ptr).
+:- type_representation(avail_module_map, is_eqv_to(map.map(mdbcomp.sym_name.module_name, hlds.hlds_module.avail_module_entry))).
+:- type_representation(complexity_arg_info, is_word_aligned_ptr).
+:- type_representation(complexity_arg_kind, du_repn(enum("complexity_input_variable_size", "complexity_input_fixed_size", ["complexity_output"],  no_c_j_cs))).
+:- type_representation(complexity_proc_info, is_word_aligned_ptr).
+:- type_representation(complexity_proc_map, is_eqv_to(map.map(string, int))).
+:- type_representation(direct_arg_map, is_eqv_to(map.map(parse_tree.prog_data.type_ctor, list.list(parse_tree.prog_data.sym_name_arity)))).
+:- type_representation(exported_enum_info, is_word_aligned_ptr).
+:- type_representation(module_info, is_word_aligned_ptr).
+:- type_representation(oisu_map, is_eqv_to(map.map(parse_tree.prog_data.type_ctor, hlds.hlds_module.oisu_preds))).
+:- type_representation(oisu_preds, is_word_aligned_ptr).
+:- type_representation(pragma_exported_proc, is_word_aligned_ptr).
+:- type_representation(proc_analysis_kind, du_repn(enum("pak_exception", "pak_trailing", ["pak_mm_tabling", "pak_termination", "pak_termination2", "pak_structure_sharing", "pak_structure_reuse"],  no_c_j_cs))).
+:- type_representation(table_struct_info, is_word_aligned_ptr).
+:- type_representation(table_struct_map, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, hlds.hlds_module.table_struct_info))).
+:- type_representation(type_ctor_gen_info, is_word_aligned_ptr).
+:- type_representation(type_repn_decision_data, is_word_aligned_ptr).
+:- type_representation(type_spec_info, is_word_aligned_ptr).
+:- type_representation(unused_arg_info, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, list.list(int)))).

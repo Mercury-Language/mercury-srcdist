@@ -1,0 +1,3 @@
+:- module (top_level.mercury_compile_main).
+:- interface.
+:- type_representation(compile, is_eqv_to(pred(libs.globals.globals, bool.bool, io.io, io.io))).

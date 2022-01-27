@@ -1,0 +1,34 @@
+:- module (make.dependencies).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module set.
+:- use_module (libs.globals).
+:- type cached_direct_imports.
+:- type cached_foreign_imports.
+:- type cached_transitive_dependencies.
+:- type dependencies_result
+    --->    deps_up_to_date 
+    ;       deps_out_of_date 
+    ;       deps_error .
+:- type dependency_file
+    --->    dep_target(make.target_file)
+    ;       dep_file(libs.file_util.file_name, maybe.maybe(libs.options.option)).
+:- type find_module_deps(T) == pred(libs.globals.globals, make.deps_set.module_index, bool.bool, make.deps_set.deps_set(T), make.make_info, make.make_info, io.io, io.io).
+:- type find_module_deps_plain_set(T) == pred(libs.globals.globals, make.deps_set.module_index, bool.bool, set.set(T), make.make_info, make.make_info, io.io, io.io).
+:- inst (find_module_deps) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (find_module_deps_plain_set) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- type_representation(cached_direct_imports, is_eqv_to(map.map(make.deps_set.module_index, make.dependencies.module_deps_result))).
+:- type_representation(cached_foreign_imports, is_eqv_to(map.map(make.deps_set.module_index, make.dependencies.module_deps_result))).
+:- type_representation(cached_transitive_dependencies, is_eqv_to(map.map(make.dependencies.transitive_dependencies_root, make.dependencies.deps_result(make.deps_set.module_index)))).
+:- type_representation(dependencies_result, du_repn(enum("deps_up_to_date", "deps_out_of_date", ["deps_error"],  no_c_j_cs))).
+:- type_representation(find_module_deps(V_1), is_eqv_to(pred(libs.globals.globals, make.deps_set.module_index, bool.bool, make.deps_set.deps_set(V_1), make.make_info, make.make_info, io.io, io.io))).
+:- type_representation(find_module_deps_plain_set(V_1), is_eqv_to(pred(libs.globals.globals, make.deps_set.module_index, bool.bool, set.set(V_1), make.make_info, make.make_info, io.io, io.io))).
+:- type_representation(module_deps_result, is_eqv_to(make.dependencies.deps_result(make.deps_set.module_index))).
+:- implementation.
+:- type cached_direct_imports == map.map(make.deps_set.module_index, make.dependencies.module_deps_result).
+:- type cached_foreign_imports == map.map(make.deps_set.module_index, make.dependencies.module_deps_result).
+:- type cached_transitive_dependencies == map.map(make.dependencies.transitive_dependencies_root, make.dependencies.deps_result(make.deps_set.module_index)).
+:- type deps_result(T).
+:- type module_deps_result == make.dependencies.deps_result(make.deps_set.module_index).
+:- type transitive_dependencies_root.
