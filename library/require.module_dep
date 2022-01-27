@@ -1,0 +1,13 @@
+module(1, "require.m",
+	require,
+	{},
+	{builtin, private_builtin},
+	{builtin, exception, list, string, type_desc, private_builtin, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

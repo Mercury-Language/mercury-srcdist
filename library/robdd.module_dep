@@ -1,0 +1,13 @@
+module(1, "robdd.m",
+	robdd,
+	{},
+	{builtin, io, list, map, sparse_bitset, term, private_builtin},
+	{builtin, io, list, map, sparse_bitset, term, assoc_list, bool, hash_table, int, multi_map, pair, require, set_bbbtree, set_unordlist, string, private_builtin, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - robdd, "C" - robdd},
+	no_foreign_export,
+	no_main
+).

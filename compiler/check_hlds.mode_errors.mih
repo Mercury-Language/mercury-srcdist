@@ -1,0 +1,409 @@
+/*
+** Automatically generated from `mode_errors.m'
+** by the Mercury compiler,
+** version rotd-2014-12-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.mode_errors. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__mode_errors
+#define MR_HEADER_GUARD_check_hlds__mode_errors
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODE_ERRORS_DECL_GUARD
+#define CHECK_HLDS__MODE_ERRORS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+#line 43 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0;
+
+#line 46 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_final_inst_error_0;
+
+#line 49 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_include_detism_on_modes_0;
+
+#line 52 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_context_0;
+
+#line 55 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_error_0;
+
+#line 58 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_errors_0;
+
+#line 61 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_0;
+
+#line 64 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_info_0;
+
+#line 67 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_unify_rhs_0;
+
+#line 70 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_warning_0;
+
+#line 73 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_warning_info_0;
+
+#line 76 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_negated_context_desc_0;
+
+#line 79 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_schedule_culprit_0;
+
+#line 82 "check_hlds.mode_errors.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_write_indented_goal_0;
+
+#line 85 "check_hlds.mode_errors.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_parse_tree__error_util__print_anything__arity1__check_hlds__mode_errors__write_indented_goal__arity0__[6];
+
+#line 159 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____schedule_culprit_0_0(
+#line 159 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 159 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 159 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 159 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____schedule_culprit_0_0(
+#line 159 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 159 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 155 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____negated_context_desc_0_0(
+#line 155 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 155 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 155 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 155 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____negated_context_desc_0_0(
+#line 155 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 155 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 192 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_warning_info_0_0(
+#line 192 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 192 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 192 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 192 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_warning_info_0_0(
+#line 192 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 192 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 187 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_warning_0_0(
+#line 187 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 187 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 187 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 187 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_warning_0_0(
+#line 187 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 187 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 171 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_unify_rhs_0_0(
+#line 171 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 171 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 171 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 171 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_unify_rhs_0_0(
+#line 171 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 171 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 176 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_info_0_0(
+#line 176 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 176 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 176 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 176 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_info_0_0(
+#line 176 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 176 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 54 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_0_0(
+#line 54 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 54 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 54 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 54 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Index____mode_error_0_0(
+#line 54 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 54 "mode_errors.m"
+  MR_Integer * check_hlds__mode_errors__param_2);
+
+#line 54 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_0_0(
+#line 54 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 54 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 45 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____merge_errors_0_0(
+#line 45 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 45 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 45 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 45 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_errors_0_0(
+#line 45 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 45 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 42 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____merge_error_0_0(
+#line 42 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 42 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 42 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 42 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_error_0_0(
+#line 42 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 42 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 37 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____merge_context_0_0(
+#line 37 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 37 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 37 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 37 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_context_0_0(
+#line 37 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 37 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 219 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____include_detism_on_modes_0_0(
+#line 219 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 219 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 219 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 219 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____include_detism_on_modes_0_0(
+#line 219 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 219 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 165 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____final_inst_error_0_0(
+#line 165 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 165 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 165 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 165 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____final_inst_error_0_0(
+#line 165 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 165 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 47 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors____Compare____delayed_goal_0_0(
+#line 47 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1,
+#line 47 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 47 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 47 "mode_errors.m"
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____delayed_goal_0_0(
+#line 47 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 47 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 237 "mode_errors.m"
+MR_Word MR_CALL 
+check_hlds__mode_errors__should_report_mode_warning_for_pred_origin_1_f_0(
+#line 237 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1);
+
+#line 235 "mode_errors.m"
+MR_Word MR_CALL 
+check_hlds__mode_errors__mode_warning_info_to_spec_2_f_0(
+#line 235 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 235 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 233 "mode_errors.m"
+MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_info_to_spec_2_f_0(
+#line 233 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 233 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 231 "mode_errors.m"
+MR_String MR_CALL 
+check_hlds__mode_errors__mode_decl_to_string_2_f_0(
+#line 231 "mode_errors.m"
+  MR_Integer check_hlds__mode_errors__param_1,
+#line 231 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2);
+
+#line 228 "mode_errors.m"
+MR_Word MR_CALL 
+check_hlds__mode_errors__report_mode_inference_messages_3_f_0(
+#line 228 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 228 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 228 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 216 "mode_errors.m"
+MR_Word MR_CALL 
+check_hlds__mode_errors__report_indistinguishable_modes_error_5_f_0(
+#line 216 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 216 "mode_errors.m"
+  MR_Integer check_hlds__mode_errors__param_2,
+#line 216 "mode_errors.m"
+  MR_Integer check_hlds__mode_errors__param_3,
+#line 216 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_4,
+#line 216 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_5);
+
+#line 209 "mode_errors.m"
+MR_Word MR_CALL 
+check_hlds__mode_errors__maybe_report_error_no_modes_3_f_0(
+#line 209 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_1,
+#line 209 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_2,
+#line 209 "mode_errors.m"
+  MR_Word check_hlds__mode_errors__param_3);
+
+#line 203 "mode_errors.m"
+void MR_CALL 
+check_hlds__mode_errors__mode_context_init_1_p_0(
+#line 203 "mode_errors.m"
+  MR_Word * check_hlds__mode_errors__param_1);
+
+void mercury__check_hlds__mode_errors__init(void);
+void mercury__check_hlds__mode_errors__init_type_tables(void);
+void mercury__check_hlds__mode_errors__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.mode_errors */
+
+/* :- end_interface check_hlds.mode_errors. */

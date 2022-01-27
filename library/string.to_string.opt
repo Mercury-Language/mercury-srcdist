@@ -1,0 +1,58 @@
+:- module (string.to_string).
+:- use_module array, assoc_list, bitmap, bool, builtin, char, deconstruct, float, int, integer, list, maybe, ops, pair, pretty_printer, private_builtin, require, rtti_implementation, std_util, term_io, type_desc, univ, version_array, (string.format), (string.parse_util), (string.to_string).
+:- type string.to_string.revstrings == list.list(string).
+:- pred (string.to_string).value_to_revstrings(deconstruct.noncanon_handling, ops.mercury_op_table, T_1, list.list(string), list.list(string)).
+:- mode (string.to_string).value_to_revstrings(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode (string.to_string).value_to_revstrings(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode (string.to_string).value_to_revstrings(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode (string.to_string).value_to_revstrings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred (string.to_string).value_to_revstrings_prio(deconstruct.noncanon_handling, ops.mercury_op_table, int, T_1, list.list(string), list.list(string)).
+:- mode (string.to_string).value_to_revstrings_prio(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode (string.to_string).value_to_revstrings_prio(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode (string.to_string).value_to_revstrings_prio(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode (string.to_string).value_to_revstrings_prio((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+(string.to_string).string_impl(Univ_3) = String_4 :-
+    V_5 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    V_6 = ops.init_mercury_op_table,
+    (string.to_string).string_ops_noncanon_impl(V_5, V_6, Univ_3, String_4).
+(string.to_string).string_ops_impl(OpsTable_4, Univ_5) = String_6 :-
+    V_7 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    (string.to_string).string_ops_noncanon_impl(V_7, OpsTable_4, Univ_5, String_6).
+(string.to_string).string_ops_noncanon_impl(NonCanon_5, OpsTable_6, X_7, String_8) :-
+    V_10 = list.[] : list.list(string),
+    (string.to_string).value_to_revstrings(NonCanon_5, OpsTable_6, X_7, V_10, RevStrings_9),
+    String_8 = string.append_list(V_11),
+    V_11 = list.reverse(RevStrings_9).
+(string.to_string).value_to_revstrings(NonCanon_6, OpsTable_7, X_8, STATE_VARIABLE_Rs_0_11, STATE_VARIABLE_Rs_12) :-
+    Priority_10 = int.(V_13 + V_14),
+    V_13 = ops.max_priority(OpsTable_7),
+    V_14 = 1 : int,
+    (string.to_string).value_to_revstrings_prio(NonCanon_6, OpsTable_7, Priority_10, X_8, STATE_VARIABLE_Rs_0_11, STATE_VARIABLE_Rs_12).
+:- pragma exceptions(function, ((string.to_string).string_impl), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((string.to_string).string_ops_impl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).string_ops_noncanon_impl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).string_ops_noncanon_impl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).string_ops_noncanon_impl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).string_ops_noncanon_impl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).value_to_revstrings), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).value_to_revstrings), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).value_to_revstrings), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).value_to_revstrings), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).value_to_revstrings_prio), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).value_to_revstrings_prio), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).value_to_revstrings_prio), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.to_string).value_to_revstrings_prio), 6, 3, may_throw(user_exception)).
+:- pragma termination_info((string.to_string).string_impl((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((string.to_string).string_ops_impl((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((string.to_string).string_ops_noncanon_impl(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).string_ops_noncanon_impl(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).string_ops_noncanon_impl(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).string_ops_noncanon_impl((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).value_to_revstrings(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).value_to_revstrings(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).value_to_revstrings(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).value_to_revstrings((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).value_to_revstrings_prio(builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).value_to_revstrings_prio(builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).value_to_revstrings_prio(builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.to_string).value_to_revstrings_prio((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).

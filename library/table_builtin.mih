@@ -1,0 +1,1036 @@
+/*
+** Automatically generated from `table_builtin.m'
+** by the Mercury compiler,
+** version rotd-2014-12-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module table_builtin. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_table_builtin
+#define MR_HEADER_GUARD_table_builtin
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TABLE_BUILTIN_DECL_GUARD
+#define TABLE_BUILTIN_DECL_GUARD
+#line 733 "table_builtin.m"
+
+    #include "mercury_tabling.h"      /* for MR_copy_table_steps */
+    #include "mercury_trace_base.h"   /* for MR_io_tabling_* */
+
+#line 1396 "table_builtin.m"
+
+
+#include "mercury_misc.h"         /* for MR_fatal_error(); */
+#include "mercury_type_info.h"    /* for MR_TypeCtorInfo_Struct; */
+#include "mercury_tabling.h"      /* for MR_TrieNode, etc. */
+
+MR_DECLARE_TYPE_CTOR_INFO_STRUCT(MR_TYPE_CTOR_INFO_NAME(io, state, 0));
+
+
+#endif
+
+
+
+
+#line 56 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_loop_status_0;
+
+#line 59 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_memo_det_status_0;
+
+#line 62 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_memo_non_record_0;
+
+#line 65 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_memo_non_status_0;
+
+#line 68 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_memo_semi_status_0;
+
+#line 71 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_answer_block_0;
+
+#line 74 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_answer_list_0;
+
+#line 77 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_consumer_0;
+
+#line 80 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_generator_0;
+
+#line 83 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_proc_table_info_0;
+
+#line 86 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_subgoal_0;
+
+#line 89 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_trie_node_0;
+
+#line 92 "table_builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_mm_status_0;
+
+#line 1046 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_98_108_101_95_109_109_111_115_95_114_101_115_116_111_114_101_95_97_110_115_119_101_114_115_95_95_91_49_93_95_48_1_p_0(void);
+
+#line 868 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_98_108_101_95_109_109_95_114_101_116_117_114_110_95_97_108_108_95_115_104_111_114_116_99_117_116_95_95_91_49_93_95_48_1_p_0(void);
+
+#line 369 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_98_108_101_95_109_101_109_111_95_110_111_110_95_114_101_116_117_114_110_95_97_108_108_95_115_104_111_114_116_99_117_116_95_95_91_49_93_95_48_1_p_0(void);
+
+#line 340 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_98_108_101_95_109_101_109_111_95_103_101_116_95_97_110_115_119_101_114_95_98_108_111_99_107_95_115_104_111_114_116_99_117_116_95_95_91_49_93_95_48_1_p_0(void);
+
+#line 804 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____mm_status_0_0(
+#line 804 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 804 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2,
+#line 804 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_3);
+
+#line 804 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____mm_status_0_0(
+#line 804 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 804 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2);
+
+#line 131 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____ml_trie_node_0_0(
+#line 131 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 131 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 131 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3);
+
+#line 131 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_trie_node_0_0(
+#line 131 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 131 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2);
+
+#line 879 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____ml_subgoal_0_0(
+#line 879 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 879 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 879 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3);
+
+#line 879 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_subgoal_0_0(
+#line 879 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 879 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2);
+
+#line 144 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____ml_proc_table_info_0_0(
+#line 144 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 144 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 144 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3);
+
+#line 144 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_proc_table_info_0_0(
+#line 144 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 144 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2);
+
+#line 1087 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____ml_generator_0_0(
+#line 1087 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 1087 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 1087 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3);
+
+#line 1087 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_generator_0_0(
+#line 1087 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1087 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2);
+
+#line 1079 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____ml_consumer_0_0(
+#line 1079 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 1079 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 1079 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3);
+
+#line 1079 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_consumer_0_0(
+#line 1079 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1079 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2);
+
+#line 886 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____ml_answer_list_0_0(
+#line 886 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 886 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 886 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3);
+
+#line 886 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_answer_list_0_0(
+#line 886 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 886 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2);
+
+#line 139 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____ml_answer_block_0_0(
+#line 139 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 139 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 139 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3);
+
+#line 139 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_answer_block_0_0(
+#line 139 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 139 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2);
+
+#line 275 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____memo_semi_status_0_0(
+#line 275 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 275 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2,
+#line 275 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_3);
+
+#line 275 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____memo_semi_status_0_0(
+#line 275 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 275 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2);
+
+#line 284 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____memo_non_status_0_0(
+#line 284 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 284 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2,
+#line 284 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_3);
+
+#line 284 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____memo_non_status_0_0(
+#line 284 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 284 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2);
+
+#line 379 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____memo_non_record_0_0(
+#line 379 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 379 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 379 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3);
+
+#line 379 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____memo_non_record_0_0(
+#line 379 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 379 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2);
+
+#line 267 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____memo_det_status_0_0(
+#line 267 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 267 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2,
+#line 267 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_3);
+
+#line 267 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____memo_det_status_0_0(
+#line 267 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 267 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2);
+
+#line 158 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin____Compare____loop_status_0_0(
+#line 158 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_1,
+#line 158 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2,
+#line 158 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_3);
+
+#line 158 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____loop_status_0_0(
+#line 158 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 158 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2);
+
+#line 1387 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_report_statistics_0_p_0(void);
+
+#line 1383 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_error_1_p_0(
+#line 1383 "table_builtin.m"
+  MR_String mercury__table_builtin__param_1);
+
+#line 1378 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_restore_any_answer_3_p_0(
+#line 1378 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1378 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1378 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 1372 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_restore_io_state_answer_3_p_0(
+#line 1372 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1372 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2);
+
+#line 1367 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_restore_float_answer_3_p_0(
+#line 1367 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1367 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1367 "table_builtin.m"
+  MR_Float * mercury__table_builtin__param_3);
+
+#line 1361 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_restore_string_answer_3_p_0(
+#line 1361 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1361 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1361 "table_builtin.m"
+  MR_String * mercury__table_builtin__param_3);
+
+#line 1355 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_restore_char_answer_3_p_0(
+#line 1355 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1355 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1355 "table_builtin.m"
+  MR_Char * mercury__table_builtin__param_3);
+
+#line 1349 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_restore_int_answer_3_p_0(
+#line 1349 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1349 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1349 "table_builtin.m"
+  MR_Integer * mercury__table_builtin__param_3);
+
+#line 1343 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_save_any_answer_3_p_0(
+#line 1343 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 1343 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 1343 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_3,
+#line 1343 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_4);
+
+#line 1337 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_save_io_state_answer_3_p_0(
+#line 1337 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1337 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2);
+
+#line 1332 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_save_float_answer_3_p_0(
+#line 1332 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1332 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1332 "table_builtin.m"
+  MR_Float mercury__table_builtin__param_3);
+
+#line 1326 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_save_string_answer_3_p_0(
+#line 1326 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1326 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1326 "table_builtin.m"
+  MR_String mercury__table_builtin__param_3);
+
+#line 1320 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_save_char_answer_3_p_0(
+#line 1320 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1320 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1320 "table_builtin.m"
+  MR_Char mercury__table_builtin__param_3);
+
+#line 1314 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_save_int_answer_3_p_0(
+#line 1314 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1314 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1314 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_3);
+
+#line 1308 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_typeclassinfo_3_p_0(
+#line 1308 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1308 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2,
+#line 1308 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 1303 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_typeinfo_3_p_0(
+#line 1303 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1303 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2,
+#line 1303 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 1298 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_gen_poly_addr_3_p_0(
+#line 1298 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 1298 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 1298 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3,
+#line 1298 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_4);
+
+#line 1290 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_gen_poly_3_p_0(
+#line 1290 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 1290 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 1290 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3,
+#line 1290 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_4);
+
+#line 1285 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_gen_addr_3_p_0(
+#line 1285 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 1285 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 1285 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3,
+#line 1285 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_4);
+
+#line 1277 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_gen_3_p_0(
+#line 1277 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 1277 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 1277 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3,
+#line 1277 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_4);
+
+#line 1272 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_foreign_enum_3_p_0(
+#line 1272 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_1,
+#line 1272 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2,
+#line 1272 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3,
+#line 1272 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_4);
+
+#line 1267 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_enum_4_p_0(
+#line 1267 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1267 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1267 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_3,
+#line 1267 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_4);
+
+#line 1262 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_float_3_p_0(
+#line 1262 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1262 "table_builtin.m"
+  MR_Float mercury__table_builtin__param_2,
+#line 1262 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 1257 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_string_3_p_0(
+#line 1257 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1257 "table_builtin.m"
+  MR_String mercury__table_builtin__param_2,
+#line 1257 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 1252 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_char_3_p_0(
+#line 1252 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1252 "table_builtin.m"
+  MR_Char mercury__table_builtin__param_2,
+#line 1252 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 1247 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_start_int_4_p_0(
+#line 1247 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1247 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1247 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_3,
+#line 1247 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_4);
+
+#line 1242 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_int_3_p_0(
+#line 1242 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1242 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1242 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 1069 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_mmos_completion_1_p_0(
+#line 1069 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 1061 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mmos_return_answer_2_p_0(
+#line 1061 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1061 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_2);
+
+#line 1056 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mmos_create_answer_block_3_p_0(
+#line 1056 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1056 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 1056 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 1051 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mmos_pickup_inputs_1_p_0(
+#line 1051 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_1);
+
+#line 1046 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mmos_restore_answers_1_p_0(
+#line 1046 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 1040 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mmos_consume_next_answer_multi_2_p_0(
+#line 1040 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1040 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 1040 "table_builtin.m"
+  MR_Cont mercury__table_builtin__param_3,
+#line 1040 "table_builtin.m"
+  void * mercury__table_builtin__param_4);
+
+#line 1038 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mmos_consume_next_answer_nondet_2_p_0(
+#line 1038 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1038 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 1038 "table_builtin.m"
+  MR_Cont mercury__table_builtin__param_3,
+#line 1038 "table_builtin.m"
+  void * mercury__table_builtin__param_4);
+
+#line 1031 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_mmos_answer_is_not_duplicate_shortcut_1_p_0(
+#line 1031 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 1026 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_mmos_answer_is_not_duplicate_1_p_0(
+#line 1026 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 1018 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mmos_setup_consumer_3_p_0(
+#line 1018 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 1018 "table_builtin.m"
+  MR_Word mercury__table_builtin__param_2,
+#line 1018 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 1010 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mmos_save_inputs_0_p_0(void);
+
+#line 868 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mm_return_all_shortcut_1_p_0(
+#line 868 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 866 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mm_return_all_multi_2_p_0(
+#line 866 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 866 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 866 "table_builtin.m"
+  MR_Cont mercury__table_builtin__param_3,
+#line 866 "table_builtin.m"
+  void * mercury__table_builtin__param_4);
+
+#line 864 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mm_return_all_nondet_2_p_0(
+#line 864 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 864 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 864 "table_builtin.m"
+  MR_Cont mercury__table_builtin__param_3,
+#line 864 "table_builtin.m"
+  void * mercury__table_builtin__param_4);
+
+#line 860 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mm_fill_answer_block_shortcut_1_p_0(
+#line 860 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 857 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mm_create_answer_block_3_p_0(
+#line 857 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 857 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 857 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 850 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_mm_answer_is_not_duplicate_shortcut_1_p_0(
+#line 850 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 849 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_mm_answer_is_not_duplicate_1_p_0(
+#line 849 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 841 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mm_get_answer_table_2_p_0(
+#line 841 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 841 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2);
+
+#line 836 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mm_completion_1_p_0(
+#line 836 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 828 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mm_suspend_consumer_2_p_0(
+#line 828 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 828 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 828 "table_builtin.m"
+  MR_Cont mercury__table_builtin__param_3,
+#line 828 "table_builtin.m"
+  void * mercury__table_builtin__param_4);
+
+#line 820 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_mm_setup_3_p_0(
+#line 820 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 820 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 820 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_3);
+
+#line 683 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_io_right_bracket_unitized_goal_1_p_0(
+#line 683 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_1);
+
+#line 682 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_io_left_bracket_unitized_goal_1_p_0(
+#line 682 "table_builtin.m"
+  MR_Integer * mercury__table_builtin__param_1);
+
+#line 671 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_io_copy_io_state_2_p_0(void);
+
+#line 664 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_io_has_occurred_1_p_0(
+#line 664 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 655 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_io_in_range_3_p_0(
+#line 655 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_1,
+#line 655 "table_builtin.m"
+  MR_Integer * mercury__table_builtin__param_2,
+#line 655 "table_builtin.m"
+  MR_Integer * mercury__table_builtin__param_3);
+
+#line 369 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_non_return_all_shortcut_1_p_0(
+#line 369 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 367 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_return_all_answers_multi_2_p_0(
+#line 367 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 367 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 367 "table_builtin.m"
+  MR_Cont mercury__table_builtin__param_3,
+#line 367 "table_builtin.m"
+  void * mercury__table_builtin__param_4);
+
+#line 365 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_return_all_answers_nondet_2_p_0(
+#line 365 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 365 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 365 "table_builtin.m"
+  MR_Cont mercury__table_builtin__param_3,
+#line 365 "table_builtin.m"
+  void * mercury__table_builtin__param_4);
+
+#line 360 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_non_create_answer_block_shortcut_1_p_0(
+#line 360 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 355 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_memo_non_answer_is_not_duplicate_shortcut_1_p_0(
+#line 355 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 353 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_memo_non_answer_is_not_duplicate_1_p_0(
+#line 353 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 345 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_non_get_answer_table_2_p_0(
+#line 345 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 345 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2);
+
+#line 340 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_get_answer_block_shortcut_1_p_0(
+#line 340 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 338 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_get_answer_block_2_p_0(
+#line 338 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 338 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2);
+
+#line 334 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_fill_answer_block_shortcut_1_p_0(
+#line 334 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 332 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_create_answer_block_3_p_0(
+#line 332 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 332 "table_builtin.m"
+  MR_Integer mercury__table_builtin__param_2,
+#line 332 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_3);
+
+#line 326 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_memo_mark_as_complete_and_fail_1_p_0(
+#line 326 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 321 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_memo_mark_as_active_and_fail_1_p_0(
+#line 321 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 317 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_mark_as_incomplete_1_p_0(
+#line 317 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 313 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_mark_as_succeeded_1_p_0(
+#line 313 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 309 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_memo_mark_as_failed_1_p_0(
+#line 309 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 304 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_non_setup_3_p_0(
+#line 304 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 304 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 304 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_3);
+
+#line 301 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_semi_setup_shortcut_3_p_0(
+#line 301 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 301 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 301 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_3);
+
+#line 298 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_semi_setup_2_p_0(
+#line 298 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 298 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_2);
+
+#line 295 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_det_setup_shortcut_3_p_0(
+#line 295 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 295 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 295 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_3);
+
+#line 292 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_memo_det_setup_2_p_0(
+#line 292 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 292 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_2);
+
+#line 181 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_loop_mark_as_active_and_fail_1_p_0(
+#line 181 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 175 "table_builtin.m"
+MR_bool MR_CALL 
+mercury__table_builtin__table_loop_mark_as_inactive_and_fail_1_p_0(
+#line 175 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 170 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_loop_mark_as_inactive_1_p_0(
+#line 170 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1);
+
+#line 164 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_loop_setup_shortcut_3_p_0(
+#line 164 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 164 "table_builtin.m"
+  MR_Box * mercury__table_builtin__param_2,
+#line 164 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_3);
+
+#line 162 "table_builtin.m"
+void MR_CALL 
+mercury__table_builtin__table_loop_setup_2_p_0(
+#line 162 "table_builtin.m"
+  MR_Box mercury__table_builtin__param_1,
+#line 162 "table_builtin.m"
+  MR_Word * mercury__table_builtin__param_2);
+
+void mercury__table_builtin__init(void);
+void mercury__table_builtin__init_type_tables(void);
+void mercury__table_builtin__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_table_builtin */
+
+/* :- end_interface table_builtin. */

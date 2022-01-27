@@ -1,0 +1,3350 @@
+/*
+** Automatically generated from `set_tree234.m'
+** by the Mercury compiler,
+** version rotd-2014-12-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module set_tree234. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_set_tree234
+#define MR_HEADER_GUARD_set_tree234
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef SET_TREE234_DECL_GUARD
+#define SET_TREE234_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "set_tree234.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1;
+
+#line 120 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+#line 120 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 120 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 120 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 120 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 131 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_95_95_91_50_93_95_48_3_p_0(
+#line 131 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 131 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 131 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 131 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 84 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_111_114_116_101_100_95_108_105_115_116_95_116_111_95_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_1_f_0(
+#line 84 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 84 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 84 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 70 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_99_111_110_116_97_105_110_115_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(
+#line 70 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 70 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 70 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 70 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4);
+
+#line 120 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 120 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 120 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 120 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 120 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 120 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 131 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 131 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 131 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 131 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 131 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 131 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 174 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 174 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 174 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 174 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 174 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4);
+
+#line 175 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 175 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 175 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 175 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 175 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 175 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 194 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_116_101_114_115_101_99_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 194 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 194 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 194 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 194 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4);
+
+#line 195 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_116_101_114_115_101_99_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 195 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 195 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 195 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 195 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 195 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 215 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_105_102_102_101_114_101_110_99_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 215 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 215 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 215 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 215 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4);
+
+#line 216 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_105_102_102_101_114_101_110_99_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 216 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 216 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 216 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 216 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 216 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 497 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234____Compare____set_tree234_1_0(
+#line 497 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 497 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_2,
+#line 497 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 497 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4);
+
+#line 497 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234____Unify____set_tree234_1_0(
+#line 497 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 497 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 497 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 2890 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__divide_2_6_p_0(
+#line 2890 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 2890 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 2890 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 2890 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 2890 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5,
+#line 2890 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 2890 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_7);
+
+#line 2824 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__filter_map_func_4_p_0(
+#line 2824 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 2824 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 2824 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 2824 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 2824 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 2824 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_6);
+
+#line 2767 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__filter_map_pred_4_p_0(
+#line 2767 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 2767 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 2767 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 2767 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 2767 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 2767 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_6);
+
+#line 2730 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__map_func_4_p_0(
+#line 2730 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 2730 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 2730 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 2730 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 2730 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 2730 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_6);
+
+#line 2692 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__map_pred_4_p_0(
+#line 2692 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 2692 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 2692 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 2692 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 2692 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 2692 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_6);
+
+#line 2478 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__height_2_p_0(
+#line 2478 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 2478 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 2478 "set_tree234.m"
+  MR_Integer * mercury__set_tree234__param_3);
+
+#line 2436 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__difference_2_3_p_0(
+#line 2436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 2436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 2436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 2436 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 2407 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__intersect_list_2_2_f_0(
+#line 2407 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 2407 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 2407 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 2310 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__power_union_2_3_p_0(
+#line 2310 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 2310 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 2310 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 2310 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 2273 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__do_union_3_p_0(
+#line 2273 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 2273 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 2273 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 2273 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 1887 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__remove_least_2_4_p_0(
+#line 1887 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 1887 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 1887 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_3,
+#line 1887 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4,
+#line 1887 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 1634 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__remove_2_4_p_0(
+#line 1634 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 1634 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2,
+#line 1634 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 1634 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4,
+#line 1634 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 1378 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__delete_2_4_p_0(
+#line 1378 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 1378 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2,
+#line 1378 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 1378 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4,
+#line 1378 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 727 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__to_sorted_list_2_3_p_0(
+#line 727 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 727 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 727 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 727 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 708 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__list_to_set_2_3_p_0(
+#line 708 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 708 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 708 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 708 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 474 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__divide_by_set_4_p_0(
+#line 474 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 474 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 474 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 474 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4,
+#line 474 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 466 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__divide_4_p_0(
+#line 466 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 466 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 466 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 466 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4,
+#line 466 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 459 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__filter_4_p_0(
+#line 459 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 459 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 459 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 459 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4,
+#line 459 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 453 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__filter_3_p_0(
+#line 453 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 453 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 453 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 453 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 451 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__filter_2_f_0(
+#line 451 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 451 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 451 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 446 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__all_true_2_p_0(
+#line 446 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 446 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 446 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 439 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl6_14_p_5(
+#line 439 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 439 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 439 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 439 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 439 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 439 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 439 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 439 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 439 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 439 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 439 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 439 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 439 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 439 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 439 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 439 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 439 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 439 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 439 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 439 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 439 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 436 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl6_14_p_4(
+#line 436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 436 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 436 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 436 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 436 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 436 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 436 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 436 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 436 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 436 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 436 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 436 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 436 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 436 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 433 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl6_14_p_3(
+#line 433 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 433 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 433 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 433 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 433 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 433 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 433 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 433 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 433 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 433 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 433 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 433 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 433 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 433 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 433 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 433 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 433 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 433 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 433 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 433 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 433 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 430 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl6_14_p_2(
+#line 430 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 430 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 430 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 430 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 430 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 430 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 430 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 430 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 430 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 430 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 430 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 430 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 430 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 430 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 430 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 430 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 430 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 430 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 430 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 430 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 430 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 427 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl6_14_p_1(
+#line 427 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 427 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 427 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 427 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 427 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 427 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 427 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 427 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 427 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 427 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 427 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 427 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 427 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 427 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 427 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 427 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 427 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 427 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 427 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 427 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 427 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 424 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl6_14_p_0(
+#line 424 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 424 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 424 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 424 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 424 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 424 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 424 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 424 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 424 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 424 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 424 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 424 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 424 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 424 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 424 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 424 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 424 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 424 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 424 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 424 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 424 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 417 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold6_14_p_5(
+#line 417 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 417 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 417 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 417 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 417 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 417 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 417 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 417 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 417 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 417 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 417 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 417 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 417 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 417 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 417 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 417 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 417 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 417 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 417 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 417 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 417 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 414 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold6_14_p_4(
+#line 414 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 414 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 414 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 414 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 414 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 414 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 414 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 414 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 414 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 414 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 414 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 414 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 414 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 414 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 414 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 414 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 414 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 414 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 414 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 414 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 414 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 411 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold6_14_p_3(
+#line 411 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 411 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 411 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 411 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 411 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 411 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 411 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 411 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 411 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 411 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 411 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 411 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 411 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 411 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 411 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 411 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 411 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 411 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 411 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 411 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 411 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 408 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold6_14_p_2(
+#line 408 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 408 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 408 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 408 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 408 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 408 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 408 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 408 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 408 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 408 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 408 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 408 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 408 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 408 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 408 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 408 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 408 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 408 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 408 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 408 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 408 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 405 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold6_14_p_1(
+#line 405 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 405 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 405 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 405 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 405 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 405 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 405 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 405 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 405 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 405 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 405 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 405 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 405 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 405 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 405 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 405 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 405 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 405 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 405 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 405 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 405 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 402 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold6_14_p_0(
+#line 402 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 402 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 402 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 402 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 402 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 402 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 402 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 402 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 402 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_9,
+#line 402 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 402 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 402 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 402 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 402 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 402 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15,
+#line 402 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_16,
+#line 402 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_17,
+#line 402 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_18,
+#line 402 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_19,
+#line 402 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_20,
+#line 402 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_21);
+
+#line 395 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl5_12_p_5(
+#line 395 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 395 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 395 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 395 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 395 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 395 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 395 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 395 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 395 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 395 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 395 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 395 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 395 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 395 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 395 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 395 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 395 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 395 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 392 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl5_12_p_4(
+#line 392 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 392 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 392 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 392 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 392 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 392 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 392 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 392 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 392 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 392 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 392 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 392 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 392 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 392 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 392 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 392 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 392 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 392 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 389 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl5_12_p_3(
+#line 389 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 389 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 389 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 389 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 389 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 389 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 389 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 389 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 389 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 389 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 389 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 389 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 389 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 389 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 389 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 389 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 389 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 389 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 386 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl5_12_p_2(
+#line 386 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 386 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 386 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 386 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 386 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 386 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 386 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 386 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 386 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 386 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 386 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 386 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 386 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 386 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 386 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 386 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 386 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 386 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 383 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl5_12_p_1(
+#line 383 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 383 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 383 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 383 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 383 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 383 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 383 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 383 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 383 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 383 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 383 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 383 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 383 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 383 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 383 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 383 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 383 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 383 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 380 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl5_12_p_0(
+#line 380 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 380 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 380 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 380 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 380 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 380 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 380 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 380 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 380 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 380 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 380 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 380 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 380 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 380 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 380 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 380 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 380 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 380 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 373 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold5_12_p_5(
+#line 373 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 373 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 373 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 373 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 373 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 373 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 373 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 373 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 373 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 373 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 373 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 373 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 373 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 373 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 373 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 373 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 373 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 373 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 370 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold5_12_p_4(
+#line 370 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 370 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 370 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 370 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 370 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 370 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 370 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 370 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 370 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 370 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 370 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 370 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 370 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 370 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 370 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 370 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 370 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 370 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 367 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold5_12_p_3(
+#line 367 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 367 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 367 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 367 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 367 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 367 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 367 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 367 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 367 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 367 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 367 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 367 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 367 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 367 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 367 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 367 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 367 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 367 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 364 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold5_12_p_2(
+#line 364 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 364 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 364 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 364 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 364 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 364 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 364 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 364 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 364 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 364 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 364 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 364 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 364 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 364 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 364 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 364 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 364 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 364 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 361 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold5_12_p_1(
+#line 361 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 361 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 361 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 361 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 361 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 361 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 361 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 361 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 361 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 361 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 361 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 361 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 361 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 361 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 361 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 361 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 361 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 361 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 358 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold5_12_p_0(
+#line 358 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 358 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 358 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 358 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 358 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 358 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 358 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 358 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_8,
+#line 358 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 358 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 358 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 358 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12,
+#line 358 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_13,
+#line 358 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_14,
+#line 358 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_15,
+#line 358 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_16,
+#line 358 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_17,
+#line 358 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_18);
+
+#line 351 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl4_10_p_5(
+#line 351 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 351 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 351 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 351 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 351 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 351 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 351 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 351 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 351 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 351 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 351 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 351 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 351 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 351 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 351 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 348 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl4_10_p_4(
+#line 348 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 348 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 348 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 348 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 348 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 348 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 348 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 348 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 348 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 348 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 348 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 348 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 348 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 348 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 348 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 345 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl4_10_p_3(
+#line 345 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 345 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 345 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 345 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 345 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 345 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 345 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 345 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 345 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 345 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 345 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 345 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 345 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 345 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 345 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 343 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl4_10_p_2(
+#line 343 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 343 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 343 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 343 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 343 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 343 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 343 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 343 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 343 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 343 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 343 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 343 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 343 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 343 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 343 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 341 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl4_10_p_1(
+#line 341 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 341 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 341 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 341 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 341 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 341 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 341 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 341 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 341 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 341 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 341 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 341 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 341 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 341 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 341 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 339 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl4_10_p_0(
+#line 339 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 339 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 339 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 339 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 339 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 339 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 339 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 339 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 339 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 339 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 339 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 339 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 339 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 339 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 339 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 332 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold4_10_p_5(
+#line 332 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 332 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 332 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 332 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 332 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 332 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 332 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 332 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 332 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 332 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 332 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 332 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 332 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 332 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 332 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 329 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold4_10_p_4(
+#line 329 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 329 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 329 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 329 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 329 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 329 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 329 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 329 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 329 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 329 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 329 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 329 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 329 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 329 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 329 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 326 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold4_10_p_3(
+#line 326 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 326 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 326 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 326 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 326 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 326 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 326 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 326 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 326 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 326 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 326 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 326 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 326 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 326 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 326 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 324 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold4_10_p_2(
+#line 324 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 324 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 324 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 324 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 324 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 324 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 324 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 324 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 324 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 324 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 324 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 324 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 324 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 324 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 324 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 322 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold4_10_p_1(
+#line 322 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 322 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 322 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 322 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 322 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 322 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 322 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 322 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 322 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 322 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 322 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 322 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 322 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 322 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 322 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 320 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold4_10_p_0(
+#line 320 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 320 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 320 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 320 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 320 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 320 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 320 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_7,
+#line 320 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 320 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9,
+#line 320 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_10,
+#line 320 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_11,
+#line 320 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_12,
+#line 320 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_13,
+#line 320 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_14,
+#line 320 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_15);
+
+#line 314 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl3_8_p_5(
+#line 314 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 314 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 314 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 314 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 314 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 314 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 314 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 314 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 314 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 314 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 314 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 314 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 312 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl3_8_p_4(
+#line 312 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 312 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 312 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 312 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 312 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 312 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 312 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 312 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 312 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 312 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 312 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 312 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 310 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl3_8_p_3(
+#line 310 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 310 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 310 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 310 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 310 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 310 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 310 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 310 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 310 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 310 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 310 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 310 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 308 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl3_8_p_2(
+#line 308 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 308 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 308 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 308 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 308 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 308 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 308 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 308 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 308 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 308 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 308 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 308 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 306 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl3_8_p_1(
+#line 306 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 306 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 306 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 306 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 306 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 306 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 306 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 306 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 306 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 306 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 306 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 306 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 304 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl3_8_p_0(
+#line 304 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 304 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 304 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 304 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 304 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 304 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 304 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 304 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 304 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 304 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 304 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 304 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 298 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold3_8_p_5(
+#line 298 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 298 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 298 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 298 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 298 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 298 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 298 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 298 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 298 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 298 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 298 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 298 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 296 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold3_8_p_4(
+#line 296 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 296 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 296 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 296 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 296 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 296 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 296 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 296 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 296 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 296 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 296 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 296 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 294 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold3_8_p_3(
+#line 294 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 294 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 294 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 294 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 294 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 294 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 294 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 294 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 294 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 294 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 294 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 294 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 292 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold3_8_p_2(
+#line 292 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 292 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 292 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 292 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 292 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 292 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 292 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 292 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 292 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 292 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 292 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 292 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 290 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold3_8_p_1(
+#line 290 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 290 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 290 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 290 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 290 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 290 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 290 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 290 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 290 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 290 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 290 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 290 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 288 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold3_8_p_0(
+#line 288 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 288 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 288 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 288 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 288 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 288 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_6,
+#line 288 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_7,
+#line 288 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_8,
+#line 288 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_9,
+#line 288 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_10,
+#line 288 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_11,
+#line 288 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_12);
+
+#line 282 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl2_6_p_5(
+#line 282 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 282 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 282 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 282 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 282 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 282 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 282 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 282 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 282 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 280 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl2_6_p_4(
+#line 280 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 280 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 280 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 280 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 280 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 280 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 280 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 280 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 280 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 278 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl2_6_p_3(
+#line 278 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 278 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 278 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 278 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 278 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 278 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 278 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 278 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 278 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 276 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl2_6_p_2(
+#line 276 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 276 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 276 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 276 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 276 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 276 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 276 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 276 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 276 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 274 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl2_6_p_1(
+#line 274 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 274 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 274 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 274 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 274 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 274 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 274 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 274 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 274 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 272 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl2_6_p_0(
+#line 272 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 272 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 272 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 272 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 272 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 272 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 272 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 272 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 272 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 267 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold2_6_p_5(
+#line 267 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 267 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 267 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 267 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 267 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 267 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 267 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 267 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 267 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 265 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold2_6_p_4(
+#line 265 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 265 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 265 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 265 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 265 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 265 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 265 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 265 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 265 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 263 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold2_6_p_3(
+#line 263 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 263 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 263 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 263 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 263 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 263 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 263 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 263 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 263 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 261 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold2_6_p_2(
+#line 261 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 261 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 261 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 261 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 261 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 261 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 261 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 261 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 261 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 259 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold2_6_p_1(
+#line 259 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 259 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 259 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 259 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 259 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 259 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 259 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 259 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 259 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 257 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold2_6_p_0(
+#line 257 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 257 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 257 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 257 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 257 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_5,
+#line 257 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_6,
+#line 257 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_7,
+#line 257 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_8,
+#line 257 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_9);
+
+#line 252 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl_4_p_5(
+#line 252 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 252 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 252 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 252 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 252 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 252 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 250 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl_4_p_4(
+#line 250 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 250 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 250 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 250 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 250 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 250 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 248 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__foldl_4_p_3(
+#line 248 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 248 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 248 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 248 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 248 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 248 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 247 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl_4_p_2(
+#line 247 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 247 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 247 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 247 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 247 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 247 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 246 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl_4_p_1(
+#line 246 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 246 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 246 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 246 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 246 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 246 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 245 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__foldl_4_p_0(
+#line 245 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 245 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 245 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 245 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 245 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 245 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 243 "set_tree234.m"
+MR_Box MR_CALL 
+mercury__set_tree234__foldl_3_f_0(
+#line 243 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 243 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 243 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 243 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 243 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5);
+
+#line 241 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold_4_p_5(
+#line 241 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 241 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 241 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 241 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 241 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 241 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 240 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold_4_p_4(
+#line 240 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 240 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 240 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 240 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 240 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 240 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 239 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__fold_4_p_3(
+#line 239 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 239 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 239 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 239 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 239 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 239 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 238 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold_4_p_2(
+#line 238 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 238 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 238 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 238 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 238 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 238 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 237 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold_4_p_1(
+#line 237 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 237 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 237 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 237 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 237 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 237 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 236 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__fold_4_p_0(
+#line 236 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 236 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 236 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 236 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 236 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5,
+#line 236 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_6);
+
+#line 234 "set_tree234.m"
+MR_Box MR_CALL 
+mercury__set_tree234__fold_3_f_0(
+#line 234 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 234 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 234 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 234 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 234 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_5);
+
+#line 232 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__filter_map_2_f_0(
+#line 232 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 232 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 232 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 232 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4);
+
+#line 227 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__filter_map_3_p_0(
+#line 227 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 227 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 227 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 227 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 227 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 224 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__map_3_p_0(
+#line 224 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 224 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 224 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 224 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4,
+#line 224 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_5);
+
+#line 223 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__map_2_f_0(
+#line 223 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 223 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 223 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 223 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_4);
+
+#line 221 "set_tree234.m"
+MR_Integer MR_CALL 
+mercury__set_tree234__count_1_f_0(
+#line 221 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 221 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 216 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__difference_3_p_0(
+#line 216 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 216 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 216 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 216 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 215 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__difference_2_f_0(
+#line 215 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 215 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 215 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 209 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__intersect_list_2_p_0(
+#line 209 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 209 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 209 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_3);
+
+#line 208 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__intersect_list_1_f_0(
+#line 208 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 208 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 202 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__power_intersect_2_p_0(
+#line 202 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 202 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 202 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_3);
+
+#line 201 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__power_intersect_1_f_0(
+#line 201 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 201 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 195 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__intersect_3_p_0(
+#line 195 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 195 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 195 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 195 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 194 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__intersect_2_f_0(
+#line 194 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 194 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 194 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 188 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__power_union_2_p_0(
+#line 188 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 188 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 188 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_3);
+
+#line 187 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__power_union_1_f_0(
+#line 187 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 187 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 181 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__union_list_2_p_0(
+#line 181 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 181 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 181 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_3);
+
+#line 180 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__union_list_1_f_0(
+#line 180 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 180 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 175 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__union_3_p_0(
+#line 175 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 175 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 175 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 175 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 174 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__union_2_f_0(
+#line 174 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 174 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 174 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 168 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__remove_least_3_p_0(
+#line 168 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 168 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_2,
+#line 168 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 168 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 161 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__remove_list_3_p_0(
+#line 161 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 161 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 161 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 161 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 153 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__remove_3_p_0(
+#line 153 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 153 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2,
+#line 153 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 153 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 145 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__delete_list_3_p_0(
+#line 145 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 145 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 145 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 145 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 144 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__delete_list_2_f_0(
+#line 144 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 144 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 144 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 139 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__delete_3_p_0(
+#line 139 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 139 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2,
+#line 139 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 139 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 138 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__delete_2_f_0(
+#line 138 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 138 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2,
+#line 138 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 131 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__insert_list_3_p_0(
+#line 131 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 131 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 131 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 131 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 130 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__insert_list_2_f_0(
+#line 130 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 130 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 130 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 125 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__insert_new_3_p_0(
+#line 125 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 125 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2,
+#line 125 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 125 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 120 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__insert_3_p_0(
+#line 120 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 120 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2,
+#line 120 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 120 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 119 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__insert_2_f_0(
+#line 119 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 119 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2,
+#line 119 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 114 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__superset_2_p_0(
+#line 114 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 114 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 114 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 110 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__subset_2_p_0(
+#line 110 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 110 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 110 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 106 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__equal_2_p_0(
+#line 106 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 106 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 106 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 101 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__to_set_1_f_0(
+#line 101 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 101 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 96 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__to_sorted_list_2_p_0(
+#line 96 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 96 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 96 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_3);
+
+#line 95 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__to_sorted_list_1_f_0(
+#line 95 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 95 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 90 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__from_set_1_f_0(
+#line 90 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 90 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 85 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__sorted_list_to_set_2_p_0(
+#line 85 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 85 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 85 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_3);
+
+#line 84 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__sorted_list_to_set_1_f_0(
+#line 84 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 84 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 79 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__from_list_2_p_0(
+#line 79 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 79 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 79 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_3);
+
+#line 78 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__from_list_1_f_0(
+#line 78 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 78 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 76 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__list_to_set_2_p_0(
+#line 76 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 76 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 76 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_3);
+
+#line 75 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__list_to_set_1_f_0(
+#line 75 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 75 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 70 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__contains_2_p_0(
+#line 70 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 70 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 70 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_3);
+
+#line 66 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__is_member_3_p_0(
+#line 66 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 66 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 66 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_3,
+#line 66 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_4);
+
+#line 65 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__is_member_2_f_0(
+#line 65 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 65 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 65 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_3);
+
+#line 60 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__member_2_p_1(
+#line 60 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 60 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_2,
+#line 60 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3,
+#line 60 "set_tree234.m"
+  MR_Cont mercury__set_tree234__param_4,
+#line 60 "set_tree234.m"
+  void * mercury__set_tree234__param_5);
+
+#line 59 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__member_2_p_0(
+#line 59 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 59 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2,
+#line 59 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 54 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__is_non_empty_1_p_0(
+#line 54 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 54 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 53 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__non_empty_1_p_0(
+#line 53 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 53 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 48 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__is_empty_1_p_0(
+#line 48 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 48 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 47 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__empty_1_p_0(
+#line 47 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 47 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2);
+
+#line 42 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__is_singleton_2_p_0(
+#line 42 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 42 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_2,
+#line 42 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_3);
+
+#line 40 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__make_singleton_set_1_f_0(
+#line 40 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 40 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2);
+
+#line 38 "set_tree234.m"
+MR_bool MR_CALL 
+mercury__set_tree234__singleton_set_2_p_1(
+#line 38 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 38 "set_tree234.m"
+  MR_Box * mercury__set_tree234__param_2,
+#line 38 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_3);
+
+#line 37 "set_tree234.m"
+void MR_CALL 
+mercury__set_tree234__singleton_set_2_p_0(
+#line 37 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1,
+#line 37 "set_tree234.m"
+  MR_Box mercury__set_tree234__param_2,
+#line 37 "set_tree234.m"
+  MR_Word * mercury__set_tree234__param_3);
+
+#line 31 "set_tree234.m"
+MR_Word MR_CALL 
+mercury__set_tree234__init_0_f_0(
+#line 31 "set_tree234.m"
+  MR_Word mercury__set_tree234__param_1);
+
+void mercury__set_tree234__init(void);
+void mercury__set_tree234__init_type_tables(void);
+void mercury__set_tree234__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_set_tree234 */
+
+/* :- end_interface set_tree234. */

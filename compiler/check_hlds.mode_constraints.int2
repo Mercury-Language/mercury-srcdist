@@ -1,0 +1,11 @@
+:- module (check_hlds.mode_constraints).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module (check_hlds.abstract_mode_constraints).
+:- import_module (check_hlds.prop_mode_constraints).
+:- import_module (hlds.hlds_module).
+:- implementation.
+:- typeclass has_ho_modes(T).
+:- typeclass has_mc_info(T).
+:- typeclass has_module_info(T).

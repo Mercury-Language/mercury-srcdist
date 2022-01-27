@@ -1,0 +1,4 @@
+:- module ((check_hlds.simplify).format_call).
+:- interface.
+:- implementation.
+:- include_module (((check_hlds.simplify).format_call).parse_string_format).

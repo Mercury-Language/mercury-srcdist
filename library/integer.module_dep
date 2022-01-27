@@ -1,0 +1,13 @@
+module(1, "integer.m",
+	integer,
+	{},
+	{builtin, private_builtin},
+	{builtin, char, float, int, list, require, string, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

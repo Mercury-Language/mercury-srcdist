@@ -1,0 +1,499 @@
+/*
+** Automatically generated from `mode_constraint_robdd.m'
+** by the Mercury compiler,
+** version rotd-2014-12-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.mode_constraint_robdd. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__mode_constraint_robdd
+#define MR_HEADER_GUARD_check_hlds__mode_constraint_robdd
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODE_CONSTRAINT_ROBDD_DECL_GUARD
+#define CHECK_HLDS__MODE_CONSTRAINT_ROBDD_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+#line 43 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_lambda_path_0;
+
+#line 46 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_mc_type_0;
+
+#line 49 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_mode_constraint_0;
+
+#line 52 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_mode_constraint_info_0;
+
+#line 55 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_mode_constraint_var_0;
+
+#line 58 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_mode_constraint_varmap_0;
+
+#line 61 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_mode_constraint_vars_0;
+
+#line 64 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_prodvars_map_0;
+
+#line 67 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_prog_var_and_level_0;
+
+#line 70 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_rep_var_0;
+
+#line 73 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_robdd_var_0;
+
+#line 76 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_threshold_0;
+
+#line 79 "check_hlds.mode_constraint_robdd.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraint_robdd__check_hlds__mode_constraint_robdd__type_ctor_info_varmap_key_0;
+
+#line 174 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_99_104_101_99_107_95_104_108_100_115_95_95_109_111_100_101_95_99_111_110_115_116_114_97_105_110_116_95_114_111_98_100_100_95_95_109_99_95_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 174 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1);
+
+#line 174 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_99_104_101_99_107_95_104_108_100_115_95_95_109_111_100_101_95_99_111_110_115_116_114_97_105_110_116_95_114_111_98_100_100_95_95_109_99_95_116_121_112_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 198 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd____Compare____threshold_0_0(
+#line 198 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1,
+#line 198 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 198 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3);
+
+#line 198 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd____Unify____threshold_0_0(
+#line 198 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 198 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 54 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd____Compare____rep_var_0_0(
+#line 54 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1,
+#line 54 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 54 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3);
+
+#line 54 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd____Unify____rep_var_0_0(
+#line 54 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 54 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 261 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd____Compare____prog_var_and_level_0_0(
+#line 261 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1,
+#line 261 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 261 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3);
+
+#line 261 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd____Unify____prog_var_and_level_0_0(
+#line 261 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 261 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 150 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd____Compare____prodvars_map_0_0(
+#line 150 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1,
+#line 150 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 150 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3);
+
+#line 150 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd____Unify____prodvars_map_0_0(
+#line 150 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 150 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 47 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd____Compare____mode_constraint_vars_0_0(
+#line 47 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1,
+#line 47 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 47 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3);
+
+#line 47 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd____Unify____mode_constraint_vars_0_0(
+#line 47 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 47 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 46 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd____Compare____mode_constraint_var_0_0(
+#line 46 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1,
+#line 46 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 46 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3);
+
+#line 46 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd____Unify____mode_constraint_var_0_0(
+#line 46 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 46 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 177 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd____Compare____mode_constraint_info_0_0(
+#line 177 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1,
+#line 177 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 177 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3);
+
+#line 177 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd____Unify____mode_constraint_info_0_0(
+#line 177 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 177 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 45 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd____Compare____mode_constraint_0_0(
+#line 45 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1,
+#line 45 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 45 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3);
+
+#line 45 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd____Unify____mode_constraint_0_0(
+#line 45 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 45 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 174 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd____Compare____mc_type_0_0(
+#line 174 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1);
+
+#line 174 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd____Unify____mc_type_0_0(void);
+
+#line 81 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd____Compare____lambda_path_0_0(
+#line 81 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_1,
+#line 81 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 81 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3);
+
+#line 81 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd____Unify____lambda_path_0_0(
+#line 81 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 81 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 152 "mode_constraint_robdd.m"
+MR_Word MR_CALL 
+check_hlds__mode_constraint_robdd__atomic_prodvars_map_2_f_0(
+#line 152 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 152 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 144 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__robdd_to_dot_6_p_0(
+#line 144 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 144 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 144 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3,
+#line 144 "mode_constraint_robdd.m"
+  MR_String check_hlds__mode_constraint_robdd__param_4);
+
+#line 132 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__add_forward_goal_path_map_4_p_0(
+#line 132 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 132 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 132 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3,
+#line 132 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_4);
+
+#line 129 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__get_forward_goal_path_map_for_pred_3_p_0(
+#line 129 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 129 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 129 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_3);
+
+#line 126 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__get_forward_goal_path_map_2_p_0(
+#line 126 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 126 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_2);
+
+#line 124 "mode_constraint_robdd.m"
+MR_bool MR_CALL 
+check_hlds__mode_constraint_robdd__using_simple_mode_constraints_1_p_0(
+#line 124 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1);
+
+#line 121 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__unset_simple_mode_constraints_2_p_0(
+#line 121 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 121 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_2);
+
+#line 118 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__set_simple_mode_constraints_2_p_0(
+#line 118 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 118 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_2);
+
+#line 115 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__set_input_nodes_4_p_0(
+#line 115 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 115 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_2,
+#line 115 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3,
+#line 115 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_4);
+
+#line 109 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__get_interesting_vars_for_pred_3_p_0(
+#line 109 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 109 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 109 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_3);
+
+#line 106 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__save_max_var_for_pred_3_p_0(
+#line 106 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 106 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 106 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_3);
+
+#line 103 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__save_min_var_for_pred_3_p_0(
+#line 103 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 103 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 103 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_3);
+
+#line 101 "mode_constraint_robdd.m"
+MR_Word MR_CALL 
+check_hlds__mode_constraint_robdd__restrict_filter_3_f_0(
+#line 101 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 101 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 101 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3);
+
+#line 97 "mode_constraint_robdd.m"
+MR_Word MR_CALL 
+check_hlds__mode_constraint_robdd__restrict_threshold_2_f_0(
+#line 97 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 97 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 95 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__save_threshold_2_p_0(
+#line 95 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 95 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_2);
+
+#line 90 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__set_level_from_var_3_p_0(
+#line 90 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 90 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 90 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_3);
+
+#line 87 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__get_prog_var_level_3_p_0(
+#line 87 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 87 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 87 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_3);
+
+#line 76 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__leave_lambda_goal_2_p_0(
+#line 76 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 76 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_2);
+
+#line 73 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__enter_lambda_goal_3_p_0(
+#line 73 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 73 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 73 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_3);
+
+#line 70 "mode_constraint_robdd.m"
+MR_Word MR_CALL 
+check_hlds__mode_constraint_robdd__mode_constraint_var_2_f_0(
+#line 70 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 70 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 65 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__mode_constraint_var_5_p_0(
+#line 65 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 65 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2,
+#line 65 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_3,
+#line 65 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_4,
+#line 65 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_5);
+
+#line 62 "mode_constraint_robdd.m"
+void MR_CALL 
+check_hlds__mode_constraint_robdd__mode_constraint_var_4_p_0(
+#line 62 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 62 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_2,
+#line 62 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_3,
+#line 62 "mode_constraint_robdd.m"
+  MR_Word * check_hlds__mode_constraint_robdd__param_4);
+
+#line 52 "mode_constraint_robdd.m"
+MR_Word MR_CALL 
+check_hlds__mode_constraint_robdd__mci_set_pred_id_2_f_0(
+#line 52 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1,
+#line 52 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_2);
+
+#line 51 "mode_constraint_robdd.m"
+MR_Word MR_CALL 
+check_hlds__mode_constraint_robdd__init_mode_constraint_info_1_f_0(
+#line 51 "mode_constraint_robdd.m"
+  MR_Word check_hlds__mode_constraint_robdd__param_1);
+
+void mercury__check_hlds__mode_constraint_robdd__init(void);
+void mercury__check_hlds__mode_constraint_robdd__init_type_tables(void);
+void mercury__check_hlds__mode_constraint_robdd__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.mode_constraint_robdd */
+
+/* :- end_interface check_hlds.mode_constraint_robdd. */

@@ -1,0 +1,273 @@
+/*
+** Automatically generated from `make_hlds_passes.m'
+** by the Mercury compiler,
+** version rotd-2014-12-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.make_hlds.make_hlds_passes. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__make_hlds_passes
+#define MR_HEADER_GUARD_hlds__make_hlds__make_hlds_passes
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__MAKE_HLDS_PASSES_DECL_GUARD
+#define HLDS__MAKE_HLDS__MAKE_HLDS_PASSES_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+
+#line 44 "hlds.make_hlds.make_hlds_passes.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_passes__hlds__make_hlds__make_hlds_passes__type_ctor_info_add_marker_pred_info_0;
+
+#line 47 "hlds.make_hlds.make_hlds_passes.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_passes__hlds__make_hlds__make_hlds_passes__type_ctor_info_item_status_0;
+
+#line 30 "make_hlds_passes.m"
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes____Compare____item_status_0_0(
+#line 30 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_1,
+#line 30 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+#line 30 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3);
+
+#line 30 "make_hlds_passes.m"
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes____Unify____item_status_0_0(
+#line 30 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+#line 30 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2);
+
+#line 75 "make_hlds_passes.m"
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes____Compare____add_marker_pred_info_0_0(
+#line 75 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_1,
+#line 75 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+#line 75 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3);
+
+#line 75 "make_hlds_passes.m"
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes____Unify____add_marker_pred_info_0_0(
+#line 75 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+#line 75 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2);
+
+#line 88 "make_hlds_passes.m"
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__maybe_check_field_access_function_7_p_0(
+#line 88 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+#line 88 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+#line 88 "make_hlds_passes.m"
+  MR_Integer hlds__make_hlds__make_hlds_passes__param_3,
+#line 88 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+#line 88 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+#line 88 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+#line 88 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_7);
+
+#line 84 "make_hlds_passes.m"
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__module_mark_as_external_7_p_0(
+#line 84 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+#line 84 "make_hlds_passes.m"
+  MR_Integer hlds__make_hlds__make_hlds_passes__param_2,
+#line 84 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+#line 84 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+#line 84 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_5,
+#line 84 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+#line 84 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_7);
+
+#line 78 "make_hlds_passes.m"
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__do_add_pred_marker_12_p_0(
+#line 78 "make_hlds_passes.m"
+  MR_String hlds__make_hlds__make_hlds_passes__param_1,
+#line 78 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+#line 78 "make_hlds_passes.m"
+  MR_Integer hlds__make_hlds__make_hlds_passes__param_3,
+#line 78 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+#line 78 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+#line 78 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+#line 78 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+#line 78 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_8,
+#line 78 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_9,
+#line 78 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_10,
+#line 78 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_11,
+#line 78 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_12);
+
+#line 70 "make_hlds_passes.m"
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_pred_marker_11_p_0(
+#line 70 "make_hlds_passes.m"
+  MR_String hlds__make_hlds__make_hlds_passes__param_1,
+#line 70 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+#line 70 "make_hlds_passes.m"
+  MR_Integer hlds__make_hlds__make_hlds_passes__param_3,
+#line 70 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+#line 70 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+#line 70 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+#line 70 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+#line 70 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_8,
+#line 70 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_9,
+#line 70 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_10,
+#line 70 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_11);
+
+#line 59 "make_hlds_passes.m"
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_stratified_pred_8_p_0(
+#line 59 "make_hlds_passes.m"
+  MR_String hlds__make_hlds__make_hlds_passes__param_1,
+#line 59 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+#line 59 "make_hlds_passes.m"
+  MR_Integer hlds__make_hlds__make_hlds_passes__param_3,
+#line 59 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+#line 59 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+#line 59 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+#line 59 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+#line 59 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+#line 55 "make_hlds_passes.m"
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_item_pass_3_9_p_0(
+#line 55 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+#line 55 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_2,
+#line 55 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_3,
+#line 55 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+#line 55 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_5,
+#line 55 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+#line 55 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_7,
+#line 55 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_8,
+#line 55 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_9);
+
+#line 51 "make_hlds_passes.m"
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__add_item_decl_pass_1_8_p_0(
+#line 51 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+#line 51 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_2,
+#line 51 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+#line 51 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_4,
+#line 51 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+#line 51 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_6,
+#line 51 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_7,
+#line 51 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8);
+
+#line 45 "make_hlds_passes.m"
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__do_parse_tree_to_hlds_11_p_0(
+#line 45 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_1,
+#line 45 "make_hlds_passes.m"
+  MR_String hlds__make_hlds__make_hlds_passes__param_2,
+#line 45 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_3,
+#line 45 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_4,
+#line 45 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_5,
+#line 45 "make_hlds_passes.m"
+  MR_Word hlds__make_hlds__make_hlds_passes__param_6,
+#line 45 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_7,
+#line 45 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_8,
+#line 45 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_9,
+#line 45 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_10,
+#line 45 "make_hlds_passes.m"
+  MR_Word * hlds__make_hlds__make_hlds_passes__param_11);
+
+void mercury__hlds__make_hlds__make_hlds_passes__init(void);
+void mercury__hlds__make_hlds__make_hlds_passes__init_type_tables(void);
+void mercury__hlds__make_hlds__make_hlds_passes__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.make_hlds.make_hlds_passes */
+
+/* :- end_interface hlds.make_hlds.make_hlds_passes. */

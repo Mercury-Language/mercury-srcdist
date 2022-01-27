@@ -1,0 +1,38 @@
+/*
+** Automatically generated from `region_builtin.m'
+** by the Mercury compiler,
+** version rotd-2014-12-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+*/
+#ifndef REGION_BUILTIN_MH
+#define REGION_BUILTIN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef REGION_BUILTIN_DECL_GUARD
+#define REGION_BUILTIN_DECL_GUARD
+#line 50 "region_builtin.m"
+#include "mercury_region.h"
+#line 31 "region_builtin.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* REGION_BUILTIN_MH */

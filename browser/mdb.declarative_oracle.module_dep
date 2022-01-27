@@ -1,0 +1,13 @@
+module(1, "declarative_oracle.m",
+	(mdb.declarative_oracle),
+	{mdb},
+	{builtin, bool, io, (mdb.browser_info), (mdb.declarative_debugger), (mdb.declarative_user), (mdb.help), (mdbcomp.rtti_access), (mdbcomp.sym_name), private_builtin},
+	{builtin, bool, io, (mdb.browser_info), (mdb.declarative_debugger), (mdb.declarative_user), (mdb.help), (mdbcomp.rtti_access), (mdbcomp.sym_name), bimap, counter, int, library, list, map, set, string, (mdb.declarative_execution), (mdbcomp.prim_data), private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

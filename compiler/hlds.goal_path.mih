@@ -1,0 +1,106 @@
+/*
+** Automatically generated from `goal_path.m'
+** by the Mercury compiler,
+** version rotd-2014-12-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.goal_path. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__goal_path
+#define MR_HEADER_GUARD_hlds__goal_path
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__GOAL_PATH_DECL_GUARD
+#define HLDS__GOAL_PATH_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+#line 43 "hlds.goal_path.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__goal_path__hlds__goal_path__type_ctor_info_containing_goal_list_0;
+
+#line 46 "hlds.goal_path.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__goal_path__hlds__goal_path__type_ctor_info_slot_info_0;
+
+#line 58 "goal_path.m"
+void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_proc_3_p_0(
+#line 58 "goal_path.m"
+  MR_Word hlds__goal_path__param_1,
+#line 58 "goal_path.m"
+  MR_Word hlds__goal_path__param_2,
+#line 58 "goal_path.m"
+  MR_Word * hlds__goal_path__param_3);
+
+#line 47 "goal_path.m"
+void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_clauses_4_p_0(
+#line 47 "goal_path.m"
+  MR_Word hlds__goal_path__param_1,
+#line 47 "goal_path.m"
+  MR_Word * hlds__goal_path__param_2,
+#line 47 "goal_path.m"
+  MR_Word hlds__goal_path__param_3,
+#line 47 "goal_path.m"
+  MR_Word * hlds__goal_path__param_4);
+
+#line 41 "goal_path.m"
+void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_proc_body_5_p_0(
+#line 41 "goal_path.m"
+  MR_Word hlds__goal_path__param_1,
+#line 41 "goal_path.m"
+  MR_Word hlds__goal_path__param_2,
+#line 41 "goal_path.m"
+  MR_Word * hlds__goal_path__param_3,
+#line 41 "goal_path.m"
+  MR_Word hlds__goal_path__param_4,
+#line 41 "goal_path.m"
+  MR_Word * hlds__goal_path__param_5);
+
+#line 38 "goal_path.m"
+void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_proc_4_p_0(
+#line 38 "goal_path.m"
+  MR_Word hlds__goal_path__param_1,
+#line 38 "goal_path.m"
+  MR_Word * hlds__goal_path__param_2,
+#line 38 "goal_path.m"
+  MR_Word hlds__goal_path__param_3,
+#line 38 "goal_path.m"
+  MR_Word * hlds__goal_path__param_4);
+
+void mercury__hlds__goal_path__init(void);
+void mercury__hlds__goal_path__init_type_tables(void);
+void mercury__hlds__goal_path__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.goal_path */
+
+/* :- end_interface hlds.goal_path. */

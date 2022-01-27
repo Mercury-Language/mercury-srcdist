@@ -1,0 +1,13 @@
+module(1, "parse.m",
+	(mdb.parse),
+	{mdb},
+	{builtin, getopt, io, list, maybe, (mdb.browser_info), private_builtin},
+	{builtin, getopt, io, list, maybe, (mdb.browser_info), bool, char, int, string, (mdb.util), private_builtin, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

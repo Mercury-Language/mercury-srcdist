@@ -1,0 +1,7 @@
+:- module (mdbcomp.sym_name).
+:- interface.
+:- import_module list.
+:- type module_name == mdbcomp.sym_name.sym_name.
+:- type sym_name
+	--->	unqualified(string)
+	;	qualified(mdbcomp.sym_name.sym_name, string).

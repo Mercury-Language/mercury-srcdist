@@ -1,0 +1,503 @@
+/*
+** Automatically generated from `builtin.m'
+** by the Mercury compiler,
+** version rotd-2014-12-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module builtin. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_builtin
+#define MR_HEADER_GUARD_builtin
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BUILTIN_DECL_GUARD
+#define BUILTIN_DECL_GUARD
+#line 573 "builtin.m"
+#include "mercury_ho_call.h"
+#endif
+
+
+
+
+#line 43 "builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__builtin__builtin__type_ctor_info_compare_1;
+
+#line 46 "builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__builtin__builtin__type_ctor_info_comparison_func_1;
+
+#line 49 "builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__builtin__builtin__type_ctor_info_comparison_pred_1;
+
+#line 52 "builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__builtin__builtin__type_ctor_info_comparison_result_0;
+
+#line 55 "builtin.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__builtin__builtin__type_ctor_info_unify_1;
+
+#line 247 "builtin.m"
+void MR_CALL 
+mercury__builtin____Compare____unify_1_0(
+#line 247 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 247 "builtin.m"
+  MR_Word * mercury__builtin__param_2,
+#line 247 "builtin.m"
+  MR_Word mercury__builtin__param_3,
+#line 247 "builtin.m"
+  MR_Word mercury__builtin__param_4);
+
+#line 247 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin____Unify____unify_1_0(
+#line 247 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 247 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 247 "builtin.m"
+  MR_Word mercury__builtin__param_3);
+
+#line 250 "builtin.m"
+void MR_CALL 
+mercury__builtin____Compare____comparison_result_0_0(
+#line 250 "builtin.m"
+  MR_Word * mercury__builtin__param_1,
+#line 250 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 250 "builtin.m"
+  MR_Word mercury__builtin__param_3);
+
+#line 250 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin____Unify____comparison_result_0_0(
+#line 250 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 250 "builtin.m"
+  MR_Word mercury__builtin__param_2);
+
+#line 336 "builtin.m"
+void MR_CALL 
+mercury__builtin____Compare____comparison_pred_1_0(
+#line 336 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 336 "builtin.m"
+  MR_Word * mercury__builtin__param_2,
+#line 336 "builtin.m"
+  MR_Word mercury__builtin__param_3,
+#line 336 "builtin.m"
+  MR_Word mercury__builtin__param_4);
+
+#line 336 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin____Unify____comparison_pred_1_0(
+#line 336 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 336 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 336 "builtin.m"
+  MR_Word mercury__builtin__param_3);
+
+#line 340 "builtin.m"
+void MR_CALL 
+mercury__builtin____Compare____comparison_func_1_0(
+#line 340 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 340 "builtin.m"
+  MR_Word * mercury__builtin__param_2,
+#line 340 "builtin.m"
+  MR_Word mercury__builtin__param_3,
+#line 340 "builtin.m"
+  MR_Word mercury__builtin__param_4);
+
+#line 340 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin____Unify____comparison_func_1_0(
+#line 340 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 340 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 340 "builtin.m"
+  MR_Word mercury__builtin__param_3);
+
+#line 284 "builtin.m"
+void MR_CALL 
+mercury__builtin____Compare____compare_1_0(
+#line 284 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 284 "builtin.m"
+  MR_Word * mercury__builtin__param_2,
+#line 284 "builtin.m"
+  MR_Word mercury__builtin__param_3,
+#line 284 "builtin.m"
+  MR_Word mercury__builtin__param_4);
+
+#line 284 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin____Unify____compare_1_0(
+#line 284 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 284 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 284 "builtin.m"
+  MR_Word mercury__builtin__param_3);
+
+#line 43 "builtin.m"
+void MR_CALL 
+mercury__builtin____Compare____c_pointer_0_0(
+#line 43 "builtin.m"
+  MR_Word * mercury__builtin__param_1,
+#line 43 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 43 "builtin.m"
+  MR_Word mercury__builtin__param_3);
+
+#line 43 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin____Unify____c_pointer_0_0(
+#line 43 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 43 "builtin.m"
+  MR_Word mercury__builtin__param_2);
+
+#line 456 "builtin.m"
+void MR_CALL 
+mercury__builtin__init_runtime_hooks_0_p_0(void);
+
+#line 451 "builtin.m"
+void MR_CALL 
+mercury__builtin__compare_representation_3_p_0(
+#line 451 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 451 "builtin.m"
+  MR_Word * mercury__builtin__param_2,
+#line 451 "builtin.m"
+  MR_Box mercury__builtin__param_3,
+#line 451 "builtin.m"
+  MR_Box mercury__builtin__param_4);
+
+#line 430 "builtin.m"
+void MR_CALL 
+mercury__builtin__get_one_solution_io_4_p_0(
+#line 430 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 430 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 430 "builtin.m"
+  MR_Word mercury__builtin__param_3,
+#line 430 "builtin.m"
+  MR_Box * mercury__builtin__param_4,
+#line 430 "builtin.m"
+  MR_Box mercury__builtin__param_5,
+#line 430 "builtin.m"
+  MR_Box * mercury__builtin__param_6);
+
+#line 427 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__get_one_solution_1_f_1(
+#line 427 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 427 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 427 "builtin.m"
+  MR_Box * mercury__builtin__param_3);
+
+#line 426 "builtin.m"
+MR_Box MR_CALL 
+mercury__builtin__get_one_solution_1_f_0(
+#line 426 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 426 "builtin.m"
+  MR_Word mercury__builtin__param_2);
+
+#line 407 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__dynamic_cast_2_p_0(
+#line 407 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 407 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 407 "builtin.m"
+  MR_Box mercury__builtin__param_3,
+#line 407 "builtin.m"
+  MR_Box * mercury__builtin__param_4);
+
+#line 399 "builtin.m"
+void MR_CALL 
+mercury__builtin__semipure_true_0_p_0(void);
+
+#line 395 "builtin.m"
+void MR_CALL 
+mercury__builtin__impure_true_0_p_0(void);
+
+#line 391 "builtin.m"
+void MR_CALL 
+mercury__builtin__cc_multi_equal_2_p_1(
+#line 391 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 391 "builtin.m"
+  MR_Box mercury__builtin__param_2,
+#line 391 "builtin.m"
+  MR_Box * mercury__builtin__param_3);
+
+#line 390 "builtin.m"
+void MR_CALL 
+mercury__builtin__cc_multi_equal_2_p_0(
+#line 390 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 390 "builtin.m"
+  MR_Box mercury__builtin__param_2,
+#line 390 "builtin.m"
+  MR_Box * mercury__builtin__param_3);
+
+#line 384 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__semidet_false_0_p_0(void);
+
+#line 380 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__semidet_true_0_p_0(void);
+
+#line 376 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__semidet_fail_0_p_0(void);
+
+#line 371 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__semidet_succeed_0_p_0(void);
+
+#line 313 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__f_64_62_61_2_p_0(
+#line 313 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 313 "builtin.m"
+  MR_Box mercury__builtin__param_2,
+#line 313 "builtin.m"
+  MR_Box mercury__builtin__param_3);
+
+#line 307 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__f_64_62_2_p_0(
+#line 307 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 307 "builtin.m"
+  MR_Box mercury__builtin__param_2,
+#line 307 "builtin.m"
+  MR_Box mercury__builtin__param_3);
+
+#line 301 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__f_64_61_60_2_p_0(
+#line 301 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 301 "builtin.m"
+  MR_Box mercury__builtin__param_2,
+#line 301 "builtin.m"
+  MR_Box mercury__builtin__param_3);
+
+#line 295 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__f_64_60_2_p_0(
+#line 295 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 295 "builtin.m"
+  MR_Box mercury__builtin__param_2,
+#line 295 "builtin.m"
+  MR_Box mercury__builtin__param_3);
+
+#line 289 "builtin.m"
+MR_Word MR_CALL 
+mercury__builtin__ordering_2_f_0(
+#line 289 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 289 "builtin.m"
+  MR_Box mercury__builtin__param_2,
+#line 289 "builtin.m"
+  MR_Box mercury__builtin__param_3);
+
+#line 265 "builtin.m"
+void MR_CALL 
+mercury__builtin__compare_3_p_3(
+#line 265 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 265 "builtin.m"
+  MR_Word * mercury__builtin__param_2,
+#line 265 "builtin.m"
+  MR_Box mercury__builtin__param_3,
+#line 265 "builtin.m"
+  MR_Box mercury__builtin__param_4);
+
+#line 264 "builtin.m"
+void MR_CALL 
+mercury__builtin__compare_3_p_2(
+#line 264 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 264 "builtin.m"
+  MR_Word * mercury__builtin__param_2,
+#line 264 "builtin.m"
+  MR_Box mercury__builtin__param_3,
+#line 264 "builtin.m"
+  MR_Box mercury__builtin__param_4);
+
+#line 263 "builtin.m"
+void MR_CALL 
+mercury__builtin__compare_3_p_1(
+#line 263 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 263 "builtin.m"
+  MR_Word * mercury__builtin__param_2,
+#line 263 "builtin.m"
+  MR_Box mercury__builtin__param_3,
+#line 263 "builtin.m"
+  MR_Box mercury__builtin__param_4);
+
+#line 262 "builtin.m"
+void MR_CALL 
+mercury__builtin__compare_3_p_0(
+#line 262 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 262 "builtin.m"
+  MR_Word * mercury__builtin__param_2,
+#line 262 "builtin.m"
+  MR_Box mercury__builtin__param_3,
+#line 262 "builtin.m"
+  MR_Box mercury__builtin__param_4);
+
+#line 240 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__unify_2_p_0(
+#line 240 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 240 "builtin.m"
+  MR_Box mercury__builtin__param_2,
+#line 240 "builtin.m"
+  MR_Box mercury__builtin__param_3);
+
+#line 232 "builtin.m"
+void MR_CALL 
+mercury__builtin__promise_only_solution_io_4_p_0(
+#line 232 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 232 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 232 "builtin.m"
+  MR_Word mercury__builtin__param_3,
+#line 232 "builtin.m"
+  MR_Box * mercury__builtin__param_4,
+#line 232 "builtin.m"
+  MR_Box mercury__builtin__param_5,
+#line 232 "builtin.m"
+  MR_Box * mercury__builtin__param_6);
+
+#line 213 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__promise_only_solution_1_f_3(
+#line 213 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 213 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 213 "builtin.m"
+  MR_Box * mercury__builtin__param_3);
+
+#line 212 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__promise_only_solution_1_f_2(
+#line 212 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 212 "builtin.m"
+  MR_Word mercury__builtin__param_2,
+#line 212 "builtin.m"
+  MR_Box * mercury__builtin__param_3);
+
+#line 211 "builtin.m"
+MR_Box MR_CALL 
+mercury__builtin__promise_only_solution_1_f_1(
+#line 211 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 211 "builtin.m"
+  MR_Word mercury__builtin__param_2);
+
+#line 210 "builtin.m"
+MR_Box MR_CALL 
+mercury__builtin__promise_only_solution_1_f_0(
+#line 210 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 210 "builtin.m"
+  MR_Word mercury__builtin__param_2);
+
+#line 188 "builtin.m"
+MR_Box MR_CALL 
+mercury__builtin__unsafe_cast_any_to_ground_1_f_0(
+#line 188 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 188 "builtin.m"
+  MR_Box mercury__builtin__param_2);
+
+#line 176 "builtin.m"
+MR_bool MR_CALL 
+mercury__builtin__false_0_p_0(void);
+
+#line 171 "builtin.m"
+void MR_CALL 
+mercury__builtin__unsafe_promise_unique_2_p_0(
+#line 171 "builtin.m"
+  MR_Box mercury__builtin__param_1,
+#line 171 "builtin.m"
+  MR_Box * mercury__builtin__param_2);
+
+#line 170 "builtin.m"
+MR_Box MR_CALL 
+mercury__builtin__unsafe_promise_unique_1_f_0(
+#line 170 "builtin.m"
+  MR_Box mercury__builtin__param_1);
+
+#line 156 "builtin.m"
+void MR_CALL 
+mercury__builtin__copy_2_p_1(
+#line 156 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 156 "builtin.m"
+  MR_Box mercury__builtin__param_2,
+#line 156 "builtin.m"
+  MR_Box * mercury__builtin__param_3);
+
+#line 155 "builtin.m"
+void MR_CALL 
+mercury__builtin__copy_2_p_0(
+#line 155 "builtin.m"
+  MR_Word mercury__builtin__param_1,
+#line 155 "builtin.m"
+  MR_Box mercury__builtin__param_2,
+#line 155 "builtin.m"
+  MR_Box * mercury__builtin__param_3);
+
+void mercury__builtin__init(void);
+void mercury__builtin__init_type_tables(void);
+void mercury__builtin__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_builtin */
+
+/* :- end_interface builtin. */

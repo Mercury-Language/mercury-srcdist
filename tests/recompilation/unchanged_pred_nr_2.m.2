@@ -1,0 +1,14 @@
+:- module unchanged_pred_nr_2.
+
+:- interface.
+
+:- import_module list.
+
+:- pred unchanged_pred(T, list(_), string, string) is det.
+:- mode unchanged_pred(in, in, in, out) is det.
+:- pragma type_spec(unchanged_pred/4, T = list(_)).
+
+:- implementation.
+
+unchanged_pred(_, _, X, X).
+

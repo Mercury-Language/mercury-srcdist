@@ -1,0 +1,547 @@
+/*
+** Automatically generated from `make.m'
+** by the Mercury compiler,
+** version rotd-2014-12-08
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module make. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_make
+#define MR_HEADER_GUARD_make
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE_DECL_GUARD
+#define MAKE_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_c_header_type_0;
+
+#line 45 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_compilation_task_type_0;
+
+#line 48 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_dependency_file_index_map_0;
+
+#line 51 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_dependency_status_0;
+
+#line 54 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_file_timestamps_0;
+
+#line 57 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_last_hash_0;
+
+#line 60 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_linked_target_file_0;
+
+#line 63 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_make_error_0;
+
+#line 66 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_make_info_0;
+
+#line 69 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_misc_target_type_0;
+
+#line 72 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_module_compilation_task_type_0;
+
+#line 75 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_module_index_map_0;
+
+#line 78 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_module_target_type_0;
+
+#line 81 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_rebuild_module_deps_0;
+
+#line 84 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_target_file_0;
+
+#line 87 "make.mih.tmp"
+extern const MR_TypeCtorInfo_Struct make__make__type_ctor_info_target_type_0;
+
+#line 436 "make.m"
+void MR_CALL 
+make____Compare____target_type_0_0(
+#line 436 "make.m"
+  MR_Word * make__param_1,
+#line 436 "make.m"
+  MR_Word make__param_2,
+#line 436 "make.m"
+  MR_Word make__param_3);
+
+#line 436 "make.m"
+MR_bool MR_CALL 
+make____Unify____target_type_0_0(
+#line 436 "make.m"
+  MR_Word make__param_1,
+#line 436 "make.m"
+  MR_Word make__param_2);
+
+#line 266 "make.m"
+void MR_CALL 
+make____Compare____target_file_0_0(
+#line 266 "make.m"
+  MR_Word * make__param_1,
+#line 266 "make.m"
+  MR_Word make__param_2,
+#line 266 "make.m"
+  MR_Word make__param_3);
+
+#line 266 "make.m"
+MR_bool MR_CALL 
+make____Unify____target_file_0_0(
+#line 266 "make.m"
+  MR_Word make__param_1,
+#line 266 "make.m"
+  MR_Word make__param_2);
+
+#line 50 "make.m"
+void MR_CALL 
+make____Compare____rebuild_module_deps_0_0(
+#line 50 "make.m"
+  MR_Word * make__param_1,
+#line 50 "make.m"
+  MR_Word make__param_2,
+#line 50 "make.m"
+  MR_Word make__param_3);
+
+#line 50 "make.m"
+MR_bool MR_CALL 
+make____Unify____rebuild_module_deps_0_0(
+#line 50 "make.m"
+  MR_Word make__param_1,
+#line 50 "make.m"
+  MR_Word make__param_2);
+
+#line 217 "make.m"
+void MR_CALL 
+make____Compare____module_target_type_0_0(
+#line 217 "make.m"
+  MR_Word * make__param_1,
+#line 217 "make.m"
+  MR_Word make__param_2,
+#line 217 "make.m"
+  MR_Word make__param_3);
+
+#line 217 "make.m"
+void MR_CALL 
+make____Index____module_target_type_0_0(
+#line 217 "make.m"
+  MR_Word make__param_1,
+#line 217 "make.m"
+  MR_Integer * make__param_2);
+
+#line 217 "make.m"
+MR_bool MR_CALL 
+make____Unify____module_target_type_0_0(
+#line 217 "make.m"
+  MR_Word make__param_1,
+#line 217 "make.m"
+  MR_Word make__param_2);
+
+#line 178 "make.m"
+void MR_CALL 
+make____Compare____module_index_map_0_0(
+#line 178 "make.m"
+  MR_Word * make__param_1,
+#line 178 "make.m"
+  MR_Word make__param_2,
+#line 178 "make.m"
+  MR_Word make__param_3);
+
+#line 178 "make.m"
+MR_bool MR_CALL 
+make____Unify____module_index_map_0_0(
+#line 178 "make.m"
+  MR_Word make__param_1,
+#line 178 "make.m"
+  MR_Word make__param_2);
+
+#line 207 "make.m"
+void MR_CALL 
+make____Compare____module_compilation_task_type_0_0(
+#line 207 "make.m"
+  MR_Word * make__param_1,
+#line 207 "make.m"
+  MR_Word make__param_2,
+#line 207 "make.m"
+  MR_Word make__param_3);
+
+#line 207 "make.m"
+MR_bool MR_CALL 
+make____Unify____module_compilation_task_type_0_0(
+#line 207 "make.m"
+  MR_Word make__param_1,
+#line 207 "make.m"
+  MR_Word make__param_2);
+
+#line 249 "make.m"
+void MR_CALL 
+make____Compare____misc_target_type_0_0(
+#line 249 "make.m"
+  MR_Word * make__param_1,
+#line 249 "make.m"
+  MR_Word make__param_2,
+#line 249 "make.m"
+  MR_Word make__param_3);
+
+#line 249 "make.m"
+MR_bool MR_CALL 
+make____Unify____misc_target_type_0_0(
+#line 249 "make.m"
+  MR_Word make__param_1,
+#line 249 "make.m"
+  MR_Word make__param_2);
+
+#line 100 "make.m"
+void MR_CALL 
+make____Compare____make_info_0_0(
+#line 100 "make.m"
+  MR_Word * make__param_1,
+#line 100 "make.m"
+  MR_Word make__param_2,
+#line 100 "make.m"
+  MR_Word make__param_3);
+
+#line 100 "make.m"
+MR_bool MR_CALL 
+make____Unify____make_info_0_0(
+#line 100 "make.m"
+  MR_Word make__param_1,
+#line 100 "make.m"
+  MR_Word make__param_2);
+
+#line 194 "make.m"
+void MR_CALL 
+make____Compare____make_error_0_0(
+#line 194 "make.m"
+  MR_Word * make__param_1,
+#line 194 "make.m"
+  MR_Word make__param_2,
+#line 194 "make.m"
+  MR_Word make__param_3);
+
+#line 194 "make.m"
+MR_bool MR_CALL 
+make____Unify____make_error_0_0(
+#line 194 "make.m"
+  MR_Word make__param_1,
+#line 194 "make.m"
+  MR_Word make__param_2);
+
+#line 272 "make.m"
+void MR_CALL 
+make____Compare____linked_target_file_0_0(
+#line 272 "make.m"
+  MR_Word * make__param_1,
+#line 272 "make.m"
+  MR_Word make__param_2,
+#line 272 "make.m"
+  MR_Word make__param_3);
+
+#line 272 "make.m"
+MR_bool MR_CALL 
+make____Unify____linked_target_file_0_0(
+#line 272 "make.m"
+  MR_Word make__param_1,
+#line 272 "make.m"
+  MR_Word make__param_2);
+
+#line 597 "make.m"
+void MR_CALL 
+make____Compare____last_hash_0_0(
+#line 597 "make.m"
+  MR_Word * make__param_1,
+#line 597 "make.m"
+  MR_Word make__param_2,
+#line 597 "make.m"
+  MR_Word make__param_3);
+
+#line 597 "make.m"
+MR_bool MR_CALL 
+make____Unify____last_hash_0_0(
+#line 597 "make.m"
+  MR_Word make__param_1,
+#line 597 "make.m"
+  MR_Word make__param_2);
+
+#line 258 "make.m"
+void MR_CALL 
+make____Compare____file_timestamps_0_0(
+#line 258 "make.m"
+  MR_Word * make__param_1,
+#line 258 "make.m"
+  MR_Word make__param_2,
+#line 258 "make.m"
+  MR_Word make__param_3);
+
+#line 258 "make.m"
+MR_bool MR_CALL 
+make____Unify____file_timestamps_0_0(
+#line 258 "make.m"
+  MR_Word make__param_1,
+#line 258 "make.m"
+  MR_Word make__param_2);
+
+#line 260 "make.m"
+void MR_CALL 
+make____Compare____dependency_status_0_0(
+#line 260 "make.m"
+  MR_Word * make__param_1,
+#line 260 "make.m"
+  MR_Word make__param_2,
+#line 260 "make.m"
+  MR_Word make__param_3);
+
+#line 260 "make.m"
+MR_bool MR_CALL 
+make____Unify____dependency_status_0_0(
+#line 260 "make.m"
+  MR_Word make__param_1,
+#line 260 "make.m"
+  MR_Word make__param_2);
+
+#line 186 "make.m"
+void MR_CALL 
+make____Compare____dependency_file_index_map_0_0(
+#line 186 "make.m"
+  MR_Word * make__param_1,
+#line 186 "make.m"
+  MR_Word make__param_2,
+#line 186 "make.m"
+  MR_Word make__param_3);
+
+#line 186 "make.m"
+MR_bool MR_CALL 
+make____Unify____dependency_file_index_map_0_0(
+#line 186 "make.m"
+  MR_Word make__param_1,
+#line 186 "make.m"
+  MR_Word make__param_2);
+
+#line 199 "make.m"
+void MR_CALL 
+make____Compare____compilation_task_type_0_0(
+#line 199 "make.m"
+  MR_Word * make__param_1,
+#line 199 "make.m"
+  MR_Word make__param_2,
+#line 199 "make.m"
+  MR_Word make__param_3);
+
+#line 199 "make.m"
+MR_bool MR_CALL 
+make____Unify____compilation_task_type_0_0(
+#line 199 "make.m"
+  MR_Word make__param_1,
+#line 199 "make.m"
+  MR_Word make__param_2);
+
+#line 243 "make.m"
+void MR_CALL 
+make____Compare____c_header_type_0_0(
+#line 243 "make.m"
+  MR_Word * make__param_1,
+#line 243 "make.m"
+  MR_Word make__param_2,
+#line 243 "make.m"
+  MR_Word make__param_3);
+
+#line 243 "make.m"
+MR_bool MR_CALL 
+make____Unify____c_header_type_0_0(
+#line 243 "make.m"
+  MR_Word make__param_1,
+#line 243 "make.m"
+  MR_Word make__param_2);
+
+#line 744 "make.m"
+void MR_CALL 
+make__write_hash_file_5_p_0(
+#line 744 "make.m"
+  MR_String make__param_1,
+#line 744 "make.m"
+  MR_String make__param_2,
+#line 744 "make.m"
+  MR_Word * make__param_3);
+
+#line 700 "make.m"
+void MR_CALL 
+make__compare_hash_file_6_p_0(
+#line 700 "make.m"
+  MR_Word make__param_1,
+#line 700 "make.m"
+  MR_String make__param_2,
+#line 700 "make.m"
+  MR_String make__param_3,
+#line 700 "make.m"
+  MR_Word * make__param_4);
+
+#line 694 "make.m"
+MR_bool MR_CALL 
+make__is_consequential_option_2_p_0(
+#line 694 "make.m"
+  MR_Word make__param_1,
+#line 694 "make.m"
+  MR_Word make__param_2);
+
+#line 667 "make.m"
+void MR_CALL 
+make__option_table_hash_4_p_0(
+#line 667 "make.m"
+  MR_Word make__param_1,
+#line 667 "make.m"
+  MR_String * make__param_2);
+
+#line 627 "make.m"
+void MR_CALL 
+make__make_track_flags_files_2_9_p_0(
+#line 627 "make.m"
+  MR_Word make__param_1,
+#line 627 "make.m"
+  MR_Word make__param_2,
+#line 627 "make.m"
+  MR_Word * make__param_3,
+#line 627 "make.m"
+  MR_Word make__param_4,
+#line 627 "make.m"
+  MR_Word * make__param_5,
+#line 627 "make.m"
+  MR_Word make__param_6,
+#line 627 "make.m"
+  MR_Word * make__param_7);
+
+#line 609 "make.m"
+void MR_CALL 
+make__make_track_flags_files_7_p_0(
+#line 609 "make.m"
+  MR_Word make__param_1,
+#line 609 "make.m"
+  MR_Word make__param_2,
+#line 609 "make.m"
+  MR_Word * make__param_3,
+#line 609 "make.m"
+  MR_Word make__param_4,
+#line 609 "make.m"
+  MR_Word * make__param_5);
+
+#line 575 "make.m"
+MR_Word MR_CALL 
+make__get_executable_type_1_f_0(
+#line 575 "make.m"
+  MR_Word make__param_1);
+
+#line 565 "make.m"
+MR_bool MR_CALL 
+make__search_backwards_for_dot_3_p_0(
+#line 565 "make.m"
+  MR_String make__param_1,
+#line 565 "make.m"
+  MR_Integer make__param_2,
+#line 565 "make.m"
+  MR_Integer * make__param_3);
+
+#line 465 "make.m"
+void MR_CALL 
+make__classify_target_2_4_p_0(
+#line 465 "make.m"
+  MR_Word make__param_1,
+#line 465 "make.m"
+  MR_String make__param_2,
+#line 465 "make.m"
+  MR_String make__param_3,
+#line 465 "make.m"
+  MR_Word * make__param_4,
+#line 465 "make.m"
+  MR_Cont make__param_5,
+#line 465 "make.m"
+  void * make__param_6);
+
+#line 441 "make.m"
+void MR_CALL 
+make__classify_target_3_p_0(
+#line 441 "make.m"
+  MR_Word make__param_1,
+#line 441 "make.m"
+  MR_String make__param_2,
+#line 441 "make.m"
+  MR_Word * make__param_3);
+
+#line 398 "make.m"
+void MR_CALL 
+make__make_target_7_p_0(
+#line 398 "make.m"
+  MR_Word make__param_1,
+#line 398 "make.m"
+  MR_Word make__param_2,
+#line 398 "make.m"
+  MR_Word * make__param_3,
+#line 398 "make.m"
+  MR_Word make__param_4,
+#line 398 "make.m"
+  MR_Word * make__param_5);
+
+#line 46 "make.m"
+MR_String MR_CALL 
+make__make_module_dep_file_extension_0_f_0(void);
+
+#line 43 "make.m"
+void MR_CALL 
+make__make_write_module_dep_file_4_p_0(
+#line 43 "make.m"
+  MR_Word make__param_1,
+#line 43 "make.m"
+  MR_Word make__param_2);
+
+#line 40 "make.m"
+void MR_CALL 
+make__make_process_args_7_p_0(
+#line 40 "make.m"
+  MR_Word make__param_1,
+#line 40 "make.m"
+  MR_Word make__param_2,
+#line 40 "make.m"
+  MR_Word make__param_3,
+#line 40 "make.m"
+  MR_Word make__param_4,
+#line 40 "make.m"
+  MR_Word make__param_5);
+
+void mercury__make__init(void);
+void mercury__make__init_type_tables(void);
+void mercury__make__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_make */
+
+/* :- end_interface make. */

@@ -1,0 +1,13 @@
+module(1, "feedback.m",
+	(mdbcomp.feedback),
+	{mdbcomp},
+	{builtin, assoc_list, io, list, maybe, (mdbcomp.program_representation), ((mdbcomp.feedback).automatic_parallelism), private_builtin},
+	{builtin, assoc_list, io, list, maybe, (mdbcomp.program_representation), ((mdbcomp.feedback).automatic_parallelism), exception, map, require, string, unit, univ, private_builtin, (string.format), (string.parse_util)},
+	{((mdbcomp.feedback).automatic_parallelism)},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
