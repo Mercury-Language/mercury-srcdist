@@ -1,0 +1,10 @@
+:- module (ml_backend.ml_tailcall).
+:- interface.
+:- import_module libs.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (libs.globals).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.error_util).
+:- pred ml_mark_tailcalls(libs.globals.globals, list.list(parse_tree.error_util.error_spec), ml_backend.mlds.mlds, ml_backend.mlds.mlds).
+:- mode ml_mark_tailcalls((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,8652 @@
+/*
+** Automatically generated from `switch_util.m'
+** by the Mercury compiler,
+** version DEV
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module backend_libs.switch_util. */
+/* :- implementation. */
+
+/*
+INIT mercury__backend_libs__switch_util__init
+ENDINIT
+*/
+
+#include "backend_libs.switch_util.mih"
+
+
+#include "analysis.mih"
+#include "backend_libs.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.rtti.mih"
+#include "backend_libs.string_encoding.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.type_util.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_code_util.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "string.format.mih"
+#include "string.parse_util.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_soln_consts_1__pseudo_2;
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_2;
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1;
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_list__pti_list_1__pseudo_2;
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_0[1];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_backend_libs__switch_util__pti_soln_consts_1__pseudo_2;
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_1[2];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_1;
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_1[1];
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_3[2];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_3[2];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_3[2];
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_several_llds_0_0[2];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_several_llds_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_several_llds_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_several_llds_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_several_llds_0[1];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_several_llds_0[1];
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__tree234__ti_tree234_2hlds__hlds_goal__type_ctor_info_case_id_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0;
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_is_int_switch_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_is_int_switch_0[2];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_is_int_switch_0[2];
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_may_use_smart_indexing_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_may_use_smart_indexing_0[2];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_may_use_smart_indexing_0[2];
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_maybe_int_switch_info_0_0[3];
+
+static const MR_ConstString backend_libs__switch_util__backend_libs__switch_util__field_names_maybe_int_switch_info_0_0[3];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_0;
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_1;
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_1[1];
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_maybe_int_switch_info_0[2];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_maybe_int_switch_info_0[2];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_maybe_int_switch_info_0[2];
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_bit_vec_check_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_bit_vec_check_0[2];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_bit_vec_check_0[2];
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_range_check_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_range_check_0[2];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_range_check_0[2];
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_1;
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_1_0[2];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_1_0;
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_1_0[1];
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_1[1];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_1[1];
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_entry_1_0[2];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_entry_1_0;
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_entry_1_0[1];
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_entry_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_entry_1[1];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_entry_1[1];
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__list__ti_list_1builtin__type_ctor_info_int_0;
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_group_entry_1_0[3];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_group_entry_1_0;
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_group_entry_1_0[1];
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_group_entry_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_group_entry_1[1];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_group_entry_1[1];
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1__pseudo_backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1;
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_rev_map_entry_1_0[4];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_rev_map_entry_1_0;
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_rev_map_entry_1_0[1];
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_rev_map_entry_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_rev_map_entry_1[1];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_rev_map_entry_1[1];
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0;
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__tree234__ti_tree234_2builtin__type_ctor_info_int_0pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_1;
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_0[1];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_list__pti_list_1__pseudo_1;
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_1[2];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_1;
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_1[1];
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_soln_consts_1[2];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_soln_consts_1[2];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_soln_consts_1[2];
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1;
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_string_hash_slot_1_0[3];
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_string_hash_slot_1_0;
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_string_hash_slot_1_0[1];
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_string_hash_slot_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_string_hash_slot_1[1];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_string_hash_slot_1[1];
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_1;
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_2;
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_3;
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_switch_category_0[4];
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_switch_category_0[4];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_switch_category_0[4];
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_table_size_upgrade_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_table_size_upgrade_0[2];
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_table_size_upgrade_0[2];
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_3_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4,
+  MR_Box backend_libs__switch_util__wrapper_arg_5);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_3_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+  MR_Box backend_libs__switch_util__wrapper_arg_6);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_several_llds_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_several_llds_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_id_ptags_map_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_id_ptags_map_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____is_int_switch_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____is_int_switch_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____may_use_smart_indexing_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____may_use_smart_indexing_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____maybe_int_switch_info_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____maybe_int_switch_info_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_bit_vec_check_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____need_bit_vec_check_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_range_check_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____need_range_check_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_count_map_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_count_map_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____soln_consts_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____soln_consts_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____string_hash_slot_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____string_hash_slot_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____switch_category_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____switch_category_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____table_size_upgrade_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____table_size_upgrade_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box * backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4,
+  MR_Box * backend_libs__switch_util__wrapper_arg_5);
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_65,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__RepresentCase_2,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_3,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_4,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_5,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_6,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_7,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_8,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0_9,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_10,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_11,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_12);
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box * backend_libs__switch_util__wrapper_arg_3);
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_54,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__RepresentCase_2,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_3,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_4,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_5,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_6,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_7,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_8,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_9,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_10);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_106_101_99_116_95_115_111_108_110_95_99_111_110_115_116_115_95_116_111_95_111_110_101_95_115_111_108_110_95_95_91_49_44_32_51_93_95_48_3_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_8,
+  MR_Word backend_libs__switch_util__Solns_5,
+  MR_Word * backend_libs__switch_util__Values_6);
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+  MR_Box * backend_libs__switch_util__wrapper_arg_6,
+  MR_Box backend_libs__switch_util__wrapper_arg_7,
+  MR_Box * backend_libs__switch_util__wrapper_arg_8,
+  MR_Box backend_libs__switch_util__wrapper_arg_9,
+  MR_Box * backend_libs__switch_util__wrapper_arg_10);
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_1,
+  MR_Integer backend_libs__switch_util__CaseNum_3,
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+  MR_Word * backend_libs__switch_util__HeadVar__5_5,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_6,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LowerLimit_7,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_8,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_UpperLimit_9,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_0_10,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumValues_11,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_12,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_13);
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_1,
+  MR_Integer backend_libs__switch_util__CaseNum_3,
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+  MR_Word * backend_libs__switch_util__HeadVar__5_5);
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_2(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+  MR_Box * backend_libs__switch_util__wrapper_arg_6,
+  MR_Box backend_libs__switch_util__wrapper_arg_7,
+  MR_Box * backend_libs__switch_util__wrapper_arg_8,
+  MR_Box backend_libs__switch_util__wrapper_arg_9,
+  MR_Box * backend_libs__switch_util__wrapper_arg_10);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__build_ptag_case_rev_map__1409__1_3_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_42,
+  MR_Word backend_libs__switch_util__Case_14,
+  MR_Word backend_libs__switch_util__OldCase_21);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1304__1_2_p_0(
+  MR_Word backend_libs__switch_util__StagLoc_21,
+  MR_Word backend_libs__switch_util__HeadVar__2_74);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1318__1_2_p_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_63,
+  MR_Word backend_libs__switch_util__StagLoc_94);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_17,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_13,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2);
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____is_int_switch_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____is_int_switch_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__build_ptag_case_rev_map_4_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg);
+
+static void MR_CALL 
+backend_libs__switch_util__build_ptag_case_rev_map_4_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_42,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_RevMap_4);
+
+static void MR_CALL 
+backend_libs__switch_util__interpret_rev_map_entry_2_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_9,
+  MR_Word backend_libs__switch_util__RevEntry_3,
+  MR_Word * backend_libs__switch_util__GroupEntry_4);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0_2(
+  MR_Box backend_libs__switch_util__closure_arg);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg);
+
+static void MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_107,
+  MR_Word backend_libs__switch_util__CaseId_8,
+  MR_Box backend_libs__switch_util__CaseRep_9,
+  MR_Word backend_libs__switch_util__TaggedConsId_10,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_0_52,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_53,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55);
+
+static void MR_CALL 
+backend_libs__switch_util__get_ptag_counts_loop_5_p_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_3,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_5);
+
+static void MR_CALL 
+backend_libs__switch_util__add_string_binary_entry_4_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_19,
+  MR_Box backend_libs__switch_util__CaseRep_5,
+  MR_Word backend_libs__switch_util__TaggedConsId_6,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_12,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_13);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__next_free_hash_slot_5_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg);
+
+static void MR_CALL 
+backend_libs__switch_util__next_free_hash_slot_5_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_17,
+  MR_Word backend_libs__switch_util__Map_6,
+  MR_Word backend_libs__switch_util__HomeMap_7,
+  MR_Integer backend_libs__switch_util__TableSize_8,
+  MR_Integer backend_libs__switch_util__LastUsed_9,
+  MR_Integer * backend_libs__switch_util__FreeSlot_10);
+
+static void MR_CALL 
+backend_libs__switch_util__follow_hash_chain_3_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_12,
+  MR_Word backend_libs__switch_util__Map_4,
+  MR_Integer backend_libs__switch_util__Slot_5,
+  MR_Integer * backend_libs__switch_util__LastSlot_6);
+
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_loop_over_hash_strings_8_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_64,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Integer backend_libs__switch_util__HeadVar__2_2,
+  MR_Integer backend_libs__switch_util__HeadVar__3_3,
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_5,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SlotMap_6,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_7,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LastUsed_8);
+
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_loop_over_hashes_7_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_32,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Integer backend_libs__switch_util__TableSize_2,
+  MR_Word backend_libs__switch_util__HashMap_3,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_4,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SlotMap_5,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_6,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LastUsed_7);
+
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_4_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_19,
+  MR_Integer backend_libs__switch_util__TableSize_5,
+  MR_Word backend_libs__switch_util__HashValList_6,
+  MR_Word backend_libs__switch_util__HashMap_7,
+  MR_Word * backend_libs__switch_util__SlotMap_8);
+
+static void MR_CALL 
+backend_libs__switch_util__string_hash_case_14_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_67,
+  MR_Word backend_libs__switch_util__StrCaseRep_15,
+  MR_Integer backend_libs__switch_util__HashMask_16,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_31,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap4_32,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_33,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap5_34,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_35,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap6_36,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_37,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_38,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_39,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_40,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_41,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_42);
+
+static void MR_CALL 
+backend_libs__switch_util__string_hash_cases_14_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_67,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Integer backend_libs__switch_util__HashMask_2,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_3,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap4_4,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_5,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap5_6,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_7,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap6_8,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_9,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_10,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_11,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_12,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_13,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_14);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__project_soln_consts_to_one_soln_3_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_Key_7,
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_8,
+  MR_Box backend_libs__switch_util___Key_4,
+  MR_Word backend_libs__switch_util__Solns_5,
+  MR_Word * backend_libs__switch_util__Values_6);
+
+static void MR_CALL 
+backend_libs__switch_util__filter_out_failing_cases_loop_5_p_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_3,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_4,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_5);
+
+static void MR_CALL 
+backend_libs__switch_util__num_cons_ids_in_tagged_cases_loop_5_p_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0_2,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumConsIds_3,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumArms_0_4,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumArms_5);
+
+static void MR_CALL 
+backend_libs__switch_util__tag_cons_id_in_int_switch_11_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_12,
+  MR_Word backend_libs__switch_util__ConsId_13,
+  MR_Word * backend_libs__switch_util__TaggedConsId_14,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_21,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LowerLimit_22,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_23,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_UpperLimit_24,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_0_25,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumValues_26,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_27,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_28);
+
+static void MR_CALL 
+backend_libs__switch_util__tag_cons_id_3_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_4,
+  MR_Word backend_libs__switch_util__ConsId_5,
+  MR_Word * backend_libs__switch_util__TaggedConsId_6);
+
+static void MR_CALL 
+backend_libs__switch_util__order_ptags_by_count_3_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__project_all_to_one_solution_2_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box * backend_libs__switch_util__wrapper_arg_3);
+
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_1[6][2];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_2[3][3];
+
+static /* final */ const MR_Integer backend_libs__switch_util_scalar_common_4[1][3];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_5[2][8];
+
+static /* final */ const MR_Integer backend_libs__switch_util_scalar_common_6[1][2];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_7[3][6];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_8[2][5];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_9[1][14];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_10[1][11];
+
+
+/* sealed */ struct backend_libs__switch_util__vector_common_type_3_0_s {
+  const MR_Word backend_libs__switch_util__vector_common_type_3_0__vct_3_f_0;
+};
+
+static /* final */ const struct backend_libs__switch_util__vector_common_type_3_0_s backend_libs__switch_util_vector_common_3[4];
+
+
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_1[6][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1)),
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_1[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) -1))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) -1))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_2[3][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0)),
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_1[0]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_2[0]))
+  },
+};
+
+static /* final */ const MR_Integer backend_libs__switch_util_scalar_common_4[1][3] = {
+  /* row 0 */
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 33,
+    (MR_Integer) 65
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_5[2][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_4[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__pti_soln_consts_1__pseudo_2)),
+    ((MR_Box) (&backend_libs__switch_util__list__pti_list_1__pseudo_2))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0)),
+    ((MR_Box) (&backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1)),
+    ((MR_Box) (&backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1))
+  },
+};
+
+static /* final */ const MR_Integer backend_libs__switch_util_scalar_common_6[1][2] = {
+  /* row 0 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 33
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_7[3][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_8[2][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_9[1][14] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 11)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_10[1][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0)),
+    ((MR_Box) (&backend_libs__switch_util__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__switch_util__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1)),
+    ((MR_Box) (&backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1))
+  },
+};
+
+
+static /* final */ const struct backend_libs__switch_util__vector_common_type_3_0_s backend_libs__switch_util_vector_common_3[4] = {
+  /* row 0 */   {     (MR_Integer) 0 },
+  /* row 1 */   {     (MR_Integer) 3 },
+  /* row 2 */   {     (MR_Integer) 0 },
+  /* row 3 */   {     (MR_Integer) 1 },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_soln_consts_1__pseudo_2 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_2 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_list__pti_list_1__pseudo_2 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_2
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_0[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_list__pti_list_1__pseudo_2
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_0 = {
+  (MR_String) "all_one_soln",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_backend_libs__switch_util__pti_soln_consts_1__pseudo_2 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_soln_consts_1__pseudo_2
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_1[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_backend_libs__switch_util__pti_soln_consts_1__pseudo_2,
+  (MR_PseudoTypeInfo) (MR_Integer) 3
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_1 = {
+  (MR_String) "some_several_solns",
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_1
+};
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_3[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_1
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_3[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_0,
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_1
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_3[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_3 = {
+  (MR_Integer) 3,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____case_consts_3_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____case_consts_3_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "case_consts",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_3 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_3 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_3
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_TypeInfo) &backend_libs__switch_util__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_several_llds_0_0[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_several_llds_0_0 = {
+  (MR_String) "case_consts_several_llds",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_several_llds_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_several_llds_0_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_several_llds_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_several_llds_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_several_llds_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_several_llds_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_several_llds_0_0
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_several_llds_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_several_llds_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____case_consts_several_llds_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____case_consts_several_llds_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "case_consts_several_llds",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_several_llds_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_several_llds_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_several_llds_0
+};
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__tree234__ti_tree234_2hlds__hlds_goal__type_ctor_info_case_id_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0,
+    (MR_TypeInfo) &backend_libs__switch_util__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_id_ptags_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (backend_libs__switch_util____Unify____case_id_ptags_map_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____case_id_ptags_map_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "case_id_ptags_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__ti_tree234_2hlds__hlds_goal__type_ctor_info_case_id_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_0 = {
+  (MR_String) "is_int_switch",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_1 = {
+  (MR_String) "is_not_int_switch",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_is_int_switch_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_is_int_switch_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_1
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_is_int_switch_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____is_int_switch_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____is_int_switch_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "is_int_switch",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_is_int_switch_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_is_int_switch_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_is_int_switch_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_0 = {
+  (MR_String) "may_not_use_smart_indexing",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_1 = {
+  (MR_String) "may_use_smart_indexing",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_may_use_smart_indexing_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_may_use_smart_indexing_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_1
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_may_use_smart_indexing_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_may_use_smart_indexing_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____may_use_smart_indexing_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____may_use_smart_indexing_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "may_use_smart_indexing",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_may_use_smart_indexing_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_may_use_smart_indexing_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_may_use_smart_indexing_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_maybe_int_switch_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString backend_libs__switch_util__backend_libs__switch_util__field_names_maybe_int_switch_info_0_0[3] = {
+  (MR_String) "lower_limit",
+  (MR_String) "upper_limit",
+  (MR_String) "num_values"
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_0 = {
+  (MR_String) "int_switch",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_maybe_int_switch_info_0_0,
+  backend_libs__switch_util__backend_libs__switch_util__field_names_maybe_int_switch_info_0_0,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_1 = {
+  (MR_String) "not_int_switch",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_1
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_maybe_int_switch_info_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_maybe_int_switch_info_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_1
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_maybe_int_switch_info_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_maybe_int_switch_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____maybe_int_switch_info_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____maybe_int_switch_info_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "maybe_int_switch_info",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_maybe_int_switch_info_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_maybe_int_switch_info_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_maybe_int_switch_info_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_0 = {
+  (MR_String) "need_bit_vec_check",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_1 = {
+  (MR_String) "dont_need_bit_vec_check",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_bit_vec_check_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_bit_vec_check_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_1,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_0
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_bit_vec_check_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_need_bit_vec_check_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____need_bit_vec_check_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____need_bit_vec_check_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "need_bit_vec_check",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_bit_vec_check_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_bit_vec_check_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_bit_vec_check_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_0 = {
+  (MR_String) "need_range_check",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_1 = {
+  (MR_String) "dont_need_range_check",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_range_check_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_range_check_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_1,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_0
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_range_check_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_need_range_check_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____need_range_check_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____need_range_check_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "need_range_check",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_range_check_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_range_check_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_range_check_0
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_1_0[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_1
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_1_0 = {
+  (MR_String) "ptag_case",
+  (MR_Integer) 2,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_1_0
+};
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_1_0
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_1
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_entry_1_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_entry_1_0 = {
+  (MR_String) "ptag_case_entry",
+  (MR_Integer) 2,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_entry_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_entry_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_entry_1_0
+};
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_entry_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_entry_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_entry_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_entry_1_0
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_entry_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_entry_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_entry_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_entry_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_entry",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_entry_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_entry_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_entry_1
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__list__ti_list_1builtin__type_ctor_info_int_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_group_entry_1_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__list__ti_list_1builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_group_entry_1_0 = {
+  (MR_String) "ptag_case_group_entry",
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_group_entry_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_group_entry_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_group_entry_1_0
+};
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_group_entry_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_group_entry_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_group_entry_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_group_entry_1_0
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_group_entry_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_group_entry_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_group_entry_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_group_entry",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_group_entry_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_group_entry_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_group_entry_1
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1
+  }
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_list_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_group_list_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_group_list_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_group_list",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_entry_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1
+  }
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_list_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_list_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_list_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_list",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_map_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_map_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_map_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1__pseudo_backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1
+  }
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_rev_map_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_rev_map_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_rev_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1__pseudo_backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_rev_map_entry_1_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__list__ti_list_1builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_rev_map_entry_1_0 = {
+  (MR_String) "ptag_case_rev_map_entry",
+  (MR_Integer) 4,
+  (MR_Integer) 8,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_rev_map_entry_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_rev_map_entry_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_rev_map_entry_1_0
+};
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_rev_map_entry_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_rev_map_entry_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_rev_map_entry_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_rev_map_entry_1_0
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_rev_map_entry_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_rev_map_entry",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_rev_map_entry_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_rev_map_entry_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_rev_map_entry_1
+};
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__tree234__ti_tree234_2builtin__type_ctor_info_int_0pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &backend_libs__switch_util__pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_count_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_count_map_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_count_map_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_count_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__ti_tree234_2builtin__type_ctor_info_int_0pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_0[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_1
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_0 = {
+  (MR_String) "one_soln",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_list__pti_list_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_1
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_1[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_1,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_list__pti_list_1__pseudo_1
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_1 = {
+  (MR_String) "several_solns",
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_1
+};
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_soln_consts_1[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_1
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_soln_consts_1[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_0,
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_1
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_soln_consts_1[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____soln_consts_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____soln_consts_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "soln_consts",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_soln_consts_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_soln_consts_1 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_soln_consts_1
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1
+  }
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_stag_goal_list_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____stag_goal_list_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____stag_goal_list_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "stag_goal_list",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_stag_goal_map_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____stag_goal_map_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____stag_goal_map_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "stag_goal_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_string_hash_slot_1_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) (MR_Integer) 1
+};
+
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_string_hash_slot_1_0 = {
+  (MR_String) "string_hash_slot",
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_string_hash_slot_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_string_hash_slot_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_string_hash_slot_1_0
+};
+
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_string_hash_slot_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_string_hash_slot_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_string_hash_slot_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_string_hash_slot_1_0
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_string_hash_slot_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____string_hash_slot_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____string_hash_slot_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "string_hash_slot",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_string_hash_slot_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_string_hash_slot_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_string_hash_slot_1
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_0 = {
+  (MR_String) "atomic_switch",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_1 = {
+  (MR_String) "string_switch",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_2 = {
+  (MR_String) "tag_switch",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_3 = {
+  (MR_String) "float_switch",
+  (MR_Integer) 3
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_switch_category_0[4] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_1,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_2,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_3
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_switch_category_0[4] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_3,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_1,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_2
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_switch_category_0[4] = {
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_switch_category_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____switch_category_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____switch_category_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "switch_category",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_switch_category_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_switch_category_0 },
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_switch_category_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_0 = {
+  (MR_String) "keep_first_size",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_1 = {
+  (MR_String) "allow_doubling",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_table_size_upgrade_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_table_size_upgrade_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_1,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_0
+};
+
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_table_size_upgrade_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_table_size_upgrade_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____table_size_upgrade_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____table_size_upgrade_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "table_size_upgrade",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_table_size_upgrade_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_table_size_upgrade_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_table_size_upgrade_0
+};
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_3_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4,
+  MR_Box backend_libs__switch_util__wrapper_arg_5)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____case_consts_3_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4), ((MR_Word) backend_libs__switch_util__wrapper_arg_5));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_3_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+  MR_Box backend_libs__switch_util__wrapper_arg_6)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____case_consts_3_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_5), ((MR_Word) backend_libs__switch_util__wrapper_arg_6));
+    }
+    *backend_libs__switch_util__wrapper_arg_4 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_several_llds_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____case_consts_several_llds_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_several_llds_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____case_consts_several_llds_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_id_ptags_map_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____case_id_ptags_map_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_id_ptags_map_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____case_id_ptags_map_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____is_int_switch_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____is_int_switch_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____is_int_switch_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____is_int_switch_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____may_use_smart_indexing_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____may_use_smart_indexing_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____may_use_smart_indexing_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____may_use_smart_indexing_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____maybe_int_switch_info_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____maybe_int_switch_info_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____maybe_int_switch_info_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____maybe_int_switch_info_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_bit_vec_check_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____need_bit_vec_check_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____need_bit_vec_check_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____need_bit_vec_check_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_range_check_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____need_range_check_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____need_range_check_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____need_range_check_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____ptag_case_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____ptag_case_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_group_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____ptag_case_group_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_group_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____ptag_case_group_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____ptag_case_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____ptag_case_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_rev_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____ptag_case_rev_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_count_map_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_count_map_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_count_map_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____ptag_count_map_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____soln_consts_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____soln_consts_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____soln_consts_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____soln_consts_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____stag_goal_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_list_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____stag_goal_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____stag_goal_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_map_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____stag_goal_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____string_hash_slot_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____string_hash_slot_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____string_hash_slot_1_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____string_hash_slot_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____switch_category_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____switch_category_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____switch_category_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____switch_category_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____table_size_upgrade_0_0_10001(
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____table_size_upgrade_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____table_size_upgrade_0_0_10001(
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+    {
+      backend_libs__switch_util____Compare____table_size_upgrade_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box * backend_libs__switch_util__wrapper_arg_3,
+  MR_Box backend_libs__switch_util__wrapper_arg_4,
+  MR_Box * backend_libs__switch_util__wrapper_arg_5)
+{
+  {
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+    MR_Word backend_libs__switch_util__conv2_STATE_VARIABLE_CaseIdPtagsMap_53;
+    MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55;
+
+    {
+      backend_libs__switch_util__group_case_by_ptag_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))), (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 5)), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), &backend_libs__switch_util__conv2_STATE_VARIABLE_CaseIdPtagsMap_53, ((MR_Word) backend_libs__switch_util__wrapper_arg_4), &backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55);
+    }
+    *backend_libs__switch_util__wrapper_arg_3 = ((MR_Box) (backend_libs__switch_util__conv2_STATE_VARIABLE_CaseIdPtagsMap_53));
+    *backend_libs__switch_util__wrapper_arg_5 = ((MR_Box) (backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55));
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_65,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__RepresentCase_2,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_3,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_4,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_5,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_6,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_7,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_8,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0_9,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_10,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_11,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_12)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded;
+
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_12 = backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_11;
+            *backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_10 = backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0_9;
+            *backend_libs__switch_util__STATE_VARIABLE_StateC_8 = backend_libs__switch_util__STATE_VARIABLE_StateC_0_7;
+            *backend_libs__switch_util__STATE_VARIABLE_StateB_6 = backend_libs__switch_util__STATE_VARIABLE_StateB_0_5;
+            *backend_libs__switch_util__STATE_VARIABLE_StateA_4 = backend_libs__switch_util__STATE_VARIABLE_StateA_0_3;
+          }
+        else
+          {
+            MR_Word backend_libs__switch_util__TypeInfo_78_78;
+            MR_Word backend_libs__switch_util__TypeInfo_80_80;
+            MR_Word backend_libs__switch_util__TaggedCase_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__TaggedCases_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__MainTaggedConsId_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_29, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__OtherConsIds_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_29, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__CaseId_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_29, (MR_Integer) 2)));
+            MR_Box backend_libs__switch_util__CaseRep_41;
+            MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_52_52;
+            MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_53_53;
+            MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_54_54;
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_55_55;
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_56_56;
+            MR_Word backend_libs__switch_util__V_57_57;
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_58_58;
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_59_59;
+            MR_Word backend_libs__switch_util___Goal_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_29, (MR_Integer) 3)));
+            void MR_CALL (* backend_libs__switch_util__func_0)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RepresentCase_2, (MR_Integer) 1)));
+            MR_Box backend_libs__switch_util__conv4_STATE_VARIABLE_CaseNumPtagsMap_58_58;
+            MR_Box backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_59_59;
+
+            {
+              backend_libs__switch_util__func_0(((MR_Box) backend_libs__switch_util__RepresentCase_2), ((MR_Box) (backend_libs__switch_util__TaggedCase_29)), &backend_libs__switch_util__CaseRep_41, backend_libs__switch_util__STATE_VARIABLE_StateA_0_3, &backend_libs__switch_util__STATE_VARIABLE_StateA_52_52, backend_libs__switch_util__STATE_VARIABLE_StateB_0_5, &backend_libs__switch_util__STATE_VARIABLE_StateB_53_53, backend_libs__switch_util__STATE_VARIABLE_StateC_0_7, &backend_libs__switch_util__STATE_VARIABLE_StateC_54_54);
+            }
+            {
+              backend_libs__switch_util__group_case_by_ptag_7_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_65, backend_libs__switch_util__CaseId_39, backend_libs__switch_util__CaseRep_41, backend_libs__switch_util__MainTaggedConsId_37, backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0_9, &backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_55_55, backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_11, &backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_56_56);
+            }
+            {
+              backend_libs__switch_util__V_57_57 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_10[0]));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0_1));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 3) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_65));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 4) = ((MR_Box) (backend_libs__switch_util__CaseId_39));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 5) = backend_libs__switch_util__CaseRep_41;
+            }
+            {
+              backend_libs__switch_util__TypeInfo_78_78 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_78_78, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_78_78, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_65));
+            }
+            {
+              backend_libs__switch_util__TypeInfo_80_80 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_80_80, 0) = ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_80_80, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_80_80, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_78_78));
+            }
+            {
+              mercury__list__foldl2_6_p_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, (MR_Word) &backend_libs__switch_util_scalar_common_2[1], backend_libs__switch_util__TypeInfo_80_80, backend_libs__switch_util__V_57_57, backend_libs__switch_util__OtherConsIds_38, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_55_55)), &backend_libs__switch_util__conv4_STATE_VARIABLE_CaseNumPtagsMap_58_58, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_56_56)), &backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_59_59);
+            }
+            backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_58_58 = ((MR_Word) backend_libs__switch_util__conv4_STATE_VARIABLE_CaseNumPtagsMap_58_58);
+            backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_59_59 = ((MR_Word) backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_59_59);
+            /* direct tailcall eliminated */
+            {
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__TaggedCases_30;
+              MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0__tmp_copy_3 = backend_libs__switch_util__STATE_VARIABLE_StateA_52_52;
+              MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0__tmp_copy_5 = backend_libs__switch_util__STATE_VARIABLE_StateB_53_53;
+              MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0__tmp_copy_7 = backend_libs__switch_util__STATE_VARIABLE_StateC_54_54;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0__tmp_copy_9 = backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_58_58;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0__tmp_copy_11 = backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_59_59;
+
+              backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_11 = backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0__tmp_copy_11;
+              backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0_9 = backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0__tmp_copy_9;
+              backend_libs__switch_util__STATE_VARIABLE_StateC_0_7 = backend_libs__switch_util__STATE_VARIABLE_StateC_0__tmp_copy_7;
+              backend_libs__switch_util__STATE_VARIABLE_StateB_0_5 = backend_libs__switch_util__STATE_VARIABLE_StateB_0__tmp_copy_5;
+              backend_libs__switch_util__STATE_VARIABLE_StateA_0_3 = backend_libs__switch_util__STATE_VARIABLE_StateA_0__tmp_copy_3;
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box * backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+    MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_UnsortedTable_13;
+
+    {
+      backend_libs__switch_util__add_string_binary_entry_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4)), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), &backend_libs__switch_util__conv1_STATE_VARIABLE_UnsortedTable_13);
+    }
+    *backend_libs__switch_util__wrapper_arg_3 = ((MR_Box) (backend_libs__switch_util__conv1_STATE_VARIABLE_UnsortedTable_13));
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_54,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__RepresentCase_2,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_3,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_4,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_5,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_6,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_7,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_8,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_9,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_10)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_10 = backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_9;
+        *backend_libs__switch_util__STATE_VARIABLE_StateC_8 = backend_libs__switch_util__STATE_VARIABLE_StateC_0_7;
+        *backend_libs__switch_util__STATE_VARIABLE_StateB_6 = backend_libs__switch_util__STATE_VARIABLE_StateB_0_5;
+        *backend_libs__switch_util__STATE_VARIABLE_StateA_4 = backend_libs__switch_util__STATE_VARIABLE_StateA_0_3;
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__TypeInfo_64_64;
+        MR_Word backend_libs__switch_util__TypeInfo_66_66;
+        MR_Word backend_libs__switch_util__TaggedCase_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__TaggedCases_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Box backend_libs__switch_util__CaseRep_31;
+        MR_Word backend_libs__switch_util__MainTaggedConsId_32;
+        MR_Word backend_libs__switch_util__OtherTaggedConsIds_33;
+        MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_44_44;
+        MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_45_45;
+        MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_46_46;
+        MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_47_47;
+        MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_51_51;
+        MR_Word backend_libs__switch_util__V_52_52;
+        void MR_CALL (* backend_libs__switch_util__func_0)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *);
+        MR_Word backend_libs__switch_util__V_34_34;
+        MR_Word backend_libs__switch_util__V_35_35;
+        MR_Box backend_libs__switch_util__conv2_STATE_VARIABLE_UnsortedTable_10;
+
+        {
+          backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_54, backend_libs__switch_util__TaggedCases_25, backend_libs__switch_util__RepresentCase_2, backend_libs__switch_util__STATE_VARIABLE_StateA_0_3, &backend_libs__switch_util__STATE_VARIABLE_StateA_44_44, backend_libs__switch_util__STATE_VARIABLE_StateB_0_5, &backend_libs__switch_util__STATE_VARIABLE_StateB_45_45, backend_libs__switch_util__STATE_VARIABLE_StateC_0_7, &backend_libs__switch_util__STATE_VARIABLE_StateC_46_46, backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_9, &backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_47_47);
+        }
+        backend_libs__switch_util__func_0 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RepresentCase_2, (MR_Integer) 1)));
+        {
+          backend_libs__switch_util__func_0(((MR_Box) backend_libs__switch_util__RepresentCase_2), ((MR_Box) (backend_libs__switch_util__TaggedCase_24)), &backend_libs__switch_util__CaseRep_31, backend_libs__switch_util__STATE_VARIABLE_StateA_44_44, backend_libs__switch_util__STATE_VARIABLE_StateA_4, backend_libs__switch_util__STATE_VARIABLE_StateB_45_45, backend_libs__switch_util__STATE_VARIABLE_StateB_6, backend_libs__switch_util__STATE_VARIABLE_StateC_46_46, backend_libs__switch_util__STATE_VARIABLE_StateC_8);
+        }
+        backend_libs__switch_util__MainTaggedConsId_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_24, (MR_Integer) 0)));
+        backend_libs__switch_util__OtherTaggedConsIds_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_24, (MR_Integer) 1)));
+        backend_libs__switch_util__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_24, (MR_Integer) 2)));
+        backend_libs__switch_util__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_24, (MR_Integer) 3)));
+        {
+          backend_libs__switch_util__add_string_binary_entry_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_54, backend_libs__switch_util__CaseRep_31, backend_libs__switch_util__MainTaggedConsId_32, backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_47_47, &backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_51_51);
+        }
+        {
+          backend_libs__switch_util__V_52_52 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_52_52, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_5[1]));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_52_52, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0_1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_52_52, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_52_52, 3) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_54));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_52_52, 4) = backend_libs__switch_util__CaseRep_31;
+        }
+        {
+          backend_libs__switch_util__TypeInfo_64_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_64_64, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_64_64, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_64_64, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_54));
+        }
+        {
+          backend_libs__switch_util__TypeInfo_66_66 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_66_66, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_66_66, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_64_64));
+        }
+        {
+          mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__TypeInfo_66_66, backend_libs__switch_util__V_52_52, backend_libs__switch_util__OtherTaggedConsIds_33, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_51_51)), &backend_libs__switch_util__conv2_STATE_VARIABLE_UnsortedTable_10);
+        }
+        *backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_10 = ((MR_Word) backend_libs__switch_util__conv2_STATE_VARIABLE_UnsortedTable_10);
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_106_101_99_116_95_115_111_108_110_95_99_111_110_115_116_115_95_116_111_95_111_110_101_95_115_111_108_110_95_95_91_49_44_32_51_93_95_48_3_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_8,
+  MR_Word backend_libs__switch_util__Solns_5,
+  MR_Word * backend_libs__switch_util__Values_6)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__Solns_5)) == (MR_mktag((MR_Integer) 0)));
+
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__Values_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Solns_5, (MR_Integer) 0)));
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+  MR_Box * backend_libs__switch_util__wrapper_arg_6,
+  MR_Box backend_libs__switch_util__wrapper_arg_7,
+  MR_Box * backend_libs__switch_util__wrapper_arg_8,
+  MR_Box backend_libs__switch_util__wrapper_arg_9,
+  MR_Box * backend_libs__switch_util__wrapper_arg_10)
+{
+  {
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+    MR_Word backend_libs__switch_util__conv4_TaggedConsId_14;
+    MR_Integer backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22;
+    MR_Integer backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24;
+    MR_Integer backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26;
+    MR_Word backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28;
+
+    {
+      backend_libs__switch_util__tag_cons_id_in_int_switch_11_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv4_TaggedConsId_14, ((MR_Integer) backend_libs__switch_util__wrapper_arg_3), &backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22, ((MR_Integer) backend_libs__switch_util__wrapper_arg_5), &backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24, ((MR_Integer) backend_libs__switch_util__wrapper_arg_7), &backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26, ((MR_Word) backend_libs__switch_util__wrapper_arg_9), &backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28);
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv4_TaggedConsId_14));
+    *backend_libs__switch_util__wrapper_arg_4 = ((MR_Box) (backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22));
+    *backend_libs__switch_util__wrapper_arg_6 = ((MR_Box) (backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24));
+    *backend_libs__switch_util__wrapper_arg_8 = ((MR_Box) (backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26));
+    *backend_libs__switch_util__wrapper_arg_10 = ((MR_Box) (backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28));
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_1,
+  MR_Integer backend_libs__switch_util__CaseNum_3,
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+  MR_Word * backend_libs__switch_util__HeadVar__5_5,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_6,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LowerLimit_7,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_8,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_UpperLimit_9,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_0_10,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumValues_11,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_12,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_13)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    if ((backend_libs__switch_util__HeadVar__4_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *backend_libs__switch_util__HeadVar__5_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_13 = backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_12;
+        *backend_libs__switch_util__STATE_VARIABLE_NumValues_11 = backend_libs__switch_util__STATE_VARIABLE_NumValues_0_10;
+        *backend_libs__switch_util__STATE_VARIABLE_UpperLimit_9 = backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_8;
+        *backend_libs__switch_util__STATE_VARIABLE_LowerLimit_7 = backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_6;
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__TypeCtorInfo_81_81;
+        MR_Word backend_libs__switch_util__Case_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__4_4, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__Cases_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__4_4, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__TaggedCase_34;
+        MR_Word backend_libs__switch_util__TaggedCases_35;
+        MR_Word backend_libs__switch_util__MainConsId_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_32, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__OtherConsIds_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_32, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__Goal_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_32, (MR_Integer) 2)));
+        MR_Word backend_libs__switch_util__TaggedMainConsId_43;
+        MR_Word backend_libs__switch_util__TaggedOtherConsIds_44;
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_53_53;
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_54_54;
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_55_55;
+        MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_56_56;
+        MR_Word backend_libs__switch_util__V_57_57;
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_58_58;
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_59_59;
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_60_60;
+        MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_61_61;
+        MR_Word backend_libs__switch_util__V_62_62;
+        MR_Integer backend_libs__switch_util__V_63_63;
+        MR_Box backend_libs__switch_util__conv8_STATE_VARIABLE_LowerLimit_58_58;
+        MR_Box backend_libs__switch_util__conv7_STATE_VARIABLE_UpperLimit_59_59;
+        MR_Box backend_libs__switch_util__conv6_STATE_VARIABLE_NumValues_60_60;
+        MR_Box backend_libs__switch_util__conv5_STATE_VARIABLE_IsIntSwitch_61_61;
+
+        {
+          backend_libs__switch_util__tag_cons_id_in_int_switch_11_p_0(backend_libs__switch_util__ModuleInfo_1, backend_libs__switch_util__MainConsId_40, &backend_libs__switch_util__TaggedMainConsId_43, backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_6, &backend_libs__switch_util__STATE_VARIABLE_LowerLimit_53_53, backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_8, &backend_libs__switch_util__STATE_VARIABLE_UpperLimit_54_54, backend_libs__switch_util__STATE_VARIABLE_NumValues_0_10, &backend_libs__switch_util__STATE_VARIABLE_NumValues_55_55, backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_12, &backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_56_56);
+        }
+        {
+          backend_libs__switch_util__V_57_57 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_9[0]));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0_1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 3) = ((MR_Box) (backend_libs__switch_util__ModuleInfo_1));
+        }
+        backend_libs__switch_util__TypeCtorInfo_81_81 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+        {
+          mercury__list__map_foldl4_11_p_1((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__TypeCtorInfo_81_81, backend_libs__switch_util__TypeCtorInfo_81_81, backend_libs__switch_util__TypeCtorInfo_81_81, (MR_Word) &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0, backend_libs__switch_util__V_57_57, backend_libs__switch_util__OtherConsIds_41, &backend_libs__switch_util__TaggedOtherConsIds_44, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_LowerLimit_53_53)), &backend_libs__switch_util__conv8_STATE_VARIABLE_LowerLimit_58_58, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_UpperLimit_54_54)), &backend_libs__switch_util__conv7_STATE_VARIABLE_UpperLimit_59_59, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_NumValues_55_55)), &backend_libs__switch_util__conv6_STATE_VARIABLE_NumValues_60_60, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_56_56)), &backend_libs__switch_util__conv5_STATE_VARIABLE_IsIntSwitch_61_61);
+        }
+        backend_libs__switch_util__STATE_VARIABLE_LowerLimit_58_58 = ((MR_Integer) backend_libs__switch_util__conv8_STATE_VARIABLE_LowerLimit_58_58);
+        backend_libs__switch_util__STATE_VARIABLE_UpperLimit_59_59 = ((MR_Integer) backend_libs__switch_util__conv7_STATE_VARIABLE_UpperLimit_59_59);
+        backend_libs__switch_util__STATE_VARIABLE_NumValues_60_60 = ((MR_Integer) backend_libs__switch_util__conv6_STATE_VARIABLE_NumValues_60_60);
+        backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_61_61 = ((MR_Word) backend_libs__switch_util__conv5_STATE_VARIABLE_IsIntSwitch_61_61);
+        backend_libs__switch_util__V_62_62 = (MR_Word) backend_libs__switch_util__CaseNum_3;
+        {
+          backend_libs__switch_util__TaggedCase_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_34, 0) = ((MR_Box) (backend_libs__switch_util__TaggedMainConsId_43));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_34, 1) = ((MR_Box) (backend_libs__switch_util__TaggedOtherConsIds_44));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_34, 2) = ((MR_Box) (backend_libs__switch_util__V_62_62));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_34, 3) = ((MR_Box) (backend_libs__switch_util__Goal_42));
+        }
+        backend_libs__switch_util__V_63_63 = (backend_libs__switch_util__CaseNum_3 + (MR_Integer) 1);
+        {
+          backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0(backend_libs__switch_util__ModuleInfo_1, backend_libs__switch_util__V_63_63, backend_libs__switch_util__Cases_33, &backend_libs__switch_util__TaggedCases_35, backend_libs__switch_util__STATE_VARIABLE_LowerLimit_58_58, backend_libs__switch_util__STATE_VARIABLE_LowerLimit_7, backend_libs__switch_util__STATE_VARIABLE_UpperLimit_59_59, backend_libs__switch_util__STATE_VARIABLE_UpperLimit_9, backend_libs__switch_util__STATE_VARIABLE_NumValues_60_60, backend_libs__switch_util__STATE_VARIABLE_NumValues_11, backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_61_61, backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_13);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *backend_libs__switch_util__HeadVar__5_5 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__TaggedCase_34));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__TaggedCases_35));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+    MR_Word backend_libs__switch_util__conv0_TaggedConsId_6;
+
+    {
+      backend_libs__switch_util__tag_cons_id_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_TaggedConsId_6);
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_TaggedConsId_6));
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_1,
+  MR_Integer backend_libs__switch_util__CaseNum_3,
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+  MR_Word * backend_libs__switch_util__HeadVar__5_5)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    if ((backend_libs__switch_util__HeadVar__4_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *backend_libs__switch_util__HeadVar__5_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word backend_libs__switch_util__Case_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__4_4, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__Cases_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__4_4, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__TaggedCase_14;
+        MR_Word backend_libs__switch_util__TaggedCases_15;
+        MR_Word backend_libs__switch_util__MainConsId_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_12, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__OtherConsIds_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_12, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__Goal_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_12, (MR_Integer) 2)));
+        MR_Word backend_libs__switch_util__TaggedMainConsId_19;
+        MR_Word backend_libs__switch_util__TaggedOtherConsIds_20;
+        MR_Word backend_libs__switch_util__V_21_21;
+        MR_Word backend_libs__switch_util__V_22_22;
+        MR_Integer backend_libs__switch_util__V_23_23;
+        MR_Word backend_libs__switch_util__ConsTag_32;
+
+        {
+          backend_libs__switch_util__ConsTag_32 = hlds__hlds_code_util__cons_id_to_tag_2_f_0(backend_libs__switch_util__ModuleInfo_1, backend_libs__switch_util__MainConsId_16);
+        }
+        {
+          backend_libs__switch_util__TaggedMainConsId_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedMainConsId_19, 0) = ((MR_Box) (backend_libs__switch_util__MainConsId_16));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedMainConsId_19, 1) = ((MR_Box) (backend_libs__switch_util__ConsTag_32));
+        }
+        {
+          backend_libs__switch_util__V_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_21_21, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_7[2]));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_21_21, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0_1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_21_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_21_21, 3) = ((MR_Box) (backend_libs__switch_util__ModuleInfo_1));
+        }
+        {
+          mercury__list__map_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__V_21_21, backend_libs__switch_util__OtherConsIds_17, &backend_libs__switch_util__TaggedOtherConsIds_20);
+        }
+        backend_libs__switch_util__V_22_22 = (MR_Word) backend_libs__switch_util__CaseNum_3;
+        {
+          backend_libs__switch_util__TaggedCase_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_14, 0) = ((MR_Box) (backend_libs__switch_util__TaggedMainConsId_19));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_14, 1) = ((MR_Box) (backend_libs__switch_util__TaggedOtherConsIds_20));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_14, 2) = ((MR_Box) (backend_libs__switch_util__V_22_22));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_14, 3) = ((MR_Box) (backend_libs__switch_util__Goal_18));
+        }
+        backend_libs__switch_util__V_23_23 = (backend_libs__switch_util__CaseNum_3 + (MR_Integer) 1);
+        {
+          backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0(backend_libs__switch_util__ModuleInfo_1, backend_libs__switch_util__V_23_23, backend_libs__switch_util__Cases_13, &backend_libs__switch_util__TaggedCases_15);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *backend_libs__switch_util__HeadVar__5_5 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__TaggedCase_14));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__TaggedCases_15));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_2(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+    MR_Word backend_libs__switch_util__conv9_TaggedConsId_6;
+
+    {
+      backend_libs__switch_util__tag_cons_id_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv9_TaggedConsId_6);
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv9_TaggedConsId_6));
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+  MR_Box * backend_libs__switch_util__wrapper_arg_6,
+  MR_Box backend_libs__switch_util__wrapper_arg_7,
+  MR_Box * backend_libs__switch_util__wrapper_arg_8,
+  MR_Box backend_libs__switch_util__wrapper_arg_9,
+  MR_Box * backend_libs__switch_util__wrapper_arg_10)
+{
+  {
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+    MR_Word backend_libs__switch_util__conv4_TaggedConsId_14;
+    MR_Integer backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22;
+    MR_Integer backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24;
+    MR_Integer backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26;
+    MR_Word backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28;
+
+    {
+      backend_libs__switch_util__tag_cons_id_in_int_switch_11_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv4_TaggedConsId_14, ((MR_Integer) backend_libs__switch_util__wrapper_arg_3), &backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22, ((MR_Integer) backend_libs__switch_util__wrapper_arg_5), &backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24, ((MR_Integer) backend_libs__switch_util__wrapper_arg_7), &backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26, ((MR_Word) backend_libs__switch_util__wrapper_arg_9), &backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28);
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv4_TaggedConsId_14));
+    *backend_libs__switch_util__wrapper_arg_4 = ((MR_Box) (backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22));
+    *backend_libs__switch_util__wrapper_arg_6 = ((MR_Box) (backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24));
+    *backend_libs__switch_util__wrapper_arg_8 = ((MR_Box) (backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26));
+    *backend_libs__switch_util__wrapper_arg_10 = ((MR_Box) (backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28));
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__3_3,
+  MR_Word * backend_libs__switch_util__HeadVar__4_4,
+  MR_Word * backend_libs__switch_util__MaybeIntSwitchLimits_5)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    if ((backend_libs__switch_util__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *backend_libs__switch_util__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.tag_cases\'/5", (MR_String) "no cases");
+          return;
+        }
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__Case_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__Cases_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__TaggedCase_16;
+        MR_Word backend_libs__switch_util__TaggedCases_17;
+        MR_Word backend_libs__switch_util__MainConsId_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_14, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__OtherConsIds_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_14, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__Goal_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_14, (MR_Integer) 2)));
+        MR_Word backend_libs__switch_util__MainConsTag_22;
+        MR_Word backend_libs__switch_util__TaggedMainConsId_23;
+        MR_Integer backend_libs__switch_util__IntTag_24;
+
+        {
+          backend_libs__switch_util__MainConsTag_22 = hlds__hlds_code_util__cons_id_to_tag_2_f_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__MainConsId_19);
+        }
+        {
+          backend_libs__switch_util__TaggedMainConsId_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedMainConsId_23, 0) = ((MR_Box) (backend_libs__switch_util__MainConsId_19));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedMainConsId_23, 1) = ((MR_Box) (backend_libs__switch_util__MainConsTag_22));
+        }
+        backend_libs__switch_util__succeeded = ((((MR_tag((MR_Word) backend_libs__switch_util__MainConsTag_22)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__MainConsTag_22, (MR_Integer) 0)))) == (MR_Integer) 0)));
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__IntTag_24 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__MainConsTag_22, (MR_Integer) 1)));
+            {
+              MR_Word backend_libs__switch_util__TypeCtorInfo_58_58;
+              MR_Word backend_libs__switch_util__TaggedOtherConsIds_25;
+              MR_Integer backend_libs__switch_util__LowerLimit1_26;
+              MR_Integer backend_libs__switch_util__UpperLimit1_27;
+              MR_Integer backend_libs__switch_util__NumValues1_28;
+              MR_Word backend_libs__switch_util__IsIntSwitch1_29;
+              MR_Integer backend_libs__switch_util__LowerLimit_30;
+              MR_Integer backend_libs__switch_util__UpperLimit_31;
+              MR_Integer backend_libs__switch_util__NumValues_32;
+              MR_Word backend_libs__switch_util__IsIntSwitch_33;
+              MR_Word backend_libs__switch_util__V_34_34;
+              MR_Box backend_libs__switch_util__conv8_LowerLimit1_26;
+              MR_Box backend_libs__switch_util__conv7_UpperLimit1_27;
+              MR_Box backend_libs__switch_util__conv6_NumValues1_28;
+              MR_Box backend_libs__switch_util__conv5_IsIntSwitch1_29;
+
+              {
+                backend_libs__switch_util__V_34_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_34_34, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_9[0]));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_34_34, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_1));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_34_34, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_34_34, 3) = ((MR_Box) (backend_libs__switch_util__HeadVar__1_1));
+              }
+              backend_libs__switch_util__TypeCtorInfo_58_58 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+              {
+                mercury__list__map_foldl4_11_p_1((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__TypeCtorInfo_58_58, backend_libs__switch_util__TypeCtorInfo_58_58, backend_libs__switch_util__TypeCtorInfo_58_58, (MR_Word) &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0, backend_libs__switch_util__V_34_34, backend_libs__switch_util__OtherConsIds_20, &backend_libs__switch_util__TaggedOtherConsIds_25, ((MR_Box) (backend_libs__switch_util__IntTag_24)), &backend_libs__switch_util__conv8_LowerLimit1_26, ((MR_Box) (backend_libs__switch_util__IntTag_24)), &backend_libs__switch_util__conv7_UpperLimit1_27, ((MR_Box) ((MR_Integer) 1)), &backend_libs__switch_util__conv6_NumValues1_28, ((MR_Box) ((MR_Integer) 0)), &backend_libs__switch_util__conv5_IsIntSwitch1_29);
+              }
+              backend_libs__switch_util__LowerLimit1_26 = ((MR_Integer) backend_libs__switch_util__conv8_LowerLimit1_26);
+              backend_libs__switch_util__UpperLimit1_27 = ((MR_Integer) backend_libs__switch_util__conv7_UpperLimit1_27);
+              backend_libs__switch_util__NumValues1_28 = ((MR_Integer) backend_libs__switch_util__conv6_NumValues1_28);
+              backend_libs__switch_util__IsIntSwitch1_29 = ((MR_Word) backend_libs__switch_util__conv5_IsIntSwitch1_29);
+              {
+                backend_libs__switch_util__TaggedCase_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 0) = ((MR_Box) (backend_libs__switch_util__TaggedMainConsId_23));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 1) = ((MR_Box) (backend_libs__switch_util__TaggedOtherConsIds_25));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 2) = ((MR_Box) (((MR_Box) ((MR_Integer) 0))));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 3) = ((MR_Box) (backend_libs__switch_util__Goal_21));
+              }
+              {
+                backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0(backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1, backend_libs__switch_util__Cases_15, &backend_libs__switch_util__TaggedCases_17, backend_libs__switch_util__LowerLimit1_26, &backend_libs__switch_util__LowerLimit_30, backend_libs__switch_util__UpperLimit1_27, &backend_libs__switch_util__UpperLimit_31, backend_libs__switch_util__NumValues1_28, &backend_libs__switch_util__NumValues_32, backend_libs__switch_util__IsIntSwitch1_29, &backend_libs__switch_util__IsIntSwitch_33);
+              }
+              switch (backend_libs__switch_util__IsIntSwitch_33) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    *backend_libs__switch_util__MaybeIntSwitchLimits_5 = base;
+                    MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__LowerLimit_30));
+                    MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__UpperLimit_31));
+                    MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (backend_libs__switch_util__NumValues_32));
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *backend_libs__switch_util__MaybeIntSwitchLimits_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  break;
+              }
+            }
+          }
+        else
+          {
+            MR_Word backend_libs__switch_util__V_41_41;
+            MR_Word backend_libs__switch_util__TaggedOtherConsIds_45;
+
+            {
+              backend_libs__switch_util__V_41_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_41_41, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_7[2]));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_41_41, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_2));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_41_41, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_41_41, 3) = ((MR_Box) (backend_libs__switch_util__HeadVar__1_1));
+            }
+            {
+              mercury__list__map_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__V_41_41, backend_libs__switch_util__OtherConsIds_20, &backend_libs__switch_util__TaggedOtherConsIds_45);
+            }
+            {
+              backend_libs__switch_util__TaggedCase_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 0) = ((MR_Box) (backend_libs__switch_util__TaggedMainConsId_23));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 1) = ((MR_Box) (backend_libs__switch_util__TaggedOtherConsIds_45));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 2) = ((MR_Box) (((MR_Box) ((MR_Integer) 0))));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 3) = ((MR_Box) (backend_libs__switch_util__Goal_21));
+            }
+            {
+              backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0(backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1, backend_libs__switch_util__Cases_15, &backend_libs__switch_util__TaggedCases_17);
+            }
+            *backend_libs__switch_util__MaybeIntSwitchLimits_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *backend_libs__switch_util__HeadVar__4_4 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__TaggedCase_16));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__TaggedCases_17));
+        }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__build_ptag_case_rev_map__1409__1_3_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_42,
+  MR_Word backend_libs__switch_util__Case_14,
+  MR_Word backend_libs__switch_util__OldCase_21)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_42, backend_libs__switch_util__Case_14, backend_libs__switch_util__OldCase_21);
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1304__1_2_p_0(
+  MR_Word backend_libs__switch_util__StagLoc_21,
+  MR_Word backend_libs__switch_util__HeadVar__2_74)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__StagLoc_21 == backend_libs__switch_util__HeadVar__2_74);
+
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1318__1_2_p_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_63,
+  MR_Word backend_libs__switch_util__StagLoc_94)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__StagLoc_94 == backend_libs__switch_util__HeadVar__1_63);
+
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____table_size_upgrade_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____table_size_upgrade_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____switch_category_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____switch_category_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____string_hash_slot_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_14,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_12 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__CastY_13 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_12 == backend_libs__switch_util__CastY_13);
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String backend_libs__switch_util__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer backend_libs__switch_util__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Box backend_libs__switch_util__V_6_6 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2));
+        MR_String backend_libs__switch_util__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer backend_libs__switch_util__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Box backend_libs__switch_util__V_9_9 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 2));
+        MR_Word backend_libs__switch_util__V_10_10;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&backend_libs__switch_util__V_10_10, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_7_7);
+        }
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_10_10 == (MR_Integer) 0);
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+        if (backend_libs__switch_util__succeeded)
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_10_10;
+        else
+          {
+            MR_Word backend_libs__switch_util__V_11_11;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_11_11, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_8_8);
+            }
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_11_11 == (MR_Integer) 0);
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+            if (backend_libs__switch_util__succeeded)
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_11_11;
+            else
+              {
+                mercury__builtin__compare_3_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_14, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_6_6, backend_libs__switch_util__V_9_9);
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____string_hash_slot_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_11,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+    if (backend_libs__switch_util__succeeded)
+      backend_libs__switch_util__succeeded = MR_TRUE;
+    else
+      {
+        MR_String backend_libs__switch_util__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Box backend_libs__switch_util__V_5_5 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 2));
+        MR_String backend_libs__switch_util__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer backend_libs__switch_util__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Box backend_libs__switch_util__V_8_8 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2));
+
+        backend_libs__switch_util__succeeded = (strcmp(backend_libs__switch_util__V_3_3, backend_libs__switch_util__V_6_6) == 0);
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_4_4 == backend_libs__switch_util__V_7_7);
+            if (backend_libs__switch_util__succeeded)
+              {
+                backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_11, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_8_8);
+              }
+          }
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_map_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      mercury__tree234____Compare____tree234_2_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_6, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_map_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_5, backend_libs__switch_util__Cast_HeadVar1_3, backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_list_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_9_9;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      backend_libs__switch_util__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+    }
+    {
+      mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_9_9, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_4, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_list_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_8_8;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+    }
+    {
+      backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_8_8, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_3, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____soln_consts_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_19,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_17 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__CastY_18 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_17 == backend_libs__switch_util__CastY_18);
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word backend_libs__switch_util__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+
+            {
+              mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_for_Rval_19, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_27_27, backend_libs__switch_util__V_5_5);
+            }
+          }
+        else
+          *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 1;
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+          *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 2;
+        else
+          {
+            MR_Word backend_libs__switch_util__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__V_16_16;
+
+            {
+              mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_for_Rval_19, &backend_libs__switch_util__V_16_16, backend_libs__switch_util__V_29_29, backend_libs__switch_util__V_14_14);
+            }
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_16_16 == (MR_Integer) 0);
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+            if (backend_libs__switch_util__succeeded)
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_16_16;
+            else
+              {
+                MR_Word backend_libs__switch_util__TypeInfo_23_23;
+
+                {
+                  backend_libs__switch_util__TypeInfo_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_19));
+                }
+                {
+                  mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_23_23, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__V_28_28, (MR_Word) backend_libs__switch_util__V_15_15);
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____soln_consts_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_11,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+    if (backend_libs__switch_util__succeeded)
+      backend_libs__switch_util__succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word backend_libs__switch_util__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_4_4;
+
+        backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+            {
+              backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_for_Rval_11, backend_libs__switch_util__V_3_3, backend_libs__switch_util__V_4_4);
+            }
+          }
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__TypeCtorInfo_14_14;
+        MR_Word backend_libs__switch_util__TypeInfo_17_17;
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_7_7;
+        MR_Word backend_libs__switch_util__V_8_8;
+
+        backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+            backend_libs__switch_util__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+            backend_libs__switch_util__TypeCtorInfo_14_14 = (MR_Word) &mercury__list__list__type_ctor_info_list_1;
+            {
+              backend_libs__switch_util__TypeInfo_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_17_17, 0) = ((MR_Box) (backend_libs__switch_util__TypeCtorInfo_14_14));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_17_17, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_11));
+            }
+            {
+              backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_for_Rval_11, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_7_7);
+            }
+            if (backend_libs__switch_util__succeeded)
+              {
+                backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_17_17, (MR_Word) backend_libs__switch_util__V_6_6, (MR_Word) backend_libs__switch_util__V_8_8);
+              }
+          }
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_count_map_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[2], backend_libs__switch_util__HeadVar__1_1, ((MR_Box) (backend_libs__switch_util__Cast_HeadVar1_4)), ((MR_Box) (backend_libs__switch_util__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_count_map_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[2], ((MR_Box) (backend_libs__switch_util__Cast_HeadVar1_3)), ((MR_Box) (backend_libs__switch_util__Cast_HeadVar2_4)));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_17,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_15 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__CastY_16 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_15 == backend_libs__switch_util__CastY_16);
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer backend_libs__switch_util__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Integer backend_libs__switch_util__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer backend_libs__switch_util__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word backend_libs__switch_util__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word backend_libs__switch_util__V_12_12;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_12_12, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_8_8);
+        }
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_12_12 == (MR_Integer) 0);
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+        if (backend_libs__switch_util__succeeded)
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_12_12;
+        else
+          {
+            MR_Word backend_libs__switch_util__V_13_13;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_13_13, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_9_9);
+            }
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_13_13 == (MR_Integer) 0);
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+            if (backend_libs__switch_util__succeeded)
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_13_13;
+            else
+              {
+                MR_Word backend_libs__switch_util__V_14_14;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_1[3], &backend_libs__switch_util__V_14_14, ((MR_Box) (backend_libs__switch_util__V_6_6)), ((MR_Box) (backend_libs__switch_util__V_10_10)));
+                }
+                backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_14_14 == (MR_Integer) 0);
+                backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+                if (backend_libs__switch_util__succeeded)
+                  *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_14_14;
+                else
+                  {
+                    backend_libs__switch_util____Compare____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_17, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_7_7, backend_libs__switch_util__V_11_11);
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_13,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_11 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+    MR_Integer backend_libs__switch_util__CastY_12 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_11 == backend_libs__switch_util__CastY_12);
+    if (backend_libs__switch_util__succeeded)
+      backend_libs__switch_util__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word backend_libs__switch_util__TypeInfo_14_14;
+        MR_Integer backend_libs__switch_util__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Integer backend_libs__switch_util__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer backend_libs__switch_util__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word backend_libs__switch_util__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 3)));
+
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_3_3 == backend_libs__switch_util__V_7_7);
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_4_4 == backend_libs__switch_util__V_8_8);
+            if (backend_libs__switch_util__succeeded)
+              {
+                backend_libs__switch_util__TypeInfo_14_14 = (MR_Word) &backend_libs__switch_util_scalar_common_1[3];
+                {
+                  backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0(backend_libs__switch_util__TypeInfo_14_14, ((MR_Box) (backend_libs__switch_util__V_5_5)), ((MR_Box) (backend_libs__switch_util__V_9_9)));
+                }
+                if (backend_libs__switch_util__succeeded)
+                  {
+                    backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_13, backend_libs__switch_util__V_6_6, backend_libs__switch_util__V_10_10);
+                  }
+              }
+          }
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_8_8;
+    MR_Word backend_libs__switch_util__TypeInfo_10_10;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      backend_libs__switch_util__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+    }
+    {
+      backend_libs__switch_util__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_10_10, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_10_10, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+    }
+    {
+      mercury__tree234____Compare____tree234_2_0(backend_libs__switch_util__TypeInfo_8_8, backend_libs__switch_util__TypeInfo_10_10, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_4, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_7_7;
+    MR_Word backend_libs__switch_util__TypeInfo_9_9;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+    }
+    {
+      backend_libs__switch_util__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+    }
+    {
+      backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0(backend_libs__switch_util__TypeInfo_7_7, backend_libs__switch_util__TypeInfo_9_9, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_3, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_map_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_9_9;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      backend_libs__switch_util__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+    }
+    {
+      mercury__tree234____Compare____tree234_2_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_9_9, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_map_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_8_8;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+    }
+    {
+      backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_8_8, backend_libs__switch_util__Cast_HeadVar1_3, backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_list_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_8_8;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      backend_libs__switch_util__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_entry_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+    }
+    {
+      mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_8_8, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_4, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_list_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_7_7;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_entry_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+    }
+    {
+      backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_7_7, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_3, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_list_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_8_8;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      backend_libs__switch_util__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+    }
+    {
+      mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_8_8, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_4, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_list_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_7_7;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+    }
+    {
+      backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_7_7, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_3, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_entry_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_14,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_12 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__CastY_13 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_12 == backend_libs__switch_util__CastY_13);
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer backend_libs__switch_util__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word backend_libs__switch_util__V_10_10;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_10_10, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_7_7);
+        }
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_10_10 == (MR_Integer) 0);
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+        if (backend_libs__switch_util__succeeded)
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_10_10;
+        else
+          {
+            MR_Word backend_libs__switch_util__V_11_11;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_1[3], &backend_libs__switch_util__V_11_11, ((MR_Box) (backend_libs__switch_util__V_5_5)), ((MR_Box) (backend_libs__switch_util__V_8_8)));
+            }
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_11_11 == (MR_Integer) 0);
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+            if (backend_libs__switch_util__succeeded)
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_11_11;
+            else
+              {
+                backend_libs__switch_util____Compare____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_14, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_6_6, backend_libs__switch_util__V_9_9);
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_entry_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_11,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+    if (backend_libs__switch_util__succeeded)
+      backend_libs__switch_util__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word backend_libs__switch_util__TypeInfo_12_12;
+        MR_Integer backend_libs__switch_util__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Integer backend_libs__switch_util__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_3_3 == backend_libs__switch_util__V_6_6);
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__TypeInfo_12_12 = (MR_Word) &backend_libs__switch_util_scalar_common_1[3];
+            {
+              backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0(backend_libs__switch_util__TypeInfo_12_12, ((MR_Box) (backend_libs__switch_util__V_4_4)), ((MR_Box) (backend_libs__switch_util__V_7_7)));
+            }
+            if (backend_libs__switch_util__succeeded)
+              {
+                backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_11, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_8_8);
+              }
+          }
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_entry_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_11,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer backend_libs__switch_util__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_8_8;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_8_8, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_6_6);
+        }
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_8_8 == (MR_Integer) 0);
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+        if (backend_libs__switch_util__succeeded)
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_8_8;
+        else
+          {
+            backend_libs__switch_util____Compare____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_11, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_7_7);
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_entry_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_9,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_7 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+    MR_Integer backend_libs__switch_util__CastY_8 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_7 == backend_libs__switch_util__CastY_8);
+    if (backend_libs__switch_util__succeeded)
+      backend_libs__switch_util__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer backend_libs__switch_util__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer backend_libs__switch_util__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_3_3 == backend_libs__switch_util__V_5_5);
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_9, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_6_6);
+          }
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_11,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_8_8;
+        MR_Integer backend_libs__switch_util__V_16_16 = (MR_Integer) backend_libs__switch_util__V_4_4;
+        MR_Integer backend_libs__switch_util__V_17_17 = (MR_Integer) backend_libs__switch_util__V_6_6;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_8_8, backend_libs__switch_util__V_16_16, backend_libs__switch_util__V_17_17);
+        }
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_8_8 == (MR_Integer) 0);
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+        if (backend_libs__switch_util__succeeded)
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_8_8;
+        else
+          {
+            {
+              mercury__tree234____Compare____tree234_2_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_11, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_7_7);
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_1_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_9,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_7 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+    MR_Integer backend_libs__switch_util__CastY_8 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_7 == backend_libs__switch_util__CastY_8);
+    if (backend_libs__switch_util__succeeded)
+      backend_libs__switch_util__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word backend_libs__switch_util__TypeCtorInfo_10_10;
+        MR_Word backend_libs__switch_util__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_3_3 == backend_libs__switch_util__V_5_5);
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__TypeCtorInfo_10_10 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+            {
+              backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0(backend_libs__switch_util__TypeCtorInfo_10_10, backend_libs__switch_util__TypeInfo_for_CaseRep_9, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_6_6);
+            }
+          }
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____need_range_check_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_range_check_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____need_bit_vec_check_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_bit_vec_check_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____maybe_int_switch_info_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_18 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__CastY_19 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_18 == backend_libs__switch_util__CastY_19);
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if ((backend_libs__switch_util__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      if ((backend_libs__switch_util__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+      else
+        *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 2;
+    else
+      {
+        MR_Integer backend_libs__switch_util__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Integer backend_libs__switch_util__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer backend_libs__switch_util__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+
+        if ((backend_libs__switch_util__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            MR_Integer backend_libs__switch_util__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Integer backend_libs__switch_util__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Integer backend_libs__switch_util__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 2)));
+            MR_Word backend_libs__switch_util__V_10_10;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_10_10, backend_libs__switch_util__V_25_25, backend_libs__switch_util__V_7_7);
+            }
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_10_10 == (MR_Integer) 0);
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+            if (backend_libs__switch_util__succeeded)
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_10_10;
+            else
+              {
+                MR_Word backend_libs__switch_util__V_11_11;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_11_11, backend_libs__switch_util__V_24_24, backend_libs__switch_util__V_8_8);
+                }
+                backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_11_11 == (MR_Integer) 0);
+                backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+                if (backend_libs__switch_util__succeeded)
+                  *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_11_11;
+                else
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_23_23, backend_libs__switch_util__V_9_9);
+                  }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____maybe_int_switch_info_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_11 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+    MR_Integer backend_libs__switch_util__CastY_12 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_11 == backend_libs__switch_util__CastY_12);
+    if (backend_libs__switch_util__succeeded)
+      backend_libs__switch_util__succeeded = MR_TRUE;
+    else
+    if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+        MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastY_10 == backend_libs__switch_util__CastX_9);
+      }
+    else
+      {
+        MR_Integer backend_libs__switch_util__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer backend_libs__switch_util__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Integer backend_libs__switch_util__V_6_6;
+        MR_Integer backend_libs__switch_util__V_7_7;
+        MR_Integer backend_libs__switch_util__V_8_8;
+
+        backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+            backend_libs__switch_util__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+            backend_libs__switch_util__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_3_3 == backend_libs__switch_util__V_6_6);
+            if (backend_libs__switch_util__succeeded)
+              {
+                backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_4_4 == backend_libs__switch_util__V_7_7);
+                if (backend_libs__switch_util__succeeded)
+                  backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_5_5 == backend_libs__switch_util__V_8_8);
+              }
+          }
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____may_use_smart_indexing_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____may_use_smart_indexing_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util____Compare____is_int_switch_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____is_int_switch_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____case_id_ptags_map_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[1], backend_libs__switch_util__HeadVar__1_1, ((MR_Box) (backend_libs__switch_util__Cast_HeadVar1_4)), ((MR_Box) (backend_libs__switch_util__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_id_ptags_map_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+    {
+      backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[1], ((MR_Box) (backend_libs__switch_util__Cast_HeadVar1_3)), ((MR_Box) (backend_libs__switch_util__Cast_HeadVar2_4)));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_several_llds_0_0(
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_8_8;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_1[2], &backend_libs__switch_util__V_8_8, ((MR_Box) (backend_libs__switch_util__V_4_4)), ((MR_Box) (backend_libs__switch_util__V_6_6)));
+        }
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_8_8 == (MR_Integer) 0);
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+        if (backend_libs__switch_util__succeeded)
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_8_8;
+        else
+          {
+            MR_Integer backend_libs__switch_util__V_13_13 = (MR_Integer) backend_libs__switch_util__V_5_5;
+            MR_Integer backend_libs__switch_util__V_14_14 = (MR_Integer) backend_libs__switch_util__V_7_7;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_13_13, backend_libs__switch_util__V_14_14);
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_several_llds_0_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_7 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+    MR_Integer backend_libs__switch_util__CastY_8 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_7 == backend_libs__switch_util__CastY_8);
+    if (backend_libs__switch_util__succeeded)
+      backend_libs__switch_util__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word backend_libs__switch_util__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &backend_libs__switch_util_scalar_common_1[2], ((MR_Box) (backend_libs__switch_util__V_3_3)), ((MR_Box) (backend_libs__switch_util__V_5_5)));
+        }
+        if (backend_libs__switch_util__succeeded)
+          backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_4_4 == backend_libs__switch_util__V_6_6);
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_3_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_Key_19,
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_20,
+  MR_Word backend_libs__switch_util__TypeInfo_for_SeveralInfo_21,
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_17 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+    MR_Integer backend_libs__switch_util__CastY_18 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_17 == backend_libs__switch_util__CastY_18);
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word backend_libs__switch_util__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word backend_libs__switch_util__TypeInfo_27_27;
+            MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+
+            {
+              backend_libs__switch_util__TypeInfo_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_27_27, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_27_27, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_20));
+            }
+            {
+              mercury__tree234____Compare____tree234_2_0(backend_libs__switch_util__TypeInfo_for_Key_19, backend_libs__switch_util__TypeInfo_27_27, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__V_30_30, (MR_Word) backend_libs__switch_util__V_5_5);
+            }
+          }
+        else
+          *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 1;
+      }
+    else
+      {
+        MR_Box backend_libs__switch_util__V_31_31 = (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1));
+        MR_Word backend_libs__switch_util__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+          *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 2;
+        else
+          {
+            MR_Word backend_libs__switch_util__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Box backend_libs__switch_util__V_15_15 = (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1));
+            MR_Word backend_libs__switch_util__V_16_16;
+            MR_Word backend_libs__switch_util__TypeInfo_23_23;
+
+            {
+              backend_libs__switch_util__TypeInfo_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_20));
+            }
+            {
+              mercury__tree234____Compare____tree234_2_0(backend_libs__switch_util__TypeInfo_for_Key_19, backend_libs__switch_util__TypeInfo_23_23, &backend_libs__switch_util__V_16_16, (MR_Word) backend_libs__switch_util__V_32_32, (MR_Word) backend_libs__switch_util__V_14_14);
+            }
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_16_16 == (MR_Integer) 0);
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+            if (backend_libs__switch_util__succeeded)
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_16_16;
+            else
+              {
+                mercury__builtin__compare_3_p_0(backend_libs__switch_util__TypeInfo_for_SeveralInfo_21, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_31_31, backend_libs__switch_util__V_15_15);
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_3_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_Key_11,
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_12,
+  MR_Word backend_libs__switch_util__TypeInfo_for_SeveralInfo_13,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+    if (backend_libs__switch_util__succeeded)
+      backend_libs__switch_util__succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word backend_libs__switch_util__TypeCtorInfo_14_14;
+        MR_Word backend_libs__switch_util__TypeInfo_15_15;
+        MR_Word backend_libs__switch_util__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__V_4_4;
+
+        backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+            backend_libs__switch_util__TypeCtorInfo_14_14 = (MR_Word) &mercury__list__list__type_ctor_info_list_1;
+            {
+              backend_libs__switch_util__TypeInfo_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_15_15, 0) = ((MR_Box) (backend_libs__switch_util__TypeCtorInfo_14_14));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_15_15, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_12));
+            }
+            {
+              backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0(backend_libs__switch_util__TypeInfo_for_Key_11, backend_libs__switch_util__TypeInfo_15_15, (MR_Word) backend_libs__switch_util__V_3_3, (MR_Word) backend_libs__switch_util__V_4_4);
+            }
+          }
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__TypeCtorInfo_18_18;
+        MR_Word backend_libs__switch_util__TypeInfo_19_19;
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Box backend_libs__switch_util__V_6_6 = (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1));
+        MR_Word backend_libs__switch_util__V_7_7;
+        MR_Box backend_libs__switch_util__V_8_8;
+
+        backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+            backend_libs__switch_util__V_8_8 = (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1));
+            backend_libs__switch_util__TypeCtorInfo_18_18 = (MR_Word) &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1;
+            {
+              backend_libs__switch_util__TypeInfo_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_19_19, 0) = ((MR_Box) (backend_libs__switch_util__TypeCtorInfo_18_18));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_19_19, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_12));
+            }
+            {
+              backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0(backend_libs__switch_util__TypeInfo_for_Key_11, backend_libs__switch_util__TypeInfo_19_19, (MR_Word) backend_libs__switch_util__V_5_5, (MR_Word) backend_libs__switch_util__V_7_7);
+            }
+            if (backend_libs__switch_util__succeeded)
+              {
+                backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0(backend_libs__switch_util__TypeInfo_for_SeveralInfo_13, backend_libs__switch_util__V_6_6, backend_libs__switch_util__V_8_8);
+              }
+          }
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__build_ptag_case_rev_map_4_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util__IntroducedFrom__pred__build_ptag_case_rev_map__1409__1_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 5))));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__build_ptag_case_rev_map_4_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_42,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_RevMap_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded;
+
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *backend_libs__switch_util__STATE_VARIABLE_RevMap_4 = backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3;
+        else
+          {
+            MR_Word backend_libs__switch_util__Entry_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__Entries_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer backend_libs__switch_util__Ptag_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Entry_9, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__Case_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Entry_9, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__CountSecTagLocn_15;
+            MR_Integer backend_libs__switch_util__Count_16;
+            MR_Word backend_libs__switch_util__V_25_25;
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_RevMap_36_36;
+            MR_Box backend_libs__switch_util__conv0_V_25_25;
+
+            {
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__HeadVar__2_2, backend_libs__switch_util__Ptag_13, &backend_libs__switch_util__conv0_V_25_25);
+            }
+            backend_libs__switch_util__V_25_25 = ((MR_Word) backend_libs__switch_util__conv0_V_25_25);
+            backend_libs__switch_util__CountSecTagLocn_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_25_25, (MR_Integer) 0)));
+            backend_libs__switch_util__Count_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_25_25, (MR_Integer) 1)));
+            switch (backend_libs__switch_util__CountSecTagLocn_15) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 2:
+              case (MR_Integer) 3:
+                {
+                  MR_Word backend_libs__switch_util__TypeInfo_60_60;
+                  MR_Word backend_libs__switch_util__TypeInfo_62_62;
+                  MR_Word backend_libs__switch_util__NewEntry_41;
+                  MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_RevMap_36_36;
+
+                  {
+                    backend_libs__switch_util__NewEntry_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_41, 0) = ((MR_Box) (backend_libs__switch_util__Count_16));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_41, 1) = ((MR_Box) (backend_libs__switch_util__Ptag_13));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_41, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_41, 3) = ((MR_Box) (backend_libs__switch_util__Case_14));
+                  }
+                  {
+                    backend_libs__switch_util__TypeInfo_60_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_60_60, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_60_60, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+                  }
+                  {
+                    backend_libs__switch_util__TypeInfo_62_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_62_62, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_62_62, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+                  }
+                  {
+                    mercury__map__det_insert_4_p_0(backend_libs__switch_util__TypeInfo_60_60, backend_libs__switch_util__TypeInfo_62_62, ((MR_Box) (backend_libs__switch_util__Case_14)), ((MR_Box) (backend_libs__switch_util__NewEntry_41)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3, &backend_libs__switch_util__conv1_STATE_VARIABLE_RevMap_36_36);
+                  }
+                  backend_libs__switch_util__STATE_VARIABLE_RevMap_36_36 = (MR_Word) backend_libs__switch_util__conv1_STATE_VARIABLE_RevMap_36_36;
+                }
+                break;
+              case (MR_Integer) 0:
+              case (MR_Integer) 1:
+                {
+                  MR_Word backend_libs__switch_util__TypeInfo_46_46;
+                  MR_Word backend_libs__switch_util__TypeInfo_48_48;
+                  MR_Word backend_libs__switch_util__OldEntry_17;
+                  MR_Box backend_libs__switch_util__conv2_OldEntry_17;
+
+                  {
+                    backend_libs__switch_util__TypeInfo_46_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_46_46, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_46_46, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+                  }
+                  {
+                    backend_libs__switch_util__TypeInfo_48_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_48_48, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_48_48, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+                  }
+                  {
+                    backend_libs__switch_util__succeeded = mercury__map__search_3_p_0(backend_libs__switch_util__TypeInfo_46_46, backend_libs__switch_util__TypeInfo_48_48, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3, ((MR_Box) (backend_libs__switch_util__Case_14)), &backend_libs__switch_util__conv2_OldEntry_17);
+                  }
+                  if (backend_libs__switch_util__succeeded)
+                    {
+                      backend_libs__switch_util__OldEntry_17 = ((MR_Word) backend_libs__switch_util__conv2_OldEntry_17);
+                      backend_libs__switch_util__succeeded = MR_TRUE;
+                    }
+                  if (backend_libs__switch_util__succeeded)
+                    {
+                      MR_Integer backend_libs__switch_util__OldCount_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__OldEntry_17, (MR_Integer) 0)));
+                      MR_Integer backend_libs__switch_util__OldFirstPtag_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__OldEntry_17, (MR_Integer) 1)));
+                      MR_Word backend_libs__switch_util__OldLaterPtags0_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__OldEntry_17, (MR_Integer) 2)));
+                      MR_Word backend_libs__switch_util__OldCase_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__OldEntry_17, (MR_Integer) 3)));
+                      MR_Word backend_libs__switch_util__NewEntry_22;
+                      MR_Word backend_libs__switch_util__V_28_28;
+                      MR_Integer backend_libs__switch_util__V_32_32;
+                      MR_Word backend_libs__switch_util__V_33_33;
+                      MR_Word backend_libs__switch_util__V_34_34;
+                      MR_Word backend_libs__switch_util__conv3_STATE_VARIABLE_RevMap_36_36;
+
+                      {
+                        backend_libs__switch_util__V_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_7[1]));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 1) = ((MR_Box) (backend_libs__switch_util__build_ptag_case_rev_map_4_p_0_1));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 3) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 4) = ((MR_Box) (backend_libs__switch_util__Case_14));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 5) = ((MR_Box) (backend_libs__switch_util__OldCase_21));
+                      }
+                      {
+                        mercury__require__expect_4_p_0(backend_libs__switch_util__V_28_28, (MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.build_ptag_case_rev_map\'/4", (MR_String) "Case != OldCase");
+                      }
+                      backend_libs__switch_util__V_32_32 = (backend_libs__switch_util__OldCount_18 + backend_libs__switch_util__Count_16);
+                      {
+                        backend_libs__switch_util__V_34_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_34_34, 0) = ((MR_Box) (backend_libs__switch_util__Ptag_13));
+                        MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_34_34, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                      {
+                        backend_libs__switch_util__V_33_33 = mercury__list__f_43_43_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__OldLaterPtags0_20, backend_libs__switch_util__V_34_34);
+                      }
+                      {
+                        backend_libs__switch_util__NewEntry_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_22, 0) = ((MR_Box) (backend_libs__switch_util__V_32_32));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_22, 1) = ((MR_Box) (backend_libs__switch_util__OldFirstPtag_19));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_22, 2) = ((MR_Box) (backend_libs__switch_util__V_33_33));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_22, 3) = ((MR_Box) (backend_libs__switch_util__OldCase_21));
+                      }
+                      {
+                        mercury__map__det_update_4_p_0(backend_libs__switch_util__TypeInfo_46_46, backend_libs__switch_util__TypeInfo_48_48, ((MR_Box) (backend_libs__switch_util__Case_14)), ((MR_Box) (backend_libs__switch_util__NewEntry_22)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3, &backend_libs__switch_util__conv3_STATE_VARIABLE_RevMap_36_36);
+                      }
+                      backend_libs__switch_util__STATE_VARIABLE_RevMap_36_36 = (MR_Word) backend_libs__switch_util__conv3_STATE_VARIABLE_RevMap_36_36;
+                    }
+                  else
+                    {
+                      MR_Word backend_libs__switch_util__TypeInfo_56_56;
+                      MR_Word backend_libs__switch_util__TypeInfo_58_58;
+                      MR_Word backend_libs__switch_util__NewEntry_40;
+                      MR_Word backend_libs__switch_util__conv4_STATE_VARIABLE_RevMap_36_36;
+
+                      {
+                        backend_libs__switch_util__NewEntry_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_40, 0) = ((MR_Box) (backend_libs__switch_util__Count_16));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_40, 1) = ((MR_Box) (backend_libs__switch_util__Ptag_13));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_40, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_40, 3) = ((MR_Box) (backend_libs__switch_util__Case_14));
+                      }
+                      {
+                        backend_libs__switch_util__TypeInfo_56_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_56_56, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_56_56, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+                      }
+                      {
+                        backend_libs__switch_util__TypeInfo_58_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_58_58, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_58_58, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+                      }
+                      {
+                        mercury__map__det_insert_4_p_0(backend_libs__switch_util__TypeInfo_56_56, backend_libs__switch_util__TypeInfo_58_58, ((MR_Box) (backend_libs__switch_util__Case_14)), ((MR_Box) (backend_libs__switch_util__NewEntry_40)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3, &backend_libs__switch_util__conv4_STATE_VARIABLE_RevMap_36_36);
+                      }
+                      backend_libs__switch_util__STATE_VARIABLE_RevMap_36_36 = (MR_Word) backend_libs__switch_util__conv4_STATE_VARIABLE_RevMap_36_36;
+                    }
+                }
+                break;
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__Entries_10;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_RevMap_0__tmp_copy_3 = backend_libs__switch_util__STATE_VARIABLE_RevMap_36_36;
+
+              backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3 = backend_libs__switch_util__STATE_VARIABLE_RevMap_0__tmp_copy_3;
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__interpret_rev_map_entry_2_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_9,
+  MR_Word backend_libs__switch_util__RevEntry_3,
+  MR_Word * backend_libs__switch_util__GroupEntry_4)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__MainPtag_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RevEntry_3, (MR_Integer) 1)));
+    MR_Word backend_libs__switch_util__OtherPtags_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RevEntry_3, (MR_Integer) 2)));
+    MR_Word backend_libs__switch_util__Case_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RevEntry_3, (MR_Integer) 3)));
+    MR_Integer backend_libs__switch_util___Count_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RevEntry_3, (MR_Integer) 0)));
+
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      *backend_libs__switch_util__GroupEntry_4 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (backend_libs__switch_util__MainPtag_6));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (backend_libs__switch_util__OtherPtags_7));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (backend_libs__switch_util__Case_8));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0_2(
+  MR_Box backend_libs__switch_util__closure_arg)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1304__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1318__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_107,
+  MR_Word backend_libs__switch_util__CaseId_8,
+  MR_Box backend_libs__switch_util__CaseRep_9,
+  MR_Word backend_libs__switch_util__TaggedConsId_10,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_0_52,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_53,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__Tag_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedConsId_10, (MR_Integer) 1)));
+    MR_Integer backend_libs__switch_util__Primary_15;
+    MR_Word backend_libs__switch_util___ConsId_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedConsId_10, (MR_Integer) 0)));
+    MR_Word backend_libs__switch_util__Ptags0_50;
+    MR_Box backend_libs__switch_util__conv12_Ptags0_50;
+
+    switch (MR_tag((MR_Word) backend_libs__switch_util__Tag_14)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(backend_libs__switch_util__Tag_14)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word backend_libs__switch_util__TypeInfo_110_146;
+              MR_Word backend_libs__switch_util___Group_142;
+              MR_Box backend_libs__switch_util__conv8__Group_142;
+
+              backend_libs__switch_util__Primary_15 = (MR_Integer) 0;
+              {
+                backend_libs__switch_util__TypeInfo_110_146 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_146, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_146, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+              }
+              {
+                backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_110_146, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, backend_libs__switch_util__Primary_15, &backend_libs__switch_util__conv8__Group_142);
+              }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  backend_libs__switch_util___Group_142 = ((MR_Word) backend_libs__switch_util__conv8__Group_142);
+                  backend_libs__switch_util__succeeded = MR_TRUE;
+                }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "unshared tag is shared");
+                    return;
+                  }
+                }
+              else
+                {
+                  MR_Word backend_libs__switch_util__TypeInfo_113_155;
+                  MR_Word backend_libs__switch_util__StagGoalMap_150;
+                  MR_Word backend_libs__switch_util__V_152_152;
+                  MR_Word backend_libs__switch_util__conv9_STATE_VARIABLE_PtagCaseMap_55;
+
+                  {
+                    backend_libs__switch_util__StagGoalMap_150 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_107, ((MR_Box) ((MR_Integer) -1)), backend_libs__switch_util__CaseRep_9);
+                  }
+                  {
+                    backend_libs__switch_util__V_152_152 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_152_152, 0) = ((MR_Box) ((MR_Integer) 0));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_152_152, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_150));
+                  }
+                  {
+                    backend_libs__switch_util__TypeInfo_113_155 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_155, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_155, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+                  }
+                  {
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_113_155, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_152_152)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv9_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv9_STATE_VARIABLE_PtagCaseMap_55;
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "non-du tag");
+                return;
+              }
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "non-du tag");
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+          case (MR_Integer) 9:
+          case (MR_Integer) 10:
+          case (MR_Integer) 15:
+          case (MR_Integer) 16:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "non-du tag");
+                return;
+              }
+            }
+            break;
+          case (MR_Integer) 11:
+            {
+              MR_Word backend_libs__switch_util__TypeInfo_110_187;
+              MR_Word backend_libs__switch_util___Group_183;
+              MR_Box backend_libs__switch_util__conv10__Group_183;
+
+              backend_libs__switch_util__Primary_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 1)));
+              {
+                backend_libs__switch_util__TypeInfo_110_187 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_187, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_187, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+              }
+              {
+                backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_110_187, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, backend_libs__switch_util__Primary_15, &backend_libs__switch_util__conv10__Group_183);
+              }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  backend_libs__switch_util___Group_183 = ((MR_Word) backend_libs__switch_util__conv10__Group_183);
+                  backend_libs__switch_util__succeeded = MR_TRUE;
+                }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "unshared tag is shared");
+                    return;
+                  }
+                }
+              else
+                {
+                  MR_Word backend_libs__switch_util__TypeInfo_113_196;
+                  MR_Word backend_libs__switch_util__StagGoalMap_191;
+                  MR_Word backend_libs__switch_util__V_193_193;
+                  MR_Word backend_libs__switch_util__conv11_STATE_VARIABLE_PtagCaseMap_55;
+
+                  {
+                    backend_libs__switch_util__StagGoalMap_191 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_107, ((MR_Box) ((MR_Integer) -1)), backend_libs__switch_util__CaseRep_9);
+                  }
+                  {
+                    backend_libs__switch_util__V_193_193 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_193_193, 0) = ((MR_Box) ((MR_Integer) 0));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_193_193, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_191));
+                  }
+                  {
+                    backend_libs__switch_util__TypeInfo_113_196 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_196, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_196, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+                  }
+                  {
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_113_196, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_193_193)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv11_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv11_STATE_VARIABLE_PtagCaseMap_55;
+                }
+            }
+            break;
+          case (MR_Integer) 12:
+            {
+              MR_Word backend_libs__switch_util__TypeInfo_110_110;
+              MR_Word backend_libs__switch_util___Group_17;
+              MR_Box backend_libs__switch_util__conv0__Group_17;
+
+              backend_libs__switch_util__Primary_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 1)));
+              {
+                backend_libs__switch_util__TypeInfo_110_110 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_110, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_110, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+              }
+              {
+                backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_110_110, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, backend_libs__switch_util__Primary_15, &backend_libs__switch_util__conv0__Group_17);
+              }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  backend_libs__switch_util___Group_17 = ((MR_Word) backend_libs__switch_util__conv0__Group_17);
+                  backend_libs__switch_util__succeeded = MR_TRUE;
+                }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "unshared tag is shared");
+                    return;
+                  }
+                }
+              else
+                {
+                  MR_Word backend_libs__switch_util__TypeInfo_113_113;
+                  MR_Word backend_libs__switch_util__StagGoalMap_18;
+                  MR_Word backend_libs__switch_util__V_85_85;
+                  MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55;
+
+                  {
+                    backend_libs__switch_util__StagGoalMap_18 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_107, ((MR_Box) ((MR_Integer) -1)), backend_libs__switch_util__CaseRep_9);
+                  }
+                  {
+                    backend_libs__switch_util__V_85_85 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_85_85, 0) = ((MR_Box) ((MR_Integer) 1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_85_85, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_18));
+                  }
+                  {
+                    backend_libs__switch_util__TypeInfo_113_113 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_113, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_113, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+                  }
+                  {
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_113_113, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_85_85)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55;
+                }
+            }
+            break;
+          case (MR_Integer) 13:
+            {
+              MR_Integer backend_libs__switch_util__Secondary_19;
+              MR_Word backend_libs__switch_util__TypeInfo_116_116;
+              MR_Word backend_libs__switch_util__Group_20;
+              MR_Box backend_libs__switch_util__conv5_Group_20;
+
+              backend_libs__switch_util__Primary_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 1)));
+              backend_libs__switch_util__Secondary_19 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 2)));
+              {
+                backend_libs__switch_util__TypeInfo_116_116 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_116_116, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_116_116, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+              }
+              {
+                backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_116_116, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, backend_libs__switch_util__Primary_15, &backend_libs__switch_util__conv5_Group_20);
+              }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  backend_libs__switch_util__Group_20 = ((MR_Word) backend_libs__switch_util__conv5_Group_20);
+                  backend_libs__switch_util__succeeded = MR_TRUE;
+                }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  MR_Word backend_libs__switch_util__StagLoc_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Group_20, (MR_Integer) 0)));
+                  MR_Word backend_libs__switch_util__StagGoalMap0_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Group_20, (MR_Integer) 1)));
+                  MR_Word backend_libs__switch_util__V_70_70;
+                  MR_Word backend_libs__switch_util__V_75_75;
+                  MR_Word backend_libs__switch_util__StagGoalMap_89;
+                  MR_Word backend_libs__switch_util__conv6_STATE_VARIABLE_PtagCaseMap_55;
+
+                  {
+                    backend_libs__switch_util__V_70_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_70_70, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_8[1]));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_70_70, 1) = ((MR_Box) (backend_libs__switch_util__group_case_by_ptag_7_p_0_2));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_70_70, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_70_70, 3) = ((MR_Box) (backend_libs__switch_util__StagLoc_21));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_70_70, 4) = ((MR_Box) ((MR_Integer) 3));
+                  }
+                  {
+                    mercury__require__expect_4_p_0(backend_libs__switch_util__V_70_70, (MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "remote tag is shared with non-remote");
+                  }
+                  {
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_107, backend_libs__switch_util__Secondary_19, backend_libs__switch_util__CaseRep_9, backend_libs__switch_util__StagGoalMap0_22, &backend_libs__switch_util__StagGoalMap_89);
+                  }
+                  {
+                    backend_libs__switch_util__V_75_75 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_75_75, 0) = ((MR_Box) ((MR_Integer) 3));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_75_75, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_89));
+                  }
+                  {
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_116_116, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_75_75)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv6_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv6_STATE_VARIABLE_PtagCaseMap_55;
+                }
+              else
+                {
+                  MR_Word backend_libs__switch_util__TypeInfo_123_123;
+                  MR_Word backend_libs__switch_util__V_78_78;
+                  MR_Word backend_libs__switch_util__StagGoalMap_90;
+                  MR_Word backend_libs__switch_util__conv7_STATE_VARIABLE_PtagCaseMap_55;
+
+                  {
+                    backend_libs__switch_util__StagGoalMap_90 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_107, ((MR_Box) (backend_libs__switch_util__Secondary_19)), backend_libs__switch_util__CaseRep_9);
+                  }
+                  {
+                    backend_libs__switch_util__V_78_78 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_78_78, 0) = ((MR_Box) ((MR_Integer) 3));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_78_78, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_90));
+                  }
+                  {
+                    backend_libs__switch_util__TypeInfo_123_123 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_123_123, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_123_123, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+                  }
+                  {
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_123_123, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_78_78)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv7_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv7_STATE_VARIABLE_PtagCaseMap_55;
+                }
+            }
+            break;
+          case (MR_Integer) 14:
+            {
+              MR_Integer backend_libs__switch_util__Secondary_102;
+              MR_Word backend_libs__switch_util__TypeInfo_126_126;
+              MR_Word backend_libs__switch_util__Group_98;
+              MR_Box backend_libs__switch_util__conv2_Group_98;
+
+              backend_libs__switch_util__Primary_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 1)));
+              backend_libs__switch_util__Secondary_102 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 2)));
+              {
+                backend_libs__switch_util__TypeInfo_126_126 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_126_126, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_126_126, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+              }
+              {
+                backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_126_126, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, backend_libs__switch_util__Primary_15, &backend_libs__switch_util__conv2_Group_98);
+              }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  backend_libs__switch_util__Group_98 = ((MR_Word) backend_libs__switch_util__conv2_Group_98);
+                  backend_libs__switch_util__succeeded = MR_TRUE;
+                }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  MR_Word backend_libs__switch_util__V_59_59;
+                  MR_Word backend_libs__switch_util__V_64_64;
+                  MR_Word backend_libs__switch_util__StagGoalMap_93;
+                  MR_Word backend_libs__switch_util__StagLoc_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Group_98, (MR_Integer) 0)));
+                  MR_Word backend_libs__switch_util__StagGoalMap0_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Group_98, (MR_Integer) 1)));
+                  MR_Word backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_55;
+
+                  {
+                    backend_libs__switch_util__V_59_59 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_59_59, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_8[1]));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_59_59, 1) = ((MR_Box) (backend_libs__switch_util__group_case_by_ptag_7_p_0_1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_59_59, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_59_59, 3) = ((MR_Box) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_59_59, 4) = ((MR_Box) (backend_libs__switch_util__StagLoc_94));
+                  }
+                  {
+                    mercury__require__expect_4_p_0(backend_libs__switch_util__V_59_59, (MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "local tag is shared with non-local");
+                  }
+                  {
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_107, backend_libs__switch_util__Secondary_102, backend_libs__switch_util__CaseRep_9, backend_libs__switch_util__StagGoalMap0_95, &backend_libs__switch_util__StagGoalMap_93);
+                  }
+                  {
+                    backend_libs__switch_util__V_64_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_64_64, 0) = ((MR_Box) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_64_64, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_93));
+                  }
+                  {
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_126_126, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_64_64)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_55;
+                }
+              else
+                {
+                  MR_Word backend_libs__switch_util__TypeInfo_133_133;
+                  MR_Word backend_libs__switch_util__V_67_67;
+                  MR_Word backend_libs__switch_util__StagGoalMap_96;
+                  MR_Word backend_libs__switch_util__conv4_STATE_VARIABLE_PtagCaseMap_55;
+
+                  {
+                    backend_libs__switch_util__StagGoalMap_96 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_107, ((MR_Box) (backend_libs__switch_util__Secondary_102)), backend_libs__switch_util__CaseRep_9);
+                  }
+                  {
+                    backend_libs__switch_util__V_67_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_67_67, 0) = ((MR_Box) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_67_67, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_96));
+                  }
+                  {
+                    backend_libs__switch_util__TypeInfo_133_133 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_133_133, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_133_133, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+                  }
+                  {
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_133_133, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_67_67)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv4_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv4_STATE_VARIABLE_PtagCaseMap_55;
+                }
+            }
+            break;
+        }
+        break;
+    }
+    {
+      backend_libs__switch_util__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &backend_libs__switch_util_scalar_common_1[0], backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_0_52, ((MR_Box) (backend_libs__switch_util__CaseId_8)), &backend_libs__switch_util__conv12_Ptags0_50);
+    }
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__Ptags0_50 = ((MR_Word) backend_libs__switch_util__conv12_Ptags0_50);
+        backend_libs__switch_util__succeeded = MR_TRUE;
+      }
+    if (backend_libs__switch_util__succeeded)
+      {
+        MR_Word backend_libs__switch_util__Ptags_51;
+
+        {
+          mercury__set__insert_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (backend_libs__switch_util__Primary_15)), backend_libs__switch_util__Ptags0_50, &backend_libs__switch_util__Ptags_51);
+        }
+        {
+          mercury__map__det_update_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &backend_libs__switch_util_scalar_common_1[0], ((MR_Box) (backend_libs__switch_util__CaseId_8)), ((MR_Box) (backend_libs__switch_util__Ptags_51)), backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_0_52, backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_53);
+        }
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__Ptags_106;
+
+        {
+          backend_libs__switch_util__Ptags_106 = mercury__set__make_singleton_set_1_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (backend_libs__switch_util__Primary_15)));
+        }
+        {
+          mercury__map__det_insert_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &backend_libs__switch_util_scalar_common_1[0], ((MR_Box) (backend_libs__switch_util__CaseId_8)), ((MR_Box) (backend_libs__switch_util__Ptags_106)), backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_0_52, backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_53);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__get_ptag_counts_loop_5_p_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_3,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded;
+
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_5 = backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4;
+            *backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_3 = backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2;
+          }
+        else
+          {
+            MR_Word backend_libs__switch_util__Tag_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__Tags_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78;
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83;
+
+            switch (MR_tag((MR_Word) backend_libs__switch_util__Tag_12)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(backend_libs__switch_util__Tag_12)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word backend_libs__switch_util__V_117_117;
+                      MR_Box backend_libs__switch_util__conv3_V_117_117;
+
+                      {
+                        mercury__int__max_3_p_0((MR_Integer) 0, backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2, &backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78);
+                      }
+                      {
+                        backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, (MR_Integer) 0, &backend_libs__switch_util__conv3_V_117_117);
+                      }
+                      if (backend_libs__switch_util__succeeded)
+                        {
+                          backend_libs__switch_util__V_117_117 = ((MR_Word) backend_libs__switch_util__conv3_V_117_117);
+                          backend_libs__switch_util__succeeded = MR_TRUE;
+                        }
+                      if (backend_libs__switch_util__succeeded)
+                        {
+                          {
+                            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "unshared tag is shared");
+                            return;
+                          }
+                        }
+                      else
+                        {
+                          {
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], (MR_Integer) 0, ((MR_Box) (&backend_libs__switch_util_scalar_common_1[5])), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      {
+                        mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "non-du tag");
+                        return;
+                      }
+                    }
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+              case (MR_Integer) 2:
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "non-du tag");
+                    return;
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                  case (MR_Integer) 1:
+                  case (MR_Integer) 2:
+                  case (MR_Integer) 3:
+                  case (MR_Integer) 4:
+                  case (MR_Integer) 5:
+                  case (MR_Integer) 6:
+                  case (MR_Integer) 7:
+                  case (MR_Integer) 8:
+                  case (MR_Integer) 9:
+                  case (MR_Integer) 10:
+                  case (MR_Integer) 15:
+                  case (MR_Integer) 16:
+                    {
+                      {
+                        mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "non-du tag");
+                        return;
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 11:
+                    {
+                      MR_Integer backend_libs__switch_util__Primary_171 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 1)));
+                      MR_Word backend_libs__switch_util__V_150_150;
+                      MR_Box backend_libs__switch_util__conv4_V_150_150;
+
+                      {
+                        mercury__int__max_3_p_0(backend_libs__switch_util__Primary_171, backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2, &backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78);
+                      }
+                      {
+                        backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, backend_libs__switch_util__Primary_171, &backend_libs__switch_util__conv4_V_150_150);
+                      }
+                      if (backend_libs__switch_util__succeeded)
+                        {
+                          backend_libs__switch_util__V_150_150 = ((MR_Word) backend_libs__switch_util__conv4_V_150_150);
+                          backend_libs__switch_util__succeeded = MR_TRUE;
+                        }
+                      if (backend_libs__switch_util__succeeded)
+                        {
+                          {
+                            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "unshared tag is shared");
+                            return;
+                          }
+                        }
+                      else
+                        {
+                          {
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_171, ((MR_Box) (&backend_libs__switch_util_scalar_common_1[5])), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 12:
+                    {
+                      MR_Integer backend_libs__switch_util__Primary_16 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 1)));
+                      MR_Word backend_libs__switch_util__V_18_18;
+                      MR_Box backend_libs__switch_util__conv0_V_18_18;
+
+                      {
+                        mercury__int__max_3_p_0(backend_libs__switch_util__Primary_16, backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2, &backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78);
+                      }
+                      {
+                        backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, backend_libs__switch_util__Primary_16, &backend_libs__switch_util__conv0_V_18_18);
+                      }
+                      if (backend_libs__switch_util__succeeded)
+                        {
+                          backend_libs__switch_util__V_18_18 = ((MR_Word) backend_libs__switch_util__conv0_V_18_18);
+                          backend_libs__switch_util__succeeded = MR_TRUE;
+                        }
+                      if (backend_libs__switch_util__succeeded)
+                        {
+                          {
+                            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "unshared tag is shared");
+                            return;
+                          }
+                        }
+                      else
+                        {
+                          {
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_16, ((MR_Box) (&backend_libs__switch_util_scalar_common_1[4])), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 13:
+                    {
+                      MR_Integer backend_libs__switch_util__Secondary_19 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 2)));
+                      MR_Integer backend_libs__switch_util__Primary_87 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 1)));
+                      MR_Word backend_libs__switch_util__Target_20;
+                      MR_Box backend_libs__switch_util__conv2_Target_20;
+
+                      {
+                        mercury__int__max_3_p_0(backend_libs__switch_util__Primary_87, backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2, &backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78);
+                      }
+                      {
+                        backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, backend_libs__switch_util__Primary_87, &backend_libs__switch_util__conv2_Target_20);
+                      }
+                      if (backend_libs__switch_util__succeeded)
+                        {
+                          backend_libs__switch_util__Target_20 = ((MR_Word) backend_libs__switch_util__conv2_Target_20);
+                          backend_libs__switch_util__succeeded = MR_TRUE;
+                        }
+                      if (backend_libs__switch_util__succeeded)
+                        {
+                          MR_Word backend_libs__switch_util__TagType_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Target_20, (MR_Integer) 0)));
+                          MR_Integer backend_libs__switch_util__MaxSoFar_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Target_20, (MR_Integer) 1)));
+                          MR_Integer backend_libs__switch_util__Max_23;
+                          MR_Word backend_libs__switch_util__V_72_72;
+
+                          switch (backend_libs__switch_util__TagType_21) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 2:
+                            case (MR_Integer) 0:
+                            case (MR_Integer) 1:
+                              {
+                                {
+                                  mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "remote tag is shared with non-remote");
+                                  return;
+                                }
+                              }
+                              break;
+                            case (MR_Integer) 3:
+                              {
+                              }
+                              break;
+                          }
+                          {
+                            mercury__int__max_3_p_0(backend_libs__switch_util__Secondary_19, backend_libs__switch_util__MaxSoFar_22, &backend_libs__switch_util__Max_23);
+                          }
+                          {
+                            backend_libs__switch_util__V_72_72 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_72_72, 0) = ((MR_Box) ((MR_Integer) 3));
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_72_72, 1) = ((MR_Box) (backend_libs__switch_util__Max_23));
+                          }
+                          {
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_87, ((MR_Box) (backend_libs__switch_util__V_72_72)), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+                        }
+                      else
+                        {
+                          MR_Word backend_libs__switch_util__V_75_75;
+
+                          {
+                            backend_libs__switch_util__V_75_75 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_75_75, 0) = ((MR_Box) ((MR_Integer) 3));
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_75_75, 1) = ((MR_Box) (backend_libs__switch_util__Secondary_19));
+                          }
+                          {
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_87, ((MR_Box) (backend_libs__switch_util__V_75_75)), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 14:
+                    {
+                      MR_Integer backend_libs__switch_util__Primary_95 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 1)));
+                      MR_Integer backend_libs__switch_util__Secondary_96 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 2)));
+                      MR_Word backend_libs__switch_util__Target_91;
+                      MR_Box backend_libs__switch_util__conv1_Target_91;
+
+                      {
+                        mercury__int__max_3_p_0(backend_libs__switch_util__Primary_95, backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2, &backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78);
+                      }
+                      {
+                        backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, backend_libs__switch_util__Primary_95, &backend_libs__switch_util__conv1_Target_91);
+                      }
+                      if (backend_libs__switch_util__succeeded)
+                        {
+                          backend_libs__switch_util__Target_91 = ((MR_Word) backend_libs__switch_util__conv1_Target_91);
+                          backend_libs__switch_util__succeeded = MR_TRUE;
+                        }
+                      if (backend_libs__switch_util__succeeded)
+                        {
+                          MR_Word backend_libs__switch_util__V_62_62;
+                          MR_Word backend_libs__switch_util__TagType_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Target_91, (MR_Integer) 0)));
+                          MR_Integer backend_libs__switch_util__MaxSoFar_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Target_91, (MR_Integer) 1)));
+                          MR_Integer backend_libs__switch_util__Max_90;
+
+                          switch (backend_libs__switch_util__TagType_88) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 2:
+                              {
+                              }
+                              break;
+                            case (MR_Integer) 0:
+                            case (MR_Integer) 1:
+                            case (MR_Integer) 3:
+                              {
+                                {
+                                  mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "local tag is shared with non-local");
+                                  return;
+                                }
+                              }
+                              break;
+                          }
+                          {
+                            mercury__int__max_3_p_0(backend_libs__switch_util__Secondary_96, backend_libs__switch_util__MaxSoFar_89, &backend_libs__switch_util__Max_90);
+                          }
+                          {
+                            backend_libs__switch_util__V_62_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_62_62, 0) = ((MR_Box) ((MR_Integer) 2));
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_62_62, 1) = ((MR_Box) (backend_libs__switch_util__Max_90));
+                          }
+                          {
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_95, ((MR_Box) (backend_libs__switch_util__V_62_62)), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+                        }
+                      else
+                        {
+                          MR_Word backend_libs__switch_util__V_65_65;
+
+                          {
+                            backend_libs__switch_util__V_65_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_65_65, 0) = ((MR_Box) ((MR_Integer) 2));
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_65_65, 1) = ((MR_Box) (backend_libs__switch_util__Secondary_96));
+                          }
+                          {
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_95, ((MR_Box) (backend_libs__switch_util__V_65_65)), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+                        }
+                    }
+                    break;
+                }
+                break;
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__Tags_13;
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0__tmp_copy_2 = backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0__tmp_copy_4 = backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83;
+
+              backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4 = backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0__tmp_copy_4;
+              backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2 = backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0__tmp_copy_2;
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__add_string_binary_entry_4_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_19,
+  MR_Box backend_libs__switch_util__CaseRep_5,
+  MR_Word backend_libs__switch_util__TaggedConsId_6,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_12,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_13)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__Tag_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedConsId_6, (MR_Integer) 1)));
+    MR_String backend_libs__switch_util__String_11;
+    MR_Word backend_libs__switch_util__V_18_18;
+    MR_Word backend_libs__switch_util___ConsId_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedConsId_6, (MR_Integer) 0)));
+    MR_String backend_libs__switch_util__StringPrime_10;
+
+    backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__Tag_9)) == (MR_mktag((MR_Integer) 1)));
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__StringPrime_10 = ((MR_String) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__Tag_9, (MR_Integer) 0)));
+        backend_libs__switch_util__String_11 = backend_libs__switch_util__StringPrime_10;
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.add_string_binary_entry\'/4", (MR_String) "non-string case\?");
+          return;
+        }
+      }
+    {
+      backend_libs__switch_util__V_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_18_18, 0) = ((MR_Box) (backend_libs__switch_util__String_11));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_18_18, 1) = backend_libs__switch_util__CaseRep_5;
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      *backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_13 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__V_18_18));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_12));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__next_free_hash_slot_5_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+
+    {
+      backend_libs__switch_util__succeeded = mercury__int__f_less_than_2_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))));
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__next_free_hash_slot_5_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_17,
+  MR_Word backend_libs__switch_util__Map_6,
+  MR_Word backend_libs__switch_util__HomeMap_7,
+  MR_Integer backend_libs__switch_util__TableSize_8,
+  MR_Integer backend_libs__switch_util__LastUsed_9,
+  MR_Integer * backend_libs__switch_util__FreeSlot_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded;
+        MR_Integer backend_libs__switch_util__NextSlot_11 = (backend_libs__switch_util__LastUsed_9 + (MR_Integer) 1);
+        MR_Word backend_libs__switch_util__V_13_13;
+
+        {
+          backend_libs__switch_util__V_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_8[0]));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 1) = ((MR_Box) (backend_libs__switch_util__next_free_hash_slot_5_p_0_1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 3) = ((MR_Box) (backend_libs__switch_util__NextSlot_11));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 4) = ((MR_Box) (backend_libs__switch_util__TableSize_8));
+        }
+        {
+          mercury__require__expect_4_p_0(backend_libs__switch_util__V_13_13, (MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.next_free_hash_slot\'/5", (MR_String) "overflow");
+        }
+        {
+          MR_Word backend_libs__switch_util__TypeInfo_20_20;
+
+          {
+            backend_libs__switch_util__TypeInfo_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_20_20, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1));
+            MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_20_20, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_17));
+          }
+          {
+            backend_libs__switch_util__succeeded = mercury__map__contains_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_20_20, backend_libs__switch_util__Map_6, ((MR_Box) (backend_libs__switch_util__NextSlot_11)));
+          }
+        }
+        if (!(backend_libs__switch_util__succeeded))
+          {
+            MR_Word backend_libs__switch_util__TypeInfo_24_24;
+            MR_Word backend_libs__switch_util__TypeInfo_26_26;
+
+            {
+              backend_libs__switch_util__TypeInfo_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_24_24, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_24_24, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_24_24, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_17));
+            }
+            {
+              backend_libs__switch_util__TypeInfo_26_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_26_26, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_26_26, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_24_24));
+            }
+            {
+              backend_libs__switch_util__succeeded = mercury__map__contains_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_26_26, backend_libs__switch_util__HomeMap_7, ((MR_Box) (backend_libs__switch_util__NextSlot_11)));
+            }
+          }
+        if (backend_libs__switch_util__succeeded)
+          {
+            /* direct tailcall eliminated */
+            {
+              MR_Integer backend_libs__switch_util__LastUsed__tmp_copy_9 = backend_libs__switch_util__NextSlot_11;
+
+              backend_libs__switch_util__LastUsed_9 = backend_libs__switch_util__LastUsed__tmp_copy_9;
+            }
+            continue;
+          }
+        else
+          *backend_libs__switch_util__FreeSlot_10 = backend_libs__switch_util__NextSlot_11;
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__follow_hash_chain_3_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_12,
+  MR_Word backend_libs__switch_util__Map_4,
+  MR_Integer backend_libs__switch_util__Slot_5,
+  MR_Integer * backend_libs__switch_util__LastSlot_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded;
+        MR_Word backend_libs__switch_util__TypeInfo_15_15;
+        MR_Integer backend_libs__switch_util__NextSlot_8;
+        MR_Word backend_libs__switch_util__V_10_10;
+        MR_Box backend_libs__switch_util__conv0_V_10_10;
+        MR_String backend_libs__switch_util__V_7_7;
+        MR_Box backend_libs__switch_util__V_9_9;
+
+        {
+          backend_libs__switch_util__TypeInfo_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_15_15, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_15_15, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_12));
+        }
+        {
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_15_15, (MR_Word) backend_libs__switch_util__Map_4, backend_libs__switch_util__Slot_5, &backend_libs__switch_util__conv0_V_10_10);
+        }
+        backend_libs__switch_util__V_10_10 = ((MR_Word) backend_libs__switch_util__conv0_V_10_10);
+        backend_libs__switch_util__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_10_10, (MR_Integer) 0)));
+        backend_libs__switch_util__NextSlot_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_10_10, (MR_Integer) 1)));
+        backend_libs__switch_util__V_9_9 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_10_10, (MR_Integer) 2));
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__NextSlot_8 >= (MR_Integer) 0);
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__succeeded = mercury__map__contains_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_15_15, backend_libs__switch_util__Map_4, ((MR_Box) (backend_libs__switch_util__NextSlot_8)));
+          }
+        if (backend_libs__switch_util__succeeded)
+          {
+            /* direct tailcall eliminated */
+            {
+              MR_Integer backend_libs__switch_util__Slot__tmp_copy_5 = backend_libs__switch_util__NextSlot_8;
+
+              backend_libs__switch_util__Slot_5 = backend_libs__switch_util__Slot__tmp_copy_5;
+            }
+            continue;
+          }
+        else
+          *backend_libs__switch_util__LastSlot_6 = backend_libs__switch_util__Slot_5;
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_loop_over_hash_strings_8_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_64,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Integer backend_libs__switch_util__HeadVar__2_2,
+  MR_Integer backend_libs__switch_util__HeadVar__3_3,
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_5,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SlotMap_6,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_7,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LastUsed_8)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *backend_libs__switch_util__STATE_VARIABLE_LastUsed_8 = backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_7;
+        *backend_libs__switch_util__STATE_VARIABLE_SlotMap_6 = backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_5;
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__StringCaseRep_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word backend_libs__switch_util__StringCaseReps_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String backend_libs__switch_util__String_25;
+        MR_Box backend_libs__switch_util__CaseRep_26;
+        MR_Word backend_libs__switch_util__NewSlot_27;
+        MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39;
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_40_40;
+        MR_Word backend_libs__switch_util__TypeInfo_67_67;
+
+        {
+          backend_libs__switch_util__calc_string_hash_slots_loop_over_hash_strings_8_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_64, backend_libs__switch_util__StringCaseReps_19, backend_libs__switch_util__HeadVar__2_2, backend_libs__switch_util__HeadVar__3_3, backend_libs__switch_util__HeadVar__4_4, backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_5, &backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_7, &backend_libs__switch_util__STATE_VARIABLE_LastUsed_40_40);
+        }
+        backend_libs__switch_util__String_25 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__StringCaseRep_18, (MR_Integer) 0)));
+        backend_libs__switch_util__CaseRep_26 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__StringCaseRep_18, (MR_Integer) 1));
+        {
+          backend_libs__switch_util__NewSlot_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewSlot_27, 0) = ((MR_Box) (backend_libs__switch_util__String_25));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewSlot_27, 1) = ((MR_Box) ((MR_Integer) -1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewSlot_27, 2) = backend_libs__switch_util__CaseRep_26;
+        }
+        {
+          backend_libs__switch_util__TypeInfo_67_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_67_67, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_67_67, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_64));
+        }
+        {
+          backend_libs__switch_util__succeeded = mercury__map__contains_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_67_67, backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, ((MR_Box) (backend_libs__switch_util__HeadVar__3_3)));
+        }
+        if (backend_libs__switch_util__succeeded)
+          {
+            MR_Integer backend_libs__switch_util__ChainEnd_28;
+            MR_Word backend_libs__switch_util__ChainEndSlot0_29;
+            MR_String backend_libs__switch_util__PrevString_30;
+            MR_Box backend_libs__switch_util__PrevCaseRep_32;
+            MR_Word backend_libs__switch_util__ChainEndSlot_33;
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_43_43;
+            MR_Box backend_libs__switch_util__conv0_ChainEndSlot0_29;
+            MR_Integer backend_libs__switch_util__V_31_31;
+            MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_SlotMap_43_43;
+            MR_Word backend_libs__switch_util__conv2_STATE_VARIABLE_SlotMap_6;
+
+            {
+              backend_libs__switch_util__follow_hash_chain_3_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_64, backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, backend_libs__switch_util__HeadVar__3_3, &backend_libs__switch_util__ChainEnd_28);
+            }
+            {
+              backend_libs__switch_util__next_free_hash_slot_5_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_64, backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, backend_libs__switch_util__HeadVar__4_4, backend_libs__switch_util__HeadVar__2_2, backend_libs__switch_util__STATE_VARIABLE_LastUsed_40_40, backend_libs__switch_util__STATE_VARIABLE_LastUsed_8);
+            }
+            {
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_67_67, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, backend_libs__switch_util__ChainEnd_28, &backend_libs__switch_util__conv0_ChainEndSlot0_29);
+            }
+            backend_libs__switch_util__ChainEndSlot0_29 = ((MR_Word) backend_libs__switch_util__conv0_ChainEndSlot0_29);
+            backend_libs__switch_util__PrevString_30 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot0_29, (MR_Integer) 0)));
+            backend_libs__switch_util__V_31_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot0_29, (MR_Integer) 1)));
+            backend_libs__switch_util__PrevCaseRep_32 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot0_29, (MR_Integer) 2));
+            {
+              backend_libs__switch_util__ChainEndSlot_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot_33, 0) = ((MR_Box) (backend_libs__switch_util__PrevString_30));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot_33, 1) = ((MR_Box) (*backend_libs__switch_util__STATE_VARIABLE_LastUsed_8));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot_33, 2) = backend_libs__switch_util__PrevCaseRep_32;
+            }
+            {
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_67_67, backend_libs__switch_util__ChainEnd_28, ((MR_Box) (backend_libs__switch_util__ChainEndSlot_33)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, &backend_libs__switch_util__conv1_STATE_VARIABLE_SlotMap_43_43);
+            }
+            backend_libs__switch_util__STATE_VARIABLE_SlotMap_43_43 = (MR_Word) backend_libs__switch_util__conv1_STATE_VARIABLE_SlotMap_43_43;
+            {
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_67_67, *backend_libs__switch_util__STATE_VARIABLE_LastUsed_8, ((MR_Box) (backend_libs__switch_util__NewSlot_27)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_SlotMap_43_43, &backend_libs__switch_util__conv2_STATE_VARIABLE_SlotMap_6);
+            }
+            *backend_libs__switch_util__STATE_VARIABLE_SlotMap_6 = (MR_Word) backend_libs__switch_util__conv2_STATE_VARIABLE_SlotMap_6;
+          }
+        else
+          {
+            MR_Word backend_libs__switch_util__TypeInfo_73_73;
+            MR_Word backend_libs__switch_util__conv3_STATE_VARIABLE_SlotMap_6;
+
+            {
+              backend_libs__switch_util__TypeInfo_73_73 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_73_73, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_73_73, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_64));
+            }
+            {
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_73_73, backend_libs__switch_util__HeadVar__3_3, ((MR_Box) (backend_libs__switch_util__NewSlot_27)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, &backend_libs__switch_util__conv3_STATE_VARIABLE_SlotMap_6);
+            }
+            *backend_libs__switch_util__STATE_VARIABLE_SlotMap_6 = (MR_Word) backend_libs__switch_util__conv3_STATE_VARIABLE_SlotMap_6;
+            *backend_libs__switch_util__STATE_VARIABLE_LastUsed_8 = backend_libs__switch_util__STATE_VARIABLE_LastUsed_40_40;
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_loop_over_hashes_7_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_32,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Integer backend_libs__switch_util__TableSize_2,
+  MR_Word backend_libs__switch_util__HashMap_3,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_4,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SlotMap_5,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_6,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LastUsed_7)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded;
+
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *backend_libs__switch_util__STATE_VARIABLE_LastUsed_7 = backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_6;
+            *backend_libs__switch_util__STATE_VARIABLE_SlotMap_5 = backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_4;
+          }
+        else
+          {
+            MR_Integer backend_libs__switch_util__HashVal_16;
+            MR_Word backend_libs__switch_util__StringCaseReps_17;
+            MR_Word backend_libs__switch_util__Rest_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_28_28;
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_29_29;
+
+            backend_libs__switch_util__HashVal_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_27_27, (MR_Integer) 0)));
+            backend_libs__switch_util__StringCaseReps_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_27_27, (MR_Integer) 1)));
+            {
+              backend_libs__switch_util__calc_string_hash_slots_loop_over_hash_strings_8_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_32, backend_libs__switch_util__StringCaseReps_17, backend_libs__switch_util__TableSize_2, backend_libs__switch_util__HashVal_16, backend_libs__switch_util__HashMap_3, backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_SlotMap_28_28, backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_6, &backend_libs__switch_util__STATE_VARIABLE_LastUsed_29_29);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__Rest_18;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_0__tmp_copy_4 = backend_libs__switch_util__STATE_VARIABLE_SlotMap_28_28;
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_0__tmp_copy_6 = backend_libs__switch_util__STATE_VARIABLE_LastUsed_29_29;
+
+              backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_6 = backend_libs__switch_util__STATE_VARIABLE_LastUsed_0__tmp_copy_6;
+              backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_4 = backend_libs__switch_util__STATE_VARIABLE_SlotMap_0__tmp_copy_4;
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_4_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_19,
+  MR_Integer backend_libs__switch_util__TableSize_5,
+  MR_Word backend_libs__switch_util__HashValList_6,
+  MR_Word backend_libs__switch_util__HashMap_7,
+  MR_Word * backend_libs__switch_util__SlotMap_8)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_22_22;
+    MR_Word backend_libs__switch_util__V_14_14;
+    MR_Integer backend_libs__switch_util__V_10_10;
+
+    {
+      backend_libs__switch_util__TypeInfo_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_22_22, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_22_22, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_19));
+    }
+    {
+      backend_libs__switch_util__V_14_14 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_22_22);
+    }
+    {
+      backend_libs__switch_util__calc_string_hash_slots_loop_over_hashes_7_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_19, backend_libs__switch_util__HashValList_6, backend_libs__switch_util__TableSize_5, backend_libs__switch_util__HashMap_7, backend_libs__switch_util__V_14_14, backend_libs__switch_util__SlotMap_8, (MR_Integer) 0, &backend_libs__switch_util__V_10_10);
+    }
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__string_hash_case_14_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_67,
+  MR_Word backend_libs__switch_util__StrCaseRep_15,
+  MR_Integer backend_libs__switch_util__HashMask_16,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_31,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap4_32,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_33,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap5_34,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_35,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap6_36,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_37,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_38,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_39,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_40,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_41,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_42)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_String backend_libs__switch_util__String_23 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__StrCaseRep_15, (MR_Integer) 0)));
+    MR_Integer backend_libs__switch_util__HashVal4_25;
+    MR_Integer backend_libs__switch_util__HashVal5_26;
+    MR_Integer backend_libs__switch_util__HashVal6_27;
+    MR_Integer backend_libs__switch_util__V_43_43;
+    MR_Integer backend_libs__switch_util__V_44_44;
+    MR_Integer backend_libs__switch_util__V_45_45;
+    MR_Box backend_libs__switch_util___CaseRep_24 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__StrCaseRep_15, (MR_Integer) 1));
+    MR_Word backend_libs__switch_util__TypeInfo_73_73;
+    MR_Word backend_libs__switch_util__OldEntries4_28;
+    MR_Word backend_libs__switch_util__TypeInfo_71_71;
+    MR_Box backend_libs__switch_util__conv0_OldEntries4_28;
+    MR_Word backend_libs__switch_util__TypeInfo_91_91;
+    MR_Word backend_libs__switch_util__OldEntries5_29;
+    MR_Word backend_libs__switch_util__TypeInfo_89_89;
+    MR_Box backend_libs__switch_util__conv3_OldEntries5_29;
+    MR_Word backend_libs__switch_util__TypeInfo_109_109;
+    MR_Word backend_libs__switch_util__OldEntries6_30;
+    MR_Word backend_libs__switch_util__TypeInfo_107_107;
+    MR_Box backend_libs__switch_util__conv6_OldEntries6_30;
+
+    {
+      backend_libs__switch_util__V_43_43 = mercury__string__hash4_1_f_0(backend_libs__switch_util__String_23);
+    }
+    backend_libs__switch_util__HashVal4_25 = (backend_libs__switch_util__V_43_43 & backend_libs__switch_util__HashMask_16);
+    {
+      backend_libs__switch_util__V_44_44 = mercury__string__hash5_1_f_0(backend_libs__switch_util__String_23);
+    }
+    backend_libs__switch_util__HashVal5_26 = (backend_libs__switch_util__V_44_44 & backend_libs__switch_util__HashMask_16);
+    {
+      backend_libs__switch_util__V_45_45 = mercury__string__hash6_1_f_0(backend_libs__switch_util__String_23);
+    }
+    backend_libs__switch_util__HashVal6_27 = (backend_libs__switch_util__V_45_45 & backend_libs__switch_util__HashMask_16);
+    {
+      backend_libs__switch_util__TypeInfo_71_71 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_71_71, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_71_71, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_71_71, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+    }
+    {
+      backend_libs__switch_util__TypeInfo_73_73 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_73_73, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_73_73, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_71_71));
+    }
+    {
+      backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_73_73, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_31, backend_libs__switch_util__HashVal4_25, &backend_libs__switch_util__conv0_OldEntries4_28);
+    }
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__OldEntries4_28 = ((MR_Word) backend_libs__switch_util__conv0_OldEntries4_28);
+        backend_libs__switch_util__succeeded = MR_TRUE;
+      }
+    if (backend_libs__switch_util__succeeded)
+      {
+        MR_Word backend_libs__switch_util__V_46_46;
+        MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_HashMap4_32;
+
+        {
+          backend_libs__switch_util__V_46_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_46_46, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_46_46, 1) = ((MR_Box) (backend_libs__switch_util__OldEntries4_28));
+        }
+        {
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_73_73, backend_libs__switch_util__HashVal4_25, ((MR_Box) (backend_libs__switch_util__V_46_46)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_31, &backend_libs__switch_util__conv1_STATE_VARIABLE_HashMap4_32);
+        }
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap4_32 = (MR_Word) backend_libs__switch_util__conv1_STATE_VARIABLE_HashMap4_32;
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_38 = (backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_37 + (MR_Integer) 1);
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__TypeInfo_83_83;
+        MR_Word backend_libs__switch_util__TypeInfo_85_85;
+        MR_Word backend_libs__switch_util__V_50_50;
+        MR_Word backend_libs__switch_util__conv2_STATE_VARIABLE_HashMap4_32;
+
+        {
+          backend_libs__switch_util__V_50_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_50_50, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_50_50, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          backend_libs__switch_util__TypeInfo_83_83 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_83_83, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_83_83, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_83_83, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+        }
+        {
+          backend_libs__switch_util__TypeInfo_85_85 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_85_85, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_85_85, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_83_83));
+        }
+        {
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_85_85, backend_libs__switch_util__HashVal4_25, ((MR_Box) (backend_libs__switch_util__V_50_50)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_31, &backend_libs__switch_util__conv2_STATE_VARIABLE_HashMap4_32);
+        }
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap4_32 = (MR_Word) backend_libs__switch_util__conv2_STATE_VARIABLE_HashMap4_32;
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_38 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_37;
+      }
+    {
+      backend_libs__switch_util__TypeInfo_89_89 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_89_89, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_89_89, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_89_89, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+    }
+    {
+      backend_libs__switch_util__TypeInfo_91_91 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_91_91, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_91_91, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_89_89));
+    }
+    {
+      backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_91_91, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_33, backend_libs__switch_util__HashVal5_26, &backend_libs__switch_util__conv3_OldEntries5_29);
+    }
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__OldEntries5_29 = ((MR_Word) backend_libs__switch_util__conv3_OldEntries5_29);
+        backend_libs__switch_util__succeeded = MR_TRUE;
+      }
+    if (backend_libs__switch_util__succeeded)
+      {
+        MR_Word backend_libs__switch_util__V_53_53;
+        MR_Word backend_libs__switch_util__conv4_STATE_VARIABLE_HashMap5_34;
+
+        {
+          backend_libs__switch_util__V_53_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_53_53, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_53_53, 1) = ((MR_Box) (backend_libs__switch_util__OldEntries5_29));
+        }
+        {
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_91_91, backend_libs__switch_util__HashVal5_26, ((MR_Box) (backend_libs__switch_util__V_53_53)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_33, &backend_libs__switch_util__conv4_STATE_VARIABLE_HashMap5_34);
+        }
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap5_34 = (MR_Word) backend_libs__switch_util__conv4_STATE_VARIABLE_HashMap5_34;
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_40 = (backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_39 + (MR_Integer) 1);
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__TypeInfo_101_101;
+        MR_Word backend_libs__switch_util__TypeInfo_103_103;
+        MR_Word backend_libs__switch_util__V_57_57;
+        MR_Word backend_libs__switch_util__conv5_STATE_VARIABLE_HashMap5_34;
+
+        {
+          backend_libs__switch_util__V_57_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_57_57, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_57_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          backend_libs__switch_util__TypeInfo_101_101 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_101_101, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_101_101, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_101_101, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+        }
+        {
+          backend_libs__switch_util__TypeInfo_103_103 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_103_103, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_103_103, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_101_101));
+        }
+        {
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_103_103, backend_libs__switch_util__HashVal5_26, ((MR_Box) (backend_libs__switch_util__V_57_57)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_33, &backend_libs__switch_util__conv5_STATE_VARIABLE_HashMap5_34);
+        }
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap5_34 = (MR_Word) backend_libs__switch_util__conv5_STATE_VARIABLE_HashMap5_34;
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_40 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_39;
+      }
+    {
+      backend_libs__switch_util__TypeInfo_107_107 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_107_107, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_107_107, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_107_107, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+    }
+    {
+      backend_libs__switch_util__TypeInfo_109_109 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_109_109, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_109_109, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_107_107));
+    }
+    {
+      backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_109_109, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_35, backend_libs__switch_util__HashVal6_27, &backend_libs__switch_util__conv6_OldEntries6_30);
+    }
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__OldEntries6_30 = ((MR_Word) backend_libs__switch_util__conv6_OldEntries6_30);
+        backend_libs__switch_util__succeeded = MR_TRUE;
+      }
+    if (backend_libs__switch_util__succeeded)
+      {
+        MR_Word backend_libs__switch_util__V_60_60;
+        MR_Word backend_libs__switch_util__conv7_STATE_VARIABLE_HashMap6_36;
+
+        {
+          backend_libs__switch_util__V_60_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_60_60, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_60_60, 1) = ((MR_Box) (backend_libs__switch_util__OldEntries6_30));
+        }
+        {
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_109_109, backend_libs__switch_util__HashVal6_27, ((MR_Box) (backend_libs__switch_util__V_60_60)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_35, &backend_libs__switch_util__conv7_STATE_VARIABLE_HashMap6_36);
+        }
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap6_36 = (MR_Word) backend_libs__switch_util__conv7_STATE_VARIABLE_HashMap6_36;
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_42 = (backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_41 + (MR_Integer) 1);
+      }
+    else
+      {
+        MR_Word backend_libs__switch_util__TypeInfo_119_119;
+        MR_Word backend_libs__switch_util__TypeInfo_121_121;
+        MR_Word backend_libs__switch_util__V_64_64;
+        MR_Word backend_libs__switch_util__conv8_STATE_VARIABLE_HashMap6_36;
+
+        {
+          backend_libs__switch_util__V_64_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_64_64, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_64_64, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          backend_libs__switch_util__TypeInfo_119_119 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_119_119, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_119_119, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_119_119, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+        }
+        {
+          backend_libs__switch_util__TypeInfo_121_121 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_121_121, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_121_121, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_119_119));
+        }
+        {
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_121_121, backend_libs__switch_util__HashVal6_27, ((MR_Box) (backend_libs__switch_util__V_64_64)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_35, &backend_libs__switch_util__conv8_STATE_VARIABLE_HashMap6_36);
+        }
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap6_36 = (MR_Word) backend_libs__switch_util__conv8_STATE_VARIABLE_HashMap6_36;
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_42 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_41;
+      }
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__string_hash_cases_14_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_67,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Integer backend_libs__switch_util__HashMask_2,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_3,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap4_4,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_5,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap5_6,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_7,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap6_8,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_9,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_10,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_11,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_12,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_13,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded;
+
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_14 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_13;
+            *backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_12 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_11;
+            *backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_10 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_9;
+            *backend_libs__switch_util__STATE_VARIABLE_HashMap6_8 = backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_7;
+            *backend_libs__switch_util__STATE_VARIABLE_HashMap5_6 = backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_5;
+            *backend_libs__switch_util__STATE_VARIABLE_HashMap4_4 = backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_3;
+          }
+        else
+          {
+            MR_Word backend_libs__switch_util__StrData_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__StrsDatas_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_55_55;
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_56_56;
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_57_57;
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_58_58;
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_59_59;
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_60_60;
+
+            {
+              backend_libs__switch_util__string_hash_case_14_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_67, backend_libs__switch_util__StrData_34, backend_libs__switch_util__HashMask_2, backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_3, &backend_libs__switch_util__STATE_VARIABLE_HashMap4_55_55, backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_5, &backend_libs__switch_util__STATE_VARIABLE_HashMap5_56_56, backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_7, &backend_libs__switch_util__STATE_VARIABLE_HashMap6_57_57, backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_9, &backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_58_58, backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_11, &backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_59_59, backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_13, &backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_60_60);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__StrsDatas_35;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_0__tmp_copy_3 = backend_libs__switch_util__STATE_VARIABLE_HashMap4_55_55;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_0__tmp_copy_5 = backend_libs__switch_util__STATE_VARIABLE_HashMap5_56_56;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_0__tmp_copy_7 = backend_libs__switch_util__STATE_VARIABLE_HashMap6_57_57;
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0__tmp_copy_9 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_58_58;
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0__tmp_copy_11 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_59_59;
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0__tmp_copy_13 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_60_60;
+
+              backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_13 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0__tmp_copy_13;
+              backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_11 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0__tmp_copy_11;
+              backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_9 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0__tmp_copy_9;
+              backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_7 = backend_libs__switch_util__STATE_VARIABLE_HashMap6_0__tmp_copy_7;
+              backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_5 = backend_libs__switch_util__STATE_VARIABLE_HashMap5_0__tmp_copy_5;
+              backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_3 = backend_libs__switch_util__STATE_VARIABLE_HashMap4_0__tmp_copy_3;
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__project_soln_consts_to_one_soln_3_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_Key_7,
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_8,
+  MR_Box backend_libs__switch_util___Key_4,
+  MR_Word backend_libs__switch_util__Solns_5,
+  MR_Word * backend_libs__switch_util__Values_6)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_106_101_99_116_95_115_111_108_110_95_99_111_110_115_116_115_95_116_111_95_111_110_101_95_115_111_108_110_95_95_91_49_44_32_51_93_95_48_3_p_0(backend_libs__switch_util__TypeInfo_for_Rval_8, backend_libs__switch_util__Solns_5, backend_libs__switch_util__Values_6);
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__filter_out_failing_cases_loop_5_p_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_3,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_4,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded;
+
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_5 = backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_4;
+            *backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_3 = backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2;
+          }
+        else
+          {
+            MR_Word backend_libs__switch_util__TaggedCase_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__TaggedCases_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__Goal_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 3)));
+            MR_Word backend_libs__switch_util__GoalExpr_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Goal_19, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_27_27;
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28;
+            MR_Word backend_libs__switch_util__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 2)));
+            MR_Word backend_libs__switch_util__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Goal_19, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__V_26_26;
+
+            backend_libs__switch_util__succeeded = ((((MR_tag((MR_Word) backend_libs__switch_util__GoalExpr_20)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__GoalExpr_20, (MR_Integer) 0)))) == (MR_Integer) 3)));
+            if (backend_libs__switch_util__succeeded)
+              {
+                backend_libs__switch_util__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__GoalExpr_20, (MR_Integer) 1)));
+                backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_26_26 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+            if (backend_libs__switch_util__succeeded)
+              {
+                backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_27_27 = (MR_Integer) 0;
+                backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28 = backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2;
+              }
+            else
+              {
+                {
+                  backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28, 0) = ((MR_Box) (backend_libs__switch_util__TaggedCase_12));
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28, 1) = ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2));
+                }
+                backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_27_27 = backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_4;
+              }
+            /* direct tailcall eliminated */
+            {
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__TaggedCases_13;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0__tmp_copy_2 = backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0__tmp_copy_4 = backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_27_27;
+
+              backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_4 = backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0__tmp_copy_4;
+              backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2 = backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0__tmp_copy_2;
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__num_cons_ids_in_tagged_cases_loop_5_p_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0_2,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumConsIds_3,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumArms_0_4,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumArms_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded;
+
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *backend_libs__switch_util__STATE_VARIABLE_NumArms_5 = backend_libs__switch_util__STATE_VARIABLE_NumArms_0_4;
+            *backend_libs__switch_util__STATE_VARIABLE_NumConsIds_3 = backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0_2;
+          }
+        else
+          {
+            MR_Word backend_libs__switch_util__TaggedCase_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__TaggedCases_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__OtherCondIds_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 1)));
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumConsIds_24_24;
+            MR_Integer backend_libs__switch_util__V_25_25 = (backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0_2 + (MR_Integer) 1);
+            MR_Integer backend_libs__switch_util__V_27_27;
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumArms_28_28;
+            MR_Word backend_libs__switch_util___MainConsId_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 2)));
+            MR_Word backend_libs__switch_util__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 3)));
+
+            {
+              backend_libs__switch_util__V_27_27 = mercury__list__length_1_f_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__OtherCondIds_17);
+            }
+            backend_libs__switch_util__STATE_VARIABLE_NumConsIds_24_24 = (backend_libs__switch_util__V_25_25 + backend_libs__switch_util__V_27_27);
+            backend_libs__switch_util__STATE_VARIABLE_NumArms_28_28 = (backend_libs__switch_util__STATE_VARIABLE_NumArms_0_4 + (MR_Integer) 1);
+            /* direct tailcall eliminated */
+            {
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__TaggedCases_13;
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0__tmp_copy_2 = backend_libs__switch_util__STATE_VARIABLE_NumConsIds_24_24;
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumArms_0__tmp_copy_4 = backend_libs__switch_util__STATE_VARIABLE_NumArms_28_28;
+
+              backend_libs__switch_util__STATE_VARIABLE_NumArms_0_4 = backend_libs__switch_util__STATE_VARIABLE_NumArms_0__tmp_copy_4;
+              backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0_2 = backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0__tmp_copy_2;
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__tag_cons_id_in_int_switch_11_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_12,
+  MR_Word backend_libs__switch_util__ConsId_13,
+  MR_Word * backend_libs__switch_util__TaggedConsId_14,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_21,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LowerLimit_22,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_23,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_UpperLimit_24,
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_0_25,
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumValues_26,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_27,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_28)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__ConsTag_19;
+    MR_Integer backend_libs__switch_util__IntTag_20;
+
+    {
+      backend_libs__switch_util__ConsTag_19 = hlds__hlds_code_util__cons_id_to_tag_2_f_0(backend_libs__switch_util__ModuleInfo_12, backend_libs__switch_util__ConsId_13);
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *backend_libs__switch_util__TaggedConsId_14 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (backend_libs__switch_util__ConsId_13));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (backend_libs__switch_util__ConsTag_19));
+    }
+    backend_libs__switch_util__succeeded = ((((MR_tag((MR_Word) backend_libs__switch_util__ConsTag_19)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__ConsTag_19, (MR_Integer) 0)))) == (MR_Integer) 0)));
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__IntTag_20 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__ConsTag_19, (MR_Integer) 1)));
+        {
+          mercury__int__min_3_p_0(backend_libs__switch_util__IntTag_20, backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_21, backend_libs__switch_util__STATE_VARIABLE_LowerLimit_22);
+        }
+        {
+          mercury__int__max_3_p_0(backend_libs__switch_util__IntTag_20, backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_23, backend_libs__switch_util__STATE_VARIABLE_UpperLimit_24);
+        }
+        *backend_libs__switch_util__STATE_VARIABLE_NumValues_26 = (backend_libs__switch_util__STATE_VARIABLE_NumValues_0_25 + (MR_Integer) 1);
+        *backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_28 = backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_27;
+      }
+    else
+      {
+        *backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_28 = (MR_Integer) 1;
+        *backend_libs__switch_util__STATE_VARIABLE_NumValues_26 = backend_libs__switch_util__STATE_VARIABLE_NumValues_0_25;
+        *backend_libs__switch_util__STATE_VARIABLE_UpperLimit_24 = backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_23;
+        *backend_libs__switch_util__STATE_VARIABLE_LowerLimit_22 = backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_21;
+      }
+  }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__tag_cons_id_3_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_4,
+  MR_Word backend_libs__switch_util__ConsId_5,
+  MR_Word * backend_libs__switch_util__TaggedConsId_6)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__ConsTag_7;
+
+    {
+      backend_libs__switch_util__ConsTag_7 = hlds__hlds_code_util__cons_id_to_tag_2_f_0(backend_libs__switch_util__ModuleInfo_4, backend_libs__switch_util__ConsId_5);
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *backend_libs__switch_util__TaggedConsId_6 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (backend_libs__switch_util__ConsId_5));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (backend_libs__switch_util__ConsTag_7));
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__get_string_tag_2_p_0(
+  MR_Word backend_libs__switch_util__ConsTag_3,
+  MR_String * backend_libs__switch_util__Str_4)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__ConsTag_3)) == (MR_mktag((MR_Integer) 1)));
+    MR_String backend_libs__switch_util__StrPrime_5;
+
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__StrPrime_5 = ((MR_String) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__ConsTag_3, (MR_Integer) 0)));
+        *backend_libs__switch_util__Str_4 = backend_libs__switch_util__StrPrime_5;
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_string_tag\'/2", (MR_String) "not string_tag");
+          return;
+        }
+      }
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__get_int_tag_2_p_0(
+  MR_Word backend_libs__switch_util__ConsTag_3,
+  MR_Integer * backend_libs__switch_util__Int_4)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded = ((((MR_tag((MR_Word) backend_libs__switch_util__ConsTag_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__ConsTag_3, (MR_Integer) 0)))) == (MR_Integer) 0)));
+    MR_Integer backend_libs__switch_util__IntPrime_5;
+
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__IntPrime_5 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__ConsTag_3, (MR_Integer) 1)));
+        *backend_libs__switch_util__Int_4 = backend_libs__switch_util__IntPrime_5;
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_int_tag\'/2", (MR_String) "not int_tag");
+          return;
+        }
+      }
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__get_ptag_counts_4_p_0(
+  MR_Word backend_libs__switch_util__Type_5,
+  MR_Word backend_libs__switch_util__ModuleInfo_6,
+  MR_Integer * backend_libs__switch_util__MaxPrimary_7,
+  MR_Word * backend_libs__switch_util__PtagCountMap_8)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeCtor_9;
+    MR_Word backend_libs__switch_util__TypeTable_10;
+    MR_Word backend_libs__switch_util__TypeDefn_11;
+    MR_Word backend_libs__switch_util__TypeBody_12;
+    MR_Word backend_libs__switch_util__TagList_23;
+    MR_Word backend_libs__switch_util__PtagCountMap0_29;
+
+    {
+      parse_tree__prog_type__type_to_ctor_det_2_p_0(backend_libs__switch_util__Type_5, &backend_libs__switch_util__TypeCtor_9);
+    }
+    {
+      hlds__hlds_module__module_info_get_type_table_2_p_0(backend_libs__switch_util__ModuleInfo_6, &backend_libs__switch_util__TypeTable_10);
+    }
+    {
+      hlds__hlds_data__lookup_type_ctor_defn_3_p_0(backend_libs__switch_util__TypeTable_10, backend_libs__switch_util__TypeCtor_9, &backend_libs__switch_util__TypeDefn_11);
+    }
+    {
+      hlds__hlds_data__get_type_defn_body_2_p_0(backend_libs__switch_util__TypeDefn_11, &backend_libs__switch_util__TypeBody_12);
+    }
+    switch (MR_tag((MR_Word) backend_libs__switch_util__TypeBody_12)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts\'/4", (MR_String) "non-du type");
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word backend_libs__switch_util__TypeCtorInfo_34_34 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+          MR_Word backend_libs__switch_util__TypeCtorInfo_35_35 = (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0;
+          MR_Word backend_libs__switch_util__ConsTable_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 1)));
+          MR_Word backend_libs__switch_util__ConsList_22;
+          MR_Word backend_libs__switch_util__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 0)));
+          MR_Word backend_libs__switch_util__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 2)));
+          MR_Word backend_libs__switch_util__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 3)));
+          MR_Word backend_libs__switch_util__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 4)));
+          MR_Word backend_libs__switch_util__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 5)));
+          MR_Word backend_libs__switch_util__V_19_19 = ((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 6)))) & (MR_Integer) 1);
+          MR_Word backend_libs__switch_util__V_20_20 = ((((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 6)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+          MR_Word backend_libs__switch_util__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 7)));
+
+          {
+            mercury__map__to_assoc_list_2_p_0(backend_libs__switch_util__TypeCtorInfo_34_34, backend_libs__switch_util__TypeCtorInfo_35_35, backend_libs__switch_util__ConsTable_14, &backend_libs__switch_util__ConsList_22);
+          }
+          {
+            mercury__assoc_list__values_2_p_0(backend_libs__switch_util__TypeCtorInfo_34_34, backend_libs__switch_util__TypeCtorInfo_35_35, backend_libs__switch_util__ConsList_22, &backend_libs__switch_util__TagList_23);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts\'/4", (MR_String) "non-du type");
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts\'/4", (MR_String) "non-du type");
+            return;
+          }
+        }
+        break;
+    }
+    {
+      mercury__map__init_1_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &backend_libs__switch_util_scalar_common_2[0], &backend_libs__switch_util__PtagCountMap0_29);
+    }
+    {
+      backend_libs__switch_util__get_ptag_counts_loop_5_p_0(backend_libs__switch_util__TagList_23, (MR_Integer) -1, backend_libs__switch_util__MaxPrimary_7, backend_libs__switch_util__PtagCountMap0_29, backend_libs__switch_util__PtagCountMap_8);
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__order_ptags_by_value_4_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_18,
+  MR_Integer backend_libs__switch_util__Ptag_5,
+  MR_Integer backend_libs__switch_util__MaxPtag_6,
+  MR_Word backend_libs__switch_util__PtagCaseMap0_7,
+  MR_Word * backend_libs__switch_util__PtagCaseList_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__MaxPtag_6 >= backend_libs__switch_util__Ptag_5);
+
+        if (backend_libs__switch_util__succeeded)
+          {
+            MR_Integer backend_libs__switch_util__NextPtag_9 = (backend_libs__switch_util__Ptag_5 + (MR_Integer) 1);
+            MR_Word backend_libs__switch_util__TypeInfo_21_21;
+            MR_Word backend_libs__switch_util__PtagCase_10;
+            MR_Box backend_libs__switch_util__conv0_PtagCase_10;
+
+            {
+              backend_libs__switch_util__TypeInfo_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_21_21, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_21_21, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_18));
+            }
+            {
+              backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_21_21, (MR_Word) backend_libs__switch_util__PtagCaseMap0_7, backend_libs__switch_util__Ptag_5, &backend_libs__switch_util__conv0_PtagCase_10);
+            }
+            if (backend_libs__switch_util__succeeded)
+              {
+                backend_libs__switch_util__PtagCase_10 = ((MR_Word) backend_libs__switch_util__conv0_PtagCase_10);
+                backend_libs__switch_util__succeeded = MR_TRUE;
+              }
+            if (backend_libs__switch_util__succeeded)
+              {
+                MR_Word backend_libs__switch_util__PtagCaseMap1_11;
+                MR_Word backend_libs__switch_util__PtagCaseList1_12;
+                MR_Word backend_libs__switch_util__PtagCaseEntry_13;
+
+                {
+                  mercury__map__delete_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_21_21, ((MR_Box) (backend_libs__switch_util__Ptag_5)), backend_libs__switch_util__PtagCaseMap0_7, &backend_libs__switch_util__PtagCaseMap1_11);
+                }
+                {
+                  backend_libs__switch_util__order_ptags_by_value_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_18, backend_libs__switch_util__NextPtag_9, backend_libs__switch_util__MaxPtag_6, backend_libs__switch_util__PtagCaseMap1_11, &backend_libs__switch_util__PtagCaseList1_12);
+                }
+                {
+                  backend_libs__switch_util__PtagCaseEntry_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__PtagCaseEntry_13, 0) = ((MR_Box) (backend_libs__switch_util__Ptag_5));
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__PtagCaseEntry_13, 1) = ((MR_Box) (backend_libs__switch_util__PtagCase_10));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *backend_libs__switch_util__PtagCaseList_8 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__PtagCaseEntry_13));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__PtagCaseList1_12));
+                }
+              }
+            else
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Integer backend_libs__switch_util__Ptag__tmp_copy_5 = backend_libs__switch_util__NextPtag_9;
+
+                  backend_libs__switch_util__Ptag_5 = backend_libs__switch_util__Ptag__tmp_copy_5;
+                }
+                continue;
+              }
+          }
+        else
+          {
+            MR_Word backend_libs__switch_util__TypeInfo_27_27;
+
+            {
+              backend_libs__switch_util__TypeInfo_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_27_27, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_27_27, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_18));
+            }
+            {
+              backend_libs__switch_util__succeeded = mercury__map__is_empty_1_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_27_27, backend_libs__switch_util__PtagCaseMap0_7);
+            }
+            if (backend_libs__switch_util__succeeded)
+              *backend_libs__switch_util__PtagCaseList_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            else
+              {
+                {
+                  mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.order_ptags_by_value\'/4", (MR_String) "PtagCaseMap0 is not empty");
+                  return;
+                }
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+backend_libs__switch_util__order_ptags_by_count_3_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box * backend_libs__switch_util__wrapper_arg_2)
+{
+  {
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+    MR_Word backend_libs__switch_util__conv3_GroupEntry_4;
+
+    {
+      backend_libs__switch_util__interpret_rev_map_entry_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv3_GroupEntry_4);
+    }
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv3_GroupEntry_4));
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__order_ptags_by_count_3_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_14,
+  MR_Word backend_libs__switch_util__PtagCountMap_4,
+  MR_Word backend_libs__switch_util__PtagCaseMap_5,
+  MR_Word * backend_libs__switch_util__PtagGroupCaseList_6)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_17_17;
+    MR_Word backend_libs__switch_util__TypeInfo_19_19;
+    MR_Word backend_libs__switch_util__TypeInfo_23_23;
+    MR_Word backend_libs__switch_util__PtagCaseList_7;
+    MR_Word backend_libs__switch_util__PtagCaseRevMap_8;
+    MR_Word backend_libs__switch_util__PtagCaseRevList_9;
+    MR_Word backend_libs__switch_util__PtagCaseRevSortedList_10;
+    MR_Word backend_libs__switch_util__PtagCaseSortedList_11;
+    MR_Word backend_libs__switch_util__V_12_12;
+    MR_Word backend_libs__switch_util__V_13_13;
+    MR_Word backend_libs__switch_util__conv0_V_12_12;
+    MR_Word backend_libs__switch_util__conv1_PtagCaseRevSortedList_10;
+    MR_Word backend_libs__switch_util__conv2_PtagCaseSortedList_11;
+
+    {
+      backend_libs__switch_util__TypeInfo_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_17_17, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_17_17, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_14));
+    }
+    {
+      mercury__map__to_assoc_list_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_17_17, backend_libs__switch_util__PtagCaseMap_5, &backend_libs__switch_util__PtagCaseList_7);
+    }
+    {
+      backend_libs__switch_util__TypeInfo_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_19_19, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_19_19, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_14));
+    }
+    {
+      backend_libs__switch_util__conv0_V_12_12 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeInfo_17_17, backend_libs__switch_util__TypeInfo_19_19);
+    }
+    backend_libs__switch_util__V_12_12 = (MR_Word) backend_libs__switch_util__conv0_V_12_12;
+    {
+      backend_libs__switch_util__build_ptag_case_rev_map_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_14, backend_libs__switch_util__PtagCaseList_7, backend_libs__switch_util__PtagCountMap_4, backend_libs__switch_util__V_12_12, &backend_libs__switch_util__PtagCaseRevMap_8);
+    }
+    {
+      mercury__map__values_2_p_0(backend_libs__switch_util__TypeInfo_17_17, backend_libs__switch_util__TypeInfo_19_19, (MR_Word) backend_libs__switch_util__PtagCaseRevMap_8, &backend_libs__switch_util__PtagCaseRevList_9);
+    }
+    {
+      mercury__list__sort_2_p_0(backend_libs__switch_util__TypeInfo_19_19, (MR_Word) backend_libs__switch_util__PtagCaseRevList_9, &backend_libs__switch_util__conv1_PtagCaseRevSortedList_10);
+    }
+    backend_libs__switch_util__PtagCaseRevSortedList_10 = (MR_Word) backend_libs__switch_util__conv1_PtagCaseRevSortedList_10;
+    {
+      mercury__list__reverse_2_p_0(backend_libs__switch_util__TypeInfo_19_19, (MR_Word) backend_libs__switch_util__PtagCaseRevSortedList_10, &backend_libs__switch_util__conv2_PtagCaseSortedList_11);
+    }
+    backend_libs__switch_util__PtagCaseSortedList_11 = (MR_Word) backend_libs__switch_util__conv2_PtagCaseSortedList_11;
+    {
+      backend_libs__switch_util__V_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_7[0]));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 1) = ((MR_Box) (backend_libs__switch_util__order_ptags_by_count_3_p_0_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 3) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_14));
+    }
+    {
+      backend_libs__switch_util__TypeInfo_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_14));
+    }
+    {
+      mercury__list__map_3_p_0(backend_libs__switch_util__TypeInfo_19_19, backend_libs__switch_util__TypeInfo_23_23, (MR_Word) backend_libs__switch_util__V_13_13, (MR_Word) backend_libs__switch_util__PtagCaseSortedList_11, backend_libs__switch_util__PtagGroupCaseList_6);
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__group_cases_by_ptag_10_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_29,
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateA_30,
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateB_31,
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateC_32,
+  MR_Word backend_libs__switch_util__TaggedCases_11,
+  MR_Word backend_libs__switch_util__RepresentCase_12,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_18,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_19,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_20,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_21,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_22,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_23,
+  MR_Word * backend_libs__switch_util__CaseNumPtagsMap_16,
+  MR_Word * backend_libs__switch_util__PtagCaseMap_17)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_37_37;
+    MR_Word backend_libs__switch_util__V_27_27;
+    MR_Word backend_libs__switch_util__V_28_28;
+
+    {
+      backend_libs__switch_util__V_27_27 = mercury__map__init_0_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &backend_libs__switch_util_scalar_common_1[0]);
+    }
+    {
+      backend_libs__switch_util__TypeInfo_37_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_37_37, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_37_37, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_29));
+    }
+    {
+      backend_libs__switch_util__V_28_28 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_37_37);
+    }
+    {
+      backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_29, backend_libs__switch_util__TaggedCases_11, backend_libs__switch_util__RepresentCase_12, backend_libs__switch_util__STATE_VARIABLE_StateA_0_18, backend_libs__switch_util__STATE_VARIABLE_StateA_19, backend_libs__switch_util__STATE_VARIABLE_StateB_0_20, backend_libs__switch_util__STATE_VARIABLE_StateB_21, backend_libs__switch_util__STATE_VARIABLE_StateC_0_22, backend_libs__switch_util__STATE_VARIABLE_StateC_23, backend_libs__switch_util__V_27_27, backend_libs__switch_util__CaseNumPtagsMap_16, backend_libs__switch_util__V_28_28, backend_libs__switch_util__PtagCaseMap_17);
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__string_binary_cases_9_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_27,
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateA_28,
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateB_29,
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateC_30,
+  MR_Word backend_libs__switch_util__TaggedCases_10,
+  MR_Word backend_libs__switch_util__RepresentCase_11,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_17,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_18,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_19,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_20,
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_21,
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_22,
+  MR_Word * backend_libs__switch_util__SortedTable_15)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_33_33;
+    MR_Word backend_libs__switch_util__UnsortedTable_16;
+    MR_Word backend_libs__switch_util__conv0_SortedTable_15;
+
+    {
+      backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_27, backend_libs__switch_util__TaggedCases_10, backend_libs__switch_util__RepresentCase_11, backend_libs__switch_util__STATE_VARIABLE_StateA_0_17, backend_libs__switch_util__STATE_VARIABLE_StateA_18, backend_libs__switch_util__STATE_VARIABLE_StateB_0_19, backend_libs__switch_util__STATE_VARIABLE_StateB_20, backend_libs__switch_util__STATE_VARIABLE_StateC_0_21, backend_libs__switch_util__STATE_VARIABLE_StateC_22, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &backend_libs__switch_util__UnsortedTable_16);
+    }
+    {
+      backend_libs__switch_util__TypeInfo_33_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_33_33, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_33_33, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_33_33, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_27));
+    }
+    {
+      mercury__list__sort_2_p_0(backend_libs__switch_util__TypeInfo_33_33, (MR_Word) backend_libs__switch_util__UnsortedTable_16, &backend_libs__switch_util__conv0_SortedTable_15);
+    }
+    *backend_libs__switch_util__SortedTable_15 = (MR_Word) backend_libs__switch_util__conv0_SortedTable_15;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__construct_string_hash_cases_6_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_81,
+  MR_Word backend_libs__switch_util__StrsDatas_7,
+  MR_Word backend_libs__switch_util__Upgrade_8,
+  MR_Integer * backend_libs__switch_util__TableSize_9,
+  MR_Word * backend_libs__switch_util__HashSlotsMap_10,
+  MR_Word * backend_libs__switch_util__HashOp_11,
+  MR_Integer * backend_libs__switch_util__NumCollisions_12)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_84_84;
+    MR_Word backend_libs__switch_util__TypeCtorInfo_85_85;
+    MR_Word backend_libs__switch_util__TypeInfo_87_87;
+    MR_Integer backend_libs__switch_util__NumStrs_13;
+    MR_Integer backend_libs__switch_util__LogNumStrs_14;
+    MR_Integer backend_libs__switch_util__RoundedUpNumStrs_15;
+    MR_Integer backend_libs__switch_util__TableSizeA_16;
+    MR_Integer backend_libs__switch_util__HashMaskA_17;
+    MR_Word backend_libs__switch_util__HashValsMap4A_18;
+    MR_Word backend_libs__switch_util__HashValsMap5A_19;
+    MR_Word backend_libs__switch_util__HashValsMap6A_20;
+    MR_Integer backend_libs__switch_util__NumCollisions4A_21;
+    MR_Integer backend_libs__switch_util__NumCollisions5A_22;
+    MR_Integer backend_libs__switch_util__NumCollisions6A_23;
+    MR_Word backend_libs__switch_util__HashValsMapA_25;
+    MR_Word backend_libs__switch_util__HashOpA_26;
+    MR_Integer backend_libs__switch_util__NumCollisionsA_27;
+    MR_Word backend_libs__switch_util__HashValsMap_28;
+    MR_Word backend_libs__switch_util__HashValsList_37;
+    MR_Word backend_libs__switch_util__V_41_41;
+    MR_Word backend_libs__switch_util__V_42_42;
+    MR_Word backend_libs__switch_util__V_43_43;
+
+    {
+      backend_libs__switch_util__TypeInfo_84_84 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_84_84, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_84_84, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_84_84, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_81));
+    }
+    {
+      mercury__list__length_2_p_0(backend_libs__switch_util__TypeInfo_84_84, (MR_Word) backend_libs__switch_util__StrsDatas_7, &backend_libs__switch_util__NumStrs_13);
+    }
+    {
+      mercury__int__log2_2_p_0(backend_libs__switch_util__NumStrs_13, &backend_libs__switch_util__LogNumStrs_14);
+    }
+    {
+      mercury__int__pow_3_p_0((MR_Integer) 2, backend_libs__switch_util__LogNumStrs_14, &backend_libs__switch_util__RoundedUpNumStrs_15);
+    }
+    backend_libs__switch_util__TableSizeA_16 = ((MR_Integer) 2 * backend_libs__switch_util__RoundedUpNumStrs_15);
+    backend_libs__switch_util__HashMaskA_17 = (backend_libs__switch_util__TableSizeA_16 - (MR_Integer) 1);
+    backend_libs__switch_util__TypeCtorInfo_85_85 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+    {
+      backend_libs__switch_util__TypeInfo_87_87 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_87_87, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_87_87, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_84_84));
+    }
+    {
+      backend_libs__switch_util__V_41_41 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+    }
+    {
+      backend_libs__switch_util__V_42_42 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+    }
+    {
+      backend_libs__switch_util__V_43_43 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+    }
+    {
+      backend_libs__switch_util__string_hash_cases_14_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_81, backend_libs__switch_util__StrsDatas_7, backend_libs__switch_util__HashMaskA_17, backend_libs__switch_util__V_41_41, &backend_libs__switch_util__HashValsMap4A_18, backend_libs__switch_util__V_42_42, &backend_libs__switch_util__HashValsMap5A_19, backend_libs__switch_util__V_43_43, &backend_libs__switch_util__HashValsMap6A_20, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions4A_21, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions5A_22, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions6A_23);
+    }
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions4A_21 <= backend_libs__switch_util__NumCollisions5A_22);
+    if (backend_libs__switch_util__succeeded)
+      backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions4A_21 <= backend_libs__switch_util__NumCollisions6A_23);
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__HashValsMapA_25 = backend_libs__switch_util__HashValsMap4A_18;
+        backend_libs__switch_util__HashOpA_26 = (MR_Integer) 11;
+        backend_libs__switch_util__NumCollisionsA_27 = backend_libs__switch_util__NumCollisions4A_21;
+      }
+    else
+      {
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions5A_22 <= backend_libs__switch_util__NumCollisions6A_23);
+        if (backend_libs__switch_util__succeeded)
+          {
+            backend_libs__switch_util__HashValsMapA_25 = backend_libs__switch_util__HashValsMap5A_19;
+            backend_libs__switch_util__HashOpA_26 = (MR_Integer) 12;
+            backend_libs__switch_util__NumCollisionsA_27 = backend_libs__switch_util__NumCollisions5A_22;
+          }
+        else
+          {
+            backend_libs__switch_util__HashValsMapA_25 = backend_libs__switch_util__HashValsMap6A_20;
+            backend_libs__switch_util__HashOpA_26 = (MR_Integer) 13;
+            backend_libs__switch_util__NumCollisionsA_27 = backend_libs__switch_util__NumCollisions6A_23;
+          }
+      }
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisionsA_27 == (MR_Integer) 0);
+    if (!(backend_libs__switch_util__succeeded))
+      backend_libs__switch_util__succeeded = (backend_libs__switch_util__Upgrade_8 == (MR_Integer) 0);
+    if (backend_libs__switch_util__succeeded)
+      {
+        *backend_libs__switch_util__TableSize_9 = backend_libs__switch_util__TableSizeA_16;
+        backend_libs__switch_util__HashValsMap_28 = backend_libs__switch_util__HashValsMapA_25;
+        *backend_libs__switch_util__HashOp_11 = backend_libs__switch_util__HashOpA_26;
+        *backend_libs__switch_util__NumCollisions_12 = backend_libs__switch_util__NumCollisionsA_27;
+      }
+    else
+      {
+        MR_Integer backend_libs__switch_util__TableSizeB_29 = ((MR_Integer) 4 * backend_libs__switch_util__RoundedUpNumStrs_15);
+        MR_Integer backend_libs__switch_util__HashMaskB_30 = (backend_libs__switch_util__TableSizeB_29 - (MR_Integer) 1);
+        MR_Word backend_libs__switch_util__HashValsMap4B_31;
+        MR_Word backend_libs__switch_util__HashValsMap5B_32;
+        MR_Word backend_libs__switch_util__HashValsMap6B_33;
+        MR_Integer backend_libs__switch_util__NumCollisions4B_34;
+        MR_Integer backend_libs__switch_util__NumCollisions5B_35;
+        MR_Integer backend_libs__switch_util__NumCollisions6B_36;
+        MR_Word backend_libs__switch_util__V_59_59;
+        MR_Word backend_libs__switch_util__V_60_60;
+        MR_Word backend_libs__switch_util__V_61_61;
+
+        {
+          backend_libs__switch_util__V_59_59 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+        }
+        {
+          backend_libs__switch_util__V_60_60 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+        }
+        {
+          backend_libs__switch_util__V_61_61 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+        }
+        {
+          backend_libs__switch_util__string_hash_cases_14_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_81, backend_libs__switch_util__StrsDatas_7, backend_libs__switch_util__HashMaskB_30, backend_libs__switch_util__V_59_59, &backend_libs__switch_util__HashValsMap4B_31, backend_libs__switch_util__V_60_60, &backend_libs__switch_util__HashValsMap5B_32, backend_libs__switch_util__V_61_61, &backend_libs__switch_util__HashValsMap6B_33, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions4B_34, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions5B_35, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions6B_36);
+        }
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions4B_34 == (MR_Integer) 0);
+        if (backend_libs__switch_util__succeeded)
+          {
+            *backend_libs__switch_util__TableSize_9 = backend_libs__switch_util__TableSizeB_29;
+            backend_libs__switch_util__HashValsMap_28 = backend_libs__switch_util__HashValsMap4B_31;
+            *backend_libs__switch_util__HashOp_11 = (MR_Integer) 11;
+            *backend_libs__switch_util__NumCollisions_12 = backend_libs__switch_util__NumCollisions4B_34;
+          }
+        else
+          {
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions5B_35 == (MR_Integer) 0);
+            if (backend_libs__switch_util__succeeded)
+              {
+                *backend_libs__switch_util__TableSize_9 = backend_libs__switch_util__TableSizeB_29;
+                backend_libs__switch_util__HashValsMap_28 = backend_libs__switch_util__HashValsMap5B_32;
+                *backend_libs__switch_util__HashOp_11 = (MR_Integer) 12;
+                *backend_libs__switch_util__NumCollisions_12 = backend_libs__switch_util__NumCollisions5B_35;
+              }
+            else
+              {
+                backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions6B_36 == (MR_Integer) 0);
+                if (backend_libs__switch_util__succeeded)
+                  {
+                    *backend_libs__switch_util__TableSize_9 = backend_libs__switch_util__TableSizeB_29;
+                    backend_libs__switch_util__HashValsMap_28 = backend_libs__switch_util__HashValsMap6B_33;
+                    *backend_libs__switch_util__HashOp_11 = (MR_Integer) 13;
+                    *backend_libs__switch_util__NumCollisions_12 = backend_libs__switch_util__NumCollisions6B_36;
+                  }
+                else
+                  {
+                    *backend_libs__switch_util__TableSize_9 = backend_libs__switch_util__TableSizeA_16;
+                    backend_libs__switch_util__HashValsMap_28 = backend_libs__switch_util__HashValsMapA_25;
+                    *backend_libs__switch_util__HashOp_11 = backend_libs__switch_util__HashOpA_26;
+                    *backend_libs__switch_util__NumCollisions_12 = backend_libs__switch_util__NumCollisionsA_27;
+                  }
+              }
+          }
+      }
+    {
+      mercury__map__to_assoc_list_2_p_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87, backend_libs__switch_util__HashValsMap_28, &backend_libs__switch_util__HashValsList_37);
+    }
+    {
+      backend_libs__switch_util__calc_string_hash_slots_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_81, *backend_libs__switch_util__TableSize_9, backend_libs__switch_util__HashValsList_37, backend_libs__switch_util__HashValsMap_28, backend_libs__switch_util__HashSlotsMap_10);
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__get_word_bits_3_p_0(
+  MR_Word backend_libs__switch_util__Globals_4,
+  MR_Integer * backend_libs__switch_util__WordBits_5,
+  MR_Integer * backend_libs__switch_util__Log2WordBits_6)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__HostWordBits_7;
+    MR_Integer backend_libs__switch_util__TargetWordBits_8;
+    MR_Integer backend_libs__switch_util__WordBits0_9;
+    MR_Integer backend_libs__switch_util__V_14_14;
+    MR_Integer backend_libs__switch_util__V_15_15;
+
+    {
+      mercury__int__bits_per_int_1_p_0(&backend_libs__switch_util__HostWordBits_7);
+    }
+    {
+      libs__globals__lookup_int_option_3_p_0(backend_libs__switch_util__Globals_4, (MR_Integer) 240, &backend_libs__switch_util__TargetWordBits_8);
+    }
+    {
+      mercury__int__min_3_p_0(backend_libs__switch_util__HostWordBits_7, backend_libs__switch_util__TargetWordBits_8, &backend_libs__switch_util__WordBits0_9);
+    }
+    backend_libs__switch_util__V_14_14 = (backend_libs__switch_util__WordBits0_9 + (MR_Integer) 1);
+    {
+      mercury__int__log2_2_p_0(backend_libs__switch_util__V_14_14, &backend_libs__switch_util__V_15_15);
+    }
+    *backend_libs__switch_util__Log2WordBits_6 = (backend_libs__switch_util__V_15_15 - (MR_Integer) 1);
+    {
+      mercury__int__pow_3_p_0((MR_Integer) 2, *backend_libs__switch_util__Log2WordBits_6, backend_libs__switch_util__WordBits_5);
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__project_solns_to_rval_lists_3_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_T_21,
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_22,
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_RvalsList_0_2,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_RvalsList_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool backend_libs__switch_util__succeeded;
+
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *backend_libs__switch_util__STATE_VARIABLE_RvalsList_3 = backend_libs__switch_util__STATE_VARIABLE_RvalsList_0_2;
+        else
+          {
+            MR_Word backend_libs__switch_util__Case_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word backend_libs__switch_util__Cases_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__Soln_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_7, (MR_Integer) 1)));
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19;
+            MR_Box backend_libs__switch_util___Index_10 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_7, (MR_Integer) 0));
+
+            if (((MR_tag((MR_Word) backend_libs__switch_util__Soln_11)) == (MR_mktag((MR_Integer) 0))))
+              {
+                MR_Word backend_libs__switch_util__Rvals_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Soln_11, (MR_Integer) 0)));
+
+                {
+                  backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19, 0) = ((MR_Box) (backend_libs__switch_util__Rvals_12));
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19, 1) = ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_RvalsList_0_2));
+                }
+              }
+            else
+              {
+                MR_Word backend_libs__switch_util__TypeInfo_24_24;
+                MR_Word backend_libs__switch_util__FirstSolnRvals_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__Soln_11, (MR_Integer) 0)));
+                MR_Word backend_libs__switch_util__LaterSolnsRvalsList_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__Soln_11, (MR_Integer) 1)));
+                MR_Word backend_libs__switch_util__V_18_18;
+
+                {
+                  backend_libs__switch_util__TypeInfo_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_24_24, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_24_24, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_22));
+                }
+                {
+                  backend_libs__switch_util__V_18_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_18_18, 0) = ((MR_Box) (backend_libs__switch_util__FirstSolnRvals_13));
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_18_18, 1) = ((MR_Box) (backend_libs__switch_util__LaterSolnsRvalsList_14));
+                }
+                {
+                  backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19 = mercury__list__f_43_43_2_f_0(backend_libs__switch_util__TypeInfo_24_24, backend_libs__switch_util__V_18_18, backend_libs__switch_util__STATE_VARIABLE_RvalsList_0_2);
+                }
+              }
+            /* direct tailcall eliminated */
+            {
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__Cases_8;
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_RvalsList_0__tmp_copy_2 = backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19;
+
+              backend_libs__switch_util__STATE_VARIABLE_RvalsList_0_2 = backend_libs__switch_util__STATE_VARIABLE_RvalsList_0__tmp_copy_2;
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+backend_libs__switch_util__project_all_to_one_solution_2_p_0_1(
+  MR_Box backend_libs__switch_util__closure_arg,
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+  MR_Box * backend_libs__switch_util__wrapper_arg_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+    MR_Word backend_libs__switch_util__conv0_Values_6;
+
+    {
+      backend_libs__switch_util__succeeded = backend_libs__switch_util__project_soln_consts_to_one_soln_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))), backend_libs__switch_util__wrapper_arg_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), &backend_libs__switch_util__conv0_Values_6);
+    }
+    if (backend_libs__switch_util__succeeded)
+      {
+        *backend_libs__switch_util__wrapper_arg_3 = ((MR_Box) (backend_libs__switch_util__conv0_Values_6));
+        backend_libs__switch_util__succeeded = MR_TRUE;
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util__project_all_to_one_solution_2_p_0(
+  MR_Word backend_libs__switch_util__TypeInfo_for_Key_6,
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_7,
+  MR_Word backend_libs__switch_util__CaseSolns_3,
+  MR_Word * backend_libs__switch_util__CaseValuePairs_4)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__TypeInfo_12_12;
+    MR_Word backend_libs__switch_util__TypeInfo_14_14;
+    MR_Word backend_libs__switch_util__V_5_5;
+
+    {
+      backend_libs__switch_util__V_5_5 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_5_5, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_5[0]));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_5_5, 1) = ((MR_Box) (backend_libs__switch_util__project_all_to_one_solution_2_p_0_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_5_5, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_5_5, 3) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Key_6));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_5_5, 4) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_7));
+    }
+    {
+      backend_libs__switch_util__TypeInfo_12_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_12_12, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_12_12, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_7));
+    }
+    {
+      backend_libs__switch_util__TypeInfo_14_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_14_14, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_14_14, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_7));
+    }
+    {
+      backend_libs__switch_util__succeeded = mercury__map__map_values_3_p_1(backend_libs__switch_util__TypeInfo_for_Key_6, backend_libs__switch_util__TypeInfo_12_12, backend_libs__switch_util__TypeInfo_14_14, (MR_Word) backend_libs__switch_util__V_5_5, (MR_Word) backend_libs__switch_util__CaseSolns_3, backend_libs__switch_util__CaseValuePairs_4);
+    }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util__find_int_lookup_switch_params_11_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_12,
+  MR_Word backend_libs__switch_util__SwitchVarType_13,
+  MR_Word backend_libs__switch_util__SwitchCanFail_14,
+  MR_Integer backend_libs__switch_util__LowerLimit_15,
+  MR_Integer backend_libs__switch_util__UpperLimit_16,
+  MR_Integer backend_libs__switch_util__NumValues_17,
+  MR_Integer backend_libs__switch_util__ReqDensity_18,
+  MR_Word * backend_libs__switch_util__NeedBitVecCheck_19,
+  MR_Word * backend_libs__switch_util__NeedRangeCheck_20,
+  MR_Integer * backend_libs__switch_util__FirstVal_21,
+  MR_Integer * backend_libs__switch_util__LastVal_22)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__Span_23 = (backend_libs__switch_util__UpperLimit_16 - backend_libs__switch_util__LowerLimit_15);
+    MR_Integer backend_libs__switch_util__Range_24 = (backend_libs__switch_util__Span_23 + (MR_Integer) 1);
+    MR_Integer backend_libs__switch_util__Density_25;
+    MR_Word backend_libs__switch_util__NeedBitVecCheck0_26;
+    MR_Integer backend_libs__switch_util__V_37_37 = (backend_libs__switch_util__NumValues_17 * (MR_Integer) 100);
+
+    {
+      backend_libs__switch_util__Density_25 = mercury__int__f_47_47_2_f_0(backend_libs__switch_util__V_37_37, backend_libs__switch_util__Range_24);
+    }
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__Density_25 > backend_libs__switch_util__ReqDensity_18);
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumValues_17 == backend_libs__switch_util__Range_24);
+        if (backend_libs__switch_util__succeeded)
+          backend_libs__switch_util__NeedBitVecCheck0_26 = (MR_Integer) 1;
+        else
+          backend_libs__switch_util__NeedBitVecCheck0_26 = (MR_Integer) 0;
+        switch (backend_libs__switch_util__SwitchCanFail_14) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word backend_libs__switch_util__TypeCategory_27;
+              MR_Integer backend_libs__switch_util__TypeRange_30;
+              MR_Integer backend_libs__switch_util__DetDensity_31;
+              MR_Integer backend_libs__switch_util__V_42_42;
+              MR_Integer backend_libs__switch_util__V_43_43;
+              MR_Integer backend_libs__switch_util__V_28_28;
+              MR_Integer backend_libs__switch_util__V_29_29;
+
+              {
+                backend_libs__switch_util__TypeCategory_27 = check_hlds__type_util__classify_type_2_f_0(backend_libs__switch_util__ModuleInfo_12, backend_libs__switch_util__SwitchVarType_13);
+              }
+              {
+                backend_libs__switch_util__succeeded = backend_libs__switch_util__type_range_6_p_0(backend_libs__switch_util__ModuleInfo_12, backend_libs__switch_util__TypeCategory_27, backend_libs__switch_util__SwitchVarType_13, &backend_libs__switch_util__V_28_28, &backend_libs__switch_util__V_29_29, &backend_libs__switch_util__TypeRange_30);
+              }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  backend_libs__switch_util__V_43_43 = (MR_Integer) 100;
+                  backend_libs__switch_util__V_42_42 = (backend_libs__switch_util__NumValues_17 * backend_libs__switch_util__V_43_43);
+                  {
+                    backend_libs__switch_util__DetDensity_31 = mercury__int__f_47_47_2_f_0(backend_libs__switch_util__V_42_42, backend_libs__switch_util__TypeRange_30);
+                  }
+                  backend_libs__switch_util__succeeded = (backend_libs__switch_util__DetDensity_31 > backend_libs__switch_util__ReqDensity_18);
+                }
+              if (backend_libs__switch_util__succeeded)
+                {
+                  *backend_libs__switch_util__NeedRangeCheck_20 = (MR_Integer) 1;
+                  *backend_libs__switch_util__NeedBitVecCheck_19 = (MR_Integer) 0;
+                  *backend_libs__switch_util__FirstVal_21 = (MR_Integer) 0;
+                  *backend_libs__switch_util__LastVal_22 = (backend_libs__switch_util__TypeRange_30 - (MR_Integer) 1);
+                }
+              else
+                {
+                  *backend_libs__switch_util__NeedRangeCheck_20 = (MR_Integer) 0;
+                  *backend_libs__switch_util__NeedBitVecCheck_19 = backend_libs__switch_util__NeedBitVecCheck0_26;
+                  *backend_libs__switch_util__FirstVal_21 = backend_libs__switch_util__LowerLimit_15;
+                  *backend_libs__switch_util__LastVal_22 = backend_libs__switch_util__UpperLimit_16;
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              *backend_libs__switch_util__NeedRangeCheck_20 = (MR_Integer) 1;
+              *backend_libs__switch_util__NeedBitVecCheck_19 = backend_libs__switch_util__NeedBitVecCheck0_26;
+              *backend_libs__switch_util__FirstVal_21 = backend_libs__switch_util__LowerLimit_15;
+              *backend_libs__switch_util__LastVal_22 = backend_libs__switch_util__UpperLimit_16;
+            }
+            break;
+        }
+        backend_libs__switch_util__succeeded = MR_TRUE;
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__filter_out_failing_cases_if_needed_5_p_0(
+  MR_Word backend_libs__switch_util__CodeModel_6,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_TaggedCases_0_9,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_TaggedCases_10,
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_11,
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_12)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    switch (backend_libs__switch_util__CodeModel_6) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          *backend_libs__switch_util__STATE_VARIABLE_TaggedCases_10 = backend_libs__switch_util__STATE_VARIABLE_TaggedCases_0_9;
+          *backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_12 = backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_11;
+        }
+        break;
+      case (MR_Integer) 2:
+      case (MR_Integer) 1:
+        {
+          MR_Word backend_libs__switch_util__RevTaggedCases_20;
+
+          {
+            backend_libs__switch_util__filter_out_failing_cases_loop_5_p_0(backend_libs__switch_util__STATE_VARIABLE_TaggedCases_0_9, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &backend_libs__switch_util__RevTaggedCases_20, backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_11, backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_12);
+          }
+          {
+            mercury__list__reverse_2_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_tagged_case_0, backend_libs__switch_util__RevTaggedCases_20, backend_libs__switch_util__STATE_VARIABLE_TaggedCases_10);
+          }
+        }
+        break;
+    }
+  }
+}
+
+MR_Integer MR_CALL 
+backend_libs__switch_util__switch_density_2_f_0(
+  MR_Integer backend_libs__switch_util__NumCases_4,
+  MR_Integer backend_libs__switch_util__Range_5)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__Density_6;
+    MR_Integer backend_libs__switch_util__V_7_7 = (backend_libs__switch_util__NumCases_4 * (MR_Integer) 100);
+
+    {
+      backend_libs__switch_util__Density_6 = mercury__int__f_47_47_2_f_0(backend_libs__switch_util__V_7_7, backend_libs__switch_util__Range_5);
+    }
+    return backend_libs__switch_util__Density_6;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__switch_util__type_range_6_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_7,
+  MR_Word backend_libs__switch_util__TypeCtorCat_8,
+  MR_Word backend_libs__switch_util__Type_9,
+  MR_Integer * backend_libs__switch_util__Min_10,
+  MR_Integer * backend_libs__switch_util__Max_11,
+  MR_Integer * backend_libs__switch_util__NumValues_12)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__V_40_40;
+    MR_Integer backend_libs__switch_util__V_41_41;
+
+    if (((MR_tag((MR_Word) backend_libs__switch_util__TypeCtorCat_8)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word backend_libs__switch_util__Globals_13;
+        MR_Word backend_libs__switch_util__Target_14;
+        MR_Word backend_libs__switch_util__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeCtorCat_8, (MR_Integer) 0)));
+
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_39_39 == (MR_Integer) 2);
+        if (backend_libs__switch_util__succeeded)
+          {
+            {
+              hlds__hlds_module__module_info_get_globals_2_p_0(backend_libs__switch_util__ModuleInfo_7, &backend_libs__switch_util__Globals_13);
+            }
+            {
+              libs__globals__get_target_2_p_0(backend_libs__switch_util__Globals_13, &backend_libs__switch_util__Target_14);
+            }
+            {
+              backend_libs__string_encoding__target_char_range_3_p_0(backend_libs__switch_util__Target_14, backend_libs__switch_util__Min_10, backend_libs__switch_util__Max_11);
+            }
+            backend_libs__switch_util__succeeded = MR_TRUE;
+          }
+      }
+    else
+    if (((MR_tag((MR_Word) backend_libs__switch_util__TypeCtorCat_8)) == (MR_mktag((MR_Integer) 2))))
+      {
+        MR_Word backend_libs__switch_util__TypeCtor_15;
+        MR_Word backend_libs__switch_util__TypeTable_16;
+        MR_Word backend_libs__switch_util__TypeDefn_17;
+        MR_Word backend_libs__switch_util__TypeBody_18;
+        MR_Word backend_libs__switch_util__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(2), backend_libs__switch_util__TypeCtorCat_8, (MR_Integer) 0)));
+
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_34_34 == (MR_Integer) 0);
+        if (backend_libs__switch_util__succeeded)
+          {
+            *backend_libs__switch_util__Min_10 = (MR_Integer) 0;
+            {
+              parse_tree__prog_type__type_to_ctor_det_2_p_0(backend_libs__switch_util__Type_9, &backend_libs__switch_util__TypeCtor_15);
+            }
+            {
+              hlds__hlds_module__module_info_get_type_table_2_p_0(backend_libs__switch_util__ModuleInfo_7, &backend_libs__switch_util__TypeTable_16);
+            }
+            {
+              hlds__hlds_data__lookup_type_ctor_defn_3_p_0(backend_libs__switch_util__TypeTable_16, backend_libs__switch_util__TypeCtor_15, &backend_libs__switch_util__TypeDefn_17);
+            }
+            {
+              hlds__hlds_data__get_type_defn_body_2_p_0(backend_libs__switch_util__TypeDefn_17, &backend_libs__switch_util__TypeBody_18);
+            }
+            switch (MR_tag((MR_Word) backend_libs__switch_util__TypeBody_18)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.type_range\'/6", (MR_String) "enum type is not d.u. type\?");
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word backend_libs__switch_util__ConsTable_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 1)));
+                  MR_Integer backend_libs__switch_util__TypeRange_28;
+                  MR_Word backend_libs__switch_util__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 0)));
+                  MR_Word backend_libs__switch_util__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 2)));
+                  MR_Word backend_libs__switch_util__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 3)));
+                  MR_Word backend_libs__switch_util__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 4)));
+                  MR_Word backend_libs__switch_util__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 5)));
+                  MR_Word backend_libs__switch_util__V_25_25 = ((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 6)))) & (MR_Integer) 1);
+                  MR_Word backend_libs__switch_util__V_26_26 = ((((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 6)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+                  MR_Word backend_libs__switch_util__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 7)));
+
+                  {
+                    mercury__map__count_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0, backend_libs__switch_util__ConsTable_20, &backend_libs__switch_util__TypeRange_28);
+                  }
+                  *backend_libs__switch_util__Max_11 = (backend_libs__switch_util__TypeRange_28 - (MR_Integer) 1);
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.type_range\'/6", (MR_String) "enum type is not d.u. type\?");
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.type_range\'/6", (MR_String) "enum type is not d.u. type\?");
+                  }
+                }
+                break;
+            }
+            backend_libs__switch_util__succeeded = MR_TRUE;
+          }
+      }
+    else
+      backend_libs__switch_util__succeeded = MR_FALSE;
+    if (backend_libs__switch_util__succeeded)
+      {
+        backend_libs__switch_util__V_40_40 = (*backend_libs__switch_util__Max_11 - *backend_libs__switch_util__Min_10);
+        backend_libs__switch_util__V_41_41 = (MR_Integer) 1;
+        *backend_libs__switch_util__NumValues_12 = (backend_libs__switch_util__V_40_40 + backend_libs__switch_util__V_41_41);
+        backend_libs__switch_util__succeeded = MR_TRUE;
+      }
+    return backend_libs__switch_util__succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__find_switch_category_4_p_0(
+  MR_Word backend_libs__switch_util__ModuleInfo_5,
+  MR_Word backend_libs__switch_util__SwitchVarType_6,
+  MR_Word * backend_libs__switch_util__SwitchCategory_7,
+  MR_Word * backend_libs__switch_util__MayUseSmartIndexing_8)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__SwitchTypeCtorCat_9;
+    MR_Word backend_libs__switch_util__Globals_10;
+
+    {
+      backend_libs__switch_util__SwitchTypeCtorCat_9 = check_hlds__type_util__classify_type_2_f_0(backend_libs__switch_util__ModuleInfo_5, backend_libs__switch_util__SwitchVarType_6);
+    }
+    {
+      *backend_libs__switch_util__SwitchCategory_7 = backend_libs__switch_util__type_ctor_cat_to_switch_cat_1_f_0(backend_libs__switch_util__SwitchTypeCtorCat_9);
+    }
+    {
+      hlds__hlds_module__module_info_get_globals_2_p_0(backend_libs__switch_util__ModuleInfo_5, &backend_libs__switch_util__Globals_10);
+    }
+    {
+      MR_Word backend_libs__switch_util__SmartIndexing_11;
+
+      {
+        libs__globals__lookup_bool_option_3_p_0(backend_libs__switch_util__Globals_10, (MR_Integer) 427, &backend_libs__switch_util__SmartIndexing_11);
+      }
+      backend_libs__switch_util__succeeded = (backend_libs__switch_util__SmartIndexing_11 == (MR_Integer) 0);
+    }
+    if (!(backend_libs__switch_util__succeeded))
+      {
+        switch (*backend_libs__switch_util__SwitchCategory_7) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word backend_libs__switch_util__SmartIndexingForCategory_12;
+
+              {
+                libs__globals__lookup_bool_option_3_p_0(backend_libs__switch_util__Globals_10, (MR_Integer) 440, &backend_libs__switch_util__SmartIndexingForCategory_12);
+              }
+              backend_libs__switch_util__succeeded = (backend_libs__switch_util__SmartIndexingForCategory_12 == (MR_Integer) 0);
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word backend_libs__switch_util__SmartIndexingForCategory_34;
+
+              {
+                libs__globals__lookup_bool_option_3_p_0(backend_libs__switch_util__Globals_10, (MR_Integer) 443, &backend_libs__switch_util__SmartIndexingForCategory_34);
+              }
+              backend_libs__switch_util__succeeded = (backend_libs__switch_util__SmartIndexingForCategory_34 == (MR_Integer) 0);
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word backend_libs__switch_util__SmartIndexingForCategory_35;
+
+              {
+                libs__globals__lookup_bool_option_3_p_0(backend_libs__switch_util__Globals_10, (MR_Integer) 441, &backend_libs__switch_util__SmartIndexingForCategory_35);
+              }
+              backend_libs__switch_util__succeeded = (backend_libs__switch_util__SmartIndexingForCategory_35 == (MR_Integer) 0);
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word backend_libs__switch_util__SmartIndexingForCategory_36;
+
+              {
+                libs__globals__lookup_bool_option_3_p_0(backend_libs__switch_util__Globals_10, (MR_Integer) 442, &backend_libs__switch_util__SmartIndexingForCategory_36);
+              }
+              backend_libs__switch_util__succeeded = (backend_libs__switch_util__SmartIndexingForCategory_36 == (MR_Integer) 0);
+            }
+            break;
+        }
+        if (!(backend_libs__switch_util__succeeded))
+          {
+            MR_Word backend_libs__switch_util__TypeTable_13;
+            MR_Word backend_libs__switch_util__SwitchVarTypeCtor_14;
+            MR_Word backend_libs__switch_util__SwitchVarTypeDefn_15;
+            MR_Word backend_libs__switch_util__SwitchVarTypeBody_16;
+            MR_Word backend_libs__switch_util__V_17_17;
+            MR_Word backend_libs__switch_util__V_19_19;
+            MR_Word backend_libs__switch_util__V_20_20;
+            MR_Word backend_libs__switch_util__V_21_21;
+            MR_Word backend_libs__switch_util__V_22_22;
+            MR_Word backend_libs__switch_util__V_23_23;
+            MR_Word backend_libs__switch_util__V_24_24;
+            MR_Word backend_libs__switch_util__V_25_25;
+            MR_Word backend_libs__switch_util__V_26_26;
+
+            {
+              hlds__hlds_module__module_info_get_type_table_2_p_0(backend_libs__switch_util__ModuleInfo_5, &backend_libs__switch_util__TypeTable_13);
+            }
+            {
+              parse_tree__prog_type__type_to_ctor_det_2_p_0(backend_libs__switch_util__SwitchVarType_6, &backend_libs__switch_util__SwitchVarTypeCtor_14);
+            }
+            {
+              backend_libs__switch_util__succeeded = hlds__hlds_data__search_type_ctor_defn_3_p_0(backend_libs__switch_util__TypeTable_13, backend_libs__switch_util__SwitchVarTypeCtor_14, &backend_libs__switch_util__SwitchVarTypeDefn_15);
+            }
+            if (backend_libs__switch_util__succeeded)
+              {
+                {
+                  hlds__hlds_data__get_type_defn_body_2_p_0(backend_libs__switch_util__SwitchVarTypeDefn_15, &backend_libs__switch_util__SwitchVarTypeBody_16);
+                }
+                backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__SwitchVarTypeBody_16)) == (MR_mktag((MR_Integer) 1)));
+                if (backend_libs__switch_util__succeeded)
+                  {
+                    backend_libs__switch_util__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 0)));
+                    backend_libs__switch_util__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 1)));
+                    backend_libs__switch_util__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 2)));
+                    backend_libs__switch_util__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 3)));
+                    backend_libs__switch_util__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 4)));
+                    backend_libs__switch_util__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 5)));
+                    backend_libs__switch_util__V_25_25 = ((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 6)))) & (MR_Integer) 1);
+                    backend_libs__switch_util__V_17_17 = ((((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 6)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+                    backend_libs__switch_util__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 7)));
+                    backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_17_17 == (MR_Integer) 0);
+                  }
+              }
+          }
+      }
+    if (backend_libs__switch_util__succeeded)
+      *backend_libs__switch_util__MayUseSmartIndexing_8 = (MR_Integer) 0;
+    else
+      *backend_libs__switch_util__MayUseSmartIndexing_8 = (MR_Integer) 1;
+  }
+}
+
+MR_Integer MR_CALL 
+backend_libs__switch_util__estimate_switch_tag_test_cost_1_f_0(
+  MR_Word backend_libs__switch_util__Tag_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Integer backend_libs__switch_util__Cost_4;
+
+    switch (MR_tag((MR_Word) backend_libs__switch_util__Tag_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(backend_libs__switch_util__Tag_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            backend_libs__switch_util__Cost_4 = (MR_Integer) 2;
+            break;
+          case (MR_Integer) 1:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.estimate_switch_tag_test_cost\'/1", (MR_String) "non-switch tag");
+              }
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_String backend_libs__switch_util__String_16 = ((MR_String) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__Tag_3, (MR_Integer) 0)));
+          MR_Integer backend_libs__switch_util__V_46_46;
+          MR_Integer backend_libs__switch_util__V_48_48;
+
+          {
+            backend_libs__switch_util__V_48_48 = mercury__string__length_1_f_0(backend_libs__switch_util__String_16);
+          }
+          backend_libs__switch_util__V_46_46 = ((MR_Integer) 2 * backend_libs__switch_util__V_48_48);
+          backend_libs__switch_util__Cost_4 = ((MR_Integer) 1 + backend_libs__switch_util__V_46_46);
+        }
+        break;
+      case (MR_Integer) 2:
+        backend_libs__switch_util__Cost_4 = (MR_Integer) 3;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_3, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 14:
+          case (MR_Integer) 15:
+            backend_libs__switch_util__Cost_4 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+          case (MR_Integer) 9:
+          case (MR_Integer) 10:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.estimate_switch_tag_test_cost\'/1", (MR_String) "non-switch tag");
+              }
+            }
+            break;
+          case (MR_Integer) 11:
+          case (MR_Integer) 12:
+            backend_libs__switch_util__Cost_4 = (MR_Integer) 2;
+            break;
+          case (MR_Integer) 13:
+            backend_libs__switch_util__Cost_4 = (MR_Integer) 4;
+            break;
+          case (MR_Integer) 16:
+            {
+              MR_Word backend_libs__switch_util__RAs_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_3, (MR_Integer) 1)));
+              MR_Word backend_libs__switch_util__SubTag_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_3, (MR_Integer) 2)));
+              MR_Integer backend_libs__switch_util__V_41_41;
+              MR_Integer backend_libs__switch_util__V_43_43;
+              MR_Integer backend_libs__switch_util__V_44_44;
+
+              {
+                backend_libs__switch_util__V_43_43 = mercury__list__length_1_f_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_reserved_address_0, backend_libs__switch_util__RAs_17);
+              }
+              backend_libs__switch_util__V_41_41 = ((MR_Integer) 2 * backend_libs__switch_util__V_43_43);
+              {
+                backend_libs__switch_util__V_44_44 = backend_libs__switch_util__estimate_switch_tag_test_cost_1_f_0(backend_libs__switch_util__SubTag_18);
+              }
+              backend_libs__switch_util__Cost_4 = (backend_libs__switch_util__V_41_41 + backend_libs__switch_util__V_44_44);
+            }
+            break;
+        }
+        break;
+    }
+    return backend_libs__switch_util__Cost_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__switch_util__type_ctor_cat_to_switch_cat_1_f_0(
+  MR_Word backend_libs__switch_util__CtorCat_3)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+    MR_Word backend_libs__switch_util__SwitchCat_4;
+
+    switch (MR_tag((MR_Word) backend_libs__switch_util__CtorCat_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(backend_libs__switch_util__CtorCat_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word backend_libs__switch_util__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__CtorCat_3, (MR_Integer) 0)));
+
+          backend_libs__switch_util__SwitchCat_4 = ((&backend_libs__switch_util_vector_common_3[0 + backend_libs__switch_util__V_41_41]))->backend_libs__switch_util__vector_common_type_3_0__vct_3_f_0;
+        }
+        break;
+      case (MR_Integer) 2:
+        backend_libs__switch_util__SwitchCat_4 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__CtorCat_3, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word backend_libs__switch_util__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__CtorCat_3, (MR_Integer) 1)));
+
+              switch (backend_libs__switch_util__V_42_42) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  backend_libs__switch_util__SwitchCat_4 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+                    }
+                  }
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+    }
+    return backend_libs__switch_util__SwitchCat_4;
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__num_cons_ids_in_tagged_cases_3_p_0(
+  MR_Word backend_libs__switch_util__TaggedCases_4,
+  MR_Integer * backend_libs__switch_util__NumConsIds_5,
+  MR_Integer * backend_libs__switch_util__NumArms_6)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__num_cons_ids_in_tagged_cases_loop_5_p_0(backend_libs__switch_util__TaggedCases_4, (MR_Integer) 0, backend_libs__switch_util__NumConsIds_5, (MR_Integer) 0, backend_libs__switch_util__NumArms_6);
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__switch_util__tag_cases_5_p_0(
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+  MR_Word backend_libs__switch_util__HeadVar__3_3,
+  MR_Word * backend_libs__switch_util__HeadVar__4_4,
+  MR_Word * backend_libs__switch_util__MaybeIntSwitchLimits_5)
+{
+  {
+    MR_bool backend_libs__switch_util__succeeded;
+
+    {
+      backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__HeadVar__3_3, backend_libs__switch_util__HeadVar__4_4, backend_libs__switch_util__MaybeIntSwitchLimits_5);
+    }
+  }
+}
+
+void mercury__backend_libs__switch_util__init(void)
+{
+}
+
+void mercury__backend_libs__switch_util__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_3);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_several_llds_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_id_ptags_map_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_may_use_smart_indexing_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_maybe_int_switch_info_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_need_bit_vec_check_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_need_range_check_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_entry_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_list_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_list_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_map_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_count_map_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_stag_goal_list_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_stag_goal_map_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_switch_category_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_table_size_upgrade_0);
+}
+
+void mercury__backend_libs__switch_util__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module backend_libs.switch_util. */

@@ -1,0 +1,9 @@
+:- module (check_hlds.check_for_missing_type_defns).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- pred check_for_missing_type_defns(hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec)).
+:- mode check_for_missing_type_defns((builtin.in), (builtin.out)) is det.

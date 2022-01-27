@@ -1,0 +1,46 @@
+:- module (mdb.parse).
+:- interface.
+:- import_module getopt.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (mdb.browser_info).
+:- type command
+    --->    cmd_print(maybe.maybe(getopt.maybe_option_table(mdb.parse.format_option)), maybe.maybe(mdb.parse.path))
+    ;       cmd_display 
+    ;       cmd_write 
+    ;       cmd_memory_addr(maybe.maybe(mdb.parse.path))
+    ;       cmd_cd_path(mdb.parse.path)
+    ;       cmd_cd_no_path 
+    ;       cmd_pwd 
+    ;       cmd_track(mdb.browser_info.how_track_subterm, mdb.browser_info.should_assert_invalid, maybe.maybe(mdb.parse.path))
+    ;       cmd_mode_query(mdb.parse.path)
+    ;       cmd_mode_query_no_path 
+    ;       cmd_param(mdb.browser_info.param_cmd)
+    ;       cmd_help 
+    ;       cmd_quit 
+    ;       cmd_empty 
+    ;       cmd_unknown .
+:- type external_request
+    --->    external_request(string).
+:- type format_option
+    --->    flat 
+    ;       raw_pretty 
+    ;       verbose 
+    ;       pretty .
+:- type format_param_cmd
+    --->    param_depth 
+    ;       param_size 
+    ;       param_width 
+    ;       param_lines .
+:- type path
+    --->    root_rel(list.list(mdb.browser_info.up_down_dir))
+    ;       dot_rel(list.list(mdb.browser_info.up_down_dir)).
+:- type setting_option
+    --->    set_print 
+    ;       set_browse 
+    ;       set_print_all 
+    ;       set_flat 
+    ;       set_raw_pretty 
+    ;       set_verbose 
+    ;       set_pretty .

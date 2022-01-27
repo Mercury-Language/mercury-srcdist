@@ -1,0 +1,22 @@
+:- module (top_level.mercury_compile_front_end).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.make_hlds).
+:- import_module (hlds.passes_aux).
+:- import_module (parse_tree.error_util).
+:- type simplify_pass
+    --->    simplify_pass_frontend 
+    ;       simplify_pass_post_untuple 
+    ;       simplify_pass_pre_prof_transforms 
+    ;       simplify_pass_pre_implicit_parallelism 
+    ;       simplify_pass_ml_backend 
+    ;       simplify_pass_ll_backend .
+:- pred frontend_pass(hlds.make_hlds.make_hlds_qual_info, bool.bool, bool.bool, bool.bool, bool.bool, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec), io.io, io.io).
+:- mode frontend_pass((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_simplify(bool.bool, top_level.mercury_compile_front_end.simplify_pass, bool.bool, bool.bool, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec), io.io, io.io).
+:- mode maybe_simplify((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
