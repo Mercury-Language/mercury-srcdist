@@ -1,0 +1,18 @@
+:- module erl_backend.
+:- interface.
+:- import_module hlds.
+:- import_module parse_tree.
+:- include_module (erl_backend.elds).
+:- include_module (erl_backend.erl_code_gen).
+:- include_module (erl_backend.erl_call_gen).
+:- include_module (erl_backend.erl_unify_gen).
+:- include_module (erl_backend.erl_code_util).
+:- include_module (erl_backend.erl_rtti).
+:- include_module (erl_backend.elds_to_erlang).
+:- implementation.
+:- import_module backend_libs.
+:- import_module check_hlds.
+:- import_module hlds.
+:- import_module libs.
+:- import_module mdbcomp.
+:- import_module parse_tree.

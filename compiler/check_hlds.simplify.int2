@@ -1,0 +1,31 @@
+:- module (check_hlds.simplify).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module libs.
+:- import_module list.
+:- import_module (check_hlds.common).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (hlds.instmap).
+:- import_module (libs.globals).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type simplification
+	--->	simp_warn_simple_code 
+	;	simp_warn_duplicate_calls 
+	;	simp_format_calls 
+	;	simp_warn_obsolete 
+	;	simp_do_once 
+	;	simp_after_front_end 
+	;	simp_excess_assigns 
+	;	simp_elim_removable_scopes 
+	;	simp_opt_duplicate_calls 
+	;	simp_constant_prop 
+	;	simp_common_struct 
+	;	simp_extra_common_struct 
+	;	simp_ignore_par_conjs .
+:- type simplifications.
+:- type simplify_info.

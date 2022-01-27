@@ -1,0 +1,627 @@
+/*
+** Automatically generated from `pprint.m'
+** by the Mercury compiler,
+** version rotd-2013-03-26, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module pprint. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_pprint
+#define MR_HEADER_GUARD_pprint
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PPRINT_DECL_GUARD
+#define PPRINT_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "pprint.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__pprint__pprint__type_ctor_info_depth_0;
+
+#line 44 "pprint.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__pprint__pprint__type_ctor_info_doc_0;
+
+#line 47 "pprint.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__pprint__pprint__type_ctor_info_map_pair_2;
+
+#line 50 "pprint.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__character__arity0__[6];
+
+#line 53 "pprint.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__float__arity0__[6];
+
+#line 56 "pprint.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__int__arity0__[6];
+
+#line 59 "pprint.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__string__arity0__[6];
+
+#line 62 "pprint.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__pprint__doc__arity0__[6];
+
+#line 65 "pprint.mih.tmp"
+extern const MR_TypeClassDeclStruct mercury__pprint__pprint__type_class_decl_doc_1;
+
+#line 415 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+#line 415 "pprint.m"
+  MR_Word mercury__pprint__param_1);
+
+#line 416 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_115_116_114_105_110_103_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+#line 416 "pprint.m"
+  MR_String mercury__pprint__param_1);
+
+#line 417 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_105_110_116_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+#line 417 "pprint.m"
+  MR_Integer mercury__pprint__param_1);
+
+#line 418 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_102_108_111_97_116_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+#line 418 "pprint.m"
+  MR_Float mercury__pprint__param_1);
+
+#line 419 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_99_104_97_114_97_99_116_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+#line 419 "pprint.m"
+  MR_Char mercury__pprint__param_1);
+
+#line 415 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____pprint__doc__arity0______pprint__doc_2_2_f_0(
+#line 415 "pprint.m"
+  MR_Integer mercury__pprint__param_1,
+#line 415 "pprint.m"
+  MR_Word mercury__pprint__param_2);
+
+#line 416 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____string__arity0______pprint__doc_2_2_f_0(
+#line 416 "pprint.m"
+  MR_Integer mercury__pprint__param_1,
+#line 416 "pprint.m"
+  MR_String mercury__pprint__param_2);
+
+#line 417 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____int__arity0______pprint__doc_2_2_f_0(
+#line 417 "pprint.m"
+  MR_Integer mercury__pprint__param_1,
+#line 417 "pprint.m"
+  MR_Integer mercury__pprint__param_2);
+
+#line 418 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____float__arity0______pprint__doc_2_2_f_0(
+#line 418 "pprint.m"
+  MR_Integer mercury__pprint__param_1,
+#line 418 "pprint.m"
+  MR_Float mercury__pprint__param_2);
+
+#line 419 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____character__arity0______pprint__doc_2_2_f_0(
+#line 419 "pprint.m"
+  MR_Integer mercury__pprint__param_1,
+#line 419 "pprint.m"
+  MR_Char mercury__pprint__param_2);
+
+#line 402 "pprint.m"
+void MR_CALL 
+mercury__pprint____Compare____map_pair_2_0(
+#line 402 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 402 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 402 "pprint.m"
+  MR_Word * mercury__pprint__param_3,
+#line 402 "pprint.m"
+  MR_Word mercury__pprint__param_4,
+#line 402 "pprint.m"
+  MR_Word mercury__pprint__param_5);
+
+#line 402 "pprint.m"
+MR_bool MR_CALL 
+mercury__pprint____Unify____map_pair_2_0(
+#line 402 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 402 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 402 "pprint.m"
+  MR_Word mercury__pprint__param_3,
+#line 402 "pprint.m"
+  MR_Word mercury__pprint__param_4);
+
+#line 384 "pprint.m"
+void MR_CALL 
+mercury__pprint____Compare____doc_0_0(
+#line 384 "pprint.m"
+  MR_Word * mercury__pprint__param_1,
+#line 384 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 384 "pprint.m"
+  MR_Word mercury__pprint__param_3);
+
+#line 384 "pprint.m"
+MR_bool MR_CALL 
+mercury__pprint____Unify____doc_0_0(
+#line 384 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 384 "pprint.m"
+  MR_Word mercury__pprint__param_2);
+
+#line 407 "pprint.m"
+void MR_CALL 
+mercury__pprint____Compare____depth_0_0(
+#line 407 "pprint.m"
+  MR_Word * mercury__pprint__param_1,
+#line 407 "pprint.m"
+  MR_Integer mercury__pprint__param_2,
+#line 407 "pprint.m"
+  MR_Integer mercury__pprint__param_3);
+
+#line 407 "pprint.m"
+MR_bool MR_CALL 
+mercury__pprint____Unify____depth_0_0(
+#line 407 "pprint.m"
+  MR_Integer mercury__pprint__param_1,
+#line 407 "pprint.m"
+  MR_Integer mercury__pprint__param_2);
+
+#line 671 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__to_doc_3_f_0(
+#line 671 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 671 "pprint.m"
+  MR_Integer mercury__pprint__param_2,
+#line 671 "pprint.m"
+  MR_Integer mercury__pprint__param_3,
+#line 671 "pprint.m"
+  MR_Box mercury__pprint__param_4);
+
+#line 485 "pprint.m"
+void MR_CALL 
+mercury__pprint__lb_8_p_1(
+#line 485 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 485 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 485 "pprint.m"
+  MR_Integer mercury__pprint__param_3,
+#line 485 "pprint.m"
+  MR_Integer mercury__pprint__param_4,
+#line 485 "pprint.m"
+  MR_Integer * mercury__pprint__param_5,
+#line 485 "pprint.m"
+  MR_String mercury__pprint__param_6,
+#line 485 "pprint.m"
+  MR_Word mercury__pprint__param_7,
+#line 485 "pprint.m"
+  MR_Box mercury__pprint__param_8,
+#line 485 "pprint.m"
+  MR_Box * mercury__pprint__param_9);
+
+#line 484 "pprint.m"
+void MR_CALL 
+mercury__pprint__lb_8_p_0(
+#line 484 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 484 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 484 "pprint.m"
+  MR_Integer mercury__pprint__param_3,
+#line 484 "pprint.m"
+  MR_Integer mercury__pprint__param_4,
+#line 484 "pprint.m"
+  MR_Integer * mercury__pprint__param_5,
+#line 484 "pprint.m"
+  MR_String mercury__pprint__param_6,
+#line 484 "pprint.m"
+  MR_Word mercury__pprint__param_7,
+#line 484 "pprint.m"
+  MR_Box mercury__pprint__param_8,
+#line 484 "pprint.m"
+  MR_Box * mercury__pprint__param_9);
+
+#line 459 "pprint.m"
+void MR_CALL 
+mercury__pprint__layout_best_5_p_1(
+#line 459 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 459 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 459 "pprint.m"
+  MR_Integer mercury__pprint__param_3,
+#line 459 "pprint.m"
+  MR_Word mercury__pprint__param_4,
+#line 459 "pprint.m"
+  MR_Box mercury__pprint__param_5,
+#line 459 "pprint.m"
+  MR_Box * mercury__pprint__param_6);
+
+#line 458 "pprint.m"
+void MR_CALL 
+mercury__pprint__layout_best_5_p_0(
+#line 458 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 458 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 458 "pprint.m"
+  MR_Integer mercury__pprint__param_3,
+#line 458 "pprint.m"
+  MR_Word mercury__pprint__param_4,
+#line 458 "pprint.m"
+  MR_Box mercury__pprint__param_5,
+#line 458 "pprint.m"
+  MR_Box * mercury__pprint__param_6);
+
+#line 361 "pprint.m"
+void MR_CALL 
+mercury__pprint__write_5_p_0(
+#line 361 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 361 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 361 "pprint.m"
+  MR_Box mercury__pprint__param_3,
+#line 361 "pprint.m"
+  MR_Integer mercury__pprint__param_4,
+#line 361 "pprint.m"
+  MR_Box mercury__pprint__param_5,
+#line 361 "pprint.m"
+  MR_Box mercury__pprint__param_6,
+#line 361 "pprint.m"
+  MR_Box * mercury__pprint__param_7);
+
+#line 356 "pprint.m"
+void MR_CALL 
+mercury__pprint__write_4_p_0(
+#line 356 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 356 "pprint.m"
+  MR_Integer mercury__pprint__param_2,
+#line 356 "pprint.m"
+  MR_Box mercury__pprint__param_3);
+
+#line 351 "pprint.m"
+MR_String MR_CALL 
+mercury__pprint__to_string_2_f_0(
+#line 351 "pprint.m"
+  MR_Integer mercury__pprint__param_1,
+#line 351 "pprint.m"
+  MR_Word mercury__pprint__param_2);
+
+#line 346 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__to_doc_2_f_0(
+#line 346 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 346 "pprint.m"
+  MR_Integer mercury__pprint__param_2,
+#line 346 "pprint.m"
+  MR_Box mercury__pprint__param_3);
+
+#line 345 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__to_doc_1_f_0(
+#line 345 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 345 "pprint.m"
+  MR_Box mercury__pprint__param_2);
+
+#line 334 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__word_wrapped_1_f_0(
+#line 334 "pprint.m"
+  MR_String mercury__pprint__param_1);
+
+#line 329 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__ellipsis_0_f_0(void);
+
+#line 328 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__colon_space_line_0_f_0(void);
+
+#line 327 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__semic_space_line_0_f_0(void);
+
+#line 326 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__comma_space_line_0_f_0(void);
+
+#line 325 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__space_line_0_f_0(void);
+
+#line 324 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__colon_line_0_f_0(void);
+
+#line 323 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__semic_line_0_f_0(void);
+
+#line 322 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__comma_line_0_f_0(void);
+
+#line 321 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__colon_space_0_f_0(void);
+
+#line 320 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__semic_space_0_f_0(void);
+
+#line 319 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__comma_space_0_f_0(void);
+
+#line 318 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__space_0_f_0(void);
+
+#line 317 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__colon_0_f_0(void);
+
+#line 316 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__semic_0_f_0(void);
+
+#line 315 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__comma_0_f_0(void);
+
+#line 310 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__separated_3_f_0(
+#line 310 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 310 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 310 "pprint.m"
+  MR_Word mercury__pprint__param_3,
+#line 310 "pprint.m"
+  MR_Box mercury__pprint__param_4,
+#line 310 "pprint.m"
+  MR_Word mercury__pprint__param_5);
+
+#line 305 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__packed_cs_univ_args_2_f_0(
+#line 305 "pprint.m"
+  MR_Integer mercury__pprint__param_1,
+#line 305 "pprint.m"
+  MR_Word mercury__pprint__param_2);
+
+#line 300 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__packed_cs_to_depth_2_f_0(
+#line 300 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 300 "pprint.m"
+  MR_Integer mercury__pprint__param_2,
+#line 300 "pprint.m"
+  MR_Word mercury__pprint__param_3);
+
+#line 295 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__packed_cs_2_f_0(
+#line 295 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 295 "pprint.m"
+  MR_Integer mercury__pprint__param_2,
+#line 295 "pprint.m"
+  MR_Word mercury__pprint__param_3);
+
+#line 290 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__packed_cs_1_f_0(
+#line 290 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 290 "pprint.m"
+  MR_Word mercury__pprint__param_2);
+
+#line 282 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__packed_3_f_0(
+#line 282 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 282 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 282 "pprint.m"
+  MR_Integer mercury__pprint__param_3,
+#line 282 "pprint.m"
+  MR_Box mercury__pprint__param_4,
+#line 282 "pprint.m"
+  MR_Word mercury__pprint__param_5);
+
+#line 277 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__packed_2_f_0(
+#line 277 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 277 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 277 "pprint.m"
+  MR_Box mercury__pprint__param_3,
+#line 277 "pprint.m"
+  MR_Word mercury__pprint__param_4);
+
+#line 267 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__braces_1_f_0(
+#line 267 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 267 "pprint.m"
+  MR_Box mercury__pprint__param_2);
+
+#line 266 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__brackets_1_f_0(
+#line 266 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 266 "pprint.m"
+  MR_Box mercury__pprint__param_2);
+
+#line 265 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__parentheses_1_f_0(
+#line 265 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 265 "pprint.m"
+  MR_Box mercury__pprint__param_2);
+
+#line 264 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__bracketed_3_f_0(
+#line 264 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 264 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 264 "pprint.m"
+  MR_Word mercury__pprint__param_3,
+#line 264 "pprint.m"
+  MR_Box mercury__pprint__param_4,
+#line 264 "pprint.m"
+  MR_Box mercury__pprint__param_5,
+#line 264 "pprint.m"
+  MR_Box mercury__pprint__param_6);
+
+#line 255 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__f_60_47_62_2_f_0(
+#line 255 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 255 "pprint.m"
+  MR_Word mercury__pprint__param_2);
+
+#line 251 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__poly_1_f_0(
+#line 251 "pprint.m"
+  MR_Word mercury__pprint__param_1);
+
+#line 243 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__group_1_f_0(
+#line 243 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 243 "pprint.m"
+  MR_Box mercury__pprint__param_2);
+
+#line 235 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__label_2_f_0(
+#line 235 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 235 "pprint.m"
+  MR_String mercury__pprint__param_2,
+#line 235 "pprint.m"
+  MR_Box mercury__pprint__param_3);
+
+#line 230 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__nest_2_f_0(
+#line 230 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 230 "pprint.m"
+  MR_Integer mercury__pprint__param_2,
+#line 230 "pprint.m"
+  MR_Box mercury__pprint__param_3);
+
+#line 224 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__line_0_f_0(void);
+
+#line 218 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__f_60_62_2_f_0(
+#line 218 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 218 "pprint.m"
+  MR_Word mercury__pprint__param_2);
+
+#line 211 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__text_1_f_0(
+#line 211 "pprint.m"
+  MR_String mercury__pprint__param_1);
+
+#line 203 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__nil_0_f_0(void);
+
+#line 199 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__f_43_43_2_f_0(
+#line 199 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 199 "pprint.m"
+  MR_Word mercury__pprint__param_2,
+#line 199 "pprint.m"
+  MR_Box mercury__pprint__param_3,
+#line 199 "pprint.m"
+  MR_Box mercury__pprint__param_4);
+
+#line 194 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__doc_1_f_0(
+#line 194 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 194 "pprint.m"
+  MR_Box mercury__pprint__param_2);
+
+#line 183 "pprint.m"
+MR_Word MR_CALL 
+mercury__pprint__doc_2_f_0(
+#line 183 "pprint.m"
+  MR_Word mercury__pprint__param_1,
+#line 183 "pprint.m"
+  MR_Integer mercury__pprint__param_2,
+#line 183 "pprint.m"
+  MR_Box mercury__pprint__param_3);
+
+void mercury__pprint__init(void);
+void mercury__pprint__init_type_tables(void);
+void mercury__pprint__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_pprint */
+
+/* :- end_interface pprint. */

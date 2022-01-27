@@ -1,0 +1,10 @@
+:- module (make.module_dep_file).
+:- interface.
+:- import_module io.
+:- import_module maybe.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- pred get_module_dependencies(libs.globals.globals, mdbcomp.prim_data.module_name, maybe.maybe(parse_tree.module_imports.module_and_imports), make.make_info, make.make_info, io.io, io.io).
+:- mode get_module_dependencies((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_module_dep_file(libs.globals.globals, parse_tree.module_imports.module_and_imports, io.io, io.io).
+:- mode write_module_dep_file((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

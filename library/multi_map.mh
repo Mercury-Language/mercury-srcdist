@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `multi_map.m'
+** by the Mercury compiler,
+** version rotd-2013-03-26, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+*/
+#ifndef MULTI_MAP_MH
+#define MULTI_MAP_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MULTI_MAP_DECL_GUARD
+#define MULTI_MAP_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MULTI_MAP_MH */

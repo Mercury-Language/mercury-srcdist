@@ -1,0 +1,71 @@
+/*
+** Automatically generated from `enum.m'
+** by the Mercury compiler,
+** version rotd-2013-03-26, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module enum. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_enum
+#define MR_HEADER_GUARD_enum
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ENUM_DECL_GUARD
+#define ENUM_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "enum.mih.tmp"
+extern const MR_TypeClassDeclStruct mercury__enum__enum__type_class_decl_enum_1;
+
+#line 27 "enum.m"
+MR_bool MR_CALL 
+mercury__enum__from_int_1_f_0(
+#line 27 "enum.m"
+  MR_Word mercury__enum__param_1,
+#line 27 "enum.m"
+  MR_Integer mercury__enum__param_2,
+#line 27 "enum.m"
+  MR_Box * mercury__enum__param_3);
+
+#line 26 "enum.m"
+MR_Integer MR_CALL 
+mercury__enum__to_int_1_f_0(
+#line 26 "enum.m"
+  MR_Word mercury__enum__param_1,
+#line 26 "enum.m"
+  MR_Box mercury__enum__param_2);
+
+void mercury__enum__init(void);
+void mercury__enum__init_type_tables(void);
+void mercury__enum__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_enum */
+
+/* :- end_interface enum. */

@@ -1,0 +1,1575 @@
+/*
+** Automatically generated from `bimap.m'
+** by the Mercury compiler,
+** version rotd-2013-03-26, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module bimap. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_bimap
+#define MR_HEADER_GUARD_bimap
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BIMAP_DECL_GUARD
+#define BIMAP_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "bimap.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__bimap__bimap__type_ctor_info_bimap_2;
+
+#line 336 "bimap.m"
+void MR_CALL 
+mercury__bimap____Compare____bimap_2_0(
+#line 336 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 336 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 336 "bimap.m"
+  MR_Word * mercury__bimap__param_3,
+#line 336 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 336 "bimap.m"
+  MR_Word mercury__bimap__param_5);
+
+#line 336 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap____Unify____bimap_2_0(
+#line 336 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 336 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 336 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 336 "bimap.m"
+  MR_Word mercury__bimap__param_4);
+
+#line 659 "bimap.m"
+void MR_CALL 
+mercury__bimap__map_values_func_2_4_p_0(
+#line 659 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 659 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 659 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 659 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 659 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 659 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 659 "bimap.m"
+  MR_Word * mercury__bimap__param_7);
+
+#line 650 "bimap.m"
+void MR_CALL 
+mercury__bimap__map_values_2_4_p_0(
+#line 650 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 650 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 650 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 650 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 650 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 650 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 650 "bimap.m"
+  MR_Word * mercury__bimap__param_7);
+
+#line 640 "bimap.m"
+void MR_CALL 
+mercury__bimap__map_keys_func_2_4_p_0(
+#line 640 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 640 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 640 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 640 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 640 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 640 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 640 "bimap.m"
+  MR_Word * mercury__bimap__param_7);
+
+#line 630 "bimap.m"
+void MR_CALL 
+mercury__bimap__map_keys_2_4_p_0(
+#line 630 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 630 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 630 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 630 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 630 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 630 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 630 "bimap.m"
+  MR_Word * mercury__bimap__param_7);
+
+#line 558 "bimap.m"
+void MR_CALL 
+mercury__bimap__overlay_2_3_p_0(
+#line 558 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 558 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 558 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 558 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 558 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 326 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__reverse_map_1_f_0(
+#line 326 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 326 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 326 "bimap.m"
+  MR_Word mercury__bimap__param_3);
+
+#line 322 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__forward_map_1_f_0(
+#line 322 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 322 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 322 "bimap.m"
+  MR_Word mercury__bimap__param_3);
+
+#line 317 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__foldl3_8_p_7(
+#line 317 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 317 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 317 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 317 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 317 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 317 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 317 "bimap.m"
+  MR_Word mercury__bimap__param_7,
+#line 317 "bimap.m"
+  MR_Box mercury__bimap__param_8,
+#line 317 "bimap.m"
+  MR_Box * mercury__bimap__param_9,
+#line 317 "bimap.m"
+  MR_Box mercury__bimap__param_10,
+#line 317 "bimap.m"
+  MR_Box * mercury__bimap__param_11,
+#line 317 "bimap.m"
+  MR_Box mercury__bimap__param_12,
+#line 317 "bimap.m"
+  MR_Box * mercury__bimap__param_13);
+
+#line 315 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__foldl3_8_p_6(
+#line 315 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 315 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 315 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 315 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 315 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 315 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 315 "bimap.m"
+  MR_Word mercury__bimap__param_7,
+#line 315 "bimap.m"
+  MR_Box mercury__bimap__param_8,
+#line 315 "bimap.m"
+  MR_Box * mercury__bimap__param_9,
+#line 315 "bimap.m"
+  MR_Box mercury__bimap__param_10,
+#line 315 "bimap.m"
+  MR_Box * mercury__bimap__param_11,
+#line 315 "bimap.m"
+  MR_Box mercury__bimap__param_12,
+#line 315 "bimap.m"
+  MR_Box * mercury__bimap__param_13);
+
+#line 313 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__foldl3_8_p_5(
+#line 313 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 313 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 313 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 313 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 313 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 313 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 313 "bimap.m"
+  MR_Word mercury__bimap__param_7,
+#line 313 "bimap.m"
+  MR_Box mercury__bimap__param_8,
+#line 313 "bimap.m"
+  MR_Box * mercury__bimap__param_9,
+#line 313 "bimap.m"
+  MR_Box mercury__bimap__param_10,
+#line 313 "bimap.m"
+  MR_Box * mercury__bimap__param_11,
+#line 313 "bimap.m"
+  MR_Box mercury__bimap__param_12,
+#line 313 "bimap.m"
+  MR_Box * mercury__bimap__param_13);
+
+#line 311 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl3_8_p_4(
+#line 311 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 311 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 311 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 311 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 311 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 311 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 311 "bimap.m"
+  MR_Word mercury__bimap__param_7,
+#line 311 "bimap.m"
+  MR_Box mercury__bimap__param_8,
+#line 311 "bimap.m"
+  MR_Box * mercury__bimap__param_9,
+#line 311 "bimap.m"
+  MR_Box mercury__bimap__param_10,
+#line 311 "bimap.m"
+  MR_Box * mercury__bimap__param_11,
+#line 311 "bimap.m"
+  MR_Box mercury__bimap__param_12,
+#line 311 "bimap.m"
+  MR_Box * mercury__bimap__param_13);
+
+#line 309 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl3_8_p_3(
+#line 309 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 309 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 309 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 309 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 309 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 309 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 309 "bimap.m"
+  MR_Word mercury__bimap__param_7,
+#line 309 "bimap.m"
+  MR_Box mercury__bimap__param_8,
+#line 309 "bimap.m"
+  MR_Box * mercury__bimap__param_9,
+#line 309 "bimap.m"
+  MR_Box mercury__bimap__param_10,
+#line 309 "bimap.m"
+  MR_Box * mercury__bimap__param_11,
+#line 309 "bimap.m"
+  MR_Box mercury__bimap__param_12,
+#line 309 "bimap.m"
+  MR_Box * mercury__bimap__param_13);
+
+#line 307 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl3_8_p_2(
+#line 307 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 307 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 307 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 307 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 307 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 307 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 307 "bimap.m"
+  MR_Word mercury__bimap__param_7,
+#line 307 "bimap.m"
+  MR_Box mercury__bimap__param_8,
+#line 307 "bimap.m"
+  MR_Box * mercury__bimap__param_9,
+#line 307 "bimap.m"
+  MR_Box mercury__bimap__param_10,
+#line 307 "bimap.m"
+  MR_Box * mercury__bimap__param_11,
+#line 307 "bimap.m"
+  MR_Box mercury__bimap__param_12,
+#line 307 "bimap.m"
+  MR_Box * mercury__bimap__param_13);
+
+#line 305 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl3_8_p_1(
+#line 305 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 305 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 305 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 305 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 305 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 305 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 305 "bimap.m"
+  MR_Word mercury__bimap__param_7,
+#line 305 "bimap.m"
+  MR_Box mercury__bimap__param_8,
+#line 305 "bimap.m"
+  MR_Box * mercury__bimap__param_9,
+#line 305 "bimap.m"
+  MR_Box mercury__bimap__param_10,
+#line 305 "bimap.m"
+  MR_Box * mercury__bimap__param_11,
+#line 305 "bimap.m"
+  MR_Box mercury__bimap__param_12,
+#line 305 "bimap.m"
+  MR_Box * mercury__bimap__param_13);
+
+#line 303 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl3_8_p_0(
+#line 303 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 303 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 303 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 303 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 303 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 303 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 303 "bimap.m"
+  MR_Word mercury__bimap__param_7,
+#line 303 "bimap.m"
+  MR_Box mercury__bimap__param_8,
+#line 303 "bimap.m"
+  MR_Box * mercury__bimap__param_9,
+#line 303 "bimap.m"
+  MR_Box mercury__bimap__param_10,
+#line 303 "bimap.m"
+  MR_Box * mercury__bimap__param_11,
+#line 303 "bimap.m"
+  MR_Box mercury__bimap__param_12,
+#line 303 "bimap.m"
+  MR_Box * mercury__bimap__param_13);
+
+#line 293 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__foldl2_6_p_6(
+#line 293 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 293 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 293 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 293 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 293 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 293 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 293 "bimap.m"
+  MR_Box mercury__bimap__param_7,
+#line 293 "bimap.m"
+  MR_Box * mercury__bimap__param_8,
+#line 293 "bimap.m"
+  MR_Box mercury__bimap__param_9,
+#line 293 "bimap.m"
+  MR_Box * mercury__bimap__param_10);
+
+#line 291 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__foldl2_6_p_5(
+#line 291 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 291 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 291 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 291 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 291 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 291 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 291 "bimap.m"
+  MR_Box mercury__bimap__param_7,
+#line 291 "bimap.m"
+  MR_Box * mercury__bimap__param_8,
+#line 291 "bimap.m"
+  MR_Box mercury__bimap__param_9,
+#line 291 "bimap.m"
+  MR_Box * mercury__bimap__param_10);
+
+#line 289 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__foldl2_6_p_4(
+#line 289 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 289 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 289 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 289 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 289 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 289 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 289 "bimap.m"
+  MR_Box mercury__bimap__param_7,
+#line 289 "bimap.m"
+  MR_Box * mercury__bimap__param_8,
+#line 289 "bimap.m"
+  MR_Box mercury__bimap__param_9,
+#line 289 "bimap.m"
+  MR_Box * mercury__bimap__param_10);
+
+#line 287 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl2_6_p_3(
+#line 287 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 287 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 287 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 287 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 287 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 287 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 287 "bimap.m"
+  MR_Box mercury__bimap__param_7,
+#line 287 "bimap.m"
+  MR_Box * mercury__bimap__param_8,
+#line 287 "bimap.m"
+  MR_Box mercury__bimap__param_9,
+#line 287 "bimap.m"
+  MR_Box * mercury__bimap__param_10);
+
+#line 285 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl2_6_p_2(
+#line 285 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 285 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 285 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 285 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 285 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 285 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 285 "bimap.m"
+  MR_Box mercury__bimap__param_7,
+#line 285 "bimap.m"
+  MR_Box * mercury__bimap__param_8,
+#line 285 "bimap.m"
+  MR_Box mercury__bimap__param_9,
+#line 285 "bimap.m"
+  MR_Box * mercury__bimap__param_10);
+
+#line 283 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl2_6_p_1(
+#line 283 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 283 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 283 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 283 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 283 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 283 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 283 "bimap.m"
+  MR_Box mercury__bimap__param_7,
+#line 283 "bimap.m"
+  MR_Box * mercury__bimap__param_8,
+#line 283 "bimap.m"
+  MR_Box mercury__bimap__param_9,
+#line 283 "bimap.m"
+  MR_Box * mercury__bimap__param_10);
+
+#line 281 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl2_6_p_0(
+#line 281 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 281 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 281 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 281 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 281 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 281 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 281 "bimap.m"
+  MR_Box mercury__bimap__param_7,
+#line 281 "bimap.m"
+  MR_Box * mercury__bimap__param_8,
+#line 281 "bimap.m"
+  MR_Box mercury__bimap__param_9,
+#line 281 "bimap.m"
+  MR_Box * mercury__bimap__param_10);
+
+#line 273 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__foldl_4_p_5(
+#line 273 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 273 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 273 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 273 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 273 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 273 "bimap.m"
+  MR_Box mercury__bimap__param_6,
+#line 273 "bimap.m"
+  MR_Box * mercury__bimap__param_7);
+
+#line 272 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__foldl_4_p_4(
+#line 272 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 272 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 272 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 272 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 272 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 272 "bimap.m"
+  MR_Box mercury__bimap__param_6,
+#line 272 "bimap.m"
+  MR_Box * mercury__bimap__param_7);
+
+#line 271 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__foldl_4_p_3(
+#line 271 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 271 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 271 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 271 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 271 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 271 "bimap.m"
+  MR_Box mercury__bimap__param_6,
+#line 271 "bimap.m"
+  MR_Box * mercury__bimap__param_7);
+
+#line 270 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl_4_p_2(
+#line 270 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 270 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 270 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 270 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 270 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 270 "bimap.m"
+  MR_Box mercury__bimap__param_6,
+#line 270 "bimap.m"
+  MR_Box * mercury__bimap__param_7);
+
+#line 269 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl_4_p_1(
+#line 269 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 269 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 269 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 269 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 269 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 269 "bimap.m"
+  MR_Box mercury__bimap__param_6,
+#line 269 "bimap.m"
+  MR_Box * mercury__bimap__param_7);
+
+#line 268 "bimap.m"
+void MR_CALL 
+mercury__bimap__foldl_4_p_0(
+#line 268 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 268 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 268 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 268 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 268 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 268 "bimap.m"
+  MR_Box mercury__bimap__param_6,
+#line 268 "bimap.m"
+  MR_Box * mercury__bimap__param_7);
+
+#line 266 "bimap.m"
+MR_Box MR_CALL 
+mercury__bimap__foldl_3_f_0(
+#line 266 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 266 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 266 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 266 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 266 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 266 "bimap.m"
+  MR_Box mercury__bimap__param_6);
+
+#line 260 "bimap.m"
+void MR_CALL 
+mercury__bimap__map_values_3_p_0(
+#line 260 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 260 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 260 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 260 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 260 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 260 "bimap.m"
+  MR_Word * mercury__bimap__param_6);
+
+#line 259 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__map_values_2_f_0(
+#line 259 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 259 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 259 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 259 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 259 "bimap.m"
+  MR_Word mercury__bimap__param_5);
+
+#line 253 "bimap.m"
+void MR_CALL 
+mercury__bimap__map_keys_3_p_0(
+#line 253 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 253 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 253 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 253 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 253 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 253 "bimap.m"
+  MR_Word * mercury__bimap__param_6);
+
+#line 252 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__map_keys_2_f_0(
+#line 252 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 252 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 252 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 252 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 252 "bimap.m"
+  MR_Word mercury__bimap__param_5);
+
+#line 246 "bimap.m"
+void MR_CALL 
+mercury__bimap__apply_reverse_map_to_list_3_p_0(
+#line 246 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 246 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 246 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 246 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 246 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 245 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__apply_reverse_map_to_list_2_f_0(
+#line 245 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 245 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 245 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 245 "bimap.m"
+  MR_Word mercury__bimap__param_4);
+
+#line 242 "bimap.m"
+void MR_CALL 
+mercury__bimap__apply_forward_map_to_list_3_p_0(
+#line 242 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 242 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 242 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 242 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 242 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 241 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__apply_forward_map_to_list_2_f_0(
+#line 241 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 241 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 241 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 241 "bimap.m"
+  MR_Word mercury__bimap__param_4);
+
+#line 238 "bimap.m"
+void MR_CALL 
+mercury__bimap__det_from_corresponding_lists_3_p_0(
+#line 238 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 238 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 238 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 238 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 238 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 237 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__det_from_corresponding_lists_2_f_0(
+#line 237 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 237 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 237 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 237 "bimap.m"
+  MR_Word mercury__bimap__param_4);
+
+#line 231 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__from_corresponding_lists_3_p_0(
+#line 231 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 231 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 231 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 231 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 231 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 229 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__from_corresponding_lists_2_f_0(
+#line 229 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 229 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 229 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 229 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 229 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 223 "bimap.m"
+void MR_CALL 
+mercury__bimap__det_from_assoc_list_2_p_0(
+#line 223 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 223 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 223 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 223 "bimap.m"
+  MR_Word * mercury__bimap__param_4);
+
+#line 222 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__det_from_assoc_list_1_f_0(
+#line 222 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 222 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 222 "bimap.m"
+  MR_Word mercury__bimap__param_3);
+
+#line 216 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__from_assoc_list_2_p_0(
+#line 216 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 216 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 216 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 216 "bimap.m"
+  MR_Word * mercury__bimap__param_4);
+
+#line 215 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__from_assoc_list_1_f_0(
+#line 215 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 215 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 215 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 215 "bimap.m"
+  MR_Word * mercury__bimap__param_4);
+
+#line 209 "bimap.m"
+void MR_CALL 
+mercury__bimap__to_assoc_list_2_p_0(
+#line 209 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 209 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 209 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 209 "bimap.m"
+  MR_Word * mercury__bimap__param_4);
+
+#line 208 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__to_assoc_list_1_f_0(
+#line 208 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 208 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 208 "bimap.m"
+  MR_Word mercury__bimap__param_3);
+
+#line 203 "bimap.m"
+void MR_CALL 
+mercury__bimap__overlay_3_p_0(
+#line 203 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 203 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 203 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 203 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 203 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 202 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__overlay_2_f_0(
+#line 202 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 202 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 202 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 202 "bimap.m"
+  MR_Word mercury__bimap__param_4);
+
+#line 195 "bimap.m"
+void MR_CALL 
+mercury__bimap__delete_values_3_p_0(
+#line 195 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 195 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 195 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 195 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 195 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 194 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__delete_values_2_f_0(
+#line 194 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 194 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 194 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 194 "bimap.m"
+  MR_Word mercury__bimap__param_4);
+
+#line 189 "bimap.m"
+void MR_CALL 
+mercury__bimap__delete_keys_3_p_0(
+#line 189 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 189 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 189 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 189 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 189 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 188 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__delete_keys_2_f_0(
+#line 188 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 188 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 188 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 188 "bimap.m"
+  MR_Word mercury__bimap__param_4);
+
+#line 184 "bimap.m"
+void MR_CALL 
+mercury__bimap__delete_value_3_p_0(
+#line 184 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 184 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 184 "bimap.m"
+  MR_Box mercury__bimap__param_3,
+#line 184 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 184 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 183 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__delete_value_2_f_0(
+#line 183 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 183 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 183 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 183 "bimap.m"
+  MR_Box mercury__bimap__param_4);
+
+#line 178 "bimap.m"
+void MR_CALL 
+mercury__bimap__delete_key_3_p_0(
+#line 178 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 178 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 178 "bimap.m"
+  MR_Box mercury__bimap__param_3,
+#line 178 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 178 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 177 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__delete_key_2_f_0(
+#line 177 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 177 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 177 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 177 "bimap.m"
+  MR_Box mercury__bimap__param_4);
+
+#line 171 "bimap.m"
+void MR_CALL 
+mercury__bimap__set_from_corresponding_lists_4_p_0(
+#line 171 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 171 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 171 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 171 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 171 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 171 "bimap.m"
+  MR_Word * mercury__bimap__param_6);
+
+#line 169 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__set_from_corresponding_lists_3_f_0(
+#line 169 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 169 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 169 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 169 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 169 "bimap.m"
+  MR_Word mercury__bimap__param_5);
+
+#line 162 "bimap.m"
+void MR_CALL 
+mercury__bimap__set_from_assoc_list_3_p_0(
+#line 162 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 162 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 162 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 162 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 162 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 160 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__set_from_assoc_list_2_f_0(
+#line 160 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 160 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 160 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 160 "bimap.m"
+  MR_Word mercury__bimap__param_4);
+
+#line 153 "bimap.m"
+void MR_CALL 
+mercury__bimap__det_insert_from_corresponding_lists_4_p_0(
+#line 153 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 153 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 153 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 153 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 153 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 153 "bimap.m"
+  MR_Word * mercury__bimap__param_6);
+
+#line 151 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__det_insert_from_corresponding_lists_3_f_0(
+#line 151 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 151 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 151 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 151 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 151 "bimap.m"
+  MR_Word mercury__bimap__param_5);
+
+#line 144 "bimap.m"
+void MR_CALL 
+mercury__bimap__det_insert_from_assoc_list_3_p_0(
+#line 144 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 144 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 144 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 144 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 144 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 142 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__det_insert_from_assoc_list_2_f_0(
+#line 142 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 142 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 142 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 142 "bimap.m"
+  MR_Word mercury__bimap__param_4);
+
+#line 136 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__insert_from_assoc_list_3_p_0(
+#line 136 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 136 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 136 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 136 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 136 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 134 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__insert_from_assoc_list_2_f_0(
+#line 134 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 134 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 134 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 134 "bimap.m"
+  MR_Word mercury__bimap__param_4,
+#line 134 "bimap.m"
+  MR_Word * mercury__bimap__param_5);
+
+#line 128 "bimap.m"
+void MR_CALL 
+mercury__bimap__set_4_p_0(
+#line 128 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 128 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 128 "bimap.m"
+  MR_Box mercury__bimap__param_3,
+#line 128 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 128 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 128 "bimap.m"
+  MR_Word * mercury__bimap__param_6);
+
+#line 127 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__set_3_f_0(
+#line 127 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 127 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 127 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 127 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 127 "bimap.m"
+  MR_Box mercury__bimap__param_5);
+
+#line 118 "bimap.m"
+void MR_CALL 
+mercury__bimap__search_insert_5_p_0(
+#line 118 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 118 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 118 "bimap.m"
+  MR_Box mercury__bimap__param_3,
+#line 118 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 118 "bimap.m"
+  MR_Word * mercury__bimap__param_5,
+#line 118 "bimap.m"
+  MR_Word mercury__bimap__param_6,
+#line 118 "bimap.m"
+  MR_Word * mercury__bimap__param_7);
+
+#line 107 "bimap.m"
+void MR_CALL 
+mercury__bimap__det_insert_4_p_0(
+#line 107 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 107 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 107 "bimap.m"
+  MR_Box mercury__bimap__param_3,
+#line 107 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 107 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 107 "bimap.m"
+  MR_Word * mercury__bimap__param_6);
+
+#line 106 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__det_insert_3_f_0(
+#line 106 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 106 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 106 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 106 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 106 "bimap.m"
+  MR_Box mercury__bimap__param_5);
+
+#line 100 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__insert_4_p_0(
+#line 100 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 100 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 100 "bimap.m"
+  MR_Box mercury__bimap__param_3,
+#line 100 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 100 "bimap.m"
+  MR_Word mercury__bimap__param_5,
+#line 100 "bimap.m"
+  MR_Word * mercury__bimap__param_6);
+
+#line 99 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__insert_3_f_0(
+#line 99 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 99 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 99 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 99 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 99 "bimap.m"
+  MR_Box mercury__bimap__param_5,
+#line 99 "bimap.m"
+  MR_Word * mercury__bimap__param_6);
+
+#line 94 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__contains_value_2_p_0(
+#line 94 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 94 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 94 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 94 "bimap.m"
+  MR_Box mercury__bimap__param_4);
+
+#line 90 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__contains_key_2_p_0(
+#line 90 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 90 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 90 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 90 "bimap.m"
+  MR_Box mercury__bimap__param_4);
+
+#line 86 "bimap.m"
+void MR_CALL 
+mercury__bimap__coordinates_2_p_0(
+#line 86 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 86 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 86 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 86 "bimap.m"
+  MR_Word * mercury__bimap__param_4);
+
+#line 85 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__coordinates_1_f_0(
+#line 85 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 85 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 85 "bimap.m"
+  MR_Word mercury__bimap__param_3);
+
+#line 81 "bimap.m"
+void MR_CALL 
+mercury__bimap__ordinates_2_p_0(
+#line 81 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 81 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 81 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 81 "bimap.m"
+  MR_Word * mercury__bimap__param_4);
+
+#line 80 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__ordinates_1_f_0(
+#line 80 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 80 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 80 "bimap.m"
+  MR_Word mercury__bimap__param_3);
+
+#line 76 "bimap.m"
+void MR_CALL 
+mercury__bimap__reverse_lookup_3_p_0(
+#line 76 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 76 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 76 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 76 "bimap.m"
+  MR_Box * mercury__bimap__param_4,
+#line 76 "bimap.m"
+  MR_Box mercury__bimap__param_5);
+
+#line 75 "bimap.m"
+MR_Box MR_CALL 
+mercury__bimap__reverse_lookup_2_f_0(
+#line 75 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 75 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 75 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 75 "bimap.m"
+  MR_Box mercury__bimap__param_4);
+
+#line 70 "bimap.m"
+void MR_CALL 
+mercury__bimap__lookup_3_p_0(
+#line 70 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 70 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 70 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 70 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 70 "bimap.m"
+  MR_Box * mercury__bimap__param_5);
+
+#line 69 "bimap.m"
+MR_Box MR_CALL 
+mercury__bimap__lookup_2_f_0(
+#line 69 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 69 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 69 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 69 "bimap.m"
+  MR_Box mercury__bimap__param_4);
+
+#line 64 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__reverse_search_3_p_0(
+#line 64 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 64 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 64 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 64 "bimap.m"
+  MR_Box * mercury__bimap__param_4,
+#line 64 "bimap.m"
+  MR_Box mercury__bimap__param_5);
+
+#line 63 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__reverse_search_2_f_0(
+#line 63 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 63 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 63 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 63 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 63 "bimap.m"
+  MR_Box * mercury__bimap__param_5);
+
+#line 59 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__forward_search_3_p_0(
+#line 59 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 59 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 59 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 59 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 59 "bimap.m"
+  MR_Box * mercury__bimap__param_5);
+
+#line 58 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__forward_search_2_f_0(
+#line 58 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 58 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 58 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 58 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 58 "bimap.m"
+  MR_Box * mercury__bimap__param_5);
+
+#line 54 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__search_3_p_1(
+#line 54 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 54 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 54 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 54 "bimap.m"
+  MR_Box * mercury__bimap__param_4,
+#line 54 "bimap.m"
+  MR_Box mercury__bimap__param_5);
+
+#line 53 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__search_3_p_0(
+#line 53 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 53 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 53 "bimap.m"
+  MR_Word mercury__bimap__param_3,
+#line 53 "bimap.m"
+  MR_Box mercury__bimap__param_4,
+#line 53 "bimap.m"
+  MR_Box * mercury__bimap__param_5);
+
+#line 47 "bimap.m"
+MR_bool MR_CALL 
+mercury__bimap__is_empty_1_p_0(
+#line 47 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 47 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 47 "bimap.m"
+  MR_Word mercury__bimap__param_3);
+
+#line 43 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__singleton_2_f_0(
+#line 43 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 43 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 43 "bimap.m"
+  MR_Box mercury__bimap__param_3,
+#line 43 "bimap.m"
+  MR_Box mercury__bimap__param_4);
+
+#line 39 "bimap.m"
+void MR_CALL 
+mercury__bimap__init_1_p_0(
+#line 39 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 39 "bimap.m"
+  MR_Word mercury__bimap__param_2,
+#line 39 "bimap.m"
+  MR_Word * mercury__bimap__param_3);
+
+#line 38 "bimap.m"
+MR_Word MR_CALL 
+mercury__bimap__init_0_f_0(
+#line 38 "bimap.m"
+  MR_Word mercury__bimap__param_1,
+#line 38 "bimap.m"
+  MR_Word mercury__bimap__param_2);
+
+void mercury__bimap__init(void);
+void mercury__bimap__init_type_tables(void);
+void mercury__bimap__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_bimap */
+
+/* :- end_interface bimap. */

@@ -1,0 +1,272 @@
+/*
+** Automatically generated from `construct.m'
+** by the Mercury compiler,
+** version rotd-2013-03-26, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module construct. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_construct
+#define MR_HEADER_GUARD_construct
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CONSTRUCT_DECL_GUARD
+#define CONSTRUCT_DECL_GUARD
+#line 138 "construct.m"
+
+
+#include "mercury_type_desc.h"
+#include "mercury_construct.h"
+
+
+#endif
+
+
+
+
+#line 47 "construct.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__construct__construct__type_ctor_info_functor_number_lex_0;
+
+#line 50 "construct.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__construct__construct__type_ctor_info_functor_number_ordinal_0;
+
+#line 32 "construct.m"
+void MR_CALL 
+mercury__construct____Compare____functor_number_ordinal_0_0(
+#line 32 "construct.m"
+  MR_Word * mercury__construct__param_1,
+#line 32 "construct.m"
+  MR_Integer mercury__construct__param_2,
+#line 32 "construct.m"
+  MR_Integer mercury__construct__param_3);
+
+#line 32 "construct.m"
+MR_bool MR_CALL 
+mercury__construct____Unify____functor_number_ordinal_0_0(
+#line 32 "construct.m"
+  MR_Integer mercury__construct__param_1,
+#line 32 "construct.m"
+  MR_Integer mercury__construct__param_2);
+
+#line 33 "construct.m"
+void MR_CALL 
+mercury__construct____Compare____functor_number_lex_0_0(
+#line 33 "construct.m"
+  MR_Word * mercury__construct__param_1,
+#line 33 "construct.m"
+  MR_Integer mercury__construct__param_2,
+#line 33 "construct.m"
+  MR_Integer mercury__construct__param_3);
+
+#line 33 "construct.m"
+MR_bool MR_CALL 
+mercury__construct____Unify____functor_number_lex_0_0(
+#line 33 "construct.m"
+  MR_Integer mercury__construct__param_1,
+#line 33 "construct.m"
+  MR_Integer mercury__construct__param_2);
+
+#line 1072 "construct.m"
+MR_Word MR_CALL 
+mercury__construct__construct_tuple_2_3_f_0(
+#line 1072 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 1072 "construct.m"
+  MR_Word mercury__construct__param_2,
+#line 1072 "construct.m"
+  MR_Integer mercury__construct__param_3);
+
+#line 543 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__find_functor_2_6_p_0(
+#line 543 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 543 "construct.m"
+  MR_String mercury__construct__param_2,
+#line 543 "construct.m"
+  MR_Integer mercury__construct__param_3,
+#line 543 "construct.m"
+  MR_Integer mercury__construct__param_4,
+#line 543 "construct.m"
+  MR_Integer * mercury__construct__param_5,
+#line 543 "construct.m"
+  MR_Word * mercury__construct__param_6);
+
+#line 358 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__null_1_p_0(
+#line 358 "construct.m"
+  MR_String mercury__construct__param_1);
+
+#line 354 "construct.m"
+MR_Word MR_CALL 
+mercury__construct__null_to_no_1_f_0(
+#line 354 "construct.m"
+  MR_String mercury__construct__param_1);
+
+#line 261 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__get_functor_with_names_internal_6_p_0(
+#line 261 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 261 "construct.m"
+  MR_Integer mercury__construct__param_2,
+#line 261 "construct.m"
+  MR_String * mercury__construct__param_3,
+#line 261 "construct.m"
+  MR_Integer * mercury__construct__param_4,
+#line 261 "construct.m"
+  MR_Word * mercury__construct__param_5,
+#line 261 "construct.m"
+  MR_Word * mercury__construct__param_6);
+
+#line 180 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__get_functor_internal_5_p_0(
+#line 180 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 180 "construct.m"
+  MR_Integer mercury__construct__param_2,
+#line 180 "construct.m"
+  MR_String * mercury__construct__param_3,
+#line 180 "construct.m"
+  MR_Integer * mercury__construct__param_4,
+#line 180 "construct.m"
+  MR_Word * mercury__construct__param_5);
+
+#line 120 "construct.m"
+MR_Word MR_CALL 
+mercury__construct__construct_tuple_1_f_0(
+#line 120 "construct.m"
+  MR_Word mercury__construct__param_1);
+
+#line 114 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__construct_3_f_0(
+#line 114 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 114 "construct.m"
+  MR_Integer mercury__construct__param_2,
+#line 114 "construct.m"
+  MR_Word mercury__construct__param_3,
+#line 114 "construct.m"
+  MR_Word * mercury__construct__param_4);
+
+#line 101 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__find_functor_5_p_0(
+#line 101 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 101 "construct.m"
+  MR_String mercury__construct__param_2,
+#line 101 "construct.m"
+  MR_Integer mercury__construct__param_3,
+#line 101 "construct.m"
+  MR_Integer * mercury__construct__param_4,
+#line 101 "construct.m"
+  MR_Word * mercury__construct__param_5);
+
+#line 92 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__get_functor_lex_2_f_0(
+#line 92 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 92 "construct.m"
+  MR_Integer mercury__construct__param_2,
+#line 92 "construct.m"
+  MR_Integer * mercury__construct__param_3);
+
+#line 82 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__get_functor_ordinal_3_p_0(
+#line 82 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 82 "construct.m"
+  MR_Integer mercury__construct__param_2,
+#line 82 "construct.m"
+  MR_Integer * mercury__construct__param_3);
+
+#line 80 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__get_functor_ordinal_2_f_0(
+#line 80 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 80 "construct.m"
+  MR_Integer mercury__construct__param_2,
+#line 80 "construct.m"
+  MR_Integer * mercury__construct__param_3);
+
+#line 69 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__get_functor_with_names_6_p_0(
+#line 69 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 69 "construct.m"
+  MR_Integer mercury__construct__param_2,
+#line 69 "construct.m"
+  MR_String * mercury__construct__param_3,
+#line 69 "construct.m"
+  MR_Integer * mercury__construct__param_4,
+#line 69 "construct.m"
+  MR_Word * mercury__construct__param_5,
+#line 69 "construct.m"
+  MR_Word * mercury__construct__param_6);
+
+#line 57 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__get_functor_5_p_0(
+#line 57 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 57 "construct.m"
+  MR_Integer mercury__construct__param_2,
+#line 57 "construct.m"
+  MR_String * mercury__construct__param_3,
+#line 57 "construct.m"
+  MR_Integer * mercury__construct__param_4,
+#line 57 "construct.m"
+  MR_Word * mercury__construct__param_5);
+
+#line 47 "construct.m"
+MR_Integer MR_CALL 
+mercury__construct__det_num_functors_1_f_0(
+#line 47 "construct.m"
+  MR_Word mercury__construct__param_1);
+
+#line 45 "construct.m"
+MR_bool MR_CALL 
+mercury__construct__num_functors_1_f_0(
+#line 45 "construct.m"
+  MR_Word mercury__construct__param_1,
+#line 45 "construct.m"
+  MR_Integer * mercury__construct__param_2);
+
+void mercury__construct__init(void);
+void mercury__construct__init_type_tables(void);
+void mercury__construct__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_construct */
+
+/* :- end_interface construct. */

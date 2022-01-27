@@ -1,0 +1,138 @@
+/*
+** Automatically generated from `term_norm.m'
+** by the Mercury compiler,
+** version rotd-2013-03-26, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.term_norm. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__term_norm
+#define MR_HEADER_GUARD_transform_hlds__term_norm
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__TERM_NORM_DECL_GUARD
+#define TRANSFORM_HLDS__TERM_NORM_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "transform_hlds.term_norm.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_norm__transform_hlds__term_norm__type_ctor_info_functor_info_0;
+
+#line 45 "transform_hlds.term_norm.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_norm__transform_hlds__term_norm__type_ctor_info_weight_info_0;
+
+#line 48 "transform_hlds.term_norm.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__term_norm__transform_hlds__term_norm__type_ctor_info_weight_table_0;
+
+#line 61 "term_norm.m"
+MR_Integer MR_CALL 
+transform_hlds__term_norm__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_117_110_99_116_111_114_95_108_111_119_101_114_95_98_111_117_110_100_95_95_91_49_93_95_48_4_f_0(
+#line 61 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_1,
+#line 61 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_2,
+#line 61 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_3);
+
+#line 95 "term_norm.m"
+void MR_CALL 
+transform_hlds__term_norm____Compare____functor_info_0_0(
+#line 95 "term_norm.m"
+  MR_Word * transform_hlds__term_norm__param_1,
+#line 95 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_2,
+#line 95 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_3);
+
+#line 95 "term_norm.m"
+MR_bool MR_CALL 
+transform_hlds__term_norm____Unify____functor_info_0_0(
+#line 95 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_1,
+#line 95 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_2);
+
+#line 66 "term_norm.m"
+MR_bool MR_CALL 
+transform_hlds__term_norm__zero_size_type_2_p_0(
+#line 66 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_1,
+#line 66 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_2);
+
+#line 61 "term_norm.m"
+MR_Integer MR_CALL 
+transform_hlds__term_norm__functor_lower_bound_4_f_0(
+#line 61 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_1,
+#line 61 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_2,
+#line 61 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_3,
+#line 61 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_4);
+
+#line 51 "term_norm.m"
+void MR_CALL 
+transform_hlds__term_norm__functor_norm_9_p_0(
+#line 51 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_1,
+#line 51 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_2,
+#line 51 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_3,
+#line 51 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_4,
+#line 51 "term_norm.m"
+  MR_Integer * transform_hlds__term_norm__param_5,
+#line 51 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_6,
+#line 51 "term_norm.m"
+  MR_Word * transform_hlds__term_norm__param_7,
+#line 51 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_8,
+#line 51 "term_norm.m"
+  MR_Word * transform_hlds__term_norm__param_9);
+
+#line 36 "term_norm.m"
+MR_Word MR_CALL 
+transform_hlds__term_norm__set_functor_info_2_f_0(
+#line 36 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_1,
+#line 36 "term_norm.m"
+  MR_Word transform_hlds__term_norm__param_2);
+
+void mercury__transform_hlds__term_norm__init(void);
+void mercury__transform_hlds__term_norm__init_type_tables(void);
+void mercury__transform_hlds__term_norm__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.term_norm */
+
+/* :- end_interface transform_hlds.term_norm. */

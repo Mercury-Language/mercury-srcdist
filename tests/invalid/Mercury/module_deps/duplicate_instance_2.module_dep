@@ -1,0 +1,13 @@
+module(1, "duplicate_instance_2.m",
+	duplicate_instance_2,
+	{},
+	{builtin, io, private_builtin},
+	{builtin, io, duplicate_instance_1, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	has_main
+).

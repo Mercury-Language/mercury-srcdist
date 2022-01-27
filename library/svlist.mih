@@ -1,0 +1,208 @@
+/*
+** Automatically generated from `svlist.m'
+** by the Mercury compiler,
+** version rotd-2013-03-26, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module svlist. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_svlist
+#define MR_HEADER_GUARD_svlist
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef SVLIST_DECL_GUARD
+#define SVLIST_DECL_GUARD
+
+#endif
+
+
+
+
+#line 73 "svlist.m"
+void MR_CALL 
+mercury__svlist__det_replace_nth_4_p_0(
+#line 73 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 73 "svlist.m"
+  MR_Integer mercury__svlist__param_2,
+#line 73 "svlist.m"
+  MR_Box mercury__svlist__param_3,
+#line 73 "svlist.m"
+  MR_Word mercury__svlist__param_4,
+#line 73 "svlist.m"
+  MR_Word * mercury__svlist__param_5);
+
+#line 66 "svlist.m"
+void MR_CALL 
+mercury__svlist__replace_all_4_p_0(
+#line 66 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 66 "svlist.m"
+  MR_Box mercury__svlist__param_2,
+#line 66 "svlist.m"
+  MR_Box mercury__svlist__param_3,
+#line 66 "svlist.m"
+  MR_Word mercury__svlist__param_4,
+#line 66 "svlist.m"
+  MR_Word * mercury__svlist__param_5);
+
+#line 60 "svlist.m"
+MR_bool MR_CALL 
+mercury__svlist__replace_first_4_p_0(
+#line 60 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 60 "svlist.m"
+  MR_Box mercury__svlist__param_2,
+#line 60 "svlist.m"
+  MR_Box mercury__svlist__param_3,
+#line 60 "svlist.m"
+  MR_Word mercury__svlist__param_4,
+#line 60 "svlist.m"
+  MR_Word * mercury__svlist__param_5);
+
+#line 55 "svlist.m"
+void MR_CALL 
+mercury__svlist__replace_4_p_1(
+#line 55 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 55 "svlist.m"
+  MR_Box mercury__svlist__param_2,
+#line 55 "svlist.m"
+  MR_Box mercury__svlist__param_3,
+#line 55 "svlist.m"
+  MR_Word mercury__svlist__param_4,
+#line 55 "svlist.m"
+  MR_Word * mercury__svlist__param_5,
+#line 55 "svlist.m"
+  MR_Cont mercury__svlist__param_6,
+#line 55 "svlist.m"
+  void * mercury__svlist__param_7);
+
+#line 54 "svlist.m"
+MR_bool MR_CALL 
+mercury__svlist__replace_4_p_0(
+#line 54 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 54 "svlist.m"
+  MR_Box mercury__svlist__param_2,
+#line 54 "svlist.m"
+  MR_Box mercury__svlist__param_3,
+#line 54 "svlist.m"
+  MR_Word mercury__svlist__param_4,
+#line 54 "svlist.m"
+  MR_Word mercury__svlist__param_5);
+
+#line 48 "svlist.m"
+void MR_CALL 
+mercury__svlist__delete_elems_3_p_0(
+#line 48 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 48 "svlist.m"
+  MR_Word mercury__svlist__param_2,
+#line 48 "svlist.m"
+  MR_Word mercury__svlist__param_3,
+#line 48 "svlist.m"
+  MR_Word * mercury__svlist__param_4);
+
+#line 43 "svlist.m"
+MR_bool MR_CALL 
+mercury__svlist__delete_first_3_p_0(
+#line 43 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 43 "svlist.m"
+  MR_Box mercury__svlist__param_2,
+#line 43 "svlist.m"
+  MR_Word mercury__svlist__param_3,
+#line 43 "svlist.m"
+  MR_Word * mercury__svlist__param_4);
+
+#line 38 "svlist.m"
+void MR_CALL 
+mercury__svlist__delete_3_p_3(
+#line 38 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 38 "svlist.m"
+  MR_Box mercury__svlist__param_2,
+#line 38 "svlist.m"
+  MR_Word * mercury__svlist__param_3,
+#line 38 "svlist.m"
+  MR_Word mercury__svlist__param_4,
+#line 38 "svlist.m"
+  MR_Cont mercury__svlist__param_5,
+#line 38 "svlist.m"
+  void * mercury__svlist__param_6);
+
+#line 37 "svlist.m"
+void MR_CALL 
+mercury__svlist__delete_3_p_2(
+#line 37 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 37 "svlist.m"
+  MR_Box * mercury__svlist__param_2,
+#line 37 "svlist.m"
+  MR_Word mercury__svlist__param_3,
+#line 37 "svlist.m"
+  MR_Word * mercury__svlist__param_4,
+#line 37 "svlist.m"
+  MR_Cont mercury__svlist__param_5,
+#line 37 "svlist.m"
+  void * mercury__svlist__param_6);
+
+#line 36 "svlist.m"
+void MR_CALL 
+mercury__svlist__delete_3_p_1(
+#line 36 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 36 "svlist.m"
+  MR_Box mercury__svlist__param_2,
+#line 36 "svlist.m"
+  MR_Word mercury__svlist__param_3,
+#line 36 "svlist.m"
+  MR_Word * mercury__svlist__param_4,
+#line 36 "svlist.m"
+  MR_Cont mercury__svlist__param_5,
+#line 36 "svlist.m"
+  void * mercury__svlist__param_6);
+
+#line 35 "svlist.m"
+MR_bool MR_CALL 
+mercury__svlist__delete_3_p_0(
+#line 35 "svlist.m"
+  MR_Word mercury__svlist__param_1,
+#line 35 "svlist.m"
+  MR_Box mercury__svlist__param_2,
+#line 35 "svlist.m"
+  MR_Word mercury__svlist__param_3,
+#line 35 "svlist.m"
+  MR_Word mercury__svlist__param_4);
+
+void mercury__svlist__init(void);
+void mercury__svlist__init_type_tables(void);
+void mercury__svlist__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_svlist */
+
+/* :- end_interface svlist. */

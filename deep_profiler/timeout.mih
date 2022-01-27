@@ -1,0 +1,172 @@
+/*
+** Automatically generated from `timeout.m'
+** by the Mercury compiler,
+** version rotd-2013-03-26, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module timeout. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_timeout
+#define MR_HEADER_GUARD_timeout
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TIMEOUT_DECL_GUARD
+#define TIMEOUT_DECL_GUARD
+#line 93 "timeout.m"
+
+#ifdef  MR_DEEP_PROFILER_ENABLED
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>  /* for O_CREAT, O_EXCL */
+#include <signal.h> /* for signal numbers */
+#include <unistd.h> /* for alarm() */
+#include <stdio.h>
+#include <errno.h>  /* for EEXIST etc */
+#include    <dirent.h>
+#include "mercury_signal.h"
+
+#define MP_MAX_CLEANUP_FILES    20  /* this should be plenty */
+
+extern  const char  *MP_cleanup_files[MP_MAX_CLEANUP_FILES];
+extern  int     MP_cleanup_file_next;
+
+extern  void        MP_maybe_print_cleanup_files(const char *msg);
+extern  void        MP_register_cleanup_file(const char *filename);
+extern  void        MP_unregister_cleanup_file(const char *filename);
+extern  void        MP_handle_fatal_exception(void *data);
+extern  void        MP_delete_cleanup_files(void);
+extern  void        MP_delete_cleanup_files_and_exit_failure(
+                        const char *signal_name);
+
+extern  int         MP_timeout_seconds;
+extern  const char  *MP_timeout_mutex_file;
+extern  const char  *MP_timeout_want_dir;
+extern  const char  *MP_timeout_want_prefix;
+
+typedef struct
+{
+    int             MP_signum;
+    void            (*MP_handler)(void);
+} MP_sig_handler;
+
+extern  const MP_sig_handler    MP_signal_structs[];
+
+extern  void    MP_handle_timeout(void);
+
+extern  void    MP_handle_sig_term(void);
+extern  void    MP_handle_sig_hup(void);
+extern  void    MP_handle_sig_int(void);
+extern  void    MP_handle_sig_quit(void);
+extern  void    MP_handle_sig_ill(void);
+extern  void    MP_handle_sig_abrt(void);
+extern  void    MP_handle_sig_bus(void);
+extern  void    MP_handle_sig_fpe(void);
+extern  void    MP_handle_sig_segv(void);
+extern  void    MP_handle_sig_pipe(void);
+
+extern  MR_bool MP_do_try_get_lock(const char *mutex_file);
+extern  void    MP_do_get_lock(const char *mutex_file);
+extern  void    MP_do_release_lock(const char *mutex_file);
+
+#endif
+
+#endif
+
+
+
+
+#line 84 "timeout.m"
+void MR_CALL 
+timeout__remove_want_file_3_p_0(
+#line 84 "timeout.m"
+  MR_String timeout__param_1);
+
+#line 80 "timeout.m"
+void MR_CALL 
+timeout__make_want_file_3_p_0(
+#line 80 "timeout.m"
+  MR_String timeout__param_1);
+
+#line 75 "timeout.m"
+void MR_CALL 
+timeout__release_lock_4_p_0(
+#line 75 "timeout.m"
+  MR_Word timeout__param_1,
+#line 75 "timeout.m"
+  MR_String timeout__param_2);
+
+#line 69 "timeout.m"
+void MR_CALL 
+timeout__get_lock_4_p_0(
+#line 69 "timeout.m"
+  MR_Word timeout__param_1,
+#line 69 "timeout.m"
+  MR_String timeout__param_2);
+
+#line 63 "timeout.m"
+void MR_CALL 
+timeout__setup_timeout_3_p_0(
+#line 63 "timeout.m"
+  MR_Integer timeout__param_1);
+
+#line 58 "timeout.m"
+void MR_CALL 
+timeout__setup_signals_5_p_0(
+#line 58 "timeout.m"
+  MR_String timeout__param_1,
+#line 58 "timeout.m"
+  MR_String timeout__param_2,
+#line 58 "timeout.m"
+  MR_String timeout__param_3);
+
+#line 51 "timeout.m"
+void MR_CALL 
+timeout__delete_cleanup_files_2_p_0(void);
+
+#line 47 "timeout.m"
+void MR_CALL 
+timeout__unregister_all_files_for_cleanup_2_p_0(void);
+
+#line 43 "timeout.m"
+void MR_CALL 
+timeout__unregister_file_for_cleanup_3_p_0(
+#line 43 "timeout.m"
+  MR_String timeout__param_1);
+
+#line 39 "timeout.m"
+void MR_CALL 
+timeout__register_file_for_cleanup_3_p_0(
+#line 39 "timeout.m"
+  MR_String timeout__param_1);
+
+void mercury__timeout__init(void);
+void mercury__timeout__init_type_tables(void);
+void mercury__timeout__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_timeout */
+
+/* :- end_interface timeout. */

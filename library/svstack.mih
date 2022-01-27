@@ -1,0 +1,98 @@
+/*
+** Automatically generated from `svstack.m'
+** by the Mercury compiler,
+** version rotd-2013-03-26, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module svstack. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_svstack
+#define MR_HEADER_GUARD_svstack
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef SVSTACK_DECL_GUARD
+#define SVSTACK_DECL_GUARD
+
+#endif
+
+
+
+
+#line 53 "svstack.m"
+void MR_CALL 
+mercury__svstack__det_pop_3_p_0(
+#line 53 "svstack.m"
+  MR_Word mercury__svstack__param_1,
+#line 53 "svstack.m"
+  MR_Box * mercury__svstack__param_2,
+#line 53 "svstack.m"
+  MR_Word mercury__svstack__param_3,
+#line 53 "svstack.m"
+  MR_Word * mercury__svstack__param_4);
+
+#line 47 "svstack.m"
+MR_bool MR_CALL 
+mercury__svstack__pop_3_p_0(
+#line 47 "svstack.m"
+  MR_Word mercury__svstack__param_1,
+#line 47 "svstack.m"
+  MR_Box * mercury__svstack__param_2,
+#line 47 "svstack.m"
+  MR_Word mercury__svstack__param_3,
+#line 47 "svstack.m"
+  MR_Word * mercury__svstack__param_4);
+
+#line 40 "svstack.m"
+void MR_CALL 
+mercury__svstack__push_list_3_p_0(
+#line 40 "svstack.m"
+  MR_Word mercury__svstack__param_1,
+#line 40 "svstack.m"
+  MR_Word mercury__svstack__param_2,
+#line 40 "svstack.m"
+  MR_Word mercury__svstack__param_3,
+#line 40 "svstack.m"
+  MR_Word * mercury__svstack__param_4);
+
+#line 33 "svstack.m"
+void MR_CALL 
+mercury__svstack__push_3_p_0(
+#line 33 "svstack.m"
+  MR_Word mercury__svstack__param_1,
+#line 33 "svstack.m"
+  MR_Box mercury__svstack__param_2,
+#line 33 "svstack.m"
+  MR_Word mercury__svstack__param_3,
+#line 33 "svstack.m"
+  MR_Word * mercury__svstack__param_4);
+
+void mercury__svstack__init(void);
+void mercury__svstack__init_type_tables(void);
+void mercury__svstack__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_svstack */
+
+/* :- end_interface svstack. */

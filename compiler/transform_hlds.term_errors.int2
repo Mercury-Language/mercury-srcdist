@@ -1,0 +1,32 @@
+:- module (transform_hlds.term_errors).
+:- interface.
+:- import_module assoc_list.
+:- import_module bag.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type termination_error
+	--->	pragma_foreign_code 
+	;	imported_pred 
+	;	can_loop_proc_called(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+	;	horder_args(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+	;	horder_call 
+	;	method_call 
+	;	inf_termination_const(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+	;	ho_inf_termination_const(hlds.hlds_pred.pred_proc_id, list.list(hlds.hlds_pred.pred_proc_id))
+	;	not_subset(hlds.hlds_pred.pred_proc_id, bag.bag(parse_tree.prog_data.prog_var), bag.bag(parse_tree.prog_data.prog_var))
+	;	inf_call(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+	;	cycle(hlds.hlds_pred.pred_proc_id, assoc_list.assoc_list(hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_context))
+	;	no_eqns 
+	;	too_many_paths 
+	;	solver_failed 
+	;	is_builtin(hlds.hlds_pred.pred_id)
+	;	does_not_term_pragma(hlds.hlds_pred.pred_id)
+	;	inconsistent_annotations 
+	;	does_not_term_foreign(hlds.hlds_pred.pred_proc_id).
+:- type termination_error_context
+	--->	termination_error_context(transform_hlds.term_errors.termination_error, parse_tree.prog_data.prog_context).
+:- type termination_error_contexts == list.list(transform_hlds.term_errors.termination_error_context).

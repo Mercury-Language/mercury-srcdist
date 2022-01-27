@@ -1,0 +1,78 @@
+/*
+** Automatically generated from `mdprof_cgi.m'
+** by the Mercury compiler,
+** version rotd-2013-03-26, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdprof_cgi. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdprof_cgi
+#define MR_HEADER_GUARD_mdprof_cgi
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDPROF_CGI_DECL_GUARD
+#define MDPROF_CGI_DECL_GUARD
+#line 700 "mdprof_cgi.m"
+
+#ifdef  MR_DEEP_PROFILER_ENABLED
+  #include <sys/types.h>
+  #include <sys/stat.h>
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <unistd.h>
+#endif
+
+#endif
+
+
+
+
+#line 50 "mdprof_cgi.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_cgi__mdprof_cgi__type_ctor_info_child_has_parent_0;
+
+#line 53 "mdprof_cgi.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_cgi__mdprof_cgi__type_ctor_info_cmd_pref_0;
+
+#line 56 "mdprof_cgi.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_cgi__mdprof_cgi__type_ctor_info_detach_process_result_0;
+
+#line 59 "mdprof_cgi.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_cgi__mdprof_cgi__type_ctor_info_option_0;
+
+#line 62 "mdprof_cgi.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_cgi__mdprof_cgi__type_ctor_info_option_table_0;
+
+#line 25 "mdprof_cgi.m"
+void MR_CALL 
+main_2_p_0(void);
+
+void mercury__mdprof_cgi__init(void);
+void mercury__mdprof_cgi__init_type_tables(void);
+void mercury__mdprof_cgi__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdprof_cgi */
+
+/* :- end_interface mdprof_cgi. */
