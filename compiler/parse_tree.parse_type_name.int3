@@ -1,0 +1,8 @@
+:- module (parse_tree.parse_type_name).
+:- interface.
+:- type allow_ho_inst_info.
+:- type maybe_constrain_inst_vars.
+:- type maybe_require_tm_mode
+	where	type_is_abstract_enum(1).
+:- type why_no_ho_inst_info
+	where	type_is_abstract_enum(4).

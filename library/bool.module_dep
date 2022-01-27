@@ -1,0 +1,13 @@
+module(1, "bool.m",
+	bool,
+	{},
+	{builtin, enum, list, private_builtin},
+	{builtin, enum, list, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - bool},
+	contains_foreign_export,
+	no_main
+).

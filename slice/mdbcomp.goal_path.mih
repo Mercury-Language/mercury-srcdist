@@ -1,0 +1,403 @@
+/*
+** Automatically generated from `mdbcomp.goal_path.m'
+** by the Mercury compiler,
+** version rotd-2016-05-13
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdbcomp.goal_path. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdbcomp__goal_path
+#define MR_HEADER_GUARD_mdbcomp__goal_path
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__GOAL_PATH_DECL_GUARD
+#define MDBCOMP__GOAL_PATH_DECL_GUARD
+#include "mdbcomp.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_containing_goal_map_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_forward_goal_path_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_attr_array_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_forward_path_map_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_id_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_path_step_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_path_string_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_reverse_path_bimap_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_goal_reverse_path_map_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_maybe_cut_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_maybe_switch_num_functors_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0;
+
+void MR_CALL 
+mdbcomp__goal_path__fgp_to_rgp_2_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__goal_id_inside_3_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__goal_path_from_string_2_p_0(
+  MR_String mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+void MR_CALL 
+mdbcomp__goal_path__goal_path_from_string_det_2_p_0(
+  MR_String mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__goal_path_get_first_2_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__goal_path_get_last_2_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__goal_path_inside_2_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__goal_path_inside_relative_3_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word * mdbcomp__goal_path__param_3);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__goal_path_remove_first_3_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2,
+  MR_Word * mdbcomp__goal_path__param_3);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__goal_path_remove_last_3_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2,
+  MR_Word * mdbcomp__goal_path__param_3);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__goal_path_step_from_string_2_p_0(
+  MR_String mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__is_goal_path_separator_1_p_0(
+  MR_Char mdbcomp__goal_path__param_1);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__is_valid_goal_id_1_p_0(
+  MR_Word mdbcomp__goal_path__param_1);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__rev_goal_path_from_string_2_p_0(
+  MR_String mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+void MR_CALL 
+mdbcomp__goal_path__rev_goal_path_from_string_det_2_p_0(
+  MR_String mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__rev_goal_path_get_last_2_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__rev_goal_path_inside_2_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__rev_goal_path_inside_relative_3_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word * mdbcomp__goal_path__param_3);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path__rev_goal_path_remove_last_3_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2,
+  MR_Word * mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path__rev_goal_path_remove_type_info_2_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+void MR_CALL 
+mdbcomp__goal_path__rgp_to_fgp_2_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2);
+
+void MR_CALL 
+mdbcomp__goal_path__update_goal_attribute_4_p_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Box mdbcomp__goal_path__param_3,
+  MR_Word mdbcomp__goal_path__param_4,
+  MR_Word * mdbcomp__goal_path__param_5);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__create_forward_goal_path_map_1_f_0(
+  MR_Word mdbcomp__goal_path__param_1);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__create_goal_id_array_1_f_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__create_goal_id_array_2_f_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Box mdbcomp__goal_path__param_3);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__create_reverse_goal_path_bimap_1_f_0(
+  MR_Word mdbcomp__goal_path__param_1);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__create_reverse_goal_path_map_1_f_0(
+  MR_Word mdbcomp__goal_path__param_1);
+
+MR_Box MR_CALL 
+mdbcomp__goal_path__get_goal_attribute_det_2_f_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__goal_id_for_head_constraints_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__goal_id_to_forward_path_2_f_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__goal_id_to_reverse_path_2_f_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__goal_path_add_at_end_2_f_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_String MR_CALL 
+mdbcomp__goal_path__goal_path_to_string_1_f_0(
+  MR_Word mdbcomp__goal_path__param_1);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__rev_goal_path_add_at_end_2_f_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_String MR_CALL 
+mdbcomp__goal_path__rev_goal_path_to_string_1_f_0(
+  MR_Word mdbcomp__goal_path__param_1);
+
+MR_Word MR_CALL 
+mdbcomp__goal_path__whole_body_goal_id_0_f_0(void);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____containing_goal_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____containing_goal_map_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____forward_goal_path_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____goal_attr_array_1_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word * mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3,
+  MR_Word mdbcomp__goal_path__param_4);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____goal_forward_path_map_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____goal_id_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____goal_path_step_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____goal_path_string_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_String mdbcomp__goal_path__param_2,
+  MR_String mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____goal_reverse_path_bimap_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____goal_reverse_path_map_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____maybe_cut_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____maybe_switch_num_functors_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+void MR_CALL 
+mdbcomp__goal_path____Compare____reverse_goal_path_0_0(
+  MR_Word * mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____containing_goal_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____containing_goal_map_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____forward_goal_path_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____goal_attr_array_1_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2,
+  MR_Word mdbcomp__goal_path__param_3);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____goal_forward_path_map_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____goal_id_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____goal_path_step_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____goal_path_string_0_0(
+  MR_String mdbcomp__goal_path__param_1,
+  MR_String mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____goal_reverse_path_bimap_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____goal_reverse_path_map_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____maybe_cut_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____maybe_switch_num_functors_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+MR_bool MR_CALL 
+mdbcomp__goal_path____Unify____reverse_goal_path_0_0(
+  MR_Word mdbcomp__goal_path__param_1,
+  MR_Word mdbcomp__goal_path__param_2);
+
+void mercury__mdbcomp__goal_path__init(void);
+void mercury__mdbcomp__goal_path__init_type_tables(void);
+void mercury__mdbcomp__goal_path__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdbcomp.goal_path */
+
+/* :- end_interface mdbcomp.goal_path. */

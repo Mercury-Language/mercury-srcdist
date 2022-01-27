@@ -1,0 +1,23 @@
+:- module (string.parse_util).
+:- interface.
+:- type gather_ended_by.
+:- type poly_kind
+	where	type_is_abstract_enum(2).
+:- type string_format_error.
+:- type string_format_flag_hash
+	where	type_is_abstract_enum(1).
+:- type string_format_flag_minus
+	where	type_is_abstract_enum(1).
+:- type string_format_flag_plus
+	where	type_is_abstract_enum(1).
+:- type string_format_flag_space
+	where	type_is_abstract_enum(1).
+:- type string_format_flag_zero
+	where	type_is_abstract_enum(1).
+:- type string_format_flags.
+:- type string_format_float_kind
+	where	type_is_abstract_enum(3).
+:- type string_format_int_base
+	where	type_is_abstract_enum(3).
+:- type string_format_maybe_prec.
+:- type string_format_maybe_width.

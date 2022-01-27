@@ -1,0 +1,2855 @@
+/*
+** Automatically generated from `rbmm.region_instruction.m'
+** by the Mercury compiler,
+** version rotd-2016-05-13
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.rbmm.region_instruction. */
+/* :- implementation. */
+
+/*
+INIT mercury__transform_hlds__rbmm__region_instruction__init
+ENDINIT
+*/
+
+#include "transform_hlds.rbmm.region_instruction.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.rbmm.mih"
+#include "transform_hlds.smm_common.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "transform_hlds.rbmm.add_rbmm_goal_infos.mih"
+#include "transform_hlds.rbmm.condition_renaming.mih"
+#include "transform_hlds.rbmm.execution_path.mih"
+#include "transform_hlds.rbmm.interproc_region_lifetime.mih"
+#include "transform_hlds.rbmm.live_region_analysis.mih"
+#include "transform_hlds.rbmm.live_variable_analysis.mih"
+#include "transform_hlds.rbmm.points_to_analysis.mih"
+#include "transform_hlds.rbmm.points_to_graph.mih"
+#include "transform_hlds.rbmm.points_to_info.mih"
+#include "transform_hlds.rbmm.region_arguments.mih"
+#include "transform_hlds.rbmm.region_liveness_info.mih"
+#include "transform_hlds.rbmm.region_resurrection_renaming.mih"
+#include "transform_hlds.rbmm.region_transformation.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0;
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_instruction__pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_instruction__list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_instruction__list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_instruction__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_instruction__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_instruction__list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0;
+
+static const MR_PseudoTypeInfo transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_instrs_before_after_0_0[2];
+
+static const MR_ConstString transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_names_instrs_before_after_0_0[2];
+
+static const MR_DuFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_instrs_before_after_0_0;
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_instrs_before_after_0_0[1];
+
+static const MR_DuPtagLayout transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_ptag_ordered_instrs_before_after_0[1];
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_name_ordered_instrs_before_after_0[1];
+
+static const MR_Integer transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__functor_number_map_instrs_before_after_0[1];
+
+static const MR_PseudoTypeInfo transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_region_instr_0_0[1];
+
+static const MR_DuFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_0;
+
+static const MR_PseudoTypeInfo transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_region_instr_0_1[1];
+
+static const MR_DuFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_1;
+
+static const MR_PseudoTypeInfo transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_region_instr_0_2[2];
+
+static const MR_DuFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_2;
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_region_instr_0_0[1];
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_region_instr_0_1[1];
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_region_instr_0_2[1];
+
+static const MR_DuPtagLayout transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_ptag_ordered_region_instr_0[3];
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_name_ordered_region_instr_0[3];
+
+static const MR_Integer transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__functor_number_map_region_instr_0[3];
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0;
+
+static const MR_EnumFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_0;
+
+static const MR_EnumFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_1;
+
+static const MR_EnumFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_2;
+
+static const MR_EnumFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_value_ordered_region_instr_type_0[3];
+
+static const MR_EnumFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_name_ordered_region_instr_type_0[3];
+
+static const MR_Integer transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__functor_number_map_region_instr_type_0[3];
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____instrs_before_after_0_0_10001(
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____instrs_before_after_0_0_10001(
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_0_0_10001(
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_0_0_10001(
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_proc_0_0_10001(
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_proc_0_0_10001(
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_table_0_0_10001(
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_table_0_0_10001(
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_type_0_0_10001(
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_type_0_0_10001(
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__record_instruction_before_prog_point_6_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__RegionInstrType_7,
+  MR_Word transform_hlds__rbmm__region_instruction__ProgPoint_8,
+  MR_Word transform_hlds__rbmm__region_instruction__Graph_9,
+  MR_Word transform_hlds__rbmm__region_instruction__Region_10,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_17,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_18);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__record_instruction_after_prog_point_6_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__RegionInstType_7,
+  MR_Word transform_hlds__rbmm__region_instruction__ProgPoint_8,
+  MR_Word transform_hlds__rbmm__region_instruction__Graph_9,
+  MR_Word transform_hlds__rbmm__region_instruction__Region_10,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_16,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_17);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__process_mapping_rule_3_6_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__BecomeDead_7,
+  MR_Word transform_hlds__rbmm__region_instruction__CalleeDeadR_8,
+  MR_Word transform_hlds__rbmm__region_instruction__SourceRegion_9,
+  MR_Word transform_hlds__rbmm__region_instruction__TargetRegion_10,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RemovedAfterProgPoint_0_12,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RemovedAfterProgPoint_13);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__process_mapping_rule_1_6_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__BecomeLive_7,
+  MR_Word transform_hlds__rbmm__region_instruction__CalleeBornR_8,
+  MR_Word transform_hlds__rbmm__region_instruction__SourceRegion_9,
+  MR_Word transform_hlds__rbmm__region_instruction__TargetRegion_10,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_CreatedBeforeProgPoint_0_12,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_CreatedBeforeProgPoint_13);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__annotate_expr_11_p_0_2(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_4);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__annotate_expr_11_p_0_1(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_4);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__annotate_expr_11_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__Expr_12,
+  MR_Word transform_hlds__rbmm__region_instruction__ProgPoint_13,
+  MR_Word transform_hlds__rbmm__region_instruction__BecomeLive_14,
+  MR_Word transform_hlds__rbmm__region_instruction__BecomeDead_15,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfo_16,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_17,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_18,
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_19,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcInfo_20,
+  MR_Word * transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_21,
+  MR_Word * transform_hlds__rbmm__region_instruction__RemovedAfterProgPoint_22);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0_3(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0_2(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0_1(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfo_2,
+  MR_Word transform_hlds__rbmm__region_instruction__BornR_3,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadR_4,
+  MR_Word transform_hlds__rbmm__region_instruction__LocalR_5,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcLRBefore_6,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcLRAfter_7,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcVoidVarRegion_8,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_9,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_10,
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_11,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcInfo_12,
+  MR_Word transform_hlds__rbmm__region_instruction__BecomeDeadBeforeProgPoint_13,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0_14,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_15,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0_16,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_17,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0_18,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_19,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_20,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_21);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_paths_20_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfo_2,
+  MR_Word transform_hlds__rbmm__region_instruction__BornR_3,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadR_4,
+  MR_Word transform_hlds__rbmm__region_instruction__LocalR_5,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcLRBefore_6,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcLRAfter_7,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcVoidVarRegion_8,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_9,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_10,
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_11,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcInfo_12,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0_13,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_14,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0_15,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_16,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0_17,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_18,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_19,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_20);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_proc_19_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_20,
+  MR_Word transform_hlds__rbmm__region_instruction__PredId_21,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfoTable_22,
+  MR_Word transform_hlds__rbmm__region_instruction__ExecPathTable_23,
+  MR_Word transform_hlds__rbmm__region_instruction__LRBeforeTable_24,
+  MR_Word transform_hlds__rbmm__region_instruction__LRAfterTable_25,
+  MR_Word transform_hlds__rbmm__region_instruction__VoidVarRegionTable_26,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_27,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_28,
+  MR_Word transform_hlds__rbmm__region_instruction__LocalRTable_29,
+  MR_Integer transform_hlds__rbmm__region_instruction__ProcId_30,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_0_49,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_50,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_0_51,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_52,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_0_53,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_54,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_0_55,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_56);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_pred_18_p_0_1(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_3,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_4,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_5,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_6,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_7,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_8,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_9);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_pred_18_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_19,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfoTable_20,
+  MR_Word transform_hlds__rbmm__region_instruction__ExecPathTable_21,
+  MR_Word transform_hlds__rbmm__region_instruction__LRBeforeTable_22,
+  MR_Word transform_hlds__rbmm__region_instruction__LRAfterTable_23,
+  MR_Word transform_hlds__rbmm__region_instruction__VoidVarRegionTable_24,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_25,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_26,
+  MR_Word transform_hlds__rbmm__region_instruction__LocalRTable_27,
+  MR_Word transform_hlds__rbmm__region_instruction__PredId_28,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_0_35,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_36,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_0_37,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_38,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_0_39,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_40,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_0_41,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_42);
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_13_p_0_1(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_3,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_4,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_5,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_6,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_7,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_8,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_9);
+
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_instruction_scalar_common_1[4][2];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_instruction_scalar_common_2[6][3];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_instruction_scalar_common_3[1][21];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_instruction_scalar_common_4[1][22];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_instruction_scalar_common_5[2][9];
+
+
+
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_instruction_scalar_common_1[4][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_2[4]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_1[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_instruction_scalar_common_2[6][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_1[0]))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_2[0]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_2[1]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_instruction_scalar_common_3[1][21] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 18)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_instruction_scalar_common_4[1][22] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 19)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_instruction_scalar_common_5[2][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_type_0)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_instruction__pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_instruction__list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__rbmm__region_instruction__pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_instruction__list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__rbmm__region_instruction__list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_instruction__list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_instruction__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_instruction__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_instruction__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_instruction__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_instruction__list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0
+  }
+};
+
+static const MR_PseudoTypeInfo transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_instrs_before_after_0_0[2] = {
+  (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_instruction__list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0,
+  (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_instruction__list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0
+};
+
+static const MR_ConstString transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_names_instrs_before_after_0_0[2] = {
+  (MR_String) "instrs_before",
+  (MR_String) "instrs_after"
+};
+
+static const MR_DuFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_instrs_before_after_0_0 = {
+  (MR_String) "instrs_before_after",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_instrs_before_after_0_0,
+  transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_names_instrs_before_after_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_instrs_before_after_0_0[1] = {
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_instrs_before_after_0_0
+};
+
+static const MR_DuPtagLayout transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_ptag_ordered_instrs_before_after_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_instrs_before_after_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_name_ordered_instrs_before_after_0[1] = {
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_instrs_before_after_0_0
+};
+
+static const MR_Integer transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__functor_number_map_instrs_before_after_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__rbmm__region_instruction____Unify____instrs_before_after_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_instruction____Compare____instrs_before_after_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_instruction",
+  (MR_String) "instrs_before_after",
+  {     transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_name_ordered_instrs_before_after_0 },
+  {     transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_ptag_ordered_instrs_before_after_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__functor_number_map_instrs_before_after_0
+};
+
+static const MR_PseudoTypeInfo transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_region_instr_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_0 = {
+  (MR_String) "create_region",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_region_instr_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_region_instr_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_1 = {
+  (MR_String) "remove_region",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_region_instr_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_region_instr_0_2[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_2 = {
+  (MR_String) "rename_region",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__field_types_region_instr_0_2,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_region_instr_0_0[1] = {
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_0
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_region_instr_0_1[1] = {
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_1
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_region_instr_0_2[1] = {
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_2
+};
+
+static const MR_DuPtagLayout transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_ptag_ordered_region_instr_0[3] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_region_instr_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_region_instr_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_stag_ordered_region_instr_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_name_ordered_region_instr_0[3] = {
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_0,
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_1,
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_functor_desc_region_instr_0_2
+};
+
+static const MR_Integer transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__functor_number_map_region_instr_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__rbmm__region_instruction____Unify____region_instr_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_instruction____Compare____region_instr_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_instruction",
+  (MR_String) "region_instr",
+  {     transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_name_ordered_region_instr_0 },
+  {     transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__du_ptag_ordered_region_instr_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__functor_number_map_region_instr_0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_proc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__region_instruction____Unify____region_instr_proc_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_instruction____Compare____region_instr_proc_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_instruction",
+  (MR_String) "region_instr_proc",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__region_instruction____Unify____region_instr_table_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_instruction____Compare____region_instr_table_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_instruction",
+  (MR_String) "region_instr_table",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_instruction__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_EnumFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_0 = {
+  (MR_String) "create_region_instr",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_1 = {
+  (MR_String) "remove_region_instr",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_2 = {
+  (MR_String) "renaming_region_instr",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_value_ordered_region_instr_type_0[3] = {
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_0,
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_1,
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_2
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_name_ordered_region_instr_type_0[3] = {
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_0,
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_1,
+  &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_functor_desc_region_instr_type_0_2
+};
+
+static const MR_Integer transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__functor_number_map_region_instr_type_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_type_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (transform_hlds__rbmm__region_instruction____Unify____region_instr_type_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_instruction____Compare____region_instr_type_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_instruction",
+  (MR_String) "region_instr_type",
+  {     transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_name_ordered_region_instr_type_0 },
+  {     transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__enum_value_ordered_region_instr_type_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__functor_number_map_region_instr_type_0
+};
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____instrs_before_after_0_0_10001(
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = transform_hlds__rbmm__region_instruction____Unify____instrs_before_after_0_0(((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2));
+    }
+    return transform_hlds__rbmm__region_instruction__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____instrs_before_after_0_0_10001(
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1;
+
+    {
+      transform_hlds__rbmm__region_instruction____Compare____instrs_before_after_0_0(&transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_3));
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_0_0_10001(
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = transform_hlds__rbmm__region_instruction____Unify____region_instr_0_0(((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2));
+    }
+    return transform_hlds__rbmm__region_instruction__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_0_0_10001(
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1;
+
+    {
+      transform_hlds__rbmm__region_instruction____Compare____region_instr_0_0(&transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_3));
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_proc_0_0_10001(
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = transform_hlds__rbmm__region_instruction____Unify____region_instr_proc_0_0(((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2));
+    }
+    return transform_hlds__rbmm__region_instruction__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_proc_0_0_10001(
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1;
+
+    {
+      transform_hlds__rbmm__region_instruction____Compare____region_instr_proc_0_0(&transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_3));
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_table_0_0_10001(
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = transform_hlds__rbmm__region_instruction____Unify____region_instr_table_0_0(((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2));
+    }
+    return transform_hlds__rbmm__region_instruction__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_table_0_0_10001(
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1;
+
+    {
+      transform_hlds__rbmm__region_instruction____Compare____region_instr_table_0_0(&transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_3));
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_type_0_0_10001(
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = transform_hlds__rbmm__region_instruction____Unify____region_instr_type_0_0(((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2));
+    }
+    return transform_hlds__rbmm__region_instruction__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_type_0_0_10001(
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1;
+
+    {
+      transform_hlds__rbmm__region_instruction____Compare____region_instr_type_0_0(&transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_3));
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv0_HeadVar__1_1));
+  }
+}
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_type_0_0(
+  MR_Word * transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_2,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Integer transform_hlds__rbmm__region_instruction__Cast_HeadVar1_4 = (MR_Integer) transform_hlds__rbmm__region_instruction__HeadVar__2_2;
+    MR_Integer transform_hlds__rbmm__region_instruction__Cast_HeadVar2_5 = (MR_Integer) transform_hlds__rbmm__region_instruction__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__rbmm__region_instruction__HeadVar__1_1, transform_hlds__rbmm__region_instruction__Cast_HeadVar1_4, transform_hlds__rbmm__region_instruction__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_type_0_0(
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_1,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded = (transform_hlds__rbmm__region_instruction__HeadVar__2_1 == transform_hlds__rbmm__region_instruction__HeadVar__2_2);
+
+    return transform_hlds__rbmm__region_instruction__succeeded;
+  }
+}
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_table_0_0(
+  MR_Word * transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_2,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Word transform_hlds__rbmm__region_instruction__Cast_HeadVar1_4 = transform_hlds__rbmm__region_instruction__HeadVar__2_2;
+    MR_Word transform_hlds__rbmm__region_instruction__Cast_HeadVar2_5 = transform_hlds__rbmm__region_instruction__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[3], transform_hlds__rbmm__region_instruction__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_instruction__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__rbmm__region_instruction__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_table_0_0(
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Word transform_hlds__rbmm__region_instruction__Cast_HeadVar1_3 = transform_hlds__rbmm__region_instruction__HeadVar__1_1;
+    MR_Word transform_hlds__rbmm__region_instruction__Cast_HeadVar2_4 = transform_hlds__rbmm__region_instruction__HeadVar__2_2;
+
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[3], ((MR_Box) (transform_hlds__rbmm__region_instruction__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__rbmm__region_instruction__Cast_HeadVar2_4)));
+    }
+    return transform_hlds__rbmm__region_instruction__succeeded;
+  }
+}
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_proc_0_0(
+  MR_Word * transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_2,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Word transform_hlds__rbmm__region_instruction__Cast_HeadVar1_4 = transform_hlds__rbmm__region_instruction__HeadVar__2_2;
+    MR_Word transform_hlds__rbmm__region_instruction__Cast_HeadVar2_5 = transform_hlds__rbmm__region_instruction__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[1], transform_hlds__rbmm__region_instruction__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_instruction__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__rbmm__region_instruction__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_proc_0_0(
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Word transform_hlds__rbmm__region_instruction__Cast_HeadVar1_3 = transform_hlds__rbmm__region_instruction__HeadVar__1_1;
+    MR_Word transform_hlds__rbmm__region_instruction__Cast_HeadVar2_4 = transform_hlds__rbmm__region_instruction__HeadVar__2_2;
+
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[1], ((MR_Box) (transform_hlds__rbmm__region_instruction__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__rbmm__region_instruction__Cast_HeadVar2_4)));
+    }
+    return transform_hlds__rbmm__region_instruction__succeeded;
+  }
+}
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____region_instr_0_0(
+  MR_Word * transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_2,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Integer transform_hlds__rbmm__region_instruction__CastX_29 = (MR_Integer) transform_hlds__rbmm__region_instruction__HeadVar__2_2;
+    MR_Integer transform_hlds__rbmm__region_instruction__CastY_30 = (MR_Integer) transform_hlds__rbmm__region_instruction__HeadVar__3_3;
+
+    transform_hlds__rbmm__region_instruction__succeeded = (transform_hlds__rbmm__region_instruction__CastX_29 == transform_hlds__rbmm__region_instruction__CastY_30);
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      *transform_hlds__rbmm__region_instruction__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_String transform_hlds__rbmm__region_instruction__V_35_35 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_String transform_hlds__rbmm__region_instruction__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_string_3_p_0(transform_hlds__rbmm__region_instruction__HeadVar__1_1, transform_hlds__rbmm__region_instruction__V_35_35, transform_hlds__rbmm__region_instruction__V_5_5);
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *transform_hlds__rbmm__region_instruction__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *transform_hlds__rbmm__region_instruction__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_String transform_hlds__rbmm__region_instruction__V_36_36 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *transform_hlds__rbmm__region_instruction__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_String transform_hlds__rbmm__region_instruction__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_string_3_p_0(transform_hlds__rbmm__region_instruction__HeadVar__1_1, transform_hlds__rbmm__region_instruction__V_36_36, transform_hlds__rbmm__region_instruction__V_14_14);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *transform_hlds__rbmm__region_instruction__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_String transform_hlds__rbmm__region_instruction__V_37_37 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 1)));
+            MR_String transform_hlds__rbmm__region_instruction__V_38_38 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *transform_hlds__rbmm__region_instruction__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *transform_hlds__rbmm__region_instruction__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_String transform_hlds__rbmm__region_instruction__V_26_26 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_String transform_hlds__rbmm__region_instruction__V_27_27 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word transform_hlds__rbmm__region_instruction__V_28_28;
+
+                  {
+                    mercury__private_builtin__builtin_compare_string_3_p_0(&transform_hlds__rbmm__region_instruction__V_28_28, transform_hlds__rbmm__region_instruction__V_38_38, transform_hlds__rbmm__region_instruction__V_26_26);
+                  }
+                  transform_hlds__rbmm__region_instruction__succeeded = (transform_hlds__rbmm__region_instruction__V_28_28 == (MR_Integer) 0);
+                  transform_hlds__rbmm__region_instruction__succeeded = !(transform_hlds__rbmm__region_instruction__succeeded);
+                  if (transform_hlds__rbmm__region_instruction__succeeded)
+                    *transform_hlds__rbmm__region_instruction__HeadVar__1_1 = transform_hlds__rbmm__region_instruction__V_28_28;
+                  else
+                    {
+                      mercury__private_builtin__builtin_compare_string_3_p_0(transform_hlds__rbmm__region_instruction__HeadVar__1_1, transform_hlds__rbmm__region_instruction__V_37_37, transform_hlds__rbmm__region_instruction__V_27_27);
+                    }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____region_instr_0_0(
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Integer transform_hlds__rbmm__region_instruction__CastX_11 = (MR_Integer) transform_hlds__rbmm__region_instruction__HeadVar__1_1;
+    MR_Integer transform_hlds__rbmm__region_instruction__CastY_12 = (MR_Integer) transform_hlds__rbmm__region_instruction__HeadVar__2_2;
+
+    transform_hlds__rbmm__region_instruction__succeeded = (transform_hlds__rbmm__region_instruction__CastX_11 == transform_hlds__rbmm__region_instruction__CastY_12);
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      transform_hlds__rbmm__region_instruction__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_String transform_hlds__rbmm__region_instruction__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__1_1, (MR_Integer) 0)));
+            MR_String transform_hlds__rbmm__region_instruction__V_4_4;
+
+            transform_hlds__rbmm__region_instruction__succeeded = ((MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (transform_hlds__rbmm__region_instruction__succeeded)
+              {
+                transform_hlds__rbmm__region_instruction__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 0)));
+                transform_hlds__rbmm__region_instruction__succeeded = (strcmp(transform_hlds__rbmm__region_instruction__V_3_3, transform_hlds__rbmm__region_instruction__V_4_4) == 0);
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_String transform_hlds__rbmm__region_instruction__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__HeadVar__1_1, (MR_Integer) 0)));
+            MR_String transform_hlds__rbmm__region_instruction__V_6_6;
+
+            transform_hlds__rbmm__region_instruction__succeeded = ((MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (transform_hlds__rbmm__region_instruction__succeeded)
+              {
+                transform_hlds__rbmm__region_instruction__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 0)));
+                transform_hlds__rbmm__region_instruction__succeeded = (strcmp(transform_hlds__rbmm__region_instruction__V_5_5, transform_hlds__rbmm__region_instruction__V_6_6) == 0);
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_String transform_hlds__rbmm__region_instruction__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__HeadVar__1_1, (MR_Integer) 0)));
+            MR_String transform_hlds__rbmm__region_instruction__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__HeadVar__1_1, (MR_Integer) 1)));
+            MR_String transform_hlds__rbmm__region_instruction__V_9_9;
+            MR_String transform_hlds__rbmm__region_instruction__V_10_10;
+
+            transform_hlds__rbmm__region_instruction__succeeded = ((MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (transform_hlds__rbmm__region_instruction__succeeded)
+              {
+                transform_hlds__rbmm__region_instruction__V_9_9 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 0)));
+                transform_hlds__rbmm__region_instruction__V_10_10 = ((MR_String) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 1)));
+                transform_hlds__rbmm__region_instruction__succeeded = (strcmp(transform_hlds__rbmm__region_instruction__V_7_7, transform_hlds__rbmm__region_instruction__V_9_9) == 0);
+                if (transform_hlds__rbmm__region_instruction__succeeded)
+                  transform_hlds__rbmm__region_instruction__succeeded = (strcmp(transform_hlds__rbmm__region_instruction__V_8_8, transform_hlds__rbmm__region_instruction__V_10_10) == 0);
+              }
+          }
+          break;
+      }
+    return transform_hlds__rbmm__region_instruction__succeeded;
+  }
+}
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction____Compare____instrs_before_after_0_0(
+  MR_Word * transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_2,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Integer transform_hlds__rbmm__region_instruction__CastX_9 = (MR_Integer) transform_hlds__rbmm__region_instruction__HeadVar__2_2;
+    MR_Integer transform_hlds__rbmm__region_instruction__CastY_10 = (MR_Integer) transform_hlds__rbmm__region_instruction__HeadVar__3_3;
+
+    transform_hlds__rbmm__region_instruction__succeeded = (transform_hlds__rbmm__region_instruction__CastX_9 == transform_hlds__rbmm__region_instruction__CastY_10);
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      *transform_hlds__rbmm__region_instruction__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word transform_hlds__rbmm__region_instruction__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word transform_hlds__rbmm__region_instruction__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word transform_hlds__rbmm__region_instruction__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word transform_hlds__rbmm__region_instruction__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word transform_hlds__rbmm__region_instruction__V_8_8;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_1[3], &transform_hlds__rbmm__region_instruction__V_8_8, ((MR_Box) (transform_hlds__rbmm__region_instruction__V_4_4)), ((MR_Box) (transform_hlds__rbmm__region_instruction__V_6_6)));
+        }
+        transform_hlds__rbmm__region_instruction__succeeded = (transform_hlds__rbmm__region_instruction__V_8_8 == (MR_Integer) 0);
+        transform_hlds__rbmm__region_instruction__succeeded = !(transform_hlds__rbmm__region_instruction__succeeded);
+        if (transform_hlds__rbmm__region_instruction__succeeded)
+          *transform_hlds__rbmm__region_instruction__HeadVar__1_1 = transform_hlds__rbmm__region_instruction__V_8_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_1[3], transform_hlds__rbmm__region_instruction__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_instruction__V_5_5)), ((MR_Box) (transform_hlds__rbmm__region_instruction__V_7_7)));
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_instruction____Unify____instrs_before_after_0_0(
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__2_2)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Integer transform_hlds__rbmm__region_instruction__CastX_7 = (MR_Integer) transform_hlds__rbmm__region_instruction__HeadVar__1_1;
+    MR_Integer transform_hlds__rbmm__region_instruction__CastY_8 = (MR_Integer) transform_hlds__rbmm__region_instruction__HeadVar__2_2;
+
+    transform_hlds__rbmm__region_instruction__succeeded = (transform_hlds__rbmm__region_instruction__CastX_7 == transform_hlds__rbmm__region_instruction__CastY_8);
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      transform_hlds__rbmm__region_instruction__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word transform_hlds__rbmm__region_instruction__TypeInfo_10_10;
+        MR_Word transform_hlds__rbmm__region_instruction__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word transform_hlds__rbmm__region_instruction__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word transform_hlds__rbmm__region_instruction__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word transform_hlds__rbmm__region_instruction__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          transform_hlds__rbmm__region_instruction__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_1[3], ((MR_Box) (transform_hlds__rbmm__region_instruction__V_3_3)), ((MR_Box) (transform_hlds__rbmm__region_instruction__V_5_5)));
+        }
+        if (transform_hlds__rbmm__region_instruction__succeeded)
+          {
+            transform_hlds__rbmm__region_instruction__TypeInfo_10_10 = (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_1[3];
+            {
+              transform_hlds__rbmm__region_instruction__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__rbmm__region_instruction__TypeInfo_10_10, ((MR_Box) (transform_hlds__rbmm__region_instruction__V_4_4)), ((MR_Box) (transform_hlds__rbmm__region_instruction__V_6_6)));
+            }
+          }
+      }
+    return transform_hlds__rbmm__region_instruction__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__record_instruction_before_prog_point_6_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__RegionInstrType_7,
+  MR_Word transform_hlds__rbmm__region_instruction__ProgPoint_8,
+  MR_Word transform_hlds__rbmm__region_instruction__Graph_9,
+  MR_Word transform_hlds__rbmm__region_instruction__Region_10,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_17,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_18)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_String transform_hlds__rbmm__region_instruction__RegionName_12;
+    MR_Word transform_hlds__rbmm__region_instruction__RegionInstruction_13;
+    MR_Word transform_hlds__rbmm__region_instruction__InstrsBefore_14;
+    MR_Word transform_hlds__rbmm__region_instruction__InstrsAfter_15;
+    MR_Word transform_hlds__rbmm__region_instruction__V_19_19;
+    MR_Box transform_hlds__rbmm__region_instruction__conv0_V_19_19;
+
+    {
+      transform_hlds__rbmm__region_instruction__RegionName_12 = transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_f_0(transform_hlds__rbmm__region_instruction__Graph_9, transform_hlds__rbmm__region_instruction__Region_10);
+    }
+    switch (transform_hlds__rbmm__region_instruction__RegionInstrType_7) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          transform_hlds__rbmm__region_instruction__RegionInstruction_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__RegionInstruction_13, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionName_12));
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          transform_hlds__rbmm__region_instruction__RegionInstruction_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__RegionInstruction_13, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionName_12));
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.rbmm.region_instruction", (MR_String) "predicate \140transform_hlds.rbmm.region_instruction.make_create_or_remove_instruction\'/3", (MR_String) "unexpected region instruction type");
+            return;
+          }
+        }
+        break;
+    }
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = mercury__map__search_3_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_17, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_8)), &transform_hlds__rbmm__region_instruction__conv0_V_19_19);
+    }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        transform_hlds__rbmm__region_instruction__V_19_19 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv0_V_19_19);
+        transform_hlds__rbmm__region_instruction__succeeded = MR_TRUE;
+      }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        transform_hlds__rbmm__region_instruction__InstrsBefore_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_19_19, (MR_Integer) 0)));
+        transform_hlds__rbmm__region_instruction__InstrsAfter_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_19_19, (MR_Integer) 1)));
+        transform_hlds__rbmm__region_instruction__succeeded = MR_TRUE;
+      }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        {
+          transform_hlds__rbmm__region_instruction__succeeded = mercury__list__member_2_p_0((MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0, ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionInstruction_13)), transform_hlds__rbmm__region_instruction__InstrsBefore_14);
+        }
+        if (transform_hlds__rbmm__region_instruction__succeeded)
+          *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_18 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_17;
+        else
+          {
+            MR_Word transform_hlds__rbmm__region_instruction__NewInstrsBefore_16;
+            MR_Word transform_hlds__rbmm__region_instruction__V_22_22;
+
+            transform_hlds__rbmm__region_instruction__succeeded = (transform_hlds__rbmm__region_instruction__RegionInstrType_7 == (MR_Integer) 0);
+            if (transform_hlds__rbmm__region_instruction__succeeded)
+              {
+                MR_Word transform_hlds__rbmm__region_instruction__V_20_20;
+
+                {
+                  transform_hlds__rbmm__region_instruction__V_20_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__V_20_20, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionInstruction_13));
+                  MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__V_20_20, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  transform_hlds__rbmm__region_instruction__NewInstrsBefore_16 = mercury__list__f_43_43_2_f_0((MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0, transform_hlds__rbmm__region_instruction__InstrsBefore_14, transform_hlds__rbmm__region_instruction__V_20_20);
+                }
+              }
+            else
+              {
+                transform_hlds__rbmm__region_instruction__NewInstrsBefore_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__NewInstrsBefore_16, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionInstruction_13));
+                MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__NewInstrsBefore_16, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__InstrsBefore_14));
+              }
+            {
+              transform_hlds__rbmm__region_instruction__V_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_22_22, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__NewInstrsBefore_16));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_22_22, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__InstrsAfter_15));
+            }
+            {
+              mercury__map__set_4_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_8)), ((MR_Box) (transform_hlds__rbmm__region_instruction__V_22_22)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_17, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_18);
+            }
+          }
+      }
+    else
+      {
+        MR_Word transform_hlds__rbmm__region_instruction__V_24_24;
+        MR_Word transform_hlds__rbmm__region_instruction__V_26_26;
+
+        {
+          transform_hlds__rbmm__region_instruction__V_26_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__V_26_26, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionInstruction_13));
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__V_26_26, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          transform_hlds__rbmm__region_instruction__V_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_24_24, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__V_26_26));
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_24_24, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          mercury__map__set_4_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_8)), ((MR_Box) (transform_hlds__rbmm__region_instruction__V_24_24)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_17, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_18);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__record_instruction_after_prog_point_6_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__RegionInstType_7,
+  MR_Word transform_hlds__rbmm__region_instruction__ProgPoint_8,
+  MR_Word transform_hlds__rbmm__region_instruction__Graph_9,
+  MR_Word transform_hlds__rbmm__region_instruction__Region_10,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_16,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_17)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_String transform_hlds__rbmm__region_instruction__RegionName_12;
+    MR_Word transform_hlds__rbmm__region_instruction__RegionInstruction_13;
+    MR_Word transform_hlds__rbmm__region_instruction__InstsBefore_14;
+    MR_Word transform_hlds__rbmm__region_instruction__InstsAfter_15;
+    MR_Word transform_hlds__rbmm__region_instruction__V_18_18;
+    MR_Box transform_hlds__rbmm__region_instruction__conv0_V_18_18;
+
+    {
+      transform_hlds__rbmm__region_instruction__RegionName_12 = transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_f_0(transform_hlds__rbmm__region_instruction__Graph_9, transform_hlds__rbmm__region_instruction__Region_10);
+    }
+    switch (transform_hlds__rbmm__region_instruction__RegionInstType_7) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          transform_hlds__rbmm__region_instruction__RegionInstruction_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__RegionInstruction_13, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionName_12));
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          transform_hlds__rbmm__region_instruction__RegionInstruction_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__RegionInstruction_13, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionName_12));
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.rbmm.region_instruction", (MR_String) "predicate \140transform_hlds.rbmm.region_instruction.make_create_or_remove_instruction\'/3", (MR_String) "unexpected region instruction type");
+            return;
+          }
+        }
+        break;
+    }
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = mercury__map__search_3_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_16, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_8)), &transform_hlds__rbmm__region_instruction__conv0_V_18_18);
+    }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        transform_hlds__rbmm__region_instruction__V_18_18 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv0_V_18_18);
+        transform_hlds__rbmm__region_instruction__succeeded = MR_TRUE;
+      }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        transform_hlds__rbmm__region_instruction__InstsBefore_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_18_18, (MR_Integer) 0)));
+        transform_hlds__rbmm__region_instruction__InstsAfter_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_18_18, (MR_Integer) 1)));
+        transform_hlds__rbmm__region_instruction__succeeded = MR_TRUE;
+      }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        {
+          transform_hlds__rbmm__region_instruction__succeeded = mercury__list__member_2_p_0((MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0, ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionInstruction_13)), transform_hlds__rbmm__region_instruction__InstsAfter_15);
+        }
+        if (transform_hlds__rbmm__region_instruction__succeeded)
+          *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_17 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_16;
+        else
+          {
+            MR_Word transform_hlds__rbmm__region_instruction__V_19_19;
+            MR_Word transform_hlds__rbmm__region_instruction__V_21_21;
+
+            {
+              transform_hlds__rbmm__region_instruction__V_21_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__V_21_21, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionInstruction_13));
+              MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__V_21_21, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__InstsAfter_15));
+            }
+            {
+              transform_hlds__rbmm__region_instruction__V_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_19_19, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__InstsBefore_14));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_19_19, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__V_21_21));
+            }
+            {
+              mercury__map__set_4_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_8)), ((MR_Box) (transform_hlds__rbmm__region_instruction__V_19_19)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_16, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_17);
+            }
+          }
+      }
+    else
+      {
+        MR_Word transform_hlds__rbmm__region_instruction__V_22_22;
+        MR_Word transform_hlds__rbmm__region_instruction__V_25_25;
+
+        {
+          transform_hlds__rbmm__region_instruction__V_25_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__V_25_25, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionInstruction_13));
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__V_25_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          transform_hlds__rbmm__region_instruction__V_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_22_22, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_22_22, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__V_25_25));
+        }
+        {
+          mercury__map__set_4_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_8)), ((MR_Box) (transform_hlds__rbmm__region_instruction__V_22_22)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_16, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_17);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__process_mapping_rule_3_6_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__BecomeDead_7,
+  MR_Word transform_hlds__rbmm__region_instruction__CalleeDeadR_8,
+  MR_Word transform_hlds__rbmm__region_instruction__SourceRegion_9,
+  MR_Word transform_hlds__rbmm__region_instruction__TargetRegion_10,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RemovedAfterProgPoint_0_12,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RemovedAfterProgPoint_13)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_15_15 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = mercury__set__contains_2_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_15_15, transform_hlds__rbmm__region_instruction__BecomeDead_7, ((MR_Box) (transform_hlds__rbmm__region_instruction__TargetRegion_10)));
+    }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        {
+          transform_hlds__rbmm__region_instruction__succeeded = mercury__set__contains_2_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_15_15, transform_hlds__rbmm__region_instruction__CalleeDeadR_8, ((MR_Box) (transform_hlds__rbmm__region_instruction__SourceRegion_9)));
+        }
+        transform_hlds__rbmm__region_instruction__succeeded = !(transform_hlds__rbmm__region_instruction__succeeded);
+      }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        {
+          mercury__set__insert_3_p_0((MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0, ((MR_Box) (transform_hlds__rbmm__region_instruction__TargetRegion_10)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RemovedAfterProgPoint_0_12, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RemovedAfterProgPoint_13);
+        }
+      }
+    else
+      *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RemovedAfterProgPoint_13 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RemovedAfterProgPoint_0_12;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__process_mapping_rule_1_6_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__BecomeLive_7,
+  MR_Word transform_hlds__rbmm__region_instruction__CalleeBornR_8,
+  MR_Word transform_hlds__rbmm__region_instruction__SourceRegion_9,
+  MR_Word transform_hlds__rbmm__region_instruction__TargetRegion_10,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_CreatedBeforeProgPoint_0_12,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_CreatedBeforeProgPoint_13)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_15_15 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = mercury__set__contains_2_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_15_15, transform_hlds__rbmm__region_instruction__BecomeLive_7, ((MR_Box) (transform_hlds__rbmm__region_instruction__TargetRegion_10)));
+    }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        {
+          transform_hlds__rbmm__region_instruction__succeeded = mercury__set__contains_2_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_15_15, transform_hlds__rbmm__region_instruction__CalleeBornR_8, ((MR_Box) (transform_hlds__rbmm__region_instruction__SourceRegion_9)));
+        }
+        transform_hlds__rbmm__region_instruction__succeeded = !(transform_hlds__rbmm__region_instruction__succeeded);
+      }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        {
+          mercury__set__insert_3_p_0((MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0, ((MR_Box) (transform_hlds__rbmm__region_instruction__TargetRegion_10)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_CreatedBeforeProgPoint_0_12, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_CreatedBeforeProgPoint_13);
+        }
+      }
+    else
+      *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_CreatedBeforeProgPoint_13 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_CreatedBeforeProgPoint_0_12;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__annotate_expr_11_p_0_2(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_4)
+{
+  {
+    MR_Box transform_hlds__rbmm__region_instruction__closure = transform_hlds__rbmm__region_instruction__closure_arg;
+    MR_Word transform_hlds__rbmm__region_instruction__conv6_STATE_VARIABLE_RemovedAfterProgPoint_13;
+
+    {
+      transform_hlds__rbmm__region_instruction__process_mapping_rule_3_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_3), &transform_hlds__rbmm__region_instruction__conv6_STATE_VARIABLE_RemovedAfterProgPoint_13);
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_4 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv6_STATE_VARIABLE_RemovedAfterProgPoint_13));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__annotate_expr_11_p_0_1(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_3,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_4)
+{
+  {
+    MR_Box transform_hlds__rbmm__region_instruction__closure = transform_hlds__rbmm__region_instruction__closure_arg;
+    MR_Word transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_CreatedBeforeProgPoint_13;
+
+    {
+      transform_hlds__rbmm__region_instruction__process_mapping_rule_1_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_3), &transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_CreatedBeforeProgPoint_13);
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_4 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_CreatedBeforeProgPoint_13));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__annotate_expr_11_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__Expr_12,
+  MR_Word transform_hlds__rbmm__region_instruction__ProgPoint_13,
+  MR_Word transform_hlds__rbmm__region_instruction__BecomeLive_14,
+  MR_Word transform_hlds__rbmm__region_instruction__BecomeDead_15,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfo_16,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_17,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_18,
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_19,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcInfo_20,
+  MR_Word * transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_21,
+  MR_Word * transform_hlds__rbmm__region_instruction__RemovedAfterProgPoint_22)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded = ((MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__Expr_12)) == (MR_mktag((MR_Integer) 2)));
+    MR_Word transform_hlds__rbmm__region_instruction__CalleePredId_23;
+    MR_Integer transform_hlds__rbmm__region_instruction__CalleeProcId_24;
+    MR_Word transform_hlds__rbmm__region_instruction__V_25_25;
+    MR_Word transform_hlds__rbmm__region_instruction__V_26_26;
+    MR_Word transform_hlds__rbmm__region_instruction__V_27_27;
+    MR_Word transform_hlds__rbmm__region_instruction__V_28_28;
+
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        transform_hlds__rbmm__region_instruction__CalleePredId_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 0)));
+        transform_hlds__rbmm__region_instruction__CalleeProcId_24 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 1)));
+        transform_hlds__rbmm__region_instruction__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 2)));
+        transform_hlds__rbmm__region_instruction__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 3)));
+        transform_hlds__rbmm__region_instruction__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 4)));
+        transform_hlds__rbmm__region_instruction__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 5)));
+        {
+          MR_Word transform_hlds__rbmm__region_instruction__CalleePPId_29;
+          MR_Word transform_hlds__rbmm__region_instruction__AlphaMapping_31;
+          MR_Word transform_hlds__rbmm__region_instruction___CallerGraph_30;
+          MR_Word transform_hlds__rbmm__region_instruction__V_32_32;
+          MR_Box transform_hlds__rbmm__region_instruction__conv0_V_32_32;
+
+          {
+            transform_hlds__rbmm__region_instruction__CalleePPId_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__CalleePPId_29, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__CalleePredId_23));
+            MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__CalleePPId_29, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__CalleeProcId_24));
+          }
+          transform_hlds__rbmm__region_instruction___CallerGraph_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__RptaInfo_16, (MR_Integer) 0)));
+          transform_hlds__rbmm__region_instruction__AlphaMapping_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__RptaInfo_16, (MR_Integer) 1)));
+          {
+            transform_hlds__rbmm__region_instruction__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_1[0], transform_hlds__rbmm__region_instruction__BornRTable_17, ((MR_Box) (transform_hlds__rbmm__region_instruction__CalleePPId_29)), &transform_hlds__rbmm__region_instruction__conv0_V_32_32);
+          }
+          if (transform_hlds__rbmm__region_instruction__succeeded)
+            {
+              transform_hlds__rbmm__region_instruction__V_32_32 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv0_V_32_32);
+              transform_hlds__rbmm__region_instruction__succeeded = MR_TRUE;
+            }
+          if (transform_hlds__rbmm__region_instruction__succeeded)
+            {
+              MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_82_82;
+              MR_Word transform_hlds__rbmm__region_instruction__TypeInfo_83_83;
+              MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_88_88;
+              MR_Word transform_hlds__rbmm__region_instruction__AlphaAtProgPoint_33;
+              MR_Word transform_hlds__rbmm__region_instruction__CalleeBornR_34;
+              MR_Word transform_hlds__rbmm__region_instruction__CalleeDeadR_35;
+              MR_Word transform_hlds__rbmm__region_instruction__V_68_68;
+              MR_Word transform_hlds__rbmm__region_instruction__V_69_69;
+              MR_Word transform_hlds__rbmm__region_instruction__V_70_70;
+              MR_Word transform_hlds__rbmm__region_instruction__V_71_71;
+              MR_Box transform_hlds__rbmm__region_instruction__conv1_AlphaAtProgPoint_33;
+              MR_Box transform_hlds__rbmm__region_instruction__conv2_CalleeBornR_34;
+              MR_Box transform_hlds__rbmm__region_instruction__conv4_CreatedBeforeProgPoint_21;
+              MR_Box transform_hlds__rbmm__region_instruction__conv5_CalleeDeadR_35;
+              MR_Box transform_hlds__rbmm__region_instruction__conv7_RemovedAfterProgPoint_22;
+
+              {
+                mercury__map__lookup_3_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[5], transform_hlds__rbmm__region_instruction__AlphaMapping_31, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_13)), &transform_hlds__rbmm__region_instruction__conv1_AlphaAtProgPoint_33);
+              }
+              transform_hlds__rbmm__region_instruction__AlphaAtProgPoint_33 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv1_AlphaAtProgPoint_33);
+              transform_hlds__rbmm__region_instruction__TypeCtorInfo_82_82 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+              transform_hlds__rbmm__region_instruction__TypeInfo_83_83 = (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_1[0];
+              {
+                mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_82_82, transform_hlds__rbmm__region_instruction__TypeInfo_83_83, transform_hlds__rbmm__region_instruction__BornRTable_17, ((MR_Box) (transform_hlds__rbmm__region_instruction__CalleePPId_29)), &transform_hlds__rbmm__region_instruction__conv2_CalleeBornR_34);
+              }
+              transform_hlds__rbmm__region_instruction__CalleeBornR_34 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv2_CalleeBornR_34);
+              {
+                transform_hlds__rbmm__region_instruction__V_68_68 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_68_68, 0) = ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_5[1]));
+                MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_68_68, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__annotate_expr_11_p_0_1));
+                MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_68_68, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_68_68, 3) = ((MR_Box) (transform_hlds__rbmm__region_instruction__BecomeLive_14));
+                MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_68_68, 4) = ((MR_Box) (transform_hlds__rbmm__region_instruction__CalleeBornR_34));
+              }
+              transform_hlds__rbmm__region_instruction__TypeCtorInfo_88_88 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+              {
+                transform_hlds__rbmm__region_instruction__V_69_69 = mercury__set__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_88_88);
+              }
+              {
+                mercury__map__foldl_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_88_88, transform_hlds__rbmm__region_instruction__TypeCtorInfo_88_88, transform_hlds__rbmm__region_instruction__TypeInfo_83_83, transform_hlds__rbmm__region_instruction__V_68_68, transform_hlds__rbmm__region_instruction__AlphaAtProgPoint_33, ((MR_Box) (transform_hlds__rbmm__region_instruction__V_69_69)), &transform_hlds__rbmm__region_instruction__conv4_CreatedBeforeProgPoint_21);
+              }
+              *transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_21 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv4_CreatedBeforeProgPoint_21);
+              {
+                mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_82_82, transform_hlds__rbmm__region_instruction__TypeInfo_83_83, transform_hlds__rbmm__region_instruction__DeadRTable_18, ((MR_Box) (transform_hlds__rbmm__region_instruction__CalleePPId_29)), &transform_hlds__rbmm__region_instruction__conv5_CalleeDeadR_35);
+              }
+              transform_hlds__rbmm__region_instruction__CalleeDeadR_35 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv5_CalleeDeadR_35);
+              {
+                transform_hlds__rbmm__region_instruction__V_70_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_70_70, 0) = ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_5[1]));
+                MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_70_70, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__annotate_expr_11_p_0_2));
+                MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_70_70, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_70_70, 3) = ((MR_Box) (transform_hlds__rbmm__region_instruction__BecomeDead_15));
+                MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_70_70, 4) = ((MR_Box) (transform_hlds__rbmm__region_instruction__CalleeDeadR_35));
+              }
+              {
+                transform_hlds__rbmm__region_instruction__V_71_71 = mercury__set__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_88_88);
+              }
+              {
+                mercury__map__foldl_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_88_88, transform_hlds__rbmm__region_instruction__TypeCtorInfo_88_88, transform_hlds__rbmm__region_instruction__TypeInfo_83_83, transform_hlds__rbmm__region_instruction__V_70_70, transform_hlds__rbmm__region_instruction__AlphaAtProgPoint_33, ((MR_Box) (transform_hlds__rbmm__region_instruction__V_71_71)), &transform_hlds__rbmm__region_instruction__conv7_RemovedAfterProgPoint_22);
+              }
+              *transform_hlds__rbmm__region_instruction__RemovedAfterProgPoint_22 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv7_RemovedAfterProgPoint_22);
+            }
+          else
+            {
+              *transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_21 = transform_hlds__rbmm__region_instruction__BecomeLive_14;
+              *transform_hlds__rbmm__region_instruction__RemovedAfterProgPoint_22 = transform_hlds__rbmm__region_instruction__BecomeDead_15;
+            }
+        }
+      }
+    else
+      {
+        MR_Word transform_hlds__rbmm__region_instruction__X_36;
+        MR_Word transform_hlds__rbmm__region_instruction__Kind_39;
+        MR_Word transform_hlds__rbmm__region_instruction__V_37_37;
+        MR_Word transform_hlds__rbmm__region_instruction__V_38_38;
+        MR_Word transform_hlds__rbmm__region_instruction__V_40_40;
+
+        transform_hlds__rbmm__region_instruction__succeeded = ((MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__Expr_12)) == (MR_mktag((MR_Integer) 1)));
+        if (transform_hlds__rbmm__region_instruction__succeeded)
+          {
+            transform_hlds__rbmm__region_instruction__X_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 0)));
+            transform_hlds__rbmm__region_instruction__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 1)));
+            transform_hlds__rbmm__region_instruction__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 2)));
+            transform_hlds__rbmm__region_instruction__Kind_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 3)));
+            transform_hlds__rbmm__region_instruction__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 4)));
+            {
+              MR_Word transform_hlds__rbmm__region_instruction__Graph_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__RptaInfo_16, (MR_Integer) 0)));
+              MR_Word transform_hlds__rbmm__region_instruction___AlphaMapping_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__RptaInfo_16, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__Kind_39)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_93_93 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+                    MR_Word transform_hlds__rbmm__region_instruction__Reach_X_50;
+                    MR_Word transform_hlds__rbmm__region_instruction__V_72_72;
+
+                    {
+                      transform_hlds__rbmm__region_instruction__V_72_72 = mercury__set__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_93_93);
+                    }
+                    {
+                      transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_p_0(transform_hlds__rbmm__region_instruction__Graph_41, transform_hlds__rbmm__region_instruction__ModuleInfo_19, transform_hlds__rbmm__region_instruction__ProcInfo_20, transform_hlds__rbmm__region_instruction__X_36, transform_hlds__rbmm__region_instruction__V_72_72, &transform_hlds__rbmm__region_instruction__Reach_X_50);
+                    }
+                    {
+                      mercury__set__intersect_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_93_93, transform_hlds__rbmm__region_instruction__Reach_X_50, transform_hlds__rbmm__region_instruction__BecomeLive_14, transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_21);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                case (MR_Integer) 2:
+                  {
+                    {
+                      *transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_21 = mercury__set__init_0_f_0((MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  {
+                    {
+                      *transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_21 = mercury__set__init_0_f_0((MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0);
+                    }
+                  }
+                  break;
+              }
+              *transform_hlds__rbmm__region_instruction__RemovedAfterProgPoint_22 = transform_hlds__rbmm__region_instruction__BecomeDead_15;
+            }
+          }
+        else
+          {
+            MR_Word transform_hlds__rbmm__region_instruction__V_64_64;
+            MR_Word transform_hlds__rbmm__region_instruction__V_65_65;
+            MR_Word transform_hlds__rbmm__region_instruction__V_66_66;
+
+            transform_hlds__rbmm__region_instruction__succeeded = ((((MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__Expr_12)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 0)))) == (MR_Integer) 4)));
+            if (transform_hlds__rbmm__region_instruction__succeeded)
+              {
+                transform_hlds__rbmm__region_instruction__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 1)));
+                transform_hlds__rbmm__region_instruction__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 2)));
+                transform_hlds__rbmm__region_instruction__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 3)));
+                {
+                  *transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_21 = mercury__set__init_0_f_0((MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0);
+                }
+                *transform_hlds__rbmm__region_instruction__RemovedAfterProgPoint_22 = transform_hlds__rbmm__region_instruction__BecomeDead_15;
+              }
+            else
+              {
+                if (((((MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__Expr_12)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 0)))) == (MR_Integer) 2))))
+                  {
+                    MR_Word transform_hlds__rbmm__region_instruction__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 2)));
+                    MR_Word transform_hlds__rbmm__region_instruction__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 1)));
+
+                    transform_hlds__rbmm__region_instruction__succeeded = (transform_hlds__rbmm__region_instruction__V_74_74 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                else
+                if (((((MR_tag((MR_Word) transform_hlds__rbmm__region_instruction__Expr_12)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 0)))) == (MR_Integer) 3))))
+                  {
+                    MR_Word transform_hlds__rbmm__region_instruction__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__rbmm__region_instruction__Expr_12, (MR_Integer) 1)));
+
+                    transform_hlds__rbmm__region_instruction__succeeded = (transform_hlds__rbmm__region_instruction__V_73_73 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                else
+                  transform_hlds__rbmm__region_instruction__succeeded = MR_FALSE;
+                if (transform_hlds__rbmm__region_instruction__succeeded)
+                  {
+                    MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_96_96 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+                    {
+                      *transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_21 = mercury__set__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_96_96);
+                    }
+                    {
+                      *transform_hlds__rbmm__region_instruction__RemovedAfterProgPoint_22 = mercury__set__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_96_96);
+                    }
+                  }
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.rbmm.region_instruction", (MR_String) "predicate \140transform_hlds.rbmm.region_instruction.annotate_expr\'/11", (MR_String) "non-atomic goal");
+                      return;
+                    }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0_3(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__rbmm__region_instruction__closure = transform_hlds__rbmm__region_instruction__closure_arg;
+    MR_Word transform_hlds__rbmm__region_instruction__conv7_STATE_VARIABLE_RegionInstructionProc_17;
+
+    {
+      transform_hlds__rbmm__region_instruction__record_instruction_after_prog_point_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 5))), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), &transform_hlds__rbmm__region_instruction__conv7_STATE_VARIABLE_RegionInstructionProc_17);
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv7_STATE_VARIABLE_RegionInstructionProc_17));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0_2(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__rbmm__region_instruction__closure = transform_hlds__rbmm__region_instruction__closure_arg;
+    MR_Word transform_hlds__rbmm__region_instruction__conv5_STATE_VARIABLE_RegionInstructionProc_18;
+
+    {
+      transform_hlds__rbmm__region_instruction__record_instruction_before_prog_point_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 5))), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), &transform_hlds__rbmm__region_instruction__conv5_STATE_VARIABLE_RegionInstructionProc_18);
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv5_STATE_VARIABLE_RegionInstructionProc_18));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0_1(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_3)
+{
+  {
+    MR_Box transform_hlds__rbmm__region_instruction__closure = transform_hlds__rbmm__region_instruction__closure_arg;
+    MR_Word transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_RegionInstructionProc_18;
+
+    {
+      transform_hlds__rbmm__region_instruction__record_instruction_before_prog_point_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 5))), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), &transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_RegionInstructionProc_18);
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_RegionInstructionProc_18));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfo_2,
+  MR_Word transform_hlds__rbmm__region_instruction__BornR_3,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadR_4,
+  MR_Word transform_hlds__rbmm__region_instruction__LocalR_5,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcLRBefore_6,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcLRAfter_7,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcVoidVarRegion_8,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_9,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_10,
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_11,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcInfo_12,
+  MR_Word transform_hlds__rbmm__region_instruction__BecomeDeadBeforeProgPoint_13,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0_14,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_15,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0_16,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_17,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0_18,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_19,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_20,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_21)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+
+        if ((transform_hlds__rbmm__region_instruction__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_21 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_20;
+            *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_19 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0_18;
+            *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_17 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0_16;
+            *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_15 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0_14;
+          }
+        else
+          {
+            MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_119_119;
+            MR_Word transform_hlds__rbmm__region_instruction__TypeInfo_120_120;
+            MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121;
+            MR_Word transform_hlds__rbmm__region_instruction__TypeInfo_125_125;
+            MR_Word transform_hlds__rbmm__region_instruction__ProgPoint_46;
+            MR_Word transform_hlds__rbmm__region_instruction__Goal_47;
+            MR_Word transform_hlds__rbmm__region_instruction__ProgPoint_Goals_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word transform_hlds__rbmm__region_instruction__LRBefore_65;
+            MR_Word transform_hlds__rbmm__region_instruction__LRAfter_66;
+            MR_Word transform_hlds__rbmm__region_instruction__VoidVarRegions_67;
+            MR_Word transform_hlds__rbmm__region_instruction__Allowed_68;
+            MR_Word transform_hlds__rbmm__region_instruction__DeadVoidVarRegions0_69;
+            MR_Word transform_hlds__rbmm__region_instruction__DeadVoidVarRegions_70;
+            MR_Word transform_hlds__rbmm__region_instruction__CallerGraph_71;
+            MR_Word transform_hlds__rbmm__region_instruction__BecomeDead_73;
+            MR_Word transform_hlds__rbmm__region_instruction__BecomeLive_74;
+            MR_Word transform_hlds__rbmm__region_instruction__Expr_75;
+            MR_Word transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_77;
+            MR_Word transform_hlds__rbmm__region_instruction__RemovedAfterProgPoint_78;
+            MR_Word transform_hlds__rbmm__region_instruction__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word transform_hlds__rbmm__region_instruction__V_93_93;
+            MR_Word transform_hlds__rbmm__region_instruction__V_94_94;
+            MR_Word transform_hlds__rbmm__region_instruction__V_95_95;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_96_96;
+            MR_Word transform_hlds__rbmm__region_instruction__V_97_97;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_98_98;
+            MR_Word transform_hlds__rbmm__region_instruction__V_100_100;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_101_101;
+            MR_Word transform_hlds__rbmm__region_instruction__V_103_103;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_104_104;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_107_107;
+            MR_Word transform_hlds__rbmm__region_instruction__V_109_109;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_110_110;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_111_111;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_112_112;
+            MR_Box transform_hlds__rbmm__region_instruction__conv0_LRBefore_65;
+            MR_Box transform_hlds__rbmm__region_instruction__conv1_LRAfter_66;
+            MR_Box transform_hlds__rbmm__region_instruction__conv2_VoidVarRegions_67;
+            MR_Word transform_hlds__rbmm__region_instruction__V_72_72;
+            MR_Word transform_hlds__rbmm__region_instruction__V_76_76;
+            MR_Box transform_hlds__rbmm__region_instruction__conv4_STATE_VARIABLE_RegionInstructionProc_98_98;
+            MR_Box transform_hlds__rbmm__region_instruction__conv6_STATE_VARIABLE_RegionInstructionProc_101_101;
+            MR_Box transform_hlds__rbmm__region_instruction__conv8_STATE_VARIABLE_RegionInstructionProc_104_104;
+            MR_Box transform_hlds__rbmm__region_instruction__conv9_STATE_VARIABLE_RegionInstructionProc_107_107;
+
+            transform_hlds__rbmm__region_instruction__ProgPoint_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_92_92, (MR_Integer) 0)));
+            transform_hlds__rbmm__region_instruction__Goal_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_92_92, (MR_Integer) 1)));
+            transform_hlds__rbmm__region_instruction__TypeCtorInfo_119_119 = (MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0;
+            transform_hlds__rbmm__region_instruction__TypeInfo_120_120 = (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_1[0];
+            {
+              mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_119_119, transform_hlds__rbmm__region_instruction__TypeInfo_120_120, transform_hlds__rbmm__region_instruction__ProcLRBefore_6, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_46)), &transform_hlds__rbmm__region_instruction__conv0_LRBefore_65);
+            }
+            transform_hlds__rbmm__region_instruction__LRBefore_65 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv0_LRBefore_65);
+            {
+              mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_119_119, transform_hlds__rbmm__region_instruction__TypeInfo_120_120, transform_hlds__rbmm__region_instruction__ProcLRAfter_7, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_46)), &transform_hlds__rbmm__region_instruction__conv1_LRAfter_66);
+            }
+            transform_hlds__rbmm__region_instruction__LRAfter_66 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv1_LRAfter_66);
+            {
+              mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_119_119, transform_hlds__rbmm__region_instruction__TypeInfo_120_120, transform_hlds__rbmm__region_instruction__ProcVoidVarRegion_8, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_46)), &transform_hlds__rbmm__region_instruction__conv2_VoidVarRegions_67);
+            }
+            transform_hlds__rbmm__region_instruction__VoidVarRegions_67 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv2_VoidVarRegions_67);
+            transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+            {
+              transform_hlds__rbmm__region_instruction__V_93_93 = mercury__set__union_2_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__LocalR_5, transform_hlds__rbmm__region_instruction__BornR_3);
+            }
+            {
+              mercury__set__union_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__V_93_93, transform_hlds__rbmm__region_instruction__DeadR_4, &transform_hlds__rbmm__region_instruction__Allowed_68);
+            }
+            {
+              mercury__set__difference_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__VoidVarRegions_67, transform_hlds__rbmm__region_instruction__LRAfter_66, &transform_hlds__rbmm__region_instruction__DeadVoidVarRegions0_69);
+            }
+            {
+              mercury__set__intersect_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__Allowed_68, transform_hlds__rbmm__region_instruction__DeadVoidVarRegions0_69, &transform_hlds__rbmm__region_instruction__DeadVoidVarRegions_70);
+            }
+            transform_hlds__rbmm__region_instruction__CallerGraph_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__RptaInfo_2, (MR_Integer) 0)));
+            transform_hlds__rbmm__region_instruction__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__RptaInfo_2, (MR_Integer) 1)));
+            {
+              transform_hlds__rbmm__region_instruction__V_94_94 = mercury__set__difference_2_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__LRBefore_65, transform_hlds__rbmm__region_instruction__LRAfter_66);
+            }
+            {
+              mercury__set__intersect_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__Allowed_68, transform_hlds__rbmm__region_instruction__V_94_94, &transform_hlds__rbmm__region_instruction__BecomeDead_73);
+            }
+            {
+              transform_hlds__rbmm__region_instruction__V_95_95 = mercury__set__difference_2_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__LRAfter_66, transform_hlds__rbmm__region_instruction__LRBefore_65);
+            }
+            {
+              mercury__set__intersect_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__Allowed_68, transform_hlds__rbmm__region_instruction__V_95_95, &transform_hlds__rbmm__region_instruction__BecomeLive_74);
+            }
+            transform_hlds__rbmm__region_instruction__Expr_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__Goal_47, (MR_Integer) 0)));
+            transform_hlds__rbmm__region_instruction__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__Goal_47, (MR_Integer) 1)));
+            {
+              mercury__map__set_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_119_119, transform_hlds__rbmm__region_instruction__TypeInfo_120_120, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_46)), ((MR_Box) (transform_hlds__rbmm__region_instruction__BecomeLive_74)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0_14, &transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_96_96);
+            }
+            {
+              transform_hlds__rbmm__region_instruction__annotate_expr_11_p_0(transform_hlds__rbmm__region_instruction__Expr_75, transform_hlds__rbmm__region_instruction__ProgPoint_46, transform_hlds__rbmm__region_instruction__BecomeLive_74, transform_hlds__rbmm__region_instruction__BecomeDead_73, transform_hlds__rbmm__region_instruction__RptaInfo_2, transform_hlds__rbmm__region_instruction__BornRTable_9, transform_hlds__rbmm__region_instruction__DeadRTable_10, transform_hlds__rbmm__region_instruction__ModuleInfo_11, transform_hlds__rbmm__region_instruction__ProcInfo_12, &transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_77, &transform_hlds__rbmm__region_instruction__RemovedAfterProgPoint_78);
+            }
+            {
+              transform_hlds__rbmm__region_instruction__V_97_97 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_97_97, 0) = ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_5[0]));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_97_97, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0_1));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_97_97, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_97_97, 3) = ((MR_Box) ((MR_Integer) 0));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_97_97, 4) = ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_46));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_97_97, 5) = ((MR_Box) (transform_hlds__rbmm__region_instruction__CallerGraph_71));
+            }
+            transform_hlds__rbmm__region_instruction__TypeInfo_125_125 = (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[1];
+            {
+              mercury__set__fold_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__TypeInfo_125_125, transform_hlds__rbmm__region_instruction__V_97_97, transform_hlds__rbmm__region_instruction__CreatedBeforeProgPoint_77, ((MR_Box) (transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_20)), &transform_hlds__rbmm__region_instruction__conv4_STATE_VARIABLE_RegionInstructionProc_98_98);
+            }
+            transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_98_98 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv4_STATE_VARIABLE_RegionInstructionProc_98_98);
+            {
+              transform_hlds__rbmm__region_instruction__V_100_100 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_100_100, 0) = ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_5[0]));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_100_100, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0_2));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_100_100, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_100_100, 3) = ((MR_Box) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_100_100, 4) = ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_46));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_100_100, 5) = ((MR_Box) (transform_hlds__rbmm__region_instruction__CallerGraph_71));
+            }
+            {
+              mercury__set__fold_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__TypeInfo_125_125, transform_hlds__rbmm__region_instruction__V_100_100, transform_hlds__rbmm__region_instruction__BecomeDeadBeforeProgPoint_13, ((MR_Box) (transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_98_98)), &transform_hlds__rbmm__region_instruction__conv6_STATE_VARIABLE_RegionInstructionProc_101_101);
+            }
+            transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_101_101 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv6_STATE_VARIABLE_RegionInstructionProc_101_101);
+            {
+              transform_hlds__rbmm__region_instruction__V_103_103 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_103_103, 0) = ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_5[0]));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_103_103, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0_3));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_103_103, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_103_103, 3) = ((MR_Box) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_103_103, 4) = ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_46));
+              MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_103_103, 5) = ((MR_Box) (transform_hlds__rbmm__region_instruction__CallerGraph_71));
+            }
+            {
+              mercury__set__fold_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__TypeInfo_125_125, transform_hlds__rbmm__region_instruction__V_103_103, transform_hlds__rbmm__region_instruction__RemovedAfterProgPoint_78, ((MR_Box) (transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_101_101)), &transform_hlds__rbmm__region_instruction__conv8_STATE_VARIABLE_RegionInstructionProc_104_104);
+            }
+            transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_104_104 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv8_STATE_VARIABLE_RegionInstructionProc_104_104);
+            {
+              mercury__set__fold_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__TypeInfo_125_125, transform_hlds__rbmm__region_instruction__V_103_103, transform_hlds__rbmm__region_instruction__DeadVoidVarRegions_70, ((MR_Box) (transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_104_104)), &transform_hlds__rbmm__region_instruction__conv9_STATE_VARIABLE_RegionInstructionProc_107_107);
+            }
+            transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_107_107 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv9_STATE_VARIABLE_RegionInstructionProc_107_107);
+            {
+              transform_hlds__rbmm__region_instruction__V_109_109 = mercury__set__union_2_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__BecomeDead_73, transform_hlds__rbmm__region_instruction__DeadVoidVarRegions_70);
+            }
+            {
+              mercury__map__set_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_119_119, transform_hlds__rbmm__region_instruction__TypeInfo_120_120, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_46)), ((MR_Box) (transform_hlds__rbmm__region_instruction__V_109_109)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0_18, &transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_110_110);
+            }
+            {
+              mercury__map__set_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_119_119, transform_hlds__rbmm__region_instruction__TypeInfo_120_120, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_46)), ((MR_Box) (transform_hlds__rbmm__region_instruction__BecomeLive_74)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_96_96, &transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_111_111);
+            }
+            {
+              mercury__map__set_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_119_119, transform_hlds__rbmm__region_instruction__TypeInfo_120_120, ((MR_Box) (transform_hlds__rbmm__region_instruction__ProgPoint_46)), ((MR_Box) (transform_hlds__rbmm__region_instruction__BecomeDeadBeforeProgPoint_13)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0_16, &transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_112_112);
+            }
+            if ((transform_hlds__rbmm__region_instruction__ProgPoint_Goals_48 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_15 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_111_111;
+                *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_17 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_112_112;
+                *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_19 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_110_110;
+                *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_21 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_107_107;
+              }
+            else
+              {
+                MR_Word transform_hlds__rbmm__region_instruction__NextProgPoint_79;
+                MR_Word transform_hlds__rbmm__region_instruction__LRBeforeNext_82;
+                MR_Word transform_hlds__rbmm__region_instruction__BecomeDeadBeforeNextProgPoint_83;
+                MR_Word transform_hlds__rbmm__region_instruction__V_113_113 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__ProgPoint_Goals_48, (MR_Integer) 0)));
+                MR_Word transform_hlds__rbmm__region_instruction__V_114_114;
+                MR_Word transform_hlds__rbmm__region_instruction__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__ProgPoint_Goals_48, (MR_Integer) 1)));
+                MR_Word transform_hlds__rbmm__region_instruction__V_80_80;
+                MR_Box transform_hlds__rbmm__region_instruction__conv10_LRBeforeNext_82;
+
+                transform_hlds__rbmm__region_instruction__NextProgPoint_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_113_113, (MR_Integer) 0)));
+                transform_hlds__rbmm__region_instruction__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_113_113, (MR_Integer) 1)));
+                {
+                  mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_119_119, transform_hlds__rbmm__region_instruction__TypeInfo_120_120, transform_hlds__rbmm__region_instruction__ProcLRBefore_6, ((MR_Box) (transform_hlds__rbmm__region_instruction__NextProgPoint_79)), &transform_hlds__rbmm__region_instruction__conv10_LRBeforeNext_82);
+                }
+                transform_hlds__rbmm__region_instruction__LRBeforeNext_82 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv10_LRBeforeNext_82);
+                {
+                  transform_hlds__rbmm__region_instruction__V_114_114 = mercury__set__difference_2_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__LRAfter_66, transform_hlds__rbmm__region_instruction__LRBeforeNext_82);
+                }
+                {
+                  mercury__set__intersect_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_121_121, transform_hlds__rbmm__region_instruction__Allowed_68, transform_hlds__rbmm__region_instruction__V_114_114, &transform_hlds__rbmm__region_instruction__BecomeDeadBeforeNextProgPoint_83);
+                }
+                /* direct tailcall eliminated */
+                {
+                  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__1__tmp_copy_1 = transform_hlds__rbmm__region_instruction__ProgPoint_Goals_48;
+                  MR_Word transform_hlds__rbmm__region_instruction__BecomeDeadBeforeProgPoint__tmp_copy_13 = transform_hlds__rbmm__region_instruction__BecomeDeadBeforeNextProgPoint_83;
+                  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0__tmp_copy_14 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_111_111;
+                  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0__tmp_copy_16 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_112_112;
+                  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0__tmp_copy_18 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_110_110;
+                  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0__tmp_copy_20 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_107_107;
+
+                  transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_20 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0__tmp_copy_20;
+                  transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0_18 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0__tmp_copy_18;
+                  transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0_16 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0__tmp_copy_16;
+                  transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0_14 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0__tmp_copy_14;
+                  transform_hlds__rbmm__region_instruction__BecomeDeadBeforeProgPoint_13 = transform_hlds__rbmm__region_instruction__BecomeDeadBeforeProgPoint__tmp_copy_13;
+                  transform_hlds__rbmm__region_instruction__HeadVar__1_1 = transform_hlds__rbmm__region_instruction__HeadVar__1__tmp_copy_1;
+                }
+                continue;
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_paths_20_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__HeadVar__1_1,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfo_2,
+  MR_Word transform_hlds__rbmm__region_instruction__BornR_3,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadR_4,
+  MR_Word transform_hlds__rbmm__region_instruction__LocalR_5,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcLRBefore_6,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcLRAfter_7,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcVoidVarRegion_8,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_9,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_10,
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_11,
+  MR_Word transform_hlds__rbmm__region_instruction__ProcInfo_12,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0_13,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_14,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0_15,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_16,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0_17,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_18,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_19,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_20)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+
+        if ((transform_hlds__rbmm__region_instruction__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_20 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_19;
+            *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_18 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0_17;
+            *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_16 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0_15;
+            *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_14 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0_13;
+          }
+        else
+          {
+            MR_Word transform_hlds__rbmm__region_instruction__ExecPath_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word transform_hlds__rbmm__region_instruction__ExecPaths_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word transform_hlds__rbmm__region_instruction__V_69_69;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_70_70;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_71_71;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_72_72;
+            MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_73_73;
+
+            {
+              transform_hlds__rbmm__region_instruction__V_69_69 = mercury__set__init_0_f_0((MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0);
+            }
+            {
+              transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_path_21_p_0(transform_hlds__rbmm__region_instruction__ExecPath_44, transform_hlds__rbmm__region_instruction__RptaInfo_2, transform_hlds__rbmm__region_instruction__BornR_3, transform_hlds__rbmm__region_instruction__DeadR_4, transform_hlds__rbmm__region_instruction__LocalR_5, transform_hlds__rbmm__region_instruction__ProcLRBefore_6, transform_hlds__rbmm__region_instruction__ProcLRAfter_7, transform_hlds__rbmm__region_instruction__ProcVoidVarRegion_8, transform_hlds__rbmm__region_instruction__BornRTable_9, transform_hlds__rbmm__region_instruction__DeadRTable_10, transform_hlds__rbmm__region_instruction__ModuleInfo_11, transform_hlds__rbmm__region_instruction__ProcInfo_12, transform_hlds__rbmm__region_instruction__V_69_69, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0_13, &transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_70_70, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0_15, &transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_71_71, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0_17, &transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_72_72, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_19, &transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_73_73);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word transform_hlds__rbmm__region_instruction__HeadVar__1__tmp_copy_1 = transform_hlds__rbmm__region_instruction__ExecPaths_45;
+              MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0__tmp_copy_13 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_70_70;
+              MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0__tmp_copy_15 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_71_71;
+              MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0__tmp_copy_17 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_72_72;
+              MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0__tmp_copy_19 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_73_73;
+
+              transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0_19 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionProc_0__tmp_copy_19;
+              transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0_17 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterProc_0__tmp_copy_17;
+              transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0_15 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeProc_0__tmp_copy_15;
+              transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0_13 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveProc_0__tmp_copy_13;
+              transform_hlds__rbmm__region_instruction__HeadVar__1_1 = transform_hlds__rbmm__region_instruction__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_proc_19_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_20,
+  MR_Word transform_hlds__rbmm__region_instruction__PredId_21,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfoTable_22,
+  MR_Word transform_hlds__rbmm__region_instruction__ExecPathTable_23,
+  MR_Word transform_hlds__rbmm__region_instruction__LRBeforeTable_24,
+  MR_Word transform_hlds__rbmm__region_instruction__LRAfterTable_25,
+  MR_Word transform_hlds__rbmm__region_instruction__VoidVarRegionTable_26,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_27,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_28,
+  MR_Word transform_hlds__rbmm__region_instruction__LocalRTable_29,
+  MR_Integer transform_hlds__rbmm__region_instruction__ProcId_30,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_0_49,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_50,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_0_51,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_52,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_0_53,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_54,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_0_55,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_56)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Word transform_hlds__rbmm__region_instruction__PPId_35;
+    MR_Word transform_hlds__rbmm__region_instruction__V_57_57;
+
+    {
+      transform_hlds__rbmm__region_instruction__PPId_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__PPId_35, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__PredId_21));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__PPId_35, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__ProcId_30));
+    }
+    {
+      transform_hlds__rbmm__region_instruction__V_57_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__V_57_57, 0) = ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35));
+      MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_instruction__V_57_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      transform_hlds__rbmm__region_instruction__succeeded = transform_hlds__smm_common__some_are_special_preds_2_p_0(transform_hlds__rbmm__region_instruction__V_57_57, transform_hlds__rbmm__region_instruction__ModuleInfo_20);
+    }
+    if (transform_hlds__rbmm__region_instruction__succeeded)
+      {
+        *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_56 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_0_55;
+        *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_54 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_0_53;
+        *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_52 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_0_51;
+        *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_50 = transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_0_49;
+      }
+    else
+      {
+        MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67;
+        MR_Word transform_hlds__rbmm__region_instruction__TypeInfo_69_69;
+        MR_Word transform_hlds__rbmm__region_instruction__TypeInfo_70_70;
+        MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_72_72;
+        MR_Word transform_hlds__rbmm__region_instruction__ProcInfo_36;
+        MR_Word transform_hlds__rbmm__region_instruction__RptaInfo_37;
+        MR_Word transform_hlds__rbmm__region_instruction__BornR_38;
+        MR_Word transform_hlds__rbmm__region_instruction__DeadR_39;
+        MR_Word transform_hlds__rbmm__region_instruction__LocalR_40;
+        MR_Word transform_hlds__rbmm__region_instruction__ProcLRBefore_41;
+        MR_Word transform_hlds__rbmm__region_instruction__ProcLRAfter_42;
+        MR_Word transform_hlds__rbmm__region_instruction__ProcVoidVarRegion_43;
+        MR_Word transform_hlds__rbmm__region_instruction__ExecPaths_44;
+        MR_Word transform_hlds__rbmm__region_instruction__BecomeLiveProc_45;
+        MR_Word transform_hlds__rbmm__region_instruction__BecomeDeadBeforeProc_46;
+        MR_Word transform_hlds__rbmm__region_instruction__BecomeDeadAfterProc_47;
+        MR_Word transform_hlds__rbmm__region_instruction__RegionInstructionProc_48;
+        MR_Word transform_hlds__rbmm__region_instruction__V_59_59;
+        MR_Word transform_hlds__rbmm__region_instruction__V_60_60;
+        MR_Word transform_hlds__rbmm__region_instruction__V_61_61;
+        MR_Word transform_hlds__rbmm__region_instruction__V_62_62;
+        MR_Box transform_hlds__rbmm__region_instruction__conv0_RptaInfo_37;
+        MR_Box transform_hlds__rbmm__region_instruction__conv1_BornR_38;
+        MR_Box transform_hlds__rbmm__region_instruction__conv2_DeadR_39;
+        MR_Box transform_hlds__rbmm__region_instruction__conv3_LocalR_40;
+        MR_Box transform_hlds__rbmm__region_instruction__conv4_ProcLRBefore_41;
+        MR_Box transform_hlds__rbmm__region_instruction__conv5_ProcLRAfter_42;
+        MR_Box transform_hlds__rbmm__region_instruction__conv6_ProcVoidVarRegion_43;
+        MR_Box transform_hlds__rbmm__region_instruction__conv7_ExecPaths_44;
+
+        {
+          hlds__hlds_module__module_info_proc_info_3_p_0(transform_hlds__rbmm__region_instruction__ModuleInfo_20, transform_hlds__rbmm__region_instruction__PPId_35, &transform_hlds__rbmm__region_instruction__ProcInfo_36);
+        }
+        transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+        {
+          mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, (MR_Word) &transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0, transform_hlds__rbmm__region_instruction__RptaInfoTable_22, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), &transform_hlds__rbmm__region_instruction__conv0_RptaInfo_37);
+        }
+        transform_hlds__rbmm__region_instruction__RptaInfo_37 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv0_RptaInfo_37);
+        transform_hlds__rbmm__region_instruction__TypeInfo_69_69 = (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_1[0];
+        {
+          mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, transform_hlds__rbmm__region_instruction__TypeInfo_69_69, transform_hlds__rbmm__region_instruction__BornRTable_27, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), &transform_hlds__rbmm__region_instruction__conv1_BornR_38);
+        }
+        transform_hlds__rbmm__region_instruction__BornR_38 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv1_BornR_38);
+        {
+          mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, transform_hlds__rbmm__region_instruction__TypeInfo_69_69, transform_hlds__rbmm__region_instruction__DeadRTable_28, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), &transform_hlds__rbmm__region_instruction__conv2_DeadR_39);
+        }
+        transform_hlds__rbmm__region_instruction__DeadR_39 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv2_DeadR_39);
+        {
+          mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, transform_hlds__rbmm__region_instruction__TypeInfo_69_69, transform_hlds__rbmm__region_instruction__LocalRTable_29, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), &transform_hlds__rbmm__region_instruction__conv3_LocalR_40);
+        }
+        transform_hlds__rbmm__region_instruction__LocalR_40 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv3_LocalR_40);
+        transform_hlds__rbmm__region_instruction__TypeInfo_70_70 = (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[0];
+        {
+          mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, transform_hlds__rbmm__region_instruction__TypeInfo_70_70, transform_hlds__rbmm__region_instruction__LRBeforeTable_24, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), &transform_hlds__rbmm__region_instruction__conv4_ProcLRBefore_41);
+        }
+        transform_hlds__rbmm__region_instruction__ProcLRBefore_41 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv4_ProcLRBefore_41);
+        {
+          mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, transform_hlds__rbmm__region_instruction__TypeInfo_70_70, transform_hlds__rbmm__region_instruction__LRAfterTable_25, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), &transform_hlds__rbmm__region_instruction__conv5_ProcLRAfter_42);
+        }
+        transform_hlds__rbmm__region_instruction__ProcLRAfter_42 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv5_ProcLRAfter_42);
+        {
+          mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, transform_hlds__rbmm__region_instruction__TypeInfo_70_70, transform_hlds__rbmm__region_instruction__VoidVarRegionTable_26, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), &transform_hlds__rbmm__region_instruction__conv6_ProcVoidVarRegion_43);
+        }
+        transform_hlds__rbmm__region_instruction__ProcVoidVarRegion_43 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv6_ProcVoidVarRegion_43);
+        {
+          mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_1[2], transform_hlds__rbmm__region_instruction__ExecPathTable_23, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), &transform_hlds__rbmm__region_instruction__conv7_ExecPaths_44);
+        }
+        transform_hlds__rbmm__region_instruction__ExecPaths_44 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv7_ExecPaths_44);
+        transform_hlds__rbmm__region_instruction__TypeCtorInfo_72_72 = (MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0;
+        {
+          transform_hlds__rbmm__region_instruction__V_59_59 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_72_72, transform_hlds__rbmm__region_instruction__TypeInfo_69_69);
+        }
+        {
+          transform_hlds__rbmm__region_instruction__V_60_60 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_72_72, transform_hlds__rbmm__region_instruction__TypeInfo_69_69);
+        }
+        {
+          transform_hlds__rbmm__region_instruction__V_61_61 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_72_72, transform_hlds__rbmm__region_instruction__TypeInfo_69_69);
+        }
+        {
+          transform_hlds__rbmm__region_instruction__V_62_62 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_72_72, (MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0);
+        }
+        {
+          transform_hlds__rbmm__region_instruction__introduce_region_instructions_exec_paths_20_p_0(transform_hlds__rbmm__region_instruction__ExecPaths_44, transform_hlds__rbmm__region_instruction__RptaInfo_37, transform_hlds__rbmm__region_instruction__BornR_38, transform_hlds__rbmm__region_instruction__DeadR_39, transform_hlds__rbmm__region_instruction__LocalR_40, transform_hlds__rbmm__region_instruction__ProcLRBefore_41, transform_hlds__rbmm__region_instruction__ProcLRAfter_42, transform_hlds__rbmm__region_instruction__ProcVoidVarRegion_43, transform_hlds__rbmm__region_instruction__BornRTable_27, transform_hlds__rbmm__region_instruction__DeadRTable_28, transform_hlds__rbmm__region_instruction__ModuleInfo_20, transform_hlds__rbmm__region_instruction__ProcInfo_36, transform_hlds__rbmm__region_instruction__V_59_59, &transform_hlds__rbmm__region_instruction__BecomeLiveProc_45, transform_hlds__rbmm__region_instruction__V_60_60, &transform_hlds__rbmm__region_instruction__BecomeDeadBeforeProc_46, transform_hlds__rbmm__region_instruction__V_61_61, &transform_hlds__rbmm__region_instruction__BecomeDeadAfterProc_47, transform_hlds__rbmm__region_instruction__V_62_62, &transform_hlds__rbmm__region_instruction__RegionInstructionProc_48);
+        }
+        {
+          mercury__map__set_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[1], ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), ((MR_Box) (transform_hlds__rbmm__region_instruction__RegionInstructionProc_48)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_0_55, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_56);
+        }
+        {
+          mercury__map__set_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, transform_hlds__rbmm__region_instruction__TypeInfo_70_70, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), ((MR_Box) (transform_hlds__rbmm__region_instruction__BecomeLiveProc_45)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_0_49, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_50);
+        }
+        {
+          mercury__map__set_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, transform_hlds__rbmm__region_instruction__TypeInfo_70_70, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), ((MR_Box) (transform_hlds__rbmm__region_instruction__BecomeDeadBeforeProc_46)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_0_51, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_52);
+        }
+        {
+          mercury__map__set_4_p_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_67_67, transform_hlds__rbmm__region_instruction__TypeInfo_70_70, ((MR_Box) (transform_hlds__rbmm__region_instruction__PPId_35)), ((MR_Box) (transform_hlds__rbmm__region_instruction__BecomeDeadAfterProc_47)), transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_0_53, transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_54);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_pred_18_p_0_1(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_3,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_4,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_5,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_6,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_7,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_8,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_9)
+{
+  {
+    MR_Box transform_hlds__rbmm__region_instruction__closure = transform_hlds__rbmm__region_instruction__closure_arg;
+    MR_Word transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_BecomeLiveTable_50;
+    MR_Word transform_hlds__rbmm__region_instruction__conv2_STATE_VARIABLE_BecomeDeadBeforeTable_52;
+    MR_Word transform_hlds__rbmm__region_instruction__conv1_STATE_VARIABLE_BecomeDeadAfterTable_54;
+    MR_Word transform_hlds__rbmm__region_instruction__conv0_STATE_VARIABLE_RegionInstructionTable_56;
+
+    {
+      transform_hlds__rbmm__region_instruction__introduce_region_instructions_proc_19_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 8))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 9))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 10))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 11))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 12))), ((MR_Integer) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), &transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_BecomeLiveTable_50, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_4), &transform_hlds__rbmm__region_instruction__conv2_STATE_VARIABLE_BecomeDeadBeforeTable_52, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_6), &transform_hlds__rbmm__region_instruction__conv1_STATE_VARIABLE_BecomeDeadAfterTable_54, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_8), &transform_hlds__rbmm__region_instruction__conv0_STATE_VARIABLE_RegionInstructionTable_56);
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_BecomeLiveTable_50));
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_5 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv2_STATE_VARIABLE_BecomeDeadBeforeTable_52));
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_7 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv1_STATE_VARIABLE_BecomeDeadAfterTable_54));
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_9 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv0_STATE_VARIABLE_RegionInstructionTable_56));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_pred_18_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_19,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfoTable_20,
+  MR_Word transform_hlds__rbmm__region_instruction__ExecPathTable_21,
+  MR_Word transform_hlds__rbmm__region_instruction__LRBeforeTable_22,
+  MR_Word transform_hlds__rbmm__region_instruction__LRAfterTable_23,
+  MR_Word transform_hlds__rbmm__region_instruction__VoidVarRegionTable_24,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_25,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_26,
+  MR_Word transform_hlds__rbmm__region_instruction__LocalRTable_27,
+  MR_Word transform_hlds__rbmm__region_instruction__PredId_28,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_0_35,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_36,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_0_37,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_38,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_0_39,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_40,
+  MR_Word transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_0_41,
+  MR_Word * transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_42)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Word transform_hlds__rbmm__region_instruction__TypeInfo_58_58;
+    MR_Word transform_hlds__rbmm__region_instruction__PredInfo_33;
+    MR_Word transform_hlds__rbmm__region_instruction__ProcIds_34;
+    MR_Word transform_hlds__rbmm__region_instruction__V_43_43;
+    MR_Box transform_hlds__rbmm__region_instruction__conv7_STATE_VARIABLE_BecomeLiveTable_36;
+    MR_Box transform_hlds__rbmm__region_instruction__conv6_STATE_VARIABLE_BecomeDeadBeforeTable_38;
+    MR_Box transform_hlds__rbmm__region_instruction__conv5_STATE_VARIABLE_BecomeDeadAfterTable_40;
+    MR_Box transform_hlds__rbmm__region_instruction__conv4_STATE_VARIABLE_RegionInstructionTable_42;
+
+    {
+      hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__rbmm__region_instruction__ModuleInfo_19, transform_hlds__rbmm__region_instruction__PredId_28, &transform_hlds__rbmm__region_instruction__PredInfo_33);
+    }
+    {
+      transform_hlds__rbmm__region_instruction__ProcIds_34 = hlds__hlds_pred__pred_info_non_imported_procids_1_f_0(transform_hlds__rbmm__region_instruction__PredInfo_33);
+    }
+    {
+      transform_hlds__rbmm__region_instruction__V_43_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 13 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 0) = ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_4[0]));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__introduce_region_instructions_pred_18_p_0_1));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 10));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 3) = ((MR_Box) (transform_hlds__rbmm__region_instruction__ModuleInfo_19));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 4) = ((MR_Box) (transform_hlds__rbmm__region_instruction__PredId_28));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 5) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RptaInfoTable_20));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 6) = ((MR_Box) (transform_hlds__rbmm__region_instruction__ExecPathTable_21));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 7) = ((MR_Box) (transform_hlds__rbmm__region_instruction__LRBeforeTable_22));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 8) = ((MR_Box) (transform_hlds__rbmm__region_instruction__LRAfterTable_23));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 9) = ((MR_Box) (transform_hlds__rbmm__region_instruction__VoidVarRegionTable_24));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 10) = ((MR_Box) (transform_hlds__rbmm__region_instruction__BornRTable_25));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 11) = ((MR_Box) (transform_hlds__rbmm__region_instruction__DeadRTable_26));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_43_43, 12) = ((MR_Box) (transform_hlds__rbmm__region_instruction__LocalRTable_27));
+    }
+    transform_hlds__rbmm__region_instruction__TypeInfo_58_58 = (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[2];
+    {
+      mercury__list__foldl4_10_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, transform_hlds__rbmm__region_instruction__TypeInfo_58_58, transform_hlds__rbmm__region_instruction__TypeInfo_58_58, transform_hlds__rbmm__region_instruction__TypeInfo_58_58, (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[3], transform_hlds__rbmm__region_instruction__V_43_43, transform_hlds__rbmm__region_instruction__ProcIds_34, ((MR_Box) (transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_0_35)), &transform_hlds__rbmm__region_instruction__conv7_STATE_VARIABLE_BecomeLiveTable_36, ((MR_Box) (transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_0_37)), &transform_hlds__rbmm__region_instruction__conv6_STATE_VARIABLE_BecomeDeadBeforeTable_38, ((MR_Box) (transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_0_39)), &transform_hlds__rbmm__region_instruction__conv5_STATE_VARIABLE_BecomeDeadAfterTable_40, ((MR_Box) (transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_0_41)), &transform_hlds__rbmm__region_instruction__conv4_STATE_VARIABLE_RegionInstructionTable_42);
+    }
+    *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeLiveTable_36 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv7_STATE_VARIABLE_BecomeLiveTable_36);
+    *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadBeforeTable_38 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv6_STATE_VARIABLE_BecomeDeadBeforeTable_38);
+    *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_BecomeDeadAfterTable_40 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv5_STATE_VARIABLE_BecomeDeadAfterTable_40);
+    *transform_hlds__rbmm__region_instruction__STATE_VARIABLE_RegionInstructionTable_42 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv4_STATE_VARIABLE_RegionInstructionTable_42);
+  }
+}
+
+static void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_13_p_0_1(
+  MR_Box transform_hlds__rbmm__region_instruction__closure_arg,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_1,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_2,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_3,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_4,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_5,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_6,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_7,
+  MR_Box transform_hlds__rbmm__region_instruction__wrapper_arg_8,
+  MR_Box * transform_hlds__rbmm__region_instruction__wrapper_arg_9)
+{
+  {
+    MR_Box transform_hlds__rbmm__region_instruction__closure = transform_hlds__rbmm__region_instruction__closure_arg;
+    MR_Word transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_BecomeLiveTable_36;
+    MR_Word transform_hlds__rbmm__region_instruction__conv2_STATE_VARIABLE_BecomeDeadBeforeTable_38;
+    MR_Word transform_hlds__rbmm__region_instruction__conv1_STATE_VARIABLE_BecomeDeadAfterTable_40;
+    MR_Word transform_hlds__rbmm__region_instruction__conv0_STATE_VARIABLE_RegionInstructionTable_42;
+
+    {
+      transform_hlds__rbmm__region_instruction__introduce_region_instructions_pred_18_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 8))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 9))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 10))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__closure, (MR_Integer) 11))), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_2), &transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_BecomeLiveTable_36, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_4), &transform_hlds__rbmm__region_instruction__conv2_STATE_VARIABLE_BecomeDeadBeforeTable_38, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_6), &transform_hlds__rbmm__region_instruction__conv1_STATE_VARIABLE_BecomeDeadAfterTable_40, ((MR_Word) transform_hlds__rbmm__region_instruction__wrapper_arg_8), &transform_hlds__rbmm__region_instruction__conv0_STATE_VARIABLE_RegionInstructionTable_42);
+    }
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv3_STATE_VARIABLE_BecomeLiveTable_36));
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_5 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv2_STATE_VARIABLE_BecomeDeadBeforeTable_38));
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_7 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv1_STATE_VARIABLE_BecomeDeadAfterTable_40));
+    *transform_hlds__rbmm__region_instruction__wrapper_arg_9 = ((MR_Box) (transform_hlds__rbmm__region_instruction__conv0_STATE_VARIABLE_RegionInstructionTable_42));
+  }
+}
+
+void MR_CALL 
+transform_hlds__rbmm__region_instruction__introduce_region_instructions_13_p_0(
+  MR_Word transform_hlds__rbmm__region_instruction__ModuleInfo_14,
+  MR_Word transform_hlds__rbmm__region_instruction__RptaInfoTable_15,
+  MR_Word transform_hlds__rbmm__region_instruction__ExecPathTable_16,
+  MR_Word transform_hlds__rbmm__region_instruction__LRBeforeTable_17,
+  MR_Word transform_hlds__rbmm__region_instruction__LRAfterTable_18,
+  MR_Word transform_hlds__rbmm__region_instruction__VoidVarRegionTable_19,
+  MR_Word transform_hlds__rbmm__region_instruction__BornRTable_20,
+  MR_Word transform_hlds__rbmm__region_instruction__DeadRTable_21,
+  MR_Word transform_hlds__rbmm__region_instruction__LocalRTable_22,
+  MR_Word * transform_hlds__rbmm__region_instruction__BecomeLiveTable_23,
+  MR_Word * transform_hlds__rbmm__region_instruction__BecomeDeadBeforeTable_24,
+  MR_Word * transform_hlds__rbmm__region_instruction__BecomeDeadAfterTable_25,
+  MR_Word * transform_hlds__rbmm__region_instruction__RegionInstructionTable_26)
+{
+  {
+    MR_bool transform_hlds__rbmm__region_instruction__succeeded;
+    MR_Word transform_hlds__rbmm__region_instruction__TypeCtorInfo_42_42;
+    MR_Word transform_hlds__rbmm__region_instruction__TypeInfo_43_43;
+    MR_Word transform_hlds__rbmm__region_instruction__TypeInfo_46_46;
+    MR_Word transform_hlds__rbmm__region_instruction__PredIds_27;
+    MR_Word transform_hlds__rbmm__region_instruction__V_28_28;
+    MR_Word transform_hlds__rbmm__region_instruction__V_29_29;
+    MR_Word transform_hlds__rbmm__region_instruction__V_30_30;
+    MR_Word transform_hlds__rbmm__region_instruction__V_31_31;
+    MR_Word transform_hlds__rbmm__region_instruction__V_32_32;
+    MR_Box transform_hlds__rbmm__region_instruction__conv7_BecomeLiveTable_23;
+    MR_Box transform_hlds__rbmm__region_instruction__conv6_BecomeDeadBeforeTable_24;
+    MR_Box transform_hlds__rbmm__region_instruction__conv5_BecomeDeadAfterTable_25;
+    MR_Box transform_hlds__rbmm__region_instruction__conv4_RegionInstructionTable_26;
+
+    {
+      hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__rbmm__region_instruction__ModuleInfo_14, &transform_hlds__rbmm__region_instruction__PredIds_27);
+    }
+    {
+      transform_hlds__rbmm__region_instruction__V_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 12 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 0) = ((MR_Box) (&transform_hlds__rbmm__region_instruction_scalar_common_3[0]));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 1) = ((MR_Box) (transform_hlds__rbmm__region_instruction__introduce_region_instructions_13_p_0_1));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 3) = ((MR_Box) (transform_hlds__rbmm__region_instruction__ModuleInfo_14));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 4) = ((MR_Box) (transform_hlds__rbmm__region_instruction__RptaInfoTable_15));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 5) = ((MR_Box) (transform_hlds__rbmm__region_instruction__ExecPathTable_16));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 6) = ((MR_Box) (transform_hlds__rbmm__region_instruction__LRBeforeTable_17));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 7) = ((MR_Box) (transform_hlds__rbmm__region_instruction__LRAfterTable_18));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 8) = ((MR_Box) (transform_hlds__rbmm__region_instruction__VoidVarRegionTable_19));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 9) = ((MR_Box) (transform_hlds__rbmm__region_instruction__BornRTable_20));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 10) = ((MR_Box) (transform_hlds__rbmm__region_instruction__DeadRTable_21));
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_instruction__V_28_28, 11) = ((MR_Box) (transform_hlds__rbmm__region_instruction__LocalRTable_22));
+    }
+    transform_hlds__rbmm__region_instruction__TypeCtorInfo_42_42 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+    transform_hlds__rbmm__region_instruction__TypeInfo_43_43 = (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[0];
+    {
+      transform_hlds__rbmm__region_instruction__V_29_29 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_42_42, transform_hlds__rbmm__region_instruction__TypeInfo_43_43);
+    }
+    {
+      transform_hlds__rbmm__region_instruction__V_30_30 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_42_42, transform_hlds__rbmm__region_instruction__TypeInfo_43_43);
+    }
+    {
+      transform_hlds__rbmm__region_instruction__V_31_31 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_42_42, transform_hlds__rbmm__region_instruction__TypeInfo_43_43);
+    }
+    {
+      transform_hlds__rbmm__region_instruction__V_32_32 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_instruction__TypeCtorInfo_42_42, (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[1]);
+    }
+    transform_hlds__rbmm__region_instruction__TypeInfo_46_46 = (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[2];
+    {
+      mercury__list__foldl4_10_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, transform_hlds__rbmm__region_instruction__TypeInfo_46_46, transform_hlds__rbmm__region_instruction__TypeInfo_46_46, transform_hlds__rbmm__region_instruction__TypeInfo_46_46, (MR_Word) &transform_hlds__rbmm__region_instruction_scalar_common_2[3], transform_hlds__rbmm__region_instruction__V_28_28, transform_hlds__rbmm__region_instruction__PredIds_27, ((MR_Box) (transform_hlds__rbmm__region_instruction__V_29_29)), &transform_hlds__rbmm__region_instruction__conv7_BecomeLiveTable_23, ((MR_Box) (transform_hlds__rbmm__region_instruction__V_30_30)), &transform_hlds__rbmm__region_instruction__conv6_BecomeDeadBeforeTable_24, ((MR_Box) (transform_hlds__rbmm__region_instruction__V_31_31)), &transform_hlds__rbmm__region_instruction__conv5_BecomeDeadAfterTable_25, ((MR_Box) (transform_hlds__rbmm__region_instruction__V_32_32)), &transform_hlds__rbmm__region_instruction__conv4_RegionInstructionTable_26);
+    }
+    *transform_hlds__rbmm__region_instruction__BecomeLiveTable_23 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv7_BecomeLiveTable_23);
+    *transform_hlds__rbmm__region_instruction__BecomeDeadBeforeTable_24 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv6_BecomeDeadBeforeTable_24);
+    *transform_hlds__rbmm__region_instruction__BecomeDeadAfterTable_25 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv5_BecomeDeadAfterTable_25);
+    *transform_hlds__rbmm__region_instruction__RegionInstructionTable_26 = ((MR_Word) transform_hlds__rbmm__region_instruction__conv4_RegionInstructionTable_26);
+  }
+}
+
+void mercury__transform_hlds__rbmm__region_instruction__init(void)
+{
+}
+
+void mercury__transform_hlds__rbmm__region_instruction__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_instrs_before_after_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_proc_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_table_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_type_0);
+}
+
+void mercury__transform_hlds__rbmm__region_instruction__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module transform_hlds.rbmm.region_instruction. */

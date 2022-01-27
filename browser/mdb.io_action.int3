@@ -1,0 +1,6 @@
+:- module (mdb.io_action).
+:- interface.
+:- type io_action.
+:- type io_action_range.
+:- type io_seq_num.
+:- type maybe_tabled_io_action.
