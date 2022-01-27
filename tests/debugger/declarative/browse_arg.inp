@@ -1,0 +1,23 @@
+echo on
+register --quiet
+break p
+continue
+finish
+format_param depth 10
+xml_browser_cmd 'cat ./browse_arg.xml.out'
+xml_tmp_filename './browse_arg.xml.out'
+dd -d 3 -n 7
+browse 2
+ls
+quit
+format verbose
+print
+format -B pretty
+p
+format -P pretty
+p
+b -x 2
+b --xml
+no
+yes
+continue

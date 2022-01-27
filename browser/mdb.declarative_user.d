@@ -1,0 +1,338 @@
+
+
+mdb.declarative_user.optdate mdb.declarative_user.trans_opt_date declarative_user.err mdb.declarative_user.c_date mdb.declarative_user.s_date mdb.declarative_user.pic_s_date mdb.declarative_user.il_date mdb.declarative_user.java_date : declarative_user.m \
+	mdb.int0 \
+	bool.int \
+	builtin.int \
+	char.int \
+	deconstruct.int \
+	exception.int \
+	getopt.int \
+	int.int \
+	io.int \
+	list.int \
+	map.int \
+	maybe.int \
+	mdbcomp.int \
+	private_builtin.int \
+	stream.int \
+	string.int \
+	univ.int \
+	mdb.browse.int \
+	mdb.browser_info.int \
+	mdb.browser_term.int \
+	mdb.declarative_debugger.int \
+	mdb.declarative_execution.int \
+	mdb.declarative_tree.int \
+	mdb.help.int \
+	mdb.io_action.int \
+	mdb.parse.int \
+	mdb.term_rep.int \
+	mdb.util.int \
+	mdbcomp.prim_data.int \
+	mdbcomp.program_representation.int \
+	mdbcomp.rtti_access.int \
+	mdbcomp.sym_name.int \
+	string.format.int \
+	string.parse_util.int \
+	array.int2 \
+	assoc_list.int2 \
+	bimap.int2 \
+	bitmap.int2 \
+	construct.int2 \
+	enum.int2 \
+	ops.int2 \
+	pair.int2 \
+	pretty_printer.int2 \
+	random.int2 \
+	rtti_implementation.int2 \
+	set.int2 \
+	set_ordlist.int2 \
+	stm_builtin.int2 \
+	store.int2 \
+	term.int2 \
+	time.int2 \
+	tree234.int2 \
+	type_desc.int2 \
+	unit.int2 \
+	mdb.declarative_analyser.int2 \
+	mdb.declarative_edt.int2 \
+	mdb.declarative_oracle.int2 \
+	mdbcomp.goal_path.int2 \
+	mdbcomp.trace_counts.int2
+
+mdb.declarative_user.pic_o mdb.declarative_user.$O : \
+	array.mih \
+	assoc_list.mih \
+	bimap.mih \
+	bitmap.mih \
+	bool.mih \
+	builtin.mih \
+	char.mih \
+	construct.mih \
+	deconstruct.mih \
+	enum.mih \
+	exception.mih \
+	getopt.mih \
+	int.mih \
+	io.mih \
+	list.mih \
+	map.mih \
+	maybe.mih \
+	mdb.mih \
+	mdbcomp.mih \
+	ops.mih \
+	pair.mih \
+	pretty_printer.mih \
+	private_builtin.mih \
+	random.mih \
+	rtti_implementation.mih \
+	set.mih \
+	set_ordlist.mih \
+	stm_builtin.mih \
+	store.mih \
+	stream.mih \
+	string.mih \
+	term.mih \
+	time.mih \
+	tree234.mih \
+	type_desc.mih \
+	unit.mih \
+	univ.mih \
+	mdb.browse.mih \
+	mdb.browser_info.mih \
+	mdb.browser_term.mih \
+	mdb.declarative_analyser.mih \
+	mdb.declarative_debugger.mih \
+	mdb.declarative_edt.mih \
+	mdb.declarative_execution.mih \
+	mdb.declarative_oracle.mih \
+	mdb.declarative_tree.mih \
+	mdb.declarative_user.mih \
+	mdb.help.mih \
+	mdb.io_action.mih \
+	mdb.parse.mih \
+	mdb.term_rep.mih \
+	mdb.util.mih \
+	mdbcomp.goal_path.mih \
+	mdbcomp.prim_data.mih \
+	mdbcomp.program_representation.mih \
+	mdbcomp.rtti_access.mih \
+	mdbcomp.sym_name.mih \
+	mdbcomp.trace_counts.mih \
+	string.format.mih \
+	string.parse_util.mih
+
+mdb.declarative_user.mh mdb.declarative_user.mih : mdb.declarative_user.c
+
+
+ifeq ($(findstring il,$(GRADE)),il)
+mdb.declarative_user.module_dep : mdb.declarative_user.il
+else
+ ifeq ($(findstring java,$(GRADE)),java)
+mdb.declarative_user.module_dep : jmercury/mdb__declarative_user.java
+ else
+mdb.declarative_user.module_dep : mdb.declarative_user.c
+ endif
+endif
+
+
+mdb.declarative_user.date mdb.declarative_user.date0 \
+	mdb.date : declarative_user.m \
+	mdb.int0 \
+	bool.int3 \
+	builtin.int3 \
+	char.int3 \
+	deconstruct.int3 \
+	exception.int3 \
+	getopt.int3 \
+	int.int3 \
+	io.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	mdbcomp.int3 \
+	private_builtin.int3 \
+	stream.int3 \
+	string.int3 \
+	univ.int3 \
+	mdb.browse.int3 \
+	mdb.browser_info.int3 \
+	mdb.browser_term.int3 \
+	mdb.declarative_debugger.int3 \
+	mdb.declarative_execution.int3 \
+	mdb.declarative_tree.int3 \
+	mdb.help.int3 \
+	mdb.io_action.int3 \
+	mdb.parse.int3 \
+	mdb.term_rep.int3 \
+	mdb.util.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.program_representation.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.sym_name.int3 \
+	string.format.int3 \
+	string.parse_util.int3 \
+	array.int3 \
+	assoc_list.int3 \
+	bimap.int3 \
+	bitmap.int3 \
+	construct.int3 \
+	enum.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set.int3 \
+	set_ordlist.int3 \
+	stm_builtin.int3 \
+	store.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	unit.int3 \
+	mdb.declarative_analyser.int3 \
+	mdb.declarative_edt.int3 \
+	mdb.declarative_oracle.int3 \
+	mdbcomp.goal_path.int3 \
+	mdbcomp.trace_counts.int3
+
+mdb.declarative_user.date0 \
+	mdb.date0 : declarative_user.m \
+	bool.int3 \
+	builtin.int3 \
+	char.int3 \
+	deconstruct.int3 \
+	exception.int3 \
+	getopt.int3 \
+	int.int3 \
+	io.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	mdbcomp.int3 \
+	private_builtin.int3 \
+	stream.int3 \
+	string.int3 \
+	univ.int3 \
+	mdb.browse.int3 \
+	mdb.browser_info.int3 \
+	mdb.browser_term.int3 \
+	mdb.declarative_debugger.int3 \
+	mdb.declarative_execution.int3 \
+	mdb.declarative_tree.int3 \
+	mdb.help.int3 \
+	mdb.io_action.int3 \
+	mdb.parse.int3 \
+	mdb.term_rep.int3 \
+	mdb.util.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.program_representation.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.sym_name.int3 \
+	string.format.int3 \
+	string.parse_util.int3 \
+	array.int3 \
+	assoc_list.int3 \
+	bimap.int3 \
+	bitmap.int3 \
+	construct.int3 \
+	enum.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set.int3 \
+	set_ordlist.int3 \
+	stm_builtin.int3 \
+	store.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	unit.int3 \
+	mdb.declarative_analyser.int3 \
+	mdb.declarative_edt.int3 \
+	mdb.declarative_oracle.int3 \
+	mdbcomp.goal_path.int3 \
+	mdbcomp.trace_counts.int3
+
+
+
+mdb.declarative_user.$O :  \
+	mdb.mh \
+	io.mh \
+	io.mh \
+	time.mh \
+	string.mh \
+	mdbcomp.program_representation.mh \
+	mdbcomp.program_representation.mh \
+	mdbcomp.rtti_access.mh \
+	mdbcomp.rtti_access.mh \
+	bitmap.mh \
+	bitmap.mh \
+	time.mh \
+	time.mh \
+	stm_builtin.mh \
+	stm_builtin.mh \
+	store.mh \
+	store.mh \
+	array.mh \
+	array.mh
+
+
+
+mdb.declarative_user.pic_o :  \
+	mdb.mh \
+	io.mh \
+	io.mh \
+	time.mh \
+	string.mh \
+	mdbcomp.program_representation.mh \
+	mdbcomp.program_representation.mh \
+	mdbcomp.rtti_access.mh \
+	mdbcomp.rtti_access.mh \
+	bitmap.mh \
+	bitmap.mh \
+	time.mh \
+	time.mh \
+	stm_builtin.mh \
+	stm_builtin.mh \
+	store.mh \
+	store.mh \
+	array.mh \
+	array.mh
+
+
+mdb.declarative_user.int0 : mdb.declarative_user.date0
+	@:
+mdb.declarative_user.int : mdb.declarative_user.date
+	@:
+mdb.declarative_user.int2 : mdb.declarative_user.date
+	@:
+mdb.declarative_user.int3 : mdb.declarative_user.date3
+	@:
+mdb.declarative_user.opt : mdb.declarative_user.optdate
+	@:
+mdb.declarative_user.trans_opt : mdb.declarative_user.trans_opt_date
+	@:
+
+mdb.declarative_user.date0 : declarative_user.m
+	$(MCPI) $(ALL_GRADEFLAGS) $(ALL_MCPIFLAGS) mdb.declarative_user
+mdb.declarative_user.date : declarative_user.m
+	$(MCI) $(ALL_GRADEFLAGS) $(ALL_MCIFLAGS) mdb.declarative_user
+mdb.declarative_user.date3 : declarative_user.m
+	$(MCSI) $(ALL_GRADEFLAGS) $(ALL_MCSIFLAGS) mdb.declarative_user
+mdb.declarative_user.optdate : declarative_user.m
+	$(MCOI) $(ALL_GRADEFLAGS) $(ALL_MCOIFLAGS) mdb.declarative_user
+mdb.declarative_user.trans_opt_date : declarative_user.m
+	$(MCTOI) $(ALL_GRADEFLAGS) $(ALL_MCTOIFLAGS) mdb.declarative_user
+mdb.declarative_user.c_date : declarative_user.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) mdb.declarative_user $(ERR_REDIRECT)
+mdb.declarative_user.il_date : declarative_user.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --il-only mdb.declarative_user $(ERR_REDIRECT)
+mdb.declarative_user.java_date : declarative_user.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --java-only mdb.declarative_user $(ERR_REDIRECT)

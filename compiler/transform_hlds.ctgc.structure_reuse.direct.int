@@ -1,0 +1,14 @@
+:- module (((transform_hlds.ctgc).structure_reuse).direct).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (((transform_hlds.ctgc).structure_reuse).domain).
+:- import_module (((transform_hlds.ctgc).structure_sharing).domain).
+:- pred direct_reuse_pass(transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table).
+:- mode direct_reuse_pass((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred direct_reuse_process_specific_procs(transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, list.list(hlds.hlds_pred.pred_proc_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table).
+:- mode direct_reuse_process_specific_procs((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- include_module ((((transform_hlds.ctgc).structure_reuse).direct).detect_garbage).
+:- include_module ((((transform_hlds.ctgc).structure_reuse).direct).choose_reuse).

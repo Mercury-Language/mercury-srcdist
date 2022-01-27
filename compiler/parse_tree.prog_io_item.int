@@ -1,0 +1,12 @@
+:- module (parse_tree.prog_io_item).
+:- interface.
+:- import_module mdbcomp.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_io_util).
+:- import_module (parse_tree.prog_item).
+:- pred parse_decl(mdbcomp.sym_name.module_name, varset.varset, term.term, int, parse_tree.prog_io_util.maybe1(parse_tree.prog_item.item)).
+:- mode parse_decl((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_item(mdbcomp.sym_name.module_name, varset.varset, term.term, int, parse_tree.prog_io_util.maybe1(parse_tree.prog_item.item)).
+:- mode parse_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

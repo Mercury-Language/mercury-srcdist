@@ -1,0 +1,86 @@
+:- module ((hlds.hlds_out).hlds_out_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module pair.
+:- import_module term.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.mercury_to_mercury).
+:- import_module (parse_tree.prog_data).
+:- type hlds_out_info
+	--->	hlds_out_info((((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_options) :: string, (((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_options_backup) :: string, (((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_pred_ids) :: list.list(string), (((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_pred_names) :: list.list(string), (((hlds.hlds_out).hlds_out_util).hoi_mercury_to_mercury) :: parse_tree.mercury_to_mercury.merc_out_info).
+:- type is_first
+	--->	is_first 
+	;	is_not_first .
+:- type is_last
+	--->	is_last 
+	;	is_not_last .
+:- type maybe_qualify_cons_id
+	--->	qualify_cons_id 
+	;	do_not_qualify_cons_id .
+:- type output_lang
+	--->	output_mercury 
+	;	output_debug .
+:- func call_arg_id_to_string(hlds.hlds_pred.call_id, int, hlds.hlds_pred.pred_markers) = string.
+:- func call_id_to_string(hlds.hlds_pred.call_id) = string.
+:- func cast_type_to_string(hlds.hlds_goal.cast_kind) = string.
+:- func cons_id_and_arity_to_string(parse_tree.prog_data.cons_id) = string.
+:- func cons_id_and_vars_or_arity_to_string(hlds.hlds_out.hlds_out_util.maybe_qualify_cons_id, parse_tree.prog_data.prog_varset, parse_tree.prog_data.cons_id, maybe.maybe(list.list(parse_tree.prog_data.prog_var))) = string.
+:- func functor_cons_id_to_string(parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, hlds.hlds_module.module_info, bool.bool) = string.
+:- func functor_to_string(term.const, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, bool.bool) = string.
+:- func functor_to_string_maybe_needs_quotes(term.const, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, bool.bool, parse_tree.mercury_to_mercury.needs_quotes) = string.
+:- func init_hlds_out_info(libs.globals.globals) = hlds.hlds_out.hlds_out_util.hlds_out_info.
+:- func pred_id_to_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id) = string.
+:- func pred_proc_id_pair_to_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id) = string.
+:- func pred_proc_id_to_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id) = string.
+:- func qualified_functor_to_string(mdbcomp.sym_name.module_name, term.const, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, bool.bool) = string.
+:- func qualified_functor_with_term_args_to_string(mdbcomp.sym_name.module_name, term.const, list.list(parse_tree.prog_data.prog_term), parse_tree.prog_data.prog_varset, bool.bool) = string.
+:- func type_ctor_to_string(parse_tree.prog_data.type_ctor) = string.
+:- pred unify_context_first_to_pieces(hlds.hlds_out.hlds_out_util.is_first, hlds.hlds_out.hlds_out_util.is_first, hlds.hlds_goal.unify_context, list.list(parse_tree.error_util.format_component), list.list(parse_tree.error_util.format_component)).
+:- mode unify_context_first_to_pieces((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred unify_context_to_pieces(hlds.hlds_goal.unify_context, list.list(parse_tree.error_util.format_component), list.list(parse_tree.error_util.format_component)).
+:- mode unify_context_to_pieces((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func var_mode_to_string(parse_tree.prog_data.prog_varset, parse_tree.prog_data.inst_varset, bool.bool, pair.pair(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_mode)) = string.
+:- func var_modes_to_string(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.prog_varset, parse_tree.prog_data.inst_varset, bool.bool) = string.
+:- pred write_class_id(parse_tree.prog_data.class_id, io.io, io.io).
+:- mode write_class_id((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_cons_id_and_arity(parse_tree.prog_data.cons_id, io.io, io.io).
+:- mode write_cons_id_and_arity((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_cons_id_and_vars_or_arity(hlds.hlds_out.hlds_out_util.maybe_qualify_cons_id, parse_tree.prog_data.prog_varset, parse_tree.prog_data.cons_id, maybe.maybe(list.list(parse_tree.prog_data.prog_var)), io.io, io.io).
+:- mode write_cons_id_and_vars_or_arity((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_constraint_proof_map(int, parse_tree.prog_data.tvarset, hlds.hlds_data.constraint_proof_map, bool.bool, io.io, io.io).
+:- mode write_constraint_proof_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_functor(term.const, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, bool.bool, io.io, io.io).
+:- mode write_functor((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_functor_cons_id(parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, hlds.hlds_module.module_info, bool.bool, io.io, io.io).
+:- mode write_functor_cons_id((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_functor_maybe_needs_quotes(term.const, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, bool.bool, parse_tree.mercury_to_mercury.needs_quotes, io.io, io.io).
+:- mode write_functor_maybe_needs_quotes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_indent(int, io.io, io.io).
+:- mode write_indent((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_intlist(list.list(int), io.io, io.io).
+:- mode write_intlist((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pred_id(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, io.io, io.io).
+:- mode write_pred_id((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pred_proc_id(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, io.io, io.io).
+:- mode write_pred_proc_id((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pred_proc_id_pair(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, io.io, io.io).
+:- mode write_pred_proc_id_pair((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_qualified_functor(mdbcomp.sym_name.module_name, term.const, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, bool.bool, io.io, io.io).
+:- mode write_qualified_functor((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_qualified_functor_with_term_args(mdbcomp.sym_name.module_name, term.const, list.list(parse_tree.prog_data.prog_term), parse_tree.prog_data.prog_varset, bool.bool, io.io, io.io).
+:- mode write_qualified_functor_with_term_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_type_ctor(parse_tree.prog_data.type_ctor, io.io, io.io).
+:- mode write_type_ctor((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_var_mode(parse_tree.prog_data.prog_varset, parse_tree.prog_data.inst_varset, bool.bool, pair.pair(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_mode), io.io, io.io).
+:- mode write_var_mode((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_var_modes(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.prog_varset, parse_tree.prog_data.inst_varset, bool.bool, io.io, io.io).
+:- mode write_var_modes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

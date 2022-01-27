@@ -1,0 +1,3 @@
+:- module (check_hlds.post_typecheck).
+:- interface.
+:- type is_plain_unify.

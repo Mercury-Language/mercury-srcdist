@@ -1,0 +1,19 @@
+:- module term_size_prof_builtin.
+:- pragma exceptions(predicate, (term_size_prof_builtin.measure_size), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_size_prof_builtin.measure_size_acc), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_size_prof_builtin.increment_size), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term_size_prof_builtin.term_size_plus), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_size_prof_builtin.complexity_is_active), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_size_prof_builtin.complexity_call_proc), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_size_prof_builtin.complexity_exit_proc), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_size_prof_builtin.complexity_fail_proc), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_size_prof_builtin.complexity_redo_proc), 1, 0, will_not_throw).
+:- pragma termination_info(term_size_prof_builtin.measure_size((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term_size_prof_builtin.measure_size_acc((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term_size_prof_builtin.increment_size((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(term_size_prof_builtin.term_size_plus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(term_size_prof_builtin.complexity_is_active((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term_size_prof_builtin.complexity_call_proc((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term_size_prof_builtin.complexity_exit_proc((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(term_size_prof_builtin.complexity_fail_proc((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(term_size_prof_builtin.complexity_redo_proc((builtin.in)), infinite, cannot_loop).

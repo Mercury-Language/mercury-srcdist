@@ -1,0 +1,13 @@
+module(1, "stream.m",
+	stream,
+	{},
+	{builtin, bool, char, list, private_builtin},
+	{builtin, bool, char, list, private_builtin},
+	{(stream.string_writer)},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

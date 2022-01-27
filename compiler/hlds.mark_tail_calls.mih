@@ -1,0 +1,79 @@
+/*
+** Automatically generated from `mark_tail_calls.m'
+** by the Mercury compiler,
+** version rotd-2015-05-05
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.mark_tail_calls. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__mark_tail_calls
+#define MR_HEADER_GUARD_hlds__mark_tail_calls
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MARK_TAIL_CALLS_DECL_GUARD
+#define HLDS__MARK_TAIL_CALLS_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__mark_tail_calls__hlds__mark_tail_calls__type_ctor_info_found_tail_calls_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__mark_tail_calls__hlds__mark_tail_calls__type_ctor_info_mark_tail_calls_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__mark_tail_calls__hlds__mark_tail_calls__type_ctor_info_tailcall_warning_0;
+
+void MR_CALL 
+hlds__mark_tail_calls__mark_tail_calls_6_p_0(
+  MR_Word hlds__mark_tail_calls__param_1,
+  MR_Word hlds__mark_tail_calls__param_2,
+  MR_Word hlds__mark_tail_calls__param_3,
+  MR_Word hlds__mark_tail_calls__param_4,
+  MR_Word hlds__mark_tail_calls__param_5,
+  MR_Word * hlds__mark_tail_calls__param_6);
+
+void MR_CALL 
+hlds__mark_tail_calls__warn_non_tail_calls_3_p_0(
+  MR_Word hlds__mark_tail_calls__param_1);
+
+void MR_CALL 
+hlds__mark_tail_calls__warn_non_tail_calls_in_proc_7_p_0(
+  MR_Word hlds__mark_tail_calls__param_1,
+  MR_Word hlds__mark_tail_calls__param_2,
+  MR_Integer hlds__mark_tail_calls__param_3,
+  MR_Word hlds__mark_tail_calls__param_4,
+  MR_Word hlds__mark_tail_calls__param_5);
+
+void mercury__hlds__mark_tail_calls__init(void);
+void mercury__hlds__mark_tail_calls__init_type_tables(void);
+void mercury__hlds__mark_tail_calls__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.mark_tail_calls */
+
+/* :- end_interface hlds.mark_tail_calls. */

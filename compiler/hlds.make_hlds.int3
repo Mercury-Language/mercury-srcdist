@@ -1,0 +1,3 @@
+:- module (hlds.make_hlds).
+:- interface.
+:- type make_hlds_qual_info.

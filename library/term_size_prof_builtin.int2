@@ -1,0 +1,6 @@
+:- module term_size_prof_builtin.
+:- interface.
+:- type complexity_is_active
+	--->	is_inactive 
+	;	is_active .
+:- type complexity_slot == int.
