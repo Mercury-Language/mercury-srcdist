@@ -1,0 +1,13 @@
+module(1, "multi_map.m",
+	multi_map,
+	{},
+	{builtin, assoc_list, list, map, set, private_builtin},
+	{builtin, assoc_list, int, list, map, pair, require, set, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

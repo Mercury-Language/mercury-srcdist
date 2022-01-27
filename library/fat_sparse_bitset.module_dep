@@ -1,0 +1,13 @@
+module(1, "fat_sparse_bitset.m",
+	fat_sparse_bitset,
+	{},
+	{builtin, enum, list, term, private_builtin, set},
+	{builtin, enum, int, list, require, term, private_builtin, set},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

@@ -1,0 +1,882 @@
+/*
+** Automatically generated from `mutvar.m'
+** by the Mercury compiler,
+** version DEV
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mutvar. */
+/* :- implementation. */
+
+/*
+INIT mercury__mutvar__init
+ENDINIT
+*/
+
+#include "mutvar.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "benchmarking.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "calendar.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "dir.mih"
+#include "enum.mih"
+#include "erlang_rtti_implementation.mih"
+#include "exception.mih"
+#include "float.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "lexer.mih"
+#include "list.mih"
+#include "map.mih"
+#include "math.mih"
+#include "maybe.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parser.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "solutions.mih"
+#include "std_util.mih"
+#include "stm_builtin.mih"
+#include "store.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "table_builtin.mih"
+#include "term.mih"
+#include "term_conversion.mih"
+#include "term_io.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "version_array.mih"
+#include "stream.string_writer.mih"
+#include "string.format.mih"
+#include "string.parse_runtime.mih"
+#include "string.parse_util.mih"
+#include "string.to_string.mih"
+
+
+
+
+#line 93 "mutvar.c"
+static const MR_Integer mercury__mutvar__mutvar__functor_number_map_mutvar_1[1];
+
+#line 96 "mutvar.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__mutvar__private_builtin__pti_ref_1__pseudo_1;
+
+#line 99 "mutvar.c"
+static const MR_NotagFunctorDesc mercury__mutvar__mutvar__notag_functor_desc_mutvar_1;
+
+#line 102 "mutvar.c"
+static MR_bool MR_CALL 
+mercury__mutvar____Unify____mutvar_1_0_10001(
+#line 105 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_1,
+#line 107 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_2,
+#line 109 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_3);
+
+#line 112 "mutvar.c"
+static void MR_CALL 
+mercury__mutvar____Compare____mutvar_1_0_10001(
+#line 115 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_1,
+#line 117 "mutvar.c"
+  MR_Box * mercury__mutvar__wrapper_arg_2,
+#line 119 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_3,
+#line 121 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_4);
+
+#line 13 "ops.opt"
+static MR_Integer MR_CALL 
+mercury__mutvar__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void);
+
+
+static /* final */ const MR_Box mercury__mutvar_scalar_common_1[1][3];
+
+static /* final */ const MR_Box mercury__mutvar_scalar_common_2[1][4];
+
+static /* final */ const MR_Box mercury__mutvar_scalar_common_3[2][5];
+
+
+
+
+static /* final */ const MR_Box mercury__mutvar_scalar_common_1[1][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__stream__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__mutvar_scalar_common_2[1][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__output__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__mutvar_scalar_common_1[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__mutvar_scalar_common_3[2][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__string__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__mutvar_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__character__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__mutvar_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_character_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+
+
+#include "mutvar.mh"
+#include "array.mh"
+#include "array.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "dir.mh"
+#include "dir.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "stm_builtin.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "store.mh"
+#include "table_builtin.mh"
+#include "table_builtin.mh"
+#include "time.mh"
+#include "time.mh"
+#include "version_array.mh"
+#include "version_array.mh"
+#include "builtin.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "int.mh"
+#include "array.mh"
+#include "array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "time.mh"
+#include "time.mh"
+#include "array.mh"
+#include "array.mh"
+#include "dir.mh"
+#include "dir.mh"
+#include "table_builtin.mh"
+#include "table_builtin.mh"
+#include "benchmarking.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "char.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "construct.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "array.mh"
+#include "array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "dir.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "float.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "rtti_implementation.mh"
+#include "array.mh"
+#include "array.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "table_builtin.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "version_array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "time.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "type_desc.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "exception.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "stm_builtin.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "store.mh"
+#include "stm_builtin.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "store.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "math.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "pretty_printer.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "array.mh"
+#include "array.mh"
+#include "version_array.mh"
+#include "version_array.mh"
+#include "string.mh"
+#include "array.mh"
+#include "array.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "version_array.mh"
+#include "version_array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "private_builtin.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+
+
+
+#line 346 "mutvar.c"
+static const MR_Integer mercury__mutvar__mutvar__functor_number_map_mutvar_1[1] = {
+  (MR_Integer) 0
+};
+
+#line 351 "mutvar.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__mutvar__private_builtin__pti_ref_1__pseudo_1 = {
+  &mercury__private_builtin__private_builtin__type_ctor_info_ref_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 359 "mutvar.c"
+static const MR_NotagFunctorDesc mercury__mutvar__mutvar__notag_functor_desc_mutvar_1 = {
+  (MR_String) "mutvar",
+  (MR_PseudoTypeInfo) &mercury__mutvar__private_builtin__pti_ref_1__pseudo_1,
+  NULL
+};
+
+#line 366 "mutvar.c"
+const MR_TypeCtorInfo_Struct mercury__mutvar__mutvar__type_ctor_info_mutvar_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG,
+  ((MR_Box) (mercury__mutvar____Unify____mutvar_1_0_10001)),
+  ((MR_Box) (mercury__mutvar____Compare____mutvar_1_0_10001)),
+  (MR_String) "mutvar",
+  (MR_String) "mutvar",
+  {     &mercury__mutvar__mutvar__notag_functor_desc_mutvar_1 },
+  {     &mercury__mutvar__mutvar__notag_functor_desc_mutvar_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__mutvar__mutvar__functor_number_map_mutvar_1
+};
+
+#line 383 "mutvar.c"
+static MR_bool MR_CALL 
+mercury__mutvar____Unify____mutvar_1_0_10001(
+#line 386 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_1,
+#line 388 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_2,
+#line 390 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_3)
+#line 392 "mutvar.c"
+{
+#line 394 "mutvar.c"
+  {
+#line 396 "mutvar.c"
+    MR_bool mercury__mutvar__succeeded;
+
+#line 399 "mutvar.c"
+    {
+#line 401 "mutvar.c"
+      mercury__mutvar__succeeded = mercury__mutvar____Unify____mutvar_1_0(((MR_Word) mercury__mutvar__wrapper_arg_1), ((MR_Word) mercury__mutvar__wrapper_arg_2), ((MR_Word) mercury__mutvar__wrapper_arg_3));
+    }
+#line 404 "mutvar.c"
+    return mercury__mutvar__succeeded;
+#line 406 "mutvar.c"
+  }
+#line 408 "mutvar.c"
+}
+
+#line 411 "mutvar.c"
+static void MR_CALL 
+mercury__mutvar____Compare____mutvar_1_0_10001(
+#line 414 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_1,
+#line 416 "mutvar.c"
+  MR_Box * mercury__mutvar__wrapper_arg_2,
+#line 418 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_3,
+#line 420 "mutvar.c"
+  MR_Box mercury__mutvar__wrapper_arg_4)
+#line 422 "mutvar.c"
+{
+#line 424 "mutvar.c"
+  {
+#line 426 "mutvar.c"
+    MR_Word mercury__mutvar__conv0_HeadVar__1_1;
+
+#line 429 "mutvar.c"
+    {
+#line 431 "mutvar.c"
+      mercury__mutvar____Compare____mutvar_1_0(((MR_Word) mercury__mutvar__wrapper_arg_1), &mercury__mutvar__conv0_HeadVar__1_1, ((MR_Word) mercury__mutvar__wrapper_arg_3), ((MR_Word) mercury__mutvar__wrapper_arg_4));
+    }
+#line 434 "mutvar.c"
+    *mercury__mutvar__wrapper_arg_2 = ((MR_Box) (mercury__mutvar__conv0_HeadVar__1_1));
+#line 436 "mutvar.c"
+  }
+#line 438 "mutvar.c"
+}
+
+#line 13 "ops.opt"
+static MR_Integer MR_CALL 
+mercury__mutvar__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void)
+#line 13 "ops.opt"
+{
+#line 38 "ops.opt"
+  {
+#line 38 "ops.opt"
+    MR_bool mercury__mutvar__succeeded;
+
+#line 38 "ops.opt"
+    return (MR_Integer) 1200;
+#line 38 "ops.opt"
+  }
+#line 13 "ops.opt"
+}
+
+#line 218 "mutvar.m"
+void MR_CALL 
+mercury__mutvar____Compare____mutvar_1_0(
+#line 218 "mutvar.m"
+  MR_Word mercury__mutvar__TypeInfo_for_T_8,
+#line 218 "mutvar.m"
+  MR_Word * mercury__mutvar__HeadVar__1_1,
+#line 218 "mutvar.m"
+  MR_Word mercury__mutvar__HeadVar__2_2,
+#line 218 "mutvar.m"
+  MR_Word mercury__mutvar__HeadVar__3_3)
+#line 218 "mutvar.m"
+{
+#line 218 "mutvar.m"
+  {
+#line 218 "mutvar.m"
+    MR_bool mercury__mutvar__succeeded;
+#line 218 "mutvar.m"
+    MR_Integer mercury__mutvar__CastX_6 = (MR_Integer) mercury__mutvar__HeadVar__2_2;
+#line 218 "mutvar.m"
+    MR_Integer mercury__mutvar__CastY_7 = (MR_Integer) mercury__mutvar__HeadVar__3_3;
+
+#line 218 "mutvar.m"
+    mercury__mutvar__succeeded = (mercury__mutvar__CastX_6 == mercury__mutvar__CastY_7);
+#line 218 "mutvar.m"
+    if (mercury__mutvar__succeeded)
+#line 484 "mutvar.c"
+      *mercury__mutvar__HeadVar__1_1 = (MR_Integer) 0;
+#line 218 "mutvar.m"
+    else
+#line 218 "mutvar.m"
+      {
+#line 218 "mutvar.m"
+        MR_Word mercury__mutvar__V_4_4 = (MR_Word) mercury__mutvar__HeadVar__2_2;
+#line 218 "mutvar.m"
+        MR_Word mercury__mutvar__V_5_5 = (MR_Word) mercury__mutvar__HeadVar__3_3;
+
+#line 218 "mutvar.m"
+        {
+#line 218 "mutvar.m"
+          mercury__private_builtin____Compare____ref_1_0(mercury__mutvar__TypeInfo_for_T_8, mercury__mutvar__HeadVar__1_1, mercury__mutvar__V_4_4, mercury__mutvar__V_5_5);
+#line 218 "mutvar.m"
+          return;
+        }
+#line 218 "mutvar.m"
+      }
+#line 218 "mutvar.m"
+  }
+#line 218 "mutvar.m"
+}
+
+#line 218 "mutvar.m"
+MR_bool MR_CALL 
+mercury__mutvar____Unify____mutvar_1_0(
+#line 218 "mutvar.m"
+  MR_Word mercury__mutvar__TypeInfo_for_T_7,
+#line 218 "mutvar.m"
+  MR_Word mercury__mutvar__HeadVar__1_1,
+#line 218 "mutvar.m"
+  MR_Word mercury__mutvar__HeadVar__2_2)
+#line 218 "mutvar.m"
+{
+#line 218 "mutvar.m"
+  {
+#line 218 "mutvar.m"
+    MR_bool mercury__mutvar__succeeded;
+#line 218 "mutvar.m"
+    MR_Integer mercury__mutvar__CastX_5 = (MR_Integer) mercury__mutvar__HeadVar__1_1;
+#line 218 "mutvar.m"
+    MR_Integer mercury__mutvar__CastY_6 = (MR_Integer) mercury__mutvar__HeadVar__2_2;
+
+#line 218 "mutvar.m"
+    mercury__mutvar__succeeded = (mercury__mutvar__CastX_5 == mercury__mutvar__CastY_6);
+#line 218 "mutvar.m"
+    if (mercury__mutvar__succeeded)
+#line 218 "mutvar.m"
+      mercury__mutvar__succeeded = MR_TRUE;
+#line 218 "mutvar.m"
+    else
+#line 218 "mutvar.m"
+      {
+#line 218 "mutvar.m"
+        MR_Word mercury__mutvar__V_3_3 = (MR_Word) mercury__mutvar__HeadVar__1_1;
+#line 218 "mutvar.m"
+        MR_Word mercury__mutvar__V_4_4 = (MR_Word) mercury__mutvar__HeadVar__2_2;
+
+#line 544 "mutvar.c"
+        {
+#line 546 "mutvar.c"
+          return mercury__mutvar__succeeded = mercury__private_builtin____Unify____ref_1_0(mercury__mutvar__TypeInfo_for_T_7, mercury__mutvar__V_3_3, mercury__mutvar__V_4_4);
+        }
+#line 218 "mutvar.m"
+      }
+#line 218 "mutvar.m"
+    return mercury__mutvar__succeeded;
+#line 218 "mutvar.m"
+  }
+#line 218 "mutvar.m"
+}
+
+#line 63 "mutvar.m"
+void MR_CALL 
+mercury__mutvar__clear_mutvar_1_p_0(
+#line 63 "mutvar.m"
+  MR_Word mercury__mutvar__TypeInfo_for_T_2,
+#line 63 "mutvar.m"
+  MR_Word mercury__mutvar__HeadVar__1_1)
+#line 63 "mutvar.m"
+{
+#line 120 "mutvar.m"
+  {
+#line 120 "mutvar.m"
+    MR_bool mercury__mutvar__succeeded;
+#line 120 "mutvar.m"
+    MR_Word mercury__mutvar__TypeInfo_for_T_3;
+
+#line 123 "mutvar.m"
+{
+#define MR_PROC_LABEL mercury__mutvar__clear_mutvar_1_p_0
+
+	MR_Word Ref;
+
+	Ref =  mercury__mutvar__HeadVar__1_1 ;
+		{
+#line 123 "mutvar.m"
+
+    *(MR_Word *) Ref = 0;
+
+#line 586 "mutvar.c"
+
+		;}
+#undef MR_PROC_LABEL
+#line 123 "mutvar.m"
+}
+#line 120 "mutvar.m"
+  }
+#line 63 "mutvar.m"
+}
+
+#line 54 "mutvar.m"
+void MR_CALL 
+mercury__mutvar__set_mutvar_2_p_0(
+#line 54 "mutvar.m"
+  MR_Word mercury__mutvar__TypeInfo_for_T_3,
+#line 54 "mutvar.m"
+  MR_Word mercury__mutvar__HeadVar__1_1,
+#line 54 "mutvar.m"
+  MR_Box mercury__mutvar__HeadVar__2_2)
+#line 54 "mutvar.m"
+{
+#line 113 "mutvar.m"
+  {
+#line 113 "mutvar.m"
+    MR_bool mercury__mutvar__succeeded;
+#line 113 "mutvar.m"
+    MR_Word mercury__mutvar__TypeInfo_for_T_4;
+
+#line 116 "mutvar.m"
+{
+#define MR_PROC_LABEL mercury__mutvar__set_mutvar_2_p_0
+
+	MR_Word Ref;
+	MR_Word X;
+
+	Ref =  mercury__mutvar__HeadVar__1_1 ;
+	X = (MR_Word) mercury__mutvar__HeadVar__2_2 ;
+		{
+#line 116 "mutvar.m"
+
+    *(MR_Word *) Ref = X;
+
+#line 629 "mutvar.c"
+
+		;}
+#undef MR_PROC_LABEL
+#line 116 "mutvar.m"
+}
+#line 113 "mutvar.m"
+  }
+#line 54 "mutvar.m"
+}
+
+#line 44 "mutvar.m"
+void MR_CALL 
+mercury__mutvar__get_mutvar_2_p_0(
+#line 44 "mutvar.m"
+  MR_Word mercury__mutvar__TypeInfo_for_T_3,
+#line 44 "mutvar.m"
+  MR_Word mercury__mutvar__HeadVar__1_1,
+#line 44 "mutvar.m"
+  MR_Box * mercury__mutvar__HeadVar__2_2)
+#line 44 "mutvar.m"
+{
+#line 106 "mutvar.m"
+  {
+#line 106 "mutvar.m"
+    MR_bool mercury__mutvar__succeeded;
+#line 106 "mutvar.m"
+    MR_Word mercury__mutvar__TypeInfo_for_T_4;
+
+#line 109 "mutvar.m"
+{
+#define MR_PROC_LABEL mercury__mutvar__get_mutvar_2_p_0
+
+	MR_Word Ref;
+	MR_Word X;
+
+	Ref =  mercury__mutvar__HeadVar__1_1 ;
+		{
+#line 109 "mutvar.m"
+
+    X = * (MR_Word *) Ref;
+
+#line 671 "mutvar.c"
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__mutvar__HeadVar__2_2  = (MR_Box) X;
+#line 109 "mutvar.m"
+}
+#line 106 "mutvar.m"
+  }
+#line 44 "mutvar.m"
+}
+
+#line 39 "mutvar.m"
+void MR_CALL 
+mercury__mutvar__new_mutvar0_1_p_0(
+#line 39 "mutvar.m"
+  MR_Word mercury__mutvar__TypeInfo_for_T_2,
+#line 39 "mutvar.m"
+  MR_Word * mercury__mutvar__HeadVar__1_1)
+#line 39 "mutvar.m"
+{
+#line 97 "mutvar.m"
+  {
+#line 97 "mutvar.m"
+    MR_bool mercury__mutvar__succeeded;
+#line 97 "mutvar.m"
+    MR_Word mercury__mutvar__TypeInfo_for_T_3;
+
+#line 100 "mutvar.m"
+{
+#define MR_PROC_LABEL mercury__mutvar__new_mutvar0_1_p_0
+
+	MR_Word Ref;
+
+		{
+#line 100 "mutvar.m"
+
+    MR_offset_incr_hp_msg(Ref, MR_SIZE_SLOT_SIZE, MR_SIZE_SLOT_SIZE + 1,
+        MR_ALLOC_ID, "mutvar.mutvar/1");
+    MR_define_size_slot(0, Ref, 1);
+
+#line 712 "mutvar.c"
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__mutvar__HeadVar__1_1  = Ref;
+#line 100 "mutvar.m"
+}
+#line 97 "mutvar.m"
+  }
+#line 39 "mutvar.m"
+}
+
+#line 34 "mutvar.m"
+void MR_CALL 
+mercury__mutvar__new_mutvar_2_p_1(
+#line 34 "mutvar.m"
+  MR_Word mercury__mutvar__TypeInfo_for_T_6,
+#line 34 "mutvar.m"
+  MR_Box mercury__mutvar__X_3,
+#line 34 "mutvar.m"
+  MR_Word * mercury__mutvar__Ref_4)
+#line 34 "mutvar.m"
+{
+#line 82 "mutvar.m"
+  {
+#line 82 "mutvar.m"
+    MR_bool mercury__mutvar__succeeded;
+#line 82 "mutvar.m"
+    MR_Word mercury__mutvar__Ref0_5;
+#line 97 "mutvar.m"
+    MR_Word mercury__mutvar__TypeInfo_for_T_7;
+#line 113 "mutvar.m"
+    MR_Word mercury__mutvar__TypeInfo_for_T_8;
+
+#line 100 "mutvar.m"
+{
+#define MR_PROC_LABEL mercury__mutvar__new_mutvar_2_p_1
+
+	MR_Word Ref;
+
+		{
+#line 100 "mutvar.m"
+
+    MR_offset_incr_hp_msg(Ref, MR_SIZE_SLOT_SIZE, MR_SIZE_SLOT_SIZE + 1,
+        MR_ALLOC_ID, "mutvar.mutvar/1");
+    MR_define_size_slot(0, Ref, 1);
+
+#line 759 "mutvar.c"
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__mutvar__Ref0_5  = Ref;
+#line 100 "mutvar.m"
+}
+#line 116 "mutvar.m"
+{
+#define MR_PROC_LABEL mercury__mutvar__new_mutvar_2_p_1
+
+	MR_Word Ref;
+	MR_Word X;
+
+	Ref =  mercury__mutvar__Ref0_5 ;
+	X = (MR_Word) mercury__mutvar__X_3 ;
+		{
+#line 116 "mutvar.m"
+
+    *(MR_Word *) Ref = X;
+
+#line 780 "mutvar.c"
+
+		;}
+#undef MR_PROC_LABEL
+#line 116 "mutvar.m"
+}
+#line 85 "mutvar.m"
+    *mercury__mutvar__Ref_4 = mercury__mutvar__Ref0_5;
+#line 82 "mutvar.m"
+  }
+#line 34 "mutvar.m"
+}
+
+#line 33 "mutvar.m"
+void MR_CALL 
+mercury__mutvar__new_mutvar_2_p_0(
+#line 33 "mutvar.m"
+  MR_Word mercury__mutvar__TypeInfo_for_T_6,
+#line 33 "mutvar.m"
+  MR_Box mercury__mutvar__X_3,
+#line 33 "mutvar.m"
+  MR_Word * mercury__mutvar__Ref_4)
+#line 33 "mutvar.m"
+{
+#line 82 "mutvar.m"
+  {
+#line 82 "mutvar.m"
+    MR_bool mercury__mutvar__succeeded;
+#line 82 "mutvar.m"
+    MR_Word mercury__mutvar__Ref0_5;
+#line 97 "mutvar.m"
+    MR_Word mercury__mutvar__TypeInfo_for_T_7;
+#line 113 "mutvar.m"
+    MR_Word mercury__mutvar__TypeInfo_for_T_8;
+
+#line 100 "mutvar.m"
+{
+#define MR_PROC_LABEL mercury__mutvar__new_mutvar_2_p_0
+
+	MR_Word Ref;
+
+		{
+#line 100 "mutvar.m"
+
+    MR_offset_incr_hp_msg(Ref, MR_SIZE_SLOT_SIZE, MR_SIZE_SLOT_SIZE + 1,
+        MR_ALLOC_ID, "mutvar.mutvar/1");
+    MR_define_size_slot(0, Ref, 1);
+
+#line 828 "mutvar.c"
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__mutvar__Ref0_5  = Ref;
+#line 100 "mutvar.m"
+}
+#line 116 "mutvar.m"
+{
+#define MR_PROC_LABEL mercury__mutvar__new_mutvar_2_p_0
+
+	MR_Word Ref;
+	MR_Word X;
+
+	Ref =  mercury__mutvar__Ref0_5 ;
+	X = (MR_Word) mercury__mutvar__X_3 ;
+		{
+#line 116 "mutvar.m"
+
+    *(MR_Word *) Ref = X;
+
+#line 849 "mutvar.c"
+
+		;}
+#undef MR_PROC_LABEL
+#line 116 "mutvar.m"
+}
+#line 85 "mutvar.m"
+    *mercury__mutvar__Ref_4 = mercury__mutvar__Ref0_5;
+#line 82 "mutvar.m"
+  }
+#line 33 "mutvar.m"
+}
+
+void mercury__mutvar__init(void)
+{
+}
+
+void mercury__mutvar__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mercury__mutvar__mutvar__type_ctor_info_mutvar_1);
+}
+
+void mercury__mutvar__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module mutvar. */

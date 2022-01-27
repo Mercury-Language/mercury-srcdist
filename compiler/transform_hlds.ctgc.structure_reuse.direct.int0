@@ -1,0 +1,59 @@
+:- module (((transform_hlds.ctgc).structure_reuse).direct).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (((transform_hlds.ctgc).structure_reuse).domain).
+:- import_module (((transform_hlds.ctgc).structure_sharing).domain).
+:- pred direct_reuse_pass(transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table).
+:- mode direct_reuse_pass((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred direct_reuse_process_specific_procs(transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, list.list(hlds.hlds_pred.pred_proc_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table).
+:- mode direct_reuse_process_specific_procs((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- import_module analysis.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.passes_aux).
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.options).
+:- import_module (parse_tree.status).
+:- import_module (transform_hlds.smm_common).
+:- import_module ((transform_hlds.ctgc).util).
+:- import_module (((transform_hlds.ctgc).structure_reuse).domain).
+:- import_module (((transform_hlds.ctgc).structure_sharing).domain).
+:- import_module ((((transform_hlds.ctgc).structure_reuse).direct).choose_reuse).
+:- import_module ((((transform_hlds.ctgc).structure_reuse).direct).detect_garbage).
+:- include_module ((((transform_hlds.ctgc).structure_reuse).direct).detect_garbage).
+:- include_module ((((transform_hlds.ctgc).structure_reuse).direct).choose_reuse).
+:- type dead_cell_table == map.map(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.domain.reuse_condition).
+:- pred dead_cell_entry_dump(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.domain.reuse_condition, io.io, io.io).
+:- mode dead_cell_entry_dump((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred dead_cell_table_add_unconditional(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.domain.reuse_condition, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table).
+:- mode dead_cell_table_add_unconditional((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func dead_cell_table_init = transform_hlds.ctgc.structure_reuse.direct.dead_cell_table.
+:- pred dead_cell_table_is_empty(transform_hlds.ctgc.structure_reuse.direct.dead_cell_table).
+:- mode dead_cell_table_is_empty((builtin.in)) is semidet.
+:- pred dead_cell_table_maybe_dump(bool.bool, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table, io.io, io.io).
+:- mode dead_cell_table_maybe_dump((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred dead_cell_table_remove(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table).
+:- mode dead_cell_table_remove((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred dead_cell_table_remove_conditionals(transform_hlds.ctgc.structure_reuse.direct.dead_cell_table, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table).
+:- mode dead_cell_table_remove_conditionals((builtin.in), (builtin.out)) is det.
+:- func dead_cell_table_search(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table) = transform_hlds.ctgc.structure_reuse.domain.reuse_condition is semidet.
+:- pred dead_cell_table_set(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.domain.reuse_condition, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table).
+:- mode dead_cell_table_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred direct_reuse_process_ppid(transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, hlds.hlds_pred.pred_proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table).
+:- mode direct_reuse_process_ppid((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred direct_reuse_process_pred(transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table).
+:- mode direct_reuse_process_pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred direct_reuse_process_proc(transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table).
+:- mode direct_reuse_process_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred direct_reuse_process_proc_2(transform_hlds.ctgc.structure_sharing.domain.sharing_as_table, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, transform_hlds.ctgc.structure_reuse.domain.reuse_as).
+:- mode direct_reuse_process_proc_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred set_external_pred_reuse_as(hlds.hlds_pred.pred_id, transform_hlds.ctgc.structure_reuse.domain.reuse_as, analysis.analysis_status, hlds.hlds_pred.proc_id, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table, transform_hlds.ctgc.structure_reuse.domain.reuse_as_table).
+:- mode set_external_pred_reuse_as((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

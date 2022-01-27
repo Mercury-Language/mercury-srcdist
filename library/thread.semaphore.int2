@@ -1,0 +1,11 @@
+:- module (thread.semaphore).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- type semaphore.
+:- implementation.
+:- pragma foreign_type(il, semaphore, "class [mercury]mercury.thread.semaphore__csharp_code.mercury_code.ML_Semaphore").
+:- pragma foreign_type(c, semaphore, "struct ML_SEMAPHORE_STRUCT *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, semaphore, "jmercury.runtime.Semaphore").
+:- pragma foreign_type(csharp, semaphore, "thread__semaphore.ML_Semaphore").
+:- pragma foreign_type(erlang, semaphore, "").

@@ -1,0 +1,31 @@
+:- module (hlds.goal_util).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module maybe.
+:- import_module term.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (hlds.instmap).
+:- import_module (hlds.pred_table).
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type attach_in_from_ground_term
+    --->    attach_in_from_ground_term 
+    ;       do_not_attach_in_from_ground_term .
+:- type goal_is_atomic
+    --->    goal_is_atomic 
+    ;       goal_is_nonatomic .
+:- type is_leaf
+    --->    is_leaf 
+    ;       is_not_leaf .
+:- type maybe_transformed_goal
+    --->    ok(hlds.hlds_goal.hlds_goal)
+    ;       error(string)
+    ;       goal_not_found .

@@ -1,0 +1,13 @@
+module(1, "test_bitset.m",
+	test_bitset,
+	{},
+	{builtin, enum, list, set, private_builtin},
+	{builtin, bool, enum, exception, int, list, maybe, pair, require, set, set_ordlist, solutions, string, tree_bitset, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

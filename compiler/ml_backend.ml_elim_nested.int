@@ -1,0 +1,12 @@
+:- module (ml_backend.ml_elim_nested).
+:- interface.
+:- import_module (libs.globals).
+:- import_module (ml_backend.mlds).
+:- type action
+    --->    hoist_nested_funcs 
+    ;       chain_gc_stack_frames .
+:- inst (chain) == bound(chain_gc_stack_frames).
+:- inst (hoist) == bound(hoist_nested_funcs).
+:- pred ml_elim_nested(ml_backend.ml_elim_nested.action, libs.globals.globals, ml_backend.mlds.mlds, ml_backend.mlds.mlds).
+:- mode ml_elim_nested(builtin.in(((ml_backend.ml_elim_nested).hoist)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode ml_elim_nested(builtin.in(((ml_backend.ml_elim_nested).chain)), (builtin.in), (builtin.in), (builtin.out)) is det.

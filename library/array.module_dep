@@ -1,0 +1,13 @@
+module(1, "array.m",
+	array,
+	{},
+	{builtin, list, maybe, pretty_printer, random, private_builtin},
+	{builtin, exception, int, list, maybe, pretty_printer, random, require, string, type_desc, private_builtin, stream, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - array, "C#" - array, "Java" - array, "IL" - array, "Erlang" - array, "C" - array},
+	contains_foreign_export,
+	no_main
+).

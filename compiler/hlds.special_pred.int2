@@ -1,0 +1,13 @@
+:- module (hlds.special_pred).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module pair.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.status).
+:- type special_pred == pair.pair(mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.type_ctor).
+:- type special_pred_map == map.map(hlds.special_pred.special_pred, hlds.hlds_pred.pred_id).

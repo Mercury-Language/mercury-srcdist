@@ -1,0 +1,175 @@
+:- module math.
+:- use_module builtin, exception, float, private_builtin.
+:- pragma foreign_import_module("C", math).
+:- pragma foreign_import_module("C#", math).
+:- pragma foreign_import_module("Java", math).
+:- pragma foreign_import_module("Erlang", math).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_proc("C", math.pi = (Pi :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Pi = ML_FLOAT_PI;
+").
+:- pragma foreign_proc("C", math.e = (E :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    E = ML_FLOAT_E;
+").
+:- pragma foreign_proc("C", math.ceiling(Num :: (builtin.in)) = (Ceil :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Ceil = ceil(Num);
+").
+:- pragma foreign_proc("C", math.floor(Num :: (builtin.in)) = (Floor :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Floor = floor(Num);
+").
+:- pragma foreign_proc("C", math.round(Num :: (builtin.in)) = (Rounded :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Rounded = floor(Num+0.5);
+").
+math.truncate(X_3) = HeadVar__2_2 :-
+    (if
+      V_4 = 0.0 : float,
+      float.(X_3 < V_4)
+    then
+      HeadVar__2_2 = math.ceiling(X_3)
+    else
+      HeadVar__2_2 = math.floor(X_3)
+    ).
+:- pragma foreign_proc("C", math.unchecked_sqrt(X :: (builtin.in)) = (SquareRoot :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    SquareRoot = sqrt(X);
+").
+:- pragma foreign_proc("C", math.unchecked_pow(X :: (builtin.in), Y :: (builtin.in)) = (Res :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Res = pow(X, Y);
+").
+:- pragma foreign_proc("C", math.exp(X :: (builtin.in)) = (Exp :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Exp = exp(X);
+").
+:- pragma foreign_proc("C", math.unchecked_ln(X :: (builtin.in)) = (Log :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Log = log(X);
+").
+:- pragma foreign_proc("C", math.unchecked_log10(X :: (builtin.in)) = (Log10 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Log10 = log10(X);
+").
+:- pragma foreign_proc("C", math.unchecked_log2(X :: (builtin.in)) = (Log2 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Log2 = log(X) / ML_FLOAT_LN2;
+").
+:- pragma foreign_proc("C", math.unchecked_log(B :: (builtin.in), X :: (builtin.in)) = (Log :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Log = log(X) / log(B);
+").
+:- pragma foreign_proc("C", math.sin(X :: (builtin.in)) = (Sin :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Sin = sin(X);
+").
+:- pragma foreign_proc("C", math.cos(X :: (builtin.in)) = (Cos :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Cos = cos(X);
+").
+:- pragma foreign_proc("C", math.tan(X :: (builtin.in)) = (Tan :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Tan = tan(X);
+").
+:- pragma foreign_proc("C", math.unchecked_asin(X :: (builtin.in)) = (ASin :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    ASin = asin(X);
+").
+:- pragma foreign_proc("C", math.unchecked_acos(X :: (builtin.in)) = (ACos :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    ACos = acos(X);
+").
+:- pragma foreign_proc("C", math.atan(X :: (builtin.in)) = (ATan :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    ATan = atan(X);
+").
+:- pragma foreign_proc("C", math.atan2(Y :: (builtin.in), X :: (builtin.in)) = (ATan2 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    ATan2 = atan2(Y, X);
+").
+:- pragma foreign_proc("C", math.sinh(X :: (builtin.in)) = (Sinh :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Sinh = sinh(X);
+").
+:- pragma foreign_proc("C", math.cosh(X :: (builtin.in)) = (Cosh :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Cosh = cosh(X);
+").
+:- pragma foreign_proc("C", math.tanh(X :: (builtin.in)) = (Tanh :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Tanh = tanh(X);
+").
+:- pragma foreign_proc("C", math.have_fma, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+#if defined(MR_HAVE_FMA)
+    SUCCESS_INDICATOR = MR_TRUE;
+#else
+    SUCCESS_INDICATOR = MR_FALSE;
+#endif
+").
+:- pragma foreign_proc("C", math.fma(X :: (builtin.in), Y :: (builtin.in), Z :: (builtin.in)) = (FMA :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+#if defined(MR_HAVE_FMA)
+    FMA = fma(X, Y, Z);
+#else
+    MR_fatal_error(\"math.fma not supported\");
+#endif
+").
+:- pragma exceptions(function, (math.pi), 1, 0, will_not_throw).
+:- pragma exceptions(function, (math.e), 1, 0, will_not_throw).
+:- pragma exceptions(function, (math.ceiling), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.floor), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.round), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.truncate), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.sqrt), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.unchecked_sqrt), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.solve_quadratic), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.pow), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.unchecked_pow), 3, 0, will_not_throw).
+:- pragma exceptions(function, (math.exp), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.ln), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.unchecked_ln), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.log10), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.unchecked_log10), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.log2), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.unchecked_log2), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.log), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.unchecked_log), 3, 0, will_not_throw).
+:- pragma exceptions(function, (math.sin), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.cos), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.tan), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.asin), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.unchecked_asin), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.acos), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.unchecked_acos), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.atan), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.atan2), 3, 0, will_not_throw).
+:- pragma exceptions(function, (math.sinh), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.cosh), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.tanh), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (math.have_fma), 0, 0, will_not_throw).
+:- pragma exceptions(function, (math.fma), 4, 0, will_not_throw).
+:- pragma termination_info((math.pi) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((math.e) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.ceiling((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.floor((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.round((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.truncate((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.sqrt((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(math.unchecked_sqrt((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.solve_quadratic((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(math.pow((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(math.unchecked_pow((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.exp((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.ln((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(math.unchecked_ln((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.log10((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(math.unchecked_log10((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.log2((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(math.unchecked_log2((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.log((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(math.unchecked_log((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.sin((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.cos((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.tan((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.asin((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(math.unchecked_asin((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.acos((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(math.unchecked_acos((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.atan((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.atan2((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.sinh((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.cosh((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.tanh((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((math.have_fma), finite(0, []), cannot_loop).
+:- pragma termination_info(math.fma((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).

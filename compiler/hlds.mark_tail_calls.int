@@ -1,0 +1,13 @@
+:- module (hlds.mark_tail_calls).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- pred mark_tail_calls(hlds.hlds_goal.goal_feature, hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode mark_tail_calls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred warn_non_tail_calls(hlds.hlds_module.module_info, io.io, io.io).
+:- mode warn_non_tail_calls((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred warn_non_tail_calls_in_proc(libs.globals.globals, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, io.io, io.io).
+:- mode warn_non_tail_calls_in_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
