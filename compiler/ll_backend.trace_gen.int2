@@ -1,0 +1,20 @@
+:- module (ll_backend.trace_gen).
+:- interface.
+:- type external_event_info
+    --->    external_event_info(ll_backend.llds.label, map.map(parse_tree.prog_data.tvar, set.set(ll_backend.llds.layout_locn)), ll_backend.llds.llds_code).
+:- type external_trace_port
+    --->    external_port_call 
+    ;       external_port_exit 
+    ;       external_port_fail 
+    ;       external_port_tailrec_call .
+:- type negation_end_port
+    --->    neg_success 
+    ;       neg_failure .
+:- type trace_info.
+:- type trace_slot_info
+    --->    trace_slot_info(((ll_backend.trace_gen).slot_from_full) :: maybe.maybe(int), ((ll_backend.trace_gen).slot_io) :: maybe.maybe(int), ((ll_backend.trace_gen).slot_trail) :: maybe.maybe(int), ((ll_backend.trace_gen).slot_maxfr) :: maybe.maybe(int), ((ll_backend.trace_gen).slot_call_table) :: maybe.maybe(int), ((ll_backend.trace_gen).slot_tail_rec) :: maybe.maybe(int)).
+:- type_representation(external_event_info, is_word_aligned_ptr).
+:- type_representation(external_trace_port, du_repn(enum("external_port_call", "external_port_exit", ["external_port_fail", "external_port_tailrec_call"],  no_c_j_cs))).
+:- type_representation(negation_end_port, du_repn(enum("neg_success", "neg_failure", [],  no_c_j_cs))).
+:- type_representation(trace_info, is_word_aligned_ptr).
+:- type_representation(trace_slot_info, is_word_aligned_ptr).

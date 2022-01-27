@@ -1,0 +1,7 @@
+:- module output.
+:- interface.
+:- use_module io.
+:- use_module map.
+:- use_module output_prof_info.
+:- pred output_profile(io.text_output_stream, output_prof_info.profiler_output, map.map(string, int), io.io, io.io).
+:- mode output_profile((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

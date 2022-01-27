@@ -1,0 +1,6 @@
+:- module mtc_diff.
+:- interface.
+:- type_representation(option_table, is_eqv_to(getopt.option_table(mtc_diff.option))).
+:- implementation.
+:- type option
+    --->    output_filename .

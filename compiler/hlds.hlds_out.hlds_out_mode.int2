@@ -1,0 +1,6 @@
+:- module ((hlds.hlds_out).hlds_out_mode).
+:- interface.
+:- type incl_addr
+    --->    do_not_incl_addr 
+    ;       do_incl_addr .
+:- type_representation(incl_addr, du_repn(enum("do_not_incl_addr", "do_incl_addr", [],  no_c_j_cs))).

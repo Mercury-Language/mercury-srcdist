@@ -1,0 +1,13 @@
+:- module (transform_hlds.const_prop).
+:- interface.
+:- use_module hlds.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.instmap).
+:- use_module (hlds.vartypes).
+:- use_module (libs.globals).
+:- use_module (parse_tree.prog_data).
+:- pred evaluate_call(libs.globals.globals, hlds.vartypes.vartypes, hlds.instmap.instmap, string, string, int, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode evaluate_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
