@@ -1,0 +1,289 @@
+/*
+** Automatically generated from `browse.m'
+** by the Mercury compiler,
+** version 13.05.1, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdb.browse. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdb__browse
+#define MR_HEADER_GUARD_mdb__browse
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__BROWSE_DECL_GUARD
+#define MDB__BROWSE_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+
+#line 42 "mdb.browse.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__browse__mdb__browse__type_ctor_info_deref_result_1;
+
+#line 45 "mdb.browse.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__browse__mdb__browse__type_ctor_info_unbound_0;
+
+#line 48 "mdb.browse.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__browse__mdb__browse__type_ctor_info_xml_function_wrapper_0;
+
+#line 51 "mdb.browse.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__browse__mdb__browse__type_ctor_info_xml_predicate_wrapper_0;
+
+#line 167 "browse.m"
+void MR_CALL 
+mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_109_100_98_95_95_98_114_111_119_115_101_95_95_117_110_98_111_117_110_100_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 167 "browse.m"
+  MR_Word * mdb__browse__param_1);
+
+#line 167 "browse.m"
+MR_bool MR_CALL 
+mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_109_100_98_95_95_98_114_111_119_115_101_95_95_117_110_98_111_117_110_100_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 142 "browse.m"
+void MR_CALL 
+mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_118_101_95_116_101_114_109_95_116_111_95_102_105_108_101_95_95_91_50_93_95_48_6_p_0(
+#line 142 "browse.m"
+  MR_String mdb__browse__param_1,
+#line 142 "browse.m"
+  MR_Word mdb__browse__param_2,
+#line 142 "browse.m"
+  MR_Word mdb__browse__param_3);
+
+#line 167 "browse.m"
+void MR_CALL 
+mdb__browse____Compare____unbound_0_0(
+#line 167 "browse.m"
+  MR_Word * mdb__browse__param_1);
+
+#line 167 "browse.m"
+MR_bool MR_CALL 
+mdb__browse____Unify____unbound_0_0(void);
+
+#line 163 "browse.m"
+MR_bool MR_CALL 
+mdb__browse__string_is_return_value_alias_1_p_0(
+#line 163 "browse.m"
+  MR_String mdb__browse__param_1);
+
+#line 158 "browse.m"
+void MR_CALL 
+mdb__browse__simplify_dirs_2_p_0(
+#line 158 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 158 "browse.m"
+  MR_Word * mdb__browse__param_2);
+
+#line 150 "browse.m"
+void MR_CALL 
+mdb__browse__save_term_to_file_xml_5_p_0(
+#line 150 "browse.m"
+  MR_String mdb__browse__param_1,
+#line 150 "browse.m"
+  MR_Word mdb__browse__param_2,
+#line 150 "browse.m"
+  MR_Word mdb__browse__param_3);
+
+#line 142 "browse.m"
+void MR_CALL 
+mdb__browse__save_term_to_file_6_p_0(
+#line 142 "browse.m"
+  MR_String mdb__browse__param_1,
+#line 142 "browse.m"
+  MR_String mdb__browse__param_2,
+#line 142 "browse.m"
+  MR_Word mdb__browse__param_3,
+#line 142 "browse.m"
+  MR_Word mdb__browse__param_4);
+
+#line 129 "browse.m"
+void MR_CALL 
+mdb__browse__browser_term_size_left_from_max_3_p_0(
+#line 129 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 129 "browse.m"
+  MR_Integer mdb__browse__param_2,
+#line 129 "browse.m"
+  MR_Integer * mdb__browse__param_3);
+
+#line 128 "browse.m"
+void MR_CALL 
+mdb__browse__term_size_left_from_max_3_p_0(
+#line 128 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 128 "browse.m"
+  MR_Integer mdb__browse__param_2,
+#line 128 "browse.m"
+  MR_Integer * mdb__browse__param_3);
+
+#line 109 "browse.m"
+void MR_CALL 
+mdb__browse__print_browser_term_format_7_p_0(
+#line 109 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 109 "browse.m"
+  MR_Word mdb__browse__param_2,
+#line 109 "browse.m"
+  MR_Word mdb__browse__param_3,
+#line 109 "browse.m"
+  MR_Word mdb__browse__param_4,
+#line 109 "browse.m"
+  MR_Word mdb__browse__param_5);
+
+#line 103 "browse.m"
+void MR_CALL 
+mdb__browse__print_browser_term_6_p_0(
+#line 103 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 103 "browse.m"
+  MR_Word mdb__browse__param_2,
+#line 103 "browse.m"
+  MR_Word mdb__browse__param_3,
+#line 103 "browse.m"
+  MR_Word mdb__browse__param_4);
+
+#line 94 "browse.m"
+void MR_CALL 
+mdb__browse__browse_external_8_p_0(
+#line 94 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 94 "browse.m"
+  MR_Box mdb__browse__param_2,
+#line 94 "browse.m"
+  MR_Word mdb__browse__param_3,
+#line 94 "browse.m"
+  MR_Word mdb__browse__param_4,
+#line 94 "browse.m"
+  MR_Word mdb__browse__param_5,
+#line 94 "browse.m"
+  MR_Word mdb__browse__param_6,
+#line 94 "browse.m"
+  MR_Word * mdb__browse__param_7);
+
+#line 86 "browse.m"
+void MR_CALL 
+mdb__browse__browse_external_no_modes_7_p_0(
+#line 86 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 86 "browse.m"
+  MR_Box mdb__browse__param_2,
+#line 86 "browse.m"
+  MR_Word mdb__browse__param_3,
+#line 86 "browse.m"
+  MR_Word mdb__browse__param_4,
+#line 86 "browse.m"
+  MR_Word mdb__browse__param_5,
+#line 86 "browse.m"
+  MR_Word * mdb__browse__param_6);
+
+#line 75 "browse.m"
+void MR_CALL 
+mdb__browse__browse_browser_term_format_9_p_0(
+#line 75 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 75 "browse.m"
+  MR_Word mdb__browse__param_2,
+#line 75 "browse.m"
+  MR_Word mdb__browse__param_3,
+#line 75 "browse.m"
+  MR_Word mdb__browse__param_4,
+#line 75 "browse.m"
+  MR_Word mdb__browse__param_5,
+#line 75 "browse.m"
+  MR_Word mdb__browse__param_6,
+#line 75 "browse.m"
+  MR_Word * mdb__browse__param_7);
+
+#line 68 "browse.m"
+void MR_CALL 
+mdb__browse__browse_browser_term_format_no_modes_8_p_0(
+#line 68 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 68 "browse.m"
+  MR_Word mdb__browse__param_2,
+#line 68 "browse.m"
+  MR_Word mdb__browse__param_3,
+#line 68 "browse.m"
+  MR_Word mdb__browse__param_4,
+#line 68 "browse.m"
+  MR_Word mdb__browse__param_5,
+#line 68 "browse.m"
+  MR_Word * mdb__browse__param_6);
+
+#line 60 "browse.m"
+void MR_CALL 
+mdb__browse__save_and_browse_browser_term_xml_6_p_0(
+#line 60 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 60 "browse.m"
+  MR_Word mdb__browse__param_2,
+#line 60 "browse.m"
+  MR_Word mdb__browse__param_3,
+#line 60 "browse.m"
+  MR_Word mdb__browse__param_4);
+
+#line 51 "browse.m"
+void MR_CALL 
+mdb__browse__browse_browser_term_9_p_0(
+#line 51 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 51 "browse.m"
+  MR_Word mdb__browse__param_2,
+#line 51 "browse.m"
+  MR_Word mdb__browse__param_3,
+#line 51 "browse.m"
+  MR_Word mdb__browse__param_4,
+#line 51 "browse.m"
+  MR_Word * mdb__browse__param_5,
+#line 51 "browse.m"
+  MR_Word mdb__browse__param_6,
+#line 51 "browse.m"
+  MR_Word * mdb__browse__param_7);
+
+#line 42 "browse.m"
+void MR_CALL 
+mdb__browse__browse_browser_term_no_modes_8_p_0(
+#line 42 "browse.m"
+  MR_Word mdb__browse__param_1,
+#line 42 "browse.m"
+  MR_Word mdb__browse__param_2,
+#line 42 "browse.m"
+  MR_Word mdb__browse__param_3,
+#line 42 "browse.m"
+  MR_Word * mdb__browse__param_4,
+#line 42 "browse.m"
+  MR_Word mdb__browse__param_5,
+#line 42 "browse.m"
+  MR_Word * mdb__browse__param_6);
+
+void mercury__mdb__browse__init(void);
+void mercury__mdb__browse__init_type_tables(void);
+void mercury__mdb__browse__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdb.browse */
+
+/* :- end_interface mdb.browse. */

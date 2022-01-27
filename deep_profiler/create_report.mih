@@ -1,0 +1,165 @@
+/*
+** Automatically generated from `create_report.m'
+** by the Mercury compiler,
+** version 13.05.1, configured for x86_64-apple-darwin12.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module create_report. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_create_report
+#define MR_HEADER_GUARD_create_report
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CREATE_REPORT_DECL_GUARD
+#define CREATE_REPORT_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "create_report.mih.tmp"
+extern const MR_TypeCtorInfo_Struct create_report__create_report__type_ctor_info_call_site_callee_perf_0;
+
+#line 44 "create_report.mih.tmp"
+extern const MR_TypeCtorInfo_Struct create_report__create_report__type_ctor_info_gs_field_raw_data_0;
+
+#line 47 "create_report.mih.tmp"
+extern const MR_TypeCtorInfo_Struct create_report__create_report__type_ctor_info_raw_gs_ds_map_0;
+
+#line 50 "create_report.mih.tmp"
+extern const MR_TypeCtorInfo_Struct create_report__create_report__type_ctor_info_raw_gs_field_info_0;
+
+#line 53 "create_report.mih.tmp"
+extern const MR_TypeCtorInfo_Struct create_report__create_report__type_ctor_info_raw_gs_field_map_0;
+
+#line 77 "create_report.m"
+void MR_CALL 
+create_report__own_and_inherit_to_perf_row_data_5_p_0(
+#line 77 "create_report.m"
+  MR_Word create_report__param_1,
+#line 77 "create_report.m"
+  MR_Word create_report__param_2,
+#line 77 "create_report.m"
+  MR_Box create_report__param_3,
+#line 77 "create_report.m"
+  MR_Word create_report__param_4,
+#line 77 "create_report.m"
+  MR_Word create_report__param_5,
+#line 77 "create_report.m"
+  MR_Word * create_report__param_6);
+
+#line 71 "create_report.m"
+MR_Word MR_CALL 
+create_report__describe_proc_2_f_0(
+#line 71 "create_report.m"
+  MR_Word create_report__param_1,
+#line 71 "create_report.m"
+  MR_Word create_report__param_2);
+
+#line 66 "create_report.m"
+void MR_CALL 
+create_report__create_clique_report_3_p_0(
+#line 66 "create_report.m"
+  MR_Word create_report__param_1,
+#line 66 "create_report.m"
+  MR_Word create_report__param_2,
+#line 66 "create_report.m"
+  MR_Word * create_report__param_3);
+
+#line 59 "create_report.m"
+void MR_CALL 
+create_report__create_top_procs_report_6_p_0(
+#line 59 "create_report.m"
+  MR_Word create_report__param_1,
+#line 59 "create_report.m"
+  MR_Word create_report__param_2,
+#line 59 "create_report.m"
+  MR_Word create_report__param_3,
+#line 59 "create_report.m"
+  MR_Word create_report__param_4,
+#line 59 "create_report.m"
+  MR_Word create_report__param_5,
+#line 59 "create_report.m"
+  MR_Word * create_report__param_6);
+
+#line 53 "create_report.m"
+void MR_CALL 
+create_report__create_dynamic_procrep_coverage_report_3_p_0(
+#line 53 "create_report.m"
+  MR_Word create_report__param_1,
+#line 53 "create_report.m"
+  MR_Word create_report__param_2,
+#line 53 "create_report.m"
+  MR_Word * create_report__param_3);
+
+#line 45 "create_report.m"
+void MR_CALL 
+create_report__create_static_procrep_coverage_report_3_p_0(
+#line 45 "create_report.m"
+  MR_Word create_report__param_1,
+#line 45 "create_report.m"
+  MR_Word create_report__param_2,
+#line 45 "create_report.m"
+  MR_Word * create_report__param_3);
+
+#line 40 "create_report.m"
+void MR_CALL 
+create_report__create_proc_report_3_p_0(
+#line 40 "create_report.m"
+  MR_Word create_report__param_1,
+#line 40 "create_report.m"
+  MR_Word create_report__param_2,
+#line 40 "create_report.m"
+  MR_Word * create_report__param_3);
+
+#line 34 "create_report.m"
+void MR_CALL 
+create_report__create_call_site_dynamic_var_use_report_3_p_0(
+#line 34 "create_report.m"
+  MR_Word create_report__param_1,
+#line 34 "create_report.m"
+  MR_Word create_report__param_2,
+#line 34 "create_report.m"
+  MR_Word * create_report__param_3);
+
+#line 28 "create_report.m"
+void MR_CALL 
+create_report__create_report_3_p_0(
+#line 28 "create_report.m"
+  MR_Word create_report__param_1,
+#line 28 "create_report.m"
+  MR_Word create_report__param_2,
+#line 28 "create_report.m"
+  MR_Word * create_report__param_3);
+
+void mercury__create_report__init(void);
+void mercury__create_report__init_type_tables(void);
+void mercury__create_report__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_create_report */
+
+/* :- end_interface create_report. */

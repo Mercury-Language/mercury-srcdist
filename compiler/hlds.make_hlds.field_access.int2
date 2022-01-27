@@ -1,0 +1,13 @@
+:- module ((hlds.make_hlds).field_access).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module pair.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io_util).
+:- import_module ((hlds.make_hlds).qual_info).
+:- import_module ((hlds.make_hlds).state_var).
+:- type field_list == assoc_list.assoc_list(parse_tree.prog_data.ctor_field_name, list.list(parse_tree.prog_data.prog_term)).

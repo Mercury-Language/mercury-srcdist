@@ -1,0 +1,15 @@
+echo on
+register --quiet
+untrust 0
+break p
+continue
+finish
+dd -d 3 -n 7
+no
+no
+yes
+yes
+yes
+yes
+yes
+quit -y

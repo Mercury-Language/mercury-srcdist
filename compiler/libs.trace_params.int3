@@ -1,0 +1,4 @@
+:- module (libs.trace_params).
+:- interface.
+:- type trace_level.
+:- type trace_suppress_items.

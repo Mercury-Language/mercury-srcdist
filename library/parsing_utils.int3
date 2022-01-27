@@ -1,0 +1,15 @@
+:- module parsing_utils.
+:- interface.
+:- import_module char.
+:- import_module list.
+:- import_module maybe.
+:- import_module unit.
+:- type line_numbers.
+:- type ps.
+:- type skip_whitespace_pred.
+:- type src.
+:- type parse_result(T).
+:- type parser(T).
+:- type parser_with_state(T, S).
+:- inst (parser) == (pred(in, out, in, out) is semidet).
+:- inst (parser_with_state) == (pred(in, out, in, out, in, out) is semidet).

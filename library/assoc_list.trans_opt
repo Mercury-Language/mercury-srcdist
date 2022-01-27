@@ -1,0 +1,85 @@
+:- module assoc_list.
+:- pragma termination_info(assoc_list.reverse_members((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.reverse_members((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.from_corresponding_lists((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(assoc_list.from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(assoc_list.keys((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.keys((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.values((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.values((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.keys_and_values((builtin.in), (builtin.out), (builtin.out)), finite(0, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(assoc_list.search((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(assoc_list.elem((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.det_elem((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, no, yes, no]), can_loop).
+:- pragma termination_info(assoc_list.remove((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), cannot_loop).
+:- pragma termination_info(assoc_list.map_keys_only((pred((builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.map_keys_only((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(assoc_list.map_values_only((pred((builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.map_values_only((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(assoc_list.map_values((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.map_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(assoc_list.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(assoc_list.negated_filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.negated_filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(assoc_list.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.merge((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.merge((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.foldl_keys((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_keys((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_keys((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_keys((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_keys((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_keys((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_keys((pred((builtin.in), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_keys((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_values((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_values((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_values((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_values((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_values((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_values((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_values((pred((builtin.in), (builtin.in), (builtin.out)) is multi), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(assoc_list.foldl_values((pred((builtin.in), (builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma exceptions(function, (assoc_list.reverse_members), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (assoc_list.reverse_members), 2, 0, will_not_throw).
+:- pragma exceptions(function, (assoc_list.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (assoc_list.keys), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (assoc_list.keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (assoc_list.values), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (assoc_list.values), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (assoc_list.keys_and_values), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (assoc_list.search), 3, 0, conditional).
+:- pragma exceptions(function, (assoc_list.elem), 3, 0, conditional).
+:- pragma exceptions(function, (assoc_list.det_elem), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.remove), 4, 0, conditional).
+:- pragma exceptions(predicate, (assoc_list.map_keys_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (assoc_list.map_keys_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.map_values_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (assoc_list.map_values_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (assoc_list.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (assoc_list.filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.negated_filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (assoc_list.negated_filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.merge), 3, 0, conditional).
+:- pragma exceptions(function, (assoc_list.merge), 3, 0, conditional).
+:- pragma exceptions(predicate, (assoc_list.foldl_keys), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_keys), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_keys), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_keys), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_keys), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_keys), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_keys), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_keys), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_values), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_values), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_values), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_values), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_values), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_values), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_values), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.foldl_values), 4, 7, may_throw(user_exception)).
