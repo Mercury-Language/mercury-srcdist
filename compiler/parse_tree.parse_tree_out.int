@@ -1,0 +1,54 @@
+:- module (parse_tree.parse_tree_out).
+:- interface.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module (libs.globals).
+:- import_module (parse_tree.parse_tree_out_info).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- pred convert_to_mercury_int(libs.globals.globals, string, parse_tree.prog_item.parse_tree_int, io.io, io.io).
+:- mode convert_to_mercury_int((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred convert_to_mercury_opt(libs.globals.globals, string, parse_tree.prog_item.parse_tree_opt, io.io, io.io).
+:- mode convert_to_mercury_opt((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred convert_to_mercury_src(libs.globals.globals, string, parse_tree.prog_item.parse_tree_src, io.io, io.io).
+:- mode convert_to_mercury_src((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_aug_compilation_unit(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.aug_compilation_unit, io.io, io.io).
+:- mode mercury_output_aug_compilation_unit((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_ctor(parse_tree.prog_data.tvarset, parse_tree.prog_data.constructor, io.io, io.io).
+:- mode mercury_output_ctor((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_instance_methods(list.list(parse_tree.prog_data.instance_method), io.io, io.io).
+:- mode mercury_output_instance_methods((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_int_for_opt_item_block(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.int_for_opt_item_block, io.io, io.io).
+:- mode mercury_output_int_for_opt_item_block((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_int_for_opt_item_blocks(parse_tree.parse_tree_out_info.merc_out_info, list.list(parse_tree.prog_item.int_for_opt_item_block), io.io, io.io).
+:- mode mercury_output_int_for_opt_item_blocks((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_int_item_block(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.int_item_block, io.io, io.io).
+:- mode mercury_output_int_item_block((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_int_item_blocks(parse_tree.parse_tree_out_info.merc_out_info, list.list(parse_tree.prog_item.int_item_block), io.io, io.io).
+:- mode mercury_output_int_item_blocks((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_item(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.item, io.io, io.io).
+:- mode mercury_output_item((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_opt_item_block(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.opt_item_block, io.io, io.io).
+:- mode mercury_output_opt_item_block((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_opt_item_blocks(parse_tree.parse_tree_out_info.merc_out_info, list.list(parse_tree.prog_item.opt_item_block), io.io, io.io).
+:- mode mercury_output_opt_item_blocks((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_parse_tree_int(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.parse_tree_int, io.io, io.io).
+:- mode mercury_output_parse_tree_int((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_parse_tree_opt(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.parse_tree_opt, io.io, io.io).
+:- mode mercury_output_parse_tree_opt((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_parse_tree_src(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.parse_tree_src, io.io, io.io).
+:- mode mercury_output_parse_tree_src((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_raw_compilation_unit(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.raw_compilation_unit, io.io, io.io).
+:- mode mercury_output_raw_compilation_unit((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_raw_item_block(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.raw_item_block, io.io, io.io).
+:- mode mercury_output_raw_item_block((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_raw_item_blocks(parse_tree.parse_tree_out_info.merc_out_info, list.list(parse_tree.prog_item.raw_item_block), io.io, io.io).
+:- mode mercury_output_raw_item_blocks((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_src_item_block(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.src_item_block, io.io, io.io).
+:- mode mercury_output_src_item_block((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_src_item_blocks(parse_tree.parse_tree_out_info.merc_out_info, list.list(parse_tree.prog_item.src_item_block), io.io, io.io).
+:- mode mercury_output_src_item_blocks((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_where_attributes(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_data.tvarset, maybe.maybe(parse_tree.prog_data.solver_type_details), maybe.maybe(parse_tree.prog_data.unify_compare), maybe.maybe(list.list(parse_tree.prog_data.sym_name_and_arity)), io.io, io.io).
+:- mode mercury_output_where_attributes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

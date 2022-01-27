@@ -1,0 +1,62 @@
+/*
+** Automatically generated from `saved_vars.m'
+** by the Mercury compiler,
+** version rotd-2016-06-30
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.saved_vars. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__saved_vars
+#define MR_HEADER_GUARD_ll_backend__saved_vars
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__SAVED_VARS_DECL_GUARD
+#define LL_BACKEND__SAVED_VARS_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__saved_vars__ll_backend__saved_vars__type_ctor_info_slot_info_0;
+
+void MR_CALL 
+ll_backend__saved_vars__saved_vars_proc_5_p_0(
+  MR_Word ll_backend__saved_vars__param_1,
+  MR_Word ll_backend__saved_vars__param_2,
+  MR_Word * ll_backend__saved_vars__param_3,
+  MR_Word ll_backend__saved_vars__param_4,
+  MR_Word * ll_backend__saved_vars__param_5);
+
+void mercury__ll_backend__saved_vars__init(void);
+void mercury__ll_backend__saved_vars__init_type_tables(void);
+void mercury__ll_backend__saved_vars__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.saved_vars */
+
+/* :- end_interface ll_backend.saved_vars. */
