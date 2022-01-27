@@ -1,0 +1,89 @@
+/*
+** Automatically generated from `mode_ordering.m'
+** by the Mercury compiler,
+** version rotd-2021-12-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.mode_ordering.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__mode_ordering
+#define MR_HEADER_GUARD_check_hlds__mode_ordering
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODE_ORDERING_DECL_GUARD
+#define CHECK_HLDS__MODE_ORDERING_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_ordering__check_hlds__mode_ordering__type_ctor_info_mode_ordering_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_ordering__check_hlds__mode_ordering__type_ctor_info_pred_constraint_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_ordering__check_hlds__mode_ordering__type_ctor_info_pred_constraint_map_0;
+
+void MR_CALL 
+check_hlds__mode_ordering__mode_ordering_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mode_ordering____Compare____pred_constraint_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_ordering____Compare____pred_constraint_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__mode_ordering____Unify____pred_constraint_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_ordering____Unify____pred_constraint_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__mode_ordering__init(void);
+void mercury__check_hlds__mode_ordering__init_type_tables(void);
+void mercury__check_hlds__mode_ordering__init_debugger(void);
+const char *mercury__check_hlds__mode_ordering__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.mode_ordering
+
+// :- end_interface check_hlds.mode_ordering.

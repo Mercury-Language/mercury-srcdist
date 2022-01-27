@@ -1,0 +1,14 @@
+module(2, "counter.m",
+	counter,
+	{},
+	{builtin, private_builtin},
+	{int},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

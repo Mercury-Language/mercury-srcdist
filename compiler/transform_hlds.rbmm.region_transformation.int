@@ -1,0 +1,18 @@
+:- module ((transform_hlds.rbmm).region_transformation).
+:- interface.
+:- use_module hlds.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- use_module ((transform_hlds.rbmm).points_to_info).
+:- use_module ((transform_hlds.rbmm).region_arguments).
+:- use_module ((transform_hlds.rbmm).region_instruction).
+:- use_module ((transform_hlds.rbmm).region_resurrection_renaming).
+:- type name_to_prog_var == map.map(string, parse_tree.prog_data.prog_var).
+:- type name_to_prog_var_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_transformation.name_to_prog_var).
+:- func create_region_pred_name = string.
+:- pred region_transform(transform_hlds.rbmm.points_to_info.rpta_info_table, transform_hlds.rbmm.region_arguments.proc_formal_region_args_table, transform_hlds.rbmm.region_arguments.proc_pp_actual_region_args_table, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_table, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_table, transform_hlds.rbmm.region_instruction.region_instr_table, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_annotation_table, transform_hlds.rbmm.region_resurrection_renaming.rbmm_renaming_annotation_table, transform_hlds.rbmm.region_transformation.name_to_prog_var_table, transform_hlds.rbmm.region_transformation.name_to_prog_var_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode region_transform((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func remove_region_pred_name = string.
