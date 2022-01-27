@@ -1,0 +1,9 @@
+:- module (check_hlds.inst_check).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_util).
+:- pred check_insts_have_matching_types(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode check_insts_have_matching_types((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
