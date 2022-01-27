@@ -1,0 +1,52 @@
+:- module ((check_hlds.simplify).simplify_tasks).
+:- interface.
+:- type maybe_after_front_end
+	where	type_is_abstract_enum(1).
+:- type maybe_elim_removable_scopes
+	where	type_is_abstract_enum(1).
+:- type maybe_generate_warnings
+	where	type_is_abstract_enum(1).
+:- type maybe_ignore_par_conjs
+	where	type_is_abstract_enum(1).
+:- type maybe_invoke_format_call
+	where	type_is_abstract_enum(1).
+:- type maybe_mark_cm_changes
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_const_structs
+	where	type_is_abstract_enum(1).
+:- type maybe_opt_extra_structs
+	where	type_is_abstract_enum(1).
+:- type maybe_try_opt_const_structs
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_duplicate_calls
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_implicit_streams
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_no_soln_disjunct
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_obsolete
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_simple_code
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_suspicious_rec
+	where	type_is_abstract_enum(1).
+:- type simplify_task
+	where	type_is_abstract_enum(5).
+:- type simplify_tasks.
+:- type_representation(maybe_after_front_end, du_repn(enum("not_after_front_end", "after_front_end", [],  no_c_j_cs))).
+:- type_representation(maybe_elim_removable_scopes, du_repn(enum("do_not_elim_removable_scopes", "elim_removable_scopes", [],  no_c_j_cs))).
+:- type_representation(maybe_generate_warnings, du_repn(enum("do_not_generate_warnings", "generate_warnings", [],  no_c_j_cs))).
+:- type_representation(maybe_ignore_par_conjs, du_repn(enum("do_not_ignore_par_conjs", "ignore_par_conjs", [],  no_c_j_cs))).
+:- type_representation(maybe_invoke_format_call, du_repn(enum("do_not_invoke_format_call", "invoke_format_call", [],  no_c_j_cs))).
+:- type_representation(maybe_mark_cm_changes, du_repn(enum("do_not_mark_code_model_changes", "mark_code_model_changes", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_const_structs, du_repn(enum("do_not_opt_const_structs", "opt_const_structs", [],  no_c_j_cs))).
+:- type_representation(maybe_opt_extra_structs, du_repn(enum("do_not_opt_extra_structs", "opt_extra_structs", [],  no_c_j_cs))).
+:- type_representation(maybe_try_opt_const_structs, du_repn(enum("do_not_try_opt_const_structs", "try_opt_const_structs", [],  no_c_j_cs))).
+:- type_representation(maybe_warn_duplicate_calls, du_repn(enum("do_not_warn_duplicate_calls", "warn_duplicate_calls", [],  no_c_j_cs))).
+:- type_representation(maybe_warn_implicit_streams, du_repn(enum("do_not_warn_implicit_streams", "warn_implicit_streams", [],  no_c_j_cs))).
+:- type_representation(maybe_warn_no_soln_disjunct, du_repn(enum("do_not_warn_no_soln_disjunct", "warn_no_soln_disjunct", [],  no_c_j_cs))).
+:- type_representation(maybe_warn_obsolete, du_repn(enum("do_not_warn_obsolete", "warn_obsolete", [],  no_c_j_cs))).
+:- type_representation(maybe_warn_simple_code, du_repn(enum("do_not_warn_simple_code", "warn_simple_code", [],  no_c_j_cs))).
+:- type_representation(maybe_warn_suspicious_rec, du_repn(enum("do_not_warn_suspicious_rec", "warn_suspicious_rec", [],  no_c_j_cs))).
+:- type_representation(simplify_task, du_repn(enum("simptask_warn_simple_code", "simptask_warn_duplicate_calls", ["simptask_warn_implicit_stream_calls", "simptask_format_calls", "simptask_warn_obsolete", "simptask_mark_code_model_changes", "simptask_after_front_end", "simptask_excess_assigns", "simptask_test_after_switch", "simptask_elim_removable_scopes", "simptask_opt_duplicate_calls", "simptask_constant_prop", "simptask_common_structs", "simptask_extra_common_structs", "simptask_try_opt_const_structs", "simptask_ignore_par_conjs", "simptask_warn_suspicious_recursion", "simptask_warn_no_solution_disjunct"],  no_c_j_cs))).
+:- type_representation(simplify_tasks, is_word_aligned_ptr).

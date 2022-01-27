@@ -1,0 +1,57 @@
+:- module (make.dependencies).
+:- interface.
+:- use_module bool.
+:- use_module enum.
+:- use_module io.
+:- use_module libs.
+:- use_module maybe.
+:- use_module set.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.maybe_succeeded).
+:- use_module (make.build).
+:- type cached_direct_imports.
+:- type cached_foreign_imports.
+:- type cached_transitive_dependencies.
+:- type dependencies_result
+    --->    deps_up_to_date 
+    ;       deps_out_of_date 
+    ;       deps_error .
+:- type dependency_file
+    --->    dep_target(make.target_file)
+    ;       dep_file(libs.file_util.file_name).
+:- type find_module_deps(T) == pred(libs.globals.globals, make.deps_set.module_index, libs.maybe_succeeded.maybe_succeeded, make.deps_set.deps_set(T), make.make_info, make.make_info, io.io, io.io).
+:- type find_module_deps_plain_set(T) == pred(libs.globals.globals, make.deps_set.module_index, libs.maybe_succeeded.maybe_succeeded, set.set(T), make.make_info, make.make_info, io.io, io.io).
+:- inst find_module_deps == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst find_module_deps_plain_set == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pred check_dependencies(libs.globals.globals, libs.file_util.file_name, maybe.maybe_error(libs.timestamp.timestamp), libs.maybe_succeeded.maybe_succeeded, list.list(make.dependencies.dependency_file), make.dependencies.dependencies_result, make.make_info, make.make_info, io.io, io.io).
+:- mode check_dependencies((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred check_dependency_timestamps(libs.globals.globals, libs.file_util.file_name, maybe.maybe_error(libs.timestamp.timestamp), libs.maybe_succeeded.maybe_succeeded, list.list(File), pred(File, io.io, io.io), list.list(maybe.maybe_error(libs.timestamp.timestamp)), make.dependencies.dependencies_result, io.io, io.io).
+:- mode check_dependency_timestamps((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred dependency_status(libs.globals.globals, make.dependencies.dependency_file, make.dependency_status, make.make_info, make.make_info, io.io, io.io).
+:- mode dependency_status((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred deps_set_foldl3_maybe_stop_at_error(make.maybe_keep_going, make.build.foldl3_pred_with_status(T, Acc, Info, IO), libs.globals.globals, make.deps_set.deps_set(T), libs.maybe_succeeded.maybe_succeeded, Acc, Acc, Info, Info, IO, IO) <= (enum.enum(T)).
+:- mode deps_set_foldl3_maybe_stop_at_error((builtin.in), builtin.in(((make.build).foldl3_pred_with_status)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred find_reachable_local_modules(libs.globals.globals, mdbcomp.sym_name.module_name, libs.maybe_succeeded.maybe_succeeded, set.set(mdbcomp.sym_name.module_name), make.make_info, make.make_info, io.io, io.io).
+:- mode find_reachable_local_modules((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func init_cached_direct_imports = make.dependencies.cached_direct_imports.
+:- func init_cached_foreign_imports = make.dependencies.cached_foreign_imports.
+:- func init_cached_transitive_dependencies = make.dependencies.cached_transitive_dependencies.
+:- pred make_local_module_id_options(libs.globals.globals, mdbcomp.sym_name.module_name, libs.maybe_succeeded.maybe_succeeded, list.list(string), make.make_info, make.make_info, io.io, io.io).
+:- mode make_local_module_id_options((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred remove_nested_modules(libs.globals.globals, list.list(mdbcomp.sym_name.module_name), list.list(mdbcomp.sym_name.module_name), make.make_info, make.make_info, io.io, io.io).
+:- mode remove_nested_modules((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func target_dependencies(libs.globals.globals, make.module_target_type) = make.dependencies.find_module_deps(make.deps_set.dependency_file_index).
+:- mode target_dependencies((builtin.in), (builtin.in)) = builtin.out(((make.dependencies).find_module_deps)) is det.
+:- pred union_deps(make.dependencies.find_module_deps(T), libs.globals.globals, make.deps_set.module_index, libs.maybe_succeeded.maybe_succeeded, make.deps_set.deps_set(T), make.deps_set.deps_set(T), make.make_info, make.make_info, io.io, io.io).
+:- mode union_deps(builtin.in(((make.dependencies).find_module_deps)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred union_deps_plain_set(make.dependencies.find_module_deps_plain_set(T), libs.globals.globals, make.deps_set.module_index, libs.maybe_succeeded.maybe_succeeded, set.set(T), set.set(T), make.make_info, make.make_info, io.io, io.io).
+:- mode union_deps_plain_set(builtin.in(((make.dependencies).find_module_deps_plain_set)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- use_module (make.deps_set).
+:- type cached_direct_imports == map.map(make.deps_set.module_index, make.dependencies.module_deps_result).
+:- type cached_foreign_imports == map.map(make.deps_set.module_index, make.dependencies.module_deps_result).
+:- type cached_transitive_dependencies == map.map(make.dependencies.transitive_dependencies_root, make.dependencies.deps_result(make.deps_set.module_index)).
+:- type deps_result(T).
+:- type module_deps_result == make.dependencies.deps_result(make.deps_set.module_index).
+:- type transitive_dependencies_root.
