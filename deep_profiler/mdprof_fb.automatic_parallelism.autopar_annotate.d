@@ -1,0 +1,255 @@
+
+
+mdprof_fb.automatic_parallelism.autopar_annotate.optdate mdprof_fb.automatic_parallelism.autopar_annotate.trans_opt_date autopar_annotate.err mdprof_fb.automatic_parallelism.autopar_annotate.c_date mdprof_fb.automatic_parallelism.autopar_annotate.s_date mdprof_fb.automatic_parallelism.autopar_annotate.pic_s_date mdprof_fb.automatic_parallelism.autopar_annotate.il_date mdprof_fb.automatic_parallelism.autopar_annotate.java_date : autopar_annotate.m \
+	mdprof_fb.automatic_parallelism.int0 \
+	mdprof_fb.int0 \
+	builtin.int \
+	list.int \
+	mdbcomp.int \
+	private_builtin.int \
+	program_representation_utils.int \
+	set.int \
+	mdbcomp.goal_path.int \
+	mdbcomp.program_representation.int \
+	mdprof_fb.automatic_parallelism.autopar_types.int \
+	analysis_utils.int2 \
+	array.int2 \
+	assoc_list.int2 \
+	bimap.int2 \
+	bitmap.int2 \
+	bool.int2 \
+	char.int2 \
+	construct.int2 \
+	cord.int2 \
+	coverage.int2 \
+	deconstruct.int2 \
+	digraph.int2 \
+	enum.int2 \
+	exclude.int2 \
+	io.int2 \
+	lazy.int2 \
+	map.int2 \
+	maybe.int2 \
+	measurement_units.int2 \
+	measurements.int2 \
+	ops.int2 \
+	pair.int2 \
+	pretty_printer.int2 \
+	profile.int2 \
+	query.int2 \
+	random.int2 \
+	report.int2 \
+	rtti_implementation.int2 \
+	set_ordlist.int2 \
+	sparse_bitset.int2 \
+	stream.int2 \
+	string.int2 \
+	term.int2 \
+	time.int2 \
+	tree234.int2 \
+	type_desc.int2 \
+	unit.int2 \
+	univ.int2 \
+	var_use_analysis.int2 \
+	mdbcomp.feedback.int2 \
+	mdbcomp.prim_data.int2 \
+	mdbcomp.rtti_access.int2 \
+	mdbcomp.trace_counts.int2 \
+	mdbcomp.feedback.automatic_parallelism.int2
+
+mdprof_fb.automatic_parallelism.autopar_annotate.mh mdprof_fb.automatic_parallelism.autopar_annotate.mih : mdprof_fb.automatic_parallelism.autopar_annotate.c
+
+
+ifeq ($(findstring il,$(GRADE)),il)
+mdprof_fb.automatic_parallelism.autopar_annotate.module_dep : mdprof_fb.automatic_parallelism.autopar_annotate.il
+else
+ ifeq ($(findstring java,$(GRADE)),java)
+mdprof_fb.automatic_parallelism.autopar_annotate.module_dep : jmercury/mdprof_fb__automatic_parallelism__autopar_annotate.java
+ else
+mdprof_fb.automatic_parallelism.autopar_annotate.module_dep : mdprof_fb.automatic_parallelism.autopar_annotate.c
+ endif
+endif
+
+
+mdprof_fb.automatic_parallelism.autopar_annotate.date mdprof_fb.automatic_parallelism.autopar_annotate.date0 \
+	mdprof_fb.automatic_parallelism.date \
+	mdprof_fb.date : autopar_annotate.m \
+	mdprof_fb.automatic_parallelism.int0 \
+	mdprof_fb.int0 \
+	builtin.int3 \
+	list.int3 \
+	mdbcomp.int3 \
+	private_builtin.int3 \
+	program_representation_utils.int3 \
+	set.int3 \
+	mdbcomp.goal_path.int3 \
+	mdbcomp.program_representation.int3 \
+	mdprof_fb.automatic_parallelism.autopar_types.int3 \
+	analysis_utils.int3 \
+	array.int3 \
+	assoc_list.int3 \
+	bimap.int3 \
+	bitmap.int3 \
+	bool.int3 \
+	char.int3 \
+	construct.int3 \
+	cord.int3 \
+	coverage.int3 \
+	deconstruct.int3 \
+	digraph.int3 \
+	enum.int3 \
+	exclude.int3 \
+	io.int3 \
+	lazy.int3 \
+	map.int3 \
+	maybe.int3 \
+	measurement_units.int3 \
+	measurements.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	profile.int3 \
+	query.int3 \
+	random.int3 \
+	report.int3 \
+	rtti_implementation.int3 \
+	set_ordlist.int3 \
+	sparse_bitset.int3 \
+	stream.int3 \
+	string.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	unit.int3 \
+	univ.int3 \
+	var_use_analysis.int3 \
+	mdbcomp.feedback.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.trace_counts.int3 \
+	mdbcomp.feedback.automatic_parallelism.int3
+
+mdprof_fb.automatic_parallelism.autopar_annotate.date0 \
+	mdprof_fb.automatic_parallelism.date0 \
+	mdprof_fb.date0 : autopar_annotate.m \
+	builtin.int3 \
+	list.int3 \
+	mdbcomp.int3 \
+	private_builtin.int3 \
+	program_representation_utils.int3 \
+	set.int3 \
+	mdbcomp.goal_path.int3 \
+	mdbcomp.program_representation.int3 \
+	mdprof_fb.automatic_parallelism.autopar_types.int3 \
+	analysis_utils.int3 \
+	array.int3 \
+	assoc_list.int3 \
+	bimap.int3 \
+	bitmap.int3 \
+	bool.int3 \
+	char.int3 \
+	construct.int3 \
+	cord.int3 \
+	coverage.int3 \
+	deconstruct.int3 \
+	digraph.int3 \
+	enum.int3 \
+	exclude.int3 \
+	io.int3 \
+	lazy.int3 \
+	map.int3 \
+	maybe.int3 \
+	measurement_units.int3 \
+	measurements.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	profile.int3 \
+	query.int3 \
+	random.int3 \
+	report.int3 \
+	rtti_implementation.int3 \
+	set_ordlist.int3 \
+	sparse_bitset.int3 \
+	stream.int3 \
+	string.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	unit.int3 \
+	univ.int3 \
+	var_use_analysis.int3 \
+	mdbcomp.feedback.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.trace_counts.int3 \
+	mdbcomp.feedback.automatic_parallelism.int3
+
+
+
+mdprof_fb.automatic_parallelism.autopar_annotate.$O :  \
+	time.mh \
+	time.mh \
+	bitmap.mh \
+	bitmap.mh \
+	mdbcomp.rtti_access.mh \
+	mdbcomp.rtti_access.mh \
+	string.mh \
+	time.mh \
+	io.mh \
+	io.mh \
+	array.mh \
+	array.mh \
+	mdbcomp.program_representation.mh \
+	mdbcomp.program_representation.mh
+
+
+
+mdprof_fb.automatic_parallelism.autopar_annotate.pic_o :  \
+	time.mh \
+	time.mh \
+	bitmap.mh \
+	bitmap.mh \
+	mdbcomp.rtti_access.mh \
+	mdbcomp.rtti_access.mh \
+	string.mh \
+	time.mh \
+	io.mh \
+	io.mh \
+	array.mh \
+	array.mh \
+	mdbcomp.program_representation.mh \
+	mdbcomp.program_representation.mh
+
+
+mdprof_fb.automatic_parallelism.autopar_annotate.int0 : mdprof_fb.automatic_parallelism.autopar_annotate.date0
+	@:
+mdprof_fb.automatic_parallelism.autopar_annotate.int : mdprof_fb.automatic_parallelism.autopar_annotate.date
+	@:
+mdprof_fb.automatic_parallelism.autopar_annotate.int2 : mdprof_fb.automatic_parallelism.autopar_annotate.date
+	@:
+mdprof_fb.automatic_parallelism.autopar_annotate.int3 : mdprof_fb.automatic_parallelism.autopar_annotate.date3
+	@:
+mdprof_fb.automatic_parallelism.autopar_annotate.opt : mdprof_fb.automatic_parallelism.autopar_annotate.optdate
+	@:
+mdprof_fb.automatic_parallelism.autopar_annotate.trans_opt : mdprof_fb.automatic_parallelism.autopar_annotate.trans_opt_date
+	@:
+
+mdprof_fb.automatic_parallelism.autopar_annotate.date0 : autopar_annotate.m
+	$(MCPI) $(ALL_GRADEFLAGS) $(ALL_MCPIFLAGS) mdprof_fb.automatic_parallelism.autopar_annotate
+mdprof_fb.automatic_parallelism.autopar_annotate.date : autopar_annotate.m
+	$(MCI) $(ALL_GRADEFLAGS) $(ALL_MCIFLAGS) mdprof_fb.automatic_parallelism.autopar_annotate
+mdprof_fb.automatic_parallelism.autopar_annotate.date3 : autopar_annotate.m
+	$(MCSI) $(ALL_GRADEFLAGS) $(ALL_MCSIFLAGS) mdprof_fb.automatic_parallelism.autopar_annotate
+mdprof_fb.automatic_parallelism.autopar_annotate.optdate : autopar_annotate.m
+	$(MCOI) $(ALL_GRADEFLAGS) $(ALL_MCOIFLAGS) mdprof_fb.automatic_parallelism.autopar_annotate
+mdprof_fb.automatic_parallelism.autopar_annotate.trans_opt_date : autopar_annotate.m
+	$(MCTOI) $(ALL_GRADEFLAGS) $(ALL_MCTOIFLAGS) mdprof_fb.automatic_parallelism.autopar_annotate
+mdprof_fb.automatic_parallelism.autopar_annotate.c_date : autopar_annotate.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) mdprof_fb.automatic_parallelism.autopar_annotate $(ERR_REDIRECT)
+mdprof_fb.automatic_parallelism.autopar_annotate.il_date : autopar_annotate.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --il-only mdprof_fb.automatic_parallelism.autopar_annotate $(ERR_REDIRECT)
+mdprof_fb.automatic_parallelism.autopar_annotate.java_date : autopar_annotate.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --java-only mdprof_fb.automatic_parallelism.autopar_annotate $(ERR_REDIRECT)

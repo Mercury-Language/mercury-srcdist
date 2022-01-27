@@ -1,0 +1,44 @@
+/*
+** Automatically generated from `program_representation.m'
+** by the Mercury compiler,
+** version rotd-2013-03-18, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+*/
+#ifndef MDBCOMP__PROGRAM_REPRESENTATION_MH
+#define MDBCOMP__PROGRAM_REPRESENTATION_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDBCOMP__PROGRAM_REPRESENTATION_DECL_GUARD
+#define MDBCOMP__PROGRAM_REPRESENTATION_DECL_GUARD
+#line 991 "program_representation.m"
+
+#ifdef MR_HAVE_SYS_STAT_H
+#include <sys/stat.h>
+#endif
+
+#line 34 "mdbcomp.program_representation.mh.tmp"
+
+#endif
+MR_bool MR_MDBCOMP_trace_read_proc_defn_rep(const MR_uint_least8_t *, const MR_LabelLayout *, MR_Word *);
+MR_Word ML_goal_rep_type(void);
+MR_Word ML_proc_defn_rep_type(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDBCOMP__PROGRAM_REPRESENTATION_MH */

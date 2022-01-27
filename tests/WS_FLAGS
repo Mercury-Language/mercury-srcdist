@@ -1,0 +1,18 @@
+--no-mercury-stdlib-dir
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/library
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/browser
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/mdbcomp
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/boehm_gc
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/boehm_gc/include
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/runtime
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/library
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/library/Mercury/mihs
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/mdbcomp
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/mdbcomp/Mercury/mihs
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/browser
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/browser/Mercury/mihs
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/trace
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/ssdb
+--c-include-directory /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/ssdb/Mercury/mihs
+--linkage shared
+--config-file /Users/jfischer/Mercury-Workspaces/mercury.local-3/stage2/scripts/Mercury.config.bootstrap

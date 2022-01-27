@@ -1,0 +1,82 @@
+/*
+** Automatically generated from `array.m'
+** by the Mercury compiler,
+** version rotd-2013-03-18, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+*/
+#ifndef ARRAY_MH
+#define ARRAY_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef ARRAY_DECL_GUARD
+#define ARRAY_DECL_GUARD
+#line 861 "array.m"
+
+#include "mercury_heap.h"             /* for MR_maybe_record_allocation() */
+#include "mercury_library_types.h"    /* for MR_ArrayPtr */
+
+/*
+** We do not yet record term sizes for arrays in term size profiling
+** grades. Doing so would require
+**
+** - modifying ML_alloc_array to allocate an extra word for the size;
+** - modifying all the predicates that call ML_alloc_array to compute the
+**   size of the array (the sum of the sizes of the elements and the size of
+**   the array itself);
+** - modifying all the predicates that update array elements to compute the
+**   difference between the sizes of the terms being added to and deleted from
+**   the array, and updating the array size accordingly.
+*/
+
+#define ML_alloc_array(newarray, arraysize, alloc_id)                       do {                                                                        MR_Word newarray_word;                                                  MR_offset_incr_hp_msg(newarray_word, 0, (arraysize),                        alloc_id, "array.array/1");                                       (newarray) = (MR_ArrayPtr) newarray_word;                           } while (0)
+
+#line 48 "array.mh.tmp"
+#line 887 "array.m"
+
+void ML_init_array(MR_ArrayPtr, MR_Integer size, MR_Word item);
+
+#line 53 "array.mh.tmp"
+#line 1697 "array.m"
+
+extern void
+ML_resize_array(MR_ArrayPtr new_array, MR_ArrayPtr old_array,
+    MR_Integer array_size, MR_Word item);
+
+#line 60 "array.mh.tmp"
+#line 1794 "array.m"
+
+extern void
+ML_shrink_array(MR_ArrayPtr array, MR_ArrayPtr old_array,
+    MR_Integer array_size);
+
+#line 67 "array.mh.tmp"
+#line 1895 "array.m"
+
+extern void
+ML_copy_array(MR_ArrayPtr array, MR_ConstArrayPtr old_array);
+
+#line 73 "array.mh.tmp"
+
+#endif
+void ML_array_compare(MR_Word, MR_Word *, MR_ArrayPtr, MR_ArrayPtr);
+MR_bool ML_array_equal(MR_Word, MR_ArrayPtr, MR_ArrayPtr);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* ARRAY_MH */

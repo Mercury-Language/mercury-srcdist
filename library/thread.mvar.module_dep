@@ -1,0 +1,13 @@
+module(1, "thread.mvar.m",
+	(thread.mvar),
+	{thread},
+	{builtin, bool, io, maybe, private_builtin},
+	{builtin, bool, io, maybe, bool, mutvar, (thread.semaphore), private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

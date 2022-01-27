@@ -1,0 +1,5 @@
+MAIN_TARGET=muz
+
+depend: muz.depend
+
+default_target: muz

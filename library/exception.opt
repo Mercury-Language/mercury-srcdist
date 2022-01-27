@@ -1,0 +1,475 @@
+:- module exception.
+:- use_module builtin, io, list, maybe, private_builtin, solutions, stm_builtin, store, string, unit, univ.
+:- type exception.handler(T) == pred(univ.univ, T).
+:- type exception.exp_determinism
+	--->	exp_detism_det 
+	;	exp_detism_semidet 
+	;	exp_detism_cc_multi 
+	;	exp_detism_cc_nondet 
+	;	exp_detism_multi 
+	;	exp_detism_nondet 
+	;	exp_detism_erroneous 
+	;	exp_detism_failure .
+:- inst (exception.handler) == (pred((builtin.in), (builtin.out)) is det).
+:- pragma foreign_import_module("C", exception).
+:- pragma foreign_import_module("C#", exception).
+:- pragma foreign_import_module("Java", exception).
+:- pragma foreign_import_module("IL", exception).
+:- pragma foreign_import_module("Erlang", exception).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("IL", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("IL", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pred exception.try_det(exception.exp_determinism, (pred T_1), exception.exception_result(T_1)).
+:- mode exception.try_det(builtin.in(bound(exp_detism_det)), (pred((builtin.out)) is det), builtin.out((exception.cannot_fail))) is cc_multi.
+:- mode exception.try_det(builtin.in(bound(exp_detism_semidet)), (pred((builtin.out)) is semidet), (builtin.out)) is cc_multi.
+:- mode exception.try_det(builtin.in(bound(exp_detism_cc_multi)), (pred((builtin.out)) is cc_multi), builtin.out((exception.cannot_fail))) is cc_multi.
+:- mode exception.try_det(builtin.in(bound(exp_detism_cc_nondet)), (pred((builtin.out)) is cc_nondet), (builtin.out)) is cc_multi.
+:- pred exception.try_io_det(exception.exp_determinism, pred(T_1, io.state, io.state), exception.exception_result(T_1), io.state, io.state).
+:- mode exception.try_io_det(builtin.in(bound(exp_detism_det)), (pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode exception.try_io_det(builtin.in(bound(exp_detism_cc_multi)), (pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- pragma no_inline((exception.try_io_det)/5).
+:- pred exception.try_store_det(exception.exp_determinism, pred(T_1, store.store(S_2), store.store(S_2)), exception.exception_result(T_1), store.store(S_2), store.store(S_2)).
+:- mode exception.try_store_det(builtin.in(bound(exp_detism_det)), (pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode exception.try_store_det(builtin.in(bound(exp_detism_cc_multi)), (pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred exception.try_all_det(exception.exp_determinism, (pred T_1), maybe.maybe(univ.univ), list.list(T_1)).
+:- mode exception.try_all_det(builtin.in(bound(exp_detism_det)), (pred((builtin.out)) is det), (builtin.out), builtin.out((exception.nil_or_singleton_list))) is cc_multi.
+:- mode exception.try_all_det(builtin.in(bound(exp_detism_semidet)), (pred((builtin.out)) is semidet), (builtin.out), builtin.out((exception.nil_or_singleton_list))) is cc_multi.
+:- mode exception.try_all_det(builtin.in(bound(exp_detism_multi)), (pred((builtin.out)) is multi), (builtin.out), (builtin.out)) is cc_multi.
+:- mode exception.try_all_det(builtin.in(bound(exp_detism_nondet)), (pred((builtin.out)) is nondet), (builtin.out), (builtin.out)) is cc_multi.
+:- pred exception.get_determinism((pred T_1), exception.exp_determinism).
+:- mode exception.get_determinism((pred((builtin.out)) is det), builtin.out(bound(exp_detism_det))) is cc_multi.
+:- mode exception.get_determinism((pred((builtin.out)) is semidet), builtin.out(bound(exp_detism_semidet))) is cc_multi.
+:- mode exception.get_determinism((pred((builtin.out)) is multi), builtin.out(bound(exp_detism_multi))) is cc_multi.
+:- mode exception.get_determinism((pred((builtin.out)) is nondet), builtin.out(bound(exp_detism_nondet))) is cc_multi.
+:- mode exception.get_determinism((pred((builtin.out)) is cc_multi), builtin.out(bound(exp_detism_cc_multi))) is cc_multi.
+:- mode exception.get_determinism((pred((builtin.out)) is cc_nondet), builtin.out(bound(exp_detism_cc_nondet))) is cc_multi.
+:- pragma promise_equivalent_clauses((exception.get_determinism)/2).
+:- pragma no_inline((exception.get_determinism)/2).
+:- pred exception.get_determinism_2(pred(T_1, S_2, S_2), exception.exp_determinism).
+:- mode exception.get_determinism_2((pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out(bound(exp_detism_det))) is cc_multi.
+:- mode exception.get_determinism_2((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out(bound(exp_detism_cc_multi))) is cc_multi.
+:- pragma promise_equivalent_clauses((exception.get_determinism_2)/2).
+:- pragma no_inline((exception.get_determinism_2)/2).
+:- pred exception.finally_2(pred(T_1, io.state, io.state), pred(io.res, io.state, io.state), T_1, io.res, io.state, io.state).
+:- mode exception.finally_2((pred((builtin.out), (builtin.di), (builtin.uo)) is det), (pred((builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode exception.finally_2((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pragma promise_pure((exception.finally_2)/6).
+:- pred exception.wrap_success((pred T_1), exception.exception_result(T_1)).
+:- mode exception.wrap_success((pred((builtin.out)) is det), (builtin.out)) is det.
+:- mode exception.wrap_success((pred((builtin.out)) is semidet), (builtin.out)) is semidet.
+:- mode exception.wrap_success((pred((builtin.out)) is multi), (builtin.out)) is multi.
+:- mode exception.wrap_success((pred((builtin.out)) is nondet), (builtin.out)) is nondet.
+:- mode exception.wrap_success((pred((builtin.out)) is cc_multi), (builtin.out)) is cc_multi.
+:- mode exception.wrap_success((pred((builtin.out)) is cc_nondet), (builtin.out)) is cc_nondet.
+:- pred exception.wrap_success_or_failure((pred T_1), exception.exception_result(T_1)).
+:- mode exception.wrap_success_or_failure((pred((builtin.out)) is det), (builtin.out)) is det.
+:- mode exception.wrap_success_or_failure((pred((builtin.out)) is semidet), (builtin.out)) is det.
+:- mode exception.wrap_success_or_failure((pred((builtin.out)) is cc_multi), (builtin.out)) is cc_multi.
+:- mode exception.wrap_success_or_failure((pred((builtin.out)) is cc_nondet), (builtin.out)) is cc_multi.
+:- pred exception.handle_store_result(exception.exception_result({T_1, store.store(S_2)}), exception.exception_result(T_1), store.store(S_2), store.store(S_2)).
+:- mode exception.handle_store_result(builtin.in((exception.cannot_fail)), builtin.out((exception.cannot_fail)), (builtin.in), (builtin.uo)) is det.
+:- pred exception.wrap_exception(univ.univ, exception.exception_result(T_1)).
+:- mode exception.wrap_exception((builtin.in), (builtin.out)) is det.
+:- pred exception.try_stm_det(exception.exp_determinism, pred(T_1, stm_builtin.stm, stm_builtin.stm), exception.exception_result(T_1), stm_builtin.stm, stm_builtin.stm).
+:- mode exception.try_stm_det(builtin.in(bound(exp_detism_det)), (pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred exception.try_stm_cc_multi(exception.exp_determinism, pred(T_1, stm_builtin.stm, stm_builtin.stm), exception.exception_result(T_1), stm_builtin.stm, stm_builtin.stm).
+:- mode exception.try_stm_cc_multi(builtin.in(bound(exp_detism_cc_multi)), (pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred exception.handle_stm_result(exception.exception_result({T_1, stm_builtin.stm}), exception.exception_result(T_1), stm_builtin.stm, stm_builtin.stm).
+:- mode exception.handle_stm_result(builtin.in((exception.cannot_fail)), builtin.out((exception.cannot_fail)), (builtin.in), (builtin.uo)) is det.
+:- pred exception.catch_impl((pred T), pred(univ.univ, T), T).
+:- mode exception.catch_impl((pred((builtin.out)) is det), builtin.in((exception.handler)), (builtin.out)) is det.
+:- mode exception.catch_impl((pred((builtin.out)) is semidet), builtin.in((exception.handler)), (builtin.out)) is semidet.
+:- mode exception.catch_impl((pred((builtin.out)) is cc_multi), builtin.in((exception.handler)), (builtin.out)) is cc_multi.
+:- mode exception.catch_impl((pred((builtin.out)) is cc_nondet), builtin.in((exception.handler)), (builtin.out)) is cc_nondet.
+:- mode exception.catch_impl((pred((builtin.out)) is multi), builtin.in((exception.handler)), (builtin.out)) is multi.
+:- mode exception.catch_impl((pred((builtin.out)) is nondet), builtin.in((exception.handler)), (builtin.out)) is nondet.
+:- pragma promise_pure((exception.catch_impl)/3).
+:- pred exception.builtin_catch((pred T_1), pred(univ.univ, T_1), T_1).
+:- mode exception.builtin_catch((pred((builtin.out)) is det), builtin.in((exception.handler)), (builtin.out)) is det.
+:- mode exception.builtin_catch((pred((builtin.out)) is semidet), builtin.in((exception.handler)), (builtin.out)) is semidet.
+:- mode exception.builtin_catch((pred((builtin.out)) is cc_multi), builtin.in((exception.handler)), (builtin.out)) is cc_multi.
+:- mode exception.builtin_catch((pred((builtin.out)) is cc_nondet), builtin.in((exception.handler)), (builtin.out)) is cc_nondet.
+:- mode exception.builtin_catch((pred((builtin.out)) is multi), builtin.in((exception.handler)), (builtin.out)) is multi.
+:- mode exception.builtin_catch((pred((builtin.out)) is nondet), builtin.in((exception.handler)), (builtin.out)) is nondet.
+exception.(try Goal_3 Result_4) :-
+    exception.get_determinism(Goal_3, Detism_5),
+    exception.try_det(Detism_5, Goal_3, Result_4).
+exception.try_io(IO_Goal_5, Result_6, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_10) :-
+    exception.get_determinism_2(IO_Goal_5, Detism_8),
+    exception.try_io_det(Detism_8, IO_Goal_5, Result_6, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_10).
+exception.try_store(StoreGoal_5, Result_6, STATE_VARIABLE_Store_0_9, STATE_VARIABLE_Store_10) :-
+    exception.get_determinism_2(StoreGoal_5, Detism_8),
+    exception.try_store_det(Detism_8, StoreGoal_5, Result_6, STATE_VARIABLE_Store_0_9, STATE_VARIABLE_Store_10).
+exception.try_all(Goal_4, MaybeException_5, Solutions_6) :-
+    exception.get_determinism(Goal_4, Detism_7),
+    exception.try_all_det(Detism_7, Goal_4, MaybeException_5, Solutions_6).
+exception.incremental_try_all(Goal_5, AccPred_6, STATE_VARIABLE_Acc_0_12, STATE_VARIABLE_Acc_13) :-
+    WrappedGoal_8 = (pred(V_14::(builtin.out)) is nondet :-
+      some [] (
+        exception.wrap_success(Goal_5, R_18),
+        V_14 = R_18
+      )
+    )
+ : (pred exception.exception_result(T_1)),
+    TryOneSoln_10 = (pred(V_15::(builtin.out)) is nondet :-
+      some [] (
+        V_16 = exception.wrap_exception : pred(univ.univ, exception.exception_result(T_1)),
+        exception.catch_impl(WrappedGoal_8, V_16, Result_19),
+        V_15 = Result_19
+      )
+    )
+ : (pred exception.exception_result(T_1)),
+    solutions.unsorted_aggregate(TryOneSoln_10, AccPred_6, STATE_VARIABLE_Acc_0_12, STATE_VARIABLE_Acc_13).
+:- pragma promise_equivalent_clauses((exception.finally)/6).
+exception.finally((P_7 :: (pred(builtin.out, builtin.di, builtin.uo) is det)), (PRes_8 :: builtin.out), (Cleanup_9 :: (pred(builtin.out, builtin.di, builtin.uo) is det)), (CleanupRes_10 :: builtin.out), (STATE_VARIABLE_IO_0_12 :: builtin.di), (STATE_VARIABLE_IO_13 :: builtin.uo)) :-
+    promise_equivalent_solutions [PRes_8, CleanupRes_10, STATE_VARIABLE_IO_13] (
+      exception.finally_2(P_7, Cleanup_9, PRes_8, CleanupRes_10, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_13)
+    ).
+exception.finally((P_15 :: (pred(builtin.out, builtin.di, builtin.uo) is cc_multi)), (PRes_16 :: builtin.out), (Cleanup_17 :: (pred(builtin.out, builtin.di, builtin.uo) is cc_multi)), (CleanupRes_18 :: builtin.out), (STATE_VARIABLE_IO_0_20 :: builtin.di), (STATE_VARIABLE_IO_21 :: builtin.uo)) :-
+    exception.finally_2(P_15, Cleanup_17, PRes_16, CleanupRes_18, STATE_VARIABLE_IO_0_20, STATE_VARIABLE_IO_21).
+exception.try_stm(Goal_5, Result_6, STATE_VARIABLE_STM_0_11, STATE_VARIABLE_STM_12) :-
+    exception.unsafe_try_stm(Goal_5, Result0_8, STATE_VARIABLE_STM_0_11, STATE_VARIABLE_STM_12),
+    ( % disjunction
+      Result0_8 = exception.succeeded(V_9) : exception.exception_result(A_1),
+      Result_6 = Result0_8
+    ;
+      Result0_8 = exception.exception(Exception_10) : exception.exception_result(A_1),
+      (if
+        ( % disjunction
+          Exception_10 = univ.univ(V_15),
+          V_15 = stm_builtin.rollback_invalid_transaction : stm_builtin.rollback_exception
+        ;
+          Exception_10 = univ.univ(V_14),
+          V_14 = stm_builtin.rollback_retry : stm_builtin.rollback_exception
+        )
+      then
+        exception.rethrow(Result0_8)
+      else
+        Result_6 = Result0_8
+      )
+    ).
+:- pragma promise_equivalent_clauses((exception.unsafe_try_stm)/4).
+exception.unsafe_try_stm((TransactionGoal_5 :: builtin.in((pred(builtin.out, builtin.di, builtin.uo) is det))), (Result_6 :: builtin.out(exception.cannot_fail)), (STM0_7 :: builtin.di), (STM_8 :: builtin.uo)) :-
+    exception.get_determinism_2(TransactionGoal_5, Detism_9),
+    exception.try_stm_det(Detism_9, TransactionGoal_5, Result_6, STM0_7, STM_8).
+exception.unsafe_try_stm((TransactionGoal_10 :: builtin.in((pred(builtin.out, builtin.di, builtin.uo) is cc_multi))), (Result_11 :: builtin.out(exception.cannot_fail)), (STM0_12 :: builtin.di), (STM_13 :: builtin.uo)) :-
+    exception.get_determinism_2(TransactionGoal_10, Detism_14),
+    exception.try_stm_cc_multi(Detism_14, TransactionGoal_10, Result_11, STM0_12, STM_13).
+exception.magic_exception_result(exception.succeeded(V_2)) :-
+    V_2 = {} : {}.
+exception.magic_exception_result(exception.succeeded(V_3)) :-
+    V_3 = {} : {}.
+exception.unreachable :-
+    V_1 = "unreachable code reached" : string,
+    exception.throw(V_1).
+exception.exc_univ_to_type(Univ_3, Object_4) :-
+    univ.univ_to_type(Univ_3, Object_4).
+exception.exc_univ_value(Univ_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = univ.univ_value(Univ_3).
+exception.try_det(exception.exp_detism_det, Goal_4, Result_5) :-
+    WrappedGoal_6 = (pred(V_9::(builtin.out)) is det :-
+      some [] (
+        exception.wrap_success_or_failure(Goal_4, R_11),
+        V_9 = R_11
+      )
+    )
+ : (pred exception.exception_result(T_1)),
+    V_10 = exception.wrap_exception : pred(univ.univ, exception.exception_result(T_1)),
+    exception.catch_impl(WrappedGoal_6, V_10, Result0_8),
+    builtin.cc_multi_equal(Result0_8, Result_5).
+exception.try_det(exception.exp_detism_semidet, Goal_12, Result_13) :-
+    WrappedGoal_14 = (pred(V_17::(builtin.out)) is det :-
+      some [] (
+        exception.wrap_success_or_failure(Goal_12, R_19),
+        V_17 = R_19
+      )
+    )
+ : (pred exception.exception_result(T_1)),
+    V_18 = exception.wrap_exception : pred(univ.univ, exception.exception_result(T_1)),
+    exception.catch_impl(WrappedGoal_14, V_18, Result0_16),
+    builtin.cc_multi_equal(Result0_16, Result_13).
+exception.try_det(exception.exp_detism_cc_multi, Goal_20, Result_21) :-
+    WrappedGoal_22 = (pred(V_24::(builtin.out)) is cc_multi :-
+      some [] (
+        exception.wrap_success_or_failure(Goal_20, R_26),
+        V_24 = R_26
+      )
+    )
+ : (pred exception.exception_result(T_1)),
+    V_25 = exception.wrap_exception : pred(univ.univ, exception.exception_result(T_1)),
+    exception.catch_impl(WrappedGoal_22, V_25, Result_21).
+exception.try_det(exception.exp_detism_cc_nondet, Goal_27, Result_28) :-
+    WrappedGoal_29 = (pred(V_31::(builtin.out)) is cc_multi :-
+      some [] (
+        exception.wrap_success_or_failure(Goal_27, R_33),
+        V_31 = R_33
+      )
+    )
+ : (pred exception.exception_result(T_1)),
+    V_32 = exception.wrap_exception : pred(univ.univ, exception.exception_result(T_1)),
+    exception.catch_impl(WrappedGoal_29, V_32, Result_28).
+exception.try_store_det(exception.exp_detism_det, StoreGoal_6, Result_7, STATE_VARIABLE_Store_0_14, STATE_VARIABLE_Store_15) :-
+    Goal_9 = (pred(V_16::(builtin.out)) is det :-
+      some [] (
+        builtin.unsafe_promise_unique(STATE_VARIABLE_Store_0_14, S0_12),
+        call(StoreGoal_6, R_19, S0_12, S_20),
+        V_16 = {R_19, S_20} : {T_1, store.store(S_2)}
+      )
+    )
+ : (pred {T_1, store.store(S_2)}),
+    V_17 = exception.exp_detism_det : exception.exp_determinism,
+    exception.try_det(V_17, Goal_9, Result0_13),
+    exception.handle_store_result(Result0_13, Result_7, STATE_VARIABLE_Store_0_14, STATE_VARIABLE_Store_15).
+exception.try_store_det(exception.exp_detism_cc_multi, StoreGoal_21, Result_22, STATE_VARIABLE_Store_0_29, STATE_VARIABLE_Store_30) :-
+    Goal_24 = (pred(V_31::(builtin.out)) is cc_multi :-
+      some [] (
+        builtin.unsafe_promise_unique(STATE_VARIABLE_Store_0_29, S0_27),
+        call(StoreGoal_21, R_34, S0_27, S_35),
+        V_31 = {R_34, S_35} : {T_1, store.store(S_2)}
+      )
+    )
+ : (pred {T_1, store.store(S_2)}),
+    V_32 = exception.exp_detism_cc_multi : exception.exp_determinism,
+    exception.try_det(V_32, Goal_24, Result0_28),
+    exception.handle_store_result(Result0_28, Result_22, STATE_VARIABLE_Store_0_29, STATE_VARIABLE_Store_30).
+exception.wrap_success(Goal_3, exception.succeeded(R_4)) :-
+    call(Goal_3, R_4).
+exception.wrap_success_or_failure(Goal_3, Result_4) :-
+    (if
+      call(Goal_3, R_5)
+    then
+      Result_4 = exception.succeeded(R_5) : exception.exception_result(T_1)
+    else
+      Result_4 = exception.failed : exception.exception_result(T_1)
+    ).
+exception.wrap_exception(Exception_3, exception.exception(Exception_3)).
+exception.try_stm_det(exception.exp_detism_det, TransactionGoal_6, Result_7, STATE_VARIABLE_STM_0_14, STATE_VARIABLE_STM_15) :-
+    Goal_9 = (pred(V_16::(builtin.out)) is det :-
+      some [] (
+        builtin.unsafe_promise_unique(STATE_VARIABLE_STM_0_14, S0_12),
+        call(TransactionGoal_6, R_19, S0_12, S_20),
+        V_16 = {R_19, S_20} : {T_1, stm_builtin.stm}
+      )
+    )
+ : (pred {T_1, stm_builtin.stm}),
+    V_17 = exception.exp_detism_det : exception.exp_determinism,
+    exception.try_det(V_17, Goal_9, Result0_13),
+    exception.handle_stm_result(Result0_13, Result_7, STATE_VARIABLE_STM_0_14, STATE_VARIABLE_STM_15).
+exception.try_stm_cc_multi(exception.exp_detism_cc_multi, TransactionGoal_6, Result_7, STATE_VARIABLE_STM_0_14, STATE_VARIABLE_STM_15) :-
+    Goal_9 = (pred(V_16::(builtin.out)) is cc_multi :-
+      some [] (
+        builtin.unsafe_promise_unique(STATE_VARIABLE_STM_0_14, S0_12),
+        call(TransactionGoal_6, R_19, S0_12, S_20),
+        V_16 = {R_19, S_20} : {T_1, stm_builtin.stm}
+      )
+    )
+ : (pred {T_1, stm_builtin.stm}),
+    V_17 = exception.exp_detism_cc_multi : exception.exp_determinism,
+    exception.try_det(V_17, Goal_9, Result0_13),
+    exception.handle_stm_result(Result0_13, Result_7, STATE_VARIABLE_STM_0_14, STATE_VARIABLE_STM_15).
+:- pragma promise_pure((exception.catch_impl)/3).
+exception.catch_impl((Pred_4 :: ((pred builtin.out) is det)), (Handler_5 :: builtin.in(exception.handler)), (T_6 :: builtin.out)) :-
+    exception.builtin_catch(Pred_4, Handler_5, T_6).
+exception.catch_impl((Pred_7 :: ((pred builtin.out) is semidet)), (Handler_8 :: builtin.in(exception.handler)), (T_9 :: builtin.out)) :-
+    exception.builtin_catch(Pred_7, Handler_8, T_9).
+exception.catch_impl((Pred_10 :: ((pred builtin.out) is cc_multi)), (Handler_11 :: builtin.in(exception.handler)), (T_12 :: builtin.out)) :-
+    exception.builtin_catch(Pred_10, Handler_11, T_12).
+exception.catch_impl((Pred_13 :: ((pred builtin.out) is cc_nondet)), (Handler_14 :: builtin.in(exception.handler)), (T_15 :: builtin.out)) :-
+    exception.builtin_catch(Pred_13, Handler_14, T_15).
+exception.catch_impl((Pred_16 :: ((pred builtin.out) is multi)), (Handler_17 :: builtin.in(exception.handler)), (T_18 :: builtin.out)) :-
+    exception.builtin_catch(Pred_16, Handler_17, T_18).
+exception.catch_impl((Pred_19 :: ((pred builtin.out) is nondet)), (Handler_20 :: builtin.in(exception.handler)), (T_21 :: builtin.out)) :-
+    exception.builtin_catch(Pred_19, Handler_20, T_21).
+:- pragma exceptions(function, (exception.throw), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.throw), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.(try)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.(try)), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.(try)), 2, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.(try)), 2, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_io), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_io), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_store), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_store), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_all), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_all), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_all), 3, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_all), 3, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.incremental_try_all), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.incremental_try_all), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.rethrow), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (exception.rethrow), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.finally), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.finally), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.throw_if_near_stack_limits), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_stm), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_stm), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.unsafe_try_stm), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.unsafe_try_stm), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.magic_exception_result), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (exception.unreachable), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.exc_univ_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.exc_univ_to_type), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.exc_univ_to_type), 2, 2, may_throw(user_exception)).
+:- pragma exceptions(function, (exception.exc_univ_value), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_det), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_det), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_det), 3, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_det), 3, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_io_det), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_io_det), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_store_det), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_store_det), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_all_det), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_all_det), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_all_det), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_all_det), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.get_determinism), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.get_determinism), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.get_determinism), 2, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.get_determinism), 2, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.get_determinism), 2, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.get_determinism), 2, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.get_determinism_2), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.get_determinism_2), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.finally_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.finally_2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_success), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_success), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_success), 2, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_success), 2, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_success), 2, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_success), 2, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_success_or_failure), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_success_or_failure), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_success_or_failure), 2, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_success_or_failure), 2, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.handle_store_result), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.wrap_exception), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (exception.try_stm_det), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.try_stm_cc_multi), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.handle_stm_result), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.catch_impl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.catch_impl), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.catch_impl), 3, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.catch_impl), 3, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.catch_impl), 3, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (exception.catch_impl), 3, 5, may_throw(user_exception)).
+:- pragma termination_info(exception.throw((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(exception.throw((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(exception.try((pred((builtin.out)) is det), builtin.out((exception.cannot_fail))), infinite, can_loop).
+:- pragma termination_info(exception.try((pred((builtin.out)) is semidet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.try((pred((builtin.out)) is cc_multi), builtin.out((exception.cannot_fail))), infinite, can_loop).
+:- pragma termination_info(exception.try((pred((builtin.out)) is cc_nondet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.try_io((pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.try_io((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.try_store((pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.try_store((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.try_all((pred((builtin.out)) is det), (builtin.out), builtin.out((exception.nil_or_singleton_list))), infinite, can_loop).
+:- pragma termination_info(exception.try_all((pred((builtin.out)) is semidet), (builtin.out), builtin.out((exception.nil_or_singleton_list))), infinite, can_loop).
+:- pragma termination_info(exception.try_all((pred((builtin.out)) is multi), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.try_all((pred((builtin.out)) is nondet), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.incremental_try_all((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.incremental_try_all((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.rethrow(builtin.in(bound(exception(ground)))), infinite, cannot_loop).
+:- pragma termination_info(exception.rethrow(builtin.in(bound(exception(ground)))) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(exception.finally((pred((builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.out), (pred((builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.finally((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((exception.throw_if_near_stack_limits), finite(0, []), cannot_loop).
+:- pragma termination_info(exception.try_stm(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.try_stm(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.unsafe_try_stm(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.unsafe_try_stm(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.magic_exception_result(builtin.out((exception.cannot_fail))), finite(1, [no]), cannot_loop).
+:- pragma termination_info((exception.unreachable), infinite, cannot_loop).
+:- pragma termination_info(exception.exc_univ_to_type((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.exc_univ_to_type((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(exception.exc_univ_to_type((builtin.uo), (builtin.di)), infinite, can_loop).
+:- pragma termination_info(exception.exc_univ_value((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(exception.try_det(builtin.in(bound(exp_detism_det)), (pred((builtin.out)) is det), builtin.out((exception.cannot_fail))), infinite, can_loop).
+:- pragma termination_info(exception.try_det(builtin.in(bound(exp_detism_semidet)), (pred((builtin.out)) is semidet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.try_det(builtin.in(bound(exp_detism_cc_multi)), (pred((builtin.out)) is cc_multi), builtin.out((exception.cannot_fail))), infinite, can_loop).
+:- pragma termination_info(exception.try_det(builtin.in(bound(exp_detism_cc_nondet)), (pred((builtin.out)) is cc_nondet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.try_io_det(builtin.in(bound(exp_detism_det)), (pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.try_io_det(builtin.in(bound(exp_detism_cc_multi)), (pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.try_store_det(builtin.in(bound(exp_detism_det)), (pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.try_store_det(builtin.in(bound(exp_detism_cc_multi)), (pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.try_all_det(builtin.in(bound(exp_detism_det)), (pred((builtin.out)) is det), (builtin.out), builtin.out((exception.nil_or_singleton_list))), infinite, can_loop).
+:- pragma termination_info(exception.try_all_det(builtin.in(bound(exp_detism_semidet)), (pred((builtin.out)) is semidet), (builtin.out), builtin.out((exception.nil_or_singleton_list))), infinite, can_loop).
+:- pragma termination_info(exception.try_all_det(builtin.in(bound(exp_detism_multi)), (pred((builtin.out)) is multi), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.try_all_det(builtin.in(bound(exp_detism_nondet)), (pred((builtin.out)) is nondet), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.get_determinism((pred((builtin.out)) is det), builtin.out(bound(exp_detism_det))), infinite, can_loop).
+:- pragma termination_info(exception.get_determinism((pred((builtin.out)) is semidet), builtin.out(bound(exp_detism_semidet))), infinite, can_loop).
+:- pragma termination_info(exception.get_determinism((pred((builtin.out)) is multi), builtin.out(bound(exp_detism_multi))), infinite, can_loop).
+:- pragma termination_info(exception.get_determinism((pred((builtin.out)) is nondet), builtin.out(bound(exp_detism_nondet))), infinite, can_loop).
+:- pragma termination_info(exception.get_determinism((pred((builtin.out)) is cc_multi), builtin.out(bound(exp_detism_cc_multi))), infinite, can_loop).
+:- pragma termination_info(exception.get_determinism((pred((builtin.out)) is cc_nondet), builtin.out(bound(exp_detism_cc_nondet))), infinite, can_loop).
+:- pragma termination_info(exception.get_determinism_2((pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out(bound(exp_detism_det))), infinite, can_loop).
+:- pragma termination_info(exception.get_determinism_2((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out(bound(exp_detism_cc_multi))), infinite, can_loop).
+:- pragma termination_info(exception.finally_2((pred((builtin.out), (builtin.di), (builtin.uo)) is det), (pred((builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.finally_2((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_success((pred((builtin.out)) is det), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_success((pred((builtin.out)) is semidet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_success((pred((builtin.out)) is multi), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_success((pred((builtin.out)) is nondet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_success((pred((builtin.out)) is cc_multi), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_success((pred((builtin.out)) is cc_nondet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_success_or_failure((pred((builtin.out)) is det), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_success_or_failure((pred((builtin.out)) is semidet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_success_or_failure((pred((builtin.out)) is cc_multi), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_success_or_failure((pred((builtin.out)) is cc_nondet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.handle_store_result(builtin.in((exception.cannot_fail)), builtin.out((exception.cannot_fail)), (builtin.in), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.wrap_exception((builtin.in), (builtin.out)), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(exception.try_stm_det(builtin.in(bound(exp_detism_det)), (pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.try_stm_cc_multi(builtin.in(bound(exp_detism_cc_multi)), (pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.handle_stm_result(builtin.in((exception.cannot_fail)), builtin.out((exception.cannot_fail)), (builtin.in), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(exception.catch_impl((pred((builtin.out)) is det), builtin.in((exception.handler)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.catch_impl((pred((builtin.out)) is semidet), builtin.in((exception.handler)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.catch_impl((pred((builtin.out)) is cc_multi), builtin.in((exception.handler)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.catch_impl((pred((builtin.out)) is cc_nondet), builtin.in((exception.handler)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.catch_impl((pred((builtin.out)) is multi), builtin.in((exception.handler)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(exception.catch_impl((pred((builtin.out)) is nondet), builtin.in((exception.handler)), (builtin.out)), infinite, can_loop).
