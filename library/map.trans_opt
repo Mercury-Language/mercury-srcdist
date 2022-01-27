@@ -1,0 +1,621 @@
+:- module map.
+
+:- pragma termination_info(map.apply_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.apply_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.common_subset((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.common_subset_loop((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.contains((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(map.count((builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(map.count((builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(map.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.delete_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.delete_sorted_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.delete_sorted_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_elem((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, no, yes, no]), can_loop).
+:- pragma termination_info(map.'det_elem :='((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(map.det_insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_insert_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_intersect(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is semidet)), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_intersect(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_max_key((builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.det_min_key((builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.det_remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_transform_value((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_transform_value(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_union(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is semidet)), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_union(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, no, yes, no]), can_loop).
+:- pragma termination_info(map.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(map.elem((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.'elem :='((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(map.equal((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(map.filter_map_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.filter_map_values_only(builtin.in((pred((builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.foldl(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl(((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl(((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl(((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is cc_multi)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl4_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4_values(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl4_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl5_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl5_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl5_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl5_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl5_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl5_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is cc_multi) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is cc_multi)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.foldr(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr(((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr(((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr(((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is cc_multi)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr2(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr3(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr5(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.from_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.from_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.from_corresponding_lists((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.from_rev_sorted_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.from_rev_sorted_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.from_sorted_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.from_sorted_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((map.init) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(map.init((builtin.uo)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(map.insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(map.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(map.intersect((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.intersect(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect_list(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect_list(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect_list_pass((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect_list_pass((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect_list_passes((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect_list_passes((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect_loop((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect_loop((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.inverse_search((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(map.is_empty((builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(map.keys((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.keys((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.keys_and_values((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.keys_as_set((builtin.in)) = (builtin.out), finite(1, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.keys_as_set((builtin.in), (builtin.out)), finite(1, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.lookup((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(map.lookup((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(map.lower_bound_lookup((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, yes, no, no]), can_loop).
+:- pragma termination_info(map.lower_bound_search((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, yes, no, no]), cannot_loop).
+:- pragma termination_info(map.map_foldl(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.map_values(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl(((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl2(((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl2(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl2(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl2(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl3(((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl3(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl3(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl3(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl3(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_only((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.map_values_only(((pred((builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_only(((pred((builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.max_key((builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.member((builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(map.merge((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.merge((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.min_key((builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.old_merge((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.old_merge((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.optimize((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.optimize((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.overlay((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.overlay((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.overlay_2((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.overlay_large_map((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.overlay_large_map((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.overlay_large_map_2((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.remove_smallest((builtin.out), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.reverse_map((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.reverse_map_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.search((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(map.search((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(map.search_insert((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(map.select((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.select((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.select_loop((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.select_sorted_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.select_sorted_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.select_unselect((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.select_unselect_loop((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no, yes, no, yes, no]), can_loop).
+:- pragma termination_info(map.select_unselect_sorted_list((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(map.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(map.set_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.singleton((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(map.sorted_keys((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.sorted_keys((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.to_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.to_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.to_sorted_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.to_sorted_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.transform_value(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.union(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_list(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_list(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_list_pass((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_list_pass((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_list_passes((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_list_passes((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_loop(builtin.in(bound([])), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_loop(builtin.in(bound([])), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_loop((builtin.in), builtin.in(bound([])), ((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_loop((builtin.in), builtin.in(bound([])), ((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_loop((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_loop((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(map.upper_bound_lookup((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, yes, no, no]), can_loop).
+:- pragma termination_info(map.upper_bound_search((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, yes, no, no]), cannot_loop).
+:- pragma termination_info(map.values((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.values((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+
+:- pragma exceptions(function, (map.apply_to_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.apply_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.common_subset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.common_subset_loop), 4, 0, conditional).
+:- pragma exceptions(predicate, (map.contains), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.count), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.count), 2, 0, will_not_throw).
+:- pragma exceptions(function, (map.delete), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.delete_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.delete_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.delete_sorted_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_elem), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.'det_elem :='), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_insert_from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_insert_from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_intersect), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_max_key), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_min_key), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_transform_value), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_transform_value), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_union), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_update), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.elem), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.'elem :='), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.equal), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.filter_map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.filter_map_values_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.foldl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2_values), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2_values), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2_values), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2_values), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2_values), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2_values), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2_values), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2_values), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2_values), 6, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3_values), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3_values), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3_values), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3_values), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3_values), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3_values), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3_values), 8, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3_values), 8, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3_values), 8, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4_values), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4_values), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4_values), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4_values), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4_values), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4_values), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4_values), 10, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4_values), 10, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4_values), 10, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5), 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5), 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5), 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5), 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5), 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5_values), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5_values), 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5_values), 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5_values), 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5_values), 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl5_values), 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(function, (map.foldr), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr5), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr5), 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr5), 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr5), 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr5), 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr5), 12, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (map.from_assoc_list), 1, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.from_assoc_list), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.from_corresponding_lists), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.from_rev_sorted_assoc_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.from_rev_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.from_sorted_assoc_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.from_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.init), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (map.insert), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.insert), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect_list), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect_list_pass), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect_list_pass), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect_list_passes), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect_list_passes), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect_loop), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect_loop), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.inverse_search), 3, 0, conditional).
+:- pragma exceptions(predicate, (map.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (map.keys), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.keys), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.keys_and_values), 3, 0, will_not_throw).
+:- pragma exceptions(function, (map.keys_as_set), 1, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.keys_as_set), 2, 0, conditional).
+:- pragma exceptions(function, (map.lookup), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.lower_bound_lookup), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.lower_bound_search), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.map_foldl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl4), 11, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl4), 11, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl4), 11, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl4), 11, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl4), 11, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl4), 11, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl4), 11, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl4), 11, 7, may_throw(user_exception)).
+:- pragma exceptions(function, (map.map_values), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl2), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl2), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl2), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl3), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl3), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl3), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl3), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl3), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(function, (map.map_values_only), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_only), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (map.max_key), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.member), 3, 0, will_not_throw).
+:- pragma exceptions(function, (map.merge), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.min_key), 1, 0, will_not_throw).
+:- pragma exceptions(function, (map.old_merge), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.old_merge), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.optimize), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.optimize), 2, 0, will_not_throw).
+:- pragma exceptions(function, (map.overlay), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.overlay), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.overlay_2), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.overlay_large_map), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.overlay_large_map), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.overlay_large_map_2), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.remove_smallest), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.reverse_map), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.reverse_map_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.search), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.search_insert), 5, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.select), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.select), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.select_loop), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.select_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.select_sorted_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.select_unselect), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.select_unselect_loop), 6, 0, conditional).
+:- pragma exceptions(predicate, (map.select_unselect_sorted_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.set), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.set), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.set_from_assoc_list), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.set_from_assoc_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.set_from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.singleton), 2, 0, will_not_throw).
+:- pragma exceptions(function, (map.sorted_keys), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.sorted_keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (map.to_assoc_list), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.to_assoc_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (map.to_sorted_assoc_list), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.to_sorted_assoc_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.transform_value), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union_list), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union_list_pass), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union_list_pass), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union_list_passes), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union_list_passes), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union_loop), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.union_loop), 5, 1, will_not_throw).
+:- pragma exceptions(predicate, (map.union_loop), 5, 2, will_not_throw).
+:- pragma exceptions(predicate, (map.union_loop), 5, 3, will_not_throw).
+:- pragma exceptions(predicate, (map.union_loop), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union_loop), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (map.update), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.update), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (map.upper_bound_lookup), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.upper_bound_search), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (map.values), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.values), 2, 0, will_not_throw).

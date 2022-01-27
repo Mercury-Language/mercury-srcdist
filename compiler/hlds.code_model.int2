@@ -1,0 +1,7 @@
+:- module (hlds.code_model).
+:- interface.
+:- type code_model
+    --->    model_det 
+    ;       model_semi 
+    ;       model_non .
+:- type_representation(code_model, du_repn(enum("model_det", "model_semi", ["model_non"],  no_c_j_cs))).

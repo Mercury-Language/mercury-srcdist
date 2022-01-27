@@ -1,0 +1,21 @@
+:- module prolog.
+
+:- pragma termination_info(prolog.'=..'((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(prolog.'=:='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'=='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'=\\='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'\\=='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.arg((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(prolog.det_arg((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(prolog.is((builtin.uo), (builtin.di)), finite(0, [no, no, yes]), cannot_loop).
+:- pragma termination_info(prolog.is((builtin.out), (builtin.in)), finite(0, [no, no, yes]), cannot_loop).
+
+:- pragma exceptions(predicate, (prolog.(=..)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (prolog.(=:=)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.(==)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.(=\=)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.(\==)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.arg), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (prolog.det_arg), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (prolog.(is)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (prolog.(is)), 2, 1, will_not_throw).

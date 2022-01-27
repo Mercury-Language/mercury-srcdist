@@ -1,0 +1,5 @@
+:- module (thread.future).
+:- interface.
+:- type future(T).
+:- type future_io(T).
+:- type_representation(future(V_1), du_repn(notag("future", thread.future.future_io(thread.future.ok_or_exception(V_1)),  no_c_j_cs))).

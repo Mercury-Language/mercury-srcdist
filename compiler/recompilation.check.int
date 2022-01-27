@@ -1,0 +1,20 @@
+:- module (recompilation.check).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.read_modules).
+:- type find_target_file_names == pred(mdbcomp.sym_name.module_name, list.list(libs.file_util.file_name), io.io, io.io).
+:- type find_timestamp_file_names == pred(mdbcomp.sym_name.module_name, list.list(libs.file_util.file_name), io.io, io.io).
+:- type modules_to_recompile
+    --->    all_modules 
+    ;       some_modules(list.list(mdbcomp.sym_name.module_name)).
+:- inst (find_target_file_names) == (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (find_timestamp_file_names) == (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pred should_recompile(libs.globals.globals, mdbcomp.sym_name.module_name, recompilation.check.find_target_file_names, recompilation.check.find_timestamp_file_names, recompilation.check.modules_to_recompile, parse_tree.read_modules.have_read_module_maps, parse_tree.read_modules.have_read_module_maps, io.io, io.io).
+:- mode should_recompile((builtin.in), (builtin.in), builtin.in(((recompilation.check).find_target_file_names)), builtin.in(((recompilation.check).find_timestamp_file_names)), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

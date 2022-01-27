@@ -1,0 +1,16 @@
+:- module (libs.pickle).
+:- interface.
+:- type pickler_pred.
+:- type picklers.
+:- type unpickle_handle.
+:- type unpickle_state.
+:- type unpickler_pred.
+:- type unpicklers.
+:- abstract_inst((pickler_pred)).
+:- abstract_inst((unpickler_pred)).
+:- type_representation(pickler_pred, is_eqv_to(pred(libs.pickle.picklers, univ, io, io))).
+:- type_representation(picklers, du_repn(notag("picklers", map(type_ctor_desc, pickler_pred),  no_c_j_cs))).
+:- type_representation(unpickle_handle, is_eqv_to(bitmap)).
+:- type_representation(unpickle_state, is_eqv_to(int)).
+:- type_representation(unpickler_pred, is_eqv_to(pred(libs.pickle.unpicklers, libs.pickle.unpickle_handle, type_desc, univ, libs.pickle.unpickle_state, libs.pickle.unpickle_state))).
+:- type_representation(unpicklers, du_repn(notag("unpicklers", map(type_ctor_desc, unpickler_pred),  no_c_j_cs))).

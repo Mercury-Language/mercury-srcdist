@@ -1,0 +1,4 @@
+:- module bag.
+:- interface.
+:- type bag(T).
+:- type_representation(bag(V_1), du_repn(notag("bag", map.map(V_1, int),  no_c_j_cs))).

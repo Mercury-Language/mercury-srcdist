@@ -1,0 +1,3 @@
+:- module (((transform_hlds.ctgc).structure_reuse).direct).
+:- interface.
+:- type_representation(dead_cell_table, is_eqv_to(map.map(transform_hlds.smm_common.program_point, transform_hlds.ctgc.structure_reuse.domain.reuse_condition))).
