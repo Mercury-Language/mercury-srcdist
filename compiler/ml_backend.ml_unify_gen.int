@@ -1,0 +1,31 @@
+:- module (ml_backend.ml_unify_gen).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.ml_global_data).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred ml_cons_id_to_tag(ml_backend.ml_gen_info.ml_gen_info, parse_tree.prog_data.cons_id, hlds.hlds_data.cons_tag).
+:- mode ml_cons_id_to_tag((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_const_structs(hlds.hlds_module.module_info, ml_backend.ml_gen_info.ml_const_struct_map, ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode ml_gen_const_structs((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_ground_term(parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, list.list(ml_backend.mlds.statement), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_ground_term((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_known_tag_test(parse_tree.prog_data.prog_var, hlds.hlds_data.tagged_cons_id, ml_backend.mlds.mlds_rval, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_known_tag_test((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_new_object(maybe.maybe(parse_tree.prog_data.cons_id), maybe.maybe(ml_backend.mlds.ctor_name), ml_backend.mlds.mlds_tag, bool.bool, parse_tree.prog_data.prog_var, list.list(ml_backend.mlds.mlds_rval), list.list(ml_backend.mlds.mlds_type), list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.uni_mode), list.list(int), hlds.hlds_goal.how_to_construct, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.statement), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_new_object((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func ml_gen_reserved_address(hlds.hlds_module.module_info, hlds.hlds_data.reserved_address, ml_backend.mlds.mlds_type) = ml_backend.mlds.mlds_rval.
+:- func ml_gen_secondary_tag_rval(hlds.hlds_module.module_info, hlds.hlds_data.tag_bits, parse_tree.prog_data.mer_type, ml_backend.mlds.mlds_rval) = ml_backend.mlds.mlds_rval.
+:- pred ml_gen_tag_test(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, ml_backend.mlds.mlds_rval, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_tag_test((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_unification(hlds.hlds_goal.unification, hlds.code_model.code_model, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.statement), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_unification((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

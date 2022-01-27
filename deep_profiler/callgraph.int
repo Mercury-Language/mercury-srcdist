@@ -1,0 +1,9 @@
+:- module callgraph.
+:- interface.
+:- import_module array.
+:- import_module list.
+:- import_module profile.
+:- pred find_cliques(profile.initial_deep, list.list(list.list(profile.proc_dynamic_ptr))).
+:- mode find_cliques((builtin.in), (builtin.out)) is det.
+:- pred make_clique_indexes(int, list.list(list.list(profile.proc_dynamic_ptr)), array.array(list.list(profile.proc_dynamic_ptr)), array.array(profile.clique_ptr)).
+:- mode make_clique_indexes((builtin.in), (builtin.in), (array.array_uo), (array.array_uo)) is det.

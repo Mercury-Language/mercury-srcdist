@@ -1,0 +1,382 @@
+/*
+** Automatically generated from `commit_gen.m'
+** by the Mercury compiler,
+** version rotd-2016-02-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.commit_gen. */
+/* :- implementation. */
+
+/*
+INIT mercury__ll_backend__commit_gen__init
+ENDINIT
+*/
+
+#include "ll_backend.commit_gen.mih"
+
+
+#include "analysis.mih"
+#include "backend_libs.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "ll_backend.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.rtti.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.type_util.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.goal_form.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "ll_backend.code_gen.mih"
+#include "ll_backend.code_info.mih"
+#include "ll_backend.code_loc_dep.mih"
+#include "ll_backend.continuation_info.mih"
+#include "ll_backend.global_data.mih"
+#include "ll_backend.layout.mih"
+#include "ll_backend.llds.mih"
+#include "ll_backend.trace_gen.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static void MR_CALL 
+ll_backend__commit_gen__generate_commit_9_p_0(
+  MR_Word ll_backend__commit_gen__OuterCodeModel_10,
+  MR_Word ll_backend__commit_gen__OuterGoalInfo_11,
+  MR_Word ll_backend__commit_gen__ForwardLiveVarsBeforeGoal_12,
+  MR_Word ll_backend__commit_gen__Goal_13,
+  MR_Word * ll_backend__commit_gen__Code_14,
+  MR_Word ll_backend__commit_gen__STATE_VARIABLE_CI_0_26,
+  MR_Word * ll_backend__commit_gen__STATE_VARIABLE_CI_27,
+  MR_Word ll_backend__commit_gen__STATE_VARIABLE_CLD_0_28,
+  MR_Word * ll_backend__commit_gen__STATE_VARIABLE_CLD_29);
+
+
+
+
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static void MR_CALL 
+ll_backend__commit_gen__generate_commit_9_p_0(
+  MR_Word ll_backend__commit_gen__OuterCodeModel_10,
+  MR_Word ll_backend__commit_gen__OuterGoalInfo_11,
+  MR_Word ll_backend__commit_gen__ForwardLiveVarsBeforeGoal_12,
+  MR_Word ll_backend__commit_gen__Goal_13,
+  MR_Word * ll_backend__commit_gen__Code_14,
+  MR_Word ll_backend__commit_gen__STATE_VARIABLE_CI_0_26,
+  MR_Word * ll_backend__commit_gen__STATE_VARIABLE_CI_27,
+  MR_Word ll_backend__commit_gen__STATE_VARIABLE_CLD_0_28,
+  MR_Word * ll_backend__commit_gen__STATE_VARIABLE_CLD_29)
+{
+  {
+    MR_bool ll_backend__commit_gen__succeeded;
+    MR_Word ll_backend__commit_gen__AddTrailOps_17;
+    MR_Word ll_backend__commit_gen__AddRegionOps_18;
+    MR_Word ll_backend__commit_gen__InnerGoalInfo_20;
+    MR_Word ll_backend__commit_gen__InnerCodeModel_21;
+    MR_Word ll_backend__commit_gen__V_19_19;
+
+    {
+      ll_backend__commit_gen__AddTrailOps_17 = ll_backend__code_info__should_add_trail_ops_2_f_0(ll_backend__commit_gen__STATE_VARIABLE_CI_0_26, ll_backend__commit_gen__OuterGoalInfo_11);
+    }
+    {
+      ll_backend__commit_gen__AddRegionOps_18 = ll_backend__code_info__should_add_region_ops_2_f_0(ll_backend__commit_gen__STATE_VARIABLE_CI_0_26, ll_backend__commit_gen__OuterGoalInfo_11);
+    }
+    ll_backend__commit_gen__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__commit_gen__Goal_13, (MR_Integer) 0)));
+    ll_backend__commit_gen__InnerGoalInfo_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__commit_gen__Goal_13, (MR_Integer) 1)));
+    {
+      ll_backend__commit_gen__InnerCodeModel_21 = hlds__code_model__goal_info_get_code_model_1_f_0(ll_backend__commit_gen__InnerGoalInfo_20);
+    }
+    switch (ll_backend__commit_gen__OuterCodeModel_10) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (ll_backend__commit_gen__InnerCodeModel_21) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              ll_backend__code_gen__generate_goal_7_p_0(ll_backend__commit_gen__InnerCodeModel_21, ll_backend__commit_gen__Goal_13, ll_backend__commit_gen__Code_14, ll_backend__commit_gen__STATE_VARIABLE_CI_0_26, ll_backend__commit_gen__STATE_VARIABLE_CI_27, ll_backend__commit_gen__STATE_VARIABLE_CLD_0_28, ll_backend__commit_gen__STATE_VARIABLE_CLD_29);
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word ll_backend__commit_gen__TypeCtorInfo_67_67;
+              MR_Word ll_backend__commit_gen__CommitInfo_22;
+              MR_Word ll_backend__commit_gen__PreCommit_23;
+              MR_Word ll_backend__commit_gen__GoalCode_24;
+              MR_Word ll_backend__commit_gen__Commit_25;
+              MR_Word ll_backend__commit_gen__STATE_VARIABLE_CI_43_43;
+              MR_Word ll_backend__commit_gen__STATE_VARIABLE_CLD_44_44;
+              MR_Word ll_backend__commit_gen__STATE_VARIABLE_CI_45_45;
+              MR_Word ll_backend__commit_gen__STATE_VARIABLE_CLD_46_46;
+              MR_Word ll_backend__commit_gen__V_49_49;
+
+              {
+                ll_backend__code_loc_dep__prepare_for_det_commit_10_p_0(ll_backend__commit_gen__AddTrailOps_17, ll_backend__commit_gen__AddRegionOps_18, ll_backend__commit_gen__ForwardLiveVarsBeforeGoal_12, ll_backend__commit_gen__InnerGoalInfo_20, &ll_backend__commit_gen__CommitInfo_22, &ll_backend__commit_gen__PreCommit_23, ll_backend__commit_gen__STATE_VARIABLE_CI_0_26, &ll_backend__commit_gen__STATE_VARIABLE_CI_43_43, ll_backend__commit_gen__STATE_VARIABLE_CLD_0_28, &ll_backend__commit_gen__STATE_VARIABLE_CLD_44_44);
+              }
+              {
+                ll_backend__code_gen__generate_goal_7_p_0(ll_backend__commit_gen__InnerCodeModel_21, ll_backend__commit_gen__Goal_13, &ll_backend__commit_gen__GoalCode_24, ll_backend__commit_gen__STATE_VARIABLE_CI_43_43, &ll_backend__commit_gen__STATE_VARIABLE_CI_45_45, ll_backend__commit_gen__STATE_VARIABLE_CLD_44_44, &ll_backend__commit_gen__STATE_VARIABLE_CLD_46_46);
+              }
+              {
+                ll_backend__code_loc_dep__generate_det_commit_6_p_0(ll_backend__commit_gen__CommitInfo_22, &ll_backend__commit_gen__Commit_25, ll_backend__commit_gen__STATE_VARIABLE_CI_45_45, ll_backend__commit_gen__STATE_VARIABLE_CI_27, ll_backend__commit_gen__STATE_VARIABLE_CLD_46_46, ll_backend__commit_gen__STATE_VARIABLE_CLD_29);
+              }
+              ll_backend__commit_gen__TypeCtorInfo_67_67 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+              {
+                ll_backend__commit_gen__V_49_49 = mercury__cord__f_43_43_2_f_0(ll_backend__commit_gen__TypeCtorInfo_67_67, ll_backend__commit_gen__GoalCode_24, ll_backend__commit_gen__Commit_25);
+              }
+              {
+                *ll_backend__commit_gen__Code_14 = mercury__cord__f_43_43_2_f_0(ll_backend__commit_gen__TypeCtorInfo_67_67, ll_backend__commit_gen__PreCommit_23, ll_backend__commit_gen__V_49_49);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              {
+                mercury__require__unexpected_3_p_0((MR_String) "ll_backend.commit_gen", (MR_String) "predicate \140ll_backend.commit_gen.generate_commit\'/9", (MR_String) "semidet model in det context");
+                return;
+              }
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          ll_backend__code_gen__generate_goal_7_p_0(ll_backend__commit_gen__InnerCodeModel_21, ll_backend__commit_gen__Goal_13, ll_backend__commit_gen__Code_14, ll_backend__commit_gen__STATE_VARIABLE_CI_0_26, ll_backend__commit_gen__STATE_VARIABLE_CI_27, ll_backend__commit_gen__STATE_VARIABLE_CLD_0_28, ll_backend__commit_gen__STATE_VARIABLE_CLD_29);
+        }
+        break;
+      case (MR_Integer) 1:
+        switch (ll_backend__commit_gen__InnerCodeModel_21) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              ll_backend__code_gen__generate_goal_7_p_0(ll_backend__commit_gen__InnerCodeModel_21, ll_backend__commit_gen__Goal_13, ll_backend__commit_gen__Code_14, ll_backend__commit_gen__STATE_VARIABLE_CI_0_26, ll_backend__commit_gen__STATE_VARIABLE_CI_27, ll_backend__commit_gen__STATE_VARIABLE_CLD_0_28, ll_backend__commit_gen__STATE_VARIABLE_CLD_29);
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word ll_backend__commit_gen__TypeCtorInfo_68_68;
+              MR_Word ll_backend__commit_gen__STATE_VARIABLE_CI_32_32;
+              MR_Word ll_backend__commit_gen__STATE_VARIABLE_CLD_33_33;
+              MR_Word ll_backend__commit_gen__STATE_VARIABLE_CI_34_34;
+              MR_Word ll_backend__commit_gen__STATE_VARIABLE_CLD_35_35;
+              MR_Word ll_backend__commit_gen__V_38_38;
+              MR_Word ll_backend__commit_gen__CommitInfo_55;
+              MR_Word ll_backend__commit_gen__PreCommit_56;
+              MR_Word ll_backend__commit_gen__GoalCode_57;
+              MR_Word ll_backend__commit_gen__Commit_58;
+
+              {
+                ll_backend__code_loc_dep__prepare_for_semi_commit_10_p_0(ll_backend__commit_gen__AddTrailOps_17, ll_backend__commit_gen__AddRegionOps_18, ll_backend__commit_gen__ForwardLiveVarsBeforeGoal_12, ll_backend__commit_gen__InnerGoalInfo_20, &ll_backend__commit_gen__CommitInfo_55, &ll_backend__commit_gen__PreCommit_56, ll_backend__commit_gen__STATE_VARIABLE_CI_0_26, &ll_backend__commit_gen__STATE_VARIABLE_CI_32_32, ll_backend__commit_gen__STATE_VARIABLE_CLD_0_28, &ll_backend__commit_gen__STATE_VARIABLE_CLD_33_33);
+              }
+              {
+                ll_backend__code_gen__generate_goal_7_p_0(ll_backend__commit_gen__InnerCodeModel_21, ll_backend__commit_gen__Goal_13, &ll_backend__commit_gen__GoalCode_57, ll_backend__commit_gen__STATE_VARIABLE_CI_32_32, &ll_backend__commit_gen__STATE_VARIABLE_CI_34_34, ll_backend__commit_gen__STATE_VARIABLE_CLD_33_33, &ll_backend__commit_gen__STATE_VARIABLE_CLD_35_35);
+              }
+              {
+                ll_backend__code_loc_dep__generate_semi_commit_6_p_0(ll_backend__commit_gen__CommitInfo_55, &ll_backend__commit_gen__Commit_58, ll_backend__commit_gen__STATE_VARIABLE_CI_34_34, ll_backend__commit_gen__STATE_VARIABLE_CI_27, ll_backend__commit_gen__STATE_VARIABLE_CLD_35_35, ll_backend__commit_gen__STATE_VARIABLE_CLD_29);
+              }
+              ll_backend__commit_gen__TypeCtorInfo_68_68 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+              {
+                ll_backend__commit_gen__V_38_38 = mercury__cord__f_43_43_2_f_0(ll_backend__commit_gen__TypeCtorInfo_68_68, ll_backend__commit_gen__GoalCode_57, ll_backend__commit_gen__Commit_58);
+              }
+              {
+                *ll_backend__commit_gen__Code_14 = mercury__cord__f_43_43_2_f_0(ll_backend__commit_gen__TypeCtorInfo_68_68, ll_backend__commit_gen__PreCommit_56, ll_backend__commit_gen__V_38_38);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              ll_backend__code_gen__generate_goal_7_p_0(ll_backend__commit_gen__InnerCodeModel_21, ll_backend__commit_gen__Goal_13, ll_backend__commit_gen__Code_14, ll_backend__commit_gen__STATE_VARIABLE_CI_0_26, ll_backend__commit_gen__STATE_VARIABLE_CI_27, ll_backend__commit_gen__STATE_VARIABLE_CLD_0_28, ll_backend__commit_gen__STATE_VARIABLE_CLD_29);
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+ll_backend__commit_gen__generate_scope_10_p_0(
+  MR_Word ll_backend__commit_gen__Reason_11,
+  MR_Word ll_backend__commit_gen__OuterCodeModel_12,
+  MR_Word ll_backend__commit_gen__OuterGoalInfo_13,
+  MR_Word ll_backend__commit_gen__ForwardLiveVarsBeforeGoal_14,
+  MR_Word ll_backend__commit_gen__Goal_15,
+  MR_Word * ll_backend__commit_gen__Code_16,
+  MR_Word ll_backend__commit_gen__STATE_VARIABLE_CI_0_25,
+  MR_Word * ll_backend__commit_gen__STATE_VARIABLE_CI_26,
+  MR_Word ll_backend__commit_gen__STATE_VARIABLE_CLD_0_27,
+  MR_Word * ll_backend__commit_gen__STATE_VARIABLE_CLD_28)
+{
+  {
+    MR_bool ll_backend__commit_gen__succeeded = ((((MR_tag((MR_Word) ll_backend__commit_gen__Reason_11)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__commit_gen__Reason_11, (MR_Integer) 0)))) == (MR_Integer) 6)));
+    MR_Word ll_backend__commit_gen__MaybeTraceRuntimeCond_20;
+    MR_Word ll_backend__commit_gen__V_19_19;
+    MR_Word ll_backend__commit_gen__V_21_21;
+    MR_Word ll_backend__commit_gen__V_22_22;
+    MR_Word ll_backend__commit_gen__V_23_23;
+    MR_Word ll_backend__commit_gen__V_24_24;
+
+    if (ll_backend__commit_gen__succeeded)
+      {
+        ll_backend__commit_gen__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__commit_gen__Reason_11, (MR_Integer) 1)));
+        ll_backend__commit_gen__MaybeTraceRuntimeCond_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__commit_gen__Reason_11, (MR_Integer) 2)));
+        ll_backend__commit_gen__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__commit_gen__Reason_11, (MR_Integer) 3)));
+        ll_backend__commit_gen__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__commit_gen__Reason_11, (MR_Integer) 4)));
+        ll_backend__commit_gen__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__commit_gen__Reason_11, (MR_Integer) 5)));
+        ll_backend__commit_gen__succeeded = ((MR_tag((MR_Word) ll_backend__commit_gen__MaybeTraceRuntimeCond_20)) == (MR_mktag((MR_Integer) 1)));
+        if (ll_backend__commit_gen__succeeded)
+          ll_backend__commit_gen__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__commit_gen__MaybeTraceRuntimeCond_20, (MR_Integer) 0)));
+      }
+    if (ll_backend__commit_gen__succeeded)
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "ll_backend.commit_gen", (MR_String) "predicate \140ll_backend.commit_gen.generate_scope\'/10", (MR_String) "trace_goal");
+          return;
+        }
+      }
+    else
+      {
+        ll_backend__commit_gen__generate_commit_9_p_0(ll_backend__commit_gen__OuterCodeModel_12, ll_backend__commit_gen__OuterGoalInfo_13, ll_backend__commit_gen__ForwardLiveVarsBeforeGoal_14, ll_backend__commit_gen__Goal_15, ll_backend__commit_gen__Code_16, ll_backend__commit_gen__STATE_VARIABLE_CI_0_25, ll_backend__commit_gen__STATE_VARIABLE_CI_26, ll_backend__commit_gen__STATE_VARIABLE_CLD_0_27, ll_backend__commit_gen__STATE_VARIABLE_CLD_28);
+      }
+  }
+}
+
+void mercury__ll_backend__commit_gen__init(void)
+{
+}
+
+void mercury__ll_backend__commit_gen__init_type_tables(void)
+{
+}
+
+void mercury__ll_backend__commit_gen__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module ll_backend.commit_gen. */

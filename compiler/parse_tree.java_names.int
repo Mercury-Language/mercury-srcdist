@@ -1,0 +1,20 @@
+:- module (parse_tree.java_names).
+:- interface.
+:- import_module (mdbcomp.sym_name).
+:- type csj_qual_kind
+    --->    module_qual 
+    ;       type_qual .
+:- pred csharp_is_keyword(string).
+:- mode csharp_is_keyword((builtin.in)) is semidet.
+:- func csharp_mercury_runtime_package_name = mdbcomp.sym_name.sym_name.
+:- func flip_initial_case(string) = string.
+:- func flip_initial_case_of_final_part(mdbcomp.sym_name.sym_name) = mdbcomp.sym_name.sym_name.
+:- pred java_is_keyword(string).
+:- mode java_is_keyword((builtin.in)) is semidet.
+:- func java_mercury_runtime_package_name = mdbcomp.sym_name.sym_name.
+:- pred mangle_sym_name_for_csharp(mdbcomp.sym_name.sym_name, parse_tree.java_names.csj_qual_kind, string, string).
+:- mode mangle_sym_name_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mangle_sym_name_for_java(mdbcomp.sym_name.sym_name, parse_tree.java_names.csj_qual_kind, string, string).
+:- mode mangle_sym_name_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func valid_csharp_symbol_name(string) = string.
+:- func valid_java_symbol_name(string) = string.

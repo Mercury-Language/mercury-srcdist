@@ -1,0 +1,13 @@
+module(1, "time.m",
+	time,
+	{},
+	{builtin, io, maybe, private_builtin},
+	{builtin, exception, int, io, list, maybe, private_builtin, require, stream, string, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - time, "C#" - time, "Java" - time, "Erlang" - time},
+	contains_foreign_export,
+	no_main
+).
