@@ -1,0 +1,5 @@
+Remove more support for .s and .pic_s files from mmake.
+
+compiler/file_names.m:
+compiler/write_deps_file.m:
+	As above.

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+aclocal -I m4
+autoconf
+mercury_cv_low_tag_bits=2 \
+mercury_cv_bits_per_word=32 \
+mercury_cv_unboxed_floats=no \
+sh configure --with-llds-base-grade=none --with-cc=clang && \
+mmake GRADE=none.gc MMAKEFLAGS="EXTRA_MCFLAGS='-O5 --opt-space --cross-compiling --no-smart-indexing' -j2" tar

@@ -1,0 +1,12 @@
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/boehm_gc
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/boehm_gc/include
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/runtime
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/library
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/library/Mercury/mihs
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/mdbcomp
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/mdbcomp/Mercury/mihs
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/browser
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/browser/Mercury/mihs
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/trace
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/ssdb
+-I/Users/jfischer/Mercury-Workspaces/mercury.local-2/stage2/ssdb/Mercury/mihs

@@ -1,0 +1,8 @@
+MR_define_extern_entry(mercury__do_call_class_method_compact);
+MR_define_extern_entry(mercury__do_call_class_method_0);
+MR_define_extern_entry(mercury__do_call_class_method_1);
+MR_define_extern_entry(mercury__do_call_class_method_2);
+MR_define_extern_entry(mercury__do_call_class_method_3);
+MR_define_extern_entry(mercury__do_call_class_method_4);
+MR_define_extern_entry(mercury__do_call_class_method_5);
+MR_define_extern_entry(mercury__do_call_class_method_6);

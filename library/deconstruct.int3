@@ -1,0 +1,14 @@
+:- module deconstruct.
+:- interface.
+:- import_module construct.
+:- import_module list.
+:- import_module maybe.
+:- import_module univ.
+:- type noncanon_handling
+	where	type_is_abstract_enum(2).
+:- type maybe_arg.
+:- inst (canonicalize) == bound(canonicalize).
+:- inst (canonicalize_or_do_not_allow) == bound(canonicalize ; do_not_allow).
+:- inst (do_not_allow) == bound(do_not_allow).
+:- inst (do_not_allow_or_include_details_cc) == bound(do_not_allow ; include_details_cc).
+:- inst (include_details_cc) == bound(include_details_cc).

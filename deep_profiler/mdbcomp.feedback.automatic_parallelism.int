@@ -1,0 +1,60 @@
+:- module ((mdbcomp.feedback).automatic_parallelism).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module string.
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.program_representation).
+:- type best_par_algorithm
+	--->	bpa_complete_branches(int)
+	;	bpa_complete_size(int)
+	;	bpa_complete 
+	;	bpa_greedy .
+:- type callee_rep
+	--->	unknown_callee 
+	;	named_callee((((mdbcomp.feedback).automatic_parallelism).nc_module_name) :: string, (((mdbcomp.feedback).automatic_parallelism).nc_proc_name) :: string).
+:- type candidate_par_conjunctions_params
+	--->	candidate_par_conjunctions_params((((mdbcomp.feedback).automatic_parallelism).cpcp_desired_parallelism) :: float, (((mdbcomp.feedback).automatic_parallelism).cpcp_intermodule_var_use) :: bool.bool, (((mdbcomp.feedback).automatic_parallelism).cpcp_sparking_cost) :: int, (((mdbcomp.feedback).automatic_parallelism).cpcp_sparking_delay) :: int, (((mdbcomp.feedback).automatic_parallelism).cpcp_barrier_cost) :: int, (((mdbcomp.feedback).automatic_parallelism).cpcp_future_signal_cost) :: int, (((mdbcomp.feedback).automatic_parallelism).cpcp_future_wait_cost) :: int, (((mdbcomp.feedback).automatic_parallelism).cpcp_context_wakeup_delay) :: int, (((mdbcomp.feedback).automatic_parallelism).cpcp_clique_threshold) :: int, (((mdbcomp.feedback).automatic_parallelism).cpcp_call_site_threshold) :: int, (((mdbcomp.feedback).automatic_parallelism).cpcp_speedup_threshold) :: float, (((mdbcomp.feedback).automatic_parallelism).cpcp_parallelise_dep_conjs) :: mdbcomp.feedback.automatic_parallelism.parallelise_dep_conjs, (((mdbcomp.feedback).automatic_parallelism).cpcp_best_par_alg) :: mdbcomp.feedback.automatic_parallelism.best_par_algorithm).
+:- type candidate_par_conjunctions_proc == mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc(mdbcomp.feedback.automatic_parallelism.pard_goal).
+:- type conjuncts_are_dependent
+	--->	conjuncts_are_dependent(set.set(mdbcomp.program_representation.var_rep))
+	;	conjuncts_are_independent .
+:- type cost_above_par_threshold
+	--->	cost_above_par_threshold 
+	;	cost_not_above_par_threshold .
+:- type parallel_exec_metrics
+	--->	parallel_exec_metrics((((mdbcomp.feedback).automatic_parallelism).pem_num_calls) :: int, (((mdbcomp.feedback).automatic_parallelism).pem_seq_time) :: float, (((mdbcomp.feedback).automatic_parallelism).pem_par_time) :: float, (((mdbcomp.feedback).automatic_parallelism).pem_par_overhead_xpark_cost) :: float, (((mdbcomp.feedback).automatic_parallelism).pem_par_overhead_barrier) :: float, (((mdbcomp.feedback).automatic_parallelism).pem_par_overhead_signals) :: float, (((mdbcomp.feedback).automatic_parallelism).pem_par_overhead_waits) :: float, (((mdbcomp.feedback).automatic_parallelism).pem_first_conj_dead_time) :: float, (((mdbcomp.feedback).automatic_parallelism).pem_future_dead_time) :: float).
+:- type parallelise_dep_conjs
+	--->	do_not_parallelise_dep_conjs 
+	;	parallelise_dep_conjs(mdbcomp.feedback.automatic_parallelism.speedup_estimate_alg).
+:- type pard_goal == mdbcomp.program_representation.goal_rep(mdbcomp.feedback.automatic_parallelism.pard_goal_annotation).
+:- type pard_goal_annotation
+	--->	pard_goal_annotation((((mdbcomp.feedback).automatic_parallelism).pga_cost_percall) :: float, (((mdbcomp.feedback).automatic_parallelism).pga_coat_above_threshold) :: mdbcomp.feedback.automatic_parallelism.cost_above_par_threshold, (((mdbcomp.feedback).automatic_parallelism).pga_var_productions) :: assoc_list.assoc_list(mdbcomp.program_representation.var_rep, float), (((mdbcomp.feedback).automatic_parallelism).pga_var_consumptions) :: assoc_list.assoc_list(mdbcomp.program_representation.var_rep, float)).
+:- type push_goal
+	--->	push_goal((((mdbcomp.feedback).automatic_parallelism).pg_goal_path) :: mdbcomp.goal_path.goal_path_string, (((mdbcomp.feedback).automatic_parallelism).pg_pushee_lo) :: int, (((mdbcomp.feedback).automatic_parallelism).pg_pushee_hi) :: int, (((mdbcomp.feedback).automatic_parallelism).pg_pushed_into) :: list.list(mdbcomp.goal_path.goal_path_string)).
+:- type speedup_estimate_alg
+	--->	estimate_speedup_naively 
+	;	estimate_speedup_by_num_vars 
+	;	estimate_speedup_by_overlap .
+:- type stat_measure
+	--->	stat_mean 
+	;	stat_median .
+:- type candidate_par_conjunction(GoalType)
+	--->	candidate_par_conjunction((((mdbcomp.feedback).automatic_parallelism).cpc_goal_path) :: mdbcomp.goal_path.goal_path_string, (((mdbcomp.feedback).automatic_parallelism).cpc_maybe_push_goal) :: maybe.maybe(mdbcomp.feedback.automatic_parallelism.push_goal), (((mdbcomp.feedback).automatic_parallelism).cpc_first_conj_num) :: int, (((mdbcomp.feedback).automatic_parallelism).cpc_is_dependent) :: mdbcomp.feedback.automatic_parallelism.conjuncts_are_dependent, (((mdbcomp.feedback).automatic_parallelism).cpc_goals_before) :: list.list(GoalType), (((mdbcomp.feedback).automatic_parallelism).cpc_goals_before_cost) :: float, (((mdbcomp.feedback).automatic_parallelism).cpc_conjs) :: list.list(mdbcomp.feedback.automatic_parallelism.seq_conj(GoalType)), (((mdbcomp.feedback).automatic_parallelism).cpc_goals_after) :: list.list(GoalType), (((mdbcomp.feedback).automatic_parallelism).cpc_goals_after_cost) :: float, (((mdbcomp.feedback).automatic_parallelism).cpc_par_exec_metrics) :: mdbcomp.feedback.automatic_parallelism.parallel_exec_metrics).
+:- type candidate_par_conjunctions_proc(GoalType)
+	--->	candidate_par_conjunctions_proc((((mdbcomp.feedback).automatic_parallelism).cpcp_var_table) :: mdbcomp.program_representation.var_name_table, (((mdbcomp.feedback).automatic_parallelism).cpcp_push_goals) :: list.list(mdbcomp.feedback.automatic_parallelism.push_goal), (((mdbcomp.feedback).automatic_parallelism).cpcp_par_conjs) :: list.list(mdbcomp.feedback.automatic_parallelism.candidate_par_conjunction(GoalType))).
+:- type seq_conj(GoalType)
+	--->	seq_conj((((mdbcomp.feedback).automatic_parallelism).sc_conjs) :: list.list(GoalType)).
+:- pred convert_candidate_par_conjunction(pred(mdbcomp.feedback.automatic_parallelism.candidate_par_conjunction(A), A, B), mdbcomp.feedback.automatic_parallelism.candidate_par_conjunction(A), mdbcomp.feedback.automatic_parallelism.candidate_par_conjunction(B)).
+:- mode convert_candidate_par_conjunction(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- pred convert_candidate_par_conjunctions_proc(pred(mdbcomp.feedback.automatic_parallelism.candidate_par_conjunction(A), A, B), mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc(A), mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc(B)).
+:- mode convert_candidate_par_conjunctions_proc(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- pred convert_seq_conj(pred(A, B), mdbcomp.feedback.automatic_parallelism.seq_conj(A), mdbcomp.feedback.automatic_parallelism.seq_conj(B)).
+:- mode convert_seq_conj(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- func parallel_exec_metrics_get_cpu_time(mdbcomp.feedback.automatic_parallelism.parallel_exec_metrics) = float.
+:- func parallel_exec_metrics_get_overheads(mdbcomp.feedback.automatic_parallelism.parallel_exec_metrics) = float.
+:- func parallel_exec_metrics_get_speedup(mdbcomp.feedback.automatic_parallelism.parallel_exec_metrics) = float.
+:- func parallel_exec_metrics_get_time_saving(mdbcomp.feedback.automatic_parallelism.parallel_exec_metrics) = float.
