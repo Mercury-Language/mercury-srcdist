@@ -1,0 +1,4 @@
+:- module (transform_hlds.untupling).
+:- interface.
+:- type_representation(transform_map, is_eqv_to(map(pred_proc_id, transformed_proc))).
+:- type_representation(untuple_map, is_eqv_to(map(prog_var, prog_vars))).
