@@ -1,0 +1,14 @@
+module(2, "interactive_query.m",
+	(mdb.interactive_query),
+	{mdb},
+	{builtin, io, list, private_builtin, univ},
+	{bool, exception, map, maybe, parser, string, term, term_io, type_desc, varset, (mdb.dl), (mdb.name_mangle), (mdb.util), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.interactive_query)},
+	contains_foreign_export,
+	no_main,
+	{}
+).

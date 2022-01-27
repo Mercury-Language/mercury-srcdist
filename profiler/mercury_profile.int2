@@ -1,0 +1,2 @@
+:- module mercury_profile.
+:- interface.
