@@ -1,0 +1,102 @@
+/*
+** Automatically generated from `cterm.m'
+** by the Mercury compiler,
+** version rotd-2021-10-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.cterm.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__cterm
+#define MR_HEADER_GUARD_mdb__cterm
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__CTERM_DECL_GUARD
+#define MDB__CTERM_DECL_GUARD
+#include "mdb.mih"
+
+#include "mercury_trace_term.h"
+
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__cterm__mdb__cterm__type_ctor_info_cargs_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__cterm__mdb__cterm__type_ctor_info_cterm_0;
+
+void MR_CALL 
+mdb__cterm__cterm_deconstruct_3_p_0(
+  MR_Box param_1,
+  MR_String * param_2,
+  MR_Box * param_3);
+
+MR_bool MR_CALL 
+mdb__cterm__cterm_head_tail_3_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mdb__cterm__match_with_cterm_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__cterm____Compare____cargs_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mdb__cterm____Compare____cterm_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mdb__cterm____Unify____cargs_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mdb__cterm____Unify____cterm_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void mercury__mdb__cterm__init(void);
+void mercury__mdb__cterm__init_type_tables(void);
+void mercury__mdb__cterm__init_debugger(void);
+const char *mercury__mdb__cterm__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.cterm
+
+// :- end_interface mdb.cterm.

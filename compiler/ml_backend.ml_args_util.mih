@@ -1,0 +1,224 @@
+/*
+** Automatically generated from `ml_args_util.m'
+** by the Mercury compiler,
+** version rotd-2021-10-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_args_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_args_util
+#define MR_HEADER_GUARD_ml_backend__ml_args_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_ARGS_UTIL_DECL_GUARD
+#define ML_BACKEND__ML_ARGS_UTIL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_args_util__ml_backend__ml_args_util__type_ctor_info_copy_out_when_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_args_util__ml_backend__ml_args_util__type_ctor_info_ml_call_arg_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_args_util__ml_backend__ml_args_util__type_ctor_info_var_mvar_type_mode_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_args_util__ml_backend__ml_args_util__type_ctor_info_what_params_0;
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_append_return_statement_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_gen_args_13_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word * param_9,
+  MR_Word * param_10,
+  MR_Word * param_11,
+  MR_Word param_12,
+  MR_Word * param_13);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_gen_args_13_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word * param_9,
+  MR_Word * param_10,
+  MR_Word * param_11,
+  MR_Word param_12,
+  MR_Word * param_13);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_gen_info_proc_params_7_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_gen_params_no_gc_stmts_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_gen_proc_params_no_gc_stmts_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_gen_tscc_arg_params_22_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Word param_11,
+  MR_Word * param_12,
+  MR_Word * param_13,
+  MR_Word * param_14,
+  MR_Word * param_15,
+  MR_Word * param_16,
+  MR_Word * param_17,
+  MR_Word * param_18,
+  MR_Word * param_19,
+  MR_Word * param_20,
+  MR_Word * param_21,
+  MR_Word * param_22);
+
+MR_Word MR_CALL 
+ml_backend__ml_args_util__compute_when_to_copy_out_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+ml_backend__ml_args_util__ml_gen_proc_params_from_rtti_no_gc_stmts_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_args_util__ml_gen_proc_params_inputs_only_no_gc_stmts_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_args_util__wrap_plain_not_fcw_arg_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_args_util__wrap_plain_not_fcw_args_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ml_backend__ml_args_util____Compare____copy_out_when_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_args_util____Compare____ml_call_arg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_args_util____Compare____var_mvar_type_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_args_util____Compare____what_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__ml_args_util____Unify____copy_out_when_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_args_util____Unify____ml_call_arg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_args_util____Unify____var_mvar_type_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_args_util____Unify____what_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__ml_args_util__init(void);
+void mercury__ml_backend__ml_args_util__init_type_tables(void);
+void mercury__ml_backend__ml_args_util__init_debugger(void);
+const char *mercury__ml_backend__ml_args_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.ml_args_util
+
+// :- end_interface ml_backend.ml_args_util.

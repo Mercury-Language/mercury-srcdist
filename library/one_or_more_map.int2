@@ -1,0 +1,5 @@
+:- module one_or_more_map.
+:- interface.
+:- use_module map.
+:- use_module one_or_more.
+:- type one_or_more_map(K, V) == map.map(K, one_or_more.one_or_more(V)).

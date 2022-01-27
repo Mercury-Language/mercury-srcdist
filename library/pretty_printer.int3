@@ -1,0 +1,13 @@
+:- module pretty_printer.
+:- interface.
+:- type doc.
+:- type docs.
+:- type formatter.
+:- type formatter_map.
+:- type func_symbol_limit.
+:- type pp_internal.
+:- type pp_params.
+:- type_representation(docs, is_eqv_to(list(pretty_printer.doc))).
+:- type_representation(formatter, is_eqv_to((func(univ, list(type_desc)) = pretty_printer.doc))).
+:- type_representation(formatter_map, is_eqv_to(map(string, map(string, map(int, pretty_printer.formatter))))).
+:- type_representation(pp_params, is_word_aligned_ptr).
