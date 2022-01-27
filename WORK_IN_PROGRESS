@@ -1,0 +1,28 @@
+                              Work not in progress
+
+   The compiler contains some code for the following features, which are
+   not yet completed but work on which has stopped, since finishing them
+   off would be quite a bit more work, and our current priorities lie
+   elsewhere. Still, these could make interesting and worthwhile projects
+   if someone has the time for it.
+
+     * We have incomplete support for a new, more expressive design for
+       representing information about type classes and type class
+       instances at runtime. When complete, the new design would allow
+       runtime tests of type class membership, it would allow the tabling
+       of predicates with type class constraints, and it would allow the
+       debugger to print type_class_infos.
+     * We have added support for dynamic link libraries (DLLs) on Windows.
+       This is not yet enabled by default because it has not yet been
+       tested properly.
+     * There is an accurate garbage collector (the hlc.agc grade). See the
+       comments in compiler/ml_elim_nested.m and the paper on our web page
+       for more details.
+     * There is a `--generate-bytecode' option, for a back-end that
+       generates bytecode. The bytecode generator is basically complete,
+       but we don't have a bytecode interpreter.
+     * A new implementation of the mode system using constraints.
+     * Support for automatic structure reuse (reusing old data structures
+       that are no longer live, rather than allocating new memory on the
+       heap) and compile time garbage collection.
+     * A SOAP interface.

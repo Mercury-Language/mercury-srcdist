@@ -1,0 +1,313 @@
+/*
+** Automatically generated from `typecheck_info.m'
+** by the Mercury compiler,
+** version rotd-2022-01-21
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.typecheck_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__typecheck_info
+#define MR_HEADER_GUARD_check_hlds__typecheck_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__TYPECHECK_INFO_DECL_GUARD
+#define CHECK_HLDS__TYPECHECK_INFO_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_info__check_hlds__typecheck_info__type_ctor_info_cons_type_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_info__check_hlds__typecheck_info__type_ctor_info_cons_type_info_source_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_info__check_hlds__typecheck_info__type_ctor_info_maybe_rhs_lambda_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_info__check_hlds__typecheck_info__type_ctor_info_overloaded_symbol_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_info__check_hlds__typecheck_info__type_ctor_info_overloaded_symbol_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_info__check_hlds__typecheck_info__type_ctor_info_type_error_clause_context_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_info__check_hlds__typecheck_info__type_ctor_info_typecheck_debug_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_info__check_hlds__typecheck_info__type_ctor_info_typecheck_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__typecheck_info__check_hlds__typecheck_info__type_ctor_info_typecheck_sub_info_0;
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_add_error_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_add_nosuffix_integer_var_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_add_overloaded_symbol_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_all_errors_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_ambiguity_error_limit_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_ambiguity_warn_limit_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_calls_are_fully_qualified_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_cons_table_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_debug_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_error_clause_context_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_is_field_access_function_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_module_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_module_name_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_non_overload_errors_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_nosuffix_integer_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_overload_error_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_overloaded_symbol_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_pred_id_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_pred_table_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_rhs_lambda_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_type_table_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_get_verbose_errors_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_init_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_set_non_overload_errors_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_set_overload_error_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_set_overloaded_symbol_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info__typecheck_info_set_rhs_lambda_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+check_hlds__typecheck_info__project_cons_type_info_source_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+check_hlds__typecheck_info____Compare____cons_type_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info____Compare____cons_type_info_source_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info____Compare____maybe_rhs_lambda_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info____Compare____overloaded_symbol_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info____Compare____overloaded_symbol_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info____Compare____type_error_clause_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info____Compare____typecheck_debug_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__typecheck_info____Compare____typecheck_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_info____Unify____cons_type_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_info____Unify____cons_type_info_source_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_info____Unify____maybe_rhs_lambda_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_info____Unify____overloaded_symbol_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_info____Unify____overloaded_symbol_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_info____Unify____type_error_clause_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_info____Unify____typecheck_debug_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__typecheck_info____Unify____typecheck_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__typecheck_info__init(void);
+void mercury__check_hlds__typecheck_info__init_type_tables(void);
+void mercury__check_hlds__typecheck_info__init_debugger(void);
+const char *mercury__check_hlds__typecheck_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.typecheck_info
+
+// :- end_interface check_hlds.typecheck_info.
