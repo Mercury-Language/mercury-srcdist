@@ -1,0 +1,123 @@
+/*
+** Automatically generated from `mode_constraints.m'
+** by the Mercury compiler,
+** version rotd-2013-03-21, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.mode_constraints. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__mode_constraints
+#define MR_HEADER_GUARD_check_hlds__mode_constraints
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODE_CONSTRAINTS_DECL_GUARD
+#define CHECK_HLDS__MODE_CONSTRAINTS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_can_succeed_0;
+
+#line 45 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_constrain_var_0;
+
+#line 48 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_goal_constraints_info_0;
+
+#line 51 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_ho_calls_0;
+
+#line 54 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_ho_modes_0;
+
+#line 57 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_mode_decl_info_0;
+
+#line 60 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_number_robdd_info_0;
+
+#line 63 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_sccs_0;
+
+#line 66 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_module_info__arity1__check_hlds__mode_constraints__goal_constraints_info__arity0__[7];
+
+#line 69 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_module_info__arity1__check_hlds__mode_constraints__number_robdd_info__arity0__[7];
+
+#line 72 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_mc_info__arity1__check_hlds__mode_constraints__mode_decl_info__arity0__[7];
+
+#line 75 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_mc_info__arity1__check_hlds__mode_constraints__goal_constraints_info__arity0__[7];
+
+#line 78 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_mc_info__arity1__check_hlds__mode_constraints__number_robdd_info__arity0__[7];
+
+#line 81 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_ho_modes__arity1__check_hlds__mode_constraints__mode_decl_info__arity0__[7];
+
+#line 84 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_ho_modes__arity1__check_hlds__mode_constraints__goal_constraints_info__arity0__[7];
+
+#line 87 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeClassDeclStruct check_hlds__mode_constraints__check_hlds__mode_constraints__type_class_decl_has_module_info_1;
+
+#line 90 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeClassDeclStruct check_hlds__mode_constraints__check_hlds__mode_constraints__type_class_decl_has_mc_info_1;
+
+#line 93 "check_hlds.mode_constraints.mih.tmp"
+extern const MR_TypeClassDeclStruct check_hlds__mode_constraints__check_hlds__mode_constraints__type_class_decl_has_ho_modes_1;
+
+#line 39 "mode_constraints.m"
+void MR_CALL 
+check_hlds__mode_constraints__dump_abstract_constraints_5_p_0(
+#line 39 "mode_constraints.m"
+  MR_Word check_hlds__mode_constraints__param_1,
+#line 39 "mode_constraints.m"
+  MR_Word check_hlds__mode_constraints__param_2,
+#line 39 "mode_constraints.m"
+  MR_Word check_hlds__mode_constraints__param_3);
+
+#line 31 "mode_constraints.m"
+void MR_CALL 
+check_hlds__mode_constraints__mc_process_module_4_p_0(
+#line 31 "mode_constraints.m"
+  MR_Word check_hlds__mode_constraints__param_1,
+#line 31 "mode_constraints.m"
+  MR_Word * check_hlds__mode_constraints__param_2);
+
+void mercury__check_hlds__mode_constraints__init(void);
+void mercury__check_hlds__mode_constraints__init_type_tables(void);
+void mercury__check_hlds__mode_constraints__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.mode_constraints */
+
+/* :- end_interface check_hlds.mode_constraints. */

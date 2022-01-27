@@ -1,0 +1,40 @@
+/*
+** Automatically generated from `foreign_decl_line_number.m'
+** by the Mercury compiler,
+** version rotd-2013-03-21, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+*/
+#ifndef FOREIGN_DECL_LINE_NUMBER_MH
+#define FOREIGN_DECL_LINE_NUMBER_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef FOREIGN_DECL_LINE_NUMBER_DECL_GUARD
+#define FOREIGN_DECL_LINE_NUMBER_DECL_GUARD
+#line 18 "foreign_decl_line_number.m"
+
+#error Error in foreign decl
+
+#line 32 "foreign_decl_line_number.mh.tmp"
+
+#endif
+void bar(int *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* FOREIGN_DECL_LINE_NUMBER_MH */

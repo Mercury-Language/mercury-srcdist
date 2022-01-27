@@ -1,0 +1,2614 @@
+/*
+** Automatically generated from `hlds_goal.m'
+** by the Mercury compiler,
+** version rotd-2013-03-21, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.hlds_goal. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_goal
+#define MR_HEADER_GUARD_hlds__hlds_goal
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_GOAL_DECL_GUARD
+#define HLDS__HLDS_GOAL_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_atomic_goal_type_0;
+
+#line 45 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_atomic_interface_vars_0;
+
+#line 48 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_builtin_state_0;
+
+#line 51 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_call_unify_context_0;
+
+#line 54 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_can_cgc_0;
+
+#line 57 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0;
+
+#line 60 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_cast_kind_0;
+
+#line 63 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_catch_part_0;
+
+#line 66 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_cell_is_unique_0;
+
+#line 69 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_cell_to_reuse_0;
+
+#line 72 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_conj_type_0;
+
+#line 75 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_construct_sub_info_0;
+
+#line 78 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_contains_trace_goal_0;
+
+#line 81 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_ctgc_goal_info_0;
+
+#line 84 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_dp_coverage_goal_info_0;
+
+#line 87 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_dp_goal_info_0;
+
+#line 90 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_force_pruning_0;
+
+#line 93 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_foreign_arg_0;
+
+#line 96 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_from_ground_term_kind_0;
+
+#line 99 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_generic_call_0;
+
+#line 102 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_goal_feature_0;
+
+#line 105 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_goal_is_mdprof_inst_0;
+
+#line 108 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_goal_trivial_0;
+
+#line 111 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_has_subgoals_0;
+
+#line 114 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+#line 117 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_code_gen_info_0;
+
+#line 120 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_expr_0;
+
+#line 123 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_extra_info_0;
+
+#line 126 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_info_0;
+
+#line 129 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goals_0;
+
+#line 132 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_ho_values_0;
+
+#line 135 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_how_to_construct_0;
+
+#line 138 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_is_conditional_0;
+
+#line 141 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_is_existential_construction_0;
+
+#line 144 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_is_first_disjunct_0;
+
+#line 147 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_lc_use_parent_stack_0;
+
+#line 150 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_missed_message_0;
+
+#line 153 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_mode_constr_goal_info_0;
+
+#line 156 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_needs_update_0;
+
+#line 159 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_port_counts_give_coverage_after_0;
+
+#line 162 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_promise_solutions_kind_0;
+
+#line 165 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_rbmm_goal_info_0;
+
+#line 168 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_removable_0;
+
+#line 171 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_reuse_description_0;
+
+#line 174 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_scope_reason_0;
+
+#line 177 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_short_reuse_description_0;
+
+#line 180 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_shorthand_goal_expr_0;
+
+#line 183 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_tagged_case_0;
+
+#line 186 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_term_size_value_0;
+
+#line 189 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_trace_mutable_var_hlds_0;
+
+#line 192 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_try_io_state_vars_0;
+
+#line 195 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_uni_mode_0;
+
+#line 198 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unification_0;
+
+#line 201 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_context_0;
+
+#line 204 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_main_context_0;
+
+#line 207 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_mode_0;
+
+#line 210 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_rhs_0;
+
+#line 213 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_sub_context_0;
+
+#line 216 "hlds.hlds_goal.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_unify_sub_contexts_0;
+
+#line 964 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_sub_contexts_0_0(
+#line 964 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 964 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 964 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 964 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_sub_contexts_0_0(
+#line 964 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 964 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 958 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_sub_context_0_0(
+#line 958 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 958 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 958 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 958 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_sub_context_0_0(
+#line 958 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 958 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 720 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_rhs_0_0(
+#line 720 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 720 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 720 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 720 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_rhs_0_0(
+#line 720 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 720 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1018 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_mode_0_0(
+#line 1018 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1018 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1018 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1018 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_mode_0_0(
+#line 1018 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1018 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 927 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_main_context_0_0(
+#line 927 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 927 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 927 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 927 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_main_context_0_0(
+#line 927 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 927 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 918 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____unify_context_0_0(
+#line 918 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 918 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 918 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 918 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unify_context_0_0(
+#line 918 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 918 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 787 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____unification_0_0(
+#line 787 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 787 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 787 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 787 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____unification_0_0(
+#line 787 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 787 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1020 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____uni_mode_0_0(
+#line 1020 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1020 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1020 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1020 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____uni_mode_0_0(
+#line 1020 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1020 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 336 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____try_io_state_vars_0_0(
+#line 336 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 336 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 336 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 336 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____try_io_state_vars_0_0(
+#line 336 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 336 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 576 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____trace_mutable_var_hlds_0_0(
+#line 576 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 576 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 576 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 576 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____trace_mutable_var_hlds_0_0(
+#line 576 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 576 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 897 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____term_size_value_0_0(
+#line 897 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 897 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 897 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 897 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____term_size_value_0_0(
+#line 897 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 897 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1040 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____tagged_case_0_0(
+#line 1040 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1040 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1040 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1040 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____tagged_case_0_0(
+#line 1040 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1040 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 259 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____shorthand_goal_expr_0_0(
+#line 259 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 259 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 259 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 259 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____shorthand_goal_expr_0_0(
+#line 259 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 259 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1193 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____short_reuse_description_0_0(
+#line 1193 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1193 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1193 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1193 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____short_reuse_description_0_0(
+#line 1193 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1193 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 441 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____scope_reason_0_0(
+#line 441 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 441 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 441 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 441 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____scope_reason_0_0(
+#line 441 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 441 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1171 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____reuse_description_0_0(
+#line 1171 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1171 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1171 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1171 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____reuse_description_0_0(
+#line 1171 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1171 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 568 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____removable_0_0(
+#line 568 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 568 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 568 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 568 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____removable_0_0(
+#line 568 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 568 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1080 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____rbmm_goal_info_0_0(
+#line 1080 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1080 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1080 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1080 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____rbmm_goal_info_0_0(
+#line 1080 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1080 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 563 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____promise_solutions_kind_0_0(
+#line 563 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 563 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 563 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 563 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____promise_solutions_kind_0_0(
+#line 563 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 563 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1265 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____port_counts_give_coverage_after_0_0(
+#line 1265 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1265 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1265 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1265 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____port_counts_give_coverage_after_0_0(
+#line 1265 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1265 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1226 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____needs_update_0_0(
+#line 1226 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1226 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1226 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1226 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____needs_update_0_0(
+#line 1226 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1226 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1108 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____mode_constr_goal_info_0_0(
+#line 1108 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1108 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1108 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1108 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____mode_constr_goal_info_0_0(
+#line 1108 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1108 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1230 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____missed_message_0_0(
+#line 1230 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1230 "hlds_goal.m"
+  MR_String hlds__hlds_goal__param_2,
+#line 1230 "hlds_goal.m"
+  MR_String hlds__hlds_goal__param_3);
+
+#line 1230 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____missed_message_0_0(
+#line 1230 "hlds_goal.m"
+  MR_String hlds__hlds_goal__param_1,
+#line 1230 "hlds_goal.m"
+  MR_String hlds__hlds_goal__param_2);
+
+#line 586 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____lc_use_parent_stack_0_0(
+#line 586 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 586 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 586 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 586 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____lc_use_parent_stack_0_0(
+#line 586 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 586 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 582 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____is_first_disjunct_0_0(
+#line 582 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 582 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 582 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 582 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____is_first_disjunct_0_0(
+#line 582 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 582 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 761 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____is_existential_construction_0_0(
+#line 761 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 761 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 761 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 761 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____is_existential_construction_0_0(
+#line 761 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 761 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1222 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____is_conditional_0_0(
+#line 1222 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1222 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1222 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1222 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____is_conditional_0_0(
+#line 1222 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1222 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 983 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____how_to_construct_0_0(
+#line 983 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 983 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 983 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 983 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____how_to_construct_0_0(
+#line 983 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 983 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1078 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____ho_values_0_0(
+#line 1078 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1078 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1078 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1078 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____ho_values_0_0(
+#line 1078 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1078 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 45 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____hlds_goals_0_0(
+#line 45 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 45 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 45 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 45 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____hlds_goals_0_0(
+#line 45 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 45 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1926 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____hlds_goal_info_0_0(
+#line 1926 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1926 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1926 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1926 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____hlds_goal_info_0_0(
+#line 1926 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1926 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 56 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____hlds_goal_expr_0_0(
+#line 56 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 56 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 56 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 56 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____hlds_goal_expr_0_0(
+#line 56 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 56 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1067 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____hlds_goal_code_gen_info_0_0(
+#line 1067 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1067 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1067 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1067 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____hlds_goal_code_gen_info_0_0(
+#line 1067 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1067 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 47 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____hlds_goal_0_0(
+#line 47 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 47 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 47 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 47 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____hlds_goal_0_0(
+#line 47 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 47 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1691 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____has_subgoals_0_0(
+#line 1691 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1691 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1691 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1691 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____has_subgoals_0_0(
+#line 1691 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1691 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1258 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____goal_trivial_0_0(
+#line 1258 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1258 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1258 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1258 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____goal_trivial_0_0(
+#line 1258 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1258 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1242 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____goal_is_mdprof_inst_0_0(
+#line 1242 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1242 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1242 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1242 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____goal_is_mdprof_inst_0_0(
+#line 1242 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1242 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1437 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____goal_feature_0_0(
+#line 1437 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1437 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1437 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1437 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____goal_feature_0_0(
+#line 1437 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1437 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 648 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____generic_call_0_0(
+#line 648 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 648 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 648 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 648 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____generic_call_0_0(
+#line 648 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 648 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 435 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____from_ground_term_kind_0_0(
+#line 435 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 435 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 435 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 435 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____from_ground_term_kind_0_0(
+#line 435 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 435 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 625 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____foreign_arg_0_0(
+#line 625 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 625 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 625 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 625 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____foreign_arg_0_0(
+#line 625 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 625 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 572 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____force_pruning_0_0(
+#line 572 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 572 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 572 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 572 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____force_pruning_0_0(
+#line 572 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 572 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1234 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____dp_goal_info_0_0(
+#line 1234 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1234 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1234 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1234 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____dp_goal_info_0_0(
+#line 1234 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1234 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1249 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____dp_coverage_goal_info_0_0(
+#line 1249 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1249 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1249 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1249 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____dp_coverage_goal_info_0_0(
+#line 1249 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1249 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1129 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____ctgc_goal_info_0_0(
+#line 1129 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1129 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1129 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1129 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____ctgc_goal_info_0_0(
+#line 1129 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1129 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1397 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____contains_trace_goal_0_0(
+#line 1397 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1397 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1397 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1397 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____contains_trace_goal_0_0(
+#line 1397 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1397 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 767 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____construct_sub_info_0_0(
+#line 767 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 767 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 767 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 767 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____construct_sub_info_0_0(
+#line 767 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 767 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 252 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____conj_type_0_0(
+#line 252 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 252 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 252 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 252 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____conj_type_0_0(
+#line 252 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 252 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 998 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____cell_to_reuse_0_0(
+#line 998 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 998 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 998 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 998 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____cell_to_reuse_0_0(
+#line 998 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 998 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1014 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____cell_is_unique_0_0(
+#line 1014 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1014 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1014 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1014 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____cell_is_unique_0_0(
+#line 1014 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1014 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 351 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____catch_part_0_0(
+#line 351 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 351 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 351 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 351 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____catch_part_0_0(
+#line 351 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 351 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 682 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____cast_kind_0_0(
+#line 682 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 682 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 682 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 682 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____cast_kind_0_0(
+#line 682 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 682 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1030 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____case_0_0(
+#line 1030 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 1030 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1030 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1030 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____case_0_0(
+#line 1030 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1030 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 911 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____can_cgc_0_0(
+#line 911 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 911 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 911 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 911 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____can_cgc_0_0(
+#line 911 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 911 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 971 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____call_unify_context_0_0(
+#line 971 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 971 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 971 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 971 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____call_unify_context_0_0(
+#line 971 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 971 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 601 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____builtin_state_0_0(
+#line 601 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 601 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 601 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 601 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____builtin_state_0_0(
+#line 601 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 601 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 330 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____atomic_interface_vars_0_0(
+#line 330 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 330 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 330 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 330 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____atomic_interface_vars_0_0(
+#line 330 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 330 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 346 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal____Compare____atomic_goal_type_0_0(
+#line 346 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1,
+#line 346 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 346 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 346 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal____Unify____atomic_goal_type_0_0(
+#line 346 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 346 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1844 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__deconstruct_tuple_3_p_0(
+#line 1844 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1844 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1844 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1842 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__construct_tuple_3_p_0(
+#line 1842 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1842 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1842 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1835 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__deconstruct_functor_4_p_0(
+#line 1835 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1835 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1835 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1835 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4);
+
+#line 1833 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__construct_functor_4_p_0(
+#line 1833 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1833 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1833 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1833 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4);
+
+#line 1826 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__get_pragma_foreign_var_names_2_p_0(
+#line 1826 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1826 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1819 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_const_construction_alloc_in_proc_7_p_0(
+#line 1819 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1819 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1819 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1819 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4,
+#line 1819 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_5,
+#line 1819 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_6,
+#line 1819 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_7);
+
+#line 1816 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_char_const_construction_alloc_in_proc_6_p_0(
+#line 1816 "hlds_goal.m"
+  MR_Char hlds__hlds_goal__param_1,
+#line 1816 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1816 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3,
+#line 1816 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4,
+#line 1816 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1816 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_6);
+
+#line 1813 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_float_const_construction_alloc_in_proc_6_p_0(
+#line 1813 "hlds_goal.m"
+  MR_Float hlds__hlds_goal__param_1,
+#line 1813 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1813 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3,
+#line 1813 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4,
+#line 1813 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1813 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_6);
+
+#line 1810 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_string_const_construction_alloc_in_proc_6_p_0(
+#line 1810 "hlds_goal.m"
+  MR_String hlds__hlds_goal__param_1,
+#line 1810 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1810 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3,
+#line 1810 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4,
+#line 1810 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1810 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_6);
+
+#line 1807 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_int_const_construction_alloc_in_proc_6_p_0(
+#line 1807 "hlds_goal.m"
+  MR_Integer hlds__hlds_goal__param_1,
+#line 1807 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1807 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3,
+#line 1807 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4,
+#line 1807 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1807 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_6);
+
+#line 1803 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_const_construction_alloc_9_p_0(
+#line 1803 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1803 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1803 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1803 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4,
+#line 1803 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_5,
+#line 1803 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_6,
+#line 1803 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_7,
+#line 1803 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_8,
+#line 1803 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_9);
+
+#line 1800 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_char_const_construction_alloc_8_p_0(
+#line 1800 "hlds_goal.m"
+  MR_Char hlds__hlds_goal__param_1,
+#line 1800 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1800 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3,
+#line 1800 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4,
+#line 1800 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1800 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_6,
+#line 1800 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_7,
+#line 1800 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_8);
+
+#line 1797 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_float_const_construction_alloc_8_p_0(
+#line 1797 "hlds_goal.m"
+  MR_Float hlds__hlds_goal__param_1,
+#line 1797 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1797 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3,
+#line 1797 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4,
+#line 1797 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1797 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_6,
+#line 1797 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_7,
+#line 1797 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_8);
+
+#line 1794 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_string_const_construction_alloc_8_p_0(
+#line 1794 "hlds_goal.m"
+  MR_String hlds__hlds_goal__param_1,
+#line 1794 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1794 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3,
+#line 1794 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4,
+#line 1794 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1794 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_6,
+#line 1794 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_7,
+#line 1794 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_8);
+
+#line 1791 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_int_const_construction_alloc_8_p_0(
+#line 1791 "hlds_goal.m"
+  MR_Integer hlds__hlds_goal__param_1,
+#line 1791 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1791 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3,
+#line 1791 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4,
+#line 1791 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1791 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_6,
+#line 1791 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_7,
+#line 1791 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_8);
+
+#line 1788 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_const_construction_3_p_0(
+#line 1788 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1788 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1788 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1786 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_char_const_construction_3_p_0(
+#line 1786 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1786 "hlds_goal.m"
+  MR_Char hlds__hlds_goal__param_2,
+#line 1786 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1784 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_float_const_construction_3_p_0(
+#line 1784 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1784 "hlds_goal.m"
+  MR_Float hlds__hlds_goal__param_2,
+#line 1784 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1782 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_string_const_construction_3_p_0(
+#line 1782 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1782 "hlds_goal.m"
+  MR_String hlds__hlds_goal__param_2,
+#line 1782 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1780 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_int_const_construction_3_p_0(
+#line 1780 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1780 "hlds_goal.m"
+  MR_Integer hlds__hlds_goal__param_2,
+#line 1780 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1769 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_simple_test_5_p_0(
+#line 1769 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1769 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1769 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1769 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_4,
+#line 1769 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_5);
+
+#line 1763 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_simple_assign_5_p_0(
+#line 1763 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1763 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1763 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1763 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_4,
+#line 1763 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_5);
+
+#line 1755 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__create_pure_atomic_complicated_unification_6_p_0(
+#line 1755 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1755 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1755 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1755 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_4,
+#line 1755 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1755 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_6);
+
+#line 1749 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__create_atomic_complicated_unification_7_p_0(
+#line 1749 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1749 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1749 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1749 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_4,
+#line 1749 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1749 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_6,
+#line 1749 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_7);
+
+#line 1739 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__set_goal_contexts_3_p_0(
+#line 1739 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1739 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1739 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1732 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_list_purity_2_p_0(
+#line 1732 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1732 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1729 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_list_determinism_2_p_0(
+#line 1729 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1729 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1724 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_list_instmap_delta_2_p_0(
+#line 1724 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1724 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1719 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_list_nonlocals_2_p_0(
+#line 1719 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1719 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1715 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__fail_goal_with_context_1_f_0(
+#line 1715 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1713 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__fail_goal_info_0_f_0(void);
+
+#line 1712 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__fail_goal_expr_0_f_0(void);
+
+#line 1711 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__fail_goal_0_f_0(void);
+
+#line 1707 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__true_goal_with_context_1_f_0(
+#line 1707 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1705 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__true_goal_expr_0_f_0(void);
+
+#line 1704 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__true_goal_0_f_0(void);
+
+#line 1700 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_expr_has_subgoals_1_f_0(
+#line 1700 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1689 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_has_foreign_1_f_0(
+#line 1689 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1684 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__negate_goal_3_p_0(
+#line 1684 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1684 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1684 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1680 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__conjoin_goals_3_p_0(
+#line 1680 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1680 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1680 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1675 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__conjoin_goal_and_goal_list_3_p_0(
+#line 1675 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1675 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1675 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1669 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__disj_list_to_goal_3_p_0(
+#line 1669 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1669 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1669 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1661 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__par_conj_list_to_goal_3_p_0(
+#line 1661 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1661 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1661 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1653 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__conj_list_to_goal_3_p_0(
+#line 1653 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1653 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1653 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1646 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_to_disj_list_2_p_0(
+#line 1646 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1646 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1640 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_to_par_conj_list_2_p_0(
+#line 1640 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1640 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1634 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_to_conj_list_2_p_0(
+#line 1634 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1634 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1621 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__incremental_rename_vars_in_goal_4_p_0(
+#line 1621 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1621 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1621 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1621 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4);
+
+#line 1611 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__rename_vars_in_goal_info_4_p_0(
+#line 1611 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1611 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1611 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1611 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4);
+
+#line 1608 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__rename_vars_in_goal_expr_4_p_0(
+#line 1608 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1608 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1608 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1608 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4);
+
+#line 1605 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__rename_vars_in_goals_4_p_0(
+#line 1605 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1605 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1605 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1605 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4);
+
+#line 1602 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__must_rename_vars_in_goal_3_p_0(
+#line 1602 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1602 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1602 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1599 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__rename_some_vars_in_goal_3_p_0(
+#line 1599 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1599 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1599 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1435 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal__goal_has_feature_2_p_0(
+#line 1435 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1435 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1433 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_remove_feature_3_p_0(
+#line 1433 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1433 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1433 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1431 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_add_feature_3_p_0(
+#line 1431 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1431 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1431 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1428 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_set_context_3_p_0(
+#line 1428 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1428 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1428 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1425 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_mdprof_inst_3_p_0(
+#line 1425 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1425 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1425 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1420 "hlds_goal.m"
+MR_bool MR_CALL 
+hlds__hlds_goal__goal_info_has_feature_2_p_0(
+#line 1420 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1420 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1418 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_remove_feature_3_p_0(
+#line 1418 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1418 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1418 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1416 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_add_feature_3_p_0(
+#line 1416 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1416 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1416 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1413 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_get_goal_purity_3_p_0(
+#line 1413 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1413 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2,
+#line 1413 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1411 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_get_goal_purity_3_p_0(
+#line 1411 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1411 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2,
+#line 1411 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1409 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_set_purity_3_p_0(
+#line 1409 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1409 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1409 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1408 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_get_purity_1_f_0(
+#line 1408 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1406 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_set_goal_id_3_p_0(
+#line 1406 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1406 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1406 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1404 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_get_nonlocals_1_f_0(
+#line 1404 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1401 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__worst_contains_trace_2_f_0(
+#line 1401 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1401 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1395 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__f_110_101_101_100_95_118_105_115_105_98_108_101_95_118_97_114_115_32_58_61_2_f_0(
+#line 1395 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1395 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1394 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__need_visible_vars_1_f_0(
+#line 1394 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1392 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__f_109_97_107_101_95_118_105_115_105_98_108_101_95_118_97_114_115_32_58_61_2_f_0(
+#line 1392 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1392 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1391 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__make_visible_vars_1_f_0(
+#line 1391 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1389 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__f_99_111_110_115_117_109_105_110_103_95_118_97_114_115_32_58_61_2_f_0(
+#line 1389 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1389 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1388 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__consuming_vars_1_f_0(
+#line 1388 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1386 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__f_112_114_111_100_117_99_105_110_103_95_118_97_114_115_32_58_61_2_f_0(
+#line 1386 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1386 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1385 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__producing_vars_1_f_0(
+#line 1385 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1382 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_need_visible_vars_3_p_0(
+#line 1382 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1382 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1382 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1380 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_make_visible_vars_3_p_0(
+#line 1380 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1380 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1380 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1378 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_consuming_vars_3_p_0(
+#line 1378 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1378 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1378 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1376 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_producing_vars_3_p_0(
+#line 1376 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1376 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1376 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1374 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_occurring_vars_3_p_0(
+#line 1374 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1374 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1374 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1371 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_get_need_visible_vars_2_p_0(
+#line 1371 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1371 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1369 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_get_make_visible_vars_2_p_0(
+#line 1369 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1369 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1367 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_get_consuming_vars_2_p_0(
+#line 1367 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1367 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1365 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_get_producing_vars_2_p_0(
+#line 1365 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1365 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1363 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_get_occurring_vars_2_p_0(
+#line 1363 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1363 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1361 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_reuse_1_f_0(
+#line 1361 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1360 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_lbu_1_f_0(
+#line 1360 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1359 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_lfu_1_f_0(
+#line 1359 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1358 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_rbmm_1_f_0(
+#line 1358 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1352 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_maybe_dp_info_3_p_0(
+#line 1352 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1352 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1352 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1350 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_reuse_3_p_0(
+#line 1350 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1350 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1350 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1348 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_lbu_3_p_0(
+#line 1348 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1348 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1348 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1346 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_lfu_3_p_0(
+#line 1346 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1346 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1346 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1344 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_maybe_ctgc_3_p_0(
+#line 1344 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1344 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1344 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1342 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_maybe_mode_constr_3_p_0(
+#line 1342 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1342 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1342 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1340 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_maybe_rbmm_3_p_0(
+#line 1340 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1340 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1340 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1338 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_ho_values_3_p_0(
+#line 1338 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1338 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1338 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1336 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_code_gen_info_3_p_0(
+#line 1336 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1336 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1336 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1334 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_reverse_goal_path_3_p_0(
+#line 1334 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1334 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1334 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1332 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_goal_id_3_p_0(
+#line 1332 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1332 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1332 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1330 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_features_3_p_0(
+#line 1330 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1330 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1330 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1328 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_code_gen_nonlocals_3_p_0(
+#line 1328 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1328 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1328 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1326 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_nonlocals_3_p_0(
+#line 1326 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1326 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1326 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1324 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_purity_3_p_0(
+#line 1324 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1324 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1324 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1322 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_context_3_p_0(
+#line 1322 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1322 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1322 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1320 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_instmap_delta_3_p_0(
+#line 1320 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1320 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1320 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1318 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_set_determinism_3_p_0(
+#line 1318 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1318 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1318 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1316 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_dp_info_1_f_0(
+#line 1316 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1315 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_reuse_1_f_0(
+#line 1315 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1314 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_lbu_1_f_0(
+#line 1314 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1313 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_lfu_1_f_0(
+#line 1313 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1312 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_ctgc_1_f_0(
+#line 1312 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1310 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_mode_constr_1_f_0(
+#line 1310 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1309 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_maybe_rbmm_1_f_0(
+#line 1309 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1308 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_ho_values_1_f_0(
+#line 1308 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1307 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_code_gen_info_1_f_0(
+#line 1307 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1306 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_reverse_goal_path_1_f_0(
+#line 1306 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1305 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_goal_id_1_f_0(
+#line 1305 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1304 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_features_1_f_0(
+#line 1304 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1303 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_purity_1_f_0(
+#line 1303 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1302 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_code_gen_nonlocals_1_f_0(
+#line 1302 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1301 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(
+#line 1301 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1300 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_context_1_f_0(
+#line 1300 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1299 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_instmap_delta_1_f_0(
+#line 1299 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1298 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_get_determinism_1_f_0(
+#line 1298 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 1286 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__add_impurity_if_needed_3_p_0(
+#line 1286 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1286 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1286 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_3);
+
+#line 1285 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_impure_2_p_0(
+#line 1285 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1285 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1283 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__goal_info_add_nonlocals_make_impure_2_f_0(
+#line 1283 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1283 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1280 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__impure_unreachable_init_goal_info_2_f_0(
+#line 1280 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1280 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1278 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__impure_reachable_init_goal_info_2_f_0(
+#line 1278 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1278 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2);
+
+#line 1276 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__impure_init_goal_info_3_f_0(
+#line 1276 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1276 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1276 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3);
+
+#line 1273 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_init_6_p_0(
+#line 1273 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1273 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1273 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1273 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_4,
+#line 1273 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_5,
+#line 1273 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_6);
+
+#line 1271 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_init_5_p_0(
+#line 1271 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1271 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 1271 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 1271 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_4,
+#line 1271 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_5);
+
+#line 1270 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_init_2_p_0(
+#line 1270 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 1270 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 1269 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__goal_info_init_1_p_0(
+#line 1269 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_1);
+
+#line 1106 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__rbmm_info_init_0_f_0(void);
+
+#line 708 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__generic_call_pred_or_func_1_f_0(
+#line 708 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 703 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__generic_call_id_2_p_0(
+#line 703 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 703 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_2);
+
+#line 639 "hlds_goal.m"
+void MR_CALL 
+hlds__hlds_goal__make_foreign_args_4_p_0(
+#line 639 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1,
+#line 639 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_2,
+#line 639 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_3,
+#line 639 "hlds_goal.m"
+  MR_Word * hlds__hlds_goal__param_4);
+
+#line 637 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__foreign_arg_box_1_f_0(
+#line 637 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 636 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__foreign_arg_type_1_f_0(
+#line 636 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 634 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__foreign_arg_maybe_name_mode_1_f_0(
+#line 634 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 633 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__foreign_arg_var_1_f_0(
+#line 633 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 54 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__get_hlds_goal_info_1_f_0(
+#line 54 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+#line 53 "hlds_goal.m"
+MR_Word MR_CALL 
+hlds__hlds_goal__get_hlds_goal_expr_1_f_0(
+#line 53 "hlds_goal.m"
+  MR_Word hlds__hlds_goal__param_1);
+
+void mercury__hlds__hlds_goal__init(void);
+void mercury__hlds__hlds_goal__init_type_tables(void);
+void mercury__hlds__hlds_goal__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.hlds_goal */
+
+/* :- end_interface hlds.hlds_goal. */

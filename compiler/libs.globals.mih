@@ -1,0 +1,977 @@
+/*
+** Automatically generated from `globals.m'
+** by the Mercury compiler,
+** version rotd-2013-03-21, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module libs.globals. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_libs__globals
+#define MR_HEADER_GUARD_libs__globals
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__GLOBALS_DECL_GUARD
+#define LIBS__GLOBALS_DECL_GUARD
+#include "libs.mih"
+#line 815 "globals.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned libs__globals__mutable_variable_solver_auto_init_supported;
+#else
+    extern MR_Unsigned libs__globals__mutable_variable_solver_auto_init_supported;
+#endif
+
+#line 820 "globals.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_maybe_from_ground_term_threshold;
+#else
+    extern MR_Word libs__globals__mutable_variable_maybe_from_ground_term_threshold;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_maybe_from_ground_term_threshold_lock;
+#endif
+
+#line 826 "globals.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_extra_error_info;
+#else
+    extern MR_Word libs__globals__mutable_variable_extra_error_info;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_extra_error_info_lock;
+#endif
+
+#line 829 "globals.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_disable_smart_recompilation;
+#else
+    extern MR_Word libs__globals__mutable_variable_disable_smart_recompilation;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_disable_smart_recompilation_lock;
+#endif
+
+#line 832 "globals.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_disable_generate_item_version_numbers;
+#else
+    extern MR_Word libs__globals__mutable_variable_disable_generate_item_version_numbers;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_disable_generate_item_version_numbers_lock;
+#endif
+
+#line 835 "globals.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_maybe_source_file_map;
+#else
+    extern MR_Word libs__globals__mutable_variable_maybe_source_file_map;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_maybe_source_file_map_lock;
+#endif
+
+#endif
+
+
+
+
+#line 98 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_c_compiler_type_0;
+
+#line 101 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_clang_version_0;
+
+#line 104 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_compilation_target_0;
+
+#line 107 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_csharp_compiler_type_0;
+
+#line 110 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_env_type_0;
+
+#line 113 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_foreign_language_0;
+
+#line 116 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_gc_method_0;
+
+#line 119 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_globals_0;
+
+#line 122 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_il_version_number_0;
+
+#line 125 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_may_be_thread_safe_0;
+
+#line 128 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_reuse_strategy_0;
+
+#line 131 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_source_file_map_0;
+
+#line 134 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_ssdb_trace_level_0;
+
+#line 137 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_tags_method_0;
+
+#line 140 "libs.globals.mih.tmp"
+extern const MR_TypeCtorInfo_Struct libs__globals__libs__globals__type_ctor_info_termination_norm_0;
+
+#line 118 "globals.m"
+void MR_CALL 
+libs__globals____Compare____termination_norm_0_0(
+#line 118 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 118 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 118 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 118 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____termination_norm_0_0(
+#line 118 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 118 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 113 "globals.m"
+void MR_CALL 
+libs__globals____Compare____tags_method_0_0(
+#line 113 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 113 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 113 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 113 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____tags_method_0_0(
+#line 113 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 113 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 192 "globals.m"
+void MR_CALL 
+libs__globals____Compare____ssdb_trace_level_0_0(
+#line 192 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 192 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 192 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 192 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____ssdb_trace_level_0_0(
+#line 192 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 192 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 205 "globals.m"
+void MR_CALL 
+libs__globals____Compare____source_file_map_0_0(
+#line 205 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 205 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 205 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 205 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____source_file_map_0_0(
+#line 205 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 205 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 161 "globals.m"
+void MR_CALL 
+libs__globals____Compare____reuse_strategy_0_0(
+#line 161 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 161 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 161 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 161 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____reuse_strategy_0_0(
+#line 161 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 161 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 124 "globals.m"
+void MR_CALL 
+libs__globals____Compare____may_be_thread_safe_0_0(
+#line 124 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 124 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 124 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 124 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____may_be_thread_safe_0_0(
+#line 124 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 124 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 229 "globals.m"
+void MR_CALL 
+libs__globals____Compare____il_version_number_0_0(
+#line 229 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 229 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 229 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 229 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____il_version_number_0_0(
+#line 229 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 229 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 584 "globals.m"
+void MR_CALL 
+libs__globals____Compare____globals_0_0(
+#line 584 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 584 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 584 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 584 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____globals_0_0(
+#line 584 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 584 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 79 "globals.m"
+void MR_CALL 
+libs__globals____Compare____gc_method_0_0(
+#line 79 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 79 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 79 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 79 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____gc_method_0_0(
+#line 79 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 79 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 50 "globals.m"
+void MR_CALL 
+libs__globals____Compare____foreign_language_0_0(
+#line 50 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 50 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 50 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 50 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____foreign_language_0_0(
+#line 50 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 50 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 172 "globals.m"
+void MR_CALL 
+libs__globals____Compare____env_type_0_0(
+#line 172 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 172 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 172 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 172 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____env_type_0_0(
+#line 172 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 172 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 147 "globals.m"
+void MR_CALL 
+libs__globals____Compare____csharp_compiler_type_0_0(
+#line 147 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 147 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 147 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 147 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____csharp_compiler_type_0_0(
+#line 147 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 147 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 40 "globals.m"
+void MR_CALL 
+libs__globals____Compare____compilation_target_0_0(
+#line 40 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 40 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 40 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 40 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____compilation_target_0_0(
+#line 40 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 40 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 153 "globals.m"
+void MR_CALL 
+libs__globals____Compare____clang_version_0_0(
+#line 153 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 153 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 153 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 153 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____clang_version_0_0(
+#line 153 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 153 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 128 "globals.m"
+void MR_CALL 
+libs__globals____Compare____c_compiler_type_0_0(
+#line 128 "globals.m"
+  MR_Word * libs__globals__param_1,
+#line 128 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 128 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 128 "globals.m"
+MR_bool MR_CALL 
+libs__globals____Unify____c_compiler_type_0_0(
+#line 128 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 128 "globals.m"
+  MR_Word libs__globals__param_2);
+
+#line 349 "globals.m"
+void MR_CALL 
+libs__globals__io_set_maybe_source_file_map_3_p_0(
+#line 349 "globals.m"
+  MR_Word libs__globals__param_1);
+
+#line 346 "globals.m"
+void MR_CALL 
+libs__globals__io_get_maybe_source_file_map_3_p_0(
+#line 346 "globals.m"
+  MR_Word * libs__globals__param_1);
+
+#line 343 "globals.m"
+void MR_CALL 
+libs__globals__io_set_disable_generate_item_version_numbers_3_p_0(
+#line 343 "globals.m"
+  MR_Word libs__globals__param_1);
+
+#line 340 "globals.m"
+void MR_CALL 
+libs__globals__io_get_disable_generate_item_version_numbers_3_p_0(
+#line 340 "globals.m"
+  MR_Word * libs__globals__param_1);
+
+#line 338 "globals.m"
+void MR_CALL 
+libs__globals__io_set_disable_smart_recompilation_3_p_0(
+#line 338 "globals.m"
+  MR_Word libs__globals__param_1);
+
+#line 336 "globals.m"
+void MR_CALL 
+libs__globals__io_get_disable_smart_recompilation_3_p_0(
+#line 336 "globals.m"
+  MR_Word * libs__globals__param_1);
+
+#line 334 "globals.m"
+void MR_CALL 
+libs__globals__io_set_extra_error_info_3_p_0(
+#line 334 "globals.m"
+  MR_Word libs__globals__param_1);
+
+#line 332 "globals.m"
+void MR_CALL 
+libs__globals__io_get_extra_error_info_3_p_0(
+#line 332 "globals.m"
+  MR_Word * libs__globals__param_1);
+
+#line 330 "globals.m"
+MR_Word MR_CALL 
+libs__globals__get_maybe_from_ground_term_threshold_0_f_0(void);
+
+#line 325 "globals.m"
+void MR_CALL 
+libs__globals__semipure_get_solver_auto_init_supported_1_p_0(
+#line 325 "globals.m"
+  MR_Word * libs__globals__param_1);
+
+#line 320 "globals.m"
+void MR_CALL 
+libs__globals__globals_init_mutables_3_p_0(
+#line 320 "globals.m"
+  MR_Word libs__globals__param_1);
+
+#line 316 "globals.m"
+void MR_CALL 
+libs__globals__get_any_intermod_2_p_0(
+#line 316 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 316 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 314 "globals.m"
+void MR_CALL 
+libs__globals__current_grade_supports_concurrency_2_p_0(
+#line 314 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 314 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 308 "globals.m"
+void MR_CALL 
+libs__globals__current_grade_supports_par_conj_2_p_0(
+#line 308 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 308 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 303 "globals.m"
+void MR_CALL 
+libs__globals__current_grade_supports_tabling_2_p_0(
+#line 303 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 303 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 299 "globals.m"
+void MR_CALL 
+libs__globals__want_return_var_layouts_2_p_0(
+#line 299 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 299 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 288 "globals.m"
+void MR_CALL 
+libs__globals__lookup_accumulating_option_3_p_0(
+#line 288 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 288 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 288 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 286 "globals.m"
+void MR_CALL 
+libs__globals__lookup_maybe_string_option_3_p_0(
+#line 286 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 286 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 286 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 285 "globals.m"
+void MR_CALL 
+libs__globals__lookup_string_option_3_p_0(
+#line 285 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 285 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 285 "globals.m"
+  MR_String * libs__globals__param_3);
+
+#line 284 "globals.m"
+void MR_CALL 
+libs__globals__lookup_int_option_3_p_0(
+#line 284 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 284 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 284 "globals.m"
+  MR_Integer * libs__globals__param_3);
+
+#line 283 "globals.m"
+MR_bool MR_CALL 
+libs__globals__lookup_bool_option_3_p_1(
+#line 283 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 283 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 283 "globals.m"
+  MR_Word libs__globals__param_3);
+
+#line 282 "globals.m"
+void MR_CALL 
+libs__globals__lookup_bool_option_3_p_0(
+#line 282 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 282 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 282 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 279 "globals.m"
+void MR_CALL 
+libs__globals__lookup_option_3_p_0(
+#line 279 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 279 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 279 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 276 "globals.m"
+void MR_CALL 
+libs__globals__set_maybe_feedback_info_3_p_0(
+#line 276 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 276 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 276 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 274 "globals.m"
+void MR_CALL 
+libs__globals__set_ssdb_trace_level_3_p_0(
+#line 274 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 274 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 274 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 273 "globals.m"
+void MR_CALL 
+libs__globals__set_trace_level_none_2_p_0(
+#line 273 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 273 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 272 "globals.m"
+void MR_CALL 
+libs__globals__set_trace_level_3_p_0(
+#line 272 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 272 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 272 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 271 "globals.m"
+void MR_CALL 
+libs__globals__set_tags_method_3_p_0(
+#line 271 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 271 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 271 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 270 "globals.m"
+void MR_CALL 
+libs__globals__set_gc_method_3_p_0(
+#line 270 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 270 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 270 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 269 "globals.m"
+void MR_CALL 
+libs__globals__set_options_3_p_0(
+#line 269 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 269 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 269 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 267 "globals.m"
+void MR_CALL 
+libs__globals__set_option_4_p_0(
+#line 267 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 267 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 267 "globals.m"
+  MR_Word libs__globals__param_3,
+#line 267 "globals.m"
+  MR_Word * libs__globals__param_4);
+
+#line 265 "globals.m"
+void MR_CALL 
+libs__globals__get_target_env_type_2_p_0(
+#line 265 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 265 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 264 "globals.m"
+void MR_CALL 
+libs__globals__get_host_env_type_2_p_0(
+#line 264 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 264 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 263 "globals.m"
+void MR_CALL 
+libs__globals__get_maybe_feedback_info_2_p_0(
+#line 263 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 263 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 261 "globals.m"
+void MR_CALL 
+libs__globals__get_maybe_il_version_number_2_p_0(
+#line 261 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 261 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 260 "globals.m"
+void MR_CALL 
+libs__globals__get_reuse_strategy_2_p_0(
+#line 260 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 260 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 258 "globals.m"
+void MR_CALL 
+libs__globals__get_csharp_compiler_type_2_p_0(
+#line 258 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 258 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 257 "globals.m"
+void MR_CALL 
+libs__globals__get_c_compiler_type_2_p_0(
+#line 257 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 257 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 256 "globals.m"
+void MR_CALL 
+libs__globals__get_maybe_thread_safe_2_p_0(
+#line 256 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 256 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 255 "globals.m"
+void MR_CALL 
+libs__globals__get_ssdb_trace_level_2_p_0(
+#line 255 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 255 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 254 "globals.m"
+void MR_CALL 
+libs__globals__get_trace_suppress_2_p_0(
+#line 254 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 254 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 253 "globals.m"
+void MR_CALL 
+libs__globals__get_trace_level_2_p_0(
+#line 253 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 253 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 252 "globals.m"
+void MR_CALL 
+libs__globals__get_termination2_norm_2_p_0(
+#line 252 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 252 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 251 "globals.m"
+void MR_CALL 
+libs__globals__get_termination_norm_2_p_0(
+#line 251 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 251 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 250 "globals.m"
+void MR_CALL 
+libs__globals__get_tags_method_2_p_0(
+#line 250 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 250 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 249 "globals.m"
+void MR_CALL 
+libs__globals__get_gc_method_2_p_0(
+#line 249 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 249 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 247 "globals.m"
+void MR_CALL 
+libs__globals__get_backend_foreign_languages_2_p_0(
+#line 247 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 247 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 246 "globals.m"
+void MR_CALL 
+libs__globals__get_target_2_p_0(
+#line 246 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 246 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 245 "globals.m"
+void MR_CALL 
+libs__globals__get_options_2_p_0(
+#line 245 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 245 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 237 "globals.m"
+void MR_CALL 
+libs__globals__globals_init_18_p_0(
+#line 237 "globals.m"
+  MR_Word libs__globals__param_1,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_3,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_4,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_5,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_6,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_7,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_8,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_9,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_10,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_11,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_12,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_13,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_14,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_15,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_16,
+#line 237 "globals.m"
+  MR_Word libs__globals__param_17,
+#line 237 "globals.m"
+  MR_Word * libs__globals__param_18);
+
+#line 221 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_ssdb_trace_level_3_p_0(
+#line 221 "globals.m"
+  MR_String libs__globals__param_1,
+#line 221 "globals.m"
+  MR_Word libs__globals__param_2,
+#line 221 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 220 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_env_type_2_p_0(
+#line 220 "globals.m"
+  MR_String libs__globals__param_1,
+#line 220 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 218 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_reuse_strategy_3_p_0(
+#line 218 "globals.m"
+  MR_String libs__globals__param_1,
+#line 218 "globals.m"
+  MR_Integer libs__globals__param_2,
+#line 218 "globals.m"
+  MR_Word * libs__globals__param_3);
+
+#line 216 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_csharp_compiler_type_2_p_0(
+#line 216 "globals.m"
+  MR_String libs__globals__param_1,
+#line 216 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 214 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_c_compiler_type_2_p_0(
+#line 214 "globals.m"
+  MR_String libs__globals__param_1,
+#line 214 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 212 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_maybe_thread_safe_2_p_0(
+#line 212 "globals.m"
+  MR_String libs__globals__param_1,
+#line 212 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 211 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_termination_norm_2_p_0(
+#line 211 "globals.m"
+  MR_String libs__globals__param_1,
+#line 211 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 210 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_tags_method_2_p_0(
+#line 210 "globals.m"
+  MR_String libs__globals__param_1,
+#line 210 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 209 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_gc_method_2_p_0(
+#line 209 "globals.m"
+  MR_String libs__globals__param_1,
+#line 209 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 208 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_foreign_language_2_p_0(
+#line 208 "globals.m"
+  MR_String libs__globals__param_1,
+#line 208 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 207 "globals.m"
+MR_bool MR_CALL 
+libs__globals__convert_target_2_p_0(
+#line 207 "globals.m"
+  MR_String libs__globals__param_1,
+#line 207 "globals.m"
+  MR_Word * libs__globals__param_2);
+
+#line 111 "globals.m"
+MR_Word MR_CALL 
+libs__globals__gc_is_conservative_1_f_0(
+#line 111 "globals.m"
+  MR_Word libs__globals__param_1);
+
+#line 71 "globals.m"
+MR_String MR_CALL 
+libs__globals__simple_foreign_language_string_1_f_0(
+#line 71 "globals.m"
+  MR_Word libs__globals__param_1);
+
+#line 66 "globals.m"
+MR_String MR_CALL 
+libs__globals__foreign_language_string_1_f_0(
+#line 66 "globals.m"
+  MR_Word libs__globals__param_1);
+
+#line 61 "globals.m"
+MR_String MR_CALL 
+libs__globals__compilation_target_string_1_f_0(
+#line 61 "globals.m"
+  MR_Word libs__globals__param_1);
+
+void mercury__libs__globals__init(void);
+void mercury__libs__globals__init_type_tables(void);
+void mercury__libs__globals__init_debugger(void);
+void mercury__libs__globals__required_init(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_libs.globals */
+
+/* :- end_interface libs.globals. */

@@ -1,0 +1,420 @@
+/*
+** Automatically generated from `time.m'
+** by the Mercury compiler,
+** version rotd-2013-03-21, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module time. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_time
+#define MR_HEADER_GUARD_time
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TIME_DECL_GUARD
+#define TIME_DECL_GUARD
+#line 202 "time.m"
+
+    #include <time.h>
+    #ifdef MR_HAVE_SYS_TYPES_H
+        #include <sys/types.h>
+    #endif
+    #ifdef MR_HAVE_SYS_TIMES_H
+        #include <sys/times.h>
+    #endif
+    #ifdef MR_HAVE_UNISTD_H
+        #include <unistd.h>
+    #endif
+
+    #include "mercury_timing.h" /* for MR_CLOCK_TICKS_PER_SECOND */
+
+
+#endif
+
+
+
+
+#line 56 "time.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__time__time__type_ctor_info_clock_t_0;
+
+#line 59 "time.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__time__time__type_ctor_info_dst_0;
+
+#line 62 "time.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__time__time__type_ctor_info_time_error_0;
+
+#line 65 "time.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__time__time__type_ctor_info_time_t_0;
+
+#line 68 "time.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__time__time__type_ctor_info_time_t_rep_0;
+
+#line 71 "time.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__time__time__type_ctor_info_tm_0;
+
+#line 74 "time.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__time__time__type_ctor_info_tms_0;
+
+#line 39 "time.m"
+void MR_CALL 
+mercury__time____Compare____tms_0_0(
+#line 39 "time.m"
+  MR_Word * mercury__time__param_1,
+#line 39 "time.m"
+  MR_Word mercury__time__param_2,
+#line 39 "time.m"
+  MR_Word mercury__time__param_3);
+
+#line 39 "time.m"
+MR_bool MR_CALL 
+mercury__time____Unify____tms_0_0(
+#line 39 "time.m"
+  MR_Word mercury__time__param_1,
+#line 39 "time.m"
+  MR_Word mercury__time__param_2);
+
+#line 58 "time.m"
+void MR_CALL 
+mercury__time____Compare____tm_0_0(
+#line 58 "time.m"
+  MR_Word * mercury__time__param_1,
+#line 58 "time.m"
+  MR_Word mercury__time__param_2,
+#line 58 "time.m"
+  MR_Word mercury__time__param_3);
+
+#line 58 "time.m"
+MR_bool MR_CALL 
+mercury__time____Unify____tm_0_0(
+#line 58 "time.m"
+  MR_Word mercury__time__param_1,
+#line 58 "time.m"
+  MR_Word mercury__time__param_2);
+
+#line 244 "time.m"
+void MR_CALL 
+mercury__time____Compare____time_t_rep_0_0(
+#line 244 "time.m"
+  MR_Word * mercury__time__param_1,
+#line 244 "time.m"
+  MR_Box mercury__time__param_2,
+#line 244 "time.m"
+  MR_Box mercury__time__param_3);
+
+#line 244 "time.m"
+MR_bool MR_CALL 
+mercury__time____Unify____time_t_rep_0_0(
+#line 244 "time.m"
+  MR_Box mercury__time__param_1,
+#line 244 "time.m"
+  MR_Box mercury__time__param_2);
+
+#line 228 "time.m"
+void MR_CALL 
+mercury__time____Compare____time_t_0_0(
+#line 228 "time.m"
+  MR_Word * mercury__time__param_1,
+#line 228 "time.m"
+  MR_Word mercury__time__param_2,
+#line 228 "time.m"
+  MR_Word mercury__time__param_3);
+
+#line 228 "time.m"
+MR_bool MR_CALL 
+mercury__time____Unify____time_t_0_0(
+#line 228 "time.m"
+  MR_Word mercury__time__param_1,
+#line 228 "time.m"
+  MR_Word mercury__time__param_2);
+
+#line 79 "time.m"
+void MR_CALL 
+mercury__time____Compare____time_error_0_0(
+#line 79 "time.m"
+  MR_Word * mercury__time__param_1,
+#line 79 "time.m"
+  MR_Word mercury__time__param_2,
+#line 79 "time.m"
+  MR_Word mercury__time__param_3);
+
+#line 79 "time.m"
+MR_bool MR_CALL 
+mercury__time____Unify____time_error_0_0(
+#line 79 "time.m"
+  MR_Word mercury__time__param_1,
+#line 79 "time.m"
+  MR_Word mercury__time__param_2);
+
+#line 72 "time.m"
+void MR_CALL 
+mercury__time____Compare____dst_0_0(
+#line 72 "time.m"
+  MR_Word * mercury__time__param_1,
+#line 72 "time.m"
+  MR_Word mercury__time__param_2,
+#line 72 "time.m"
+  MR_Word mercury__time__param_3);
+
+#line 72 "time.m"
+MR_bool MR_CALL 
+mercury__time____Unify____dst_0_0(
+#line 72 "time.m"
+  MR_Word mercury__time__param_1,
+#line 72 "time.m"
+  MR_Word mercury__time__param_2);
+
+#line 34 "time.m"
+void MR_CALL 
+mercury__time____Compare____clock_t_0_0(
+#line 34 "time.m"
+  MR_Word * mercury__time__param_1,
+#line 34 "time.m"
+  MR_Integer mercury__time__param_2,
+#line 34 "time.m"
+  MR_Integer mercury__time__param_3);
+
+#line 34 "time.m"
+MR_bool MR_CALL 
+mercury__time____Unify____clock_t_0_0(
+#line 34 "time.m"
+  MR_Integer mercury__time__param_1,
+#line 34 "time.m"
+  MR_Integer mercury__time__param_2);
+
+#line 1019 "time.m"
+MR_Word MR_CALL 
+mercury__time__construct_time_t_1_f_0(
+#line 1019 "time.m"
+  MR_Box mercury__time__param_1);
+
+#line 943 "time.m"
+MR_Integer MR_CALL 
+mercury__time__maybe_dst_to_int_1_f_0(
+#line 943 "time.m"
+  MR_Word mercury__time__param_1);
+
+#line 829 "time.m"
+void MR_CALL 
+mercury__time__c_mktime_10_p_0(
+#line 829 "time.m"
+  MR_Integer mercury__time__param_1,
+#line 829 "time.m"
+  MR_Integer mercury__time__param_2,
+#line 829 "time.m"
+  MR_Integer mercury__time__param_3,
+#line 829 "time.m"
+  MR_Integer mercury__time__param_4,
+#line 829 "time.m"
+  MR_Integer mercury__time__param_5,
+#line 829 "time.m"
+  MR_Integer mercury__time__param_6,
+#line 829 "time.m"
+  MR_Integer mercury__time__param_7,
+#line 829 "time.m"
+  MR_Integer mercury__time__param_8,
+#line 829 "time.m"
+  MR_Integer mercury__time__param_9,
+#line 829 "time.m"
+  MR_Box * mercury__time__param_10);
+
+#line 809 "time.m"
+MR_Word MR_CALL 
+mercury__time__int_to_maybe_dst_1_f_0(
+#line 809 "time.m"
+  MR_Integer mercury__time__param_1);
+
+#line 698 "time.m"
+void MR_CALL 
+mercury__time__c_gmtime_10_p_0(
+#line 698 "time.m"
+  MR_Box mercury__time__param_1,
+#line 698 "time.m"
+  MR_Integer * mercury__time__param_2,
+#line 698 "time.m"
+  MR_Integer * mercury__time__param_3,
+#line 698 "time.m"
+  MR_Integer * mercury__time__param_4,
+#line 698 "time.m"
+  MR_Integer * mercury__time__param_5,
+#line 698 "time.m"
+  MR_Integer * mercury__time__param_6,
+#line 698 "time.m"
+  MR_Integer * mercury__time__param_7,
+#line 698 "time.m"
+  MR_Integer * mercury__time__param_8,
+#line 698 "time.m"
+  MR_Integer * mercury__time__param_9,
+#line 698 "time.m"
+  MR_Integer * mercury__time__param_10);
+
+#line 588 "time.m"
+void MR_CALL 
+mercury__time__c_localtime_10_p_0(
+#line 588 "time.m"
+  MR_Box mercury__time__param_1,
+#line 588 "time.m"
+  MR_Integer * mercury__time__param_2,
+#line 588 "time.m"
+  MR_Integer * mercury__time__param_3,
+#line 588 "time.m"
+  MR_Integer * mercury__time__param_4,
+#line 588 "time.m"
+  MR_Integer * mercury__time__param_5,
+#line 588 "time.m"
+  MR_Integer * mercury__time__param_6,
+#line 588 "time.m"
+  MR_Integer * mercury__time__param_7,
+#line 588 "time.m"
+  MR_Integer * mercury__time__param_8,
+#line 588 "time.m"
+  MR_Integer * mercury__time__param_9,
+#line 588 "time.m"
+  MR_Integer * mercury__time__param_10);
+
+#line 551 "time.m"
+void MR_CALL 
+mercury__time__c_difftime_3_p_0(
+#line 551 "time.m"
+  MR_Box mercury__time__param_1,
+#line 551 "time.m"
+  MR_Box mercury__time__param_2,
+#line 551 "time.m"
+  MR_Float * mercury__time__param_3);
+
+#line 517 "time.m"
+MR_bool MR_CALL 
+mercury__time__time_t_is_invalid_1_p_0(
+#line 517 "time.m"
+  MR_Box mercury__time__param_1);
+
+#line 490 "time.m"
+void MR_CALL 
+mercury__time__c_time_3_p_0(
+#line 490 "time.m"
+  MR_Box * mercury__time__param_1);
+
+#line 342 "time.m"
+void MR_CALL 
+mercury__time__c_times_7_p_0(
+#line 342 "time.m"
+  MR_Integer * mercury__time__param_1,
+#line 342 "time.m"
+  MR_Integer * mercury__time__param_2,
+#line 342 "time.m"
+  MR_Integer * mercury__time__param_3,
+#line 342 "time.m"
+  MR_Integer * mercury__time__param_4,
+#line 342 "time.m"
+  MR_Integer * mercury__time__param_5);
+
+#line 263 "time.m"
+void MR_CALL 
+mercury__time__c_clock_3_p_0(
+#line 263 "time.m"
+  MR_Integer * mercury__time__param_1);
+
+#line 247 "time.m"
+void MR_CALL 
+mercury__time__compare_time_t_reps_3_p_0(
+#line 247 "time.m"
+  MR_Word * mercury__time__param_1,
+#line 247 "time.m"
+  MR_Box mercury__time__param_2,
+#line 247 "time.m"
+  MR_Box mercury__time__param_3);
+
+#line 189 "time.m"
+MR_String MR_CALL 
+mercury__time__ctime_1_f_0(
+#line 189 "time.m"
+  MR_Word mercury__time__param_1);
+
+#line 182 "time.m"
+MR_String MR_CALL 
+mercury__time__asctime_1_f_0(
+#line 182 "time.m"
+  MR_Word mercury__time__param_1);
+
+#line 173 "time.m"
+MR_Word MR_CALL 
+mercury__time__mktime_1_f_0(
+#line 173 "time.m"
+  MR_Word mercury__time__param_1);
+
+#line 165 "time.m"
+MR_Word MR_CALL 
+mercury__time__gmtime_1_f_0(
+#line 165 "time.m"
+  MR_Word mercury__time__param_1);
+
+#line 158 "time.m"
+MR_Word MR_CALL 
+mercury__time__localtime_1_f_0(
+#line 158 "time.m"
+  MR_Word mercury__time__param_1);
+
+#line 151 "time.m"
+MR_Float MR_CALL 
+mercury__time__difftime_2_f_0(
+#line 151 "time.m"
+  MR_Word mercury__time__param_1,
+#line 151 "time.m"
+  MR_Word mercury__time__param_2);
+
+#line 143 "time.m"
+MR_Integer MR_CALL 
+mercury__time__clk_tck_0_f_0(void);
+
+#line 132 "time.m"
+void MR_CALL 
+mercury__time__times_4_p_0(
+#line 132 "time.m"
+  MR_Word * mercury__time__param_1,
+#line 132 "time.m"
+  MR_Integer * mercury__time__param_2);
+
+#line 112 "time.m"
+void MR_CALL 
+mercury__time__time_3_p_0(
+#line 112 "time.m"
+  MR_Word * mercury__time__param_1);
+
+#line 103 "time.m"
+MR_Integer MR_CALL 
+mercury__time__clocks_per_sec_0_f_0(void);
+
+#line 93 "time.m"
+void MR_CALL 
+mercury__time__clock_3_p_0(
+#line 93 "time.m"
+  MR_Integer * mercury__time__param_1);
+
+void mercury__time__init(void);
+void mercury__time__init_type_tables(void);
+void mercury__time__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_time */
+
+/* :- end_interface time. */

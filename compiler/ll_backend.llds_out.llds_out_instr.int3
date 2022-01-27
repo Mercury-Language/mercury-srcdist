@@ -1,0 +1,4 @@
+:- module ((ll_backend.llds_out).llds_out_instr).
+:- interface.
+:- type after_layout_label
+	where	type_is_abstract_enum(1).

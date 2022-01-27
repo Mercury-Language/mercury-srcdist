@@ -1,0 +1,2265 @@
+/*
+** Automatically generated from `hlds_data.m'
+** by the Mercury compiler,
+** version rotd-2013-03-21, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.hlds_data. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_data
+#define MR_HEADER_GUARD_hlds__hlds_data
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_DATA_DECL_GUARD
+#define HLDS__HLDS_DATA_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_ancestor_constraints_0;
+
+#line 45 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_any_inst_table_0;
+
+#line 48 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_assert_id_0;
+
+#line 51 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_assertion_table_0;
+
+#line 54 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_class_table_0;
+
+#line 57 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_table_0;
+
+#line 60 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0;
+
+#line 63 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_values_0;
+
+#line 66 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_constraint_id_0;
+
+#line 69 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_constraint_map_0;
+
+#line 72 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_constraint_proof_0;
+
+#line 75 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_constraint_proof_map_0;
+
+#line 78 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_constraint_type_0;
+
+#line 81 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_ctor_field_table_0;
+
+#line 84 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_du_type_kind_0;
+
+#line 87 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_exclusive_id_0;
+
+#line 90 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_exclusive_ids_0;
+
+#line 93 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_exclusive_table_0;
+
+#line 96 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_field_access_type_0;
+
+#line 99 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_foreign_type_body_0;
+
+#line 102 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_foreign_type_lang_body_1;
+
+#line 105 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_foreign_type_lang_data_1;
+
+#line 108 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_ground_inst_table_0;
+
+#line 111 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_class_argpos_0;
+
+#line 114 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_class_defn_0;
+
+#line 117 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_class_fundep_0;
+
+#line 120 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_class_fundeps_0;
+
+#line 123 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_class_interface_0;
+
+#line 126 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_class_proc_0;
+
+#line 129 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_cons_defn_0;
+
+#line 132 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_constraint_0;
+
+#line 135 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_constraints_0;
+
+#line 138 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_ctor_field_defn_0;
+
+#line 141 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_inst_body_0;
+
+#line 144 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_inst_defn_0;
+
+#line 147 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_instance_defn_0;
+
+#line 150 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_mode_body_0;
+
+#line 153 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_mode_defn_0;
+
+#line 156 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_body_0;
+
+#line 159 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0;
+
+#line 162 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_inner_cons_entry_0;
+
+#line 165 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_inner_cons_table_0;
+
+#line 168 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_inst_table_0;
+
+#line 171 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_instance_id_0;
+
+#line 174 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_instance_table_0;
+
+#line 177 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_may_use_atomic_alloc_0;
+
+#line 180 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_maybe_cheaper_tag_test_0;
+
+#line 183 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_maybe_inst_0;
+
+#line 186 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_maybe_inst_det_0;
+
+#line 189 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_merge_inst_table_0;
+
+#line 192 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_mode_defns_0;
+
+#line 195 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_mode_table_0;
+
+#line 198 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_mostly_uniq_inst_table_0;
+
+#line 201 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_no_tag_type_0;
+
+#line 204 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_no_tag_type_table_0;
+
+#line 207 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_redundant_constraints_0;
+
+#line 210 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_reserved_address_0;
+
+#line 213 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_shared_inst_table_0;
+
+#line 216 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_tag_bits_0;
+
+#line 219 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0;
+
+#line 222 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_ctor_table_0;
+
+#line 225 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_table_0;
+
+#line 228 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_unify_inst_pair_0;
+
+#line 231 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_unify_inst_table_0;
+
+#line 234 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_user_inst_defns_0;
+
+#line 237 "hlds.hlds_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_user_inst_table_0;
+
+#line 1137 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____user_inst_table_0_0(
+#line 1137 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1137 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1137 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1137 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____user_inst_table_0_0(
+#line 1137 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1137 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1025 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____user_inst_defns_0_0(
+#line 1025 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1025 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1025 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1025 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____user_inst_defns_0_0(
+#line 1025 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1025 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1026 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____unify_inst_table_0_0(
+#line 1026 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1026 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1026 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1026 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____unify_inst_table_0_0(
+#line 1026 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1026 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1033 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____unify_inst_pair_0_0(
+#line 1033 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1033 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1033 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1033 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____unify_inst_pair_0_0(
+#line 1033 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1033 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 842 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____type_table_0_0(
+#line 842 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 842 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 842 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 842 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_table_0_0(
+#line 842 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 842 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 565 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____tagged_cons_id_0_0(
+#line 565 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 565 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 565 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 565 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____tagged_cons_id_0_0(
+#line 565 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 565 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 708 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____tag_bits_0_0(
+#line 708 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 708 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_2,
+#line 708 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_3);
+
+#line 708 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____tag_bits_0_0(
+#line 708 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_1,
+#line 708 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_2);
+
+#line 1030 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____shared_inst_table_0_0(
+#line 1030 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1030 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1030 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1030 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____shared_inst_table_0_0(
+#line 1030 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1030 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 694 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____reserved_address_0_0(
+#line 694 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 694 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 694 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 694 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____reserved_address_0_0(
+#line 694 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 694 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1478 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____redundant_constraints_0_0(
+#line 1478 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1478 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1478 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1478 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____redundant_constraints_0_0(
+#line 1478 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1478 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 733 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____no_tag_type_table_0_0(
+#line 733 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 733 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 733 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 733 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____no_tag_type_table_0_0(
+#line 733 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 733 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 726 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____no_tag_type_0_0(
+#line 726 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 726 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 726 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 726 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____no_tag_type_0_0(
+#line 726 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 726 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1031 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____mostly_uniq_inst_table_0_0(
+#line 1031 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1031 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1031 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1031 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____mostly_uniq_inst_table_0_0(
+#line 1031 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1031 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1242 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____mode_table_0_0(
+#line 1242 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1242 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1242 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1242 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____mode_table_0_0(
+#line 1242 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1242 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1190 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____mode_defns_0_0(
+#line 1190 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1190 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1190 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1190 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____mode_defns_0_0(
+#line 1190 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1190 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1027 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____merge_inst_table_0_0(
+#line 1027 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1027 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1027 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1027 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____merge_inst_table_0_0(
+#line 1027 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1027 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1045 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____maybe_inst_det_0_0(
+#line 1045 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1045 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1045 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1045 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____maybe_inst_det_0_0(
+#line 1045 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1045 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1041 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____maybe_inst_0_0(
+#line 1041 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1041 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1041 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1041 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____maybe_inst_0_0(
+#line 1041 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1041 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 501 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____maybe_cheaper_tag_test_0_0(
+#line 501 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 501 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 501 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 501 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____maybe_cheaper_tag_test_0_0(
+#line 501 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 501 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 746 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____may_use_atomic_alloc_0_0(
+#line 746 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 746 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 746 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 746 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____may_use_atomic_alloc_0_0(
+#line 746 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 746 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1328 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____instance_table_0_0(
+#line 1328 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1328 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1328 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1328 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____instance_table_0_0(
+#line 1328 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1328 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1330 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____instance_id_0_0(
+#line 1330 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1330 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_2,
+#line 1330 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_3);
+
+#line 1330 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____instance_id_0_0(
+#line 1330 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_1,
+#line 1330 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_2);
+
+#line 1126 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____inst_table_0_0(
+#line 1126 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1126 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1126 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1126 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____inst_table_0_0(
+#line 1126 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1126 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 134 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____inner_cons_entry_0_0(
+#line 134 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 134 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 134 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 134 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____inner_cons_entry_0_0(
+#line 134 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 134 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 950 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_type_defn_0_0(
+#line 950 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 950 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 950 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 950 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_type_defn_0_0(
+#line 950 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 950 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 467 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_type_body_0_0(
+#line 467 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 467 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 467 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 467 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_type_body_0_0(
+#line 467 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 467 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1200 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_mode_defn_0_0(
+#line 1200 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1200 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1200 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1200 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_mode_defn_0_0(
+#line 1200 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1200 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1221 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_mode_body_0_0(
+#line 1221 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1221 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1221 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1221 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_mode_body_0_0(
+#line 1221 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1221 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1334 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_instance_defn_0_0(
+#line 1334 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1334 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1334 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1334 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_instance_defn_0_0(
+#line 1334 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1334 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1053 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_inst_defn_0_0(
+#line 1053 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1053 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1053 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1053 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_inst_defn_0_0(
+#line 1053 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1053 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1071 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_inst_body_0_0(
+#line 1071 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1071 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1071 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1071 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_inst_body_0_0(
+#line 1071 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1071 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 349 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_ctor_field_defn_0_0(
+#line 349 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 349 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 349 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 349 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_ctor_field_defn_0_0(
+#line 349 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 349 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1451 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_constraints_0_0(
+#line 1451 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1451 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1451 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1451 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_constraints_0_0(
+#line 1451 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1451 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1444 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_constraint_0_0(
+#line 1444 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1444 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1444 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1444 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_constraint_0_0(
+#line 1444 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1444 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 59 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_cons_defn_0_0(
+#line 59 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 59 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 59 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 59 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_cons_defn_0_0(
+#line 59 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 59 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1317 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_class_proc_0_0(
+#line 1317 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1317 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1317 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1317 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_class_proc_0_0(
+#line 1317 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1317 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1314 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_class_interface_0_0(
+#line 1314 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1314 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1314 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1314 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_class_interface_0_0(
+#line 1314 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1314 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1303 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_class_fundeps_0_0(
+#line 1303 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1303 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1303 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1303 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_class_fundeps_0_0(
+#line 1303 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1303 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1304 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_class_fundep_0_0(
+#line 1304 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1304 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1304 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1304 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_class_fundep_0_0(
+#line 1304 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1304 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1263 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_class_defn_0_0(
+#line 1263 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1263 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1263 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1263 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_class_defn_0_0(
+#line 1263 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1263 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1310 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_class_argpos_0_0(
+#line 1310 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1310 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_2,
+#line 1310 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_3);
+
+#line 1310 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_class_argpos_0_0(
+#line 1310 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_1,
+#line 1310 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_2);
+
+#line 1028 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____ground_inst_table_0_0(
+#line 1028 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1028 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1028 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1028 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____ground_inst_table_0_0(
+#line 1028 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1028 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 539 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____foreign_type_lang_data_1_0(
+#line 539 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 539 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2,
+#line 539 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 539 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_4);
+
+#line 539 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____foreign_type_lang_data_1_0(
+#line 539 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 539 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 539 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 534 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____foreign_type_lang_body_1_0(
+#line 534 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 534 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2,
+#line 534 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 534 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_4);
+
+#line 534 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____foreign_type_lang_body_1_0(
+#line 534 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 534 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 534 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 525 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____foreign_type_body_0_0(
+#line 525 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 525 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 525 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 525 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____foreign_type_body_0_0(
+#line 525 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 525 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 376 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____field_access_type_0_0(
+#line 376 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 376 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 376 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 376 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____field_access_type_0_0(
+#line 376 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 376 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1967 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____exclusive_table_0_0(
+#line 1967 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1967 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1967 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1967 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____exclusive_table_0_0(
+#line 1967 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1967 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1933 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____exclusive_ids_0_0(
+#line 1933 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1933 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1933 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1933 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____exclusive_ids_0_0(
+#line 1933 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1933 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1932 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____exclusive_id_0_0(
+#line 1932 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1932 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1932 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1932 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____exclusive_id_0_0(
+#line 1932 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1932 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 510 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____du_type_kind_0_0(
+#line 510 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 510 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 510 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 510 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____du_type_kind_0_0(
+#line 510 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 510 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 347 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____ctor_field_table_0_0(
+#line 347 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 347 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 347 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 347 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____ctor_field_table_0_0(
+#line 347 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 347 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1435 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____constraint_type_0_0(
+#line 1435 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1435 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1435 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1435 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____constraint_type_0_0(
+#line 1435 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1435 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1520 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____constraint_proof_map_0_0(
+#line 1520 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1520 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1520 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1520 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____constraint_proof_map_0_0(
+#line 1520 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1520 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1497 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____constraint_proof_0_0(
+#line 1497 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1497 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1497 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1497 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____constraint_proof_0_0(
+#line 1497 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1497 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1494 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____constraint_map_0_0(
+#line 1494 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1494 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1494 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1494 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____constraint_map_0_0(
+#line 1494 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1494 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1423 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____constraint_id_0_0(
+#line 1423 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1423 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1423 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1423 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____constraint_id_0_0(
+#line 1423 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1423 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 561 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____cons_tag_values_0_0(
+#line 561 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 561 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 561 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 561 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____cons_tag_values_0_0(
+#line 561 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 561 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 577 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____cons_tag_0_0(
+#line 577 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 577 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 577 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 577 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Index____cons_tag_0_0(
+#line 577 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 577 "hlds_data.m"
+  MR_Integer * hlds__hlds_data__param_2);
+
+#line 577 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____cons_tag_0_0(
+#line 577 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 577 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 122 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____cons_table_0_0(
+#line 122 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 122 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 122 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 122 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____cons_table_0_0(
+#line 122 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 122 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1259 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____class_table_0_0(
+#line 1259 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1259 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1259 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1259 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____class_table_0_0(
+#line 1259 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1259 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1890 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____assertion_table_0_0(
+#line 1890 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1890 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1890 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1890 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____assertion_table_0_0(
+#line 1890 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1890 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1889 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____assert_id_0_0(
+#line 1889 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1889 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_2,
+#line 1889 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_3);
+
+#line 1889 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____assert_id_0_0(
+#line 1889 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_1,
+#line 1889 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_2);
+
+#line 1029 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____any_inst_table_0_0(
+#line 1029 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1029 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1029 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1029 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____any_inst_table_0_0(
+#line 1029 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1029 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1488 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data____Compare____ancestor_constraints_0_0(
+#line 1488 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1,
+#line 1488 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1488 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1488 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____ancestor_constraints_0_0(
+#line 1488 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1488 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1960 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__exclusive_table_add_4_p_0(
+#line 1960 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1960 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1960 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1960 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 1954 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__exclusive_table_optimize_2_p_0(
+#line 1954 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1954 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1949 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__exclusive_table_lookup_3_p_0(
+#line 1949 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1949 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1949 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1944 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data__exclusive_table_search_3_p_0(
+#line 1944 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1944 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1944 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1939 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__exclusive_table_init_1_p_0(
+#line 1939 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1);
+
+#line 1884 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__assertion_table_pred_ids_2_p_0(
+#line 1884 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1884 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1881 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__assertion_table_lookup_3_p_0(
+#line 1881 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1881 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_2,
+#line 1881 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1878 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__assertion_table_add_assertion_4_p_0(
+#line 1878 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1878 "hlds_data.m"
+  MR_Integer * hlds__hlds_data__param_2,
+#line 1878 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1878 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 1876 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__assertion_table_init_1_p_0(
+#line 1876 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1);
+
+#line 1579 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data__search_hlds_constraint_list_5_p_0(
+#line 1579 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1579 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1579 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1579 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_4,
+#line 1579 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_5);
+
+#line 1576 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__lookup_hlds_constraint_list_5_p_0(
+#line 1576 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1576 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1576 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1576 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_4,
+#line 1576 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_5);
+
+#line 1572 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__update_redundant_constraints_5_p_0(
+#line 1572 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1572 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1572 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1572 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_4,
+#line 1572 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_5);
+
+#line 1569 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__update_constraint_map_3_p_0(
+#line 1569 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1569 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1569 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1566 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__compare_hlds_constraints_3_p_0(
+#line 1566 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1566 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1566 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1563 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data__matching_constraints_2_p_0(
+#line 1563 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1563 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2);
+
+#line 1560 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__retrieve_prog_constraint_2_p_0(
+#line 1560 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1560 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1557 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__retrieve_prog_constraint_list_2_p_0(
+#line 1557 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1557 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1554 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__retrieve_prog_constraints_2_p_0(
+#line 1554 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1554 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1551 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__merge_hlds_constraints_3_p_0(
+#line 1551 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1551 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1551 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1548 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__make_hlds_constraint_list_4_p_0(
+#line 1548 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1548 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1548 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1548 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 1544 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__make_hlds_constraints_5_p_0(
+#line 1544 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1544 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1544 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1544 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_4,
+#line 1544 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_5);
+
+#line 1530 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__make_body_hlds_constraints_5_p_0(
+#line 1530 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1530 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1530 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1530 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_4,
+#line 1530 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_5);
+
+#line 1527 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__make_head_hlds_constraints_4_p_0(
+#line 1527 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1527 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1527 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1527 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 1524 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__init_hlds_constraint_list_2_p_0(
+#line 1524 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1524 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1522 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__empty_hlds_constraints_1_p_0(
+#line 1522 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1);
+
+#line 1372 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__num_extra_instance_args_2_p_0(
+#line 1372 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1372 "hlds_data.m"
+  MR_Integer * hlds__hlds_data__param_2);
+
+#line 1312 "hlds_data.m"
+MR_Word MR_CALL 
+hlds__hlds_data__restrict_list_elements_2_f_0(
+#line 1312 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1312 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1312 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3);
+
+#line 1238 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__mode_table_optimize_2_p_0(
+#line 1238 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1238 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1234 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__mode_table_init_1_p_0(
+#line 1234 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1);
+
+#line 1231 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data__mode_table_insert_4_p_0(
+#line 1231 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1231 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1231 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1231 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 1226 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__mode_table_get_mode_defns_2_p_0(
+#line 1226 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1226 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1121 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__user_inst_table_optimize_2_p_0(
+#line 1121 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1121 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1115 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data__user_inst_table_insert_4_p_0(
+#line 1115 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1115 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1115 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 1115 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 1112 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__user_inst_table_get_inst_defns_2_p_0(
+#line 1112 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1112 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1109 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_set_mostly_uniq_insts_3_p_0(
+#line 1109 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1109 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1109 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1107 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_set_shared_insts_3_p_0(
+#line 1107 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1107 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1107 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1105 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_set_any_insts_3_p_0(
+#line 1105 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1105 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1105 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1103 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_set_ground_insts_3_p_0(
+#line 1103 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1103 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1103 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1101 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_set_merge_insts_3_p_0(
+#line 1101 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1101 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1101 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1099 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_set_unify_insts_3_p_0(
+#line 1099 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1099 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1099 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1097 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_set_user_insts_3_p_0(
+#line 1097 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1097 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 1097 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 1094 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_get_mostly_uniq_insts_2_p_0(
+#line 1094 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1094 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1092 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_get_shared_insts_2_p_0(
+#line 1092 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1092 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1091 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_get_any_insts_2_p_0(
+#line 1091 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1091 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1089 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_get_ground_insts_2_p_0(
+#line 1089 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1089 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1087 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_get_merge_insts_2_p_0(
+#line 1087 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1087 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1085 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_get_unify_insts_2_p_0(
+#line 1085 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1085 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1084 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_get_user_insts_2_p_0(
+#line 1084 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 1084 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 1082 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__inst_table_init_1_p_0(
+#line 1082 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_1);
+
+#line 735 "hlds_data.m"
+MR_Word MR_CALL 
+hlds__hlds_data__get_maybe_cheaper_tag_test_1_f_0(
+#line 735 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1);
+
+#line 720 "hlds_data.m"
+MR_Word MR_CALL 
+hlds__hlds_data__get_secondary_tag_1_f_0(
+#line 720 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1);
+
+#line 715 "hlds_data.m"
+MR_Word MR_CALL 
+hlds__hlds_data__get_primary_tag_1_f_0(
+#line 715 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1);
+
+#line 570 "hlds_data.m"
+MR_Word MR_CALL 
+hlds__hlds_data__project_tagged_cons_id_tag_1_f_0(
+#line 570 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1);
+
+#line 460 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__set_type_defn_in_exported_eqv_3_p_0(
+#line 460 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 460 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 460 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 458 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__set_type_defn_status_3_p_0(
+#line 458 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 458 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 458 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 456 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__set_type_defn_tvarset_3_p_0(
+#line 456 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 456 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 456 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 454 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__set_type_defn_body_3_p_0(
+#line 454 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 454 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 454 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 452 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__get_type_defn_context_2_p_0(
+#line 452 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 452 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 450 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__get_type_defn_need_qualifier_2_p_0(
+#line 450 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 450 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 449 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__get_type_defn_in_exported_eqv_2_p_0(
+#line 449 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 449 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 448 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__get_type_defn_status_2_p_0(
+#line 448 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 448 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 447 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__get_type_defn_body_2_p_0(
+#line 447 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 447 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 446 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__get_type_defn_kind_map_2_p_0(
+#line 446 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 446 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 444 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__get_type_defn_tparams_2_p_0(
+#line 444 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 444 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 443 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__get_type_defn_tvarset_2_p_0(
+#line 443 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 443 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 439 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__set_type_defn_9_p_0(
+#line 439 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 439 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 439 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 439 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_4,
+#line 439 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_5,
+#line 439 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_6,
+#line 439 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_7,
+#line 439 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_8,
+#line 439 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_9);
+
+#line 425 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__map_foldl_over_type_ctor_defns_5_p_0(
+#line 425 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 425 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 425 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 425 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4,
+#line 425 "hlds_data.m"
+  MR_Box hlds__hlds_data__param_5,
+#line 425 "hlds_data.m"
+  MR_Box * hlds__hlds_data__param_6);
+
+#line 420 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__foldl3_over_type_ctor_defns_8_p_0(
+#line 420 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 420 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 420 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 420 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_4,
+#line 420 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_5,
+#line 420 "hlds_data.m"
+  MR_Box hlds__hlds_data__param_6,
+#line 420 "hlds_data.m"
+  MR_Box * hlds__hlds_data__param_7,
+#line 420 "hlds_data.m"
+  MR_Box hlds__hlds_data__param_8,
+#line 420 "hlds_data.m"
+  MR_Box * hlds__hlds_data__param_9,
+#line 420 "hlds_data.m"
+  MR_Box hlds__hlds_data__param_10,
+#line 420 "hlds_data.m"
+  MR_Box * hlds__hlds_data__param_11);
+
+#line 415 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__foldl2_over_type_ctor_defns_6_p_0(
+#line 415 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 415 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 415 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 415 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_4,
+#line 415 "hlds_data.m"
+  MR_Box hlds__hlds_data__param_5,
+#line 415 "hlds_data.m"
+  MR_Box * hlds__hlds_data__param_6,
+#line 415 "hlds_data.m"
+  MR_Box hlds__hlds_data__param_7,
+#line 415 "hlds_data.m"
+  MR_Box * hlds__hlds_data__param_8);
+
+#line 410 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__foldl_over_type_ctor_defns_4_p_0(
+#line 410 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 410 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 410 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 410 "hlds_data.m"
+  MR_Box hlds__hlds_data__param_4,
+#line 410 "hlds_data.m"
+  MR_Box * hlds__hlds_data__param_5);
+
+#line 407 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__get_all_type_ctor_defns_2_p_0(
+#line 407 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 407 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 404 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__lookup_type_ctor_defn_3_p_0(
+#line 404 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 404 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 404 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 402 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data__search_type_ctor_defn_3_p_0(
+#line 402 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 402 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 402 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 399 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__add_or_replace_type_ctor_defn_4_p_0(
+#line 399 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 399 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 399 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 399 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 396 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__replace_type_ctor_defn_4_p_0(
+#line 396 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 396 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 396 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 396 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 393 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__add_type_ctor_defn_4_p_0(
+#line 393 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 393 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 393 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 393 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 391 "hlds_data.m"
+MR_Word MR_CALL 
+hlds__hlds_data__init_type_table_0_f_0(void);
+
+#line 116 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__cons_table_optimize_2_p_0(
+#line 116 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 116 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 112 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__replace_cons_defns_in_cons_table_3_p_0(
+#line 112 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 112 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 112 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 109 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__return_other_arities_4_p_0(
+#line 109 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 109 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 109 "hlds_data.m"
+  MR_Integer hlds__hlds_data__param_3,
+#line 109 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 106 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__get_all_cons_defns_2_p_0(
+#line 106 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 106 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_2);
+
+#line 103 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__lookup_cons_table_of_type_ctor_4_p_0(
+#line 103 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 103 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 103 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 103 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 100 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data__search_cons_table_of_type_ctor_4_p_0(
+#line 100 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 100 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 100 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 100 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_4);
+
+#line 97 "hlds_data.m"
+MR_bool MR_CALL 
+hlds__hlds_data__search_cons_table_3_p_0(
+#line 97 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 97 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 97 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_3);
+
+#line 94 "hlds_data.m"
+void MR_CALL 
+hlds__hlds_data__insert_into_cons_table_5_p_0(
+#line 94 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_1,
+#line 94 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_2,
+#line 94 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_3,
+#line 94 "hlds_data.m"
+  MR_Word hlds__hlds_data__param_4,
+#line 94 "hlds_data.m"
+  MR_Word * hlds__hlds_data__param_5);
+
+#line 92 "hlds_data.m"
+MR_Word MR_CALL 
+hlds__hlds_data__init_cons_table_0_f_0(void);
+
+void mercury__hlds__hlds_data__init(void);
+void mercury__hlds__hlds_data__init_type_tables(void);
+void mercury__hlds__hlds_data__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.hlds_data */
+
+/* :- end_interface hlds.hlds_data. */

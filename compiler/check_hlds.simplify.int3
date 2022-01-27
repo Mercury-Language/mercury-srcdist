@@ -1,0 +1,6 @@
+:- module (check_hlds.simplify).
+:- interface.
+:- type simplification
+	where	type_is_abstract_enum(4).
+:- type simplifications.
+:- type simplify_info.

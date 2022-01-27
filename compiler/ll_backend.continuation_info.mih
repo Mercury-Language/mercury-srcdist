@@ -1,0 +1,515 @@
+/*
+** Automatically generated from `continuation_info.m'
+** by the Mercury compiler,
+** version rotd-2013-03-21, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.continuation_info. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__continuation_info
+#define MR_HEADER_GUARD_ll_backend__continuation_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__CONTINUATION_INFO_DECL_GUARD
+#define LL_BACKEND__CONTINUATION_INFO_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_call_info_0;
+
+#line 45 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_closure_arg_info_0;
+
+#line 48 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_closure_layout_info_0;
+
+#line 51 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_internal_layout_info_0;
+
+#line 54 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_layout_label_info_0;
+
+#line 57 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_layout_var_info_0;
+
+#line 60 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_proc_deep_prof_info_0;
+
+#line 63 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_proc_label_layout_info_0;
+
+#line 66 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_proc_layout_info_0;
+
+#line 69 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_proc_layout_table_info_0;
+
+#line 72 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_return_layout_info_0;
+
+#line 75 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_slot_contents_0;
+
+#line 78 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_trace_needs_body_rep_0;
+
+#line 81 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_trace_port_layout_info_0;
+
+#line 84 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_user_attribute_0;
+
+#line 87 "ll_backend.continuation_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__continuation_info__ll_backend__continuation_info__type_ctor_info_user_event_info_0;
+
+#line 386 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_114_101_115_117_109_101_95_108_97_121_111_117_116_95_95_91_51_93_95_48_6_p_0(
+#line 386 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 386 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 386 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3,
+#line 386 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_4,
+#line 386 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_5);
+
+#line 378 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_97_116_101_95_114_101_116_117_114_110_95_108_105_118_101_95_108_118_97_108_117_101_115_95_95_91_50_44_32_55_93_95_48_10_p_0(
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_4,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_5,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_6,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_7,
+#line 378 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_8);
+
+#line 306 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____user_event_info_0_0(
+#line 306 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 306 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 306 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 306 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____user_event_info_0_0(
+#line 306 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 306 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 300 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____user_attribute_0_0(
+#line 300 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 300 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 300 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 300 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____user_attribute_0_0(
+#line 300 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 300 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 265 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____trace_port_layout_info_0_0(
+#line 265 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 265 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 265 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 265 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____trace_port_layout_info_0_0(
+#line 265 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 265 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 175 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____trace_needs_body_rep_0_0(
+#line 175 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 175 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 175 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 175 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____trace_needs_body_rep_0_0(
+#line 175 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 175 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 338 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____slot_contents_0_0(
+#line 338 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 338 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 338 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 338 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____slot_contents_0_0(
+#line 338 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 338 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 275 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____return_layout_info_0_0(
+#line 275 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 275 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 275 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 275 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____return_layout_info_0_0(
+#line 275 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 275 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 167 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____proc_layout_table_info_0_0(
+#line 167 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 167 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 167 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 167 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____proc_layout_table_info_0_0(
+#line 167 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 167 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 83 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____proc_layout_info_0_0(
+#line 83 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 83 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 83 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 83 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____proc_layout_info_0_0(
+#line 83 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 83 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 181 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____proc_label_layout_info_0_0(
+#line 181 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 181 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 181 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 181 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____proc_label_layout_info_0_0(
+#line 181 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 181 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 160 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____proc_deep_prof_info_0_0(
+#line 160 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 160 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 160 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 160 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____proc_deep_prof_info_0_0(
+#line 160 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 160 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 292 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____layout_var_info_0_0(
+#line 292 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 292 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 292 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 292 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____layout_var_info_0_0(
+#line 292 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 292 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 283 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____layout_label_info_0_0(
+#line 283 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 283 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 283 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 283 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____layout_label_info_0_0(
+#line 283 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 283 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 258 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____internal_layout_info_0_0(
+#line 258 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 258 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 258 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 258 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____internal_layout_info_0_0(
+#line 258 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 258 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 312 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____closure_layout_info_0_0(
+#line 312 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 312 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 312 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 312 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____closure_layout_info_0_0(
+#line 312 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 312 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 323 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info____Compare____closure_arg_info_0_0(
+#line 323 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_1,
+#line 323 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 323 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3);
+
+#line 323 "continuation_info.m"
+MR_bool MR_CALL 
+ll_backend__continuation_info____Unify____closure_arg_info_0_0(
+#line 323 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 323 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2);
+
+#line 401 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info__generate_table_arg_type_info_3_p_0(
+#line 401 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 401 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 401 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_3);
+
+#line 398 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info__find_typeinfos_for_tvars_4_p_0(
+#line 398 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 398 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 398 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3,
+#line 398 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_4);
+
+#line 392 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info__generate_closure_layout_4_p_0(
+#line 392 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 392 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 392 "continuation_info.m"
+  MR_Integer ll_backend__continuation_info__param_3,
+#line 392 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_4);
+
+#line 386 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info__generate_resume_layout_6_p_0(
+#line 386 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 386 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 386 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3,
+#line 386 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_4,
+#line 386 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_5,
+#line 386 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_6);
+
+#line 378 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info__generate_return_live_lvalues_10_p_0(
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_4,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_5,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_6,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_7,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_8,
+#line 378 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_9,
+#line 378 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_10);
+
+#line 373 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info__basic_stack_layout_for_proc_4_p_0(
+#line 373 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 373 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 373 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_3,
+#line 373 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_4);
+
+#line 366 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info__maybe_process_proc_llds_5_p_0(
+#line 366 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 366 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 366 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3,
+#line 366 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_4,
+#line 366 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_5);
+
+#line 357 "continuation_info.m"
+void MR_CALL 
+ll_backend__continuation_info__maybe_process_llds_4_p_0(
+#line 357 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_1,
+#line 357 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_2,
+#line 357 "continuation_info.m"
+  MR_Word ll_backend__continuation_info__param_3,
+#line 357 "continuation_info.m"
+  MR_Word * ll_backend__continuation_info__param_4);
+
+void mercury__ll_backend__continuation_info__init(void);
+void mercury__ll_backend__continuation_info__init_type_tables(void);
+void mercury__ll_backend__continuation_info__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.continuation_info */
+
+/* :- end_interface ll_backend.continuation_info. */

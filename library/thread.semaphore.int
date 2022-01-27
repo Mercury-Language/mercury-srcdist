@@ -1,0 +1,37 @@
+:- module (thread.semaphore).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- type semaphore.
+:- pragma obsolete(((thread.semaphore).new)/1).
+:- pragma obsolete(((thread.semaphore).new)/3).
+:- pred init(thread.semaphore.semaphore, io.io, io.io).
+:- mode init((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- impure func init(int) = thread.semaphore.semaphore.
+:- mode init((builtin.in)) = (builtin.uo) is det.
+:- pred new(thread.semaphore.semaphore, io.io, io.io).
+:- mode new((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- impure func new(int) = thread.semaphore.semaphore.
+:- mode new((builtin.in)) = (builtin.uo) is det.
+:- pred signal(thread.semaphore.semaphore, io.io, io.io).
+:- mode signal((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred try_wait(thread.semaphore.semaphore, bool.bool, io.io, io.io).
+:- mode try_wait((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred wait(thread.semaphore.semaphore, io.io, io.io).
+:- mode wait((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- pragma foreign_type(il, semaphore, "class [mercury]mercury.thread.semaphore__csharp_code.mercury_code.ML_Semaphore").
+:- pragma foreign_type(c, semaphore, "struct ML_SEMAPHORE_STRUCT *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, semaphore, "java.util.concurrent.Semaphore").
+:- pragma foreign_type(csharp, semaphore, "thread__semaphore.ML_Semaphore").
+:- pragma foreign_type(erlang, semaphore, "").
+:- pragma foreign_import_module("C", (thread.semaphore)).
+:- pragma foreign_import_module("C#", (thread.semaphore)).
+:- pragma foreign_import_module("Java", (thread.semaphore)).
+:- pragma foreign_import_module("IL", (thread.semaphore)).
+:- pragma foreign_import_module("Erlang", (thread.semaphore)).
+:- pragma foreign_import_module("C", (thread.semaphore)).
+:- pragma foreign_import_module("C#", (thread.semaphore)).
+:- pragma foreign_import_module("Java", (thread.semaphore)).
+:- pragma foreign_import_module("IL", (thread.semaphore)).
+:- pragma foreign_import_module("Erlang", (thread.semaphore)).

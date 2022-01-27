@@ -1,0 +1,3 @@
+:- module (transform_hlds.term_constr_fixpoint).
+:- interface.
+:- type fixpoint_options.

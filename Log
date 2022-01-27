@@ -1,0 +1,7 @@
+Avoid a configure script problem with MinGW64.
+
+configure.ac:
+	Make a configure check more specific: we should not
+	attempt to link against libpthread just because $host
+	matches  "*mingw*".  That doesn't (currently) work
+	for x86_64-w64-mingw32.

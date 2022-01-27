@@ -1,0 +1,1411 @@
+/*
+** Automatically generated from `analysis.m'
+** by the Mercury compiler,
+** version rotd-2013-03-21, configured for x86_64-apple-darwin12.2.1.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module analysis. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_analysis
+#define MR_HEADER_GUARD_analysis
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ANALYSIS_DECL_GUARD
+#define ANALYSIS_DECL_GUARD
+#line 1381 "analysis.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word analysis__mutable_variable_debug_analysis;
+#else
+    extern MR_Word analysis__mutable_variable_debug_analysis;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock analysis__mutable_variable_debug_analysis_lock;
+#endif
+
+#endif
+
+
+
+
+#line 50 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_info_0;
+
+#line 53 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_map_1;
+
+#line 56 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_name_0;
+
+#line 59 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_request_0;
+
+#line 62 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_result_2;
+
+#line 65 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_status_0;
+
+#line 68 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_type_0;
+
+#line 71 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_any_call_0;
+
+#line 74 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_fixpoint_type_0;
+
+#line 77 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_func_analysis_map_1;
+
+#line 80 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_func_id_0;
+
+#line 83 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_imdg_arc_0;
+
+#line 86 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_make_analysis_registry_0;
+
+#line 89 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_module_analysis_map_1;
+
+#line 92 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_no_func_info_0;
+
+#line 95 "analysis.mih.tmp"
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_some_analysis_result_0;
+
+#line 98 "analysis.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__to_term__arity1__analysis__any_call__arity0__[7];
+
+#line 101 "analysis.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__[7];
+
+#line 104 "analysis.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__call_pattern__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__[5];
+
+#line 107 "analysis.mih.tmp"
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_to_term_1;
+
+#line 110 "analysis.mih.tmp"
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_partial_order_2;
+
+#line 113 "analysis.mih.tmp"
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_compiler_1;
+
+#line 116 "analysis.mih.tmp"
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_call_pattern_2;
+
+#line 119 "analysis.mih.tmp"
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_answer_pattern_2;
+
+#line 122 "analysis.mih.tmp"
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_analysis_3;
+
+#line 446 "analysis.m"
+MR_Word MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_116_111_95_116_101_114_109_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_95_116_101_114_109_95_49_95_95_91_49_93_95_48_1_f_0(void);
+
+#line 441 "analysis.m"
+MR_bool MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_44_32_50_44_32_51_93_95_48_3_p_0(void);
+
+#line 438 "analysis.m"
+MR_bool MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_44_32_50_44_32_51_93_95_48_3_p_0(void);
+
+#line 144 "analysis.m"
+void MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 144 "analysis.m"
+  MR_Word * analysis__param_1);
+
+#line 144 "analysis.m"
+MR_bool MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 150 "analysis.m"
+void MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 150 "analysis.m"
+  MR_Word * analysis__param_1);
+
+#line 150 "analysis.m"
+MR_bool MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 1368 "analysis.m"
+MR_Word MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_108_117_98_95_114_101_115_117_108_116_95_115_116_97_116_117_115_101_115_95_51_95_95_91_49_93_95_48_3_f_0(
+#line 1368 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1368 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 1361 "analysis.m"
+MR_Word MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_108_117_98_95_114_101_115_117_108_116_95_115_116_97_116_117_115_101_115_95_50_95_95_91_49_93_95_48_3_f_0(
+#line 1361 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1361 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 449 "analysis.m"
+MR_bool MR_CALL 
+analysis__ClassMethod_for_analysis__to_term____analysis__any_call__arity0______analysis__from_term_2_2_p_0(
+#line 449 "analysis.m"
+  MR_Word analysis__param_1);
+
+#line 446 "analysis.m"
+MR_Word MR_CALL 
+analysis__ClassMethod_for_analysis__to_term____analysis__any_call__arity0______analysis__to_term_1_1_f_0(void);
+
+#line 441 "analysis.m"
+MR_bool MR_CALL 
+analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__analysis__any_call__arity0______analysis__equivalent_3_3_p_0(void);
+
+#line 438 "analysis.m"
+MR_bool MR_CALL 
+analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__analysis__any_call__arity0______analysis__more_precise_than_3_3_p_0(void);
+
+#line 399 "analysis.m"
+void MR_CALL 
+analysis____Compare____some_analysis_result_0_0(
+#line 399 "analysis.m"
+  MR_Word * analysis__param_1,
+#line 399 "analysis.m"
+  MR_Word analysis__param_2,
+#line 399 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 399 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____some_analysis_result_0_0(
+#line 399 "analysis.m"
+  MR_Word analysis__param_1,
+#line 399 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 144 "analysis.m"
+void MR_CALL 
+analysis____Compare____no_func_info_0_0(
+#line 144 "analysis.m"
+  MR_Word * analysis__param_1);
+
+#line 144 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____no_func_info_0_0(void);
+
+#line 428 "analysis.m"
+void MR_CALL 
+analysis____Compare____module_analysis_map_1_0(
+#line 428 "analysis.m"
+  MR_Word analysis__param_1,
+#line 428 "analysis.m"
+  MR_Word * analysis__param_2,
+#line 428 "analysis.m"
+  MR_Word analysis__param_3,
+#line 428 "analysis.m"
+  MR_Word analysis__param_4);
+
+#line 428 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____module_analysis_map_1_0(
+#line 428 "analysis.m"
+  MR_Word analysis__param_1,
+#line 428 "analysis.m"
+  MR_Word analysis__param_2,
+#line 428 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 392 "analysis.m"
+void MR_CALL 
+analysis____Compare____make_analysis_registry_0_0(
+#line 392 "analysis.m"
+  MR_Word * analysis__param_1,
+#line 392 "analysis.m"
+  MR_Word analysis__param_2,
+#line 392 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 392 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____make_analysis_registry_0_0(
+#line 392 "analysis.m"
+  MR_Word analysis__param_1,
+#line 392 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 416 "analysis.m"
+void MR_CALL 
+analysis____Compare____imdg_arc_0_0(
+#line 416 "analysis.m"
+  MR_Word * analysis__param_1,
+#line 416 "analysis.m"
+  MR_Word analysis__param_2,
+#line 416 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 416 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____imdg_arc_0_0(
+#line 416 "analysis.m"
+  MR_Word analysis__param_1,
+#line 416 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 170 "analysis.m"
+void MR_CALL 
+analysis____Compare____func_id_0_0(
+#line 170 "analysis.m"
+  MR_Word * analysis__param_1,
+#line 170 "analysis.m"
+  MR_Word analysis__param_2,
+#line 170 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 170 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____func_id_0_0(
+#line 170 "analysis.m"
+  MR_Word analysis__param_1,
+#line 170 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 429 "analysis.m"
+void MR_CALL 
+analysis____Compare____func_analysis_map_1_0(
+#line 429 "analysis.m"
+  MR_Word analysis__param_1,
+#line 429 "analysis.m"
+  MR_Word * analysis__param_2,
+#line 429 "analysis.m"
+  MR_Word analysis__param_3,
+#line 429 "analysis.m"
+  MR_Word analysis__param_4);
+
+#line 429 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____func_analysis_map_1_0(
+#line 429 "analysis.m"
+  MR_Word analysis__param_1,
+#line 429 "analysis.m"
+  MR_Word analysis__param_2,
+#line 429 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 105 "analysis.m"
+void MR_CALL 
+analysis____Compare____fixpoint_type_0_0(
+#line 105 "analysis.m"
+  MR_Word * analysis__param_1,
+#line 105 "analysis.m"
+  MR_Word analysis__param_2,
+#line 105 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 105 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____fixpoint_type_0_0(
+#line 105 "analysis.m"
+  MR_Word analysis__param_1,
+#line 105 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 150 "analysis.m"
+void MR_CALL 
+analysis____Compare____any_call_0_0(
+#line 150 "analysis.m"
+  MR_Word * analysis__param_1);
+
+#line 150 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____any_call_0_0(void);
+
+#line 68 "analysis.m"
+void MR_CALL 
+analysis____Compare____analysis_type_0_0(
+#line 68 "analysis.m"
+  MR_Word * analysis__param_1,
+#line 68 "analysis.m"
+  MR_Word analysis__param_2,
+#line 68 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 68 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____analysis_type_0_0(
+#line 68 "analysis.m"
+  MR_Word analysis__param_1,
+#line 68 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 159 "analysis.m"
+void MR_CALL 
+analysis____Compare____analysis_status_0_0(
+#line 159 "analysis.m"
+  MR_Word * analysis__param_1,
+#line 159 "analysis.m"
+  MR_Word analysis__param_2,
+#line 159 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 159 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____analysis_status_0_0(
+#line 159 "analysis.m"
+  MR_Word analysis__param_1,
+#line 159 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 124 "analysis.m"
+void MR_CALL 
+analysis____Compare____analysis_result_2_0(
+#line 124 "analysis.m"
+  MR_Word analysis__param_1,
+#line 124 "analysis.m"
+  MR_Word analysis__param_2,
+#line 124 "analysis.m"
+  MR_Word * analysis__param_3,
+#line 124 "analysis.m"
+  MR_Word analysis__param_4,
+#line 124 "analysis.m"
+  MR_Word analysis__param_5);
+
+#line 124 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____analysis_result_2_0(
+#line 124 "analysis.m"
+  MR_Word analysis__param_1,
+#line 124 "analysis.m"
+  MR_Word analysis__param_2,
+#line 124 "analysis.m"
+  MR_Word analysis__param_3,
+#line 124 "analysis.m"
+  MR_Word analysis__param_4);
+
+#line 408 "analysis.m"
+void MR_CALL 
+analysis____Compare____analysis_request_0_0(
+#line 408 "analysis.m"
+  MR_Word * analysis__param_1,
+#line 408 "analysis.m"
+  MR_Word analysis__param_2,
+#line 408 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 408 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____analysis_request_0_0(
+#line 408 "analysis.m"
+  MR_Word analysis__param_1,
+#line 408 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 66 "analysis.m"
+void MR_CALL 
+analysis____Compare____analysis_name_0_0(
+#line 66 "analysis.m"
+  MR_Word * analysis__param_1,
+#line 66 "analysis.m"
+  MR_String analysis__param_2,
+#line 66 "analysis.m"
+  MR_String analysis__param_3);
+
+#line 66 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____analysis_name_0_0(
+#line 66 "analysis.m"
+  MR_String analysis__param_1,
+#line 66 "analysis.m"
+  MR_String analysis__param_2);
+
+#line 427 "analysis.m"
+void MR_CALL 
+analysis____Compare____analysis_map_1_0(
+#line 427 "analysis.m"
+  MR_Word analysis__param_1,
+#line 427 "analysis.m"
+  MR_Word * analysis__param_2,
+#line 427 "analysis.m"
+  MR_Word analysis__param_3,
+#line 427 "analysis.m"
+  MR_Word analysis__param_4);
+
+#line 427 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____analysis_map_1_0(
+#line 427 "analysis.m"
+  MR_Word analysis__param_1,
+#line 427 "analysis.m"
+  MR_Word analysis__param_2,
+#line 427 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 333 "analysis.m"
+void MR_CALL 
+analysis____Compare____analysis_info_0_0(
+#line 333 "analysis.m"
+  MR_Word * analysis__param_1,
+#line 333 "analysis.m"
+  MR_Word analysis__param_2,
+#line 333 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 333 "analysis.m"
+MR_bool MR_CALL 
+analysis____Unify____analysis_info_0_0(
+#line 333 "analysis.m"
+  MR_Word analysis__param_1,
+#line 333 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 1386 "analysis.m"
+void MR_CALL 
+analysis__debug_msg_3_p_0(
+#line 1386 "analysis.m"
+  MR_Word analysis__param_1);
+
+#line 1381 "analysis.m"
+void MR_CALL 
+analysis__set_debug_analysis_3_p_0(
+#line 1381 "analysis.m"
+  MR_Word analysis__param_1);
+
+#line 1381 "analysis.m"
+void MR_CALL 
+analysis__get_debug_analysis_3_p_0(
+#line 1381 "analysis.m"
+  MR_Word * analysis__param_1);
+
+#line 1381 "analysis.m"
+void MR_CALL 
+analysis__set_debug_analysis_1_p_0(
+#line 1381 "analysis.m"
+  MR_Word analysis__param_1);
+
+#line 1381 "analysis.m"
+void MR_CALL 
+analysis__get_debug_analysis_1_p_0(
+#line 1381 "analysis.m"
+  MR_Word * analysis__param_1);
+
+#line 1381 "analysis.m"
+void MR_CALL 
+analysis__unsafe_set_debug_analysis_1_p_0(
+#line 1381 "analysis.m"
+  MR_Word analysis__param_1);
+
+#line 1381 "analysis.m"
+void MR_CALL 
+analysis__unsafe_get_debug_analysis_1_p_0(
+#line 1381 "analysis.m"
+  MR_Word * analysis__param_1);
+
+#line 1381 "analysis.m"
+void MR_CALL 
+analysis__unlock_debug_analysis_0_p_0(void);
+
+#line 1381 "analysis.m"
+void MR_CALL 
+analysis__lock_debug_analysis_0_p_0(void);
+
+#line 1381 "analysis.m"
+void MR_CALL 
+analysis__pre_initialise_mutable_debug_analysis_0_p_0(void);
+
+#line 1381 "analysis.m"
+void MR_CALL 
+analysis__initialise_mutable_debug_analysis_0_p_0(void);
+
+#line 1374 "analysis.m"
+MR_Word MR_CALL 
+analysis__lub_result_statuses_4_2_f_0(
+#line 1374 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1374 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 1368 "analysis.m"
+MR_Word MR_CALL 
+analysis__lub_result_statuses_3_3_f_0(
+#line 1368 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1368 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1368 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 1361 "analysis.m"
+MR_Word MR_CALL 
+analysis__lub_result_statuses_2_3_f_0(
+#line 1361 "analysis.m"
+  MR_String analysis__param_1,
+#line 1361 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1361 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 1355 "analysis.m"
+MR_Word MR_CALL 
+analysis__lub_result_statuses_1_f_0(
+#line 1355 "analysis.m"
+  MR_Word analysis__param_1);
+
+#line 1322 "analysis.m"
+void MR_CALL 
+analysis__maybe_write_module_imdg_5_p_0(
+#line 1322 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1322 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1322 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 1311 "analysis.m"
+void MR_CALL 
+analysis__maybe_write_module_requests_5_p_0(
+#line 1311 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1311 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1311 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 1299 "analysis.m"
+void MR_CALL 
+analysis__maybe_write_module_overall_status_5_p_0(
+#line 1299 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1299 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1299 "analysis.m"
+  MR_Word analysis__param_3);
+
+#line 1290 "analysis.m"
+void MR_CALL 
+analysis__load_module_imdg_6_p_0(
+#line 1290 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1290 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1290 "analysis.m"
+  MR_Word analysis__param_3,
+#line 1290 "analysis.m"
+  MR_Word * analysis__param_4);
+
+#line 1205 "analysis.m"
+void MR_CALL 
+analysis__load_module_analysis_results_6_p_0(
+#line 1205 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1205 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1205 "analysis.m"
+  MR_Word analysis__param_3,
+#line 1205 "analysis.m"
+  MR_Word * analysis__param_4);
+
+#line 1181 "analysis.m"
+void MR_CALL 
+analysis__combine_imdg_lists_3_p_0(
+#line 1181 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1181 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1181 "analysis.m"
+  MR_Word * analysis__param_3);
+
+#line 1175 "analysis.m"
+void MR_CALL 
+analysis__combine_func_imdg_3_p_0(
+#line 1175 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1175 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1175 "analysis.m"
+  MR_Word * analysis__param_3);
+
+#line 1168 "analysis.m"
+void MR_CALL 
+analysis__clear_imdg_entries_pointing_at_3_3_p_0(
+#line 1168 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1168 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1168 "analysis.m"
+  MR_Word * analysis__param_3);
+
+#line 1160 "analysis.m"
+void MR_CALL 
+analysis__clear_imdg_entries_pointing_at_2_3_p_0(
+#line 1160 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1160 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1160 "analysis.m"
+  MR_Word * analysis__param_3);
+
+#line 1152 "analysis.m"
+void MR_CALL 
+analysis__clear_imdg_entries_pointing_at_3_p_0(
+#line 1152 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1152 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1152 "analysis.m"
+  MR_Word * analysis__param_3);
+
+#line 1142 "analysis.m"
+void MR_CALL 
+analysis__write_clearing_entries_4_p_0(
+#line 1142 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1142 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 1123 "analysis.m"
+void MR_CALL 
+analysis__update_intermodule_dependencies_2_4_p_0(
+#line 1123 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1123 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1123 "analysis.m"
+  MR_Word analysis__param_3,
+#line 1123 "analysis.m"
+  MR_Word * analysis__param_4);
+
+#line 1116 "analysis.m"
+void MR_CALL 
+analysis__update_intermodule_dependencies_4_p_0(
+#line 1116 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1116 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1116 "analysis.m"
+  MR_Word analysis__param_3,
+#line 1116 "analysis.m"
+  MR_Word * analysis__param_4);
+
+#line 1098 "analysis.m"
+void MR_CALL 
+analysis__write_tainting_module_4_p_0(
+#line 1098 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1098 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 1082 "analysis.m"
+void MR_CALL 
+analysis__write_changed_answer_6_p_0(
+#line 1082 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1082 "analysis.m"
+  MR_Box analysis__param_2,
+#line 1082 "analysis.m"
+  MR_Box analysis__param_3,
+#line 1082 "analysis.m"
+  MR_Word analysis__param_4,
+#line 1082 "analysis.m"
+  MR_Word analysis__param_5);
+
+#line 1068 "analysis.m"
+void MR_CALL 
+analysis__write_no_change_in_result_6_p_0(
+#line 1068 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1068 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1068 "analysis.m"
+  MR_Word analysis__param_3,
+#line 1068 "analysis.m"
+  MR_Word analysis__param_4,
+#line 1068 "analysis.m"
+  MR_Box analysis__param_5,
+#line 1068 "analysis.m"
+  MR_Box analysis__param_6);
+
+#line 1056 "analysis.m"
+void MR_CALL 
+analysis__ensure_module_status_loaded_6_p_0(
+#line 1056 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1056 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1056 "analysis.m"
+  MR_Word analysis__param_3,
+#line 1056 "analysis.m"
+  MR_Word * analysis__param_4);
+
+#line 1032 "analysis.m"
+void MR_CALL 
+analysis__taint_module_overall_status_7_p_0(
+#line 1032 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1032 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1032 "analysis.m"
+  MR_Word analysis__param_3,
+#line 1032 "analysis.m"
+  MR_Word analysis__param_4,
+#line 1032 "analysis.m"
+  MR_Word * analysis__param_5);
+
+#line 1024 "analysis.m"
+MR_bool MR_CALL 
+analysis__arc_module_name_3_f_0(
+#line 1024 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1024 "analysis.m"
+  MR_Box analysis__param_2,
+#line 1024 "analysis.m"
+  MR_Box analysis__param_3,
+#line 1024 "analysis.m"
+  MR_Word analysis__param_4,
+#line 1024 "analysis.m"
+  MR_Word * analysis__param_5);
+
+#line 1008 "analysis.m"
+MR_Word MR_CALL 
+analysis__imdg_dependent_modules_5_f_0(
+#line 1008 "analysis.m"
+  MR_Word analysis__param_1,
+#line 1008 "analysis.m"
+  MR_Word analysis__param_2,
+#line 1008 "analysis.m"
+  MR_String analysis__param_3,
+#line 1008 "analysis.m"
+  MR_Word analysis__param_4,
+#line 1008 "analysis.m"
+  MR_Box analysis__param_5,
+#line 1008 "analysis.m"
+  MR_Box analysis__param_6);
+
+#line 986 "analysis.m"
+void MR_CALL 
+analysis__replace_result_in_list_6_p_0(
+#line 986 "analysis.m"
+  MR_Word analysis__param_1,
+#line 986 "analysis.m"
+  MR_Box analysis__param_2,
+#line 986 "analysis.m"
+  MR_Box analysis__param_3,
+#line 986 "analysis.m"
+  MR_Box analysis__param_4,
+#line 986 "analysis.m"
+  MR_Word analysis__param_5,
+#line 986 "analysis.m"
+  MR_Word analysis__param_6,
+#line 986 "analysis.m"
+  MR_Word * analysis__param_7);
+
+#line 968 "analysis.m"
+void MR_CALL 
+analysis__replace_result_in_analysis_map_8_p_0(
+#line 968 "analysis.m"
+  MR_Word analysis__param_1,
+#line 968 "analysis.m"
+  MR_Word analysis__param_2,
+#line 968 "analysis.m"
+  MR_Word analysis__param_3,
+#line 968 "analysis.m"
+  MR_Box analysis__param_4,
+#line 968 "analysis.m"
+  MR_Box analysis__param_5,
+#line 968 "analysis.m"
+  MR_Box analysis__param_6,
+#line 968 "analysis.m"
+  MR_Word analysis__param_7,
+#line 968 "analysis.m"
+  MR_Word analysis__param_8,
+#line 968 "analysis.m"
+  MR_Word * analysis__param_9);
+
+#line 878 "analysis.m"
+void MR_CALL 
+analysis__update_analysis_registry_5_9_p_0(
+#line 878 "analysis.m"
+  MR_Word analysis__param_1,
+#line 878 "analysis.m"
+  MR_Word analysis__param_2,
+#line 878 "analysis.m"
+  MR_String analysis__param_3,
+#line 878 "analysis.m"
+  MR_Word analysis__param_4,
+#line 878 "analysis.m"
+  MR_Word analysis__param_5,
+#line 878 "analysis.m"
+  MR_Word analysis__param_6,
+#line 878 "analysis.m"
+  MR_Word * analysis__param_7);
+
+#line 865 "analysis.m"
+void MR_CALL 
+analysis__update_analysis_registry_4_9_p_0(
+#line 865 "analysis.m"
+  MR_Word analysis__param_1,
+#line 865 "analysis.m"
+  MR_Word analysis__param_2,
+#line 865 "analysis.m"
+  MR_String analysis__param_3,
+#line 865 "analysis.m"
+  MR_Word analysis__param_4,
+#line 865 "analysis.m"
+  MR_Word analysis__param_5,
+#line 865 "analysis.m"
+  MR_Word analysis__param_6,
+#line 865 "analysis.m"
+  MR_Word * analysis__param_7);
+
+#line 855 "analysis.m"
+void MR_CALL 
+analysis__update_analysis_registry_3_8_p_0(
+#line 855 "analysis.m"
+  MR_Word analysis__param_1,
+#line 855 "analysis.m"
+  MR_Word analysis__param_2,
+#line 855 "analysis.m"
+  MR_String analysis__param_3,
+#line 855 "analysis.m"
+  MR_Word analysis__param_4,
+#line 855 "analysis.m"
+  MR_Word analysis__param_5,
+#line 855 "analysis.m"
+  MR_Word * analysis__param_6);
+
+#line 847 "analysis.m"
+void MR_CALL 
+analysis__update_analysis_registry_2_7_p_0(
+#line 847 "analysis.m"
+  MR_Word analysis__param_1,
+#line 847 "analysis.m"
+  MR_Word analysis__param_2,
+#line 847 "analysis.m"
+  MR_Word analysis__param_3,
+#line 847 "analysis.m"
+  MR_Word analysis__param_4,
+#line 847 "analysis.m"
+  MR_Word * analysis__param_5);
+
+#line 837 "analysis.m"
+void MR_CALL 
+analysis__update_analysis_registry_5_p_0(
+#line 837 "analysis.m"
+  MR_Word analysis__param_1,
+#line 837 "analysis.m"
+  MR_Word analysis__param_2,
+#line 837 "analysis.m"
+  MR_Word * analysis__param_3);
+
+#line 773 "analysis.m"
+void MR_CALL 
+analysis__record_dependency_2_7_p_0(
+#line 773 "analysis.m"
+  MR_Word analysis__param_1,
+#line 773 "analysis.m"
+  MR_Word analysis__param_2,
+#line 773 "analysis.m"
+  MR_String analysis__param_3,
+#line 773 "analysis.m"
+  MR_Word analysis__param_4,
+#line 773 "analysis.m"
+  MR_Word analysis__param_5,
+#line 773 "analysis.m"
+  MR_Box analysis__param_6,
+#line 773 "analysis.m"
+  MR_Word analysis__param_7,
+#line 773 "analysis.m"
+  MR_Word * analysis__param_8);
+
+#line 709 "analysis.m"
+void MR_CALL 
+analysis__record_request_2_7_p_0(
+#line 709 "analysis.m"
+  MR_Word analysis__param_1,
+#line 709 "analysis.m"
+  MR_Word analysis__param_2,
+#line 709 "analysis.m"
+  MR_String analysis__param_3,
+#line 709 "analysis.m"
+  MR_Word analysis__param_4,
+#line 709 "analysis.m"
+  MR_Word analysis__param_5,
+#line 709 "analysis.m"
+  MR_Box analysis__param_6,
+#line 709 "analysis.m"
+  MR_Word analysis__param_7,
+#line 709 "analysis.m"
+  MR_Word * analysis__param_8);
+
+#line 641 "analysis.m"
+void MR_CALL 
+analysis__record_result_in_analysis_map_6_p_0(
+#line 641 "analysis.m"
+  MR_Word analysis__param_1,
+#line 641 "analysis.m"
+  MR_Word analysis__param_2,
+#line 641 "analysis.m"
+  MR_Box analysis__param_3,
+#line 641 "analysis.m"
+  MR_Box analysis__param_4,
+#line 641 "analysis.m"
+  MR_Word analysis__param_5,
+#line 641 "analysis.m"
+  MR_Word analysis__param_6,
+#line 641 "analysis.m"
+  MR_Word * analysis__param_7);
+
+#line 594 "analysis.m"
+void MR_CALL 
+analysis__lookup_exactly_matching_result_even_from_invalid_modules_6_p_0(
+#line 594 "analysis.m"
+  MR_Word analysis__param_1,
+#line 594 "analysis.m"
+  MR_Word analysis__param_2,
+#line 594 "analysis.m"
+  MR_Word analysis__param_3,
+#line 594 "analysis.m"
+  MR_Word analysis__param_4,
+#line 594 "analysis.m"
+  MR_Box analysis__param_5,
+#line 594 "analysis.m"
+  MR_Box analysis__param_6,
+#line 594 "analysis.m"
+  MR_Word * analysis__param_7);
+
+#line 580 "analysis.m"
+void MR_CALL 
+analysis__more_precise_answer_4_p_0(
+#line 580 "analysis.m"
+  MR_Word analysis__param_1,
+#line 580 "analysis.m"
+  MR_Box analysis__param_2,
+#line 580 "analysis.m"
+  MR_Word analysis__param_3,
+#line 580 "analysis.m"
+  MR_Word analysis__param_4,
+#line 580 "analysis.m"
+  MR_Word * analysis__param_5);
+
+#line 525 "analysis.m"
+void MR_CALL 
+analysis__lookup_results_2_4_p_0(
+#line 525 "analysis.m"
+  MR_Word analysis__param_1,
+#line 525 "analysis.m"
+  MR_Word analysis__param_2,
+#line 525 "analysis.m"
+  MR_Word analysis__param_3,
+#line 525 "analysis.m"
+  MR_Word analysis__param_4,
+#line 525 "analysis.m"
+  MR_Word * analysis__param_5);
+
+#line 494 "analysis.m"
+void MR_CALL 
+analysis__lookup_results_1_5_p_0(
+#line 494 "analysis.m"
+  MR_Word analysis__param_1,
+#line 494 "analysis.m"
+  MR_Word analysis__param_2,
+#line 494 "analysis.m"
+  MR_Word analysis__param_3,
+#line 494 "analysis.m"
+  MR_Word analysis__param_4,
+#line 494 "analysis.m"
+  MR_Word analysis__param_5,
+#line 494 "analysis.m"
+  MR_Word * analysis__param_6);
+
+#line 311 "analysis.m"
+void MR_CALL 
+analysis__enable_debug_messages_3_p_0(
+#line 311 "analysis.m"
+  MR_Word analysis__param_1);
+
+#line 307 "analysis.m"
+void MR_CALL 
+analysis__do_read_module_overall_status_6_p_0(
+#line 307 "analysis.m"
+  MR_Word analysis__param_1,
+#line 307 "analysis.m"
+  MR_Box analysis__param_2,
+#line 307 "analysis.m"
+  MR_Word analysis__param_3,
+#line 307 "analysis.m"
+  MR_Word analysis__param_4,
+#line 307 "analysis.m"
+  MR_Word * analysis__param_5);
+
+#line 295 "analysis.m"
+void MR_CALL 
+analysis__write_analysis_files_7_p_0(
+#line 295 "analysis.m"
+  MR_Word analysis__param_1,
+#line 295 "analysis.m"
+  MR_Box analysis__param_2,
+#line 295 "analysis.m"
+  MR_Word analysis__param_3,
+#line 295 "analysis.m"
+  MR_Word analysis__param_4,
+#line 295 "analysis.m"
+  MR_Word analysis__param_5,
+#line 295 "analysis.m"
+  MR_Word * analysis__param_6);
+
+#line 289 "analysis.m"
+void MR_CALL 
+analysis__module_is_local_3_p_0(
+#line 289 "analysis.m"
+  MR_Word analysis__param_1,
+#line 289 "analysis.m"
+  MR_Word analysis__param_2,
+#line 289 "analysis.m"
+  MR_Word * analysis__param_3);
+
+#line 279 "analysis.m"
+void MR_CALL 
+analysis__prepare_intermodule_analysis_7_p_0(
+#line 279 "analysis.m"
+  MR_Word analysis__param_1,
+#line 279 "analysis.m"
+  MR_Word analysis__param_2,
+#line 279 "analysis.m"
+  MR_Word analysis__param_3,
+#line 279 "analysis.m"
+  MR_Word analysis__param_4,
+#line 279 "analysis.m"
+  MR_Word * analysis__param_5);
+
+#line 263 "analysis.m"
+void MR_CALL 
+analysis__record_request_6_p_0(
+#line 263 "analysis.m"
+  MR_Word analysis__param_1,
+#line 263 "analysis.m"
+  MR_String analysis__param_2,
+#line 263 "analysis.m"
+  MR_Word analysis__param_3,
+#line 263 "analysis.m"
+  MR_Word analysis__param_4,
+#line 263 "analysis.m"
+  MR_Box analysis__param_5,
+#line 263 "analysis.m"
+  MR_Word analysis__param_6,
+#line 263 "analysis.m"
+  MR_Word * analysis__param_7);
+
+#line 254 "analysis.m"
+void MR_CALL 
+analysis__lookup_requests_5_p_0(
+#line 254 "analysis.m"
+  MR_Word analysis__param_1,
+#line 254 "analysis.m"
+  MR_Word analysis__param_2,
+#line 254 "analysis.m"
+  MR_String analysis__param_3,
+#line 254 "analysis.m"
+  MR_Word analysis__param_4,
+#line 254 "analysis.m"
+  MR_Word analysis__param_5,
+#line 254 "analysis.m"
+  MR_Word * analysis__param_6);
+
+#line 247 "analysis.m"
+void MR_CALL 
+analysis__record_dependency_7_p_0(
+#line 247 "analysis.m"
+  MR_Word analysis__param_1,
+#line 247 "analysis.m"
+  MR_Word analysis__param_2,
+#line 247 "analysis.m"
+  MR_Word analysis__param_3,
+#line 247 "analysis.m"
+  MR_Box analysis__param_4,
+#line 247 "analysis.m"
+  MR_Box analysis__param_5,
+#line 247 "analysis.m"
+  MR_Word analysis__param_6,
+#line 247 "analysis.m"
+  MR_Word * analysis__param_7);
+
+#line 236 "analysis.m"
+void MR_CALL 
+analysis__record_result_7_p_0(
+#line 236 "analysis.m"
+  MR_Word analysis__param_1,
+#line 236 "analysis.m"
+  MR_Word analysis__param_2,
+#line 236 "analysis.m"
+  MR_Word analysis__param_3,
+#line 236 "analysis.m"
+  MR_Box analysis__param_4,
+#line 236 "analysis.m"
+  MR_Box analysis__param_5,
+#line 236 "analysis.m"
+  MR_Word analysis__param_6,
+#line 236 "analysis.m"
+  MR_Word analysis__param_7,
+#line 236 "analysis.m"
+  MR_Word * analysis__param_8);
+
+#line 228 "analysis.m"
+void MR_CALL 
+analysis__lookup_best_result_6_p_0(
+#line 228 "analysis.m"
+  MR_Word analysis__param_1,
+#line 228 "analysis.m"
+  MR_Word analysis__param_2,
+#line 228 "analysis.m"
+  MR_Word analysis__param_3,
+#line 228 "analysis.m"
+  MR_Word analysis__param_4,
+#line 228 "analysis.m"
+  MR_Box analysis__param_5,
+#line 228 "analysis.m"
+  MR_Box analysis__param_6,
+#line 228 "analysis.m"
+  MR_Word * analysis__param_7);
+
+#line 213 "analysis.m"
+void MR_CALL 
+analysis__lookup_matching_results_6_p_0(
+#line 213 "analysis.m"
+  MR_Word analysis__param_1,
+#line 213 "analysis.m"
+  MR_Word analysis__param_2,
+#line 213 "analysis.m"
+  MR_Word analysis__param_3,
+#line 213 "analysis.m"
+  MR_Word analysis__param_4,
+#line 213 "analysis.m"
+  MR_Box analysis__param_5,
+#line 213 "analysis.m"
+  MR_Box analysis__param_6,
+#line 213 "analysis.m"
+  MR_Word * analysis__param_7);
+
+#line 202 "analysis.m"
+void MR_CALL 
+analysis__lookup_results_4_p_0(
+#line 202 "analysis.m"
+  MR_Word analysis__param_1,
+#line 202 "analysis.m"
+  MR_Word analysis__param_2,
+#line 202 "analysis.m"
+  MR_Word analysis__param_3,
+#line 202 "analysis.m"
+  MR_Word analysis__param_4,
+#line 202 "analysis.m"
+  MR_Word * analysis__param_5);
+
+#line 192 "analysis.m"
+void MR_CALL 
+analysis__lookup_existing_call_patterns_5_p_0(
+#line 192 "analysis.m"
+  MR_Word analysis__param_1,
+#line 192 "analysis.m"
+  MR_Word analysis__param_2,
+#line 192 "analysis.m"
+  MR_String analysis__param_3,
+#line 192 "analysis.m"
+  MR_Word analysis__param_4,
+#line 192 "analysis.m"
+  MR_Word analysis__param_5,
+#line 192 "analysis.m"
+  MR_Word * analysis__param_6);
+
+#line 180 "analysis.m"
+MR_Word MR_CALL 
+analysis__init_analysis_info_3_f_0(
+#line 180 "analysis.m"
+  MR_Word analysis__param_1,
+#line 180 "analysis.m"
+  MR_Box analysis__param_2,
+#line 180 "analysis.m"
+  MR_Word analysis__param_3,
+#line 180 "analysis.m"
+  MR_Word analysis__param_4);
+
+#line 166 "analysis.m"
+MR_Word MR_CALL 
+analysis__lub_2_f_0(
+#line 166 "analysis.m"
+  MR_Word analysis__param_1,
+#line 166 "analysis.m"
+  MR_Word analysis__param_2);
+
+#line 141 "analysis.m"
+MR_bool MR_CALL 
+analysis__from_term_2_p_0(
+#line 141 "analysis.m"
+  MR_Word analysis__param_1,
+#line 141 "analysis.m"
+  MR_Word analysis__param_2,
+#line 141 "analysis.m"
+  MR_Box * analysis__param_3);
+
+#line 140 "analysis.m"
+MR_Word MR_CALL 
+analysis__to_term_1_f_0(
+#line 140 "analysis.m"
+  MR_Word analysis__param_1,
+#line 140 "analysis.m"
+  MR_Box analysis__param_2);
+
+#line 136 "analysis.m"
+MR_bool MR_CALL 
+analysis__equivalent_3_p_0(
+#line 136 "analysis.m"
+  MR_Word analysis__param_1,
+#line 136 "analysis.m"
+  MR_Box analysis__param_2,
+#line 136 "analysis.m"
+  MR_Box analysis__param_3,
+#line 136 "analysis.m"
+  MR_Box analysis__param_4);
+
+#line 135 "analysis.m"
+MR_bool MR_CALL 
+analysis__more_precise_than_3_p_0(
+#line 135 "analysis.m"
+  MR_Word analysis__param_1,
+#line 135 "analysis.m"
+  MR_Box analysis__param_2,
+#line 135 "analysis.m"
+  MR_Box analysis__param_3,
+#line 135 "analysis.m"
+  MR_Box analysis__param_4);
+
+#line 101 "analysis.m"
+void MR_CALL 
+analysis__get_func_info_6_p_0(
+#line 101 "analysis.m"
+  MR_Word analysis__param_1,
+#line 101 "analysis.m"
+  MR_Word analysis__param_2,
+#line 101 "analysis.m"
+  MR_Word analysis__param_3,
+#line 101 "analysis.m"
+  MR_Word analysis__param_4,
+#line 101 "analysis.m"
+  MR_Box * analysis__param_5);
+
+#line 99 "analysis.m"
+MR_Box MR_CALL 
+analysis__top_2_f_0(
+#line 99 "analysis.m"
+  MR_Word analysis__param_1,
+#line 99 "analysis.m"
+  MR_Box analysis__param_2);
+
+#line 98 "analysis.m"
+MR_Box MR_CALL 
+analysis__bottom_2_f_0(
+#line 98 "analysis.m"
+  MR_Word analysis__param_1,
+#line 98 "analysis.m"
+  MR_Box analysis__param_2);
+
+#line 95 "analysis.m"
+MR_Word MR_CALL 
+analysis__preferred_fixpoint_type_2_f_0(
+#line 95 "analysis.m"
+  MR_Word analysis__param_1);
+
+#line 92 "analysis.m"
+MR_Integer MR_CALL 
+analysis__analysis_version_number_2_f_0(
+#line 92 "analysis.m"
+  MR_Word analysis__param_1);
+
+#line 85 "analysis.m"
+MR_String MR_CALL 
+analysis__analysis_name_2_f_0(
+#line 85 "analysis.m"
+  MR_Word analysis__param_1);
+
+#line 62 "analysis.m"
+void MR_CALL 
+analysis__module_name_to_write_file_name_7_p_0(
+#line 62 "analysis.m"
+  MR_Word analysis__param_1,
+#line 62 "analysis.m"
+  MR_Box analysis__param_2,
+#line 62 "analysis.m"
+  MR_Word analysis__param_3,
+#line 62 "analysis.m"
+  MR_Word analysis__param_4,
+#line 62 "analysis.m"
+  MR_String analysis__param_5,
+#line 62 "analysis.m"
+  MR_String * analysis__param_6);
+
+#line 55 "analysis.m"
+void MR_CALL 
+analysis__module_name_to_read_file_name_7_p_0(
+#line 55 "analysis.m"
+  MR_Word analysis__param_1,
+#line 55 "analysis.m"
+  MR_Box analysis__param_2,
+#line 55 "analysis.m"
+  MR_Word analysis__param_3,
+#line 55 "analysis.m"
+  MR_Word analysis__param_4,
+#line 55 "analysis.m"
+  MR_String analysis__param_5,
+#line 55 "analysis.m"
+  MR_Word * analysis__param_6);
+
+#line 50 "analysis.m"
+MR_bool MR_CALL 
+analysis__analyses_2_f_0(
+#line 50 "analysis.m"
+  MR_Word analysis__param_1,
+#line 50 "analysis.m"
+  MR_Box analysis__param_2,
+#line 50 "analysis.m"
+  MR_String analysis__param_3,
+#line 50 "analysis.m"
+  MR_Word * analysis__param_4);
+
+#line 46 "analysis.m"
+MR_String MR_CALL 
+analysis__compiler_name_1_f_0(
+#line 46 "analysis.m"
+  MR_Word analysis__param_1,
+#line 46 "analysis.m"
+  MR_Box analysis__param_2);
+
+void mercury__analysis__init(void);
+void mercury__analysis__init_type_tables(void);
+void mercury__analysis__init_debugger(void);
+void mercury__analysis__required_init(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_analysis */
+
+/* :- end_interface analysis. */

@@ -1,0 +1,19 @@
+:- module (ll_backend.code_info).
+:- interface.
+:- type branch_end.
+:- type branch_end_info.
+:- type call_direction
+	where	type_is_abstract_enum(1).
+:- type code_info.
+:- type code_info_component
+	where	type_is_abstract_enum(2).
+:- type det_commit_info.
+:- type disj_hijack_info.
+:- type ite_hijack_info.
+:- type position_info.
+:- type resume_map.
+:- type resume_point_info.
+:- type semi_commit_info.
+:- type simple_neg_info.
+:- type temp_slot_persistence
+	where	type_is_abstract_enum(1).

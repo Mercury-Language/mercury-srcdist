@@ -1,0 +1,17 @@
+In file included from foreign_decl_line_number.c:27:
+foreign_decl_line_number.m:19:2: error: Error in foreign decl
+#error Error in foreign decl
+ ^
+foreign_decl_line_number.m:23:2: error: Error in foreign code
+#error Error in foreign code
+ ^
+foreign_decl_line_number.m:37:2: error: Error in foreign proc
+#error Error in foreign proc
+ ^
+foreign_decl_line_number.m:37:2: error: Error in foreign proc
+#error Error in foreign proc
+ ^
+foreign_decl_line_number.m:37:2: error: Error in foreign proc
+#error Error in foreign proc
+ ^
+5 errors generated.

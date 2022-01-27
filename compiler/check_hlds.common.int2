@@ -1,0 +1,3 @@
+:- module (check_hlds.common).
+:- interface.
+:- type common_info.
