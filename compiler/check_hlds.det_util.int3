@@ -1,0 +1,11 @@
+:- module (check_hlds.det_util).
+:- interface.
+:- type contains_format_call
+	where	type_is_abstract_enum(1).
+:- type contains_require_scope
+	where	type_is_abstract_enum(1).
+:- type det_info.
+:- type maybe_changed
+	where	type_is_abstract_enum(1).
+:- type report_pess_extra_vars
+	where	type_is_abstract_enum(1).

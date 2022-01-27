@@ -1,0 +1,13 @@
+module(1, "hash_table.m",
+	hash_table,
+	{},
+	{array, assoc_list, builtin, char, private_builtin},
+	{array, assoc_list, bool, builtin, char, deconstruct, exception, float, int, list, pair, private_builtin, string, univ},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - hash_table},
+	no_foreign_export,
+	no_main
+).

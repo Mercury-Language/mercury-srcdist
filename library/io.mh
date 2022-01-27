@@ -1,0 +1,335 @@
+/*
+** Automatically generated from `io.m'
+** by the Mercury compiler,
+** version rotd-2016-02-26
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+*/
+#ifndef IO_MH
+#define IO_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO_DECL_GUARD
+#define IO_DECL_GUARD
+
+    extern MR_Word      ML_io_stream_db;
+    extern MR_Word      ML_io_user_globals;
+
+    extern int          ML_next_stream_id;
+    #if 0
+      extern MR_Word    ML_io_ops_table;
+    #endif
+
+    #ifdef MR_THREAD_SAFE
+        extern MercuryLock ML_io_stream_db_lock;
+        extern MercuryLock ML_io_user_globals_lock;
+        extern MercuryLock ML_io_next_stream_id_lock;
+    #endif
+
+
+#ifdef MR_HAVE_UNISTD_H
+    #include <unistd.h>
+#endif
+#ifdef MR_HAVE_SYS_STAT_H
+    #include <sys/stat.h>
+#endif
+#include "mercury_types.h"            /* for MR_Integer */
+#include "mercury_library_types.h"    /* for MercuryFilePtr */
+
+
+#ifdef MR_HAVE_DEV_T
+  typedef   dev_t       ML_dev_t;
+#else
+  typedef   MR_Integer  ML_dev_t;
+#endif
+
+#ifdef MR_HAVE_INO_T
+  typedef   ino_t       ML_ino_t;
+#else
+  typedef   MR_Integer  ML_ino_t;
+#endif
+
+typedef struct {
+    ML_dev_t device;
+    ML_ino_t inode;
+} ML_File_Id;
+
+
+
+#include "mercury_init.h"
+#include "mercury_wrapper.h"
+#include "mercury_type_info.h"
+#include "mercury_library_types.h"
+#include "mercury_file.h"
+#include "mercury_heap.h"
+#include "mercury_misc.h"
+#include "mercury_runtime_util.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <errno.h>
+#include <limits.h>
+
+#ifdef MR_HAVE_SYS_WAIT_H
+  #include <sys/wait.h>     /* for WIFEXITED, WEXITSTATUS, etc. */
+#endif
+
+#ifdef MR_WIN32
+  #include "mercury_windows.h"
+#endif
+
+#if defined(MR_MSVC)
+    typedef SSIZE_T ML_ssize_t;
+#else
+    typedef ssize_t ML_ssize_t;
+#endif
+
+extern MercuryFile mercury_stdin;
+extern MercuryFile mercury_stdout;
+extern MercuryFile mercury_stderr;
+extern MercuryFile mercury_stdin_binary;
+extern MercuryFile mercury_stdout_binary;
+extern MR_Unsigned mercury_current_text_input_index;
+extern MR_Unsigned mercury_current_text_output_index;
+extern MR_Unsigned mercury_current_binary_input_index;
+extern MR_Unsigned mercury_current_binary_output_index;
+
+#define MR_initial_io_state()       0   /* some random number */
+#define MR_final_io_state(r)        ((void)0)
+
+void            mercury_init_io(void);
+MercuryFilePtr  mercury_current_text_input(void);
+MercuryFilePtr  mercury_current_text_output(void);
+MercuryFilePtr  mercury_current_binary_input(void);
+MercuryFilePtr  mercury_current_binary_output(void);
+int             mercury_next_stream_id(void);
+MercuryFilePtr  mercury_open(const char *filename, const char *openmode,
+                    MR_AllocSiteInfoPtr alloc_id);
+void            mercury_io_error(MercuryFilePtr mf, const char *format, ...);
+void            mercury_output_error(MercuryFilePtr mf, int errnum);
+void            mercury_print_string(MercuryFilePtr mf, const char *s);
+int             mercury_get_byte(MercuryFilePtr mf);
+void            mercury_close(MercuryFilePtr mf);
+int             ML_fprintf(MercuryFilePtr mf, const char *format, ...);
+
+#ifdef MR_WIN32
+    wchar_t     *ML_utf8_to_wide(const char *s);
+    char        *ML_wide_to_utf8(const wchar_t *ws,
+                    MR_AllocSiteInfoPtr alloc_id);
+#endif
+
+
+
+/*
+** A note regarding the declaration of the environ global variable
+** that follows:
+**
+** The man page (on Linux) says that it should be declared by the user
+** program.
+**
+** On MinGW, environ is a macro (defined in stdlib.h) that expands to a
+** function call that returns the user environment; no additional
+** declaration is required.
+**
+** On Mac OS X shared libraries do not have direct access to environ.
+** The man page for environ(7) says that we should look it up at
+** runtime using _NSGetEnviron().
+*/
+
+#if defined(MR_HAVE_ENVIRON) && !defined(MR_MAC_OSX)
+    #include <unistd.h>
+
+    #if !defined(MR_MINGW)
+        extern char **environ;
+    #endif
+#endif
+
+#if defined(MR_MAC_OSX)
+    #include <crt_externs.h>
+#endif
+
+#ifdef MR_HAVE_SPAWN_H
+    #include <spawn.h>
+#endif
+
+
+#include <stdlib.h> /* for getenv() and putenv() */
+
+
+#ifdef MR_HAVE_UNISTD_H
+    #include <unistd.h>
+#endif
+    #include <sys/types.h>
+    #include <sys/stat.h>
+    #include <fcntl.h>
+
+    #define ML_MAX_TEMPNAME_TRIES   (6 * 4)
+
+    extern long ML_io_tempnam_counter;
+
+
+
+#include <string.h>
+#include <errno.h>
+
+/*
+** ML_maybe_make_err_msg(was_error, errnum, msg, alloc_id, error_msg):
+** if `was_error' is true, then append `msg' and a message for errnum
+** to give `error_msg'; otherwise, set `error_msg' to ".
+**
+** WARNING: this must only be called when the `hp' register is valid.
+** That means it must only be called from procedures declared
+** `[will_not_call_mercury, promise_pure]'.
+**
+** This is defined as a macro rather than a C function
+** to avoid worrying about the `hp' register being
+** invalidated by the function call.
+*/
+
+#define ML_maybe_make_err_msg(was_error, errnum, msg, alloc_id, error_msg) \
+    do {                                                                   \
+        char    errbuf[MR_STRERROR_BUF_SIZE];                              \
+        const char *errno_msg;                                             \
+        size_t  total_len;                                                 \
+        MR_Word tmp;                                                       \
+                                                                           \
+        if (was_error) {                                                   \
+            errno_msg = MR_strerror(errnum, errbuf, sizeof(errbuf));       \
+            total_len = strlen(msg) + strlen(errno_msg);                   \
+            MR_offset_incr_hp_atomic_msg(tmp, 0,                           \
+                (total_len + sizeof(MR_Word)) / sizeof(MR_Word),           \
+                (alloc_id), "string.string/0");                          \
+            (error_msg) = (char *) tmp;                                    \
+            strcpy((error_msg), msg);                                      \
+            strcat((error_msg), errno_msg);                                \
+        } else {                                                           \
+            /*                                                             \
+            ** We can't just return NULL here, because otherwise mdb       \
+            ** will break when it tries to print the string.               \
+            */                                                             \
+            (error_msg) = MR_make_string_const("");                      \
+        }                                                                  \
+    } while(0)
+
+/*
+** ML_maybe_make_win32_err_msg(was_error, error, msg, alloc_id, error_msg):
+** if `was_error' is true, then append `msg' and the string
+** returned by the Win32 API function FormatMessage() for the
+** last error to give `error_msg'; otherwise, set `error_msg' to ".
+** Aborts if MR_WIN32 is not defined.
+**
+** WARNING: this must only be called when the `hp' register is valid.
+** That means it must only be called from procedures declared
+** `[will_not_call_mercury]'.
+**
+** This is defined as a macro rather than a C function
+** to avoid worrying about the `hp' register being
+** invalidated by the function call.
+*/
+#ifdef MR_WIN32
+
+#define ML_maybe_make_win32_err_msg(was_error, error, msg, alloc_id,        \
+        error_msg)                                                          \
+    do {                                                                    \
+        size_t total_len;                                                   \
+        MR_Word tmp;                                                        \
+                                                                            \
+        if (was_error) {                                                    \
+            LPVOID  err_buf;                                                \
+            MR_bool free_err_buf = MR_TRUE;                                 \
+            if (!FormatMessage(                                             \
+                FORMAT_MESSAGE_ALLOCATE_BUFFER                              \
+                | FORMAT_MESSAGE_FROM_SYSTEM                                \
+                | FORMAT_MESSAGE_IGNORE_INSERTS,                            \
+                NULL,                                                       \
+                error,                                                      \
+                MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),                  \
+                (LPTSTR) &err_buf,                                          \
+                0,                                                          \
+                NULL))                                                      \
+            {                                                               \
+                free_err_buf = MR_FALSE;                                    \
+                err_buf = (LPVOID) "could not retrieve error message";    \
+            }                                                               \
+            total_len = strlen(msg) + strlen((char *)err_buf);              \
+            MR_incr_hp_atomic_msg(tmp,                                      \
+                (total_len + sizeof(MR_Word)) / sizeof(MR_Word),            \
+                (alloc_id), "string.string/0");                           \
+            (error_msg) = (char *) tmp;                                     \
+            strcpy((error_msg), msg);                                       \
+            strcat((error_msg), (char *)err_buf);                           \
+            if (free_err_buf) {                                             \
+                LocalFree(err_buf);                                         \
+            }                                                               \
+        } else {                                                            \
+            /*                                                              \
+            ** We can't just return NULL here, because otherwise mdb        \
+            ** will break when it tries to print the string.                \
+            */                                                              \
+            (error_msg) = MR_make_string_const("");                       \
+        }                                                                   \
+    } while(0)
+
+#else /* !MR_WIN32 */
+
+#define ML_maybe_make_win32_err_msg(was_error, error, msg, alloc_id, error_msg) \
+    MR_fatal_error("ML_maybe_make_win32_err_msg called on non-Windows platform")
+
+#endif /* !MR_WIN32 */
+
+
+
+#endif
+void ML_make_err_msg(MR_Integer, MR_String, MR_String *);
+void ML_make_win32_err_msg(MR_Integer, MR_String, MR_String *);
+MR_Word ML_file_type_character_device(void);
+MR_Word ML_file_type_block_device(void);
+MR_Word ML_file_type_fifo(void);
+MR_Word ML_file_type_directory(void);
+MR_Word ML_file_type_socket(void);
+MR_Word ML_file_type_symbolic_link(void);
+MR_Word ML_file_type_regular(void);
+MR_Word ML_file_type_message_queue(void);
+MR_Word ML_file_type_semaphore(void);
+MR_Word ML_file_type_shared_memory(void);
+MR_Word ML_file_type_unknown(void);
+MR_bool ML_access_types_includes_read(MR_Word);
+MR_bool ML_access_types_includes_write(MR_Word);
+MR_bool ML_access_types_includes_execute(MR_Word);
+MR_Word ML_make_io_res_0_ok(void);
+void ML_make_io_res_0_error(MR_Integer, MR_String, MR_Word *);
+MR_Word ML_make_io_res_0_error_msg(MR_String);
+MR_Word ML_make_io_res_1_ok_file_type(MR_Word);
+void ML_make_io_res_1_error_file_type(MR_Integer, MR_String, MR_Word *);
+MR_Word ML_make_io_res_1_ok_string(MR_String);
+void ML_make_io_res_1_error_string(MR_Integer, MR_String, MR_Word *);
+void ML_io_print_to_cur_stream(MR_Word, MR_Word);
+void ML_io_print_to_stream(MR_Word, MercuryFilePtr, MR_Word);
+void ML_io_input_stream_type(MR_Word *);
+void ML_io_output_stream_type(MR_Word *);
+void ML_throw_io_error(MR_String);
+void ML_io_stdin_stream(MercuryFilePtr *);
+void ML_io_stdout_stream(MercuryFilePtr *);
+void ML_io_stderr_stream(MercuryFilePtr *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO_MH */

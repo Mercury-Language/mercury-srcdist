@@ -1,0 +1,3 @@
+:- module cliques.
+:- interface.
+:- type graph.

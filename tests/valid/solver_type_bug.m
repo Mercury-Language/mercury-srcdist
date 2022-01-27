@@ -1,0 +1,53 @@
+%---------------------------------------------------------------------------%
+% vim: ts=4 sw=4 et ft=mercury
+%---------------------------------------------------------------------------%
+%
+% This is a regression test.
+% Previous versions of the Mercury compiler would
+% incorrectly infer the determinism of p2 as semidet,
+% resulting in a warning (and invalid code generation).
+
+:- module solver_type_bug.
+:- interface.
+
+:- solver type foo1.
+:- pragma foreign_type("C", foo1, "int").
+:- pragma foreign_type("Java", foo1, "int").
+:- pragma foreign_type("Erlang", foo1, "").
+
+:- type foo2
+    --->    foo2(foo1).
+
+:- pred p1(foo1).
+:- mode p1(in(any)) is nondet.
+
+:- pred p2(foo2).
+:- mode p2(in(any)) is nondet.
+
+:- implementation.
+
+p1(X) :-
+    q1(X).
+
+p2(X) :-
+    q2(X).
+
+:- pred q1(foo1).
+:- mode q1(in(any)) is nondet.
+:- external(q1/1).
+
+:- pred q2(foo2).
+:- mode q2(in(any)) is nondet.
+:- external(q2/1).
+
+:- pragma foreign_code("Erlang", "
+q1_1_p_0(_, _) -> void.
+q2_1_p_0(_, _) -> void.
+").
+
+:- pragma foreign_code("Java", "
+
+    private static void q1_1_p_0(int a1, jmercury.runtime.MethodPtr a2, java.lang.Object a3) {}
+    private static void q2_1_p_0(Foo2_0 a1, jmercury.runtime.MethodPtr a2, java.lang.Object a3) {}
+
+").

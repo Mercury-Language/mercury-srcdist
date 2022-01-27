@@ -1,0 +1,1119 @@
+/*
+** Automatically generated from `mmc_analysis.m'
+** by the Mercury compiler,
+** version rotd-2016-02-26
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.mmc_analysis. */
+/* :- implementation. */
+
+/*
+INIT mercury__transform_hlds__mmc_analysis__init
+ENDINIT
+*/
+
+#include "transform_hlds.mmc_analysis.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.file_names.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.ctgc.mih"
+#include "transform_hlds.exception_analysis.mih"
+#include "transform_hlds.tabling_analysis.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "transform_hlds.trailing_analysis.mih"
+#include "transform_hlds.unused_args.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "transform_hlds.ctgc.livedata.mih"
+#include "transform_hlds.ctgc.structure_reuse.mih"
+#include "transform_hlds.ctgc.structure_sharing.mih"
+#include "transform_hlds.ctgc.structure_reuse.analysis.mih"
+#include "transform_hlds.ctgc.structure_reuse.domain.mih"
+#include "transform_hlds.ctgc.structure_sharing.analysis.mih"
+#include "transform_hlds.ctgc.structure_sharing.domain.mih"
+
+
+
+
+static const MR_EnumFunctorDesc transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__enum_functor_desc_mmc_0_0;
+
+static const MR_EnumFunctorDescPtr transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__enum_value_ordered_mmc_0[1];
+
+static const MR_EnumFunctorDescPtr transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__enum_name_ordered_mmc_0[1];
+
+static const MR_Integer transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__functor_number_map_mmc_0[1];
+
+static MR_bool MR_CALL 
+transform_hlds__mmc_analysis____Unify____mmc_0_0_10001(
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_1,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_2);
+
+static void MR_CALL 
+transform_hlds__mmc_analysis____Compare____mmc_0_0_10001(
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_1,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_2,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__compiler_name_1_1_f_0_10001(
+  MR_Box transform_hlds__mmc_analysis__closure_arg,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__analyses_2_2_f_0_10001(
+  MR_Box transform_hlds__mmc_analysis__closure_arg,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_1,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_2,
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_3);
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_read_file_name_7_7_p_0_10001(
+  MR_Box transform_hlds__mmc_analysis__closure_arg,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_1,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_2,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_3,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_4,
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_5,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_6,
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_7);
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_write_file_name_7_7_p_0_10001(
+  MR_Box transform_hlds__mmc_analysis__closure_arg,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_1,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_2,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_3,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_4,
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_5,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_6,
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_7);
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_119_114_105_116_101_95_102_105_108_101_95_110_97_109_101_95_55_95_95_91_49_93_95_48_7_p_0(
+  MR_Word transform_hlds__mmc_analysis__Globals_8,
+  MR_Word transform_hlds__mmc_analysis__ModuleName_9,
+  MR_String transform_hlds__mmc_analysis__Ext_10,
+  MR_String * transform_hlds__mmc_analysis__FileName_13);
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_114_101_97_100_95_102_105_108_101_95_110_97_109_101_95_55_95_95_91_49_93_95_48_7_p_0(
+  MR_Word transform_hlds__mmc_analysis__Globals_8,
+  MR_Word transform_hlds__mmc_analysis__ModuleName_9,
+  MR_String transform_hlds__mmc_analysis__Ext_10,
+  MR_Word * transform_hlds__mmc_analysis__MaybeFileName_11);
+
+static MR_bool MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_101_115_95_50_95_95_91_49_93_95_48_2_f_0(
+  MR_String transform_hlds__mmc_analysis__HeadVar__2_2,
+  MR_Word * transform_hlds__mmc_analysis__HeadVar__3_3);
+
+static MR_String MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_110_97_109_101_95_49_95_95_91_49_93_95_48_1_f_0(void);
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_write_file_name_7_7_p_0(
+  MR_Word transform_hlds__mmc_analysis__Globals_8,
+  MR_Word transform_hlds__mmc_analysis__ModuleName_9,
+  MR_String transform_hlds__mmc_analysis__Ext_10,
+  MR_String * transform_hlds__mmc_analysis__FileName_13);
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_read_file_name_7_7_p_0(
+  MR_Word transform_hlds__mmc_analysis__Globals_8,
+  MR_Word transform_hlds__mmc_analysis__ModuleName_9,
+  MR_String transform_hlds__mmc_analysis__Ext_10,
+  MR_Word * transform_hlds__mmc_analysis__MaybeFileName_11);
+
+static MR_bool MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__analyses_2_2_f_0(
+  MR_String transform_hlds__mmc_analysis__HeadVar__2_2,
+  MR_Word * transform_hlds__mmc_analysis__HeadVar__3_3);
+
+static MR_String MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__compiler_name_1_1_f_0(void);
+
+
+static /* final */ const MR_Box transform_hlds__mmc_analysis_scalar_common_1[16][3];
+
+static /* final */ const MR_Box transform_hlds__mmc_analysis_scalar_common_2[10][2];
+
+static /* final */ const MR_Box transform_hlds__mmc_analysis_scalar_common_3[10][5];
+
+static /* final */ const MR_Box transform_hlds__mmc_analysis_scalar_common_4[6][6];
+
+
+/* sealed */ struct transform_hlds__mmc_analysis__vector_common_type_5_0_s {
+  const MR_String transform_hlds__mmc_analysis__vector_common_type_5_0__vct_5_f_0;
+  const MR_Word transform_hlds__mmc_analysis__vector_common_type_5_0__vct_5_f_1;
+};
+
+static /* final */ const struct transform_hlds__mmc_analysis__vector_common_type_5_0_s transform_hlds__mmc_analysis_vector_common_5[6];
+
+
+
+static /* final */ const MR_Box transform_hlds__mmc_analysis_scalar_common_1[16][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_mm_tabling_analysis_answer_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_trailing_analysis_answer_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_exception_analysis_answer_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__transform_hlds__unused_args__unused_args_func_info__arity0__transform_hlds__unused_args__unused_args_call__arity0__)),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_func_info_0)),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_call_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__transform_hlds__unused_args__unused_args_func_info__arity0__transform_hlds__unused_args__unused_args_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_func_info_0)),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_answer_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_call_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_answer_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_func_info__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_call__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_call_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_func_info__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_answer_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_4[2])),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_4[0])),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_4[5])),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_4[4])),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_4[1])),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_4[3])),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__mmc_analysis_scalar_common_2[10][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__analysis__any_call__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_mm_tabling_analysis_answer_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_trailing_analysis_answer_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__exception_analysis__exception_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_exception_analysis_answer_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__unused_args__unused_args_call__arity0__)),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_call_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__unused_args__unused_args_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_answer_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_call_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_answer_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_call__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_call_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_answer_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__mmc_analysis_scalar_common_3[10][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__call_pattern__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_1[0])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_2[0])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__answer_pattern__arity2__analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_1[1])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_2[1])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_mm_tabling_analysis_answer_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__answer_pattern__arity2__analysis__no_func_info__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_1[2])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_2[2])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_trailing_analysis_answer_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__answer_pattern__arity2__analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_1[3])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_2[3])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_exception_analysis_answer_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__call_pattern__arity2__transform_hlds__unused_args__unused_args_func_info__arity0__transform_hlds__unused_args__unused_args_call__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_1[4])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_2[4])),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_func_info_0)),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_call_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__answer_pattern__arity2__transform_hlds__unused_args__unused_args_func_info__arity0__transform_hlds__unused_args__unused_args_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_1[5])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_2[5])),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_func_info_0)),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_answer_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__call_pattern__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_1[6])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_2[6])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_call_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__answer_pattern__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_1[7])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_2[7])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_answer_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__call_pattern__arity2__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_func_info__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_call__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_1[8])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_2[8])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_call_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__answer_pattern__arity2__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_func_info__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_1[9])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_2[9])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_answer_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__mmc_analysis_scalar_common_4[6][6] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__analysis__arity3__analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[0])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[1])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_mm_tabling_analysis_answer_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__analysis__arity3__analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__trailing_analysis__trailing_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[0])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[2])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0)),
+    ((MR_Box) (&transform_hlds__trailing_analysis__transform_hlds__trailing_analysis__type_ctor_info_trailing_analysis_answer_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__analysis__arity3__analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[0])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[3])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_exception_analysis_answer_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__analysis__arity3__transform_hlds__unused_args__unused_args_func_info__arity0__transform_hlds__unused_args__unused_args_call__arity0__transform_hlds__unused_args__unused_args_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[4])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[5])),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_func_info_0)),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_call_0)),
+    ((MR_Box) (&transform_hlds__unused_args__transform_hlds__unused_args__type_ctor_info_unused_args_answer_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__analysis__arity3__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[6])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[7])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_call_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_answer_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__analysis__arity3__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_func_info__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_call__arity0__transform_hlds__ctgc__structure_reuse__analysis__structure_reuse_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[8])),
+    ((MR_Box) (&transform_hlds__mmc_analysis_scalar_common_3[9])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_call_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_reuse__analysis__transform_hlds__ctgc__structure_reuse__analysis__type_ctor_info_structure_reuse_answer_0))
+  },
+};
+
+
+static /* final */ const struct transform_hlds__mmc_analysis__vector_common_type_5_0_s transform_hlds__mmc_analysis_vector_common_5[6] = {
+  /* row 0 */
+  {
+    (MR_String) "exception_analysis",
+    (MR_Word) &transform_hlds__mmc_analysis_scalar_common_1[10]
+  },
+  /* row 1 */
+  {
+    (MR_String) "mm_tabling_analysis",
+    (MR_Word) &transform_hlds__mmc_analysis_scalar_common_1[11]
+  },
+  /* row 2 */
+  {
+    (MR_String) "structure_reuse",
+    (MR_Word) &transform_hlds__mmc_analysis_scalar_common_1[12]
+  },
+  /* row 3 */
+  {
+    (MR_String) "structure_sharing",
+    (MR_Word) &transform_hlds__mmc_analysis_scalar_common_1[13]
+  },
+  /* row 4 */
+  {
+    (MR_String) "trail_usage",
+    (MR_Word) &transform_hlds__mmc_analysis_scalar_common_1[14]
+  },
+  /* row 5 */
+  {
+    (MR_String) "unused_args",
+    (MR_Word) &transform_hlds__mmc_analysis_scalar_common_1[15]
+  },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_EnumFunctorDesc transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__enum_functor_desc_mmc_0_0 = {
+  (MR_String) "mmc",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__enum_value_ordered_mmc_0[1] = {
+  &transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__enum_functor_desc_mmc_0_0
+};
+
+static const MR_EnumFunctorDescPtr transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__enum_name_ordered_mmc_0[1] = {
+  &transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__enum_functor_desc_mmc_0_0
+};
+
+static const MR_Integer transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__functor_number_map_mmc_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__type_ctor_info_mmc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (transform_hlds__mmc_analysis____Unify____mmc_0_0_10001)),
+  ((MR_Box) (transform_hlds__mmc_analysis____Compare____mmc_0_0_10001)),
+  (MR_String) "transform_hlds.mmc_analysis",
+  (MR_String) "mmc",
+  {     transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__enum_name_ordered_mmc_0 },
+  {     transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__enum_value_ordered_mmc_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__functor_number_map_mmc_0
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__compiler__arity1__transform_hlds__mmc_analysis__mmc__arity0__[9] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+  ((MR_Box) (transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__compiler_name_1_1_f_0_10001)),
+  ((MR_Box) (transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__analyses_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_read_file_name_7_7_p_0_10001)),
+  ((MR_Box) (transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_write_file_name_7_7_p_0_10001))
+};
+
+static MR_bool MR_CALL 
+transform_hlds__mmc_analysis____Unify____mmc_0_0_10001(
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_1,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_2)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+
+    {
+      transform_hlds__mmc_analysis__succeeded = transform_hlds__mmc_analysis____Unify____mmc_0_0();
+    }
+    return transform_hlds__mmc_analysis__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__mmc_analysis____Compare____mmc_0_0_10001(
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_1,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_2,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_3)
+{
+  {
+    MR_Word transform_hlds__mmc_analysis__conv0_HeadVar__1_1;
+
+    {
+      transform_hlds__mmc_analysis____Compare____mmc_0_0(&transform_hlds__mmc_analysis__conv0_HeadVar__1_1);
+    }
+    *transform_hlds__mmc_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__mmc_analysis__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_Box MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__compiler_name_1_1_f_0_10001(
+  MR_Box transform_hlds__mmc_analysis__closure_arg,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_1)
+{
+  {
+    MR_Box transform_hlds__mmc_analysis__wrapper_arg_2;
+    MR_Box transform_hlds__mmc_analysis__closure;
+    MR_String transform_hlds__mmc_analysis__conv0_HeadVar__2_2;
+
+    transform_hlds__mmc_analysis__closure = transform_hlds__mmc_analysis__closure_arg;
+    {
+      transform_hlds__mmc_analysis__conv0_HeadVar__2_2 = transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__compiler_name_1_1_f_0();
+    }
+    transform_hlds__mmc_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__mmc_analysis__conv0_HeadVar__2_2));
+    return transform_hlds__mmc_analysis__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__analyses_2_2_f_0_10001(
+  MR_Box transform_hlds__mmc_analysis__closure_arg,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_1,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_2,
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_3)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+    MR_Box transform_hlds__mmc_analysis__closure;
+    MR_Word transform_hlds__mmc_analysis__conv0_HeadVar__3_3;
+
+    transform_hlds__mmc_analysis__closure = transform_hlds__mmc_analysis__closure_arg;
+    {
+      transform_hlds__mmc_analysis__succeeded = transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__analyses_2_2_f_0(((MR_String) transform_hlds__mmc_analysis__wrapper_arg_2), &transform_hlds__mmc_analysis__conv0_HeadVar__3_3);
+    }
+    if (transform_hlds__mmc_analysis__succeeded)
+      {
+        *transform_hlds__mmc_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__mmc_analysis__conv0_HeadVar__3_3));
+        transform_hlds__mmc_analysis__succeeded = MR_TRUE;
+      }
+    return transform_hlds__mmc_analysis__succeeded;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_read_file_name_7_7_p_0_10001(
+  MR_Box transform_hlds__mmc_analysis__closure_arg,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_1,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_2,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_3,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_4,
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_5,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_6,
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_7)
+{
+  {
+    MR_Box transform_hlds__mmc_analysis__closure;
+    MR_Word transform_hlds__mmc_analysis__conv0_MaybeFileName_11;
+
+    transform_hlds__mmc_analysis__closure = transform_hlds__mmc_analysis__closure_arg;
+    {
+      transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_read_file_name_7_7_p_0(((MR_Word) transform_hlds__mmc_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__mmc_analysis__wrapper_arg_3), ((MR_String) transform_hlds__mmc_analysis__wrapper_arg_4), &transform_hlds__mmc_analysis__conv0_MaybeFileName_11);
+    }
+    *transform_hlds__mmc_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__mmc_analysis__conv0_MaybeFileName_11));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_write_file_name_7_7_p_0_10001(
+  MR_Box transform_hlds__mmc_analysis__closure_arg,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_1,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_2,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_3,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_4,
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_5,
+  MR_Box transform_hlds__mmc_analysis__wrapper_arg_6,
+  MR_Box * transform_hlds__mmc_analysis__wrapper_arg_7)
+{
+  {
+    MR_Box transform_hlds__mmc_analysis__closure;
+    MR_String transform_hlds__mmc_analysis__conv0_FileName_13;
+
+    transform_hlds__mmc_analysis__closure = transform_hlds__mmc_analysis__closure_arg;
+    {
+      transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_write_file_name_7_7_p_0(((MR_Word) transform_hlds__mmc_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__mmc_analysis__wrapper_arg_3), ((MR_String) transform_hlds__mmc_analysis__wrapper_arg_4), &transform_hlds__mmc_analysis__conv0_FileName_13);
+    }
+    *transform_hlds__mmc_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__mmc_analysis__conv0_FileName_13));
+  }
+}
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_119_114_105_116_101_95_102_105_108_101_95_110_97_109_101_95_55_95_95_91_49_93_95_48_7_p_0(
+  MR_Word transform_hlds__mmc_analysis__Globals_8,
+  MR_Word transform_hlds__mmc_analysis__ModuleName_9,
+  MR_String transform_hlds__mmc_analysis__Ext_10,
+  MR_String * transform_hlds__mmc_analysis__FileName_13)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+
+    {
+      parse_tree__file_names__module_name_to_file_name_7_p_0(transform_hlds__mmc_analysis__Globals_8, transform_hlds__mmc_analysis__ModuleName_9, transform_hlds__mmc_analysis__Ext_10, (MR_Integer) 0, transform_hlds__mmc_analysis__FileName_13);
+    }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_114_101_97_100_95_102_105_108_101_95_110_97_109_101_95_55_95_95_91_49_93_95_48_7_p_0(
+  MR_Word transform_hlds__mmc_analysis__Globals_8,
+  MR_Word transform_hlds__mmc_analysis__ModuleName_9,
+  MR_String transform_hlds__mmc_analysis__Ext_10,
+  MR_Word * transform_hlds__mmc_analysis__MaybeFileName_11)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+    MR_String transform_hlds__mmc_analysis__FileName0_24;
+    MR_Word transform_hlds__mmc_analysis__Dirs_25;
+
+    {
+      parse_tree__file_names__module_name_to_search_file_name_6_p_0(transform_hlds__mmc_analysis__Globals_8, transform_hlds__mmc_analysis__ModuleName_9, transform_hlds__mmc_analysis__Ext_10, &transform_hlds__mmc_analysis__FileName0_24);
+    }
+    {
+      libs__globals__lookup_accumulating_option_3_p_0(transform_hlds__mmc_analysis__Globals_8, (MR_Integer) 637, &transform_hlds__mmc_analysis__Dirs_25);
+    }
+    {
+      libs__file_util__search_for_file_6_p_0((MR_Integer) 1, transform_hlds__mmc_analysis__Dirs_25, transform_hlds__mmc_analysis__FileName0_24, transform_hlds__mmc_analysis__MaybeFileName_11);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_101_115_95_50_95_95_91_49_93_95_48_2_f_0(
+  MR_String transform_hlds__mmc_analysis__HeadVar__2_2,
+  MR_Word * transform_hlds__mmc_analysis__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+    MR_Integer transform_hlds__mmc_analysis__lo_0;
+    MR_Integer transform_hlds__mmc_analysis__hi_1;
+    MR_Integer transform_hlds__mmc_analysis__mid_2;
+    MR_Integer transform_hlds__mmc_analysis__result_3;
+
+    /* binary string simple lookup switch */
+    transform_hlds__mmc_analysis__lo_0 = (MR_Integer) 0;
+    transform_hlds__mmc_analysis__hi_1 = (MR_Integer) 5;
+    do
+      {
+        transform_hlds__mmc_analysis__mid_2 = (((transform_hlds__mmc_analysis__lo_0 + transform_hlds__mmc_analysis__hi_1)) / (MR_Integer) 2);
+        transform_hlds__mmc_analysis__result_3 = MR_strcmp(transform_hlds__mmc_analysis__HeadVar__2_2, ((&transform_hlds__mmc_analysis_vector_common_5[0 + transform_hlds__mmc_analysis__mid_2]))->transform_hlds__mmc_analysis__vector_common_type_5_0__vct_5_f_0);
+        if ((transform_hlds__mmc_analysis__result_3 == (MR_Integer) 0))
+          {
+            *transform_hlds__mmc_analysis__HeadVar__3_3 = ((&transform_hlds__mmc_analysis_vector_common_5[0 + transform_hlds__mmc_analysis__mid_2]))->transform_hlds__mmc_analysis__vector_common_type_5_0__vct_5_f_1;
+            transform_hlds__mmc_analysis__succeeded = MR_TRUE;
+            /* jump out of search loop */
+            goto label_0;
+          }
+        else
+        if ((transform_hlds__mmc_analysis__result_3 < (MR_Integer) 0))
+          transform_hlds__mmc_analysis__hi_1 = (transform_hlds__mmc_analysis__mid_2 - (MR_Integer) 1);
+        else
+          transform_hlds__mmc_analysis__lo_0 = (transform_hlds__mmc_analysis__mid_2 + (MR_Integer) 1);
+      }
+    while ((transform_hlds__mmc_analysis__lo_0 <= transform_hlds__mmc_analysis__hi_1));
+    transform_hlds__mmc_analysis__succeeded = MR_FALSE;
+  label_0:;
+    return transform_hlds__mmc_analysis__succeeded;
+  }
+}
+
+static MR_String MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_110_97_109_101_95_49_95_95_91_49_93_95_48_1_f_0(void)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+
+    return (MR_String) "mmc";
+  }
+}
+
+void MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * transform_hlds__mmc_analysis__HeadVar__1_1)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+
+    *transform_hlds__mmc_analysis__HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+{
+  {
+    return MR_TRUE;
+  }
+}
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_write_file_name_7_7_p_0(
+  MR_Word transform_hlds__mmc_analysis__Globals_8,
+  MR_Word transform_hlds__mmc_analysis__ModuleName_9,
+  MR_String transform_hlds__mmc_analysis__Ext_10,
+  MR_String * transform_hlds__mmc_analysis__FileName_13)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+
+    {
+      transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_119_114_105_116_101_95_102_105_108_101_95_110_97_109_101_95_55_95_95_91_49_93_95_48_7_p_0(transform_hlds__mmc_analysis__Globals_8, transform_hlds__mmc_analysis__ModuleName_9, transform_hlds__mmc_analysis__Ext_10, transform_hlds__mmc_analysis__FileName_13);
+    }
+  }
+}
+
+static void MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__module_name_to_read_file_name_7_7_p_0(
+  MR_Word transform_hlds__mmc_analysis__Globals_8,
+  MR_Word transform_hlds__mmc_analysis__ModuleName_9,
+  MR_String transform_hlds__mmc_analysis__Ext_10,
+  MR_Word * transform_hlds__mmc_analysis__MaybeFileName_11)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+
+    {
+      transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_100_117_108_101_95_110_97_109_101_95_116_111_95_114_101_97_100_95_102_105_108_101_95_110_97_109_101_95_55_95_95_91_49_93_95_48_7_p_0(transform_hlds__mmc_analysis__Globals_8, transform_hlds__mmc_analysis__ModuleName_9, transform_hlds__mmc_analysis__Ext_10, transform_hlds__mmc_analysis__MaybeFileName_11);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__analyses_2_2_f_0(
+  MR_String transform_hlds__mmc_analysis__HeadVar__2_2,
+  MR_Word * transform_hlds__mmc_analysis__HeadVar__3_3)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+
+    {
+      transform_hlds__mmc_analysis__succeeded = transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_101_115_95_50_95_95_91_49_93_95_48_2_f_0(transform_hlds__mmc_analysis__HeadVar__2_2, transform_hlds__mmc_analysis__HeadVar__3_3);
+    }
+    return transform_hlds__mmc_analysis__succeeded;
+  }
+}
+
+static MR_String MR_CALL 
+transform_hlds__mmc_analysis__ClassMethod_for_analysis__compiler____transform_hlds__mmc_analysis__mmc__arity0______analysis__compiler_name_1_1_f_0(void)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+    MR_String transform_hlds__mmc_analysis__HeadVar__2_2;
+
+    {
+      transform_hlds__mmc_analysis__HeadVar__2_2 = transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_99_111_109_112_105_108_101_114_95_110_97_109_101_95_49_95_95_91_49_93_95_48_1_f_0();
+    }
+    return transform_hlds__mmc_analysis__HeadVar__2_2;
+  }
+}
+
+void MR_CALL 
+transform_hlds__mmc_analysis____Compare____mmc_0_0(
+  MR_Word * transform_hlds__mmc_analysis__HeadVar__1_1)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+
+    {
+      transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(transform_hlds__mmc_analysis__HeadVar__1_1);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+transform_hlds__mmc_analysis____Unify____mmc_0_0(void)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+
+    {
+      transform_hlds__mmc_analysis__succeeded = transform_hlds__mmc_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_109_109_99_95_97_110_97_108_121_115_105_115_95_95_109_109_99_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+    return transform_hlds__mmc_analysis__succeeded;
+  }
+}
+
+void MR_CALL 
+transform_hlds__mmc_analysis__func_id_to_ppid_4_p_0(
+  MR_Word transform_hlds__mmc_analysis__ModuleInfo_5,
+  MR_Word transform_hlds__mmc_analysis__ModuleName_6,
+  MR_Word transform_hlds__mmc_analysis__FuncId_7,
+  MR_Word * transform_hlds__mmc_analysis__PPId_8)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+    MR_Word transform_hlds__mmc_analysis__PredOrFunc_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__mmc_analysis__FuncId_7, (MR_Integer) 0)));
+    MR_String transform_hlds__mmc_analysis__FuncName_10 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__mmc_analysis__FuncId_7, (MR_Integer) 1)));
+    MR_Integer transform_hlds__mmc_analysis__Arity_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__mmc_analysis__FuncId_7, (MR_Integer) 2)));
+    MR_Integer transform_hlds__mmc_analysis__ProcId_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__mmc_analysis__FuncId_7, (MR_Integer) 3)));
+    MR_Word transform_hlds__mmc_analysis__PredTable_13;
+    MR_Word transform_hlds__mmc_analysis__PredIds_14;
+
+    {
+      hlds__hlds_module__module_info_get_predicate_table_2_p_0(transform_hlds__mmc_analysis__ModuleInfo_5, &transform_hlds__mmc_analysis__PredTable_13);
+    }
+    {
+      hlds__pred_table__predicate_table_lookup_pf_m_n_a_7_p_0(transform_hlds__mmc_analysis__PredTable_13, (MR_Integer) 0, transform_hlds__mmc_analysis__PredOrFunc_9, transform_hlds__mmc_analysis__ModuleName_6, transform_hlds__mmc_analysis__FuncName_10, transform_hlds__mmc_analysis__Arity_11, &transform_hlds__mmc_analysis__PredIds_14);
+    }
+    if ((transform_hlds__mmc_analysis__PredIds_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.mmc_analysis", (MR_String) "predicate \140transform_hlds.mmc_analysis.func_id_to_ppid\'/4", (MR_String) "no predicate");
+          return;
+        }
+      }
+    else
+      {
+        MR_Word transform_hlds__mmc_analysis__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__mmc_analysis__PredIds_14, (MR_Integer) 1)));
+        MR_Word transform_hlds__mmc_analysis__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__mmc_analysis__PredIds_14, (MR_Integer) 0)));
+
+        if ((transform_hlds__mmc_analysis__V_28_28 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word base;
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+            *transform_hlds__mmc_analysis__PPId_8 = base;
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__mmc_analysis__V_29_29));
+            MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__mmc_analysis__ProcId_12));
+          }
+        else
+          {
+            {
+              mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.mmc_analysis", (MR_String) "predicate \140transform_hlds.mmc_analysis.func_id_to_ppid\'/4", (MR_String) "more than one predicate");
+              return;
+            }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+transform_hlds__mmc_analysis__module_name_func_id_from_pred_info_4_p_0(
+  MR_Word transform_hlds__mmc_analysis__PredInfo_5,
+  MR_Integer transform_hlds__mmc_analysis__ProcId_6,
+  MR_Word * transform_hlds__mmc_analysis__PredModule_7,
+  MR_Word * transform_hlds__mmc_analysis__FuncId_8)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+    MR_String transform_hlds__mmc_analysis__PredName_9;
+    MR_Word transform_hlds__mmc_analysis__PredOrFunc_10;
+    MR_Integer transform_hlds__mmc_analysis__PredArity_11;
+
+    {
+      *transform_hlds__mmc_analysis__PredModule_7 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__mmc_analysis__PredInfo_5);
+    }
+    {
+      transform_hlds__mmc_analysis__PredName_9 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__mmc_analysis__PredInfo_5);
+    }
+    {
+      transform_hlds__mmc_analysis__PredOrFunc_10 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(transform_hlds__mmc_analysis__PredInfo_5);
+    }
+    {
+      transform_hlds__mmc_analysis__PredArity_11 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(transform_hlds__mmc_analysis__PredInfo_5);
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      *transform_hlds__mmc_analysis__FuncId_8 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__mmc_analysis__PredOrFunc_10));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__mmc_analysis__PredName_9));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__mmc_analysis__PredArity_11));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__mmc_analysis__ProcId_6));
+    }
+  }
+}
+
+void MR_CALL 
+transform_hlds__mmc_analysis__module_name_func_id_4_p_0(
+  MR_Word transform_hlds__mmc_analysis__ModuleInfo_5,
+  MR_Word transform_hlds__mmc_analysis__HeadVar__2_2,
+  MR_Word * transform_hlds__mmc_analysis__PredModule_8,
+  MR_Word * transform_hlds__mmc_analysis__FuncId_9)
+{
+  {
+    MR_bool transform_hlds__mmc_analysis__succeeded;
+    MR_Word transform_hlds__mmc_analysis__PredId_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__mmc_analysis__HeadVar__2_2, (MR_Integer) 0)));
+    MR_Integer transform_hlds__mmc_analysis__ProcId_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__mmc_analysis__HeadVar__2_2, (MR_Integer) 1)));
+    MR_Word transform_hlds__mmc_analysis__PredInfo_10;
+    MR_String transform_hlds__mmc_analysis__PredName_15;
+    MR_Word transform_hlds__mmc_analysis__PredOrFunc_16;
+    MR_Integer transform_hlds__mmc_analysis__PredArity_17;
+
+    {
+      hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__mmc_analysis__ModuleInfo_5, transform_hlds__mmc_analysis__PredId_6, &transform_hlds__mmc_analysis__PredInfo_10);
+    }
+    {
+      *transform_hlds__mmc_analysis__PredModule_8 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__mmc_analysis__PredInfo_10);
+    }
+    {
+      transform_hlds__mmc_analysis__PredName_15 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__mmc_analysis__PredInfo_10);
+    }
+    {
+      transform_hlds__mmc_analysis__PredOrFunc_16 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(transform_hlds__mmc_analysis__PredInfo_10);
+    }
+    {
+      transform_hlds__mmc_analysis__PredArity_17 = hlds__hlds_pred__pred_info_orig_arity_1_f_0(transform_hlds__mmc_analysis__PredInfo_10);
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      *transform_hlds__mmc_analysis__FuncId_9 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__mmc_analysis__PredOrFunc_16));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__mmc_analysis__PredName_15));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__mmc_analysis__PredArity_17));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__mmc_analysis__ProcId_7));
+    }
+  }
+}
+
+void mercury__transform_hlds__mmc_analysis__init(void)
+{
+}
+
+void mercury__transform_hlds__mmc_analysis__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&transform_hlds__mmc_analysis__transform_hlds__mmc_analysis__type_ctor_info_mmc_0);
+}
+
+void mercury__transform_hlds__mmc_analysis__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module transform_hlds.mmc_analysis. */

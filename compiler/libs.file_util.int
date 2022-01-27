@@ -1,0 +1,41 @@
+:- module (libs.file_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module time.
+:- import_module (libs.globals).
+:- type dir_name == string.
+:- type file_name == string.
+:- type maybe_open_file
+    --->    open_file 
+    ;       do_not_open_file .
+:- type open_file_pred(FileInfo) == pred(maybe.maybe_error(FileInfo), io.io, io.io).
+:- inst (open_file_pred) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pred get_install_name_option(libs.globals.globals, string, string).
+:- mode get_install_name_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func make_install_dir_command(libs.globals.globals, string, string) = string.
+:- func make_install_file_command(libs.globals.globals, string, string) = string.
+:- pred maybe_flush_output(bool.bool, io.io, io.io).
+:- mode maybe_flush_output((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_report_stats(bool.bool, io.io, io.io).
+:- mode maybe_report_stats((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_string(bool.bool, string, io.io, io.io).
+:- mode maybe_write_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_to_file(libs.globals.globals, string, pred(io.io, io.io), bool.bool, io.io, io.io).
+:- mode output_to_file((builtin.in), (builtin.in), builtin.in((pred((builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_to_file_return_result(libs.globals.globals, string, pred(T, io.io, io.io), maybe.maybe(T), io.io, io.io).
+:- mode output_to_file_return_result((builtin.in), (builtin.in), builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred report_error(string, io.io, io.io).
+:- mode report_error((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred report_error_to_stream(io.output_stream, string, io.io, io.io).
+:- mode report_error_to_stream((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred search_for_file(libs.file_util.maybe_open_file, list.list(libs.file_util.dir_name), libs.file_util.file_name, maybe.maybe_error(libs.file_util.file_name), io.io, io.io).
+:- mode search_for_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred search_for_file_mod_time(list.list(libs.file_util.dir_name), libs.file_util.file_name, maybe.maybe_error(time.time_t), io.io, io.io).
+:- mode search_for_file_mod_time((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred search_for_file_returning_dir(libs.file_util.maybe_open_file, list.list(libs.file_util.dir_name), libs.file_util.file_name, maybe.maybe_error(libs.file_util.dir_name), io.io, io.io).
+:- mode search_for_file_returning_dir((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_include_file_contents(string, io.io, io.io).
+:- mode write_include_file_contents((builtin.in), (builtin.di), (builtin.uo)) is det.
