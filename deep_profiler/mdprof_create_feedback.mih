@@ -1,0 +1,62 @@
+/*
+** Automatically generated from `mdprof_create_feedback.m'
+** by the Mercury compiler,
+** version rotd-2022-01-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdprof_create_feedback.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdprof_create_feedback
+#define MR_HEADER_GUARD_mdprof_create_feedback
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDPROF_CREATE_FEEDBACK_DECL_GUARD
+#define MDPROF_CREATE_FEEDBACK_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdprof_create_feedback__mdprof_create_feedback__type_ctor_info_maybe_found_error_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_create_feedback__mdprof_create_feedback__type_ctor_info_option_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_create_feedback__mdprof_create_feedback__type_ctor_info_requested_feedback_info_0;
+
+void MR_CALL 
+main_2_p_0(void);
+
+void mercury__mdprof_create_feedback__init(void);
+void mercury__mdprof_create_feedback__init_type_tables(void);
+void mercury__mdprof_create_feedback__init_debugger(void);
+const char *mercury__mdprof_create_feedback__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdprof_create_feedback
+
+// :- end_interface mdprof_create_feedback.
