@@ -1,0 +1,4 @@
+:- module propagate.
+:- interface.
+:- type_representation(cycle_to_preds_map, is_eqv_to(multi_map.multi_map(int, string))).
+:- type_representation(pred_to_cycle_map, is_eqv_to(map.map(string, int))).

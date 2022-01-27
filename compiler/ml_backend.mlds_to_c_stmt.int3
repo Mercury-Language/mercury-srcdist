@@ -1,0 +1,4 @@
+:- module (ml_backend.mlds_to_c_stmt).
+:- interface.
+:- type func_info_c.
+:- type_representation(func_info_c, is_word_aligned_ptr).

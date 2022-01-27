@@ -1,0 +1,12 @@
+:- module globals.
+:- interface.
+:- type globals.
+:- type what_to_profile
+    --->    memory_words 
+    ;       memory_cells 
+    ;       memory_snapshots 
+    ;       user_plus_system_time 
+    ;       user_time 
+    ;       real_time .
+:- type_representation(globals, is_word_aligned_ptr).
+:- type_representation(what_to_profile, du_repn(enum("memory_words", "memory_cells", ["memory_snapshots", "user_plus_system_time", "user_time", "real_time"],  no_c_j_cs))).

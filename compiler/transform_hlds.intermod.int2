@@ -1,0 +1,12 @@
+:- module (transform_hlds.intermod).
+:- interface.
+:- type intermod_info.
+:- type maybe_should_write
+    --->    should_not_write 
+    ;       should_write .
+:- type should_write_for
+    --->    for_analysis_framework 
+    ;       for_pragma .
+:- type_representation(intermod_info, is_word_aligned_ptr).
+:- type_representation(maybe_should_write, du_repn(enum("should_not_write", "should_write", [],  no_c_j_cs))).
+:- type_representation(should_write_for, du_repn(enum("for_analysis_framework", "for_pragma", [],  no_c_j_cs))).
