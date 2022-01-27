@@ -1,0 +1,2001 @@
+/*
+** Automatically generated from `hlds_module.m'
+** by the Mercury compiler,
+** version rotd-2014-09-30
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.hlds_module. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_module
+#define MR_HEADER_GUARD_hlds__hlds_module
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_MODULE_DECL_GUARD
+#define HLDS__HLDS_MODULE_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+#line 43 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_complexity_arg_info_0;
+
+#line 46 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_complexity_arg_kind_0;
+
+#line 49 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_complexity_proc_info_0;
+
+#line 52 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_complexity_proc_map_0;
+
+#line 55 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_dependency_graph_1;
+
+#line 58 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_dependency_graph_0;
+
+#line 61 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_dependency_graph_key_0;
+
+#line 64 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_dependency_info_1;
+
+#line 67 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_dependency_info_0;
+
+#line 70 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_dependency_ordering_1;
+
+#line 73 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_dependency_ordering_0;
+
+#line 76 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_exception_info_0;
+
+#line 79 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_exported_enum_info_0;
+
+#line 82 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_foreign_code_info_0;
+
+#line 85 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_mm_tabling_info_0;
+
+#line 88 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0;
+
+#line 91 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_sub_info_0;
+
+#line 94 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_oisu_map_0;
+
+#line 97 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_oisu_preds_0;
+
+#line 100 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_pragma_exported_proc_0;
+
+#line 103 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_exception_info_0;
+
+#line 106 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0;
+
+#line 109 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_trailing_info_0;
+
+#line 112 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_table_struct_info_0;
+
+#line 115 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_table_struct_map_0;
+
+#line 118 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_trailing_info_0;
+
+#line 121 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_type_ctor_gen_info_0;
+
+#line 124 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_type_spec_info_0;
+
+#line 127 "hlds.hlds_module.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_module__hlds__hlds_module__type_ctor_info_unused_arg_info_0;
+
+#line 88 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____unused_arg_info_0_0(
+#line 88 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 88 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 88 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 88 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____unused_arg_info_0_0(
+#line 88 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 88 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 143 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____type_spec_info_0_0(
+#line 143 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 143 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 143 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 143 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____type_spec_info_0_0(
+#line 143 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 143 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 73 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____type_ctor_gen_info_0_0(
+#line 73 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 73 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 73 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 73 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____type_ctor_gen_info_0_0(
+#line 73 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 73 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 103 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____trailing_info_0_0(
+#line 103 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 103 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 103 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 103 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____trailing_info_0_0(
+#line 103 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 103 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 114 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____table_struct_map_0_0(
+#line 114 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 114 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 114 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 114 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____table_struct_map_0_0(
+#line 114 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 114 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 116 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____table_struct_info_0_0(
+#line 116 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 116 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 116 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 116 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____table_struct_info_0_0(
+#line 116 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 116 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 105 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____proc_trailing_info_0_0(
+#line 105 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 105 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 105 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 105 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____proc_trailing_info_0_0(
+#line 105 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 105 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 127 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____proc_mm_tabling_info_0_0(
+#line 127 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 127 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 127 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 127 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____proc_mm_tabling_info_0_0(
+#line 127 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 127 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 95 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____proc_exception_info_0_0(
+#line 95 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 95 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 95 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 95 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____proc_exception_info_0_0(
+#line 95 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 95 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 59 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____pragma_exported_proc_0_0(
+#line 59 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 59 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 59 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 59 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____pragma_exported_proc_0_0(
+#line 59 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 59 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 215 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____oisu_preds_0_0(
+#line 215 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 215 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 215 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 215 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____oisu_preds_0_0(
+#line 215 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 215 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 213 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____oisu_map_0_0(
+#line 213 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 213 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 213 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 213 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____oisu_map_0_0(
+#line 213 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 213 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 723 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____module_info_0_0(
+#line 723 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 723 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 723 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 723 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____module_info_0_0(
+#line 723 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 723 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 125 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____mm_tabling_info_0_0(
+#line 125 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 125 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 125 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 125 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____mm_tabling_info_0_0(
+#line 125 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 125 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 53 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____foreign_code_info_0_0(
+#line 53 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 53 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 53 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 53 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____foreign_code_info_0_0(
+#line 53 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 53 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 200 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____exported_enum_info_0_0(
+#line 200 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 200 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 200 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 200 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____exported_enum_info_0_0(
+#line 200 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 200 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 93 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____exception_info_0_0(
+#line 93 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 93 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 93 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 93 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____exception_info_0_0(
+#line 93 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 93 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 1512 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____dependency_ordering_1_0(
+#line 1512 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1512 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2,
+#line 1512 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 1512 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4);
+
+#line 1512 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____dependency_ordering_1_0(
+#line 1512 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1512 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1512 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 1513 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____dependency_ordering_0_0(
+#line 1513 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 1513 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1513 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 1513 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____dependency_ordering_0_0(
+#line 1513 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1513 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 1540 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____dependency_info_1_0(
+#line 1540 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1540 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2,
+#line 1540 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 1540 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4);
+
+#line 1540 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____dependency_info_1_0(
+#line 1540 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1540 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1540 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 1519 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____dependency_info_0_0(
+#line 1519 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 1519 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1519 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 1519 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____dependency_info_0_0(
+#line 1519 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1519 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 1517 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____dependency_graph_key_0_0(
+#line 1517 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 1517 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1517 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 1517 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____dependency_graph_key_0_0(
+#line 1517 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1517 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 1515 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____dependency_graph_1_0(
+#line 1515 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1515 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2,
+#line 1515 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 1515 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4);
+
+#line 1515 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____dependency_graph_1_0(
+#line 1515 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1515 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1515 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 1516 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____dependency_graph_0_0(
+#line 1516 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 1516 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1516 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 1516 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____dependency_graph_0_0(
+#line 1516 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1516 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 168 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____complexity_proc_map_0_0(
+#line 168 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 168 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 168 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 168 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____complexity_proc_map_0_0(
+#line 168 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 168 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 170 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____complexity_proc_info_0_0(
+#line 170 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 170 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 170 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 170 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____complexity_proc_info_0_0(
+#line 170 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 170 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 190 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____complexity_arg_kind_0_0(
+#line 190 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 190 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 190 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 190 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____complexity_arg_kind_0_0(
+#line 190 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 190 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 184 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module____Compare____complexity_arg_info_0_0(
+#line 184 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 184 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 184 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3);
+
+#line 184 "hlds_module.m"
+MR_bool MR_CALL 
+hlds__hlds_module____Unify____complexity_arg_info_0_0(
+#line 184 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 184 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 1532 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__hlds_dependency_info_set_dependency_ordering_3_p_0(
+#line 1532 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1532 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1532 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 1532 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_4);
+
+#line 1529 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__hlds_dependency_info_set_dependency_graph_3_p_0(
+#line 1529 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1529 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1529 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 1529 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_4);
+
+#line 1526 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__hlds_dependency_info_get_dependency_ordering_2_p_0(
+#line 1526 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1526 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1526 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 1523 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__hlds_dependency_info_get_dependency_graph_2_p_0(
+#line 1523 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1523 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 1523 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 1521 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__hlds_dependency_info_init_1_p_0(
+#line 1521 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 1521 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 685 "hlds_module.m"
+MR_Integer MR_CALL 
+hlds__hlds_module__predicate_arity_2_f_0(
+#line 685 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 685 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 684 "hlds_module.m"
+MR_String MR_CALL 
+hlds__hlds_module__predicate_name_2_f_0(
+#line 684 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 684 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 683 "hlds_module.m"
+MR_Word MR_CALL 
+hlds__hlds_module__predicate_module_2_f_0(
+#line 683 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 683 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2);
+
+#line 680 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__predicate_id_5_p_0(
+#line 680 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 680 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 680 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3,
+#line 680 "hlds_module.m"
+  MR_String * hlds__hlds_module__param_4,
+#line 680 "hlds_module.m"
+  MR_Integer * hlds__hlds_module__param_5);
+
+#line 676 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_optimize_2_p_0(
+#line 676 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 676 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 665 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_next_model_non_pragma_count_3_p_0(
+#line 665 "hlds_module.m"
+  MR_Integer * hlds__hlds_module__param_1,
+#line 665 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 665 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 662 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_next_atomic_count_4_p_0(
+#line 662 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 662 "hlds_module.m"
+  MR_Integer * hlds__hlds_module__param_2,
+#line 662 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 662 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_4);
+
+#line 659 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_next_lambda_count_4_p_0(
+#line 659 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 659 "hlds_module.m"
+  MR_Integer * hlds__hlds_module__param_2,
+#line 659 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 659 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_4);
+
+#line 651 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_incr_num_errors_3_p_0(
+#line 651 "hlds_module.m"
+  MR_Integer hlds__hlds_module__param_1,
+#line 651 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 651 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 649 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_incr_errors_2_p_0(
+#line 649 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 649 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 646 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_clobber_dependency_info_2_p_0(
+#line 646 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 646 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 643 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_dependency_info_3_p_0(
+#line 643 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 643 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 643 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 637 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_dependency_info_2_p_0(
+#line 637 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 637 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 631 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_pred_proc_info_5_p_0(
+#line 631 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 631 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 631 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 631 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4,
+#line 631 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_5);
+
+#line 628 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_pred_proc_info_6_p_0(
+#line 628 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 628 "hlds_module.m"
+  MR_Integer hlds__hlds_module__param_2,
+#line 628 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 628 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4,
+#line 628 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_5,
+#line 628 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_6);
+
+#line 625 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_pred_info_4_p_0(
+#line 625 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 625 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 625 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 625 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_4);
+
+#line 622 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_remove_predicate_3_p_0(
+#line 622 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 622 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 622 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 617 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_remove_predid_3_p_0(
+#line 617 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 617 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 617 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 611 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_valid_predids_3_p_0(
+#line 611 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 611 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 611 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 603 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_valid_predids_3_p_0(
+#line 603 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 603 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 603 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 592 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_pred_proc_info_4_p_0(
+#line 592 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 592 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 592 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3,
+#line 592 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_4);
+
+#line 589 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_pred_proc_info_5_p_0(
+#line 589 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 589 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 589 "hlds_module.m"
+  MR_Integer hlds__hlds_module__param_3,
+#line 589 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_4,
+#line 589 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_5);
+
+#line 583 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_proc_info_4_p_0(
+#line 583 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 583 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 583 "hlds_module.m"
+  MR_Integer hlds__hlds_module__param_3,
+#line 583 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_4);
+
+#line 581 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_proc_info_3_p_0(
+#line 581 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 581 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 581 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 576 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_pred_info_3_p_0(
+#line 576 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 576 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 576 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 571 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_preds_3_p_0(
+#line 571 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 571 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 571 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 570 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_preds_2_p_0(
+#line 570 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 570 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 565 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_ts_rev_string_table_4_p_0(
+#line 565 "hlds_module.m"
+  MR_Integer hlds__hlds_module__param_1,
+#line 565 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 565 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 565 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_4);
+
+#line 562 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_ts_rev_string_table_3_p_0(
+#line 562 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 562 "hlds_module.m"
+  MR_Integer * hlds__hlds_module__param_2,
+#line 562 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 559 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_const_struct_db_3_p_0(
+#line 559 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 559 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 559 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 556 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_const_struct_db_2_p_0(
+#line 556 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 556 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 553 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_oisu_procs_3_p_0(
+#line 553 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 553 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 553 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 550 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_oisu_procs_2_p_0(
+#line 550 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 550 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 547 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_oisu_map_3_p_0(
+#line 547 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 547 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 547 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 545 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_oisu_map_2_p_0(
+#line 545 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 545 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 542 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_event_set_3_p_0(
+#line 542 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 542 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 542 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 540 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_event_set_2_p_0(
+#line 540 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 540 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 537 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_exported_enums_3_p_0(
+#line 537 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 537 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 537 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 534 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_exported_enums_2_p_0(
+#line 534 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 534 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 531 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_interface_module_specifiers_2_p_0(
+#line 531 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 531 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 528 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_add_parents_to_used_modules_3_p_0(
+#line 528 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 528 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 528 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 525 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_used_modules_3_p_0(
+#line 525 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 525 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 525 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 522 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_used_modules_2_p_0(
+#line 522 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 522 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 519 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_structure_reuse_preds_3_p_0(
+#line 519 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 519 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 519 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 516 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_structure_reuse_preds_2_p_0(
+#line 516 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 516 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 513 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_user_final_pred_procs_2_p_0(
+#line 513 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 513 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 510 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_user_final_pred_c_names_2_p_0(
+#line 510 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 510 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 507 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_new_user_final_pred_5_p_0(
+#line 507 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 507 "hlds_module.m"
+  MR_Integer hlds__hlds_module__param_2,
+#line 507 "hlds_module.m"
+  MR_String * hlds__hlds_module__param_3,
+#line 507 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4,
+#line 507 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_5);
+
+#line 504 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_user_init_pred_procs_2_p_0(
+#line 504 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 504 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 501 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_user_init_pred_c_names_2_p_0(
+#line 501 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 501 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 498 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_new_user_init_pred_5_p_0(
+#line 498 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 498 "hlds_module.m"
+  MR_Integer hlds__hlds_module__param_2,
+#line 498 "hlds_module.m"
+  MR_String * hlds__hlds_module__param_3,
+#line 498 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4,
+#line 498 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_5);
+
+#line 495 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_complexity_proc_infos_3_p_0(
+#line 495 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 495 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 495 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 492 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_complexity_proc_infos_2_p_0(
+#line 492 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 492 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 488 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_maybe_complexity_proc_map_3_p_0(
+#line 488 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 488 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 488 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 485 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_maybe_complexity_proc_map_2_p_0(
+#line 485 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 485 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 482 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_analysis_info_3_p_0(
+#line 482 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 482 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 482 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 479 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_analysis_info_2_p_0(
+#line 479 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 479 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 476 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_no_tag_types_3_p_0(
+#line 476 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 476 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 476 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 473 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_no_tag_types_2_p_0(
+#line 473 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 473 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 470 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_type_spec_info_3_p_0(
+#line 470 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 470 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 470 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 467 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_type_spec_info_2_p_0(
+#line 467 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 467 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 464 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_stratified_preds_3_p_0(
+#line 464 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 464 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 464 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 461 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_stratified_preds_2_p_0(
+#line 461 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 461 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 458 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_type_ctor_gen_infos_3_p_0(
+#line 458 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 458 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 458 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 455 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_type_ctor_gen_infos_2_p_0(
+#line 455 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 455 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 452 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_pragma_exported_procs_3_p_0(
+#line 452 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 452 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 452 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 449 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_pragma_exported_procs_2_p_0(
+#line 449 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 449 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 446 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_num_errors_3_p_0(
+#line 446 "hlds_module.m"
+  MR_Integer hlds__hlds_module__param_1,
+#line 446 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 446 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 443 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_mm_tabling_info_3_p_0(
+#line 443 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 443 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 443 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 440 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_table_struct_map_3_p_0(
+#line 440 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 440 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 440 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 437 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_trailing_info_3_p_0(
+#line 437 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 437 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 437 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 434 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_exception_info_3_p_0(
+#line 434 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 434 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 434 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 431 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_unused_arg_info_3_p_0(
+#line 431 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 431 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 431 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 428 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_proc_requests_3_p_0(
+#line 428 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 428 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 428 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 425 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_mm_tabling_info_2_p_0(
+#line 425 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 425 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 422 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_table_struct_map_2_p_0(
+#line 422 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 422 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 419 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_trailing_info_2_p_0(
+#line 419 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 419 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 416 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_exception_info_2_p_0(
+#line 416 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 416 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 413 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_unused_arg_info_2_p_0(
+#line 413 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 413 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 411 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_num_errors_2_p_0(
+#line 411 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 411 "hlds_module.m"
+  MR_Integer * hlds__hlds_module__param_2);
+
+#line 408 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_maybe_dependency_info_2_p_0(
+#line 408 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 408 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 402 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_add_fact_table_file_3_p_0(
+#line 402 "hlds_module.m"
+  MR_String hlds__hlds_module__param_1,
+#line 402 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 402 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 400 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_get_fact_table_files_2_p_0(
+#line 400 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 400 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 397 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_add_foreign_import_module_5_p_0(
+#line 397 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 397 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 397 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 397 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4,
+#line 397 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_5);
+
+#line 393 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_add_foreign_body_code_5_p_0(
+#line 393 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 393 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 393 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 393 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4,
+#line 393 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_5);
+
+#line 389 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_add_foreign_decl_6_p_0(
+#line 389 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 389 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 389 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 389 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4,
+#line 389 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_5,
+#line 389 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_6);
+
+#line 385 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_foreign_import_module_3_p_0(
+#line 385 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 385 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 385 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 382 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_foreign_import_module_2_p_0(
+#line 382 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 382 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 379 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_foreign_body_code_3_p_0(
+#line 379 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 379 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 379 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 376 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_foreign_body_code_2_p_0(
+#line 376 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 376 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 373 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_foreign_decl_3_p_0(
+#line 373 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 373 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 373 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 370 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_foreign_decl_2_p_0(
+#line 370 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 370 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 367 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_has_user_event_2_p_0(
+#line 367 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 367 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 364 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_has_user_event_2_p_0(
+#line 364 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 364 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 361 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_has_parallel_conj_2_p_0(
+#line 361 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 361 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 358 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_has_parallel_conj_2_p_0(
+#line 358 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 358 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 355 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_contains_foreign_type_2_p_0(
+#line 355 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 355 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 352 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_contains_foreign_type_2_p_0(
+#line 352 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 352 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 349 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_globals_3_p_0(
+#line 349 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 349 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 349 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 347 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_globals_2_p_0(
+#line 347 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 347 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 344 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_dump_hlds_base_file_name_2_p_0(
+#line 344 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 344 "hlds_module.m"
+  MR_String * hlds__hlds_module__param_2);
+
+#line 342 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_name_2_p_0(
+#line 342 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 342 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 337 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_all_deps_2_p_0(
+#line 337 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 337 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 331 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__visible_module_2_p_0(
+#line 331 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_1,
+#line 331 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 331 "hlds_module.m"
+  MR_Cont hlds__hlds_module__param_3,
+#line 331 "hlds_module.m"
+  void * hlds__hlds_module__param_4);
+
+#line 323 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_indirectly_imported_module_specifiers_2_p_0(
+#line 323 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 323 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 320 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_add_indirectly_imported_module_specifiers_3_p_0(
+#line 320 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 320 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 320 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 317 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_imported_module_specifiers_2_p_0(
+#line 317 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 317 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 314 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_add_imported_module_specifiers_4_p_0(
+#line 314 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 314 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 314 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 314 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_4);
+
+#line 311 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_maybe_recompilation_info_3_p_0(
+#line 311 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 311 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 311 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 308 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_maybe_recompilation_info_2_p_0(
+#line 308 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 308 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 305 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_ctor_field_table_3_p_0(
+#line 305 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 305 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 305 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 302 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_ctor_field_table_2_p_0(
+#line 302 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 302 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 299 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_exclusive_table_3_p_0(
+#line 299 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 299 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 299 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 296 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_exclusive_table_2_p_0(
+#line 296 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 296 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 293 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_assertion_table_3_p_0(
+#line 293 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 293 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 293 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 290 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_assertion_table_2_p_0(
+#line 290 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 290 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 287 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_instance_table_3_p_0(
+#line 287 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 287 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 287 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 284 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_instance_table_2_p_0(
+#line 284 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 284 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 281 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_class_table_3_p_0(
+#line 281 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 281 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 281 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 279 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_class_table_2_p_0(
+#line 279 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 279 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 276 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_cons_table_3_p_0(
+#line 276 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 276 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 276 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 274 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_cons_table_2_p_0(
+#line 274 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 274 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 271 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_mode_table_3_p_0(
+#line 271 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 271 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 271 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 269 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_mode_table_2_p_0(
+#line 269 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 269 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 266 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_inst_table_3_p_0(
+#line 266 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 266 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 266 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 264 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_inst_table_2_p_0(
+#line 264 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 264 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 261 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_type_table_3_p_0(
+#line 261 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 261 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 261 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 259 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_type_table_2_p_0(
+#line 259 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 259 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 256 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_partial_qualifier_info_3_p_0(
+#line 256 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 256 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 256 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 253 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_partial_qualifier_info_2_p_0(
+#line 253 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 253 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 250 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_special_pred_map_3_p_0(
+#line 250 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 250 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 250 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 247 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_special_pred_map_2_p_0(
+#line 247 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 247 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 244 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_proc_requests_2_p_0(
+#line 244 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 244 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 239 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_set_predicate_table_3_p_0(
+#line 239 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 239 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_2,
+#line 239 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_3);
+
+#line 236 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_get_predicate_table_2_p_0(
+#line 236 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 236 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_2);
+
+#line 232 "hlds_module.m"
+void MR_CALL 
+hlds__hlds_module__module_info_init_7_p_0(
+#line 232 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_1,
+#line 232 "hlds_module.m"
+  MR_String hlds__hlds_module__param_2,
+#line 232 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_3,
+#line 232 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_4,
+#line 232 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_5,
+#line 232 "hlds_module.m"
+  MR_Word hlds__hlds_module__param_6,
+#line 232 "hlds_module.m"
+  MR_Word * hlds__hlds_module__param_7);
+
+void mercury__hlds__hlds_module__init(void);
+void mercury__hlds__hlds_module__init_type_tables(void);
+void mercury__hlds__hlds_module__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.hlds_module */
+
+/* :- end_interface hlds.hlds_module. */

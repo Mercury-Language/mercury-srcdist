@@ -1,0 +1,6 @@
+:- module (parse_tree.prog_io_error).
+:- interface.
+:- type module_error
+	--->	no_module_errors 
+	;	some_module_errors 
+	;	fatal_module_errors .

@@ -1,0 +1,153 @@
+/*
+** Automatically generated from `rbmm.condition_renaming.m'
+** by the Mercury compiler,
+** version rotd-2014-09-30
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.rbmm.condition_renaming. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__rbmm__condition_renaming
+#define MR_HEADER_GUARD_transform_hlds__rbmm__condition_renaming
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__RBMM__CONDITION_RENAMING_DECL_GUARD
+#define TRANSFORM_HLDS__RBMM__CONDITION_RENAMING_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.rbmm.mih"
+
+#endif
+
+
+
+
+#line 44 "transform_hlds.rbmm.condition_renaming.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__condition_renaming__transform_hlds__rbmm__condition_renaming__type_ctor_info_goal_path_regions_table_0;
+
+#line 47 "transform_hlds.rbmm.condition_renaming.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__condition_renaming__transform_hlds__rbmm__condition_renaming__type_ctor_info_proc_goal_path_regions_table_0;
+
+#line 55 "rbmm.condition_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__condition_renaming____Compare____proc_goal_path_regions_table_0_0(
+#line 55 "rbmm.condition_renaming.m"
+  MR_Word * transform_hlds__rbmm__condition_renaming__param_1,
+#line 55 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_2,
+#line 55 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_3);
+
+#line 55 "rbmm.condition_renaming.m"
+MR_bool MR_CALL 
+transform_hlds__rbmm__condition_renaming____Unify____proc_goal_path_regions_table_0_0(
+#line 55 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_1,
+#line 55 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_2);
+
+#line 57 "rbmm.condition_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__condition_renaming____Compare____goal_path_regions_table_0_0(
+#line 57 "rbmm.condition_renaming.m"
+  MR_Word * transform_hlds__rbmm__condition_renaming__param_1,
+#line 57 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_2,
+#line 57 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_3);
+
+#line 57 "rbmm.condition_renaming.m"
+MR_bool MR_CALL 
+transform_hlds__rbmm__condition_renaming____Unify____goal_path_regions_table_0_0(
+#line 57 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_1,
+#line 57 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_2);
+
+#line 129 "rbmm.condition_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__condition_renaming__collect_ite_annotation_6_p_0(
+#line 129 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_1,
+#line 129 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_2,
+#line 129 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_3,
+#line 129 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_4,
+#line 129 "rbmm.condition_renaming.m"
+  MR_Word * transform_hlds__rbmm__condition_renaming__param_5,
+#line 129 "rbmm.condition_renaming.m"
+  MR_Word * transform_hlds__rbmm__condition_renaming__param_6);
+
+#line 101 "rbmm.condition_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__condition_renaming__collect_ite_renaming_4_p_0(
+#line 101 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_1,
+#line 101 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_2,
+#line 101 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_3,
+#line 101 "rbmm.condition_renaming.m"
+  MR_Word * transform_hlds__rbmm__condition_renaming__param_4);
+
+#line 87 "rbmm.condition_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__condition_renaming__collect_ite_renamed_regions_3_p_0(
+#line 87 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_1,
+#line 87 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_2,
+#line 87 "rbmm.condition_renaming.m"
+  MR_Word * transform_hlds__rbmm__condition_renaming__param_3);
+
+#line 75 "rbmm.condition_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__condition_renaming__collect_non_local_and_in_cond_regions_8_p_0(
+#line 75 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_1,
+#line 75 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_2,
+#line 75 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_3,
+#line 75 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_4,
+#line 75 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_5,
+#line 75 "rbmm.condition_renaming.m"
+  MR_Word transform_hlds__rbmm__condition_renaming__param_6,
+#line 75 "rbmm.condition_renaming.m"
+  MR_Word * transform_hlds__rbmm__condition_renaming__param_7,
+#line 75 "rbmm.condition_renaming.m"
+  MR_Word * transform_hlds__rbmm__condition_renaming__param_8);
+
+void mercury__transform_hlds__rbmm__condition_renaming__init(void);
+void mercury__transform_hlds__rbmm__condition_renaming__init_type_tables(void);
+void mercury__transform_hlds__rbmm__condition_renaming__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.rbmm.condition_renaming */
+
+/* :- end_interface transform_hlds.rbmm.condition_renaming. */

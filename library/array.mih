@@ -1,0 +1,5471 @@
+/*
+** Automatically generated from `array.m'
+** by the Mercury compiler,
+** version rotd-2014-09-30
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module array. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_array
+#define MR_HEADER_GUARD_array
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ARRAY_DECL_GUARD
+#define ARRAY_DECL_GUARD
+#line 875 "array.m"
+
+#include "mercury_heap.h"             /* for MR_maybe_record_allocation() */
+#include "mercury_library_types.h"    /* for MR_ArrayPtr */
+
+/*
+** We do not yet record term sizes for arrays in term size profiling
+** grades. Doing so would require
+**
+** - modifying ML_alloc_array to allocate an extra word for the size;
+** - modifying all the predicates that call ML_alloc_array to compute the
+**   size of the array (the sum of the sizes of the elements and the size of
+**   the array itself);
+** - modifying all the predicates that update array elements to compute the
+**   difference between the sizes of the terms being added to and deleted from
+**   the array, and updating the array size accordingly.
+*/
+
+#define ML_alloc_array(newarray, arraysize, alloc_id)                       do {                                                                        MR_Word newarray_word;                                                  MR_offset_incr_hp_msg(newarray_word, 0, (arraysize),                        alloc_id, "array.array/1");                                       (newarray) = (MR_ArrayPtr) newarray_word;                           } while (0)
+
+#line 901 "array.m"
+
+void ML_init_array(MR_ArrayPtr, MR_Integer size, MR_Word item);
+
+#line 1660 "array.m"
+
+extern void
+ML_resize_array(MR_ArrayPtr new_array, MR_ArrayPtr old_array,
+    MR_Integer array_size, MR_Word item);
+
+#line 1757 "array.m"
+
+extern void
+ML_shrink_array(MR_ArrayPtr array, MR_ArrayPtr old_array,
+    MR_Integer array_size);
+
+#line 1858 "array.m"
+
+extern void
+ML_copy_array(MR_ArrayPtr array, MR_ConstArrayPtr old_array);
+
+#endif
+
+
+
+
+#line 82 "array.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__array__array__type_ctor_info_array_1;
+
+#line 85 "array.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__array__array__type_ctor_info_index_out_of_bounds_0;
+
+#line 433 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_111_114_116_95_95_91_84_32_61_32_105_110_116_93_95_48_95_49_1_f_0(
+#line 433 "array.m"
+  MR_ArrayPtr mercury__array__param_1);
+
+#line 433 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_111_114_116_95_95_91_84_32_61_32_115_116_114_105_110_103_93_95_48_95_49_1_f_0(
+#line 433 "array.m"
+  MR_ArrayPtr mercury__array__param_1);
+
+#line 2686 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_97_109_115_111_114_116_95_115_117_98_97_114_114_97_121_95_95_91_84_32_61_32_105_110_116_93_95_48_95_49_3_f_0(
+#line 2686 "array.m"
+  MR_ArrayPtr mercury__array__param_1,
+#line 2686 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 2686 "array.m"
+  MR_Integer mercury__array__param_3);
+
+#line 2686 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_97_109_115_111_114_116_95_115_117_98_97_114_114_97_121_95_95_91_84_32_61_32_115_116_114_105_110_103_93_95_48_95_49_3_f_0(
+#line 2686 "array.m"
+  MR_ArrayPtr mercury__array__param_1,
+#line 2686 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 2686 "array.m"
+  MR_Integer mercury__array__param_3);
+
+#line 2695 "array.m"
+void MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_97_109_115_111_114_116_95_117_112_95_95_91_84_32_61_32_105_110_116_93_95_48_95_49_8_p_0(
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_1,
+#line 2695 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 2695 "array.m"
+  MR_ArrayPtr * mercury__array__param_3,
+#line 2695 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2695 "array.m"
+  MR_ArrayPtr * mercury__array__param_5,
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_8);
+
+#line 2695 "array.m"
+void MR_CALL 
+mercury__array__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_97_109_115_111_114_116_95_117_112_95_95_91_84_32_61_32_115_116_114_105_110_103_93_95_48_95_49_8_p_0(
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_1,
+#line 2695 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 2695 "array.m"
+  MR_ArrayPtr * mercury__array__param_3,
+#line 2695 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2695 "array.m"
+  MR_ArrayPtr * mercury__array__param_5,
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_8);
+
+#line 81 "array.m"
+void MR_CALL 
+mercury__array____Compare____index_out_of_bounds_0_0(
+#line 81 "array.m"
+  MR_Word * mercury__array__param_1,
+#line 81 "array.m"
+  MR_Word mercury__array__param_2,
+#line 81 "array.m"
+  MR_Word mercury__array__param_3);
+
+#line 81 "array.m"
+MR_bool MR_CALL 
+mercury__array____Unify____index_out_of_bounds_0_0(
+#line 81 "array.m"
+  MR_Word mercury__array__param_1,
+#line 81 "array.m"
+  MR_Word mercury__array__param_2);
+
+#line 749 "array.m"
+void MR_CALL 
+mercury__array____Compare____array_1_0(
+#line 749 "array.m"
+  MR_Word mercury__array__param_1,
+#line 749 "array.m"
+  MR_Word * mercury__array__param_2,
+#line 749 "array.m"
+  MR_ArrayPtr mercury__array__param_3,
+#line 749 "array.m"
+  MR_ArrayPtr mercury__array__param_4);
+
+#line 749 "array.m"
+MR_bool MR_CALL 
+mercury__array____Unify____array_1_0(
+#line 749 "array.m"
+  MR_Word mercury__array__param_1,
+#line 749 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 749 "array.m"
+  MR_ArrayPtr mercury__array__param_3);
+
+#line 2877 "array.m"
+void MR_CALL 
+mercury__array__out_of_bounds_error_3_p_0(
+#line 2877 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2877 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 2877 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 2877 "array.m"
+  MR_String mercury__array__param_4);
+
+#line 2695 "array.m"
+void MR_CALL 
+mercury__array__samsort_up_8_p_0(
+#line 2695 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 2695 "array.m"
+  MR_ArrayPtr mercury__array__param_3,
+#line 2695 "array.m"
+  MR_ArrayPtr * mercury__array__param_4,
+#line 2695 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 2695 "array.m"
+  MR_ArrayPtr * mercury__array__param_6,
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2695 "array.m"
+  MR_Integer mercury__array__param_9);
+
+#line 2686 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__samsort_subarray_3_f_0(
+#line 2686 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2686 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 2686 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 2686 "array.m"
+  MR_Integer mercury__array__param_4);
+
+#line 2666 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_all_false_4_p_0(
+#line 2666 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2666 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2666 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 2666 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2666 "array.m"
+  MR_ArrayPtr mercury__array__param_5);
+
+#line 2650 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_all_true_4_p_0(
+#line 2650 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2650 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2650 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 2650 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2650 "array.m"
+  MR_ArrayPtr mercury__array__param_5);
+
+#line 2628 "array.m"
+MR_bool MR_CALL 
+mercury__array__map_corresponding_foldl_2_9_p_3(
+#line 2628 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2628 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2628 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2628 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2628 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2628 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2628 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2628 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2628 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2628 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2628 "array.m"
+  MR_ArrayPtr * mercury__array__param_11,
+#line 2628 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2628 "array.m"
+  MR_Box * mercury__array__param_13);
+
+#line 2625 "array.m"
+void MR_CALL 
+mercury__array__map_corresponding_foldl_2_9_p_2(
+#line 2625 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2625 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2625 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2625 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2625 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2625 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2625 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2625 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2625 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2625 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2625 "array.m"
+  MR_ArrayPtr * mercury__array__param_11,
+#line 2625 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2625 "array.m"
+  MR_Box * mercury__array__param_13);
+
+#line 2622 "array.m"
+void MR_CALL 
+mercury__array__map_corresponding_foldl_2_9_p_1(
+#line 2622 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2622 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2622 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2622 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2622 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2622 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2622 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2622 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2622 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2622 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2622 "array.m"
+  MR_ArrayPtr * mercury__array__param_11,
+#line 2622 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2622 "array.m"
+  MR_Box * mercury__array__param_13);
+
+#line 2619 "array.m"
+void MR_CALL 
+mercury__array__map_corresponding_foldl_2_9_p_0(
+#line 2619 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2619 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2619 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2619 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2619 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2619 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2619 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2619 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2619 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2619 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2619 "array.m"
+  MR_ArrayPtr * mercury__array__param_11,
+#line 2619 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2619 "array.m"
+  MR_Box * mercury__array__param_13);
+
+#line 2592 "array.m"
+MR_bool MR_CALL 
+mercury__array__map_foldl_2_7_p_3(
+#line 2592 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2592 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2592 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2592 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2592 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2592 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2592 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2592 "array.m"
+  MR_ArrayPtr * mercury__array__param_8,
+#line 2592 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2592 "array.m"
+  MR_Box * mercury__array__param_10);
+
+#line 2590 "array.m"
+void MR_CALL 
+mercury__array__map_foldl_2_7_p_2(
+#line 2590 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2590 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2590 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2590 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2590 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2590 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2590 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2590 "array.m"
+  MR_ArrayPtr * mercury__array__param_8,
+#line 2590 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2590 "array.m"
+  MR_Box * mercury__array__param_10);
+
+#line 2588 "array.m"
+void MR_CALL 
+mercury__array__map_foldl_2_7_p_1(
+#line 2588 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2588 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2588 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2588 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2588 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2588 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2588 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2588 "array.m"
+  MR_ArrayPtr * mercury__array__param_8,
+#line 2588 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2588 "array.m"
+  MR_Box * mercury__array__param_10);
+
+#line 2586 "array.m"
+void MR_CALL 
+mercury__array__map_foldl_2_7_p_0(
+#line 2586 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2586 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2586 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2586 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2586 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2586 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2586 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2586 "array.m"
+  MR_ArrayPtr * mercury__array__param_8,
+#line 2586 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2586 "array.m"
+  MR_Box * mercury__array__param_10);
+
+#line 2559 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr5_14_p_5(
+#line 2559 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2559 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2559 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2559 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2559 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2559 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2559 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2559 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2559 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2559 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2559 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2559 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2559 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2559 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2559 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2559 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2559 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2559 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2559 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2559 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2556 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr5_14_p_4(
+#line 2556 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2556 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2556 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2556 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2556 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2556 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2556 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2556 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2556 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2556 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2556 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2556 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2556 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2556 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2556 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2556 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2556 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2556 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2556 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2556 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2553 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr5_14_p_3(
+#line 2553 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2553 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2553 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2553 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2553 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2553 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2553 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2553 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2553 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2553 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2553 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2553 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2553 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2553 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2553 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2553 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2553 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2553 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2553 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2553 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2550 "array.m"
+void MR_CALL 
+mercury__array__do_foldr5_14_p_2(
+#line 2550 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2550 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2550 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2550 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2550 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2550 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2550 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2550 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2550 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2550 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2550 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2550 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2550 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2550 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2550 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2550 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2550 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2550 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2550 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2550 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2547 "array.m"
+void MR_CALL 
+mercury__array__do_foldr5_14_p_1(
+#line 2547 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2547 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2547 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2547 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2547 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2547 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2547 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2547 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2547 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2547 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2547 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2547 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2547 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2547 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2547 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2547 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2547 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2547 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2547 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2547 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2544 "array.m"
+void MR_CALL 
+mercury__array__do_foldr5_14_p_0(
+#line 2544 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2544 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2544 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2544 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2544 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2544 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2544 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2544 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2544 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2544 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2544 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2544 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2544 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2544 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2544 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2544 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2544 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2544 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2544 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2544 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2525 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr4_12_p_5(
+#line 2525 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2525 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2525 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2525 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2525 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2525 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2525 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2525 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2525 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2525 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2525 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2525 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2525 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2525 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2525 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2525 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2525 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2523 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr4_12_p_4(
+#line 2523 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2523 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2523 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2523 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2523 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2523 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2523 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2523 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2523 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2523 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2523 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2523 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2523 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2523 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2523 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2523 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2523 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2521 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr4_12_p_3(
+#line 2521 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2521 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2521 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2521 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2521 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2521 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2521 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2521 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2521 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2521 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2521 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2521 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2521 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2521 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2521 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2521 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2521 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2519 "array.m"
+void MR_CALL 
+mercury__array__do_foldr4_12_p_2(
+#line 2519 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2519 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2519 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2519 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2519 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2519 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2519 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2519 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2519 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2519 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2519 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2519 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2519 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2519 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2519 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2519 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2519 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2517 "array.m"
+void MR_CALL 
+mercury__array__do_foldr4_12_p_1(
+#line 2517 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2517 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2517 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2517 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2517 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2517 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2517 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2517 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2517 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2517 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2517 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2517 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2517 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2517 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2517 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2517 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2517 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2515 "array.m"
+void MR_CALL 
+mercury__array__do_foldr4_12_p_0(
+#line 2515 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2515 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2515 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2515 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2515 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2515 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2515 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2515 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2515 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2515 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2515 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2515 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2515 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2515 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2515 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2515 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2515 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2497 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr3_10_p_5(
+#line 2497 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2497 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2497 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2497 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2497 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2497 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2497 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2497 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2497 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2497 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2497 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2497 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2497 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2497 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2495 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr3_10_p_4(
+#line 2495 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2495 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2495 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2495 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2495 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2495 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2495 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2495 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2495 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2495 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2495 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2495 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2495 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2495 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2493 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr3_10_p_3(
+#line 2493 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2493 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2493 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2493 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2493 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2493 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2493 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2493 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2493 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2493 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2493 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2493 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2493 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2493 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2491 "array.m"
+void MR_CALL 
+mercury__array__do_foldr3_10_p_2(
+#line 2491 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2491 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2491 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2491 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2491 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2491 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2491 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2491 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2491 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2491 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2491 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2491 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2491 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2491 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2489 "array.m"
+void MR_CALL 
+mercury__array__do_foldr3_10_p_1(
+#line 2489 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2489 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2489 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2489 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2489 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2489 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2489 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2489 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2489 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2489 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2489 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2489 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2489 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2489 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2487 "array.m"
+void MR_CALL 
+mercury__array__do_foldr3_10_p_0(
+#line 2487 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2487 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2487 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2487 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2487 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2487 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2487 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2487 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2487 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2487 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2487 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2487 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2487 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2487 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2469 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr2_8_p_5(
+#line 2469 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2469 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2469 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2469 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2469 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2469 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2469 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2469 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2469 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2469 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2469 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2467 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr2_8_p_4(
+#line 2467 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2467 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2467 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2467 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2467 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2467 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2467 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2467 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2467 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2467 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2467 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2465 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr2_8_p_3(
+#line 2465 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2465 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2465 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2465 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2465 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2465 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2465 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2465 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2465 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2465 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2465 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2463 "array.m"
+void MR_CALL 
+mercury__array__do_foldr2_8_p_2(
+#line 2463 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2463 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2463 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2463 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2463 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2463 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2463 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2463 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2463 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2463 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2463 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2461 "array.m"
+void MR_CALL 
+mercury__array__do_foldr2_8_p_1(
+#line 2461 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2461 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2461 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2461 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2461 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2461 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2461 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2461 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2461 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2461 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2461 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2459 "array.m"
+void MR_CALL 
+mercury__array__do_foldr2_8_p_0(
+#line 2459 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2459 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2459 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2459 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2459 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2459 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2459 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2459 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2459 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2459 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2459 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2441 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr_pred_6_p_5(
+#line 2441 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2441 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2441 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2441 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2441 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2441 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2441 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2441 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2439 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr_pred_6_p_4(
+#line 2439 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2439 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2439 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2439 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2439 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2439 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2439 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2439 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2437 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldr_pred_6_p_3(
+#line 2437 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2437 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2437 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2437 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2437 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2437 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2437 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2437 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2436 "array.m"
+void MR_CALL 
+mercury__array__do_foldr_pred_6_p_2(
+#line 2436 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2436 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2436 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2436 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2436 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2436 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2436 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2436 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2435 "array.m"
+void MR_CALL 
+mercury__array__do_foldr_pred_6_p_1(
+#line 2435 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2435 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2435 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2435 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2435 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2435 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2435 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2435 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2434 "array.m"
+void MR_CALL 
+mercury__array__do_foldr_pred_6_p_0(
+#line 2434 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2434 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2434 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2434 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2434 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2434 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2434 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2434 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2419 "array.m"
+MR_Box MR_CALL 
+mercury__array__do_foldr_func_5_f_1(
+#line 2419 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2419 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2419 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2419 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2419 "array.m"
+  MR_Box mercury__array__param_5,
+#line 2419 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2419 "array.m"
+  MR_Integer mercury__array__param_7);
+
+#line 2416 "array.m"
+MR_Box MR_CALL 
+mercury__array__do_foldr_func_5_f_0(
+#line 2416 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2416 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2416 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2416 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2416 "array.m"
+  MR_Box mercury__array__param_5,
+#line 2416 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2416 "array.m"
+  MR_Integer mercury__array__param_7);
+
+#line 2396 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl5_14_p_5(
+#line 2396 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2396 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2396 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2396 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2396 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2396 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2396 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2396 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2396 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2396 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2396 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2396 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2396 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2396 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2396 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2396 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2396 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2396 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2396 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2396 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2393 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl5_14_p_4(
+#line 2393 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2393 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2393 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2393 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2393 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2393 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2393 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2393 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2393 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2393 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2393 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2393 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2393 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2393 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2393 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2393 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2393 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2393 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2393 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2393 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2390 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl5_14_p_3(
+#line 2390 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2390 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2390 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2390 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2390 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2390 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2390 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2390 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2390 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2390 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2390 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2390 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2390 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2390 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2390 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2390 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2390 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2390 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2390 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2390 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2387 "array.m"
+void MR_CALL 
+mercury__array__do_foldl5_14_p_2(
+#line 2387 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2387 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2387 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2387 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2387 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2387 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2387 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2387 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2387 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2387 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2387 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2387 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2387 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2387 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2387 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2387 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2387 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2387 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2387 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2387 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2384 "array.m"
+void MR_CALL 
+mercury__array__do_foldl5_14_p_1(
+#line 2384 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2384 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2384 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2384 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2384 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2384 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2384 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2384 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2384 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2384 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2384 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2384 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2384 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2384 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2384 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2384 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2384 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2384 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2384 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2384 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2381 "array.m"
+void MR_CALL 
+mercury__array__do_foldl5_14_p_0(
+#line 2381 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2381 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2381 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2381 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2381 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2381 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2381 "array.m"
+  MR_Word mercury__array__param_7,
+#line 2381 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2381 "array.m"
+  MR_Integer mercury__array__param_9,
+#line 2381 "array.m"
+  MR_ArrayPtr mercury__array__param_10,
+#line 2381 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2381 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2381 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2381 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 2381 "array.m"
+  MR_Box mercury__array__param_15,
+#line 2381 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 2381 "array.m"
+  MR_Box mercury__array__param_17,
+#line 2381 "array.m"
+  MR_Box * mercury__array__param_18,
+#line 2381 "array.m"
+  MR_Box mercury__array__param_19,
+#line 2381 "array.m"
+  MR_Box * mercury__array__param_20);
+
+#line 2362 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl4_12_p_5(
+#line 2362 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2362 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2362 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2362 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2362 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2362 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2362 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2362 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2362 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2362 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2362 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2362 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2362 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2362 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2362 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2362 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2362 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2360 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl4_12_p_4(
+#line 2360 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2360 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2360 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2360 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2360 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2360 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2360 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2360 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2360 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2360 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2360 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2360 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2360 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2360 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2360 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2360 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2360 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2358 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl4_12_p_3(
+#line 2358 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2358 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2358 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2358 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2358 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2358 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2358 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2358 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2358 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2358 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2358 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2358 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2358 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2358 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2358 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2358 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2358 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2356 "array.m"
+void MR_CALL 
+mercury__array__do_foldl4_12_p_2(
+#line 2356 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2356 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2356 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2356 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2356 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2356 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2356 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2356 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2356 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2356 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2356 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2356 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2356 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2356 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2356 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2356 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2356 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2354 "array.m"
+void MR_CALL 
+mercury__array__do_foldl4_12_p_1(
+#line 2354 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2354 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2354 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2354 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2354 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2354 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2354 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2354 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2354 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2354 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2354 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2354 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2354 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2354 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2354 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2354 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2354 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2352 "array.m"
+void MR_CALL 
+mercury__array__do_foldl4_12_p_0(
+#line 2352 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2352 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2352 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2352 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2352 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2352 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2352 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2352 "array.m"
+  MR_Integer mercury__array__param_8,
+#line 2352 "array.m"
+  MR_ArrayPtr mercury__array__param_9,
+#line 2352 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2352 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 2352 "array.m"
+  MR_Box mercury__array__param_12,
+#line 2352 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 2352 "array.m"
+  MR_Box mercury__array__param_14,
+#line 2352 "array.m"
+  MR_Box * mercury__array__param_15,
+#line 2352 "array.m"
+  MR_Box mercury__array__param_16,
+#line 2352 "array.m"
+  MR_Box * mercury__array__param_17);
+
+#line 2334 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl3_10_p_5(
+#line 2334 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2334 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2334 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2334 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2334 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2334 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2334 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2334 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2334 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2334 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2334 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2334 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2334 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2334 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2332 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl3_10_p_4(
+#line 2332 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2332 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2332 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2332 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2332 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2332 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2332 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2332 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2332 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2332 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2332 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2332 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2332 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2332 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2330 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl3_10_p_3(
+#line 2330 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2330 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2330 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2330 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2330 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2330 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2330 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2330 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2330 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2330 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2330 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2330 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2330 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2330 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2328 "array.m"
+void MR_CALL 
+mercury__array__do_foldl3_10_p_2(
+#line 2328 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2328 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2328 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2328 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2328 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2328 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2328 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2328 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2328 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2328 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2328 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2328 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2328 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2328 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2326 "array.m"
+void MR_CALL 
+mercury__array__do_foldl3_10_p_1(
+#line 2326 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2326 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2326 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2326 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2326 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2326 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2326 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2326 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2326 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2326 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2326 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2326 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2326 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2326 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2324 "array.m"
+void MR_CALL 
+mercury__array__do_foldl3_10_p_0(
+#line 2324 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2324 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2324 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2324 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2324 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2324 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2324 "array.m"
+  MR_Integer mercury__array__param_7,
+#line 2324 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 2324 "array.m"
+  MR_Box mercury__array__param_9,
+#line 2324 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 2324 "array.m"
+  MR_Box mercury__array__param_11,
+#line 2324 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 2324 "array.m"
+  MR_Box mercury__array__param_13,
+#line 2324 "array.m"
+  MR_Box * mercury__array__param_14);
+
+#line 2306 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl2_8_p_5(
+#line 2306 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2306 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2306 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2306 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2306 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2306 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2306 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2306 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2306 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2306 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2306 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2304 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl2_8_p_4(
+#line 2304 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2304 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2304 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2304 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2304 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2304 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2304 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2304 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2304 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2304 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2304 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2302 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl2_8_p_3(
+#line 2302 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2302 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2302 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2302 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2302 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2302 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2302 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2302 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2302 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2302 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2302 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2300 "array.m"
+void MR_CALL 
+mercury__array__do_foldl2_8_p_2(
+#line 2300 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2300 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2300 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2300 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2300 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2300 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2300 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2300 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2300 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2300 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2300 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2298 "array.m"
+void MR_CALL 
+mercury__array__do_foldl2_8_p_1(
+#line 2298 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2298 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2298 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2298 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2298 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2298 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2298 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2298 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2298 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2298 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2298 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2296 "array.m"
+void MR_CALL 
+mercury__array__do_foldl2_8_p_0(
+#line 2296 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2296 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2296 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2296 "array.m"
+  MR_Word mercury__array__param_4,
+#line 2296 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2296 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2296 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2296 "array.m"
+  MR_Box mercury__array__param_8,
+#line 2296 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 2296 "array.m"
+  MR_Box mercury__array__param_10,
+#line 2296 "array.m"
+  MR_Box * mercury__array__param_11);
+
+#line 2278 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl_pred_6_p_5(
+#line 2278 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2278 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2278 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2278 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2278 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2278 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2278 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2278 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2276 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl_pred_6_p_4(
+#line 2276 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2276 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2276 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2276 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2276 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2276 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2276 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2276 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2274 "array.m"
+MR_bool MR_CALL 
+mercury__array__do_foldl_pred_6_p_3(
+#line 2274 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2274 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2274 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2274 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2274 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2274 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2274 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2274 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2273 "array.m"
+void MR_CALL 
+mercury__array__do_foldl_pred_6_p_2(
+#line 2273 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2273 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2273 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2273 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2273 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2273 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2273 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2273 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2272 "array.m"
+void MR_CALL 
+mercury__array__do_foldl_pred_6_p_1(
+#line 2272 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2272 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2272 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2272 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2272 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2272 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2272 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2272 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2271 "array.m"
+void MR_CALL 
+mercury__array__do_foldl_pred_6_p_0(
+#line 2271 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2271 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2271 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2271 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2271 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2271 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2271 "array.m"
+  MR_Box mercury__array__param_7,
+#line 2271 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 2256 "array.m"
+MR_Box MR_CALL 
+mercury__array__do_foldl_func_5_f_1(
+#line 2256 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2256 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2256 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2256 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2256 "array.m"
+  MR_Box mercury__array__param_5,
+#line 2256 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2256 "array.m"
+  MR_Integer mercury__array__param_7);
+
+#line 2253 "array.m"
+MR_Box MR_CALL 
+mercury__array__do_foldl_func_5_f_0(
+#line 2253 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2253 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2253 "array.m"
+  MR_Word mercury__array__param_3,
+#line 2253 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 2253 "array.m"
+  MR_Box mercury__array__param_5,
+#line 2253 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2253 "array.m"
+  MR_Integer mercury__array__param_7);
+
+#line 2238 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__swap_elems_3_f_0(
+#line 2238 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2238 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 2238 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 2238 "array.m"
+  MR_Integer mercury__array__param_4);
+
+#line 2220 "array.m"
+void MR_CALL 
+mercury__array__permutation_2_8_p_0(
+#line 2220 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2220 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 2220 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 2220 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2220 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2220 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2220 "array.m"
+  MR_ArrayPtr * mercury__array__param_7,
+#line 2220 "array.m"
+  MR_Word mercury__array__param_8,
+#line 2220 "array.m"
+  MR_Word * mercury__array__param_9);
+
+#line 2140 "array.m"
+MR_bool MR_CALL 
+mercury__array__approx_binary_search_2_6_p_0(
+#line 2140 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2140 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2140 "array.m"
+  MR_ArrayPtr mercury__array__param_3,
+#line 2140 "array.m"
+  MR_Box mercury__array__param_4,
+#line 2140 "array.m"
+  MR_Integer mercury__array__param_5,
+#line 2140 "array.m"
+  MR_Integer mercury__array__param_6,
+#line 2140 "array.m"
+  MR_Integer * mercury__array__param_7);
+
+#line 2090 "array.m"
+void MR_CALL 
+mercury__array__map_2_6_p_0(
+#line 2090 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2090 "array.m"
+  MR_Word mercury__array__param_2,
+#line 2090 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 2090 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2090 "array.m"
+  MR_Word mercury__array__param_5,
+#line 2090 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 2090 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 2090 "array.m"
+  MR_ArrayPtr * mercury__array__param_8);
+
+#line 2033 "array.m"
+void MR_CALL 
+mercury__array__bsearch_2_6_p_0(
+#line 2033 "array.m"
+  MR_Word mercury__array__param_1,
+#line 2033 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 2033 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 2033 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 2033 "array.m"
+  MR_Box mercury__array__param_5,
+#line 2033 "array.m"
+  MR_Word mercury__array__param_6,
+#line 2033 "array.m"
+  MR_Word * mercury__array__param_7);
+
+#line 1360 "array.m"
+MR_bool MR_CALL 
+mercury__array__generate_foldl_2_7_p_5(
+#line 1360 "array.m"
+  MR_Word mercury__array__param_1,
+#line 1360 "array.m"
+  MR_Word mercury__array__param_2,
+#line 1360 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 1360 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 1360 "array.m"
+  MR_Word mercury__array__param_5,
+#line 1360 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 1360 "array.m"
+  MR_ArrayPtr * mercury__array__param_7,
+#line 1360 "array.m"
+  MR_Box mercury__array__param_8,
+#line 1360 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 1358 "array.m"
+MR_bool MR_CALL 
+mercury__array__generate_foldl_2_7_p_4(
+#line 1358 "array.m"
+  MR_Word mercury__array__param_1,
+#line 1358 "array.m"
+  MR_Word mercury__array__param_2,
+#line 1358 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 1358 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 1358 "array.m"
+  MR_Word mercury__array__param_5,
+#line 1358 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 1358 "array.m"
+  MR_ArrayPtr * mercury__array__param_7,
+#line 1358 "array.m"
+  MR_Box mercury__array__param_8,
+#line 1358 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 1356 "array.m"
+MR_bool MR_CALL 
+mercury__array__generate_foldl_2_7_p_3(
+#line 1356 "array.m"
+  MR_Word mercury__array__param_1,
+#line 1356 "array.m"
+  MR_Word mercury__array__param_2,
+#line 1356 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 1356 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 1356 "array.m"
+  MR_Word mercury__array__param_5,
+#line 1356 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 1356 "array.m"
+  MR_ArrayPtr * mercury__array__param_7,
+#line 1356 "array.m"
+  MR_Box mercury__array__param_8,
+#line 1356 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 1354 "array.m"
+void MR_CALL 
+mercury__array__generate_foldl_2_7_p_2(
+#line 1354 "array.m"
+  MR_Word mercury__array__param_1,
+#line 1354 "array.m"
+  MR_Word mercury__array__param_2,
+#line 1354 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 1354 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 1354 "array.m"
+  MR_Word mercury__array__param_5,
+#line 1354 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 1354 "array.m"
+  MR_ArrayPtr * mercury__array__param_7,
+#line 1354 "array.m"
+  MR_Box mercury__array__param_8,
+#line 1354 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 1352 "array.m"
+void MR_CALL 
+mercury__array__generate_foldl_2_7_p_1(
+#line 1352 "array.m"
+  MR_Word mercury__array__param_1,
+#line 1352 "array.m"
+  MR_Word mercury__array__param_2,
+#line 1352 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 1352 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 1352 "array.m"
+  MR_Word mercury__array__param_5,
+#line 1352 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 1352 "array.m"
+  MR_ArrayPtr * mercury__array__param_7,
+#line 1352 "array.m"
+  MR_Box mercury__array__param_8,
+#line 1352 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 1350 "array.m"
+void MR_CALL 
+mercury__array__generate_foldl_2_7_p_0(
+#line 1350 "array.m"
+  MR_Word mercury__array__param_1,
+#line 1350 "array.m"
+  MR_Word mercury__array__param_2,
+#line 1350 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 1350 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 1350 "array.m"
+  MR_Word mercury__array__param_5,
+#line 1350 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 1350 "array.m"
+  MR_ArrayPtr * mercury__array__param_7,
+#line 1350 "array.m"
+  MR_Box mercury__array__param_8,
+#line 1350 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 1321 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__generate_2_4_f_0(
+#line 1321 "array.m"
+  MR_Word mercury__array__param_1,
+#line 1321 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 1321 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 1321 "array.m"
+  MR_Word mercury__array__param_4,
+#line 1321 "array.m"
+  MR_ArrayPtr mercury__array__param_5);
+
+#line 1281 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__unsafe_init_3_f_0(
+#line 1281 "array.m"
+  MR_Word mercury__array__param_1,
+#line 1281 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 1281 "array.m"
+  MR_Box mercury__array__param_3,
+#line 1281 "array.m"
+  MR_Integer mercury__array__param_4);
+
+#line 1190 "array.m"
+void MR_CALL 
+mercury__array__init_2_3_p_0(
+#line 1190 "array.m"
+  MR_Word mercury__array__param_1,
+#line 1190 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 1190 "array.m"
+  MR_Box mercury__array__param_3,
+#line 1190 "array.m"
+  MR_ArrayPtr * mercury__array__param_4);
+
+#line 832 "array.m"
+MR_bool MR_CALL 
+mercury__array__bounds_checks_0_p_0(void);
+
+#line 788 "array.m"
+void MR_CALL 
+mercury__array__array_compare_3_p_0(
+#line 788 "array.m"
+  MR_Word mercury__array__param_1,
+#line 788 "array.m"
+  MR_Word * mercury__array__param_2,
+#line 788 "array.m"
+  MR_ArrayPtr mercury__array__param_3,
+#line 788 "array.m"
+  MR_ArrayPtr mercury__array__param_4);
+
+#line 755 "array.m"
+MR_bool MR_CALL 
+mercury__array__array_equal_2_p_0(
+#line 755 "array.m"
+  MR_Word mercury__array__param_1,
+#line 755 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 755 "array.m"
+  MR_ArrayPtr mercury__array__param_3);
+
+#line 712 "array.m"
+MR_bool MR_CALL 
+mercury__array__dynamic_cast_to_array_2_p_0(
+#line 712 "array.m"
+  MR_Word mercury__array__param_1,
+#line 712 "array.m"
+  MR_Word * mercury__array__param_2,
+#line 712 "array.m"
+  MR_Box mercury__array__param_3,
+#line 712 "array.m"
+  MR_ArrayPtr * mercury__array__param_4);
+
+#line 696 "array.m"
+MR_Word MR_CALL 
+mercury__array__array_to_doc_1_f_0(
+#line 696 "array.m"
+  MR_Word mercury__array__param_1,
+#line 696 "array.m"
+  MR_ArrayPtr mercury__array__param_2);
+
+#line 690 "array.m"
+void MR_CALL 
+mercury__array__random_permutation_4_p_0(
+#line 690 "array.m"
+  MR_Word mercury__array__param_1,
+#line 690 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 690 "array.m"
+  MR_ArrayPtr * mercury__array__param_3,
+#line 690 "array.m"
+  MR_Word mercury__array__param_4,
+#line 690 "array.m"
+  MR_Word * mercury__array__param_5);
+
+#line 684 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__append_2_f_0(
+#line 684 "array.m"
+  MR_Word mercury__array__param_1,
+#line 684 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 684 "array.m"
+  MR_ArrayPtr mercury__array__param_3);
+
+#line 678 "array.m"
+MR_bool MR_CALL 
+mercury__array__all_false_2_p_0(
+#line 678 "array.m"
+  MR_Word mercury__array__param_1,
+#line 678 "array.m"
+  MR_Word mercury__array__param_2,
+#line 678 "array.m"
+  MR_ArrayPtr mercury__array__param_3);
+
+#line 671 "array.m"
+MR_bool MR_CALL 
+mercury__array__all_true_2_p_0(
+#line 671 "array.m"
+  MR_Word mercury__array__param_1,
+#line 671 "array.m"
+  MR_Word mercury__array__param_2,
+#line 671 "array.m"
+  MR_ArrayPtr mercury__array__param_3);
+
+#line 662 "array.m"
+MR_bool MR_CALL 
+mercury__array__map_corresponding_foldl_6_p_3(
+#line 662 "array.m"
+  MR_Word mercury__array__param_1,
+#line 662 "array.m"
+  MR_Word mercury__array__param_2,
+#line 662 "array.m"
+  MR_Word mercury__array__param_3,
+#line 662 "array.m"
+  MR_Word mercury__array__param_4,
+#line 662 "array.m"
+  MR_Word mercury__array__param_5,
+#line 662 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 662 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 662 "array.m"
+  MR_ArrayPtr * mercury__array__param_8,
+#line 662 "array.m"
+  MR_Box mercury__array__param_9,
+#line 662 "array.m"
+  MR_Box * mercury__array__param_10);
+
+#line 659 "array.m"
+void MR_CALL 
+mercury__array__map_corresponding_foldl_6_p_2(
+#line 659 "array.m"
+  MR_Word mercury__array__param_1,
+#line 659 "array.m"
+  MR_Word mercury__array__param_2,
+#line 659 "array.m"
+  MR_Word mercury__array__param_3,
+#line 659 "array.m"
+  MR_Word mercury__array__param_4,
+#line 659 "array.m"
+  MR_Word mercury__array__param_5,
+#line 659 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 659 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 659 "array.m"
+  MR_ArrayPtr * mercury__array__param_8,
+#line 659 "array.m"
+  MR_Box mercury__array__param_9,
+#line 659 "array.m"
+  MR_Box * mercury__array__param_10);
+
+#line 656 "array.m"
+void MR_CALL 
+mercury__array__map_corresponding_foldl_6_p_1(
+#line 656 "array.m"
+  MR_Word mercury__array__param_1,
+#line 656 "array.m"
+  MR_Word mercury__array__param_2,
+#line 656 "array.m"
+  MR_Word mercury__array__param_3,
+#line 656 "array.m"
+  MR_Word mercury__array__param_4,
+#line 656 "array.m"
+  MR_Word mercury__array__param_5,
+#line 656 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 656 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 656 "array.m"
+  MR_ArrayPtr * mercury__array__param_8,
+#line 656 "array.m"
+  MR_Box mercury__array__param_9,
+#line 656 "array.m"
+  MR_Box * mercury__array__param_10);
+
+#line 653 "array.m"
+void MR_CALL 
+mercury__array__map_corresponding_foldl_6_p_0(
+#line 653 "array.m"
+  MR_Word mercury__array__param_1,
+#line 653 "array.m"
+  MR_Word mercury__array__param_2,
+#line 653 "array.m"
+  MR_Word mercury__array__param_3,
+#line 653 "array.m"
+  MR_Word mercury__array__param_4,
+#line 653 "array.m"
+  MR_Word mercury__array__param_5,
+#line 653 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 653 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 653 "array.m"
+  MR_ArrayPtr * mercury__array__param_8,
+#line 653 "array.m"
+  MR_Box mercury__array__param_9,
+#line 653 "array.m"
+  MR_Box * mercury__array__param_10);
+
+#line 638 "array.m"
+MR_bool MR_CALL 
+mercury__array__map_foldl_5_p_3(
+#line 638 "array.m"
+  MR_Word mercury__array__param_1,
+#line 638 "array.m"
+  MR_Word mercury__array__param_2,
+#line 638 "array.m"
+  MR_Word mercury__array__param_3,
+#line 638 "array.m"
+  MR_Word mercury__array__param_4,
+#line 638 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 638 "array.m"
+  MR_ArrayPtr * mercury__array__param_6,
+#line 638 "array.m"
+  MR_Box mercury__array__param_7,
+#line 638 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 636 "array.m"
+void MR_CALL 
+mercury__array__map_foldl_5_p_2(
+#line 636 "array.m"
+  MR_Word mercury__array__param_1,
+#line 636 "array.m"
+  MR_Word mercury__array__param_2,
+#line 636 "array.m"
+  MR_Word mercury__array__param_3,
+#line 636 "array.m"
+  MR_Word mercury__array__param_4,
+#line 636 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 636 "array.m"
+  MR_ArrayPtr * mercury__array__param_6,
+#line 636 "array.m"
+  MR_Box mercury__array__param_7,
+#line 636 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 634 "array.m"
+void MR_CALL 
+mercury__array__map_foldl_5_p_1(
+#line 634 "array.m"
+  MR_Word mercury__array__param_1,
+#line 634 "array.m"
+  MR_Word mercury__array__param_2,
+#line 634 "array.m"
+  MR_Word mercury__array__param_3,
+#line 634 "array.m"
+  MR_Word mercury__array__param_4,
+#line 634 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 634 "array.m"
+  MR_ArrayPtr * mercury__array__param_6,
+#line 634 "array.m"
+  MR_Box mercury__array__param_7,
+#line 634 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 632 "array.m"
+void MR_CALL 
+mercury__array__map_foldl_5_p_0(
+#line 632 "array.m"
+  MR_Word mercury__array__param_1,
+#line 632 "array.m"
+  MR_Word mercury__array__param_2,
+#line 632 "array.m"
+  MR_Word mercury__array__param_3,
+#line 632 "array.m"
+  MR_Word mercury__array__param_4,
+#line 632 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 632 "array.m"
+  MR_ArrayPtr * mercury__array__param_6,
+#line 632 "array.m"
+  MR_Box mercury__array__param_7,
+#line 632 "array.m"
+  MR_Box * mercury__array__param_8);
+
+#line 623 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr5_12_p_5(
+#line 623 "array.m"
+  MR_Word mercury__array__param_1,
+#line 623 "array.m"
+  MR_Word mercury__array__param_2,
+#line 623 "array.m"
+  MR_Word mercury__array__param_3,
+#line 623 "array.m"
+  MR_Word mercury__array__param_4,
+#line 623 "array.m"
+  MR_Word mercury__array__param_5,
+#line 623 "array.m"
+  MR_Word mercury__array__param_6,
+#line 623 "array.m"
+  MR_Word mercury__array__param_7,
+#line 623 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 623 "array.m"
+  MR_Box mercury__array__param_9,
+#line 623 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 623 "array.m"
+  MR_Box mercury__array__param_11,
+#line 623 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 623 "array.m"
+  MR_Box mercury__array__param_13,
+#line 623 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 623 "array.m"
+  MR_Box mercury__array__param_15,
+#line 623 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 623 "array.m"
+  MR_Box mercury__array__param_17,
+#line 623 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 620 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr5_12_p_4(
+#line 620 "array.m"
+  MR_Word mercury__array__param_1,
+#line 620 "array.m"
+  MR_Word mercury__array__param_2,
+#line 620 "array.m"
+  MR_Word mercury__array__param_3,
+#line 620 "array.m"
+  MR_Word mercury__array__param_4,
+#line 620 "array.m"
+  MR_Word mercury__array__param_5,
+#line 620 "array.m"
+  MR_Word mercury__array__param_6,
+#line 620 "array.m"
+  MR_Word mercury__array__param_7,
+#line 620 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 620 "array.m"
+  MR_Box mercury__array__param_9,
+#line 620 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 620 "array.m"
+  MR_Box mercury__array__param_11,
+#line 620 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 620 "array.m"
+  MR_Box mercury__array__param_13,
+#line 620 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 620 "array.m"
+  MR_Box mercury__array__param_15,
+#line 620 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 620 "array.m"
+  MR_Box mercury__array__param_17,
+#line 620 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 617 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr5_12_p_3(
+#line 617 "array.m"
+  MR_Word mercury__array__param_1,
+#line 617 "array.m"
+  MR_Word mercury__array__param_2,
+#line 617 "array.m"
+  MR_Word mercury__array__param_3,
+#line 617 "array.m"
+  MR_Word mercury__array__param_4,
+#line 617 "array.m"
+  MR_Word mercury__array__param_5,
+#line 617 "array.m"
+  MR_Word mercury__array__param_6,
+#line 617 "array.m"
+  MR_Word mercury__array__param_7,
+#line 617 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 617 "array.m"
+  MR_Box mercury__array__param_9,
+#line 617 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 617 "array.m"
+  MR_Box mercury__array__param_11,
+#line 617 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 617 "array.m"
+  MR_Box mercury__array__param_13,
+#line 617 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 617 "array.m"
+  MR_Box mercury__array__param_15,
+#line 617 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 617 "array.m"
+  MR_Box mercury__array__param_17,
+#line 617 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 614 "array.m"
+void MR_CALL 
+mercury__array__foldr5_12_p_2(
+#line 614 "array.m"
+  MR_Word mercury__array__param_1,
+#line 614 "array.m"
+  MR_Word mercury__array__param_2,
+#line 614 "array.m"
+  MR_Word mercury__array__param_3,
+#line 614 "array.m"
+  MR_Word mercury__array__param_4,
+#line 614 "array.m"
+  MR_Word mercury__array__param_5,
+#line 614 "array.m"
+  MR_Word mercury__array__param_6,
+#line 614 "array.m"
+  MR_Word mercury__array__param_7,
+#line 614 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 614 "array.m"
+  MR_Box mercury__array__param_9,
+#line 614 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 614 "array.m"
+  MR_Box mercury__array__param_11,
+#line 614 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 614 "array.m"
+  MR_Box mercury__array__param_13,
+#line 614 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 614 "array.m"
+  MR_Box mercury__array__param_15,
+#line 614 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 614 "array.m"
+  MR_Box mercury__array__param_17,
+#line 614 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 611 "array.m"
+void MR_CALL 
+mercury__array__foldr5_12_p_1(
+#line 611 "array.m"
+  MR_Word mercury__array__param_1,
+#line 611 "array.m"
+  MR_Word mercury__array__param_2,
+#line 611 "array.m"
+  MR_Word mercury__array__param_3,
+#line 611 "array.m"
+  MR_Word mercury__array__param_4,
+#line 611 "array.m"
+  MR_Word mercury__array__param_5,
+#line 611 "array.m"
+  MR_Word mercury__array__param_6,
+#line 611 "array.m"
+  MR_Word mercury__array__param_7,
+#line 611 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 611 "array.m"
+  MR_Box mercury__array__param_9,
+#line 611 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 611 "array.m"
+  MR_Box mercury__array__param_11,
+#line 611 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 611 "array.m"
+  MR_Box mercury__array__param_13,
+#line 611 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 611 "array.m"
+  MR_Box mercury__array__param_15,
+#line 611 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 611 "array.m"
+  MR_Box mercury__array__param_17,
+#line 611 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 608 "array.m"
+void MR_CALL 
+mercury__array__foldr5_12_p_0(
+#line 608 "array.m"
+  MR_Word mercury__array__param_1,
+#line 608 "array.m"
+  MR_Word mercury__array__param_2,
+#line 608 "array.m"
+  MR_Word mercury__array__param_3,
+#line 608 "array.m"
+  MR_Word mercury__array__param_4,
+#line 608 "array.m"
+  MR_Word mercury__array__param_5,
+#line 608 "array.m"
+  MR_Word mercury__array__param_6,
+#line 608 "array.m"
+  MR_Word mercury__array__param_7,
+#line 608 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 608 "array.m"
+  MR_Box mercury__array__param_9,
+#line 608 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 608 "array.m"
+  MR_Box mercury__array__param_11,
+#line 608 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 608 "array.m"
+  MR_Box mercury__array__param_13,
+#line 608 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 608 "array.m"
+  MR_Box mercury__array__param_15,
+#line 608 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 608 "array.m"
+  MR_Box mercury__array__param_17,
+#line 608 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 601 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr4_10_p_5(
+#line 601 "array.m"
+  MR_Word mercury__array__param_1,
+#line 601 "array.m"
+  MR_Word mercury__array__param_2,
+#line 601 "array.m"
+  MR_Word mercury__array__param_3,
+#line 601 "array.m"
+  MR_Word mercury__array__param_4,
+#line 601 "array.m"
+  MR_Word mercury__array__param_5,
+#line 601 "array.m"
+  MR_Word mercury__array__param_6,
+#line 601 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 601 "array.m"
+  MR_Box mercury__array__param_8,
+#line 601 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 601 "array.m"
+  MR_Box mercury__array__param_10,
+#line 601 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 601 "array.m"
+  MR_Box mercury__array__param_12,
+#line 601 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 601 "array.m"
+  MR_Box mercury__array__param_14,
+#line 601 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 599 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr4_10_p_4(
+#line 599 "array.m"
+  MR_Word mercury__array__param_1,
+#line 599 "array.m"
+  MR_Word mercury__array__param_2,
+#line 599 "array.m"
+  MR_Word mercury__array__param_3,
+#line 599 "array.m"
+  MR_Word mercury__array__param_4,
+#line 599 "array.m"
+  MR_Word mercury__array__param_5,
+#line 599 "array.m"
+  MR_Word mercury__array__param_6,
+#line 599 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 599 "array.m"
+  MR_Box mercury__array__param_8,
+#line 599 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 599 "array.m"
+  MR_Box mercury__array__param_10,
+#line 599 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 599 "array.m"
+  MR_Box mercury__array__param_12,
+#line 599 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 599 "array.m"
+  MR_Box mercury__array__param_14,
+#line 599 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 597 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr4_10_p_3(
+#line 597 "array.m"
+  MR_Word mercury__array__param_1,
+#line 597 "array.m"
+  MR_Word mercury__array__param_2,
+#line 597 "array.m"
+  MR_Word mercury__array__param_3,
+#line 597 "array.m"
+  MR_Word mercury__array__param_4,
+#line 597 "array.m"
+  MR_Word mercury__array__param_5,
+#line 597 "array.m"
+  MR_Word mercury__array__param_6,
+#line 597 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 597 "array.m"
+  MR_Box mercury__array__param_8,
+#line 597 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 597 "array.m"
+  MR_Box mercury__array__param_10,
+#line 597 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 597 "array.m"
+  MR_Box mercury__array__param_12,
+#line 597 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 597 "array.m"
+  MR_Box mercury__array__param_14,
+#line 597 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 595 "array.m"
+void MR_CALL 
+mercury__array__foldr4_10_p_2(
+#line 595 "array.m"
+  MR_Word mercury__array__param_1,
+#line 595 "array.m"
+  MR_Word mercury__array__param_2,
+#line 595 "array.m"
+  MR_Word mercury__array__param_3,
+#line 595 "array.m"
+  MR_Word mercury__array__param_4,
+#line 595 "array.m"
+  MR_Word mercury__array__param_5,
+#line 595 "array.m"
+  MR_Word mercury__array__param_6,
+#line 595 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 595 "array.m"
+  MR_Box mercury__array__param_8,
+#line 595 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 595 "array.m"
+  MR_Box mercury__array__param_10,
+#line 595 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 595 "array.m"
+  MR_Box mercury__array__param_12,
+#line 595 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 595 "array.m"
+  MR_Box mercury__array__param_14,
+#line 595 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 593 "array.m"
+void MR_CALL 
+mercury__array__foldr4_10_p_1(
+#line 593 "array.m"
+  MR_Word mercury__array__param_1,
+#line 593 "array.m"
+  MR_Word mercury__array__param_2,
+#line 593 "array.m"
+  MR_Word mercury__array__param_3,
+#line 593 "array.m"
+  MR_Word mercury__array__param_4,
+#line 593 "array.m"
+  MR_Word mercury__array__param_5,
+#line 593 "array.m"
+  MR_Word mercury__array__param_6,
+#line 593 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 593 "array.m"
+  MR_Box mercury__array__param_8,
+#line 593 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 593 "array.m"
+  MR_Box mercury__array__param_10,
+#line 593 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 593 "array.m"
+  MR_Box mercury__array__param_12,
+#line 593 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 593 "array.m"
+  MR_Box mercury__array__param_14,
+#line 593 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 591 "array.m"
+void MR_CALL 
+mercury__array__foldr4_10_p_0(
+#line 591 "array.m"
+  MR_Word mercury__array__param_1,
+#line 591 "array.m"
+  MR_Word mercury__array__param_2,
+#line 591 "array.m"
+  MR_Word mercury__array__param_3,
+#line 591 "array.m"
+  MR_Word mercury__array__param_4,
+#line 591 "array.m"
+  MR_Word mercury__array__param_5,
+#line 591 "array.m"
+  MR_Word mercury__array__param_6,
+#line 591 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 591 "array.m"
+  MR_Box mercury__array__param_8,
+#line 591 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 591 "array.m"
+  MR_Box mercury__array__param_10,
+#line 591 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 591 "array.m"
+  MR_Box mercury__array__param_12,
+#line 591 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 591 "array.m"
+  MR_Box mercury__array__param_14,
+#line 591 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 584 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr3_8_p_5(
+#line 584 "array.m"
+  MR_Word mercury__array__param_1,
+#line 584 "array.m"
+  MR_Word mercury__array__param_2,
+#line 584 "array.m"
+  MR_Word mercury__array__param_3,
+#line 584 "array.m"
+  MR_Word mercury__array__param_4,
+#line 584 "array.m"
+  MR_Word mercury__array__param_5,
+#line 584 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 584 "array.m"
+  MR_Box mercury__array__param_7,
+#line 584 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 584 "array.m"
+  MR_Box mercury__array__param_9,
+#line 584 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 584 "array.m"
+  MR_Box mercury__array__param_11,
+#line 584 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 582 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr3_8_p_4(
+#line 582 "array.m"
+  MR_Word mercury__array__param_1,
+#line 582 "array.m"
+  MR_Word mercury__array__param_2,
+#line 582 "array.m"
+  MR_Word mercury__array__param_3,
+#line 582 "array.m"
+  MR_Word mercury__array__param_4,
+#line 582 "array.m"
+  MR_Word mercury__array__param_5,
+#line 582 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 582 "array.m"
+  MR_Box mercury__array__param_7,
+#line 582 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 582 "array.m"
+  MR_Box mercury__array__param_9,
+#line 582 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 582 "array.m"
+  MR_Box mercury__array__param_11,
+#line 582 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 580 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr3_8_p_3(
+#line 580 "array.m"
+  MR_Word mercury__array__param_1,
+#line 580 "array.m"
+  MR_Word mercury__array__param_2,
+#line 580 "array.m"
+  MR_Word mercury__array__param_3,
+#line 580 "array.m"
+  MR_Word mercury__array__param_4,
+#line 580 "array.m"
+  MR_Word mercury__array__param_5,
+#line 580 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 580 "array.m"
+  MR_Box mercury__array__param_7,
+#line 580 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 580 "array.m"
+  MR_Box mercury__array__param_9,
+#line 580 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 580 "array.m"
+  MR_Box mercury__array__param_11,
+#line 580 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 578 "array.m"
+void MR_CALL 
+mercury__array__foldr3_8_p_2(
+#line 578 "array.m"
+  MR_Word mercury__array__param_1,
+#line 578 "array.m"
+  MR_Word mercury__array__param_2,
+#line 578 "array.m"
+  MR_Word mercury__array__param_3,
+#line 578 "array.m"
+  MR_Word mercury__array__param_4,
+#line 578 "array.m"
+  MR_Word mercury__array__param_5,
+#line 578 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 578 "array.m"
+  MR_Box mercury__array__param_7,
+#line 578 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 578 "array.m"
+  MR_Box mercury__array__param_9,
+#line 578 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 578 "array.m"
+  MR_Box mercury__array__param_11,
+#line 578 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 576 "array.m"
+void MR_CALL 
+mercury__array__foldr3_8_p_1(
+#line 576 "array.m"
+  MR_Word mercury__array__param_1,
+#line 576 "array.m"
+  MR_Word mercury__array__param_2,
+#line 576 "array.m"
+  MR_Word mercury__array__param_3,
+#line 576 "array.m"
+  MR_Word mercury__array__param_4,
+#line 576 "array.m"
+  MR_Word mercury__array__param_5,
+#line 576 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 576 "array.m"
+  MR_Box mercury__array__param_7,
+#line 576 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 576 "array.m"
+  MR_Box mercury__array__param_9,
+#line 576 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 576 "array.m"
+  MR_Box mercury__array__param_11,
+#line 576 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 574 "array.m"
+void MR_CALL 
+mercury__array__foldr3_8_p_0(
+#line 574 "array.m"
+  MR_Word mercury__array__param_1,
+#line 574 "array.m"
+  MR_Word mercury__array__param_2,
+#line 574 "array.m"
+  MR_Word mercury__array__param_3,
+#line 574 "array.m"
+  MR_Word mercury__array__param_4,
+#line 574 "array.m"
+  MR_Word mercury__array__param_5,
+#line 574 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 574 "array.m"
+  MR_Box mercury__array__param_7,
+#line 574 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 574 "array.m"
+  MR_Box mercury__array__param_9,
+#line 574 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 574 "array.m"
+  MR_Box mercury__array__param_11,
+#line 574 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 567 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr2_6_p_5(
+#line 567 "array.m"
+  MR_Word mercury__array__param_1,
+#line 567 "array.m"
+  MR_Word mercury__array__param_2,
+#line 567 "array.m"
+  MR_Word mercury__array__param_3,
+#line 567 "array.m"
+  MR_Word mercury__array__param_4,
+#line 567 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 567 "array.m"
+  MR_Box mercury__array__param_6,
+#line 567 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 567 "array.m"
+  MR_Box mercury__array__param_8,
+#line 567 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 565 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr2_6_p_4(
+#line 565 "array.m"
+  MR_Word mercury__array__param_1,
+#line 565 "array.m"
+  MR_Word mercury__array__param_2,
+#line 565 "array.m"
+  MR_Word mercury__array__param_3,
+#line 565 "array.m"
+  MR_Word mercury__array__param_4,
+#line 565 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 565 "array.m"
+  MR_Box mercury__array__param_6,
+#line 565 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 565 "array.m"
+  MR_Box mercury__array__param_8,
+#line 565 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 563 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr2_6_p_3(
+#line 563 "array.m"
+  MR_Word mercury__array__param_1,
+#line 563 "array.m"
+  MR_Word mercury__array__param_2,
+#line 563 "array.m"
+  MR_Word mercury__array__param_3,
+#line 563 "array.m"
+  MR_Word mercury__array__param_4,
+#line 563 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 563 "array.m"
+  MR_Box mercury__array__param_6,
+#line 563 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 563 "array.m"
+  MR_Box mercury__array__param_8,
+#line 563 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 561 "array.m"
+void MR_CALL 
+mercury__array__foldr2_6_p_2(
+#line 561 "array.m"
+  MR_Word mercury__array__param_1,
+#line 561 "array.m"
+  MR_Word mercury__array__param_2,
+#line 561 "array.m"
+  MR_Word mercury__array__param_3,
+#line 561 "array.m"
+  MR_Word mercury__array__param_4,
+#line 561 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 561 "array.m"
+  MR_Box mercury__array__param_6,
+#line 561 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 561 "array.m"
+  MR_Box mercury__array__param_8,
+#line 561 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 559 "array.m"
+void MR_CALL 
+mercury__array__foldr2_6_p_1(
+#line 559 "array.m"
+  MR_Word mercury__array__param_1,
+#line 559 "array.m"
+  MR_Word mercury__array__param_2,
+#line 559 "array.m"
+  MR_Word mercury__array__param_3,
+#line 559 "array.m"
+  MR_Word mercury__array__param_4,
+#line 559 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 559 "array.m"
+  MR_Box mercury__array__param_6,
+#line 559 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 559 "array.m"
+  MR_Box mercury__array__param_8,
+#line 559 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 557 "array.m"
+void MR_CALL 
+mercury__array__foldr2_6_p_0(
+#line 557 "array.m"
+  MR_Word mercury__array__param_1,
+#line 557 "array.m"
+  MR_Word mercury__array__param_2,
+#line 557 "array.m"
+  MR_Word mercury__array__param_3,
+#line 557 "array.m"
+  MR_Word mercury__array__param_4,
+#line 557 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 557 "array.m"
+  MR_Box mercury__array__param_6,
+#line 557 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 557 "array.m"
+  MR_Box mercury__array__param_8,
+#line 557 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 552 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr_4_p_5(
+#line 552 "array.m"
+  MR_Word mercury__array__param_1,
+#line 552 "array.m"
+  MR_Word mercury__array__param_2,
+#line 552 "array.m"
+  MR_Word mercury__array__param_3,
+#line 552 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 552 "array.m"
+  MR_Box mercury__array__param_5,
+#line 552 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 551 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr_4_p_4(
+#line 551 "array.m"
+  MR_Word mercury__array__param_1,
+#line 551 "array.m"
+  MR_Word mercury__array__param_2,
+#line 551 "array.m"
+  MR_Word mercury__array__param_3,
+#line 551 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 551 "array.m"
+  MR_Box mercury__array__param_5,
+#line 551 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 550 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldr_4_p_3(
+#line 550 "array.m"
+  MR_Word mercury__array__param_1,
+#line 550 "array.m"
+  MR_Word mercury__array__param_2,
+#line 550 "array.m"
+  MR_Word mercury__array__param_3,
+#line 550 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 550 "array.m"
+  MR_Box mercury__array__param_5,
+#line 550 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 549 "array.m"
+void MR_CALL 
+mercury__array__foldr_4_p_2(
+#line 549 "array.m"
+  MR_Word mercury__array__param_1,
+#line 549 "array.m"
+  MR_Word mercury__array__param_2,
+#line 549 "array.m"
+  MR_Word mercury__array__param_3,
+#line 549 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 549 "array.m"
+  MR_Box mercury__array__param_5,
+#line 549 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 548 "array.m"
+void MR_CALL 
+mercury__array__foldr_4_p_1(
+#line 548 "array.m"
+  MR_Word mercury__array__param_1,
+#line 548 "array.m"
+  MR_Word mercury__array__param_2,
+#line 548 "array.m"
+  MR_Word mercury__array__param_3,
+#line 548 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 548 "array.m"
+  MR_Box mercury__array__param_5,
+#line 548 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 547 "array.m"
+void MR_CALL 
+mercury__array__foldr_4_p_0(
+#line 547 "array.m"
+  MR_Word mercury__array__param_1,
+#line 547 "array.m"
+  MR_Word mercury__array__param_2,
+#line 547 "array.m"
+  MR_Word mercury__array__param_3,
+#line 547 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 547 "array.m"
+  MR_Box mercury__array__param_5,
+#line 547 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 540 "array.m"
+MR_Box MR_CALL 
+mercury__array__foldr_3_f_1(
+#line 540 "array.m"
+  MR_Word mercury__array__param_1,
+#line 540 "array.m"
+  MR_Word mercury__array__param_2,
+#line 540 "array.m"
+  MR_Word mercury__array__param_3,
+#line 540 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 540 "array.m"
+  MR_Box mercury__array__param_5);
+
+#line 538 "array.m"
+MR_Box MR_CALL 
+mercury__array__foldr_3_f_0(
+#line 538 "array.m"
+  MR_Word mercury__array__param_1,
+#line 538 "array.m"
+  MR_Word mercury__array__param_2,
+#line 538 "array.m"
+  MR_Word mercury__array__param_3,
+#line 538 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 538 "array.m"
+  MR_Box mercury__array__param_5);
+
+#line 528 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl5_12_p_5(
+#line 528 "array.m"
+  MR_Word mercury__array__param_1,
+#line 528 "array.m"
+  MR_Word mercury__array__param_2,
+#line 528 "array.m"
+  MR_Word mercury__array__param_3,
+#line 528 "array.m"
+  MR_Word mercury__array__param_4,
+#line 528 "array.m"
+  MR_Word mercury__array__param_5,
+#line 528 "array.m"
+  MR_Word mercury__array__param_6,
+#line 528 "array.m"
+  MR_Word mercury__array__param_7,
+#line 528 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 528 "array.m"
+  MR_Box mercury__array__param_9,
+#line 528 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 528 "array.m"
+  MR_Box mercury__array__param_11,
+#line 528 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 528 "array.m"
+  MR_Box mercury__array__param_13,
+#line 528 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 528 "array.m"
+  MR_Box mercury__array__param_15,
+#line 528 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 528 "array.m"
+  MR_Box mercury__array__param_17,
+#line 528 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 525 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl5_12_p_4(
+#line 525 "array.m"
+  MR_Word mercury__array__param_1,
+#line 525 "array.m"
+  MR_Word mercury__array__param_2,
+#line 525 "array.m"
+  MR_Word mercury__array__param_3,
+#line 525 "array.m"
+  MR_Word mercury__array__param_4,
+#line 525 "array.m"
+  MR_Word mercury__array__param_5,
+#line 525 "array.m"
+  MR_Word mercury__array__param_6,
+#line 525 "array.m"
+  MR_Word mercury__array__param_7,
+#line 525 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 525 "array.m"
+  MR_Box mercury__array__param_9,
+#line 525 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 525 "array.m"
+  MR_Box mercury__array__param_11,
+#line 525 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 525 "array.m"
+  MR_Box mercury__array__param_13,
+#line 525 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 525 "array.m"
+  MR_Box mercury__array__param_15,
+#line 525 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 525 "array.m"
+  MR_Box mercury__array__param_17,
+#line 525 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 522 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl5_12_p_3(
+#line 522 "array.m"
+  MR_Word mercury__array__param_1,
+#line 522 "array.m"
+  MR_Word mercury__array__param_2,
+#line 522 "array.m"
+  MR_Word mercury__array__param_3,
+#line 522 "array.m"
+  MR_Word mercury__array__param_4,
+#line 522 "array.m"
+  MR_Word mercury__array__param_5,
+#line 522 "array.m"
+  MR_Word mercury__array__param_6,
+#line 522 "array.m"
+  MR_Word mercury__array__param_7,
+#line 522 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 522 "array.m"
+  MR_Box mercury__array__param_9,
+#line 522 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 522 "array.m"
+  MR_Box mercury__array__param_11,
+#line 522 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 522 "array.m"
+  MR_Box mercury__array__param_13,
+#line 522 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 522 "array.m"
+  MR_Box mercury__array__param_15,
+#line 522 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 522 "array.m"
+  MR_Box mercury__array__param_17,
+#line 522 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 519 "array.m"
+void MR_CALL 
+mercury__array__foldl5_12_p_2(
+#line 519 "array.m"
+  MR_Word mercury__array__param_1,
+#line 519 "array.m"
+  MR_Word mercury__array__param_2,
+#line 519 "array.m"
+  MR_Word mercury__array__param_3,
+#line 519 "array.m"
+  MR_Word mercury__array__param_4,
+#line 519 "array.m"
+  MR_Word mercury__array__param_5,
+#line 519 "array.m"
+  MR_Word mercury__array__param_6,
+#line 519 "array.m"
+  MR_Word mercury__array__param_7,
+#line 519 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 519 "array.m"
+  MR_Box mercury__array__param_9,
+#line 519 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 519 "array.m"
+  MR_Box mercury__array__param_11,
+#line 519 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 519 "array.m"
+  MR_Box mercury__array__param_13,
+#line 519 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 519 "array.m"
+  MR_Box mercury__array__param_15,
+#line 519 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 519 "array.m"
+  MR_Box mercury__array__param_17,
+#line 519 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 516 "array.m"
+void MR_CALL 
+mercury__array__foldl5_12_p_1(
+#line 516 "array.m"
+  MR_Word mercury__array__param_1,
+#line 516 "array.m"
+  MR_Word mercury__array__param_2,
+#line 516 "array.m"
+  MR_Word mercury__array__param_3,
+#line 516 "array.m"
+  MR_Word mercury__array__param_4,
+#line 516 "array.m"
+  MR_Word mercury__array__param_5,
+#line 516 "array.m"
+  MR_Word mercury__array__param_6,
+#line 516 "array.m"
+  MR_Word mercury__array__param_7,
+#line 516 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 516 "array.m"
+  MR_Box mercury__array__param_9,
+#line 516 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 516 "array.m"
+  MR_Box mercury__array__param_11,
+#line 516 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 516 "array.m"
+  MR_Box mercury__array__param_13,
+#line 516 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 516 "array.m"
+  MR_Box mercury__array__param_15,
+#line 516 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 516 "array.m"
+  MR_Box mercury__array__param_17,
+#line 516 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 513 "array.m"
+void MR_CALL 
+mercury__array__foldl5_12_p_0(
+#line 513 "array.m"
+  MR_Word mercury__array__param_1,
+#line 513 "array.m"
+  MR_Word mercury__array__param_2,
+#line 513 "array.m"
+  MR_Word mercury__array__param_3,
+#line 513 "array.m"
+  MR_Word mercury__array__param_4,
+#line 513 "array.m"
+  MR_Word mercury__array__param_5,
+#line 513 "array.m"
+  MR_Word mercury__array__param_6,
+#line 513 "array.m"
+  MR_Word mercury__array__param_7,
+#line 513 "array.m"
+  MR_ArrayPtr mercury__array__param_8,
+#line 513 "array.m"
+  MR_Box mercury__array__param_9,
+#line 513 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 513 "array.m"
+  MR_Box mercury__array__param_11,
+#line 513 "array.m"
+  MR_Box * mercury__array__param_12,
+#line 513 "array.m"
+  MR_Box mercury__array__param_13,
+#line 513 "array.m"
+  MR_Box * mercury__array__param_14,
+#line 513 "array.m"
+  MR_Box mercury__array__param_15,
+#line 513 "array.m"
+  MR_Box * mercury__array__param_16,
+#line 513 "array.m"
+  MR_Box mercury__array__param_17,
+#line 513 "array.m"
+  MR_Box * mercury__array__param_18);
+
+#line 506 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl4_10_p_5(
+#line 506 "array.m"
+  MR_Word mercury__array__param_1,
+#line 506 "array.m"
+  MR_Word mercury__array__param_2,
+#line 506 "array.m"
+  MR_Word mercury__array__param_3,
+#line 506 "array.m"
+  MR_Word mercury__array__param_4,
+#line 506 "array.m"
+  MR_Word mercury__array__param_5,
+#line 506 "array.m"
+  MR_Word mercury__array__param_6,
+#line 506 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 506 "array.m"
+  MR_Box mercury__array__param_8,
+#line 506 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 506 "array.m"
+  MR_Box mercury__array__param_10,
+#line 506 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 506 "array.m"
+  MR_Box mercury__array__param_12,
+#line 506 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 506 "array.m"
+  MR_Box mercury__array__param_14,
+#line 506 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 504 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl4_10_p_4(
+#line 504 "array.m"
+  MR_Word mercury__array__param_1,
+#line 504 "array.m"
+  MR_Word mercury__array__param_2,
+#line 504 "array.m"
+  MR_Word mercury__array__param_3,
+#line 504 "array.m"
+  MR_Word mercury__array__param_4,
+#line 504 "array.m"
+  MR_Word mercury__array__param_5,
+#line 504 "array.m"
+  MR_Word mercury__array__param_6,
+#line 504 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 504 "array.m"
+  MR_Box mercury__array__param_8,
+#line 504 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 504 "array.m"
+  MR_Box mercury__array__param_10,
+#line 504 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 504 "array.m"
+  MR_Box mercury__array__param_12,
+#line 504 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 504 "array.m"
+  MR_Box mercury__array__param_14,
+#line 504 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 502 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl4_10_p_3(
+#line 502 "array.m"
+  MR_Word mercury__array__param_1,
+#line 502 "array.m"
+  MR_Word mercury__array__param_2,
+#line 502 "array.m"
+  MR_Word mercury__array__param_3,
+#line 502 "array.m"
+  MR_Word mercury__array__param_4,
+#line 502 "array.m"
+  MR_Word mercury__array__param_5,
+#line 502 "array.m"
+  MR_Word mercury__array__param_6,
+#line 502 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 502 "array.m"
+  MR_Box mercury__array__param_8,
+#line 502 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 502 "array.m"
+  MR_Box mercury__array__param_10,
+#line 502 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 502 "array.m"
+  MR_Box mercury__array__param_12,
+#line 502 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 502 "array.m"
+  MR_Box mercury__array__param_14,
+#line 502 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 500 "array.m"
+void MR_CALL 
+mercury__array__foldl4_10_p_2(
+#line 500 "array.m"
+  MR_Word mercury__array__param_1,
+#line 500 "array.m"
+  MR_Word mercury__array__param_2,
+#line 500 "array.m"
+  MR_Word mercury__array__param_3,
+#line 500 "array.m"
+  MR_Word mercury__array__param_4,
+#line 500 "array.m"
+  MR_Word mercury__array__param_5,
+#line 500 "array.m"
+  MR_Word mercury__array__param_6,
+#line 500 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 500 "array.m"
+  MR_Box mercury__array__param_8,
+#line 500 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 500 "array.m"
+  MR_Box mercury__array__param_10,
+#line 500 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 500 "array.m"
+  MR_Box mercury__array__param_12,
+#line 500 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 500 "array.m"
+  MR_Box mercury__array__param_14,
+#line 500 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 498 "array.m"
+void MR_CALL 
+mercury__array__foldl4_10_p_1(
+#line 498 "array.m"
+  MR_Word mercury__array__param_1,
+#line 498 "array.m"
+  MR_Word mercury__array__param_2,
+#line 498 "array.m"
+  MR_Word mercury__array__param_3,
+#line 498 "array.m"
+  MR_Word mercury__array__param_4,
+#line 498 "array.m"
+  MR_Word mercury__array__param_5,
+#line 498 "array.m"
+  MR_Word mercury__array__param_6,
+#line 498 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 498 "array.m"
+  MR_Box mercury__array__param_8,
+#line 498 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 498 "array.m"
+  MR_Box mercury__array__param_10,
+#line 498 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 498 "array.m"
+  MR_Box mercury__array__param_12,
+#line 498 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 498 "array.m"
+  MR_Box mercury__array__param_14,
+#line 498 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 496 "array.m"
+void MR_CALL 
+mercury__array__foldl4_10_p_0(
+#line 496 "array.m"
+  MR_Word mercury__array__param_1,
+#line 496 "array.m"
+  MR_Word mercury__array__param_2,
+#line 496 "array.m"
+  MR_Word mercury__array__param_3,
+#line 496 "array.m"
+  MR_Word mercury__array__param_4,
+#line 496 "array.m"
+  MR_Word mercury__array__param_5,
+#line 496 "array.m"
+  MR_Word mercury__array__param_6,
+#line 496 "array.m"
+  MR_ArrayPtr mercury__array__param_7,
+#line 496 "array.m"
+  MR_Box mercury__array__param_8,
+#line 496 "array.m"
+  MR_Box * mercury__array__param_9,
+#line 496 "array.m"
+  MR_Box mercury__array__param_10,
+#line 496 "array.m"
+  MR_Box * mercury__array__param_11,
+#line 496 "array.m"
+  MR_Box mercury__array__param_12,
+#line 496 "array.m"
+  MR_Box * mercury__array__param_13,
+#line 496 "array.m"
+  MR_Box mercury__array__param_14,
+#line 496 "array.m"
+  MR_Box * mercury__array__param_15);
+
+#line 489 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl3_8_p_5(
+#line 489 "array.m"
+  MR_Word mercury__array__param_1,
+#line 489 "array.m"
+  MR_Word mercury__array__param_2,
+#line 489 "array.m"
+  MR_Word mercury__array__param_3,
+#line 489 "array.m"
+  MR_Word mercury__array__param_4,
+#line 489 "array.m"
+  MR_Word mercury__array__param_5,
+#line 489 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 489 "array.m"
+  MR_Box mercury__array__param_7,
+#line 489 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 489 "array.m"
+  MR_Box mercury__array__param_9,
+#line 489 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 489 "array.m"
+  MR_Box mercury__array__param_11,
+#line 489 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 487 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl3_8_p_4(
+#line 487 "array.m"
+  MR_Word mercury__array__param_1,
+#line 487 "array.m"
+  MR_Word mercury__array__param_2,
+#line 487 "array.m"
+  MR_Word mercury__array__param_3,
+#line 487 "array.m"
+  MR_Word mercury__array__param_4,
+#line 487 "array.m"
+  MR_Word mercury__array__param_5,
+#line 487 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 487 "array.m"
+  MR_Box mercury__array__param_7,
+#line 487 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 487 "array.m"
+  MR_Box mercury__array__param_9,
+#line 487 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 487 "array.m"
+  MR_Box mercury__array__param_11,
+#line 487 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 485 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl3_8_p_3(
+#line 485 "array.m"
+  MR_Word mercury__array__param_1,
+#line 485 "array.m"
+  MR_Word mercury__array__param_2,
+#line 485 "array.m"
+  MR_Word mercury__array__param_3,
+#line 485 "array.m"
+  MR_Word mercury__array__param_4,
+#line 485 "array.m"
+  MR_Word mercury__array__param_5,
+#line 485 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 485 "array.m"
+  MR_Box mercury__array__param_7,
+#line 485 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 485 "array.m"
+  MR_Box mercury__array__param_9,
+#line 485 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 485 "array.m"
+  MR_Box mercury__array__param_11,
+#line 485 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 483 "array.m"
+void MR_CALL 
+mercury__array__foldl3_8_p_2(
+#line 483 "array.m"
+  MR_Word mercury__array__param_1,
+#line 483 "array.m"
+  MR_Word mercury__array__param_2,
+#line 483 "array.m"
+  MR_Word mercury__array__param_3,
+#line 483 "array.m"
+  MR_Word mercury__array__param_4,
+#line 483 "array.m"
+  MR_Word mercury__array__param_5,
+#line 483 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 483 "array.m"
+  MR_Box mercury__array__param_7,
+#line 483 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 483 "array.m"
+  MR_Box mercury__array__param_9,
+#line 483 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 483 "array.m"
+  MR_Box mercury__array__param_11,
+#line 483 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 481 "array.m"
+void MR_CALL 
+mercury__array__foldl3_8_p_1(
+#line 481 "array.m"
+  MR_Word mercury__array__param_1,
+#line 481 "array.m"
+  MR_Word mercury__array__param_2,
+#line 481 "array.m"
+  MR_Word mercury__array__param_3,
+#line 481 "array.m"
+  MR_Word mercury__array__param_4,
+#line 481 "array.m"
+  MR_Word mercury__array__param_5,
+#line 481 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 481 "array.m"
+  MR_Box mercury__array__param_7,
+#line 481 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 481 "array.m"
+  MR_Box mercury__array__param_9,
+#line 481 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 481 "array.m"
+  MR_Box mercury__array__param_11,
+#line 481 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 479 "array.m"
+void MR_CALL 
+mercury__array__foldl3_8_p_0(
+#line 479 "array.m"
+  MR_Word mercury__array__param_1,
+#line 479 "array.m"
+  MR_Word mercury__array__param_2,
+#line 479 "array.m"
+  MR_Word mercury__array__param_3,
+#line 479 "array.m"
+  MR_Word mercury__array__param_4,
+#line 479 "array.m"
+  MR_Word mercury__array__param_5,
+#line 479 "array.m"
+  MR_ArrayPtr mercury__array__param_6,
+#line 479 "array.m"
+  MR_Box mercury__array__param_7,
+#line 479 "array.m"
+  MR_Box * mercury__array__param_8,
+#line 479 "array.m"
+  MR_Box mercury__array__param_9,
+#line 479 "array.m"
+  MR_Box * mercury__array__param_10,
+#line 479 "array.m"
+  MR_Box mercury__array__param_11,
+#line 479 "array.m"
+  MR_Box * mercury__array__param_12);
+
+#line 472 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl2_6_p_5(
+#line 472 "array.m"
+  MR_Word mercury__array__param_1,
+#line 472 "array.m"
+  MR_Word mercury__array__param_2,
+#line 472 "array.m"
+  MR_Word mercury__array__param_3,
+#line 472 "array.m"
+  MR_Word mercury__array__param_4,
+#line 472 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 472 "array.m"
+  MR_Box mercury__array__param_6,
+#line 472 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 472 "array.m"
+  MR_Box mercury__array__param_8,
+#line 472 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 470 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl2_6_p_4(
+#line 470 "array.m"
+  MR_Word mercury__array__param_1,
+#line 470 "array.m"
+  MR_Word mercury__array__param_2,
+#line 470 "array.m"
+  MR_Word mercury__array__param_3,
+#line 470 "array.m"
+  MR_Word mercury__array__param_4,
+#line 470 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 470 "array.m"
+  MR_Box mercury__array__param_6,
+#line 470 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 470 "array.m"
+  MR_Box mercury__array__param_8,
+#line 470 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 468 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl2_6_p_3(
+#line 468 "array.m"
+  MR_Word mercury__array__param_1,
+#line 468 "array.m"
+  MR_Word mercury__array__param_2,
+#line 468 "array.m"
+  MR_Word mercury__array__param_3,
+#line 468 "array.m"
+  MR_Word mercury__array__param_4,
+#line 468 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 468 "array.m"
+  MR_Box mercury__array__param_6,
+#line 468 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 468 "array.m"
+  MR_Box mercury__array__param_8,
+#line 468 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 466 "array.m"
+void MR_CALL 
+mercury__array__foldl2_6_p_2(
+#line 466 "array.m"
+  MR_Word mercury__array__param_1,
+#line 466 "array.m"
+  MR_Word mercury__array__param_2,
+#line 466 "array.m"
+  MR_Word mercury__array__param_3,
+#line 466 "array.m"
+  MR_Word mercury__array__param_4,
+#line 466 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 466 "array.m"
+  MR_Box mercury__array__param_6,
+#line 466 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 466 "array.m"
+  MR_Box mercury__array__param_8,
+#line 466 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 464 "array.m"
+void MR_CALL 
+mercury__array__foldl2_6_p_1(
+#line 464 "array.m"
+  MR_Word mercury__array__param_1,
+#line 464 "array.m"
+  MR_Word mercury__array__param_2,
+#line 464 "array.m"
+  MR_Word mercury__array__param_3,
+#line 464 "array.m"
+  MR_Word mercury__array__param_4,
+#line 464 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 464 "array.m"
+  MR_Box mercury__array__param_6,
+#line 464 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 464 "array.m"
+  MR_Box mercury__array__param_8,
+#line 464 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 462 "array.m"
+void MR_CALL 
+mercury__array__foldl2_6_p_0(
+#line 462 "array.m"
+  MR_Word mercury__array__param_1,
+#line 462 "array.m"
+  MR_Word mercury__array__param_2,
+#line 462 "array.m"
+  MR_Word mercury__array__param_3,
+#line 462 "array.m"
+  MR_Word mercury__array__param_4,
+#line 462 "array.m"
+  MR_ArrayPtr mercury__array__param_5,
+#line 462 "array.m"
+  MR_Box mercury__array__param_6,
+#line 462 "array.m"
+  MR_Box * mercury__array__param_7,
+#line 462 "array.m"
+  MR_Box mercury__array__param_8,
+#line 462 "array.m"
+  MR_Box * mercury__array__param_9);
+
+#line 455 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl_4_p_5(
+#line 455 "array.m"
+  MR_Word mercury__array__param_1,
+#line 455 "array.m"
+  MR_Word mercury__array__param_2,
+#line 455 "array.m"
+  MR_Word mercury__array__param_3,
+#line 455 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 455 "array.m"
+  MR_Box mercury__array__param_5,
+#line 455 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 454 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl_4_p_4(
+#line 454 "array.m"
+  MR_Word mercury__array__param_1,
+#line 454 "array.m"
+  MR_Word mercury__array__param_2,
+#line 454 "array.m"
+  MR_Word mercury__array__param_3,
+#line 454 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 454 "array.m"
+  MR_Box mercury__array__param_5,
+#line 454 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 453 "array.m"
+MR_bool MR_CALL 
+mercury__array__foldl_4_p_3(
+#line 453 "array.m"
+  MR_Word mercury__array__param_1,
+#line 453 "array.m"
+  MR_Word mercury__array__param_2,
+#line 453 "array.m"
+  MR_Word mercury__array__param_3,
+#line 453 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 453 "array.m"
+  MR_Box mercury__array__param_5,
+#line 453 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 452 "array.m"
+void MR_CALL 
+mercury__array__foldl_4_p_2(
+#line 452 "array.m"
+  MR_Word mercury__array__param_1,
+#line 452 "array.m"
+  MR_Word mercury__array__param_2,
+#line 452 "array.m"
+  MR_Word mercury__array__param_3,
+#line 452 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 452 "array.m"
+  MR_Box mercury__array__param_5,
+#line 452 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 451 "array.m"
+void MR_CALL 
+mercury__array__foldl_4_p_1(
+#line 451 "array.m"
+  MR_Word mercury__array__param_1,
+#line 451 "array.m"
+  MR_Word mercury__array__param_2,
+#line 451 "array.m"
+  MR_Word mercury__array__param_3,
+#line 451 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 451 "array.m"
+  MR_Box mercury__array__param_5,
+#line 451 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 450 "array.m"
+void MR_CALL 
+mercury__array__foldl_4_p_0(
+#line 450 "array.m"
+  MR_Word mercury__array__param_1,
+#line 450 "array.m"
+  MR_Word mercury__array__param_2,
+#line 450 "array.m"
+  MR_Word mercury__array__param_3,
+#line 450 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 450 "array.m"
+  MR_Box mercury__array__param_5,
+#line 450 "array.m"
+  MR_Box * mercury__array__param_6);
+
+#line 443 "array.m"
+MR_Box MR_CALL 
+mercury__array__foldl_3_f_1(
+#line 443 "array.m"
+  MR_Word mercury__array__param_1,
+#line 443 "array.m"
+  MR_Word mercury__array__param_2,
+#line 443 "array.m"
+  MR_Word mercury__array__param_3,
+#line 443 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 443 "array.m"
+  MR_Box mercury__array__param_5);
+
+#line 441 "array.m"
+MR_Box MR_CALL 
+mercury__array__foldl_3_f_0(
+#line 441 "array.m"
+  MR_Word mercury__array__param_1,
+#line 441 "array.m"
+  MR_Word mercury__array__param_2,
+#line 441 "array.m"
+  MR_Word mercury__array__param_3,
+#line 441 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 441 "array.m"
+  MR_Box mercury__array__param_5);
+
+#line 433 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__sort_1_f_0(
+#line 433 "array.m"
+  MR_Word mercury__array__param_1,
+#line 433 "array.m"
+  MR_ArrayPtr mercury__array__param_2);
+
+#line 421 "array.m"
+MR_Word MR_CALL 
+mercury__array__array_compare_2_f_0(
+#line 421 "array.m"
+  MR_Word mercury__array__param_1,
+#line 421 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 421 "array.m"
+  MR_ArrayPtr mercury__array__param_3);
+
+#line 418 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__map_2_f_0(
+#line 418 "array.m"
+  MR_Word mercury__array__param_1,
+#line 418 "array.m"
+  MR_Word mercury__array__param_2,
+#line 418 "array.m"
+  MR_Word mercury__array__param_3,
+#line 418 "array.m"
+  MR_ArrayPtr mercury__array__param_4);
+
+#line 415 "array.m"
+void MR_CALL 
+mercury__array__map_3_p_0(
+#line 415 "array.m"
+  MR_Word mercury__array__param_1,
+#line 415 "array.m"
+  MR_Word mercury__array__param_2,
+#line 415 "array.m"
+  MR_Word mercury__array__param_3,
+#line 415 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 415 "array.m"
+  MR_ArrayPtr * mercury__array__param_5);
+
+#line 408 "array.m"
+MR_bool MR_CALL 
+mercury__array__binary_search_4_p_0(
+#line 408 "array.m"
+  MR_Word mercury__array__param_1,
+#line 408 "array.m"
+  MR_Word mercury__array__param_2,
+#line 408 "array.m"
+  MR_ArrayPtr mercury__array__param_3,
+#line 408 "array.m"
+  MR_Box mercury__array__param_4,
+#line 408 "array.m"
+  MR_Integer * mercury__array__param_5);
+
+#line 406 "array.m"
+MR_bool MR_CALL 
+mercury__array__binary_search_3_p_0(
+#line 406 "array.m"
+  MR_Word mercury__array__param_1,
+#line 406 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 406 "array.m"
+  MR_Box mercury__array__param_3,
+#line 406 "array.m"
+  MR_Integer * mercury__array__param_4);
+
+#line 404 "array.m"
+MR_bool MR_CALL 
+mercury__array__approx_binary_search_4_p_0(
+#line 404 "array.m"
+  MR_Word mercury__array__param_1,
+#line 404 "array.m"
+  MR_Word mercury__array__param_2,
+#line 404 "array.m"
+  MR_ArrayPtr mercury__array__param_3,
+#line 404 "array.m"
+  MR_Box mercury__array__param_4,
+#line 404 "array.m"
+  MR_Integer * mercury__array__param_5);
+
+#line 402 "array.m"
+MR_bool MR_CALL 
+mercury__array__approx_binary_search_3_p_0(
+#line 402 "array.m"
+  MR_Word mercury__array__param_1,
+#line 402 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 402 "array.m"
+  MR_Box mercury__array__param_3,
+#line 402 "array.m"
+  MR_Integer * mercury__array__param_4);
+
+#line 386 "array.m"
+MR_Word MR_CALL 
+mercury__array__bsearch_3_f_0(
+#line 386 "array.m"
+  MR_Word mercury__array__param_1,
+#line 386 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 386 "array.m"
+  MR_Box mercury__array__param_3,
+#line 386 "array.m"
+  MR_Word mercury__array__param_4);
+
+#line 382 "array.m"
+void MR_CALL 
+mercury__array__bsearch_4_p_0(
+#line 382 "array.m"
+  MR_Word mercury__array__param_1,
+#line 382 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 382 "array.m"
+  MR_Box mercury__array__param_3,
+#line 382 "array.m"
+  MR_Word mercury__array__param_4,
+#line 382 "array.m"
+  MR_Word * mercury__array__param_5);
+
+#line 370 "array.m"
+MR_Word MR_CALL 
+mercury__array__fetch_items_3_f_0(
+#line 370 "array.m"
+  MR_Word mercury__array__param_1,
+#line 370 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 370 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 370 "array.m"
+  MR_Integer mercury__array__param_4);
+
+#line 366 "array.m"
+void MR_CALL 
+mercury__array__fetch_items_4_p_0(
+#line 366 "array.m"
+  MR_Word mercury__array__param_1,
+#line 366 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 366 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 366 "array.m"
+  MR_Integer mercury__array__param_4,
+#line 366 "array.m"
+  MR_Word * mercury__array__param_5);
+
+#line 359 "array.m"
+MR_Word MR_CALL 
+mercury__array__to_list_1_f_0(
+#line 359 "array.m"
+  MR_Word mercury__array__param_1,
+#line 359 "array.m"
+  MR_ArrayPtr mercury__array__param_2);
+
+#line 355 "array.m"
+void MR_CALL 
+mercury__array__to_list_2_p_0(
+#line 355 "array.m"
+  MR_Word mercury__array__param_1,
+#line 355 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 355 "array.m"
+  MR_Word * mercury__array__param_3);
+
+#line 348 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__from_reverse_list_1_f_0(
+#line 348 "array.m"
+  MR_Word mercury__array__param_1,
+#line 348 "array.m"
+  MR_Word mercury__array__param_2);
+
+#line 343 "array.m"
+void MR_CALL 
+mercury__array__from_list_2_p_0(
+#line 343 "array.m"
+  MR_Word mercury__array__param_1,
+#line 343 "array.m"
+  MR_Word mercury__array__param_2,
+#line 343 "array.m"
+  MR_ArrayPtr * mercury__array__param_3);
+
+#line 342 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__from_list_1_f_0(
+#line 342 "array.m"
+  MR_Word mercury__array__param_1,
+#line 342 "array.m"
+  MR_Word mercury__array__param_2);
+
+#line 337 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__shrink_2_f_0(
+#line 337 "array.m"
+  MR_Word mercury__array__param_1,
+#line 337 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 337 "array.m"
+  MR_Integer mercury__array__param_3);
+
+#line 330 "array.m"
+void MR_CALL 
+mercury__array__shrink_3_p_0(
+#line 330 "array.m"
+  MR_Word mercury__array__param_1,
+#line 330 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 330 "array.m"
+  MR_ArrayPtr mercury__array__param_3,
+#line 330 "array.m"
+  MR_ArrayPtr * mercury__array__param_4);
+
+#line 323 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__resize_3_f_0(
+#line 323 "array.m"
+  MR_Word mercury__array__param_1,
+#line 323 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 323 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 323 "array.m"
+  MR_Box mercury__array__param_4);
+
+#line 316 "array.m"
+void MR_CALL 
+mercury__array__resize_4_p_0(
+#line 316 "array.m"
+  MR_Word mercury__array__param_1,
+#line 316 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 316 "array.m"
+  MR_Box mercury__array__param_3,
+#line 316 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 316 "array.m"
+  MR_ArrayPtr * mercury__array__param_5);
+
+#line 309 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__copy_1_f_0(
+#line 309 "array.m"
+  MR_Word mercury__array__param_1,
+#line 309 "array.m"
+  MR_ArrayPtr mercury__array__param_2);
+
+#line 305 "array.m"
+void MR_CALL 
+mercury__array__copy_2_p_0(
+#line 305 "array.m"
+  MR_Word mercury__array__param_1,
+#line 305 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 305 "array.m"
+  MR_ArrayPtr * mercury__array__param_3);
+
+#line 296 "array.m"
+void MR_CALL 
+mercury__array__member_2_p_0(
+#line 296 "array.m"
+  MR_Word mercury__array__param_1,
+#line 296 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 296 "array.m"
+  MR_Box * mercury__array__param_3,
+#line 296 "array.m"
+  MR_Cont mercury__array__param_4,
+#line 296 "array.m"
+  void * mercury__array__param_5);
+
+#line 292 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__f_117_110_115_97_102_101_95_101_108_101_109_32_58_61_3_f_0(
+#line 292 "array.m"
+  MR_Word mercury__array__param_1,
+#line 292 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 292 "array.m"
+  MR_ArrayPtr mercury__array__param_3,
+#line 292 "array.m"
+  MR_Box mercury__array__param_4);
+
+#line 287 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__f_101_108_101_109_32_58_61_3_f_0(
+#line 287 "array.m"
+  MR_Word mercury__array__param_1,
+#line 287 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 287 "array.m"
+  MR_ArrayPtr mercury__array__param_3,
+#line 287 "array.m"
+  MR_Box mercury__array__param_4);
+
+#line 281 "array.m"
+MR_Box MR_CALL 
+mercury__array__unsafe_elem_2_f_0(
+#line 281 "array.m"
+  MR_Word mercury__array__param_1,
+#line 281 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 281 "array.m"
+  MR_ArrayPtr mercury__array__param_3);
+
+#line 275 "array.m"
+MR_Box MR_CALL 
+mercury__array__elem_2_f_0(
+#line 275 "array.m"
+  MR_Word mercury__array__param_1,
+#line 275 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 275 "array.m"
+  MR_ArrayPtr mercury__array__param_3);
+
+#line 268 "array.m"
+MR_bool MR_CALL 
+mercury__array__semidet_slow_set_4_p_0(
+#line 268 "array.m"
+  MR_Word mercury__array__param_1,
+#line 268 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 268 "array.m"
+  MR_Box mercury__array__param_3,
+#line 268 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 268 "array.m"
+  MR_ArrayPtr * mercury__array__param_5);
+
+#line 259 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__slow_set_3_f_0(
+#line 259 "array.m"
+  MR_Word mercury__array__param_1,
+#line 259 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 259 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 259 "array.m"
+  MR_Box mercury__array__param_4);
+
+#line 255 "array.m"
+void MR_CALL 
+mercury__array__slow_set_4_p_0(
+#line 255 "array.m"
+  MR_Word mercury__array__param_1,
+#line 255 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 255 "array.m"
+  MR_Box mercury__array__param_3,
+#line 255 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 255 "array.m"
+  MR_ArrayPtr * mercury__array__param_5);
+
+#line 246 "array.m"
+void MR_CALL 
+mercury__array__unsafe_set_4_p_0(
+#line 246 "array.m"
+  MR_Word mercury__array__param_1,
+#line 246 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 246 "array.m"
+  MR_Box mercury__array__param_3,
+#line 246 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 246 "array.m"
+  MR_ArrayPtr * mercury__array__param_5);
+
+#line 240 "array.m"
+MR_bool MR_CALL 
+mercury__array__semidet_set_4_p_0(
+#line 240 "array.m"
+  MR_Word mercury__array__param_1,
+#line 240 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 240 "array.m"
+  MR_Box mercury__array__param_3,
+#line 240 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 240 "array.m"
+  MR_ArrayPtr * mercury__array__param_5);
+
+#line 234 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__set_3_f_0(
+#line 234 "array.m"
+  MR_Word mercury__array__param_1,
+#line 234 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 234 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 234 "array.m"
+  MR_Box mercury__array__param_4);
+
+#line 231 "array.m"
+void MR_CALL 
+mercury__array__set_4_p_0(
+#line 231 "array.m"
+  MR_Word mercury__array__param_1,
+#line 231 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 231 "array.m"
+  MR_Box mercury__array__param_3,
+#line 231 "array.m"
+  MR_ArrayPtr mercury__array__param_4,
+#line 231 "array.m"
+  MR_ArrayPtr * mercury__array__param_5);
+
+#line 224 "array.m"
+void MR_CALL 
+mercury__array__unsafe_lookup_3_p_0(
+#line 224 "array.m"
+  MR_Word mercury__array__param_1,
+#line 224 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 224 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 224 "array.m"
+  MR_Box * mercury__array__param_4);
+
+#line 217 "array.m"
+MR_bool MR_CALL 
+mercury__array__semidet_lookup_3_p_0(
+#line 217 "array.m"
+  MR_Word mercury__array__param_1,
+#line 217 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 217 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 217 "array.m"
+  MR_Box * mercury__array__param_4);
+
+#line 210 "array.m"
+MR_Box MR_CALL 
+mercury__array__lookup_2_f_0(
+#line 210 "array.m"
+  MR_Word mercury__array__param_1,
+#line 210 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 210 "array.m"
+  MR_Integer mercury__array__param_3);
+
+#line 206 "array.m"
+void MR_CALL 
+mercury__array__lookup_3_p_0(
+#line 206 "array.m"
+  MR_Word mercury__array__param_1,
+#line 206 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 206 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 206 "array.m"
+  MR_Box * mercury__array__param_4);
+
+#line 197 "array.m"
+MR_bool MR_CALL 
+mercury__array__is_empty_1_p_0(
+#line 197 "array.m"
+  MR_Word mercury__array__param_1,
+#line 197 "array.m"
+  MR_ArrayPtr mercury__array__param_2);
+
+#line 190 "array.m"
+MR_bool MR_CALL 
+mercury__array__in_bounds_2_p_0(
+#line 190 "array.m"
+  MR_Word mercury__array__param_1,
+#line 190 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 190 "array.m"
+  MR_Integer mercury__array__param_3);
+
+#line 184 "array.m"
+void MR_CALL 
+mercury__array__bounds_3_p_0(
+#line 184 "array.m"
+  MR_Word mercury__array__param_1,
+#line 184 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 184 "array.m"
+  MR_Integer * mercury__array__param_3,
+#line 184 "array.m"
+  MR_Integer * mercury__array__param_4);
+
+#line 177 "array.m"
+MR_Integer MR_CALL 
+mercury__array__size_1_f_0(
+#line 177 "array.m"
+  MR_Word mercury__array__param_1,
+#line 177 "array.m"
+  MR_ArrayPtr mercury__array__param_2);
+
+#line 173 "array.m"
+void MR_CALL 
+mercury__array__size_2_p_0(
+#line 173 "array.m"
+  MR_Word mercury__array__param_1,
+#line 173 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 173 "array.m"
+  MR_Integer * mercury__array__param_3);
+
+#line 166 "array.m"
+MR_Integer MR_CALL 
+mercury__array__greatest_index_1_f_0(
+#line 166 "array.m"
+  MR_Word mercury__array__param_1,
+#line 166 "array.m"
+  MR_ArrayPtr mercury__array__param_2);
+
+#line 162 "array.m"
+MR_Integer MR_CALL 
+mercury__array__max_1_f_0(
+#line 162 "array.m"
+  MR_Word mercury__array__param_1,
+#line 162 "array.m"
+  MR_ArrayPtr mercury__array__param_2);
+
+#line 158 "array.m"
+void MR_CALL 
+mercury__array__max_2_p_0(
+#line 158 "array.m"
+  MR_Word mercury__array__param_1,
+#line 158 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 158 "array.m"
+  MR_Integer * mercury__array__param_3);
+
+#line 152 "array.m"
+MR_Integer MR_CALL 
+mercury__array__least_index_1_f_0(
+#line 152 "array.m"
+  MR_Word mercury__array__param_1,
+#line 152 "array.m"
+  MR_ArrayPtr mercury__array__param_2);
+
+#line 148 "array.m"
+MR_Integer MR_CALL 
+mercury__array__min_1_f_0(
+#line 148 "array.m"
+  MR_Word mercury__array__param_1,
+#line 148 "array.m"
+  MR_ArrayPtr mercury__array__param_2);
+
+#line 144 "array.m"
+void MR_CALL 
+mercury__array__min_2_p_0(
+#line 144 "array.m"
+  MR_Word mercury__array__param_1,
+#line 144 "array.m"
+  MR_ArrayPtr mercury__array__param_2,
+#line 144 "array.m"
+  MR_Integer * mercury__array__param_3);
+
+#line 134 "array.m"
+MR_bool MR_CALL 
+mercury__array__generate_foldl_5_p_5(
+#line 134 "array.m"
+  MR_Word mercury__array__param_1,
+#line 134 "array.m"
+  MR_Word mercury__array__param_2,
+#line 134 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 134 "array.m"
+  MR_Word mercury__array__param_4,
+#line 134 "array.m"
+  MR_ArrayPtr * mercury__array__param_5,
+#line 134 "array.m"
+  MR_Box mercury__array__param_6,
+#line 134 "array.m"
+  MR_Box * mercury__array__param_7);
+
+#line 132 "array.m"
+MR_bool MR_CALL 
+mercury__array__generate_foldl_5_p_4(
+#line 132 "array.m"
+  MR_Word mercury__array__param_1,
+#line 132 "array.m"
+  MR_Word mercury__array__param_2,
+#line 132 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 132 "array.m"
+  MR_Word mercury__array__param_4,
+#line 132 "array.m"
+  MR_ArrayPtr * mercury__array__param_5,
+#line 132 "array.m"
+  MR_Box mercury__array__param_6,
+#line 132 "array.m"
+  MR_Box * mercury__array__param_7);
+
+#line 130 "array.m"
+MR_bool MR_CALL 
+mercury__array__generate_foldl_5_p_3(
+#line 130 "array.m"
+  MR_Word mercury__array__param_1,
+#line 130 "array.m"
+  MR_Word mercury__array__param_2,
+#line 130 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 130 "array.m"
+  MR_Word mercury__array__param_4,
+#line 130 "array.m"
+  MR_ArrayPtr * mercury__array__param_5,
+#line 130 "array.m"
+  MR_Box mercury__array__param_6,
+#line 130 "array.m"
+  MR_Box * mercury__array__param_7);
+
+#line 128 "array.m"
+void MR_CALL 
+mercury__array__generate_foldl_5_p_2(
+#line 128 "array.m"
+  MR_Word mercury__array__param_1,
+#line 128 "array.m"
+  MR_Word mercury__array__param_2,
+#line 128 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 128 "array.m"
+  MR_Word mercury__array__param_4,
+#line 128 "array.m"
+  MR_ArrayPtr * mercury__array__param_5,
+#line 128 "array.m"
+  MR_Box mercury__array__param_6,
+#line 128 "array.m"
+  MR_Box * mercury__array__param_7);
+
+#line 126 "array.m"
+void MR_CALL 
+mercury__array__generate_foldl_5_p_1(
+#line 126 "array.m"
+  MR_Word mercury__array__param_1,
+#line 126 "array.m"
+  MR_Word mercury__array__param_2,
+#line 126 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 126 "array.m"
+  MR_Word mercury__array__param_4,
+#line 126 "array.m"
+  MR_ArrayPtr * mercury__array__param_5,
+#line 126 "array.m"
+  MR_Box mercury__array__param_6,
+#line 126 "array.m"
+  MR_Box * mercury__array__param_7);
+
+#line 124 "array.m"
+void MR_CALL 
+mercury__array__generate_foldl_5_p_0(
+#line 124 "array.m"
+  MR_Word mercury__array__param_1,
+#line 124 "array.m"
+  MR_Word mercury__array__param_2,
+#line 124 "array.m"
+  MR_Integer mercury__array__param_3,
+#line 124 "array.m"
+  MR_Word mercury__array__param_4,
+#line 124 "array.m"
+  MR_ArrayPtr * mercury__array__param_5,
+#line 124 "array.m"
+  MR_Box mercury__array__param_6,
+#line 124 "array.m"
+  MR_Box * mercury__array__param_7);
+
+#line 116 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__generate_2_f_0(
+#line 116 "array.m"
+  MR_Word mercury__array__param_1,
+#line 116 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 116 "array.m"
+  MR_Word mercury__array__param_3);
+
+#line 108 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__array_1_f_0(
+#line 108 "array.m"
+  MR_Word mercury__array__param_1,
+#line 108 "array.m"
+  MR_Word mercury__array__param_2);
+
+#line 100 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__init_2_f_0(
+#line 100 "array.m"
+  MR_Word mercury__array__param_1,
+#line 100 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 100 "array.m"
+  MR_Box mercury__array__param_3);
+
+#line 97 "array.m"
+void MR_CALL 
+mercury__array__init_3_p_0(
+#line 97 "array.m"
+  MR_Word mercury__array__param_1,
+#line 97 "array.m"
+  MR_Integer mercury__array__param_2,
+#line 97 "array.m"
+  MR_Box mercury__array__param_3,
+#line 97 "array.m"
+  MR_ArrayPtr * mercury__array__param_4);
+
+#line 91 "array.m"
+MR_ArrayPtr MR_CALL 
+mercury__array__make_empty_array_0_f_0(
+#line 91 "array.m"
+  MR_Word mercury__array__param_1);
+
+#line 89 "array.m"
+void MR_CALL 
+mercury__array__make_empty_array_1_p_0(
+#line 89 "array.m"
+  MR_Word mercury__array__param_1,
+#line 89 "array.m"
+  MR_ArrayPtr * mercury__array__param_2);
+
+void mercury__array__init(void);
+void mercury__array__init_type_tables(void);
+void mercury__array__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_array */
+
+/* :- end_interface array. */

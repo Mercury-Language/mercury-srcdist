@@ -1,0 +1,4 @@
+:- module (parse_tree.prog_io_error).
+:- interface.
+:- type module_error
+	where	type_is_abstract_enum(2).

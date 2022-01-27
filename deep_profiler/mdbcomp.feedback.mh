@@ -1,0 +1,35 @@
+/*
+** Automatically generated from `mdbcomp.feedback.m'
+** by the Mercury compiler,
+** version rotd-2014-09-30
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+*/
+#ifndef MDBCOMP__FEEDBACK_MH
+#define MDBCOMP__FEEDBACK_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDBCOMP__FEEDBACK_DECL_GUARD
+#define MDBCOMP__FEEDBACK_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDBCOMP__FEEDBACK_MH */

@@ -1,0 +1,52 @@
+:- module recompilation.
+:- interface.
+:- import_module check_hlds.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module pair.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module term.
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- include_module (recompilation.check).
+:- include_module (recompilation.usage).
+:- include_module (recompilation.version).
+:- type functor_set == recompilation.simple_item_set.
+:- type instance_version_numbers == map.map(recompilation.item_name, recompilation.version_number).
+:- type item_id
+	--->	item_id(recompilation.item_type, recompilation.item_name).
+:- type item_name
+	--->	item_name(mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity).
+:- type item_type
+	--->	type_abstract_item 
+	;	type_body_item 
+	;	mode_item 
+	;	inst_item 
+	;	typeclass_item 
+	;	functor_item 
+	;	predicate_item 
+	;	function_item 
+	;	mutable_item 
+	;	foreign_proc_item .
+:- type item_version_numbers == recompilation.item_id_set(recompilation.version_number_map).
+:- type module_qualifier == mdbcomp.sym_name.module_name.
+:- type pred_or_func_set == recompilation.simple_item_set.
+:- type recompilation_info
+	--->	recompilation_info((recompilation.module_name) :: mdbcomp.sym_name.module_name, (recompilation.used_items) :: recompilation.used_items, (recompilation.dependencies) :: map.map(recompilation.item_id, set.set(recompilation.item_id)), (recompilation.version_numbers) :: map.map(mdbcomp.sym_name.module_name, recompilation.version_numbers)).
+:- type simple_item_set == map.map(pair.pair(string, parse_tree.prog_data.arity), map.map(recompilation.module_qualifier, mdbcomp.sym_name.module_name)).
+:- type used_items == recompilation.item_id_set(recompilation.simple_item_set, recompilation.pred_or_func_set, recompilation.functor_set).
+:- type version_number == libs.timestamp.timestamp.
+:- type version_number_map == map.map(pair.pair(string, parse_tree.prog_data.arity), recompilation.version_number).
+:- type version_numbers
+	--->	version_numbers(recompilation.item_version_numbers, recompilation.instance_version_numbers).
+:- type item_id_set(T) == recompilation.item_id_set(T, T, T).
+:- type item_id_set(Map, Set, Cons)
+	--->	item_id_set((recompilation.types) :: Map, (recompilation.type_bodies) :: Map, (recompilation.modes) :: Map, (recompilation.insts) :: Map, (recompilation.typeclasses) :: Map, (recompilation.functors) :: Cons, (recompilation.predicates) :: Set, (recompilation.functions) :: Set, (recompilation.mutables) :: Set, (recompilation.foreign_procs) :: Set).
+:- inst (pred_or_func) == bound(function_item ; predicate_item).
+:- inst (simple_item) == bound(inst_item ; mode_item ; type_abstract_item ; type_body_item ; typeclass_item).

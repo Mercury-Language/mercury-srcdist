@@ -1,0 +1,651 @@
+/*
+** Automatically generated from `set_of_var.m'
+** by the Mercury compiler,
+** version rotd-2014-09-30
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.set_of_var. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__set_of_var
+#define MR_HEADER_GUARD_parse_tree__set_of_var
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__SET_OF_VAR_DECL_GUARD
+#define PARSE_TREE__SET_OF_VAR_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 43 "parse_tree.set_of_var.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__set_of_var__parse_tree__set_of_var__type_ctor_info_set_of_progvar_0;
+
+#line 46 "parse_tree.set_of_var.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__set_of_var__parse_tree__set_of_var__type_ctor_info_set_of_tvar_0;
+
+#line 49 "parse_tree.set_of_var.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__set_of_var__parse_tree__set_of_var__type_ctor_info_set_of_var_1;
+
+#line 187 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var____Compare____set_of_var_1_0(
+#line 187 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 187 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_2,
+#line 187 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 187 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_4);
+
+#line 187 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var____Unify____set_of_var_1_0(
+#line 187 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 187 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 187 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 28 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var____Compare____set_of_tvar_0_0(
+#line 28 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_1,
+#line 28 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 28 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 28 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var____Unify____set_of_tvar_0_0(
+#line 28 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 28 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 27 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var____Compare____set_of_progvar_0_0(
+#line 27 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_1,
+#line 27 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 27 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 27 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var____Unify____set_of_progvar_0_0(
+#line 27 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 27 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 159 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__graph_colour_group_elements_2_p_0(
+#line 159 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 159 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 159 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_3);
+
+#line 147 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__all_true_2_p_0(
+#line 147 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 147 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 147 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 141 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__filter_4_p_0(
+#line 141 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 141 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 141 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 141 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4,
+#line 141 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_5);
+
+#line 135 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__filter_3_p_0(
+#line 135 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 135 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 135 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 135 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 133 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__filter_2_f_0(
+#line 133 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 133 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 133 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 128 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__fold_func_4_p_0(
+#line 128 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 128 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 128 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 128 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_4,
+#line 128 "set_of_var.m"
+  MR_Box parse_tree__set_of_var__param_5,
+#line 128 "set_of_var.m"
+  MR_Box * parse_tree__set_of_var__param_6);
+
+#line 125 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__fold_4_p_1(
+#line 125 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 125 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 125 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 125 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_4,
+#line 125 "set_of_var.m"
+  MR_Box parse_tree__set_of_var__param_5,
+#line 125 "set_of_var.m"
+  MR_Box * parse_tree__set_of_var__param_6);
+
+#line 124 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__fold_4_p_0(
+#line 124 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 124 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 124 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 124 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_4,
+#line 124 "set_of_var.m"
+  MR_Box parse_tree__set_of_var__param_5,
+#line 124 "set_of_var.m"
+  MR_Box * parse_tree__set_of_var__param_6);
+
+#line 117 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__cartesian_product_list_2_p_0(
+#line 117 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 117 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 117 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_3);
+
+#line 114 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__cartesian_product_3_p_0(
+#line 114 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 114 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 114 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 114 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 111 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__divide_by_set_4_p_0(
+#line 111 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 111 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 111 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 111 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4,
+#line 111 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_5);
+
+#line 108 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__divide_4_p_0(
+#line 108 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 108 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 108 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 108 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4,
+#line 108 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_5);
+
+#line 105 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__difference_3_p_0(
+#line 105 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 105 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 105 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 105 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 104 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__difference_2_f_0(
+#line 104 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 104 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 104 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 102 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__intersect_list_2_p_0(
+#line 102 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 102 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 102 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_3);
+
+#line 101 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__intersect_list_1_f_0(
+#line 101 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 101 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 98 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__intersect_3_p_0(
+#line 98 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 98 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 98 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 98 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 97 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__intersect_2_f_0(
+#line 97 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 97 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 97 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 95 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__union_list_2_p_0(
+#line 95 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 95 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 95 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_3);
+
+#line 94 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__union_list_1_f_0(
+#line 94 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 94 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 91 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__union_3_p_0(
+#line 91 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 91 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 91 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 91 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 90 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__union_2_f_0(
+#line 90 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 90 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 90 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 84 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__remove_least_3_p_0(
+#line 84 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 84 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_2,
+#line 84 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 84 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 82 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__remove_list_3_p_0(
+#line 82 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 82 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 82 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 82 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 80 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__remove_3_p_0(
+#line 80 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 80 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 80 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 80 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 78 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__delete_list_3_p_0(
+#line 78 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 78 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 78 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 78 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 76 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__delete_3_p_0(
+#line 76 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 76 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 76 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 76 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 74 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__insert_list_3_p_0(
+#line 74 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 74 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 74 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 74 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 72 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__insert_3_p_0(
+#line 72 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 72 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 72 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 72 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 67 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__bitset_to_set_1_f_0(
+#line 67 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 67 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 66 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__set_to_bitset_1_f_0(
+#line 66 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 66 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 64 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__to_sorted_list_2_p_0(
+#line 64 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 64 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 64 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_3);
+
+#line 63 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__sorted_list_to_set_2_p_0(
+#line 63 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 63 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 63 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_3);
+
+#line 62 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__list_to_set_2_p_0(
+#line 62 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 62 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 62 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_3);
+
+#line 60 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__to_sorted_list_1_f_0(
+#line 60 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 60 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 59 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__sorted_list_to_set_1_f_0(
+#line 59 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 59 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 58 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__list_to_set_1_f_0(
+#line 58 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 58 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 53 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__equal_2_p_0(
+#line 53 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 53 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 53 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 51 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__contains_2_p_0(
+#line 51 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 51 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 51 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 49 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__is_member_3_p_0(
+#line 49 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 49 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 49 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3,
+#line 49 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_4);
+
+#line 47 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__member_2_p_1(
+#line 47 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 47 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 47 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_3,
+#line 47 "set_of_var.m"
+  MR_Cont parse_tree__set_of_var__param_4,
+#line 47 "set_of_var.m"
+  void * parse_tree__set_of_var__param_5);
+
+#line 46 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__member_2_p_0(
+#line 46 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 46 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 46 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_3);
+
+#line 43 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__is_singleton_2_p_0(
+#line 43 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 43 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 43 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_3);
+
+#line 42 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__is_non_empty_1_p_0(
+#line 42 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 42 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 41 "set_of_var.m"
+MR_bool MR_CALL 
+parse_tree__set_of_var__is_empty_1_p_0(
+#line 41 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 41 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 36 "set_of_var.m"
+MR_Integer MR_CALL 
+parse_tree__set_of_var__count_1_f_0(
+#line 36 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 36 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 34 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__make_singleton_2_p_0(
+#line 34 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 34 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2,
+#line 34 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_3);
+
+#line 33 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__make_singleton_1_f_0(
+#line 33 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 33 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_2);
+
+#line 31 "set_of_var.m"
+void MR_CALL 
+parse_tree__set_of_var__init_1_p_0(
+#line 31 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1,
+#line 31 "set_of_var.m"
+  MR_Word * parse_tree__set_of_var__param_2);
+
+#line 30 "set_of_var.m"
+MR_Word MR_CALL 
+parse_tree__set_of_var__init_0_f_0(
+#line 30 "set_of_var.m"
+  MR_Word parse_tree__set_of_var__param_1);
+
+void mercury__parse_tree__set_of_var__init(void);
+void mercury__parse_tree__set_of_var__init_type_tables(void);
+void mercury__parse_tree__set_of_var__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.set_of_var */
+
+/* :- end_interface parse_tree.set_of_var. */

@@ -1,0 +1,17 @@
+:- module (thread.barrier).
+:- use_module bool, builtin, int, io, maybe, private_builtin, require, string, unit, (thread.mvar).
+:- type thread.barrier.why_can_we_go
+	--->	can_go_normal 
+	;	can_go_release_called .
+:- type thread.barrier.barrier
+	--->	barrier(((thread.barrier).b_waiting_for) :: thread.mvar.mvar(int), ((thread.barrier).b_go) :: thread.mvar.mvar(thread.barrier.why_can_we_go)).
+(thread.barrier).init(N_5, thread.barrier.barrier(WaitingOn_6, Go_7), STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_10) :-
+    (thread.mvar).init(WaitingOn_6, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_11_11),
+    (thread.mvar).init(Go_7, STATE_VARIABLE_IO_11_11, STATE_VARIABLE_IO_12_12),
+    (thread.mvar).put(WaitingOn_6, N_5, STATE_VARIABLE_IO_12_12, STATE_VARIABLE_IO_10).
+:- pragma exceptions(predicate, ((thread.barrier).init), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.barrier).wait), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.barrier).release), 3, 0, may_throw(user_exception)).
+:- pragma termination_info((thread.barrier).init((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.barrier).wait((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.barrier).release((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).

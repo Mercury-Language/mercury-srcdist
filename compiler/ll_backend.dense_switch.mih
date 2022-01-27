@@ -1,0 +1,123 @@
+/*
+** Automatically generated from `dense_switch.m'
+** by the Mercury compiler,
+** version rotd-2014-09-30
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.dense_switch. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__dense_switch
+#define MR_HEADER_GUARD_ll_backend__dense_switch
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__DENSE_SWITCH_DECL_GUARD
+#define LL_BACKEND__DENSE_SWITCH_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 43 "ll_backend.dense_switch.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__dense_switch__ll_backend__dense_switch__type_ctor_info_dense_switch_info_0;
+
+#line 74 "dense_switch.m"
+void MR_CALL 
+ll_backend__dense_switch____Compare____dense_switch_info_0_0(
+#line 74 "dense_switch.m"
+  MR_Word * ll_backend__dense_switch__param_1,
+#line 74 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_2,
+#line 74 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_3);
+
+#line 74 "dense_switch.m"
+MR_bool MR_CALL 
+ll_backend__dense_switch____Unify____dense_switch_info_0_0(
+#line 74 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_1,
+#line 74 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_2);
+
+#line 43 "dense_switch.m"
+void MR_CALL 
+ll_backend__dense_switch__generate_dense_switch_12_p_0(
+#line 43 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_1,
+#line 43 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_2,
+#line 43 "dense_switch.m"
+  MR_String ll_backend__dense_switch__param_3,
+#line 43 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_4,
+#line 43 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_5,
+#line 43 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_6,
+#line 43 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_7,
+#line 43 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_8,
+#line 43 "dense_switch.m"
+  MR_Word * ll_backend__dense_switch__param_9,
+#line 43 "dense_switch.m"
+  MR_Word * ll_backend__dense_switch__param_10,
+#line 43 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_11,
+#line 43 "dense_switch.m"
+  MR_Word * ll_backend__dense_switch__param_12);
+
+#line 37 "dense_switch.m"
+MR_bool MR_CALL 
+ll_backend__dense_switch__tagged_case_list_is_dense_switch_9_p_0(
+#line 37 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_1,
+#line 37 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_2,
+#line 37 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_3,
+#line 37 "dense_switch.m"
+  MR_Integer ll_backend__dense_switch__param_4,
+#line 37 "dense_switch.m"
+  MR_Integer ll_backend__dense_switch__param_5,
+#line 37 "dense_switch.m"
+  MR_Integer ll_backend__dense_switch__param_6,
+#line 37 "dense_switch.m"
+  MR_Integer ll_backend__dense_switch__param_7,
+#line 37 "dense_switch.m"
+  MR_Word ll_backend__dense_switch__param_8,
+#line 37 "dense_switch.m"
+  MR_Word * ll_backend__dense_switch__param_9);
+
+void mercury__ll_backend__dense_switch__init(void);
+void mercury__ll_backend__dense_switch__init_type_tables(void);
+void mercury__ll_backend__dense_switch__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.dense_switch */
+
+/* :- end_interface ll_backend.dense_switch. */

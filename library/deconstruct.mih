@@ -1,0 +1,929 @@
+/*
+** Automatically generated from `deconstruct.m'
+** by the Mercury compiler,
+** version rotd-2014-09-30
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module deconstruct. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_deconstruct
+#define MR_HEADER_GUARD_deconstruct
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef DECONSTRUCT_DECL_GUARD
+#define DECONSTRUCT_DECL_GUARD
+#line 287 "deconstruct.m"
+
+
+#include "mercury_deconstruct.h"
+#include "mercury_deconstruct_macros.h"
+
+
+#endif
+
+
+
+
+#line 48 "deconstruct.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__deconstruct__deconstruct__type_ctor_info_maybe_arg_0;
+
+#line 51 "deconstruct.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__deconstruct__deconstruct__type_ctor_info_noncanon_handling_0;
+
+#line 445 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_100_117_95_50_95_95_91_51_93_95_49_5_p_1(
+#line 445 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 445 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 445 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_3,
+#line 445 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 445 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_5);
+
+#line 444 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_100_117_95_50_95_95_91_51_93_95_48_5_p_0(
+#line 444 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 444 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 444 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_3,
+#line 444 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 444 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_5);
+
+#line 264 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_105_109_105_116_101_100_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_49_6_p_1(
+#line 264 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 264 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 264 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_3,
+#line 264 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 264 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 264 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 262 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_105_109_105_116_101_100_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_48_6_p_0(
+#line 262 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 262 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 262 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_3,
+#line 262 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 262 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 262 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 230 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_50_5_p_2(
+#line 230 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 230 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 230 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_3,
+#line 230 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 230 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_5);
+
+#line 229 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_49_5_p_1(
+#line 229 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 229 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 229 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_3,
+#line 229 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 229 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_5);
+
+#line 228 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_48_5_p_0(
+#line 228 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 228 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 228 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_3,
+#line 228 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 228 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_5);
+
+#line 209 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_110_97_109_101_100_95_97_114_103_95_95_91_52_93_95_50_4_p_2(
+#line 209 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 209 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 209 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 209 "deconstruct.m"
+  MR_String mercury__deconstruct__param_4,
+#line 209 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_5);
+
+#line 208 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_110_97_109_101_100_95_97_114_103_95_95_91_52_93_95_49_4_p_1(
+#line 208 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 208 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 208 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 208 "deconstruct.m"
+  MR_String mercury__deconstruct__param_4,
+#line 208 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_5);
+
+#line 207 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_110_97_109_101_100_95_97_114_103_95_95_91_52_93_95_48_4_p_0(
+#line 207 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 207 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 207 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 207 "deconstruct.m"
+  MR_String mercury__deconstruct__param_4,
+#line 207 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_5);
+
+#line 198 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_97_114_103_95_95_91_52_93_95_50_4_p_2(
+#line 198 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 198 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 198 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 198 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_4,
+#line 198 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_5);
+
+#line 197 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_97_114_103_95_95_91_52_93_95_49_4_p_1(
+#line 197 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 197 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 197 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 197 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_4,
+#line 197 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_5);
+
+#line 196 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_116_95_97_114_103_95_95_91_52_93_95_48_4_p_0(
+#line 196 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 196 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 196 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 196 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_4,
+#line 196 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_5);
+
+#line 182 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_97_109_101_100_95_97_114_103_95_95_91_52_93_95_49_4_p_1(
+#line 182 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 182 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 182 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 182 "deconstruct.m"
+  MR_String mercury__deconstruct__param_4,
+#line 182 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_5);
+
+#line 181 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_97_109_101_100_95_97_114_103_95_95_91_52_93_95_48_4_p_0(
+#line 181 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 181 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 181 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 181 "deconstruct.m"
+  MR_String mercury__deconstruct__param_4,
+#line 181 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_5);
+
+#line 161 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_114_103_95_95_91_52_93_95_49_4_p_1(
+#line 161 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 161 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 161 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 161 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_4,
+#line 161 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_5);
+
+#line 160 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_114_103_95_95_91_52_93_95_48_4_p_0(
+#line 160 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 160 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 160 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 160 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_4,
+#line 160 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_5);
+
+#line 125 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_117_110_99_116_111_114_95_95_91_51_93_95_50_4_p_2(
+#line 125 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 125 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 125 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_3,
+#line 125 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4);
+
+#line 124 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_117_110_99_116_111_114_95_95_91_51_93_95_49_4_p_1(
+#line 124 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 124 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 124 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_3,
+#line 124 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4);
+
+#line 123 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_117_110_99_116_111_114_95_95_91_51_93_95_48_4_p_0(
+#line 123 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 123 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 123 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_3,
+#line 123 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4);
+
+#line 43 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct____Compare____noncanon_handling_0_0(
+#line 43 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_1,
+#line 43 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_2,
+#line 43 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3);
+
+#line 43 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct____Unify____noncanon_handling_0_0(
+#line 43 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 43 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_2);
+
+#line 164 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct____Compare____maybe_arg_0_0(
+#line 164 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_1,
+#line 164 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_2,
+#line 164 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3);
+
+#line 164 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct____Unify____maybe_arg_0_0(
+#line 164 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 164 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_2);
+
+#line 843 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__limited_deconstruct_idcc_5_p_0(
+#line 843 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 843 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 843 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_3,
+#line 843 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 843 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 843 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 447 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__deconstruct_du_2_5_p_2(
+#line 447 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 447 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 447 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 447 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 447 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 447 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 445 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__deconstruct_du_2_5_p_1(
+#line 445 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 445 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 445 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 445 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 445 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 445 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 444 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__deconstruct_du_2_5_p_0(
+#line 444 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 444 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 444 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 444 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 444 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 444 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 267 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__limited_deconstruct_cc_3_p_0(
+#line 267 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 267 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 267 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_3,
+#line 267 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_4);
+
+#line 264 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__limited_deconstruct_6_p_1(
+#line 264 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 264 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 264 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 264 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_4,
+#line 264 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_5,
+#line 264 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_6,
+#line 264 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_7);
+
+#line 262 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__limited_deconstruct_6_p_0(
+#line 262 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 262 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 262 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 262 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_4,
+#line 262 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_5,
+#line 262 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_6,
+#line 262 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_7);
+
+#line 247 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__deconstruct_du_5_p_2(
+#line 247 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 247 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 247 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 247 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 247 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 247 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 246 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__deconstruct_du_5_p_1(
+#line 246 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 246 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 246 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 246 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 246 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 246 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 245 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__deconstruct_du_5_p_0(
+#line 245 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 245 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 245 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 245 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4,
+#line 245 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 245 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 231 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__deconstruct_5_p_3(
+#line 231 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 231 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 231 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 231 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 231 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 231 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 230 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__deconstruct_5_p_2(
+#line 230 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 230 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 230 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 230 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 230 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 230 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 229 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__deconstruct_5_p_1(
+#line 229 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 229 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 229 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 229 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 229 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 229 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 228 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__deconstruct_5_p_0(
+#line 228 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 228 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 228 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 228 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 228 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5,
+#line 228 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_6);
+
+#line 210 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__det_named_arg_4_p_3(
+#line 210 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 210 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 210 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 210 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 210 "deconstruct.m"
+  MR_String mercury__deconstruct__param_5,
+#line 210 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 209 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__det_named_arg_4_p_2(
+#line 209 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 209 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 209 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 209 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 209 "deconstruct.m"
+  MR_String mercury__deconstruct__param_5,
+#line 209 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 208 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__det_named_arg_4_p_1(
+#line 208 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 208 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 208 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 208 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 208 "deconstruct.m"
+  MR_String mercury__deconstruct__param_5,
+#line 208 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 207 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__det_named_arg_4_p_0(
+#line 207 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 207 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 207 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 207 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 207 "deconstruct.m"
+  MR_String mercury__deconstruct__param_5,
+#line 207 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 199 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__det_arg_4_p_3(
+#line 199 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 199 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 199 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 199 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 199 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_5,
+#line 199 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 198 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__det_arg_4_p_2(
+#line 198 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 198 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 198 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 198 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 198 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_5,
+#line 198 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 197 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__det_arg_4_p_1(
+#line 197 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 197 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 197 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 197 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 197 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_5,
+#line 197 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 196 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__det_arg_4_p_0(
+#line 196 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 196 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 196 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 196 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 196 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_5,
+#line 196 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 188 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__named_arg_cc_3_p_0(
+#line 188 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 188 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 188 "deconstruct.m"
+  MR_String mercury__deconstruct__param_3,
+#line 188 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_4);
+
+#line 183 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__named_arg_4_p_2(
+#line 183 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 183 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 183 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 183 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 183 "deconstruct.m"
+  MR_String mercury__deconstruct__param_5,
+#line 183 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 182 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__named_arg_4_p_1(
+#line 182 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 182 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 182 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 182 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 182 "deconstruct.m"
+  MR_String mercury__deconstruct__param_5,
+#line 182 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 181 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__named_arg_4_p_0(
+#line 181 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 181 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 181 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 181 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 181 "deconstruct.m"
+  MR_String mercury__deconstruct__param_5,
+#line 181 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 172 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__arg_cc_3_p_0(
+#line 172 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 172 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 172 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_3,
+#line 172 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_4);
+
+#line 162 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__arg_4_p_2(
+#line 162 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 162 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 162 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 162 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 162 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_5,
+#line 162 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 161 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__arg_4_p_1(
+#line 161 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 161 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 161 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 161 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 161 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_5,
+#line 161 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 160 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__arg_4_p_0(
+#line 160 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 160 "deconstruct.m"
+  MR_Word * mercury__deconstruct__param_2,
+#line 160 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_3,
+#line 160 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_4,
+#line 160 "deconstruct.m"
+  MR_Integer mercury__deconstruct__param_5,
+#line 160 "deconstruct.m"
+  MR_Box * mercury__deconstruct__param_6);
+
+#line 144 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__functor_number_cc_3_p_0(
+#line 144 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 144 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 144 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_3,
+#line 144 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4);
+
+#line 135 "deconstruct.m"
+MR_bool MR_CALL 
+mercury__deconstruct__functor_number_3_p_0(
+#line 135 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 135 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 135 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_3,
+#line 135 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_4);
+
+#line 126 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__functor_4_p_3(
+#line 126 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 126 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 126 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 126 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 126 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5);
+
+#line 125 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__functor_4_p_2(
+#line 125 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 125 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 125 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 125 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 125 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5);
+
+#line 124 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__functor_4_p_1(
+#line 124 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 124 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 124 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 124 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 124 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5);
+
+#line 123 "deconstruct.m"
+void MR_CALL 
+mercury__deconstruct__functor_4_p_0(
+#line 123 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_1,
+#line 123 "deconstruct.m"
+  MR_Box mercury__deconstruct__param_2,
+#line 123 "deconstruct.m"
+  MR_Word mercury__deconstruct__param_3,
+#line 123 "deconstruct.m"
+  MR_String * mercury__deconstruct__param_4,
+#line 123 "deconstruct.m"
+  MR_Integer * mercury__deconstruct__param_5);
+
+void mercury__deconstruct__init(void);
+void mercury__deconstruct__init_type_tables(void);
+void mercury__deconstruct__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_deconstruct */
+
+/* :- end_interface deconstruct. */

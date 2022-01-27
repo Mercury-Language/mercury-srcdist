@@ -1,0 +1,35 @@
+/*
+** Automatically generated from `generate_output.m'
+** by the Mercury compiler,
+** version rotd-2014-09-30
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+*/
+#ifndef GENERATE_OUTPUT_MH
+#define GENERATE_OUTPUT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef GENERATE_OUTPUT_DECL_GUARD
+#define GENERATE_OUTPUT_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* GENERATE_OUTPUT_MH */
