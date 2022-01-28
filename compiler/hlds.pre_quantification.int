@@ -1,0 +1,5 @@
+:- module (hlds.pre_quantification).
+:- interface.
+:- use_module (hlds.hlds_goal).
+:- pred separate_trace_goal_only_locals(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode separate_trace_goal_only_locals((builtin.in), (builtin.out)) is det.

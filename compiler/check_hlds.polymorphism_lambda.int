@@ -1,0 +1,16 @@
+:- module (check_hlds.polymorphism_lambda).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_data).
+:- pred convert_pred_to_lambda_goal(parse_tree.prog_data.purity, parse_tree.prog_data.lambda_eval_method, parse_tree.prog_data.prog_var, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type), hlds.hlds_goal.unify_context, hlds.hlds_goal.hlds_goal_info, term.context, hlds.hlds_module.module_info, parse_tree.maybe_error.maybe1(hlds.hlds_goal.unify_rhs), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode convert_pred_to_lambda_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred fix_undetermined_mode_lambda_goal(hlds.hlds_module.module_info, hlds.hlds_pred.proc_id, hlds.hlds_goal.unify_rhs, parse_tree.maybe_error.maybe1(hlds.hlds_goal.unify_rhs)).
+:- mode fix_undetermined_mode_lambda_goal((builtin.in), (builtin.in), builtin.in(((hlds.hlds_goal).rhs_lambda_goal)), builtin.out((parse_tree.maybe_error).maybe1(((hlds.hlds_goal).rhs_lambda_goal)))) is det.

@@ -1,0 +1,4 @@
+:- module (check_hlds.unify_proc).
+:- interface.
+:- type spec_pred_defn_info
+    --->    spec_pred_defn_info(((check_hlds.unify_proc).spdi_spec_pred_id) :: mdbcomp.prim_data.special_pred_id, ((check_hlds.unify_proc).spdi_pred_id) :: hlds.hlds_pred.pred_id, ((check_hlds.unify_proc).spdi_tvarset) :: parse_tree.prog_data.tvarset, ((check_hlds.unify_proc).spdi_type) :: parse_tree.prog_data.mer_type, ((check_hlds.unify_proc).spdi_type_ctor) :: parse_tree.prog_data.type_ctor, ((check_hlds.unify_proc).spdi_type_body) :: hlds.hlds_data.hlds_type_body, ((check_hlds.unify_proc).spdi_orig_status) :: hlds.status.type_status, ((check_hlds.unify_proc).spdi_context) :: parse_tree.prog_data.prog_context).

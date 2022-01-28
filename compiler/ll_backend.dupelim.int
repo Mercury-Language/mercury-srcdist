@@ -1,0 +1,9 @@
+:- module (ll_backend.dupelim).
+:- interface.
+:- use_module counter.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module (ll_backend.llds).
+:- use_module (mdbcomp.prim_data).
+:- pred dupelim_main(mdbcomp.prim_data.proc_label, counter.counter, counter.counter, list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode dupelim_main((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
