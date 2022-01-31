@@ -1,0 +1,312 @@
+/*
+** Automatically generated from `mode_errors.m'
+** by the Mercury compiler,
+** version rotd-2022-01-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.mode_errors.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__mode_errors
+#define MR_HEADER_GUARD_check_hlds__mode_errors
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODE_ERRORS_DECL_GUARD
+#define CHECK_HLDS__MODE_ERRORS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_argnum_var_type_inst_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_cannot_create_reason_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_reason_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_coerce_error_term_path_step_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_delayed_goal_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_final_inst_error_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_ground_or_nonground_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_maybe_is_disjunctive_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_context_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_merge_error_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_error_unify_rhs_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_warning_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_mode_warning_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_negated_context_desc_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_pred_id_var_multimode_error_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_report_inst_how_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_schedule_culprit_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_var_multimode_error_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_errors__check_hlds__mode_errors__type_ctor_info_write_indented_goal_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_parse_tree__error_util__print_anything__arity1__check_hlds__mode_errors__write_indented_goal__arity0__[6];
+
+MR_String MR_CALL 
+check_hlds__mode_errors__mode_decl_to_string_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+check_hlds__mode_errors__mode_error_info_to_spec_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__mode_errors__mode_warning_info_to_spec_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__mode_errors__should_report_mode_warning_for_pred_origin_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____cannot_create_reason_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____coerce_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____coerce_error_reason_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____coerce_error_term_path_step_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____delayed_goal_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____final_inst_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____merge_context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____merge_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_error_unify_rhs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_warning_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____mode_warning_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____negated_context_desc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____pred_id_var_multimode_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____schedule_culprit_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Compare____var_multimode_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_errors____Index____mode_error_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____cannot_create_reason_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____coerce_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____coerce_error_reason_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____coerce_error_term_path_step_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____delayed_goal_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____final_inst_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____merge_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_error_unify_rhs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_warning_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____mode_warning_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____negated_context_desc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____pred_id_var_multimode_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____schedule_culprit_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_errors____Unify____var_multimode_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__mode_errors__init(void);
+void mercury__check_hlds__mode_errors__init_type_tables(void);
+void mercury__check_hlds__mode_errors__init_debugger(void);
+const char *mercury__check_hlds__mode_errors__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.mode_errors
+
+// :- end_interface check_hlds.mode_errors.
