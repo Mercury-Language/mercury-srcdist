@@ -1,0 +1,14 @@
+:- module (parse_tree.prog_data_event).
+:- interface.
+:- type event_attr_synth_call.
+:- type event_attribute.
+:- type event_set.
+:- type event_set_data.
+:- type event_spec.
+:- type event_spec_map.
+:- type_representation(event_attr_synth_call, is_word_aligned_ptr).
+:- type_representation(event_attribute, is_word_aligned_ptr).
+:- type_representation(event_set, is_word_aligned_ptr).
+:- type_representation(event_set_data, is_word_aligned_ptr).
+:- type_representation(event_spec, is_word_aligned_ptr).
+:- type_representation(event_spec_map, is_eqv_to(map(string, parse_tree.prog_data_event.event_spec))).

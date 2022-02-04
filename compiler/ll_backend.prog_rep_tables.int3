@@ -1,0 +1,6 @@
+:- module (ll_backend.prog_rep_tables).
+:- interface.
+:- type string_table_info.
+:- type type_table_info.
+:- type_representation(string_table_info, is_word_aligned_ptr).
+:- type_representation(type_table_info, is_word_aligned_ptr).

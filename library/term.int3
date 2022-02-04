@@ -1,0 +1,38 @@
+:- module term.
+:- interface.
+:- import_module enum.
+:- import_module integer.
+:- import_module list.
+:- import_module map.
+:- type const.
+:- type context.
+:- type generic.
+:- type integer_base
+	where	type_is_abstract_enum(2).
+:- type integer_size
+	where	type_is_abstract_enum(3).
+:- type renaming.
+:- type renaming(T).
+:- type signedness
+	where	type_is_abstract_enum(1).
+:- type substitution.
+:- type substitution(T).
+:- type term.
+:- type term(T).
+:- type var.
+:- type var(T).
+:- type var_supply(T).
+:- instance (enum(term.var(V_1))).
+:- type_representation(context, is_word_aligned_ptr).
+:- type_representation(generic, du_repn(direct_dummy("generic",  no_c_j_cs))).
+:- type_representation(integer_base, du_repn(enum("base_2", "base_8", ["base_10", "base_16"],  no_c_j_cs))).
+:- type_representation(integer_size, du_repn(enum("size_word", "size_8_bit", ["size_16_bit", "size_32_bit", "size_64_bit"],  no_c_j_cs))).
+:- type_representation(renaming, is_eqv_to(term.renaming(term.generic))).
+:- type_representation(renaming(V_1), is_eqv_to(map(term.var(V_1), term.var(V_1)))).
+:- type_representation(signedness, du_repn(enum("signed", "unsigned", [],  no_c_j_cs))).
+:- type_representation(substitution, is_eqv_to(term.substitution(term.generic))).
+:- type_representation(substitution(V_1), is_eqv_to(map(term.var(V_1), term.term(V_1)))).
+:- type_representation(term, is_eqv_to(term.term(term.generic))).
+:- type_representation(var, is_eqv_to(term.var(term.generic))).
+:- type_representation(var(V_1), du_repn(notag("var", int,  no_c_j_cs))).
+:- type_representation(var_supply(V_1), du_repn(notag("var_supply", int,  no_c_j_cs))).
