@@ -1,0 +1,503 @@
+/*
+** Automatically generated from `module_qual.m'
+** by the Mercury compiler,
+** version rotd-2022-02-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.module_qual.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__module_qual
+#define MR_HEADER_GUARD_parse_tree__module_qual
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__MODULE_QUAL_DECL_GUARD
+#define PARSE_TREE__MODULE_QUAL_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_maybe_found_undef_inst_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_maybe_found_undef_mode_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_maybe_found_undef_type_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_maybe_found_undef_typeclass_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_maybe_should_report_errors_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_maybe_suppress_found_undef_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_maybe_warn_unused_imports_in_parents_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_mq_in_interface_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_mq_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_mq_sub_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__module_qual__parse_tree__module_qual__type_ctor_info_partial_qualifier_info_0;
+
+void MR_CALL 
+parse_tree__module_qual__get_mq_debug_output_stream_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__get_partial_qualifiers_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_qual__get_partial_qualifiers_acc_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+parse_tree__module_qual__init_mq_info_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_qual__maybe_report_qual_errors_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__module_qual__module_qualify_aug_comp_unit_13_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_String param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_Word * param_9,
+  MR_Word * param_10,
+  MR_Word * param_11,
+  MR_Word param_12,
+  MR_Word * param_13);
+
+void MR_CALL 
+parse_tree__module_qual__module_qualify_aug_make_int_unit_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__module_qual__module_qualify_parse_tree_int3_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_as_yet_unused_interface_modules_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_classes_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_exported_instances_flag_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_found_undef_inst_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_found_undef_mode_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_found_undef_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_found_undef_typeclass_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_globals_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_imported_instance_modules_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_imported_modules_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_insts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_modes_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_modules_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_partial_qualifier_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_recompilation_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_should_report_errors_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_should_warn_unused_imports_in_parents_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_suppress_found_undef_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_this_module_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_get_types_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_record_undef_mq_id_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_as_yet_unused_interface_modules_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_classes_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_exported_instances_flag_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_found_undef_inst_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_found_undef_mode_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_found_undef_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_found_undef_typeclass_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_imported_instance_modules_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_imported_modules_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_modes_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_module_used_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_modules_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_recompilation_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_suppress_found_undef_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__mq_info_set_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual__qualify_clause_mode_list_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+parse_tree__module_qual__qualify_lambda_mode_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+parse_tree__module_qual__qualify_type_qualification_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+parse_tree__module_qual__update_recompilation_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____maybe_found_undef_inst_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____maybe_found_undef_mode_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____maybe_found_undef_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____maybe_found_undef_typeclass_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____maybe_should_report_errors_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____maybe_suppress_found_undef_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____maybe_warn_unused_imports_in_parents_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____mq_in_interface_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____mq_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____mq_sub_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__module_qual____Compare____partial_qualifier_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____maybe_found_undef_inst_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____maybe_found_undef_mode_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____maybe_found_undef_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____maybe_found_undef_typeclass_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____maybe_should_report_errors_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____maybe_suppress_found_undef_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____maybe_warn_unused_imports_in_parents_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____mq_in_interface_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____mq_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____mq_sub_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__module_qual____Unify____partial_qualifier_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__module_qual__init(void);
+void mercury__parse_tree__module_qual__init_type_tables(void);
+void mercury__parse_tree__module_qual__init_debugger(void);
+const char *mercury__parse_tree__module_qual__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.module_qual
+
+// :- end_interface parse_tree.module_qual.
