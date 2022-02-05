@@ -1,0 +1,10 @@
+erroneous_throw_promise.m:009: `foo'(in) has determinism erroneous but also has
+erroneous_throw_promise.m:009:   foreign clauses that have a
+erroneous_throw_promise.m:009:   `will_not_throw_exception' attribute. This
+erroneous_throw_promise.m:009:   attribute cannot be applied to erroneous
+erroneous_throw_promise.m:009:   procedures.
+erroneous_throw_promise.m:011: `bar'(in) has determinism erroneous but also has
+erroneous_throw_promise.m:011:   foreign clauses that have a
+erroneous_throw_promise.m:011:   `will_not_throw_exception' attribute. This
+erroneous_throw_promise.m:011:   attribute cannot be applied to erroneous
+erroneous_throw_promise.m:011:   procedures.
