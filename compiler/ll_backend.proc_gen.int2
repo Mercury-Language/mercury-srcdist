@@ -1,0 +1,2 @@
+:- module (ll_backend.proc_gen).
+:- interface.
