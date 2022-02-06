@@ -1,0 +1,82 @@
+:- module (grade_lib.grade_vars).
+:- interface.
+:- type grade_var_backend
+	where	type_is_abstract_enum(1).
+:- type grade_var_debug
+	where	type_is_abstract_enum(2).
+:- type grade_var_deep_prof
+	where	type_is_abstract_enum(1).
+:- type grade_var_gc
+	where	type_is_abstract_enum(3).
+:- type grade_var_gcc_conf
+	where	type_is_abstract_enum(3).
+:- type grade_var_low_tag_bits_use
+	where	type_is_abstract_enum(2).
+:- type grade_var_merc_file
+	where	type_is_abstract_enum(1).
+:- type grade_var_merc_float
+	where	type_is_abstract_enum(2).
+:- type grade_var_minmodel
+	where	type_is_abstract_enum(3).
+:- type grade_var_mprof_call
+	where	type_is_abstract_enum(1).
+:- type grade_var_mprof_memory
+	where	type_is_abstract_enum(1).
+:- type grade_var_mprof_time
+	where	type_is_abstract_enum(1).
+:- type grade_var_nested_funcs
+	where	type_is_abstract_enum(1).
+:- type grade_var_pregen
+	where	type_is_abstract_enum(1).
+:- type grade_var_rbmm
+	where	type_is_abstract_enum(1).
+:- type grade_var_rbmm_debug
+	where	type_is_abstract_enum(1).
+:- type grade_var_rbmm_prof
+	where	type_is_abstract_enum(1).
+:- type grade_var_ssdebug
+	where	type_is_abstract_enum(1).
+:- type grade_var_stack_len
+	where	type_is_abstract_enum(2).
+:- type grade_var_target
+	where	type_is_abstract_enum(2).
+:- type grade_var_target_debug
+	where	type_is_abstract_enum(1).
+:- type grade_var_term_size_prof
+	where	type_is_abstract_enum(2).
+:- type grade_var_thread_safe
+	where	type_is_abstract_enum(2).
+:- type grade_var_trail
+	where	type_is_abstract_enum(1).
+:- type grade_var_trail_segments
+	where	type_is_abstract_enum(1).
+:- type grade_var_tscope_prof
+	where	type_is_abstract_enum(1).
+:- type grade_vars.
+:- type_representation(grade_var_backend, du_repn(enum("grade_var_backend_mlds", "grade_var_backend_llds", [],  no_c_j_cs))).
+:- type_representation(grade_var_debug, du_repn(enum("grade_var_debug_none", "grade_var_debug_debug", ["grade_var_debug_decldebug"],  no_c_j_cs))).
+:- type_representation(grade_var_deep_prof, du_repn(enum("grade_var_deep_prof_no", "grade_var_deep_prof_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_gc, du_repn(enum("grade_var_gc_none", "grade_var_gc_bdw", ["grade_var_gc_bdw_debug", "grade_var_gc_target_native", "grade_var_gc_accurate", "grade_var_gc_history"],  no_c_j_cs))).
+:- type_representation(grade_var_gcc_conf, du_repn(enum("grade_var_gcc_conf_none", "grade_var_gcc_conf_reg", ["grade_var_gcc_conf_jump", "grade_var_gcc_conf_fast", "grade_var_gcc_conf_asm_jump", "grade_var_gcc_conf_asm_fast"],  no_c_j_cs))).
+:- type_representation(grade_var_low_tag_bits_use, du_repn(enum("grade_var_low_tag_bits_use_0", "grade_var_low_tag_bits_use_2", ["grade_var_low_tag_bits_use_3"],  no_c_j_cs))).
+:- type_representation(grade_var_merc_file, du_repn(enum("grade_var_merc_file_no", "grade_var_merc_file_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_merc_float, du_repn(enum("grade_var_merc_float_is_boxed_c_double", "grade_var_merc_float_is_unboxed_c_double", ["grade_var_merc_float_is_unboxed_c_float"],  no_c_j_cs))).
+:- type_representation(grade_var_minmodel, du_repn(enum("grade_var_minmodel_no", "grade_var_minmodel_stack_copy", ["grade_var_minmodel_stack_copy_debug", "grade_var_minmodel_own_stack", "grade_var_minmodel_own_stack_debug"],  no_c_j_cs))).
+:- type_representation(grade_var_mprof_call, du_repn(enum("grade_var_mprof_call_no", "grade_var_mprof_call_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_mprof_memory, du_repn(enum("grade_var_mprof_memory_no", "grade_var_mprof_memory_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_mprof_time, du_repn(enum("grade_var_mprof_time_no", "grade_var_mprof_time_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_nested_funcs, du_repn(enum("grade_var_nested_funcs_no", "grade_var_nested_funcs_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_pregen, du_repn(enum("grade_var_pregen_no", "grade_var_pregen_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_rbmm, du_repn(enum("grade_var_rbmm_no", "grade_var_rbmm_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_rbmm_debug, du_repn(enum("grade_var_rbmm_debug_no", "grade_var_rbmm_debug_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_rbmm_prof, du_repn(enum("grade_var_rbmm_prof_no", "grade_var_rbmm_prof_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_ssdebug, du_repn(enum("grade_var_ssdebug_no", "grade_var_ssdebug_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_stack_len, du_repn(enum("grade_var_stack_len_std", "grade_var_stack_len_segments", ["grade_var_stack_len_extend"],  no_c_j_cs))).
+:- type_representation(grade_var_target, du_repn(enum("grade_var_target_c", "grade_var_target_csharp", ["grade_var_target_java"],  no_c_j_cs))).
+:- type_representation(grade_var_target_debug, du_repn(enum("grade_var_target_debug_no", "grade_var_target_debug_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_term_size_prof, du_repn(enum("grade_var_term_size_prof_no", "grade_var_term_size_prof_cells", ["grade_var_term_size_prof_words"],  no_c_j_cs))).
+:- type_representation(grade_var_thread_safe, du_repn(enum("grade_var_thread_safe_c_no", "grade_var_thread_safe_c_yes", ["grade_var_thread_safe_target_native"],  no_c_j_cs))).
+:- type_representation(grade_var_trail, du_repn(enum("grade_var_trail_no", "grade_var_trail_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_trail_segments, du_repn(enum("grade_var_trail_segments_no", "grade_var_trail_segments_yes", [],  no_c_j_cs))).
+:- type_representation(grade_var_tscope_prof, du_repn(enum("grade_var_tscope_prof_no", "grade_var_tscope_prof_yes", [],  no_c_j_cs))).
+:- type_representation(grade_vars, is_word_aligned_ptr).

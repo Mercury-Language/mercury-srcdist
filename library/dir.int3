@@ -1,0 +1,20 @@
+:- module dir.
+:- interface.
+:- type file_error.
+:- type file_operation
+	where	type_is_abstract_enum(3).
+:- type fold_params.
+:- type foldl_pred(T).
+:- type maybe_follow_symlinks
+	where	type_is_abstract_enum(1).
+:- type maybe_subdirs.
+:- type on_error
+	where	type_is_abstract_enum(1).
+:- abstract_inst((foldl_pred)).
+:- type_representation(file_error, is_word_aligned_ptr).
+:- type_representation(file_operation, du_repn(enum("file_open", "file_close", ["file_get_id", "file_get_type", "file_check_accessibility", "file_read_dir_entry"],  no_c_j_cs))).
+:- type_representation(fold_params, is_word_aligned_ptr).
+:- type_representation(foldl_pred(V_1), is_eqv_to(pred(string, string, io.file_type, bool, V_1, V_1, io, io))).
+:- type_representation(maybe_file_error, is_eqv_to(maybe_file_error(unit))).
+:- type_representation(maybe_follow_symlinks, du_repn(enum("do_not_follow_symlinks", "follow_symlinks", [],  no_c_j_cs))).
+:- type_representation(on_error, du_repn(enum("on_error_stop", "on_error_keep_going", [],  no_c_j_cs))).
