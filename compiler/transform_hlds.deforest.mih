@@ -1,0 +1,65 @@
+/*
+** Automatically generated from `deforest.m'
+** by the Mercury compiler,
+** version rotd-2022-02-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.deforest.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__deforest
+#define MR_HEADER_GUARD_transform_hlds__deforest
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__DEFOREST_DECL_GUARD
+#define TRANSFORM_HLDS__DEFOREST_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__deforest__transform_hlds__deforest__type_ctor_info_annotated_conj_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__deforest__transform_hlds__deforest__type_ctor_info_can_move_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__deforest__transform_hlds__deforest__type_ctor_info_deforest_info_0;
+
+void MR_CALL 
+transform_hlds__deforest__deforestation_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__transform_hlds__deforest__init(void);
+void mercury__transform_hlds__deforest__init_type_tables(void);
+void mercury__transform_hlds__deforest__init_debugger(void);
+const char *mercury__transform_hlds__deforest__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.deforest
+
+// :- end_interface transform_hlds.deforest.

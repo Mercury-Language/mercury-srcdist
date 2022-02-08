@@ -1,0 +1,26 @@
+:- module (backend_libs.bytecode_data).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- pred float_to_byte_list(float, list.list(int)).
+:- mode float_to_byte_list((builtin.in), (builtin.out)) is det.
+:- pred int32_to_byte_list(int, list.list(int)).
+:- mode int32_to_byte_list((builtin.in), (builtin.out)) is det.
+:- pred int_to_byte_list(int, list.list(int)).
+:- mode int_to_byte_list((builtin.in), (builtin.out)) is det.
+:- pred output_byte(int, io.io, io.io).
+:- mode output_byte((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_float(float, io.io, io.io).
+:- mode output_float((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_int(int, io.io, io.io).
+:- mode output_int((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_int32(int, io.io, io.io).
+:- mode output_int32((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_short(int, io.io, io.io).
+:- mode output_short((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_string(string, io.io, io.io).
+:- mode output_string((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred short_to_byte_list(int, list.list(int)).
+:- mode short_to_byte_list((builtin.in), (builtin.out)) is det.
+:- pred string_to_byte_list(string, list.list(int)).
+:- mode string_to_byte_list((builtin.in), (builtin.out)) is det.

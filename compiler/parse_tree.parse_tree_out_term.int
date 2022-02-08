@@ -1,0 +1,51 @@
+:- module (parse_tree.parse_tree_out_term).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module term.
+:- use_module varset.
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- type needs_quotes
+    --->    next_to_graphic_token 
+    ;       not_next_to_graphic_token .
+:- func describe_error_term(varset.varset(T), term.term(T)) = string.
+:- func mercury_bracketed_atom_to_string(parse_tree.parse_tree_out_term.needs_quotes, string) = string.
+:- pred mercury_convert_var_name(string, string).
+:- mode mercury_convert_var_name((builtin.in), (builtin.out)) is det.
+:- pred mercury_format_bracketed_atom(parse_tree.parse_tree_out_term.needs_quotes, string, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_bracketed_atom((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_comma_separated_terms(varset.varset(T), parse_tree.prog_data.var_name_print, term.term(T), list.list(term.term(T)), S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_comma_separated_terms((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_quoted_atom(parse_tree.parse_tree_out_term.needs_quotes, string, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_quoted_atom((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_term(varset.varset(T), parse_tree.prog_data.var_name_print, term.term(T), S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_term((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_term_nq(varset.varset(T), parse_tree.prog_data.var_name_print, parse_tree.parse_tree_out_term.needs_quotes, term.term(T), S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_term_nq((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_var(varset.varset(T), parse_tree.prog_data.var_name_print, term.var(T), S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_var((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_vars(varset.varset(T), parse_tree.prog_data.var_name_print, list.list(term.var(T)), S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func mercury_limited_term_nq_to_string(varset.varset(T), parse_tree.prog_data.var_name_print, parse_tree.parse_tree_out_term.needs_quotes, int, term.term(T)) = string.
+:- func mercury_limited_term_to_string(varset.varset(T), parse_tree.prog_data.var_name_print, int, term.term(T)) = string.
+:- pred mercury_op(string).
+:- mode mercury_op((builtin.in)) is semidet.
+:- pred mercury_output_limited_term(varset.varset(T), parse_tree.prog_data.var_name_print, int, term.term(T), io.text_output_stream, io.io, io.io).
+:- mode mercury_output_limited_term((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_limited_term_nq(varset.varset(T), parse_tree.prog_data.var_name_print, parse_tree.parse_tree_out_term.needs_quotes, int, term.term(T), io.text_output_stream, io.io, io.io).
+:- mode mercury_output_limited_term_nq((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_term(varset.varset(T), parse_tree.prog_data.var_name_print, term.term(T), io.text_output_stream, io.io, io.io).
+:- mode mercury_output_term((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_term_nq(varset.varset(T), parse_tree.prog_data.var_name_print, parse_tree.parse_tree_out_term.needs_quotes, term.term(T), io.text_output_stream, io.io, io.io).
+:- mode mercury_output_term_nq((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_var(varset.varset(T), parse_tree.prog_data.var_name_print, term.var(T), io.text_output_stream, io.io, io.io).
+:- mode mercury_output_var((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_vars(varset.varset(T), parse_tree.prog_data.var_name_print, list.list(term.var(T)), io.text_output_stream, io.io, io.io).
+:- mode mercury_output_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func mercury_term_nq_to_string(varset.varset(T), parse_tree.prog_data.var_name_print, parse_tree.parse_tree_out_term.needs_quotes, term.term(T)) = string.
+:- func mercury_term_to_string(varset.varset(T), parse_tree.prog_data.var_name_print, term.term(T)) = string.
+:- func mercury_var_to_name_only(varset.varset(T), term.var(T)) = string.
+:- func mercury_var_to_string(varset.varset(T), parse_tree.prog_data.var_name_print, term.var(T)) = string.
+:- func mercury_vars_to_name_only(varset.varset(T), list.list(term.var(T))) = string.
+:- func mercury_vars_to_string(varset.varset(T), parse_tree.prog_data.var_name_print, list.list(term.var(T))) = string.

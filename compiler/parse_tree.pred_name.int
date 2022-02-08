@@ -1,0 +1,28 @@
+:- module (parse_tree.pred_name).
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_pragma).
+:- type line_number_and_counter
+    --->    lnc(int, int).
+:- type transform_name
+    --->    tn_accumulator(mdbcomp.prim_data.pred_or_func, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_deforestation(mdbcomp.prim_data.pred_or_func, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_lambda(mdbcomp.prim_data.pred_or_func, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_loop_inv(mdbcomp.prim_data.pred_or_func, int, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_tupling(mdbcomp.prim_data.pred_or_func, int, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_untupling(mdbcomp.prim_data.pred_or_func, int, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_dep_par_conj(mdbcomp.prim_data.pred_or_func, int, list.list(int))
+    ;       tn_par_distance_granularity(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_par_loop_control(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_structure_reuse(mdbcomp.prim_data.pred_or_func, int, list.list(int))
+    ;       tn_type_spec(maybe.maybe(mdbcomp.prim_data.pred_or_func), parse_tree.prog_data.tvarset, parse_tree.prog_data_pragma.type_subst)
+    ;       tn_unused_args(mdbcomp.prim_data.pred_or_func, int, list.list(int)).
+:- pred make_pred_name(mdbcomp.sym_name.module_name, string, parse_tree.pred_name.transform_name, mdbcomp.sym_name.sym_name).
+:- mode make_pred_name((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
