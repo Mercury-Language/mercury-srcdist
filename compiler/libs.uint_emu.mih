@@ -1,0 +1,156 @@
+/*
+** Automatically generated from `uint_emu.m'
+** by the Mercury compiler,
+** version 22.01-beta-2022-02-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.uint_emu.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__uint_emu
+#define MR_HEADER_GUARD_libs__uint_emu
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__UINT_EMU_DECL_GUARD
+#define LIBS__UINT_EMU_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__uint_emu__libs__uint_emu__type_ctor_info_bits_per_uint_0;
+
+MR_bool MR_CALL 
+libs__uint_emu__left_shift_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Integer param_3,
+  MR_Unsigned * param_4);
+
+MR_bool MR_CALL 
+libs__uint_emu__minus_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3,
+  MR_Unsigned * param_4);
+
+MR_bool MR_CALL 
+libs__uint_emu__mod_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3,
+  MR_Unsigned * param_4);
+
+MR_bool MR_CALL 
+libs__uint_emu__plus_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3,
+  MR_Unsigned * param_4);
+
+MR_bool MR_CALL 
+libs__uint_emu__quotient_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3,
+  MR_Unsigned * param_4);
+
+MR_bool MR_CALL 
+libs__uint_emu__rem_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3,
+  MR_Unsigned * param_4);
+
+MR_bool MR_CALL 
+libs__uint_emu__right_shift_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Integer param_3,
+  MR_Unsigned * param_4);
+
+void MR_CALL 
+libs__uint_emu__target_bits_per_uint_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+libs__uint_emu__times_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3,
+  MR_Unsigned * param_4);
+
+MR_bool MR_CALL 
+libs__uint_emu__unchecked_left_shift_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Integer param_3,
+  MR_Unsigned * param_4);
+
+MR_bool MR_CALL 
+libs__uint_emu__unchecked_quotient_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3,
+  MR_Unsigned * param_4);
+
+MR_bool MR_CALL 
+libs__uint_emu__unchecked_rem_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3,
+  MR_Unsigned * param_4);
+
+MR_bool MR_CALL 
+libs__uint_emu__unchecked_right_shift_4_p_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Integer param_3,
+  MR_Unsigned * param_4);
+
+void MR_CALL 
+libs__uint_emu____Compare____bits_per_uint_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__uint_emu____Unify____bits_per_uint_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__uint_emu__init(void);
+void mercury__libs__uint_emu__init_type_tables(void);
+void mercury__libs__uint_emu__init_debugger(void);
+const char *mercury__libs__uint_emu__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.uint_emu
+
+// :- end_interface libs.uint_emu.
