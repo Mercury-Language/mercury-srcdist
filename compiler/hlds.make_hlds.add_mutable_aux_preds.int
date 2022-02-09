@@ -1,0 +1,9 @@
+:- module ((hlds.make_hlds).add_mutable_aux_preds).
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_foreign).
+:- pred implement_mutables_if_local(hlds.hlds_module.module_info, hlds.make_hlds.sec_list(parse_tree.prog_item.item_mutable_info), hlds.make_hlds.sec_list(parse_tree.prog_item.item_pred_decl_info), hlds.make_hlds.ims_list(parse_tree.prog_item.item_clause_info), hlds.make_hlds.ims_list(parse_tree.prog_item.item_foreign_proc), list.list(parse_tree.prog_foreign.foreign_decl_code), list.list(parse_tree.prog_foreign.foreign_body_code), list.list(parse_tree.prog_item.item_fproc_export), parse_tree.prog_foreign.pred_target_names, parse_tree.prog_foreign.pred_target_names, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode implement_mutables_if_local((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
