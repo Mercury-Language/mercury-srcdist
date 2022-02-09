@@ -1,0 +1,405 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1995-2012 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public Licence - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# This is the Mmakefile for building the Mercury deep profiler.
+
+MERCURY_DIR=..
+LINK_STATIC=yes
+include $(MERCURY_DIR)/Mmake.common
+
+#----------------------------------------------------------------------------#
+
+# Override some settings from ../Mmake.workspace so that in debugging grades
+# we do not include mer_mdbcomp.init when creating the _init.c files in
+# this directory. We copy the mdbcomp modules into this directory so if we
+# do include mer_mdbcomp.init we will end up with duplicate entries in the
+# _init.c files.
+
+C2INITFLAGS = --trace-init-file $(BROWSER_DIR)/$(BROWSER_LIB_NAME).init
+
+#----------------------------------------------------------------------------#
+
+-include Mmake.deep.params
+
+# Override the default rule in `mmake --use-mmc-make' that asks `mmc'
+# to create a missing optional params file.
+Mmake.deep.params:
+
+# Module-specific options should go in Mercury.options so they can be found
+# by `mmc --make'.
+include Mercury.options
+
+MAIN_TARGET = all
+
+ALL_DEEP_MAIN_MODULES = \
+	mdprof_cgi \
+	mdprof_test \
+	mdprof_dump \
+	mdprof_create_feedback \
+	mdprof_report_feedback \
+	mdprof_procrep
+
+# Always compile the deep profiler, even if it is not enabled.
+#
+MAIN_TARGET=all
+MERCURY_MAIN_MODULES=$(ALL_DEEP_MAIN_MODULES)
+DEPEND=$(patsubst %,%.depend,$(ALL_DEEP_MAIN_MODULES))
+PDBS=$(patsubst %,%.pdb,$(ALL_DEEP_MAIN_MODULES))
+
+ifeq ("$(ENABLE_DEEP_PROFILER)","yes")
+	INSTALL=install_cgi_progs
+else
+	INSTALL=nothing
+endif
+
+VPATH = $(LIBRARY_DIR) $(SSDB_DIR)
+
+#-----------------------------------------------------------------------------#
+
+MDBCOMP_MODULES = \
+	builtin_modules.m \
+	feedback.automatic_parallelism.m \
+	feedback.m \
+	mdbcomp.m \
+	mdbcomp.goal_path.m \
+	prim_data.m \
+	program_representation.m \
+	rtti_access.m \
+	shared_utilities.m \
+	slice_and_dice.m \
+	sym_name.m \
+	trace_counts.m
+
+#-----------------------------------------------------------------------------#
+
+MLFLAGS += --shared
+MCFLAGS += --flags DEEP_FLAGS $(CONFIG_OVERRIDE)
+
+#-----------------------------------------------------------------------------#
+
+# Tell the C# compiler where the stdlib assembly is.
+#
+ifneq ("$(filter csharp%,$(GRADE))","")
+CSCFLAGS=-lib:../library -r:mer_std.dll
+endif
+
+#-----------------------------------------------------------------------------#
+
+ifneq ("$(filter csharp% java%,$(GRADE))","")
+MLOBJS =
+endif
+
+#-----------------------------------------------------------------------------#
+
+# The deep profiler contains quite a lot of C code for which there are
+# currently not C# or Java implementations. We need to pass
+# `--allow-stubs' in order to compile it.
+#
+ifneq ("$(filter csharp% java%,$(GRADE))","")
+MCFLAGS += --allow-stubs --no-warn-stubs
+endif
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: nothing
+nothing:
+
+.PHONY: depend
+depend:	$(MDBCOMP_MODULES) $(DEPEND)
+
+$(DEPEND): DEEP_FLAGS $(MDBCOMP_MODULES) Mercury.modules
+
+# This directory contains source files for which the module name
+# does not match the file name, so smart recompilation won't work
+# without the Mercury.modules file.
+.PHONY: Mercury.modules
+Mercury.modules: DEEP_FLAGS $(MDBCOMP_MODULES)
+	$(MC) $(ALL_GRADEFLAGS) $(ALL_MCFLAGS) -f *.m
+
+.PHONY: all
+all:	$(MDBCOMP_MODULES) $(ALL_DEEP_MAIN_MODULES) $(TAGS_FILE_EXISTS)
+
+#-----------------------------------------------------------------------------#
+#
+# The programs in this directory rely on the mdbcomp package, since
+# it contains the types that define the representation of Mercury programs
+# for tools such as debuggers and profilers, and predicates that operate on
+# those representations.
+#
+# If we linked ../mdbcomp/libmer_mdbcomp.so into the executables in this
+# directory, then those executables would have to be compiled in the same grade
+# as the modules of the mdbcomp directory, which in turn is the same grade
+# as the modules of the library and compiler directories. This would work,
+# but it would mean that rebuilding the tools in this directory in another
+# grade (e.g. to enable debugging) would take several minutes. To avoid such
+# delays, we copy across the source files of the mdbcomp library. The copied
+# .m files, and the .m files that natively reside in this directory, can be
+# recompiled in a different grade much more quickly than that.
+#
+
+$(MDBCOMP_MODULES): %: $(MDBCOMP_DIR)/%
+	-@/bin/rm -f $*
+	@cp $(MDBCOMP_DIR)/$* .
+	@chmod a-w $*
+
+#-----------------------------------------------------------------------------#
+
+# Add some additional dependencies, so that Mmake knows to remake the
+# profiler if one of the libraries changes.
+# XXX Should also depend on $(BOEHM_GC_DIR)/libgc(_prof).$A, but only
+# if in .gc(.prof) grade.
+
+RUN_LIB = \
+	$(RUNTIME_DIR)/lib$(RT_LIB_NAME).$A \
+	$(LIBRARY_DIR)/lib$(STD_LIB_NAME).$A
+
+ifeq ("$(filter csharp% java%,$(GRADE))","")
+mdprof_cgi:		$(RUN_LIB)
+mdprof_test:		$(RUN_LIB)
+mdprof_dump:		$(RUN_LIB)
+mdprof_create_feedback:	$(RUN_LIB)
+mdprof_report_feedback:	$(RUN_LIB)
+mdprof_procrep:		$(RUN_LIB)
+endif
+
+$(cs_subdir)mdprof_cgi_init.c:		   $(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+$(cs_subdir)mdprof_test_init.c:		   $(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+$(cs_subdir)mdprof_dump_init.c:		   $(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+$(cs_subdir)mdprof_create_feedback_init.c: $(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+$(cs_subdir)mdprof_report_feedback_init.c: $(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+$(cs_subdir)mdprof_procrep_init.c:	   $(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: check
+check:	DEPEND=$(patsubst %,%.check,$(ALL_DEEP_MAIN_MODULES))
+
+.PHONY: ints
+ints:	DEPEND=$(patsubst %,%.ints,$(ALL_DEEP_MAIN_MODULES))
+
+#-----------------------------------------------------------------------------#
+
+# We need the shenanigans with .deep_tags to avoid situations in which
+# "mmake tags" in this directory does nothing even in the absence of a tags
+# file in this directory, because mmake uses VPATH to find ../library/tags
+# and believes it to be the tags file we are asking for.
+#
+# We give files in mdbcomp to mtags before the files in this directory
+# because we want references to entities defined in the modules copied from the
+# mdbcomp directory to this directory to go the actual, effective definitions,
+# the definitions which can be changed *without* those changes going away
+# on the next copy.
+
+.PHONY: tags
+tags:	.deep_tags
+
+.deep_tags: $(MTAGS) $(wildcard *.m) \
+		$(wildcard $(MDBCOMP_DIR)/*.m) \
+		$(wildcard $(LIBRARY_DIR)/*.m)
+	$(MTAGS) $(MDBCOMP_DIR)/*.m *.m $(LIBRARY_DIR)/*.m
+	@touch .deep_tags
+
+.PHONY: tags_file_exists
+tags_file_exists:
+	@if test ! -f tags; \
+	then \
+		echo making tags; \
+		$(MTAGS) *.m $(MDBCOMP_DIR)/*.m $(LIBRARY_DIR)/*.m; \
+		touch .deep_tags; \
+	fi
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: dates
+dates:
+	touch	$(mdprof_cgi.dates) \
+		$(mdprof_test.dates) \
+		$(mdprof_dump.dates) \
+		$(mdprof_create_feedback.dates) \
+		$(mdprof_report_feedback.dates) \
+		$(mdprof_procrep.dates)
+
+#-----------------------------------------------------------------------------#
+
+# The documentation of the reason for this set of rules
+# can be found in library/Mmakefile.
+
+.PHONY: os cs css javas
+
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+
+os: \
+	mdprof_cgi.os \
+	mdprof_test.os \
+	mdprof_dump.os \
+	mdprof_create_feedback.os \
+	mdprof_report_feedback.os \
+	mdprof_procrep.os
+
+cs: \
+	mdprof_cgi.cs \
+	mdprof_test.cs \
+	mdprof_dump.cs \
+	mdprof_create_feedback.cs \
+	mdprof_report_feedback.cs \
+	mdprof_procrep.cs
+
+css:  \
+	mdprof_cgi.css \
+	mdprof_test.css \
+	mdprof_dump.css \
+	mdprof_create_feedback.css \
+	mdprof_report_feedback.css \
+	mdprof_procrep.css
+
+javas: \
+	mdprof_cgi.javas \
+	mdprof_test.javas \
+	mdprof_dump.javas \
+	mdprof_create_feedback.javas \
+	mdprof_report_feedback.javas \
+	mdprof_procrep.javas
+
+else
+ifneq ($(origin mdprof_cgi.os),undefined)
+
+os: \
+	$(mdprof_cgi.os) \
+	$(mdprof_test.os) \
+	$(mdprof_dump.os) \
+	$(mdprof_create_feedback.os) \
+	$(mdprof_report_feedback.os) \
+	$(mdprof_procrep.os)
+
+cs: \
+	$(mdprof_cgi.cs) \
+	$(mdprof_test.cs) \
+	$(mdprof_dump.cs) \
+	$(mdprof_create_feedback.cs) \
+	$(mdprof_report_feedback.cs) \
+	$(mdprof_procrep.cs)
+
+css: \
+	$(mdprof_cgi.css) \
+	$(mdprof_test.css) \
+	$(mdprof_dump.css) \
+	$(mdprof_create_feedback.css) \
+	$(mdprof_report_feedback.css) \
+	$(mdprof_procrep.css)
+
+javas: \
+	$(mdprof_cgi.javas) \
+	$(mdprof_test.javas) \
+	$(mdprof_dump.javas) \
+	$(mdprof_create_feedback.javas) \
+	$(mdprof_report_feedback.javas) \
+	$(mdprof_procrep.javas)
+else
+os:
+	mmake depend; mmake os
+
+cs:
+	mmake depend; mmake cs
+
+css:
+	mmake depend; mmake css
+
+javas:
+	mmake depend; mmake javas
+endif
+endif
+
+#-----------------------------------------------------------------------------#
+
+realclean_local:
+	rm -f Mercury.modules .deep_tags tags DEEP_FLAGS DEEP_FLAGS.date \
+		.mdbcomp_modules $(MDBCOMP_MODULES) mdbcomp.*.err
+	rm -f $(PDBS) vc*.pdb
+
+#-----------------------------------------------------------------------------#
+
+# Installation targets
+
+.PHONY: install
+install: $(INSTALL)
+
+# We don't install mdprof_test, since it is not for users.
+
+# The code of the install_cgi_progs target is duplicated in
+# bindist/bindist.Makefile.in, though the two rules refer to mdprof_cgi
+# by different paths.
+
+.PHONY: install_cgi_progs
+install_cgi_progs: mdprof_cgi mdprof_dump mdprof_test \
+	mdprof_create_feedback mdprof_report_feedback
+	# $(INSTALL_CGI_DIR) is likely to be writeable only by root or
+	# the www system administrator, which is why we don't consider a
+	# failure of this action to be an error. If the command fails,
+	# the install action in ../Mmakefile will remind the user to do
+	# the copy later.
+	#
+	# The mv before the cp is there in case the executable is being
+	# executed when we do the install. The mv is of course expected to
+	# fail during a first-time installation. The rm is before the move
+	# in case this is the third or later installation.
+	-if test $(ENABLE_DEEP_PROFILER) = yes ; then \
+		if test -w $(INSTALL_CGI_DIR) ; then \
+			rm -f $(INSTALL_CGI_DIR)/mdprof_cgi.was ; \
+			mv -f $(INSTALL_CGI_DIR)/mdprof_cgi \
+				$(INSTALL_CGI_DIR)/mdprof_cgi.was ; \
+			cp mdprof_cgi $(INSTALL_CGI_DIR) ; \
+		else \
+			echo "cannot install mdprof_cgi: " \
+				"$(INSTALL_CGI_DIR) is not writeable"; \
+		fi \
+	fi
+	# We also install mdprof_cgi in $(INSTALL_MERC_BIN_DIR).
+	# This is done just so that it can easily get put in the binary
+	# distribution (even if the step above failed). It is useful for
+	# mdprof_test and mdprof_dump to be available when debugging problems
+	# with the deep profiler, so we install them as well.
+	-[ -d $(INSTALL_MERC_BIN_DIR) ] || mkdir -p $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mdprof_cgi$(EXT_FOR_EXE)` \
+		$(INSTALL_MERC_BIN_DIR)/mdprof_cgi$(EXT_FOR_EXE)
+	cp `vpath_find mdprof_test$(EXT_FOR_EXE)` \
+		$(INSTALL_MERC_BIN_DIR)/mdprof_test$(EXT_FOR_EXE)
+	cp `vpath_find mdprof_dump$(EXT_FOR_EXE)` \
+		$(INSTALL_MERC_BIN_DIR)/mdprof_dump$(EXT_FOR_EXE)
+	cp `vpath_find mdprof_create_feedback$(EXT_FOR_EXE)` \
+		$(INSTALL_MERC_BIN_DIR)/mdprof_create_feedback$(EXT_FOR_EXE)
+	cp `vpath_find mdprof_report_feedback$(EXT_FOR_EXE)` \
+		$(INSTALL_MERC_BIN_DIR)/mdprof_report_feedback$(EXT_FOR_EXE)
+ifeq ($(findstring java,$(GRADE)),java)
+	cp `vpath_find mdprof_cgi.jar` $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mdprof_create_feedback.jar` $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mdprof_dump.jar` $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mdprof_procrep.jar` $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mdprof_report_feedback.jar` $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mdprof_test.jar` $(INSTALL_MERC_BIN_DIR)
+endif
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: uninstall
+uninstall:
+	# We try to uninstall mdprof_cgi, but failure to do so is not an
+	# error for two reasons: because we may simply lack permission to
+	# update the directory, and because the deep profiler installation
+	# may not have been enabled in the first place. (Looking at the current
+	# value of $(ENABLE_DEEP_PROFILER) to check for the latter wouldn't
+	# necessarily do any good, since its setting may have changed since
+	# the original install.)
+	-rm -f $(INSTALL_CGI_DIR)/mdprof_cgi$(EXT_FOR_EXE)
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mdprof_cgi$(EXT_FOR_EXE)
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mdprof_test$(EXT_FOR_EXE)
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mdprof_dump$(EXT_FOR_EXE)
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mdprof_create_feedback$(EXT_FOR_EXE)
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mdprof_report_feedback$(EXT_FOR_EXE)
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mdprof_procrep$(EXT_FOR_EXE)
+
+#-----------------------------------------------------------------------------#
