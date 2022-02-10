@@ -1,0 +1,12 @@
+TRAIL_INSTALL_PREFIX=.
+
+MCFLAGS = \
+	--use-trail			\
+	--trail-segments		\
+	--use-grade-subdirs		\
+	--libgrades-exclude java	\
+	--libgrades-exclude csharp	\
+	--libgrades-include trseg	\
+	--install-prefix $(TRAIL_INSTALL_PREFIX)
+
+MCFLAGS-mercury_trail=--no-warn-nothing-exported --no-warn-interface-imports 

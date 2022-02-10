@@ -1,0 +1,5 @@
+:- module (parse_tree.pred_name).
+:- interface.
+:- type line_number_and_counter.
+:- type transform_name.
+:- type_representation(line_number_and_counter, is_word_aligned_ptr).

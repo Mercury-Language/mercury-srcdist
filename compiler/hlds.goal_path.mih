@@ -1,0 +1,86 @@
+/*
+** Automatically generated from `goal_path.m'
+** by the Mercury compiler,
+** version rotd-2022-02-10
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.goal_path.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__goal_path
+#define MR_HEADER_GUARD_hlds__goal_path
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__GOAL_PATH_DECL_GUARD
+#define HLDS__GOAL_PATH_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_path__hlds__goal_path__type_ctor_info_containing_goal_list_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_path__hlds__goal_path__type_ctor_info_slot_info_0;
+
+void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_clauses_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_proc_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__goal_path__fill_goal_id_slots_in_proc_body_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__goal_path__fill_goal_path_slots_in_proc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void mercury__hlds__goal_path__init(void);
+void mercury__hlds__goal_path__init_type_tables(void);
+void mercury__hlds__goal_path__init_debugger(void);
+const char *mercury__hlds__goal_path__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.goal_path
+
+// :- end_interface hlds.goal_path.
