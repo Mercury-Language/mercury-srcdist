@@ -1,0 +1,24 @@
+:- module (make.build).
+:- interface.
+:- use_module (libs.globals).
+:- use_module (libs.maybe_succeeded).
+:- type foldl2_pred_with_status(T, Info, IO) == pred(libs.globals.globals, T, libs.maybe_succeeded.maybe_succeeded, Info, Info, IO, IO).
+:- type foldl3_pred_with_status(T, Acc, Info, IO) == pred(libs.globals.globals, T, libs.maybe_succeeded.maybe_succeeded, Acc, Acc, Info, Info, IO, IO).
+:- type may_build
+    --->    may_not_build(list.list(parse_tree.error_util.error_spec))
+    ;       may_build(list.list(string), libs.globals.globals).
+:- type maybe_invoked_by_mmc_make
+    --->    not_invoked_by_mmc_make 
+    ;       invoked_by_mmc_make .
+:- type stdout_lock.
+:- inst foldl2_pred_with_status == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst foldl3_pred_with_status == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- implementation.
+:- pragma foreign_import_module("C", (make.build)).
+:- pragma foreign_import_module("C#", (make.build)).
+:- pragma foreign_import_module("Java", (make.build)).
+:- type job_ctl.
+:- pragma foreign_type(c, job_ctl, "MC_JobCtl *").
+:- pragma foreign_type(java, job_ctl, "java.lang.Object").
+:- pragma foreign_type(csharp, job_ctl, "object").
+:- type stdout_lock == make.build.job_ctl.
