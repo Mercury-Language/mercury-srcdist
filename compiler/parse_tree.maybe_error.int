@@ -1,0 +1,42 @@
+:- module (parse_tree.maybe_error).
+:- interface.
+:- use_module list.
+:- use_module (parse_tree.error_util).
+:- type maybe1(T1)
+    --->    error1(list.list(parse_tree.error_util.error_spec))
+    ;       ok1(T1).
+:- type maybe2(T1, T2)
+    --->    error2(list.list(parse_tree.error_util.error_spec))
+    ;       ok2(T1, T2).
+:- type maybe3(T1, T2, T3)
+    --->    error3(list.list(parse_tree.error_util.error_spec))
+    ;       ok3(T1, T2, T3).
+:- type maybe4(T1, T2, T3, T4)
+    --->    error4(list.list(parse_tree.error_util.error_spec))
+    ;       ok4(T1, T2, T3, T4).
+:- type maybe_safe_to_continue
+    --->    safe_to_continue 
+    ;       unsafe_to_continue .
+:- inst maybe1(I) for (parse_tree.maybe_error).maybe1/1
+    --->    error1(ground)
+    ;       ok1(I).
+:- inst maybe2(I1, I2) for (parse_tree.maybe_error).maybe2/2
+    --->    error2(ground)
+    ;       ok2(I1, I2).
+:- inst maybe3(I1, I2, I3) for (parse_tree.maybe_error).maybe3/3
+    --->    error3(ground)
+    ;       ok3(I1, I2, I3).
+:- inst maybe4(I1, I2, I3, I4) for (parse_tree.maybe_error).maybe4/4
+    --->    error4(ground)
+    ;       ok4(I1, I2, I3, I4).
+:- pred det_project_ok1(parse_tree.maybe_error.maybe1(T1), T1).
+:- mode det_project_ok1((builtin.in), (builtin.out)) is det.
+:- func get_any_errors1(parse_tree.maybe_error.maybe1(T1)) = list.list(parse_tree.error_util.error_spec).
+:- func get_any_errors2(parse_tree.maybe_error.maybe2(T1, T2)) = list.list(parse_tree.error_util.error_spec).
+:- func get_any_errors3(parse_tree.maybe_error.maybe3(T1, T2, T3)) = list.list(parse_tree.error_util.error_spec).
+:- func get_any_errors4(parse_tree.maybe_error.maybe4(T1, T2, T3, T4)) = list.list(parse_tree.error_util.error_spec).
+:- func get_any_errors_warnings2(parse_tree.maybe_error.maybe2(T1, list.list(parse_tree.error_util.warning_spec))) = list.list(parse_tree.error_util.error_spec).
+:- func get_any_errors_warnings3(parse_tree.maybe_error.maybe3(T1, T2, list.list(parse_tree.error_util.warning_spec))) = list.list(parse_tree.error_util.error_spec).
+:- func get_any_errors_warnings4(parse_tree.maybe_error.maybe4(T1, T2, T3, list.list(parse_tree.error_util.warning_spec))) = list.list(parse_tree.error_util.error_spec).
+:- pred project_ok1(parse_tree.maybe_error.maybe1(T1), T1).
+:- mode project_ok1((builtin.in), (builtin.out)) is semidet.
