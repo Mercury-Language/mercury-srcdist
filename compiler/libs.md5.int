@@ -1,0 +1,3 @@
+:- module (libs.md5).
+:- interface.
+:- func md5sum(string) = string.

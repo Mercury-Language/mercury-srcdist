@@ -1,0 +1,13 @@
+:- module (parse_tree.parse_tree_to_term).
+:- interface.
+:- use_module term.
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- func inst_name_to_term(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.inst_name) = parse_tree.prog_data.prog_term.
+:- func inst_test_results_to_term(parse_tree.prog_data.prog_context, parse_tree.prog_data.inst_test_results) = parse_tree.prog_data.prog_term.
+:- func inst_to_term(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.mer_inst) = parse_tree.prog_data.prog_term.
+:- func int_const_to_decimal_term(parse_tree.prog_data.some_int_const, term.context) = term.term(T).
+:- func mode_to_term(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.mer_mode) = parse_tree.prog_data.prog_term.
+:- func mode_to_term_with_context(parse_tree.parse_tree_out_info.output_lang, parse_tree.prog_data.prog_context, parse_tree.prog_data.mer_mode) = parse_tree.prog_data.prog_term.
+:- pred unparse_type(parse_tree.prog_data.mer_type, term.term).
+:- mode unparse_type((builtin.in), (builtin.out)) is det.

@@ -1,0 +1,9 @@
+:- module (check_hlds.mode_debug).
+:- interface.
+:- use_module (check_hlds.mode_info).
+:- type port
+    --->    enter 
+    ;       exit 
+    ;       wakeup .
+:- pred mode_checkpoint(check_hlds.mode_debug.port, string, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_checkpoint((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
