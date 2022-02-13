@@ -1,0 +1,2 @@
+:- module (hlds.pre_quantification).
+:- interface.
