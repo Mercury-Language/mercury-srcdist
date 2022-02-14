@@ -1,0 +1,42 @@
+:- module (parse_tree.pred_name).
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_pragma).
+:- type line_number_and_counter
+    --->    lnc(int, int).
+:- type transform_name
+    --->    tn_higher_order(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_higher_order_type_spec(mdbcomp.prim_data.pred_or_func, int, int)
+    ;       tn_accumulator(mdbcomp.prim_data.pred_or_func, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_deforestation(mdbcomp.prim_data.pred_or_func, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_lambda(mdbcomp.prim_data.pred_or_func, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_loop_inv(mdbcomp.prim_data.pred_or_func, int, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_tupling(mdbcomp.prim_data.pred_or_func, int, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_untupling(mdbcomp.prim_data.pred_or_func, int, parse_tree.pred_name.line_number_and_counter)
+    ;       tn_last_call_modulo_cons(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_ssdb_stdlib_proxy(mdbcomp.prim_data.pred_or_func)
+    ;       tn_dep_par_conj(mdbcomp.prim_data.pred_or_func, int, list.list(int))
+    ;       tn_par_distance_granularity(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_par_loop_control(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_structure_reuse(mdbcomp.prim_data.pred_or_func, int, list.list(int))
+    ;       tn_pragma_type_spec(maybe.maybe(mdbcomp.prim_data.pred_or_func), parse_tree.prog_data.tvarset, parse_tree.prog_data_pragma.type_subst)
+    ;       tn_minimal_model_generator(mdbcomp.prim_data.pred_or_func, int)
+    ;       tn_unused_args(mdbcomp.prim_data.pred_or_func, int, list.list(int)).
+:- pred make_instance_method_pred_sym_name(parse_tree.prog_data.class_id, mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity, list.list(parse_tree.prog_data.mer_type), mdbcomp.sym_name.sym_name).
+:- mode make_instance_method_pred_sym_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_instance_string(list.list(parse_tree.prog_data.mer_type), string).
+:- mode make_instance_string((builtin.in), (builtin.out)) is det.
+:- pred make_transformed_pred_name(string, parse_tree.pred_name.transform_name, string).
+:- mode make_transformed_pred_name((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_transformed_pred_sym_name(mdbcomp.sym_name.module_name, string, parse_tree.pred_name.transform_name, mdbcomp.sym_name.sym_name).
+:- mode make_transformed_pred_sym_name((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_uci_pred_sym_name(mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.type_ctor, mdbcomp.sym_name.sym_name).
+:- mode make_uci_pred_sym_name((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func uci_pred_name(mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.type_ctor) = string.
