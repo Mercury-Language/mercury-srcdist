@@ -1,0 +1,218 @@
+/*
+** Automatically generated from `edit_seq.m'
+** by the Mercury compiler,
+** version rotd-2022-02-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module edit_seq.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_edit_seq
+#define MR_HEADER_GUARD_edit_seq
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef EDIT_SEQ_DECL_GUARD
+#define EDIT_SEQ_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__edit_seq__edit_seq__type_ctor_info_change_hunk_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__edit_seq__edit_seq__type_ctor_info_diff_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__edit_seq__edit_seq__type_ctor_info_diff_cord_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__edit_seq__edit_seq__type_ctor_info_diff_seq_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__edit_seq__edit_seq__type_ctor_info_dynprog_entry_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__edit_seq__edit_seq__type_ctor_info_dynprog_table_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__edit_seq__edit_seq__type_ctor_info_edit_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__edit_seq__edit_seq__type_ctor_info_edit_params_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__edit_seq__edit_seq__type_ctor_info_edit_seq_1;
+
+void MR_CALL 
+mercury__edit_seq__find_change_hunks_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__edit_seq__find_diff_cord_7_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+mercury__edit_seq__find_diff_seq_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__edit_seq__find_shortest_edit_seq_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__edit_seq____Compare____change_hunk_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__edit_seq____Compare____diff_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__edit_seq____Compare____diff_cord_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__edit_seq____Compare____diff_seq_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__edit_seq____Compare____dynprog_entry_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__edit_seq____Compare____dynprog_table_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__edit_seq____Compare____edit_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__edit_seq____Compare____edit_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__edit_seq____Compare____edit_seq_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__edit_seq____Unify____change_hunk_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__edit_seq____Unify____diff_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__edit_seq____Unify____diff_cord_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__edit_seq____Unify____diff_seq_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__edit_seq____Unify____dynprog_entry_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__edit_seq____Unify____dynprog_table_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__edit_seq____Unify____edit_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__edit_seq____Unify____edit_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__edit_seq____Unify____edit_seq_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__edit_seq__init(void);
+void mercury__edit_seq__init_type_tables(void);
+void mercury__edit_seq__init_debugger(void);
+const char *mercury__edit_seq__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_edit_seq
+
+// :- end_interface edit_seq.

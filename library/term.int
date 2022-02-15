@@ -1,0 +1,181 @@
+:- module term.
+:- interface.
+:- use_module enum.
+:- use_module integer.
+:- use_module list.
+:- use_module map.
+:- type const
+    --->    atom(string)
+    ;       integer((term.integer_base) :: term.integer_base, (term.integer_value) :: integer.integer, (term.integer_signedness) :: term.signedness, (term.integer_size) :: term.integer_size)
+    ;       string(string)
+    ;       float(float)
+    ;       implementation_defined(string).
+:- type context
+    --->    context(string, int).
+:- type generic
+    --->    generic .
+:- type integer_base
+    --->    base_2 
+    ;       base_8 
+    ;       base_10 
+    ;       base_16 .
+:- type integer_size
+    --->    size_word 
+    ;       size_8_bit 
+    ;       size_16_bit 
+    ;       size_32_bit 
+    ;       size_64_bit .
+:- type renaming == term.renaming(term.generic).
+:- type renaming(T) == map.map(term.var(T), term.var(T)).
+:- type signedness
+    --->    signed 
+    ;       unsigned .
+:- type substitution == term.substitution(term.generic).
+:- type substitution(T) == map.map(term.var(T), term.term(T)).
+:- type term == term.term(term.generic).
+:- type term(T)
+    --->    functor(term.const, list.list(term.term(T)), term.context)
+    ;       variable(term.var(T), term.context).
+:- type var == term.var(term.generic).
+:- type var(T).
+:- type var_supply(T).
+:- instance (enum.enum(term.var(V_1))).
+:- pred apply_rec_substitution_in_term(term.substitution(T), term.term(T), term.term(T)).
+:- mode apply_rec_substitution_in_term((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_rec_substitution_in_terms(term.substitution(T), list.list(term.term(T)), list.list(term.term(T))).
+:- mode apply_rec_substitution_in_terms((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_renaming_in_term(term.renaming(T), term.term(T), term.term(T)).
+:- mode apply_renaming_in_term((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_renaming_in_terms(term.renaming(T), list.list(term.term(T)), list.list(term.term(T))).
+:- mode apply_renaming_in_terms((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_renaming_in_var(term.renaming(T), term.var(T), term.var(T)).
+:- mode apply_renaming_in_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_renaming_in_vars(term.renaming(T), list.list(term.var(T)), list.list(term.var(T))).
+:- mode apply_renaming_in_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_substitution_in_term(term.substitution(T), term.term(T), term.term(T)).
+:- mode apply_substitution_in_term((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_substitution_in_terms(term.substitution(T), list.list(term.term(T)), list.list(term.term(T))).
+:- mode apply_substitution_in_terms((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred coerce(term.term(T), term.term(U)).
+:- mode coerce((builtin.in), (builtin.out)) is det.
+:- func coerce(term.term(T)) = term.term(U).
+:- pred coerce_var(term.var(T), term.var(U)).
+:- mode coerce_var((builtin.in), (builtin.out)) is det.
+:- func coerce_var(term.var(T)) = term.var(U).
+:- pred coerce_var_supply(term.var_supply(T), term.var_supply(U)).
+:- mode coerce_var_supply((builtin.in), (builtin.out)) is det.
+:- func coerce_var_supply(term.var_supply(T)) = term.var_supply(U).
+:- pred contains_var(term.term(T), term.var(T)).
+:- mode contains_var((builtin.in), (builtin.in)) is semidet.
+:- mode contains_var((builtin.in), (builtin.out)) is nondet.
+:- pred contains_var_list(list.list(term.term(T)), term.var(T)).
+:- mode contains_var_list((builtin.in), (builtin.in)) is semidet.
+:- mode contains_var_list((builtin.in), (builtin.out)) is nondet.
+:- pred context_file(term.context, string).
+:- mode context_file((builtin.in), (builtin.out)) is det.
+:- func context_file(term.context) = string.
+:- pred context_init(term.context).
+:- mode context_init((builtin.out)) is det.
+:- func context_init = term.context.
+:- pred context_init(string, int, term.context).
+:- mode context_init((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func context_init(string, int) = term.context.
+:- pred context_line(term.context, int).
+:- mode context_line((builtin.in), (builtin.out)) is det.
+:- func context_line(term.context) = int.
+:- pred create_var(term.var(T), term.var_supply(T), term.var_supply(T)).
+:- mode create_var((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred decimal_term_to_int(term.term(T), int).
+:- mode decimal_term_to_int((builtin.in), (builtin.out)) is semidet.
+:- func dummy_context_init = term.context.
+:- func force_construct_var(int) = term.var(T).
+:- func force_construct_var_supply(int) = term.var_supply(T).
+:- pred generic_term(term.term).
+:- mode generic_term((builtin.in)) is det.
+:- func get_term_context(term.term(T)) = term.context.
+:- pred init_var_supply(term.var_supply(T)).
+:- mode init_var_supply((builtin.out)) is det.
+:- mode init_var_supply((builtin.in)) is semidet.
+:- func init_var_supply = term.var_supply(T).
+:- func int16_to_decimal_term(int16, term.context) = term.term(T).
+:- func int32_to_decimal_term(int32, term.context) = term.term(T).
+:- func int64_to_decimal_term(int64, term.context) = term.term(T).
+:- func int8_to_decimal_term(int8, term.context) = term.term(T).
+:- func int_to_decimal_term(int, term.context) = term.term(T).
+:- pred is_dummy_context(term.context).
+:- mode is_dummy_context((builtin.in)) is semidet.
+:- pred is_ground(term.term(T)).
+:- mode is_ground((builtin.in)) is semidet.
+:- pred is_ground_in_bindings(term.term(T), term.substitution(T)).
+:- mode is_ground_in_bindings((builtin.in), (builtin.in)) is semidet.
+:- pred list_subsumes(list.list(term.term(T)), list.list(term.term(T)), term.substitution(T)).
+:- mode list_subsumes((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred occurs(term.term(T), term.var(T), term.substitution(T)).
+:- mode occurs((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred occurs_list(list.list(term.term(T)), term.var(T), term.substitution(T)).
+:- mode occurs_list((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred rename_var_in_term(term.var(T), term.var(T), term.term(T), term.term(T)).
+:- mode rename_var_in_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_var_in_terms(term.var(T), term.var(T), list.list(term.term(T)), list.list(term.term(T))).
+:- mode rename_var_in_terms((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_corresponding_in_term(list.list(term.var(T)), list.list(term.term(T)), term.term(T), term.term(T)).
+:- mode substitute_corresponding_in_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_corresponding_in_terms(list.list(term.var(T)), list.list(term.term(T)), list.list(term.term(T)), list.list(term.term(T))).
+:- mode substitute_corresponding_in_terms((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_var_in_term(term.var(T), term.term(T), term.term(T), term.term(T)).
+:- mode substitute_var_in_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_var_in_terms(term.var(T), term.term(T), list.list(term.term(T)), list.list(term.term(T))).
+:- mode substitute_var_in_terms((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term_list_to_var_list(list.list(term.term(T)), list.list(term.var(T))).
+:- mode term_list_to_var_list((builtin.in), (builtin.out)) is semidet.
+:- func term_list_to_var_list(list.list(term.term(T))) = list.list(term.var(T)).
+:- pred term_to_int(term.term(T), int).
+:- mode term_to_int((builtin.in), (builtin.out)) is semidet.
+:- pred term_to_int16(term.term(T), int16).
+:- mode term_to_int16((builtin.in), (builtin.out)) is semidet.
+:- pred term_to_int32(term.term(T), int32).
+:- mode term_to_int32((builtin.in), (builtin.out)) is semidet.
+:- pred term_to_int64(term.term(T), int64).
+:- mode term_to_int64((builtin.in), (builtin.out)) is semidet.
+:- pred term_to_int8(term.term(T), int8).
+:- mode term_to_int8((builtin.in), (builtin.out)) is semidet.
+:- pred term_to_uint(term.term(T), uint).
+:- mode term_to_uint((builtin.in), (builtin.out)) is semidet.
+:- pred term_to_uint16(term.term(T), uint16).
+:- mode term_to_uint16((builtin.in), (builtin.out)) is semidet.
+:- pred term_to_uint32(term.term(T), uint32).
+:- mode term_to_uint32((builtin.in), (builtin.out)) is semidet.
+:- pred term_to_uint64(term.term(T), uint64).
+:- mode term_to_uint64((builtin.in), (builtin.out)) is semidet.
+:- pred term_to_uint8(term.term(T), uint8).
+:- mode term_to_uint8((builtin.in), (builtin.out)) is semidet.
+:- func uint16_to_decimal_term(uint16, term.context) = term.term(T).
+:- func uint32_to_decimal_term(uint32, term.context) = term.term(T).
+:- func uint64_to_decimal_term(uint64, term.context) = term.term(T).
+:- func uint8_to_decimal_term(uint8, term.context) = term.term(T).
+:- func uint_to_decimal_term(uint, term.context) = term.term(T).
+:- pred unify_term(term.term(T), term.term(T), term.substitution(T), term.substitution(T)).
+:- mode unify_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred unify_term_dont_bind(term.term(T), term.term(T), list.list(term.var(T)), term.substitution(T), term.substitution(T)).
+:- mode unify_term_dont_bind((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred unify_term_list(list.list(term.term(T)), list.list(term.term(T)), term.substitution(T), term.substitution(T)).
+:- mode unify_term_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred unify_term_list_dont_bind(list.list(term.term(T)), list.list(term.term(T)), list.list(term.var(T)), term.substitution(T), term.substitution(T)).
+:- mode unify_term_list_dont_bind((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred var_list_to_term_list(list.list(term.var(T)), list.list(term.term(T))).
+:- mode var_list_to_term_list((builtin.in), (builtin.out)) is det.
+:- func var_list_to_term_list(list.list(term.var(T))) = list.list(term.term(T)).
+:- func var_supply_max_var(term.var_supply(T)) = term.var(T).
+:- func var_supply_num_allocated(term.var_supply(T)) = int.
+:- pred var_to_int(term.var(T), int).
+:- mode var_to_int((builtin.in), (builtin.out)) is det.
+:- func var_to_int(term.var(T)) = int.
+:- pred vars(term.term(T), list.list(term.var(T))).
+:- mode vars((builtin.in), (builtin.out)) is det.
+:- func vars(term.term(T)) = list.list(term.var(T)).
+:- pred vars_2(term.term(T), list.list(term.var(T)), list.list(term.var(T))).
+:- mode vars_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func vars_2(term.term(T), list.list(term.var(T))) = list.list(term.var(T)).
+:- pred vars_list(list.list(term.term(T)), list.list(term.var(T))).
+:- mode vars_list((builtin.in), (builtin.out)) is det.
+:- func vars_list(list.list(term.term(T))) = list.list(term.var(T)).

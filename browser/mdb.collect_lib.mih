@@ -1,0 +1,56 @@
+/*
+** Automatically generated from `collect_lib.m'
+** by the Mercury compiler,
+** version rotd-2022-02-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.collect_lib.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__collect_lib
+#define MR_HEADER_GUARD_mdb__collect_lib
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__COLLECT_LIB_DECL_GUARD
+#define MDB__COLLECT_LIB_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+void MR_CALL 
+mdb__collect_lib__dummy_pred_to_avoid_warning_about_nothing_exported_0_p_0(void);
+
+void mercury__mdb__collect_lib__init(void);
+void mercury__mdb__collect_lib__init_type_tables(void);
+void mercury__mdb__collect_lib__init_debugger(void);
+const char *mercury__mdb__collect_lib__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.collect_lib
+
+// :- end_interface mdb.collect_lib.
