@@ -1,0 +1,9 @@
+:- module tree234.
+:- interface.
+:- type tree234(K, V).
+:- abstract_inst((uniq_tree234(K, V))).
+:- abstract_inst((uniq_tree234_gg)).
+:- abstract_mode((di_tree234)).
+:- abstract_mode((di_tree234(K, V))).
+:- abstract_mode((uo_tree234)).
+:- abstract_mode((uo_tree234(K, V))).
