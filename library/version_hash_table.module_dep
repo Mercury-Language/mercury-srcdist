@@ -1,0 +1,14 @@
+module(2, "version_hash_table.m",
+	version_hash_table,
+	{},
+	{assoc_list, builtin, char, private_builtin},
+	{array, bool, deconstruct, exception, float, int, list, pair, require, string, uint, unit, univ, version_array},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - version_hash_table, "C#" - version_hash_table, "Java" - version_hash_table},
+	no_foreign_export,
+	no_main,
+	{}
+).

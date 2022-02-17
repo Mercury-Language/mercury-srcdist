@@ -1,0 +1,8 @@
+:- module (parse_tree.pred_name).
+:- interface.
+:- type line_number_and_counter.
+:- type stm_clone_kind
+	where	type_is_abstract_enum(3).
+:- type transform_name.
+:- type_representation(line_number_and_counter, is_word_aligned_ptr).
+:- type_representation(stm_clone_kind, du_repn(enum("stmck_top_level", "stmck_rollback", ["stmck_wrapper", "stmck_simple_wrapper", "stmck_or_else"],  no_c_j_cs))).

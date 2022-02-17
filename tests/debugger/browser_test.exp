@@ -1,0 +1,241 @@
+      E1:     C1 CALL pred browser_test.main/2-0 (det) browser_test.m:16
+Goal path printing is now on.
+Registering debuggable procedures... done.
+There is one debuggable module, with 7 procedures.
+mdb: there is no such procedure.
+Trusting the Mercury standard library
+mdb> echo on
+Command echo enabled.
+mdb> register --quiet
+mdb> list_context_lines 10
+mdb> break big_data
+ 0: + stop  interface pred browser_test.big_data/1-0 (det)
+mdb> continue
+      E2:     C2 CALL pred browser_test.big_data/1-0 (det) browser_test.m:37 (browser_test.m:20)
+mdb> finish
+      E3:     C2 EXIT pred browser_test.big_data/1-0 (det) browser_test.m:37 (browser_test.m:20)
+mdb> delete *
+ 0: E stop  interface pred browser_test.big_data/1-0 (det)
+mdb> dump -q 1 browser_test.save.1
+mdb> format raw_pretty
+mdb> print *
+       Data (arg 1)           	
+big(
+  big(big(small, 1, small), 2, small), 
+  3, 
+  big(big(small, 4, big(small, 5, small)), 6, small))
+mdb> format -A verbose
+mdb> print *
+       Data (arg 1)           	
+big
+1-big
+| 1-big
+| | 1-small
+| | 2-1
+| | 3-small
+| 2-2
+| 3-small
+2-3
+3-big
+  1-big/3
+  2-6
+  3-small
+
+mdb> browse 1; ls; quit
+big(
+  big(big(small, 1, small), 2, small), 
+  3, 
+  big(big(small, 4, big(small, 5, small)), 6, small))
+mdb> format -AP flat
+mdb> print -f 1
+       Data (arg 1)           	big(big(big(small, 1, small), 2, small), 3, big(big/3, 6, small))
+mdb> print -p 1
+       Data (arg 1)           	
+big(big(big(small, 1, small), 2, small), 3, 
+  big(big(small, 4, big(small, 5, small)), 6, small))
+mdb> print -v 1
+       Data (arg 1)           	
+big
+1-big
+| 1-big
+| | 1-small
+| | 2-1
+| | 3-small
+| 2-2
+| 3-small
+2-3
+3-big
+  1-big/3
+  2-6
+  3-small
+
+mdb> print -r 1
+       Data (arg 1)           	
+big(
+  big(big(small, 1, small), 2, small), 
+  3, 
+  big(big(small, 4, big(small, 5, small)), 6, small))
+mdb> print --xyzzy 1
+print: unrecognized option: `xyzzy'
+mdb: print: usage error -- type `help print' for help.
+mdb> browse 1; print; quit
+big(
+  big(big(small, 1, small), 2, small), 
+  3, 
+  big(big(small, 4, big(small, 5, small)), 6, small))
+mdb> browse -f 1; ls; quit
+big(big(big(small, 1, small), 2, small), 3, big(big(small, 4, big(small, 5, small)), 6, small))
+mdb> browse Data
+browser> ls
+big(
+  big(big(small, 1, small), 2, small), 
+  3, 
+  big(big(small, 4, big(small, 5, small)), 6, small))
+browser> cd /1
+browser> ls
+big(big(small, 1, small), 2, small)
+browser> cd /1/2
+browser> ls
+2
+browser> cd /3
+browser> ls
+big(big(small, 4, big(small, 5, small)), 6, small)
+browser> cd 1/3/2
+browser> ls
+5
+browser> cd
+browser> ls
+big(
+  big(big(small, 1, small), 2, small), 
+  3, 
+  big(big(small, 4, big(small, 5, small)), 6, small))
+browser> cdr 100 2
+error: in subdir 2: there is no subterm 2
+browser> cdr 3 1
+browser> ls
+small
+browser> cdr 3 ../1/..
+browser> ls
+big(
+  big(big(small, 1, small), 2, small), 
+  3, 
+  big(big(small, 4, big(small, 5, small)), 6, small))
+browser> quit
+mdb> format_param -A -f depth 1
+mdb> print *
+       Data (arg 1)           	big(big/3, 3, big/3)
+mdb> print Data/1
+       Data (arg 1)^1         	big(big(small, 1, small), 2, small)
+mdb> format_param -f depth 3
+mdb> print 1
+       Data (arg 1)           	big(big(big(small, 1, small), 2, small), 3, big(big(small, 4, big/3), 6, small))
+mdb> print Data/1/2
+       Data (arg 1)/1/2       	2
+mdb> print 1^1^2^3
+mdb: the path 3 does not exist in variable 1.
+mdb> retry
+      E2:     C2 CALL pred browser_test.big_data/1-0 (det) browser_test.m:37 (browser_test.m:20)
+mdb> break list_data
+ 0: + stop  interface pred browser_test.list_data/1-0 (det)
+mdb> continue
+big(big(big(small, 1, small), 2, small), 3, big(big(small, 4, big(small, 5, small)), 6, small)).
+      E4:     C3 CALL pred browser_test.list_data/1-0 (det) browser_test.m:66 (browser_test.m:23)
+mdb> finish
+      E5:     C3 EXIT pred browser_test.list_data/1-0 (det) browser_test.m:66 (browser_test.m:23)
+mdb> dump Data browser_test.save.2
+Dumped Data to browser_test.save.2
+mdb> break a_func
+ 1: + stop  interface func browser_test.a_func/1-0 (det)
+mdb> continue
+seq(1, [big(big(small, 1, small), 2, small), small, big(small, 4, big(small, 5, small))], 5).
+browser_test.save.1:
+big(
+ big(
+  big(
+   small,
+   1,
+   small
+  ),
+  2,
+  small
+ ),
+ 3,
+ big(
+  big(
+   small,
+   4,
+   big(
+    small,
+    5,
+    small
+   )
+  ),
+  6,
+  small
+ )
+)
+
+browser_test.save.2:
+seq(
+ 1,
+ [
+  big(
+   big(
+    small,
+    1,
+    small
+   ),
+   2,
+   small
+  ),
+  small,
+  big(
+   small,
+   4,
+   big(
+    small,
+    5,
+    small
+   )
+  )
+ ],
+ 5
+)
+
+      E6:     C4 CALL func browser_test.a_func/1-0 (det) browser_test.m:112 (browser_test.m:31)
+mdb> finish
+      E7:     C4 EXIT func browser_test.a_func/1-0 (det) browser_test.m:112 (browser_test.m:31)
+mdb> print -p
+a_func(
+  big(big(big(small, 1, small), 2, small), 3, 
+    big(big(small, 4, big(small, 5, small)), 6, small))) = big(
+  big(big(small, 1, small), 2, small), 3, 
+  big(big(small, 4, big(small, 5, small)), 6, small))
+mdb> print -r
+a_func(
+  big(
+    big(big(small, 1, small), 2, small), 
+    3, 
+    big(big(small, 4, big(small, 5, small)), 6, small)))
+ = big(
+    big(big(small, 1, small), 2, small), 
+    3, 
+    big(big(small, 4, big(small, 5, small)), 6, small))
+mdb> print -v
+a_func
+1-big
+| 1-big
+| | 1-big
+| | | 1-small
+| | | 2-1
+| | | 3-small
+| | 2-2
+| | 3-small
+| 2-3
+| 3-big/3
+2-big/3
+
+mdb> print -f
+a_func(big(big(big/3, 2, small), 3, big(big/3, 6, small))) = big(big(big/3, 2, small), 3, big(big/3, 6, small))
+mdb> continue
+big(big(big(small, 1, small), 2, small), 3, big(big(small, 4, big(small, 5, small)), 6, small))
