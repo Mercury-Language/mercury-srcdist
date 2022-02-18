@@ -1,0 +1,17 @@
+:- module (hlds.pred_table).
+:- interface.
+:- type constraint_search.
+:- type is_fully_qualified
+	where	type_is_abstract_enum(1).
+:- type mode_no.
+:- type pred_id_table.
+:- type predicate_table.
+:- abstract_inst((constraint_search)).
+:- type_representation(accessibility_table, is_eqv_to(map(pred_id, name_accessibility))).
+:- type_representation(constraint_search, is_eqv_to(pred(int, list(prog_constraint)))).
+:- type_representation(is_fully_qualified, du_repn(enum("is_fully_qualified", "may_be_partially_qualified", [],  no_c_j_cs))).
+:- type_representation(module_name_arity_index, is_eqv_to(map(module_and_name, multi_map(arity, pred_id)))).
+:- type_representation(name_arity_index, is_eqv_to(map(name_arity, list(pred_id)))).
+:- type_representation(name_index, is_eqv_to(map(string, list(pred_id)))).
+:- type_representation(pred_id_table, is_eqv_to(map(pred_id, pred_info))).
+:- type_representation(predicate_table, is_word_aligned_ptr).

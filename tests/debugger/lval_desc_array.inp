@@ -1,0 +1,8 @@
+echo on
+context none
+register --quiet
+break -E 107 -e lval_desc_array__increment
+continue
+up
+print *
+continue

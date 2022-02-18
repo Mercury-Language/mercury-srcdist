@@ -1,0 +1,4 @@
+:- module (make.module_target).
+:- interface.
+:- type foreign_code_file.
+:- type_representation(foreign_code_file, is_word_aligned_ptr).

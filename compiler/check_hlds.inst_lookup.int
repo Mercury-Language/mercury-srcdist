@@ -1,0 +1,12 @@
+:- module (check_hlds.inst_lookup).
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.prog_data).
+:- pred inst_expand(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_expand((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred inst_expand_and_remove_constrained_inst_vars(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_expand_and_remove_constrained_inst_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred inst_lookup(hlds.hlds_module.module_info, parse_tree.prog_data.inst_name, parse_tree.prog_data.mer_inst).
+:- mode inst_lookup((builtin.in), (builtin.in), (builtin.out)) is det.
