@@ -1,0 +1,2 @@
+:- module (parse_tree.comp_unit_interface).
+:- interface.

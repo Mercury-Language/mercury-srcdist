@@ -1,0 +1,4 @@
+:- module (transform_hlds.intermod).
+:- interface.
+:- type intermod_info.
+:- type_representation(intermod_info, is_word_aligned_ptr).

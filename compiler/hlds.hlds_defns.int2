@@ -1,0 +1,2 @@
+:- module (hlds.hlds_defns).
+:- interface.
