@@ -1,0 +1,7 @@
+:- module version_hash_table.
+:- interface.
+:- type hash_pred(K).
+:- type version_hash_table(K, V).
+:- abstract_inst((hash_pred)).
+:- type_representation(buckets(V_1, V_2), is_eqv_to(version_array(hash_table_alist(V_1, V_2)))).
+:- type_representation(hash_pred(V_1), is_eqv_to(pred(V_1, int))).
