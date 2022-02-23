@@ -1,0 +1,35 @@
+%------------------------------------------------------------------------------%
+% Copyright (C) 1999-2001 INRIA/INSA/IFSIC.
+% This file may only be copied under the terms of the GNU Library General
+% Public License - see the file License in the Morphine distribution.
+% 
+% Author : Erwan Jahier <jahier@irisa.fr>
+%
+% Computes the control flow graph of an execution. 
+
+:- import_module set.
+
+:- type predicate ---> proc_name/arity.
+:- type arc ---> arc(predicate, predicate).
+:- type graph == set(arc).
+
+:- type accumulator_type ---> ct(predicate, graph).
+:- type collected_type ---> collected_type(graph).
+
+initialize(ct("user"/0, set__init)).
+
+filter(Event, Acc0, Acc) :-
+	Port = port(Event),
+	( 
+		(Port = call ; Port = exit ; Port = fail ; Port = redo)
+	->
+		Acc0 = ct(PreviousPred, Graph0),
+		CurrentPred = proc_name(Event) / proc_arity(Event),
+		Arc = arc(PreviousPred, CurrentPred),
+		set__insert(Graph0, Arc, Graph),
+		Acc = ct(CurrentPred, Graph)
+	;
+		Acc = Acc0
+	).
+
+post_process(ct(_, Graph), collected_type(Graph)).
