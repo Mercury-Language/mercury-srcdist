@@ -1,0 +1,33 @@
+       1:      1  1 CALL pred deep_warning.main/2-0 (det) deep_warning.m:16
+mdb> echo on
+Command echo enabled.
+mdb> register --quiet
+mdb> break p
+ 0: + stop  interface pred deep_warning.p/2-0 (nondet)
+mdb> break q
+ 1: + stop  interface pred deep_sub.q/1-0 (multi)
+mdb> continue
+       3:      2  2 CALL pred deep_warning.p/2-0 (nondet) deep_warning.m:36 (deep_warning.m:18)
+mdb> finish
+       5:      3  3 CALL pred deep_sub.q/1-0 (multi) deep_sub.m:12 (deep_warning.m:37)
+       7:      3  3 EXIT pred deep_sub.q/1-0 (multi) deep_sub.m:12 (deep_warning.m:37)
+       8:      2  2 EXIT pred deep_warning.p/2-0 (nondet) deep_warning.m:36 (deep_warning.m:18)
+mdb> dd -d 3 -n 7
+Warning: some modules were compiled with a trace level lower than `decl'.
+This may result in calls being omitted from the debugging tree.
+p(1, 1)
+Valid? no
+Found incorrect contour:
+p(1, 1)
+Is this a bug? yes
+       8:      2  2 EXIT pred deep_warning.p/2-0 (nondet) deep_warning.m:36 (deep_warning.m:18)
+mdb> retry
+       3:      2  2 CALL pred deep_warning.p/2-0 (nondet) deep_warning.m:36 (deep_warning.m:18)
+mdb> continue
+       5:      3  3 CALL pred deep_sub.q/1-0 (multi) deep_sub.m:12 (deep_warning.m:37)
+mdb> finish
+       7:      3  3 EXIT pred deep_sub.q/1-0 (multi) deep_sub.m:12 (deep_warning.m:37)
+mdb> dd -d 3 -n 7
+mdb: cannot start declarative debugging, because some event types were
+suppressed when this procedure was compiled.
+mdb> quit -y
