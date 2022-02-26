@@ -1,0 +1,13 @@
+:- module ((hlds.hlds_out).hlds_out_util).
+:- interface.
+:- type hlds_out_info
+    --->    hlds_out_info((((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_options) :: string, (((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_options_backup) :: string, (((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_pred_ids) :: list.list(string), (((hlds.hlds_out).hlds_out_util).hoi_dump_hlds_pred_names) :: list.list(string), (((hlds.hlds_out).hlds_out_util).hoi_merc_out_info) :: parse_tree.parse_tree_out_info.merc_out_info).
+:- type is_first
+    --->    is_first 
+    ;       is_not_first .
+:- type is_last
+    --->    is_last 
+    ;       is_not_last .
+:- type maybe_qualify_cons_id
+    --->    qualify_cons_id 
+    ;       do_not_qualify_cons_id .

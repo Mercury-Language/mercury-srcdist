@@ -1,0 +1,5 @@
+:- module mdprof_test.
+:- interface.
+:- implementation.
+:- type options
+    --->    options .
