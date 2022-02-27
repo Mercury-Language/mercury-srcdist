@@ -1,0 +1,67 @@
+:- module (hlds.make_goal).
+:- interface.
+:- use_module char.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.prog_data).
+:- pred construct_functor(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal).
+:- mode construct_functor((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_tuple(parse_tree.prog_data.prog_var, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal).
+:- mode construct_tuple((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred create_atomic_complicated_unification(parse_tree.prog_data.prog_var, hlds.hlds_goal.unify_rhs, parse_tree.prog_data.prog_context, hlds.hlds_goal.unify_main_context, hlds.hlds_goal.unify_sub_contexts, parse_tree.prog_data.purity, hlds.hlds_goal.hlds_goal).
+:- mode create_atomic_complicated_unification((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred create_pure_atomic_complicated_unification(parse_tree.prog_data.prog_var, hlds.hlds_goal.unify_rhs, parse_tree.prog_data.prog_context, hlds.hlds_goal.unify_main_context, hlds.hlds_goal.unify_sub_contexts, hlds.hlds_goal.hlds_goal).
+:- mode create_pure_atomic_complicated_unification((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred deconstruct_functor(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal).
+:- mode deconstruct_functor((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred deconstruct_tuple(parse_tree.prog_data.prog_var, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal).
+:- mode deconstruct_tuple((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func fail_goal = hlds.hlds_goal.hlds_goal.
+:- func fail_goal_expr = hlds.hlds_goal.hlds_goal_expr.
+:- func fail_goal_info = hlds.hlds_goal.hlds_goal_info.
+:- func fail_goal_with_context(parse_tree.prog_data.prog_context) = hlds.hlds_goal.hlds_goal.
+:- pred make_char_const_construction(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, char.char, hlds.hlds_goal.hlds_goal).
+:- mode make_char_const_construction((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_char_const_construction_alloc(char.char, maybe.maybe(string), hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode make_char_const_construction_alloc((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_char_const_construction_alloc_in_proc(char.char, maybe.maybe(string), hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode make_char_const_construction_alloc_in_proc((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_complicated_unify_assign(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal).
+:- mode make_complicated_unify_assign((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_complicated_unify_assigns(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.hlds_goal)).
+:- mode make_complicated_unify_assigns((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_const_construction(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, hlds.hlds_goal.hlds_goal).
+:- mode make_const_construction((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_const_construction_alloc(parse_tree.prog_data.cons_id, parse_tree.prog_data.mer_type, maybe.maybe(string), hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode make_const_construction_alloc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_const_construction_alloc_in_proc(parse_tree.prog_data.cons_id, parse_tree.prog_data.mer_type, maybe.maybe(string), hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode make_const_construction_alloc_in_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_float_const_construction(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, float, hlds.hlds_goal.hlds_goal).
+:- mode make_float_const_construction((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_float_const_construction_alloc(float, maybe.maybe(string), hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode make_float_const_construction_alloc((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_float_const_construction_alloc_in_proc(float, maybe.maybe(string), hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode make_float_const_construction_alloc_in_proc((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_int_const_construction(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, int, hlds.hlds_goal.hlds_goal).
+:- mode make_int_const_construction((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_int_const_construction_alloc(int, maybe.maybe(string), hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode make_int_const_construction_alloc((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_int_const_construction_alloc_in_proc(int, maybe.maybe(string), hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode make_int_const_construction_alloc_in_proc((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_simple_assign(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, hlds.hlds_goal.unify_main_context, hlds.hlds_goal.unify_sub_contexts, hlds.hlds_goal.hlds_goal).
+:- mode make_simple_assign((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_simple_test(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, hlds.hlds_goal.unify_main_context, hlds.hlds_goal.unify_sub_contexts, hlds.hlds_goal.hlds_goal).
+:- mode make_simple_test((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_string_const_construction(parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, string, hlds.hlds_goal.hlds_goal).
+:- mode make_string_const_construction((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_string_const_construction_alloc(string, maybe.maybe(string), hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode make_string_const_construction_alloc((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_string_const_construction_alloc_in_proc(string, maybe.maybe(string), hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode make_string_const_construction_alloc_in_proc((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func true_goal = hlds.hlds_goal.hlds_goal.
+:- func true_goal_expr = hlds.hlds_goal.hlds_goal_expr.
+:- func true_goal_with_context(parse_tree.prog_data.prog_context) = hlds.hlds_goal.hlds_goal.
