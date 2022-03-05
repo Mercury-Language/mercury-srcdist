@@ -1,0 +1,272 @@
+/*
+** Automatically generated from `type_assign.m'
+** by the Mercury compiler,
+** version rotd-2022-03-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.type_assign.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__type_assign
+#define MR_HEADER_GUARD_check_hlds__type_assign
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__TYPE_ASSIGN_DECL_GUARD
+#define CHECK_HLDS__TYPE_ASSIGN_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__type_assign__check_hlds__type_assign__type_ctor_info_args_type_assign_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__type_assign__check_hlds__type_assign__type_ctor_info_args_type_assign_set_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__type_assign__check_hlds__type_assign__type_ctor_info_coerce_constraint_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__type_assign__check_hlds__type_assign__type_ctor_info_coerce_constraint_status_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__type_assign__check_hlds__type_assign__type_ctor_info_type_assign_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__type_assign__check_hlds__type_assign__type_ctor_info_type_assign_set_0;
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_get_coerce_constraints_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_get_constraint_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_get_constraint_proof_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_get_external_type_params_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_get_type_bindings_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_get_typeclass_constraints_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_get_typevarset_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_get_var_types_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_coerce_constraints_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_constraint_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_constraint_proof_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_external_type_params_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_get_final_info_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_Word * param_9,
+  MR_Word * param_10,
+  MR_Word * param_11,
+  MR_Word * param_12);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_init_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_reduce_results_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_type_bindings_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_typeclass_constraints_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_typevarset_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__type_assign__type_assign_set_var_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+check_hlds__type_assign__convert_args_type_assign_set_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__type_assign__convert_args_type_assign_set_check_empty_args_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__type_assign__get_callee_arg_types_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__type_assign__get_callee_constraints_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__type_assign__get_caller_arg_assign_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+check_hlds__type_assign____Compare____args_type_assign_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__type_assign____Compare____args_type_assign_set_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__type_assign____Compare____coerce_constraint_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__type_assign____Compare____coerce_constraint_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__type_assign____Compare____type_assign_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__type_assign____Compare____type_assign_set_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__type_assign____Unify____args_type_assign_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_assign____Unify____args_type_assign_set_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_assign____Unify____coerce_constraint_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_assign____Unify____coerce_constraint_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_assign____Unify____type_assign_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__type_assign____Unify____type_assign_set_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__type_assign__init(void);
+void mercury__check_hlds__type_assign__init_type_tables(void);
+void mercury__check_hlds__type_assign__init_debugger(void);
+const char *mercury__check_hlds__type_assign__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.type_assign
+
+// :- end_interface check_hlds.type_assign.
