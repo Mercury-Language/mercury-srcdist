@@ -1,0 +1,199 @@
+:- module bitmap.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module list.
+:- type bit_index == int.
+:- type bitmap.
+:- type bitmap_error
+    --->    bitmap_error(string).
+:- type byte == int.
+:- type byte_index == int.
+:- type num_bits == int.
+:- type num_bytes == int.
+:- type slice.
+:- type word == int.
+:- inst bitmap == ground.
+:- inst uniq_bitmap == (bitmap.bitmap).
+:- mode (bitmap_di) == builtin.in((bitmap.uniq_bitmap)).
+:- mode (bitmap_ui) == builtin.in((bitmap.uniq_bitmap)).
+:- mode (bitmap_uo) == builtin.out((bitmap.uniq_bitmap)).
+:- func append_list(list.list(bitmap.bitmap)) = bitmap.bitmap.
+:- mode append_list((builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func bit(bitmap.bit_index, bitmap.bitmap) = bool.bool.
+:- mode bit((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func 'bit :='(bitmap.bit_index, bitmap.bitmap, bool.bool) = bitmap.bitmap.
+:- mode 'bit :='((builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func bits(bitmap.bit_index, bitmap.num_bits, bitmap.bitmap) = bitmap.word.
+:- mode bits((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func 'bits :='(bitmap.bit_index, bitmap.num_bits, bitmap.bitmap, bitmap.word) = bitmap.bitmap.
+:- mode 'bits :='((builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func bits_per_byte = int.
+:- func byte(bitmap.byte_index, bitmap.bitmap) = bitmap.byte.
+:- mode byte((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func 'byte :='(bitmap.byte_index, bitmap.bitmap, bitmap.byte) = bitmap.bitmap.
+:- mode 'byte :='((builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- pred byte_in_range(bitmap.bitmap, bitmap.byte_index).
+:- mode byte_in_range((builtin.in), (builtin.in)) is semidet.
+:- func byte_slice(bitmap.bitmap, bitmap.byte_index, bitmap.num_bytes) = bitmap.slice.
+:- pred clear(bitmap.bit_index, bitmap.bitmap, bitmap.bitmap).
+:- mode clear((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- func clear(bitmap.bitmap, bitmap.bit_index) = bitmap.bitmap.
+:- mode clear((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func complement(bitmap.bitmap) = bitmap.bitmap.
+:- mode complement((bitmap.bitmap_di)) = (bitmap.bitmap_uo) is det.
+:- func copy(bitmap.bitmap) = bitmap.bitmap.
+:- mode copy((builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func copy_bits(bitmap.bitmap, bitmap.bit_index, bitmap.bitmap, bitmap.bit_index, bitmap.num_bits) = bitmap.bitmap.
+:- mode copy_bits((builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func copy_bits_in_bitmap(bitmap.bitmap, bitmap.bit_index, bitmap.bit_index, bitmap.num_bits) = bitmap.bitmap.
+:- mode copy_bits_in_bitmap((bitmap.bitmap_di), (builtin.in), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func copy_bytes(bitmap.bitmap, bitmap.byte_index, bitmap.bitmap, bitmap.byte_index, bitmap.num_bytes) = bitmap.bitmap.
+:- mode copy_bytes((builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func copy_bytes_in_bitmap(bitmap.bitmap, bitmap.byte_index, bitmap.byte_index, bitmap.num_bytes) = bitmap.bitmap.
+:- mode copy_bytes_in_bitmap((bitmap.bitmap_di), (builtin.in), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func det_from_string(string) = bitmap.bitmap.
+:- mode det_from_string((builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func det_num_bytes(bitmap.bitmap) = bitmap.num_bytes.
+:- mode det_num_bytes((builtin.in)) = (builtin.out) is det.
+:- func difference(bitmap.bitmap, bitmap.bitmap) = bitmap.bitmap.
+:- mode difference((builtin.in), (bitmap.bitmap_di)) = (bitmap.bitmap_uo) is det.
+:- pred flip(bitmap.bit_index, bitmap.bitmap, bitmap.bitmap).
+:- mode flip((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- func flip(bitmap.bitmap, bitmap.bit_index) = bitmap.bitmap.
+:- mode flip((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func from_string(string) = bitmap.bitmap.
+:- mode from_string((builtin.in)) = (bitmap.bitmap_uo) is semidet.
+:- func get_bit(bitmap.bitmap, bitmap.bit_index) = bool.bool.
+:- mode get_bit((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func get_bits(bitmap.bitmap, bitmap.bit_index, bitmap.num_bits) = bitmap.word.
+:- mode get_bits((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func get_byte(bitmap.bitmap, bitmap.byte_index) = bitmap.byte.
+:- mode get_byte((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func get_uint8(bitmap.bitmap, bitmap.byte_index) = uint8.
+:- mode get_uint8((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func hash(bitmap.bitmap) = int.
+:- mode hash((builtin.in)) = (builtin.out) is det.
+:- pred in_range(bitmap.bitmap, bitmap.bit_index).
+:- mode in_range((builtin.in), (builtin.in)) is semidet.
+:- func init(bitmap.num_bits) = bitmap.bitmap.
+:- mode init((builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func init(bitmap.num_bits, bool.bool) = bitmap.bitmap.
+:- mode init((builtin.in), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func intersect(bitmap.bitmap, bitmap.bitmap) = bitmap.bitmap.
+:- mode intersect((builtin.in), (bitmap.bitmap_di)) = (bitmap.bitmap_uo) is det.
+:- pred is_clear(bitmap.bitmap, bitmap.bit_index).
+:- mode is_clear((builtin.in), (builtin.in)) is semidet.
+:- pred is_empty(bitmap.bitmap).
+:- mode is_empty((builtin.in)) is semidet.
+:- pred is_set(bitmap.bitmap, bitmap.bit_index).
+:- mode is_set((builtin.in), (builtin.in)) is semidet.
+:- func num_bits(bitmap.bitmap) = bitmap.num_bits.
+:- mode num_bits((builtin.in)) = (builtin.out) is det.
+:- func num_bytes(bitmap.bitmap) = bitmap.num_bytes.
+:- mode num_bytes((builtin.in)) = (builtin.out) is semidet.
+:- pred read_bitmap(bitmap.bitmap, bitmap.bitmap, int, io.res, io.io, io.io).
+:- mode read_bitmap((bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_bitmap(io.binary_input_stream, bitmap.bitmap, bitmap.bitmap, int, io.res, io.io, io.io).
+:- mode read_bitmap((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_bitmap_range(bitmap.byte_index, bitmap.num_bytes, bitmap.bitmap, bitmap.bitmap, bitmap.num_bytes, io.res, io.io, io.io).
+:- mode read_bitmap_range((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_bitmap_range(io.binary_input_stream, bitmap.byte_index, bitmap.num_bytes, bitmap.bitmap, bitmap.bitmap, bitmap.num_bytes, io.res, io.io, io.io).
+:- mode read_bitmap_range((builtin.in), (builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func resize(bitmap.bitmap, bitmap.num_bits, bool.bool) = bitmap.bitmap.
+:- mode resize((bitmap.bitmap_di), (builtin.in), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- pred set(bitmap.bit_index, bitmap.bitmap, bitmap.bitmap).
+:- mode set((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- func set(bitmap.bitmap, bitmap.bit_index) = bitmap.bitmap.
+:- mode set((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- pred set_bit(bitmap.bit_index, bool.bool, bitmap.bitmap, bitmap.bitmap).
+:- mode set_bit((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- pred set_bits(bitmap.bit_index, bitmap.num_bits, bitmap.word, bitmap.bitmap, bitmap.bitmap).
+:- mode set_bits((builtin.in), (builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- pred set_byte(bitmap.byte_index, bitmap.byte, bitmap.bitmap, bitmap.bitmap).
+:- mode set_byte((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- pred set_uint8(bitmap.byte_index, uint8, bitmap.bitmap, bitmap.bitmap).
+:- mode set_uint8((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- func shrink_without_copying(bitmap.bitmap, bitmap.num_bits) = bitmap.bitmap.
+:- mode shrink_without_copying((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func slice(bitmap.bitmap, bitmap.bit_index, bitmap.num_bits) = bitmap.slice.
+:- func slice_bitmap(bitmap.slice) = bitmap.bitmap.
+:- func slice_num_bits(bitmap.slice) = bitmap.num_bits.
+:- func slice_num_bytes(bitmap.slice) = bitmap.num_bytes.
+:- func slice_start_bit_index(bitmap.slice) = bitmap.bit_index.
+:- func slice_start_byte_index(bitmap.slice) = bitmap.byte_index.
+:- pred throw_bounds_error(bitmap.bitmap, string, bitmap.bit_index, bitmap.num_bits).
+:- mode throw_bounds_error((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is erroneous.
+:- func to_byte_string(bitmap.bitmap) = string.
+:- mode to_byte_string((builtin.in)) = (builtin.out) is det.
+:- func to_string(bitmap.bitmap) = string.
+:- mode to_string((builtin.in)) = (builtin.out) is det.
+:- func union(bitmap.bitmap, bitmap.bitmap) = bitmap.bitmap.
+:- mode union((builtin.in), (bitmap.bitmap_di)) = (bitmap.bitmap_uo) is det.
+:- func unsafe_bit(bitmap.bit_index, bitmap.bitmap) = bool.bool.
+:- mode unsafe_bit((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func 'unsafe_bit :='(bitmap.bit_index, bitmap.bitmap, bool.bool) = bitmap.bitmap.
+:- mode 'unsafe_bit :='((builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func unsafe_bits(bitmap.bit_index, bitmap.num_bits, bitmap.bitmap) = bitmap.word.
+:- mode unsafe_bits((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func 'unsafe_bits :='(bitmap.bit_index, bitmap.num_bits, bitmap.bitmap, bitmap.word) = bitmap.bitmap.
+:- mode 'unsafe_bits :='((builtin.in), (builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func unsafe_byte(bitmap.byte_index, bitmap.bitmap) = bitmap.byte.
+:- mode unsafe_byte((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func 'unsafe_byte :='(bitmap.byte_index, bitmap.bitmap, bitmap.byte) = bitmap.bitmap.
+:- mode 'unsafe_byte :='((builtin.in), (bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- pred unsafe_clear(bitmap.bit_index, bitmap.bitmap, bitmap.bitmap).
+:- mode unsafe_clear((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- func unsafe_clear(bitmap.bitmap, bitmap.bit_index) = bitmap.bitmap.
+:- mode unsafe_clear((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- pred unsafe_flip(bitmap.bit_index, bitmap.bitmap, bitmap.bitmap).
+:- mode unsafe_flip((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- func unsafe_flip(bitmap.bitmap, bitmap.bit_index) = bitmap.bitmap.
+:- mode unsafe_flip((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- func unsafe_get_bit(bitmap.bitmap, bitmap.bit_index) = bool.bool.
+:- mode unsafe_get_bit((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func unsafe_get_bits(bitmap.bitmap, bitmap.bit_index, bitmap.num_bits) = bitmap.word.
+:- mode unsafe_get_bits((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func unsafe_get_byte(bitmap.bitmap, bitmap.byte_index) = bitmap.byte.
+:- mode unsafe_get_byte((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func unsafe_get_uint8(bitmap.bitmap, bitmap.byte_index) = uint8.
+:- mode unsafe_get_uint8((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred unsafe_is_clear(bitmap.bitmap, bitmap.bit_index).
+:- mode unsafe_is_clear((builtin.in), (builtin.in)) is semidet.
+:- pred unsafe_is_set(bitmap.bitmap, bitmap.bit_index).
+:- mode unsafe_is_set((builtin.in), (builtin.in)) is semidet.
+:- pred unsafe_set(bitmap.bit_index, bitmap.bitmap, bitmap.bitmap).
+:- mode unsafe_set((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- func unsafe_set(bitmap.bitmap, bitmap.bit_index) = bitmap.bitmap.
+:- mode unsafe_set((bitmap.bitmap_di), (builtin.in)) = (bitmap.bitmap_uo) is det.
+:- pred unsafe_set_bit(bitmap.bit_index, bool.bool, bitmap.bitmap, bitmap.bitmap).
+:- mode unsafe_set_bit((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- pred unsafe_set_bits(bitmap.bit_index, bitmap.num_bits, bitmap.word, bitmap.bitmap, bitmap.bitmap).
+:- mode unsafe_set_bits((builtin.in), (builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- pred unsafe_set_byte(bitmap.byte_index, bitmap.byte, bitmap.bitmap, bitmap.bitmap).
+:- mode unsafe_set_byte((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- pred unsafe_set_uint8(bitmap.byte_index, uint8, bitmap.bitmap, bitmap.bitmap).
+:- mode unsafe_set_uint8((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo)) is det.
+:- pred write_bitmap(bitmap.bitmap, io.io, io.io).
+:- mode write_bitmap((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_bitmap(io.binary_output_stream, bitmap.bitmap, io.io, io.io).
+:- mode write_bitmap((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_bitmap_range(bitmap.bitmap, int, int, io.io, io.io).
+:- mode write_bitmap_range((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_bitmap_range(io.binary_output_stream, bitmap.bitmap, int, int, io.io, io.io).
+:- mode write_bitmap_range((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func xor(bitmap.bitmap, bitmap.bitmap) = bitmap.bitmap.
+:- mode xor((builtin.in), (bitmap.bitmap_di)) = (bitmap.bitmap_uo) is det.
+:- implementation.
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_type(c, bitmap, "MR_BitmapPtr", [can_pass_as_mercury_type])
+    where
+        type_is_abstract_noncanonical.
+:- pragma foreign_type(java, bitmap, "jmercury.runtime.MercuryBitmap")
+    where
+        type_is_abstract_noncanonical.
+:- pragma foreign_type(csharp, bitmap, "mercury.runtime.MercuryBitmap")
+    where
+        type_is_abstract_noncanonical.

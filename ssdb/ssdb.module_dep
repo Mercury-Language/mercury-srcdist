@@ -1,0 +1,14 @@
+module(2, "ssdb.m",
+	ssdb,
+	{},
+	{builtin, io, list, private_builtin},
+	{assoc_list, bitmap, bool, char, dir, int, map, maybe, mdb, pair, require, stream, string, univ, (mdb.browse), (mdb.browser_info), (mdb.browser_term), (mdb.listing), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - ssdb, "C#" - ssdb, "Java" - ssdb},
+	contains_foreign_export,
+	no_main,
+	{}
+).

@@ -1,0 +1,14 @@
+module(2, "io.m",
+	io,
+	{},
+	{array, bitmap, bool, builtin, char, deconstruct, list, map, maybe, ops, private_builtin, stream, string, time, univ},
+	{assoc_list, dir, exception, int, int16, int32, int64, int8, mercury_term_parser, pair, require, rtti_implementation, table_builtin, term, term_conversion, type_desc, uint16, uint32, uint64, uint8, (stream.string_writer), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - io, "C" - string, "C" - time, "C#" - io, "Java" - io},
+	contains_foreign_export,
+	no_main,
+	{}
+).

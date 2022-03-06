@@ -1,0 +1,7 @@
+:- module ((ll_backend.llds_out).llds_out_util).
+:- interface.
+:- type decl_id.
+:- type decl_set.
+:- type llds_out_info.
+:- type_representation(decl_set, is_eqv_to(set_tree234(ll_backend.llds_out.llds_out_util.decl_id))).
+:- type_representation(llds_out_info, is_word_aligned_ptr).

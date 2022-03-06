@@ -1,0 +1,43 @@
+// Automatically generated from `term_size_prof_builtin.m'
+// by the Mercury compiler,
+// version rotd-2022-03-06
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef TERM_SIZE_PROF_BUILTIN_MH
+#define TERM_SIZE_PROF_BUILTIN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef TERM_SIZE_PROF_BUILTIN_DECL_GUARD
+#define TERM_SIZE_PROF_BUILTIN_DECL_GUARD
+
+#ifndef MR_TERM_SIZE_PROFILING_GUARD
+#define MR_TERM_SIZE_PROFILING_GUARD
+
+  #ifdef MR_RECORD_TERM_SIZES
+    #include "mercury_term_size.h"
+  #endif // MR_RECORD_TERM_SIZES
+
+#endif // MR_TERM_SIZE_PROFILING_GUARD
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* TERM_SIZE_PROF_BUILTIN_MH */
