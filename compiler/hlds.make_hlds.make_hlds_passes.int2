@@ -1,0 +1,2 @@
+:- module ((hlds.make_hlds).make_hlds_passes).
+:- interface.
