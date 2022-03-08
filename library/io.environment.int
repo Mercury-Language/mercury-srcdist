@@ -1,0 +1,13 @@
+:- module (io.environment).
+:- interface.
+:- use_module list.
+:- use_module map.
+:- pred get_environment_var(string, maybe.maybe(string), io.io, io.io).
+:- mode get_environment_var((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_environment_var_map(io.environment_var_map, io.io, io.io).
+:- mode get_environment_var_map((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred have_set_environment_var is semidet.
+:- pred set_environment_var(string, string, io.io, io.io).
+:- mode set_environment_var((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_environment_var(string, string, io.res, io.io, io.io).
+:- mode set_environment_var((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
