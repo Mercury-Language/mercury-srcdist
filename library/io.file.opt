@@ -1,0 +1,125 @@
+:- module (io.file).
+:- use_module array.
+:- use_module benchmarking.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module dir.
+:- use_module exception.
+:- use_module int.
+:- use_module int16.
+:- use_module int32.
+:- use_module int64.
+:- use_module int8.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mercury_term_parser.
+:- use_module ops.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module stream.
+:- use_module string.
+:- use_module table_builtin.
+:- use_module term.
+:- use_module term_conversion.
+:- use_module time.
+:- use_module type_desc.
+:- use_module uint16.
+:- use_module uint32.
+:- use_module uint64.
+:- use_module uint8.
+:- use_module univ.
+:- use_module (io.call_system).
+:- use_module (io.environment).
+:- use_module (io.file).
+:- use_module (io.stream_db).
+:- use_module (stream.string_writer).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", (io.file)).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", (io.file)).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", (io.file)).
+
+:- pragma foreign_proc("C", (io.file).have_make_temp_directory, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+#ifdef MR_HAVE_MKDTEMP
+    SUCCESS_INDICATOR = MR_TRUE;
+#else
+    SUCCESS_INDICATOR = MR_FALSE;
+#endif
+").
+
+:- pragma foreign_proc("C", (io.file).have_symlinks, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+#if defined(MR_HAVE_SYMLINK) && defined(MR_HAVE_READLINK)
+    SUCCESS_INDICATOR = MR_TRUE;
+#else
+    SUCCESS_INDICATOR = MR_FALSE;
+#endif
+").
+
+(io.file).make_temp_directory(V_4, V_7, V_8) :-
+    (io.file).get_temp_directory(V_6, V_7, V_9),
+    V_10 = "mtmp" : string,
+    V_11 = "" : string,
+    (io.file).make_temp_directory(V_6, V_10, V_11, V_4, V_9, V_8).
+
+(io.file).make_temp_file(V_4, V_7, V_8) :-
+    (io.file).get_temp_directory(V_6, V_7, V_9),
+    V_10 = "mtmp" : string,
+    V_11 = "" : string,
+    (io.file).make_temp_file(V_6, V_10, V_11, V_4, V_9, V_8).
+
+:- pragma termination_info((io.file).check_file_accessibility((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).file_modification_time((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).file_type((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).get_temp_directory((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(((io.file).have_make_temp_directory), finite(0, []), cannot_loop).
+:- pragma termination_info(((io.file).have_symlinks), finite(0, []), cannot_loop).
+:- pragma termination_info((io.file).make_symlink((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).make_temp_directory((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).make_temp_directory((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).make_temp_file((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).make_temp_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).read_symlink((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).remove_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).remove_file_recursively((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).rename_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, ((io.file).check_file_accessibility), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).file_modification_time), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).file_type), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).get_temp_directory), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).have_make_temp_directory), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).have_symlinks), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).make_symlink), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).make_temp_directory), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).make_temp_directory), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).make_temp_file), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).make_temp_file), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).read_symlink), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).remove_file), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).remove_file_recursively), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).rename_file), 5, 0, may_throw(user_exception)).

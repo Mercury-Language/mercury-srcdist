@@ -1,0 +1,14 @@
+module(2, "bitmap.m",
+	bitmap,
+	{},
+	{bool, builtin, io, list, private_builtin, stream},
+	{char, exception, int, maybe, require, string, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - bitmap, "C#" - bitmap, "Java" - bitmap},
+	no_foreign_export,
+	no_main,
+	{}
+).
