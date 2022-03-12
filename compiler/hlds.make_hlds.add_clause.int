@@ -1,0 +1,19 @@
+:- module ((hlds.make_hlds).add_clause).
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.quantification).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- use_module ((hlds.make_hlds).qual_info).
+:- type clause_type
+    --->    clause_not_for_promise 
+    ;       clause_for_promise(parse_tree.prog_data.promise_type).
+:- pred clauses_info_add_clause(hlds.hlds_clauses.clause_applicable_modes, list.list(hlds.hlds_pred.proc_id), hlds.status.pred_status, hlds.make_hlds.add_clause.clause_type, mdbcomp.prim_data.pred_or_func, list.list(parse_tree.prog_data.prog_term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, list.list(hlds.quantification.quant_warning), parse_tree.prog_item.goal, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode clauses_info_add_clause((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_add_clause(hlds.status.pred_status, hlds.make_hlds.add_clause.clause_type, parse_tree.prog_item.item_clause_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode module_add_clause((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

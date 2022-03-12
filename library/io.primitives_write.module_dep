@@ -1,0 +1,14 @@
+module(2, "io.primitives_write.m",
+	(io.primitives_write),
+	{io},
+	{builtin, char, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (io.primitives_write), "C#" - (io.primitives_write), "Java" - (io.primitives_write)},
+	no_foreign_export,
+	no_main,
+	{}
+).
