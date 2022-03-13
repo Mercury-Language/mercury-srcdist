@@ -1,0 +1,239 @@
+/*
+** Automatically generated from `trace_params.m'
+** by the Mercury compiler,
+** version 22.01-beta-2022-03-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.trace_params.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__trace_params
+#define MR_HEADER_GUARD_libs__trace_params
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__TRACE_PARAMS_DECL_GUARD
+#define LIBS__TRACE_PARAMS_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__trace_params__libs__trace_params__type_ctor_info_maybe_exec_trace_enabled_0;
+
+extern const MR_TypeCtorInfo_Struct libs__trace_params__libs__trace_params__type_ctor_info_port_category_0;
+
+extern const MR_TypeCtorInfo_Struct libs__trace_params__libs__trace_params__type_ctor_info_trace_level_0;
+
+extern const MR_TypeCtorInfo_Struct libs__trace_params__libs__trace_params__type_ctor_info_trace_suppress_item_0;
+
+extern const MR_TypeCtorInfo_Struct libs__trace_params__libs__trace_params__type_ctor_info_trace_suppress_items_0;
+
+MR_bool MR_CALL 
+libs__trace_params__convert_trace_level_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+libs__trace_params__convert_trace_suppress_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+libs__trace_params__at_least_at_deep_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__trace_params__at_least_at_shallow_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__trace_params__default_trace_suppress_0_f_0(void);
+
+MR_Word MR_CALL 
+libs__trace_params__eff_trace_level_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+libs__trace_params__eff_trace_level_needs_fail_vars_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+libs__trace_params__eff_trace_level_needs_fixed_slots_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+libs__trace_params__eff_trace_level_needs_from_full_slot_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+libs__trace_params__eff_trace_level_needs_input_vars_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+libs__trace_params__eff_trace_needs_all_var_names_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+libs__trace_params__eff_trace_needs_port_6_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+MR_Word MR_CALL 
+libs__trace_params__eff_trace_needs_proc_body_reps_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Integer MR_CALL 
+libs__trace_params__encode_suppressed_events_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__trace_params__is_exec_trace_enabled_at_eff_trace_level_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+libs__trace_params__is_exec_trace_enabled_at_given_trace_level_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__trace_params__trace_level_allows_delay_death_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__trace_params__trace_level_allows_tail_rec_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__trace_params__trace_level_for_unify_compare_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__trace_params__trace_level_needs_meaningful_var_names_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__trace_params__trace_level_none_0_f_0(void);
+
+MR_String MR_CALL 
+libs__trace_params__trace_level_rep_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__trace_params__trace_needs_proc_body_reps_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__trace_params__trace_needs_return_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+libs__trace_params____Compare____maybe_exec_trace_enabled_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__trace_params____Compare____trace_level_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__trace_params____Compare____trace_suppress_item_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__trace_params____Compare____trace_suppress_items_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__trace_params____Unify____maybe_exec_trace_enabled_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__trace_params____Unify____trace_level_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__trace_params____Unify____trace_suppress_item_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__trace_params____Unify____trace_suppress_items_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__trace_params__init(void);
+void mercury__libs__trace_params__init_type_tables(void);
+void mercury__libs__trace_params__init_debugger(void);
+const char *mercury__libs__trace_params__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.trace_params
+
+// :- end_interface libs.trace_params.
