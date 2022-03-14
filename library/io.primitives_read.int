@@ -1,0 +1,19 @@
+:- module (io.primitives_read).
+:- interface.
+:- use_module char.
+:- pred do_read_binary_uint16(io.stream, io.byte_order, io.maybe_incomplete_result_code, uint16, list.list(uint8), io.system_error, io.io, io.io).
+:- mode do_read_binary_uint16((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_read_binary_uint32(io.stream, io.byte_order, io.maybe_incomplete_result_code, uint32, list.list(uint8), io.system_error, io.io, io.io).
+:- mode do_read_binary_uint32((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_read_binary_uint64(io.stream, io.byte_order, io.maybe_incomplete_result_code, uint64, list.list(uint8), io.system_error, io.io, io.io).
+:- mode do_read_binary_uint64((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred putback_char_2(io.stream, char.char, bool.bool, io.io, io.io).
+:- mode putback_char_2((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred putback_uint8_2(io.stream, uint8, bool.bool, io.io, io.io).
+:- mode putback_uint8_2((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_byte_val(io.input_stream, io.result_code, int, io.system_error, io.io, io.io).
+:- mode read_byte_val((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_char_code(io.input_stream, io.result_code, char.char, io.system_error, io.io, io.io).
+:- mode read_char_code((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- pragma foreign_import_module("C#", (io.stream_ops)).
