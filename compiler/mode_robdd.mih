@@ -1,0 +1,67 @@
+/*
+** Automatically generated from `mode_robdd.m'
+** by the Mercury compiler,
+** version rotd-2022-03-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mode_robdd.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mode_robdd
+#define MR_HEADER_GUARD_mode_robdd
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MODE_ROBDD_DECL_GUARD
+#define MODE_ROBDD_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mode_robdd__mode_robdd__type_ctor_info_mode_robdd_1;
+
+void MR_CALL 
+mode_robdd____Compare____mode_robdd_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mode_robdd____Unify____mode_robdd_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__mode_robdd__init(void);
+void mercury__mode_robdd__init_type_tables(void);
+void mercury__mode_robdd__init_debugger(void);
+const char *mercury__mode_robdd__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mode_robdd
+
+// :- end_interface mode_robdd.

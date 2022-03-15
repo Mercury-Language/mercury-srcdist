@@ -1,0 +1,11 @@
+:- module (ll_backend.opt_util).
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module (ll_backend.llds).
+:- type instrmap == map.map(ll_backend.llds.label, ll_backend.llds.instruction).
+:- type lvalmap == map.map(ll_backend.llds.label, maybe.maybe(ll_backend.llds.instruction)).
+:- type succmap == map.map(ll_backend.llds.label, bool.bool).
+:- type tailmap == map.map(ll_backend.llds.label, list.list(ll_backend.llds.instruction)).

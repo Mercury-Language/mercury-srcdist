@@ -1,0 +1,232 @@
+:- module psqueue.
+:- use_module assoc_list.
+:- use_module builtin.
+:- use_module cord.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+
+:- type loser_tree(P, K)
+    --->    loser_leaf 
+    ;       loser_node((psqueue.l_size) :: int, (psqueue.l_prio) :: P, (psqueue.l_key) :: K, (psqueue.l_left_tree) :: psqueue.loser_tree(P, K), (psqueue.l_sort_key) :: K, (psqueue.l_right_tree) :: psqueue.loser_tree(P, K)).
+:- type loser_tree_size == int.
+:- type psqueue(P, K)
+    --->    empty_psqueue 
+    ;       nonempty_psqueue(psqueue.winner(P, K)).
+:- type tournament_view(P, K)
+    --->    singleton_tournament(P, K)
+    ;       tournament_between(psqueue.winner(P, K), psqueue.winner(P, K)).
+:- type winner(P, K)
+    --->    winner((psqueue.w_prio) :: P, (psqueue.w_key) :: K, (psqueue.w_losers) :: psqueue.loser_tree(P, K), (psqueue.w_max_key) :: K).
+
+:- pred psqueue.adjust_tv(((func P) = P), K, psqueue.tournament_view(P, K), psqueue.winner(P, K)).
+:- mode adjust_tv(builtin.in((func((builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pragma type_spec(pred((psqueue.adjust_tv)/4), (P = int), (psqueue.'TypeSpecOf__pred__adjust_tv__[P = int]')).
+:- pred psqueue.combine_winners_via_tournament(psqueue.winner(P, K), psqueue.winner(P, K), psqueue.winner(P, K)).
+:- mode combine_winners_via_tournament((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pragma type_spec(pred((psqueue.combine_winners_via_tournament)/3), (P = int), (psqueue.'TypeSpecOf__pred__combine_winners_via_tournament__[P = int]')).
+:- func psqueue.convert_loser_tree_to_psqueue(psqueue.loser_tree(P, K), K) = psqueue.psqueue(P, K).
+:- mode convert_loser_tree_to_psqueue((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pragma type_spec(func((psqueue.convert_loser_tree_to_psqueue)/2), (P = int), (psqueue.'TypeSpecOf__func__convert_loser_tree_to_psqueue__[P = int]')).
+:- func psqueue.dump_psqueue(int, psqueue.psqueue(P, K)) = string.
+:- mode dump_psqueue((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred psqueue.from_assoc_list_loop(list.list(pair.pair(P, K)), psqueue.psqueue(P, K), psqueue.psqueue(P, K)).
+:- mode from_assoc_list_loop((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pragma type_spec(pred((psqueue.from_assoc_list_loop)/3), (P = int), (psqueue.'TypeSpecOf__pred__from_assoc_list_loop__[P = int]')).
+:- func psqueue.get_tournament_view(psqueue.winner(P, K)) = psqueue.tournament_view(P, K).
+:- mode get_tournament_view((builtin.in)) = (builtin.out) is det.
+:- pragma type_spec(func((psqueue.get_tournament_view)/1), (P = int), (psqueue.'TypeSpecOf__func__get_tournament_view__[P = int]')).
+:- pred psqueue.leq(V, V).
+:- mode leq((builtin.in), (builtin.in)) is semidet.
+:- pragma type_spec(pred((psqueue.leq)/2), (V = int), (psqueue.'TypeSpecOf__pred__leq__[V = int]')).
+:- func psqueue.singleton_winner(P, K) = psqueue.winner(P, K).
+:- mode singleton_winner((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pragma inline(func((psqueue.singleton_winner)/2)).
+
+psqueue.adjust(V_5, V_6, V_10, V_11) :-
+    ( % disjunction
+      V_10 = psqueue.empty_psqueue : psqueue.psqueue(P_1, K_2),
+      fail,
+      V_11 = V_10
+    ;
+      V_10 = psqueue.nonempty_psqueue(V_8) : psqueue.psqueue(P_1, K_2),
+      V_12 = psqueue.get_tournament_view(V_8),
+      psqueue.adjust_tv(V_5, V_6, V_12, V_9),
+      V_11 = psqueue.nonempty_psqueue(V_9) : psqueue.psqueue(P_1, K_2)
+    ).
+
+psqueue.adjust_tv(V_5, V_6, V_7, V_8) :-
+    ( % disjunction
+      V_7 = psqueue.singleton_tournament(V_9, V_10) : psqueue.tournament_view(P_1, K_2),
+      ( if
+        V_10 = V_6
+      then
+        V_8 = psqueue.singleton_winner(V_21, V_10),
+        V_21 = apply(V_5, V_9)
+      else
+        fail
+      )
+    ;
+      V_7 = psqueue.tournament_between(V_11, V_12) : psqueue.tournament_view(P_1, K_2),
+      V_11 = psqueue.winner(V_13, V_14, V_15, V_16) : psqueue.winner(P_1, K_2),
+      ( if
+        psqueue.leq(V_6, V_16)
+      then
+        V_19 = psqueue.get_tournament_view(V_11),
+        psqueue.adjust_tv(V_5, V_6, V_19, V_17),
+        psqueue.combine_winners_via_tournament(V_17, V_12, V_8)
+      else
+        V_20 = psqueue.get_tournament_view(V_12),
+        psqueue.adjust_tv(V_5, V_6, V_20, V_18),
+        psqueue.combine_winners_via_tournament(V_11, V_18, V_8)
+      )
+    ).
+
+psqueue.at_most(V_4, V_5) = V_6 :-
+    psqueue.at_most(V_4, V_5, V_6).
+
+psqueue.det_insert(V_5, V_6, V_7) = V_8 :-
+    psqueue.det_insert(V_6, V_7, V_5, V_8).
+
+psqueue.dump_psqueue(V_3) = V_2 :-
+    V_2 = psqueue.dump_psqueue(V_4, V_3),
+    V_4 = 0 : int.
+
+psqueue.from_assoc_list(V_3) = V_4 :-
+    psqueue.from_assoc_list(V_3, V_4).
+
+psqueue.from_assoc_list(V_3, V_4) :-
+    V_5 = psqueue.init,
+    psqueue.from_assoc_list_loop(V_3, V_5, V_4).
+
+psqueue.init = V_2 :-
+    psqueue.init(V_2).
+
+psqueue.init(psqueue.empty_psqueue).
+
+psqueue.is_empty(psqueue.empty_psqueue).
+
+psqueue.leq(V_3, V_4) :-
+    builtin.compare(V_5, V_3, V_4),
+    ( % disjunction
+      V_5 = builtin.(<) : builtin.comparison_result
+    ;
+      V_5 = builtin.(=) : builtin.comparison_result
+    ).
+
+psqueue.lookup(V_4, V_5) = V_6 :-
+    psqueue.lookup(V_4, V_5, V_6).
+
+psqueue.peek(V_4, V_5, V_6) :-
+    V_4 = psqueue.nonempty_psqueue(V_9) : psqueue.psqueue(P_1, K_2),
+    V_9 = psqueue.winner(V_5, V_6, V_7, V_8) : psqueue.winner(P_1, K_2).
+
+psqueue.remove_least(V_5, V_6, V_10, V_11) :-
+    V_10 = psqueue.nonempty_psqueue(V_12) : psqueue.psqueue(P_1, K_2),
+    V_12 = psqueue.winner(V_5, V_6, V_8, V_9) : psqueue.winner(P_1, K_2),
+    V_11 = psqueue.convert_loser_tree_to_psqueue(V_8, V_9).
+
+psqueue.singleton(V_4, V_5) = V_6 :-
+    psqueue.singleton(V_4, V_5, V_6).
+
+psqueue.singleton(V_4, V_5, V_6) :-
+    V_6 = psqueue.nonempty_psqueue(V_7) : psqueue.psqueue(P_1, K_2),
+    V_7 = psqueue.singleton_winner(V_4, V_5).
+
+:- pragma inline(func((psqueue.singleton_winner)/2)).
+psqueue.singleton_winner(V_4, V_5) = psqueue.winner(V_4, V_5, V_6, V_7) :-
+    V_6 = psqueue.loser_leaf : psqueue.loser_tree(P_1, K_2),
+    V_7 = V_5.
+
+psqueue.size(V_3) = V_4 :-
+    psqueue.size(V_3, V_4).
+
+psqueue.to_assoc_list(V_3) = V_4 :-
+    psqueue.to_assoc_list(V_3, V_4).
+
+:- pragma termination_info(psqueue.adjust((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(psqueue.adjust_tv(builtin.in((func((builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(psqueue.at_most((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(psqueue.at_most((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(psqueue.combine_winners_via_tournament((builtin.in), (builtin.in), (builtin.out)), finite(2, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(psqueue.convert_loser_tree_to_psqueue((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(psqueue.det_insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(psqueue.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(psqueue.det_peek((builtin.in), (builtin.out), (builtin.out)), finite(-5, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(psqueue.det_remove((builtin.out), (builtin.in), (builtin.in), (builtin.out)), finite(-3, [no, no, no, no, yes, no]), can_loop).
+:- pragma termination_info(psqueue.det_remove_least((builtin.out), (builtin.out), (builtin.in), (builtin.out)), finite(-5, [no, no, no, no, yes, no]), can_loop).
+:- pragma termination_info(psqueue.dump_psqueue((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(psqueue.dump_psqueue((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(psqueue.from_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(psqueue.from_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(psqueue.from_assoc_list_loop((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(psqueue.get_tournament_view((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(psqueue.has_key_condition((builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info((psqueue.init) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(psqueue.init((builtin.out)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(psqueue.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(psqueue.is_empty((builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(psqueue.is_finite_map((builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(psqueue.is_search_tree((builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(psqueue.is_semi_heap((builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(psqueue.leq((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(psqueue.lookup((builtin.in), (builtin.in)) = (builtin.out), finite(-3, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(psqueue.lookup((builtin.in), (builtin.in), (builtin.out)), finite(-3, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(psqueue.peek((builtin.in), (builtin.out), (builtin.out)), finite(-5, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(psqueue.remove((builtin.out), (builtin.in), (builtin.in), (builtin.out)), finite(-3, [no, no, no, no, yes, no]), can_loop).
+:- pragma termination_info(psqueue.remove_least((builtin.out), (builtin.out), (builtin.in), (builtin.out)), finite(-5, [no, no, no, no, yes, no]), can_loop).
+:- pragma termination_info(psqueue.search((builtin.in), (builtin.in), (builtin.out)), finite(-3, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(psqueue.singleton((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(psqueue.singleton((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(psqueue.singleton_winner((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(psqueue.size((builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(psqueue.size((builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(psqueue.to_assoc_list((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(psqueue.to_assoc_list((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(psqueue.verify_and_dump_psqueue((builtin.in)) = (builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, (psqueue.adjust), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.adjust_tv), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (psqueue.at_most), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.at_most), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.combine_winners_via_tournament), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (psqueue.convert_loser_tree_to_psqueue), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (psqueue.det_insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.det_peek), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.det_remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.det_remove_least), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (psqueue.dump_psqueue), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (psqueue.dump_psqueue), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (psqueue.from_assoc_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.from_assoc_list_loop), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (psqueue.get_tournament_view), 1, 0, conditional).
+:- pragma exceptions(predicate, (psqueue.has_key_condition), 1, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (psqueue.init), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (psqueue.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (psqueue.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (psqueue.is_finite_map), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.is_search_tree), 1, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (psqueue.is_semi_heap), 1, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (psqueue.leq), 2, 0, conditional).
+:- pragma exceptions(function, (psqueue.lookup), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.peek), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (psqueue.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.remove_least), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (psqueue.singleton), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (psqueue.singleton), 3, 0, will_not_throw).
+:- pragma exceptions(function, (psqueue.singleton_winner), 2, 0, will_not_throw).
+:- pragma exceptions(function, (psqueue.size), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (psqueue.size), 2, 0, will_not_throw).
+:- pragma exceptions(function, (psqueue.to_assoc_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (psqueue.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (psqueue.verify_and_dump_psqueue), 1, 0, may_throw(user_exception)).
