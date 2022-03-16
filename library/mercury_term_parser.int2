@@ -1,0 +1,8 @@
+:- module mercury_term_parser.
+:- interface.
+:- use_module term.
+:- type read_term == mercury_term_parser.read_term(term.generic).
+:- type read_term(T)
+    --->    eof 
+    ;       error(string, int)
+    ;       term(varset.varset(T), term.term(T)).

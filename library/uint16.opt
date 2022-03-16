@@ -1,0 +1,368 @@
+:- module uint16.
+:- use_module builtin.
+:- use_module exception.
+:- use_module int.
+:- use_module pretty_printer.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module uint.
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", uint16).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", uint16).
+:- pragma foreign_import_module("C#", (io.stream_ops)).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", uint16).
+:- pragma foreign_import_module("Java", (io.stream_ops)).
+
+:- pragma inline(func((uint16.(/))/2)).
+uint16.(V_4 / V_5) = V_3 :-
+    V_3 = uint16.(V_4 // V_5).
+
+:- pragma inline(func((uint16.(//))/2)).
+uint16.(V_4 // V_5) = V_6 :-
+    ( if
+      V_5 = 0u16 : uint16
+    then
+      V_7 = exception.domain_error(V_8) : exception.domain_error,
+      V_8 = "uint16.\'//\': division by zero" : string,
+      exception.throw(V_7)
+    else
+      V_6 = uint16.unchecked_quotient(V_4, V_5)
+    ).
+
+:- pragma foreign_proc("C", uint16.cast_from_int(I :: (builtin.in)) = (U16 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U16 = (uint16_t) I;
+").
+
+:- pragma foreign_proc("C", uint16.cast_from_int16(I16 :: (builtin.in)) = (U16 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U16 = (uint16_t) I16;
+").
+
+:- pragma foreign_proc("C", uint16.cast_from_uint(U :: (builtin.in)) = (U16 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U16 = (uint16_t) U;
+").
+
+:- pragma foreign_proc("C", uint16.cast_from_uint64(U64 :: (builtin.in)) = (U16 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U16 = (uint16_t) U64;
+").
+
+:- pragma foreign_proc("C", uint16.cast_from_uint8(U8 :: (builtin.in)) = (U16 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U16 = (uint16_t) U8;
+").
+
+:- pragma foreign_proc("C", uint16.cast_to_int(U16 :: (builtin.in)) = (I :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    I = U16;
+").
+
+:- pragma foreign_proc("C", uint16.cast_to_uint(U16 :: (builtin.in)) = (U :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U = (MR_Unsigned) U16;
+").
+
+:- pragma foreign_proc("C", uint16.cast_to_uint64(U16 :: (builtin.in)) = (U64 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U64 = (uint64_t) U16;
+").
+
+:- pragma foreign_proc("C", uint16.cast_to_uint8(U16 :: (builtin.in)) = (U8 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    U8 = (uint8_t) U16;
+").
+
+uint16.(V_4 div V_5) = V_3 :-
+    V_3 = uint16.(V_4 // V_5).
+
+:- pragma inline(pred((uint16.even)/1)).
+uint16.even(V_2) :-
+    V_3 = uint16.(V_2 /\ V_4),
+    V_4 = 1u16 : uint16,
+    V_3 = 0u16 : uint16.
+
+uint16.from_bytes_be(V_4, V_5) = V_3 :-
+    V_3 = uint16.from_bytes_le(V_5, V_4).
+
+:- pragma foreign_proc("C", uint16.from_bytes_le(LSB :: (builtin.in), MSB :: (builtin.in)) = (U16 :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    unsigned char *uint16_bytes = (unsigned char *) &U16;
+#if defined(MR_BIG_ENDIAN)
+    uint16_bytes[0] = MSB;
+    uint16_bytes[1] = LSB;
+#else
+    uint16_bytes[0] = LSB;
+    uint16_bytes[1] = MSB;
+#endif
+").
+
+uint16.from_uint(V_3, V_4) :-
+    V_5 = 65535u : uint,
+    uint.(V_3 =< V_5),
+    V_4 = uint16.cast_from_uint(V_3).
+
+uint16.max(V_4, V_5) = V_3 :-
+    ( if
+      uint16.(V_4 > V_5)
+    then
+      V_3 = V_4
+    else
+      V_3 = V_5
+    ).
+
+uint16.max_uint16 = 65535u16.
+
+uint16.min(V_4, V_5) = V_3 :-
+    ( if
+      uint16.(V_4 < V_5)
+    then
+      V_3 = V_4
+    else
+      V_3 = V_5
+    ).
+
+uint16.(V_4 mod V_5) = V_3 :-
+    V_3 = uint16.(V_4 rem V_5).
+
+:- pragma foreign_proc("C", uint16.num_leading_zeros(U :: (builtin.in)) = (N :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    if (U == 0) {
+        N = 16;
+    } else {
+        int n = 1;
+        if ((U >> 8) == 0) { n = n + 8;   U = U << 8; }
+        if ((U >> 12) == 0) { n = n + 4;  U = U << 4; }
+        if ((U >> 14) == 0) { n = n + 2;  U = U << 2; }
+        if ((U >> 15) == 0) { n = n + 1;  U = U << 1; }
+        N = n - (int) (U >> 15);
+    }
+").
+
+:- pragma foreign_proc("C", uint16.num_ones(U :: (builtin.in)) = (N :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    U = (U & 0x5555) + ((U >> 1) & 0x5555);
+    U = (U & 0x3333) + ((U >> 2) & 0x3333);
+    U = (U & 0x0f0f) + ((U >> 4) & 0x0f0f);
+    U = (U & 0x00ff) + ((U >> 8) & 0x00ff);
+    N = U;
+").
+
+uint16.num_zeros(V_3) = V_2 :-
+    V_2 = int.(V_4 - V_5),
+    V_4 = 16 : int,
+    V_5 = uint16.num_ones(V_3).
+
+:- pragma inline(pred((uint16.odd)/1)).
+uint16.odd(V_2) :-
+    not (
+      V_3 = uint16.(V_2 /\ V_4),
+      V_4 = 1u16 : uint16,
+      V_3 = 0u16 : uint16
+    ).
+
+:- pragma inline(func((uint16.(rem))/2)).
+uint16.(V_4 rem V_5) = V_6 :-
+    ( if
+      V_5 = 0u16 : uint16
+    then
+      V_7 = exception.domain_error(V_8) : exception.domain_error,
+      V_8 = "uint16.rem: division by zero" : string,
+      exception.throw(V_7)
+    else
+      V_6 = uint16.unchecked_rem(V_4, V_5)
+    ).
+
+:- pragma foreign_proc("C", uint16.reverse_bytes(A :: (builtin.in)) = (B :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    B = MR_uint16_reverse_bytes(A);
+").
+
+:- pragma foreign_proc("C", uint16.to_int(U16 :: (builtin.in)) = (I :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    I = U16;
+").
+
+uint16.uint16_to_doc(V_3) = pretty_printer.str(V_4) :-
+    V_4 = string.uint16_to_string(V_3).
+
+uint16.unchecked_clear_bit(V_4, V_5) = V_3 :-
+    V_3 = uint16.(V_4 /\ V_6),
+    V_6 = uint16.(\ V_7),
+    V_7 = uint16.unchecked_left_shift(V_8, V_9),
+    V_8 = 1u16 : uint16,
+    V_9 = uint.cast_to_int(V_5).
+
+uint16.unchecked_flip_bit(V_4, V_5) = V_3 :-
+    V_3 = uint16.xor(V_4, V_6),
+    V_6 = uint16.unchecked_left_shift(V_7, V_8),
+    V_7 = 1u16 : uint16,
+    V_8 = uint.cast_to_int(V_5).
+
+:- pragma foreign_proc("C", uint16.unchecked_rotate_left(X :: (builtin.in), N :: (builtin.in)) = (Result :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    N &= 15;
+    // XXX clang has intrinsics for rotation -- we should use those instead.
+    Result = (X << N) | (X >> (-N & 15));
+").
+
+:- pragma foreign_proc("C", uint16.unchecked_rotate_right(X :: (builtin.in), N :: (builtin.in)) = (Result :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    N &= 15;
+    Result = (X >> N) | (X << (-N & 15));
+").
+
+uint16.unchecked_set_bit(V_4, V_5) = V_3 :-
+    V_3 = uint16.(V_4 \/ V_6),
+    V_6 = uint16.unchecked_left_shift(V_7, V_8),
+    V_7 = 1u16 : uint16,
+    V_8 = uint.cast_to_int(V_5).
+
+:- pragma termination_info(uint16.'*'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.'+'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.'+'((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.'+'((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.'-'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.'-'((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.'-'((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.'/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.'//'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.'/\\'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.'<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint16.'<<'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.'=<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint16.'>'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint16.'>='((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint16.'>>'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.'\\'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint16.'\\/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.bit_is_clear((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(uint16.bit_is_set((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(uint16.cast_from_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.cast_from_int16((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.cast_from_uint((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.cast_from_uint64((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.cast_from_uint8((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.cast_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.cast_to_uint((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.cast_to_uint64((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.cast_to_uint8((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.clear_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.det_from_int((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(uint16.det_from_uint((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(uint16.div((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.even((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(uint16.flip_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.from_bytes_be((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.from_bytes_le((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.from_int((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(uint16.from_uint((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(uint16.max((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((uint16.max_uint16) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(uint16.min((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(uint16.minus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.mod((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.num_leading_zeros((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.num_ones((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.num_trailing_zeros((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint16.num_zeros((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(uint16.odd((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(uint16.plus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.rem((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.reverse_bits((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(uint16.reverse_bytes((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.rotate_left((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(uint16.rotate_right((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(uint16.set_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.times((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.uint16_to_doc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(uint16.unchecked_bit_is_clear((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(uint16.unchecked_bit_is_set((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(uint16.unchecked_clear_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.unchecked_flip_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.unchecked_left_shift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.unchecked_rem((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.unchecked_right_shift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.unchecked_rotate_left((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.unchecked_rotate_right((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(uint16.unchecked_set_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(uint16.xor((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.xor((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(uint16.xor((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+
+:- pragma exceptions(function, (uint16.(*)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.(+)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.(+)), 2, 1, will_not_throw).
+:- pragma exceptions(function, (uint16.(+)), 2, 2, will_not_throw).
+:- pragma exceptions(function, (uint16.(-)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.(-)), 2, 1, will_not_throw).
+:- pragma exceptions(function, (uint16.(-)), 2, 2, will_not_throw).
+:- pragma exceptions(function, (uint16.(/)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.(//)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.(/\)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint16.(<)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.(<<)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (uint16.(=<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint16.(>)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint16.(>=)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.(>>)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.(\)), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.(\/)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint16.bit_is_clear), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (uint16.bit_is_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.cast_from_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.cast_from_int16), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.cast_from_uint), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.cast_from_uint64), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.cast_from_uint8), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.cast_to_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.cast_to_uint), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.cast_to_uint64), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.cast_to_uint8), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.clear_bit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.det_from_int), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.det_from_uint), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.(div)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (uint16.even), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.flip_bit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.from_bytes_be), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.from_bytes_le), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint16.from_int), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint16.from_uint), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.max), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.max_uint16), 0, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.min), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.minus), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.(mod)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.num_leading_zeros), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.num_ones), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.num_trailing_zeros), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.num_zeros), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (uint16.odd), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.plus), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.(rem)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.reverse_bits), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.reverse_bytes), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.rotate_left), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.rotate_right), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.set_bit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.times), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.to_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.uint16_to_doc), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (uint16.unchecked_bit_is_clear), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (uint16.unchecked_bit_is_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.unchecked_clear_bit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.unchecked_flip_bit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.unchecked_left_shift), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.unchecked_quotient), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.unchecked_rem), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.unchecked_right_shift), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.unchecked_rotate_left), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.unchecked_rotate_right), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.unchecked_set_bit), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (uint16.xor), 2, 0, will_not_throw).
+:- pragma exceptions(function, (uint16.xor), 2, 1, will_not_throw).
+:- pragma exceptions(function, (uint16.xor), 2, 2, will_not_throw).

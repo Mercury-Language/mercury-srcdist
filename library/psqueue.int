@@ -1,0 +1,77 @@
+:- module psqueue.
+:- interface.
+:- use_module assoc_list.
+:- type psqueue(P, K).
+:- pred adjust(((func P) = P), K, psqueue.psqueue(P, K), psqueue.psqueue(P, K)).
+:- mode adjust((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred at_most(psqueue.psqueue(P, K), P, assoc_list.assoc_list(P, K)).
+:- mode at_most((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func at_most(psqueue.psqueue(P, K), P) = assoc_list.assoc_list(P, K).
+:- pred det_insert(P, K, psqueue.psqueue(P, K), psqueue.psqueue(P, K)).
+:- mode det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_insert(psqueue.psqueue(P, K), P, K) = psqueue.psqueue(P, K).
+:- pred det_peek(psqueue.psqueue(P, K), P, K).
+:- mode det_peek((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred det_remove(P, K, psqueue.psqueue(P, K), psqueue.psqueue(P, K)).
+:- mode det_remove((builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_remove_least(P, K, psqueue.psqueue(P, K), psqueue.psqueue(P, K)).
+:- mode det_remove_least((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func dump_psqueue(psqueue.psqueue(P, K)) = string.
+:- pred from_assoc_list(assoc_list.assoc_list(P, K), psqueue.psqueue(P, K)).
+:- mode from_assoc_list((builtin.in), (builtin.out)) is det.
+:- func from_assoc_list(assoc_list.assoc_list(P, K)) = psqueue.psqueue(P, K).
+:- pred has_key_condition(psqueue.psqueue(P, K)).
+:- mode has_key_condition((builtin.in)) is semidet.
+:- pred init(psqueue.psqueue(P, K)).
+:- mode init((builtin.out)) is det.
+:- func init = psqueue.psqueue(P, K).
+:- pred insert(P, K, psqueue.psqueue(P, K), psqueue.psqueue(P, K)).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred is_empty(psqueue.psqueue(P, K)).
+:- mode is_empty((builtin.in)) is semidet.
+:- pred is_finite_map(psqueue.psqueue(P, K)).
+:- mode is_finite_map((builtin.in)) is semidet.
+:- pred is_search_tree(psqueue.psqueue(P, K)).
+:- mode is_search_tree((builtin.in)) is semidet.
+:- pred is_semi_heap(psqueue.psqueue(P, K)).
+:- mode is_semi_heap((builtin.in)) is semidet.
+:- pred lookup(psqueue.psqueue(P, K), K, P).
+:- mode lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup(psqueue.psqueue(P, K), K) = P.
+:- pred peek(psqueue.psqueue(P, K), P, K).
+:- mode peek((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred remove(P, K, psqueue.psqueue(P, K), psqueue.psqueue(P, K)).
+:- mode remove((builtin.out), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_least(P, K, psqueue.psqueue(P, K), psqueue.psqueue(P, K)).
+:- mode remove_least((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred search(psqueue.psqueue(P, K), K, P).
+:- mode search((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred singleton(P, K, psqueue.psqueue(P, K)).
+:- mode singleton((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func singleton(P, K) = psqueue.psqueue(P, K).
+:- pred size(psqueue.psqueue(P, K), int).
+:- mode size((builtin.in), (builtin.out)) is det.
+:- func size(psqueue.psqueue(P, K)) = int.
+:- pred to_assoc_list(psqueue.psqueue(P, K), assoc_list.assoc_list(P, K)).
+:- mode to_assoc_list((builtin.in), (builtin.out)) is det.
+:- func to_assoc_list(psqueue.psqueue(P, K)) = assoc_list.assoc_list(P, K).
+:- func verify_and_dump_psqueue(psqueue.psqueue(P, K)) = string.
+:- pragma type_spec(pred((psqueue.from_assoc_list)/2), (P = int), (psqueue.'TypeSpecOf__pred__from_assoc_list__[P = int]')).
+:- pragma type_spec(pred((psqueue.size)/2), (P = int), (psqueue.'TypeSpecOf__pred__size__[P = int]')).
+:- pragma type_spec(pred((psqueue.to_assoc_list)/2), (P = int), (psqueue.'TypeSpecOf__pred__to_assoc_list__[P = int]')).
+:- pragma type_spec(pred((psqueue.at_most)/3), (P = int), (psqueue.'TypeSpecOf__pred__at_most__[P = int]')).
+:- pragma type_spec(pred((psqueue.lookup)/3), (P = int), (psqueue.'TypeSpecOf__pred__lookup__[P = int]')).
+:- pragma type_spec(pred((psqueue.search)/3), (P = int), (psqueue.'TypeSpecOf__pred__search__[P = int]')).
+:- pragma type_spec(pred((psqueue.adjust)/4), (P = int), (psqueue.'TypeSpecOf__pred__adjust__[P = int]')).
+:- pragma type_spec(pred((psqueue.det_insert)/4), (P = int), (psqueue.'TypeSpecOf__pred__det_insert__[P = int]')).
+:- pragma type_spec(pred((psqueue.det_remove)/4), (P = int), (psqueue.'TypeSpecOf__pred__det_remove__[P = int]')).
+:- pragma type_spec(pred((psqueue.det_remove_least)/4), (P = int), (psqueue.'TypeSpecOf__pred__det_remove_least__[P = int]')).
+:- pragma type_spec(pred((psqueue.insert)/4), (P = int), (psqueue.'TypeSpecOf__pred__insert__[P = int]')).
+:- pragma type_spec(pred((psqueue.remove)/4), (P = int), (psqueue.'TypeSpecOf__pred__remove__[P = int]')).
+:- pragma type_spec(pred((psqueue.remove_least)/4), (P = int), (psqueue.'TypeSpecOf__pred__remove_least__[P = int]')).
+:- pragma type_spec(func((psqueue.from_assoc_list)/1), (P = int), (psqueue.'TypeSpecOf__func__from_assoc_list__[P = int]')).
+:- pragma type_spec(func((psqueue.size)/1), (P = int), (psqueue.'TypeSpecOf__func__size__[P = int]')).
+:- pragma type_spec(func((psqueue.to_assoc_list)/1), (P = int), (psqueue.'TypeSpecOf__func__to_assoc_list__[P = int]')).
+:- pragma type_spec(func((psqueue.at_most)/2), (P = int), (psqueue.'TypeSpecOf__func__at_most__[P = int]')).
+:- pragma type_spec(func((psqueue.lookup)/2), (P = int), (psqueue.'TypeSpecOf__func__lookup__[P = int]')).
+:- pragma type_spec(func((psqueue.det_insert)/3), (P = int), (psqueue.'TypeSpecOf__func__det_insert__[P = int]')).

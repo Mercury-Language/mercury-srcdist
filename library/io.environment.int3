@@ -1,0 +1,3 @@
+:- module (io.environment).
+:- interface.
+:- type_representation(env_var_assoc_list, is_eqv_to(assoc_list(string, string))).
