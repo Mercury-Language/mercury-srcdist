@@ -1,0 +1,38 @@
+%---------------------------------------------------------------------------%
+% vim: ts=4 sw=4 et ft=mercury
+%---------------------------------------------------------------------------%
+
+:- module add_instance_2_r.
+
+:- interface.
+
+:- import_module io.
+
+:- type foo
+    --->    a
+    ;       b(int).
+
+:- pred init_foo(foo::out) is det.
+
+:- typeclass io(T) where [
+    pred output(T::in, io::di, io::uo) is det
+].
+
+:- instance io(foo).
+
+:- pred main(io::di, io::uo) is det.
+
+:- implementation.
+
+:- instance io(foo) where [
+    pred(output/3) is io.write
+].
+
+init_foo(a).
+
+:- import_module add_instance_2_r_2.
+
+main(!IO) :-
+    init_foo(X),
+    output(X, !IO),
+    io.nl(!IO).
