@@ -1,0 +1,2 @@
+:- module (transform_hlds.loop_inv).
+:- interface.
