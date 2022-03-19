@@ -1,0 +1,109 @@
+// Automatically generated from `io.primitives_read.m'
+// by the Mercury compiler,
+// version rotd-2022-03-19
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef IO__PRIMITIVES_READ_MH
+#define IO__PRIMITIVES_READ_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO__PRIMITIVES_READ_DECL_GUARD
+#define IO__PRIMITIVES_READ_DECL_GUARD
+
+#ifdef MR_HAVE_UNISTD_H
+    #include <unistd.h>
+#endif
+
+#include "mercury_types.h"            // for MR_Integer
+#include "mercury_int.h"              // for MR_*_reverse_bytes
+
+#include <inttypes.h>
+
+#ifdef MR_WIN32
+    // This is for SSIZE_T.
+  #include "mercury_windows.h"
+#endif
+
+#if defined(MR_MSVC)
+    typedef SSIZE_T     ML_ssize_t;
+#else
+    typedef ssize_t     ML_ssize_t;
+#endif
+
+int     mercury_get_byte(MercuryFilePtr mf);
+
+///////////////////////////////////////////////////////////////////////////
+//
+// The C implementation of reading multibyte integers from binary streams.
+//
+
+// ML_N_BIT_UINT_T(n) expands to the name of an n-bit unsigned integer type
+// in C, if N is 8, 16, 32 or 64.
+//
+#define ML_N_BIT_INT_T(n)     MR_PASTE3(uint, n, _t)
+
+// ML_REVERSE_BYTES_FUNC(n) expands to the name a function exported by the
+// Mercury runtime that can be used to reverse the bytes in an n-bit
+// unsigned integer, if N is 16, 32 or 64.
+//
+#define ML_REVERSE_BYTES_FUNC(n)     MR_PASTE3(MR_uint, n, _reverse_bytes)
+
+// ML_build_uintN(int n, MR_Word byte_order, unsigned char *buffer,
+//     uintN_t value):
+//
+// Build an n-bit unsigned integer using the bytes stored in the array
+// 'buffer'. The order of the bytes in the buffer are given by 'byte_order'.
+// The result is assigned to the lvalue 'value'
+//
+// We have two definitions of this macro, one for big-endian machines
+// and one for little-endian machines.
+//
+#if defined(MR_BIG_ENDIAN)
+#define ML_build_uintN(n, byte_order, buffer, value)                     do {                                                                     if (byte_order == ML_LITTLE_ENDIAN) {                                    value = ML_REVERSE_BYTES_FUNC(n)(                                        *((ML_N_BIT_INT_T(n) *) buffer));                            } else {                                                                 value = *((ML_N_BIT_INT_T(n) *) buffer);                         }                                                                } while (0)
+#else
+#define ML_build_uintN(n, byte_order, buffer, value)                     do {                                                                     if (byte_order == ML_LITTLE_ENDIAN) {                                    value = *((ML_N_BIT_INT_T(n) *) buffer);                         } else {                                                                 value = ML_REVERSE_BYTES_FUNC(n)(                                        *((ML_N_BIT_INT_T(n) *) buffer));                            }                                                                } while (0)
+#endif
+
+// ML_do_read_binary_uintN(int nbytes, int nbits, MR_Word stream,
+//     MR_Word byte_order, MR_Word result_code, MR_Word result_error,
+//     MR_Word result_incomplete, MR_Word result_value):
+//
+// This macro implements the do_read_binary_uint{16 32,64}/8 predicates.
+// It expands to code for reading an 'nbits'-bit ('nbytes'-byte) unsigned
+// integer from the binary stream 'stream', with the bytes in the stream
+// being in 'byte_order' order.
+//
+// The result is returned as follows:
+//
+// 'result_code' is set the status code (maybe_incomplete_result_code/0)
+// for the read.
+// 'result_error' is the errno if an I/O error occurs, and zero otherwise.
+// 'result_incomplete' is the list of bytes read so far for an incomplete
+// read, and the empty list otherwise.
+// 'result_value' is the value of the integer read on a successful read
+// and zero otherwise.
+//
+#define ML_do_read_binary_uintN(nbytes, nbits, stream, byte_order,                  result_code, result_error, result_incomplete, result_value)               do {                                                                             unsigned char buffer[nbytes];                                                size_t nread = MR_READ(*stream, buffer, nbytes);                             result_incomplete = MR_list_empty();                                                                                                                      if (nread < nbytes) {                                                            result_value = 0;                                                            if (MR_FERROR(*stream)) {                                                        result_code = ML_MIRC_ERROR,                                                 result_error = errno;                                                    } else if (nread > 0) {                                                          int i;                                                                       result_code = ML_MIRC_INCOMPLETE;                                            for (i = nread - 1; i >= 0; i--) {                                               result_incomplete =                                                              MR_list_cons(buffer[i],                                                      result_incomplete);                                                  }                                                                            result_error = 0;                                                        } else {                                                                         result_code = ML_MIRC_EOF;                                                   result_error = 0;                                                        }                                                                        } else {                                                                         result_code = ML_MIRC_OK;                                                    ML_build_uintN(nbits, byte_order, buffer, result_value);                     result_error = 0;                                                        }                                                                        } while (0)
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO__PRIMITIVES_READ_MH */

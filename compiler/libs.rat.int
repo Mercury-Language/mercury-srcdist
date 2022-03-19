@@ -1,0 +1,26 @@
+:- module (libs.rat).
+:- interface.
+:- type rat.
+:- func *(libs.rat.rat, libs.rat.rat) = libs.rat.rat.
+:- func +(libs.rat.rat) = libs.rat.rat.
+:- func +(libs.rat.rat, libs.rat.rat) = libs.rat.rat.
+:- func -(libs.rat.rat) = libs.rat.rat.
+:- func -(libs.rat.rat, libs.rat.rat) = libs.rat.rat.
+:- func /(libs.rat.rat, libs.rat.rat) = libs.rat.rat.
+:- pred <(libs.rat.rat, libs.rat.rat).
+:- mode <((builtin.in), (builtin.in)) is semidet.
+:- pred =<(libs.rat.rat, libs.rat.rat).
+:- mode =<((builtin.in), (builtin.in)) is semidet.
+:- pred >(libs.rat.rat, libs.rat.rat).
+:- mode >((builtin.in), (builtin.in)) is semidet.
+:- pred >=(libs.rat.rat, libs.rat.rat).
+:- mode >=((builtin.in), (builtin.in)) is semidet.
+:- func abs(libs.rat.rat) = libs.rat.rat.
+:- func denom(libs.rat.rat) = int.
+:- func numer(libs.rat.rat) = int.
+:- func one = libs.rat.rat.
+:- func rat(int) = libs.rat.rat.
+:- func rat(int, int) = libs.rat.rat.
+:- func to_arith_string(libs.rat.rat) = string.
+:- func to_rat_string(libs.rat.rat) = string.
+:- func zero = libs.rat.rat.
