@@ -1,0 +1,136 @@
+/*
+** Automatically generated from `from_ground_term_util.m'
+** by the Mercury compiler,
+** version 22.01-beta-2022-03-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.from_ground_term_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__from_ground_term_util
+#define MR_HEADER_GUARD_hlds__from_ground_term_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__FROM_GROUND_TERM_UTIL_DECL_GUARD
+#define HLDS__FROM_GROUND_TERM_UTIL_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__from_ground_term_util__hlds__from_ground_term_util__type_ctor_info_fgt_build_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__from_ground_term_util__hlds__from_ground_term_util__type_ctor_info_fgt_build_info_map_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__from_ground_term_util__hlds__from_ground_term_util__type_ctor_info_fgt_invariants_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__from_ground_term_util__hlds__from_ground_term_util__type_ctor_info_fgt_marked_goal_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__from_ground_term_util__hlds__from_ground_term_util__type_ctor_info_goal_order_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__from_ground_term_util__hlds__from_ground_term_util__type_ctor_info_maybe_kept_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__from_ground_term_util__hlds__from_ground_term_util__type_ctor_info_maybe_kept_goal_info_0;
+
+void MR_CALL 
+hlds__from_ground_term_util__introduce_partial_fgt_scopes_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__from_ground_term_util__project_kept_goal_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__from_ground_term_util____Compare____fgt_build_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__from_ground_term_util____Compare____fgt_build_info_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__from_ground_term_util____Compare____fgt_invariants_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__from_ground_term_util____Compare____fgt_marked_goal_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__from_ground_term_util____Compare____goal_order_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__from_ground_term_util____Unify____fgt_build_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__from_ground_term_util____Unify____fgt_build_info_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__from_ground_term_util____Unify____fgt_invariants_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__from_ground_term_util____Unify____fgt_marked_goal_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__from_ground_term_util____Unify____goal_order_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__from_ground_term_util__init(void);
+void mercury__hlds__from_ground_term_util__init_type_tables(void);
+void mercury__hlds__from_ground_term_util__init_debugger(void);
+const char *mercury__hlds__from_ground_term_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.from_ground_term_util
+
+// :- end_interface hlds.from_ground_term_util.
