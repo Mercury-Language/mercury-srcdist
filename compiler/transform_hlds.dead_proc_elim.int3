@@ -1,0 +1,11 @@
+:- module (transform_hlds.dead_proc_elim).
+:- interface.
+:- type entity.
+:- type maybe_elim_opt_imported
+	where	type_is_abstract_enum(1).
+:- type maybe_needed.
+:- type needed_map.
+:- type_representation(entity_queue, is_eqv_to(queue(transform_hlds.dead_proc_elim.entity))).
+:- type_representation(examined_set, is_eqv_to(set_tree234(transform_hlds.dead_proc_elim.entity))).
+:- type_representation(maybe_elim_opt_imported, du_repn(enum("elim_opt_imported", "do_not_elim_opt_imported", [],  no_c_j_cs))).
+:- type_representation(needed_map, is_eqv_to(map(transform_hlds.dead_proc_elim.entity, transform_hlds.dead_proc_elim.maybe_needed))).
