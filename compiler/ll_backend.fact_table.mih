@@ -1,0 +1,165 @@
+/*
+** Automatically generated from `fact_table.m'
+** by the Mercury compiler,
+** version rotd-2022-03-23
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.fact_table.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__fact_table
+#define MR_HEADER_GUARD_ll_backend__fact_table
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__FACT_TABLE_DECL_GUARD
+#define LL_BACKEND__FACT_TABLE_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_comparison_kind_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_arg_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_arg_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_arg_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_result_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_table_arg_check_result_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_table_gen_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_table_mode_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_table_mode_class_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_table_proc_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_table_proc_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_fact_table_var_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_hash_entry_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_hash_index_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_hash_table_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_inferred_determinism_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_maybe_create_fact_map_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_maybe_in_or_output_for_some_mode_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_maybe_input_for_some_mode_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_maybe_make_unique_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_maybe_primary_proc_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_maybe_primary_table_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_maybe_seen_input_arg_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_maybe_test_keys_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_maybe_write_data_table_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_maybe_write_hash_tables_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_proc_stream_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__fact_table__ll_backend__fact_table__type_ctor_info_sort_file_line_0;
+
+void MR_CALL 
+ll_backend__fact_table__fact_table_check_args_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__fact_table__fact_table_compile_facts_12_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_Integer * param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+ll_backend__fact_table__fact_table_generate_c_code_for_proc_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_String * param_9,
+  MR_String * param_10);
+
+void MR_CALL 
+ll_backend__fact_table____Compare____fact_table_arg_check_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__fact_table____Compare____fact_table_gen_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__fact_table____Unify____fact_table_arg_check_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__fact_table____Unify____fact_table_gen_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__fact_table__init(void);
+void mercury__ll_backend__fact_table__init_type_tables(void);
+void mercury__ll_backend__fact_table__init_debugger(void);
+const char *mercury__ll_backend__fact_table__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.fact_table
+
+// :- end_interface ll_backend.fact_table.

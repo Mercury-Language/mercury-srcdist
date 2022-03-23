@@ -1,0 +1,25 @@
+:- module deconstruct.
+:- interface.
+:- use_module construct.
+:- use_module list.
+:- use_module maybe.
+:- use_module univ.
+:- type maybe_arg
+    --->    some [T] (arg(T))
+    ;       no_arg .
+:- type noncanon_handling
+    --->    do_not_allow 
+    ;       canonicalize 
+    ;       include_details_cc .
+:- inst canonicalize for deconstruct.noncanon_handling/0
+    --->    canonicalize.
+:- inst canonicalize_or_do_not_allow for deconstruct.noncanon_handling/0
+    --->    canonicalize
+    ;       do_not_allow.
+:- inst do_not_allow for deconstruct.noncanon_handling/0
+    --->    do_not_allow.
+:- inst do_not_allow_or_include_details_cc for deconstruct.noncanon_handling/0
+    --->    do_not_allow
+    ;       include_details_cc.
+:- inst include_details_cc for deconstruct.noncanon_handling/0
+    --->    include_details_cc.
