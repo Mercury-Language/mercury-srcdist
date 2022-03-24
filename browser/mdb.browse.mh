@@ -1,0 +1,37 @@
+// Automatically generated from `browse.m'
+// by the Mercury compiler,
+// version 22.01-beta-2022-03-24
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MDB__BROWSE_MH
+#define MDB__BROWSE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+void ML_BROWSE_browse_browser_term_no_modes(MR_Word, MR_Word, MR_Word, MR_Word *, MR_Word, MR_Word *);
+void ML_BROWSE_browse_browser_term_format_no_modes(MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word *);
+void ML_BROWSE_browse_external_no_modes(MR_Word, MR_Word, MR_Word, MR_Word, MR_Word, MR_Word *);
+void ML_BROWSE_print_browser_term(MR_Word, MR_Word, MR_Word, MR_Word);
+void ML_BROWSE_print_browser_term_format(MR_Word, MR_Word, MR_Word, MR_Word, MR_Word);
+void ML_BROWSE_save_term_to_file(MR_Word, MR_String, MR_String, MR_Word);
+void ML_BROWSE_save_term_to_file_xml(MR_Word, MR_String, MR_Word);
+void ML_BROWSE_save_and_browse_browser_term_web(MR_Word, MR_Word, MR_Word, MR_Word);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__BROWSE_MH */

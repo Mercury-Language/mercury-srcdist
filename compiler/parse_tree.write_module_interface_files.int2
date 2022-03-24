@@ -1,0 +1,2 @@
+:- module (parse_tree.write_module_interface_files).
+:- interface.

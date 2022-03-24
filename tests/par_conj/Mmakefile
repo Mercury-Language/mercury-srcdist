@@ -1,0 +1,190 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = par_conj
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+# please keep these lists sorted
+DEP_PAR_CONJ_PROGS = \
+	bug_130_unreachable \
+	bug_130_should_push_signal \
+	consume_in_some_branches \
+	consume_in_some_branches_and_after \
+	consume_wait \
+	dep_par_1 \
+	dep_par_2 \
+	dep_par_3 \
+	dep_par_3b \
+	dep_par_3c \
+	dep_par_4 \
+	dep_par_5 \
+	dep_par_5b \
+	dep_par_5c \
+	dep_par_5d \
+	dep_par_6 \
+	dep_par_6b \
+	dep_par_7 \
+	dep_par_8 \
+	dep_par_9 \
+	dep_par_10 \
+	dep_par_11 \
+	dep_par_11b \
+	dep_par_11c \
+	dep_par_11d \
+	dep_par_12 \
+	dep_par_13 \
+	dep_par_14 \
+	dep_par_14b \
+	dep_par_14c \
+	dep_par_14d \
+	dep_par_16 \
+	dep_par_17 \
+	dep_par_18 \
+	dep_par_20 \
+	dep_par_21 \
+	dep_par_22 \
+	dep_par_23 \
+	dep_par_24 \
+	dep_par_24b \
+	dep_par_25 \
+	dep_par_25b \
+	dep_par_26 \
+	dep_par_27 \
+	dep_par_28 \
+	dep_par_29 \
+	impure_wait \
+	pathological_right_recursion \
+	produce_in_nondet_disj
+
+INDEP_PAR_CONJ_PROGS = \
+	indep_par_append \
+	indep_par_nested \
+	par_fib \
+	threads_hang
+
+# These tests require debugging, which hasn't been implemented for
+# the MLDS backend.
+#
+LLDS_PROGS = \
+	par_ddeath \
+	par_ddeath_2
+
+ifeq "$(filter hl% java% csharp%,$(GRADE))" ""
+	PROGS0 = $(LLDS_PROGS)
+else
+	PROGS0 =
+endif
+
+ifneq "$(findstring par,$(GRADE))" ""
+	# These tests are to do with explicit threads rather than parallel
+	# conjunction, but the tests require multiple engines to be enabled,
+	# which was already set up in this directory.
+	#
+	THREAD_PROGS = \
+		spawn_many \
+		thread_barrier
+else
+	THREAD_PROGS =
+endif
+
+ifneq "$(findstring decldebug,$(GRADE))" ""
+	OBJ_PROGS =
+	PROGS =
+else
+	OBJ_PROGS =
+	PROGS = $(PROGS0) $(DEP_PAR_CONJ_PROGS) $(INDEP_PAR_CONJ_PROGS) \
+		$(THREAD_PROGS)
+endif
+
+# `mmc --make' doesn't expect subdirectories to appear in targets.
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+OS_SUBDIR=
+else
+OS_SUBDIR=$(os_subdir)
+endif
+
+TARGET_OBJ_EXT=$(O)
+TARGET_OBJ_SUBDIR=$(OS_SUBDIR)
+OBJS =	$(OBJ_PROGS:%=$(TARGET_OBJ_SUBDIR)%.$(TARGET_OBJ_EXT))
+
+#-----------------------------------------------------------------------------#
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+%.runtest: %.res ;
+
+$(OBJ_PROGS:%=%.runtest): %.runtest: %.$(TARGET_OBJ_EXT) ;
+
+# Exercise multiple Mercury engines in lowlevel grades.
+ENGINES :=
+ifeq "$(filter hl% java% csharp%,$(GRADE))" ""
+	ENGINES := MERCURY_OPTIONS=-P2
+endif
+
+%.out: %
+	{ [ -f $*.inp ] && cat $*.inp; } | $(ENGINES) ./$< > $@ 2>&1 || \
+		{ grep . $@ /dev/null; exit 1; }
+
+ifeq "$(filter hl% java% csharp%,$(GRADE))" ""
+
+# Run threads_hang with multiple OS threads in lowlevel parallel grades.
+# Repeat the test a few times in increase the chances of getting a deadlock.
+threads_hang.out: threads_hang
+	for i in 1 2 3 4 5 6 7 8 9 10 ; do \
+		MERCURY_OPTIONS=-P10 ./threads_hang 2>&1 > threads_hang.out ||\
+			{ echo 'failed' > threads_hang.out; break; } \
+	done
+
+# Run spawn_many with smallish C stacks, so we don't need to spawn so many
+# threads to see the bug.
+spawn_many.out: spawn_many
+	ulimit -s 256 && \
+		MERCURY_OPTIONS="-P2 \
+			--detstack-size 32 \
+			--small-detstack-size 32 \
+			--nondetstack-size 16 \
+			--small-nondetstack-size 16" \
+		./spawn_many 2>&1 > spawn_many.out || \
+		{ grep . $@ /dev/null; exit 1; }
+
+# Run pathological_right_recursion with large stacks (so that this fit in the
+# stack and so it hits the ulimit earlier.
+pathological_right_recursion.out: pathological_right_recursion
+	ulimit -m 1048576 && \
+	ulimit -v 1048576 && \
+	MERCURY_OPTIONS="-P2 \
+		--detstack-size 65536 \
+		--small-detstack-size 65536" \
+	./pathological_right_recursion 2>&1 > pathological_right_recursion.out || \
+	{ grep . $@ /dev/null; exit 1; }
+
+impure_wait.out: impure_wait
+	MERCURY_OPTIONS="--thread-pinning" \
+	./impure_wait 2>&1 > impure_wait.out || \
+	{ grep . $@ /dev/null; exit 1; }
+
+endif
+
+#-----------------------------------------------------------------------------#
+
+printtests:
+	@echo $(PROGS)
+
+printobjs:
+	@echo $(OBJS)
+
+clean_local: clean_par_conj
+
+clean_par_conj:
+	rm -f *.err *.h
+
+#-----------------------------------------------------------------------------#

@@ -1,0 +1,4 @@
+:- module map.
+:- interface.
+:- use_module tree234.
+:- type map(K, V) == tree234.tree234(K, V).
