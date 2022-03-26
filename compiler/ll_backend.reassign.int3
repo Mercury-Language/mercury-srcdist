@@ -1,0 +1,4 @@
+:- module (ll_backend.reassign).
+:- interface.
+:- type_representation(dependent_lval_map, is_eqv_to(map(lval, set(lval)))).
+:- type_representation(known_contents, is_eqv_to(map(lval, rval))).
