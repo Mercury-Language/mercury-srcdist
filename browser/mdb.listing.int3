@@ -1,0 +1,11 @@
+:- module (mdb.listing).
+:- interface.
+:- type c_file_ptr.
+:- type file_name.
+:- type line_no.
+:- type path_name.
+:- type search_path.
+:- type_representation(file_name, is_eqv_to(string)).
+:- type_representation(line_no, is_eqv_to(int)).
+:- type_representation(path_name, is_eqv_to(string)).
+:- type_representation(search_path, is_eqv_to(list(mdb.listing.path_name))).

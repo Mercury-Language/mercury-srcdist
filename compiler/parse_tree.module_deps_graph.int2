@@ -1,0 +1,7 @@
+:- module (parse_tree.module_deps_graph).
+:- interface.
+:- use_module digraph.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.module_imports).
+:- type deps_graph == digraph.digraph(mdbcomp.sym_name.module_name).
+:- type lookup_module_dep_info == ((func mdbcomp.sym_name.module_name) = parse_tree.module_imports.module_dep_info).
