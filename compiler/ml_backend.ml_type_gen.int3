@@ -1,0 +1,7 @@
+:- module (ml_backend.ml_type_gen).
+:- interface.
+:- type mlds_field_info.
+:- type tag_uses_base_class
+	where	type_is_abstract_enum(1).
+:- type_representation(mlds_field_info, is_word_aligned_ptr).
+:- type_representation(tag_uses_base_class, du_repn(enum("tag_does_not_use_base_class", "tag_uses_base_class", [],  no_c_j_cs))).

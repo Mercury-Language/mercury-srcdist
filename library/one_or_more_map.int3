@@ -1,0 +1,4 @@
+:- module one_or_more_map.
+:- interface.
+:- type one_or_more_map(K, V).
+:- type_representation(one_or_more_map(V_1, V_2), is_eqv_to(map(V_1, one_or_more(V_2)))).
