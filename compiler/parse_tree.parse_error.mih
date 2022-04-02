@@ -1,0 +1,82 @@
+/*
+** Automatically generated from `parse_error.m'
+** by the Mercury compiler,
+** version rotd-2022-04-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.parse_error.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__parse_error
+#define MR_HEADER_GUARD_parse_tree__parse_error
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PARSE_ERROR_DECL_GUARD
+#define PARSE_TREE__PARSE_ERROR_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_error__parse_tree__parse_error__type_ctor_info_read_module_error_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_error__parse_tree__parse_error__type_ctor_info_read_module_errors_0;
+
+MR_Word MR_CALL 
+parse_tree__parse_error__fatal_read_module_errors_0_f_0(void);
+
+void MR_CALL 
+parse_tree__parse_error____Compare____read_module_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__parse_error____Compare____read_module_errors_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__parse_error____Unify____read_module_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__parse_error____Unify____read_module_errors_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__parse_error__init(void);
+void mercury__parse_tree__parse_error__init_type_tables(void);
+void mercury__parse_tree__parse_error__init_debugger(void);
+const char *mercury__parse_tree__parse_error__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.parse_error
+
+// :- end_interface parse_tree.parse_error.

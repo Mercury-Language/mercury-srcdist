@@ -1,0 +1,8 @@
+:- module (libs.file_util).
+:- interface.
+:- type dir_name.
+:- type file_name.
+:- type path_name_and_stream.
+:- type_representation(dir_name, is_eqv_to(string)).
+:- type_representation(file_name, is_eqv_to(string)).
+:- type_representation(path_name_and_stream, is_word_aligned_ptr).

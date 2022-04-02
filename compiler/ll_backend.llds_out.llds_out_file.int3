@@ -1,0 +1,5 @@
+:- module ((ll_backend.llds_out).llds_out_file).
+:- interface.
+:- type linkage
+	where	type_is_abstract_enum(1).
+:- type_representation(linkage, du_repn(enum("extern", "static", [],  no_c_j_cs))).
