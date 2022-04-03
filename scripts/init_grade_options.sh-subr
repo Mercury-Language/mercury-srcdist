@@ -1,0 +1,104 @@
+#---------------------------------------------------------------------------#
+# vim: ts=4 sw=4 expandtab ft=sh
+#---------------------------------------------------------------------------#
+# Copyright (C) 1997-2007, 2010 The University of Melbourne.
+# Copyright (C) 2013-2014, 2016-2017, 2020 The Mercury team.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#---------------------------------------------------------------------------#
+#
+# init_grade_options.sh-subr:
+#	An `sh' subroutine for initializing grade-related options.
+#	Used by the `ml', `mgnuc' and `c2init' scripts.
+#
+#	The code here should be inserted before a script's option-parsing
+#	loop.  The invoking script must define a DEFAULT_GRADE option.
+#
+# IMPORTANT: any changes to the handling of grades here may also require
+# changes to all the files indicated by runtime/mercury_grade.h.
+#
+# This file must initialize all the shell variables used by
+# parse_grade_options.sh-subr, and must list all the options processed in
+# parse_grade_options.sh-subr.
+#
+#---------------------------------------------------------------------------#
+
+grade_usage="\
+Grade options:
+	-s <grade>, --grade <grade>
+	--target {c, csharp, java}
+	--asm-labels
+	--gcc-non-local-gotos
+	--gcc-global-registers
+	-H, --high-level-code
+	--parallel
+	--gc {boehm, boehm_debug, hgc, accurate, none}
+	-p, --profiling
+	--profile-calls
+	--profile-time
+	--profile-memory
+	--profile-deep
+	--record-term-sizes-as-words
+	--record-term-sizes-as-cells
+	--use-trail
+	--use-trail-segments
+	--reserve-tag
+	--use-minimal-model-stack-copy
+	--use-minimal-model-own-stacks
+	--minimal-model-debug
+	--single-prec-float
+	--pic-reg
+	--no-stack-trace
+	--debug
+	--decl-debug
+	--ss-debug
+	--low-level-debug
+	--extend-stacks-when-needed
+	--stack-segments
+	--use-regions
+		See the documentation in the \"Invocation\" section
+		of the Mercury User's Guide."
+
+# --use-regions-debug and --use-regions-profiling are not yet documented
+#		since they are not yet stable
+
+target=c
+highlevel_code=false
+asm_labels=true
+non_local_gotos=true
+global_regs=true
+thread_safe=false
+threadscope=false
+gc_method=boehm
+profile_time=false
+profile_calls=false
+profile_memory=false
+profile_deep=false
+record_term_sizes_as_words=false
+record_term_sizes_as_cells=false
+use_trail=false
+use_minimal_model_stack_copy=false
+use_minimal_model_own_stacks=false
+minimal_model_debug=false
+pregenerated_dist=false
+single_prec_float=false
+debug=false
+decl_debug=false
+ss_debug=false
+ll_debug=false
+extend_stacks=false
+stack_segments=false
+use_regions=false
+use_regions_debug=false
+use_regions_profiling=false
+
+case $# in
+	0)
+        set - --grade "$DEFAULT_GRADE"
+        ;;
+	*)
+        set - --grade "$DEFAULT_GRADE" "$@"
+        ;;
+esac
+
+#---------------------------------------------------------------------------#
