@@ -1,0 +1,65 @@
+:- module profile.
+:- interface.
+:- type call_site_array_slot.
+:- type call_site_callees.
+:- type call_site_caller.
+:- type call_site_dynamic.
+:- type call_site_dynamic_ptr.
+:- type call_site_dynamics.
+:- type call_site_kind
+	where	type_is_abstract_enum(3).
+:- type call_site_kind_and_callee.
+:- type call_site_kind_and_callee(T).
+:- type call_site_kind_and_info(T).
+:- type call_site_static.
+:- type call_site_static_map.
+:- type call_site_static_ptr.
+:- type call_site_statics.
+:- type canonical_flag
+	where	type_is_abstract_enum(1).
+:- type clique_ptr.
+:- type compensation_table.
+:- type coverage_data_type
+	where	type_is_abstract_enum(2).
+:- type deep.
+:- type deep_compression_flag.
+:- type deep_flags.
+:- type initial_deep.
+:- type is_zeroed
+	where	type_is_abstract_enum(1).
+:- type module_data.
+:- type proc_dynamic.
+:- type proc_dynamic_ptr.
+:- type proc_dynamics.
+:- type proc_static.
+:- type proc_static_ptr.
+:- type proc_statics.
+:- type profile_stats.
+:- type_representation(call_site_callees, du_repn(notag("call_site_callees", list(proc_dynamic_ptr),  no_c_j_cs))).
+:- type_representation(call_site_caller, du_repn(notag("call_site_caller", call_site_static_ptr,  no_c_j_cs))).
+:- type_representation(call_site_dynamic, is_word_aligned_ptr).
+:- type_representation(call_site_dynamic_ptr, du_repn(notag("call_site_dynamic_ptr", int,  no_c_j_cs))).
+:- type_representation(call_site_dynamics, is_eqv_to(array(profile.call_site_dynamic))).
+:- type_representation(call_site_kind, du_repn(enum("normal_call", "special_call", ["higher_order_call", "method_call", "callback"],  c_j_cs(foreign_enum(["MR_callsite_normal_call", "MR_callsite_special_call", "MR_callsite_higher_order_call", "MR_callsite_method_call", "MR_callsite_callback"]), no_foreign, no_foreign)))).
+:- type_representation(call_site_kind_and_callee, is_eqv_to(profile.call_site_kind_and_callee(profile.proc_static_ptr))).
+:- type_representation(call_site_static, is_word_aligned_ptr).
+:- type_representation(call_site_static_map, is_eqv_to(array(profile.call_site_static_ptr))).
+:- type_representation(call_site_static_ptr, du_repn(notag("call_site_static_ptr", int,  no_c_j_cs))).
+:- type_representation(call_site_statics, is_eqv_to(array(profile.call_site_static))).
+:- type_representation(canonical_flag, du_repn(enum("is_canonical", "maybe_not_canonical", [],  no_c_j_cs))).
+:- type_representation(clique_ptr, du_repn(notag("clique_ptr", int,  no_c_j_cs))).
+:- type_representation(compensation_table, is_eqv_to(map(profile.proc_static_ptr, inherit_prof_info))).
+:- type_representation(coverage_data_type, du_repn(enum("no_coverage_data", "static_coverage_data", ["dynamic_coverage_data"],  no_c_j_cs))).
+:- type_representation(deep, is_word_aligned_ptr).
+:- type_representation(deep_compression_flag, du_repn(direct_dummy("no_compression",  no_c_j_cs))).
+:- type_representation(deep_flags, is_word_aligned_ptr).
+:- type_representation(initial_deep, is_word_aligned_ptr).
+:- type_representation(is_zeroed, du_repn(enum("zeroed", "not_zeroed", [],  no_c_j_cs))).
+:- type_representation(module_data, is_word_aligned_ptr).
+:- type_representation(proc_dynamic, is_word_aligned_ptr).
+:- type_representation(proc_dynamic_ptr, du_repn(notag("proc_dynamic_ptr", int,  no_c_j_cs))).
+:- type_representation(proc_dynamics, is_eqv_to(array(profile.proc_dynamic))).
+:- type_representation(proc_static, is_word_aligned_ptr).
+:- type_representation(proc_static_ptr, du_repn(notag("proc_static_ptr", int,  no_c_j_cs))).
+:- type_representation(proc_statics, is_eqv_to(array(profile.proc_static))).
+:- type_representation(profile_stats, is_word_aligned_ptr).

@@ -1,0 +1,8 @@
+:- module (hlds.error_msg_inst).
+:- interface.
+:- type maybe_expand_named_insts
+	where	type_is_abstract_enum(1).
+:- type short_inst
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_expand_named_insts, du_repn(enum("dont_expand_named_insts", "expand_named_insts", [],  no_c_j_cs))).
+:- type_representation(short_inst, du_repn(enum("quote_short_inst", "fixed_short_inst", [],  no_c_j_cs))).

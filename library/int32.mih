@@ -1,0 +1,347 @@
+/*
+** Automatically generated from `int32.m'
+** by the Mercury compiler,
+** version rotd-2022-04-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module int32.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_int32
+#define MR_HEADER_GUARD_int32
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef INT32_DECL_GUARD
+#define INT32_DECL_GUARD
+
+#endif
+
+
+
+MR_bool MR_CALL 
+mercury__int32__f_less_than_2_p_0(
+  int32_t param_1,
+  int32_t param_2);
+
+MR_bool MR_CALL 
+mercury__int32__f_less_or_equal_2_p_0(
+  int32_t param_1,
+  int32_t param_2);
+
+MR_bool MR_CALL 
+mercury__int32__f_greater_than_2_p_0(
+  int32_t param_1,
+  int32_t param_2);
+
+MR_bool MR_CALL 
+mercury__int32__f_greater_or_equal_2_p_0(
+  int32_t param_1,
+  int32_t param_2);
+
+MR_bool MR_CALL 
+mercury__int32__even_1_p_0(
+  int32_t param_1);
+
+MR_bool MR_CALL 
+mercury__int32__from_int_2_p_0(
+  MR_Integer param_1,
+  int32_t * param_2);
+
+MR_bool MR_CALL 
+mercury__int32__odd_1_p_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__f_times_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__f_plus_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__f_plus_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+void MR_CALL 
+mercury__int32__f_plus_2_f_1(
+  int32_t * param_1,
+  int32_t param_2,
+  int32_t param_3);
+
+void MR_CALL 
+mercury__int32__f_plus_2_f_2(
+  int32_t param_1,
+  int32_t * param_2,
+  int32_t param_3);
+
+int32_t MR_CALL 
+mercury__int32__f_minus_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__f_minus_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+void MR_CALL 
+mercury__int32__f_minus_2_f_1(
+  int32_t * param_1,
+  int32_t param_2,
+  int32_t param_3);
+
+void MR_CALL 
+mercury__int32__f_minus_2_f_2(
+  int32_t param_1,
+  int32_t * param_2,
+  int32_t param_3);
+
+int32_t MR_CALL 
+mercury__int32__f_slash_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__f_47_47_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__f_47_92_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__f_60_60_2_f_0(
+  int32_t param_1,
+  MR_Integer param_2);
+
+int32_t MR_CALL 
+mercury__int32__f_62_62_2_f_0(
+  int32_t param_1,
+  MR_Integer param_2);
+
+int32_t MR_CALL 
+mercury__int32__f_92_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__f_92_47_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__abs_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__cast_from_int_1_f_0(
+  MR_Integer param_1);
+
+int32_t MR_CALL 
+mercury__int32__cast_from_int16_1_f_0(
+  int16_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__cast_from_int64_1_f_0(
+  int64_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__cast_from_int8_1_f_0(
+  int8_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__cast_from_uint32_1_f_0(
+  uint32_t param_1);
+
+MR_Integer MR_CALL 
+mercury__int32__cast_to_int_1_f_0(
+  int32_t param_1);
+
+int16_t MR_CALL 
+mercury__int32__cast_to_int16_1_f_0(
+  int32_t param_1);
+
+int64_t MR_CALL 
+mercury__int32__cast_to_int64_1_f_0(
+  int32_t param_1);
+
+int8_t MR_CALL 
+mercury__int32__cast_to_int8_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__det_from_int_1_f_0(
+  MR_Integer param_1);
+
+int32_t MR_CALL 
+mercury__int32__div_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__from_bytes_be_4_f_0(
+  uint8_t param_1,
+  uint8_t param_2,
+  uint8_t param_3,
+  uint8_t param_4);
+
+int32_t MR_CALL 
+mercury__int32__from_bytes_le_4_f_0(
+  uint8_t param_1,
+  uint8_t param_2,
+  uint8_t param_3,
+  uint8_t param_4);
+
+MR_Word MR_CALL 
+mercury__int32__int32_to_doc_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__max_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__max_int32_0_f_0(void);
+
+int32_t MR_CALL 
+mercury__int32__min_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__min_int32_0_f_0(void);
+
+int32_t MR_CALL 
+mercury__int32__minus_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__mod_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__nabs_1_f_0(
+  int32_t param_1);
+
+MR_Integer MR_CALL 
+mercury__int32__num_leading_zeros_1_f_0(
+  int32_t param_1);
+
+MR_Integer MR_CALL 
+mercury__int32__num_ones_1_f_0(
+  int32_t param_1);
+
+MR_Integer MR_CALL 
+mercury__int32__num_trailing_zeros_1_f_0(
+  int32_t param_1);
+
+MR_Integer MR_CALL 
+mercury__int32__num_zeros_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__plus_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__rem_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__reverse_bits_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__reverse_bytes_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__times_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+MR_Integer MR_CALL 
+mercury__int32__to_int_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__unchecked_abs_1_f_0(
+  int32_t param_1);
+
+int32_t MR_CALL 
+mercury__int32__unchecked_left_shift_2_f_0(
+  int32_t param_1,
+  MR_Integer param_2);
+
+int32_t MR_CALL 
+mercury__int32__unchecked_quotient_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__unchecked_rem_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+int32_t MR_CALL 
+mercury__int32__unchecked_right_shift_2_f_0(
+  int32_t param_1,
+  MR_Integer param_2);
+
+int32_t MR_CALL 
+mercury__int32__xor_2_f_0(
+  int32_t param_1,
+  int32_t param_2);
+
+void MR_CALL 
+mercury__int32__xor_2_f_1(
+  int32_t param_1,
+  int32_t * param_2,
+  int32_t param_3);
+
+void MR_CALL 
+mercury__int32__xor_2_f_2(
+  int32_t * param_1,
+  int32_t param_2,
+  int32_t param_3);
+
+void mercury__int32__init(void);
+void mercury__int32__init_type_tables(void);
+void mercury__int32__init_debugger(void);
+const char *mercury__int32__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_int32
+
+// :- end_interface int32.

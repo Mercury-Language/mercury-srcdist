@@ -1,0 +1,11 @@
+:- module (parse_tree.module_cmds).
+:- interface.
+:- type command_verbosity
+	where	type_is_abstract_enum(1).
+:- type quote_char
+	where	type_is_abstract_enum(1).
+:- type update_interface_result
+	where	type_is_abstract_enum(2).
+:- type_representation(command_verbosity, du_repn(enum("cmd_verbose", "cmd_verbose_commands", [],  no_c_j_cs))).
+:- type_representation(quote_char, du_repn(enum("forward", "double", [],  no_c_j_cs))).
+:- type_representation(update_interface_result, du_repn(enum("interface_new_or_changed", "interface_unchanged", ["interface_error"],  no_c_j_cs))).
