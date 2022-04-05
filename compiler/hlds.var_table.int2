@@ -1,0 +1,9 @@
+:- module (hlds.var_table).
+:- interface.
+:- type prog_var_set_types
+    --->    prog_var_set_types(parse_tree.prog_data.prog_varset, hlds.var_table.var_table).
+:- type var_table.
+:- type var_table_entry
+    --->    vte(((hlds.var_table).vte_name) :: string, ((hlds.var_table).vte_type) :: parse_tree.prog_data.mer_type, ((hlds.var_table).vte_is_dummy) :: parse_tree.prog_type.is_dummy_type).
+:- implementation.
+:- type var_table == map.map(parse_tree.prog_data.prog_var, hlds.var_table.var_table_entry).
