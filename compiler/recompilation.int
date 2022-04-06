@@ -1,0 +1,96 @@
+:- module recompilation.
+:- interface.
+:- include_module (recompilation.check).
+:- include_module (recompilation.usage).
+:- include_module (recompilation.used_file).
+:- include_module (recompilation.version).
+:- use_module libs.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module term.
+:- use_module (libs.timestamp).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- type eqv_expand_info
+    --->    no_eqv_expand_info 
+    ;       eqv_expand_info(mdbcomp.sym_name.module_name, set.set(recompilation.recomp_item_id)).
+:- type module_item_version_numbers
+    --->    module_item_version_numbers((recompilation.mivn_type_names) :: recompilation.name_arity_version_map, (recompilation.mivn_type_defns) :: recompilation.name_arity_version_map, (recompilation.mivn_insts) :: recompilation.name_arity_version_map, (recompilation.mivn_modes) :: recompilation.name_arity_version_map, (recompilation.mivn_typeclasses) :: recompilation.name_arity_version_map, (recompilation.mivn_instances) :: recompilation.recomp_item_name_version_map, (recompilation.mivn_predicates) :: recompilation.name_arity_version_map, (recompilation.mivn_functions) :: recompilation.name_arity_version_map).
+:- type module_item_version_numbers_map == map.map(mdbcomp.sym_name.module_name, recompilation.module_item_version_numbers).
+:- type module_qualifier == mdbcomp.sym_name.module_name.
+:- type name_arity_version_map == map.map(parse_tree.prog_data.name_arity, recompilation.version_number).
+:- type recomp_item_id
+    --->    recomp_item_id(recompilation.recomp_item_type, recompilation.recomp_item_name).
+:- type recomp_item_name
+    --->    recomp_item_name(mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity).
+:- type recomp_item_name_version_map == map.map(recompilation.recomp_item_name, recompilation.version_number).
+:- type recomp_item_type
+    --->    recomp_type_name 
+    ;       recomp_type_defn 
+    ;       recomp_inst 
+    ;       recomp_mode 
+    ;       recomp_typeclass 
+    ;       recomp_functor 
+    ;       recomp_predicate 
+    ;       recomp_function 
+    ;       recomp_mutable 
+    ;       recomp_foreign_proc .
+:- type recompilation_info
+    --->    recompilation_info((recompilation.recomp_module_name) :: mdbcomp.sym_name.module_name, (recompilation.recomp_used_items) :: recompilation.used_items, (recompilation.recomp_dependencies) :: map.map(recompilation.recomp_item_id, set.set(recompilation.recomp_item_id)), (recompilation.recomp_version_numbers) :: recompilation.module_item_version_numbers_map).
+:- type simple_item_set == map.map(parse_tree.prog_data.name_arity, map.map(recompilation.module_qualifier, mdbcomp.sym_name.module_name)).
+:- type used_item_type
+    --->    used_type_name 
+    ;       used_type_defn 
+    ;       used_inst 
+    ;       used_mode 
+    ;       used_typeclass 
+    ;       used_functor 
+    ;       used_predicate 
+    ;       used_function .
+:- type used_items
+    --->    used_items((recompilation.used_type_names) :: recompilation.simple_item_set, (recompilation.used_type_defns) :: recompilation.simple_item_set, (recompilation.used_insts) :: recompilation.simple_item_set, (recompilation.used_modes) :: recompilation.simple_item_set, (recompilation.used_typeclasses) :: recompilation.simple_item_set, (recompilation.used_functors) :: recompilation.simple_item_set, (recompilation.used_predicates) :: recompilation.simple_item_set, (recompilation.used_functions) :: recompilation.simple_item_set).
+:- type version_number == libs.timestamp.timestamp.
+:- inst recomp_pred_or_func for recompilation.recomp_item_type/0
+    --->    recomp_function
+    ;       recomp_predicate.
+:- inst recomp_simple for recompilation.recomp_item_type/0
+    --->    recomp_inst
+    ;       recomp_mode
+    ;       recomp_type_defn
+    ;       recomp_type_name
+    ;       recomp_typeclass.
+:- func find_module_qualifier(mdbcomp.sym_name.sym_name) = recompilation.module_qualifier.
+:- pred finish_recording_expanded_items(recompilation.recomp_item_id, recompilation.eqv_expand_info, maybe.maybe(recompilation.recompilation_info), maybe.maybe(recompilation.recompilation_info)).
+:- mode finish_recording_expanded_items((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func init_module_item_version_numbers = recompilation.module_item_version_numbers.
+:- func init_recompilation_info(mdbcomp.sym_name.module_name) = recompilation.recompilation_info.
+:- func init_used_items = recompilation.used_items.
+:- func inst_ctor_to_recomp_item_name(parse_tree.prog_data.inst_ctor) = recompilation.recomp_item_name.
+:- pred maybe_start_recording_expanded_items(mdbcomp.sym_name.module_name, mdbcomp.sym_name.sym_name, maybe.maybe(recompilation.recompilation_info), recompilation.eqv_expand_info).
+:- mode maybe_start_recording_expanded_items((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func mode_ctor_to_recomp_item_name(parse_tree.prog_data.mode_ctor) = recompilation.recomp_item_name.
+:- func module_qualify_name(recompilation.module_qualifier, string) = mdbcomp.sym_name.sym_name.
+:- pred parse_timestamp_term(term.term(T), libs.timestamp.timestamp).
+:- mode parse_timestamp_term((builtin.in), (builtin.out)) is semidet.
+:- pred parse_version_number_term(term.term(T), recompilation.version_number).
+:- mode parse_version_number_term((builtin.in), (builtin.out)) is semidet.
+:- func pred_or_func_to_recomp_item_type(mdbcomp.prim_data.pred_or_func) = recompilation.recomp_item_type.
+:- mode pred_or_func_to_recomp_item_type((builtin.in)) = builtin.out((recompilation.recomp_pred_or_func)) is det.
+:- func recomp_item_name_to_inst_ctor(recompilation.recomp_item_name) = parse_tree.prog_data.inst_ctor.
+:- func recomp_item_name_to_mode_ctor(recompilation.recomp_item_name) = parse_tree.prog_data.mode_ctor.
+:- func recomp_item_name_to_type_ctor(recompilation.recomp_item_name) = parse_tree.prog_data.type_ctor.
+:- pred record_expanded_item(recompilation.recomp_item_id, recompilation.eqv_expand_info, recompilation.eqv_expand_info).
+:- mode record_expanded_item((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred record_expanded_items(recompilation.recomp_item_id, set.set(recompilation.recomp_item_id), recompilation.recompilation_info, recompilation.recompilation_info).
+:- mode record_expanded_items((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred record_used_item(recompilation.used_item_type, recompilation.recomp_item_name, recompilation.recomp_item_name, recompilation.recompilation_info, recompilation.recompilation_info).
+:- mode record_used_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred string_to_recomp_item_type(string, recompilation.recomp_item_type).
+:- mode string_to_recomp_item_type((builtin.in), (builtin.out)) is semidet.
+:- mode string_to_recomp_item_type((builtin.out), (builtin.in)) is det.
+:- func type_ctor_to_recomp_item_name(parse_tree.prog_data.type_ctor) = recompilation.recomp_item_name.
+:- func version_number_to_string(recompilation.version_number) = string.
