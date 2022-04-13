@@ -1,0 +1,33 @@
+:- module (thread.closeable_channel).
+:- use_module bool.
+:- use_module builtin.
+:- use_module io.
+:- use_module maybe.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module (thread.mvar).
+
+:- type closeable_channel(T)
+    --->    channel(thread.mvar.mvar(thread.mvar.mvar(thread.closeable_channel.item(T))), thread.mvar.mvar(thread.mvar.mvar(thread.closeable_channel.item(T)))).
+:- type item(T)
+    --->    item(T, thread.mvar.mvar(thread.closeable_channel.item(T)))
+    ;       closed .
+:- type stream(T) == thread.mvar.mvar(thread.closeable_channel.item(T)).
+
+(thread.closeable_channel).close(thread.closeable_channel.channel(V_4, V_5), V_9, V_10) :-
+    (thread.mvar).take(V_5, V_7, V_9, V_11),
+    V_12 = (thread.closeable_channel).closed : thread.closeable_channel.item(T_1),
+    (thread.mvar).try_put(V_7, V_12, V_8, V_11, V_13),
+    (thread.mvar).put(V_5, V_7, V_13, V_10).
+
+:- pragma termination_info((thread.closeable_channel).close((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.closeable_channel).init((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.closeable_channel).put((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.closeable_channel).take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.closeable_channel).try_take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, ((thread.closeable_channel).close), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.closeable_channel).init), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.closeable_channel).put), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.closeable_channel).take), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.closeable_channel).try_take), 4, 0, may_throw(user_exception)).
