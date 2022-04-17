@@ -1,0 +1,20 @@
+:- module (check_hlds.recompute_instmap_deltas).
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.instmap).
+:- use_module (hlds.var_table).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.prog_data).
+:- type recompute_atomic_instmap_deltas
+    --->    recompute_atomic_instmap_deltas 
+    ;       do_not_recompute_atomic_instmap_deltas .
+:- pred recompute_instmap_delta(check_hlds.recompute_instmap_deltas.recompute_atomic_instmap_deltas, hlds.vartypes.vartypes, parse_tree.prog_data.inst_varset, hlds.instmap.instmap, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode recompute_instmap_delta((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred recompute_instmap_delta_proc(check_hlds.recompute_instmap_deltas.recompute_atomic_instmap_deltas, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode recompute_instmap_delta_proc((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred recompute_instmap_delta_vt(check_hlds.recompute_instmap_deltas.recompute_atomic_instmap_deltas, hlds.var_table.var_table, parse_tree.prog_data.inst_varset, hlds.instmap.instmap, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode recompute_instmap_delta_vt((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

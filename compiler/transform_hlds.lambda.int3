@@ -1,0 +1,8 @@
+:- module (transform_hlds.lambda).
+:- interface.
+:- type lambda_info.
+:- type maybe_recompute_nonlocals
+	where	type_is_abstract_enum(1).
+:- type reg_wrapper_proc.
+:- type_representation(lambda_info, is_word_aligned_ptr).
+:- type_representation(maybe_recompute_nonlocals, du_repn(enum("need_not_recompute_nonlocals", "must_recompute_nonlocals", [],  no_c_j_cs))).

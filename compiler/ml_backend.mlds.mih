@@ -1,0 +1,1346 @@
+/*
+** Automatically generated from `mlds.m'
+** by the Mercury compiler,
+** version rotd-2022-04-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.mlds.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds
+#define MR_HEADER_GUARD_ml_backend__mlds
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_DECL_GUARD
+#define ML_BACKEND__MLDS_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_class_access_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_constness_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_function_access_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_global_var_access_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_global_var_ref_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_initializer_array_size_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mercury_mlds_import_type_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mercury_module_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_ml_call_kind_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_ml_scalar_common_type_num_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_ml_vector_common_type_num_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_alloc_id_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_arg_types_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_argument_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_atomic_statement_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_decl_flags_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_defn_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_id_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_inherits_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_kind_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_code_addr_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_compiler_aux_var_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_compiler_var_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_ctor_id_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_exception_handler_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_exported_enum_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_exported_enum_constant_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_exported_enums_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_field_id_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_field_var_decl_flags_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_field_var_defn_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_field_var_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_foreign_code_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_func_label_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_func_params_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_func_signature_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_function_body_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_function_decl_flags_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_function_defn_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_function_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_gc_statement_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_global_const_var_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_global_var_decl_flags_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_global_var_defn_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_global_var_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_goto_target_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_import_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_interface_id_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_label_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_local_var_defn_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_local_var_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_local_var_name_type_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_lval_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_maybe_aux_func_id_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_module_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_package_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_plain_func_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_pragma_export_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_pred_label_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_proc_label_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_qual_kind_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_reset_trail_reason_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_return_types_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_const_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_scalar_common_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_case_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_default_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_range_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_target_lang_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_type_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_typed_rval_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_vector_common_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_outline_arg_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_overridability_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_per_instance_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_proc_id_in_tscc_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_qual_class_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_qual_ctor_id_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_qual_field_var_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_qual_func_label_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_qual_function_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_qual_global_var_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_qual_proc_label_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_target_code_component_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_trail_op_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_while_loop_kind_0;
+
+MR_bool MR_CALL 
+ml_backend__mlds__is_std_lib_module_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+ml_backend__mlds__get_initializer_array_size_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds__global_dummy_var_0_f_0(void);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mercury_module_and_package_name_to_mlds_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds__ml_field_var_name_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+ml_backend__mlds__ml_global_const_var_name_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+ml_backend__mlds__ml_local_var_name_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_append_class_qualifier_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Integer param_5);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_append_class_qualifier_module_qual_3_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_append_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_get_arg_types_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_get_func_signature_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_get_module_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_module_name_to_package_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_module_name_to_sym_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_std_tabling_proc_label_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ml_backend__mlds____Compare____class_access_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____constness_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____function_access_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____global_var_access_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____global_var_ref_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____initializer_array_size_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mercury_mlds_import_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mercury_module_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____ml_call_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____ml_scalar_common_type_num_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____ml_vector_common_type_num_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_alloc_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_arg_types_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_argument_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_atomic_statement_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_case_match_cond_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_decl_flags_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_inherits_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_name_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_code_addr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_compiler_aux_var_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_compiler_var_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_ctor_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_exception_handler_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_exported_enum_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_exported_enum_constant_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_exported_enums_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_field_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_field_var_decl_flags_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_field_var_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_field_var_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_foreign_code_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_func_label_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_func_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_func_signature_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_function_body_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_function_decl_flags_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_function_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_function_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_gc_statement_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_global_const_var_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_global_var_decl_flags_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_global_var_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_global_var_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_goto_target_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_import_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_initializer_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_interface_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_label_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_local_var_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_local_var_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_local_var_name_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_lval_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_maybe_aux_func_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_module_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_package_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_plain_func_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_pragma_export_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_pred_label_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_proc_label_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_qual_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_reset_trail_reason_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_return_types_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_rval_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_rval_const_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_scalar_common_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_stmt_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_switch_case_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_switch_default_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_switch_range_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_target_lang_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_typed_rval_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_vector_common_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____outline_arg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____overridability_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____per_instance_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____proc_id_in_tscc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____qual_class_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____qual_ctor_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____qual_field_var_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____qual_func_label_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____qual_function_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____qual_global_var_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____qual_proc_label_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____target_code_component_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____trail_op_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Compare____while_loop_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds____Index____mlds_compiler_var_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+ml_backend__mlds____Index____mlds_rval_const_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+ml_backend__mlds____Index____mlds_type_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____class_access_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____constness_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____function_access_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____global_var_access_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____global_var_ref_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____initializer_array_size_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mercury_mlds_import_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mercury_module_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____ml_call_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____ml_scalar_common_type_num_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____ml_vector_common_type_num_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_alloc_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_arg_types_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_argument_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_atomic_statement_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_case_match_cond_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_decl_flags_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_inherits_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_name_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_code_addr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_compiler_aux_var_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_compiler_var_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_ctor_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_exception_handler_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_exported_enum_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_exported_enum_constant_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_exported_enums_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_field_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_field_var_decl_flags_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_field_var_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_field_var_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_foreign_code_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_func_label_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_func_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_func_signature_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_function_body_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_function_decl_flags_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_function_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_function_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_gc_statement_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_global_const_var_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_global_var_decl_flags_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_global_var_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_global_var_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_goto_target_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_import_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_initializer_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_interface_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_label_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_local_var_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_local_var_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_local_var_name_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_lval_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_maybe_aux_func_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_module_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_package_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_plain_func_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_pragma_export_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_pred_label_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_proc_label_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_qual_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_reset_trail_reason_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_return_types_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_rval_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_rval_const_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_scalar_common_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_stmt_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_switch_case_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_switch_default_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_switch_range_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_target_lang_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_typed_rval_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_vector_common_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____outline_arg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____overridability_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____per_instance_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____proc_id_in_tscc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____qual_class_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____qual_ctor_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____qual_field_var_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____qual_func_label_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____qual_function_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____qual_global_var_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____qual_proc_label_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____target_code_component_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____trail_op_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____while_loop_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__mlds__init(void);
+void mercury__ml_backend__mlds__init_type_tables(void);
+void mercury__ml_backend__mlds__init_debugger(void);
+const char *mercury__ml_backend__mlds__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.mlds
+
+// :- end_interface ml_backend.mlds.

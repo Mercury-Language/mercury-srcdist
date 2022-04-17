@@ -1,0 +1,20 @@
+:- module (parse_tree.prog_type).
+:- interface.
+:- type is_builtin_dummy_type_ctor
+	where	type_is_abstract_enum(1).
+:- type is_dummy_type
+	where	type_is_abstract_enum(1).
+:- type polymorphism_cell.
+:- type type_ctor_cat_builtin.
+:- type type_ctor_cat_enum
+	where	type_is_abstract_enum(1).
+:- type type_ctor_cat_system
+	where	type_is_abstract_enum(2).
+:- type type_ctor_cat_user
+	where	type_is_abstract_enum(3).
+:- type type_ctor_category.
+:- type_representation(is_builtin_dummy_type_ctor, du_repn(enum("is_builtin_dummy_type_ctor", "is_not_builtin_dummy_type_ctor", [],  no_c_j_cs))).
+:- type_representation(is_dummy_type, du_repn(enum("is_dummy_type", "is_not_dummy_type", [],  no_c_j_cs))).
+:- type_representation(type_ctor_cat_enum, du_repn(enum("cat_enum_mercury", "cat_enum_foreign", [],  no_c_j_cs))).
+:- type_representation(type_ctor_cat_system, du_repn(enum("cat_system_type_info", "cat_system_type_ctor_info", ["cat_system_typeclass_info", "cat_system_base_typeclass_info"],  no_c_j_cs))).
+:- type_representation(type_ctor_cat_user, du_repn(enum("cat_user_direct_dummy", "cat_user_abstract_dummy", ["cat_user_notag", "cat_user_abstract_notag", "cat_user_general"],  no_c_j_cs))).

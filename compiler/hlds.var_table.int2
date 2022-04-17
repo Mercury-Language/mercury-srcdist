@@ -1,0 +1,11 @@
+:- module (hlds.var_table).
+:- interface.
+:- type var_db
+    --->    var_db_varset_vartypes(hlds.vartypes.prog_var_set_types)
+    ;       var_db_var_table(hlds.var_table.var_table).
+:- type var_table.
+:- type var_table_entry
+    --->    vte(((hlds.var_table).vte_name) :: string, ((hlds.var_table).vte_type) :: parse_tree.prog_data.mer_type, ((hlds.var_table).vte_is_dummy) :: parse_tree.prog_type.is_dummy_type).
+:- type var_type_source
+    --->    vts_vartypes(hlds.vartypes.vartypes)
+    ;       vts_var_table(hlds.var_table.var_table).

@@ -1,0 +1,4 @@
+:- module set_ordlist.
+:- interface.
+:- type set_ordlist(T).
+:- type_representation(set_ordlist(V_1), du_repn(notag("sol", list(V_1),  no_c_j_cs))).

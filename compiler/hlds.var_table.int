@@ -1,0 +1,93 @@
+:- module (hlds.var_table).
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module varset.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_type).
+:- type var_db
+    --->    var_db_varset_vartypes(hlds.vartypes.prog_var_set_types)
+    ;       var_db_var_table(hlds.var_table.var_table).
+:- type var_table.
+:- type var_table_entry
+    --->    vte(((hlds.var_table).vte_name) :: string, ((hlds.var_table).vte_type) :: parse_tree.prog_data.mer_type, ((hlds.var_table).vte_is_dummy) :: parse_tree.prog_type.is_dummy_type).
+:- type var_type_source
+    --->    vts_vartypes(hlds.vartypes.vartypes)
+    ;       vts_var_table(hlds.var_table.var_table).
+:- pred add_var_entry(hlds.var_table.var_table_entry, parse_tree.prog_data.prog_var, hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode add_var_entry((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred apply_rec_subst_to_var_table(parse_tree.prog_data.tsubst, hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode apply_rec_subst_to_var_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_subst_to_var_table(parse_tree.prog_data.tsubst, hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode apply_subst_to_var_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_variable_renaming_to_var_table(parse_tree.prog_data.tvar_renaming, hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode apply_variable_renaming_to_var_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete_sorted_var_entries(list.list(parse_tree.prog_data.prog_var), hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode delete_sorted_var_entries((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete_var_entries(list.list(parse_tree.prog_data.prog_var), hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode delete_var_entries((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete_var_entry(parse_tree.prog_data.prog_var, hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode delete_var_entry((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred foldl_var_table(pred(hlds.var_table.var_table_entry, T, T), hlds.var_table.var_table, T, T).
+:- mode foldl_var_table(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred init_var_table(hlds.var_table.var_table).
+:- mode init_var_table((builtin.out)) is det.
+:- pred is_in_var_table(hlds.var_table.var_table, parse_tree.prog_data.prog_var).
+:- mode is_in_var_table((builtin.in), (builtin.in)) is semidet.
+:- pred lookup_var_entries(hlds.var_table.var_table, list.list(parse_tree.prog_data.prog_var), list.list(hlds.var_table.var_table_entry)).
+:- mode lookup_var_entries((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_var_entry(hlds.var_table.var_table, parse_tree.prog_data.prog_var, hlds.var_table.var_table_entry).
+:- mode lookup_var_entry((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_var_entry_func(hlds.var_table.var_table, parse_tree.prog_data.prog_var) = hlds.var_table.var_table_entry.
+:- pred lookup_var_type(hlds.var_table.var_table, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type).
+:- mode lookup_var_type((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_var_type_func(hlds.var_table.var_table, parse_tree.prog_data.prog_var) = parse_tree.prog_data.mer_type.
+:- pred lookup_var_type_in_source(hlds.var_table.var_type_source, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type).
+:- mode lookup_var_type_in_source((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_var_types(hlds.var_table.var_table, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type)).
+:- mode lookup_var_types((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_var_table(hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.var_table.var_table).
+:- mode make_var_table((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred search_insert_var_entry(parse_tree.prog_data.prog_var, hlds.var_table.var_table_entry, maybe.maybe(hlds.var_table.var_table_entry), hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode search_insert_var_entry((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred search_var_entry(hlds.var_table.var_table, parse_tree.prog_data.prog_var, hlds.var_table.var_table_entry).
+:- mode search_var_entry((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred split_var_table(hlds.var_table.var_table, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes).
+:- mode split_var_table((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred transform_foldl_var_table(pred(hlds.var_table.var_table_entry, hlds.var_table.var_table_entry, T, T), hlds.var_table.var_table, hlds.var_table.var_table, T, T).
+:- mode transform_foldl_var_table(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred update_var_entry(parse_tree.prog_data.prog_var, hlds.var_table.var_table_entry, hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode update_var_entry((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func var_entry_name(parse_tree.prog_data.prog_var, hlds.var_table.var_table_entry) = string.
+:- func var_entry_name_and_number(parse_tree.prog_data.prog_var, hlds.var_table.var_table_entry) = string.
+:- pred var_table_add_corresponding_lists(list.list(parse_tree.prog_data.prog_var), list.list(hlds.var_table.var_table_entry), hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode var_table_add_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_table_count(hlds.var_table.var_table, int).
+:- mode var_table_count((builtin.in), (builtin.out)) is det.
+:- pred var_table_entries(hlds.var_table.var_table, list.list(hlds.var_table.var_table_entry)).
+:- mode var_table_entries((builtin.in), (builtin.out)) is det.
+:- func var_table_entry_name(hlds.var_table.var_table, parse_tree.prog_data.prog_var) = string.
+:- func var_table_entry_name_and_number(hlds.var_table.var_table, parse_tree.prog_data.prog_var) = string.
+:- pred var_table_from_corresponding_lists(list.list(parse_tree.prog_data.prog_var), list.list(hlds.var_table.var_table_entry), hlds.var_table.var_table).
+:- mode var_table_from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_table_from_rev_sorted_assoc_list(assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.var_table.var_table_entry), hlds.var_table.var_table).
+:- mode var_table_from_rev_sorted_assoc_list((builtin.in), (builtin.out)) is det.
+:- pred var_table_from_sorted_assoc_list(assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.var_table.var_table_entry), hlds.var_table.var_table).
+:- mode var_table_from_sorted_assoc_list((builtin.in), (builtin.out)) is det.
+:- pred var_table_is_empty(hlds.var_table.var_table).
+:- mode var_table_is_empty((builtin.in)) is semidet.
+:- pred var_table_max_var_num(hlds.var_table.var_table, int).
+:- mode var_table_max_var_num((builtin.in), (builtin.out)) is det.
+:- pred var_table_optimize(hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode var_table_optimize((builtin.in), (builtin.out)) is det.
+:- pred var_table_select(set.set(parse_tree.prog_data.prog_var), hlds.var_table.var_table, hlds.var_table.var_table).
+:- mode var_table_select((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_table_to_sorted_assoc_list(hlds.var_table.var_table, assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.var_table.var_table_entry)).
+:- mode var_table_to_sorted_assoc_list((builtin.in), (builtin.out)) is det.
+:- pred var_table_vars(hlds.var_table.var_table, list.list(parse_tree.prog_data.prog_var)).
+:- mode var_table_vars((builtin.in), (builtin.out)) is det.
