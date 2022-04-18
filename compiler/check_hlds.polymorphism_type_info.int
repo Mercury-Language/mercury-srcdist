@@ -1,0 +1,53 @@
+:- module (check_hlds.polymorphism_type_info).
+:- interface.
+:- use_module assoc_list.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module (check_hlds.polymorphism_info).
+:- use_module (hlds.const_struct).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.hlds_rtti).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.var_table).
+:- use_module (parse_tree.vartypes).
+:- type int_or_var
+    --->    iov_int(int)
+    ;       iov_var(parse_tree.prog_data.prog_var).
+:- type type_info_kind
+    --->    type_info 
+    ;       type_ctor_info .
+:- pred gen_extract_type_info(hlds.hlds_module.module_info, parse_tree.prog_data.tvar, parse_tree.prog_data.kind, parse_tree.prog_data.prog_var, check_hlds.polymorphism_type_info.int_or_var, parse_tree.prog_data.prog_context, list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes, parse_tree.vartypes.vartypes, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_rtti.rtti_varmaps).
+:- mode gen_extract_type_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred get_type_info_locn(parse_tree.prog_data.tvar, hlds.hlds_rtti.type_info_locn, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode get_type_info_locn((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred init_const_type_ctor_info_var(parse_tree.prog_data.mer_type, parse_tree.prog_data.type_ctor, parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes, parse_tree.vartypes.vartypes, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_rtti.rtti_varmaps).
+:- mode init_const_type_ctor_info_var((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred init_const_type_ctor_info_var_vt(parse_tree.prog_data.mer_type, parse_tree.prog_data.type_ctor, parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, hlds.hlds_goal.hlds_goal, parse_tree.var_table.var_table, parse_tree.var_table.var_table, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_rtti.rtti_varmaps).
+:- mode init_const_type_ctor_info_var_vt((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred init_type_info_var(parse_tree.prog_data.mer_type, list.list(parse_tree.prog_data.prog_var), maybe.maybe(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes, parse_tree.vartypes.vartypes, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_rtti.rtti_varmaps).
+:- mode init_type_info_var((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred init_type_info_var_vt(parse_tree.prog_data.mer_type, list.list(parse_tree.prog_data.prog_var), maybe.maybe(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, parse_tree.var_table.var_table, parse_tree.var_table.var_table, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_rtti.rtti_varmaps).
+:- mode init_type_info_var_vt((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_type_info_var(parse_tree.prog_data.mer_type, check_hlds.polymorphism_type_info.type_info_kind, parse_tree.prog_data.prog_var, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode new_type_info_var((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_type_info_var_raw(parse_tree.prog_data.mer_type, check_hlds.polymorphism_type_info.type_info_kind, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, parse_tree.vartypes.vartypes, parse_tree.vartypes.vartypes, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_rtti.rtti_varmaps).
+:- mode new_type_info_var_raw((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_type_info_var_raw_vt(parse_tree.prog_data.mer_type, check_hlds.polymorphism_type_info.type_info_kind, parse_tree.prog_data.prog_var, parse_tree.var_table.var_table, parse_tree.var_table.var_table, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_rtti.rtti_varmaps).
+:- mode new_type_info_var_raw_vt((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred polymorphism_do_make_type_info_vars(list.list(parse_tree.prog_data.mer_type), term.context, assoc_list.assoc_list(parse_tree.prog_data.prog_var, maybe.maybe(hlds.const_struct.const_struct_arg)), list.list(hlds.hlds_goal.hlds_goal), check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode polymorphism_do_make_type_info_vars((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred polymorphism_extract_type_info(parse_tree.prog_data.tvar, parse_tree.prog_data.prog_var, int, parse_tree.prog_data.prog_context, list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.prog_var, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode polymorphism_extract_type_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred polymorphism_make_type_info_var(parse_tree.prog_data.mer_type, term.context, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode polymorphism_make_type_info_var((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred polymorphism_make_type_info_var_raw(parse_tree.prog_data.mer_type, term.context, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode polymorphism_make_type_info_var_raw((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred polymorphism_make_type_info_vars(list.list(parse_tree.prog_data.mer_type), term.context, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.hlds_goal), check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode polymorphism_make_type_info_vars((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred polymorphism_make_type_info_vars_raw(list.list(parse_tree.prog_data.mer_type), term.context, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode polymorphism_make_type_info_vars_raw((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

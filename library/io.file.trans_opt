@@ -1,0 +1,43 @@
+:- module (io.file).
+
+:- pragma termination_info((io.file).check_file_accessibility((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).do_make_temp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.file).do_make_temp_directory((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.file).file_modification_time((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).file_modification_time_2((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).file_type((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.file).get_temp_directory((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(((io.file).have_make_temp_directory), finite(0, []), cannot_loop).
+:- pragma termination_info(((io.file).have_symlinks), finite(0, []), cannot_loop).
+:- pragma termination_info((io.file).make_symlink((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.file).make_temp_directory((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).make_temp_directory((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).make_temp_file((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).make_temp_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).read_symlink((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.file).remove_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.file).remove_file_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.file).remove_file_recursively((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.file).rename_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.file).rename_file_2((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, ((io.file).check_file_accessibility), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).do_make_temp), 8, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).do_make_temp_directory), 8, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).file_modification_time), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).file_modification_time_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).file_type), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).get_temp_directory), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).have_make_temp_directory), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).have_symlinks), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).make_symlink), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).make_temp_directory), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).make_temp_directory), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).make_temp_file), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).make_temp_file), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).read_symlink), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).remove_file), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).remove_file_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).remove_file_recursively), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.file).rename_file), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.file).rename_file_2), 5, 0, will_not_throw).

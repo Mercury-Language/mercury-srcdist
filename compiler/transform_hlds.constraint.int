@@ -1,0 +1,17 @@
+:- module (transform_hlds.constraint).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.instmap).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.vartypes).
+:- type constraint_info.
+:- pred constraint_info_deconstruct(transform_hlds.constraint.constraint_info, hlds.hlds_module.module_info, parse_tree.vartypes.vartypes, parse_tree.prog_data.prog_varset, bool.bool).
+:- mode constraint_info_deconstruct((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred constraint_info_init(hlds.hlds_module.module_info, parse_tree.vartypes.vartypes, parse_tree.prog_data.prog_varset, hlds.instmap.instmap, transform_hlds.constraint.constraint_info).
+:- mode constraint_info_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred propagate_constraints_in_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, transform_hlds.constraint.constraint_info, transform_hlds.constraint.constraint_info).
+:- mode propagate_constraints_in_goal((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
