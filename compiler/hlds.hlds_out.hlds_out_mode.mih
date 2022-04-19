@@ -1,0 +1,174 @@
+/*
+** Automatically generated from `hlds_out_mode.m'
+** by the Mercury compiler,
+** version 22.01.1-beta-2022-04-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_out.hlds_out_mode.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_out__hlds_out_mode
+#define MR_HEADER_GUARD_hlds__hlds_out__hlds_out_mode
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_OUT__HLDS_OUT_MODE_DECL_GUARD
+#define HLDS__HLDS_OUT__HLDS_OUT_MODE_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.hlds_out.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_out__hlds_out_mode__hlds__hlds_out__hlds_out_mode__type_ctor_info_incl_addr_0;
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_output_structured_inst_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_output_structured_inst_list_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_output_structured_unify_mode_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_output_structured_unify_mode_list_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_output_unify_mode_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_output_unify_mode_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_mode__write_instmap_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_mode__write_var_inst_list_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_structured_inst_list_to_string_5_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_structured_inst_to_string_5_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_structured_unify_mode_list_to_string_5_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_structured_unify_mode_to_string_5_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_unify_mode_list_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_mode__mercury_unify_mode_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_mode____Compare____incl_addr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_out__hlds_out_mode____Unify____incl_addr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_out__hlds_out_mode__init(void);
+void mercury__hlds__hlds_out__hlds_out_mode__init_type_tables(void);
+void mercury__hlds__hlds_out__hlds_out_mode__init_debugger(void);
+const char *mercury__hlds__hlds_out__hlds_out_mode__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_out.hlds_out_mode
+
+// :- end_interface hlds.hlds_out.hlds_out_mode.
