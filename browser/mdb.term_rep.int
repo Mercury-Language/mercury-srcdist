@@ -1,0 +1,16 @@
+:- module (mdb.term_rep).
+:- interface.
+:- use_module mdbcomp.
+:- use_module univ.
+:- use_module (mdbcomp.program_representation).
+:- type term_rep.
+:- pred argument(mdb.term_rep.term_rep, int, mdb.term_rep.term_rep).
+:- mode argument((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred deref_path(mdb.term_rep.term_rep, mdbcomp.program_representation.term_path, mdb.term_rep.term_rep).
+:- mode deref_path((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred field_pos(string, mdb.term_rep.term_rep, int).
+:- mode field_pos((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred rep_to_univ(mdb.term_rep.term_rep, univ.univ).
+:- mode rep_to_univ((builtin.in), (builtin.out)) is det.
+:- pred univ_to_rep(univ.univ, mdb.term_rep.term_rep).
+:- mode univ_to_rep((builtin.in), (builtin.out)) is cc_multi.

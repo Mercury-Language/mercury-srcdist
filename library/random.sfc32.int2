@@ -1,0 +1,9 @@
+:- module (random.sfc32).
+:- interface.
+:- type params.
+:- type ustate.
+:- instance (random.urandom(random.sfc32.params, random.sfc32.ustate)).
+:- instance (random.urandom_dup(random.sfc32.ustate)).
+:- implementation.
+:- type params
+    --->    params .
