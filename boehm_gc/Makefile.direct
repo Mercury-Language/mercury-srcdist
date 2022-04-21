@@ -1,0 +1,553 @@
+#-----------------------------------------------------------------------------#
+# WARNING: the original copy of this file resides in Makefile.direct.
+# Any changes made here must be also made there (and vice versa).
+#-----------------------------------------------------------------------------#
+# WARNING: This makefile is not safe for parallel makes.
+# This makefile should only be invoked with `-j1'.
+#
+# (The reason parallel makes break is because of the use of constructs like
+# `./if_not_there on_sparc_sunos5_so $(MAKE) dyn_load.o)' to handle
+# OS-specific dependencies; this can lead to one process noticing
+# a partially build dyn_load.o and trying to use it before it is
+# completely built.)
+#-----------------------------------------------------------------------------#
+# I have modified this file.
+# I've added a different rule for the libgc.a target,
+# added the `include ../Mmake.common' line,
+# and changed the rule for libgc.so to use the $(LINK_SHARED_LIB) macro
+# defined in ../Mmake.common.
+# I've change the definitions of CC, AS, and CFLAGS.
+# I've also modified the stuff to support for DLLs on gnu-win32
+#	- fjh.
+#-----------------------------------------------------------------------------#
+
+MERCURY_DIR := $(shell pwd)/..
+LINK_BOEHM_GC_ONLY=yes
+include ../Mmake.common
+
+# This is the original manually generated Makefile.  It may still be used
+# to build the collector.
+#
+# Primary targets:
+# gc.a - builds basic library
+# c++ - adds C++ interface to library
+# cords - adds cords (heavyweight strings) to library
+# check - prints porting information, then builds basic version of gc.a,
+#       and runs some tests of collector and cords.  Does not add cords or
+#       c++ interface to gc.a
+# check-cpp - runs C++ test without adding C++ (and cords) interface to gc.a
+# cord/de - builds dumb editor based on cords.
+
+ABI_FLAG=
+# ABI_FLAG should be the cc flag that specifies the ABI.  On most
+# platforms this will be the empty string.  Possible values:
+# +DD64 for 64-bit executable on HP/UX.
+# -n32, -n64, -o32 for SGI/MIPS ABIs.
+
+AS_ABI_FLAG=$(ABI_FLAG)
+# ABI flag for assembler.  On HP/UX this is +A64 for 64 bit
+# executables.
+
+# CC=cc $(ABI_FLAG)
+
+# Mercury-specific definition of CC.
+CC=$(MERCURY_DIR)/scripts/mgnuc --grade $(GRADE) --no-ansi --no-check --no-mercury-stdlib-dir
+
+CXX=g++ $(ABI_FLAG)
+# Needed only for "make c++", which adds the c++ interface.
+
+# AS=as $(AS_ABI_FLAG)
+# The above doesn't work with gas, which doesn't run cpp.
+# Define AS as `gcc -c -x assembler-with-cpp' instead.
+# Under Irix 6, you have to specify the ABI (-o32, -n32, or -64)
+# if you use something other than the default ABI on your machine.
+# Mercury-specific AS:
+AS=$(MERCURY_DIR)/scripts/mgnuc --grade $(GRADE) --assemble
+
+LD=ld
+
+# Redefining srcdir allows object code for the nonPCR version of the collector
+# to be generated in different directories.
+srcdir= .
+VPATH= $(srcdir)
+
+# Path to atomic_ops source.
+AO_SRC_DIR=$(srcdir)/libatomic_ops
+
+# CFLAGS_EXTRA=
+# We need CFLAGS_FOR_PIC because we might be building a shared library.
+# CFLAGS= -O -I$(srcdir)/include -I$(AO_SRC_DIR)/src \
+#   -DALL_INTERIOR_POINTERS -DENABLE_DISCLAIM -DGC_ATOMIC_UNCOLLECTABLE \
+#   -DGC_GCJ_SUPPORT -DJAVA_FINALIZATION -DNO_EXECUTE_PERMISSION \
+#   -DUSE_MMAP -DUSE_MUNMAP $(CFLAGS_FOR_PIC) $(CFLAGS_EXTRA)
+
+# To build the collector with threads support, add to the above:
+# -DGC_THREADS -DPARALLEL_MARK -DTHREAD_LOCAL_ALLOC
+#
+# To build the preload library that intercepts malloc, add:
+# -DGC_USE_DLOPEN_WRAP -DREDIRECT_MALLOC=GC_malloc -fpic
+
+# To build the collector with fork() support by default, add to the above:
+# -DHANDLE_FORK
+
+# Mercury-specific CFLAGS:
+# We need $(CFLAGS_FOR_PIC) because we might be building a shared library.
+CFLAGS= -I$(srcdir)/include -I$(AO_SRC_DIR)/src \
+	-DNO_EXECUTE_PERMISSION \
+	$(BOEHM_CFLAGS) $(CFLAGS_FOR_PIC) $(DLL_CFLAGS) $(EXTRA_CFLAGS)
+
+# If we are in the gcd grade then don't define -DNO_DEBUGGING
+ifneq ($(findstring gcd,$(GRADE)),gcd)
+CFLAGS += -DNO_DEBUGGING
+endif
+
+# HOSTCC and HOSTCFLAGS are used to build executables that will be run as
+# part of the build process, i.e. on the build machine.  These will usually
+# be the same as CC and CFLAGS, except in a cross-compilation environment.
+# Note that HOSTCFLAGS should include any -D flags that affect thread support.
+#
+# Mercury-specific: we set HOSTCC in Mmake.common
+# Mercury-specific: flags affecting thread support are NOT included in
+# HOSTCFLAGS (despite the comment above) as that breaks cross-compilation if
+# gc.h includes platform-specific headers that do not exist on the host.
+# threadlibs will not work but we use our THREAD_LIBS variable instead.
+#
+ifndef HOSTCC
+HOSTCC=$(CC)
+endif
+HOSTCFLAGS:=$(CFLAGS)
+
+# Mercury-specific: add flags for thread support to CFLAGS but not HOSTCFLAGS.
+ifeq ($(findstring par,$(GRADE)),par)
+CFLAGS += $(BOEHM_CFLAGS_FOR_THREADS)
+MAYBE_THREAD_LIBS = $(THREAD_LIBS)
+endif
+
+# For dynamic library builds, it may be necessary to add flags to generate
+# PIC code, e.g. -fPIC on Linux.
+
+# Setjmp_test may yield overly optimistic results when compiled
+# without optimization.
+
+# Look into doc/README.macros for the description of the "define arguments"
+# influencing the collector configuration.
+
+CXXFLAGS= $(CFLAGS)
+AR= ar
+
+RANLIB= ranlib
+# For EMX, replace "ranlib" with "ar s".
+
+
+OBJS= alloc.o reclaim.o allchblk.o misc.o mach_dep.o os_dep.o mark_rts.o \
+  headers.o mark.o obj_map.o blacklst.o finalize.o new_hblk.o dbg_mlc.o  \
+  malloc.o checksums.o pthread_support.o pthread_stop_world.o \
+  darwin_stop_world.o typd_mlc.o ptr_chck.o mallocx.o gcj_mlc.o specific.o \
+  gc_dlopen.o backgraph.o win32_threads.o pthread_start.o \
+  thread_local_alloc.o fnlz_mlc.o atomic_ops.o atomic_ops_sysdeps.o
+
+CSRCS= reclaim.c allchblk.c misc.c alloc.c mach_dep.c os_dep.c mark_rts.c \
+  headers.c mark.c obj_map.c blacklst.c finalize.c \
+  new_hblk.c dyn_load.c dbg_mlc.c malloc.c \
+  checksums.c pthread_support.c pthread_stop_world.c darwin_stop_world.c \
+  typd_mlc.c ptr_chck.c mallocx.c gcj_mlc.c specific.c gc_dlopen.c \
+  backgraph.c win32_threads.c pthread_start.c thread_local_alloc.c fnlz_mlc.c
+
+CORD_SRCS= cord/cordbscs.c cord/cordxtra.c cord/cordprnt.c cord/tests/de.c \
+  cord/tests/cordtest.c include/cord.h include/ec.h \
+  include/cord_pos.h cord/tests/de_win.c cord/tests/de_win.h \
+  cord/tests/de_cmds.h cord/tests/de_win.rc
+
+CORD_OBJS= cord/cordbscs.o cord/cordxtra.o cord/cordprnt.o
+
+SRCS= $(CSRCS) \
+  include/gc.h include/gc_typed.h include/gc_tiny_fl.h \
+  include/gc_version.h include/private/gc_hdrs.h include/private/gc_priv.h \
+  include/private/gcconfig.h include/private/gc_pmark.h \
+  include/gc_inline.h include/gc_mark.h include/gc_disclaim.h \
+  tools/threadlibs.c tools/if_mach.c tools/if_not_there.c gc_cpp.cc \
+  include/gc_cpp.h include/private/gc_locks.h include/new_gc_alloc.h \
+  include/gc_alloc_ptrs.h include/gc_allocator.h include/javaxfc.h \
+  include/gc_backptr.h include/gc_gcj.h include/private/dbg_mlc.h \
+  include/private/specific.h include/leak_detector.h \
+  include/gc_pthread_redirects.h include/private/gc_atomic_ops.h \
+  include/gc_config_macros.h include/private/pthread_support.h \
+  include/private/pthread_stop_world.h include/private/darwin_semaphore.h \
+  include/private/darwin_stop_world.h include/private/thread_local_alloc.h \
+  ia64_save_regs_in_stack.s sparc_mach_dep.S \
+  sparc_netbsd_mach_dep.s sparc_sunos4_mach_dep.s $(CORD_SRCS)
+
+CORD_INCLUDE_FILES= $(srcdir)/include/gc.h $(srcdir)/include/cord.h \
+  $(srcdir)/include/ec.h $(srcdir)/include/cord_pos.h
+
+# Executable file name extension.  For EMX, specify ".exe".
+EXEEXT=
+
+UTILS= if_mach$(EXEEXT) if_not_there$(EXEEXT) threadlibs$(EXEEXT)
+
+# Libraries needed for curses applications.  Only needed for de.
+# It might also require -ltermlib on some targets.
+CURSES= -lcurses
+
+# The following is irrelevant on most systems.  But a few
+# versions of make otherwise fork the shell specified in
+# the SHELL environment variable.
+SHELL= /bin/sh
+
+SPECIALCFLAGS= -I$(srcdir)/include -I$(AO_SRC_DIR)/src $(CFLAGS_FOR_PIC) \
+	       $(BOEHM_CFLAGS)
+# Alternative flags to the C compiler for mach_dep.c.
+# Mach_dep.c often doesn't like optimization, and it's
+# not time-critical anyway.
+# Set SPECIALCFLAGS to -q nodirect_code on Encore.
+
+all: base_lib gctest$(EXEEXT)
+
+atomic_ops.o: $(AO_SRC_DIR)/src/atomic_ops.c
+	$(CC) $(CFLAGS) -c -o $@ $(AO_SRC_DIR)/src/atomic_ops.c
+# For some reason, Solaris make does not handle "$<" properly.
+
+atomic_ops_sysdeps.o: $(AO_SRC_DIR)/src/atomic_ops_sysdeps.S
+	$(CC) $(CFLAGS) -c -o $@ $(AO_SRC_DIR)/src/atomic_ops_sysdeps.S
+
+LEAKFLAGS= $(CFLAGS) -DFIND_LEAK
+
+BSD-pkg-all: bsd-libgc.a bsd-libleak.a
+
+bsd-libgc.a:
+	$(MAKE) -f Makefile.direct CFLAGS="$(CFLAGS)" clean c++-t
+	mv gc.a bsd-libgc.a
+
+bsd-libleak.a:
+	$(MAKE) -f Makefile.direct CFLAGS="$(LEAKFLAGS)" clean c++-nt
+	mv gc.a bsd-libleak.a
+
+BSD-pkg-install: BSD-pkg-all
+	${CP} bsd-libgc.a libgc.a
+	${INSTALL_DATA} libgc.a ${PREFIX}/lib
+	${INSTALL_DATA} gc.h gc_cpp.h ${PREFIX}/include
+	${INSTALL_MAN} doc/gc.man ${PREFIX}/man/man3/gc.3
+
+pcr: PCR-Makefile include/private/gc_private.h include/private/gc_hdrs.h \
+include/private/gc_locks.h include/gc.h include/private/gcconfig.h \
+mach_dep.o $(SRCS)
+	$(MAKE) -f PCR-Makefile depend
+	$(MAKE) -f PCR-Makefile
+
+$(OBJS) tests/test.o dyn_load.o dyn_load_sunos53.o: \
+  $(srcdir)/include/private/gc_priv.h \
+  $(srcdir)/include/private/gc_hdrs.h $(srcdir)/include/private/gc_locks.h \
+  $(srcdir)/include/gc.h $(srcdir)/include/gc_pthread_redirects.h \
+  $(srcdir)/include/private/gcconfig.h $(srcdir)/include/gc_typed.h \
+  $(srcdir)/include/gc_config_macros.h \
+  $(LIBGC_DLL_H)
+
+mark.o typd_mlc.o finalize.o ptr_chck.o: $(srcdir)/include/gc_mark.h \
+					 $(srcdir)/include/private/gc_pmark.h
+
+specific.o pthread_support.o thread_local_alloc.o win32_threads.o: \
+  $(srcdir)/include/private/specific.h $(srcdir)/include/gc_inline.h \
+  $(srcdir)/include/private/thread_local_alloc.h
+
+dbg_mlc.o gcj_mlc.o: $(srcdir)/include/private/dbg_mlc.h
+
+tests/test.o: $(srcdir)/tests/test.c
+	mkdir tests || cat /dev/null
+	$(CC) $(CFLAGS) -c $(srcdir)/tests/test.c
+	mv test.o tests/test.o
+
+# Mercury-specific target:
+lib$(GC_GRADE)$(DLL_DEF_LIB).a: gc.a
+	rm -f lib$(GC_GRADE)$(DLL_DEF_LIB).a
+	# `ln -s' here doesn't work with gnu-win32, so we use `cp' instead
+	# The sleep is necessary on MinGW, otherwise cp sometimes reports
+	# that it cannot stat gc.a, even though it is there.  Waiting for
+	# a second first seems to help.
+	sleep 1
+	cp gc.a lib$(GC_GRADE)$(DLL_DEF_LIB).a
+
+base_lib gc.a: $(OBJS) dyn_load.o $(UTILS)
+	rm -f dont_ar_1
+	./if_mach SPARC SOLARIS touch dont_ar_1
+	./if_mach SPARC SOLARIS $(AR) rus gc.a $(OBJS) dyn_load.o
+	./if_mach M68K AMIGA touch dont_ar_1
+	./if_mach M68K AMIGA $(AR) -vrus gc.a $(OBJS) dyn_load.o
+	./if_not_there dont_ar_1 || $(AR) ru gc.a $(OBJS) dyn_load.o
+	./if_not_there dont_ar_1 || $(RANLIB) gc.a || cat /dev/null
+	echo > base_lib
+#    Ignore ranlib failure; that usually means it doesn't exist, and
+#    isn't needed.
+
+cords: $(CORD_OBJS) $(UTILS) base_lib
+	rm -f dont_ar_3
+	./if_mach SPARC SOLARIS touch dont_ar_3
+	./if_mach SPARC SOLARIS $(AR) rus gc.a $(CORD_OBJS)
+	./if_mach M68K AMIGA touch dont_ar_3
+	./if_mach M68K AMIGA $(AR) -vrus gc.a $(CORD_OBJS)
+	./if_not_there dont_ar_3 || $(AR) ru gc.a $(CORD_OBJS)
+	./if_not_there dont_ar_3 || $(RANLIB) gc.a || cat /dev/null
+	echo > cords
+
+gc_cpp.o: $(srcdir)/gc_cpp.cc $(srcdir)/include/gc_cpp.h $(srcdir)/include/gc.h
+	$(CXX) -c $(CXXFLAGS) $(srcdir)/gc_cpp.cc
+
+test_cpp$(EXEEXT): $(srcdir)/tests/test_cpp.cc $(srcdir)/include/gc_cpp.h \
+  $(srcdir)/include/gc.h gc_cpp.o base_lib $(UTILS)
+	rm -f test_cpp$(EXEEXT)
+	./if_mach HP_PA HPUX $(CXX) $(CXXFLAGS) -o test_cpp $(srcdir)/tests/test_cpp.cc gc_cpp.o gc.a -ldld `./threadlibs`
+	./if_not_there test_cpp$(EXEEXT) || $(CXX) $(CXXFLAGS) -DGC_NOT_DLL -o test_cpp$(EXEEXT) $(srcdir)/tests/test_cpp.cc gc_cpp.o gc.a `./threadlibs`
+
+check-cpp: test_cpp$(EXEEXT)
+	./test_cpp
+
+c++-t: c++ test_cpp$(EXEEXT)
+	./test_cpp 1
+
+c++-nt: c++
+	@echo "Use ./test_cpp 1 to test the leak library"
+
+c++: gc_cpp.o $(srcdir)/include/gc_cpp.h base_lib $(UTILS)
+	rm -f dont_ar_4
+	./if_mach SPARC SOLARIS touch dont_ar_4
+	./if_mach SPARC SOLARIS $(AR) rus gc.a gc_cpp.o
+	./if_mach M68K AMIGA touch dont_ar_4
+	./if_mach M68K AMIGA $(AR) -vrus gc.a gc_cpp.o
+	./if_not_there dont_ar_4 || $(AR) ru gc.a gc_cpp.o
+	./if_not_there dont_ar_4 || $(RANLIB) gc.a || cat /dev/null
+	echo > c++
+
+dyn_load_sunos53.o: dyn_load.c
+	$(CC) $(CFLAGS) -DSUNOS53_SHARED_LIB -c $(srcdir)/dyn_load.c -o $@
+
+# Mercury-specific target:
+# generic shared library version of the collector
+lib$(GC_GRADE).so: $(OBJS) $(UTILS) # dyn_load_sunos53.o
+	rm -f on_sparc_sunos5_so
+	./if_mach SPARC SOLARIS touch on_sparc_sunos5_so
+	./if_mach SPARC SOLARIS $(MAKE) dyn_load_sunos53.o
+	./if_mach SPARC SOLARIS \
+	$(LINK_SHARED_OBJ) -o lib$(GC_GRADE).so $(OBJS) dyn_load_sunos53.o \
+		-ldl $(MAYBE_THREAD_LIBS) $(LD_LIBFLAGS) $(EXTRA_LD_LIBFLAGS)
+	./if_not_there on_sparc_sunos5_so $(MAKE) dyn_load.o
+	./if_not_there on_sparc_sunos5_so \
+	$(LINK_SHARED_OBJ) -o lib$(GC_GRADE).so $(OBJS) dyn_load.o \
+		-lc $(MAYBE_THREAD_LIBS) $(LD_LIBFLAGS) $(EXTRA_LD_LIBFLAGS)
+
+# Mercury-specific target:
+# Darwin shared library version of the gc.
+lib$(GC_GRADE).dylib: $(OBJS) $(UTILS)
+	$(LINK_SHARED_OBJ) -install_name \
+		$(FINAL_INSTALL_MERC_GC_LIB_DIR)/lib$(GC_GRADE).dylib \
+		-o lib$(GC_GRADE).dylib $(OBJS) dyn_load.o -lc $(LD_LIBFLAGS) $(EXTRA_LD_LIBFLAGS)
+
+# SunOS5 shared library version of the collector
+sunos5gc.so: $(OBJS) dyn_load_sunos53.o
+	$(CC) -G -o sunos5gc.so $(OBJS) dyn_load_sunos53.o -ldl
+	ln sunos5gc.so libgc.so
+
+# Alpha/OSF shared library version of the collector
+libalphagc.so: $(OBJS)
+	$(LD) -shared -o libalphagc.so $(OBJS) dyn_load.o -lc
+	ln libalphagc.so libgc.so
+
+# IRIX shared library version of the collector
+libirixgc.so: $(OBJS) dyn_load.o
+	$(LD) -shared $(ABI_FLAG) -o libirixgc.so $(OBJS) dyn_load.o -lc
+	ln libirixgc.so libgc.so
+
+# Linux shared library version of the collector
+liblinuxgc.so: $(OBJS) dyn_load.o
+	gcc -shared -o liblinuxgc.so $(OBJS) dyn_load.o
+	ln liblinuxgc.so libgc.so
+
+# Build gctest with dynamic library
+dyn_test:
+	$(CC) $(CFLAGS) -o gctest$(EXEEXT) tests/test.c libgc.so `./threadlibs`
+	./gctest
+
+# Alternative Linux rule.  This is preferable, but is likely to break the
+# Makefile for some non-linux platforms.
+# LIBOBJS= $(patsubst %.o, %.lo, $(OBJS))
+#
+#.SUFFIXES: .lo $(SUFFIXES)
+#
+#.c.lo:
+# $(CC) $(CFLAGS) $(CPPFLAGS) -fPIC -c $< -o $@
+#
+# liblinuxgc.so: $(LIBOBJS) dyn_load.lo
+# 	gcc -shared -Wl,-soname=libgc.so.0 -o libgc.so.0 $(LIBOBJS) dyn_load.lo
+#	touch liblinuxgc.so
+
+mach_dep.o: $(srcdir)/mach_dep.c $(srcdir)/sparc_mach_dep.S \
+  $(srcdir)/ia64_save_regs_in_stack.s \
+  $(srcdir)/sparc_netbsd_mach_dep.s $(UTILS)
+	rm -f mach_dep.o
+	./if_mach SPARC SOLARIS $(CC) -c -o mach_dep2.o $(srcdir)/sparc_mach_dep.S
+	./if_mach SPARC OPENBSD $(CC) -c -o mach_dep2.o $(srcdir)/sparc_mach_dep.S
+	./if_mach SPARC NETBSD $(AS) -o mach_dep2.o $(srcdir)/sparc_netbsd_mach_dep.s
+	./if_mach SPARC "" $(CC) -c -o mach_dep1.o $(SPECIALCFLAGS) $(srcdir)/mach_dep.c
+	./if_mach SPARC "" $(LD) -r -o mach_dep.o mach_dep1.o mach_dep2.o
+	./if_mach IA64 "" $(AS) -o ia64_save_regs_in_stack.o $(srcdir)/ia64_save_regs_in_stack.s
+	./if_mach IA64 "" $(CC) -c -o mach_dep1.o $(SPECIALCFLAGS) $(srcdir)/mach_dep.c
+	./if_mach IA64 "" $(LD) -r -o mach_dep.o mach_dep1.o ia64_save_regs_in_stack.o
+	-./if_not_there mach_dep.o || $(CC) -c $(SPECIALCFLAGS) $(srcdir)/mach_dep.c
+	-./if_not_there mach_dep.o || `cygpath -w /bin/sh` $(CC) -c $(SPECIALCFLAGS) $(srcdir)/mach_dep.c
+	-./if_not_there mach_dep.o || /bin/sh $(CC) -c $(SPECIALCFLAGS) $(srcdir)/mach_dep.c
+
+mark_rts.o: $(srcdir)/mark_rts.c $(UTILS)
+	rm -f mark_rts.o
+	-./if_mach ALPHA OSF1 $(CC) -c $(CFLAGS) -Wo,-notail $(srcdir)/mark_rts.c
+	-./if_not_there mark_rts.o || $(CC) -c $(CFLAGS) $(srcdir)/mark_rts.c
+	-./if_not_there mark_rts.o || `cygpath -w /bin/sh` $(CC) -c $(CFLAGS) $(srcdir)/mark_rts.c
+	-./if_not_there mark_rts.o || /bin/sh $(CC) -c $(CFLAGS) $(srcdir)/mark_rts.c
+#   Work-around for DEC optimizer tail recursion elimination bug.
+#   The ALPHA-specific line should be removed if gcc is used.
+
+alloc.o: include/gc_version.h
+
+cord/cordbscs.o: $(srcdir)/cord/cordbscs.c $(CORD_INCLUDE_FILES)
+	$(CC) $(CFLAGS) -c -I$(srcdir) $(srcdir)/cord/cordbscs.c
+	mkdir cord || cat /dev/null
+	mv cordbscs.o cord/cordbscs.o
+#  not all compilers understand -o filename
+
+cord/cordxtra.o: $(srcdir)/cord/cordxtra.c $(CORD_INCLUDE_FILES)
+	$(CC) $(CFLAGS) -c -I$(srcdir) $(srcdir)/cord/cordxtra.c
+	mkdir cord || cat /dev/null
+	mv cordxtra.o cord/cordxtra.o
+
+cord/cordprnt.o: $(srcdir)/cord/cordprnt.c $(CORD_INCLUDE_FILES)
+	$(CC) $(CFLAGS) -c -I$(srcdir) $(srcdir)/cord/cordprnt.c
+	mkdir cord || cat /dev/null
+	mv cordprnt.o cord/cordprnt.o
+
+cord/cordtest$(EXEEXT): $(srcdir)/cord/tests/cordtest.c $(CORD_OBJS) \
+  base_lib $(UTILS)
+	rm -f cord/cordtest$(EXEEXT)
+	./if_mach SPARC DRSNX $(CC) $(CFLAGS) -o cord/cordtest $(srcdir)/cord/tests/cordtest.c $(CORD_OBJS) gc.a -lucb
+	./if_mach HP_PA HPUX $(CC) $(CFLAGS) -o cord/cordtest $(srcdir)/cord/tests/cordtest.c $(CORD_OBJS) gc.a -ldld `./threadlibs`
+	./if_mach M68K AMIGA $(CC) $(CFLAGS) -UGC_AMIGA_MAKINGLIB -o cord/cordtest $(srcdir)/cord/tests/cordtest.c $(CORD_OBJS) gc.a `./threadlibs`
+	./if_not_there cord/cordtest$(EXEEXT) || $(CC) $(CFLAGS) -o cord/cordtest$(EXEEXT) $(srcdir)/cord/tests/cordtest.c $(CORD_OBJS) gc.a `./threadlibs`
+
+cord/de: $(srcdir)/cord/tests/de.c $(srcdir)/cord/tests/de_win.c \
+  $(srcdir)/cord/tests/de_win.h cord/cordbscs.o cord/cordxtra.o base_lib \
+  $(UTILS)
+	rm -f cord/de
+	./if_mach SPARC DRSNX $(CC) $(CFLAGS) -o cord/de $(srcdir)/cord/tests/de.c cord/cordbscs.o cord/cordxtra.o gc.a -lcurses -ltermlib -lucb `./threadlibs`
+	./if_mach HP_PA HPUX $(CC) $(CFLAGS) -o cord/de $(srcdir)/cord/tests/de.c cord/cordbscs.o cord/cordxtra.o gc.a -lcurses -ltermlib -ldld `./threadlibs`
+	./if_mach POWERPC AIX $(CC) $(CFLAGS) -o cord/de $(srcdir)/cord/tests/de.c cord/cordbscs.o cord/cordxtra.o gc.a -lcurses
+	./if_mach POWERPC DARWIN $(CC) $(CFLAGS) -o cord/de $(srcdir)/cord/tests/de.c cord/cordbscs.o cord/cordxtra.o gc.a
+	./if_mach I386 LINUX $(CC) $(CFLAGS) -o cord/de $(srcdir)/cord/tests/de.c cord/cordbscs.o cord/cordxtra.o gc.a -lcurses `./threadlibs`
+	./if_mach ALPHA LINUX $(CC) $(CFLAGS) -o cord/de $(srcdir)/cord/tests/de.c cord/cordbscs.o cord/cordxtra.o gc.a -lcurses `./threadlibs`
+	./if_mach IA64 LINUX $(CC) $(CFLAGS) -o cord/de $(srcdir)/cord/tests/de.c cord/cordbscs.o cord/cordxtra.o gc.a -lcurses `./threadlibs`
+	./if_mach M68K AMIGA $(CC) $(CFLAGS) -UGC_AMIGA_MAKINGLIB -o cord/de $(srcdir)/cord/tests/de.c cord/cordbscs.o cord/cordxtra.o gc.a -lcurses
+	./if_not_there cord/de$(EXEEXT) || $(CC) $(CFLAGS) -o cord/de$(EXEEXT) $(srcdir)/cord/tests/de.c $(srcdir)/cord/tests/de_win.c cord/cordbscs.o cord/cordxtra.o gc.a $(CURSES) `./threadlibs`
+
+if_mach$(EXEEXT): $(srcdir)/tools/if_mach.c \
+  $(srcdir)/include/private/gcconfig.h
+	$(HOSTCC) $(HOSTCFLAGS) -o if_mach$(EXEEXT) $(srcdir)/tools/if_mach.c
+
+threadlibs$(EXEEXT): $(srcdir)/tools/threadlibs.c \
+  $(srcdir)/include/private/gcconfig.h
+	$(HOSTCC) $(HOSTCFLAGS) -o threadlibs$(EXEEXT) $(srcdir)/tools/threadlibs.c
+
+# Mercury-specific: use a shell script instead of if_not_there.c
+if_not_there: $(srcdir)/tools/if_not_there.sh
+	cp $< $@
+	chmod +x $@
+
+clean:
+	rm -f gc.a *.i *.o *.exe tests/*.o gctest gctest_dyn_link test_cpp \
+	      setjmp_test mon.out gmon.out a.out core if_not_there if_mach \
+	      base_lib c++ $(CORD_OBJS) cord/cordtest cord/de cords \
+	      dont_ar_* threadlibs
+	-rm -f *~
+
+gctest$(EXEEXT): tests/test.o base_lib $(UTILS)
+	rm -f gctest$(EXEEXT)
+	./if_mach SPARC DRSNX $(CC) $(CFLAGS) -o gctest tests/test.o gc.a -lucb
+	./if_mach HP_PA HPUX $(CC) $(CFLAGS) -o gctest tests/test.o gc.a -ldld `./threadlibs`
+	./if_mach M68K AMIGA $(CC) $(CFLAGS) -UGC_AMIGA_MAKINGLIB -o gctest  tests/test.o gc.a `./threadlibs`
+	./if_not_there gctest$(EXEEXT) || $(CC) $(CFLAGS) -o gctest$(EXEEXT) tests/test.o gc.a `./threadlibs`
+
+# If an optimized setjmp_test generates a segmentation fault,
+# odds are your compiler is broken.  Gctest may still work.
+# Try compiling setjmp_t.c unoptimized.
+setjmp_test$(EXEEXT): $(srcdir)/tools/setjmp_t.c $(srcdir)/include/gc.h \
+  $(UTILS)
+	$(CC) $(CFLAGS) -o setjmp_test$(EXEEXT) $(srcdir)/tools/setjmp_t.c
+
+check: cord/cordtest$(EXEEXT) gctest$(EXEEXT) setjmp_test$(EXEEXT)
+	./setjmp_test
+	./gctest
+	cord/cordtest
+
+# A synonym to "check" (for compatibility with older GC versions).
+test: check
+
+# BTL: added to test shared library version of collector.
+# Currently works only under SunOS5.  Requires GC_INIT call from statically
+# loaded client code.
+ABSDIR= `pwd`
+gctest_dyn_link: tests/test.o libgc.so
+	$(CC) -L$(ABSDIR) -R$(ABSDIR) -o gctest_dyn_link tests/test.o -lgc -ldl -lthread
+
+gctest_irix_dyn_link: tests/test.o libirixgc.so
+	$(CC) -L$(ABSDIR) -o gctest_irix_dyn_link tests/test.o -lirixgc
+
+SYM_PREFIX-libgc=GC
+
+reserved_namespace: $(SRCS)
+	for file in $(SRCS) tests/test.c tests/test_cpp.cc; do \
+		sed s/GC_/_GC_/g < $$file > tmp; \
+		cp tmp $$file; \
+		done
+
+user_namespace: $(SRCS)
+	for file in $(SRCS) tests/test.c tests/test_cpp.cc; do \
+		sed s/_GC_/GC_/g < $$file > tmp; \
+		cp tmp $$file; \
+		done
+
+#-----------------------------------------------------------------------------#
+
+# The Mmakefile invokes `make $(EXT_FOR_SHARED_LIB)',
+# so we need targets `a', `so', 'dylib' and `dll'.
+
+.PHONY: a
+a: lib$(GC_GRADE).a
+
+.PHONY: so
+so: lib$(GC_GRADE).so
+
+.PHONY: dylib
+dylib: lib$(GC_GRADE).dylib
+
+#-----------------------------------------------------------------------------#
+# support for DLLs using gnu-win32
+#-----------------------------------------------------------------------------#
+ifeq ($(USE_DLLS),yes)
+
+LIBGC_DLL_H = libgc_dll.h 
+LIBGC_GLOBALS_H = libgc_globals.h 
+
+DLL_CFLAGS = -DUSE_DLLS -DGC_DEFINE_DLL
+
+.PHONY: dll
+dll: libgc.dll libgc.a libgc_dll.h libgc_globals.h
+	@echo Made DLL
+
+# GNU Make seems to need these extra dependencies as a hint
+lib$(GC_GRADE).dll: lib$(GC_GRADE)$(DLL_DEF_LIB) libgc.def
+
+test_dll.o: tests/test.c libgc_dll.h libgc_globals.h
+	$(CC) $(CFLAGS) -UGC_DEFINE_DLL -c tests/test.c -o test_dll.o
+
+test_dll: test_dll.o libgc.a libgc.dll
+	$(CC) test_dll.o -L$(ABSDIR) -lgc -o test_dll
+
+SYM_PREFIX-libgc=GC
+include ../Makefile.DLLs
+
+endif
+#-----------------------------------------------------------------------------#
