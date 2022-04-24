@@ -1,0 +1,14 @@
+module(2, "std_util.m",
+	std_util,
+	{},
+	{builtin, private_builtin},
+	{int},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

@@ -1,0 +1,11 @@
+:- module library.
+
+:- pragma termination_info(library.mercury_std_library_module((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(library.stdlib_module_doc_undoc((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(library.stdlib_module_doc_undoc((builtin.out), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(library.version((builtin.out), (builtin.out)), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, (library.mercury_std_library_module), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (library.stdlib_module_doc_undoc), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (library.stdlib_module_doc_undoc), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (library.version), 2, 0, will_not_throw).
