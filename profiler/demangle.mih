@@ -1,0 +1,64 @@
+/*
+** Automatically generated from `demangle.m'
+** by the Mercury compiler,
+** version 22.01.2-beta-2022-04-26
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module demangle.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_demangle
+#define MR_HEADER_GUARD_demangle
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef DEMANGLE_DECL_GUARD
+#define DEMANGLE_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct demangle__demangle__type_ctor_info_data_category_0;
+
+extern const MR_TypeCtorInfo_Struct demangle__demangle__type_ctor_info_introduced_pred_type_0;
+
+extern const MR_TypeCtorInfo_Struct demangle__demangle__type_ctor_info_pred_category_0;
+
+void MR_CALL 
+demangle__demangle_2_p_0(
+  MR_String param_1,
+  MR_String * param_2);
+
+void mercury__demangle__init(void);
+void mercury__demangle__init_type_tables(void);
+void mercury__demangle__init_debugger(void);
+const char *mercury__demangle__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_demangle
+
+// :- end_interface demangle.
