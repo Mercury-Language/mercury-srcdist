@@ -1,0 +1,2 @@
+:- module io_combinator.
+:- interface.

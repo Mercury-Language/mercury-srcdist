@@ -1,0 +1,7 @@
+:- module (ll_backend.transform_llds).
+:- interface.
+:- use_module libs.
+:- use_module (libs.globals).
+:- use_module (ll_backend.llds).
+:- pred transform_llds(libs.globals.globals, ll_backend.llds.c_file, ll_backend.llds.c_file).
+:- mode transform_llds((builtin.in), (builtin.in), (builtin.out)) is det.

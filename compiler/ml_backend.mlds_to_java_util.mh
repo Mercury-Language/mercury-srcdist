@@ -1,0 +1,43 @@
+// Automatically generated from `mlds_to_java_util.m'
+// by the Mercury compiler,
+// version rotd-2022-04-26
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef ML_BACKEND__MLDS_TO_JAVA_UTIL_MH
+#define ML_BACKEND__MLDS_TO_JAVA_UTIL_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef ML_BACKEND__MLDS_TO_JAVA_UTIL_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_JAVA_UTIL_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ml_backend__mlds_to_java_util__mutable_variable_last_context;
+#else
+    extern MR_Word ml_backend__mlds_to_java_util__mutable_variable_last_context;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ml_backend__mlds_to_java_util__mutable_variable_last_context_lock;
+#endif
+
+
+#endif
+void ml_backend__mlds_to_java_util__user_init_pred_36_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* ML_BACKEND__MLDS_TO_JAVA_UTIL_MH */

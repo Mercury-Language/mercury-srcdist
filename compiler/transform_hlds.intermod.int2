@@ -1,0 +1,3 @@
+:- module (transform_hlds.intermod).
+:- interface.
+:- type intermod_info.
