@@ -1,0 +1,2 @@
+:- module (check_hlds.polymorphism_post_copy).
+:- interface.
