@@ -1,0 +1,90 @@
+X: foo
+Y: bar
+X append Y: foobar
+capitalize_first X: Foo
+uncapitalize_first CapX: foo
+int_to_string 1234: 1234
+octal 1234: 2322
+hexadecimal 1234: 4D2
+Grouped 1234: 1,234
+Grouped 113: 1--1--1--0--0--0--1
+Grouped 1300000: 1,300,000
+Non Grouped 45999: 45999
+string_to_int 5678: 5678
+Five f's: fffff
+Five f's and five dots: fffff.....
+Five dashes, five f's and five dots: -----fffff.....
+Five φ's: φφφφφ
+Five φ's and five dots: φφφφφ.....
+Five dashes, five φ's and five dots: -----φφφφφ.....
+aaa|áaȧ|1111111|¹½⅓¼⅕⅙⅛|  1,300,000.00
+b  |б  |       |       |      9,999.00
+cc |цц |    333|    ¾⅘⅚|123,456,789.99
+
+Wrapped string:
+*aaaaaaaaa
+aaaaaaaaaa
+a* bbbbb
+bbb b
+ccccc c c
+c cccc c c
+c c ccccc
+ccc cccc c
+ccc ccc
+ccc
+*ddddddddd
+dddddddddd
+dddddddddd
+dddddddddd
+dddddddddd
+ddddd* eee
+Wrapped string with hyphens:
+*aaaaaaaa-
+aaaaaaaaa-
+aaa* bbbbb
+bbb b
+ccccc c c
+c cccc c c
+c c ccccc
+ccc cccc c
+ccc ccc
+ccc
+*dddddddd-
+ddddddddd-
+ddddddddd-
+ddddddddd-
+ddddddddd-
+ddddddddd-
+d* eee
+Wrapped string with dots:
+*a...
+aa...
+aa...
+a*
+bbbbb
+bbb b
+ccccc
+c c c
+cccc
+c c c
+c
+ccccc
+ccc
+cccc
+c ccc
+ccc
+ccc
+*d...
+dd...
+dd...
+dd...
+dd...
+dd...
+dd...
+d*
+eee
+Wrapped string where separator is too long:
+wh
+at
+ev
+er

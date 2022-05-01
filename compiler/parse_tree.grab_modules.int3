@@ -1,0 +1,8 @@
+:- module (parse_tree.grab_modules).
+:- interface.
+:- type maybe_opt_file_error
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_opt_file_error, du_repn(enum("no_opt_file_error", "opt_file_error", [],  no_c_j_cs))).
+:- type_representation(missing_ancestor_map, is_eqv_to(map(module_name, missing_ancestor_info))).
+:- type_representation(module_import_or_use_map, is_eqv_to(map(module_name, one_or_more(import_or_use_context)))).
+:- type_representation(module_inclusion_map, is_eqv_to(map(module_name, one_or_more(include_context)))).
