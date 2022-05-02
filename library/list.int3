@@ -1,0 +1,13 @@
+:- module list.
+:- interface.
+:- type list(T).
+:- abstract_inst((empty_list)).
+:- abstract_inst((list(I))).
+:- abstract_inst((list_skel)).
+:- abstract_inst((list_skel(I))).
+:- abstract_inst((non_empty_list)).
+:- abstract_mode((in_list_skel)).
+:- abstract_mode((list_skel_in(I))).
+:- abstract_mode((list_skel_out)).
+:- abstract_mode((list_skel_out(I))).
+:- abstract_mode((out_list_skel)).

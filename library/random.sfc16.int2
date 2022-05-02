@@ -1,0 +1,4 @@
+:- module (random.sfc16).
+:- interface.
+:- type random.
+:- instance (random.random(random.sfc16.random)).

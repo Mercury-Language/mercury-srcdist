@@ -1,0 +1,4 @@
+:- module set.
+:- interface.
+:- use_module set_ordlist.
+:- type set(T) == set_ordlist.set_ordlist(T).

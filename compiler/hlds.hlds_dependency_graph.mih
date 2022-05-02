@@ -1,0 +1,198 @@
+/*
+** Automatically generated from `hlds_dependency_graph.m'
+** by the Mercury compiler,
+** version rotd-2022-05-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_dependency_graph.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_dependency_graph
+#define MR_HEADER_GUARD_hlds__hlds_dependency_graph
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_DEPENDENCY_GRAPH_DECL_GUARD
+#define HLDS__HLDS_DEPENDENCY_GRAPH_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_ctor_info_dep_arcs_1;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_ctor_info_edge_kind_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_ctor_info_hlds_bottom_up_dependency_sccs_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_ctor_info_hlds_dependency_graph_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_ctor_info_hlds_dependency_graph_key_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_ctor_info_hlds_dependency_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_ctor_info_include_imported_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_ctor_info_scc_id_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_ctor_info_scc_with_entry_points_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_ctor_info_what_dependency_edges_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_hlds__hlds_dependency_graph__dependency_node__arity1__hlds__hlds_pred__pred_id__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_hlds__hlds_dependency_graph__dependency_node__arity1__hlds__hlds_pred__pred_proc_id__arity0__[6];
+
+extern const MR_TypeClassDeclStruct hlds__hlds_dependency_graph__hlds__hlds_dependency_graph__type_class_decl_dependency_node_1;
+
+void MR_CALL 
+hlds__hlds_dependency_graph__get_bottom_up_sccs_with_entry_points_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph__module_info_ensure_dependency_info_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph__module_info_rebuild_dependency_info_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph__write_dependency_graph_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph__write_prof_dependency_graph_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_dependency_graph__build_pred_dependency_graph_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+hlds__hlds_dependency_graph__build_proc_dependency_graph_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph____Compare____hlds_bottom_up_dependency_sccs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph____Compare____hlds_dependency_graph_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph____Compare____hlds_dependency_graph_key_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph____Compare____hlds_dependency_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph____Compare____include_imported_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph____Compare____scc_with_entry_points_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_dependency_graph____Compare____what_dependency_edges_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_dependency_graph____Unify____hlds_bottom_up_dependency_sccs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_dependency_graph____Unify____hlds_dependency_graph_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_dependency_graph____Unify____hlds_dependency_graph_key_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_dependency_graph____Unify____hlds_dependency_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_dependency_graph____Unify____include_imported_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_dependency_graph____Unify____scc_with_entry_points_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_dependency_graph____Unify____what_dependency_edges_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_dependency_graph__init(void);
+void mercury__hlds__hlds_dependency_graph__init_type_tables(void);
+void mercury__hlds__hlds_dependency_graph__init_debugger(void);
+const char *mercury__hlds__hlds_dependency_graph__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_dependency_graph
+
+// :- end_interface hlds.hlds_dependency_graph.
