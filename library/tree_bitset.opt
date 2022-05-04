@@ -1,0 +1,1097 @@
+:- module tree_bitset.
+:- use_module bool.
+:- use_module builtin.
+:- use_module enum.
+:- use_module int.
+:- use_module list.
+:- use_module maybe.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module set.
+:- use_module term.
+:- use_module uint.
+
+:- type fold_direction
+    --->    low_to_high 
+    ;       high_to_low .
+:- type interior_node
+    --->    interior_node((tree_bitset.init_offset) :: int, (tree_bitset.limit_offset) :: int, (tree_bitset.components) :: tree_bitset.node_list).
+:- type leaf_node
+    --->    leaf_node((tree_bitset.leaf_offset) :: int, (tree_bitset.leaf_bits) :: uint).
+:- type node_list
+    --->    leaf_list((tree_bitset.leaf_nodes) :: list.list(tree_bitset.leaf_node))
+    ;       interior_list((tree_bitset.level) :: int, (tree_bitset.interior_nodes) :: list.list(tree_bitset.interior_node)).
+:- type tree_bitset(T)
+    --->    tree_bitset(tree_bitset.node_list).
+
+:- pred tree_bitset.all_true_bits((pred T), int, uint, int) <= (enum.enum(T)).
+:- mode all_true_bits(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pragma type_spec(pred((tree_bitset.all_true_bits)/4), (T = term.var(V_2)), (tree_bitset.'TypeSpecOf__pred__all_true_bits__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.all_true_bits)/4), (T = int), (tree_bitset.'TypeSpecOf__pred__all_true_bits__[T = int]')).
+:- pred tree_bitset.do_foldl2_pred(pred(T, U, U, V, V), list.list(tree_bitset.interior_node), U, U, V, V) <= (enum.enum(T)).
+:- mode do_foldl2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode do_foldl2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec(pred((tree_bitset.do_foldl2_pred)/6), (T = term.var(V_4)), (tree_bitset.'TypeSpecOf__pred__do_foldl2_pred__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.do_foldl2_pred)/6), (T = int), (tree_bitset.'TypeSpecOf__pred__do_foldl2_pred__[T = int]')).
+:- pred tree_bitset.do_foldl_pred(pred(T, U, U), list.list(tree_bitset.interior_node), U, U) <= (enum.enum(T)).
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)) is nondet.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pragma type_spec(pred((tree_bitset.do_foldl_pred)/4), (T = term.var(V_3)), (tree_bitset.'TypeSpecOf__pred__do_foldl_pred__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.do_foldl_pred)/4), (T = int), (tree_bitset.'TypeSpecOf__pred__do_foldl_pred__[T = int]')).
+:- pred tree_bitset.do_foldr2_pred(pred(T, U, U, V, V), list.list(tree_bitset.interior_node), U, U, V, V) <= (enum.enum(T)).
+:- mode do_foldr2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode do_foldr2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec(pred((tree_bitset.do_foldr2_pred)/6), (T = term.var(V_4)), (tree_bitset.'TypeSpecOf__pred__do_foldr2_pred__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.do_foldr2_pred)/6), (T = int), (tree_bitset.'TypeSpecOf__pred__do_foldr2_pred__[T = int]')).
+:- pred tree_bitset.do_foldr_pred(pred(T, U, U), list.list(tree_bitset.interior_node), U, U) <= (enum.enum(T)).
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec(pred((tree_bitset.do_foldr_pred)/4), (T = term.var(V_3)), (tree_bitset.'TypeSpecOf__pred__do_foldr_pred__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.do_foldr_pred)/4), (T = int), (tree_bitset.'TypeSpecOf__pred__do_foldr_pred__[T = int]')).
+:- pred tree_bitset.fold2_bits(tree_bitset.fold_direction, pred(T, U, U, V, V), int, uint, int, U, U, V, V) <= (enum.enum(T)).
+:- mode fold2_bits((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode fold2_bits((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec(pred((tree_bitset.fold2_bits)/9), (T = term.var(V_4)), (tree_bitset.'TypeSpecOf__pred__fold2_bits__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.fold2_bits)/9), (T = int), (tree_bitset.'TypeSpecOf__pred__fold2_bits__[T = int]')).
+:- pred tree_bitset.fold_bits(tree_bitset.fold_direction, pred(T, U, U), int, uint, int, U, U) <= (enum.enum(T)).
+:- mode fold_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode fold_bits((builtin.in), ((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode fold_bits((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode fold_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode fold_bits((builtin.in), ((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fold_bits((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode fold_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode fold_bits((builtin.in), ((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is nondet.
+:- mode fold_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode fold_bits((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pragma type_spec(pred((tree_bitset.fold_bits)/7), (T = term.var(V_3)), (tree_bitset.'TypeSpecOf__pred__fold_bits__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.fold_bits)/7), (T = int), (tree_bitset.'TypeSpecOf__pred__fold_bits__[T = int]')).
+:- func tree_bitset.get_bit(uint, int) = uint.
+:- mode get_bit((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pragma inline(func((tree_bitset.get_bit)/2)).
+:- func tree_bitset.index_to_enum(int) = T <= (enum.enum(T)).
+:- mode index_to_enum((builtin.in)) = (builtin.out) is det.
+:- func tree_bitset.integrity(maybe.maybe(pair.pair(int, int)), tree_bitset.node_list) = bool.bool.
+:- mode integrity((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred tree_bitset.interior_all_true((pred T), list.list(tree_bitset.interior_node)) <= (enum.enum(T)).
+:- mode interior_all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- pragma type_spec(pred((tree_bitset.interior_all_true)/2), (T = term.var(V_2)), (tree_bitset.'TypeSpecOf__pred__interior_all_true__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.interior_all_true)/2), (T = int), (tree_bitset.'TypeSpecOf__pred__interior_all_true__[T = int]')).
+:- pred tree_bitset.interiornode_divide((pred T), list.list(tree_bitset.interior_node), list.list(tree_bitset.interior_node), list.list(tree_bitset.interior_node)) <= (enum.enum(T)).
+:- mode interiornode_divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred tree_bitset.leaf_all_true((pred T), list.list(tree_bitset.leaf_node)) <= (enum.enum(T)).
+:- mode leaf_all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- pragma type_spec(pred((tree_bitset.leaf_all_true)/2), (T = term.var(V_2)), (tree_bitset.'TypeSpecOf__pred__leaf_all_true__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.leaf_all_true)/2), (T = int), (tree_bitset.'TypeSpecOf__pred__leaf_all_true__[T = int]')).
+:- pred tree_bitset.leaf_foldl2_pred(pred(T, U, U, V, V), list.list(tree_bitset.leaf_node), U, U, V, V) <= (enum.enum(T)).
+:- mode leaf_foldl2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode leaf_foldl2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec(pred((tree_bitset.leaf_foldl2_pred)/6), (T = term.var(V_4)), (tree_bitset.'TypeSpecOf__pred__leaf_foldl2_pred__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.leaf_foldl2_pred)/6), (T = int), (tree_bitset.'TypeSpecOf__pred__leaf_foldl2_pred__[T = int]')).
+:- pred tree_bitset.leaf_foldl_pred(pred(T, U, U), list.list(tree_bitset.leaf_node), U, U) <= (enum.enum(T)).
+:- mode leaf_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode leaf_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode leaf_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode leaf_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode leaf_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode leaf_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode leaf_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode leaf_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)) is nondet.
+:- mode leaf_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode leaf_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pragma type_spec(pred((tree_bitset.leaf_foldl_pred)/4), (T = term.var(V_3)), (tree_bitset.'TypeSpecOf__pred__leaf_foldl_pred__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.leaf_foldl_pred)/4), (T = int), (tree_bitset.'TypeSpecOf__pred__leaf_foldl_pred__[T = int]')).
+:- pred tree_bitset.leaf_foldr2_pred(pred(T, U, U, V, V), list.list(tree_bitset.leaf_node), U, U, V, V) <= (enum.enum(T)).
+:- mode leaf_foldr2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- mode leaf_foldr2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec(pred((tree_bitset.leaf_foldr2_pred)/6), (T = term.var(V_4)), (tree_bitset.'TypeSpecOf__pred__leaf_foldr2_pred__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.leaf_foldr2_pred)/6), (T = int), (tree_bitset.'TypeSpecOf__pred__leaf_foldr2_pred__[T = int]')).
+:- pred tree_bitset.leaf_foldr_pred(pred(T, U, U), list.list(tree_bitset.leaf_node), U, U) <= (enum.enum(T)).
+:- mode leaf_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode leaf_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode leaf_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode leaf_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode leaf_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode leaf_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pragma type_spec(pred((tree_bitset.leaf_foldr_pred)/4), (T = term.var(V_3)), (tree_bitset.'TypeSpecOf__pred__leaf_foldr_pred__[T = var(V_2)]')).
+:- pragma type_spec(pred((tree_bitset.leaf_foldr_pred)/4), (T = int), (tree_bitset.'TypeSpecOf__pred__leaf_foldr_pred__[T = int]')).
+:- pred tree_bitset.leaflist_divide((pred T), list.list(tree_bitset.leaf_node), list.list(tree_bitset.leaf_node), list.list(tree_bitset.leaf_node)) <= (enum.enum(T)).
+:- mode leaflist_divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred tree_bitset.leafnode_divide((pred T), int, int, uint, uint, uint, uint, uint) <= (enum.enum(T)).
+:- mode leafnode_divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func tree_bitset.make_leaf_node(int, uint) = tree_bitset.leaf_node.
+:- mode make_leaf_node((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pragma inline(func((tree_bitset.make_leaf_node)/2)).
+:- func tree_bitset.mask(int) = uint.
+:- mode mask((builtin.in)) = (builtin.out) is det.
+:- pragma inline(func((tree_bitset.mask)/1)).
+:- pred tree_bitset.prune_top_levels(tree_bitset.node_list, tree_bitset.node_list).
+:- mode prune_top_levels((builtin.in), (builtin.out)) is det.
+:- func tree_bitset.set_bit(uint, int) = uint.
+:- mode set_bit((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pragma inline(func((tree_bitset.set_bit)/2)).
+:- func tree_bitset.wrap_tree_bitset(tree_bitset.node_list) = tree_bitset.tree_bitset(T).
+:- mode wrap_tree_bitset((builtin.in)) = (builtin.out) is det.
+:- pragma inline(func((tree_bitset.wrap_tree_bitset)/1)).
+
+tree_bitset.all_true(V_3, V_4) :-
+    V_4 = tree_bitset.tree_bitset(V_5) : tree_bitset.tree_bitset(T_1),
+    ( % disjunction
+      V_5 = tree_bitset.leaf_list(V_6) : tree_bitset.node_list,
+      tree_bitset.leaf_all_true(V_3, V_6)
+    ;
+      V_5 = tree_bitset.interior_list(V_7, V_8) : tree_bitset.node_list,
+      tree_bitset.interior_all_true(V_3, V_8)
+    ).
+
+tree_bitset.all_true_bits(V_5, V_6, V_7, V_8) :-
+    ( if
+      V_7 = 0u : uint
+    then
+      true
+    else
+      ( if
+        V_8 = 1 : int
+      then
+        V_9 = tree_bitset.index_to_enum(V_6),
+        call(V_5, V_9)
+      else
+        V_10 = int.unchecked_right_shift(V_8, V_14),
+        V_14 = 1 : int,
+        V_11 = tree_bitset.mask(V_10),
+        V_12 = uint.(V_11 /\ V_7),
+        V_13 = uint.(V_11 /\ V_15),
+        V_15 = uint.unchecked_right_shift(V_7, V_10),
+        tree_bitset.all_true_bits(V_5, V_6, V_12, V_10),
+        V_16 = int.(V_6 + V_10),
+        tree_bitset.all_true_bits(V_5, V_16, V_13, V_10)
+      )
+    ).
+
+tree_bitset.count(V_3) = V_2 :-
+    V_2 = tree_bitset.foldl(V_6, V_3, V_11),
+    V_6 = (func(V_7::(ground >> ground), V_8::(ground >> ground)) = (V_9::(free >> ground)) is det :-
+      some [] (
+        V_7 = V_12,
+        V_8 = V_14,
+        V_9 = int.(V_14 + V_10),
+        V_10 = 1 : int
+      )
+    ) : (func(T_1, int) = int),
+    V_11 = 0 : int.
+
+tree_bitset.delete(V_4, V_6, V_7) :-
+    V_7 = tree_bitset.delete(V_6, V_4).
+
+tree_bitset.delete_list(V_4, V_5) = V_3 :-
+    V_3 = tree_bitset.difference(V_4, V_6),
+    V_6 = tree_bitset.list_to_set(V_5).
+
+tree_bitset.delete_list(V_4, V_6, V_7) :-
+    V_7 = tree_bitset.delete_list(V_6, V_4).
+
+tree_bitset.difference(V_4, V_5, V_3) :-
+    V_3 = tree_bitset.difference(V_4, V_5).
+
+tree_bitset.divide(V_5, V_6, V_7, V_8) :-
+    V_6 = tree_bitset.tree_bitset(V_9) : tree_bitset.tree_bitset(T_1),
+    ( % disjunction
+      V_9 = tree_bitset.leaf_list(V_10) : tree_bitset.node_list,
+      tree_bitset.leaflist_divide(V_5, V_10, V_11, V_12),
+      V_7 = tree_bitset.wrap_tree_bitset(V_19),
+      V_19 = tree_bitset.leaf_list(V_11) : tree_bitset.node_list,
+      V_8 = tree_bitset.wrap_tree_bitset(V_20),
+      V_20 = tree_bitset.leaf_list(V_12) : tree_bitset.node_list
+    ;
+      V_9 = tree_bitset.interior_list(V_13, V_14) : tree_bitset.node_list,
+      tree_bitset.interiornode_divide(V_5, V_14, V_15, V_16),
+      V_21 = tree_bitset.interior_list(V_13, V_15) : tree_bitset.node_list,
+      tree_bitset.prune_top_levels(V_21, V_17),
+      V_7 = tree_bitset.wrap_tree_bitset(V_17),
+      V_22 = tree_bitset.interior_list(V_13, V_16) : tree_bitset.node_list,
+      tree_bitset.prune_top_levels(V_22, V_18),
+      V_8 = tree_bitset.wrap_tree_bitset(V_18)
+    ).
+
+tree_bitset.do_foldl2_pred(V_7, list.[], V_10, V_11, V_12, V_13) :-
+    V_13 = V_12,
+    V_11 = V_10.
+tree_bitset.do_foldl2_pred(V_14, list.[V_15 | V_16], V_23, V_24, V_25, V_26) :-
+    V_15 = tree_bitset.interior_node(V_31, V_32, V_19) : tree_bitset.interior_node,
+    ( % disjunction
+      V_19 = tree_bitset.leaf_list(V_20) : tree_bitset.node_list,
+      tree_bitset.leaf_foldl2_pred(V_14, V_20, V_23, V_29, V_25, V_30)
+    ;
+      V_19 = tree_bitset.interior_list(V_21, V_22) : tree_bitset.node_list,
+      tree_bitset.do_foldl2_pred(V_14, V_22, V_23, V_29, V_25, V_30)
+    ),
+    tree_bitset.do_foldl2_pred(V_14, V_16, V_29, V_24, V_30, V_26).
+
+tree_bitset.do_foldl_pred(V_5, list.[], V_7, V_8) :-
+    V_8 = V_7.
+tree_bitset.do_foldl_pred(V_9, list.[V_10 | V_11], V_17, V_18) :-
+    V_10 = tree_bitset.interior_node(V_21, V_22, V_13) : tree_bitset.interior_node,
+    ( % disjunction
+      V_13 = tree_bitset.leaf_list(V_14) : tree_bitset.node_list,
+      tree_bitset.leaf_foldl_pred(V_9, V_14, V_17, V_20)
+    ;
+      V_13 = tree_bitset.interior_list(V_15, V_16) : tree_bitset.node_list,
+      tree_bitset.do_foldl_pred(V_9, V_16, V_17, V_20)
+    ),
+    tree_bitset.do_foldl_pred(V_9, V_11, V_20, V_18).
+
+tree_bitset.do_foldr2_pred(V_7, list.[], V_10, V_11, V_12, V_13) :-
+    V_13 = V_12,
+    V_11 = V_10.
+tree_bitset.do_foldr2_pred(V_14, list.[V_15 | V_16], V_23, V_24, V_25, V_26) :-
+    tree_bitset.do_foldr2_pred(V_14, V_16, V_23, V_27, V_25, V_28),
+    V_15 = tree_bitset.interior_node(V_29, V_30, V_19) : tree_bitset.interior_node,
+    ( % disjunction
+      V_19 = tree_bitset.leaf_list(V_20) : tree_bitset.node_list,
+      tree_bitset.leaf_foldr2_pred(V_14, V_20, V_27, V_24, V_28, V_26)
+    ;
+      V_19 = tree_bitset.interior_list(V_21, V_22) : tree_bitset.node_list,
+      tree_bitset.do_foldr2_pred(V_14, V_22, V_27, V_24, V_28, V_26)
+    ).
+
+tree_bitset.do_foldr_pred(V_5, list.[], V_7, V_8) :-
+    V_8 = V_7.
+tree_bitset.do_foldr_pred(V_9, list.[V_10 | V_11], V_17, V_18) :-
+    tree_bitset.do_foldr_pred(V_9, V_11, V_17, V_19),
+    V_10 = tree_bitset.interior_node(V_20, V_21, V_13) : tree_bitset.interior_node,
+    ( % disjunction
+      V_13 = tree_bitset.leaf_list(V_14) : tree_bitset.node_list,
+      tree_bitset.leaf_foldr_pred(V_9, V_14, V_19, V_18)
+    ;
+      V_13 = tree_bitset.interior_list(V_15, V_16) : tree_bitset.node_list,
+      tree_bitset.do_foldr_pred(V_9, V_16, V_19, V_18)
+    ).
+
+tree_bitset.filter(V_4, V_5) = V_6 :-
+    V_7 = tree_bitset.to_sorted_list(V_5),
+    V_8 = list.filter(V_4, V_7),
+    V_6 = tree_bitset.sorted_list_to_set(V_8).
+
+tree_bitset.filter(V_5, V_6, V_7, V_8) :-
+    V_9 = tree_bitset.to_sorted_list(V_6),
+    list.filter(V_5, V_9, V_10, V_11),
+    V_7 = tree_bitset.sorted_list_to_set(V_10),
+    V_8 = tree_bitset.sorted_list_to_set(V_11).
+
+tree_bitset.fold2_bits(V_10, V_11, V_12, V_13, V_14, V_22, V_23, V_24, V_25) :-
+    ( if
+      V_13 = 0u : uint
+    then
+      V_25 = V_24,
+      V_23 = V_22
+    else
+      ( if
+        V_14 = 1 : int
+      then
+        V_17 = tree_bitset.index_to_enum(V_12),
+        call(V_11, V_17, V_22, V_23, V_24, V_25)
+      else
+        V_18 = int.unchecked_right_shift(V_14, V_28),
+        V_28 = 1 : int,
+        V_19 = tree_bitset.mask(V_18),
+        V_20 = uint.(V_19 /\ V_13),
+        V_21 = uint.(V_19 /\ V_29),
+        V_29 = uint.unchecked_right_shift(V_13, V_18),
+        ( % disjunction
+          V_10 = tree_bitset.low_to_high : tree_bitset.fold_direction,
+          tree_bitset.fold2_bits(V_10, V_11, V_12, V_20, V_18, V_22, V_35, V_24, V_36),
+          V_37 = int.(V_12 + V_18),
+          tree_bitset.fold2_bits(V_10, V_11, V_37, V_21, V_18, V_35, V_23, V_36, V_25)
+        ;
+          V_10 = tree_bitset.high_to_low : tree_bitset.fold_direction,
+          V_30 = int.(V_12 + V_18),
+          tree_bitset.fold2_bits(V_10, V_11, V_30, V_21, V_18, V_22, V_31, V_24, V_32),
+          tree_bitset.fold2_bits(V_10, V_11, V_12, V_20, V_18, V_31, V_23, V_32, V_25)
+        )
+      )
+    ).
+
+tree_bitset.fold_bits(V_8, V_9, V_10, V_11, V_12, V_19, V_20) :-
+    ( if
+      V_11 = 0u : uint
+    then
+      V_20 = V_19
+    else
+      ( if
+        V_12 = 1 : int
+      then
+        V_14 = tree_bitset.index_to_enum(V_10),
+        call(V_9, V_14, V_19, V_20)
+      else
+        V_15 = int.unchecked_right_shift(V_12, V_22),
+        V_22 = 1 : int,
+        V_16 = tree_bitset.mask(V_15),
+        V_17 = uint.(V_16 /\ V_11),
+        V_18 = uint.(V_16 /\ V_23),
+        V_23 = uint.unchecked_right_shift(V_11, V_15),
+        ( % disjunction
+          V_8 = tree_bitset.low_to_high : tree_bitset.fold_direction,
+          tree_bitset.fold_bits(V_8, V_9, V_10, V_17, V_15, V_19, V_27),
+          V_28 = int.(V_10 + V_15),
+          tree_bitset.fold_bits(V_8, V_9, V_28, V_18, V_15, V_27, V_20)
+        ;
+          V_8 = tree_bitset.high_to_low : tree_bitset.fold_direction,
+          V_24 = int.(V_10 + V_15),
+          tree_bitset.fold_bits(V_8, V_9, V_24, V_18, V_15, V_19, V_25),
+          tree_bitset.fold_bits(V_8, V_9, V_10, V_17, V_15, V_25, V_20)
+        )
+      )
+    ).
+
+tree_bitset.foldl(V_5, V_6, V_7) = V_8 :-
+    V_9 = (pred(V_13::(ground >> ground), V_14::(ground >> ground), V_15::(free >> ground)) is det :-
+      some [] (
+        V_13 = V_16,
+        V_14 = V_17,
+        V_18 = apply(V_5, V_16, V_17),
+        V_15 = V_18
+      )
+    ) : pred(T_1, U_2, U_2),
+    tree_bitset.foldl(V_9, V_6, V_7, V_8).
+
+tree_bitset.foldl(V_5, V_6, V_12, V_13) :-
+    V_6 = tree_bitset.tree_bitset(V_8) : tree_bitset.tree_bitset(T_1),
+    ( % disjunction
+      V_8 = tree_bitset.leaf_list(V_9) : tree_bitset.node_list,
+      tree_bitset.leaf_foldl_pred(V_5, V_9, V_12, V_13)
+    ;
+      V_8 = tree_bitset.interior_list(V_10, V_11) : tree_bitset.node_list,
+      tree_bitset.do_foldl_pred(V_5, V_11, V_12, V_13)
+    ).
+
+tree_bitset.foldl2(V_7, V_8, V_15, V_16, V_17, V_18) :-
+    V_8 = tree_bitset.tree_bitset(V_11) : tree_bitset.tree_bitset(T_1),
+    ( % disjunction
+      V_11 = tree_bitset.leaf_list(V_12) : tree_bitset.node_list,
+      tree_bitset.leaf_foldl2_pred(V_7, V_12, V_15, V_16, V_17, V_18)
+    ;
+      V_11 = tree_bitset.interior_list(V_13, V_14) : tree_bitset.node_list,
+      tree_bitset.do_foldl2_pred(V_7, V_14, V_15, V_16, V_17, V_18)
+    ).
+
+tree_bitset.foldr(V_5, V_6, V_7) = V_8 :-
+    V_9 = (pred(V_13::(ground >> ground), V_14::(ground >> ground), V_15::(free >> ground)) is det :-
+      some [] (
+        V_13 = V_16,
+        V_14 = V_17,
+        V_18 = apply(V_5, V_16, V_17),
+        V_15 = V_18
+      )
+    ) : pred(T_1, U_2, U_2),
+    tree_bitset.foldr(V_9, V_6, V_7, V_8).
+
+tree_bitset.foldr(V_5, V_6, V_12, V_13) :-
+    V_6 = tree_bitset.tree_bitset(V_8) : tree_bitset.tree_bitset(T_1),
+    ( % disjunction
+      V_8 = tree_bitset.leaf_list(V_9) : tree_bitset.node_list,
+      tree_bitset.leaf_foldr_pred(V_5, V_9, V_12, V_13)
+    ;
+      V_8 = tree_bitset.interior_list(V_10, V_11) : tree_bitset.node_list,
+      tree_bitset.do_foldr_pred(V_5, V_11, V_12, V_13)
+    ).
+
+tree_bitset.foldr2(V_7, V_8, V_15, V_16, V_17, V_18) :-
+    V_8 = tree_bitset.tree_bitset(V_11) : tree_bitset.tree_bitset(T_1),
+    ( % disjunction
+      V_11 = tree_bitset.leaf_list(V_12) : tree_bitset.node_list,
+      tree_bitset.leaf_foldr2_pred(V_7, V_12, V_15, V_16, V_17, V_18)
+    ;
+      V_11 = tree_bitset.interior_list(V_13, V_14) : tree_bitset.node_list,
+      tree_bitset.do_foldr2_pred(V_7, V_14, V_15, V_16, V_17, V_18)
+    ).
+
+tree_bitset.from_set(V_3) = V_2 :-
+    V_2 = tree_bitset.sorted_list_to_set(V_4),
+    V_4 = set.to_sorted_list(V_3).
+
+:- pragma inline(func((tree_bitset.get_bit)/2)).
+tree_bitset.get_bit(V_4, V_5) = V_3 :-
+    V_3 = uint.(V_4 /\ V_6),
+    V_6 = uint.unchecked_left_shift(V_7, V_5),
+    V_7 = 1u : uint.
+
+tree_bitset.init = V_1 :-
+    V_1 = tree_bitset.wrap_tree_bitset(V_2),
+    V_2 = tree_bitset.leaf_list(V_3) : tree_bitset.node_list,
+    V_3 = list.[] : list.list(tree_bitset.leaf_node).
+
+tree_bitset.insert(V_4, V_6, V_7) :-
+    V_7 = tree_bitset.insert(V_6, V_4).
+
+tree_bitset.insert_list(V_4, V_5) = V_3 :-
+    V_3 = tree_bitset.union(V_6, V_4),
+    V_6 = tree_bitset.list_to_set(V_5).
+
+tree_bitset.insert_list(V_4, V_6, V_7) :-
+    V_7 = tree_bitset.insert_list(V_6, V_4).
+
+tree_bitset.interior_all_true(V_3, list.[]).
+tree_bitset.interior_all_true(V_4, list.[V_5 | V_6]) :-
+    V_5 = tree_bitset.interior_node(V_11, V_12, V_7) : tree_bitset.interior_node,
+    ( % disjunction
+      V_7 = tree_bitset.leaf_list(V_8) : tree_bitset.node_list,
+      tree_bitset.leaf_all_true(V_4, V_8)
+    ;
+      V_7 = tree_bitset.interior_list(V_9, V_10) : tree_bitset.node_list,
+      tree_bitset.interior_all_true(V_4, V_10)
+    ),
+    tree_bitset.interior_all_true(V_4, V_6).
+
+tree_bitset.interiornode_divide(V_5, list.[], list.[], list.[]).
+tree_bitset.interiornode_divide(V_6, list.[V_7 | V_8], V_9, V_10) :-
+    tree_bitset.interiornode_divide(V_6, V_8, V_11, V_12),
+    V_7 = tree_bitset.interior_node(V_13, V_14, V_15) : tree_bitset.interior_node,
+    ( % disjunction
+      V_15 = tree_bitset.leaf_list(V_16) : tree_bitset.node_list,
+      tree_bitset.leaflist_divide(V_6, V_16, V_17, V_18),
+      ( % disjunction
+        V_17 = list.[] : list.list(tree_bitset.leaf_node),
+        V_9 = V_11
+      ;
+        V_17 = list.[V_19 | V_20] : list.list(tree_bitset.leaf_node),
+        V_21 = tree_bitset.interior_node(V_13, V_14, V_35) : tree_bitset.interior_node,
+        V_35 = tree_bitset.leaf_list(V_17) : tree_bitset.node_list,
+        V_9 = list.[V_21 | V_11] : list.list(tree_bitset.interior_node)
+      ),
+      ( % disjunction
+        V_18 = list.[] : list.list(tree_bitset.leaf_node),
+        V_10 = V_12
+      ;
+        V_18 = list.[V_22 | V_23] : list.list(tree_bitset.leaf_node),
+        V_24 = tree_bitset.interior_node(V_13, V_14, V_36) : tree_bitset.interior_node,
+        V_36 = tree_bitset.leaf_list(V_18) : tree_bitset.node_list,
+        V_10 = list.[V_24 | V_12] : list.list(tree_bitset.interior_node)
+      )
+    ;
+      V_15 = tree_bitset.interior_list(V_25, V_26) : tree_bitset.node_list,
+      tree_bitset.interiornode_divide(V_6, V_26, V_27, V_28),
+      ( % disjunction
+        V_27 = list.[] : list.list(tree_bitset.interior_node),
+        V_9 = V_11
+      ;
+        V_27 = list.[V_29 | V_30] : list.list(tree_bitset.interior_node),
+        V_37 = tree_bitset.interior_node(V_13, V_14, V_33) : tree_bitset.interior_node,
+        V_33 = tree_bitset.interior_list(V_25, V_27) : tree_bitset.node_list,
+        V_9 = list.[V_37 | V_11] : list.list(tree_bitset.interior_node)
+      ),
+      ( % disjunction
+        V_28 = list.[] : list.list(tree_bitset.interior_node),
+        V_10 = V_12
+      ;
+        V_28 = list.[V_31 | V_32] : list.list(tree_bitset.interior_node),
+        V_39 = tree_bitset.interior_node(V_13, V_14, V_34) : tree_bitset.interior_node,
+        V_34 = tree_bitset.interior_list(V_25, V_28) : tree_bitset.node_list,
+        V_10 = list.[V_39 | V_12] : list.list(tree_bitset.interior_node)
+      )
+    ).
+
+tree_bitset.intersect(V_4, V_5, V_3) :-
+    V_3 = tree_bitset.intersect(V_4, V_5).
+
+tree_bitset.intersect_list(V_3) = V_4 :-
+    tree_bitset.intersect_list(V_3, V_4).
+
+tree_bitset.is_empty(V_1) :-
+    V_1 = tree_bitset.init.
+
+tree_bitset.is_non_empty(V_2) :-
+    not (
+      tree_bitset.is_empty(V_2)
+    ).
+
+tree_bitset.leaf_all_true(V_3, list.[]).
+tree_bitset.leaf_all_true(V_4, list.[V_5 | V_6]) :-
+    V_5 = tree_bitset.leaf_node(V_7, V_10) : tree_bitset.leaf_node,
+    V_5 = tree_bitset.leaf_node(V_11, V_8) : tree_bitset.leaf_node,
+    V_9 = int.bits_per_int,
+    tree_bitset.all_true_bits(V_4, V_7, V_8, V_9),
+    tree_bitset.leaf_all_true(V_4, V_6).
+
+tree_bitset.leaf_foldl2_pred(V_7, list.[], V_10, V_11, V_12, V_13) :-
+    V_13 = V_12,
+    V_11 = V_10.
+tree_bitset.leaf_foldl2_pred(V_14, list.[V_15 | V_16], V_19, V_20, V_21, V_22) :-
+    V_23 = tree_bitset.low_to_high : tree_bitset.fold_direction,
+    V_15 = tree_bitset.leaf_node(V_24, V_29) : tree_bitset.leaf_node,
+    V_15 = tree_bitset.leaf_node(V_30, V_25) : tree_bitset.leaf_node,
+    V_26 = int.bits_per_int,
+    tree_bitset.fold2_bits(V_23, V_14, V_24, V_25, V_26, V_19, V_27, V_21, V_28),
+    tree_bitset.leaf_foldl2_pred(V_14, V_16, V_27, V_20, V_28, V_22).
+
+tree_bitset.leaf_foldl_pred(V_5, list.[], V_7, V_8) :-
+    V_8 = V_7.
+tree_bitset.leaf_foldl_pred(V_9, list.[V_10 | V_11], V_13, V_14) :-
+    V_15 = tree_bitset.low_to_high : tree_bitset.fold_direction,
+    V_10 = tree_bitset.leaf_node(V_16, V_20) : tree_bitset.leaf_node,
+    V_10 = tree_bitset.leaf_node(V_21, V_17) : tree_bitset.leaf_node,
+    V_18 = int.bits_per_int,
+    tree_bitset.fold_bits(V_15, V_9, V_16, V_17, V_18, V_13, V_19),
+    tree_bitset.leaf_foldl_pred(V_9, V_11, V_19, V_14).
+
+tree_bitset.leaf_foldr2_pred(V_7, list.[], V_10, V_11, V_12, V_13) :-
+    V_13 = V_12,
+    V_11 = V_10.
+tree_bitset.leaf_foldr2_pred(V_14, list.[V_15 | V_16], V_19, V_20, V_21, V_22) :-
+    tree_bitset.leaf_foldr2_pred(V_14, V_16, V_19, V_23, V_21, V_24),
+    V_25 = tree_bitset.high_to_low : tree_bitset.fold_direction,
+    V_15 = tree_bitset.leaf_node(V_26, V_29) : tree_bitset.leaf_node,
+    V_15 = tree_bitset.leaf_node(V_30, V_27) : tree_bitset.leaf_node,
+    V_28 = int.bits_per_int,
+    tree_bitset.fold2_bits(V_25, V_14, V_26, V_27, V_28, V_23, V_20, V_24, V_22).
+
+tree_bitset.leaf_foldr_pred(V_5, list.[], V_7, V_8) :-
+    V_8 = V_7.
+tree_bitset.leaf_foldr_pred(V_9, list.[V_10 | V_11], V_13, V_14) :-
+    tree_bitset.leaf_foldr_pred(V_9, V_11, V_13, V_15),
+    V_16 = tree_bitset.high_to_low : tree_bitset.fold_direction,
+    V_10 = tree_bitset.leaf_node(V_17, V_20) : tree_bitset.leaf_node,
+    V_10 = tree_bitset.leaf_node(V_21, V_18) : tree_bitset.leaf_node,
+    V_19 = int.bits_per_int,
+    tree_bitset.fold_bits(V_16, V_9, V_17, V_18, V_19, V_15, V_14).
+
+tree_bitset.leaflist_divide(V_5, list.[], list.[], list.[]).
+tree_bitset.leaflist_divide(V_6, list.[V_7 | V_8], V_9, V_10) :-
+    tree_bitset.leaflist_divide(V_6, V_8, V_11, V_12),
+    V_7 = tree_bitset.leaf_node(V_13, V_14) : tree_bitset.leaf_node,
+    V_19 = 0 : int,
+    V_20 = 0u : uint,
+    V_21 = 0u : uint,
+    tree_bitset.leafnode_divide(V_6, V_13, V_19, V_14, V_20, V_15, V_21, V_16),
+    ( if
+      V_15 = 0u : uint
+    then
+      V_9 = V_11
+    else
+      V_17 = tree_bitset.make_leaf_node(V_13, V_15),
+      V_9 = list.[V_17 | V_11] : list.list(tree_bitset.leaf_node)
+    ),
+    ( if
+      V_16 = 0u : uint
+    then
+      V_10 = V_12
+    else
+      V_18 = tree_bitset.make_leaf_node(V_13, V_16),
+      V_10 = list.[V_18 | V_12] : list.list(tree_bitset.leaf_node)
+    ).
+
+tree_bitset.leafnode_divide(V_9, V_10, V_11, V_12, V_17, V_18, V_19, V_20) :-
+    ( if
+      V_21 = int.bits_per_int,
+      int.(V_11 < V_21)
+    then
+      V_15 = tree_bitset.get_bit(V_12, V_11),
+      ( if
+        V_15 = 0u : uint
+      then
+        V_24 = V_19,
+        V_23 = V_17
+      else
+        V_16 = tree_bitset.index_to_enum(V_22),
+        V_22 = int.(V_10 + V_11),
+        ( if
+          call(V_9, V_16)
+        then
+          V_23 = tree_bitset.set_bit(V_17, V_11),
+          V_24 = V_19
+        else
+          V_24 = tree_bitset.set_bit(V_19, V_11),
+          V_23 = V_17
+        )
+      ),
+      V_25 = int.(V_11 + V_28),
+      V_28 = 1 : int,
+      tree_bitset.leafnode_divide(V_9, V_10, V_25, V_12, V_23, V_18, V_24, V_20)
+    else
+      V_20 = V_19,
+      V_18 = V_17
+    ).
+
+tree_bitset.list_to_set(V_3) = V_2 :-
+    V_2 = tree_bitset.sorted_list_to_set(V_4),
+    V_4 = list.sort(V_3).
+
+tree_bitset.list_to_set(V_3, V_4) :-
+    V_4 = tree_bitset.list_to_set(V_3).
+
+:- pragma inline(func((tree_bitset.make_leaf_node)/2)).
+tree_bitset.make_leaf_node(V_4, V_5) = tree_bitset.leaf_node(V_4, V_5).
+
+tree_bitset.make_singleton_set(V_3) = V_2 :-
+    V_2 = tree_bitset.insert(V_4, V_3),
+    V_4 = tree_bitset.init.
+
+:- pragma inline(func((tree_bitset.mask)/1)).
+tree_bitset.mask(V_3) = V_2 :-
+    V_2 = uint.(\ V_4),
+    V_4 = uint.unchecked_left_shift(V_5, V_3),
+    V_5 = uint.(\ V_6),
+    V_6 = 0u : uint.
+
+tree_bitset.remove(V_4, V_6, V_7) :-
+    tree_bitset.contains(V_6, V_4),
+    V_7 = tree_bitset.delete(V_6, V_4).
+
+tree_bitset.remove_list(V_4, V_7, V_8) :-
+    V_6 = tree_bitset.list_to_set(V_4),
+    tree_bitset.subset(V_6, V_7),
+    V_8 = tree_bitset.difference(V_7, V_6).
+
+:- pragma inline(func((tree_bitset.set_bit)/2)).
+tree_bitset.set_bit(V_4, V_5) = V_3 :-
+    V_3 = uint.(V_4 \/ V_6),
+    V_6 = uint.unchecked_left_shift(V_7, V_5),
+    V_7 = 1u : uint.
+
+tree_bitset.sorted_list_to_set(V_3, V_4) :-
+    V_4 = tree_bitset.sorted_list_to_set(V_3).
+
+tree_bitset.subset(V_3, V_4) :-
+    V_5 = V_3,
+    tree_bitset.intersect(V_4, V_3, V_5).
+
+tree_bitset.superset(V_3, V_4) :-
+    tree_bitset.subset(V_4, V_3).
+
+tree_bitset.to_set(V_3) = V_2 :-
+    V_2 = set.sorted_list_to_set(V_4),
+    V_4 = tree_bitset.to_sorted_list(V_3).
+
+tree_bitset.to_sorted_list(V_3) = V_2 :-
+    V_2 = tree_bitset.foldr(V_4, V_3, V_5),
+    V_4 = list.cons : (func(T_1, list.list(T_1)) = list.list(T_1)),
+    V_5 = list.[] : list.list(T_1).
+
+tree_bitset.to_sorted_list(V_3, V_4) :-
+    V_4 = tree_bitset.to_sorted_list(V_3).
+
+tree_bitset.union(V_4, V_5, V_3) :-
+    V_3 = tree_bitset.union(V_4, V_5).
+
+tree_bitset.union_list(V_3) = V_4 :-
+    tree_bitset.union_list(V_3, V_4).
+
+:- pragma inline(func((tree_bitset.wrap_tree_bitset)/1)).
+tree_bitset.wrap_tree_bitset(V_3) = V_4 :-
+    trace [
+      compile_time(flag("tree-bitset-integrity"))
+    ] (
+      V_5 = maybe.no : maybe.maybe(pair.pair(int, int)),
+      V_6 = tree_bitset.integrity(V_5, V_3),
+      ( % disjunction
+        V_6 = bool.yes : bool.bool
+      ;
+        V_6 = bool.no : bool.bool,
+        V_7 = "function `tree_bitset.wrap_tree_bitset\'/1" : string,
+        V_8 = "integrity failed" : string,
+        require.unexpected(V_7, V_8)
+      )
+    ),
+    V_4 = tree_bitset.tree_bitset(V_3) : tree_bitset.tree_bitset(T_1).
+
+:- pragma termination_info(tree_bitset.all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.all_true_bits(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.contains((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(tree_bitset.count((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.delete_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.difference((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.difference((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.divide_by_set((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(tree_bitset.filter(((pred((builtin.in)) is semidet) >> (pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.filter(((pred((builtin.in)) is semidet) >> (pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold2_bits((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold2_bits((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold2_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold_bits((builtin.in), ((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold_bits((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold_bits((builtin.in), ((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold_bits((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold_bits((builtin.in), ((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold_bits((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.fold_bits((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl2(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl2(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr2(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr2(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.from_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.get_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(tree_bitset.index_to_enum((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((tree_bitset.init) = (builtin.out), finite(2, [no, no]), cannot_loop).
+:- pragma termination_info(tree_bitset.insert((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.insert((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.insert_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.insert_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.insert_new((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.integrity((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(tree_bitset.interior_all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.interiornode_divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.intersect((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.intersect((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.intersect_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.intersect_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(tree_bitset.is_non_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(tree_bitset.is_singleton((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr2_pred(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr2_pred(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaf_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leaflist_divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.leafnode_divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.make_leaf_node((builtin.in), (builtin.in)) = (builtin.out), finite(2, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(tree_bitset.make_singleton_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.mask((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(tree_bitset.member((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(tree_bitset.member((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.prune_top_levels((builtin.in), (builtin.out)), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(tree_bitset.remove((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.remove_gt((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.remove_least((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.remove_leq((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.set_bit((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(tree_bitset.sorted_list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.sorted_list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.subset((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(tree_bitset.superset((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(tree_bitset.to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.to_sorted_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.to_sorted_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.union((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.union((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.union_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(tree_bitset.union_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(tree_bitset.wrap_tree_bitset((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+
+:- pragma exceptions(predicate, (tree_bitset.all_true), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.all_true_bits), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.contains), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.count), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.delete), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.delete_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.difference), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.difference), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.divide), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.divide_by_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl2_pred), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl2_pred), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl2_pred), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl2_pred), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl2_pred), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl2_pred), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl2_pred), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl2_pred), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl_pred), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl_pred), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl_pred), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl_pred), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl_pred), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl_pred), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl_pred), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl_pred), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl_pred), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldl_pred), 4, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr2_pred), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr2_pred), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr2_pred), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr2_pred), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr2_pred), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr2_pred), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr2_pred), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr2_pred), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr_pred), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr_pred), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr_pred), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr_pred), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr_pred), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.do_foldr_pred), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.filter), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold2_bits), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold2_bits), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold2_bits), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold2_bits), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold2_bits), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold2_bits), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold2_bits), 9, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold2_bits), 9, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold_bits), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold_bits), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold_bits), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold_bits), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold_bits), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold_bits), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold_bits), 7, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold_bits), 7, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold_bits), 7, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.fold_bits), 7, 9, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.foldl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl), 4, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldl2), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.foldr), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.foldr2), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.from_set), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.get_bit), 2, 0, will_not_throw).
+:- pragma exceptions(function, (tree_bitset.index_to_enum), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.init), 0, 0, will_not_throw).
+:- pragma exceptions(function, (tree_bitset.insert), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.insert_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.insert_new), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.integrity), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.interior_all_true), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.interiornode_divide), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.intersect), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.intersect_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.intersect_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.is_empty), 1, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (tree_bitset.is_non_empty), 1, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (tree_bitset.is_singleton), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_all_true), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl2_pred), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl2_pred), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl2_pred), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl2_pred), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl2_pred), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl2_pred), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl2_pred), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl2_pred), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl_pred), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl_pred), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl_pred), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl_pred), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl_pred), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl_pred), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl_pred), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl_pred), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl_pred), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldl_pred), 4, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr2_pred), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr2_pred), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr2_pred), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr2_pred), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr2_pred), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr2_pred), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr2_pred), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr2_pred), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr_pred), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr_pred), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr_pred), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr_pred), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr_pred), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaf_foldr_pred), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leaflist_divide), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.leafnode_divide), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.list_to_set), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.make_leaf_node), 2, 0, will_not_throw).
+:- pragma exceptions(function, (tree_bitset.make_singleton_set), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.mask), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (tree_bitset.member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.member), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.prune_top_levels), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (tree_bitset.remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.remove_gt), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.remove_least), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.remove_leq), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.set_bit), 2, 0, will_not_throw).
+:- pragma exceptions(function, (tree_bitset.sorted_list_to_set), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.sorted_list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.subset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.superset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.to_set), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.to_sorted_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.to_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.union), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.union_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (tree_bitset.union_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (tree_bitset.wrap_tree_bitset), 1, 0, will_not_throw).

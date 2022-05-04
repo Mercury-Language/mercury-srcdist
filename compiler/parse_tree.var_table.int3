@@ -1,0 +1,11 @@
+:- module (parse_tree.var_table).
+:- interface.
+:- type var_db.
+:- type var_name_source.
+:- type var_table.
+:- type var_table_entry.
+:- type var_table_map.
+:- type var_type_source.
+:- type_representation(var_table, is_word_aligned_ptr).
+:- type_representation(var_table_entry, is_word_aligned_ptr).
+:- type_representation(var_table_map, is_eqv_to(map(prog_var, parse_tree.var_table.var_table_entry))).

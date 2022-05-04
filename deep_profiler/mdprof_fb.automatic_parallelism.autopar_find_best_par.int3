@@ -1,0 +1,5 @@
+:- module ((mdprof_fb.automatic_parallelism).autopar_find_best_par).
+:- interface.
+:- type full_parallelisation.
+:- type_representation(full_parallelisation, is_word_aligned_ptr).
+:- type_representation(producer_map, is_eqv_to(map(var_rep, int))).
