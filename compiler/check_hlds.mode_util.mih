@@ -1,0 +1,196 @@
+/*
+** Automatically generated from `mode_util.m'
+** by the Mercury compiler,
+** version rotd-2022-05-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.mode_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__mode_util
+#define MR_HEADER_GUARD_check_hlds__mode_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODE_UTIL_DECL_GUARD
+#define CHECK_HLDS__MODE_UTIL_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+void MR_CALL 
+check_hlds__mode_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_110_115_116_114_117_99_116_111_114_115_95_116_111_95_98_111_117_110_100_95_97_110_121_95_105_110_115_116_115_95_95_91_49_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mode_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_110_115_116_114_117_99_116_111_114_115_95_116_111_95_98_111_117_110_100_95_105_110_115_116_115_95_95_91_49_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mode_util__constructors_to_bound_any_insts_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__mode_util__constructors_to_bound_insts_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__mode_util__from_to_insts_to_unify_mode_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mode_util__from_to_insts_to_unify_modes_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mode_util__get_arg_lives_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mode_util__mode_get_from_to_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mode_util__mode_get_insts_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+check_hlds__mode_util__mode_get_insts_semidet_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mode_util__mode_list_get_final_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mode_util__mode_list_get_initial_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mode_util__modes_to_unify_mode_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mode_util__modes_to_unify_modes_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mode_util__unify_mode_to_lhs_rhs_from_to_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+check_hlds__mode_util__from_to_insts_to_final_inst_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__mode_util__from_to_insts_to_init_inst_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__mode_util__from_to_insts_to_mode_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__mode_util__mode_get_final_inst_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__mode_util__mode_get_initial_inst_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__mode_util__mode_to_from_to_insts_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+check_hlds__mode_util__unify_mode_to_lhs_from_to_insts_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__mode_util__unify_mode_to_lhs_mode_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__mode_util__unify_mode_to_rhs_from_to_insts_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__mode_util__unify_mode_to_rhs_mode_1_f_0(
+  MR_Word param_1);
+
+void mercury__check_hlds__mode_util__init(void);
+void mercury__check_hlds__mode_util__init_type_tables(void);
+void mercury__check_hlds__mode_util__init_debugger(void);
+const char *mercury__check_hlds__mode_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.mode_util
+
+// :- end_interface check_hlds.mode_util.

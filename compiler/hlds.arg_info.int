@@ -1,0 +1,44 @@
+:- module (hlds.arg_info).
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.code_model).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_llds).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.var_table).
+:- use_module (parse_tree.vartypes).
+:- pred compute_in_and_out_vars(hlds.hlds_module.module_info, parse_tree.vartypes.vartypes, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var)).
+:- mode compute_in_and_out_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred compute_in_and_out_vars_sep_regs(hlds.hlds_module.module_info, parse_tree.vartypes.vartypes, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), list.list(hlds.hlds_llds.reg_type), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var)).
+:- mode compute_in_and_out_vars_sep_regs((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred compute_in_and_out_vars_sep_regs_table(hlds.hlds_module.module_info, parse_tree.var_table.var_table, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), list.list(hlds.hlds_llds.reg_type), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var)).
+:- mode compute_in_and_out_vars_sep_regs_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred compute_in_and_out_vars_table(hlds.hlds_module.module_info, parse_tree.var_table.var_table, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var)).
+:- mode compute_in_and_out_vars_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred generate_arg_info(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode generate_arg_info((builtin.in), (builtin.out)) is det.
+:- pred generate_proc_arg_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_markers, list.list(parse_tree.prog_data.mer_type), hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode generate_proc_arg_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generic_call_arg_reg_types(hlds.hlds_module.module_info, hlds.hlds_goal.generic_call, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.arg_reg_type_info, list.list(hlds.hlds_llds.reg_type)).
+:- mode generic_call_arg_reg_types((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_arg_infos(hlds.hlds_module.module_info, hlds.code_model.code_model, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode), list.list(hlds.hlds_llds.reg_type), list.list(hlds.hlds_pred.arg_info)).
+:- mode make_arg_infos((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_standard_arg_infos(hlds.hlds_module.module_info, hlds.code_model.code_model, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode), list.list(hlds.hlds_pred.arg_info)).
+:- mode make_standard_arg_infos((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred partition_args(assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info)).
+:- mode partition_args((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred partition_args(assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info)).
+:- mode partition_args((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred partition_generic_call_args(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_mode), set.set(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var)).
+:- mode partition_generic_call_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred partition_proc_args(hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, set.set(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var)).
+:- mode partition_proc_args((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred partition_proc_call_args(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, parse_tree.vartypes.vartypes, list.list(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var)).
+:- mode partition_proc_call_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred partition_proc_call_args_table(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, parse_tree.var_table.var_table, list.list(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var)).
+:- mode partition_proc_call_args_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
