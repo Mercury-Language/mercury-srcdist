@@ -1,0 +1,4 @@
+:- module (libs.rat).
+:- interface.
+:- type rat.
+:- type_representation(rat, is_word_aligned_ptr).

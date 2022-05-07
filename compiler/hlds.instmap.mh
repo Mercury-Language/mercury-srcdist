@@ -1,0 +1,43 @@
+// Automatically generated from `instmap.m'
+// by the Mercury compiler,
+// version rotd-2022-05-07
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef HLDS__INSTMAP_MH
+#define HLDS__INSTMAP_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef HLDS__INSTMAP_DECL_GUARD
+#define HLDS__INSTMAP_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word hlds__instmap__mutable_variable_instmap_delta_restrict_stats;
+#else
+    extern MR_Word hlds__instmap__mutable_variable_instmap_delta_restrict_stats;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock hlds__instmap__mutable_variable_instmap_delta_restrict_stats_lock;
+#endif
+
+
+#endif
+void hlds__instmap__user_init_pred_272_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* HLDS__INSTMAP_MH */
