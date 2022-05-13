@@ -1,0 +1,7 @@
+:- module (parse_tree.vartypes).
+:- interface.
+:- type maybe_vartypes.
+:- type prog_var_set_types.
+:- type vartypes.
+:- type_representation(prog_var_set_types, is_word_aligned_ptr).
+:- type_representation(vartypes, is_eqv_to(map(prog_var, mer_type))).
