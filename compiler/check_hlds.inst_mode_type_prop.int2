@@ -1,0 +1,11 @@
+:- module (check_hlds.inst_mode_type_prop).
+:- interface.
+:- type tprop_args
+    --->    ta_pred(hlds.hlds_pred.pred_info)
+    ;       ta_lambda(mdbcomp.prim_data.pred_or_func, int, parse_tree.prog_data.prog_context)
+    ;       ta_bound_inst(parse_tree.prog_data.cons_id, check_hlds.inst_mode_type_prop.tprop_context)
+    ;       ta_tuple_inst(check_hlds.inst_mode_type_prop.tprop_context)
+    ;       ta_ho_inst(mdbcomp.prim_data.pred_or_func, int, check_hlds.inst_mode_type_prop.tprop_context).
+:- type tprop_context
+    --->    tprop_arg_list_slot(check_hlds.inst_mode_type_prop.tprop_args, int)
+    ;       tprop_inst_name_expansion(parse_tree.prog_data.sym_name_arity, check_hlds.inst_mode_type_prop.tprop_context).
