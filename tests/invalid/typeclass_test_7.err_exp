@@ -1,0 +1,3 @@
+typeclass_test_7.m:014: In clause for predicate `p'/2:
+typeclass_test_7.m:014:   unsatisfiable typeclass constraint:
+typeclass_test_7.m:014:   `typeclass_test_7.numbered_type(T)'.

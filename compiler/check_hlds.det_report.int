@@ -1,0 +1,51 @@
+:- module (check_hlds.det_report).
+:- interface.
+:- use_module hlds.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (check_hlds.det_util).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.instmap).
+:- use_module (libs.globals).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.var_table).
+:- type cc_unify_context
+    --->    ccuc_unify(hlds.hlds_goal.unify_context)
+    ;       ccuc_switch .
+:- type failing_context
+    --->    failing_context(parse_tree.prog_data.prog_context, check_hlds.det_report.failing_goal).
+:- type failing_goal
+    --->    incomplete_switch(parse_tree.prog_data.prog_var)
+    ;       fail_goal 
+    ;       test_goal(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var)
+    ;       deconstruct_goal(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id)
+    ;       call_goal(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+    ;       generic_call_goal(hlds.hlds_goal.generic_call)
+    ;       negated_goal .
+:- type options_to_restore.
+:- type seen_call_id
+    --->    seen_call(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+    ;       higher_order_call .
+:- type switch_context.
+:- pred check_determinism_of_preds(list.list(hlds.hlds_pred.pred_proc_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode check_determinism_of_preds((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred det_check_lambda(parse_tree.prog_data.determinism, parse_tree.prog_data.determinism, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal_info, hlds.instmap.instmap, check_hlds.det_util.det_info, check_hlds.det_util.det_info).
+:- mode det_check_lambda((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_diagnose_conj(list.list(hlds.hlds_goal.hlds_goal), hlds.instmap.instmap, parse_tree.prog_data.determinism, list.list(check_hlds.det_report.switch_context), check_hlds.det_util.det_info, check_hlds.det_util.det_info, list.list(parse_tree.error_util.error_msg)).
+:- mode det_diagnose_conj((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func det_report_seen_call_id(hlds.hlds_module.module_info, check_hlds.det_report.seen_call_id) = list.list(parse_tree.error_util.format_component).
+:- pred disable_det_warnings(check_hlds.det_report.options_to_restore, libs.globals.globals, libs.globals.globals).
+:- mode disable_det_warnings((builtin.out), (builtin.in), (builtin.out)) is det.
+:- func failing_contexts_description(hlds.hlds_module.module_info, parse_tree.var_table.var_table, list.list(check_hlds.det_report.failing_context)) = list.list(parse_tree.error_util.error_msg).
+:- func promise_solutions_kind_str(hlds.hlds_goal.promise_solutions_kind) = string.
+:- pred restore_det_warnings(check_hlds.det_report.options_to_restore, libs.globals.globals, libs.globals.globals).
+:- mode restore_det_warnings((builtin.in), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- use_module assoc_list.
+:- use_module getopt.
+:- use_module (libs.options).
+:- type options_to_restore == assoc_list.assoc_list(libs.options.option, getopt.option_data).

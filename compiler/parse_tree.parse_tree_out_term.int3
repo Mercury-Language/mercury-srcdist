@@ -1,0 +1,8 @@
+:- module (parse_tree.parse_tree_out_term).
+:- interface.
+:- type graphic_char_in_string
+	where	type_is_abstract_enum(2).
+:- type needs_quotes
+	where	type_is_abstract_enum(1).
+:- type_representation(graphic_char_in_string, du_repn(enum("no_graphic_chars", "some_graphic_chars", ["all_graphic_chars"],  no_c_j_cs))).
+:- type_representation(needs_quotes, du_repn(enum("next_to_graphic_token", "not_next_to_graphic_token", [],  no_c_j_cs))).
