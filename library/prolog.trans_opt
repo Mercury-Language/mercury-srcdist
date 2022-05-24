@@ -1,0 +1,37 @@
+:- module prolog.
+
+:- pragma termination_info(prolog.'=..'((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(prolog.'=:='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'=='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'=\\='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.'\\=='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(prolog.arg((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(prolog.det_arg((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(prolog.is((builtin.uo), (builtin.di)), finite(0, [no, no, yes]), cannot_loop).
+:- pragma termination_info(prolog.is((builtin.out), (builtin.in)), finite(0, [no, no, yes]), cannot_loop).
+:- pragma termination_info(prolog.see((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(prolog.see_binary((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(prolog.seen((builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(prolog.seen_binary((builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(prolog.tell((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(prolog.tell_binary((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(prolog.told((builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(prolog.told_binary((builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (prolog.(=..)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (prolog.(=:=)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.(==)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.(=\=)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.(\==)), 2, 0, conditional).
+:- pragma exceptions(predicate, (prolog.arg), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (prolog.det_arg), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (prolog.(is)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (prolog.(is)), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (prolog.see), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (prolog.see_binary), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (prolog.seen), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (prolog.seen_binary), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (prolog.tell), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (prolog.tell_binary), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (prolog.told), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (prolog.told_binary), 2, 0, may_throw(user_exception)).

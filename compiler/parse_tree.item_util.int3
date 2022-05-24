@@ -1,0 +1,6 @@
+:- module (parse_tree.item_util).
+:- interface.
+:- type maybe_include_implicit
+	where	type_is_abstract_enum(1).
+:- abstract_inst((item_decl_or_impl_pragma)).
+:- type_representation(maybe_include_implicit, du_repn(enum("do_include_implicit", "do_not_include_implicit", [],  no_c_j_cs))).

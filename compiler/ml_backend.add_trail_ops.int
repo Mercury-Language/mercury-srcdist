@@ -1,0 +1,10 @@
+:- module (ml_backend.add_trail_ops).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module libs.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (libs.optimization_options).
+:- pred add_trail_ops(bool.bool, libs.optimization_options.maybe_gen_trail_ops_inline, hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode add_trail_ops((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

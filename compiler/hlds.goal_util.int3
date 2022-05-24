@@ -1,0 +1,18 @@
+:- module (hlds.goal_util).
+:- interface.
+:- type attach_in_from_ground_term
+	where	type_is_abstract_enum(1).
+:- type can_reorder_goals
+	where	type_is_abstract_enum(1).
+:- type goal_is_atomic
+	where	type_is_abstract_enum(1).
+:- type is_leaf
+	where	type_is_abstract_enum(1).
+:- type maybe_transformed_goal.
+:- type reorder_maintains_termination
+	where	type_is_abstract_enum(1).
+:- type_representation(attach_in_from_ground_term, du_repn(enum("attach_in_from_ground_term", "do_not_attach_in_from_ground_term", [],  no_c_j_cs))).
+:- type_representation(can_reorder_goals, du_repn(enum("cannot_reorder_goals", "can_reorder_goals", [],  no_c_j_cs))).
+:- type_representation(goal_is_atomic, du_repn(enum("goal_is_atomic", "goal_is_nonatomic", [],  no_c_j_cs))).
+:- type_representation(is_leaf, du_repn(enum("is_leaf", "is_not_leaf", [],  no_c_j_cs))).
+:- type_representation(reorder_maintains_termination, du_repn(enum("reorder_maintains_termination", "reorder_does_not_maintain_termination", [],  no_c_j_cs))).
