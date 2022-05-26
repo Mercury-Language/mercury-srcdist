@@ -1,0 +1,3 @@
+:- module (hlds.goal_path).
+:- interface.
+:- type_representation(containing_goal_list, is_eqv_to(assoc_list(goal_id, containing_goal))).

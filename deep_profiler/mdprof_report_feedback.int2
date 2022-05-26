@@ -1,0 +1,2 @@
+:- module mdprof_report_feedback.
+:- interface.
