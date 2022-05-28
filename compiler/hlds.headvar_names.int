@@ -1,0 +1,7 @@
+:- module (hlds.headvar_names).
+:- interface.
+:- use_module libs.
+:- use_module (hlds.hlds_pred).
+:- use_module (libs.globals).
+:- pred maybe_improve_headvar_names(libs.globals.globals, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode maybe_improve_headvar_names((builtin.in), (builtin.in), (builtin.out)) is det.
