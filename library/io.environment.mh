@@ -1,0 +1,67 @@
+// Automatically generated from `io.environment.m'
+// by the Mercury compiler,
+// version rotd-2022-05-30
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef IO__ENVIRONMENT_MH
+#define IO__ENVIRONMENT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO__ENVIRONMENT_DECL_GUARD
+#define IO__ENVIRONMENT_DECL_GUARD
+
+#include <stdlib.h> // for getenv() and setenv()
+
+
+// A note regarding the declaration of the environ global variable
+// that follows:
+//
+// The man page (on Linux) says that it should be declared by the user program.
+//
+// On MinGW, environ is a macro (defined in stdlib.h) that expands to a
+// function call that returns the user environment; no additional
+// declaration is required.
+//
+// On Mac OS X, shared libraries do not have direct access to environ.
+// The man page for environ(7) says that we should look it up at runtime
+// using _NSGetEnviron().
+
+#if defined(MR_HAVE_ENVIRON) && !defined(MR_MAC_OSX)
+    #include <unistd.h>
+
+    #if !defined(MR_MINGW)
+        extern char **environ;
+    #endif
+#endif
+
+#if defined(MR_MAC_OSX)
+    #include <crt_externs.h>
+#endif
+
+#ifdef MR_HAVE_SPAWN_H
+    #include <spawn.h>
+#endif
+
+
+#endif
+void ML_record_env_var_equal_value(MR_String, MR_Word, MR_Word *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO__ENVIRONMENT_MH */
