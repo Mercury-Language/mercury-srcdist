@@ -1,0 +1,11 @@
+:- module cliques.
+:- interface.
+:- use_module list.
+:- use_module set.
+:- type graph.
+:- pred add_arc(cliques.graph, int, int, cliques.graph).
+:- mode add_arc((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred init(cliques.graph).
+:- mode init((builtin.out)) is det.
+:- pred topological_sort(cliques.graph, list.list(set.set(int))).
+:- mode topological_sort((builtin.in), (builtin.out)) is det.

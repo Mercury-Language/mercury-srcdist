@@ -1,0 +1,2 @@
+:- module (transform_hlds.par_loop_control).
+:- interface.
