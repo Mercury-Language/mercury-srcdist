@@ -1,0 +1,355 @@
+/*
+** Automatically generated from `mercury_to_mercury.m'
+** by the Mercury compiler,
+** version 22.01.2-beta-2022-06-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.mercury_to_mercury.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__mercury_to_mercury
+#define MR_HEADER_GUARD_parse_tree__mercury_to_mercury
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__MERCURY_TO_MERCURY_DECL_GUARD
+#define PARSE_TREE__MERCURY_TO_MERCURY_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__mercury_to_mercury__parse_tree__mercury_to_mercury__type_ctor_info_maybe_exist_constraints_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__mercury_to_mercury__parse_tree__mercury_to_mercury__type_ctor_info_needs_brackets_0;
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_bracketed_sym_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_bracketed_sym_name_arity_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_bracketed_sym_name_ngt_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_class_context_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_cons_id_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_constraint_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_det_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_foreign_language_string_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_prog_constraint_list_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_quantifier_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_sym_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_sym_name_arity_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_sym_name_ngt_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_tabs_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_format_type_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_ngt_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_class_context_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_cons_id_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_constraint_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_det_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_foreign_language_string_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_newline_4_p_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_quantifier_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_state_vars_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_sym_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury__mercury_output_type_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_bracketed_sym_name_arity_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_bracketed_sym_name_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_bracketed_sym_name_to_string_ngt_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_cons_id_to_string_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_constraint_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_det_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_foreign_language_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_prog_constraint_list_to_string_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_quantifier_to_string_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_sym_name_arity_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_sym_name_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_type_list_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__mercury_to_mercury__mercury_type_to_string_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury____Compare____maybe_exist_constraints_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__mercury_to_mercury____Compare____needs_brackets_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__mercury_to_mercury____Unify____maybe_exist_constraints_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__mercury_to_mercury____Unify____needs_brackets_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__mercury_to_mercury__init(void);
+void mercury__parse_tree__mercury_to_mercury__init_type_tables(void);
+void mercury__parse_tree__mercury_to_mercury__init_debugger(void);
+const char *mercury__parse_tree__mercury_to_mercury__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.mercury_to_mercury
+
+// :- end_interface parse_tree.mercury_to_mercury.
