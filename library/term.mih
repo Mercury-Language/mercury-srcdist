@@ -1,0 +1,879 @@
+/*
+** Automatically generated from `term.m'
+** by the Mercury compiler,
+** version rotd-2022-06-07
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module term.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_term
+#define MR_HEADER_GUARD_term
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TERM_DECL_GUARD
+#define TERM_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_const_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_context_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_generic_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_integer_base_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_integer_size_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_renaming_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_renaming_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_signedness_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_substitution_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_substitution_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_term_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_term_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_var_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_var_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__term__term__type_ctor_info_var_supply_1;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__enum__arity1__term__var__arity1__[7];
+
+void MR_CALL 
+mercury__term__LCMC__pred__apply_rec_substitution_in_terms__1_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__LCMC__pred__apply_renaming_in_terms__1_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__LCMC__pred__apply_renaming_in_vars__1_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__LCMC__pred__apply_substitution_in_terms__1_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__LCMC__pred__rename_var_in_terms__1_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__term__LCMC__pred__substitute_var_in_terms__1_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__term__LCMC__pred__term_list_to_var_list__1_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__term__LCMC__pred__var_list_to_term_list__1_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__term__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_116_101_114_109_95_95_103_101_110_101_114_105_99_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__term__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_105_99_95_116_101_114_109_95_95_91_49_93_95_48_1_p_0(void);
+
+void MR_CALL 
+mercury__term__apply_rec_substitution_in_term_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__apply_rec_substitution_in_terms_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__apply_renaming_in_term_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__apply_renaming_in_terms_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__apply_renaming_in_var_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__apply_renaming_in_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__apply_substitution_in_term_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__apply_substitution_in_terms_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__term__are_ground_in_bindings_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term__build_subst_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__term__coerce_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__coerce_var_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__coerce_var_supply_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__term__contains_var_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term__contains_var_2_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+MR_bool MR_CALL 
+mercury__term__contains_var_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term__contains_var_list_2_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+void MR_CALL 
+mercury__term__context_file_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+mercury__term__context_init_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__term__context_init_3_p_0(
+  MR_String param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__term__context_line_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__term__create_var_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__term__decimal_term_to_int_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__term__generic_term_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mercury__term__init_var_supply_1_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mercury__term__init_var_supply_1_p_1(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term__is_dummy_context_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+mercury__term__is_ground_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term__is_ground_in_bindings_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__term__is_ground_list_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term__list_subsumes_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__term__occurs_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__term__occurs_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__term__rename_var_in_term_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__term__rename_var_in_terms_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__term__substitute_corresponding_in_term_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__term__substitute_corresponding_in_terms_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__term__substitute_var_in_term_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__term__substitute_var_in_terms_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__term__term_list_to_var_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__term__term_to_int_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__term__term_to_int16_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  int16_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term__term_to_int32_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  int32_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term__term_to_int64_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  int64_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term__term_to_int8_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  int8_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term__term_to_uint_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned * param_3);
+
+MR_bool MR_CALL 
+mercury__term__term_to_uint16_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  uint16_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term__term_to_uint32_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  uint32_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term__term_to_uint64_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  uint64_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term__term_to_uint8_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  uint8_t * param_3);
+
+MR_bool MR_CALL 
+mercury__term__unify_term_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__term__unify_term_dont_bind_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__term__unify_term_list_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__term__unify_term_list_dont_bind_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__term__var_list_to_term_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__term__var_to_int_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__term__vars_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__term__vars_2_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__vars_2_list_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__term__vars_list_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__term__ClassMethod_for_enum__enum____term__var__arity1______enum__from_int_1_1_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+MR_Integer MR_CALL 
+mercury__term__ClassMethod_for_enum__enum____term__var__arity1______enum__to_int_1_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__term__coerce_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__coerce_var_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__coerce_var_supply_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+mercury__term__context_file_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__term__context_init_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__term__context_init_2_f_0(
+  MR_String param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__term__context_line_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__term__dummy_context_init_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__term__force_construct_var_1_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__term__force_construct_var_supply_1_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__term__get_term_context_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__term__init_var_supply_0_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__term__int16_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  int16_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__int32_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  int32_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__int64_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  int64_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__int8_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  int8_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__int_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__term_list_to_var_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__term__uint16_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  uint16_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__uint32_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  uint32_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__uint64_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  uint64_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__uint8_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  uint8_t param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__uint_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  MR_Unsigned param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__var_list_to_term_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__term__var_supply_max_var_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+mercury__term__var_supply_num_allocated_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+mercury__term__var_to_int_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__term__vars_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__term__vars_2_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__term__vars_list_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__term____Compare____const_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term____Compare____context_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term____Compare____generic_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__term____Compare____integer_base_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term____Compare____integer_size_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term____Compare____renaming_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term____Compare____renaming_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__term____Compare____signedness_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term____Compare____substitution_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term____Compare____substitution_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__term____Compare____term_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term____Compare____term_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__term____Compare____var_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__term____Compare____var_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__term____Compare____var_supply_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__term____Unify____const_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term____Unify____context_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term____Unify____generic_0_0(void);
+
+MR_bool MR_CALL 
+mercury__term____Unify____integer_base_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term____Unify____integer_size_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term____Unify____renaming_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term____Unify____renaming_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__term____Unify____signedness_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term____Unify____substitution_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term____Unify____substitution_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__term____Unify____term_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term____Unify____term_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__term____Unify____var_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__term____Unify____var_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__term____Unify____var_supply_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__term__init(void);
+void mercury__term__init_type_tables(void);
+void mercury__term__init_debugger(void);
+const char *mercury__term__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_term
+
+// :- end_interface term.
