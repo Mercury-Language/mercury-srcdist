@@ -1,0 +1,2 @@
+:- module (transform_hlds.term_pass2).
+:- interface.

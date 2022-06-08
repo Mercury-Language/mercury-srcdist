@@ -1,0 +1,11 @@
+:- module (check_hlds.det_report).
+:- interface.
+:- type cc_unify_context.
+:- type failing_context.
+:- type failing_goal.
+:- type options_to_restore.
+:- type seen_call_id.
+:- type switch_context.
+:- type_representation(failing_context, is_word_aligned_ptr).
+:- type_representation(options_to_restore, is_eqv_to(assoc_list(option, option_data))).
+:- type_representation(switch_context, is_word_aligned_ptr).
