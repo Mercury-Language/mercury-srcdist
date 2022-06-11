@@ -1,0 +1,5 @@
+:- module (ll_backend.exprn_aux).
+:- interface.
+:- use_module (ll_backend.llds).
+:- type transform_lval(T) == pred(ll_backend.llds.lval, ll_backend.llds.lval, T, T).
+:- inst transform_lval == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).

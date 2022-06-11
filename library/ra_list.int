@@ -1,0 +1,30 @@
+:- module ra_list.
+:- interface.
+:- use_module list.
+:- type ra_list(T).
+:- pred append(ra_list.ra_list(T), ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode append((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred cons(T, ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode cons((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_index0(ra_list.ra_list(T), int, T).
+:- mode det_index0((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_index1(ra_list.ra_list(T), int, T).
+:- mode det_index1((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred drop(int, ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode drop((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred head(ra_list.ra_list(T), T).
+:- mode head((builtin.in), (builtin.out)) is semidet.
+:- pred head_tail(ra_list.ra_list(T), T, ra_list.ra_list(T)).
+:- mode head_tail((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred index0(ra_list.ra_list(T), int, T).
+:- mode index0((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred index1(ra_list.ra_list(T), int, T).
+:- mode index1((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred init(ra_list.ra_list(T)).
+:- mode init((builtin.uo)) is det.
+:- pred ra_list_to_list(ra_list.ra_list(T), list.list(T)).
+:- mode ra_list_to_list((builtin.in), (builtin.out)) is det.
+:- pred tail(ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode tail((builtin.in), (builtin.out)) is semidet.
+:- pred update(int, T, ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.

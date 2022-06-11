@@ -1,0 +1,18 @@
+:- module (ml_backend.ml_closure_gen).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_pred).
+:- use_module (ml_backend.ml_gen_info).
+:- use_module (ml_backend.mlds).
+:- use_module (parse_tree.prog_data).
+:- type closure_kind
+    --->    higher_order_proc_closure 
+    ;       typeclass_info_closure 
+    ;       special_pred_closure .
+:- pred ml_construct_closure(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, parse_tree.prog_data.prog_var, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.unify_mode), hlds.hlds_goal.how_to_construct, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_construct_closure((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_closure_wrapper(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, ml_backend.ml_closure_gen.closure_kind, int, parse_tree.prog_data.prog_context, ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_closure_wrapper((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,37 @@
+:- module ra_list.
+
+:- pragma termination_info(ra_list.append((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.cons((builtin.in), (builtin.in), (builtin.out)), finite(4, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(ra_list.det_index0((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(ra_list.det_index1((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(ra_list.drop((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.head((builtin.in), (builtin.out)), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(ra_list.head_tail((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(ra_list.index0((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(ra_list.index0_bintree((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(-1, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(ra_list.index0_list((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(ra_list.index1((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(ra_list.init((builtin.uo)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ra_list.ra_list_to_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.tail((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(ra_list.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(ra_list.update_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(ra_list.update_bintree((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(1, [no, no, no, yes, yes, no]), cannot_loop).
+
+:- pragma exceptions(predicate, (ra_list.append), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.cons), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.det_index0), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.det_index1), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.drop), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.head), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.head_tail), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.index0), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.index0_bintree), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.index0_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.index1), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.ra_list_to_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.tail), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.update_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.update_bintree), 5, 0, may_throw(user_exception)).
