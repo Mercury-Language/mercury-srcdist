@@ -1,0 +1,14 @@
+module(2, "mdb.m",
+	mdb,
+	{},
+	{builtin, private_builtin},
+	{},
+	{(mdb.browse), (mdb.browser_info), (mdb.browser_term), (mdb.collect_lib), (mdb.cterm), (mdb.debugger_interface), (mdb.declarative_analyser), (mdb.declarative_debugger), (mdb.declarative_edt), (mdb.declarative_execution), (mdb.declarative_oracle), (mdb.declarative_tree), (mdb.declarative_user), (mdb.diff), (mdb.dl), (mdb.frame), (mdb.help), (mdb.interactive_query), (mdb.io_action), (mdb.listing), (mdb.name_mangle), (mdb.parse), (mdb.percent_encoding), (mdb.sized_pretty), (mdb.term_rep), (mdb.term_to_html), (mdb.util)},
+	{},
+	{},
+	{"C"},
+	{"C" - mdb},
+	no_foreign_export,
+	no_main,
+	{}
+).
