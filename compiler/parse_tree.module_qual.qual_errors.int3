@@ -1,0 +1,4 @@
+:- module ((parse_tree.module_qual).qual_errors).
+:- interface.
+:- type mq_constraint_error_context.
+:- type mq_error_context.

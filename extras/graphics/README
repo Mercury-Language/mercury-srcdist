@@ -1,0 +1,35 @@
+This directory contains stuff for doing graphics with Mercury.
+
+If you add missing functionality to any of these modules, let us know,
+and we'll see about incorporating enhancements in the main distribution.
+
+	easyx/			A Mercury binding to Xlib suitable for
+				simple interactive graphical
+				applications.
+
+	mercury_allegro/	A Mercury binding to the Allegro
+				and AllegroGL game programming
+				libraries.
+
+	mercury_tcltk/		A Mercury binding to Tcl/Tk.
+
+	mercury_opengl/		A Mercury binding to OpenGL.
+ 
+	mercury_glfw/		A Mercury binding to GLFW.
+	
+	mercury_glut/		A Mercury binding to GLUT.
+
+        mercury_cairo/		A Mercury binding to the Cairo 2D graphics
+                                library.
+					
+	samples/
+		calc/		A calculator that uses mercury_tcltk.
+
+		gears/		The classic OpenGL gears demo.
+	
+		maze/		Draws pretty mazes in 3D using OpenGL
+				and GLUT.
+
+We haven't worked out how to prevent the Tcl/Tk library from giving a
+tcl prompt when it enters the event loop. If you know how, let us know!
+

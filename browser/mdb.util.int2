@@ -1,0 +1,3 @@
+:- module (mdb.util).
+:- interface.
+:- type line_number == int.

@@ -1,0 +1,3 @@
+:- module set_ctree234.
+:- interface.
+:- type set_ctree234(T).
