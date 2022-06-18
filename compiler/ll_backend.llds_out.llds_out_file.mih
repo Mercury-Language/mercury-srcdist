@@ -1,0 +1,87 @@
+/*
+** Automatically generated from `llds_out_file.m'
+** by the Mercury compiler,
+** version rotd-2022-06-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.llds_out.llds_out_file.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__llds_out__llds_out_file
+#define MR_HEADER_GUARD_ll_backend__llds_out__llds_out_file
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__LLDS_OUT__LLDS_OUT_FILE_DECL_GUARD
+#define LL_BACKEND__LLDS_OUT__LLDS_OUT_FILE_DECL_GUARD
+#include "ll_backend.mih"
+#include "ll_backend.llds_out.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds_out__llds_out_file__ll_backend__llds_out__llds_out_file__type_ctor_info_annotated_c_module_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds_out__llds_out_file__ll_backend__llds_out__llds_out_file__type_ctor_info_annotated_c_procedure_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__llds_out__llds_out_file__ll_backend__llds_out__llds_out_file__type_ctor_info_linkage_0;
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_file__output_llds_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_String MR_CALL 
+ll_backend__llds_out__llds_out_file__c_data_const_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+ll_backend__llds_out__llds_out_file__c_data_linkage_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__llds_out__llds_out_file____Compare____linkage_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__llds_out__llds_out_file____Unify____linkage_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__llds_out__llds_out_file__init(void);
+void mercury__ll_backend__llds_out__llds_out_file__init_type_tables(void);
+void mercury__ll_backend__llds_out__llds_out_file__init_debugger(void);
+const char *mercury__ll_backend__llds_out__llds_out_file__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.llds_out.llds_out_file
+
+// :- end_interface ll_backend.llds_out.llds_out_file.
