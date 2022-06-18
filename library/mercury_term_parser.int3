@@ -1,0 +1,2 @@
+:- module mercury_term_parser.
+:- interface.
