@@ -1,0 +1,5 @@
+:- module (parse_tree.check_type_inst_mode_defns).
+:- interface.
+:- type maybe_insist_on_defn
+    --->    do_not_insist_on_defn 
+    ;       do_insist_on_defn .

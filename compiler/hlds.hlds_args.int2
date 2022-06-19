@@ -1,0 +1,6 @@
+:- module (hlds.hlds_args).
+:- interface.
+:- type poly_arg_vector(T).
+:- type proc_arg_vector(T).
+:- implementation.
+:- type poly_arg_vector(T) == hlds.hlds_args.proc_arg_vector(T).
