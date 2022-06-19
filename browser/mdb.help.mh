@@ -1,0 +1,36 @@
+// Automatically generated from `help.m'
+// by the Mercury compiler,
+// version rotd-2022-06-19
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MDB__HELP_MH
+#define MDB__HELP_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+void ML_HELP_init(MR_Word *);
+void ML_HELP_add_help_node(MR_Word, MR_Integer, MR_String, MR_String, MR_Word *, MR_Word, MR_Word *);
+void ML_HELP_print_top_level_help_nodes(MR_Word, MR_Word);
+void ML_HELP_print_help_node_at_path(MR_Word, MR_Word, MR_Word, MR_Word *);
+void ML_HELP_print_help_for_name(MR_Word, MR_Word, MR_String);
+void ML_HELP_help_system_type(MR_Word *);
+MR_bool ML_HELP_result_is_error(MR_Word, MR_String *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__HELP_MH */
