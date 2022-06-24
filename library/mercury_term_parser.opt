@@ -1,0 +1,121 @@
+:- module mercury_term_parser.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module float.
+:- use_module int.
+:- use_module integer.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mercury_term_lexer.
+:- use_module ops.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module term.
+:- use_module varset.
+:- use_module (string.format).
+:- use_module (string.parse_util).
+
+:- type parse_result(T)
+    --->    pr_ok(T)
+    ;       pr_error(string, mercury_term_lexer.token_list).
+:- type parser_state(Ops, T)
+    --->    parser_state((mercury_term_parser.ps_stream_name) :: string, (mercury_term_parser.ps_ops_table) :: Ops, (mercury_term_parser.ps_varset) :: varset.varset(T), (mercury_term_parser.ps_var_names) :: tree234.tree234(string, term.var(T))).
+:- type term_kind
+    --->    ordinary_term 
+    ;       argument 
+    ;       list_elem .
+
+mercury_term_parser.parse_tokens(V_4, V_5, V_6) :-
+    V_7 = ops.init_mercury_op_table,
+    mercury_term_parser.parse_tokens_with_op_table(V_7, V_4, V_5, V_6).
+
+mercury_term_parser.read_term(V_4, V_7, V_8) :-
+    io.input_stream(V_6, V_7, V_9),
+    mercury_term_parser.read_term(V_6, V_4, V_9, V_8).
+
+mercury_term_parser.read_term(V_5, V_6, V_9, V_10) :-
+    io.input_stream_name(V_5, V_8, V_9, V_11),
+    V_12 = ops.init_mercury_op_table,
+    mercury_term_parser.read_term_filename_with_op_table(V_5, V_12, V_8, V_6, V_11, V_10).
+
+mercury_term_parser.read_term_filename(V_5, V_6, V_9, V_10) :-
+    io.input_stream(V_8, V_9, V_11),
+    mercury_term_parser.read_term_filename(V_8, V_5, V_6, V_11, V_10).
+
+mercury_term_parser.read_term_filename(V_6, V_7, V_8, V_10, V_11) :-
+    V_12 = ops.init_mercury_op_table,
+    mercury_term_parser.read_term_filename_with_op_table(V_6, V_12, V_7, V_8, V_10, V_11).
+
+mercury_term_parser.read_term_filename_with_op_table(V_6, V_7, V_8, V_11, V_12) :-
+    io.input_stream(V_10, V_11, V_13),
+    mercury_term_parser.read_term_filename_with_op_table(V_10, V_6, V_7, V_8, V_13, V_12).
+
+mercury_term_parser.read_term_filename_with_op_table(V_7, V_8, V_9, V_10, V_13, V_14) :-
+    mercury_term_lexer.get_token_list(V_7, V_12, V_13, V_14),
+    mercury_term_parser.parse_tokens_with_op_table(V_8, V_9, V_12, V_10).
+
+mercury_term_parser.read_term_from_linestr(V_9, V_10, V_11, V_12, V_13, V_14, V_15, V_16) :-
+    V_17 = ops.init_mercury_op_table,
+    mercury_term_parser.read_term_from_linestr_with_op_table(V_17, V_9, V_10, V_11, V_12, V_13, V_14, V_15, V_16).
+
+mercury_term_parser.read_term_from_linestr_with_op_table(V_10, V_11, V_12, V_13, V_14, V_15, V_16, V_17, V_18) :-
+    mercury_term_lexer.linestr_get_token_list_max(V_12, V_13, V_19, V_14, V_15, V_16, V_17),
+    mercury_term_parser.parse_tokens_with_op_table(V_10, V_11, V_19, V_18).
+
+mercury_term_parser.read_term_from_string(V_5, V_6, V_7, V_8) :-
+    V_9 = ops.init_mercury_op_table,
+    mercury_term_parser.read_term_from_string_with_op_table(V_9, V_5, V_6, V_7, V_8).
+
+mercury_term_parser.read_term_from_substring(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    V_13 = ops.init_mercury_op_table,
+    mercury_term_parser.read_term_from_substring_with_op_table(V_13, V_7, V_8, V_9, V_10, V_11, V_12).
+
+mercury_term_parser.read_term_from_substring_with_op_table(V_8, V_9, V_10, V_11, V_12, V_13, V_14) :-
+    mercury_term_lexer.string_get_token_list_max(V_10, V_11, V_15, V_12, V_13),
+    mercury_term_parser.parse_tokens_with_op_table(V_8, V_9, V_15, V_14).
+
+mercury_term_parser.read_term_with_op_table(V_5, V_6, V_9, V_10) :-
+    io.input_stream(V_8, V_9, V_11),
+    mercury_term_parser.read_term_with_op_table(V_8, V_5, V_6, V_11, V_10).
+
+mercury_term_parser.read_term_with_op_table(V_6, V_7, V_8, V_11, V_12) :-
+    io.input_stream_name(V_6, V_10, V_11, V_13),
+    mercury_term_parser.read_term_filename_with_op_table(V_6, V_7, V_10, V_8, V_13, V_12).
+
+:- pragma termination_info(mercury_term_parser.parse_tokens((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.parse_tokens_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_filename((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_filename((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_filename_with_op_table((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_filename_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_from_linestr((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_from_linestr_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_from_string((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_from_string_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_from_substring((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_from_substring_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_with_op_table((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(mercury_term_parser.read_term_with_op_table((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (mercury_term_parser.parse_tokens), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.parse_tokens_with_op_table), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_filename), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_filename), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_filename_with_op_table), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_filename_with_op_table), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_from_linestr), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_from_linestr_with_op_table), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_from_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_from_string_with_op_table), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_from_substring), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_from_substring_with_op_table), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_with_op_table), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (mercury_term_parser.read_term_with_op_table), 5, 0, may_throw(user_exception)).
