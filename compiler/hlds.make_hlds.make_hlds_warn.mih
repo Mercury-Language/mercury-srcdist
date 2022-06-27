@@ -1,0 +1,106 @@
+/*
+** Automatically generated from `make_hlds_warn.m'
+** by the Mercury compiler,
+** version 22.01.3-beta-2022-06-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.make_hlds_warn.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__make_hlds_warn
+#define MR_HEADER_GUARD_hlds__make_hlds__make_hlds_warn
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__MAKE_HLDS_WARN_DECL_GUARD
+#define HLDS__MAKE_HLDS__MAKE_HLDS_WARN_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_single_or_multi_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_warn_info_0;
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn__add_quant_warnings_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn__check_promise_ex_decl_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_pragma_foreign_proc_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_suspicious_foreign_code_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void mercury__hlds__make_hlds__make_hlds_warn__init(void);
+void mercury__hlds__make_hlds__make_hlds_warn__init_type_tables(void);
+void mercury__hlds__make_hlds__make_hlds_warn__init_debugger(void);
+const char *mercury__hlds__make_hlds__make_hlds_warn__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.make_hlds.make_hlds_warn
+
+// :- end_interface hlds.make_hlds.make_hlds_warn.

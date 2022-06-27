@@ -1,0 +1,210 @@
+/*
+** Automatically generated from `array2d.m'
+** by the Mercury compiler,
+** version 22.01.3-beta-2022-06-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module array2d.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_array2d
+#define MR_HEADER_GUARD_array2d
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ARRAY2D_DECL_GUARD
+#define ARRAY2D_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__array2d__array2d__type_ctor_info_array2d_1;
+
+void MR_CALL 
+mercury__array2d__bounds_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__array2d__fill_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__array2d__get_rows_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_ArrayPtr param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mercury__array2d__in_bounds_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+MR_bool MR_CALL 
+mercury__array2d__is_empty_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__array2d__lookup_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__array2d__set_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__array2d__unsafe_lookup_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__array2d__unsafe_set_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_Word MR_CALL 
+mercury__array2d__array2d_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Box MR_CALL 
+mercury__array2d__elem_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__array2d__f_101_108_101_109_32_58_61_4_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Box param_5);
+
+MR_Word MR_CALL 
+mercury__array2d__from_array_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_ArrayPtr param_4);
+
+MR_Word MR_CALL 
+mercury__array2d__from_lists_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__array2d__init_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__array2d__lists_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Box MR_CALL 
+mercury__array2d__lookup_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+MR_Box MR_CALL 
+mercury__array2d__unsafe_elem_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__array2d__f_117_110_115_97_102_101_95_101_108_101_109_32_58_61_4_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Box param_5);
+
+MR_Box MR_CALL 
+mercury__array2d__unsafe_lookup_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+void MR_CALL 
+mercury__array2d____Compare____array2d_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__array2d____Unify____array2d_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__array2d__init(void);
+void mercury__array2d__init_type_tables(void);
+void mercury__array2d__init_debugger(void);
+const char *mercury__array2d__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_array2d
+
+// :- end_interface array2d.
