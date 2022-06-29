@@ -1,0 +1,218 @@
+/*
+** Automatically generated from `rbmm.region_resurrection_renaming.m'
+** by the Mercury compiler,
+** version rotd-2022-06-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.rbmm.region_resurrection_renaming.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__rbmm__region_resurrection_renaming
+#define MR_HEADER_GUARD_transform_hlds__rbmm__region_resurrection_renaming
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__RBMM__REGION_RESURRECTION_RENAMING_DECL_GUARD
+#define TRANSFORM_HLDS__RBMM__REGION_RESURRECTION_RENAMING_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.rbmm.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_exec_path_region_set_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_join_point_region_name_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_proc_resurrection_path_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_annotation_proc_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_annotation_table_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_proc_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_table_0;
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__make_renaming_instruction_3_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__record_annotation_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____exec_path_region_set_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____join_point_region_name_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____proc_resurrection_path_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_proc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_proc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____exec_path_region_set_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____join_point_region_name_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____proc_resurrection_path_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_proc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_proc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__rbmm__region_resurrection_renaming__init(void);
+void mercury__transform_hlds__rbmm__region_resurrection_renaming__init_type_tables(void);
+void mercury__transform_hlds__rbmm__region_resurrection_renaming__init_debugger(void);
+const char *mercury__transform_hlds__rbmm__region_resurrection_renaming__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.rbmm.region_resurrection_renaming
+
+// :- end_interface transform_hlds.rbmm.region_resurrection_renaming.
