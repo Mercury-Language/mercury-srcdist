@@ -1,0 +1,103 @@
+/*
+** Automatically generated from `mlds_to_c_data.m'
+** by the Mercury compiler,
+** version rotd-2022-07-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.mlds_to_c_data.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_c_data
+#define MR_HEADER_GUARD_ml_backend__mlds_to_c_data
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_C_DATA_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_C_DATA_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+void MR_CALL 
+ml_backend__mlds_to_c_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_108_100_115_95_111_117_116_112_117_116_95_105_110_105_116_105_97_108_105_122_101_114_95_95_91_51_93_95_48_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_c_data__mlds_output_boxed_rval_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_c_data__mlds_output_bracketed_rval_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_c_data__mlds_output_initializer_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_c_data__mlds_output_initializer_body_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_c_data__mlds_output_lval_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_c_data__mlds_output_ptag_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ml_backend__mlds_to_c_data__mlds_output_rval_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__ml_backend__mlds_to_c_data__init(void);
+void mercury__ml_backend__mlds_to_c_data__init_type_tables(void);
+void mercury__ml_backend__mlds_to_c_data__init_debugger(void);
+const char *mercury__ml_backend__mlds_to_c_data__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.mlds_to_c_data
+
+// :- end_interface ml_backend.mlds_to_c_data.
