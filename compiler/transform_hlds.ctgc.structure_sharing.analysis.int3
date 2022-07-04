@@ -1,0 +1,19 @@
+:- module (((transform_hlds.ctgc).structure_sharing).analysis).
+:- interface.
+:- import_module analysis.
+:- import_module hlds.
+:- import_module (hlds.hlds_module).
+:- type structure_sharing_answer.
+:- type structure_sharing_call.
+:- type structure_sharing_func_info.
+:- instance (analysis(transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_func_info, transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_call, transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_answer)).
+:- instance (answer_pattern(transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_func_info, transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_answer)).
+:- instance (call_pattern(transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_func_info, transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_call)).
+:- instance (partial_order(transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_func_info, transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_answer)).
+:- instance (partial_order(transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_func_info, transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_call)).
+:- instance (to_term(transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_answer)).
+:- instance (to_term(transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_call)).
+:- type_representation(dep_procs, is_eqv_to(list(pred_proc_id))).
+:- type_representation(ss_fixpoint_table, is_eqv_to(fixpoint_table(pred_proc_id, sharing_as_and_status))).
+:- type_representation(structure_sharing_call, du_repn(direct_dummy("structure_sharing_call",  no_c_j_cs))).
+:- type_representation(structure_sharing_func_info, is_word_aligned_ptr).
