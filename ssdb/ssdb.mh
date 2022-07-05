@@ -1,0 +1,236 @@
+// Automatically generated from `ssdb.m'
+// by the Mercury compiler,
+// version rotd-2022-07-05
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef SSDB_MH
+#define SSDB_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef SSDB_DECL_GUARD
+#define SSDB_DECL_GUARD
+
+    #include "mercury_signal.h"
+    static void MR_ssdb_sigint_handler(void);
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_String ssdb__mutable_variable_cur_filename;
+#else
+    extern MR_Word ssdb__mutable_variable_cur_filename;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_filename_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Integer ssdb__mutable_variable_cur_line_number;
+#else
+    extern MR_Word ssdb__mutable_variable_cur_line_number;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_line_number_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Integer ssdb__mutable_variable_cur_ssdb_event_number;
+#else
+    extern MR_Word ssdb__mutable_variable_cur_ssdb_event_number;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_event_number_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Integer ssdb__mutable_variable_cur_ssdb_csn;
+#else
+    extern MR_Word ssdb__mutable_variable_cur_ssdb_csn;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_csn_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_cur_ssdb_next_stop;
+#else
+    extern MR_Word ssdb__mutable_variable_cur_ssdb_next_stop;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_next_stop_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_shadow_stack;
+#else
+    extern MR_Word ssdb__mutable_variable_shadow_stack;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_shadow_stack_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Integer ssdb__mutable_variable_shadow_stack_depth;
+#else
+    extern MR_Word ssdb__mutable_variable_shadow_stack_depth;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_shadow_stack_depth_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_nondet_shadow_stack;
+#else
+    extern MR_Word ssdb__mutable_variable_nondet_shadow_stack;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_nondet_shadow_stack_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Integer ssdb__mutable_variable_nondet_shadow_stack_depth;
+#else
+    extern MR_Word ssdb__mutable_variable_nondet_shadow_stack_depth;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_nondet_shadow_stack_depth_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_command_queue;
+#else
+    extern MR_Word ssdb__mutable_variable_command_queue;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_command_queue_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_aliases;
+#else
+    extern MR_Word ssdb__mutable_variable_aliases;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_aliases_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_breakpoints_map;
+#else
+    extern MR_Word ssdb__mutable_variable_breakpoints_map;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_breakpoints_map_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_BitmapPtr ssdb__mutable_variable_breakpoints_filter;
+#else
+    extern MR_Word ssdb__mutable_variable_breakpoints_filter;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_breakpoints_filter_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_browser_state;
+#else
+    extern MR_Word ssdb__mutable_variable_browser_state;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_browser_state_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_list_params;
+#else
+    extern MR_Word ssdb__mutable_variable_list_params;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_list_params_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_tty_in;
+#else
+    extern MR_Word ssdb__mutable_variable_tty_in;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_tty_in_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_tty_out;
+#else
+    extern MR_Word ssdb__mutable_variable_tty_out;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_tty_out_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_saved_input_stream;
+#else
+    extern MR_Word ssdb__mutable_variable_saved_input_stream;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_saved_input_stream_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ssdb__mutable_variable_saved_output_stream;
+#else
+    extern MR_Word ssdb__mutable_variable_saved_output_stream;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_saved_output_stream_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned ssdb__mutable_variable_debugger_state;
+#else
+    extern MR_Unsigned ssdb__mutable_variable_debugger_state;
+#endif
+
+
+#endif
+void SSDB_step_next_stop(void);
+void ssdb__user_init_pred_80_0(void);
+void ssdb__user_init_pred_79_0(void);
+void ssdb__user_init_pred_78_0(void);
+void ssdb__user_init_pred_77_0(void);
+void ssdb__user_init_pred_76_0(void);
+void ssdb__user_init_pred_73_0(void);
+void ssdb__user_init_pred_70_0(void);
+void ssdb__user_init_pred_69_0(void);
+void ssdb__user_init_pred_68_0(void);
+void ssdb__user_init_pred_67_0(void);
+void ssdb__user_init_pred_66_0(void);
+void ssdb__user_init_pred_65_0(void);
+void ssdb__user_init_pred_64_0(void);
+void ssdb__user_init_pred_63_0(void);
+void ssdb__user_init_pred_62_0(void);
+void ssdb__user_init_pred_61_0(void);
+void ssdb__user_init_pred_60_0(void);
+void ssdb__user_init_pred_59_0(void);
+void ssdb__user_init_pred_58_0(void);
+void ssdb__user_init_pred_57_0(void);
+void ssdb__user_init_pred_81_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SSDB_MH */
