@@ -1,0 +1,2 @@
+:- module (ml_backend.ml_proc_gen).
+:- interface.

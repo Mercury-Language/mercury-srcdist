@@ -1,0 +1,5 @@
+:- module ((hlds.make_hlds).goal_expr_to_goal).
+:- interface.
+:- type loc_kind
+    --->    loc_whole_goal 
+    ;       loc_inside_atomic_goal .
