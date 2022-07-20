@@ -1,0 +1,2 @@
+:- module (check_hlds.delay_partial_inst).
+:- interface.
