@@ -1,0 +1,43 @@
+:- module (mdb.declarative_analyser).
+:- interface.
+:- use_module io.
+:- use_module maybe.
+:- use_module (mdb.declarative_debugger).
+:- use_module (mdb.declarative_edt).
+:- use_module (mdb.declarative_oracle).
+:- use_module (mdb.declarative_user).
+:- type analyser_response(T)
+    --->    analyser_response_no_suspects 
+    ;       analyser_response_bug_found(mdb.declarative_debugger.decl_bug, mdb.declarative_debugger.decl_evidence(T))
+    ;       analyser_response_oracle_question(mdb.declarative_debugger.decl_question(T))
+    ;       analyser_response_require_explicit_subtree(T)
+    ;       analyser_response_require_explicit_supertree(T)
+    ;       analyser_response_revise(mdb.declarative_debugger.decl_question(T)).
+:- type analyser_state(T).
+:- type analysis_type(T)
+    --->    new_tree(T)
+    ;       resume_previous .
+:- type search_mode.
+:- pred analyser_state_init(mdb.declarative_analyser.analyser_state(T)).
+:- mode analyser_state_init((builtin.out)) is det.
+:- pred change_search_mode(S, mdb.declarative_oracle.oracle_state, mdb.declarative_user.user_search_mode, mdb.declarative_analyser.analyser_response(T), mdb.declarative_analyser.analyser_state(T), mdb.declarative_analyser.analyser_state(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode change_search_mode((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred continue_analysis(S, mdb.declarative_oracle.oracle_state, mdb.declarative_debugger.decl_answer(T), mdb.declarative_analyser.analyser_response(T), mdb.declarative_analyser.analyser_state(T), mdb.declarative_analyser.analyser_state(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode continue_analysis((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred debug_analyser_state(mdb.declarative_analyser.analyser_state(T), maybe.maybe(mdb.declarative_edt.subterm_origin(T))).
+:- mode debug_analyser_state((builtin.in), (builtin.out)) is det.
+:- func divide_and_query_search_mode = mdb.declarative_analyser.search_mode.
+:- pred reask_last_question(S, mdb.declarative_analyser.analyser_state(T), mdb.declarative_analyser.analyser_response(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode reask_last_question((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred reset_analyser(mdb.declarative_analyser.analyser_state(T), mdb.declarative_analyser.analyser_state(T)).
+:- mode reset_analyser((builtin.in), (builtin.out)) is det.
+:- pred revise_analysis(S, mdb.declarative_analyser.analyser_response(T), mdb.declarative_analyser.analyser_state(T), mdb.declarative_analyser.analyser_state(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode revise_analysis((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred set_analyser_fallback_search_mode(S, mdb.declarative_analyser.search_mode, mdb.declarative_analyser.analyser_state(T), mdb.declarative_analyser.analyser_state(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode set_analyser_fallback_search_mode((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred show_info(S, io.output_stream, mdb.declarative_analyser.analyser_state(T), io.io, io.io) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode show_info((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred start_or_resume_analysis(S, mdb.declarative_oracle.oracle_state, mdb.declarative_analyser.analysis_type(T), mdb.declarative_analyser.analyser_response(T), mdb.declarative_analyser.analyser_state(T), mdb.declarative_analyser.analyser_state(T)) <= ((mdb.declarative_edt).mercury_edt(S, T)).
+:- mode start_or_resume_analysis((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func suspicion_divide_and_query_search_mode = mdb.declarative_analyser.search_mode.
+:- func top_down_search_mode = mdb.declarative_analyser.search_mode.

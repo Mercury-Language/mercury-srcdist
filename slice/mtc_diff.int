@@ -1,0 +1,8 @@
+:- module mtc_diff.
+:- interface.
+:- use_module io.
+:- pred main(io.io, io.io).
+:- mode main((builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- type option
+    --->    output_filename .
