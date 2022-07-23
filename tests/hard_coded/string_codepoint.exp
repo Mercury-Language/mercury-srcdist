@@ -1,0 +1,190 @@
+count_code_units:
+13
+
+count_codepoints:
+6
+
+codepoint_offset:
+string.codepoint_offset(Str, 0, 0)
+string.codepoint_offset(Str, 0, 1, 1)
+string.index(Str, 0, 'a')
+string.codepoint_offset(Str, 1, 1)
+string.codepoint_offset(Str, 1, 1, 3)
+string.index(Str, 1, 'ß')
+string.codepoint_offset(Str, 2, 3)
+string.codepoint_offset(Str, 3, 1, 5)
+string.index(Str, 3, 'ξ')
+string.codepoint_offset(Str, 3, 5)
+string.codepoint_offset(Str, 5, 1, 8)
+string.index(Str, 5, '啕')
+string.codepoint_offset(Str, 4, 8)
+string.codepoint_offset(Str, 8, 1, 12)
+string.index(Str, 8, '𐀀')
+string.codepoint_offset(Str, 5, 12)
+string.codepoint_offset(Str, 12, 1, _) failed
+string.index(Str, 12, '.')
+string.codepoint_offset(Str, 6, _) failed
+
+to_char_list:
+['a', 'ß', 'ξ', '啕', '𐀀', '.']
+
+from_char_list:
+aßξ啕𐀀.
+
+from_rev_char_list:
+.𐀀啕ξßa
+
+to_code_unit_list:
+[97, 195, 159, 206, 190, 229, 149, 149, 240, 144, 128, 128, 46]
+
+from_code_unit_list:
+aßξ啕𐀀.
+
+index_next:
+index_next(Str, 0, 1, 'a')
+index_next(Str, 1, 3, 'ß')
+index_next(Str, 3, 5, 'ξ')
+index_next(Str, 5, 8, '啕')
+index_next(Str, 8, 12, '𐀀')
+index_next(Str, 12, 13, '.')
+end
+
+index_next(-1):
+end
+
+unsafe_index_next:
+unsafe_index_next(Str, 0, 1, 'a')
+unsafe_index_next(Str, 1, 3, 'ß')
+unsafe_index_next(Str, 3, 5, 'ξ')
+unsafe_index_next(Str, 5, 8, '啕')
+unsafe_index_next(Str, 8, 12, '𐀀')
+unsafe_index_next(Str, 12, 13, '.')
+end
+
+unsafe_prev_index:
+unsafe_prev_index(Str, 13, 12, '.')
+unsafe_prev_index(Str, 12, 8, '𐀀')
+unsafe_prev_index(Str, 8, 5, '啕')
+unsafe_prev_index(Str, 5, 3, 'ξ')
+unsafe_prev_index(Str, 3, 1, 'ß')
+unsafe_prev_index(Str, 1, 0, 'a')
+end
+
+split_by_codepoint:
+split_by_codepoint(Str, -1, "", "aßξ啕𐀀.")
+split_by_codepoint(Str, 0, "", "aßξ啕𐀀.")
+split_by_codepoint(Str, 1, "a", "ßξ啕𐀀.")
+split_by_codepoint(Str, 2, "aß", "ξ啕𐀀.")
+split_by_codepoint(Str, 3, "aßξ", "啕𐀀.")
+split_by_codepoint(Str, 4, "aßξ啕", "𐀀.")
+split_by_codepoint(Str, 5, "aßξ啕𐀀", ".")
+split_by_codepoint(Str, 6, "aßξ啕𐀀.", "")
+
+left_by_codepoint:
+aßξ
+
+right_by_codepoint:
+啕𐀀.
+
+between_codepoints:
+between_codepoints(Str, -2, -2, "")
+between_codepoints(Str, -2, -1, "")
+between_codepoints(Str, -2, 0, "")
+between_codepoints(Str, -2, 1, "a")
+between_codepoints(Str, -2, 2, "aß")
+between_codepoints(Str, -2, 3, "aßξ")
+between_codepoints(Str, -2, 4, "aßξ啕")
+between_codepoints(Str, -2, 5, "aßξ啕𐀀")
+between_codepoints(Str, -2, 6, "aßξ啕𐀀.")
+between_codepoints(Str, -2, 7, "aßξ啕𐀀.")
+between_codepoints(Str, -1, -2, "")
+between_codepoints(Str, -1, -1, "")
+between_codepoints(Str, -1, 0, "")
+between_codepoints(Str, -1, 1, "a")
+between_codepoints(Str, -1, 2, "aß")
+between_codepoints(Str, -1, 3, "aßξ")
+between_codepoints(Str, -1, 4, "aßξ啕")
+between_codepoints(Str, -1, 5, "aßξ啕𐀀")
+between_codepoints(Str, -1, 6, "aßξ啕𐀀.")
+between_codepoints(Str, -1, 7, "aßξ啕𐀀.")
+between_codepoints(Str, 0, -2, "")
+between_codepoints(Str, 0, -1, "")
+between_codepoints(Str, 0, 0, "")
+between_codepoints(Str, 0, 1, "a")
+between_codepoints(Str, 0, 2, "aß")
+between_codepoints(Str, 0, 3, "aßξ")
+between_codepoints(Str, 0, 4, "aßξ啕")
+between_codepoints(Str, 0, 5, "aßξ啕𐀀")
+between_codepoints(Str, 0, 6, "aßξ啕𐀀.")
+between_codepoints(Str, 0, 7, "aßξ啕𐀀.")
+between_codepoints(Str, 1, -2, "")
+between_codepoints(Str, 1, -1, "")
+between_codepoints(Str, 1, 0, "")
+between_codepoints(Str, 1, 1, "")
+between_codepoints(Str, 1, 2, "ß")
+between_codepoints(Str, 1, 3, "ßξ")
+between_codepoints(Str, 1, 4, "ßξ啕")
+between_codepoints(Str, 1, 5, "ßξ啕𐀀")
+between_codepoints(Str, 1, 6, "ßξ啕𐀀.")
+between_codepoints(Str, 1, 7, "ßξ啕𐀀.")
+between_codepoints(Str, 2, -2, "")
+between_codepoints(Str, 2, -1, "")
+between_codepoints(Str, 2, 0, "")
+between_codepoints(Str, 2, 1, "")
+between_codepoints(Str, 2, 2, "")
+between_codepoints(Str, 2, 3, "ξ")
+between_codepoints(Str, 2, 4, "ξ啕")
+between_codepoints(Str, 2, 5, "ξ啕𐀀")
+between_codepoints(Str, 2, 6, "ξ啕𐀀.")
+between_codepoints(Str, 2, 7, "ξ啕𐀀.")
+between_codepoints(Str, 3, -2, "")
+between_codepoints(Str, 3, -1, "")
+between_codepoints(Str, 3, 0, "")
+between_codepoints(Str, 3, 1, "")
+between_codepoints(Str, 3, 2, "")
+between_codepoints(Str, 3, 3, "")
+between_codepoints(Str, 3, 4, "啕")
+between_codepoints(Str, 3, 5, "啕𐀀")
+between_codepoints(Str, 3, 6, "啕𐀀.")
+between_codepoints(Str, 3, 7, "啕𐀀.")
+between_codepoints(Str, 4, -2, "")
+between_codepoints(Str, 4, -1, "")
+between_codepoints(Str, 4, 0, "")
+between_codepoints(Str, 4, 1, "")
+between_codepoints(Str, 4, 2, "")
+between_codepoints(Str, 4, 3, "")
+between_codepoints(Str, 4, 4, "")
+between_codepoints(Str, 4, 5, "𐀀")
+between_codepoints(Str, 4, 6, "𐀀.")
+between_codepoints(Str, 4, 7, "𐀀.")
+between_codepoints(Str, 5, -2, "")
+between_codepoints(Str, 5, -1, "")
+between_codepoints(Str, 5, 0, "")
+between_codepoints(Str, 5, 1, "")
+between_codepoints(Str, 5, 2, "")
+between_codepoints(Str, 5, 3, "")
+between_codepoints(Str, 5, 4, "")
+between_codepoints(Str, 5, 5, "")
+between_codepoints(Str, 5, 6, ".")
+between_codepoints(Str, 5, 7, ".")
+between_codepoints(Str, 6, -2, "")
+between_codepoints(Str, 6, -1, "")
+between_codepoints(Str, 6, 0, "")
+between_codepoints(Str, 6, 1, "")
+between_codepoints(Str, 6, 2, "")
+between_codepoints(Str, 6, 3, "")
+between_codepoints(Str, 6, 4, "")
+between_codepoints(Str, 6, 5, "")
+between_codepoints(Str, 6, 6, "")
+between_codepoints(Str, 6, 7, "")
+between_codepoints(Str, 7, -2, "")
+between_codepoints(Str, 7, -1, "")
+between_codepoints(Str, 7, 0, "")
+between_codepoints(Str, 7, 1, "")
+between_codepoints(Str, 7, 2, "")
+between_codepoints(Str, 7, 3, "")
+between_codepoints(Str, 7, 4, "")
+between_codepoints(Str, 7, 5, "")
+between_codepoints(Str, 7, 6, "")
+between_codepoints(Str, 7, 7, "")
+

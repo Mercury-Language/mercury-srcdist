@@ -1,0 +1,182 @@
+/*
+** Automatically generated from `mode_robdd.equiv_vars.m'
+** by the Mercury compiler,
+** version rotd-2022-07-23
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mode_robdd.equiv_vars.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mode_robdd__equiv_vars
+#define MR_HEADER_GUARD_mode_robdd__equiv_vars
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MODE_ROBDD__EQUIV_VARS_DECL_GUARD
+#define MODE_ROBDD__EQUIV_VARS_DECL_GUARD
+#include "mode_robdd.mih"
+
+#endif
+
+
+
+void MR_CALL 
+mode_robdd__equiv_vars__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_110_111_114_109_97_108_105_115_101_95_107_110_111_119_110_95_101_113_117_105_118_97_108_101_110_116_95_118_97_114_115_95_95_91_84_32_61_32_99_104_101_99_107_95_104_108_100_115_46_109_111_100_101_95_99_111_110_115_116_114_97_105_110_116_95_114_111_98_100_100_46_109_99_95_116_121_112_101_93_95_48_95_49_5_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mode_robdd__equiv_vars__empty_1_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mode_robdd__equiv_vars__label_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mode_robdd__equiv_vars__normalise_known_equivalent_vars_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+mode_robdd__equiv_vars__vars_are_equivalent_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mode_robdd__equiv_vars__vars_are_not_equivalent_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__f_times_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__f_plus_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mode_robdd__equiv_vars__f_84_121_112_101_83_112_101_99_79_102_95_95_102_117_110_99_95_95_108_101_97_100_101_114_95_95_91_84_32_61_32_99_104_101_99_107_95_104_108_100_115_46_109_111_100_101_95_99_111_110_115_116_114_97_105_110_116_95_114_111_98_100_100_46_109_99_95_116_121_112_101_93_95_48_95_49_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__add_equalities_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__add_equality_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__delete_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__det_leader_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__difference_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mode_robdd__equiv_vars__equivalent_vars_in_robdd_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__filter_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__init_equiv_vars_0_f_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+mode_robdd__equiv_vars__leader_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__remove_equiv_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mode_robdd__equiv_vars__restrict_threshold_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__mode_robdd__equiv_vars__init(void);
+void mercury__mode_robdd__equiv_vars__init_type_tables(void);
+void mercury__mode_robdd__equiv_vars__init_debugger(void);
+const char *mercury__mode_robdd__equiv_vars__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mode_robdd.equiv_vars
+
+// :- end_interface mode_robdd.equiv_vars.
