@@ -1,0 +1,274 @@
+/*
+** Automatically generated from `passes_aux.m'
+** by the Mercury compiler,
+** version rotd-2022-07-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.passes_aux.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__passes_aux
+#define MR_HEADER_GUARD_hlds__passes_aux
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__PASSES_AUX_DECL_GUARD
+#define HLDS__PASSES_AUX_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_dump_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_module_cookie_task_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_module_pred_cookie_task_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_module_pred_task_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_module_task_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_pred_error_task_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_proc_ids_pred_task_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_proc_ids_task_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_proc_task_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_update_pred_task_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_update_proc_task_0;
+
+void MR_CALL 
+hlds__passes_aux__get_debug_output_stream_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__passes_aux__get_error_output_stream_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__passes_aux__get_progress_output_stream_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__passes_aux__maybe_dump_hlds_7_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__passes_aux__maybe_report_sizes_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__passes_aux__process_valid_nonimported_preds_errors_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__passes_aux__process_valid_nonimported_procs_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__passes_aux__process_valid_nonimported_procs_update_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__passes_aux__should_dump_stage_4_p_0(
+  MR_Integer param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__passes_aux__write_pred_progress_message_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux__write_proc_progress_message_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux__write_proc_progress_message_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Integer param_4);
+
+MR_String MR_CALL 
+hlds__passes_aux__stage_num_str_1_f_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+hlds__passes_aux____Compare____dump_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux____Compare____module_cookie_task_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux____Compare____module_pred_cookie_task_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux____Compare____module_pred_task_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux____Compare____module_task_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux____Compare____pred_error_task_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux____Compare____proc_ids_pred_task_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux____Compare____proc_ids_task_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux____Compare____proc_task_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux____Compare____update_pred_task_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__passes_aux____Compare____update_proc_task_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____dump_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____module_cookie_task_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____module_pred_cookie_task_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____module_pred_task_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____module_task_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____pred_error_task_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____proc_ids_pred_task_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____proc_ids_task_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____proc_task_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____update_pred_task_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____update_proc_task_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__passes_aux__init(void);
+void mercury__hlds__passes_aux__init_type_tables(void);
+void mercury__hlds__passes_aux__init_debugger(void);
+const char *mercury__hlds__passes_aux__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.passes_aux
+
+// :- end_interface hlds.passes_aux.

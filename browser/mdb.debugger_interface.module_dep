@@ -1,0 +1,14 @@
+module(2, "debugger_interface.m",
+	(mdb.debugger_interface),
+	{mdb},
+	{builtin, private_builtin},
+	{io, list, mdbcomp, require, univ, (mdb.interactive_query), (mdb.util), (mdbcomp.goal_path), (mdbcomp.prim_data)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.debugger_interface)},
+	contains_foreign_export,
+	no_main,
+	{}
+).
