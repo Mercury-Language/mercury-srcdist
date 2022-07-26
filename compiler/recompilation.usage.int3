@@ -1,0 +1,3 @@
+:- module (recompilation.usage).
+:- interface.
+:- type_representation(record_item_pred(V_1), is_eqv_to(pred(module_qualifier, sym_name, arity, maybe_recorded, resolved_item_map(V_1), resolved_item_map(V_1), recompilation_usage_info, recompilation_usage_info))).
