@@ -1,0 +1,91 @@
+/*
+** Automatically generated from `pd_cost.m'
+** by the Mercury compiler,
+** version rotd-2022-07-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.pd_cost.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__pd_cost
+#define MR_HEADER_GUARD_transform_hlds__pd_cost
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__PD_COST_DECL_GUARD
+#define TRANSFORM_HLDS__PD_COST_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+void MR_CALL 
+transform_hlds__pd_cost__goal_cost_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_builtin_call_0_f_0(void);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_call_0_f_0(void);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_eliminate_switch_0_f_0(void);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_fold_0_f_0(void);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_heap_assign_0_f_0(void);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_heap_incr_0_f_0(void);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_higher_order_call_0_f_0(void);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_recursive_fold_0_f_0(void);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_reg_assign_0_f_0(void);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_simple_test_0_f_0(void);
+
+MR_Integer MR_CALL 
+transform_hlds__pd_cost__cost_of_stack_flush_0_f_0(void);
+
+void mercury__transform_hlds__pd_cost__init(void);
+void mercury__transform_hlds__pd_cost__init_type_tables(void);
+void mercury__transform_hlds__pd_cost__init_debugger(void);
+const char *mercury__transform_hlds__pd_cost__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.pd_cost
+
+// :- end_interface transform_hlds.pd_cost.

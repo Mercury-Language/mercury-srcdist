@@ -1,0 +1,14 @@
+module(2, "exception.m",
+	exception,
+	{},
+	{builtin, io, list, maybe, private_builtin, stm_builtin, store, univ},
+	{solutions, string, unit},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - exception, "C#" - exception, "Java" - exception},
+	contains_foreign_export,
+	no_main,
+	{}
+).

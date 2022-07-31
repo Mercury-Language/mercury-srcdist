@@ -1,0 +1,9 @@
+:- module (check_hlds.try_expand).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_util).
+:- pred expand_try_goals_in_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode expand_try_goals_in_module((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

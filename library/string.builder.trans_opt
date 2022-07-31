@@ -1,0 +1,11 @@
+:- module (string.builder).
+
+:- pragma termination_info((string.builder).'ClassMethod_for_stream__output____string__builder__handle__arity0__string__builder__state__arity0______stream__flush_3'((builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info((string.builder).'ClassMethod_for_stream__stream____string__builder__handle__arity0__string__builder__state__arity0______stream__name_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info((string.builder).'ClassMethod_for_stream__writer____string__builder__handle__arity0__character__arity0__string__builder__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((string.builder).'ClassMethod_for_stream__writer____string__builder__handle__arity0__string__arity0__string__builder__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(((string.builder).init) = (builtin.uo), finite(1, [no]), cannot_loop).
+:- pragma termination_info((string.builder).to_string((builtin.di)) = (builtin.uo), infinite, can_loop).
+
+:- pragma exceptions(function, ((string.builder).init), 0, 0, will_not_throw).
+:- pragma exceptions(function, ((string.builder).to_string), 1, 0, will_not_throw).
