@@ -1,0 +1,3 @@
+:- module (check_hlds.inst_test).
+:- interface.
+:- type_representation(inst_names, is_eqv_to(set(inst_name))).

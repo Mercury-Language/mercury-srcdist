@@ -1,0 +1,3 @@
+:- module (transform_hlds.constraint).
+:- interface.
+:- type constraint_info.
