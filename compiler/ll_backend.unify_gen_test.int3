@@ -1,0 +1,5 @@
+:- module (ll_backend.unify_gen_test).
+:- interface.
+:- type test_sense
+	where	type_is_abstract_enum(1).
+:- type_representation(test_sense, du_repn(enum("branch_on_success", "branch_on_failure", [],  no_c_j_cs))).
