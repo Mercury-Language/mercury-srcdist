@@ -1,0 +1,40 @@
+:- module calendar.
+:- interface.
+:- type date.
+:- type date_time.
+:- type day_of_month.
+:- type day_of_week
+	where	type_is_abstract_enum(3).
+:- type days.
+:- type duration.
+:- type hour.
+:- type hours.
+:- type microsecond.
+:- type microseconds.
+:- type minute.
+:- type minutes.
+:- type month
+	where	type_is_abstract_enum(4).
+:- type months.
+:- type second.
+:- type seconds.
+:- type year.
+:- type years.
+:- type_representation(date, is_word_aligned_ptr).
+:- type_representation(date_time, is_eqv_to(calendar.date)).
+:- type_representation(day_of_month, is_eqv_to(int)).
+:- type_representation(day_of_week, du_repn(enum("monday", "tuesday", ["wednesday", "thursday", "friday", "saturday", "sunday"],  no_c_j_cs))).
+:- type_representation(days, is_eqv_to(int)).
+:- type_representation(duration, is_word_aligned_ptr).
+:- type_representation(hour, is_eqv_to(int)).
+:- type_representation(hours, is_eqv_to(int)).
+:- type_representation(microsecond, is_eqv_to(int)).
+:- type_representation(microseconds, is_eqv_to(int)).
+:- type_representation(minute, is_eqv_to(int)).
+:- type_representation(minutes, is_eqv_to(int)).
+:- type_representation(month, du_repn(enum("january", "february", ["march", "april", "may", "june", "july", "august", "september", "october", "november", "december"],  no_c_j_cs))).
+:- type_representation(months, is_eqv_to(int)).
+:- type_representation(second, is_eqv_to(int)).
+:- type_representation(seconds, is_eqv_to(int)).
+:- type_representation(year, is_eqv_to(int)).
+:- type_representation(years, is_eqv_to(int)).
