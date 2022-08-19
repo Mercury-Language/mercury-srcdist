@@ -1,0 +1,43 @@
+// Automatically generated from `string.format.m'
+// by the Mercury compiler,
+// version rotd-2022-08-19
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef STRING__FORMAT_MH
+#define STRING__FORMAT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef STRING__FORMAT_DECL_GUARD
+#define STRING__FORMAT_DECL_GUARD
+
+#include "mercury_float.h"    // for MR_float_to_string
+
+// The following macro should expand to MR_TRUE if the C grades should
+// implement string.format using C's sprintf function.
+// Setting it to MR_FALSE will cause string.format to use the Mercury
+// implementation of string formatting in C grades.
+
+#define ML_USE_SPRINTF MR_TRUE
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* STRING__FORMAT_MH */
