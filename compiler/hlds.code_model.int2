@@ -1,0 +1,6 @@
+:- module (hlds.code_model).
+:- interface.
+:- type code_model
+    --->    model_det 
+    ;       model_semi 
+    ;       model_non .

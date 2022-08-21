@@ -1,0 +1,25 @@
+:- module term_unify.
+:- use_module builtin.
+:- use_module list.
+:- use_module map.
+:- use_module private_builtin.
+:- use_module term.
+:- use_module term_subst.
+:- use_module term_vars.
+
+term_unify.first_term_list_subsumes_second(V_4, V_5, V_6) :-
+    term_vars.vars_in_terms(V_5, V_7),
+    map.init(V_8),
+    term_unify.unify_term_lists_dont_bind(V_4, V_5, V_7, V_8, V_6).
+
+:- pragma termination_info(term_unify.first_term_list_subsumes_second((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_unify.unify_term_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_unify.unify_term_lists_dont_bind((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_unify.unify_terms((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_unify.unify_terms_dont_bind((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (term_unify.first_term_list_subsumes_second), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_unify.unify_term_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_unify.unify_term_lists_dont_bind), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_unify.unify_terms), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_unify.unify_terms_dont_bind), 5, 0, may_throw(user_exception)).

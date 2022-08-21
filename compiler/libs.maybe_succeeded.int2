@@ -1,0 +1,5 @@
+:- module (libs.maybe_succeeded).
+:- interface.
+:- type maybe_succeeded
+    --->    did_not_succeed 
+    ;       succeeded .
