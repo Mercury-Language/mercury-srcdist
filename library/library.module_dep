@@ -1,0 +1,14 @@
+module(2, "library.m",
+	library,
+	{},
+	{builtin, private_builtin},
+	{array, array2d, assoc_list, backjump, bag, benchmarking, bimap, bit_buffer, bitmap, bool, bt_array, calendar, char, construct, cord, counter, deconstruct, diet, digraph, dir, edit_seq, enum, eqvclass, exception, fat_sparse_bitset, float, gc, getopt, getopt_io, hash_table, injection, int, int16, int32, int64, int8, integer, io, kv_list, lazy, list, map, math, maybe, mercury_term_lexer, mercury_term_parser, multi_map, mutvar, one_or_more, one_or_more_map, ops, pair, par_builtin, parsing_utils, pprint, pqueue, pretty_printer, profiling_builtin, prolog, psqueue, queue, ra_list, random, ranges, rational, rbtree, region_builtin, require, robdd, rtree, rtti_implementation, set, set_bbbtree, set_ctree234, set_ordlist, set_tree234, set_unordlist, solutions, sparse_bitset, stack, std_util, stm_builtin, store, stream, string, table_builtin, table_statistics, term, term_conversion, term_int, term_io, term_size_prof_builtin, term_subst, term_to_xml, term_unify, term_vars, test_bitset, thread, time, tree234, tree_bitset, type_desc, uint, uint16, uint32, uint64, uint8, unit, univ, varset, version_array, version_array2d, version_bitmap, version_hash_table, version_store, (bit_buffer.read), (bit_buffer.write), (io.call_system), (io.environment), (io.file), (io.primitives_read), (io.primitives_write), (io.stream_db), (io.stream_ops), (random.sfc16), (random.sfc32), (random.sfc64), (random.system_rng), (stream.string_writer), (string.builder), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - library, "C#" - library, "Java" - library},
+	contains_foreign_export,
+	no_main,
+	{}
+).

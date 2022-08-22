@@ -1,0 +1,12 @@
+:- module (libs.process_util).
+:- interface.
+:- type io_pred.
+:- type pid.
+:- type post_signal_cleanup(Info).
+:- type signal_action.
+:- abstract_inst((io_pred)).
+:- abstract_inst((post_signal_cleanup)).
+:- type_representation(io_pred, is_eqv_to(pred(maybe_succeeded, io, io))).
+:- type_representation(pid, is_eqv_to(int)).
+:- type_representation(post_signal_cleanup(V_1), is_eqv_to(pred(V_1, V_1, io, io))).
+:- type_representation(signal_action, du_repn(direct_dummy("signal_action",  c_j_cs(foreign_type("MR_signal_action", []), no_foreign, no_foreign)))).

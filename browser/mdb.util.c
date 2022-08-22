@@ -1,0 +1,479 @@
+/*
+** Automatically generated from `util.m'
+** by the Mercury compiler,
+** version rotd-2022-08-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.util.
+// :- implementation.
+
+/*
+INIT mercury__mdb__util__init
+ENDINIT
+*/
+
+#include "mdb.util.mih"
+#include "mdb.util.mh"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdb.mih"
+#include "mdbcomp.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "require.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "univ.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.sym_name.mih"
+
+
+
+
+static void MR_CALL 
+mdb__util__trace_get_command_fallback_6_p_0(
+  MR_Word MdbIn_7,
+  MR_Word MdbOut_8,
+  MR_String Prompt_9,
+  MR_String * String_10);
+
+static void MR_CALL 
+mdb__util__call_trace_getline_7_p_0(
+  MR_Word MdbIn_1,
+  MR_Word MdbOut_2,
+  MR_String Prompt_3,
+  MR_String * Line_4,
+  MR_Integer * Success_5);
+
+static MR_bool MR_CALL 
+mdb__util____Unify____line_number_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+mdb__util____Compare____line_number_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+
+
+
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "mdb.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdb.util.mh"
+
+#line 145 "util.m"
+void 
+ML_BROWSER_trace_get_command_fallback(
+  MR_Word MdbIn_7,
+  MR_Word MdbOut_8,
+  MR_String Prompt_9,
+  MR_String * String_10)
+#line 145 "util.m"
+{
+#line 145 "util.m"
+	mdb__util__trace_get_command_fallback_6_p_0((MR_Word) MdbIn_7, (MR_Word) MdbOut_8, (MR_String) Prompt_9, (MR_String *) String_10);
+}
+
+
+const MR_TypeCtorInfo_Struct mdb__util__mdb__util__type_ctor_info_line_number_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mdb__util____Unify____line_number_0_0_10001)),
+  ((MR_Box) (mdb__util____Compare____line_number_0_0_10001)),
+  (MR_String) "mdb.util",
+  (MR_String) "line_number",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+void MR_CALL 
+mdb__util____Compare____line_number_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Integer HeadVar__2_2,
+  MR_Integer HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Integer Cast_HeadVar2_5 = HeadVar__3_3;
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+mdb__util____Unify____line_number_0_0(
+  MR_Integer HeadVar__1_1,
+  MR_Integer HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Integer Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = (Cast_HeadVar1_3 == Cast_HeadVar2_4);
+  return succeeded;
+}
+
+static void MR_CALL 
+mdb__util__trace_get_command_fallback_6_p_0(
+  MR_Word MdbIn_7,
+  MR_Word MdbOut_8,
+  MR_String Prompt_9,
+  MR_String * String_10)
+{
+  MR_Word Result_12;
+
+  mercury__io__write_string_4_p_0(MdbOut_8, Prompt_9);
+  mercury__io__flush_output_3_p_0(MdbOut_8);
+  mercury__io__read_line_as_string_4_p_0(MdbIn_7, &Result_12);
+  switch (MR_tag((MR_Word) Result_12)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      *String_10 = (MR_String) "quit";
+      break;
+    case (MR_Integer) 1:
+      *String_10 = ((MR_String) ((MR_hl_field(MR_mktag(1), Result_12, (MR_Integer) 0))));
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word Error_13 = ((MR_Word) ((MR_hl_field(MR_mktag(2), Result_12, (MR_Integer) 0))));
+        MR_String Var_20;
+
+        Var_20 = mercury__io__error_message_1_f_0(Error_13);
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140mdb.util.trace_get_command_fallback\'/6", Var_20);
+          return;
+        }
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+mdb__util__call_trace_getline_7_p_0(
+  MR_Word MdbIn_1,
+  MR_Word MdbOut_2,
+  MR_String Prompt_3,
+  MR_String * Line_4,
+  MR_Integer * Success_5)
+{
+{
+#define MR_PROC_LABEL mdb__util__call_trace_getline_7_p_0
+
+	MR_Word MdbIn;
+	MR_Word MdbOut;
+	MR_String Prompt;
+	MR_String Line;
+	MR_Integer Success;
+
+	MdbIn = MdbIn_1 ;
+	MdbOut = MdbOut_2 ;
+	Prompt = Prompt_3 ;
+		{
+
+    char        *line = NULL;
+    MercuryFile *mdb_in = (MercuryFile *) MdbIn;
+    MercuryFile *mdb_out = (MercuryFile *) MdbOut;
+
+    if (MR_address_of_trace_getline != NULL) {
+        line = (*MR_address_of_trace_getline)((char *) Prompt,
+            MR_file(*mdb_in), MR_file(*mdb_out));
+    } else {
+        MR_tracing_not_enabled();
+        /* not reached */
+    }
+
+    if (line == NULL) {
+        /* we copy the null string to avoid warnings about const */
+        MR_make_aligned_string_copy(Line, "");
+        Success = 0;
+    } else {
+        MR_make_aligned_string_copy(Line, line);
+        MR_free(line);
+        Success = 1;
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	*Line_4  = Line;
+	*Success_5  = Success;
+}
+}
+
+void MR_CALL 
+mdb__util__zip_with_4_p_0(
+  MR_Word TypeInfo_for_T1_26,
+  MR_Word TypeInfo_for_T2_27,
+  MR_Word TypeInfo_for_T3_28,
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3,
+  MR_Word * HeadVar__4_4)
+{
+  if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+    if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      *HeadVar__4_4 = (MR_Word) ((MR_Unsigned) 0U);
+    else
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140mdb.util.zip_with\'/4", (MR_String) "list length mismatch");
+        return;
+      }
+  else
+  {
+    MR_Word Var_29 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1))));
+    MR_Box Var_30 = (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0));
+
+    if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        mercury__require__unexpected_2_p_0((MR_String) "predicate \140mdb.util.zip_with\'/4", (MR_String) "list length mismatch");
+        return;
+      }
+    else
+    {
+      MR_Box Y_21 = (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0));
+      MR_Word Ys_22 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1))));
+      MR_Box HeadXY_24;
+      MR_Word TailXYs_25;
+      void MR_CALL (* func_0)(MR_Box, MR_Box, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))));
+
+      func_0(((MR_Box) (HeadVar__1_1)), Var_30, Y_21, &HeadXY_24);
+      mdb__util__zip_with_4_p_0(TypeInfo_for_T1_26, TypeInfo_for_T2_27, TypeInfo_for_T3_28, HeadVar__1_1, Var_29, Ys_22, &TailXYs_25);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *HeadVar__4_4 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = HeadXY_24;
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (TailXYs_25));
+      }
+    }
+  }
+}
+
+void MR_CALL 
+mdb__util__trace_get_command_6_p_0(
+  MR_Word MdbIn_1,
+  MR_Word MdbOut_2,
+  MR_String Prompt_3,
+  MR_String * Line_4)
+{
+{
+#define MR_PROC_LABEL mdb__util__trace_get_command_6_p_0
+
+	MR_Word MdbIn;
+	MR_Word MdbOut;
+	MR_String Prompt;
+	MR_String Line;
+
+	MdbIn = MdbIn_1 ;
+	MdbOut = MdbOut_2 ;
+	Prompt = Prompt_3 ;
+		{
+
+    char        *line;
+    MercuryFile *mdb_in = (MercuryFile *) MdbIn;
+    MercuryFile *mdb_out = (MercuryFile *) MdbOut;
+
+    if (MR_address_of_trace_getline != NULL) {
+        line = (*MR_address_of_trace_get_command)((char *) Prompt,
+            MR_file(*mdb_in), MR_file(*mdb_out));
+        MR_make_aligned_string_copy(Line, line);
+        MR_free(line);
+    } else {
+        ML_BROWSER_trace_get_command_fallback(MdbIn, MdbOut, Prompt, &Line);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	*Line_4  = Line;
+}
+}
+
+void MR_CALL 
+mdb__util__trace_getline_6_p_0(
+  MR_Word MdbIn_7,
+  MR_Word MdbOut_8,
+  MR_String Prompt_9,
+  MR_Word * Result_10)
+{
+  MR_bool succeeded;
+  MR_String Line_12;
+  MR_Integer Success_13;
+
+{
+#define MR_PROC_LABEL mdb__util__trace_getline_6_p_0
+
+	MR_Word MdbIn;
+	MR_Word MdbOut;
+	MR_String Prompt;
+	MR_String Line;
+	MR_Integer Success;
+
+	MdbIn = MdbIn_7 ;
+	MdbOut = MdbOut_8 ;
+	Prompt = Prompt_9 ;
+		{
+
+    char        *line = NULL;
+    MercuryFile *mdb_in = (MercuryFile *) MdbIn;
+    MercuryFile *mdb_out = (MercuryFile *) MdbOut;
+
+    if (MR_address_of_trace_getline != NULL) {
+        line = (*MR_address_of_trace_getline)((char *) Prompt,
+            MR_file(*mdb_in), MR_file(*mdb_out));
+    } else {
+        MR_tracing_not_enabled();
+        /* not reached */
+    }
+
+    if (line == NULL) {
+        /* we copy the null string to avoid warnings about const */
+        MR_make_aligned_string_copy(Line, "");
+        Success = 0;
+    } else {
+        MR_make_aligned_string_copy(Line, line);
+        MR_free(line);
+        Success = 1;
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	Line_12  = Line;
+	Success_13  = Success;
+}
+  succeeded = (Success_13 == (MR_Integer) 0);
+  if (succeeded)
+    *Result_10 = (MR_Word) ((MR_Unsigned) 0U);
+  else
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      *Result_10 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Line_12));
+    }
+}
+
+MR_Word MR_CALL 
+mdb__util__is_function_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  MR_Word HeadVar__2_2;
+
+  switch (HeadVar__1_1) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      HeadVar__2_2 = (MR_Integer) 1;
+      break;
+    case (MR_Integer) 0:
+      HeadVar__2_2 = (MR_Integer) 0;
+      break;
+  }
+  return HeadVar__2_2;
+}
+
+static MR_bool MR_CALL 
+mdb__util____Unify____line_number_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = mdb__util____Unify____line_number_0_0(((MR_Integer) (wrapper_arg_1)), ((MR_Integer) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+mdb__util____Compare____line_number_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  mdb__util____Compare____line_number_0_0(&conv0_HeadVar__1_1, ((MR_Integer) (wrapper_arg_2)), ((MR_Integer) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+void mercury__mdb__util__init(void)
+{
+}
+
+void mercury__mdb__util__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mdb__util__mdb__util__type_ctor_info_line_number_0);
+}
+
+void mercury__mdb__util__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__mdb__util__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module mdb.util.

@@ -1,0 +1,65 @@
+:- module (grade_lib.grade_structure).
+:- interface.
+:- use_module (grade_lib.grade_vars).
+:- type c_gc
+    --->    c_gc_none 
+    ;       c_gc_bdw 
+    ;       c_gc_bdw_debug 
+    ;       c_gc_accurate 
+    ;       c_gc_history .
+:- type c_trail
+    --->    c_trail_no 
+    ;       c_trail_yes .
+:- type grade_structure
+    --->    grade_pregen(grade_lib.grade_structure.pregen_kind)
+    ;       grade_llds(grade_lib.grade_vars.grade_var_gcc_conf, grade_lib.grade_vars.grade_var_stack_len, grade_lib.grade_structure.llds_thread_safe_minmodel, grade_lib.grade_vars.grade_var_merc_file, grade_lib.grade_vars.grade_var_low_tag_bits_use, grade_lib.grade_vars.grade_var_merc_float, grade_lib.grade_vars.grade_var_target_debug)
+    ;       grade_mlds(grade_lib.grade_structure.mlds_target, grade_lib.grade_vars.grade_var_target_debug).
+:- type llds_gcc_conf
+    --->    llds_gcc_conf_none 
+    ;       llds_gcc_conf_reg 
+    ;       llds_gcc_conf_jump 
+    ;       llds_gcc_conf_fast 
+    ;       llds_gcc_conf_asm_jump 
+    ;       llds_gcc_conf_asm_fast .
+:- type llds_minmodel_gc
+    --->    llds_mm_gc_bdw 
+    ;       llds_mm_gc_bdw_debug .
+:- type llds_minmodel_kind
+    --->    lmk_stack_copy 
+    ;       lmk_stack_copy_debug 
+    ;       lmk_own_stack 
+    ;       lmk_own_stack_debug .
+:- type llds_perf_prof
+    --->    llds_perf_prof_none 
+    ;       llds_perf_prof_deep 
+    ;       llds_perf_prof_mprof(grade_lib.grade_vars.grade_var_mprof_time, grade_lib.grade_vars.grade_var_mprof_memory).
+:- type llds_rbmm
+    --->    llds_rbmm_no 
+    ;       llds_rbmm_yes(grade_lib.grade_vars.grade_var_rbmm_debug, grade_lib.grade_vars.grade_var_rbmm_prof).
+:- type llds_thread_safe_minmodel
+    --->    llds_thread_safe_no_minmodel_no(grade_lib.grade_structure.c_gc, grade_lib.grade_structure.c_trail, grade_lib.grade_structure.llds_perf_prof, grade_lib.grade_vars.grade_var_term_size_prof, grade_lib.grade_vars.grade_var_debug, grade_lib.grade_structure.llds_rbmm)
+    ;       llds_thread_safe_no_minmodel_yes(grade_lib.grade_structure.llds_minmodel_kind, grade_lib.grade_structure.llds_minmodel_gc, grade_lib.grade_vars.grade_var_debug)
+    ;       llds_thread_safe_yes_minmodel_no(grade_lib.grade_structure.thread_safe_c_gc, grade_lib.grade_structure.c_trail, grade_lib.grade_vars.grade_var_tscope_prof).
+:- type mlds_c_dararep
+    --->    mlds_c_datarep_heap_cells 
+    ;       mlds_c_datarep_classes .
+:- type mlds_c_perf_prof
+    --->    mlds_c_perf_prof_none 
+    ;       mlds_c_perf_prof_mprof(grade_lib.grade_vars.grade_var_mprof_time, grade_lib.grade_vars.grade_var_mprof_memory).
+:- type mlds_c_thread_safe
+    --->    mlds_c_thread_safe_no(grade_lib.grade_structure.c_gc, grade_lib.grade_structure.mlds_c_perf_prof, grade_lib.grade_vars.grade_var_ssdebug)
+    ;       mlds_c_thread_safe_yes(grade_lib.grade_structure.thread_safe_c_gc).
+:- type mlds_target
+    --->    mlds_target_c(grade_lib.grade_structure.mlds_c_thread_safe, grade_lib.grade_structure.c_trail, grade_lib.grade_vars.grade_var_merc_file, grade_lib.grade_vars.grade_var_low_tag_bits_use, grade_lib.grade_vars.grade_var_merc_float)
+    ;       mlds_target_csharp(grade_lib.grade_vars.grade_var_ssdebug)
+    ;       mlds_target_java(grade_lib.grade_vars.grade_var_ssdebug).
+:- type pregen_kind
+    --->    pregen_mlds_hlc 
+    ;       pregen_llds_none 
+    ;       pregen_llds_reg 
+    ;       pregen_llds_asm_fast .
+:- type thread_safe_c_gc
+    --->    thread_safe_c_gc_none 
+    ;       thread_safe_c_gc_bdw 
+    ;       thread_safe_c_gc_bdw_debug .
+:- func grade_vars_to_grade_structure(grade_lib.grade_vars.grade_vars) = grade_lib.grade_structure.grade_structure.
