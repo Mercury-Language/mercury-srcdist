@@ -1,0 +1,17 @@
+:- module (libs.compute_grade).
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (libs.globals).
+:- use_module (libs.options).
+:- use_module (parse_tree.error_util).
+:- pred check_grade_component_compatibility(libs.globals.globals, libs.globals.compilation_target, libs.globals.gc_method, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode check_grade_component_compatibility((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred compute_grade(libs.globals.globals, string).
+:- mode compute_grade((builtin.in), (builtin.out)) is det.
+:- pred convert_grade_option(string, libs.options.option_table, libs.options.option_table).
+:- mode convert_grade_option((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred grade_directory_component(libs.globals.globals, string).
+:- mode grade_directory_component((builtin.in), (builtin.out)) is det.
+:- pred postprocess_options_libgrades(libs.globals.globals, libs.globals.globals, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode postprocess_options_libgrades((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
