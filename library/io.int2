@@ -1,0 +1,166 @@
+:- module io.
+:- interface.
+:- include_module (io.call_system).
+:- include_module (io.environment).
+:- include_module (io.file).
+:- include_module (io.primitives_read).
+:- include_module (io.primitives_write).
+:- include_module (io.stream_db).
+:- include_module (io.stream_ops).
+:- include_module (io.text_read).
+:- use_module array.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module ops.
+:- use_module stream.
+:- use_module string.
+:- use_module time.
+:- use_module univ.
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- type access_type
+    --->    read 
+    ;       write 
+    ;       execute .
+:- type binary_input_stream.
+:- type binary_output_stream.
+:- type environment_var_map == map.map(string, string).
+:- type error.
+:- type file_id.
+:- type file_type
+    --->    regular_file 
+    ;       directory 
+    ;       symbolic_link 
+    ;       named_pipe 
+    ;       socket 
+    ;       character_device 
+    ;       block_device 
+    ;       message_queue 
+    ;       semaphore 
+    ;       shared_memory 
+    ;       unknown .
+:- type input_stream.
+:- type io == io.state.
+:- type maybe_incomplete_result(T)
+    --->    ok(T)
+    ;       eof 
+    ;       incomplete(list.list(uint8))
+    ;       error(io.error).
+:- type maybe_partial_res(T)
+    --->    ok(T)
+    ;       error(T, io.error).
+:- type maybe_partial_res_2(T1, T2)
+    --->    ok2(T1, T2)
+    ;       error2(T1, T2, io.error).
+:- type output_stream.
+:- type posn
+    --->    posn((io.posn_current_line_number) :: int, (io.posn_offset_of_start_of_line) :: int, (io.posn_current_offset) :: int).
+:- type read_result(T)
+    --->    ok(T)
+    ;       eof 
+    ;       error(string, int).
+:- type res
+    --->    ok 
+    ;       error(io.error).
+:- type res(T)
+    --->    ok(T)
+    ;       error(io.error).
+:- type result
+    --->    ok 
+    ;       eof 
+    ;       error(io.error).
+:- type result(T)
+    --->    ok(T)
+    ;       eof 
+    ;       error(io.error).
+:- type state.
+:- type stream.
+:- type stream_id.
+:- type system_error.
+:- pragma foreign_type(c, system_error, "MR_Integer", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, system_error, "java.lang.Exception").
+:- pragma foreign_type(csharp, system_error, "System.Exception").
+:- type system_result
+    --->    exited(int)
+    ;       signalled(int).
+:- type text_input_stream == io.input_stream.
+:- type text_output_stream == io.output_stream.
+:- type whence
+    --->    set 
+    ;       cur 
+    ;       end .
+:- inst maybe_partial_res(T) for io.maybe_partial_res/1
+    --->    error(T, ground)
+    ;       ok(T).
+:- instance (stream.error(io.error)).
+:- instance (stream.input(io.binary_input_stream, io.io)).
+:- instance (stream.input(io.text_input_stream, io.io)).
+:- instance (stream.line_oriented(io.text_input_stream, io.io)).
+:- instance (stream.line_oriented(io.text_output_stream, io.io)).
+:- instance (stream.output(io.binary_output_stream, io.io)).
+:- instance (stream.output(io.text_output_stream, io.io)).
+:- instance (stream.putback(io.binary_input_stream, int, io.io, io.error)).
+:- instance (stream.putback(io.binary_input_stream, int8, io.io, io.error)).
+:- instance (stream.putback(io.binary_input_stream, uint8, io.io, io.error)).
+:- instance (stream.putback(io.text_input_stream, char.char, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, int, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, int8, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, uint8, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, char.char, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, string.line, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, string.text_file, io.io, io.error)).
+:- instance (stream.seekable(io.binary_input_stream, io.io)).
+:- instance (stream.seekable(io.binary_output_stream, io.io)).
+:- instance (stream.stream(io.binary_input_stream, io.io)).
+:- instance (stream.stream(io.binary_output_stream, io.io)).
+:- instance (stream.stream(io.text_input_stream, io.io)).
+:- instance (stream.stream(io.text_output_stream, io.io)).
+:- instance (stream.unboxed_reader(io.binary_input_stream, int8, io.io, io.error)).
+:- instance (stream.unboxed_reader(io.binary_input_stream, uint8, io.io, io.error)).
+:- instance (stream.unboxed_reader(io.text_input_stream, char.char, io.io, io.error)).
+:- instance (stream.writer(io.binary_output_stream, bitmap.byte, io.io)).
+:- instance (stream.writer(io.binary_output_stream, int8, io.io)).
+:- instance (stream.writer(io.binary_output_stream, uint8, io.io)).
+:- instance (stream.writer(io.text_output_stream, char.char, io.io)).
+:- instance (stream.writer(io.text_output_stream, univ.univ, io.io)).
+:- instance (stream.writer(io.text_output_stream, int, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint, io.io)).
+:- instance (stream.writer(io.text_output_stream, int8, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint8, io.io)).
+:- instance (stream.writer(io.text_output_stream, int16, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint16, io.io)).
+:- instance (stream.writer(io.text_output_stream, int32, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint32, io.io)).
+:- instance (stream.writer(io.text_output_stream, int64, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint64, io.io)).
+:- instance (stream.writer(io.text_output_stream, float, io.io)).
+:- instance (stream.writer(io.text_output_stream, string, io.io)).
+:- implementation.
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- type file_id
+    --->    file_id .
+:- pragma foreign_type(c, file_id, "ML_File_Id")
+    where
+        type_is_abstract_noncanonical.
+:- pragma foreign_type(c, state, "MR_Word", [can_pass_as_mercury_type])
+    where
+        type_is_abstract_noncanonical.
+:- pragma foreign_type(java, state, "java.lang.Object", [can_pass_as_mercury_type])
+    where
+        type_is_abstract_noncanonical.
+:- pragma foreign_type(csharp, state, "int", [can_pass_as_mercury_type])
+    where
+        type_is_abstract_noncanonical.
+:- type stream
+    --->    stream(builtin.c_pointer).
+:- pragma foreign_type(c, stream, "MercuryFilePtr", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, stream, "jmercury.io__stream_ops.MR_MercuryFileStruct").
+:- pragma foreign_type(csharp, stream, "mercury.io__stream_ops.MR_MercuryFileStruct").
+:- type stream_id == int.

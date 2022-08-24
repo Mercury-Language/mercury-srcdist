@@ -1,0 +1,14 @@
+module(2, "term_subst.m",
+	term_subst,
+	{},
+	{builtin, list, map, private_builtin, term},
+	{require, term_context},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

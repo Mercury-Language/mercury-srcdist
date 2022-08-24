@@ -1,0 +1,61 @@
+:- module pretty_printer.
+
+:- pragma termination_info(pretty_printer.do_put_doc((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.do_put_doc((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.format((builtin.in)) = (builtin.out), finite(2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(pretty_printer.format_arg((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pretty_printer.get_default_formatter_map((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.get_default_params((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(pretty_printer.get_io_pp_params(builtin.out(ground), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(pretty_printer.group((builtin.in)) = (builtin.out), finite(10, [yes, no]), cannot_loop).
+:- pragma termination_info(pretty_printer.indent((builtin.in)) = (builtin.out), finite(11, [yes, no]), cannot_loop).
+:- pragma termination_info(pretty_printer.indent((builtin.in), (builtin.in)) = (builtin.out), finite(11, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((pretty_printer.initial_formatter_map) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pretty_printer.lock_io_pp_params), finite(0, []), cannot_loop).
+:- pragma termination_info((pretty_printer.new_formatter_map) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pretty_printer.pretty_printer_is_initialised((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(pretty_printer.put_doc((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.put_doc((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.set_default_formatter((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.set_default_formatter_map((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(pretty_printer.set_default_params((builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(pretty_printer.set_formatter((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.set_io_pp_params(builtin.in(ground), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info((pretty_printer.unlock_io_pp_params), finite(0, []), cannot_loop).
+:- pragma termination_info(pretty_printer.unsafe_get_default_formatter_map((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(pretty_printer.unsafe_get_io_pp_params(builtin.out(ground)), infinite, cannot_loop).
+:- pragma termination_info(pretty_printer.unsafe_set_io_pp_params(builtin.in(ground)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(pretty_printer.write_as_doc((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.write_as_doc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.write_doc((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pretty_printer.write_doc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (pretty_printer.do_put_doc), 17, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.do_put_doc), 17, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (pretty_printer.format), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pretty_printer.format_arg), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.get_default_formatter_map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.get_default_params), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.get_io_pp_params), 3, 0, will_not_throw).
+:- pragma exceptions(function, (pretty_printer.group), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pretty_printer.indent), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pretty_printer.indent), 2, 0, will_not_throw).
+:- pragma exceptions(function, (pretty_printer.initial_formatter_map), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.lock_io_pp_params), 0, 0, will_not_throw).
+:- pragma exceptions(function, (pretty_printer.new_formatter_map), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.pretty_printer_is_initialised), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.put_doc), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.put_doc), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.set_default_formatter), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.set_default_formatter_map), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.set_default_params), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.set_formatter), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.set_io_pp_params), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.unlock_io_pp_params), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.unsafe_get_default_formatter_map), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.unsafe_get_io_pp_params), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.unsafe_set_io_pp_params), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (pretty_printer.write_as_doc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.write_as_doc), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.write_doc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pretty_printer.write_doc), 4, 0, may_throw(user_exception)).
