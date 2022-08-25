@@ -1,0 +1,650 @@
+/*
+** Automatically generated from `profiling_builtin.m'
+** by the Mercury compiler,
+** version rotd-2022-08-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module profiling_builtin.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_profiling_builtin
+#define MR_HEADER_GUARD_profiling_builtin
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PROFILING_BUILTIN_DECL_GUARD
+#define PROFILING_BUILTIN_DECL_GUARD
+
+#ifndef MR_DEEP_PROFILING_GUARD
+#define MR_DEEP_PROFILING_GUARD
+
+  #ifdef    MR_DEEP_PROFILING
+
+  #include "mercury_deep_profiling.h"
+  #include "mercury_deep_rec_depth_actions.h"
+  #include "mercury_ho_call.h"
+  #include <stdio.h>
+
+  MR_declare_entry(mercury__profiling_builtin__prepare_for_normal_call_1_0);
+  MR_declare_entry(mercury__profiling_builtin__prepare_for_ho_call_2_0);
+
+  #endif    // MR_DEEP_PROFILING
+
+#endif  // MR_DEEP_PROFILING_GUARD
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_dynamic_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_2_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_3_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_4_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_5_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_6_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_7_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_8_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_call_site_nums_9_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_proc_dynamic_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__profiling_builtin__profiling_builtin__type_ctor_info_proc_layout_0;
+
+void MR_CALL 
+mercury__profiling_builtin__det_call_port_code_ac_3_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__profiling_builtin__det_call_port_code_sr_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Box * param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__profiling_builtin__det_exit_port_code_ac_2_p_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__profiling_builtin__det_exit_port_code_sr_3_p_0(
+  MR_Box param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__profiling_builtin__increment_dynamic_coverage_point_count_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__profiling_builtin__increment_static_coverage_point_count_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__profiling_builtin__non_call_port_code_ac_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Box * param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__profiling_builtin__non_call_port_code_sr_5_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Box * param_3,
+  MR_Box * param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__profiling_builtin__non_exit_port_code_ac_2_p_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__profiling_builtin__non_exit_port_code_sr_3_p_0(
+  MR_Box param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin__non_fail_port_code_ac_2_p_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin__non_fail_port_code_sr_3_p_0(
+  MR_Box param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin__non_redo_port_code_ac_2_p_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin__non_redo_port_code_sr_2_p_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_callback_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_ho_call_2_p_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_method_call_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_normal_call_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_special_call_2_p_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__profiling_builtin__prepare_for_tail_call_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__profiling_builtin__reset_activation_info_ac_2_p_0(
+  MR_Integer param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__profiling_builtin__reset_activation_info_sr_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_1_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_2_4_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_3_5_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_4_6_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_5_7_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_6_8_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_7_9_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_Integer param_9);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_8_10_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_Integer param_10);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_exit_9_11_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_Integer param_10,
+  MR_Integer param_11);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_1_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_2_4_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_3_5_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_4_6_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_5_7_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_6_8_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_7_9_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_Integer param_9);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_8_10_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_Integer param_10);
+
+void MR_CALL 
+mercury__profiling_builtin__restore_recursion_depth_fail_9_11_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_Integer param_10,
+  MR_Integer param_11);
+
+void MR_CALL 
+mercury__profiling_builtin__rezero_activation_info_ac_0_p_0(void);
+
+void MR_CALL 
+mercury__profiling_builtin__rezero_activation_info_sr_0_p_0(void);
+
+void MR_CALL 
+mercury__profiling_builtin__save_and_zero_activation_info_ac_2_p_0(
+  MR_Integer * param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__profiling_builtin__save_and_zero_activation_info_sr_1_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_1_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_2_4_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_3_5_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5);
+
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_4_6_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6);
+
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_5_7_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Integer * param_7);
+
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_6_8_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Integer * param_7,
+  MR_Integer * param_8);
+
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_7_9_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Integer * param_7,
+  MR_Integer * param_8,
+  MR_Integer * param_9);
+
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_8_10_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Integer * param_7,
+  MR_Integer * param_8,
+  MR_Integer * param_9,
+  MR_Integer * param_10);
+
+void MR_CALL 
+mercury__profiling_builtin__save_recursion_depth_9_11_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Integer * param_7,
+  MR_Integer * param_8,
+  MR_Integer * param_9,
+  MR_Integer * param_10,
+  MR_Integer * param_11);
+
+void MR_CALL 
+mercury__profiling_builtin__semi_call_port_code_ac_3_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__profiling_builtin__semi_call_port_code_sr_4_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Box * param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__profiling_builtin__semi_exit_port_code_ac_2_p_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__profiling_builtin__semi_exit_port_code_sr_3_p_0(
+  MR_Box param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin__semi_fail_port_code_ac_2_p_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin__semi_fail_port_code_sr_3_p_0(
+  MR_Box param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_dynamic_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_2_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_3_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_4_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_5_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_6_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_7_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_8_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____call_site_nums_9_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____proc_dynamic_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__profiling_builtin____Compare____proc_layout_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_dynamic_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_2_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_3_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_4_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_5_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_6_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_7_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_8_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____call_site_nums_9_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____proc_dynamic_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__profiling_builtin____Unify____proc_layout_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void mercury__profiling_builtin__init(void);
+void mercury__profiling_builtin__init_type_tables(void);
+void mercury__profiling_builtin__init_debugger(void);
+const char *mercury__profiling_builtin__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_profiling_builtin
+
+// :- end_interface profiling_builtin.

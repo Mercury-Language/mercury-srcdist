@@ -1,0 +1,59 @@
+:- module pretty_printer.
+:- interface.
+:- use_module deconstruct.
+:- use_module io.
+:- use_module list.
+:- use_module stream.
+:- use_module type_desc.
+:- use_module univ.
+:- type doc
+    --->    str(string)
+    ;       nl 
+    ;       hard_nl 
+    ;       docs(list.list(pretty_printer.doc))
+    ;       format_univ(univ.univ)
+    ;       format_list(list.list(univ.univ), pretty_printer.doc)
+    ;       format_term(string, list.list(univ.univ))
+    ;       format_susp(((func) = pretty_printer.doc))
+    ;       pp_internal(pretty_printer.pp_internal).
+:- type docs == list.list(pretty_printer.doc).
+:- type formatter == (func(univ.univ, list.list(type_desc.type_desc)) = pretty_printer.doc).
+:- type formatter_map.
+:- type func_symbol_limit
+    --->    linear(int)
+    ;       triangular(int).
+:- type pp_internal.
+:- type pp_params
+    --->    pp_params((pretty_printer.pp_line_width) :: int, (pretty_printer.pp_max_lines) :: int, (pretty_printer.pp_limit) :: pretty_printer.func_symbol_limit).
+:- func format(T) = pretty_printer.doc.
+:- func format_arg(pretty_printer.doc) = pretty_printer.doc.
+:- pred get_default_formatter_map(pretty_printer.formatter_map, io.io, io.io).
+:- mode get_default_formatter_map((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_default_params(pretty_printer.pp_params, io.io, io.io).
+:- mode get_default_params((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func group(list.list(pretty_printer.doc)) = pretty_printer.doc.
+:- func indent(list.list(pretty_printer.doc)) = pretty_printer.doc.
+:- func indent(string, list.list(pretty_printer.doc)) = pretty_printer.doc.
+:- func new_formatter_map = pretty_printer.formatter_map.
+:- pred put_doc(Stream, deconstruct.noncanon_handling, pretty_printer.formatter_map, pretty_printer.pp_params, pretty_printer.doc, State, State) <= (stream.writer(Stream, string, State)).
+:- mode put_doc((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode put_doc((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred set_default_formatter(string, string, int, pretty_printer.formatter, io.io, io.io).
+:- mode set_default_formatter((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_default_formatter_map(pretty_printer.formatter_map, io.io, io.io).
+:- mode set_default_formatter_map((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_default_params(pretty_printer.pp_params, io.io, io.io).
+:- mode set_default_params((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_formatter(string, string, int, pretty_printer.formatter, pretty_printer.formatter_map, pretty_printer.formatter_map).
+:- mode set_formatter((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred write_doc(pretty_printer.doc, io.io, io.io).
+:- mode write_doc((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_doc(io.output_stream, pretty_printer.doc, io.io, io.io).
+:- mode write_doc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_doc_formatted(T, io.io, io.io).
+:- mode write_doc_formatted((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_doc_formatted(io.output_stream, T, io.io, io.io).
+:- mode write_doc_formatted((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- use_module map.
+:- type formatter_map == map.map(string, map.map(string, map.map(int, pretty_printer.formatter))).
