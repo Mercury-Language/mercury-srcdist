@@ -1,0 +1,2 @@
+:- module display_report.
+:- interface.
