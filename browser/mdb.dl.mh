@@ -1,0 +1,45 @@
+// Automatically generated from `dl.m'
+// by the Mercury compiler,
+// version rotd-2022-08-31
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MDB__DL_MH
+#define MDB__DL_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDB__DL_DECL_GUARD
+#define MDB__DL_DECL_GUARD
+
+    #include <stdio.h>
+    #include "mercury_conf.h"
+    #include "mercury_string.h"   /* for MR_make_aligned_string_copy() */
+    #include "mercury_ho_call.h"
+#ifdef MR_HAVE_DLFCN_H
+    #include <dlfcn.h>
+#endif
+
+
+#include "mercury_ho_call.h"
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__DL_MH */

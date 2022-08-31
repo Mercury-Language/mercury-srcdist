@@ -1,0 +1,4 @@
+:- module dense_bitset.
+:- interface.
+:- use_module array.
+:- type dense_bitset == array.array(int).
