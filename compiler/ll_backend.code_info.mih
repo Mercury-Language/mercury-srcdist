@@ -1,0 +1,552 @@
+/*
+** Automatically generated from `code_info.m'
+** by the Mercury compiler,
+** version rotd-2022-09-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.code_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__code_info
+#define MR_HEADER_GUARD_ll_backend__code_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__CODE_INFO_DECL_GUARD
+#define LL_BACKEND__CODE_INFO_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_code_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_code_info_persistent_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_code_info_static_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__code_info__ll_backend__code_info__type_ctor_info_for_call_or_closure_0;
+
+void MR_CALL 
+ll_backend__code_info__add_alloc_site_info_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ll_backend__code_info__add_closure_layout_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__add_out_of_line_code_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__add_resume_layout_for_label_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__code_info__add_scalar_static_cell_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__code_info__add_scalar_static_cell_natural_types_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__code_info__add_threadscope_string_4_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__code_info__add_trace_layout_for_label_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+ll_backend__code_info__add_vector_static_cell_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__code_info__code_info_init_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word param_11,
+  MR_Integer param_12,
+  MR_Word * param_13,
+  MR_Word * param_14);
+
+void MR_CALL 
+ll_backend__code_info__get_alloc_sites_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_auto_comments_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_closure_layouts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_const_struct_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_containing_goal_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_created_temp_frame_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_eff_trace_level_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_emit_region_ops_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_emit_trail_ops_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_exprn_opts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_gc_method_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_globals_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_label_counter_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_layout_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_lcmc_null_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_max_regs_in_use_at_trace_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+ll_backend__code_info__get_max_temp_slot_count_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_may_use_atomic_alloc_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_maybe_containing_goal_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_maybe_trace_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_module_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_next_closure_seq_no_3_p_0(
+  MR_Integer * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__get_next_label_3_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__get_num_ptag_bits_2_p_0(
+  MR_Word param_1,
+  uint8_t * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_opt_no_return_calls_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_opt_region_ops_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_opt_trail_ops_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_out_of_line_code_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_persistent_temps_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_pred_id_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_pred_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_proc_id_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_proc_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_proc_label_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_proc_trace_events_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_profile_memory_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_stack_slots_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_static_cell_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_succip_used_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_temp_content_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_threadscope_rev_string_table_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+ll_backend__code_info__get_total_stackslot_count_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_used_env_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_var_slot_count_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_var_table_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__code_info__get_variable_slot_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__maybe_add_alloc_site_info_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_bool MR_CALL 
+ll_backend__code_info__search_type_defn_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__set_alloc_sites_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__set_created_temp_frame_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__set_max_regs_in_use_at_trace_4_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__code_info__set_max_temp_slot_count_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__set_persistent_temps_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__set_proc_trace_events_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__set_static_cell_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__set_temp_content_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__set_used_env_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__code_info__succip_is_used_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+ll_backend__code_info__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_115_104_111_117_108_100_95_97_100_100_95_114_101_103_105_111_110_95_111_112_115_95_95_91_50_93_95_48_2_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__code_info__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_115_104_111_117_108_100_95_97_100_100_95_116_114_97_105_108_95_111_112_115_95_95_91_50_93_95_48_2_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__code_info__body_typeinfo_liveness_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__code_info__filter_region_vars_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ll_backend__code_info__get_arginfo_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__code_info__get_headvars_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__code_info__get_pred_proc_arginfo_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+ll_backend__code_info__get_proc_model_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__code_info__lookup_cheaper_tag_test_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ll_backend__code_info__lookup_type_defn_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ll_backend__code_info__make_proc_entry_label_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5);
+
+MR_Integer MR_CALL 
+ll_backend__code_info__round_det_stack_frame_size_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+ll_backend__code_info__should_add_region_ops_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ll_backend__code_info__should_add_trail_ops_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ll_backend__code_info__variable_type_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__code_info____Compare____code_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__code_info____Compare____for_call_or_closure_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____code_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__code_info____Unify____for_call_or_closure_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__code_info__init(void);
+void mercury__ll_backend__code_info__init_type_tables(void);
+void mercury__ll_backend__code_info__init_debugger(void);
+const char *mercury__ll_backend__code_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.code_info
+
+// :- end_interface ll_backend.code_info.
