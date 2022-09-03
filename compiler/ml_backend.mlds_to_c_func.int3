@@ -1,0 +1,5 @@
+:- module (ml_backend.mlds_to_c_func).
+:- interface.
+:- type maybe_blank_line
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_blank_line, du_repn(enum("no_blank_line_start", "blank_line_start", [],  no_c_j_cs))).

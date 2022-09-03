@@ -1,0 +1,272 @@
+/*
+** Automatically generated from `prog_out.m'
+** by the Mercury compiler,
+** version rotd-2022-09-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_out.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_out
+#define MR_HEADER_GUARD_parse_tree__prog_out
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_OUT_DECL_GUARD
+#define PARSE_TREE__PROG_OUT_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_out__parse_tree__prog_out__type_ctor_info_maybe_mangle_cons_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_out__parse_tree__prog_out__type_ctor_info_maybe_quote_cons_0;
+
+void MR_CALL 
+parse_tree__prog_out__context_to_string_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+parse_tree__prog_out__int_const_to_string_and_suffix_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__prog_out__purity_name_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_out__purity_name_2_p_1(
+  MR_Word * param_1,
+  MR_String param_2);
+
+void MR_CALL 
+parse_tree__prog_out__type_to_debug_string_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+parse_tree__prog_out__write_class_id_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__prog_out__write_context_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__prog_out__write_context_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__prog_out__write_pred_or_func_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__prog_out__write_pred_or_func_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__prog_out__write_quoted_sym_name_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__prog_out__write_quoted_sym_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__prog_out__write_sym_name_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__prog_out__write_sym_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__prog_out__write_sym_name_arity_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__prog_out__write_sym_name_arity_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__prog_out__write_type_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__prog_out__arg_tabling_method_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__can_fail_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__cons_id_and_arity_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__determinism_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__eval_method_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__goal_warning_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__maybe_arg_tabling_method_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__maybe_quoted_cons_id_and_arity_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__module_name_to_escaped_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pf_sym_name_orig_arity_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pf_sym_name_orig_arity_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pf_sym_name_orig_arity_to_string_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pf_sym_name_user_arity_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pf_sym_name_user_arity_to_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pf_sym_name_user_arity_to_string_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pf_sym_name_user_arity_to_unquoted_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pf_sym_name_user_arity_to_unquoted_string_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pf_sym_name_user_arity_to_unquoted_string_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pred_or_func_to_full_str_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__pred_or_func_to_str_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__promise_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+parse_tree__prog_out__promise_to_string_1_f_1(
+  MR_Word * param_1,
+  MR_String param_2);
+
+void MR_CALL 
+parse_tree__prog_out__promise_to_string_1_f_2(
+  MR_Word * param_1,
+  MR_String * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+MR_String MR_CALL 
+parse_tree__prog_out__purity_prefix_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__sym_name_arity_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__sym_name_to_escaped_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__tabled_eval_method_to_pragma_name_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__tabled_eval_method_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__type_ctor_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+parse_tree__prog_out__type_name_to_string_1_f_0(
+  MR_Word param_1);
+
+void mercury__parse_tree__prog_out__init(void);
+void mercury__parse_tree__prog_out__init_type_tables(void);
+void mercury__parse_tree__prog_out__init_debugger(void);
+const char *mercury__parse_tree__prog_out__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_out
+
+// :- end_interface parse_tree.prog_out.

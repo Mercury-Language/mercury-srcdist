@@ -1,0 +1,14 @@
+module(2, "unit.m",
+	unit,
+	{},
+	{builtin, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

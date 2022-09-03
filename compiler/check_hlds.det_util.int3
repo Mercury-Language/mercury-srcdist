@@ -1,0 +1,19 @@
+:- module (check_hlds.det_util).
+:- interface.
+:- type contains_format_call
+	where	type_is_abstract_enum(1).
+:- type contains_incomplete_switch
+	where	type_is_abstract_enum(1).
+:- type contains_require_scope
+	where	type_is_abstract_enum(1).
+:- type det_info.
+:- type maybe_changed
+	where	type_is_abstract_enum(1).
+:- type report_pess_extra_vars
+	where	type_is_abstract_enum(1).
+:- type_representation(contains_format_call, du_repn(enum("does_not_contain_format_call", "contains_format_call", [],  no_c_j_cs))).
+:- type_representation(contains_incomplete_switch, du_repn(enum("does_not_contain_incomplete_switch", "contains_incomplete_switch", [],  no_c_j_cs))).
+:- type_representation(contains_require_scope, du_repn(enum("does_not_contain_require_scope", "contains_require_scope", [],  no_c_j_cs))).
+:- type_representation(det_info, is_word_aligned_ptr).
+:- type_representation(maybe_changed, du_repn(enum("changed", "unchanged", [],  no_c_j_cs))).
+:- type_representation(report_pess_extra_vars, du_repn(enum("pess_extra_vars_report", "pess_extra_vars_ignore", [],  no_c_j_cs))).

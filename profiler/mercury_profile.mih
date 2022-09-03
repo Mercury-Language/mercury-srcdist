@@ -1,0 +1,55 @@
+/*
+** Automatically generated from `mercury_profile.m'
+** by the Mercury compiler,
+** version rotd-2022-09-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mercury_profile.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mercury_profile
+#define MR_HEADER_GUARD_mercury_profile
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MERCURY_PROFILE_DECL_GUARD
+#define MERCURY_PROFILE_DECL_GUARD
+
+#endif
+
+
+
+void MR_CALL 
+main_2_p_0(void);
+
+void mercury__mercury_profile__init(void);
+void mercury__mercury_profile__init_type_tables(void);
+void mercury__mercury_profile__init_debugger(void);
+const char *mercury__mercury_profile__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mercury_profile
+
+// :- end_interface mercury_profile.
