@@ -1,0 +1,75 @@
+:- module (hlds.passes_aux).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module univ.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.error_util).
+:- type dump_info
+    --->    no_prev_dump 
+    ;       prev_dumped_hlds(string, hlds.hlds_module.module_info).
+:- type module_cookie_task == pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, univ.univ, univ.univ).
+:- type module_pred_cookie_task == pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, univ.univ, univ.univ).
+:- type module_pred_task == pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- type module_task == pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- type pred_error_task == pred(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- type proc_ids_pred_task == pred(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- type proc_ids_task == pred(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- type proc_task == pred(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- type update_pred_task
+    --->    update_pred_error(hlds.passes_aux.pred_error_task).
+:- type update_proc_task
+    --->    update_proc(hlds.passes_aux.proc_task)
+    ;       update_proc_ids(hlds.passes_aux.proc_ids_task)
+    ;       update_proc_ids_pred(hlds.passes_aux.proc_ids_pred_task)
+    ;       update_module(hlds.passes_aux.module_task)
+    ;       update_module_pred(hlds.passes_aux.module_pred_task)
+    ;       update_module_cookie(hlds.passes_aux.module_cookie_task, univ.univ)
+    ;       update_module_pred_cookie(hlds.passes_aux.module_pred_cookie_task, univ.univ).
+:- inst module_cookie_task == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst module_pred_cookie_task == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst module_pred_task == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst module_task == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst pred_error_task == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst proc_ids_pred_task == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det).
+:- inst proc_ids_task == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det).
+:- inst proc_task == (pred((builtin.in), (builtin.in), (builtin.out)) is det).
+:- inst update_pred_task for (hlds.passes_aux).update_pred_task/0
+    --->    update_pred_error(((hlds.passes_aux).pred_error_task)).
+:- inst update_proc_task for (hlds.passes_aux).update_proc_task/0
+    --->    update_module(((hlds.passes_aux).module_task))
+    ;       update_module_cookie(((hlds.passes_aux).module_cookie_task), ground)
+    ;       update_module_pred(((hlds.passes_aux).module_pred_task))
+    ;       update_module_pred_cookie(((hlds.passes_aux).module_pred_cookie_task), ground)
+    ;       update_proc(((hlds.passes_aux).proc_task))
+    ;       update_proc_ids(((hlds.passes_aux).proc_ids_task))
+    ;       update_proc_ids_pred(((hlds.passes_aux).proc_ids_pred_task)).
+:- mode (update_pred_task) == (((hlds.passes_aux).update_pred_task) >> ((hlds.passes_aux).update_pred_task)).
+:- mode (update_proc_task) == (((hlds.passes_aux).update_proc_task) >> ((hlds.passes_aux).update_proc_task)).
+:- pred get_debug_output_stream(hlds.hlds_module.module_info, io.text_output_stream, io.io, io.io).
+:- mode get_debug_output_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_error_output_stream(hlds.hlds_module.module_info, io.text_output_stream, io.io, io.io).
+:- mode get_error_output_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_progress_output_stream(hlds.hlds_module.module_info, io.text_output_stream, io.io, io.io).
+:- mode get_progress_output_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_dump_hlds(hlds.hlds_module.module_info, int, string, hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, io.io, io.io).
+:- mode maybe_dump_hlds((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_report_sizes(hlds.hlds_module.module_info, io.io, io.io).
+:- mode maybe_report_sizes((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred process_valid_nonimported_preds_errors(hlds.passes_aux.update_pred_task, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec), io.io, io.io).
+:- mode process_valid_nonimported_preds_errors(((hlds.passes_aux).update_pred_task), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred process_valid_nonimported_procs(hlds.passes_aux.update_proc_task, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode process_valid_nonimported_procs(((hlds.passes_aux).update_proc_task), (builtin.in), (builtin.out)) is det.
+:- pred process_valid_nonimported_procs_update(hlds.passes_aux.update_proc_task, hlds.passes_aux.update_proc_task, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode process_valid_nonimported_procs_update(((hlds.passes_aux).update_proc_task), builtin.out(((hlds.passes_aux).update_proc_task)), (builtin.in), (builtin.out)) is det.
+:- pred should_dump_stage(int, string, string, list.list(string)).
+:- mode should_dump_stage((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- func stage_num_str(int) = string.
+:- pred write_pred_progress_message(hlds.hlds_module.module_info, string, hlds.hlds_pred.pred_id, io.io, io.io).
+:- mode write_pred_progress_message((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_proc_progress_message(hlds.hlds_module.module_info, string, hlds.hlds_pred.pred_proc_id, io.io, io.io).
+:- mode write_proc_progress_message((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_proc_progress_message(hlds.hlds_module.module_info, string, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, io.io, io.io).
+:- mode write_proc_progress_message((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
