@@ -1,0 +1,25 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2010 The University of Melbourne.
+# Copyright (C) 2015, 2018 The Mercury team.
+# This file is distributed under the terms specified in COPYING.LIB.
+#-----------------------------------------------------------------------------#
+
+INSTALL_PREFIX := $(INSTALL_PREFIX)/extras
+
+-include Mmake.params
+
+.PHONY: default_target
+default_target:	doit dots
+
+depend:	doit.depend dots.depend
+
+.PHONY: install
+install:
+	[ -d $(INSTALL_BINDIR) ] || mkdir -p $(INSTALL_BINDIR)
+	cp monte $(INSTALL_BINDIR)
+
+.PHONY: check
+check:
+	true

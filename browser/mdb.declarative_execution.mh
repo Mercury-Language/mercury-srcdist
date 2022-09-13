@@ -1,0 +1,63 @@
+// Automatically generated from `declarative_execution.m'
+// by the Mercury compiler,
+// version rotd-2022-09-13
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MDB__DECLARATIVE_EXECUTION_MH
+#define MDB__DECLARATIVE_EXECUTION_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+MR_Word MR_DD_call_node_get_last_interface(MR_Word);
+MR_Word MR_DD_call_node_set_last_interface(MR_Word, MR_Word);
+MR_Word MR_DD_call_node_update_implicit_tree_info(MR_Word, MR_Integer);
+MR_Integer MR_DD_get_implicit_tree_ideal_depth(MR_Word);
+MR_Word MR_DD_cond_node_set_status(MR_Word, MR_Word);
+MR_Word MR_DD_neg_node_set_status(MR_Word, MR_Word);
+MR_Word MR_DD_trace_node_port(MR_Word);
+MR_String MR_DD_trace_node_path(MR_Word);
+MR_bool MR_DD_trace_node_seqno(MR_Word, MR_Word, MR_Integer *);
+MR_bool MR_DD_trace_node_call(MR_Word, MR_Word, MR_Word *);
+MR_bool MR_DD_trace_node_first_disj(MR_Word, MR_Word *);
+MR_Word MR_DD_step_left_in_contour(MR_Word, MR_Word);
+MR_Word MR_DD_find_prev_contour(MR_Word, MR_Word);
+void MR_DD_print_trace_node(MR_Word, MR_Word);
+MR_Word MR_DD_construct_call_node(MR_Word, MR_Word, MR_Integer, MR_Integer, MR_Word, MR_Word, const MR_LabelLayout *, MR_Integer, MR_Integer);
+MR_Word MR_DD_make_yes_maybe_label(const MR_LabelLayout *);
+MR_Word MR_DD_make_no_maybe_label(void);
+MR_Word MR_DD_construct_exit_node(MR_Word, MR_Word, MR_Word, MR_Word, MR_Integer, const MR_LabelLayout *, MR_Integer, MR_Integer);
+MR_Word MR_DD_construct_redo_node(MR_Word, MR_Word, MR_Integer, const MR_LabelLayout *, MR_Integer);
+MR_Word MR_DD_construct_fail_node(MR_Word, MR_Word, MR_Word, MR_Integer, const MR_LabelLayout *, MR_Integer);
+void MR_DD_construct_excp_node(MR_Word, MR_Word, MR_Word, MR_Word, MR_Integer, const MR_LabelLayout *, MR_Integer, MR_Word *);
+MR_Word MR_DD_construct_switch_node(MR_Word, const MR_LabelLayout *);
+MR_Word MR_DD_construct_first_disj_node(MR_Word, const MR_LabelLayout *);
+MR_Word MR_DD_construct_later_disj_node(MR_Word, MR_Word, const MR_LabelLayout *, MR_Word);
+MR_Word MR_DD_construct_cond_node(MR_Word, const MR_LabelLayout *);
+MR_Word MR_DD_construct_then_node(MR_Word, MR_Word, const MR_LabelLayout *);
+MR_Word MR_DD_construct_else_node(MR_Word, MR_Word, const MR_LabelLayout *);
+MR_Word MR_DD_construct_neg_node(MR_Word, const MR_LabelLayout *);
+MR_Word MR_DD_construct_neg_succ_node(MR_Word, MR_Word, const MR_LabelLayout *);
+MR_Word MR_DD_construct_neg_fail_node(MR_Word, MR_Word, const MR_LabelLayout *);
+MR_Word MR_DD_init_trace_atom_args(void);
+void MR_DD_add_trace_atom_arg_value(MR_Integer, MR_Integer, MR_Word, MR_Word, MR_Word *);
+void MR_DD_add_trace_atom_arg_no_value(MR_Integer, MR_Integer, MR_Word, MR_Word *);
+void MR_DD_save_trace(MR_Word, MR_Word, MR_Word);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__DECLARATIVE_EXECUTION_MH */

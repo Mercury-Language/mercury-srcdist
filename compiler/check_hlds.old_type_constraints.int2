@@ -1,0 +1,2 @@
+:- module (check_hlds.old_type_constraints).
+:- interface.

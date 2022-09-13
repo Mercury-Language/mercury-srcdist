@@ -1,0 +1,14 @@
+module(2, "set_bbbtree.m",
+	set_bbbtree,
+	{},
+	{bool, builtin, list, private_builtin},
+	{int, require},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

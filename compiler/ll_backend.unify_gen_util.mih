@@ -1,0 +1,156 @@
+/*
+** Automatically generated from `unify_gen_util.m'
+** by the Mercury compiler,
+** version rotd-2022-09-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.unify_gen_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__unify_gen_util
+#define MR_HEADER_GUARD_ll_backend__unify_gen_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__UNIFY_GEN_UTIL_DECL_GUARD
+#define LL_BACKEND__UNIFY_GEN_UTIL_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__unify_gen_util__ll_backend__unify_gen_util__type_ctor_info_arg_and_width_1;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__unify_gen_util__ll_backend__unify_gen_util__type_ctor_info_assign_dir_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__unify_gen_util__ll_backend__unify_gen_util__type_ctor_info_maybe_zero_const_0;
+
+void MR_CALL 
+ll_backend__unify_gen_util__associate_cons_id_args_with_widths_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__unify_gen_util__cast_to_unsigned_without_sign_extend_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__unify_gen_util__compute_assign_direction_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__unify_gen_util__int_tag_to_const_and_int_type_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__unify_gen_util__maybe_cast_masked_off_rval_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+ll_backend__unify_gen_util__bitwise_or_rvals_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__unify_gen_util__bitwise_or_some_rvals_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ll_backend__unify_gen_util__bitwise_or_two_rvals_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ll_backend__unify_gen_util__is_zero_const_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ll_backend__unify_gen_util__left_shift_rval_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+ll_backend__unify_gen_util__right_shift_rval_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ll_backend__unify_gen_util____Compare____arg_and_width_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+ll_backend__unify_gen_util____Compare____assign_dir_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__unify_gen_util____Compare____maybe_zero_const_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__unify_gen_util____Unify____arg_and_width_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__unify_gen_util____Unify____assign_dir_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__unify_gen_util____Unify____maybe_zero_const_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__unify_gen_util__init(void);
+void mercury__ll_backend__unify_gen_util__init_type_tables(void);
+void mercury__ll_backend__unify_gen_util__init_debugger(void);
+const char *mercury__ll_backend__unify_gen_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.unify_gen_util
+
+// :- end_interface ll_backend.unify_gen_util.

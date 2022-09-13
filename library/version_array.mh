@@ -1,0 +1,86 @@
+// Automatically generated from `version_array.m'
+// by the Mercury compiler,
+// version rotd-2022-09-13
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef VERSION_ARRAY_MH
+#define VERSION_ARRAY_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef VERSION_ARRAY_DECL_GUARD
+#define VERSION_ARRAY_DECL_GUARD
+
+// If index is -1 then value is undefined and rest is the latest
+// array value.
+//
+// Otherwise value is the overwritten value at index and rest is
+// a pointer to the next version in the chain.
+
+typedef struct ML_va        *ML_va_ptr;
+typedef const struct ML_va  *ML_const_va_ptr;
+
+struct ML_va {
+    MR_Integer          index;  // -1 for latest, >= 0 for older
+    MR_Word             value;  // Valid if index >= 0
+    union {
+        MR_ArrayPtr     array;  // Valid if index == -1
+        ML_va_ptr       next;   // Valid if index >= 0
+    } rest;
+#ifdef MR_THREAD_SAFE
+    MercuryLock         *lock;  // NULL or lock
+#endif
+};
+
+// Returns a pointer to the latest version of the array.
+extern ML_va_ptr
+ML_va_get_latest(ML_const_va_ptr VA);
+
+// Returns the number of items in a version array.
+extern MR_Integer
+ML_va_size_dolock(ML_const_va_ptr);
+
+// If I is in range then ML_va_get(VA, I, &X) sets X to the I'th item
+// in VA (counting from zero) and returns MR_TRUE. Otherwise it
+// returns MR_FALSE.
+extern MR_bool
+ML_va_get_dolock(ML_const_va_ptr, MR_Integer, MR_Word *);
+
+// If I is in range then ML_va_set(VA0, I, X, VA) sets VA to be VA0
+// updated with the I'th item as X (counting from zero) and
+// returns MR_TRUE. Otherwise it returns MR_FALSE.
+extern MR_bool
+ML_va_set_dolock(ML_va_ptr, MR_Integer, MR_Word, ML_va_ptr *,
+    MR_AllocSiteInfoPtr);
+
+// `Rewinds' a version array, invalidating all extant successors
+// including the argument.
+extern ML_va_ptr
+ML_va_rewind_dolock(ML_va_ptr, MR_AllocSiteInfoPtr);
+
+// Resize a version array.
+extern ML_va_ptr
+ML_va_resize_dolock(ML_va_ptr, MR_Integer, MR_Word, MR_AllocSiteInfoPtr);
+
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* VERSION_ARRAY_MH */
