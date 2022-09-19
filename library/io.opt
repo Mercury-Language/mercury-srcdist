@@ -1,0 +1,2943 @@
+:- module io.
+:- use_module array.
+:- use_module benchmarking.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module dir.
+:- use_module exception.
+:- use_module int.
+:- use_module int16.
+:- use_module int32.
+:- use_module int64.
+:- use_module int8.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mercury_term_parser.
+:- use_module ops.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module stream.
+:- use_module string.
+:- use_module table_builtin.
+:- use_module term.
+:- use_module term_conversion.
+:- use_module term_subst.
+:- use_module time.
+:- use_module type_desc.
+:- use_module uint16.
+:- use_module uint32.
+:- use_module uint64.
+:- use_module uint8.
+:- use_module univ.
+:- use_module (io.call_system).
+:- use_module (io.environment).
+:- use_module (io.file).
+:- use_module (io.primitives_read).
+:- use_module (io.primitives_write).
+:- use_module (io.stream_db).
+:- use_module (io.stream_ops).
+:- use_module (io.text_read).
+:- use_module (stream.string_writer).
+:- use_module (string.format).
+:- use_module (string.parse_util).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", (io.stream_ops)).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", (io.primitives_write)).
+:- pragma foreign_import_module("C#", (io.stream_ops)).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", (io.stream_ops)).
+
+:- type binary_input_stream
+    --->    binary_input_stream(io.stream).
+:- type binary_output_stream
+    --->    binary_output_stream(io.stream).
+:- type byte_order
+    --->    big_endian 
+    ;       little_endian .
+:- type chunk_inner_res(T)
+    --->    cir_ok(T)
+    ;       cir_error(T, io.error)
+    ;       cir_more(T).
+:- type chunk_inner_res0
+    --->    cir0_ok 
+    ;       cir0_error(io.error)
+    ;       cir0_more .
+:- type error
+    --->    io_error_string(string)
+    ;       io_error_errno(string, io.system_error)
+    ;       io_error_win32(string, io.system_error)
+    ;       io_error_exception_object(string, io.system_error).
+:- type file_id
+    --->    file_id .
+:- pragma foreign_type(c, file_id, "ML_File_Id")
+    where
+        comparison is (io.compare_file_id).
+:- type input_stream
+    --->    input_stream(io.stream).
+:- type maybe_incomplete_result_code
+    --->    mirc_ok 
+    ;       mirc_eof 
+    ;       mirc_incomplete 
+    ;       mirc_error .
+:- type output_stream
+    --->    output_stream(io.stream).
+:- type result_code
+    --->    result_code_ok 
+    ;       result_code_eof 
+    ;       result_code_error .
+:- type state.
+:- pragma foreign_type(c, state, "MR_Word", [can_pass_as_mercury_type])
+    where
+        equality is (io.io_state_equal),
+        comparison is (io.io_state_compare).
+:- pragma foreign_type(java, state, "java.lang.Object", [can_pass_as_mercury_type])
+    where
+        equality is (io.io_state_equal),
+        comparison is (io.io_state_compare).
+:- pragma foreign_type(csharp, state, "int", [can_pass_as_mercury_type])
+    where
+        equality is (io.io_state_equal),
+        comparison is (io.io_state_compare).
+:- type stream
+    --->    stream(builtin.c_pointer).
+:- pragma foreign_type(c, stream, "MercuryFilePtr", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, stream, "jmercury.io__stream_ops.MR_MercuryFileStruct").
+:- pragma foreign_type(csharp, stream, "mercury.io__stream_ops.MR_MercuryFileStruct").
+:- type stream_id == int.
+:- type system_error_style
+    --->    syserr_errno 
+    ;       syserr_errno_or_win32 
+    ;       syserr_exception_object .
+
+:- instance (stream.error(io.error)) where [
+	func((stream.error_message)/1) is (io.error_message)
+].
+:- instance (stream.input(io.binary_input_stream, io.state)) where [
+
+].
+:- instance (stream.input(io.input_stream, io.state)) where [
+
+].
+:- instance (stream.line_oriented(io.input_stream, io.state)) where [
+	pred((stream.get_line)/4) is (io.get_line_number),
+	pred((stream.set_line)/4) is (io.set_line_number)
+].
+:- instance (stream.line_oriented(io.output_stream, io.state)) where [
+	pred((stream.get_line)/4) is (io.get_output_line_number),
+	pred((stream.set_line)/4) is (io.set_output_line_number)
+].
+:- instance (stream.output(io.binary_output_stream, io.state)) where [
+	pred((stream.flush)/3) is (io.flush_binary_output)
+].
+:- instance (stream.output(io.output_stream, io.state)) where [
+	pred((stream.flush)/3) is (io.flush_output)
+].
+:- instance (stream.putback(io.binary_input_stream, int, io.state, io.error)) where [
+	pred((stream.unget)/4) is (io.putback_byte)
+].
+:- instance (stream.putback(io.binary_input_stream, int8, io.state, io.error)) where [
+	pred((stream.unget)/4) is (io.putback_int8)
+].
+:- instance (stream.putback(io.binary_input_stream, uint8, io.state, io.error)) where [
+	pred((stream.unget)/4) is (io.putback_uint8)
+].
+:- instance (stream.putback(io.input_stream, character, io.state, io.error)) where [
+	pred((stream.unget)/4) is (io.putback_char)
+].
+:- instance (stream.stream(io.binary_input_stream, io.state)) where [
+	pred((stream.name)/4) is (io.binary_input_stream_name)
+].
+:- instance (stream.stream(io.binary_output_stream, io.state)) where [
+	pred((stream.name)/4) is (io.binary_output_stream_name)
+].
+:- instance (stream.stream(io.input_stream, io.state)) where [
+	pred((stream.name)/4) is (io.input_stream_name)
+].
+:- instance (stream.stream(io.output_stream, io.state)) where [
+	pred((stream.name)/4) is (io.output_stream_name)
+].
+:- instance (stream.writer(io.binary_output_stream, int, io.state)) where [
+	pred((stream.put)/4) is (io.write_byte)
+].
+:- instance (stream.writer(io.binary_output_stream, int8, io.state)) where [
+	pred((stream.put)/4) is (io.write_binary_int8)
+].
+:- instance (stream.writer(io.binary_output_stream, uint8, io.state)) where [
+	pred((stream.put)/4) is (io.write_binary_uint8)
+].
+:- instance (stream.writer(io.output_stream, univ.univ, io.state)) where [
+	pred((stream.put)/4) is ((stream.string_writer).write_univ)
+].
+:- instance (stream.writer(io.output_stream, int, io.state)) where [
+	pred((stream.put)/4) is (io.write_int)
+].
+:- instance (stream.writer(io.output_stream, uint, io.state)) where [
+	pred((stream.put)/4) is (io.write_uint)
+].
+:- instance (stream.writer(io.output_stream, int8, io.state)) where [
+	pred((stream.put)/4) is (io.write_int8)
+].
+:- instance (stream.writer(io.output_stream, uint8, io.state)) where [
+	pred((stream.put)/4) is (io.write_uint8)
+].
+:- instance (stream.writer(io.output_stream, int16, io.state)) where [
+	pred((stream.put)/4) is (io.write_int16)
+].
+:- instance (stream.writer(io.output_stream, uint16, io.state)) where [
+	pred((stream.put)/4) is (io.write_uint16)
+].
+:- instance (stream.writer(io.output_stream, int32, io.state)) where [
+	pred((stream.put)/4) is (io.write_int32)
+].
+:- instance (stream.writer(io.output_stream, uint32, io.state)) where [
+	pred((stream.put)/4) is (io.write_uint32)
+].
+:- instance (stream.writer(io.output_stream, int64, io.state)) where [
+	pred((stream.put)/4) is (io.write_int64)
+].
+:- instance (stream.writer(io.output_stream, uint64, io.state)) where [
+	pred((stream.put)/4) is (io.write_uint64)
+].
+:- instance (stream.writer(io.output_stream, float, io.state)) where [
+	pred((stream.put)/4) is (io.write_float)
+].
+:- instance (stream.writer(io.output_stream, string, io.state)) where [
+	pred((stream.put)/4) is (io.write_string)
+].
+:- instance (stream.writer(io.output_stream, character, io.state)) where [
+	pred((stream.put)/4) is (io.write_char)
+].
+
+:- pred io.binary_input_stream_foldl2_io_chunk(io.binary_input_stream, pred(int, T, T, io.state, io.state), T, io.maybe_partial_res(T), io.state, io.state).
+:- mode binary_input_stream_foldl2_io_chunk((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl2_io_chunk((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.binary_input_stream_foldl2_io_inner(int, io.binary_input_stream, pred(int, T, T, io.state, io.state), T, io.chunk_inner_res(T), io.state, io.state).
+:- mode binary_input_stream_foldl2_io_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl2_io_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.binary_input_stream_foldl2_io_maybe_stop_chunk(io.binary_input_stream, pred(int, bool.bool, T, T, io.state, io.state), T, io.maybe_partial_res(T), io.state, io.state).
+:- mode binary_input_stream_foldl2_io_maybe_stop_chunk((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl2_io_maybe_stop_chunk((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.binary_input_stream_foldl2_io_maybe_stop_inner(int, io.binary_input_stream, pred(int, bool.bool, T, T, io.state, io.state), T, io.chunk_inner_res(T), io.state, io.state).
+:- mode binary_input_stream_foldl2_io_maybe_stop_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl2_io_maybe_stop_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.binary_input_stream_foldl2_io_maybe_stop_plain(io.binary_input_stream, pred(int, bool.bool, T, T, io.state, io.state), T, io.maybe_partial_res(T), io.state, io.state).
+:- mode binary_input_stream_foldl2_io_maybe_stop_plain((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl2_io_maybe_stop_plain((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.binary_input_stream_foldl2_io_plain(io.binary_input_stream, pred(int, T, T, io.state, io.state), T, io.maybe_partial_res(T), io.state, io.state).
+:- mode binary_input_stream_foldl2_io_plain((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl2_io_plain((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.binary_input_stream_foldl_io_chunk(io.binary_input_stream, pred(int, io.state, io.state), io.res, io.state, io.state).
+:- mode binary_input_stream_foldl_io_chunk((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl_io_chunk((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.binary_input_stream_foldl_io_inner(int, io.binary_input_stream, pred(int, io.state, io.state), io.chunk_inner_res0, io.state, io.state).
+:- mode binary_input_stream_foldl_io_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl_io_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.binary_input_stream_foldl_io_plain(io.binary_input_stream, pred(int, io.state, io.state), io.res, io.state, io.state).
+:- mode binary_input_stream_foldl_io_plain((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl_io_plain((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.call_pred_no_result(pred(io.state, io.state), {}, io.state, io.state).
+:- mode call_pred_no_result(((pred((builtin.di), (builtin.uo)) is det) >> (pred((builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode call_pred_no_result(((pred((builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- func (io.chunk_size) = int.
+:- mode chunk_size = (builtin.out) is det.
+:- pred io.compare_file_id(builtin.comparison_result, io.file_id, io.file_id).
+:- mode compare_file_id((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred io.compare_file_id_2(int, io.file_id, io.file_id).
+:- mode compare_file_id_2((builtin.out), (builtin.in), (builtin.in)) is det.
+:- pred io.do_write_array(array.array(T), string, pred(T, io.state, io.state), int, int, io.state, io.state).
+:- mode do_write_array((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode do_write_array((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.file_id_2(string, io.file_id, io.system_error, io.state, io.state).
+:- mode file_id_2((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io.gc_init(type_desc.type_desc, type_desc.type_desc, io.state, io.state).
+:- mode gc_init((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred io.get_exception_object_message(io.system_error, string, io.state, io.state).
+:- mode get_exception_object_message((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io.init_std_streams(io.state, io.state).
+:- mode init_std_streams((builtin.di), (builtin.uo)) is det.
+:- pred io.interpret_maybe_incomplete_result_code(io.maybe_incomplete_result_code, io.system_error, list.list(uint8), T, io.maybe_incomplete_result(T), io.state, io.state).
+:- mode interpret_maybe_incomplete_result_code((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma inline(pred((io.interpret_maybe_incomplete_result_code)/7)).
+:- pred io.interpret_result_code0(io.result_code, io.system_error, io.result, io.state, io.state).
+:- mode interpret_result_code0((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma inline(pred((io.interpret_result_code0)/5)).
+:- pred io.interpret_result_code1(io.result_code, io.system_error, T, io.result(T), io.state, io.state).
+:- mode interpret_result_code1((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma inline(pred((io.interpret_result_code1)/6)).
+:- pred io.io_state_compare(builtin.comparison_result, io.state, io.state).
+:- mode io_state_compare((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred io.io_state_equal(io.state, io.state).
+:- mode io_state_equal((builtin.in), (builtin.in)) is semidet.
+:- pred io.is_success(io.system_error).
+:- mode is_success((builtin.in)) is semidet.
+:- pragma inline(pred((io.is_success)/1)).
+:- pred io.lock_globals(io.state, io.state).
+:- mode lock_globals((builtin.di), (builtin.uo)) is det.
+:- pred (io.native_byte_order_is_big_endian).
+:- mode native_byte_order_is_big_endian is semidet.
+:- func (io.native_system_error_style) = io.system_error_style.
+:- mode native_system_error_style = (builtin.out) is det.
+:- func (io.no_error) = io.system_error.
+:- mode no_error = (builtin.out) is det.
+:- pred io.print_to_stream(io.stream, T, io.state, io.state).
+:- mode print_to_stream((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred io.process_read_term(string, mercury_term_parser.read_term(term.generic), int, io.read_result(T)).
+:- mode process_read_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred io.read_binary_file_2(io.binary_input_stream, list.list(int), io.result(list.list(int)), io.state, io.state).
+:- mode read_binary_file_2((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io.read_binary_from_text_input_stream(io.input_stream, io.result(T), io.state, io.state).
+:- mode read_binary_from_text_input_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io.read_file_chars_acc(io.input_stream, list.list(character), io.maybe_partial_res(list.list(character)), io.state, io.state).
+:- mode read_file_chars_acc((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io.restore_output_stream(pred(io.state, io.state), io.output_stream, io.res, io.state, io.state).
+:- mode restore_output_stream(((pred((builtin.di), (builtin.uo)) is det) >> (pred((builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode restore_output_stream(((pred((builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.should_reduce_stack_usage(bool.bool).
+:- mode should_reduce_stack_usage((builtin.out)) is det.
+:- pred io.system_error_exception_name(io.system_error, string).
+:- mode system_error_exception_name((builtin.in), (builtin.out)) is det.
+:- pred io.throw_on_close_error(io.system_error, io.state, io.state).
+:- mode throw_on_close_error((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred io.throw_on_error(io.system_error, string, io.state, io.state).
+:- mode throw_on_error((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pragma inline(pred((io.throw_on_error)/4)).
+:- pred io.unlock_globals(io.state, io.state).
+:- mode unlock_globals((builtin.di), (builtin.uo)) is det.
+:- pred io.unsafe_get_globals(univ.univ, io.state, io.state).
+:- mode unsafe_get_globals((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io.unsafe_set_globals(univ.univ, io.state, io.state).
+:- mode unsafe_set_globals((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred io.with_output_stream(io.output_stream, pred(io.state, io.state), io.state, io.state).
+:- mode with_output_stream((builtin.in), ((pred((builtin.di), (builtin.uo)) is det) >> (pred((builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.
+:- mode with_output_stream((builtin.in), ((pred((builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred io.write_list_lag(T, list.list(T), string, pred(T, io.state, io.state), io.state, io.state).
+:- mode write_list_lag((builtin.in), (builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.
+:- mode write_list_lag((builtin.in), (builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)) is cc_multi.
+
+io.binary_input_stream(io.binary_input_stream(V_4), V_6, V_7) :-
+    (io.stream_ops).binary_input_stream_2(V_4, V_6, V_7).
+
+io.binary_input_stream_foldl(V_6, V_7, V_8, V_11, V_12) :-
+    io.binary_input_stream(V_10, V_11, V_13),
+    io.binary_input_stream_foldl(V_10, V_6, V_7, V_8, V_13, V_12).
+
+io.binary_input_stream_foldl(V_7, V_8, V_9, V_10, V_16, V_17) :-
+    io.read_byte(V_7, V_12, V_16, V_18),
+    ( % disjunction
+      V_12 = io.ok(V_13) : io.result(int),
+      call(V_8, V_13, V_9, V_14),
+      io.binary_input_stream_foldl(V_7, V_8, V_14, V_10, V_18, V_17)
+    ;
+      V_12 = io.eof : io.result(int),
+      V_10 = io.ok(V_9) : io.maybe_partial_res(T_1),
+      V_17 = V_18
+    ;
+      V_12 = io.error(V_15) : io.result(int),
+      V_10 = io.error(V_9, V_15) : io.maybe_partial_res(T_1),
+      V_17 = V_18
+    ).
+
+io.binary_input_stream_foldl2_io(V_6, V_7, V_8, V_11, V_12) :-
+    io.binary_input_stream(V_10, V_11, V_13),
+    io.binary_input_stream_foldl2_io(V_10, V_6, V_7, V_8, V_13, V_12).
+
+io.binary_input_stream_foldl2_io(V_7, V_8, V_9, V_10, V_13, V_14) :-
+    io.should_reduce_stack_usage(V_12),
+    ( % disjunction
+      V_12 = bool.no : bool.bool,
+      io.binary_input_stream_foldl2_io_plain(V_7, V_8, V_9, V_10, V_13, V_14)
+    ;
+      V_12 = bool.yes : bool.bool,
+      io.binary_input_stream_foldl2_io_chunk(V_7, V_8, V_9, V_10, V_13, V_14)
+    ).
+
+io.binary_input_stream_foldl2_io_chunk(V_7, V_8, V_9, V_10, V_16, V_17) :-
+    V_18 = io.chunk_size,
+    io.binary_input_stream_foldl2_io_inner(V_18, V_7, V_8, V_9, V_12, V_16, V_19),
+    ( % disjunction
+      V_12 = io.cir_ok(V_13) : io.chunk_inner_res(T_1),
+      V_10 = io.ok(V_13) : io.maybe_partial_res(T_1),
+      V_17 = V_19
+    ;
+      V_12 = io.cir_error(V_21, V_14) : io.chunk_inner_res(T_1),
+      V_10 = io.error(V_21, V_14) : io.maybe_partial_res(T_1),
+      V_17 = V_19
+    ;
+      V_12 = io.cir_more(V_15) : io.chunk_inner_res(T_1),
+      io.binary_input_stream_foldl2_io_chunk(V_7, V_8, V_15, V_10, V_19, V_17)
+    ).
+
+io.binary_input_stream_foldl2_io_inner(V_8, V_9, V_10, V_11, V_12, V_18, V_19) :-
+    ( if
+      V_20 = 0 : int,
+      int.(V_8 > V_20)
+    then
+      io.read_byte(V_9, V_14, V_18, V_21),
+      ( % disjunction
+        V_14 = io.ok(V_15) : io.result(int),
+        call(V_10, V_15, V_11, V_16, V_21, V_22),
+        V_23 = int.(V_8 - V_25),
+        V_25 = 1 : int,
+        io.binary_input_stream_foldl2_io_inner(V_23, V_9, V_10, V_16, V_12, V_22, V_19)
+      ;
+        V_14 = io.eof : io.result(int),
+        V_12 = io.cir_ok(V_11) : io.chunk_inner_res(T_1),
+        V_19 = V_21
+      ;
+        V_14 = io.error(V_17) : io.result(int),
+        V_12 = io.cir_error(V_11, V_17) : io.chunk_inner_res(T_1),
+        V_19 = V_21
+      )
+    else
+      V_12 = io.cir_more(V_11) : io.chunk_inner_res(T_1),
+      V_19 = V_18
+    ).
+
+io.binary_input_stream_foldl2_io_maybe_stop(V_6, V_7, V_8, V_11, V_12) :-
+    io.binary_input_stream(V_10, V_11, V_13),
+    io.binary_input_stream_foldl2_io_maybe_stop(V_10, V_6, V_7, V_8, V_13, V_12).
+
+io.binary_input_stream_foldl2_io_maybe_stop(V_7, V_8, V_9, V_10, V_13, V_14) :-
+    io.should_reduce_stack_usage(V_12),
+    ( % disjunction
+      V_12 = bool.no : bool.bool,
+      io.binary_input_stream_foldl2_io_maybe_stop_plain(V_7, V_8, V_9, V_10, V_13, V_14)
+    ;
+      V_12 = bool.yes : bool.bool,
+      io.binary_input_stream_foldl2_io_maybe_stop_chunk(V_7, V_8, V_9, V_10, V_13, V_14)
+    ).
+
+io.binary_input_stream_foldl2_io_maybe_stop_chunk(V_7, V_8, V_9, V_10, V_16, V_17) :-
+    V_18 = io.chunk_size,
+    io.binary_input_stream_foldl2_io_maybe_stop_inner(V_18, V_7, V_8, V_9, V_12, V_16, V_19),
+    ( % disjunction
+      V_12 = io.cir_ok(V_13) : io.chunk_inner_res(T_1),
+      V_10 = io.ok(V_13) : io.maybe_partial_res(T_1),
+      V_17 = V_19
+    ;
+      V_12 = io.cir_error(V_21, V_14) : io.chunk_inner_res(T_1),
+      V_10 = io.error(V_21, V_14) : io.maybe_partial_res(T_1),
+      V_17 = V_19
+    ;
+      V_12 = io.cir_more(V_15) : io.chunk_inner_res(T_1),
+      io.binary_input_stream_foldl2_io_maybe_stop_chunk(V_7, V_8, V_15, V_10, V_19, V_17)
+    ).
+
+io.binary_input_stream_foldl2_io_maybe_stop_inner(V_8, V_9, V_10, V_11, V_12, V_19, V_20) :-
+    ( if
+      V_21 = 0 : int,
+      int.(V_8 > V_21)
+    then
+      io.read_byte(V_9, V_14, V_19, V_22),
+      ( % disjunction
+        V_14 = io.ok(V_15) : io.result(int),
+        call(V_10, V_15, V_16, V_11, V_17, V_22, V_23),
+        ( % disjunction
+          V_16 = bool.no : bool.bool,
+          V_12 = io.cir_ok(V_17) : io.chunk_inner_res(T_1),
+          V_20 = V_23
+        ;
+          V_16 = bool.yes : bool.bool,
+          V_24 = int.(V_8 - V_26),
+          V_26 = 1 : int,
+          io.binary_input_stream_foldl2_io_maybe_stop_inner(V_24, V_9, V_10, V_17, V_12, V_23, V_20)
+        )
+      ;
+        V_14 = io.eof : io.result(int),
+        V_12 = io.cir_ok(V_11) : io.chunk_inner_res(T_1),
+        V_20 = V_22
+      ;
+        V_14 = io.error(V_18) : io.result(int),
+        V_12 = io.cir_error(V_11, V_18) : io.chunk_inner_res(T_1),
+        V_20 = V_22
+      )
+    else
+      V_12 = io.cir_more(V_11) : io.chunk_inner_res(T_1),
+      V_20 = V_19
+    ).
+
+io.binary_input_stream_foldl2_io_maybe_stop_plain(V_7, V_8, V_9, V_10, V_17, V_18) :-
+    io.read_byte(V_7, V_12, V_17, V_19),
+    ( % disjunction
+      V_12 = io.ok(V_13) : io.result(int),
+      call(V_8, V_13, V_14, V_9, V_15, V_19, V_20),
+      ( % disjunction
+        V_14 = bool.no : bool.bool,
+        V_10 = io.ok(V_15) : io.maybe_partial_res(T_1),
+        V_18 = V_20
+      ;
+        V_14 = bool.yes : bool.bool,
+        io.binary_input_stream_foldl2_io_maybe_stop_plain(V_7, V_8, V_15, V_10, V_20, V_18)
+      )
+    ;
+      V_12 = io.eof : io.result(int),
+      V_10 = io.ok(V_9) : io.maybe_partial_res(T_1),
+      V_18 = V_19
+    ;
+      V_12 = io.error(V_16) : io.result(int),
+      V_10 = io.error(V_9, V_16) : io.maybe_partial_res(T_1),
+      V_18 = V_19
+    ).
+
+io.binary_input_stream_foldl2_io_plain(V_7, V_8, V_9, V_10, V_16, V_17) :-
+    io.read_byte(V_7, V_12, V_16, V_18),
+    ( % disjunction
+      V_12 = io.ok(V_13) : io.result(int),
+      call(V_8, V_13, V_9, V_14, V_18, V_19),
+      io.binary_input_stream_foldl2_io_plain(V_7, V_8, V_14, V_10, V_19, V_17)
+    ;
+      V_12 = io.eof : io.result(int),
+      V_10 = io.ok(V_9) : io.maybe_partial_res(T_1),
+      V_17 = V_18
+    ;
+      V_12 = io.error(V_15) : io.result(int),
+      V_10 = io.error(V_9, V_15) : io.maybe_partial_res(T_1),
+      V_17 = V_18
+    ).
+
+io.binary_input_stream_foldl_io(V_5, V_6, V_9, V_10) :-
+    io.binary_input_stream(V_8, V_9, V_11),
+    io.binary_input_stream_foldl_io(V_8, V_5, V_6, V_11, V_10).
+
+io.binary_input_stream_foldl_io(V_6, V_7, V_8, V_11, V_12) :-
+    io.should_reduce_stack_usage(V_10),
+    ( % disjunction
+      V_10 = bool.no : bool.bool,
+      io.binary_input_stream_foldl_io_plain(V_6, V_7, V_8, V_11, V_12)
+    ;
+      V_10 = bool.yes : bool.bool,
+      io.binary_input_stream_foldl_io_chunk(V_6, V_7, V_8, V_11, V_12)
+    ).
+
+io.binary_input_stream_foldl_io_chunk(V_6, V_7, V_8, V_12, V_13) :-
+    V_14 = io.chunk_size,
+    io.binary_input_stream_foldl_io_inner(V_14, V_6, V_7, V_10, V_12, V_15),
+    ( % disjunction
+      V_10 = io.cir0_ok : io.chunk_inner_res0,
+      V_8 = io.ok : io.res,
+      V_13 = V_15
+    ;
+      V_10 = io.cir0_error(V_11) : io.chunk_inner_res0,
+      V_8 = io.error(V_11) : io.res,
+      V_13 = V_15
+    ;
+      V_10 = io.cir0_more : io.chunk_inner_res0,
+      io.binary_input_stream_foldl_io_chunk(V_6, V_7, V_8, V_15, V_13)
+    ).
+
+io.binary_input_stream_foldl_io_inner(V_7, V_8, V_9, V_10, V_15, V_16) :-
+    ( if
+      V_17 = 0 : int,
+      int.(V_7 > V_17)
+    then
+      io.read_byte(V_8, V_12, V_15, V_18),
+      ( % disjunction
+        V_12 = io.ok(V_13) : io.result(int),
+        call(V_9, V_13, V_18, V_19),
+        V_20 = int.(V_7 - V_22),
+        V_22 = 1 : int,
+        io.binary_input_stream_foldl_io_inner(V_20, V_8, V_9, V_10, V_19, V_16)
+      ;
+        V_12 = io.eof : io.result(int),
+        V_10 = io.cir0_ok : io.chunk_inner_res0,
+        V_16 = V_18
+      ;
+        V_12 = io.error(V_14) : io.result(int),
+        V_10 = io.cir0_error(V_14) : io.chunk_inner_res0,
+        V_16 = V_18
+      )
+    else
+      V_10 = io.cir0_more : io.chunk_inner_res0,
+      V_16 = V_15
+    ).
+
+io.binary_input_stream_foldl_io_plain(V_6, V_7, V_8, V_13, V_14) :-
+    io.read_byte(V_6, V_10, V_13, V_15),
+    ( % disjunction
+      V_10 = io.ok(V_11) : io.result(int),
+      call(V_7, V_11, V_15, V_16),
+      io.binary_input_stream_foldl_io_plain(V_6, V_7, V_8, V_16, V_14)
+    ;
+      V_10 = io.eof : io.result(int),
+      V_8 = io.ok : io.res,
+      V_14 = V_15
+    ;
+      V_10 = io.error(V_12) : io.result(int),
+      V_8 = io.error(V_12) : io.res,
+      V_14 = V_15
+    ).
+
+io.binary_input_stream_get_stream(io.binary_input_stream(V_3)) = V_3.
+
+io.binary_input_stream_name(V_4, V_7, V_8) :-
+    V_9 = io.binary_input_stream(V_6) : io.binary_input_stream,
+    io.binary_input_stream(V_9, V_7, V_10),
+    (io.stream_db).stream_name(V_6, V_4, V_10, V_8).
+
+io.binary_input_stream_name(io.binary_input_stream(V_5), V_6, V_8, V_9) :-
+    (io.stream_db).stream_name(V_5, V_6, V_8, V_9).
+
+io.binary_input_stream_offset64(io.binary_input_stream(V_5), V_6, V_9, V_10) :-
+    (io.stream_ops).binary_stream_offset_2(V_5, V_6, V_8, V_9, V_11),
+    V_12 = "error getting file offset: " : string,
+    io.throw_on_error(V_8, V_12, V_11, V_10).
+
+io.binary_output_stream(io.binary_output_stream(V_4), V_6, V_7) :-
+    (io.stream_ops).binary_output_stream_2(V_4, V_6, V_7).
+
+io.binary_output_stream_get_stream(io.binary_output_stream(V_3)) = V_3.
+
+io.binary_output_stream_name(V_4, V_7, V_8) :-
+    V_9 = io.binary_output_stream(V_6) : io.binary_output_stream,
+    io.binary_output_stream(V_9, V_7, V_10),
+    (io.stream_db).stream_name(V_6, V_4, V_10, V_8).
+
+io.binary_output_stream_name(io.binary_output_stream(V_5), V_6, V_8, V_9) :-
+    (io.stream_db).stream_name(V_5, V_6, V_8, V_9).
+
+io.binary_output_stream_offset64(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.stream_ops).binary_stream_offset_2(V_5, V_6, V_8, V_9, V_11),
+    V_12 = "error getting file offset: " : string,
+    io.throw_on_error(V_8, V_12, V_11, V_10).
+
+io.call_pred_no_result(V_5, V_2, V_7, V_8) :-
+    V_2 = {} : {},
+    call(V_5, V_7, V_8).
+
+io.call_system(V_5, V_6, V_8, V_9) :-
+    (io.call_system).call_system(V_5, V_6, V_8, V_9).
+
+io.call_system_return_signal(V_5, V_6, V_8, V_9) :-
+    (io.call_system).call_system_return_signal(V_5, V_6, V_8, V_9).
+
+io.check_file_accessibility(V_6, V_7, V_8, V_10, V_11) :-
+    (io.file).check_file_accessibility(V_6, V_7, V_8, V_10, V_11).
+
+io.chunk_size = 1000.
+
+io.close_binary_input(io.binary_input_stream(V_4), V_7, V_8) :-
+    (io.stream_db).maybe_delete_stream_info(V_4, V_7, V_9),
+    (io.stream_ops).close_stream(V_4, V_6, V_9, V_10),
+    io.throw_on_close_error(V_6, V_10, V_8).
+
+io.close_binary_output(io.binary_output_stream(V_4), V_7, V_8) :-
+    (io.stream_db).maybe_delete_stream_info(V_4, V_7, V_9),
+    (io.stream_ops).close_stream(V_4, V_6, V_9, V_10),
+    io.throw_on_close_error(V_6, V_10, V_8).
+
+io.close_input(io.input_stream(V_4), V_7, V_8) :-
+    (io.stream_db).maybe_delete_stream_info(V_4, V_7, V_9),
+    (io.stream_ops).close_stream(V_4, V_6, V_9, V_10),
+    io.throw_on_close_error(V_6, V_10, V_8).
+
+io.close_output(io.output_stream(V_4), V_7, V_8) :-
+    (io.stream_db).maybe_delete_stream_info(V_4, V_7, V_9),
+    (io.stream_ops).close_stream(V_4, V_6, V_9, V_10),
+    io.throw_on_close_error(V_6, V_10, V_8).
+
+:- pragma foreign_proc("C", io.compare_file_id_2(Res :: (builtin.out), FileId1 :: (builtin.in), FileId2 :: (builtin.in)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    int device_cmp;
+    int inode_cmp;
+
+    // For compilers other than GCC, glibc defines dev_t as struct (dev_t
+    // is 64 bits, and other compilers may not have a 64 bit arithmetic type).
+    // XXX This code assumes that dev_t and ino_t do not include padding bits.
+    // In practice, that should be OK.
+    device_cmp = memcmp(&(FileId1.device), &(FileId2.device),
+        sizeof(ML_dev_t));
+
+    if (device_cmp < 0) {
+        Res = -1;
+    } else if (device_cmp > 0) {
+        Res = 1;
+    } else {
+        inode_cmp = memcmp(&(FileId1.inode), &(FileId2.inode),
+            sizeof(ML_ino_t));
+        if (inode_cmp < 0) {
+            Res = -1;
+        } else if (inode_cmp > 0) {
+            Res = 1;
+        } else {
+            Res = 0;
+        }
+    }
+").
+
+io.do_write_array(V_8, V_9, V_10, V_11, V_12, V_15, V_16) :-
+    ( if
+      int.(V_11 =< V_12)
+    then
+      io.write_string(V_9, V_15, V_17),
+      array.unsafe_lookup(V_8, V_11, V_14),
+      call(V_10, V_14, V_17, V_18),
+      V_19 = int.(V_11 + V_21),
+      V_21 = 1 : int,
+      io.do_write_array(V_8, V_9, V_10, V_19, V_12, V_18, V_16)
+    else
+      V_16 = V_15
+    ).
+
+io.error_message(V_3) = V_4 :-
+    io.error_message(V_3, V_4).
+
+:- pragma foreign_proc("C", io.file_id_2(FileName :: (builtin.in), FileId :: (builtin.out), Error :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    // Win32 returns junk in the st_ino field of `struct stat\'.
+#if defined(MR_HAVE_STAT) && !defined(MR_WIN32)
+    struct stat s;
+    int stat_result = stat(FileName, &s);
+
+    if (stat_result == 0) {
+        FileId.device = s.st_dev;
+        FileId.inode = s.st_ino;
+        Error = 0;
+    } else {
+        Error = errno;
+    }
+#else
+    Error = ENOSYS;
+#endif
+").
+
+io.file_modification_time(V_5, V_6, V_8, V_9) :-
+    (io.file).file_modification_time(V_5, V_6, V_8, V_9).
+
+io.file_type(V_6, V_7, V_8, V_10, V_11) :-
+    (io.file).file_type(V_6, V_7, V_8, V_10, V_11).
+
+io.finalize_state(V_4, V_5) :-
+    V_5 = V_4.
+
+io.flush_binary_output(V_5, V_6) :-
+    io.binary_output_stream(V_4, V_5, V_7),
+    io.flush_binary_output(V_4, V_7, V_6).
+
+io.flush_binary_output(io.binary_output_stream(V_4), V_7, V_8) :-
+    (io.stream_ops).flush_binary_output_2(V_4, V_6, V_7, V_9),
+    io.throw_on_output_error(V_6, V_9, V_8).
+
+io.flush_output(V_5, V_6) :-
+    io.output_stream(V_4, V_5, V_7),
+    io.flush_output(V_4, V_7, V_6).
+
+io.flush_output(io.output_stream(V_4), V_7, V_8) :-
+    (io.stream_ops).flush_text_output_2(V_4, V_6, V_7, V_9),
+    io.throw_on_output_error(V_6, V_9, V_8).
+
+io.format(V_5, V_6, V_9, V_10) :-
+    io.output_stream(V_8, V_9, V_11),
+    disable_warnings [unknown_format_calls] (
+      io.format(V_8, V_5, V_6, V_11, V_10)
+    ).
+
+io.format(V_6, V_7, V_8, V_11, V_12) :-
+    disable_warnings [unknown_format_calls] (
+      string.format(V_7, V_8, V_10)
+    ),
+    io.write_string(V_6, V_10, V_11, V_12).
+
+:- pragma foreign_proc("C", io.gc_init(StreamDbType :: (builtin.in), UserGlobalsType :: (builtin.in), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    // For Windows DLLs, we need to call GC_INIT() from each DLL.
+#ifdef MR_BOEHM_GC
+    GC_INIT();
+#endif
+    MR_add_root(&ML_io_stream_db, (MR_TypeInfo) StreamDbType);
+    MR_add_root(&ML_io_user_globals, (MR_TypeInfo) UserGlobalsType);
+").
+
+io.get_environment_var(V_5, V_6, V_8, V_9) :-
+    (io.environment).get_environment_var(V_5, V_6, V_8, V_9).
+
+io.get_environment_var_map(V_4, V_6, V_7) :-
+    (io.environment).get_environment_var_map(V_4, V_6, V_7).
+
+io.get_errno_error(V_3, V_4) :-
+    V_3 = io.io_error_errno(V_5, V_4) : io.error.
+
+io.get_exception_object_error(V_3, V_4) :-
+    V_3 = io.io_error_exception_object(V_5, V_4) : io.error.
+
+io.get_exception_object_message(V_5, V_6, V_8, V_9) :-
+    V_10 = "io.get_exception_object_message: inapplicable back-end" : string,
+    require.error(V_10),
+    V_9 = V_8.
+
+:- pragma foreign_proc("C", io.get_exit_status(ExitStatus :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    ExitStatus = mercury_exit_status;
+").
+
+io.get_globals(V_4, V_6, V_7) :-
+    io.lock_globals(V_6, V_8),
+    io.unsafe_get_globals(V_4, V_8, V_9),
+    io.unlock_globals(V_9, V_7).
+
+io.get_line_number(V_4, V_7, V_8) :-
+    (io.stream_ops).input_stream_2(V_6, V_7, V_9),
+    (io.stream_ops).get_input_line_number_2(V_6, V_4, V_9, V_8).
+
+io.get_line_number(io.input_stream(V_5), V_6, V_8, V_9) :-
+    (io.stream_ops).get_input_line_number_2(V_5, V_6, V_8, V_9).
+
+io.get_op_table(V_1, V_5, V_6) :-
+    V_1 = ops.init_mercury_op_table,
+    V_6 = V_5.
+
+io.get_output_line_number(V_4, V_7, V_8) :-
+    (io.stream_ops).output_stream_2(V_6, V_7, V_9),
+    (io.stream_ops).get_output_line_number_2(V_6, V_4, V_9, V_8).
+
+io.get_output_line_number(io.output_stream(V_5), V_6, V_8, V_9) :-
+    (io.stream_ops).get_output_line_number_2(V_5, V_6, V_8, V_9).
+
+io.get_temp_directory(V_4, V_6, V_7) :-
+    (io.file).get_temp_directory(V_4, V_6, V_7).
+
+io.get_windows_error(V_3, V_4) :-
+    V_3 = io.io_error_win32(V_5, V_4) : io.error.
+
+:- pragma foreign_proc("C", io.have_cygwin, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+#if defined(MR_CYGWIN)
+    SUCCESS_INDICATOR = MR_TRUE;
+#else
+    SUCCESS_INDICATOR = MR_FALSE;
+#endif
+").
+
+io.have_dotnet :-
+    builtin.semidet_fail.
+
+io.have_make_temp_directory :-
+    (io.file).have_make_temp_directory.
+
+io.have_set_environment_var :-
+    (io.environment).have_set_environment_var.
+
+io.have_symlinks :-
+    (io.file).have_symlinks.
+
+:- pragma foreign_proc("C", io.have_win32, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+#if defined(MR_WIN32)
+    SUCCESS_INDICATOR = MR_TRUE;
+#else
+    SUCCESS_INDICATOR = MR_FALSE;
+#endif
+").
+
+io.ignore_whitespace(V_4, V_7, V_8) :-
+    io.input_stream(V_6, V_7, V_9),
+    io.ignore_whitespace(V_6, V_4, V_9, V_8).
+
+io.init_std_streams(V_4, V_5) :-
+    V_5 = V_4.
+
+io.input_stream(io.input_stream(V_4), V_6, V_7) :-
+    (io.stream_ops).input_stream_2(V_4, V_6, V_7).
+
+io.input_stream_foldl(V_6, V_7, V_8, V_11, V_12) :-
+    io.input_stream(V_10, V_11, V_13),
+    io.input_stream_foldl(V_10, V_6, V_7, V_8, V_13, V_12).
+
+io.input_stream_foldl(V_7, V_8, V_9, V_10, V_16, V_17) :-
+    io.read_char(V_7, V_12, V_16, V_18),
+    ( % disjunction
+      V_12 = io.ok(V_13) : io.result(character),
+      call(V_8, V_13, V_9, V_14),
+      io.input_stream_foldl(V_7, V_8, V_14, V_10, V_18, V_17)
+    ;
+      V_12 = io.eof : io.result(character),
+      V_10 = io.ok(V_9) : io.maybe_partial_res(T_1),
+      V_17 = V_18
+    ;
+      V_12 = io.error(V_15) : io.result(character),
+      V_10 = io.error(V_9, V_15) : io.maybe_partial_res(T_1),
+      V_17 = V_18
+    ).
+
+io.input_stream_foldl2_io(V_6, V_7, V_8, V_11, V_12) :-
+    io.input_stream(V_10, V_11, V_13),
+    io.input_stream_foldl2_io(V_10, V_6, V_7, V_8, V_13, V_12).
+
+io.input_stream_foldl2_io(V_7, V_8, V_9, V_10, V_16, V_17) :-
+    io.read_char(V_7, V_12, V_16, V_18),
+    ( % disjunction
+      V_12 = io.ok(V_13) : io.result(character),
+      call(V_8, V_13, V_9, V_14, V_18, V_19),
+      io.input_stream_foldl2_io(V_7, V_8, V_14, V_10, V_19, V_17)
+    ;
+      V_12 = io.eof : io.result(character),
+      V_10 = io.ok(V_9) : io.maybe_partial_res(T_1),
+      V_17 = V_18
+    ;
+      V_12 = io.error(V_15) : io.result(character),
+      V_10 = io.error(V_9, V_15) : io.maybe_partial_res(T_1),
+      V_17 = V_18
+    ).
+
+io.input_stream_foldl2_io_maybe_stop(V_6, V_7, V_8, V_11, V_12) :-
+    io.input_stream(V_10, V_11, V_13),
+    io.input_stream_foldl2_io_maybe_stop(V_10, V_6, V_7, V_8, V_13, V_12).
+
+io.input_stream_foldl2_io_maybe_stop(V_7, V_8, V_9, V_10, V_17, V_18) :-
+    io.read_char(V_7, V_12, V_17, V_19),
+    ( % disjunction
+      V_12 = io.ok(V_13) : io.result(character),
+      call(V_8, V_13, V_14, V_9, V_15, V_19, V_20),
+      ( % disjunction
+        V_14 = bool.no : bool.bool,
+        V_10 = io.ok(V_15) : io.maybe_partial_res(T_1),
+        V_18 = V_20
+      ;
+        V_14 = bool.yes : bool.bool,
+        io.input_stream_foldl2_io_maybe_stop(V_7, V_8, V_15, V_10, V_20, V_18)
+      )
+    ;
+      V_12 = io.eof : io.result(character),
+      V_10 = io.ok(V_9) : io.maybe_partial_res(T_1),
+      V_18 = V_19
+    ;
+      V_12 = io.error(V_16) : io.result(character),
+      V_10 = io.error(V_9, V_16) : io.maybe_partial_res(T_1),
+      V_18 = V_19
+    ).
+
+io.input_stream_foldl_io(V_5, V_6, V_9, V_10) :-
+    io.input_stream(V_8, V_9, V_11),
+    io.input_stream_foldl_io(V_8, V_5, V_6, V_11, V_10).
+
+io.input_stream_foldl_io(V_6, V_7, V_8, V_13, V_14) :-
+    io.read_char(V_6, V_10, V_13, V_15),
+    ( % disjunction
+      V_10 = io.ok(V_11) : io.result(character),
+      call(V_7, V_11, V_15, V_16),
+      io.input_stream_foldl_io(V_6, V_7, V_8, V_16, V_14)
+    ;
+      V_10 = io.eof : io.result(character),
+      V_8 = io.ok : io.res,
+      V_14 = V_15
+    ;
+      V_10 = io.error(V_12) : io.result(character),
+      V_8 = io.error(V_12) : io.res,
+      V_14 = V_15
+    ).
+
+io.input_stream_get_stream(io.input_stream(V_3)) = V_3.
+
+io.input_stream_name(V_4, V_7, V_8) :-
+    V_9 = io.input_stream(V_6) : io.input_stream,
+    io.input_stream(V_9, V_7, V_10),
+    (io.stream_db).stream_name(V_6, V_4, V_10, V_8).
+
+io.input_stream_name(io.input_stream(V_5), V_6, V_8, V_9) :-
+    (io.stream_db).stream_name(V_5, V_6, V_8, V_9).
+
+:- pragma inline(pred((io.interpret_maybe_incomplete_result_code)/7)).
+io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_11, V_12, V_15, V_16) :-
+    ( % disjunction
+      V_8 = io.mirc_ok : io.maybe_incomplete_result_code,
+      V_12 = io.ok(V_11) : io.maybe_incomplete_result(T_1),
+      V_16 = V_15
+    ;
+      V_8 = io.mirc_eof : io.maybe_incomplete_result_code,
+      V_12 = io.eof : io.maybe_incomplete_result(T_1),
+      V_16 = V_15
+    ;
+      V_8 = io.mirc_incomplete : io.maybe_incomplete_result_code,
+      V_12 = io.incomplete(V_10) : io.maybe_incomplete_result(T_1),
+      V_16 = V_15
+    ;
+      V_8 = io.mirc_error : io.maybe_incomplete_result_code,
+      V_17 = "read failed: " : string,
+      io.make_io_error_from_system_error(V_9, V_17, V_14, V_15, V_16),
+      V_12 = io.error(V_14) : io.maybe_incomplete_result(T_1)
+    ).
+
+:- pragma inline(pred((io.interpret_result_code0)/5)).
+io.interpret_result_code0(V_6, V_7, V_8, V_11, V_12) :-
+    ( % disjunction
+      V_6 = io.result_code_ok : io.result_code,
+      V_8 = io.ok : io.result,
+      V_12 = V_11
+    ;
+      V_6 = io.result_code_eof : io.result_code,
+      V_8 = io.eof : io.result,
+      V_12 = V_11
+    ;
+      V_6 = io.result_code_error : io.result_code,
+      V_13 = "read failed: " : string,
+      io.make_io_error_from_system_error(V_7, V_13, V_10, V_11, V_12),
+      V_8 = io.error(V_10) : io.result
+    ).
+
+:- pragma inline(pred((io.interpret_result_code1)/6)).
+io.interpret_result_code1(V_7, V_8, V_9, V_10, V_13, V_14) :-
+    ( % disjunction
+      V_7 = io.result_code_ok : io.result_code,
+      V_10 = io.ok(V_9) : io.result(T_1),
+      V_14 = V_13
+    ;
+      V_7 = io.result_code_eof : io.result_code,
+      V_10 = io.eof : io.result(T_1),
+      V_14 = V_13
+    ;
+      V_7 = io.result_code_error : io.result_code,
+      V_15 = "read failed: " : string,
+      io.make_io_error_from_system_error(V_8, V_15, V_12, V_13, V_14),
+      V_10 = io.error(V_12) : io.result(T_1)
+    ).
+
+io.io_state_compare(V_4, V_5, V_6) :-
+    V_7 = "attempt to compare two I/O states" : string,
+    require.error(V_7).
+
+io.io_state_equal(V_3, V_4) :-
+    V_5 = "attempt to unify two I/O states" : string,
+    require.error(V_5).
+
+:- pragma inline(pred((io.is_error)/5)).
+io.is_error(V_6, V_7, V_8, V_11, V_12) :-
+    ( if
+      io.is_success(V_6)
+    then
+      V_8 = maybe.no : maybe.maybe(io.error),
+      V_12 = V_11
+    else
+      io.make_io_error_from_system_error(V_6, V_7, V_10, V_11, V_12),
+      V_8 = maybe.yes(V_10) : maybe.maybe(io.error)
+    ).
+
+:- pragma inline(pred((io.is_success)/1)).
+:- pragma foreign_proc("C", io.is_success(Error :: (builtin.in)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    // This works for errno and Win32 error values (ERROR_SUCCESS == 0).
+    SUCCESS_INDICATOR = (Error == 0) ? MR_TRUE : MR_FALSE;
+").
+
+:- pragma foreign_proc("C", io.lock_globals(_IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    #ifdef MR_THREAD_SAFE
+        MR_LOCK(&ML_io_user_globals_lock, \"io.lock_globals/2\");
+    #endif
+").
+
+io.make_io_error(V_3) = io.io_error_string(V_3).
+
+io.make_symlink(V_6, V_7, V_8, V_10, V_11) :-
+    (io.file).make_symlink(V_6, V_7, V_8, V_10, V_11).
+
+io.make_temp_directory(V_4, V_6, V_7) :-
+    (io.file).make_temp_directory(V_4, V_6, V_7).
+
+io.make_temp_directory(V_7, V_8, V_9, V_10, V_12, V_13) :-
+    (io.file).make_temp_directory(V_7, V_8, V_9, V_10, V_12, V_13).
+
+io.make_temp_file(V_4, V_6, V_7) :-
+    (io.file).make_temp_file(V_4, V_6, V_7).
+
+io.make_temp_file(V_7, V_8, V_9, V_10, V_12, V_13) :-
+    (io.file).make_temp_file(V_7, V_8, V_9, V_10, V_12, V_13).
+
+:- pragma foreign_proc("C", io.native_byte_order_is_big_endian, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    #if defined(MR_BIG_ENDIAN)
+        SUCCESS_INDICATOR = MR_TRUE;
+    #else
+        SUCCESS_INDICATOR = MR_FALSE;
+    #endif
+").
+
+:- pragma foreign_proc("C", io.native_system_error_style = (SysErrStyle :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+#ifdef MR_WIN32
+    SysErrStyle = ML_SYSERR_ERRNO_OR_WIN32;
+#else
+    SysErrStyle = ML_SYSERR_ERRNO;
+#endif
+").
+
+io.nl(V_4, V_5) :-
+    V_6 = ('\n') : character,
+    io.write_char(V_6, V_4, V_5).
+
+io.nl(V_4, V_6, V_7) :-
+    V_8 = ('\n') : character,
+    io.write_char(V_4, V_8, V_6, V_7).
+
+:- pragma foreign_proc("C", io.no_error = (Error :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    Error = 0;
+").
+
+io.output_stream(io.output_stream(V_4), V_6, V_7) :-
+    (io.stream_ops).output_stream_2(V_4, V_6, V_7).
+
+io.output_stream_get_stream(io.output_stream(V_3)) = V_3.
+
+io.output_stream_name(V_4, V_7, V_8) :-
+    V_9 = io.output_stream(V_6) : io.output_stream,
+    io.output_stream(V_9, V_7, V_10),
+    (io.stream_db).stream_name(V_6, V_4, V_10, V_8).
+
+io.output_stream_name(io.output_stream(V_5), V_6, V_8, V_9) :-
+    (io.stream_db).stream_name(V_5, V_6, V_8, V_9).
+
+io.print(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    V_10 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    (stream.string_writer).print(V_6, V_10, V_4, V_9, V_8).
+
+io.print(V_5, V_6, V_8, V_9) :-
+    V_10 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    (stream.string_writer).print(V_5, V_10, V_6, V_8, V_9).
+
+io.print(V_6, V_7, V_8, V_10, V_11) :-
+    (stream.string_writer).print(V_6, V_7, V_8, V_10, V_11).
+
+io.print_cc(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    (stream.string_writer).print_cc(V_6, V_4, V_9, V_8).
+
+io.print_line(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.print_line(V_6, V_4, V_9, V_8).
+
+io.print_line(V_5, V_6, V_8, V_9) :-
+    io.print(V_5, V_6, V_8, V_10),
+    io.nl(V_5, V_10, V_9).
+
+io.print_line(V_6, V_7, V_8, V_10, V_11) :-
+    io.print(V_6, V_7, V_8, V_10, V_12),
+    io.nl(V_6, V_12, V_11).
+
+io.print_line_cc(V_4, V_6, V_7) :-
+    io.print_cc(V_4, V_6, V_8),
+    io.nl(V_8, V_7).
+
+io.print_to_stream(V_5, V_6, V_8, V_9) :-
+    V_10 = io.output_stream(V_5) : io.output_stream,
+    V_11 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    io.print(V_10, V_11, V_6, V_8, V_9).
+
+io.progname_base(V_5, V_6, V_9, V_10) :-
+    io.progname(V_5, V_8, V_9, V_10),
+    V_6 = dir.det_basename(V_8).
+
+io.putback_byte(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.putback_byte(V_6, V_4, V_9, V_8).
+
+io.putback_byte(V_5, V_6, V_9, V_10) :-
+    V_8 = uint8.cast_from_int(V_11),
+    V_11 = int.(V_6 /\ V_12),
+    V_12 = 255 : int,
+    io.putback_uint8(V_5, V_8, V_9, V_10).
+
+io.putback_char(V_4, V_7, V_8) :-
+    io.input_stream(V_6, V_7, V_9),
+    io.putback_char(V_6, V_4, V_9, V_8).
+
+io.putback_int8(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.putback_int8(V_6, V_4, V_9, V_8).
+
+io.putback_uint8(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.putback_uint8(V_6, V_4, V_9, V_8).
+
+io.read(V_5, V_6, V_10, V_11) :-
+    mercury_term_parser.read_term(V_5, V_8, V_10, V_12),
+    io.get_line_number(V_5, V_9, V_12, V_11),
+    V_14 = "predicate `io.read\'/4" : string,
+    io.process_read_term(V_14, V_8, V_9, V_6).
+
+io.read_binary(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary(V_6, V_4, V_9, V_8).
+
+io.read_binary(V_5, V_6, V_10, V_11) :-
+    V_5 = io.binary_input_stream(V_8) : io.binary_input_stream,
+    V_9 = io.input_stream(V_8) : io.input_stream,
+    io.read_binary_from_text_input_stream(V_9, V_6, V_10, V_11).
+
+io.read_binary_file(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_file(V_6, V_4, V_9, V_8).
+
+io.read_binary_file(V_5, V_6, V_8, V_9) :-
+    V_10 = list.[] : list.list(int),
+    io.read_binary_file_2(V_5, V_10, V_6, V_8, V_9).
+
+io.read_binary_file_as_bitmap(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_file_as_bitmap(V_6, V_4, V_9, V_8).
+
+io.read_binary_file_as_bitmap(V_5, V_6, V_8, V_9) :-
+    (io.text_read).read_binary_file_as_bitmap_2(V_5, V_6, V_8, V_9).
+
+io.read_binary_int16(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_int16(V_6, V_4, V_9, V_8).
+
+io.read_binary_int16(V_5, V_6, V_8, V_9) :-
+    ( if
+      io.native_byte_order_is_big_endian
+    then
+      io.read_binary_int16_be(V_5, V_6, V_8, V_9)
+    else
+      io.read_binary_int16_le(V_5, V_6, V_8, V_9)
+    ).
+
+io.read_binary_int16_be(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_int16_be(V_6, V_4, V_9, V_8).
+
+io.read_binary_int16_be(io.binary_input_stream(V_5), V_6, V_13, V_14) :-
+    V_15 = io.big_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint16(V_5, V_15, V_8, V_9, V_10, V_11, V_13, V_16),
+    V_12 = int16.cast_from_uint16(V_11),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_12, V_6, V_16, V_14).
+
+io.read_binary_int16_le(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_int16_le(V_6, V_4, V_9, V_8).
+
+io.read_binary_int16_le(io.binary_input_stream(V_5), V_6, V_13, V_14) :-
+    V_15 = io.little_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint16(V_5, V_15, V_8, V_9, V_10, V_11, V_13, V_16),
+    V_12 = int16.cast_from_uint16(V_11),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_12, V_6, V_16, V_14).
+
+io.read_binary_int32(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_int32(V_6, V_4, V_9, V_8).
+
+io.read_binary_int32(V_5, V_6, V_8, V_9) :-
+    ( if
+      io.native_byte_order_is_big_endian
+    then
+      io.read_binary_int32_be(V_5, V_6, V_8, V_9)
+    else
+      io.read_binary_int32_le(V_5, V_6, V_8, V_9)
+    ).
+
+io.read_binary_int32_be(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_int32_be(V_6, V_4, V_9, V_8).
+
+io.read_binary_int32_be(io.binary_input_stream(V_5), V_6, V_13, V_14) :-
+    V_15 = io.big_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint32(V_5, V_15, V_8, V_9, V_10, V_11, V_13, V_16),
+    V_12 = int32.cast_from_uint32(V_11),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_12, V_6, V_16, V_14).
+
+io.read_binary_int32_le(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_int32_le(V_6, V_4, V_9, V_8).
+
+io.read_binary_int32_le(io.binary_input_stream(V_5), V_6, V_13, V_14) :-
+    V_15 = io.little_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint32(V_5, V_15, V_8, V_9, V_10, V_11, V_13, V_16),
+    V_12 = int32.cast_from_uint32(V_11),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_12, V_6, V_16, V_14).
+
+io.read_binary_int64(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_int64(V_6, V_4, V_9, V_8).
+
+io.read_binary_int64(V_5, V_6, V_8, V_9) :-
+    ( if
+      io.native_byte_order_is_big_endian
+    then
+      io.read_binary_int64_be(V_5, V_6, V_8, V_9)
+    else
+      io.read_binary_int64_le(V_5, V_6, V_8, V_9)
+    ).
+
+io.read_binary_int64_be(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_int64_be(V_6, V_4, V_9, V_8).
+
+io.read_binary_int64_be(io.binary_input_stream(V_5), V_6, V_13, V_14) :-
+    V_15 = io.big_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint64(V_5, V_15, V_8, V_9, V_10, V_11, V_13, V_16),
+    V_12 = int64.cast_from_uint64(V_11),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_12, V_6, V_16, V_14).
+
+io.read_binary_int64_le(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_int64_le(V_6, V_4, V_9, V_8).
+
+io.read_binary_int64_le(io.binary_input_stream(V_5), V_6, V_13, V_14) :-
+    V_15 = io.little_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint64(V_5, V_15, V_8, V_9, V_10, V_11, V_13, V_16),
+    V_12 = int64.cast_from_uint64(V_11),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_12, V_6, V_16, V_14).
+
+io.read_binary_int8(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_int8(V_6, V_4, V_9, V_8).
+
+io.read_binary_int8(io.binary_input_stream(V_5), V_6, V_12, V_13) :-
+    V_14 = io.input_stream(V_5) : io.input_stream,
+    (io.primitives_read).read_byte_val(V_14, V_8, V_9, V_10, V_12, V_15),
+    V_11 = int8.cast_from_int(V_10),
+    io.interpret_result_code1(V_8, V_9, V_11, V_6, V_15, V_13).
+
+io.read_binary_int8_unboxed(io.binary_input_stream(V_6), V_7, V_8, V_13, V_14) :-
+    V_15 = io.input_stream(V_6) : io.input_stream,
+    (io.primitives_read).read_byte_val(V_15, V_10, V_11, V_12, V_13, V_16),
+    V_8 = int8.cast_from_int(V_12),
+    io.interpret_result_code0(V_10, V_11, V_7, V_16, V_14).
+
+io.read_binary_uint16(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_uint16(V_6, V_4, V_9, V_8).
+
+io.read_binary_uint16(V_5, V_6, V_8, V_9) :-
+    ( if
+      io.native_byte_order_is_big_endian
+    then
+      io.read_binary_uint16_be(V_5, V_6, V_8, V_9)
+    else
+      io.read_binary_uint16_le(V_5, V_6, V_8, V_9)
+    ).
+
+io.read_binary_uint16_be(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_uint16_be(V_6, V_4, V_9, V_8).
+
+io.read_binary_uint16_be(io.binary_input_stream(V_5), V_6, V_12, V_13) :-
+    V_14 = io.big_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint16(V_5, V_14, V_8, V_9, V_10, V_11, V_12, V_15),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_11, V_6, V_15, V_13).
+
+io.read_binary_uint16_le(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_uint16_le(V_6, V_4, V_9, V_8).
+
+io.read_binary_uint16_le(io.binary_input_stream(V_5), V_6, V_12, V_13) :-
+    V_14 = io.little_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint16(V_5, V_14, V_8, V_9, V_10, V_11, V_12, V_15),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_11, V_6, V_15, V_13).
+
+io.read_binary_uint32(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_uint32(V_6, V_4, V_9, V_8).
+
+io.read_binary_uint32(V_5, V_6, V_8, V_9) :-
+    ( if
+      io.native_byte_order_is_big_endian
+    then
+      io.read_binary_uint32_be(V_5, V_6, V_8, V_9)
+    else
+      io.read_binary_uint32_le(V_5, V_6, V_8, V_9)
+    ).
+
+io.read_binary_uint32_be(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_uint32_be(V_6, V_4, V_9, V_8).
+
+io.read_binary_uint32_be(io.binary_input_stream(V_5), V_6, V_12, V_13) :-
+    V_14 = io.big_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint32(V_5, V_14, V_8, V_9, V_10, V_11, V_12, V_15),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_11, V_6, V_15, V_13).
+
+io.read_binary_uint32_le(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_uint32_le(V_6, V_4, V_9, V_8).
+
+io.read_binary_uint32_le(io.binary_input_stream(V_5), V_6, V_12, V_13) :-
+    V_14 = io.little_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint32(V_5, V_14, V_8, V_9, V_10, V_11, V_12, V_15),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_11, V_6, V_15, V_13).
+
+io.read_binary_uint64(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_uint64(V_6, V_4, V_9, V_8).
+
+io.read_binary_uint64(V_5, V_6, V_8, V_9) :-
+    ( if
+      io.native_byte_order_is_big_endian
+    then
+      io.read_binary_uint64_be(V_5, V_6, V_8, V_9)
+    else
+      io.read_binary_uint64_le(V_5, V_6, V_8, V_9)
+    ).
+
+io.read_binary_uint64_be(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_uint64_be(V_6, V_4, V_9, V_8).
+
+io.read_binary_uint64_be(io.binary_input_stream(V_5), V_6, V_12, V_13) :-
+    V_14 = io.big_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint64(V_5, V_14, V_8, V_9, V_10, V_11, V_12, V_15),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_11, V_6, V_15, V_13).
+
+io.read_binary_uint64_le(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_uint64_le(V_6, V_4, V_9, V_8).
+
+io.read_binary_uint64_le(io.binary_input_stream(V_5), V_6, V_12, V_13) :-
+    V_14 = io.little_endian : io.byte_order,
+    (io.primitives_read).do_read_binary_uint64(V_5, V_14, V_8, V_9, V_10, V_11, V_12, V_15),
+    io.interpret_maybe_incomplete_result_code(V_8, V_9, V_10, V_11, V_6, V_15, V_13).
+
+io.read_binary_uint8(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_binary_uint8(V_6, V_4, V_9, V_8).
+
+io.read_binary_uint8(io.binary_input_stream(V_5), V_6, V_12, V_13) :-
+    V_14 = io.input_stream(V_5) : io.input_stream,
+    (io.primitives_read).read_byte_val(V_14, V_8, V_9, V_10, V_12, V_15),
+    V_11 = uint8.cast_from_int(V_10),
+    io.interpret_result_code1(V_8, V_9, V_11, V_6, V_15, V_13).
+
+io.read_binary_uint8_unboxed(io.binary_input_stream(V_6), V_7, V_8, V_13, V_14) :-
+    V_15 = io.input_stream(V_6) : io.input_stream,
+    (io.primitives_read).read_byte_val(V_15, V_10, V_11, V_12, V_13, V_16),
+    V_8 = uint8.cast_from_int(V_12),
+    io.interpret_result_code0(V_10, V_11, V_7, V_16, V_14).
+
+io.read_bitmap(V_11, V_12, V_8, V_9, V_13, V_14) :-
+    bitmap.read_bitmap(V_11, V_12, V_8, V_9, V_13, V_14).
+
+io.read_bitmap(V_8, V_13, V_14, V_10, V_11, V_15, V_16) :-
+    bitmap.read_bitmap(V_8, V_13, V_14, V_10, V_11, V_15, V_16).
+
+io.read_bitmap(V_9, V_10, V_15, V_16, V_12, V_13, V_17, V_18) :-
+    bitmap.read_bitmap_range(V_9, V_10, V_15, V_16, V_12, V_13, V_17, V_18).
+
+io.read_bitmap(V_10, V_11, V_12, V_17, V_18, V_14, V_15, V_19, V_20) :-
+    bitmap.read_bitmap_range(V_10, V_11, V_12, V_17, V_18, V_14, V_15, V_19, V_20).
+
+:- pragma inline(pred((io.read_byte)/3)).
+io.read_byte(V_4, V_7, V_8) :-
+    io.binary_input_stream(V_6, V_7, V_9),
+    io.read_byte(V_6, V_4, V_9, V_8).
+
+:- pragma inline(pred((io.read_byte)/4)).
+io.read_byte(io.binary_input_stream(V_5), V_6, V_11, V_12) :-
+    V_13 = io.input_stream(V_5) : io.input_stream,
+    (io.primitives_read).read_byte_val(V_13, V_8, V_9, V_10, V_11, V_14),
+    io.interpret_result_code1(V_8, V_9, V_10, V_6, V_14, V_12).
+
+:- pragma inline(pred((io.read_char)/3)).
+io.read_char(V_4, V_7, V_8) :-
+    io.input_stream(V_6, V_7, V_9),
+    io.read_char(V_6, V_4, V_9, V_8).
+
+:- pragma inline(pred((io.read_char)/4)).
+io.read_char(V_5, V_6, V_11, V_12) :-
+    (io.primitives_read).read_char_code(V_5, V_8, V_9, V_10, V_11, V_13),
+    io.interpret_result_code1(V_8, V_9, V_10, V_6, V_13, V_12).
+
+:- pragma inline(pred((io.read_char_unboxed)/5)).
+io.read_char_unboxed(V_6, V_7, V_8, V_12, V_13) :-
+    (io.primitives_read).read_char_code(V_6, V_10, V_11, V_8, V_12, V_14),
+    io.interpret_result_code0(V_10, V_11, V_7, V_14, V_13).
+
+io.read_file(V_4, V_7, V_8) :-
+    io.input_stream(V_6, V_7, V_9),
+    io.read_file(V_6, V_4, V_9, V_8).
+
+io.read_file(V_5, V_6, V_8, V_9) :-
+    V_10 = list.[] : list.list(character),
+    io.read_file_chars_acc(V_5, V_10, V_6, V_8, V_9).
+
+io.read_file_as_string(V_4, V_7, V_8) :-
+    io.input_stream(V_6, V_7, V_9),
+    io.read_file_as_string(V_6, V_4, V_9, V_8).
+
+io.read_file_as_string_and_num_code_units(V_4, V_7, V_8) :-
+    io.input_stream(V_6, V_7, V_9),
+    io.read_file_as_string_and_num_code_units(V_6, V_4, V_9, V_8).
+
+io.read_from_string(V_7, V_8, V_9, V_10, V_16, V_17) :-
+    mercury_term_parser.read_term_from_substring(V_7, V_8, V_9, V_16, V_17, V_12),
+    V_17 = io.posn(V_13, V_14, V_15) : io.posn,
+    V_19 = "predicate `io.read_from_string\'/6" : string,
+    io.process_read_term(V_19, V_12, V_13, V_10).
+
+io.read_line(V_4, V_7, V_8) :-
+    io.input_stream(V_6, V_7, V_9),
+    io.read_line(V_6, V_4, V_9, V_8).
+
+io.read_line_as_string(V_4, V_7, V_8) :-
+    io.input_stream(V_6, V_7, V_9),
+    io.read_line_as_string(V_6, V_4, V_9, V_8).
+
+io.read_symlink(V_5, V_6, V_8, V_9) :-
+    (io.file).read_symlink(V_5, V_6, V_8, V_9).
+
+io.read_word(V_4, V_7, V_8) :-
+    io.input_stream(V_6, V_7, V_9),
+    io.read_word(V_6, V_4, V_9, V_8).
+
+io.remove_file(V_5, V_6, V_8, V_9) :-
+    (io.file).remove_file(V_5, V_6, V_8, V_9).
+
+io.remove_file_recursively(V_5, V_6, V_8, V_9) :-
+    (io.file).remove_file_recursively(V_5, V_6, V_8, V_9).
+
+io.rename_file(V_6, V_7, V_8, V_10, V_11) :-
+    (io.file).rename_file(V_6, V_7, V_8, V_10, V_11).
+
+io.report_full_memory_stats(V_4, V_5) :-
+    benchmarking.report_full_memory_stats(V_4, V_5).
+
+io.report_full_memory_stats(io.output_stream(V_4), V_6, V_7) :-
+    V_8 = io.output_stream(V_4) : io.output_stream,
+    benchmarking.report_full_memory_stats(V_8, V_6, V_7).
+
+io.report_standard_stats(V_4, V_5) :-
+    benchmarking.report_standard_stats(V_4, V_5).
+
+io.report_standard_stats(io.output_stream(V_4), V_6, V_7) :-
+    V_8 = io.output_stream(V_4) : io.output_stream,
+    benchmarking.report_standard_stats(V_8, V_6, V_7).
+
+io.report_stats(V_4, V_6, V_7) :-
+    benchmarking.report_stats(V_4, V_6, V_7).
+
+io.report_stats(V_5, V_6, V_8, V_9) :-
+    benchmarking.report_stats(V_5, V_6, V_8, V_9).
+
+io.report_tabling_statistics(V_4, V_5) :-
+    benchmarking.report_tabling_statistics(V_4, V_5).
+
+io.report_tabling_statistics(io.output_stream(V_4), V_6, V_7) :-
+    V_8 = io.output_stream(V_4) : io.output_stream,
+    benchmarking.report_tabling_statistics(V_8, V_6, V_7).
+
+io.restore_output_stream(V_6, V_7, io.ok, V_10, V_11) :-
+    io.set_output_stream(V_7, V_9, V_10, V_11).
+
+io.seek_binary_input64(io.binary_input_stream(V_6), V_7, V_8, V_12, V_13) :-
+    (io.stream_ops).whence_to_int(V_7, V_10),
+    (io.stream_ops).seek_binary_2(V_6, V_10, V_8, V_11, V_12, V_14),
+    V_15 = "error seeking in file: " : string,
+    io.throw_on_error(V_11, V_15, V_14, V_13).
+
+io.seek_binary_output64(io.binary_output_stream(V_6), V_7, V_8, V_12, V_13) :-
+    (io.stream_ops).whence_to_int(V_7, V_10),
+    (io.stream_ops).seek_binary_2(V_6, V_10, V_8, V_11, V_12, V_14),
+    V_15 = "error seeking in file: " : string,
+    io.throw_on_error(V_11, V_15, V_14, V_13).
+
+io.set_binary_input_stream(io.binary_input_stream(V_5), io.binary_input_stream(V_6), V_8, V_9) :-
+    (io.stream_ops).set_binary_input_stream_2(V_5, V_6, V_8, V_9).
+
+io.set_binary_output_stream(io.binary_output_stream(V_5), io.binary_output_stream(V_6), V_8, V_9) :-
+    (io.stream_ops).set_binary_output_stream_2(V_5, V_6, V_8, V_9).
+
+io.set_environment_var(V_5, V_6, V_8, V_9) :-
+    (io.environment).set_environment_var(V_5, V_6, V_8, V_9).
+
+io.set_environment_var(V_6, V_7, V_8, V_10, V_11) :-
+    (io.environment).set_environment_var(V_6, V_7, V_8, V_10, V_11).
+
+:- pragma foreign_proc("C", io.set_exit_status(ExitStatus :: (builtin.in), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    mercury_exit_status = (int) ExitStatus;
+").
+
+io.set_globals(V_4, V_6, V_7) :-
+    io.lock_globals(V_6, V_8),
+    io.unsafe_set_globals(V_4, V_8, V_9),
+    io.unlock_globals(V_9, V_7).
+
+io.set_input_stream(io.input_stream(V_5), io.input_stream(V_6), V_8, V_9) :-
+    (io.stream_ops).set_input_stream_2(V_5, V_6, V_8, V_9).
+
+io.set_line_number(V_4, V_7, V_8) :-
+    (io.stream_ops).output_stream_2(V_6, V_7, V_9),
+    (io.stream_ops).set_input_line_number_2(V_6, V_4, V_9, V_8).
+
+io.set_line_number(io.input_stream(V_5), V_6, V_8, V_9) :-
+    (io.stream_ops).set_input_line_number_2(V_5, V_6, V_8, V_9).
+
+io.set_op_table(V_4, V_6, V_7) :-
+    V_7 = V_6.
+
+io.set_output_line_number(V_4, V_7, V_8) :-
+    (io.stream_ops).output_stream_2(V_6, V_7, V_9),
+    (io.stream_ops).set_output_line_number_2(V_6, V_4, V_9, V_8).
+
+io.set_output_line_number(io.output_stream(V_5), V_6, V_8, V_9) :-
+    (io.stream_ops).set_output_line_number_2(V_5, V_6, V_8, V_9).
+
+io.set_output_stream(io.output_stream(V_5), io.output_stream(V_6), V_8, V_9) :-
+    (io.stream_ops).set_output_stream_2(V_5, V_6, V_8, V_9).
+
+:- pragma foreign_proc("C", io.should_reduce_stack_usage(ShouldReduce :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail, doesnt_affect_liveness], "
+#ifdef  MR_EXEC_TRACE
+    ShouldReduce = MR_YES;
+#else
+    ShouldReduce = MR_NO;
+#endif
+").
+
+io.stderr_stream = io.output_stream(V_2) :-
+    V_2 = (io.stream_ops).stderr_stream_2.
+
+io.stderr_stream(io.output_stream(V_4), V_6, V_7) :-
+    (io.stream_ops).stderr_stream_2(V_4, V_6, V_7).
+
+io.stdin_binary_stream(io.binary_input_stream(V_4), V_6, V_7) :-
+    (io.stream_ops).stdin_binary_stream_2(V_4, V_6, V_7).
+
+io.stdin_stream = io.input_stream(V_2) :-
+    V_2 = (io.stream_ops).stdin_stream_2.
+
+io.stdin_stream(io.input_stream(V_4), V_6, V_7) :-
+    (io.stream_ops).stdin_stream_2(V_4, V_6, V_7).
+
+io.stdout_binary_stream(io.binary_output_stream(V_4), V_6, V_7) :-
+    (io.stream_ops).stdout_binary_stream_2(V_4, V_6, V_7).
+
+io.stdout_stream = io.output_stream(V_2) :-
+    V_2 = (io.stream_ops).stdout_stream_2.
+
+io.stdout_stream(io.output_stream(V_4), V_6, V_7) :-
+    (io.stream_ops).stdout_stream_2(V_4, V_6, V_7).
+
+io.system_error_exception_name(V_3, V_4) :-
+    V_5 = "io.system_error_exception_name: inapplicable back-end" : string,
+    require.error(V_5).
+
+io.throw_on_close_error(V_4, V_6, V_7) :-
+    V_8 = "error closing file: " : string,
+    io.throw_on_error(V_4, V_8, V_6, V_7).
+
+:- pragma inline(pred((io.throw_on_error)/4)).
+io.throw_on_error(V_5, V_6, V_9, V_10) :-
+    ( if
+      io.is_success(V_5)
+    then
+      V_10 = V_9
+    else
+      io.make_io_error_from_system_error(V_5, V_6, V_8, V_9, V_10),
+      exception.throw(V_8)
+    ).
+
+:- pragma inline(pred((io.throw_on_output_error)/3)).
+io.throw_on_output_error(V_4, V_6, V_7) :-
+    V_8 = "error writing to output file: " : string,
+    io.throw_on_error(V_4, V_8, V_6, V_7).
+
+:- pragma foreign_proc("C", io.unlock_globals(_IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    #ifdef MR_THREAD_SAFE
+        MR_UNLOCK(&ML_io_user_globals_lock, \"io.unlock_globals/2\");
+    #endif
+").
+
+:- pragma foreign_proc("C", io.unsafe_get_globals(Globals :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail, doesnt_affect_liveness], "
+    Globals = ML_io_user_globals;
+").
+
+:- pragma foreign_proc("C", io.unsafe_set_globals(Globals :: (builtin.in), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    // XXX need to globalize the memory.
+    ML_io_user_globals = Globals;
+").
+
+io.with_output_stream(V_5, V_6, V_11, V_12) :-
+    io.set_output_stream(V_5, V_8, V_11, V_13),
+    V_14 = io.call_pred_no_result(V_6) : pred({}, io.state, io.state),
+    V_15 = io.restore_output_stream(V_6, V_8) : pred(io.res, io.state, io.state),
+    exception.finally(V_14, V_9, V_15, V_10, V_13, V_12).
+
+io.write(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    V_10 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    (stream.string_writer).write(V_6, V_10, V_4, V_9, V_8).
+
+io.write(V_5, V_6, V_8, V_9) :-
+    V_10 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    (stream.string_writer).write(V_5, V_10, V_6, V_8, V_9).
+
+io.write(V_6, V_7, V_8, V_10, V_11) :-
+    (stream.string_writer).write(V_6, V_7, V_8, V_10, V_11).
+
+io.write_array(V_6, V_7, V_8, V_13, V_14) :-
+    array.bounds(V_6, V_10, V_11),
+    ( if
+      int.(V_10 =< V_11)
+    then
+      array.unsafe_lookup(V_6, V_10, V_12),
+      call(V_8, V_12, V_13, V_15),
+      V_16 = int.(V_10 + V_18),
+      V_18 = 1 : int,
+      io.do_write_array(V_6, V_7, V_8, V_16, V_11, V_15, V_14)
+    else
+      V_14 = V_13
+    ).
+
+io.write_array(V_7, V_8, V_9, V_10, V_12, V_13) :-
+    V_14 = io.write_array(V_8, V_9, V_10) : pred(io.state, io.state),
+    io.with_output_stream(V_7, V_14, V_12, V_13).
+
+io.write_binary(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary(V_6, V_4, V_9, V_8).
+
+io.write_binary_int16(V_4, V_7, V_8) :-
+    V_6 = uint16.cast_from_int16(V_4),
+    io.write_binary_uint16(V_6, V_7, V_8).
+
+io.write_binary_int16(V_5, V_6, V_9, V_10) :-
+    V_8 = uint16.cast_from_int16(V_6),
+    io.write_binary_uint16(V_5, V_8, V_9, V_10).
+
+io.write_binary_int16_be(V_4, V_7, V_8) :-
+    V_6 = uint16.cast_from_int16(V_4),
+    io.write_binary_uint16_be(V_6, V_7, V_8).
+
+io.write_binary_int16_be(V_5, V_6, V_9, V_10) :-
+    V_8 = uint16.cast_from_int16(V_6),
+    io.write_binary_uint16_be(V_5, V_8, V_9, V_10).
+
+io.write_binary_int16_le(V_4, V_7, V_8) :-
+    V_6 = uint16.cast_from_int16(V_4),
+    io.write_binary_uint16_le(V_6, V_7, V_8).
+
+io.write_binary_int16_le(V_5, V_6, V_9, V_10) :-
+    V_8 = uint16.cast_from_int16(V_6),
+    io.write_binary_uint16_le(V_5, V_8, V_9, V_10).
+
+io.write_binary_int32(V_4, V_7, V_8) :-
+    V_6 = uint32.cast_from_int32(V_4),
+    io.write_binary_uint32(V_6, V_7, V_8).
+
+io.write_binary_int32(V_5, V_6, V_9, V_10) :-
+    V_8 = uint32.cast_from_int32(V_6),
+    io.write_binary_uint32(V_5, V_8, V_9, V_10).
+
+io.write_binary_int32_be(V_4, V_7, V_8) :-
+    V_6 = uint32.cast_from_int32(V_4),
+    io.write_binary_uint32_be(V_6, V_7, V_8).
+
+io.write_binary_int32_be(V_5, V_6, V_9, V_10) :-
+    V_8 = uint32.cast_from_int32(V_6),
+    io.write_binary_uint32_be(V_5, V_8, V_9, V_10).
+
+io.write_binary_int32_le(V_4, V_7, V_8) :-
+    V_6 = uint32.cast_from_int32(V_4),
+    io.write_binary_uint32_le(V_6, V_7, V_8).
+
+io.write_binary_int32_le(V_5, V_6, V_9, V_10) :-
+    V_8 = uint32.cast_from_int32(V_6),
+    io.write_binary_uint32_le(V_5, V_8, V_9, V_10).
+
+io.write_binary_int64(V_4, V_7, V_8) :-
+    V_6 = uint64.cast_from_int64(V_4),
+    io.write_binary_uint64(V_6, V_7, V_8).
+
+io.write_binary_int64(V_5, V_6, V_9, V_10) :-
+    V_8 = uint64.cast_from_int64(V_6),
+    io.write_binary_uint64(V_5, V_8, V_9, V_10).
+
+io.write_binary_int64_be(V_4, V_7, V_8) :-
+    V_6 = uint64.cast_from_int64(V_4),
+    io.write_binary_uint64_be(V_6, V_7, V_8).
+
+io.write_binary_int64_be(V_5, V_6, V_9, V_10) :-
+    V_8 = uint64.cast_from_int64(V_6),
+    io.write_binary_uint64_be(V_5, V_8, V_9, V_10).
+
+io.write_binary_int64_le(V_4, V_7, V_8) :-
+    V_6 = uint64.cast_from_int64(V_4),
+    io.write_binary_uint64_le(V_6, V_7, V_8).
+
+io.write_binary_int64_le(V_5, V_6, V_9, V_10) :-
+    V_8 = uint64.cast_from_int64(V_6),
+    io.write_binary_uint64_le(V_5, V_8, V_9, V_10).
+
+io.write_binary_int8(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_int8(V_6, V_4, V_9, V_8).
+
+io.write_binary_int8(io.binary_output_stream(V_5), V_6, V_11, V_12) :-
+    V_8 = uint8.cast_from_int8(V_6),
+    V_9 = uint8.to_int(V_8),
+    (io.primitives_write).do_write_byte(V_5, V_9, V_10, V_11, V_13),
+    io.throw_on_output_error(V_10, V_13, V_12).
+
+io.write_binary_string_utf8(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_string_utf8(V_6, V_4, V_9, V_8).
+
+io.write_binary_string_utf8(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_binary_string_utf8(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_binary_uint16(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_uint16(V_6, V_4, V_9, V_8).
+
+io.write_binary_uint16(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_binary_uint16(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_binary_uint16_be(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_uint16_be(V_6, V_4, V_9, V_8).
+
+io.write_binary_uint16_be(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_binary_uint16_be(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_binary_uint16_le(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_uint16_le(V_6, V_4, V_9, V_8).
+
+io.write_binary_uint16_le(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_binary_uint16_le(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_binary_uint32(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_uint32(V_6, V_4, V_9, V_8).
+
+io.write_binary_uint32(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_binary_uint32(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_binary_uint32_be(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_uint32_be(V_6, V_4, V_9, V_8).
+
+io.write_binary_uint32_be(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_binary_uint32_be(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_binary_uint32_le(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_uint32_le(V_6, V_4, V_9, V_8).
+
+io.write_binary_uint32_le(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_binary_uint32_le(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_binary_uint64(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_uint64(V_6, V_4, V_9, V_8).
+
+io.write_binary_uint64(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_binary_uint64(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_binary_uint64_be(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_uint64_be(V_6, V_4, V_9, V_8).
+
+io.write_binary_uint64_be(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_binary_uint64_be(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_binary_uint64_le(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_uint64_le(V_6, V_4, V_9, V_8).
+
+io.write_binary_uint64_le(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_binary_uint64_le(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_binary_uint8(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_binary_uint8(V_6, V_4, V_9, V_8).
+
+io.write_binary_uint8(io.binary_output_stream(V_5), V_6, V_10, V_11) :-
+    V_8 = uint8.to_int(V_6),
+    (io.primitives_write).do_write_byte(V_5, V_8, V_9, V_10, V_12),
+    io.throw_on_output_error(V_9, V_12, V_11).
+
+io.write_bitmap(V_4, V_6, V_7) :-
+    bitmap.write_bitmap(V_4, V_6, V_7).
+
+io.write_bitmap(V_5, V_6, V_8, V_9) :-
+    bitmap.write_bitmap(V_5, V_6, V_8, V_9).
+
+io.write_bitmap(V_6, V_7, V_8, V_10, V_11) :-
+    bitmap.write_bitmap_range(V_6, V_7, V_8, V_10, V_11).
+
+io.write_bitmap(V_7, V_8, V_9, V_10, V_12, V_13) :-
+    bitmap.write_bitmap_range(V_7, V_8, V_9, V_10, V_12, V_13).
+
+io.write_byte(V_4, V_7, V_8) :-
+    io.binary_output_stream(V_6, V_7, V_9),
+    io.write_byte(V_6, V_4, V_9, V_8).
+
+io.write_byte(io.binary_output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_byte(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_cc(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_cc(V_6, V_4, V_9, V_8).
+
+io.write_cc(V_5, V_6, V_8, V_9) :-
+    V_10 = deconstruct.include_details_cc : deconstruct.noncanon_handling,
+    (stream.string_writer).write(V_5, V_10, V_6, V_8, V_9).
+
+io.write_char(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_char(V_6, V_4, V_9, V_8).
+
+io.write_char(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_char(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_float(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_float(V_6, V_4, V_9, V_8).
+
+io.write_float(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_float(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_int(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_int(V_6, V_4, V_9, V_8).
+
+io.write_int(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_int(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_int16(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_int16(V_6, V_4, V_9, V_8).
+
+io.write_int16(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_int16(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_int32(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_int32(V_6, V_4, V_9, V_8).
+
+io.write_int32(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_int32(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_int64(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_int64(V_6, V_4, V_9, V_8).
+
+io.write_int64(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_int64(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_int8(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_int8(V_6, V_4, V_9, V_8).
+
+io.write_int8(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_int8(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_line(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_line(V_6, V_4, V_9, V_8).
+
+io.write_line(V_5, V_6, V_8, V_9) :-
+    io.write(V_5, V_6, V_8, V_10),
+    io.nl(V_5, V_10, V_9).
+
+io.write_line(V_6, V_7, V_8, V_10, V_11) :-
+    io.write(V_6, V_7, V_8, V_10, V_12),
+    io.nl(V_6, V_12, V_11).
+
+io.write_line_cc(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_line_cc(V_6, V_4, V_9, V_8).
+
+io.write_line_cc(V_5, V_6, V_8, V_9) :-
+    io.write_cc(V_5, V_6, V_8, V_10),
+    io.nl(V_5, V_10, V_9).
+
+io.write_list(list.[], V_6, V_7, V_9, V_10) :-
+    V_10 = V_9.
+io.write_list(list.[V_11 | V_12], V_13, V_14, V_18, V_19) :-
+    call(V_14, V_11, V_18, V_20),
+    ( % disjunction
+      V_12 = list.[] : list.list(T_1),
+      V_19 = V_20
+    ;
+      V_12 = list.[V_16 | V_17] : list.list(T_1),
+      io.write_list_lag(V_16, V_17, V_13, V_14, V_20, V_19)
+    ).
+
+io.write_list(V_7, V_8, V_9, V_10, V_12, V_13) :-
+    V_14 = io.write_list(V_8, V_9, V_10) : pred(io.state, io.state),
+    io.with_output_stream(V_7, V_14, V_12, V_13).
+
+io.write_list_lag(V_7, V_8, V_9, V_10, V_14, V_15) :-
+    io.write_string(V_9, V_14, V_16),
+    call(V_10, V_7, V_16, V_17),
+    ( % disjunction
+      V_8 = list.[] : list.list(T_1),
+      V_15 = V_17
+    ;
+      V_8 = list.[V_12 | V_13] : list.list(T_1),
+      io.write_list_lag(V_12, V_13, V_9, V_10, V_17, V_15)
+    ).
+
+io.write_many(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_many(V_6, V_4, V_9, V_8).
+
+io.write_string(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_string(V_6, V_4, V_9, V_8).
+
+io.write_string(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_string(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_strings(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_strings(V_6, V_4, V_9, V_8).
+
+io.write_uint(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_uint(V_6, V_4, V_9, V_8).
+
+io.write_uint(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_uint(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_uint16(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_uint16(V_6, V_4, V_9, V_8).
+
+io.write_uint16(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_uint16(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_uint32(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_uint32(V_6, V_4, V_9, V_8).
+
+io.write_uint32(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_uint32(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_uint64(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_uint64(V_6, V_4, V_9, V_8).
+
+io.write_uint64(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_uint64(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+io.write_uint8(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    io.write_uint8(V_6, V_4, V_9, V_8).
+
+io.write_uint8(io.output_stream(V_5), V_6, V_9, V_10) :-
+    (io.primitives_write).do_write_uint8(V_5, V_6, V_8, V_9, V_11),
+    io.throw_on_output_error(V_8, V_11, V_10).
+
+:- pragma termination_info(io.'ClassMethod_for_stream__error____io__error__arity0______stream__error_message_1'((builtin.in)) = (builtin.out), finite(-1, [yes, no]), cannot_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__line_oriented____io__input_stream__arity0__io__state__arity0______stream__get_line_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__line_oriented____io__input_stream__arity0__io__state__arity0______stream__set_line_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__line_oriented____io__output_stream__arity0__io__state__arity0______stream__get_line_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__line_oriented____io__output_stream__arity0__io__state__arity0______stream__set_line_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__output____io__binary_output_stream__arity0__io__state__arity0______stream__flush_3'((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__output____io__output_stream__arity0__io__state__arity0______stream__flush_3'((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__putback____io__binary_input_stream__arity0__int8__arity0__io__state__arity0__io__error__arity0______stream__unget_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__putback____io__binary_input_stream__arity0__int__arity0__io__state__arity0__io__error__arity0______stream__unget_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__putback____io__binary_input_stream__arity0__uint8__arity0__io__state__arity0__io__error__arity0______stream__unget_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__putback____io__input_stream__arity0__character__arity0__io__state__arity0__io__error__arity0______stream__unget_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__reader____io__binary_input_stream__arity0__int8__arity0__io__state__arity0__io__error__arity0______stream__get_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__reader____io__binary_input_stream__arity0__int__arity0__io__state__arity0__io__error__arity0______stream__get_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__reader____io__binary_input_stream__arity0__uint8__arity0__io__state__arity0__io__error__arity0______stream__get_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__reader____io__input_stream__arity0__character__arity0__io__state__arity0__io__error__arity0______stream__get_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__reader____io__input_stream__arity0__string__line__arity0__io__state__arity0__io__error__arity0______stream__get_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__reader____io__input_stream__arity0__string__text_file__arity0__io__state__arity0__io__error__arity0______stream__get_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__seekable____io__binary_input_stream__arity0__io__state__arity0______stream__seek64_5'((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__seekable____io__binary_input_stream__arity0__io__state__arity0______stream__seek_5'((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__seekable____io__binary_output_stream__arity0__io__state__arity0______stream__seek64_5'((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__seekable____io__binary_output_stream__arity0__io__state__arity0______stream__seek_5'((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__stream____io__binary_input_stream__arity0__io__state__arity0______stream__name_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__stream____io__binary_output_stream__arity0__io__state__arity0______stream__name_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__stream____io__input_stream__arity0__io__state__arity0______stream__name_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__stream____io__output_stream__arity0__io__state__arity0______stream__name_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__unboxed_reader____io__binary_input_stream__arity0__int8__arity0__io__state__arity0__io__error__arity0______stream__unboxed_get_5'((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__unboxed_reader____io__binary_input_stream__arity0__uint8__arity0__io__state__arity0__io__error__arity0______stream__unboxed_get_5'((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__unboxed_reader____io__input_stream__arity0__character__arity0__io__state__arity0__io__error__arity0______stream__unboxed_get_5'((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__binary_output_stream__arity0__int8__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__binary_output_stream__arity0__int__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__binary_output_stream__arity0__uint8__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__character__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__float__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__int16__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__int32__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__int64__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__int8__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__int__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__string__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__uint16__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__uint32__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__uint64__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__uint8__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__uint__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.'ClassMethod_for_stream__writer____io__output_stream__arity0__univ__univ__arity0__io__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_chunk((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_chunk((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_maybe_stop(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_maybe_stop(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_maybe_stop((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_maybe_stop((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_maybe_stop_chunk((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_maybe_stop_chunk((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_maybe_stop_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_maybe_stop_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_maybe_stop_plain((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_maybe_stop_plain((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_plain((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl2_io_plain((builtin.in), ((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl_io(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl_io(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl_io((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl_io((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl_io_chunk((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl_io_chunk((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl_io_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl_io_inner((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl_io_plain((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_foldl_io_plain((builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_get_stream((builtin.in)) = (builtin.out), finite(-1, [yes, no]), cannot_loop).
+:- pragma termination_info(io.binary_input_stream_name((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_offset((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_input_stream_offset64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_output_stream((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_output_stream_get_stream((builtin.in)) = (builtin.out), finite(-1, [yes, no]), cannot_loop).
+:- pragma termination_info(io.binary_output_stream_name((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_output_stream_name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_output_stream_offset((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.binary_output_stream_offset64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.call_pred_no_result(((pred((builtin.di), (builtin.uo)) is det) >> (pred((builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.call_pred_no_result(((pred((builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.call_system((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.call_system_return_signal((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.check_file_accessibility((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.chunk_size) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(io.close_binary_input((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.close_binary_output((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.close_input((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.close_output((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.command_line_arguments((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.compare_file_id((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(io.compare_file_id_2((builtin.out), (builtin.in), (builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(io.do_write_array((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.do_write_array((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.error_message((builtin.in)) = (builtin.out), finite(-1, [yes, no]), cannot_loop).
+:- pragma termination_info(io.error_message((builtin.in), (builtin.out)), finite(-1, [yes, no]), cannot_loop).
+:- pragma termination_info(io.file_id((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.file_id_2((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.file_modification_time((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.file_type((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.finalize_state((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(io.flush_binary_output((builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.flush_binary_output((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.flush_output((builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.flush_output((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.format((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.format((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.gc_init((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.get_environment_var((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.get_environment_var_map((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.get_errno_error((builtin.in), (builtin.out)), finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info(io.get_exception_object_error((builtin.in), (builtin.out)), finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info(io.get_exception_object_message((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.get_exit_status((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.get_globals((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.get_line_number((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.get_line_number((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.get_op_table((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.get_output_line_number((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.get_output_line_number((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.get_system_error((builtin.in), (builtin.out)), finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info(io.get_system_error_name((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(io.get_temp_directory((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.get_windows_error((builtin.in), (builtin.out)), finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info((io.have_cygwin), finite(0, []), cannot_loop).
+:- pragma termination_info((io.have_dotnet), finite(0, []), can_loop).
+:- pragma termination_info((io.have_make_temp_directory), finite(0, []), can_loop).
+:- pragma termination_info((io.have_set_environment_var), finite(0, []), can_loop).
+:- pragma termination_info((io.have_symlinks), finite(0, []), can_loop).
+:- pragma termination_info((io.have_win32), finite(0, []), cannot_loop).
+:- pragma termination_info(io.ignore_whitespace((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.ignore_whitespace((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.init_state((builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.init_std_streams((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(io.input_stream((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl2_io(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl2_io(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl2_io((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl2_io((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl2_io_maybe_stop(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl2_io_maybe_stop(((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl2_io_maybe_stop((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl2_io_maybe_stop((builtin.in), ((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl_io(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl_io(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl_io((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_foldl_io((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_get_stream((builtin.in)) = (builtin.out), finite(-1, [yes, no]), cannot_loop).
+:- pragma termination_info(io.input_stream_name((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.input_stream_name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.interpret_maybe_incomplete_result_code((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.interpret_result_code0((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.interpret_result_code1((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.io_state_compare((builtin.uo), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(io.io_state_equal((builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(io.is_error((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.is_error_maybe_win32((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.is_success((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(io.lock_globals((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.make_io_error((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(io.make_io_error_from_maybe_win32_error((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.make_io_error_from_system_error((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.make_io_error_from_windows_error((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.make_symlink((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.make_temp_directory((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.make_temp_directory((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.make_temp_file((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.make_temp_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.native_byte_order_is_big_endian), finite(0, []), cannot_loop).
+:- pragma termination_info((io.native_system_error_style) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(io.nl((builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.nl((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.no_error) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(io.open_append((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.open_binary_append((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.open_binary_input((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.open_binary_output((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.open_input((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.open_output((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.output_stream((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.output_stream_get_stream((builtin.in)) = (builtin.out), finite(-1, [yes, no]), cannot_loop).
+:- pragma termination_info(io.output_stream_name((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.output_stream_name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print_cc((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print_line((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print_line((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print_line((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print_line((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print_line((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print_line((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print_line_cc((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.print_to_stream((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.process_read_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(io.progname((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.progname_base((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.putback_byte((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.putback_byte((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.putback_char((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.putback_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.putback_int8((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.putback_int8((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.putback_uint8((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.putback_uint8((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_file((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_file_2((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_file_as_bitmap((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_file_as_bitmap((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_from_text_input_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int16((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int16_be((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int16_be((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int16_le((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int16_le((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int32((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int32_be((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int32_be((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int32_le((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int32_le((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int64((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int64_be((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int64_be((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int64_le((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int64_le((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int8((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_int8_unboxed((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint16((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint16_be((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint16_be((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint16_le((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint16_le((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint32((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint32_be((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint32_be((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint32_le((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint32_le((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint64((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint64_be((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint64_be((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint64_le((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint64_le((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint8((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_binary_uint8_unboxed((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_bitmap((bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_bitmap((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_bitmap((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_bitmap((builtin.in), (builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_byte((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_byte((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_char((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_char((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_char_unboxed((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_file((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_file_as_string((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_file_as_string((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_file_as_string_and_num_code_units((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_file_as_string_and_num_code_units((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_file_chars_acc((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_from_string((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(io.read_line((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_line((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_line_as_string((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_line_as_string((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_named_file_as_lines((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_named_file_as_string((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_symlink((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_word((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.read_word((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.remove_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.remove_file_recursively((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.rename_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.report_full_memory_stats((builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.report_full_memory_stats((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.report_standard_stats((builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.report_standard_stats((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.report_stats((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.report_stats((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.report_tabling_statistics((builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.report_tabling_statistics((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.restore_output_stream(((pred((builtin.di), (builtin.uo)) is det) >> (pred((builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.restore_output_stream(((pred((builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.seek_binary_input((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.seek_binary_input64((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.seek_binary_output((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.seek_binary_output64((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.set_binary_input_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.set_binary_output_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.set_environment_var((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.set_environment_var((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.set_exit_status((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.set_globals((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.set_input_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.set_line_number((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.set_line_number((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.set_op_table((builtin.di), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(io.set_output_line_number((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.set_output_line_number((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.set_output_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.should_reduce_stack_usage((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((io.stderr_stream) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(io.stderr_stream((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.stdin_binary_stream((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.stdin_stream) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(io.stdin_stream((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.stdout_binary_stream((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.stdout_stream) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(io.stdout_stream((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.system_error_exception_name((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(io.throw_on_close_error((builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), can_loop).
+:- pragma termination_info(io.throw_on_error((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(io.throw_on_output_error((builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), can_loop).
+:- pragma termination_info(io.unlock_globals((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.unsafe_get_globals((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.unsafe_get_io_state((builtin.uo)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(io.unsafe_set_globals((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(io.unsafe_set_io_state((builtin.di)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(io.update_globals(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.with_output_stream((builtin.in), ((pred((builtin.di), (builtin.uo)) is det) >> (pred((builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.with_output_stream((builtin.in), ((pred((builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_array((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_array((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_array((builtin.in), (builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_array((builtin.in), (builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int16((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int16((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int16_be((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int16_be((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int16_le((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int16_le((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int32((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int32((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int32_be((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int32_be((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int32_le((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int32_le((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int64((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int64((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int64_be((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int64_be((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int64_le((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int64_le((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int8((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_int8((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_string_utf8((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_string_utf8((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint16((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint16((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint16_be((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint16_be((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint16_le((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint16_le((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint32((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint32((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint32_be((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint32_be((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint32_le((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint32_le((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint64((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint64((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint64_be((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint64_be((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint64_le((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint64_le((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint8((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_binary_uint8((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_bitmap((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_bitmap((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_bitmap((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_bitmap((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_byte((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_byte((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_cc((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_cc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_char((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_float((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_float((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_int((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_int((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_int16((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_int16((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_int32((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_int32((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_int64((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_int64((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_int8((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_int8((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_line((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_line((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_line((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_line((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_line((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_line((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_line_cc((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_line_cc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_list((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_list((builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_list((builtin.in), (builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_list((builtin.in), (builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_list_lag((builtin.in), (builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_list_lag((builtin.in), (builtin.in), (builtin.in), ((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_many((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_many((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_string((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_strings((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_strings((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_uint((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_uint((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_uint16((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_uint16((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_uint32((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_uint32((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_uint64((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_uint64((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_uint8((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(io.write_uint8((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (io.binary_input_stream), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_chunk), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_chunk), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_inner), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_inner), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_maybe_stop), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_maybe_stop), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_maybe_stop), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_maybe_stop), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_maybe_stop_chunk), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_maybe_stop_chunk), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_maybe_stop_inner), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_maybe_stop_inner), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_maybe_stop_plain), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_maybe_stop_plain), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_plain), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl2_io_plain), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl_io), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl_io), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl_io), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl_io), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl_io_chunk), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl_io_chunk), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl_io_inner), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl_io_inner), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl_io_plain), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_foldl_io_plain), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (io.binary_input_stream_get_stream), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.binary_input_stream_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_name), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_offset), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_input_stream_offset64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_output_stream), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (io.binary_output_stream_get_stream), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.binary_output_stream_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_output_stream_name), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_output_stream_offset), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.binary_output_stream_offset64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.call_pred_no_result), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.call_pred_no_result), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.call_system), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.call_system_return_signal), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.check_file_accessibility), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (io.chunk_size), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.close_binary_input), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.close_binary_output), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.close_input), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.close_output), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.command_line_arguments), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.compare_file_id), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.compare_file_id_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.do_write_array), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.do_write_array), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (io.error_message), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.error_message), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.file_id), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.file_id_2), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.file_modification_time), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.file_type), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.finalize_state), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.flush_binary_output), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.flush_binary_output), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.flush_output), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.flush_output), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.format), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.format), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.gc_init), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.get_environment_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.get_environment_var_map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.get_errno_error), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.get_exception_object_error), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.get_exception_object_message), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.get_exit_status), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.get_globals), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.get_line_number), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.get_line_number), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.get_op_table), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.get_output_line_number), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.get_output_line_number), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.get_system_error), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.get_system_error_name), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.get_temp_directory), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.get_windows_error), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.have_cygwin), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.have_dotnet), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.have_make_temp_directory), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.have_set_environment_var), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.have_symlinks), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.have_win32), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.ignore_whitespace), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.ignore_whitespace), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.init_current_streams), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.init_state), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.init_std_streams), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.input_stream), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl2_io), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl2_io), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl2_io), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl2_io), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl2_io_maybe_stop), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl2_io_maybe_stop), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl2_io_maybe_stop), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl2_io_maybe_stop), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl_io), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl_io), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl_io), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_foldl_io), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (io.input_stream_get_stream), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.input_stream_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.input_stream_name), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.insert_std_stream_names), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.interpret_maybe_incomplete_result_code), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.interpret_result_code0), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.interpret_result_code1), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.io_state_compare), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.io_state_equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.is_error), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.is_error_maybe_win32), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.is_success), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.lock_globals), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.make_errno_message), 5, 0, will_not_throw).
+:- pragma exceptions(function, (io.make_io_error), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.make_io_error_from_maybe_win32_error), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.make_io_error_from_system_error), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.make_io_error_from_windows_error), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.make_symlink), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.make_temp_directory), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.make_temp_directory), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.make_temp_file), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.make_temp_file), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.make_win32_error_message), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.native_byte_order_is_big_endian), 0, 0, will_not_throw).
+:- pragma exceptions(function, (io.native_system_error_style), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.nl), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.nl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (io.no_error), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.open_append), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.open_binary_append), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.open_binary_input), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.open_binary_output), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.open_input), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.open_output), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.output_stream), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (io.output_stream_get_stream), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.output_stream_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.output_stream_name), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print_cc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print_line), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print_line), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print_line), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print_line), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print_line), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print_line), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print_line_cc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.print_to_stream), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.process_read_term), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.progname), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.progname_base), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.putback_byte), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.putback_byte), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.putback_char), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.putback_char), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.putback_int8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.putback_int8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.putback_uint8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.putback_uint8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_file), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_file), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_file_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_file_as_bitmap), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_file_as_bitmap), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_from_text_input_stream), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int16), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int16_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int16_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int16_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int16_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int32), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int32_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int32_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int32_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int32_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int64), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int64_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int64_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int64_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int64_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_int8_unboxed), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint16), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint16_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint16_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint16_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint16_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint32), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint32_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint32_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint32_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint32_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint64), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint64_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint64_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint64_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint64_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_binary_uint8_unboxed), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_bitmap), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_bitmap), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_bitmap), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_bitmap), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_byte), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_byte), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_char), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_char), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_char_unboxed), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_file), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_file), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_file_as_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_file_as_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_file_as_string_and_num_code_units), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_file_as_string_and_num_code_units), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_file_chars_acc), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_from_string), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_line), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_line), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_line_as_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_line_as_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_named_file_as_lines), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_named_file_as_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_symlink), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_word), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.read_word), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.remove_file), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.remove_file_recursively), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.rename_file), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.report_full_memory_stats), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.report_full_memory_stats), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.report_standard_stats), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.report_standard_stats), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.report_stats), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.report_stats), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.report_tabling_statistics), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.report_tabling_statistics), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.restore_output_stream), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.restore_output_stream), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (io.result0_to_stream_result0), 1, 0, will_not_throw).
+:- pragma exceptions(function, (io.result1_to_stream_result1), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.seek_binary_input), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.seek_binary_input64), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.seek_binary_output), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.seek_binary_output64), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.set_binary_input_stream), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.set_binary_output_stream), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.set_environment_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.set_environment_var), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.set_exit_status), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.set_globals), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.set_input_stream), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.set_line_number), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.set_line_number), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.set_op_table), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.set_output_line_number), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.set_output_line_number), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.set_output_stream), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.should_reduce_stack_usage), 1, 0, will_not_throw).
+:- pragma exceptions(function, (io.stderr_stream), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.stderr_stream), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.stdin_binary_stream), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (io.stdin_stream), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.stdin_stream), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.stdout_binary_stream), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (io.stdout_stream), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.stdout_stream), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (io.stream_whence_to_io_whence), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.system_error_errno_name), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.system_error_exception_name), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.system_error_win32_error_name), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.throw_on_close_error), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.throw_on_error), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.throw_on_output_error), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.unlock_globals), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.unlock_globals), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.unsafe_get_globals), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.unsafe_get_io_state), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.unsafe_set_globals), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.unsafe_set_io_state), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (io.update_globals), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.with_output_stream), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.with_output_stream), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_array), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_array), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_array), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_array), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int16), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int16_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int16_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int16_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int16_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int32), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int32_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int32_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int32_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int32_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int64), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int64_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int64_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int64_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int64_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_int8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_string_utf8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_string_utf8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint16), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint16_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint16_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint16_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint16_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint32), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint32_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint32_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint32_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint32_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint64), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint64_be), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint64_be), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint64_le), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint64_le), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_binary_uint8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_bitmap), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_bitmap), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_bitmap), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_bitmap), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_byte), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_byte), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_cc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_cc), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_char), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_char), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_float), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_float), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_int), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_int), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_int16), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_int16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_int32), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_int32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_int64), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_int64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_int8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_int8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_line), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_line), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_line), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_line), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_line), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_line), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_line_cc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_line_cc), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_list), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_list), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_list), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_list), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_list_lag), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_list_lag), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_many), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_many), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_strings), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_strings), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_uint), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_uint), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_uint16), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_uint16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_uint32), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_uint32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_uint64), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_uint64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_uint8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (io.write_uint8), 4, 0, may_throw(user_exception)).
