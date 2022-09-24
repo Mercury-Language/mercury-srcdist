@@ -1,0 +1,4 @@
+:- module (ml_backend.mlds_to_cs_util).
+:- interface.
+:- type csharp_out_info
+    --->    csharp_out_info(((ml_backend.mlds_to_cs_util).csoi_module_info) :: hlds.hlds_module.module_info, ((ml_backend.mlds_to_cs_util).csoi_auto_comments) :: bool.bool, ((ml_backend.mlds_to_cs_util).csoi_line_numbers) :: bool.bool, ((ml_backend.mlds_to_cs_util).csoi_foreign_line_numbers) :: bool.bool, ((ml_backend.mlds_to_cs_util).csoi_module_name) :: ml_backend.mlds.mlds_module_name, ((ml_backend.mlds_to_cs_util).csoi_source_filename) :: string, ((ml_backend.mlds_to_cs_util).csoi_code_addrs) :: map.map(ml_backend.mlds.mlds_code_addr, string), ((ml_backend.mlds_to_cs_util).csoi_output_generics) :: ml_backend.mlds_to_target_util.output_generics, ((ml_backend.mlds_to_cs_util).csoi_break_context) :: ml_backend.mlds_to_target_util.break_context, ((ml_backend.mlds_to_cs_util).csoi_univ_tvars) :: list.list(parse_tree.prog_data.tvar)).

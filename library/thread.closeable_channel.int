@@ -1,0 +1,22 @@
+:- module (thread.closeable_channel).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- type closeable_channel(T).
+:- type take_result(T)
+    --->    ok(T)
+    ;       closed .
+:- type try_take_result(T)
+    --->    ok(T)
+    ;       closed 
+    ;       would_block .
+:- pred close(thread.closeable_channel.closeable_channel(T), io.io, io.io).
+:- mode close((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred init(thread.closeable_channel.closeable_channel(T), io.io, io.io).
+:- mode init((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred put(thread.closeable_channel.closeable_channel(T), T, bool.bool, io.io, io.io).
+:- mode put((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred take(thread.closeable_channel.closeable_channel(T), thread.closeable_channel.take_result(T), io.io, io.io).
+:- mode take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred try_take(thread.closeable_channel.closeable_channel(T), thread.closeable_channel.try_take_result(T), io.io, io.io).
+:- mode try_take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
