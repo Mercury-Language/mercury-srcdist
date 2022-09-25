@@ -1,0 +1,14 @@
+module(2, "array.m",
+	array,
+	{},
+	{builtin, list, pretty_printer, private_builtin},
+	{exception, int, require, stream, string, type_desc, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - array, "C#" - array, "Java" - array},
+	no_foreign_export,
+	no_main,
+	{}
+).

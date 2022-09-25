@@ -1,0 +1,187 @@
+/*
+** Automatically generated from `io.file.m'
+** by the Mercury compiler,
+** version rotd-2022-09-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module io.file.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_io__file
+#define MR_HEADER_GUARD_io__file
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef IO__FILE_DECL_GUARD
+#define IO__FILE_DECL_GUARD
+#include "io.mih"
+
+#ifdef MR_HAVE_UNISTD_H
+    #include <unistd.h>
+#endif
+    #include <sys/types.h>
+    #include <sys/stat.h>
+    #include <fcntl.h>
+
+    #define ML_MAX_TEMPNAME_TRIES   (6 * 4)
+
+    extern long ML_io_tempnam_counter;
+
+
+#endif
+
+#define ML_FILE_TYPE_REGULAR_FILE 0
+#define ML_FILE_TYPE_DIRECTORY 1
+#define ML_FILE_TYPE_SYMBOLIC_LINK 2
+#define ML_FILE_TYPE_NAMED_PIPE 3
+#define ML_FILE_TYPE_SOCKET 4
+#define ML_FILE_TYPE_CHARACTER_DEVICE 5
+#define ML_FILE_TYPE_BLOCK_DEVICE 6
+#define ML_FILE_TYPE_MESSAGE_QUEUE 7
+#define ML_FILE_TYPE_SEMAPHORE 8
+#define ML_FILE_TYPE_SHARED_MEMORY 9
+#define ML_FILE_TYPE_UNKNOWN 10
+
+
+void MR_CALL 
+mercury__io__file__check_file_accessibility_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__io__file__do_make_temp_8_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_String * param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__io__file__do_make_temp_directory_8_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_String * param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__io__file__file_modification_time_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__io__file__file_modification_time_2_5_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__io__file__file_type_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__io__file__get_temp_directory_3_p_0(
+  MR_String * param_1);
+
+MR_bool MR_CALL 
+mercury__io__file__have_make_temp_directory_0_p_0(void);
+
+MR_bool MR_CALL 
+mercury__io__file__have_symlinks_0_p_0(void);
+
+void MR_CALL 
+mercury__io__file__make_symlink_5_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__io__file__make_temp_directory_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__io__file__make_temp_directory_6_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__io__file__make_temp_file_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__io__file__make_temp_file_6_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__io__file__read_symlink_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__io__file__remove_file_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__io__file__remove_file_2_4_p_0(
+  MR_String param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__io__file__remove_file_recursively_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__io__file__rename_file_5_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__io__file__rename_file_2_5_p_0(
+  MR_String param_1,
+  MR_String param_2,
+  MR_Box * param_3);
+
+void mercury__io__file__init(void);
+void mercury__io__file__init_type_tables(void);
+void mercury__io__file__init_debugger(void);
+const char *mercury__io__file__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_io.file
+
+// :- end_interface io.file.
