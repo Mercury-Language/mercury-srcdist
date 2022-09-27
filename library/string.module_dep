@@ -1,0 +1,14 @@
+module(2, "string.m",
+	string,
+	{},
+	{assoc_list, builtin, char, deconstruct, list, maybe, ops, pretty_printer, private_builtin},
+	{bool, int, pair, require, stream, term_io, uint, uint8, (string.format), (string.parse_util), (string.to_string)},
+	{(string.builder), (string.format), (string.parse_runtime), (string.parse_util), (string.to_string)},
+	{},
+	{},
+	{"C"},
+	{"C" - string, "C#" - string, "Java" - string},
+	contains_foreign_export,
+	no_main,
+	{}
+).

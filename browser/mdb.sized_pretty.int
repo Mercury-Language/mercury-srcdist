@@ -1,0 +1,14 @@
+:- module (mdb.sized_pretty).
+:- interface.
+:- use_module univ.
+:- use_module (mdb.browser_info).
+:- use_module (mdb.browser_term).
+:- pred browser_term_to_string_line(mdb.browser_info.browser_db, mdb.browser_term.browser_term, int, int, string).
+:- mode browser_term_to_string_line((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- pred univ_to_string_line(mdb.browser_info.browser_db, univ.univ, int, int, string).
+:- mode univ_to_string_line((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- implementation.
+:- type no_measure_params
+    --->    no_measure_params .
+:- typeclass measure(T).
+:- typeclass measure_with_params(T, MeasureParams) <= ((mdb.sized_pretty).measure(T)).
