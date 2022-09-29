@@ -1,0 +1,305 @@
+/*
+** Automatically generated from `display.m'
+** by the Mercury compiler,
+** version rotd-2022-09-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module display.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_display
+#define MR_HEADER_GUARD_display
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef DISPLAY_DECL_GUARD
+#define DISPLAY_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_attr_string_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_deep_link_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_display_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_display_item_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_link_class_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_list_class_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_pseudo_link_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_str_attr_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_table_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_table_cell_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_table_class_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_table_column_class_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_table_column_colour_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_table_data_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_table_header_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_table_header_group_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_table_header_group_columns_0;
+
+extern const MR_TypeCtorInfo_Struct display__display__type_ctor_info_table_row_0;
+
+void MR_CALL 
+display__header_groups_to_header_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+MR_Word MR_CALL 
+display__make_multi_table_header_group_4_f_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+display__make_single_table_header_group_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____attr_string_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____deep_link_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____display_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____display_item_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____link_class_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____list_class_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____pseudo_link_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____str_attr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____table_cell_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____table_class_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____table_column_class_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____table_column_colour_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____table_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____table_header_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____table_header_group_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____table_header_group_columns_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+display____Compare____table_row_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+display____Unify____attr_string_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____deep_link_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____display_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____display_item_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____link_class_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____list_class_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____pseudo_link_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____str_attr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____table_cell_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____table_class_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____table_column_class_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____table_column_colour_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____table_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____table_header_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____table_header_group_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____table_header_group_columns_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+display____Unify____table_row_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__display__init(void);
+void mercury__display__init_type_tables(void);
+void mercury__display__init_debugger(void);
+const char *mercury__display__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_display
+
+// :- end_interface display.
