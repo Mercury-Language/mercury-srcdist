@@ -1,0 +1,53 @@
+:- module (parse_tree.prog_util).
+:- interface.
+:- use_module integer.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_item).
+:- pred adjust_func_arity(mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.arity, parse_tree.prog_data.arity).
+:- mode adjust_func_arity((builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode adjust_func_arity((builtin.in), (builtin.out), (builtin.in)) is det.
+:- pred cons_id_and_args_to_term(parse_tree.prog_data.cons_id, list.list(term.term(T)), term.term(T)).
+:- mode cons_id_and_args_to_term((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func cons_id_arity(parse_tree.prog_data.cons_id) = parse_tree.prog_data.arity.
+:- func cons_id_maybe_arity(parse_tree.prog_data.cons_id) = maybe.maybe(parse_tree.prog_data.arity).
+:- pred construct_qualified_term(mdbcomp.sym_name.sym_name, list.list(term.term(T)), term.term(T)).
+:- mode construct_qualified_term((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_qualified_term_with_context(mdbcomp.sym_name.sym_name, list.list(term.term(T)), parse_tree.prog_data.prog_context, term.term(T)).
+:- mode construct_qualified_term_with_context((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_new_tvars(list.list(parse_tree.prog_data.tvar), parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvar_name_map, parse_tree.prog_data.tvar_name_map, parse_tree.prog_data.tvar_renaming, parse_tree.prog_data.tvar_renaming).
+:- mode get_new_tvars((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred get_state_args(list.list(T), list.list(T), T, T).
+:- mode get_state_args((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred get_state_args_det(list.list(T), list.list(T), T, T).
+:- mode get_state_args_det((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func goal_list_to_conj(parse_tree.prog_data.prog_context, list.list(parse_tree.prog_item.goal)) = parse_tree.prog_item.goal.
+:- pred make_n_fresh_vars(string, int, list.list(term.var(T)), varset.varset(T), varset.varset(T)).
+:- mode make_n_fresh_vars((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred pred_args_to_func_args(list.list(T), list.list(T), T).
+:- mode pred_args_to_func_args((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred rename_in_goal(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_item.goal, parse_tree.prog_item.goal).
+:- mode rename_in_goal((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred source_integer_to_int(term.integer_base, integer.integer, int).
+:- mode source_integer_to_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred split_type_and_mode(parse_tree.prog_data.type_and_mode, parse_tree.prog_data.mer_type, maybe.maybe(parse_tree.prog_data.mer_mode)).
+:- mode split_type_and_mode((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred split_types_and_modes(list.list(parse_tree.prog_data.type_and_mode), list.list(parse_tree.prog_data.mer_type), maybe.maybe(list.list(parse_tree.prog_data.mer_mode))).
+:- mode split_types_and_modes((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred strip_builtin_qualifier_from_cons_id(parse_tree.prog_data.cons_id, parse_tree.prog_data.cons_id).
+:- mode strip_builtin_qualifier_from_cons_id((builtin.in), (builtin.out)) is det.
+:- pred strip_builtin_qualifier_from_sym_name(mdbcomp.sym_name.sym_name, mdbcomp.sym_name.sym_name).
+:- mode strip_builtin_qualifier_from_sym_name((builtin.in), (builtin.out)) is det.
+:- pred strip_module_qualifier_from_cons_id(parse_tree.prog_data.cons_id, parse_tree.prog_data.cons_id).
+:- mode strip_module_qualifier_from_cons_id((builtin.in), (builtin.out)) is det.
+:- pred strip_module_qualifier_from_sym_name(mdbcomp.sym_name.sym_name, mdbcomp.sym_name.sym_name).
+:- mode strip_module_qualifier_from_sym_name((builtin.in), (builtin.out)) is det.
+:- pred user_arity_pred_form_arity(mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.user_arity, parse_tree.prog_data.pred_form_arity).
+:- mode user_arity_pred_form_arity((builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode user_arity_pred_form_arity((builtin.in), (builtin.out), (builtin.in)) is det.
