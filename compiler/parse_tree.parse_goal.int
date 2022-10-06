@@ -1,0 +1,19 @@
+:- module (parse_tree.parse_goal).
+:- interface.
+:- use_module cord.
+:- use_module list.
+:- use_module term.
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_item).
+:- pred apply_purity_marker_to_maybe_goal(term.term, parse_tree.prog_data.purity, parse_tree.maybe_error.maybe2(parse_tree.prog_item.goal, list.list(parse_tree.error_util.warning_spec)), parse_tree.maybe_error.maybe2(parse_tree.prog_item.goal, list.list(parse_tree.error_util.warning_spec))).
+:- mode apply_purity_marker_to_maybe_goal((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_goal(term.term, cord.cord(parse_tree.error_util.format_component), parse_tree.maybe_error.maybe2(parse_tree.prog_item.goal, list.list(parse_tree.error_util.warning_spec)), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset).
+:- mode parse_goal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred parse_some_vars_goal(term.term, cord.cord(parse_tree.error_util.format_component), parse_tree.maybe_error.maybe4(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), parse_tree.prog_item.goal, list.list(parse_tree.error_util.warning_spec)), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset).
+:- mode parse_some_vars_goal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func should_have_one_goal_prefix(cord.cord(parse_tree.error_util.format_component), term.context, string) = parse_tree.error_util.error_spec.
+:- func should_have_one_x_one_goal_prefix(cord.cord(parse_tree.error_util.format_component), term.context, string, string) = parse_tree.error_util.error_spec.
+:- func should_have_two_goals_infix(cord.cord(parse_tree.error_util.format_component), term.context, string) = parse_tree.error_util.error_spec.
+:- func should_have_two_terms_infix(cord.cord(parse_tree.error_util.format_component), term.context, string) = parse_tree.error_util.error_spec.

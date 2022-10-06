@@ -1,0 +1,16 @@
+:- module (check_hlds.style_checks).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_clauses).
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_util).
+:- type maybe_warn_non_contiguous_pred_decls
+    --->    do_not_warn_non_contiguous_pred_decls 
+    ;       warn_non_contiguous_pred_decls .
+:- type maybe_warn_pred_decl_vs_defn_order
+    --->    do_not_warn_pred_decl_vs_defn_order 
+    ;       warn_pred_decl_vs_defn_order(hlds.hlds_clauses.clause_item_number_types).
+:- pred generate_style_warnings(hlds.hlds_module.module_info, check_hlds.style_checks.maybe_warn_non_contiguous_pred_decls, check_hlds.style_checks.maybe_warn_pred_decl_vs_defn_order, list.list(parse_tree.error_util.error_spec)).
+:- mode generate_style_warnings((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,32 @@
+:- module (transform_hlds.dead_proc_elim).
+:- interface.
+:- use_module map.
+:- use_module (hlds.hlds_pred).
+:- type eliminated_how
+    --->    elim_deleted_proc 
+    ;       elim_deleted_goal .
+:- type eliminated_map == map.map(hlds.hlds_pred.pred_id, transform_hlds.dead_proc_elim.eliminated_what).
+:- type eliminated_what
+    --->    elim_whole_pred(transform_hlds.dead_proc_elim.eliminated_how)
+    ;       elim_procs(set.set(hlds.hlds_pred.proc_id)).
+:- type entity
+    --->    entity_proc(hlds.hlds_pred.pred_proc_id)
+    ;       entity_table_struct(hlds.hlds_pred.pred_proc_id)
+    ;       entity_type_ctor(mdbcomp.sym_name.module_name, string, int)
+    ;       entity_const_struct(int)
+    ;       entity_mutable(mdbcomp.sym_name.module_name, string, parse_tree.prog_data.mutable_pred_kind).
+:- type maybe_elim_opt_imported
+    --->    elim_opt_imported 
+    ;       do_not_elim_opt_imported .
+:- type maybe_needed
+    --->    not_eliminable(set_ctree234.set_ctree234(transform_hlds.dead_proc_elim.needed_reason))
+    ;       maybe_eliminable(((transform_hlds.dead_proc_elim).num_references) :: int).
+:- type needed_map == map.map(transform_hlds.dead_proc_elim.entity, transform_hlds.dead_proc_elim.maybe_needed).
+:- type needed_reason
+    --->    nr_exported 
+    ;       nr_foreign_exported 
+    ;       nr_initial_final 
+    ;       nr_type_ctor 
+    ;       nr_const_struct 
+    ;       nr_class_interface_proc 
+    ;       nr_used_by(transform_hlds.dead_proc_elim.entity).
