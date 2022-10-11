@@ -1,0 +1,77 @@
+      E1:     C1 CALL pred polymorphic_output.main/2-0 (det) polymorphic_output.m:29
+mdb> echo on
+Command echo enabled.
+mdb> register --quiet
+mdb> context none
+Contexts will not be printed.
+mdb> b functor_names
+ 0: + stop  interface func polymorphic_output.functor_names/1-0 (det)
+mdb> c
+      E2:     C2 CALL func polymorphic_output.functor_names/1-0 (det)
+mdb> delete 0
+ 0: E stop  interface func polymorphic_output.functor_names/1-0 (det)
+mdb> p goal
+functor_names(two("three", 3, three("four", 4, "one", 1, empty, empty, empty), two("two", 2, empty, empty))) = _
+mdb> format verbose
+mdb> format_param lines 100
+mdb> p goal
+functor_names
+1-two
+| 1-"three"
+| 2-3
+| 3-three
+| | 1-"four"
+| | 2-4
+| | 3-"one"
+| | 4-1
+| | 5-empty
+| | 6-empty
+| | 7-empty
+| 4-two
+|   1-"two"
+|   2-2
+|   3-empty
+|   4-empty
+2-_
+
+mdb> format flat
+mdb> browse goal
+browser> ^1
+browser> p
+two("three", 3, three("four", 4, "one", 1, empty, empty, empty), two("two", 2, empty, empty))
+browser> ^..^2
+browser> p
+'_'
+browser> ^..^3
+error: there is no subterm 3
+browser> p
+'_'
+browser> ^..^r
+browser> p
+'_'
+browser> quit
+mdb> b -A deconstruct.det_arg/4
+ 0: + stop  interface pred deconstruct.det_arg/4-0 (det)
+ 1: + stop  interface pred deconstruct.det_arg/4-1 (det)
+ 2: + stop  interface pred deconstruct.det_arg/4-2 (cc_multi)
+ 3: + stop  interface pred deconstruct.det_arg/4-3 (cc_multi)
+mdb> c
+      E3:     C3 CALL pred deconstruct.det_arg/4-1 (det)
+mdb> P
+       Term (arg 1)           	two("three", 3, three("four", 4, "one", 1, empty, empty, empty), two/4)
+       NonCanon (arg 2)       	canonicalize
+       Index (arg 3)          	3
+mdb> f
+      E4:     C3 EXIT pred deconstruct.det_arg/4-1 (det)
+mdb> P
+       Term (arg 1)           	two("three", 3, three("four", 4, "one", 1, empty, empty, empty), two/4)
+       NonCanon (arg 2)       	canonicalize
+       Index (arg 3)          	3
+       Argument (arg 4)       	two("two", 2, empty, empty)
+mdb> disable *
+ 0: - stop  interface pred deconstruct.det_arg/4-0 (det)
+ 1: - stop  interface pred deconstruct.det_arg/4-1 (det)
+ 2: - stop  interface pred deconstruct.det_arg/4-2 (cc_multi)
+ 3: - stop  interface pred deconstruct.det_arg/4-3 (cc_multi)
+mdb> c
+two

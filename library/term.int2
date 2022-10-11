@@ -1,0 +1,40 @@
+:- module term.
+:- interface.
+:- use_module enum.
+:- use_module map.
+:- use_module term_context.
+:- type const
+    --->    atom(string)
+    ;       integer((term.integer_base) :: term.integer_base, (term.integer_value) :: integer.integer, (term.integer_signedness) :: term.signedness, (term.integer_size) :: term.integer_size)
+    ;       string(string)
+    ;       float(float)
+    ;       implementation_defined(string).
+:- type context == term_context.term_context.
+:- type generic
+    --->    generic .
+:- type integer_base
+    --->    base_2 
+    ;       base_8 
+    ;       base_10 
+    ;       base_16 .
+:- type integer_size
+    --->    size_word 
+    ;       size_8_bit 
+    ;       size_16_bit 
+    ;       size_32_bit 
+    ;       size_64_bit .
+:- type renaming == term.renaming(term.generic).
+:- type renaming(T) == map.map(term.var(T), term.var(T)).
+:- type signedness
+    --->    signed 
+    ;       unsigned .
+:- type substitution == term.substitution(term.generic).
+:- type substitution(T) == map.map(term.var(T), term.term(T)).
+:- type term == term.term(term.generic).
+:- type term(T)
+    --->    functor(term.const, list.list(term.term(T)), term_context.term_context)
+    ;       variable(term.var(T), term_context.term_context).
+:- type var == term.var(term.generic).
+:- type var(T).
+:- type var_supply(T).
+:- instance (enum.enum(term.var(V_1))).
