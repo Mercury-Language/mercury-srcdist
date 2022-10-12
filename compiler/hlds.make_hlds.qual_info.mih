@@ -1,0 +1,212 @@
+/*
+** Automatically generated from `qual_info.m'
+** by the Mercury compiler,
+** version rotd-2022-10-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.qual_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__qual_info
+#define MR_HEADER_GUARD_hlds__make_hlds__qual_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__QUAL_INFO_DECL_GUARD
+#define HLDS__MAKE_HLDS__QUAL_INFO_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__qual_info__hlds__make_hlds__qual_info__type_ctor_info_qual_info_0;
+
+void MR_CALL 
+hlds__make_hlds__qual_info__apply_to_recompilation_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__construct_and_record_pred_or_func_call_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__construct_pred_or_func_call_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__init_qual_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__make_atomic_unification_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__make_atomic_unification_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__process_type_qualification_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__qual_info_get_explicit_var_types_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__qual_info_get_found_syntax_error_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__qual_info_get_found_trace_goal_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__qual_info_get_maybe_opt_imported_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__qual_info_get_mq_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__qual_info_get_tvarset_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__qual_info_set_explicit_var_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__qual_info_set_found_syntax_error_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__qual_info_set_found_trace_goal_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__qual_info_set_mq_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__record_called_pred_or_func_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__set_module_recompilation_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_hlds__qual_info__update_qual_info_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__make_hlds__qual_info____Compare____qual_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__qual_info____Unify____qual_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__make_hlds__qual_info__init(void);
+void mercury__hlds__make_hlds__qual_info__init_type_tables(void);
+void mercury__hlds__make_hlds__qual_info__init_debugger(void);
+const char *mercury__hlds__make_hlds__qual_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.make_hlds.qual_info
+
+// :- end_interface hlds.make_hlds.qual_info.
