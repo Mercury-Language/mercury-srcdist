@@ -1,0 +1,104 @@
+/*
+** Automatically generated from `output_prof_info.m'
+** by the Mercury compiler,
+** version rotd-2022-10-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module output_prof_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_output_prof_info
+#define MR_HEADER_GUARD_output_prof_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef OUTPUT_PROF_INFO_DECL_GUARD
+#define OUTPUT_PROF_INFO_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct output_prof_info__output_prof_info__type_ctor_info_child_0;
+
+extern const MR_TypeCtorInfo_Struct output_prof_info__output_prof_info__type_ctor_info_output_prof_0;
+
+extern const MR_TypeCtorInfo_Struct output_prof_info__output_prof_info__type_ctor_info_parent_0;
+
+extern const MR_TypeCtorInfo_Struct output_prof_info__output_prof_info__type_ctor_info_profiler_output_0;
+
+void MR_CALL 
+output_prof_info____Compare____child_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+output_prof_info____Compare____output_prof_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+output_prof_info____Compare____parent_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+output_prof_info____Compare____profiler_output_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+output_prof_info____Unify____child_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+output_prof_info____Unify____output_prof_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+output_prof_info____Unify____parent_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+output_prof_info____Unify____profiler_output_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__output_prof_info__init(void);
+void mercury__output_prof_info__init_type_tables(void);
+void mercury__output_prof_info__init_debugger(void);
+const char *mercury__output_prof_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_output_prof_info
+
+// :- end_interface output_prof_info.

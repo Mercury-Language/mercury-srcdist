@@ -1,0 +1,4 @@
+:- module (ll_backend.dense_switch).
+:- interface.
+:- type dense_switch_info.
+:- type_representation(dense_switch_info, is_word_aligned_ptr).

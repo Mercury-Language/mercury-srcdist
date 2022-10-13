@@ -1,0 +1,56 @@
+#! /bin/sh
+#---------------------------------------------------------------------------#
+# vim: ts=4 sw=4 et ft=sh
+#---------------------------------------------------------------------------#
+# @configure_input@
+#---------------------------------------------------------------------------#
+# Copyright (C) 1995-1997 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#---------------------------------------------------------------------------#
+#
+# MERCURY_UPDATE_INTERFACE
+#
+# usage:
+#   mercury_update_interface [-v] filename
+#
+# Move `filename.tmp' to `filename', but only if necessary.
+# If they are identical, then we simply remove `filename.tmp',
+# and leave `filename's time-stamp unaltered.
+#
+# If the `-v' (verbose) option is specified, then we print progress messages.
+#
+# Enviroment variables: none.
+
+verbose=false
+
+if test $# -ge 1 -a "$1" = "-v"
+then
+    verbose=true
+    shift
+fi
+
+if test $# -ne 1
+then
+    echo "Usage: `basename $0` filename" 1>&2
+    exit 1
+fi
+
+filename="$1"
+    
+if test ! -f "$filename"
+then
+    $verbose && echo "creating \`${filename}'." 1>&2
+    mv -f "${filename}.tmp" "${filename}"
+    # Work-around for a parallel gmake problem
+    exit 0
+elif cmp -s "${filename}.tmp" "${filename}"
+then
+    $verbose && echo "\`${filename}' has not changed." 1>&2
+    rm -f "${filename}.tmp"
+else
+    echo "\`${filename}' has CHANGED." 1>&2
+    mv -f "${filename}.tmp" "${filename}"
+    # Work-around for a parallel gmake problem
+    exit 0
+fi
