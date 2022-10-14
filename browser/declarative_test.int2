@@ -1,0 +1,2 @@
+:- module declarative_test.
+:- interface.

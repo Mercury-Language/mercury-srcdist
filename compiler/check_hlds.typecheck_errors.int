@@ -1,0 +1,71 @@
+:- module (check_hlds.typecheck_errors).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (check_hlds.type_assign).
+:- use_module (check_hlds.typecheck_info).
+:- use_module (hlds.hlds_cons).
+:- use_module (hlds.hlds_data).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.prog_data).
+:- type actual_expected_types
+    --->    actual_expected_types(((check_hlds.typecheck_errors).actual_type_pieces) :: list.list(parse_tree.error_spec.format_piece), ((check_hlds.typecheck_errors).actual_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_errors).expected_type_piece) :: list.list(parse_tree.error_spec.format_piece), ((check_hlds.typecheck_errors).expected_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_errors).existq_tvars) :: list.list(parse_tree.prog_data.tvar)).
+:- type arg_vector_kind
+    --->    arg_vector_clause_head 
+    ;       arg_vector_plain_call_pred_id(hlds.hlds_pred.pred_id)
+    ;       arg_vector_plain_pred_call(parse_tree.prog_data.sym_name_pred_form_arity)
+    ;       arg_vector_generic_call(hlds.hlds_pred.generic_call_id)
+    ;       arg_vector_foreign_proc_call(hlds.hlds_pred.pred_id)
+    ;       arg_vector_event(string).
+:- type arg_vector_type_error
+    --->    arg_vector_type_error(int, parse_tree.prog_data.prog_var, check_hlds.typecheck_errors.actual_expected_types).
+:- type cons_error
+    --->    foreign_type_constructor(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn)
+    ;       abstract_imported_type 
+    ;       invalid_field_update(mdbcomp.sym_name.sym_name, hlds.hlds_cons.hlds_ctor_field_defn, parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.tvar))
+    ;       new_on_non_existential_type(parse_tree.prog_data.type_ctor).
+:- type spec_and_maybe_actual_expected
+    --->    spec_and_maybe_actual_expected(parse_tree.error_spec.error_spec, maybe.maybe(check_hlds.typecheck_errors.actual_expected_types)).
+:- type type_error_goal_context
+    --->    type_error_in_var_vector(((check_hlds.typecheck_errors).teiav_kind) :: check_hlds.typecheck_errors.var_vector_kind, ((check_hlds.typecheck_errors).teiav_arg_num) :: int)
+    ;       type_error_in_unify(((check_hlds.typecheck_errors).teiu_unify_context) :: hlds.hlds_goal.unify_context)
+    ;       type_error_in_atomic_inner .
+:- type var_vector_kind
+    --->    var_vector_args(check_hlds.typecheck_errors.arg_vector_kind)
+    ;       var_vector_cond_quant 
+    ;       var_vector_exist_quant 
+    ;       var_vector_promise_solutions 
+    ;       var_vector_switch_complete 
+    ;       var_vector_switch_arm_detism 
+    ;       var_vector_loop_control 
+    ;       var_vector_try_io 
+    ;       var_vector_atomic_output 
+    ;       var_vector_atomic_outer .
+:- func maybe_report_no_clauses(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info) = list.list(parse_tree.error_spec.error_spec).
+:- func maybe_report_no_clauses_stub(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info) = list.list(parse_tree.error_spec.error_spec).
+:- func report_ambiguity_error(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.typecheck_info.overloaded_symbol_map, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign) = parse_tree.error_spec.error_spec.
+:- func report_arg_vector_type_errors(check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.typecheck_errors.arg_vector_kind, check_hlds.type_assign.type_assign_set, list.list(check_hlds.typecheck_errors.arg_vector_type_error)) = parse_tree.error_spec.error_spec.
+:- func report_error_arg_var(check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.type_error_clause_context, check_hlds.typecheck_errors.type_error_goal_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, check_hlds.type_assign.args_type_assign_set) = parse_tree.error_spec.error_spec.
+:- func report_error_functor_arg_types(check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.type_error_clause_context, hlds.hlds_goal.unify_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, list.list(check_hlds.typecheck_info.cons_type_info), parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), check_hlds.type_assign.args_type_assign_set) = parse_tree.error_spec.error_spec.
+:- func report_error_functor_type(check_hlds.typecheck_info.typecheck_info, hlds.hlds_goal.unify_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, list.list(check_hlds.typecheck_info.cons_type_info), parse_tree.prog_data.cons_id, int, check_hlds.type_assign.type_assign_set) = parse_tree.error_spec.error_spec.
+:- func report_error_lambda_var(check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.type_error_clause_context, hlds.hlds_goal.unify_context, parse_tree.prog_data.prog_context, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.lambda_eval_method, parse_tree.prog_data.prog_var, list.list(parse_tree.prog_data.prog_var), check_hlds.type_assign.type_assign_set) = parse_tree.error_spec.error_spec.
+:- func report_error_too_much_overloading(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.typecheck_info.overloaded_symbol_map) = parse_tree.error_spec.error_spec.
+:- func report_error_undef_cons(check_hlds.typecheck_info.type_error_clause_context, check_hlds.typecheck_errors.type_error_goal_context, parse_tree.prog_data.prog_context, list.list(check_hlds.typecheck_errors.cons_error), parse_tree.prog_data.cons_id, parse_tree.prog_data.arity) = parse_tree.error_spec.error_spec.
+:- func report_error_unify_var_var(check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.type_error_clause_context, hlds.hlds_goal.unify_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, check_hlds.type_assign.type_assign_set) = parse_tree.error_spec.error_spec.
+:- func report_error_var(check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_errors.type_error_goal_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, check_hlds.type_assign.type_assign_set) = check_hlds.typecheck_errors.spec_and_maybe_actual_expected.
+:- func report_error_var_either_type(check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.type_error_clause_context, check_hlds.typecheck_errors.type_error_goal_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, check_hlds.type_assign.type_assign_set) = parse_tree.error_spec.error_spec.
+:- func report_event_args_mismatch(parse_tree.prog_data.prog_context, string, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.prog_var)) = parse_tree.error_spec.error_spec.
+:- func report_invalid_coerce_from_to(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.tvarset, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type) = parse_tree.error_spec.error_spec.
+:- func report_missing_tvar_in_foreign_code(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, string) = parse_tree.error_spec.error_spec.
+:- func report_pred_call_error(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, parse_tree.prog_data.sym_name_pred_form_arity) = parse_tree.error_spec.error_spec.
+:- func report_unknown_event_call_error(parse_tree.prog_data.prog_context, string) = parse_tree.error_spec.error_spec.
+:- func report_unsatisfiable_constraints(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.type_assign.type_assign_set) = parse_tree.error_spec.error_spec.
+:- func report_warning_too_much_overloading(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.typecheck_info.overloaded_symbol_map) = parse_tree.error_spec.error_spec.
