@@ -1,0 +1,48 @@
+:- module (hlds.hlds_error_util).
+:- interface.
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.pred_table).
+:- use_module (libs.globals).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- type should_module_qualify
+    --->    should_module_qualify 
+    ;       should_not_module_qualify .
+:- pred definitely_write_out_errors(libs.globals.globals, list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode definitely_write_out_errors((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred definitely_write_out_errors(io.text_output_stream, libs.globals.globals, list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode definitely_write_out_errors((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func describe_one_call_site(hlds.hlds_module.module_info, hlds.hlds_error_util.should_module_qualify, pair.pair(hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_context)) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_one_pred_info_name(hlds.hlds_error_util.should_module_qualify, hlds.hlds_pred.pred_info) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_one_pred_name(hlds.hlds_module.module_info, hlds.hlds_error_util.should_module_qualify, hlds.hlds_pred.pred_id) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_one_pred_name_mode(hlds.hlds_module.module_info, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_error_util.should_module_qualify, hlds.hlds_pred.pred_id, parse_tree.prog_data.inst_varset, list.list(parse_tree.prog_data.mer_mode)) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_one_proc_name(hlds.hlds_module.module_info, hlds.hlds_error_util.should_module_qualify, hlds.hlds_pred.pred_proc_id) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_one_proc_name_mode(hlds.hlds_module.module_info, parse_tree.parse_tree_out_info.output_lang, hlds.hlds_error_util.should_module_qualify, hlds.hlds_pred.pred_proc_id) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_several_call_sites(hlds.hlds_module.module_info, hlds.hlds_error_util.should_module_qualify, assoc_list.assoc_list(hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_context)) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_several_pred_names(hlds.hlds_module.module_info, hlds.hlds_error_util.should_module_qualify, list.list(hlds.hlds_pred.pred_id)) = list.list(parse_tree.error_spec.format_piece).
+:- func describe_several_proc_names(hlds.hlds_module.module_info, hlds.hlds_error_util.should_module_qualify, list.list(hlds.hlds_pred.pred_proc_id)) = list.list(parse_tree.error_spec.format_piece).
+:- pred find_pred_arities(hlds.pred_table.pred_id_table, list.list(hlds.hlds_pred.pred_id), list.list(parse_tree.prog_data.pred_form_arity)).
+:- mode find_pred_arities((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred find_pred_arities_other_than(hlds.pred_table.pred_id_table, list.list(hlds.hlds_pred.pred_id), parse_tree.prog_data.pred_form_arity, list.list(parse_tree.prog_data.pred_form_arity)).
+:- mode find_pred_arities_other_than((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred find_user_arities(hlds.pred_table.pred_id_table, list.list(hlds.hlds_pred.pred_id), list.list(parse_tree.prog_data.user_arity)).
+:- mode find_user_arities((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred find_user_arities_other_than(hlds.pred_table.pred_id_table, list.list(hlds.hlds_pred.pred_id), parse_tree.prog_data.user_arity, list.list(parse_tree.prog_data.user_arity)).
+:- mode find_user_arities_other_than((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_write_out_errors(bool.bool, libs.globals.globals, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode maybe_write_out_errors((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_out_errors(io.text_output_stream, bool.bool, libs.globals.globals, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode maybe_write_out_errors((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func project_pred_form_arity_int(parse_tree.prog_data.pred_form_arity) = int.
+:- func project_user_arity_int(parse_tree.prog_data.user_arity) = int.
+:- pragma obsolete(pred(((hlds.hlds_error_util).definitely_write_out_errors)/4), [definitely_write_out_errors/5]).
+:- pragma obsolete(pred(((hlds.hlds_error_util).maybe_write_out_errors)/6), [maybe_write_out_errors/7]).
