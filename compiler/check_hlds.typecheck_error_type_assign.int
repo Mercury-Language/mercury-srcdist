@@ -1,0 +1,33 @@
+:- module (check_hlds.typecheck_error_type_assign).
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module term.
+:- use_module varset.
+:- use_module (check_hlds.type_assign).
+:- use_module (check_hlds.typecheck_info).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.error_type_util).
+:- use_module (parse_tree.prog_data).
+:- type actual_expected_types
+    --->    actual_expected_types(((check_hlds.typecheck_error_type_assign).actual_type_pieces) :: list.list(parse_tree.error_spec.format_piece), ((check_hlds.typecheck_error_type_assign).actual_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_error_type_assign).expected_type_piece) :: list.list(parse_tree.error_spec.format_piece), ((check_hlds.typecheck_error_type_assign).expected_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_error_type_assign).existq_tvars) :: list.list(parse_tree.prog_data.tvar), ((check_hlds.typecheck_error_type_assign).expectation_source) :: maybe.maybe(check_hlds.type_assign.args_type_assign_source)).
+:- type arg_type_stuff
+    --->    arg_type_stuff(((check_hlds.typecheck_error_type_assign).arg_type_stuff_var_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_error_type_assign).arg_type_stuff_source) :: check_hlds.type_assign.args_type_assign_source, ((check_hlds.typecheck_error_type_assign).arg_type_stuff_arg_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_error_type_assign).arg_type_stuff_tvarset) :: parse_tree.prog_data.tvarset, ((check_hlds.typecheck_error_type_assign).arg_type_stuff_existq_tvars) :: list.list(parse_tree.prog_data.tvar)).
+:- type type_stuff
+    --->    type_stuff(((check_hlds.typecheck_error_type_assign).type_stuff_base_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_error_type_assign).type_stuff_tvarset) :: parse_tree.prog_data.tvarset, ((check_hlds.typecheck_error_type_assign).type_stuff_binding) :: parse_tree.prog_data.tsubst, ((check_hlds.typecheck_error_type_assign).type_stuff_existq_tvars) :: list.list(parse_tree.prog_data.tvar)).
+:- pred arg_type_assign_set_msg_to_verbose_component(check_hlds.typecheck_info.typecheck_info, parse_tree.prog_data.prog_varset, check_hlds.type_assign.args_type_assign_set, parse_tree.error_spec.error_msg_component).
+:- mode arg_type_assign_set_msg_to_verbose_component((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func arg_type_stuff_to_actual_expected(parse_tree.error_type_util.maybe_add_quotes, parse_tree.prog_data.inst_varset, check_hlds.typecheck_error_type_assign.arg_type_stuff) = check_hlds.typecheck_error_type_assign.actual_expected_types.
+:- pred get_all_transformed_type_stuffs(((func check_hlds.typecheck_error_type_assign.type_stuff) = T), check_hlds.type_assign.type_assign_set, parse_tree.prog_data.prog_var, list.list(T)).
+:- mode get_all_transformed_type_stuffs((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_all_type_stuffs_remove_dups(check_hlds.type_assign.type_assign_set, parse_tree.prog_data.prog_var, list.list(check_hlds.typecheck_error_type_assign.type_stuff)).
+:- mode get_all_type_stuffs_remove_dups((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_arg_type_stuffs(parse_tree.prog_data.prog_var, check_hlds.type_assign.args_type_assign_set, list.list(check_hlds.typecheck_error_type_assign.arg_type_stuff)).
+:- mode get_arg_type_stuffs((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_msg_to_verbose_component(check_hlds.typecheck_info.typecheck_info, parse_tree.prog_data.prog_varset, check_hlds.type_assign.type_assign_set, parse_tree.error_spec.error_msg_component).
+:- mode type_assign_set_msg_to_verbose_component((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func type_stuff_to_actual_expected(parse_tree.error_type_util.maybe_add_quotes, parse_tree.prog_data.inst_varset, parse_tree.prog_data.mer_type, check_hlds.typecheck_error_type_assign.type_stuff) = check_hlds.typecheck_error_type_assign.actual_expected_types.
+:- func typestuff_to_pieces(parse_tree.error_type_util.maybe_add_quotes, parse_tree.prog_data.inst_varset, check_hlds.typecheck_error_type_assign.type_stuff) = list.list(parse_tree.error_spec.format_piece).
+:- func typestuff_to_type(check_hlds.typecheck_error_type_assign.type_stuff) = parse_tree.prog_data.mer_type.
