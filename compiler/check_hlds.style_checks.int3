@@ -1,0 +1,6 @@
+:- module (check_hlds.style_checks).
+:- interface.
+:- type maybe_warn_non_contiguous_pred_decls
+	where	type_is_abstract_enum(1).
+:- type maybe_warn_pred_decl_vs_defn_order.
+:- type_representation(maybe_warn_non_contiguous_pred_decls, du_repn(enum("do_not_warn_non_contiguous_pred_decls", "warn_non_contiguous_pred_decls", [],  no_c_j_cs))).
