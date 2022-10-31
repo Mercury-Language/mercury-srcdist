@@ -1,0 +1,21 @@
+:- module (libs.handle_options).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (libs.globals).
+:- use_module (parse_tree.error_spec).
+:- pred display_compiler_version(io.text_output_stream, io.io, io.io).
+:- mode display_compiler_version((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred generate_default_globals(libs.globals.globals, io.io, io.io).
+:- mode generate_default_globals((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred handle_given_options(list.list(string), list.list(string), list.list(string), list.list(parse_tree.error_spec.error_spec), libs.globals.globals, io.io, io.io).
+:- mode handle_given_options((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred long_usage(io.text_output_stream, io.io, io.io).
+:- mode long_usage((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred separate_option_args(list.list(string), list.list(string), list.list(string)).
+:- mode separate_option_args((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred usage(io.text_output_stream, io.io, io.io).
+:- mode usage((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred usage_errors(io.text_output_stream, libs.globals.globals, list.list(parse_tree.error_spec.error_spec), io.io, io.io).
+:- mode usage_errors((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

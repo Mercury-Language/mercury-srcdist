@@ -1,0 +1,13 @@
+:- module (check_hlds.polymorphism).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.maybe_error).
+:- pred polymorphism_process_generated_pred(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode polymorphism_process_generated_pred((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred polymorphism_process_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_id), parse_tree.maybe_error.maybe_safe_to_continue, list.list(parse_tree.error_spec.error_spec)).
+:- mode polymorphism_process_module((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
