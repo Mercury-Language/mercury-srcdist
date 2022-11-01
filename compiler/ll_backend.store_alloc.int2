@@ -1,0 +1,5 @@
+:- module (ll_backend.store_alloc).
+:- interface.
+:- type store_map_run_type
+    --->    final_allocation 
+    ;       for_stack_opt .
