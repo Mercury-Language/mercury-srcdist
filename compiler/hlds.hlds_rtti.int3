@@ -1,0 +1,14 @@
+:- module (hlds.hlds_rtti).
+:- interface.
+:- type prog_var_name.
+:- type rtti_proc_label.
+:- type rtti_var_info.
+:- type rtti_varmaps.
+:- type type_info_locn.
+:- type_representation(prog_var_name, is_eqv_to(string)).
+:- type_representation(rtti_proc_label, is_word_aligned_ptr).
+:- type_representation(rtti_varmaps, is_word_aligned_ptr).
+:- type_representation(type_info_type_map, is_eqv_to(map(prog_var, mer_type))).
+:- type_representation(type_info_varmap, is_eqv_to(map(tvar, hlds.hlds_rtti.type_info_locn))).
+:- type_representation(typeclass_info_constraint_map, is_eqv_to(map(prog_var, prog_constraint))).
+:- type_representation(typeclass_info_varmap, is_eqv_to(map(prog_constraint, prog_var))).

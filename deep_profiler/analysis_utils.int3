@@ -1,0 +1,10 @@
+:- module analysis_utils.
+:- interface.
+:- type callee.
+:- type cost_and_callees.
+:- type cost_and_callees(Callee).
+:- type higher_order
+	where	type_is_abstract_enum(1).
+:- type_representation(callee, is_word_aligned_ptr).
+:- type_representation(cost_and_callees, is_eqv_to(analysis_utils.cost_and_callees(analysis_utils.callee))).
+:- type_representation(higher_order, du_repn(enum("first_order_call", "higher_order_call", [],  no_c_j_cs))).
