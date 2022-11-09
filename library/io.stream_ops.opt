@@ -1,0 +1,292 @@
+:- module (io.stream_ops).
+:- use_module array.
+:- use_module benchmarking.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module dir.
+:- use_module exception.
+:- use_module int.
+:- use_module int16.
+:- use_module int32.
+:- use_module int64.
+:- use_module int8.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mercury_term_parser.
+:- use_module ops.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module stream.
+:- use_module string.
+:- use_module table_builtin.
+:- use_module term.
+:- use_module term_conversion.
+:- use_module term_subst.
+:- use_module time.
+:- use_module type_desc.
+:- use_module uint16.
+:- use_module uint32.
+:- use_module uint64.
+:- use_module uint8.
+:- use_module univ.
+:- use_module (io.call_system).
+:- use_module (io.environment).
+:- use_module (io.file).
+:- use_module (io.primitives_read).
+:- use_module (io.primitives_write).
+:- use_module (io.stream_db).
+:- use_module (io.stream_ops).
+:- use_module (io.text_read).
+:- use_module (stream.string_writer).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", (io.stream_ops)).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", (io.primitives_write)).
+:- pragma foreign_import_module("C#", (io.stream_ops)).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", (io.stream_ops)).
+
+:- pragma foreign_proc("C", (io.stream_ops).binary_input_stream_2(Stream :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = mercury_current_binary_input();
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).binary_output_stream_2(Stream :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = mercury_current_binary_output();
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).binary_stream_offset_2(Stream :: (builtin.in), Offset :: (builtin.out), Error :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    // XXX should check if the stream is tellable
+    if (MR_IS_FILE_STREAM(*Stream)) {
+        Offset = MR_ftell(MR_file(*Stream));
+        if (Offset < 0) {
+            Error = errno;
+        } else {
+            Error = 0;
+        }
+    } else {
+        Error = EINVAL;
+    }
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).close_stream(Stream :: (builtin.in), Error :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    if (mercury_close(Stream) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).do_open_binary(FileName :: (builtin.in), Mode :: (builtin.in), StreamId :: (builtin.out), Stream :: (builtin.out), Error :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = mercury_open(FileName, Mode, MR_ALLOC_ID);
+    if (Stream != NULL) {
+        StreamId = mercury_next_stream_id();
+        Error = 0;
+    } else {
+        StreamId = -1;
+        Error = errno;
+    }
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).do_open_text(FileName :: (builtin.in), Mode :: (builtin.in), StreamId :: (builtin.out), Stream :: (builtin.out), Error :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = mercury_open(FileName, Mode, MR_ALLOC_ID);
+    if (Stream != NULL) {
+        StreamId = mercury_next_stream_id();
+        Error = 0;
+    } else {
+        StreamId = -1;
+        Error = errno;
+    }
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).flush_binary_output_2(Stream :: (builtin.in), Error :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    if (MR_FLUSH(*Stream) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).flush_text_output_2(Stream :: (builtin.in), Error :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    if (MR_FLUSH(*Stream) < 0) {
+        Error = errno;
+    } else {
+        Error = 0;
+    }
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).get_input_line_number_2(Stream :: (builtin.in), LineNum :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    LineNum = MR_line_number(*Stream);
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).get_output_line_number_2(Stream :: (builtin.in), LineNum :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    LineNum = MR_line_number(*Stream);
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).input_stream_2(Stream :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = mercury_current_text_input();
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).output_stream_2(Stream :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = mercury_current_text_output();
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).seek_binary_2(Stream :: (builtin.in), Flag :: (builtin.in), Off :: (builtin.in), Error :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    static const int seek_flags[] = { SEEK_SET, SEEK_CUR, SEEK_END };
+
+    // XXX check if the stream is seekable.
+    if (MR_IS_FILE_STREAM(*Stream)) {
+        if (MR_fseek(MR_file(*Stream), Off, seek_flags[Flag]) < 0) {
+            Error = errno;
+        } else {
+            Error = 0;
+        }
+    } else {
+        Error = EINVAL;
+    }
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).set_binary_input_stream_2(NewStream :: (builtin.in), OutStream :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    OutStream = mercury_current_binary_input();
+    MR_set_thread_local_mutable(MercuryFilePtr, NewStream,
+        mercury_current_binary_input_index);
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).set_binary_output_stream_2(NewStream :: (builtin.in), OutStream :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    OutStream = mercury_current_binary_output();
+    MR_set_thread_local_mutable(MercuryFilePtr, NewStream,
+        mercury_current_binary_output_index);
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).set_input_line_number_2(Stream :: (builtin.in), LineNum :: (builtin.in), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    MR_line_number(*Stream) = LineNum;
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).set_input_stream_2(NewStream :: (builtin.in), OutStream :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    OutStream = mercury_current_text_input();
+    MR_set_thread_local_mutable(MercuryFilePtr, NewStream,
+        mercury_current_text_input_index);
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).set_output_line_number_2(Stream :: (builtin.in), LineNum :: (builtin.in), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    MR_line_number(*Stream) = LineNum;
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).set_output_stream_2(NewStream :: (builtin.in), OutStream :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    OutStream = mercury_current_text_output();
+    MR_set_thread_local_mutable(MercuryFilePtr, NewStream,
+        mercury_current_text_output_index);
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).stderr_stream_2 = (Stream :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = &mercury_stderr;
+").
+
+(io.stream_ops).stderr_stream_2(V_4, V_6, V_7) :-
+    V_4 = (io.stream_ops).stderr_stream_2,
+    V_7 = V_6.
+
+:- pragma foreign_proc("C", (io.stream_ops).stdin_binary_stream_2(Stream :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = &mercury_stdin_binary;
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).stdin_stream_2 = (Stream :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = &mercury_stdin;
+").
+
+(io.stream_ops).stdin_stream_2(V_4, V_6, V_7) :-
+    V_4 = (io.stream_ops).stdin_stream_2,
+    V_7 = V_6.
+
+:- pragma foreign_proc("C", (io.stream_ops).stdout_binary_stream_2(Stream :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = &mercury_stdout_binary;
+").
+
+:- pragma foreign_proc("C", (io.stream_ops).stdout_stream_2 = (Stream :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    Stream = &mercury_stdout;
+").
+
+(io.stream_ops).stdout_stream_2(V_4, V_6, V_7) :-
+    V_4 = (io.stream_ops).stdout_stream_2,
+    V_7 = V_6.
+
+:- pragma termination_info((io.stream_ops).binary_input_stream_2((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).binary_output_stream_2((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).binary_stream_offset_2((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).close_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).do_open_binary((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).do_open_text((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).flush_binary_output_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).flush_text_output_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).get_input_line_number_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).get_output_line_number_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).input_stream_2((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).output_stream_2((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).seek_binary_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).set_binary_input_stream_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).set_binary_output_stream_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).set_input_line_number_2((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).set_input_stream_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).set_output_line_number_2((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).set_output_stream_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(((io.stream_ops).stderr_stream_2) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).stderr_stream_2((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).stdin_binary_stream_2((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(((io.stream_ops).stdin_stream_2) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).stdin_stream_2((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).stdout_binary_stream_2((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(((io.stream_ops).stdout_stream_2) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).stdout_stream_2((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_ops).whence_to_int((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+
+:- pragma exceptions(predicate, ((io.stream_ops).binary_input_stream_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).binary_output_stream_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).binary_stream_offset_2), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).close_stream), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).do_open_binary), 7, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).do_open_text), 7, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).flush_binary_output_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).flush_text_output_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).get_input_line_number_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).get_output_line_number_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).input_stream_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).output_stream_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).seek_binary_2), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).set_binary_input_stream_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).set_binary_output_stream_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).set_input_line_number_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).set_input_stream_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).set_output_line_number_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).set_output_stream_2), 4, 0, will_not_throw).
+:- pragma exceptions(function, ((io.stream_ops).stderr_stream_2), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).stderr_stream_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).stdin_binary_stream_2), 3, 0, will_not_throw).
+:- pragma exceptions(function, ((io.stream_ops).stdin_stream_2), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).stdin_stream_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).stdout_binary_stream_2), 3, 0, will_not_throw).
+:- pragma exceptions(function, ((io.stream_ops).stdout_stream_2), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).stdout_stream_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_ops).whence_to_int), 2, 0, will_not_throw).

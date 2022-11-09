@@ -1,0 +1,4 @@
+:- module (ml_backend.ml_unify_gen_deconstruct).
+:- interface.
+:- type take_addr_info
+    --->    take_addr_info(((ml_backend.ml_unify_gen_deconstruct).tai_address_var) :: parse_tree.prog_data.prog_var, ((ml_backend.ml_unify_gen_deconstruct).tai_offset) :: parse_tree.prog_data.cell_offset, ((ml_backend.ml_unify_gen_deconstruct).tai_field_var_type) :: ml_backend.mlds.mlds_type, ((ml_backend.ml_unify_gen_deconstruct).tai_maybe_boxed_field_type) :: ml_backend.mlds.mlds_type).
