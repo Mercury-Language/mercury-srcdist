@@ -1,0 +1,158 @@
+/*
+** Automatically generated from `options.m'
+** by the Mercury compiler,
+** version 22.01.4-beta-2022-11-10
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.options.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__options
+#define MR_HEADER_GUARD_libs__options
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__OPTIONS_DECL_GUARD
+#define LIBS__OPTIONS_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__options__libs__options__type_ctor_info_maybe_option_table_0;
+
+extern const MR_TypeCtorInfo_Struct libs__options__libs__options__type_ctor_info_option_0;
+
+extern const MR_TypeCtorInfo_Struct libs__options__libs__options__type_ctor_info_option_category_0;
+
+extern const MR_TypeCtorInfo_Struct libs__options__libs__options__type_ctor_info_option_table_0;
+
+void MR_CALL 
+libs__options__inconsequential_options_1_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+libs__options__long_option_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__options__option_defaults_2_p_0(
+  MR_Word * param_1,
+  MR_Word * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+libs__options__option_table_add_mercury_library_directory_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__options__option_table_add_search_library_files_directory_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__options__options_help_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__options__set_all_options_to_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+libs__options__short_option_2_p_0(
+  MR_Char param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+libs__options__special_handler_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_Word MR_CALL 
+libs__options__non_style_warning_options_0_f_0(void);
+
+MR_String MR_CALL 
+libs__options__quote_arg_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+libs__options__style_warning_options_0_f_0(void);
+
+void MR_CALL 
+libs__options____Compare____maybe_option_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__options____Compare____option_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__options____Compare____option_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__options____Unify____maybe_option_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__options____Unify____option_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__options____Unify____option_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__options__init(void);
+void mercury__libs__options__init_type_tables(void);
+void mercury__libs__options__init_debugger(void);
+const char *mercury__libs__options__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.options
+
+// :- end_interface libs.options.
