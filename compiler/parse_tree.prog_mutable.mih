@@ -1,0 +1,105 @@
+/*
+** Automatically generated from `prog_mutable.m'
+** by the Mercury compiler,
+** version rotd-2022-11-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_mutable.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_mutable
+#define MR_HEADER_GUARD_parse_tree__prog_mutable
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_MUTABLE_DECL_GUARD
+#define PARSE_TREE__PROG_MUTABLE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_mutable__parse_tree__prog_mutable__type_ctor_info_module_params_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_mutable__parse_tree__prog_mutable__type_ctor_info_mutable_target_params_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_mutable__parse_tree__prog_mutable__type_ctor_info_need_lock_unlock_preds_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_mutable__parse_tree__prog_mutable__type_ctor_info_need_pre_init_pred_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_mutable__parse_tree__prog_mutable__type_ctor_info_type_foreign_name_func_0;
+
+void MR_CALL 
+parse_tree__prog_mutable__implement_mutable_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Word param_11,
+  MR_Word * param_12);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__declare_mutable_aux_preds_for_int0_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__prog_mutable____Compare____module_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__prog_mutable____Compare____type_foreign_name_func_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_mutable____Unify____module_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_mutable____Unify____type_foreign_name_func_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__prog_mutable__init(void);
+void mercury__parse_tree__prog_mutable__init_type_tables(void);
+void mercury__parse_tree__prog_mutable__init_debugger(void);
+const char *mercury__parse_tree__prog_mutable__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_mutable
+
+// :- end_interface parse_tree.prog_mutable.

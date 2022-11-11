@@ -1,0 +1,25 @@
+#! /bin/sh
+#---------------------------------------------------------------------------#
+# vim: ts=4 sw=4 et ft=sh
+#---------------------------------------------------------------------------#
+# @configure_input@
+#---------------------------------------------------------------------------#
+# Copyright (C) 1995, 2005 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#---------------------------------------------------------------------------#
+#
+# MPROF - Mercury Profiler
+#
+# Use `mprof -h' for help.
+#
+# Environment variables: MERCURY_PROFILER.
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+MPROF=${MERCURY_PROFILER="@bindir@/mercury_profile"}
+
+case $# in
+    0) exec $MPROF ;;
+    *) exec $MPROF "$@" ;;
+esac

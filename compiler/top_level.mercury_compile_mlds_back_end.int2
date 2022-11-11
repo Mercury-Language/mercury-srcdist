@@ -1,0 +1,2 @@
+:- module (top_level.mercury_compile_mlds_back_end).
+:- interface.

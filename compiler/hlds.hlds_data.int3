@@ -1,0 +1,50 @@
+:- module (hlds.hlds_data).
+:- interface.
+:- type cons_tag.
+:- type constructor_arg_repn.
+:- type constructor_repn.
+:- type ctor_name_to_repn_map.
+:- type du_type_kind.
+:- type du_type_repn.
+:- type foreign_type_body.
+:- type foreign_type_lang_body(T).
+:- type hlds_type_body.
+:- type hlds_type_defn.
+:- type int_tag.
+:- type local_args_tag_info.
+:- type local_sectag.
+:- type lsectag_mask
+	where	type_is_abstract_enum(1).
+:- type may_use_atomic_alloc
+	where	type_is_abstract_enum(1).
+:- type maybe_cheaper_tag_test.
+:- type no_tag_type.
+:- type no_tag_type_table.
+:- type remote_args_tag_info.
+:- type remote_sectag.
+:- type rsectag_size.
+:- type sectag_bits.
+:- type tagged_cons_id.
+:- type type_body_du.
+:- type type_defn_prev_errors
+	where	type_is_abstract_enum(1).
+:- type type_table.
+:- type_representation(constructor_arg_repn, is_word_aligned_ptr).
+:- type_representation(constructor_repn, is_word_aligned_ptr).
+:- type_representation(ctor_name_to_repn_map, is_eqv_to(map(string, one_or_more(hlds.hlds_data.constructor_repn)))).
+:- type_representation(du_type_repn, is_word_aligned_ptr).
+:- type_representation(foreign_type_body, is_word_aligned_ptr).
+:- type_representation(foreign_type_lang_body(V_1), is_eqv_to(maybe(type_details_foreign(V_1)))).
+:- type_representation(hlds_type_defn, is_word_aligned_ptr).
+:- type_representation(local_sectag, is_word_aligned_ptr).
+:- type_representation(lsectag_mask, du_repn(enum("lsectag_always_rest_of_word", "lsectag_must_be_masked", [],  no_c_j_cs))).
+:- type_representation(may_use_atomic_alloc, du_repn(enum("may_use_atomic_alloc", "may_not_use_atomic_alloc", [],  no_c_j_cs))).
+:- type_representation(no_tag_type, is_word_aligned_ptr).
+:- type_representation(no_tag_type_table, is_eqv_to(map(type_ctor, hlds.hlds_data.no_tag_type))).
+:- type_representation(remote_sectag, is_word_aligned_ptr).
+:- type_representation(sectag_bits, is_word_aligned_ptr).
+:- type_representation(tagged_cons_id, is_word_aligned_ptr).
+:- type_representation(type_body_du, is_word_aligned_ptr).
+:- type_representation(type_ctor_table, is_eqv_to(map(type_ctor, hlds.hlds_data.hlds_type_defn))).
+:- type_representation(type_defn_prev_errors, du_repn(enum("type_defn_no_prev_errors", "type_defn_prev_errors", [],  no_c_j_cs))).
+:- type_representation(type_table, is_eqv_to(map(string, type_ctor_table))).

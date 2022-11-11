@@ -1,0 +1,20 @@
+:- module (libs.lp).
+:- interface.
+:- use_module list.
+:- use_module pair.
+:- use_module term.
+:- type coeff == pair.pair(term.var, float).
+:- type direction
+    --->    max 
+    ;       min .
+:- type equation
+    --->    eqn(list.list(libs.lp.coeff), libs.lp.operator, float).
+:- type equations == list.list(libs.lp.equation).
+:- type objective == list.list(libs.lp.coeff).
+:- type operator
+    --->    op_le 
+    ;       op_eq 
+    ;       op_ge .
+:- type result
+    --->    unsatisfiable 
+    ;       satisfiable(float, map.map(term.var, float)).
