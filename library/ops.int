@@ -1,0 +1,82 @@
+:- module ops.
+:- interface.
+:- use_module list.
+:- type arg_prio_gt_or_ge
+    --->    arg_gt 
+    ;       arg_ge .
+:- type class
+    --->    infix(ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge)
+    ;       prefix(ops.arg_prio_gt_or_ge)
+    ;       binary_prefix(ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge)
+    ;       postfix(ops.arg_prio_gt_or_ge).
+:- type mercury_op_table.
+:- type op_info
+    --->    op_info(ops.class, ops.priority).
+:- type priority
+    --->    prio(uint).
+:- type table == ops.mercury_op_table.
+:- typeclass op_table(Table) where [
+	pred lookup_infix_op(Table, string, ops.priority, ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge),
+	mode lookup_infix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet,
+	pred lookup_prefix_op(Table, string, ops.priority, ops.arg_prio_gt_or_ge),
+	mode lookup_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet,
+	pred lookup_binary_prefix_op(Table, string, ops.priority, ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge),
+	mode lookup_binary_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet,
+	pred lookup_postfix_op(Table, string, ops.priority, ops.arg_prio_gt_or_ge),
+	mode lookup_postfix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet,
+	pred is_op(Table, string),
+	mode is_op((builtin.in), (builtin.in)) is semidet,
+	pred lookup_op_infos(Table, string, ops.op_info, list.list(ops.op_info)),
+	mode lookup_op_infos((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet,
+	pred lookup_operator_term(Table, ops.priority, ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge),
+	mode lookup_operator_term((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet,
+	func universal_priority(Table) = ops.priority,
+	func loosest_op_priority(Table) = ops.priority,
+	func tightest_op_priority(Table) = ops.priority,
+	func comma_priority(Table) = ops.priority,
+	func arg_priority(Table) = ops.priority
+].
+:- instance (ops.op_table(ops.mercury_op_table)).
+:- func decrement_priority(ops.priority) = ops.priority.
+:- func increment_priority(ops.priority) = ops.priority.
+:- func init_mercury_op_table = ops.mercury_op_table.
+:- mode init_mercury_op_table = (builtin.uo) is det.
+:- func mercury_op_table_arg_priority = ops.priority.
+:- func mercury_op_table_comma_priority = ops.priority.
+:- pred mercury_op_table_lookup_operator_term(ops.priority, ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge).
+:- mode mercury_op_table_lookup_operator_term((builtin.out), (builtin.out), (builtin.out)) is det.
+:- func mercury_op_table_loosest_op_priority = ops.priority.
+:- pred mercury_op_table_search_binary_prefix_op(string, ops.priority, ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge).
+:- mode mercury_op_table_search_binary_prefix_op((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred mercury_op_table_search_infix_op(string, ops.priority, ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge).
+:- mode mercury_op_table_search_infix_op((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred mercury_op_table_search_op(string).
+:- mode mercury_op_table_search_op((builtin.in)) is semidet.
+:- pred mercury_op_table_search_op_infos(string, ops.op_info, list.list(ops.op_info)).
+:- mode mercury_op_table_search_op_infos((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred mercury_op_table_search_postfix_op(string, ops.priority, ops.arg_prio_gt_or_ge).
+:- mode mercury_op_table_search_postfix_op((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred mercury_op_table_search_prefix_op(string, ops.priority, ops.arg_prio_gt_or_ge).
+:- mode mercury_op_table_search_prefix_op((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- func mercury_op_table_tightest_op_priority = ops.priority.
+:- func mercury_op_table_universal_priority = ops.priority.
+:- func min_priority_for_arg(ops.priority, ops.arg_prio_gt_or_ge) = ops.priority.
+:- pred op_infos_binary_prefix_op(ops.op_info, list.list(ops.op_info), ops.priority, ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge).
+:- mode op_infos_binary_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred op_infos_infix_op(ops.op_info, list.list(ops.op_info), ops.priority, ops.arg_prio_gt_or_ge, ops.arg_prio_gt_or_ge).
+:- mode op_infos_infix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred op_infos_postfix_op(ops.op_info, list.list(ops.op_info), ops.priority, ops.arg_prio_gt_or_ge).
+:- mode op_infos_postfix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred op_infos_prefix_op(ops.op_info, list.list(ops.op_info), ops.priority, ops.arg_prio_gt_or_ge).
+:- mode op_infos_prefix_op((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred priority_ge(ops.priority, ops.priority).
+:- mode priority_ge((builtin.in), (builtin.in)) is semidet.
+:- pred priority_gt(ops.priority, ops.priority).
+:- mode priority_gt((builtin.in), (builtin.in)) is semidet.
+:- pred priority_le(ops.priority, ops.priority).
+:- mode priority_le((builtin.in), (builtin.in)) is semidet.
+:- pred priority_lt(ops.priority, ops.priority).
+:- mode priority_lt((builtin.in), (builtin.in)) is semidet.
+:- implementation.
+:- type mercury_op_table
+    --->    mercury_op_table .

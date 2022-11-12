@@ -1,0 +1,7 @@
+:- module ((ll_backend.llds_out).llds_out_instr).
+:- interface.
+:- type after_layout_label
+    --->    not_after_layout_label 
+    ;       after_layout_label .
+:- type label_output_info
+    --->    label_output_info((((ll_backend.llds_out).llds_out_instr).loi_caller_label) :: ll_backend.llds.label, (((ll_backend.llds_out).llds_out_instr).loi_cont_labels) :: set_tree234.set_tree234(ll_backend.llds.label), (((ll_backend.llds_out).llds_out_instr).loi_while_labels) :: set_tree234.set_tree234(ll_backend.llds.label), (((ll_backend.llds_out).llds_out_instr).loi_undef_while_labels) :: set_tree234.set_tree234(ll_backend.llds.label)).
