@@ -1,0 +1,2 @@
+:- module (libs.handle_options).
+:- interface.

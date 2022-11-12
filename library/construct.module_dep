@@ -1,0 +1,14 @@
+module(2, "construct.m",
+	construct,
+	{},
+	{builtin, list, maybe, private_builtin, type_desc, univ},
+	{int, require, rtti_implementation},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - construct, "C#" - construct, "Java" - construct},
+	no_foreign_export,
+	no_main,
+	{}
+).
