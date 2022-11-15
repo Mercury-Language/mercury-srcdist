@@ -1,0 +1,25 @@
+:- module (random.system_rng).
+:- interface.
+:- use_module maybe.
+:- type system_rng.
+:- instance (random.urandom(random.system_rng.system_rng, io.io)).
+:- pred close_system_rng(random.system_rng.system_rng, io.io, io.io).
+:- mode close_system_rng((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred generate_uint16(random.system_rng.system_rng, uint16, io.io, io.io).
+:- mode generate_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred generate_uint32(random.system_rng.system_rng, uint32, io.io, io.io).
+:- mode generate_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred generate_uint64(random.system_rng.system_rng, uint64, io.io, io.io).
+:- mode generate_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred generate_uint8(random.system_rng.system_rng, uint8, io.io, io.io).
+:- mode generate_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred have_system_rng is semidet.
+:- pred open_system_rng(maybe.maybe_error(random.system_rng.system_rng), io.io, io.io).
+:- mode open_system_rng((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- pragma foreign_import_module("C", (random.system_rng)).
+:- pragma foreign_import_module("C#", (random.system_rng)).
+:- pragma foreign_import_module("Java", (random.system_rng)).
+:- pragma foreign_type(c, system_rng, "ML_SystemRandomHandle", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, system_rng, "random__system_rng.ML_SystemRandomHandle").
+:- pragma foreign_type(csharp, system_rng, "random__system_rng.ML_SystemRandomHandle").
