@@ -1,0 +1,7 @@
+:- module (parse_tree.prog_mutable).
+:- interface.
+:- use_module (libs.globals).
+:- use_module (parse_tree.prog_data).
+:- type module_params
+    --->    module_params(((parse_tree.prog_mutable).mp_globals) :: libs.globals.globals, ((parse_tree.prog_mutable).mp_module_name) :: mdbcomp.sym_name.sym_name, ((parse_tree.prog_mutable).mp_type_name_func) :: parse_tree.prog_mutable.type_foreign_name_func).
+:- type type_foreign_name_func == (func(libs.globals.foreign_language, parse_tree.prog_data.mer_type) = string).

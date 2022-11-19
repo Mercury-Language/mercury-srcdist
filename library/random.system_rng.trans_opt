@@ -1,0 +1,35 @@
+:- module (random.system_rng).
+
+:- pragma termination_info((random.system_rng).'ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint16_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).'ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint32_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).'ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint64_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).'ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint8_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).close_system_rng((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).do_close_system_rng((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).do_generate_uint16((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).do_generate_uint32((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).do_generate_uint64((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).do_generate_uint8((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).do_open_system_rng((builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).generate_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).generate_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).generate_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).generate_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(((random.system_rng).have_system_rng), finite(0, []), cannot_loop).
+:- pragma termination_info((random.system_rng).open_system_rng((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((random.system_rng).throw_system_rng_error((builtin.in), (builtin.in)), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, ((random.system_rng).close_system_rng), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).do_close_system_rng), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, ((random.system_rng).do_generate_uint16), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, ((random.system_rng).do_generate_uint32), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, ((random.system_rng).do_generate_uint64), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, ((random.system_rng).do_generate_uint8), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, ((random.system_rng).do_open_system_rng), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, ((random.system_rng).generate_uint16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).generate_uint32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).generate_uint64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).generate_uint8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).have_system_rng), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((random.system_rng).open_system_rng), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((random.system_rng).throw_system_rng_error), 2, 0, may_throw(user_exception)).

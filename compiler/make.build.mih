@@ -1,0 +1,228 @@
+/*
+** Automatically generated from `make.build.m'
+** by the Mercury compiler,
+** version rotd-2022-11-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.build.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__build
+#define MR_HEADER_GUARD_make__build
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__BUILD_DECL_GUARD
+#define MAKE__BUILD_DECL_GUARD
+#include "make.mih"
+
+typedef struct MC_JobCtl MC_JobCtl;
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__build__make__build__type_ctor_info_foldl2_pred_with_status_3;
+
+extern const MR_TypeCtorInfo_Struct make__build__make__build__type_ctor_info_foldl3_pred_with_status_4;
+
+extern const MR_TypeCtorInfo_Struct make__build__make__build__type_ctor_info_job_ctl_0;
+
+extern const MR_TypeCtorInfo_Struct make__build__make__build__type_ctor_info_may_build_0;
+
+extern const MR_TypeCtorInfo_Struct make__build__make__build__type_ctor_info_maybe_invoked_by_mmc_make_0;
+
+extern const MR_TypeCtorInfo_Struct make__build__make__build__type_ctor_info_stdout_lock_0;
+
+void MR_CALL 
+make__build__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_101_112_97_114_101_95_116_111_95_114_101_100_105_114_101_99_116_95_111_117_116_112_117_116_95_95_91_49_93_95_48_6_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__build__foldl2_maybe_stop_at_error_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+make__build__foldl2_maybe_stop_at_error_maybe_parallel_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+make__build__foldl3_maybe_stop_at_error_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+make__build__prepare_to_redirect_output_6_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__build__setup_for_build_with_module_options_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+make__build__unredirect_output_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+make__build__with_locked_stdout_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+make__build____Compare____foldl2_pred_with_status_3_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+make__build____Compare____foldl3_pred_with_status_4_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word param_7);
+
+void MR_CALL 
+make__build____Compare____job_ctl_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+make__build____Compare____may_build_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__build____Compare____maybe_invoked_by_mmc_make_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__build____Compare____stdout_lock_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+make__build____Unify____foldl2_pred_with_status_3_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_bool MR_CALL 
+make__build____Unify____foldl3_pred_with_status_4_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+MR_bool MR_CALL 
+make__build____Unify____job_ctl_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+make__build____Unify____may_build_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__build____Unify____maybe_invoked_by_mmc_make_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__build____Unify____stdout_lock_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void mercury__make__build__init(void);
+void mercury__make__build__init_type_tables(void);
+void mercury__make__build__init_debugger(void);
+const char *mercury__make__build__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.build
+
+// :- end_interface make.build.

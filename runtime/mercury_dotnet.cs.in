@@ -1,0 +1,1253 @@
+// vim: ts=4 sw=4 expandtab ft=cs
+//
+// Copyright (C) 2003-2004, 2010-2011 The University of Melbourne.
+// Copyright (C) 2014-2018, 2021 The Mercury team.
+// This file is distributed under the terms specified in COPYING.LIB.
+//
+
+// mercury_dotnet.cs - This file defines the system runtime types and
+// methods that are used when generating code for the .NET backend.
+
+// The following "using" declaration works around a bug in GNU Portable.NET's
+// C# compiler.
+using System.Runtime.InteropServices;
+
+namespace mercury.runtime {
+
+/*---------------------------------------------------------------------------*/
+
+public delegate void MethodPtr1_r0  <A1> (A1 a1);
+public delegate R1   MethodPtr1_r1  <A1, R1> (A1 a1);
+public delegate R1   MethodPtr1_r2  <A1, R1, R2> (A1 a1, out R2 r2);
+public delegate R1   MethodPtr1_r3  <A1, R1, R2, R3> (A1 a1, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr1_r4  <A1, R1, R2, R3, R4> (A1 a1, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr1_r5  <A1, R1, R2, R3, R4, R5> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr1_r6  <A1, R1, R2, R3, R4, R5, R6> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr1_r7  <A1, R1, R2, R3, R4, R5, R6, R7> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr1_r8  <A1, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr1_r9  <A1, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr1_r10 <A1, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr1_r11 <A1, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr1_r12 <A1, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr1_r13 <A1, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr1_r14 <A1, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr1_r15 <A1, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr1_r16 <A1, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr2_r0  <A1, A2> (A1 a1, A2 a2);
+public delegate R1   MethodPtr2_r1  <A1, A2, R1> (A1 a1, A2 a2);
+public delegate R1   MethodPtr2_r2  <A1, A2, R1, R2> (A1 a1, A2 a2, out R2 r2);
+public delegate R1   MethodPtr2_r3  <A1, A2, R1, R2, R3> (A1 a1, A2 a2, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr2_r4  <A1, A2, R1, R2, R3, R4> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr2_r5  <A1, A2, R1, R2, R3, R4, R5> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr2_r6  <A1, A2, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr2_r7  <A1, A2, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr2_r8  <A1, A2, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr2_r9  <A1, A2, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr2_r10 <A1, A2, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr2_r11 <A1, A2, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr2_r12 <A1, A2, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr2_r13 <A1, A2, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr2_r14 <A1, A2, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr2_r15 <A1, A2, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr2_r16 <A1, A2, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr3_r0  <A1, A2, A3> (A1 a1, A2 a2, A3 a3);
+public delegate R1   MethodPtr3_r1  <A1, A2, A3, R1> (A1 a1, A2 a2, A3 a3);
+public delegate R1   MethodPtr3_r2  <A1, A2, A3, R1, R2> (A1 a1, A2 a2, A3 a3, out R2 r2);
+public delegate R1   MethodPtr3_r3  <A1, A2, A3, R1, R2, R3> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr3_r4  <A1, A2, A3, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr3_r5  <A1, A2, A3, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr3_r6  <A1, A2, A3, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr3_r7  <A1, A2, A3, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr3_r8  <A1, A2, A3, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr3_r9  <A1, A2, A3, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr3_r10 <A1, A2, A3, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr3_r11 <A1, A2, A3, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr3_r12 <A1, A2, A3, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr3_r13 <A1, A2, A3, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr3_r14 <A1, A2, A3, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr3_r15 <A1, A2, A3, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr3_r16 <A1, A2, A3, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr4_r0  <A1, A2, A3, A4> (A1 a1, A2 a2, A3 a3, A4 a4);
+public delegate R1   MethodPtr4_r1  <A1, A2, A3, A4, R1> (A1 a1, A2 a2, A3 a3, A4 a4);
+public delegate R1   MethodPtr4_r2  <A1, A2, A3, A4, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2);
+public delegate R1   MethodPtr4_r3  <A1, A2, A3, A4, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr4_r4  <A1, A2, A3, A4, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr4_r5  <A1, A2, A3, A4, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr4_r6  <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr4_r7  <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr4_r8  <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr4_r9  <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr4_r10 <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr4_r11 <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr4_r12 <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr4_r13 <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr4_r14 <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr4_r15 <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr4_r16 <A1, A2, A3, A4, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr5_r0  <A1, A2, A3, A4, A5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5);
+public delegate R1   MethodPtr5_r1  <A1, A2, A3, A4, A5, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5);
+public delegate R1   MethodPtr5_r2  <A1, A2, A3, A4, A5, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2);
+public delegate R1   MethodPtr5_r3  <A1, A2, A3, A4, A5, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr5_r4  <A1, A2, A3, A4, A5, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr5_r5  <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr5_r6  <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr5_r7  <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr5_r8  <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr5_r9  <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr5_r10 <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr5_r11 <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr5_r12 <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr5_r13 <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr5_r14 <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr5_r15 <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr5_r16 <A1, A2, A3, A4, A5, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr6_r0  <A1, A2, A3, A4, A5, A6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6);
+public delegate R1   MethodPtr6_r1  <A1, A2, A3, A4, A5, A6, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6);
+public delegate R1   MethodPtr6_r2  <A1, A2, A3, A4, A5, A6, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2);
+public delegate R1   MethodPtr6_r3  <A1, A2, A3, A4, A5, A6, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr6_r4  <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr6_r5  <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr6_r6  <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr6_r7  <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr6_r8  <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr6_r9  <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr6_r10 <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr6_r11 <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr6_r12 <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr6_r13 <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr6_r14 <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr6_r15 <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr6_r16 <A1, A2, A3, A4, A5, A6, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr7_r0  <A1, A2, A3, A4, A5, A6, A7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7);
+public delegate R1   MethodPtr7_r1  <A1, A2, A3, A4, A5, A6, A7, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7);
+public delegate R1   MethodPtr7_r2  <A1, A2, A3, A4, A5, A6, A7, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2);
+public delegate R1   MethodPtr7_r3  <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr7_r4  <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr7_r5  <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr7_r6  <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr7_r7  <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr7_r8  <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr7_r9  <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr7_r10 <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr7_r11 <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr7_r12 <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr7_r13 <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr7_r14 <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr7_r15 <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr7_r16 <A1, A2, A3, A4, A5, A6, A7, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr8_r0  <A1, A2, A3, A4, A5, A6, A7, A8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8);
+public delegate R1   MethodPtr8_r1  <A1, A2, A3, A4, A5, A6, A7, A8, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8);
+public delegate R1   MethodPtr8_r2  <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2);
+public delegate R1   MethodPtr8_r3  <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr8_r4  <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr8_r5  <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr8_r6  <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr8_r7  <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr8_r8  <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr8_r9  <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr8_r10 <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr8_r11 <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr8_r12 <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr8_r13 <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr8_r14 <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr8_r15 <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr8_r16 <A1, A2, A3, A4, A5, A6, A7, A8, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr9_r0  <A1, A2, A3, A4, A5, A6, A7, A8, A9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9);
+public delegate R1   MethodPtr9_r1  <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9);
+public delegate R1   MethodPtr9_r2  <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2);
+public delegate R1   MethodPtr9_r3  <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr9_r4  <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr9_r5  <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr9_r6  <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr9_r7  <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr9_r8  <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr9_r9  <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr9_r10 <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr9_r11 <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr9_r12 <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr9_r13 <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr9_r14 <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr9_r15 <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr9_r16 <A1, A2, A3, A4, A5, A6, A7, A8, A9, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr10_r0  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10);
+public delegate R1   MethodPtr10_r1  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10);
+public delegate R1   MethodPtr10_r2  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2);
+public delegate R1   MethodPtr10_r3  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr10_r4  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr10_r5  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr10_r6  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr10_r7  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr10_r8  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr10_r9  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr10_r10 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr10_r11 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr10_r12 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr10_r13 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr10_r14 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr10_r15 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr10_r16 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr11_r0  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11);
+public delegate R1   MethodPtr11_r1  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11);
+public delegate R1   MethodPtr11_r2  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2);
+public delegate R1   MethodPtr11_r3  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr11_r4  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr11_r5  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr11_r6  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr11_r7  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr11_r8  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr11_r9  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr11_r10 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr11_r11 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr11_r12 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr11_r13 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr11_r14 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr11_r15 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr11_r16 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr12_r0  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12);
+public delegate R1   MethodPtr12_r1  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12);
+public delegate R1   MethodPtr12_r2  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2);
+public delegate R1   MethodPtr12_r3  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr12_r4  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr12_r5  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr12_r6  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr12_r7  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr12_r8  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr12_r9  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr12_r10 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr12_r11 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr12_r12 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr12_r13 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr12_r14 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr12_r15 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr12_r16 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr13_r0  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13);
+public delegate R1   MethodPtr13_r1  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13);
+public delegate R1   MethodPtr13_r2  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2);
+public delegate R1   MethodPtr13_r3  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr13_r4  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr13_r5  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr13_r6  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr13_r7  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr13_r8  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr13_r9  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr13_r10 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr13_r11 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr13_r12 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr13_r13 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr13_r14 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr13_r15 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr13_r16 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr14_r0  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14);
+public delegate R1   MethodPtr14_r1  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14);
+public delegate R1   MethodPtr14_r2  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2);
+public delegate R1   MethodPtr14_r3  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr14_r4  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr14_r5  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr14_r6  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr14_r7  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr14_r8  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr14_r9  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr14_r10 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr14_r11 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr14_r12 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr14_r13 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr14_r14 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr14_r15 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr14_r16 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr15_r0  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15);
+public delegate R1   MethodPtr15_r1  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15);
+public delegate R1   MethodPtr15_r2  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2);
+public delegate R1   MethodPtr15_r3  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr15_r4  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr15_r5  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr15_r6  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr15_r7  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr15_r8  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr15_r9  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr15_r10 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr15_r11 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr15_r12 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr15_r13 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr15_r14 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr15_r15 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr15_r16 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+public delegate void MethodPtr16_r0  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16);
+public delegate R1   MethodPtr16_r1  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16);
+public delegate R1   MethodPtr16_r2  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2);
+public delegate R1   MethodPtr16_r3  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3);
+public delegate R1   MethodPtr16_r4  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4);
+public delegate R1   MethodPtr16_r5  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5);
+public delegate R1   MethodPtr16_r6  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6);
+public delegate R1   MethodPtr16_r7  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6, R7> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7);
+public delegate R1   MethodPtr16_r8  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6, R7, R8> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8);
+public delegate R1   MethodPtr16_r9  <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6, R7, R8, R9> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9);
+public delegate R1   MethodPtr16_r10 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10);
+public delegate R1   MethodPtr16_r11 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11);
+public delegate R1   MethodPtr16_r12 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12);
+public delegate R1   MethodPtr16_r13 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13);
+public delegate R1   MethodPtr16_r14 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14);
+public delegate R1   MethodPtr16_r15 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15);
+public delegate R1   MethodPtr16_r16 <A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16> (A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15, A16 a16, out R2 r2, out R3 r3, out R4 r4, out R5 r5, out R6 r6, out R7 r7, out R8 r8, out R9 r9, out R10 r10, out R11 r11, out R12 r12, out R13 r13, out R14 r14, out R15 r15, out R16 r16);
+
+/*---------------------------------------------------------------------------*/
+
+public enum TypeCtorRep {
+    MR_TYPECTOR_REP_ENUM                    = 0,
+    MR_TYPECTOR_REP_ENUM_USEREQ             = 1,
+    MR_TYPECTOR_REP_DU                      = 2,
+    MR_TYPECTOR_REP_DU_USEREQ               = 3,
+    MR_TYPECTOR_REP_NOTAG                   = 4,
+    MR_TYPECTOR_REP_NOTAG_USEREQ            = 5,
+    MR_TYPECTOR_REP_EQUIV                   = 6,
+    MR_TYPECTOR_REP_FUNC                    = 7,
+    MR_TYPECTOR_REP_INT                     = 8,
+    MR_TYPECTOR_REP_UINT                    = 9,
+    MR_TYPECTOR_REP_CHAR                    = 10,
+    MR_TYPECTOR_REP_FLOAT                   = 11,
+    MR_TYPECTOR_REP_STRING                  = 12,
+    MR_TYPECTOR_REP_PRED                    = 13,
+    MR_TYPECTOR_REP_SUBGOAL                 = 14,
+    MR_TYPECTOR_REP_VOID                    = 15,
+    MR_TYPECTOR_REP_C_POINTER               = 16,
+    MR_TYPECTOR_REP_TYPEINFO                = 17,
+    MR_TYPECTOR_REP_TYPECLASSINFO           = 18,
+    MR_TYPECTOR_REP_ARRAY                   = 19,
+    MR_TYPECTOR_REP_SUCCIP                  = 20,
+    MR_TYPECTOR_REP_HP                      = 21,
+    MR_TYPECTOR_REP_CURFR                   = 22,
+    MR_TYPECTOR_REP_MAXFR                   = 23,
+    MR_TYPECTOR_REP_REDOFR                  = 24,
+    MR_TYPECTOR_REP_REDOIP                  = 25,
+    MR_TYPECTOR_REP_TRAIL_PTR               = 26,
+    MR_TYPECTOR_REP_TICKET                  = 27,
+    MR_TYPECTOR_REP_NOTAG_GROUND            = 28,
+    MR_TYPECTOR_REP_NOTAG_GROUND_USEREQ     = 29,
+    MR_TYPECTOR_REP_EQUIV_GROUND            = 30,
+    MR_TYPECTOR_REP_TUPLE                   = 31,
+    MR_TYPECTOR_REP_RESERVED_ADDR           = 32,
+    MR_TYPECTOR_REP_RESERVED_ADDR_USEREQ    = 33,
+    MR_TYPECTOR_REP_TYPECTORINFO            = 34,
+    MR_TYPECTOR_REP_BASETYPECLASSINFO       = 35,
+    MR_TYPECTOR_REP_TYPEDESC                = 36,
+    MR_TYPECTOR_REP_TYPECTORDESC            = 37,
+    MR_TYPECTOR_REP_FOREIGN                 = 38,
+    MR_TYPECTOR_REP_REFERENCE               = 39,
+    MR_TYPECTOR_REP_STABLE_C_POINTER        = 40,
+    MR_TYPECTOR_REP_STABLE_FOREIGN          = 41,
+    MR_TYPECTOR_REP_PSEUDOTYPEDESC          = 42,
+    MR_TYPECTOR_REP_DUMMY                   = 43,
+    MR_TYPECTOR_REP_BITMAP                  = 44,
+    MR_TYPECTOR_REP_FOREIGN_ENUM            = 45,
+    MR_TYPECTOR_REP_FOREIGN_ENUM_USEREQ     = 46,
+    MR_TYPECTOR_REP_INT8                    = 47,
+    MR_TYPECTOR_REP_UINT8                   = 48,
+    MR_TYPECTOR_REP_INT16                   = 49,
+    MR_TYPECTOR_REP_UINT16                  = 50,
+    MR_TYPECTOR_REP_INT32                   = 51,
+    MR_TYPECTOR_REP_UINT32                  = 52,
+    MR_TYPECTOR_REP_INT64                   = 53,
+    MR_TYPECTOR_REP_UINT64                  = 54,
+    MR_TYPECTOR_REP_UNKNOWN                 = 55,
+    MR_TYPECTOR_REP_MAX                     = 56
+}
+
+public class PseudoTypeInfo {
+    public readonly int variable_number;
+
+    public static PseudoTypeInfo K1 = new PseudoTypeInfo(1);
+    public static PseudoTypeInfo K2 = new PseudoTypeInfo(2);
+    public static PseudoTypeInfo K3 = new PseudoTypeInfo(3);
+    public static PseudoTypeInfo K4 = new PseudoTypeInfo(4);
+    public static PseudoTypeInfo K5 = new PseudoTypeInfo(5);
+
+    public PseudoTypeInfo() {
+        this.variable_number = -1;
+    }
+    public PseudoTypeInfo(int variable_number) {
+        this.variable_number = variable_number;
+    }
+}
+
+public class TypeCtorInfo_Struct : PseudoTypeInfo {
+    public int                  arity;
+    public byte                 type_ctor_version;
+    public sbyte                type_ctor_num_ptags;
+    public TypeCtorRep          type_ctor_rep;
+    public object               unify_pred;
+    public object               compare_pred;
+    public string               type_ctor_module_name;
+    public string               type_ctor_name;
+    public TypeFunctors         type_functors;
+    public TypeLayout           type_layout;
+    public int                  type_ctor_num_functors;
+    public ushort               type_ctor_flags;
+    public int[]                type_functor_number_map;
+    public TypeCtorInfo_Struct  type_ctor_base; // null unless subtype
+
+    private const ushort MR_TYPE_CTOR_FLAG_LAYOUT_INDEXABLE = 0x8;
+
+    // This attribute is also to prevent cyclic copying in deep_copy.
+    [System.NonSerialized]
+    private TypeInfo_Struct cached_type_info;
+
+    public TypeCtorInfo_Struct() {
+    }
+
+    public TypeCtorInfo_Struct(TypeCtorInfo_Struct other, int arity) {
+        this.init(
+            arity,
+            other.type_ctor_version,
+            other.type_ctor_num_ptags,
+            other.type_ctor_rep,
+            other.unify_pred,
+            other.compare_pred,
+            other.type_ctor_module_name,
+            other.type_ctor_name,
+            other.type_functors,
+            other.type_layout,
+            other.type_ctor_num_functors,
+            other.type_ctor_flags,
+            other.type_functor_number_map,
+            other.type_ctor_base
+        );
+    }
+
+    public void init(
+        int type_arity,
+        byte version,
+        sbyte num_ptags,
+        TypeCtorRep rep,
+        object unify_proc,
+        object compare_proc,
+        string module,
+        string name,
+        object name_ordered_functor_descs,  // TypeFunctors
+        object ordinal_ordered_functor_descs, // TypeLayout
+        int num_functors,
+        ushort flags,
+        int[] functor_number_map,
+        TypeCtorInfo_Struct type_ctor_base)
+    {
+        this.arity = type_arity;
+        this.type_ctor_version = version;
+        this.type_ctor_num_ptags = num_ptags;
+        this.type_ctor_rep = rep;
+        this.unify_pred = unify_proc;
+        this.compare_pred = compare_proc;
+        this.type_ctor_module_name = module;
+        this.type_ctor_name = name;
+        this.type_functors = (TypeFunctors) name_ordered_functor_descs;
+        this.type_layout = (TypeLayout) ordinal_ordered_functor_descs;
+        this.type_ctor_num_functors = num_functors;
+        this.type_ctor_flags = flags;
+        this.type_functor_number_map = functor_number_map;
+        this.type_ctor_base = type_ctor_base;
+    }
+
+    public override bool Equals(object other) {
+        TypeCtorInfo_Struct tci = other as TypeCtorInfo_Struct;
+        if ((System.Object) tci == null) {
+            return false;
+        }
+        return this.Equals(tci);
+    }
+
+    public bool Equals(TypeCtorInfo_Struct tci) {
+        if (tci == null) {
+            return false;
+        }
+        if (this == tci) {
+            return true;
+        }
+        return type_ctor_module_name.Equals(tci.type_ctor_module_name)
+            && type_ctor_name.Equals(tci.type_ctor_name)
+            && arity == tci.arity;
+    }
+
+    public override int GetHashCode() {
+        return type_ctor_module_name.GetHashCode()
+            ^ type_ctor_name.GetHashCode()
+            ^ arity;
+    }
+
+    public override string ToString() {
+        return type_ctor_module_name + "." + type_ctor_name + "/" + arity;
+    }
+
+    public TypeInfo_Struct ToTypeInfo() {
+        if (cached_type_info == null) {
+            cached_type_info = new TypeInfo_Struct(this);
+        }
+        return cached_type_info;
+    }
+
+    public int index_or_search_enum_functor_ordinal(int enum_value) {
+        if (flags_is_layout_indexable()) {
+            return enum_value; // same as ordinal
+        }
+
+        EnumFunctorDesc[] layout_enum = type_layout.layout_enum();
+        for (int i = 0; i < layout_enum.Length; i++) {
+            if (layout_enum[i].enum_functor_value == enum_value) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Return the ptag layout with the given ptag, or null if not found.
+    public DuPtagLayout index_or_search_ptag_layout(byte ptag) {
+        DuPtagLayout[] layout_du = type_layout.layout_du();
+
+        if (flags_is_layout_indexable()) {
+            return layout_du[ptag];
+        }
+
+        foreach (DuPtagLayout ptag_layout in layout_du) {
+            if (ptag_layout.du_ptag == ptag) {
+                return ptag_layout;
+            }
+        }
+        return null;
+    }
+
+    private bool flags_is_layout_indexable() {
+        return (type_ctor_flags & MR_TYPE_CTOR_FLAG_LAYOUT_INDEXABLE) != 0;
+    }
+}
+
+public class TypeInfo_Struct : PseudoTypeInfo {
+    public TypeCtorInfo_Struct  type_ctor;
+    public PseudoTypeInfo[]     args;
+
+    public TypeInfo_Struct() {
+    }
+
+    public TypeInfo_Struct(TypeCtorInfo_Struct tc) {
+        type_ctor = tc;
+    }
+
+    public TypeInfo_Struct(TypeInfo_Struct ti, int arity, params object[] args)
+    {
+        init(ti.type_ctor, arity, args);
+    }
+
+    public TypeInfo_Struct(TypeInfo_Struct ti, params object[] args) {
+        init(ti.type_ctor, args.Length, args);
+    }
+
+    public static TypeInfo_Struct maybe_new(TypeInfo_Struct ti) {
+        return ti;
+    }
+
+    public static TypeInfo_Struct maybe_new(TypeCtorInfo_Struct tc) {
+        return tc.ToTypeInfo();
+    }
+
+    public static TypeInfo_Struct maybe_new(PseudoTypeInfo obj) {
+        TypeCtorInfo_Struct tc = obj as TypeCtorInfo_Struct;
+        if (tc != null) {
+            return tc.ToTypeInfo();
+        }
+        return (TypeInfo_Struct) obj;
+    }
+
+    public void init(TypeCtorInfo_Struct tc, PseudoTypeInfo[] args) {
+        this.type_ctor = tc;
+        this.args = args;
+    }
+
+    // XXX "as" should have type PseudoTypeInfo[],
+    //     but because init_array/1 does not store the type.
+    public void init(TypeCtorInfo_Struct tc, object[] os) {
+        init(tc, os.Length, os);
+    }
+
+    // XXX "as" should have type PseudoTypeInfo[],
+    //     but because init_array/1 does not store the type.
+    public void init(TypeCtorInfo_Struct tc, int arity, object[] os) {
+        PseudoTypeInfo[] ptis = new PseudoTypeInfo[arity];
+        for (int i = 0; i < arity; i++) {
+            ptis[i] = (PseudoTypeInfo) os[i];
+        }
+        init(tc, ptis);
+    }
+
+    public TypeInfo_Struct copy() {
+        TypeInfo_Struct ti = new TypeInfo_Struct(type_ctor);
+        if (args != null) {
+            ti.args = (PseudoTypeInfo[]) args.Clone();
+        }
+        return ti;
+    }
+
+    public override bool Equals(object other) {
+        TypeInfo_Struct ti = other as TypeInfo_Struct;
+        if ((System.Object) ti == null) {
+            return false;
+        }
+        return this.Equals(ti);
+    }
+
+    public bool Equals(TypeInfo_Struct ti) {
+        if (ti == null) {
+            return false;
+        }
+
+        if (this == ti) {
+            return true;
+        }
+
+        TypeInfo_Struct self = this.collapse_equivalences();
+        ti = ti.collapse_equivalences();
+
+        if (self == ti) {
+            return true;
+        }
+
+        if (!self.type_ctor.Equals(ti.type_ctor)) {
+            return false;
+        }
+
+        int len1 = 0;
+        int len2 = 0;
+        if (self.args != null) {
+            len1 = self.args.Length;
+        }
+        if (ti.args != null) {
+            len2 = ti.args.Length;
+        }
+        if (len1 != len2) {
+            return false;
+        }
+
+        for (int i = 0; i < len1; i++) {
+            if (!self.args[i].Equals(ti.args[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private TypeInfo_Struct collapse_equivalences() {
+        TypeInfo_Struct ti = this;
+
+        // Look past equivalences.
+        while (ti.type_ctor.type_ctor_rep ==
+                TypeCtorRep.MR_TYPECTOR_REP_EQUIV_GROUND
+            || ti.type_ctor.type_ctor_rep ==
+                TypeCtorRep.MR_TYPECTOR_REP_EQUIV)
+        {
+            ti = TypeInfo_Struct.maybe_new(
+                ti.type_ctor.type_layout.layout_equiv());
+        }
+
+        return ti;
+    }
+
+    public override int GetHashCode() {
+        int hash = type_ctor.GetHashCode();
+        if (args != null) {
+            foreach (PseudoTypeInfo a in args) {
+                hash ^= a.GetHashCode();
+            }
+        }
+        return hash;
+    }
+
+    /* Useful for debugging.
+    public override string ToString() {
+        string s = type_ctor.ToString() + "(";
+        if (args != null) {
+            foreach (PseudoTypeInfo a in args) {
+                s += a.ToString() + ",";
+            }
+        }
+        s += ")";
+        return s;
+    }
+    */
+}
+
+public class TypeLayout {
+    private readonly object layout_init;
+    public TypeLayout(object init) {
+        layout_init = init;
+    }
+    public DuPtagLayout[] layout_du() {
+        return (DuPtagLayout[]) layout_init;
+    }
+    public EnumFunctorDesc[] layout_enum() {
+        return (EnumFunctorDesc[]) layout_init;
+    }
+    public NotagFunctorDesc[] layout_notag() {
+        return (NotagFunctorDesc[]) layout_init;
+    }
+    public PseudoTypeInfo layout_equiv() {
+        return (PseudoTypeInfo) layout_init;
+    }
+}
+
+public class TypeFunctors {
+    private readonly object functors_init;
+    public TypeFunctors(object init) {
+        functors_init = init;
+    }
+    public DuFunctorDesc[] functors_du() {
+        return (DuFunctorDesc[]) functors_init;
+    }
+    public EnumFunctorDesc[] functors_enum() {
+        return (EnumFunctorDesc[]) functors_init;
+    }
+    public ForeignEnumFunctorDesc[] functors_foreign_enum() {
+        return (ForeignEnumFunctorDesc[]) functors_init;
+    }
+    public NotagFunctorDesc functors_notag() {
+        return (NotagFunctorDesc) functors_init;
+    }
+}
+
+public class DuFunctorDesc {
+    public string           du_functor_name;
+    public short            du_functor_orig_arity;
+    public ushort           du_functor_arg_type_contains_var;
+    public Sectag_Locn      du_functor_sectag_locn;
+    public byte             du_functor_primary;
+    public int              du_functor_secondary;
+    public int              du_functor_ordinal;
+    public PseudoTypeInfo[] du_functor_arg_types;
+    public string[]         du_functor_arg_names;
+    public DuArgLocn[]      du_functor_arg_locns;
+    public DuExistInfo      du_functor_exist_info;
+    public FunctorSubtypeInfo   du_functor_subtype_info;
+    public byte             du_functor_num_sectag_bits; // unused in C# grades
+
+    public DuFunctorDesc() {
+    }
+
+    public void init(
+        string functor_name,
+        short orig_arity,
+        ushort arg_type_contains_var,
+        Sectag_Locn sectag_locn,
+        byte primary,
+        int secondary,
+        int ordinal,
+        // XXX why do we need to use object here?
+        object arg_types,
+        object arg_names,
+        object arg_locns,
+        object exist_info,
+        FunctorSubtypeInfo functor_subtype_info,
+        byte num_sectag_bits)
+    {
+        du_functor_name = functor_name;
+        du_functor_orig_arity = orig_arity;
+        du_functor_ordinal = ordinal;
+        du_functor_arg_type_contains_var = arg_type_contains_var;
+        du_functor_sectag_locn = sectag_locn;
+        du_functor_primary = primary;
+        du_functor_secondary = secondary;
+        du_functor_ordinal = ordinal;
+        du_functor_arg_types = (PseudoTypeInfo []) arg_types;
+        du_functor_arg_names = (string[]) arg_names;
+        du_functor_arg_locns = (DuArgLocn[]) arg_locns;
+        du_functor_exist_info = (DuExistInfo) exist_info;
+        du_functor_subtype_info = functor_subtype_info;
+        du_functor_num_sectag_bits = num_sectag_bits;
+    }
+}
+
+public enum Sectag_Locn {
+    MR_SECTAG_NONE               = 0,
+    MR_SECTAG_NONE_DIRECT_ARG    = 1,
+    MR_SECTAG_LOCAL              = 2,
+    MR_SECTAG_LOCAL_REST_OF_WORD = 2,       // synonym
+    MR_SECTAG_REMOTE             = 3,
+    MR_SECTAG_REMOTE_FULL_WORD   = 3        // synonym
+    // These are never used.
+    // MR_SECTAG_VARIABLE        = 4
+    // These are never used in C# grades.
+    // MR_SECTAG_LOCAL_BITS      = 5
+    // MR_SECTAG_REMOTE_BITS     = 6
+}
+
+public enum FunctorSubtypeInfo {
+    MR_FUNCTOR_SUBTYPE_NONE     = 0,
+    MR_FUNCTOR_SUBTYPE_EXISTS   = 1
+}
+
+public class DuPtagLayout {
+    public uint         sectag_sharers;
+    public Sectag_Locn  sectag_locn;
+    public /* final */ DuFunctorDesc[] sectag_alternatives;
+    public sbyte        sectag_numbits;     // unused in C# grades
+    public byte         du_ptag;
+    public byte         du_ptag_flags;
+
+    private const byte MR_DU_PTAG_FLAG_SECTAG_ALTERNATIVES_INDEXABLE = 0x1;
+
+    public DuPtagLayout(
+        uint sectag_sharers,
+        Sectag_Locn sectag_locn,
+        DuFunctorDesc[] sectag_alts,
+        sbyte sectag_numbits,
+        byte du_ptag,
+        byte du_ptag_flags)
+    {
+        this.sectag_sharers = sectag_sharers;
+        this.sectag_locn = sectag_locn;
+        this.sectag_alternatives = sectag_alts;
+        this.sectag_numbits = sectag_numbits;
+        this.du_ptag = du_ptag;
+        this.du_ptag_flags = du_ptag_flags;
+    }
+
+    public DuPtagLayout(
+        uint sectag_sharers,
+        int sectag_locn,
+        DuFunctorDesc[] sectag_alts,
+        sbyte sectag_numbits,
+        byte du_ptag,
+        byte du_ptag_flags)
+        : this(sectag_sharers,
+            (Sectag_Locn) sectag_locn,
+            sectag_alts,
+            sectag_numbits,
+            du_ptag,
+            du_ptag_flags)
+    {
+    }
+
+    public DuFunctorDesc index_or_search_sectag_functor(int sectag) {
+        if (flags_is_sectag_alternatives_indexable()) {
+            return sectag_alternatives[sectag];
+        }
+
+        foreach (DuFunctorDesc desc in sectag_alternatives) {
+            if (desc.du_functor_secondary == sectag) {
+                return desc;
+            }
+        }
+        return null;
+    }
+
+    private bool flags_is_sectag_alternatives_indexable() {
+        return (du_ptag_flags & MR_DU_PTAG_FLAG_SECTAG_ALTERNATIVES_INDEXABLE)
+                != 0;
+    }
+}
+
+public class DuArgLocn {
+    public short arg_offset;
+    public sbyte arg_shift;
+    public sbyte arg_bits;
+
+    public DuArgLocn(short arg_offset, sbyte arg_shift, sbyte arg_bits) {
+        this.arg_offset = arg_offset;
+        this.arg_shift = arg_shift;
+        this.arg_bits = arg_bits;
+    }
+}
+
+public class DuExistInfo {
+    public short exist_typeinfos_plain;
+    public short exist_typeinfos_in_tci;
+    public short exist_tcis;
+    public /* final */ DuExistLocn[] exist_typeinfo_locns;
+    public /* final */ TypeClassConstraint[] exist_constraints;
+
+    public DuExistInfo() {
+    }
+
+    public void init(
+        short typeinfos_plain,
+        short typeinfos_in_tci,
+        short tcis,
+        DuExistLocn[] typeinfo_locns,
+        TypeClassConstraint[] constraints)
+    {
+        exist_typeinfos_plain = typeinfos_plain;
+        exist_typeinfos_in_tci = typeinfos_in_tci;
+        exist_tcis = tcis;
+        exist_typeinfo_locns = typeinfo_locns;
+        exist_constraints = constraints;
+    }
+}
+
+public class DuExistLocn {
+    public short exist_arg_num;
+    public short exist_offset_in_tci;
+
+    public DuExistLocn(short arg_num, short offset_in_tci) {
+        exist_arg_num = arg_num;
+        exist_offset_in_tci = offset_in_tci;
+    }
+}
+
+public class TypeClassConstraint {
+    public TypeClassDeclStruct  tc_constr_type_class;
+    public PseudoTypeInfo[]     tc_constr_arg_ptis;
+
+    public TypeClassConstraint() {
+    }
+
+    public void init(
+        TypeClassDeclStruct type_class,
+        // XXX object[] should be PseudoTypeInfo[],
+        //     but mlds_to_csharp.m generates Object[] since
+        //     init_array/1 doesn't give type info
+        object[] ptis)
+    {
+        tc_constr_type_class = type_class;
+        tc_constr_arg_ptis = new PseudoTypeInfo[ptis.Length];
+        for (int i = 0; i < ptis.Length; i++) {
+            tc_constr_arg_ptis[i] = (PseudoTypeInfo) ptis[i];
+        }
+    }
+}
+
+public class TypeClassDeclStruct {
+    public TypeClassId          tc_decl_id;
+    public int                  tc_decl_version_number;
+    public int                  tc_decl_num_supers; // redundant
+    public TypeClassConstraint  tc_decl_supers;
+
+    public TypeClassDeclStruct() {
+    }
+
+    public void init(
+        TypeClassId id,
+        int version_number,
+        int num_supers,
+        TypeClassConstraint supers)
+    {
+        tc_decl_id = id;
+        tc_decl_version_number = version_number;
+        tc_decl_num_supers = num_supers;
+        tc_decl_supers = supers;
+    }
+}
+
+public class TypeClassId {
+    public string               tc_id_module_name;
+    public string               tc_id_name;
+    public int                  tc_id_arity;
+    public int                  tc_id_num_type_vars; // XXX redundant
+    public int                  tc_id_num_methods;   // XXX redundant
+    public string[]             tc_id_var_names;
+    public TypeClassMethod[]    tc_id_methods;
+
+    public TypeClassId() {
+    }
+
+    public void init(
+        string module_name,
+        string name,
+        int arity,
+        int num_type_vars,
+        int num_methods,
+        string[] var_names,
+        TypeClassMethod[] methods)
+    {
+        tc_id_module_name = module_name;
+        tc_id_name = name;
+        tc_id_arity = arity;
+        tc_id_num_type_vars = num_type_vars;
+        tc_id_num_methods = num_methods;
+        tc_id_var_names = var_names;
+        tc_id_methods = methods;
+    }
+}
+
+public class TypeClassMethod {
+    public string               tc_method_name;
+    public int                  tc_method_arity;
+    public int /* PredFunc */   tc_method_pred_func;
+
+    public TypeClassMethod(string name, int arity, int pred_func) {
+        tc_method_name = name;
+        tc_method_arity = arity;
+        tc_method_pred_func = pred_func;
+    }
+}
+
+public class EnumFunctorDesc {
+    public string   enum_functor_name;
+    public int      enum_functor_value;
+
+    public EnumFunctorDesc() {
+    }
+
+    public void init(string name, int val) {
+        enum_functor_name = name;
+        enum_functor_value = val;
+    }
+}
+
+public class NotagFunctorDesc {
+    public string           no_tag_functor_name;
+    public PseudoTypeInfo   no_tag_functor_arg_type;
+    public string           no_tag_functor_arg_name;
+
+    public NotagFunctorDesc(
+        string functor_name,
+        PseudoTypeInfo functor_arg_type,
+        object functor_arg_name)
+    {
+        no_tag_functor_name = functor_name;
+        no_tag_functor_arg_type = functor_arg_type;
+        // XXX cast might fail
+        no_tag_functor_arg_name = (string) functor_arg_name;
+    }
+}
+
+public class ForeignEnumFunctorDesc {
+    public string   foreign_enum_functor_name;
+    public int      foreign_enum_functor_ordinal;
+    public int      foreign_enum_functor_value;
+
+    public ForeignEnumFunctorDesc() {
+    }
+
+    public void init(string name, int ordinal, int val) {
+        foreign_enum_functor_name = name;
+        foreign_enum_functor_ordinal = ordinal;
+        foreign_enum_functor_value = val;
+    }
+}
+
+/*---------------------------------------------------------------------------*/
+
+public class SystemException : System.Exception
+{
+    public SystemException(string Msg) : base(Msg)
+    {
+        // The parent constructor sets the error message that will be printed.
+    }
+}
+
+public class Errors
+{
+    public static void SORRY(string s)
+    {
+        string msg;
+        msg = System.String.Concat("Sorry, unimplemented: ", s);
+        throw new mercury.runtime.SystemException(msg);
+    }
+
+    public static void fatal_error(string s)
+    {
+        string msg;
+        msg = System.String.Concat("Fatal error: ", s);
+        throw new mercury.runtime.SystemException(msg);
+    }
+}
+
+public class Exception : System.Exception
+{
+    private object _exception; // univ.Univ_0
+
+    public Exception(object exception) {
+        this._exception = exception;
+    }
+
+    public object exception {
+        get { return _exception; }
+    }
+};
+
+public class Commit : System.Exception
+{
+}
+
+public class UnreachableDefault : System.Exception {
+}
+
+/*---------------------------------------------------------------------------*/
+
+public class ThreadLocalMutables
+{
+    // Child threads do not inherit [ThreadStatic] values, so we cannot use
+    // the attribute to implement `thread_local' mutables directly. Instead,
+    // all thread-local mutables are stored in a single array, which is copied
+    // from the parent thread when a new thread is spawned. The array indices
+    // are allocated by module initialisation predicates.
+    [System.ThreadStatic]
+    private static object[] array = null;
+
+    public static int new_index()
+    {
+        if (array == null) {
+            array = new object[1];
+            return 0;
+        } else {
+            int i = array.Length;
+            System.Array.Resize(ref array, i + 1);
+            return i;
+        }
+    }
+
+    public static void set(int i, object val)
+    {
+        array[i] = val;
+    }
+
+    public static object get(int i)
+    {
+        return array[i];
+    }
+
+    public static object[] clone()
+    {
+        if (array == null) {
+            return null;
+        } else {
+            return (object[]) array.Clone();
+        }
+    }
+
+    public static void set_array(object[] arr)
+    {
+        array = arr;
+    }
+}
+
+/*---------------------------------------------------------------------------*/
+
+public class Constants
+{
+    public static readonly int MR_PREDICATE     = 0;
+    public static readonly int MR_FUNCTION      = 1;
+
+    public static readonly string MR_VERSION    = "@VERSION@";
+    public static readonly string MR_FULLARCH   = "@FULLARCH@";
+}
+
+/*---------------------------------------------------------------------------*/
+
+#if !MR_HIGHLEVEL_DATA
+public class Environment
+{
+}
+
+public class LowLevelData
+{
+    // Make a Mercury enumeration with the given integer value.
+    public static object[] make_enum(int enum_value)
+    {
+        object[] e;
+        e = make_MR_Word(enum_value, 0);
+        return e;
+    }
+
+    // Make a MR_Word with the given tag and arity.
+    public static object[] make_MR_Word(int tag, int arity)
+    {
+        object[] o = new object[arity + 1];
+        o[0] = tag;
+        return o;
+    }
+
+    // Set a field of an MR_Word with a given value.
+    // The first field is at index 1.
+    public static void set_MR_Word_field(object[] w, int index, object value)
+    {
+        w[index] = value;
+    }
+
+    // Get the value from an MR_Word.
+    // The first field is at index 1.
+    public static object get_MR_Word_field(object[] w, int index)
+    {
+        return w[index];
+    }
+
+    public static bool list_is_cons(object[] w)
+    {
+        return (System.Convert.ToInt32(w[0]) != 0);
+    }
+
+    public static object list_get_head(object[] w)
+    {
+        return w[1];
+    }
+
+    public static object[] list_get_tail(object[] w)
+    {
+        return ((object[]) w[2]);
+    }
+}
+#endif
+
+class PInvoke {
+    [System.Runtime.InteropServices.DllImport("msvcrt.dll")]
+    public static extern int _putenv(string env);
+}
+
+// A bitmap class for bitmap.m and the rewind code in version_array.m.
+[System.Serializable]
+public class MercuryBitmap {
+    public int num_bits;
+    public byte[] elements;
+    public static int BITS_PER_BYTE = 8;
+
+    public MercuryBitmap(int numBits) {
+        num_bits = numBits;
+        elements = new byte[numBits / 8 + (((numBits % 8) != 0) ? 1: 0)];
+    }
+
+    public override bool Equals(object that) {
+        MercuryBitmap other = that as MercuryBitmap;
+        if (other == null) {
+            return false;
+        }
+        if (num_bits != other.num_bits) {
+            return false;
+        }
+        for (int i = 0; i < elements.Length; i++) {
+            if (elements[i] != other.elements[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public override int GetHashCode() {
+        return num_bits ^ elements.GetHashCode();
+    }
+
+    public bool GetBit(int bit)
+    {
+        return (elements[ByteIndexForBit(bit)]
+            & (1 << BitIndexWithinByte(bit))) != 0;
+    }
+
+    public void SetBit(int bit)
+    {
+        byte b;
+
+        b = elements[ByteIndexForBit(bit)];
+        b |= (byte) (1 << BitIndexWithinByte(bit));
+        elements[ByteIndexForBit(bit)] = b;
+    }
+
+    public void ClearBit(int bit)
+    {
+        byte b;
+
+        b = elements[ByteIndexForBit(bit)];
+        b &= (byte) ~(1 << BitIndexWithinByte(bit));
+        elements[ByteIndexForBit(bit)] = b;
+    }
+
+    public int ByteIndexForBit(int bit) {
+        return bit / BITS_PER_BYTE;
+    }
+
+    public int BitIndexWithinByte(int bit) {
+        return bit % BITS_PER_BYTE;
+    }
+}
+
+}

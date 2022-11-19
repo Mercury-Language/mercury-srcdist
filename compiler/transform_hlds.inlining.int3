@@ -1,0 +1,5 @@
+:- module (transform_hlds.inlining).
+:- interface.
+:- type may_inline_purity_promised_pred
+	where	type_is_abstract_enum(1).
+:- type_representation(may_inline_purity_promised_pred, du_repn(enum("may_not_inline_purity_promised_pred", "may_inline_purity_promised_pred", [],  no_c_j_cs))).
