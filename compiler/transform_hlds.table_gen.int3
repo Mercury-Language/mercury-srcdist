@@ -1,0 +1,4 @@
+:- module (transform_hlds.table_gen).
+:- interface.
+:- type_representation(generator_map, is_eqv_to(map(pred_id, pred_id))).
+:- type_representation(var_mode_pos_method, is_eqv_to(var_mode_pos_method(arg_tabling_method))).
