@@ -1,0 +1,23 @@
+:- module (parse_tree.parse_tree_out_clause).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_item).
+:- pred mercury_output_goal(io.text_output_stream, parse_tree.prog_data.prog_varset, int, parse_tree.prog_item.goal, io.io, io.io).
+:- mode mercury_output_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_item_clause(parse_tree.parse_tree_out_info.merc_out_info, io.text_output_stream, parse_tree.prog_item.item_clause_info, io.io, io.io).
+:- mode mercury_output_item_clause((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_trace_compiletime(parse_tree.prog_data.trace_compiletime, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_trace_compiletime((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_trace_expr(io.text_output_stream, pred(T, io.text_output_stream, io.io, io.io), parse_tree.prog_data.trace_expr(T), io.io, io.io).
+:- mode mercury_output_trace_expr((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_trace_runtime(parse_tree.prog_data.trace_runtime, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_trace_runtime((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_instance_method_clause(mdbcomp.sym_name.sym_name, parse_tree.prog_item.item_clause_info, io.text_output_stream, io.io, io.io).
+:- mode output_instance_method_clause((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_goal_warnings(io.text_output_stream, parse_tree.prog_data.goal_warning, list.list(parse_tree.prog_data.goal_warning), io.io, io.io).
+:- mode write_goal_warnings((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

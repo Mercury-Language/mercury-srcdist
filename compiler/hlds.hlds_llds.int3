@@ -1,0 +1,32 @@
+:- module (hlds.hlds_llds).
+:- interface.
+:- type abs_follow_vars.
+:- type abs_follow_vars_map.
+:- type abs_locn.
+:- type abs_store_map.
+:- type llds_code_gen_details.
+:- type need_across_call.
+:- type need_for_loop_control.
+:- type need_in_par_conj.
+:- type need_in_resume.
+:- type reg_type
+	where	type_is_abstract_enum(1).
+:- type resume_locs
+	where	type_is_abstract_enum(2).
+:- type resume_point.
+:- type stack_slot.
+:- type stack_slot_width
+	where	type_is_abstract_enum(1).
+:- type stack_slots.
+:- type_representation(abs_follow_vars, is_word_aligned_ptr).
+:- type_representation(abs_follow_vars_map, is_eqv_to(map(prog_var, hlds.hlds_llds.abs_locn))).
+:- type_representation(abs_store_map, is_eqv_to(map(prog_var, hlds.hlds_llds.abs_locn))).
+:- type_representation(llds_code_gen_details, is_word_aligned_ptr).
+:- type_representation(need_across_call, is_word_aligned_ptr).
+:- type_representation(need_for_loop_control, du_repn(notag("need_for_loop_control", list(set_of_progvar),  no_c_j_cs))).
+:- type_representation(need_in_par_conj, du_repn(notag("need_in_par_conj", set_of_progvar,  no_c_j_cs))).
+:- type_representation(need_in_resume, is_word_aligned_ptr).
+:- type_representation(reg_type, du_repn(enum("reg_r", "reg_f", [],  no_c_j_cs))).
+:- type_representation(resume_locs, du_repn(enum("resume_locs_orig_only", "resume_locs_stack_only", ["resume_locs_orig_then_stack", "resume_locs_stack_then_orig"],  no_c_j_cs))).
+:- type_representation(stack_slot_width, du_repn(enum("single_width", "double_width", [],  no_c_j_cs))).
+:- type_representation(stack_slots, is_eqv_to(map(prog_var, hlds.hlds_llds.stack_slot))).

@@ -1,0 +1,124 @@
+:- module (io.stream_db).
+:- use_module array.
+:- use_module benchmarking.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module dir.
+:- use_module exception.
+:- use_module int.
+:- use_module int16.
+:- use_module int32.
+:- use_module int64.
+:- use_module int8.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mercury_term_parser.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module stream.
+:- use_module string.
+:- use_module table_builtin.
+:- use_module term.
+:- use_module term_conversion.
+:- use_module term_subst.
+:- use_module time.
+:- use_module type_desc.
+:- use_module uint16.
+:- use_module uint32.
+:- use_module uint64.
+:- use_module uint8.
+:- use_module univ.
+:- use_module (io.call_system).
+:- use_module (io.environment).
+:- use_module (io.file).
+:- use_module (io.primitives_read).
+:- use_module (io.primitives_write).
+:- use_module (io.stream_db).
+:- use_module (io.stream_ops).
+:- use_module (io.text_read).
+:- use_module (stream.string_writer).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", (io.stream_db)).
+:- pragma foreign_import_module("C", (io.stream_ops)).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", (io.primitives_write)).
+:- pragma foreign_import_module("C#", (io.stream_db)).
+:- pragma foreign_import_module("C#", (io.stream_ops)).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", (io.stream_db)).
+:- pragma foreign_import_module("Java", (io.stream_ops)).
+
+:- func (io.stream_db).get_maybe_stream_info(tree234.tree234(int, io.stream_db.stream_info), io.stream) = io.stream_db.maybe_stream_info.
+:- mode get_maybe_stream_info((builtin.in), (builtin.in)) = (builtin.out) is det.
+
+(io.stream_db).binary_input_stream_info(V_4, io.binary_input_stream(V_5)) = V_3 :-
+    V_3 = (io.stream_db).get_maybe_stream_info(V_4, V_5).
+
+(io.stream_db).binary_output_stream_info(V_4, io.binary_output_stream(V_5)) = V_3 :-
+    V_3 = (io.stream_db).get_maybe_stream_info(V_4, V_5).
+
+:- pragma foreign_proc("C", (io.stream_db).get_stream_db(StreamDb :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, may_modify_trail, doesnt_affect_liveness], "
+    StreamDb = ML_io_stream_db;
+").
+
+(io.stream_db).input_stream_info(V_4, io.input_stream(V_5)) = V_3 :-
+    V_3 = (io.stream_db).get_maybe_stream_info(V_4, V_5).
+
+(io.stream_db).output_stream_info(V_4, io.output_stream(V_5)) = V_3 :-
+    V_3 = (io.stream_db).get_maybe_stream_info(V_4, V_5).
+
+:- pragma foreign_proc("C", (io.stream_db).set_stream_db(StreamDb :: (builtin.in), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, tabled_for_io, promise_pure, no_sharing, may_modify_trail, doesnt_affect_liveness], "
+    ML_io_stream_db = StreamDb;
+").
+
+:- pragma termination_info((io.stream_db).binary_input_stream_info((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((io.stream_db).binary_output_stream_info((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((io.stream_db).get_io_stream_info((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((io.stream_db).get_maybe_stream_info((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((io.stream_db).get_stream_db((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).get_stream_db_with_locking((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).input_stream_info((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((io.stream_db).insert_stream_info((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.stream_db).maybe_delete_stream_info((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.stream_db).output_stream_info((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((io.stream_db).set_stream_db((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.stream_db).stream_info((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.stream_db).stream_name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(function, ((io.stream_db).binary_input_stream_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((io.stream_db).binary_output_stream_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((io.stream_db).get_io_stream_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((io.stream_db).get_maybe_stream_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.stream_db).get_stream_db), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_db).get_stream_db_with_locking), 1, 0, will_not_throw).
+:- pragma exceptions(function, ((io.stream_db).input_stream_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.stream_db).insert_stream_info), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.stream_db).maybe_delete_stream_info), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((io.stream_db).output_stream_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.stream_db).set_stream_db), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.stream_db).stream_info), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.stream_db).stream_name), 4, 0, may_throw(user_exception)).

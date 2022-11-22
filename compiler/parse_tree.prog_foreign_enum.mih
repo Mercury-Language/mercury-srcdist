@@ -1,0 +1,78 @@
+/*
+** Automatically generated from `prog_foreign_enum.m'
+** by the Mercury compiler,
+** version rotd-2022-11-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_foreign_enum.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_foreign_enum
+#define MR_HEADER_GUARD_parse_tree__prog_foreign_enum
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_FOREIGN_ENUM_DECL_GUARD
+#define PARSE_TREE__PROG_FOREIGN_ENUM_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_foreign_enum__parse_tree__prog_foreign_enum__type_ctor_info_for_fe_or_fee_0;
+
+void MR_CALL 
+parse_tree__prog_foreign_enum__build_ctor_name_to_foreign_name_map_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+parse_tree__prog_foreign_enum____Compare____for_fe_or_fee_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__prog_foreign_enum____Unify____for_fe_or_fee_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__prog_foreign_enum__init(void);
+void mercury__parse_tree__prog_foreign_enum__init_type_tables(void);
+void mercury__parse_tree__prog_foreign_enum__init_debugger(void);
+const char *mercury__parse_tree__prog_foreign_enum__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_foreign_enum
+
+// :- end_interface parse_tree.prog_foreign_enum.
