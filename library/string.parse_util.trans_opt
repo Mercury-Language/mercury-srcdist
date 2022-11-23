@@ -1,0 +1,15 @@
+:- module (string.parse_util).
+
+:- pragma termination_info((string.parse_util).gather_flag_chars((builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(0, [yes, no, yes, no]), cannot_loop).
+:- pragma termination_info((string.parse_util).gather_non_percent_chars((builtin.in), (builtin.out), (builtin.out)), finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info((string.parse_util).get_nonzero_number_prefix((builtin.in), (builtin.out), (builtin.out)), finite(-2, [yes, no, no]), cannot_loop).
+:- pragma termination_info((string.parse_util).get_number_prefix((builtin.in), (builtin.out), (builtin.out)), finite(0, [yes, no, no]), cannot_loop).
+:- pragma termination_info((string.parse_util).get_number_prefix_loop((builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(0, [yes, no, yes, no]), cannot_loop).
+:- pragma termination_info((string.parse_util).string_format_error_to_msg((builtin.in)) = (builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, ((string.parse_util).gather_flag_chars), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.parse_util).gather_non_percent_chars), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.parse_util).get_nonzero_number_prefix), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.parse_util).get_number_prefix), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.parse_util).get_number_prefix_loop), 4, 0, will_not_throw).
+:- pragma exceptions(function, ((string.parse_util).string_format_error_to_msg), 1, 0, may_throw(user_exception)).

@@ -1,0 +1,14 @@
+module(2, "term_int.m",
+	term_int,
+	{},
+	{builtin, private_builtin, term},
+	{integer, list},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
