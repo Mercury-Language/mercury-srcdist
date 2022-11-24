@@ -1,0 +1,82 @@
+/*
+** Automatically generated from `simplify_goal_ite.m'
+** by the Mercury compiler,
+** version rotd-2022-11-24
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.simplify.simplify_goal_ite.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__simplify__simplify_goal_ite
+#define MR_HEADER_GUARD_check_hlds__simplify__simplify_goal_ite
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__SIMPLIFY__SIMPLIFY_GOAL_ITE_DECL_GUARD
+#define CHECK_HLDS__SIMPLIFY__SIMPLIFY_GOAL_ITE_DECL_GUARD
+#include "check_hlds.mih"
+#include "check_hlds.simplify.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__simplify__simplify_goal_ite__check_hlds__simplify__simplify_goal_ite__type_ctor_info_cond_can_switch_0;
+
+void MR_CALL 
+check_hlds__simplify__simplify_goal_ite__simplify_goal_ite_10_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+check_hlds__simplify__simplify_goal_ite__simplify_goal_neg_10_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void mercury__check_hlds__simplify__simplify_goal_ite__init(void);
+void mercury__check_hlds__simplify__simplify_goal_ite__init_type_tables(void);
+void mercury__check_hlds__simplify__simplify_goal_ite__init_debugger(void);
+const char *mercury__check_hlds__simplify__simplify_goal_ite__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.simplify.simplify_goal_ite
+
+// :- end_interface check_hlds.simplify.simplify_goal_ite.

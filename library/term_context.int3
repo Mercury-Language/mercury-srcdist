@@ -1,0 +1,4 @@
+:- module term_context.
+:- interface.
+:- type term_context.
+:- type_representation(term_context, is_word_aligned_ptr).
