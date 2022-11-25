@@ -1,0 +1,4 @@
+:- module (parse_tree.write_deps_file).
+:- interface.
+:- type maybe_intermod_deps.
+:- type_representation(maybe_mmake_var, is_eqv_to(pair(list(string), string))).

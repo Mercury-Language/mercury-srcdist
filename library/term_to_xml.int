@@ -1,0 +1,85 @@
+:- module term_to_xml.
+:- interface.
+:- use_module deconstruct.
+:- use_module list.
+:- use_module maybe.
+:- use_module stream.
+:- use_module type_desc.
+:- type attr
+    --->    attr(string, string).
+:- type attr_from_source
+    --->    attr_from_source((term_to_xml.attr_name) :: string, (term_to_xml.attr_source) :: term_to_xml.attr_source).
+:- type attr_source
+    --->    functor 
+    ;       field_name 
+    ;       type_name 
+    ;       arity .
+:- type doctype
+    --->    public(string)
+    ;       public_system(string, string)
+    ;       system(string).
+:- type dtd_generation_result
+    --->    ok 
+    ;       multiple_functors_for_root 
+    ;       duplicate_elements((term_to_xml.duplicate_element) :: string, (term_to_xml.duplicate_types) :: list.list(type_desc.type_desc))
+    ;       unsupported_dtd_type(type_desc.type_desc)
+    ;       type_not_ground(type_desc.pseudo_type_desc).
+:- type element_mapping
+    --->    simple 
+    ;       unique 
+    ;       custom(term_to_xml.element_pred).
+:- type element_pred == pred(type_desc.type_desc, term_to_xml.maybe_functor_info, string, list.list(term_to_xml.attr_from_source)).
+:- type maybe_dtd
+    --->    embed_dtd 
+    ;       external_dtd(term_to_xml.doctype)
+    ;       no_dtd .
+:- type maybe_functor_info
+    --->    du_functor((term_to_xml.functor_name) :: string, (term_to_xml.functor_arity) :: int)
+    ;       non_du .
+:- type maybe_stylesheet
+    --->    with_stylesheet((term_to_xml.stylesheet_type) :: string, (term_to_xml.stylesheet_href) :: string)
+    ;       no_stylesheet .
+:- type xml
+    --->    elem((term_to_xml.element_name) :: string, (term_to_xml.attributes) :: list.list(term_to_xml.attr), (term_to_xml.children) :: list.list(term_to_xml.xml))
+    ;       data(string)
+    ;       cdata(string)
+    ;       comment(string)
+    ;       entity(string)
+    ;       raw(string).
+:- inst element_mapping for term_to_xml.element_mapping/0
+    --->    custom((term_to_xml.element_pred))
+    ;       simple
+    ;       unique.
+:- inst element_pred == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det).
+:- inst non_embedded_dtd for term_to_xml.maybe_dtd/0
+    --->    external_dtd(ground)
+    ;       no_dtd.
+:- inst xml_doc for term_to_xml.xml/0
+    --->    elem(ground, ground, ground).
+:- typeclass xmlable(T) where [
+	func to_xml(T) = term_to_xml.xml,
+	mode to_xml((builtin.in)) = builtin.out((term_to_xml.xml_doc)) is det
+].
+:- func can_generate_dtd(term_to_xml.element_mapping, type_desc.type_desc) = term_to_xml.dtd_generation_result.
+:- mode can_generate_dtd(builtin.in((term_to_xml.element_mapping)), (builtin.in)) = (builtin.out) is det.
+:- pred write_dtd(Stream, T, term_to_xml.element_mapping, term_to_xml.dtd_generation_result, State, State) <= (stream.writer(Stream, string, State)).
+:- mode write_dtd((builtin.in), (builtin.unused), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_dtd_from_type(Stream, type_desc.type_desc, term_to_xml.element_mapping, term_to_xml.dtd_generation_result, State, State) <= (stream.writer(Stream, string, State)).
+:- mode write_dtd_from_type((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_xml_doc(Stream, T, State, State) <= (term_to_xml.xmlable(T), stream.writer(Stream, string, State)).
+:- mode write_xml_doc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_xml_doc_general(Stream, T, term_to_xml.element_mapping, term_to_xml.maybe_stylesheet, term_to_xml.maybe_dtd, term_to_xml.dtd_generation_result, State, State) <= (stream.writer(Stream, string, State)).
+:- mode write_xml_doc_general((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_xml_doc_general_cc(Stream, T, term_to_xml.element_mapping, term_to_xml.maybe_stylesheet, term_to_xml.maybe_dtd, term_to_xml.dtd_generation_result, State, State) <= (stream.writer(Stream, string, State)).
+:- mode write_xml_doc_general_cc((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred write_xml_doc_style_dtd(Stream, T, term_to_xml.maybe_stylesheet, term_to_xml.maybe_dtd, State, State) <= (term_to_xml.xmlable(T), stream.writer(Stream, string, State)).
+:- mode write_xml_doc_style_dtd((builtin.in), (builtin.in), (builtin.in), builtin.in((term_to_xml.non_embedded_dtd)), (builtin.di), (builtin.uo)) is det.
+:- pred write_xml_element(Stream, int, T, State, State) <= (term_to_xml.xmlable(T), stream.writer(Stream, string, State)).
+:- mode write_xml_element((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_xml_element_general(Stream, deconstruct.noncanon_handling, term_to_xml.element_mapping, int, T, State, State) <= (stream.writer(Stream, string, State)).
+:- mode write_xml_element_general((builtin.in), builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode write_xml_element_general((builtin.in), builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode write_xml_element_general((builtin.in), builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode write_xml_element_general((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred write_xml_header(Stream, maybe.maybe(string), State, State) <= (stream.writer(Stream, string, State)).
+:- mode write_xml_header((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
