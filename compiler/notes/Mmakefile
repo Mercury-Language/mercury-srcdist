@@ -1,0 +1,89 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1996-1997, 1999, 2001, 2003 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# Mmake - Mmake file for the Mercury documentation.
+
+MAIN_TARGET=all
+
+MERCURY_DIR=../..
+include $(MERCURY_DIR)/Mmake.common
+
+INSTALL_WEB_SUBDIR=$(INSTALL_WEBDIR)/developer
+
+# Note that we need to explicitly set TERM=vt100,
+# because otherwise lynx complains if TERM is not set properly
+# (as is the case when this Makefile is run from a cron job).
+# This is a bug in lynx -- it should ignore TERM when given
+# the `-dump' option.
+HTML_TO_TEXT=TERM=vt100 lynx -dump
+
+#-----------------------------------------------------------------------------#
+
+.SUFFIXES: .html .text
+
+.html.text:
+	$(HTML_TO_TEXT) $< > $@
+
+#-----------------------------------------------------------------------------#
+
+DOCS_HTML = \
+	allocation.html \
+	analysis.html \
+	bootstrapping.html \
+	bytecode.html \
+	c_coding_standard.html \
+	coding_standards.html \
+	compiler_design.html \
+	developer_intro.html \
+	failure.html \
+	gc_and_c_code.html \
+	glossary.html \
+	grade_library.html \
+	index.html \
+	interface_files.html \
+	mlds_tail_recursion.html \
+	overall_design.html \
+	promise_ex.html \
+	release_checklist.html \
+	reviews.html \
+	todo.html \
+	trailing.html \
+	type_class_transformation.html \
+	upgrade_boehm_gc.html \
+	work_in_progress.html
+
+DOCS_TEXT = $(subst .html,.text,$(DOCS_HTML))
+
+DOCS_ALL = $(DOCS_TEXT) $(DOCS_HTML)
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: all
+all: $(DOCS_ALL)
+
+weblint: $(DOCS_HTML)
+	for f in $(DOCS_HTML); do \
+		echo $$f; weblint $$f ; \
+	done
+
+# This install is for installing the Mercury webpage, which goes to
+# a different directory (supplied by the environment variable
+# INSTALL_WEBDIR).
+# Currently the webpage and this documentation on it is installed by
+# a different method. A copy if the repository is checked out on the
+# webserver and linked to.
+
+.PHONY: install
+install: $(DOCS_ALL)
+	[ -d $(INSTALL_WEB_SUBDIR) ] || mkdir -p $(INSTALL_WEB_SUBDIR)
+	cp $(DOCS_ALL) $(INSTALL_WEB_SUBDIR)
+
+clean_local:
+	rm -f $(DOCS_TEXT)
+
+#-----------------------------------------------------------------------------#
