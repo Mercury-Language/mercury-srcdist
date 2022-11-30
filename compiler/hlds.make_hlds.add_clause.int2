@@ -1,0 +1,5 @@
+:- module ((hlds.make_hlds).add_clause).
+:- interface.
+:- type clause_type
+    --->    clause_not_for_promise 
+    ;       clause_for_promise(parse_tree.prog_data.promise_type).

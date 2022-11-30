@@ -1,0 +1,34 @@
+:- module (make.dependencies).
+:- interface.
+:- use_module io.
+:- use_module set.
+:- use_module (libs.globals).
+:- use_module (libs.maybe_succeeded).
+:- use_module (make.deps_set).
+:- use_module (make.make_info).
+:- type cached_direct_imports.
+:- type cached_indirect_imports.
+:- type cached_transitive_dependencies.
+:- type cached_transitive_foreign_imports.
+:- type dependencies_result
+    --->    deps_up_to_date 
+    ;       deps_out_of_date 
+    ;       deps_error .
+:- type dependency_file
+    --->    dep_target(make.make_info.target_file)
+    ;       dep_file(libs.file_util.file_name).
+:- type dependency_file_with_module_index
+    --->    dfmi_target(make.deps_set.module_index, make.make_info.module_target_type)
+    ;       dfmi_file(libs.file_util.file_name).
+:- type find_module_deps(T) == pred(libs.globals.globals, make.deps_set.module_index, libs.maybe_succeeded.maybe_succeeded, make.deps_set.deps_set(T), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- type find_module_deps_plain_set(T) == pred(libs.globals.globals, make.deps_set.module_index, libs.maybe_succeeded.maybe_succeeded, set.set(T), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- inst find_module_deps == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst find_module_deps_plain_set == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- implementation.
+:- type cached_direct_imports == map.map(make.deps_set.module_index, make.dependencies.module_deps_result).
+:- type cached_indirect_imports == map.map(make.deps_set.module_index, make.dependencies.module_deps_result).
+:- type cached_transitive_dependencies == map.map(make.dependencies.transitive_dependencies_root, make.dependencies.deps_result(make.deps_set.module_index)).
+:- type cached_transitive_foreign_imports == map.map(make.deps_set.module_index, make.dependencies.module_deps_result).
+:- type deps_result(T).
+:- type module_deps_result == make.dependencies.deps_result(make.deps_set.module_index).
+:- type transitive_dependencies_root.

@@ -1,0 +1,32 @@
+%---------------------------------------------------------------------------%
+% vim: ts=4 sw=4 et ft=mercury
+%---------------------------------------------------------------------------%
+
+:- module combined_type_mode_nr_2.
+
+:- interface.
+
+:- import_module io.
+
+:- pred p(T::in(I), T::out(I)) is det.
+
+:- typeclass io(T) where [
+    pred id(T::in(I), T::out(I)) is det,
+    some [U] pred output(T::in(I), U::out(I), T::in,
+        io::di, io::uo) is det
+].
+
+:- instance io(int).
+
+:- type t == int.
+
+:- implementation.
+
+:- instance io(int) where [
+    id(T, T),
+    ( output(U, U, T, !IO) :-
+        io.write(T, !IO)
+    )
+].
+
+p(T, T).
