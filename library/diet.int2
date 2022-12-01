@@ -1,0 +1,5 @@
+:- module diet.
+:- interface.
+:- type diet(T).
+:- typeclass diet_element(T).
+:- instance (diet.diet_element(int)).

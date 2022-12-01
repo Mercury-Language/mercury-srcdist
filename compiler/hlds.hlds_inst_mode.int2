@@ -1,0 +1,39 @@
+:- module (hlds.hlds_inst_mode).
+:- interface.
+:- use_module map.
+:- use_module (parse_tree.prog_data).
+:- type any_inst_table.
+:- type ground_inst_table.
+:- type hlds_inst_defn
+    --->    hlds_inst_defn(((hlds.hlds_inst_mode).inst_varset) :: parse_tree.prog_data.inst_varset, ((hlds.hlds_inst_mode).inst_params) :: list.list(parse_tree.prog_data.inst_var), ((hlds.hlds_inst_mode).inst_body) :: parse_tree.prog_data.inst_defn, ((hlds.hlds_inst_mode).inst_for_type) :: hlds.hlds_inst_mode.inst_for_type_ctor, ((hlds.hlds_inst_mode).inst_context) :: parse_tree.prog_data.prog_context, ((hlds.hlds_inst_mode).inst_status) :: hlds.status.inst_status).
+:- type hlds_mode_body
+    --->    hlds_mode_body(parse_tree.prog_data.mer_mode).
+:- type hlds_mode_defn
+    --->    hlds_mode_defn(((hlds.hlds_inst_mode).mode_varset) :: parse_tree.prog_data.inst_varset, ((hlds.hlds_inst_mode).mode_params) :: list.list(parse_tree.prog_data.inst_var), ((hlds.hlds_inst_mode).mody_body) :: hlds.hlds_inst_mode.hlds_mode_body, ((hlds.hlds_inst_mode).mode_context) :: parse_tree.prog_data.prog_context, ((hlds.hlds_inst_mode).mode_status) :: hlds.status.mode_status).
+:- type inst_for_type_ctor
+    --->    iftc_not_applicable 
+    ;       iftc_applicable_declared(parse_tree.prog_data.type_ctor)
+    ;       iftc_applicable_not_known 
+    ;       iftc_applicable_known(list.list(parse_tree.prog_data.type_ctor))
+    ;       iftc_applicable_error .
+:- type inst_table.
+:- type maybe_inst
+    --->    inst_unknown 
+    ;       inst_known(parse_tree.prog_data.mer_inst).
+:- type maybe_inst_det
+    --->    inst_det_unknown 
+    ;       inst_det_known(parse_tree.prog_data.mer_inst, parse_tree.prog_data.determinism).
+:- type merge_inst_table.
+:- type mode_defns == map.map(parse_tree.prog_data.mode_ctor, hlds.hlds_inst_mode.hlds_mode_defn).
+:- type mode_table.
+:- type mostly_uniq_inst_table.
+:- type shared_inst_table.
+:- type unify_inst_table.
+:- type user_inst_table == map.map(parse_tree.prog_data.inst_ctor, hlds.hlds_inst_mode.hlds_inst_defn).
+:- implementation.
+:- type any_inst_table == map.map(parse_tree.prog_data.any_inst_info, hlds.hlds_inst_mode.maybe_inst_det).
+:- type ground_inst_table == map.map(parse_tree.prog_data.ground_inst_info, hlds.hlds_inst_mode.maybe_inst_det).
+:- type merge_inst_table == map.map(parse_tree.prog_data.merge_inst_info, hlds.hlds_inst_mode.maybe_inst).
+:- type mode_table == hlds.hlds_inst_mode.mode_defns.
+:- type mostly_uniq_inst_table == map.map(parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst).
+:- type shared_inst_table == map.map(parse_tree.prog_data.inst_name, hlds.hlds_inst_mode.maybe_inst).
