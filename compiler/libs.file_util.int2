@@ -1,0 +1,4 @@
+:- module (libs.file_util).
+:- interface.
+:- type dir_name == string.
+:- type file_name == string.

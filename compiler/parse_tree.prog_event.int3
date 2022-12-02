@@ -1,0 +1,8 @@
+:- module (parse_tree.prog_event).
+:- interface.
+:- type_representation(attr_dep_rel, is_eqv_to(digraph(string))).
+:- type_representation(attr_key, is_eqv_to(digraph_key(string))).
+:- type_representation(attr_key_map, is_eqv_to(bimap(string, attr_key))).
+:- type_representation(attr_name_map, is_eqv_to(map(string, attr_info))).
+:- type_representation(attr_num_map, is_eqv_to(map(int, attr_info))).
+:- type_representation(attr_type_map, is_eqv_to(map(string, mer_type))).
