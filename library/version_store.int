@@ -1,0 +1,25 @@
+:- module version_store.
+:- interface.
+:- type mutvar(T, S).
+:- type version_store(S).
+:- pred copy_mutvar(version_store.mutvar(T, S), version_store.mutvar(T, S), version_store.version_store(S), version_store.version_store(S)).
+:- mode copy_mutvar((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func elem(version_store.mutvar(T, S), version_store.version_store(S)) = T.
+:- func 'elem :='(version_store.mutvar(T, S), version_store.version_store(S), T) = version_store.version_store(S).
+:- pred get_mutvar(version_store.mutvar(T, S), T, version_store.version_store(S), version_store.version_store(S)).
+:- mode get_mutvar((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- some [S] (func init = version_store.version_store(S)).
+:- func lookup(version_store.version_store(S), version_store.mutvar(T, S)) = T.
+:- pred new_cyclic_mutvar(((func version_store.mutvar(T, S)) = T), version_store.mutvar(T, S), version_store.version_store(S), version_store.version_store(S)).
+:- mode new_cyclic_mutvar((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_mutvar(T, version_store.mutvar(T, S), version_store.version_store(S), version_store.version_store(S)).
+:- mode new_mutvar((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func set(version_store.version_store(S), version_store.mutvar(T, S), T) = version_store.version_store(S).
+:- pred set_mutvar(version_store.mutvar(T, S), T, version_store.version_store(S), version_store.version_store(S)).
+:- mode set_mutvar((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred unsafe_rewind(version_store.version_store(T), version_store.version_store(T)).
+:- mode unsafe_rewind((builtin.in), (builtin.out)) is det.
+:- func unsafe_rewind(version_store.version_store(T)) = version_store.version_store(T).
+:- implementation.
+:- type some_version_store_type
+    --->    some_version_store_type .
