@@ -1,0 +1,6 @@
+:- module (mdb.frame).
+:- interface.
+:- use_module list.
+:- use_module pair.
+:- type clip_rect == pair.pair(int, int).
+:- type frame == list.list(string).

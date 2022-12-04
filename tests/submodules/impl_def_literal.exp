@@ -1,0 +1,19 @@
+impl_def_literal.m
+25
+impl_def_literal
+predicate `impl_def_literal.main'/2
+function `impl_def_literal.a_function'/0
+predicate `impl_def_literal.a_lambda'/1
+predicate `impl_def_literal.a_try_goal'/1
+predicate `impl_def_literal.an_atomic_goal'/3
+fun_with_lines: unequal
+fun_with_lines_2: unequal
+have $grade
+impl_def_literal.sub
+predicate `impl_def_literal.sub.in_submodule'/2
+impl_def_literal.m
+10101
+instance method predicate `impl_def_literal.tc_p'/5 for `impl_def_literal.tc(int, character, impl_def_literal.sub.tt(V_1))'
+instance method function `impl_def_literal.tc_f'/3 for `impl_def_literal.tc(int, character, impl_def_literal.sub.tt(V_1))'
+predicate `impl_def_literal.sub.string_p'/5
+function `impl_def_literal.sub.string_f'/3
