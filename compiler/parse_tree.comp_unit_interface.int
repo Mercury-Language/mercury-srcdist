@@ -1,0 +1,15 @@
+:- module (parse_tree.comp_unit_interface).
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module (libs.globals).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.prog_item).
+:- pred generate_interfaces_int1_int2(libs.globals.globals, parse_tree.prog_item.aug_make_int_unit, parse_tree.prog_item.parse_tree_int1, parse_tree.prog_item.parse_tree_int2, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode generate_interfaces_int1_int2((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_pre_grab_pre_qual_interface_for_int1_int2(parse_tree.prog_item.parse_tree_module_src, parse_tree.prog_item.parse_tree_module_src).
+:- mode generate_pre_grab_pre_qual_interface_for_int1_int2((builtin.in), (builtin.out)) is det.
+:- pred generate_private_interface_int0(parse_tree.prog_item.aug_make_int_unit, parse_tree.prog_item.parse_tree_int0, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode generate_private_interface_int0((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_short_interface_int3(libs.globals.globals, parse_tree.prog_item.parse_tree_module_src, parse_tree.prog_item.parse_tree_int3, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode generate_short_interface_int3((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

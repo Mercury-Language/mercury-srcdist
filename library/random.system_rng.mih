@@ -1,0 +1,240 @@
+/*
+** Automatically generated from `random.system_rng.m'
+** by the Mercury compiler,
+** version rotd-2022-12-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module random.system_rng.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_random__system_rng
+#define MR_HEADER_GUARD_random__system_rng
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RANDOM__SYSTEM_RNG_DECL_GUARD
+#define RANDOM__SYSTEM_RNG_DECL_GUARD
+#include "random.mih"
+
+
+#include "mercury_conf_param.h"
+
+#if defined(MR_HAVE_SYS_PARAM_H)
+    #include <sys/param.h>
+#endif
+
+#if defined(MR_MAC_OSX)
+    #include <AvailabilityMacros.h>
+#endif
+
+// The following macros define if the system random number exists on this
+// system and, if so, how it is accessed.
+//
+// Only one of the following must be defined.
+//
+// ML_SYSRAND_IMPL_ARC4RANDOM
+//    the system RNG is implemented by calling the arc4random() family of
+//    functions. Note: this for when arc4random() is provided by libc (as on
+//    macOS and the BSDs), not for when it is provided as a separate library
+//    (e.g. libbsd on Linux).
+//
+//    This should only be enabled on systems where arc4random() uses a secure
+//    PRNG, such as ChaCha20; it should _not_ be enabled on systems where
+//    arc4random() still uses RC4.
+//
+// ML_SYSRAND_IMPL_RAND_S
+//    the system RNG is implemented by calling the rand_s() function
+//    (Windows only).
+//
+// ML_SYSRAND_IMPL_GETRANDOM (NYI)
+//    the system RNG is implemented by calling getrandom() (sufficiently
+//    recent Linux kernels only).
+//
+// ML_SYSRAND_IMPL_URANDOM
+//     the system RNG is implemented by reading from /dev/urandom.
+//
+// ML_SYSRAND_IMPL_NONE
+//     there is no system RNG available on this platform.
+
+#if defined(__linux__) || defined(MR_SOLARIS) || defined(_AIX)
+    #define ML_SYSRAND_IMPL_URANDOM
+#elif defined(__OpenBSD__) || defined(__NetBSD__) || defined(MR_CYGWIN)
+    #define ML_SYSRAND_IMPL_ARC4RANDOM
+#elif __FreeBSD__ >= 12
+    // arc4random() on FreeBSD used RC4 until version 12.
+    #define ML_SYSRAND_IMPL_ARC4RANDOM
+#elif defined(__FreeBSD__)
+    #define ML_SYSRAND_IMPL_URANDOM
+#elif defined(MR_MAC_OSX)
+   // arc4random() on macOS used RC4 until version 10.12.
+   // XXX this will be unnecessary when we stop supporting versions
+   // of macOS before 10.12.
+   #if defined(MAC_OS_X_VERSION_10_12) && \
+        MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_12
+      #define ML_SYSRAND_IMPL_ARC4RANDOM
+   #else
+      #define ML_SYSRAND_IMPL_URANDOM
+   #endif
+#elif defined(MR_WIN32)
+    #define ML_SYSRAND_IMPL_RAND_S
+#else
+    #define ML_SYSRAND_IMPL_NONE
+#endif
+
+struct ML_SystemRandomHandle_Struct {
+    #if defined(ML_SYSRAND_IMPL_URANDOM)
+        int ML_srh_fd;
+    #else
+        MR_Bool ML_srh_is_open;
+    #endif
+};
+typedef struct ML_SystemRandomHandle_Struct *ML_SystemRandomHandle;
+
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__random__system_rng__random__system_rng__type_ctor_info_system_rng_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_random__urandom__arity2__random__system_rng__system_rng__arity0__io__state__arity0__[9];
+
+void MR_CALL 
+mercury__random__system_rng__ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint16_4_4_p_0(
+  MR_Box param_1,
+  uint16_t * param_2);
+
+void MR_CALL 
+mercury__random__system_rng__ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint32_4_4_p_0(
+  MR_Box param_1,
+  uint32_t * param_2);
+
+void MR_CALL 
+mercury__random__system_rng__ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint64_4_4_p_0(
+  MR_Box param_1,
+  uint64_t * param_2);
+
+void MR_CALL 
+mercury__random__system_rng__ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint8_4_4_p_0(
+  MR_Box param_1,
+  uint8_t * param_2);
+
+void MR_CALL 
+mercury__random__system_rng__close_system_rng_3_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__random__system_rng__do_close_system_rng_5_p_0(
+  MR_Box param_1,
+  MR_Word * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mercury__random__system_rng__do_generate_uint16_6_p_0(
+  MR_Box param_1,
+  uint16_t * param_2,
+  MR_Word * param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__random__system_rng__do_generate_uint32_6_p_0(
+  MR_Box param_1,
+  uint32_t * param_2,
+  MR_Word * param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__random__system_rng__do_generate_uint64_6_p_0(
+  MR_Box param_1,
+  uint64_t * param_2,
+  MR_Word * param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__random__system_rng__do_generate_uint8_6_p_0(
+  MR_Box param_1,
+  uint8_t * param_2,
+  MR_Word * param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__random__system_rng__do_open_system_rng_5_p_0(
+  MR_Box * param_1,
+  MR_Word * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mercury__random__system_rng__generate_uint16_4_p_0(
+  MR_Box param_1,
+  uint16_t * param_2);
+
+void MR_CALL 
+mercury__random__system_rng__generate_uint32_4_p_0(
+  MR_Box param_1,
+  uint32_t * param_2);
+
+void MR_CALL 
+mercury__random__system_rng__generate_uint64_4_p_0(
+  MR_Box param_1,
+  uint64_t * param_2);
+
+void MR_CALL 
+mercury__random__system_rng__generate_uint8_4_p_0(
+  MR_Box param_1,
+  uint8_t * param_2);
+
+MR_bool MR_CALL 
+mercury__random__system_rng__have_system_rng_0_p_0(void);
+
+void MR_CALL 
+mercury__random__system_rng__open_system_rng_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+mercury__random__system_rng__throw_system_rng_error_2_p_0(
+  MR_String param_1,
+  MR_String param_2);
+
+void MR_CALL 
+mercury__random__system_rng____Compare____system_rng_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__random__system_rng____Unify____system_rng_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void mercury__random__system_rng__init(void);
+void mercury__random__system_rng__init_type_tables(void);
+void mercury__random__system_rng__init_debugger(void);
+const char *mercury__random__system_rng__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_random.system_rng
+
+// :- end_interface random.system_rng.
