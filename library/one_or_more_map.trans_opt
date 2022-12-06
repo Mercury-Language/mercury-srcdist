@@ -1,0 +1,147 @@
+:- module one_or_more_map.
+
+:- pragma termination_info(one_or_more_map.accumulate_length((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.add((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.add((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.add_from_pair((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.all_count((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.all_count((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.apply_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.apply_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.assoc_list_merge((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.contains((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.count((builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.count((builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.delete((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.delete((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_replace((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, no, yes, no]), can_loop).
+:- pragma termination_info(one_or_more_map.det_replace((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(one_or_more_map.det_update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_corresponding_list_lists((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_corresponding_list_lists((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_corresponding_lists((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_corresponding_lists_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_flat_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_flat_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_sorted_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.from_sorted_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((one_or_more_map.init) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.init((builtin.uo)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(one_or_more_map.inverse_search((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.is_empty((builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.keys((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.keys((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.keys_as_set((builtin.in)) = (builtin.out), finite(1, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.keys_as_set((builtin.in), (builtin.out)), finite(1, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.lookup((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(one_or_more_map.lookup((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(one_or_more_map.member((builtin.in), (builtin.out), (builtin.out)), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.merge((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.merge((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.nondet_lookup((builtin.in), (builtin.in), (builtin.out)), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.nondet_search((builtin.in), (builtin.in), (builtin.out)), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.optimize((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.optimize((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.remove_smallest((builtin.out), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.replace((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.reverse_set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.reverse_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.search((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.select((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.select((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.sorted_keys((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.sorted_keys((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(one_or_more_map.to_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.to_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.to_flat_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.to_flat_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.to_flat_assoc_list_acc((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(one_or_more_map.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(one_or_more_map.values((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(one_or_more_map.values((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+
+:- pragma exceptions(predicate, (one_or_more_map.accumulate_length), 3, 0, will_not_throw).
+:- pragma exceptions(function, (one_or_more_map.add), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.add), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.add_from_pair), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.all_count), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.all_count), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.apply_to_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.apply_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.assoc_list_merge), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.contains), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (one_or_more_map.count), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (one_or_more_map.count), 2, 0, will_not_throw).
+:- pragma exceptions(function, (one_or_more_map.delete), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.delete), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.det_insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.det_remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.det_replace), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.det_replace), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.det_update), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.from_assoc_list), 1, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.from_assoc_list), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (one_or_more_map.from_corresponding_list_lists), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.from_corresponding_list_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.from_corresponding_lists), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.from_corresponding_lists_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.from_flat_assoc_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.from_flat_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.from_sorted_assoc_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.from_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.init), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (one_or_more_map.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (one_or_more_map.insert), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.inverse_search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (one_or_more_map.keys), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (one_or_more_map.keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (one_or_more_map.keys_as_set), 1, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.keys_as_set), 2, 0, conditional).
+:- pragma exceptions(function, (one_or_more_map.lookup), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.member), 3, 0, will_not_throw).
+:- pragma exceptions(function, (one_or_more_map.merge), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.nondet_lookup), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.nondet_search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (one_or_more_map.optimize), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (one_or_more_map.optimize), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (one_or_more_map.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.remove_smallest), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.replace), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (one_or_more_map.reverse_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.reverse_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (one_or_more_map.select), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.select), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (one_or_more_map.sorted_keys), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (one_or_more_map.sorted_keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (one_or_more_map.to_assoc_list), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (one_or_more_map.to_assoc_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (one_or_more_map.to_flat_assoc_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.to_flat_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.to_flat_assoc_list_acc), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (one_or_more_map.update), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (one_or_more_map.values), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (one_or_more_map.values), 2, 0, will_not_throw).

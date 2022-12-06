@@ -1,0 +1,26 @@
+:- module (parse_tree.parse_pragma_analysis).
+:- interface.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.parse_types).
+:- use_module (parse_tree.prog_data).
+:- pred parse_pragma_exceptions(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_exceptions((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_pragma_mm_tabling_info(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_mm_tabling_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_pragma_structure_reuse(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_structure_reuse((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_pragma_structure_sharing(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_structure_sharing((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_pragma_termination2_info(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_termination2_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_pragma_termination_info(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_termination_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_pragma_trailing_info(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_trailing_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_pragma_unused_args(mdbcomp.sym_name.module_name, varset.varset, term.term, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma_unused_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
