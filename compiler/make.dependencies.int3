@@ -1,0 +1,24 @@
+:- module (make.dependencies).
+:- interface.
+:- type cached_computed_module_deps.
+:- type cached_direct_imports.
+:- type cached_indirect_imports.
+:- type cached_transitive_dependencies.
+:- type cached_transitive_foreign_imports.
+:- type dependencies_result
+	where	type_is_abstract_enum(2).
+:- type dependency_file.
+:- type dependency_file_with_module_index.
+:- type find_module_deps(T).
+:- type find_module_deps_plain_set(T).
+:- abstract_inst((find_module_deps)).
+:- abstract_inst((find_module_deps_plain_set)).
+:- type_representation(cached_computed_module_deps, is_eqv_to(map(computed_module_deps_key, deps_result(dependency_file_index)))).
+:- type_representation(cached_direct_imports, is_eqv_to(map(module_index, module_deps_result))).
+:- type_representation(cached_indirect_imports, is_eqv_to(map(module_index, module_deps_result))).
+:- type_representation(cached_transitive_dependencies, is_eqv_to(map(transitive_dependencies_root, deps_result(module_index)))).
+:- type_representation(cached_transitive_foreign_imports, is_eqv_to(map(module_index, module_deps_result))).
+:- type_representation(dependencies_result, du_repn(enum("deps_up_to_date", "deps_out_of_date", ["deps_error"],  no_c_j_cs))).
+:- type_representation(find_module_deps(V_1), is_eqv_to(pred(globals, module_index, maybe_succeeded, deps_set(V_1), make_info, make_info, io, io))).
+:- type_representation(find_module_deps_plain_set(V_1), is_eqv_to(pred(globals, module_index, maybe_succeeded, set(V_1), make_info, make_info, io, io))).
+:- type_representation(module_deps_result, is_eqv_to(deps_result(module_index))).
