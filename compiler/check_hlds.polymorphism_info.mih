@@ -1,0 +1,494 @@
+/*
+** Automatically generated from `polymorphism_info.m'
+** by the Mercury compiler,
+** version rotd-2022-12-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.polymorphism_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__polymorphism_info
+#define MR_HEADER_GUARD_check_hlds__polymorphism_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__POLYMORPHISM_INFO_DECL_GUARD
+#define CHECK_HLDS__POLYMORPHISM_INFO_DECL_GUARD
+#include "check_hlds.mih"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word check_hlds__polymorphism_info__mutable_variable_selected_pred;
+#else
+    extern MR_Word check_hlds__polymorphism_info__mutable_variable_selected_pred;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock check_hlds__polymorphism_info__mutable_variable_selected_pred_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Integer check_hlds__polymorphism_info__mutable_variable_indent_level;
+#else
+    extern MR_Word check_hlds__polymorphism_info__mutable_variable_indent_level;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock check_hlds__polymorphism_info__mutable_variable_indent_level_lock;
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_cache_maps_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_const_or_var_arg_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_const_struct_var_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_int_const_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_maybe_must_requantify_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_maybe_selected_pred_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_poly_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_type_info_var_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_typeclass_info_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_typeclass_info_map_entry_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__polymorphism_info__check_hlds__polymorphism_info__type_ctor_info_var_maps_0;
+
+void MR_CALL 
+check_hlds__polymorphism_info__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_99_97_99_104_101_95_109_97_112_115_95_115_110_97_112_115_104_111_116_95_95_91_49_93_95_48_4_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_118_97_114_95_109_97_112_115_95_115_110_97_112_115_104_111_116_95_95_91_49_93_95_48_4_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_116_95_99_97_99_104_101_95_109_97_112_115_95_115_110_97_112_115_104_111_116_95_95_91_49_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_116_95_118_97_114_95_109_97_112_115_95_115_110_97_112_115_104_111_116_95_95_91_49_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info__all_are_const_struct_args_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__create_poly_info_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__polymorphism_info__empty_cache_maps_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__get_cache_maps_snapshot_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__polymorphism_info__get_inst_of_const_struct_arg_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__get_poly_const_5_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__polymorphism_info__get_var_maps_snapshot_4_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__polymorphism_info__init_poly_info_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_extract_7_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_const_struct_db_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_const_struct_var_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_constraint_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_debug_stream_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_defined_where_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_errors_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_indent_level_3_p_0(
+  MR_Integer * param_1);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_int_const_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_module_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_must_requantify_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_num_reuses_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_proof_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_rtti_varmaps_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_selected_pred_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_tvar_kind_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_type_info_var_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_typeclass_info_map_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_typevarset_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_get_var_table_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_const_struct_db_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_const_struct_var_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_errors_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_indent_level_3_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_int_const_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_must_requantify_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_num_reuses_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_proof_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_rtti_varmaps_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_selected_pred_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_type_info_var_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_typeclass_info_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_typevarset_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_var_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info__poly_info_set_var_table_rtti_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__polymorphism_info__set_cache_maps_snapshot_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__polymorphism_info__set_var_maps_snapshot_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____cache_maps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____const_or_var_arg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____const_struct_var_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____int_const_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____maybe_must_requantify_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____maybe_selected_pred_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____poly_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____type_info_var_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____typeclass_info_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____typeclass_info_map_entry_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__polymorphism_info____Compare____var_maps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____cache_maps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____const_or_var_arg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____const_struct_var_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____int_const_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____maybe_must_requantify_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____maybe_selected_pred_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____poly_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____type_info_var_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____typeclass_info_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____typeclass_info_map_entry_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__polymorphism_info____Unify____var_maps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__polymorphism_info__init(void);
+void mercury__check_hlds__polymorphism_info__init_type_tables(void);
+void mercury__check_hlds__polymorphism_info__init_debugger(void);
+void mercury__check_hlds__polymorphism_info__required_init(void);
+const char *mercury__check_hlds__polymorphism_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.polymorphism_info
+
+// :- end_interface check_hlds.polymorphism_info.

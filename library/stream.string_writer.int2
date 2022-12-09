@@ -1,0 +1,2 @@
+:- module (stream.string_writer).
+:- interface.
