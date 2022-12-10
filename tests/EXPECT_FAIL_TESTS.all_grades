@@ -1,0 +1,7 @@
+declarative_debugger/condition_bug
+hard_coded/test_generic_ref
+typeclasses/complicated_constraint
+valid/bug85
+valid/constraint_prop_bug
+valid/csharp_hello
+valid/ho_and_type_spec_bug2

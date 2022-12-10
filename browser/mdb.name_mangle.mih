@@ -1,0 +1,148 @@
+/*
+** Automatically generated from `name_mangle.m'
+** by the Mercury compiler,
+** version rotd-2022-12-10
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.name_mangle.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__name_mangle
+#define MR_HEADER_GUARD_mdb__name_mangle
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__NAME_MANGLE_DECL_GUARD
+#define MDB__NAME_MANGLE_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__name_mangle__mdb__name_mangle__type_ctor_info_arity_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__name_mangle__mdb__name_mangle__type_ctor_info_is_pred_or_func_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__name_mangle__mdb__name_mangle__type_ctor_info_mercury_proc_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__name_mangle__mdb__name_mangle__type_ctor_info_mode_num_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__name_mangle__mdb__name_mangle__type_ctor_info_module_name_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__name_mangle__mdb__name_mangle__type_ctor_info_pred_name_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__name_mangle__mdb__name_mangle__type_ctor_info_sym_name_0;
+
+MR_String MR_CALL 
+mdb__name_mangle__proc_name_mangle_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mdb__name_mangle____Compare____arity_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mdb__name_mangle____Compare____is_pred_or_func_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__name_mangle____Compare____mercury_proc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__name_mangle____Compare____mode_num_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mdb__name_mangle____Compare____module_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__name_mangle____Compare____pred_name_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+mdb__name_mangle____Compare____sym_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__name_mangle____Unify____arity_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mdb__name_mangle____Unify____is_pred_or_func_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__name_mangle____Unify____mercury_proc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__name_mangle____Unify____mode_num_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mdb__name_mangle____Unify____module_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__name_mangle____Unify____pred_name_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+mdb__name_mangle____Unify____sym_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdb__name_mangle__init(void);
+void mercury__mdb__name_mangle__init_type_tables(void);
+void mercury__mdb__name_mangle__init_debugger(void);
+const char *mercury__mdb__name_mangle__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.name_mangle
+
+// :- end_interface mdb.name_mangle.

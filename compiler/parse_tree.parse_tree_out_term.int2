@@ -1,0 +1,9 @@
+:- module (parse_tree.parse_tree_out_term).
+:- interface.
+:- type graphic_char_in_string
+    --->    no_graphic_chars 
+    ;       some_graphic_chars 
+    ;       all_graphic_chars .
+:- type needs_quotes
+    --->    next_to_graphic_token 
+    ;       not_next_to_graphic_token .
