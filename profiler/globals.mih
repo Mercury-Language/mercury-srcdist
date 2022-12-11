@@ -1,0 +1,192 @@
+/*
+** Automatically generated from `globals.m'
+** by the Mercury compiler,
+** version rotd-2022-12-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module globals.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_globals
+#define MR_HEADER_GUARD_globals
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef GLOBALS_DECL_GUARD
+#define GLOBALS_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word globals__mutable_variable_profiler_globals;
+#else
+    extern MR_Word globals__mutable_variable_profiler_globals;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock globals__mutable_variable_profiler_globals_lock;
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct globals__globals__type_ctor_info_globals_0;
+
+extern const MR_TypeCtorInfo_Struct globals__globals__type_ctor_info_what_to_profile_0;
+
+void MR_CALL 
+globals__get_options_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+globals__get_what_to_profile_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+globals__io_get_globals_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+globals__io_init_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+globals__io_lookup_accumulating_option_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+globals__io_lookup_bool_option_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+globals__io_lookup_int_option_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+globals__io_lookup_option_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+globals__io_lookup_string_option_4_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+globals__io_set_globals_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+globals__io_set_option_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+globals__lookup_accumulating_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+globals__lookup_bool_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+globals__lookup_int_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+globals__lookup_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+globals__lookup_string_option_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+globals__set_options_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+globals__set_what_to_profile_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+globals__what_to_profile_2_p_1(
+  MR_String * param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+globals__what_to_profile_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+globals____Compare____globals_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+globals____Compare____what_to_profile_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+globals____Unify____globals_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+globals____Unify____what_to_profile_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__globals__init(void);
+void mercury__globals__init_type_tables(void);
+void mercury__globals__init_debugger(void);
+void mercury__globals__required_init(void);
+const char *mercury__globals__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_globals
+
+// :- end_interface globals.

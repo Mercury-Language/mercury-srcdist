@@ -1,0 +1,14 @@
+:- module (io.stream_db).
+:- interface.
+:- type maybe_stream_info.
+:- type stream_content
+	where	type_is_abstract_enum(2).
+:- type stream_db.
+:- type stream_info.
+:- type stream_mode
+	where	type_is_abstract_enum(2).
+:- type stream_source.
+:- type_representation(stream_content, du_repn(enum("text", "binary", ["preopen"],  no_c_j_cs))).
+:- type_representation(stream_db, is_eqv_to(map(stream_id, io.stream_db.stream_info))).
+:- type_representation(stream_info, is_word_aligned_ptr).
+:- type_representation(stream_mode, du_repn(enum("input", "output", ["append"],  no_c_j_cs))).

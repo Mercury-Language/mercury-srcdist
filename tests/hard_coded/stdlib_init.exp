@@ -1,0 +1,4 @@
+"<globals>"
+stream(0, input, preopen, stdin)
+stream(1, output, preopen, stdout)
+stream(1, output, preopen, stderr)
