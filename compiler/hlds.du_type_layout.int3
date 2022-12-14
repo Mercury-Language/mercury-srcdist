@@ -1,0 +1,3 @@
+:- module (hlds.du_type_layout).
+:- interface.
+:- type_representation(component_type_map, is_eqv_to(map(type_ctor, component_type_kind))).
