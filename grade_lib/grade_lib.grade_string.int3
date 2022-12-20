@@ -1,0 +1,6 @@
+:- module (grade_lib.grade_string).
+:- interface.
+:- type which_grade_string
+	where	type_is_abstract_enum(1).
+:- type_representation(grade_component_map, is_eqv_to(map(solver_var_id, grade_component_entry))).
+:- type_representation(which_grade_string, du_repn(enum("grade_string_user", "grade_string_link_check", [],  no_c_j_cs))).
