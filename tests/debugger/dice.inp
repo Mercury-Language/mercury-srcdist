@@ -1,0 +1,14 @@
+register --quiet
+context none
+echo on
+dice -f dice.fail -p dice.passes -m dice
+fail_trace_counts dice.fail
+pass_trace_counts dice.passes
+dice -sS -m dice
+dice -sSF -m dice
+dice -n 3 -s P -m dice
+dice -s Fp -m dice
+dice -sS -n 1 --module dice
+break dice.m:81
+c
+quit -y
