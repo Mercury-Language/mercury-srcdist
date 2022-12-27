@@ -1,0 +1,86 @@
+/*
+** Automatically generated from `smm_common.m'
+** by the Mercury compiler,
+** version rotd-2022-12-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.smm_common.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__smm_common
+#define MR_HEADER_GUARD_transform_hlds__smm_common
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__SMM_COMMON_DECL_GUARD
+#define TRANSFORM_HLDS__SMM_COMMON_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0;
+
+MR_bool MR_CALL 
+transform_hlds__smm_common__check_type_of_node_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__smm_common__dump_program_point_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__smm_common__some_are_special_preds_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__smm_common__program_point_init_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+transform_hlds__smm_common____Compare____program_point_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__smm_common____Unify____program_point_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__smm_common__init(void);
+void mercury__transform_hlds__smm_common__init_type_tables(void);
+void mercury__transform_hlds__smm_common__init_debugger(void);
+const char *mercury__transform_hlds__smm_common__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.smm_common
+
+// :- end_interface transform_hlds.smm_common.
