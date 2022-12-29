@@ -1,0 +1,308 @@
+/*
+** Automatically generated from `feedback.automatic_parallelism.m'
+** by the Mercury compiler,
+** version rotd-2022-12-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdbcomp.feedback.automatic_parallelism.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdbcomp__feedback__automatic_parallelism
+#define MR_HEADER_GUARD_mdbcomp__feedback__automatic_parallelism
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__FEEDBACK__AUTOMATIC_PARALLELISM_DECL_GUARD
+#define MDBCOMP__FEEDBACK__AUTOMATIC_PARALLELISM_DECL_GUARD
+#include "mdbcomp.mih"
+#include "mdbcomp.feedback.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_alg_for_finding_best_par_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_callee_rep_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_params_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_conjuncts_are_dependent_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_cost_above_par_threshold_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallel_exec_metrics_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallelise_dep_conjs_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_speedup_estimate_alg_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_stat_measure_0;
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunction_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunctions_proc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism__convert_seq_conj_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Float MR_CALL 
+mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_cpu_time_1_f_0(
+  MR_Word param_1);
+
+MR_Float MR_CALL 
+mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_overheads_1_f_0(
+  MR_Word param_1);
+
+MR_Float MR_CALL 
+mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_speedup_1_f_0(
+  MR_Word param_1);
+
+MR_Float MR_CALL 
+mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_time_saving_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____alg_for_finding_best_par_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____callee_rep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunction_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____candidate_par_conjunctions_proc_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____conjuncts_are_dependent_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____cost_above_par_threshold_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____parallel_exec_metrics_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____parallelise_dep_conjs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____pard_goal_annotation_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____push_goal_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____seq_conj_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____speedup_estimate_alg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Compare____stat_measure_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____alg_for_finding_best_par_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____callee_rep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunction_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____candidate_par_conjunctions_proc_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____conjuncts_are_dependent_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____cost_above_par_threshold_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____parallel_exec_metrics_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____parallelise_dep_conjs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____pard_goal_annotation_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____push_goal_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____seq_conj_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____speedup_estimate_alg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__feedback__automatic_parallelism____Unify____stat_measure_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdbcomp__feedback__automatic_parallelism__init(void);
+void mercury__mdbcomp__feedback__automatic_parallelism__init_type_tables(void);
+void mercury__mdbcomp__feedback__automatic_parallelism__init_debugger(void);
+const char *mercury__mdbcomp__feedback__automatic_parallelism__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdbcomp.feedback.automatic_parallelism
+
+// :- end_interface mdbcomp.feedback.automatic_parallelism.

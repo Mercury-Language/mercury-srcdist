@@ -1,0 +1,143 @@
+/*
+** Automatically generated from `par_builtin.m'
+** by the Mercury compiler,
+** version rotd-2022-12-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module par_builtin.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_par_builtin
+#define MR_HEADER_GUARD_par_builtin
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PAR_BUILTIN_DECL_GUARD
+#define PAR_BUILTIN_DECL_GUARD
+
+/*
+INIT mercury_sys_init_par_builtin_modules
+*/
+
+#if !defined(MR_HIGHLEVEL_CODE) && defined(MR_THREAD_SAFE)
+    MR_define_extern_entry(mercury__par_builtin__wait_resume);
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__par_builtin__par_builtin__type_ctor_info_future_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__par_builtin__par_builtin__type_ctor_info_loop_control_0;
+
+MR_bool MR_CALL 
+mercury__par_builtin__evaluate_parallelism_condition_0_p_0(void);
+
+void MR_CALL 
+mercury__par_builtin__get_future_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__par_builtin__lc_create_2_p_0(
+  MR_Integer param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__par_builtin__lc_default_num_contexts_1_p_0(
+  MR_Integer * param_1);
+
+void MR_CALL 
+mercury__par_builtin__lc_finish_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__par_builtin__lc_free_slot_2_p_0(
+  MR_Box param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__par_builtin__lc_join_and_terminate_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__par_builtin__lc_wait_free_slot_2_p_0(
+  MR_Box param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__par_builtin__new_future_2_p_0(
+  MR_Integer param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__par_builtin__par_cond_close_stats_file_2_p_0(void);
+
+void MR_CALL 
+mercury__par_builtin__signal_future_2_p_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__par_builtin__wait_future_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__par_builtin____Compare____future_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+void MR_CALL 
+mercury__par_builtin____Compare____loop_control_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__par_builtin____Unify____future_1_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__par_builtin____Unify____loop_control_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void mercury__par_builtin__init(void);
+void mercury__par_builtin__init_type_tables(void);
+void mercury__par_builtin__init_debugger(void);
+const char *mercury__par_builtin__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_par_builtin
+
+// :- end_interface par_builtin.
