@@ -1,0 +1,14 @@
+module(2, "percent_encoding.m",
+	(mdb.percent_encoding),
+	{mdb},
+	{builtin, private_builtin},
+	{char, int, list, string},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

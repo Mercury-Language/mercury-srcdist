@@ -1,0 +1,4 @@
+:- module (libs.int_emu).
+:- interface.
+:- type bits_per_int
+    --->    bits_per_int(int).

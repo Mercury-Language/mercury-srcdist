@@ -1,0 +1,27 @@
+version: 7.6.x-{build}
+
+image:
+- Visual Studio 2015
+
+environment:
+  BLD: debug
+  matrix:
+  - ARCH: x86
+    CFLAGS_EXTRA: -DAO_ASSUME_VISTA -DAO_USE_PENTIUM4_INSTRS
+  - ARCH: x86
+    BLD: release
+  - ARCH: x64
+    CFLAGS_EXTRA: -DAO_CMPXCHG16B_AVAILABLE
+  - ARCH: x64
+    BLD: release
+
+clone_depth: 50
+
+install:
+- cmd: '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /%ARCH% /%BLD%'
+
+build_script:
+  - cmd: cd src && nmake -f Makefile.msft clean all CFLAGS_EXTRA="%CFLAGS_EXTRA%" && cd ..
+
+test_script:
+  - cmd: cd src && nmake -f Makefile.msft check-noautogen CFLAGS_EXTRA="%CFLAGS_EXTRA%"
