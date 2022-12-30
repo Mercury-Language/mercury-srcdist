@@ -1,0 +1,14 @@
+:- module (make.top_level).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.maybe_succeeded).
+:- use_module (make.make_info).
+:- use_module (make.options_file).
+:- pred make_process_compiler_args(libs.globals.globals, list.list(string), make.options_file.options_variables, list.list(string), list.list(libs.file_util.file_name), io.io, io.io).
+:- mode make_process_compiler_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred make_top_target(libs.globals.globals, make.make_info.top_target_file, libs.maybe_succeeded.maybe_succeeded, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode make_top_target((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
