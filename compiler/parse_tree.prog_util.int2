@@ -1,0 +1,5 @@
+:- module (parse_tree.prog_util).
+:- interface.
+:- type strip_what_module_names
+    --->    strip_builtin_module_name 
+    ;       strip_all_module_names .

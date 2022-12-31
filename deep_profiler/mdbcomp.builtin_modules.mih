@@ -1,0 +1,137 @@
+/*
+** Automatically generated from `builtin_modules.m'
+** by the Mercury compiler,
+** version rotd-2022-12-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdbcomp.builtin_modules.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdbcomp__builtin_modules
+#define MR_HEADER_GUARD_mdbcomp__builtin_modules
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__BUILTIN_MODULES_DECL_GUARD
+#define MDBCOMP__BUILTIN_MODULES_DECL_GUARD
+#include "mdbcomp.mih"
+
+#endif
+
+
+
+MR_bool MR_CALL 
+mdbcomp__builtin_modules__any_mercury_builtin_module_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+mdbcomp__builtin_modules__is_mdbcomp_module_name_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+mdbcomp__builtin_modules__is_std_lib_module_name_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__builtin_modules__non_traced_mercury_builtin_module_1_p_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__all_builtin_modules_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_exception_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_int_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_io_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_list_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_par_builtin_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_private_builtin_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_profiling_builtin_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_region_builtin_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_rtti_implementation_builtin_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_ssdb_builtin_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_std_lib_module_name_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_stm_builtin_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_stream_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_string_format_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_string_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_string_parse_util_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_table_builtin_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_table_statistics_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_term_size_prof_builtin_module_0_f_0(void);
+
+MR_Word MR_CALL 
+mdbcomp__builtin_modules__mercury_univ_module_0_f_0(void);
+
+void mercury__mdbcomp__builtin_modules__init(void);
+void mercury__mdbcomp__builtin_modules__init_type_tables(void);
+void mercury__mdbcomp__builtin_modules__init_debugger(void);
+const char *mercury__mdbcomp__builtin_modules__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdbcomp.builtin_modules
+
+// :- end_interface mdbcomp.builtin_modules.
