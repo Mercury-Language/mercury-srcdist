@@ -1,0 +1,59 @@
+echo on
+register --quiet
+list_context_lines 10
+break big_data
+continue
+finish
+delete *
+dump -q 1 browser_test.save.1
+format raw_pretty
+print *
+format -A verbose
+print *
+browse 1; ls; quit
+format -AP flat
+print -f 1
+print -p 1
+print -v 1
+print -r 1
+print --xyzzy 1
+browse 1; print; quit
+browse -f 1; ls; quit
+browse Data
+ls
+cd /1
+ls
+cd /1/2
+ls
+cd /3
+ls
+cd 1/3/2
+ls
+cd
+ls
+cdr 100 2
+cdr 3 1
+ls
+cdr 3 ../1/..
+ls
+quit
+format_param -A -f depth 1
+print *
+print Data/1
+format_param -f depth 3
+print 1
+print Data/1/2
+print 1^1^2^3
+retry
+break list_data
+continue
+finish
+dump Data browser_test.save.2
+break a_func
+continue
+finish
+print -p
+print -r
+print -v
+print -f
+continue

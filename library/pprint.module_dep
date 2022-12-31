@@ -1,0 +1,14 @@
+module(2, "pprint.m",
+	pprint,
+	{},
+	{builtin, char, io, list, private_builtin, stream, string, univ},
+	{array, deconstruct, enum, int, int16, int32, int64, int8, map, ops, pair, robdd, sparse_bitset, term, type_desc, uint16, uint32, uint64, uint8, version_array, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
