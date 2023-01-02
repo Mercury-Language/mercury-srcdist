@@ -1,0 +1,3 @@
+:- module (transform_hlds.term_pass1).
+:- interface.
+:- type arg_size_result.

@@ -1,0 +1,271 @@
+:- module int.
+
+:- pragma termination_info(int.'*'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'+'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int.'+'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'+'((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'+'((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'-'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int.'-'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'-'((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'-'((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'//'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'/\\'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int.'<<'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'<<u'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'=<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int.'>'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int.'>='((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int.'>>'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'>>u'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.'ClassMethod_for_enum__enum____int__arity0______enum__from_int_1'((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(int.'ClassMethod_for_enum__enum____int__arity0______enum__to_int_1'((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(int.'ClassMethod_for_enum__uenum____int__arity0______enum__from_uint_2'((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(int.'ClassMethod_for_enum__uenum____int__arity0______enum__to_uint_1'((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int.'\\'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(int.'\\/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.abs((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(int.abs((builtin.in), (builtin.out)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(int.all_true_in_range(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info((int.bits_per_int) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int.bits_per_int((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(int.div((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.even((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(int.floor_to_multiple_of_bits_per_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int.fold_down((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (array.array_di), (array.array_uo)) is det) >> (pred((builtin.in), (array.array_di), (array.array_uo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_down(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_down2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down2(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down2(((pred((builtin.in), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_down2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_down2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_down3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_down3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_down3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_down3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (array.array_di), (array.array_uo)) is det) >> (pred((builtin.in), (array.array_di), (array.array_uo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up2(((pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(int.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(int.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(int.hash((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int.hash((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((int.int_domain_checks), finite(0, []), cannot_loop).
+:- pragma termination_info(int.int_to_doc((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int.log2((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(int.log2((builtin.in), (builtin.out)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(int.max((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(int.max((builtin.in), (builtin.in), (builtin.out)), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((int.max_int) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int.max_int((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(int.min((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(int.min((builtin.in), (builtin.in), (builtin.out)), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((int.min_int) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int.min_int((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(int.minus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.mod((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.nabs((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(int.nondet_int_in_range((builtin.in), (builtin.in), (builtin.out)), finite(0, [yes, no, no]), can_loop).
+:- pragma termination_info(int.odd((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(int.plus((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.pow((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(int.pow((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(int.quot_bits_per_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int.rem((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.rem_bits_per_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int.times((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.times_bits_per_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((int.ubits_per_int) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(int.ubits_per_int((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(int.unchecked_abs((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(int.unchecked_left_shift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.unchecked_left_ushift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.unchecked_rem((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.unchecked_right_shift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.unchecked_right_ushift((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.xor((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.xor((builtin.in), (builtin.uo)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(int.xor((builtin.uo), (builtin.in)) = (builtin.in), finite(0, [no, no, no]), cannot_loop).
+
+:- pragma exceptions(function, (int.(*)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.(+)), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.(+)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.(+)), 2, 1, will_not_throw).
+:- pragma exceptions(function, (int.(+)), 2, 2, will_not_throw).
+:- pragma exceptions(function, (int.(-)), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.(-)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.(-)), 2, 1, will_not_throw).
+:- pragma exceptions(function, (int.(-)), 2, 2, will_not_throw).
+:- pragma exceptions(function, (int.(/)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int.(//)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int.(/\)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.(<)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.(<<)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int.('<<u')), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.(=<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.(>)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.(>=)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.(>>)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int.('>>u')), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int.(\)), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.(\/)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.abs), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.abs), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.all_true_in_range), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int.bits_per_int), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.bits_per_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.(div)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.even), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.floor_to_multiple_of_bits_per_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.fold_down), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down), 5, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down2), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down2), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down2), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down2), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down2), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down2), 7, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down2), 7, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down2), 7, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down3), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down3), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down3), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down3), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down3), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down3), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down3), 9, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down3), 9, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down3), 9, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_down3), 9, 9, may_throw(user_exception)).
+:- pragma exceptions(function, (int.fold_up), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up), 5, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up2), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up2), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up2), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up2), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up2), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up2), 7, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up2), 7, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up2), 7, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up2), 7, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up3), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up3), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up3), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up3), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up3), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up3), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up3), 9, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up3), 9, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up3), 9, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.fold_up3), 9, 9, may_throw(user_exception)).
+:- pragma exceptions(function, (int.hash), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.hash), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.int_domain_checks), 0, 0, will_not_throw).
+:- pragma exceptions(function, (int.int_to_doc), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.log2), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.log2), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int.max), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.max), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int.max_int), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.max_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.min), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.min), 3, 0, will_not_throw).
+:- pragma exceptions(function, (int.min_int), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.min_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.minus), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.(mod)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int.nabs), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.nondet_int_in_range), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.odd), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.plus), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.pow), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (int.pow), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int.quot_bits_per_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.(rem)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (int.rem_bits_per_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.times), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.times_bits_per_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.ubits_per_int), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (int.ubits_per_int), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.unchecked_abs), 1, 0, will_not_throw).
+:- pragma exceptions(function, (int.unchecked_left_shift), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.unchecked_left_ushift), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.unchecked_quotient), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.unchecked_rem), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.unchecked_right_shift), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.unchecked_right_ushift), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.xor), 2, 0, will_not_throw).
+:- pragma exceptions(function, (int.xor), 2, 1, will_not_throw).
+:- pragma exceptions(function, (int.xor), 2, 2, will_not_throw).

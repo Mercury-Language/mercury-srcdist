@@ -1,0 +1,5 @@
+:- module (io.text_read).
+:- interface.
+:- type read_line_as_string_result
+	where	type_is_abstract_enum(2).
+:- type_representation(read_line_as_string_result, du_repn(enum("rlas_ok", "rlas_eof", ["rlas_null_char", "rlas_error"],  no_c_j_cs))).
