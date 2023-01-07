@@ -1,0 +1,13 @@
+:- module (check_hlds.typecheck_info).
+:- interface.
+:- type maybe_rhs_lambda
+	where	type_is_abstract_enum(1).
+:- type overloaded_symbol.
+:- type overloaded_symbol_map.
+:- type type_error_clause_context.
+:- type typecheck_debug_info.
+:- type typecheck_info.
+:- type_representation(maybe_rhs_lambda, du_repn(enum("has_no_rhs_lambda", "has_rhs_lambda", [],  no_c_j_cs))).
+:- type_representation(overloaded_symbol_map, is_eqv_to(map(check_hlds.typecheck_info.overloaded_symbol, list(prog_context)))).
+:- type_representation(type_error_clause_context, is_word_aligned_ptr).
+:- type_representation(typecheck_info, is_word_aligned_ptr).

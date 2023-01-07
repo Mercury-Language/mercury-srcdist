@@ -1,0 +1,14 @@
+module(2, "mer_ssdb.m",
+	mer_ssdb,
+	{},
+	{builtin, private_builtin},
+	{ssdb},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
