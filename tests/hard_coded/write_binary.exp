@@ -1,0 +1,181 @@
+TESTING TERMS WITH OPERATORS
+ok... test passed:
+var("X") + int(3) * var("X^2") ; (type)
+var("X") + int(3) * var("X^2") ; (type)
+ok... test passed:
+{ type }
+{ type }
+ok... test passed:
+{ '?-' }
+{ '?-' }
+ok... test passed:
+'?-'
+'?-'
+ok... test passed:
+{ blah }
+{ blah }
+ok... test passed:
+blah ; (type), (type) * blah ; (type)
+blah ; (type), (type) * blah ; (type)
+ok... test passed:
+((blah ; blah), blah) * blah ; blah
+((blah ; blah), blah) * blah ; blah
+ok... test passed:
+(type) * blah ; (type)
+(type) * blah ; (type)
+TESTING DISCRIMINATED UNIONS
+ok... test passed:
+one
+one
+ok... test passed:
+two
+two
+ok... test passed:
+three
+three
+ok... test passed:
+apple([9, 5, 1])
+apple([9, 5, 1])
+ok... test passed:
+banana([three, one, two])
+banana([three, one, two])
+ok... test passed:
+zop(3.3, 2.03)
+zop(3.3, 2.03)
+ok... test passed:
+zip(3, 2)
+zip(3, 2)
+ok... test passed:
+zap(3, -2.111)
+zap(3, -2.111)
+ok... test passed:
+wombat
+wombat
+ok... test passed:
+foo
+foo
+TESTING POLYMORPHISM
+ok... test passed:
+poly_one([2399.3])
+poly_one([2399.3])
+ok... test passed:
+poly_two(3)
+poly_two(3)
+ok... test passed:
+poly_three(3.33, 4, poly_one(9.11))
+poly_three(3.33, 4, poly_one(9.11))
+TESTING BUILTINS
+ok... test passed:
+
+
+ok... test passed:
+Hello, world
+
+Hello, world
+
+ok... test passed:
+Foo%sFoo
+Foo%sFoo
+ok... test passed:
+"
+"
+ok... test passed:
+a
+a
+ok... test passed:
+&
+&
+ok... test passed:
+.
+.
+ok... test passed:
+%
+%
+ok... test passed:
+ 
+ 
+ok... test passed:
+	
+	
+ok... test passed:
+
+
+
+
+ok... test passed:
+\
+\
+ok... test passed:
+*
+*
+ok... test passed:
+/
+/
+ok... test passed:
+3.14159
+3.14159
+ok... test passed:
+1.128324983e-21
+1.128324983e-21
+ok... test passed:
+2.23954899e+23
+2.23954899e+23
+ok... test passed:
+-65
+-65
+ok... test passed:
+4
+4
+ok... test passed:
+651
+651
+ok... test passed:
+-128
+-128
+ok... test passed:
+127
+127
+ok... test passed:
+255
+255
+ok... test passed:
+-32768
+-32768
+ok... test passed:
+32767
+32767
+ok... test passed:
+65535
+65535
+ok... test passed:
+-2147483648
+-2147483648
+ok... test passed:
+2147483647
+2147483647
+ok... test passed:
+4294967295
+4294967295
+next text is expected to fail:
+test failed:
+exception(univ_cons("error reading term back in again"))
+'<<predicate>>'
+TESTING OTHER TYPES
+ok... test passed:
+var(1)
+var(1)
+ok... test passed:
+var_supply(0)
+var_supply(0)
+ok... test passed:
+var_supply(1)
+var_supply(1)
+ok... test passed:
+empty
+empty
+ok... test passed:
+qwerty(4)
+qwerty(4)
+ok... test passed:
+array([1, 2, 3, 4])
+array([1, 2, 3, 4])

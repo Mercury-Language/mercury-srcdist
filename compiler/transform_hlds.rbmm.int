@@ -1,0 +1,17 @@
+:- module (transform_hlds.rbmm).
+:- interface.
+:- include_module ((transform_hlds.rbmm).add_rbmm_goal_infos).
+:- include_module ((transform_hlds.rbmm).condition_renaming).
+:- include_module ((transform_hlds.rbmm).execution_path).
+:- include_module ((transform_hlds.rbmm).interproc_region_lifetime).
+:- include_module ((transform_hlds.rbmm).live_region_analysis).
+:- include_module ((transform_hlds.rbmm).live_variable_analysis).
+:- include_module ((transform_hlds.rbmm).points_to_analysis).
+:- include_module ((transform_hlds.rbmm).points_to_graph).
+:- include_module ((transform_hlds.rbmm).points_to_info).
+:- include_module ((transform_hlds.rbmm).region_analysis).
+:- include_module ((transform_hlds.rbmm).region_arguments).
+:- include_module ((transform_hlds.rbmm).region_instruction).
+:- include_module ((transform_hlds.rbmm).region_liveness_info).
+:- include_module ((transform_hlds.rbmm).region_resurrection_renaming).
+:- include_module ((transform_hlds.rbmm).region_transformation).
