@@ -1,0 +1,5 @@
+:- module (ml_backend.mlds_to_c_func).
+:- interface.
+:- type maybe_blank_line
+    --->    no_blank_line_start 
+    ;       blank_line_start .
