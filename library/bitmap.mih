@@ -1,0 +1,847 @@
+/*
+** Automatically generated from `bitmap.m'
+** by the Mercury compiler,
+** version rotd-2023-01-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module bitmap.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_bitmap
+#define MR_HEADER_GUARD_bitmap
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BITMAP_DECL_GUARD
+#define BITMAP_DECL_GUARD
+
+#include "mercury_types.h"
+#include "mercury_bitmap.h"
+#include "mercury_type_info.h"
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_bit_index_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_bit_index_in_byte_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_bitmap_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_bitmap_error_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_byte_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_byte_index_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_copy_direction_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_num_bits_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_num_bytes_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_slice_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bitmap__bitmap__type_ctor_info_word_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_stream__bulk_reader__arity5__io__binary_input_stream__arity0__int__arity0__bitmap__bitmap__arity0__io__state__arity0__io__error__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_stream__writer__arity3__io__binary_output_stream__arity0__bitmap__bitmap__arity0__io__state__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_stream__writer__arity3__io__binary_output_stream__arity0__bitmap__slice__arity0__io__state__arity0__[6];
+
+void MR_CALL 
+mercury__bitmap__ClassMethod_for_stream__bulk_reader____io__binary_input_stream__arity0__int__arity0__bitmap__bitmap__arity0__io__state__arity0__io__error__arity0______stream__bulk_get_9_9_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Box * param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__bitmap__ClassMethod_for_stream__writer____io__binary_output_stream__arity0__bitmap__bitmap__arity0__io__state__arity0______stream__put_4_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__bitmap__ClassMethod_for_stream__writer____io__binary_output_stream__arity0__bitmap__slice__arity0__io__state__arity0______stream__put_4_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__bitmap__bitmap_compare_3_p_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__bitmap__bitmap_equal_2_p_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap__byte_in_range_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__bitmap__clear_3_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__bitmap__clear_filler_bits_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__bitmap__complement_loop_3_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__bitmap__copy_bits_7_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+mercury__bitmap__do_copy_bytes_7_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+mercury__bitmap__do_write_bitmap_range_7_p_0(
+  MR_Box param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__bitmap__extract_bits_from_bytes_6_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6);
+
+void MR_CALL 
+mercury__bitmap__flip_3_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+MR_bool MR_CALL 
+mercury__bitmap__in_range_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap__is_clear_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap__is_empty_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__bitmap__is_set_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__bitmap__read_bitmap_6_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Integer * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__bitmap__read_bitmap_7_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__bitmap__read_bitmap_range_8_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Box * param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__bitmap__read_bitmap_range_9_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Box * param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__bitmap__set_3_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__bitmap__set_bit_4_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__bitmap__set_bits_5_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__bitmap__set_bits_in_bytes_6_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__bitmap__set_byte_4_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__bitmap__set_trailing_bits_in_byte_4_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__bitmap__set_uint8_4_p_0(
+  MR_Integer param_1,
+  uint8_t param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__bitmap__throw_bit_bounds_error_3_p_0(
+  MR_Box param_1,
+  MR_String param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__bitmap__throw_bitmap_error_1_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+mercury__bitmap__throw_bounds_error_4_p_0(
+  MR_Box param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+void MR_CALL 
+mercury__bitmap__throw_byte_bounds_error_3_p_0(
+  MR_Box param_1,
+  MR_String param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__bitmap__unsafe_clear_3_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__bitmap__unsafe_flip_3_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+MR_bool MR_CALL 
+mercury__bitmap__unsafe_is_clear_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap__unsafe_is_set_2_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__bitmap__unsafe_set_3_p_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__bitmap__unsafe_set_bit_4_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__bitmap__unsafe_set_bits_5_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__bitmap__unsafe_set_byte_4_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__bitmap__unsafe_set_uint8_4_p_0(
+  MR_Integer param_1,
+  uint8_t param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__bitmap__write_bitmap_3_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__bitmap__write_bitmap_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__bitmap__write_bitmap_range_5_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__bitmap__write_bitmap_range_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+void MR_CALL 
+mercury__bitmap__zip_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__bitmap__zip2_5_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_Box MR_CALL 
+mercury__bitmap__append_list_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__bitmap__bit_2_f_0(
+  MR_Integer param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__f_98_105_116_32_58_61_3_f_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Word param_3);
+
+MR_Integer MR_CALL 
+mercury__bitmap__bit_index_in_byte_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__bitmap__bitmap_to_byte_strings_1_f_0(
+  MR_Box param_1);
+
+MR_Word MR_CALL 
+mercury__bitmap__bitmap_to_byte_strings_3_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Integer MR_CALL 
+mercury__bitmap__bitmask_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__bitmap__bits_3_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Box param_3);
+
+MR_Box MR_CALL 
+mercury__bitmap__f_98_105_116_115_32_58_61_4_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Integer param_4);
+
+MR_Integer MR_CALL 
+mercury__bitmap__bits_per_byte_0_f_0(void);
+
+MR_Integer MR_CALL 
+mercury__bitmap__byte_2_f_0(
+  MR_Integer param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__f_98_121_116_101_32_58_61_3_f_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Integer param_3);
+
+MR_Integer MR_CALL 
+mercury__bitmap__byte_index_for_bit_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__bitmap__byte_slice_3_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_Box MR_CALL 
+mercury__bitmap__clear_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__complement_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__bitmap__copy_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__bitmap__copy_bits_5_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_Integer param_5);
+
+MR_Box MR_CALL 
+mercury__bitmap__copy_bits_in_bitmap_4_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+MR_Box MR_CALL 
+mercury__bitmap__copy_bytes_5_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_Integer param_5);
+
+MR_Box MR_CALL 
+mercury__bitmap__copy_bytes_in_bitmap_4_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Integer param_4);
+
+MR_Integer MR_CALL 
+mercury__bitmap__det_byte_index_for_bit_1_f_0(
+  MR_Integer param_1);
+
+MR_Box MR_CALL 
+mercury__bitmap__det_from_string_1_f_0(
+  MR_String param_1);
+
+MR_Integer MR_CALL 
+mercury__bitmap__det_num_bytes_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__bitmap__difference_2_f_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__flip_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap__from_string_1_f_0(
+  MR_String param_1,
+  MR_Box * param_2);
+
+MR_Word MR_CALL 
+mercury__bitmap__get_bit_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__bitmap__get_bits_3_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_Integer MR_CALL 
+mercury__bitmap__get_byte_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+uint8_t MR_CALL 
+mercury__bitmap__get_uint8_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__bitmap__hash_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__bitmap__init_1_f_0(
+  MR_Integer param_1);
+
+MR_Box MR_CALL 
+mercury__bitmap__init_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__intersect_2_f_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_Integer MR_CALL 
+mercury__bitmap__num_bits_1_f_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__bitmap__num_bytes_1_f_0(
+  MR_Box param_1,
+  MR_Integer * param_2);
+
+MR_Integer MR_CALL 
+mercury__bitmap__quotient_bits_per_byte_with_rem_zero_2_f_0(
+  MR_String param_1,
+  MR_Integer param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__resize_3_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Box MR_CALL 
+mercury__bitmap__set_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__shrink_without_copying_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__bitmap__slice_3_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_Box MR_CALL 
+mercury__bitmap__slice_bitmap_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__bitmap__slice_num_bits_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__bitmap__slice_num_bytes_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__bitmap__slice_start_bit_index_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+mercury__bitmap__slice_start_byte_index_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mercury__bitmap__to_byte_string_1_f_0(
+  MR_Box param_1);
+
+MR_String MR_CALL 
+mercury__bitmap__to_string_1_f_0(
+  MR_Box param_1);
+
+MR_Box MR_CALL 
+mercury__bitmap__union_2_f_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+mercury__bitmap__unsafe_bit_2_f_0(
+  MR_Integer param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__f_117_110_115_97_102_101_95_98_105_116_32_58_61_3_f_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Word param_3);
+
+MR_Integer MR_CALL 
+mercury__bitmap__unsafe_bits_3_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Box param_3);
+
+MR_Box MR_CALL 
+mercury__bitmap__f_117_110_115_97_102_101_95_98_105_116_115_32_58_61_4_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Integer param_4);
+
+MR_Integer MR_CALL 
+mercury__bitmap__unsafe_byte_2_f_0(
+  MR_Integer param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__f_117_110_115_97_102_101_95_98_121_116_101_32_58_61_3_f_0(
+  MR_Integer param_1,
+  MR_Box param_2,
+  MR_Integer param_3);
+
+MR_Box MR_CALL 
+mercury__bitmap__unsafe_clear_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__unsafe_flip_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__bitmap__unsafe_get_bit_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__bitmap__unsafe_get_bits_3_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_Integer MR_CALL 
+mercury__bitmap__unsafe_get_byte_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+uint8_t MR_CALL 
+mercury__bitmap__unsafe_get_uint8_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__unsafe_set_2_f_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+MR_Box MR_CALL 
+mercury__bitmap__xor_2_f_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__bitmap____Compare____bit_index_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__bitmap____Compare____bit_index_in_byte_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__bitmap____Compare____bitmap_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__bitmap____Compare____bitmap_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__bitmap____Compare____byte_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__bitmap____Compare____byte_index_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__bitmap____Compare____copy_direction_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__bitmap____Compare____num_bits_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__bitmap____Compare____num_bytes_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__bitmap____Compare____slice_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__bitmap____Compare____word_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____bit_index_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____bit_index_in_byte_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____bitmap_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____bitmap_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____byte_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____byte_index_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____copy_direction_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____num_bits_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____num_bytes_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____slice_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__bitmap____Unify____word_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void mercury__bitmap__init(void);
+void mercury__bitmap__init_type_tables(void);
+void mercury__bitmap__init_debugger(void);
+const char *mercury__bitmap__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_bitmap
+
+// :- end_interface bitmap.

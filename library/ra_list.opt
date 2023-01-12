@@ -1,0 +1,424 @@
+:- module ra_list.
+:- use_module builtin.
+:- use_module int.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+
+:- type ra_list(T)
+    --->    nil 
+    ;       cons(int, ra_list.ra_list_bintree(T), ra_list.ra_list(T)).
+:- type ra_list_bintree(T)
+    --->    leaf(T)
+    ;       node(T, ra_list.ra_list_bintree(T), ra_list.ra_list_bintree(T)).
+
+:- func ra_list.foldl_bintree((func(L, A) = A), ra_list.ra_list_bintree(L), A) = A.
+:- mode foldl_bintree((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred ra_list.foldl_bintree(pred(L, A, A), ra_list.ra_list_bintree(L), A, A).
+:- mode foldl_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode foldl_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- mode foldl_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode foldl_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)) is nondet.
+:- mode foldl_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode foldl_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- func ra_list.foldr_bintree((func(L, A) = A), ra_list.ra_list_bintree(L), A) = A.
+:- mode foldr_bintree((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred ra_list.foldr_bintree(pred(L, A, A), ra_list.ra_list_bintree(L), A, A).
+:- mode foldr_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldr_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldr_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldr_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldr_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode foldr_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- mode foldr_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode foldr_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)) is nondet.
+:- mode foldr_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)) is cc_multi.
+:- mode foldr_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred ra_list.index0_list(ra_list.ra_list(T), int, T).
+:- mode index0_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred ra_list.length_acc(ra_list.ra_list(T), int, int).
+:- mode length_acc((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func ra_list.map_bintree(((func X) = Y), ra_list.ra_list_bintree(X)) = ra_list.ra_list_bintree(Y).
+:- mode map_bintree((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred ra_list.map_bintree(pred(X, Y), ra_list.ra_list_bintree(X), ra_list.ra_list_bintree(Y)).
+:- mode map_bintree(((pred((builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- mode map_bintree(((pred((builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out)) is cc_multi.
+:- mode map_bintree(((pred((builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)) is semidet.
+:- mode map_bintree(((pred((builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.out)) is multi.
+:- mode map_bintree(((pred((builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.out)) is nondet.
+:- mode map_bintree(((pred((builtin.in), (builtin.in)) is semidet) >> (pred((builtin.in), (builtin.in)) is semidet)), (builtin.in), (builtin.in)) is semidet.
+:- pred ra_list.update_2(int, T, ra_list.ra_list(T), ra_list.ra_list(T)).
+:- mode update_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+
+:- pragma inline(pred((ra_list.cons)/3)).
+ra_list.cons(V_4, V_5, V_6) :-
+    ( if
+      V_5 = ra_list.cons(V_7, V_8, V_13) : ra_list.ra_list(T_1),
+      V_13 = ra_list.cons(V_9, V_10, V_11) : ra_list.ra_list(T_1),
+      V_7 = V_9
+    then
+      V_12 = int.(V_14 + V_9),
+      V_14 = int.(V_15 + V_7),
+      V_15 = 1 : int,
+      V_6 = ra_list.cons(V_12, V_16, V_11) : ra_list.ra_list(T_1),
+      V_16 = ra_list.node(V_4, V_8, V_10) : ra_list.ra_list_bintree(T_1)
+    else
+      V_6 = ra_list.cons(V_17, V_18, V_5) : ra_list.ra_list(T_1),
+      V_17 = 1 : int,
+      V_18 = ra_list.leaf(V_4) : ra_list.ra_list_bintree(T_1)
+    ).
+
+ra_list.foldl(V_5, ra_list.nil, V_7) = V_7.
+ra_list.foldl(V_8, ra_list.cons(V_9, V_10, V_11), V_13) = V_14 :-
+    V_15 = ra_list.foldl_bintree(V_8, V_10, V_13),
+    V_14 = ra_list.foldl(V_8, V_11, V_15).
+
+ra_list.foldl(V_5, ra_list.nil, V_7, V_8) :-
+    V_8 = V_7.
+ra_list.foldl(V_9, ra_list.cons(V_10, V_11, V_12), V_14, V_15) :-
+    ra_list.foldl_bintree(V_9, V_11, V_14, V_16),
+    ra_list.foldl(V_9, V_12, V_16, V_15).
+
+ra_list.foldl_bintree(V_5, V_6, V_11) = V_12 :-
+    ( % disjunction
+      V_6 = ra_list.leaf(V_8) : ra_list.ra_list_bintree(L_1),
+      V_12 = apply(V_5, V_8, V_11)
+    ;
+      V_6 = ra_list.node(V_17, V_9, V_10) : ra_list.ra_list_bintree(L_1),
+      V_14 = apply(V_5, V_17, V_11),
+      V_15 = ra_list.foldl_bintree(V_5, V_9, V_14),
+      V_12 = ra_list.foldl_bintree(V_5, V_10, V_15)
+    ).
+
+ra_list.foldl_bintree(V_5, V_6, V_11, V_12) :-
+    ( % disjunction
+      V_6 = ra_list.leaf(V_8) : ra_list.ra_list_bintree(L_1),
+      call(V_5, V_8, V_11, V_12)
+    ;
+      V_6 = ra_list.node(V_17, V_9, V_10) : ra_list.ra_list_bintree(L_1),
+      call(V_5, V_17, V_11, V_14),
+      ra_list.foldl_bintree(V_5, V_9, V_14, V_15),
+      ra_list.foldl_bintree(V_5, V_10, V_15, V_12)
+    ).
+
+ra_list.foldr(V_5, ra_list.nil, V_7) = V_7.
+ra_list.foldr(V_8, ra_list.cons(V_9, V_10, V_11), V_13) = V_14 :-
+    V_15 = ra_list.foldr(V_8, V_11, V_13),
+    V_14 = ra_list.foldr_bintree(V_8, V_10, V_15).
+
+ra_list.foldr(V_5, ra_list.nil, V_7, V_8) :-
+    V_8 = V_7.
+ra_list.foldr(V_9, ra_list.cons(V_10, V_11, V_12), V_14, V_15) :-
+    ra_list.foldr(V_9, V_12, V_14, V_16),
+    ra_list.foldr_bintree(V_9, V_11, V_16, V_15).
+
+ra_list.foldr_bintree(V_5, V_6, V_11) = V_12 :-
+    ( % disjunction
+      V_6 = ra_list.leaf(V_8) : ra_list.ra_list_bintree(L_1),
+      V_12 = apply(V_5, V_8, V_11)
+    ;
+      V_6 = ra_list.node(V_17, V_9, V_10) : ra_list.ra_list_bintree(L_1),
+      V_14 = ra_list.foldr_bintree(V_5, V_10, V_11),
+      V_15 = ra_list.foldr_bintree(V_5, V_9, V_14),
+      V_12 = apply(V_5, V_17, V_15)
+    ).
+
+ra_list.foldr_bintree(V_5, V_6, V_11, V_12) :-
+    ( % disjunction
+      V_6 = ra_list.leaf(V_8) : ra_list.ra_list_bintree(L_1),
+      call(V_5, V_8, V_11, V_12)
+    ;
+      V_6 = ra_list.node(V_17, V_9, V_10) : ra_list.ra_list_bintree(L_1),
+      ra_list.foldr_bintree(V_5, V_10, V_11, V_14),
+      ra_list.foldr_bintree(V_5, V_9, V_14, V_15),
+      call(V_5, V_17, V_15, V_12)
+    ).
+
+:- pragma inline(pred((ra_list.head)/2)).
+ra_list.head(ra_list.cons(V_3, V_6, V_5), V_4) :-
+    V_6 = ra_list.leaf(V_4) : ra_list.ra_list_bintree(T_1).
+ra_list.head(ra_list.cons(V_7, V_12, V_11), V_8) :-
+    V_12 = ra_list.node(V_8, V_9, V_10) : ra_list.ra_list_bintree(T_1).
+
+:- pragma inline(pred((ra_list.head_tail)/3)).
+ra_list.head_tail(ra_list.cons(V_4, V_7, V_6), V_5, V_6) :-
+    V_7 = ra_list.leaf(V_5) : ra_list.ra_list_bintree(T_1).
+ra_list.head_tail(ra_list.cons(V_8, V_15, V_12), V_9, V_13) :-
+    V_15 = ra_list.node(V_9, V_10, V_11) : ra_list.ra_list_bintree(T_1),
+    V_14 = int.(V_8 // V_16),
+    V_16 = 2 : int,
+    V_13 = ra_list.cons(V_14, V_10, V_17) : ra_list.ra_list(T_1),
+    V_17 = ra_list.cons(V_14, V_11, V_12) : ra_list.ra_list(T_1).
+
+:- pragma inline(pred((ra_list.index0)/3)).
+ra_list.index0(V_4, V_5, V_6) :-
+    V_7 = 0 : int,
+    int.(V_5 >= V_7),
+    ra_list.index0_list(V_4, V_5, V_6).
+
+:- pragma inline(pred((ra_list.index1)/3)).
+ra_list.index1(V_4, V_5, V_6) :-
+    V_7 = int.(V_5 - V_8),
+    V_8 = 1 : int,
+    V_9 = 0 : int,
+    int.(V_7 >= V_9),
+    ra_list.index0_list(V_4, V_7, V_6).
+
+:- pragma inline(pred((ra_list.init)/1)).
+ra_list.init(ra_list.nil).
+
+ra_list.is_empty(V_2) :-
+    V_2 = ra_list.nil : ra_list.ra_list(T_1).
+
+ra_list.is_not_empty(V_2) :-
+    V_2 = ra_list.cons(V_3, V_4, V_5) : ra_list.ra_list(T_1).
+
+ra_list.is_singleton(V_3, V_4) :-
+    V_3 = ra_list.cons(V_5, V_6, V_7) : ra_list.ra_list(T_1),
+    V_5 = 1 : int,
+    V_6 = ra_list.leaf(V_4) : ra_list.ra_list_bintree(T_1),
+    V_7 = ra_list.nil : ra_list.ra_list(T_1).
+
+ra_list.length(V_3) = V_4 :-
+    V_5 = 0 : int,
+    ra_list.length_acc(V_3, V_5, V_4).
+
+ra_list.length(V_3, V_4) :-
+    V_5 = 0 : int,
+    ra_list.length_acc(V_3, V_5, V_4).
+
+ra_list.map(V_4, ra_list.nil) = ra_list.nil.
+ra_list.map(V_5, ra_list.cons(V_6, V_7, V_8)) = ra_list.cons(V_6, V_9, V_10) :-
+    V_9 = ra_list.map_bintree(V_5, V_7),
+    V_10 = ra_list.map(V_5, V_8).
+
+ra_list.map(V_4, ra_list.nil, ra_list.nil).
+ra_list.map(V_5, ra_list.cons(V_6, V_7, V_8), ra_list.cons(V_6, V_9, V_10)) :-
+    ra_list.map_bintree(V_5, V_7, V_9),
+    ra_list.map(V_5, V_8, V_10).
+
+ra_list.map_bintree(V_4, V_5) = V_6 :-
+    ( % disjunction
+      V_5 = ra_list.leaf(V_7) : ra_list.ra_list_bintree(X_1),
+      V_8 = apply(V_4, V_7),
+      V_6 = ra_list.leaf(V_8) : ra_list.ra_list_bintree(Y_2)
+    ;
+      V_5 = ra_list.node(V_13, V_9, V_10) : ra_list.ra_list_bintree(X_1),
+      V_14 = apply(V_4, V_13),
+      V_11 = ra_list.map_bintree(V_4, V_9),
+      V_12 = ra_list.map_bintree(V_4, V_10),
+      V_6 = ra_list.node(V_14, V_11, V_12) : ra_list.ra_list_bintree(Y_2)
+    ).
+
+ra_list.map_bintree(V_4, V_5, V_6) :-
+    ( % disjunction
+      V_5 = ra_list.leaf(V_7) : ra_list.ra_list_bintree(X_1),
+      call(V_4, V_7, V_8),
+      V_6 = ra_list.leaf(V_8) : ra_list.ra_list_bintree(Y_2)
+    ;
+      V_5 = ra_list.node(V_13, V_9, V_10) : ra_list.ra_list_bintree(X_1),
+      call(V_4, V_13, V_14),
+      ra_list.map_bintree(V_4, V_9, V_11),
+      ra_list.map_bintree(V_4, V_10, V_12),
+      V_6 = ra_list.node(V_14, V_11, V_12) : ra_list.ra_list_bintree(Y_2)
+    ).
+
+:- pragma inline(func((ra_list.singleton)/1)).
+ra_list.singleton(V_3) = ra_list.cons(V_4, V_5, V_6) :-
+    V_4 = 1 : int,
+    V_5 = ra_list.leaf(V_3) : ra_list.ra_list_bintree(T_1),
+    V_6 = ra_list.nil : ra_list.ra_list(T_1).
+
+:- pragma inline(pred((ra_list.tail)/2)).
+ra_list.tail(ra_list.cons(V_3, V_6, V_5), V_5) :-
+    V_6 = ra_list.leaf(V_4) : ra_list.ra_list_bintree(T_1).
+ra_list.tail(ra_list.cons(V_7, V_14, V_11), V_12) :-
+    V_14 = ra_list.node(V_8, V_9, V_10) : ra_list.ra_list_bintree(T_1),
+    V_13 = int.(V_7 // V_15),
+    V_15 = 2 : int,
+    V_12 = ra_list.cons(V_13, V_9, V_16) : ra_list.ra_list(T_1),
+    V_16 = ra_list.cons(V_13, V_10, V_11) : ra_list.ra_list(T_1).
+
+:- pragma inline(pred((ra_list.update)/4)).
+ra_list.update(V_5, V_6, V_7, V_8) :-
+    V_9 = 0 : int,
+    int.(V_5 >= V_9),
+    ra_list.update_2(V_5, V_6, V_7, V_8).
+
+:- pragma termination_info(ra_list.append((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.cons((builtin.in), (builtin.in), (builtin.out)), finite(4, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(ra_list.det_index0((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, yes, no, no]), can_loop).
+:- pragma termination_info(ra_list.det_index1((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, yes, no, no]), can_loop).
+:- pragma termination_info(ra_list.drop((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldl_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is nondet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.foldr_bintree(((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(ra_list.head((builtin.in), (builtin.out)), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(ra_list.head_tail((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.index0((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, yes, no, no]), can_loop).
+:- pragma termination_info(ra_list.index0_list((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, yes, no, no]), can_loop).
+:- pragma termination_info(ra_list.index1((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, yes, no, no]), can_loop).
+:- pragma termination_info(ra_list.init((builtin.uo)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ra_list.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ra_list.is_not_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(ra_list.is_singleton((builtin.in), (builtin.out)), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(ra_list.length((builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(ra_list.length((builtin.in), (builtin.out)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(ra_list.length_acc((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(ra_list.list_to_ra_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ra_list.map(((pred((builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map(((pred((builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map(((pred((builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map(((pred((builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map(((pred((builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map(((pred((builtin.in), (builtin.in)) is semidet) >> (pred((builtin.in), (builtin.in)) is semidet)), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(ra_list.map_bintree((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(ra_list.map_bintree(((pred((builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map_bintree(((pred((builtin.in), (builtin.out)) is cc_multi) >> (pred((builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map_bintree(((pred((builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map_bintree(((pred((builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map_bintree(((pred((builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.map_bintree(((pred((builtin.in), (builtin.in)) is semidet) >> (pred((builtin.in), (builtin.in)) is semidet)), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(ra_list.ra_list_to_list((builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(ra_list.singleton((builtin.in)) = (builtin.out), finite(4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(ra_list.tail((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(ra_list.update_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (ra_list.append), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.cons), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.det_index0), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.det_index1), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.drop), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (ra_list.foldl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl), 4, 10, may_throw(user_exception)).
+:- pragma exceptions(function, (ra_list.foldl_bintree), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldl_bintree), 4, 10, may_throw(user_exception)).
+:- pragma exceptions(function, (ra_list.foldr), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr), 4, 10, may_throw(user_exception)).
+:- pragma exceptions(function, (ra_list.foldr_bintree), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.foldr_bintree), 4, 10, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.head), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.head_tail), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.index0), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.index0_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.index1), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.is_not_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.is_singleton), 2, 0, will_not_throw).
+:- pragma exceptions(function, (ra_list.length), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.length), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.length_acc), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.list_to_ra_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (ra_list.map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map), 3, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map), 3, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map), 3, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map), 3, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (ra_list.map_bintree), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map_bintree), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map_bintree), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map_bintree), 3, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map_bintree), 3, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map_bintree), 3, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.map_bintree), 3, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.ra_list_to_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (ra_list.singleton), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (ra_list.tail), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (ra_list.update_2), 4, 0, may_throw(user_exception)).

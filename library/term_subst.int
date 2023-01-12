@@ -1,0 +1,46 @@
+:- module term_subst.
+:- interface.
+:- use_module list.
+:- use_module term.
+:- pred apply_rec_substitution_in_term(term.substitution(T), term.term(T), term.term(T)).
+:- mode apply_rec_substitution_in_term((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_rec_substitution_in_terms(term.substitution(T), list.list(term.term(T)), list.list(term.term(T))).
+:- mode apply_rec_substitution_in_terms((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_renaming_in_term(term.renaming(T), term.term(T), term.term(T)).
+:- mode apply_renaming_in_term((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_renaming_in_terms(term.renaming(T), list.list(term.term(T)), list.list(term.term(T))).
+:- mode apply_renaming_in_terms((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_renaming_in_var(term.renaming(T), term.var(T), term.var(T)).
+:- mode apply_renaming_in_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_renaming_in_vars(term.renaming(T), list.list(term.var(T)), list.list(term.var(T))).
+:- mode apply_renaming_in_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_substitution_in_term(term.substitution(T), term.term(T), term.term(T)).
+:- mode apply_substitution_in_term((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_substitution_in_terms(term.substitution(T), list.list(term.term(T)), list.list(term.term(T))).
+:- mode apply_substitution_in_terms((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_var_in_term(term.var(T), term.var(T), term.term(T), term.term(T)).
+:- mode rename_var_in_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rename_var_in_terms(term.var(T), term.var(T), list.list(term.term(T)), list.list(term.term(T))).
+:- mode rename_var_in_terms((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_corresponding_in_term(list.list(term.var(T)), list.list(term.term(T)), term.term(T), term.term(T)).
+:- mode substitute_corresponding_in_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_corresponding_in_terms(list.list(term.var(T)), list.list(term.term(T)), list.list(term.term(T)), list.list(term.term(T))).
+:- mode substitute_corresponding_in_terms((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_var_in_term(term.var(T), term.term(T), term.term(T), term.term(T)).
+:- mode substitute_var_in_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_var_in_terms(term.var(T), term.term(T), list.list(term.term(T)), list.list(term.term(T))).
+:- mode substitute_var_in_terms((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term_is_ground(term.term(T)).
+:- mode term_is_ground((builtin.in)) is semidet.
+:- pred term_is_ground_in_bindings(term.term(T), term.substitution(T)).
+:- mode term_is_ground_in_bindings((builtin.in), (builtin.in)) is semidet.
+:- pred term_list_to_var_list(list.list(term.term(T)), list.list(term.var(T))).
+:- mode term_list_to_var_list((builtin.in), (builtin.out)) is semidet.
+:- func term_list_to_var_list(list.list(term.term(T))) = list.list(term.var(T)).
+:- pred var_list_to_term_list(list.list(term.var(T)), list.list(term.term(T))).
+:- mode var_list_to_term_list((builtin.in), (builtin.out)) is det.
+:- func var_list_to_term_list(list.list(term.var(T))) = list.list(term.term(T)).
+:- pred var_occurs_in_subst_term(term.var(T), term.substitution(T), term.term(T)).
+:- mode var_occurs_in_subst_term((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred var_occurs_in_subst_terms(term.var(T), term.substitution(T), list.list(term.term(T))).
+:- mode var_occurs_in_subst_terms((builtin.in), (builtin.in), (builtin.in)) is semidet.
