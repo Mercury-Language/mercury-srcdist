@@ -1,0 +1,12 @@
+:- module (mdb.browser_term).
+:- interface.
+:- use_module bool.
+:- use_module list.
+:- use_module maybe.
+:- use_module univ.
+:- type browser_term
+    --->    plain_term(univ.univ)
+    ;       synthetic_term(string, list.list(univ.univ), maybe.maybe(univ.univ)).
+:- func plain_term_to_browser_term(T) = mdb.browser_term.browser_term.
+:- func synthetic_term_to_browser_term(string, list.list(univ.univ), bool.bool) = mdb.browser_term.browser_term.
+:- func univ_to_browser_term(univ.univ) = mdb.browser_term.browser_term.

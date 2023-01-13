@@ -1,0 +1,2 @@
+:- module (io.call_system).
+:- interface.

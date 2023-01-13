@@ -1,0 +1,4 @@
+:- module (parse_tree.generate_dep_d_files).
+:- interface.
+:- type_representation(gen_node_name(V_1), is_eqv_to(((func V_1) = string))).
+:- type_representation(trans_opt_deps_spec, is_eqv_to(map(module_name, allow_or_disallow_trans_opt_deps))).
