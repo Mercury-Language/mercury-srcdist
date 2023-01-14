@@ -1,0 +1,6 @@
+:- module (parse_tree.write_deps_file).
+:- interface.
+:- type maybe_include_trans_opt_rule.
+:- type maybe_intermod_deps.
+:- type trans_opt_rule_info.
+:- type_representation(maybe_mmake_var, is_eqv_to(pair(list(string), string))).

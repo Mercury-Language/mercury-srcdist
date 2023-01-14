@@ -1,0 +1,8 @@
+:- module rtti_implementation.
+:- interface.
+:- type pseudo_type_info.
+:- type type_ctor_info.
+:- type type_info.
+:- type_representation(pseudo_type_info, du_repn(notag("pseudo_type_info", c_pointer,  c_j_cs(no_foreign, foreign_type("jmercury.runtime.PseudoTypeInfo", []), foreign_type("runtime.PseudoTypeInfo", []))))).
+:- type_representation(type_ctor_info, du_repn(notag("type_ctor_info", c_pointer,  c_j_cs(no_foreign, foreign_type("jmercury.runtime.TypeCtorInfo_Struct", []), foreign_type("runtime.TypeCtorInfo_Struct", []))))).
+:- type_representation(type_info, du_repn(notag("type_info", c_pointer,  c_j_cs(no_foreign, foreign_type("jmercury.runtime.TypeInfo_Struct", []), foreign_type("runtime.TypeInfo_Struct", []))))).
