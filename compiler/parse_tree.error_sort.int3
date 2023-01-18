@@ -1,0 +1,2 @@
+:- module (parse_tree.error_sort).
+:- interface.
