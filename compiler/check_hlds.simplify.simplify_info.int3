@@ -1,0 +1,25 @@
+:- module ((check_hlds.simplify).simplify_info).
+:- interface.
+:- type innermost_proc.
+:- type maybe_allow_messages
+	where	type_is_abstract_enum(1).
+:- type maybe_fully_strict
+	where	type_is_abstract_enum(1).
+:- type maybe_ignore_marked_static
+	where	type_is_abstract_enum(1).
+:- type maybe_rerun_det
+	where	type_is_abstract_enum(1).
+:- type maybe_rerun_quant_instmap_deltas
+	where	type_is_abstract_enum(1).
+:- type maybe_trace_optimized
+	where	type_is_abstract_enum(1).
+:- type simplify_info.
+:- type simplify_nested_context.
+:- type_representation(maybe_allow_messages, du_repn(enum("do_not_allow_messages", "allow_messages", [],  no_c_j_cs))).
+:- type_representation(maybe_fully_strict, du_repn(enum("not_fully_strict", "fully_strict", [],  no_c_j_cs))).
+:- type_representation(maybe_ignore_marked_static, du_repn(enum("do_not_ignore_marked_static", "ignore_marked_static", [],  no_c_j_cs))).
+:- type_representation(maybe_rerun_det, du_repn(enum("do_not_rerun_det", "rerun_det", [],  no_c_j_cs))).
+:- type_representation(maybe_rerun_quant_instmap_deltas, du_repn(enum("do_not_rerun_quant_instmap_deltas", "rerun_quant_instmap_deltas", [],  no_c_j_cs))).
+:- type_representation(maybe_trace_optimized, du_repn(enum("not_trace_optimized", "trace_optimized", [],  no_c_j_cs))).
+:- type_representation(simplify_info, is_word_aligned_ptr).
+:- type_representation(simplify_nested_context, is_word_aligned_ptr).

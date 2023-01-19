@@ -1,0 +1,23 @@
+:- module (check_hlds.mode_constraint_robdd).
+:- interface.
+:- type lambda_path.
+:- type mc_type.
+:- type mode_constraint.
+:- type mode_constraint_info.
+:- type mode_constraint_var.
+:- type mode_constraint_vars.
+:- type prodvars_map.
+:- type prog_var_and_level.
+:- type rep_var.
+:- type threshold.
+:- type_representation(lambda_path, is_eqv_to(stack(goal_id))).
+:- type_representation(mc_type, du_repn(direct_dummy("mc_type",  no_c_j_cs))).
+:- type_representation(mode_constraint, is_eqv_to(mode_robdd(check_hlds.mode_constraint_robdd.mc_type))).
+:- type_representation(mode_constraint_info, is_word_aligned_ptr).
+:- type_representation(mode_constraint_var, is_eqv_to(var(check_hlds.mode_constraint_robdd.mc_type))).
+:- type_representation(mode_constraint_varmap, is_eqv_to(bimap(varmap_key, robdd_var))).
+:- type_representation(mode_constraint_vars, is_eqv_to(vars(check_hlds.mode_constraint_robdd.mc_type))).
+:- type_representation(prodvars_map, is_eqv_to(map(check_hlds.mode_constraint_robdd.lambda_path, set_of_progvar))).
+:- type_representation(prog_var_and_level, is_word_aligned_ptr).
+:- type_representation(robdd_var, is_eqv_to(var(check_hlds.mode_constraint_robdd.mc_type))).
+:- type_representation(threshold, du_repn(notag("threshold", mode_constraint_var,  no_c_j_cs))).

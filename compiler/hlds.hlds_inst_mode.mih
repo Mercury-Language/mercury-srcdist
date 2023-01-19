@@ -1,0 +1,545 @@
+/*
+** Automatically generated from `hlds_inst_mode.m'
+** by the Mercury compiler,
+** version rotd-2023-01-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_inst_mode.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_inst_mode
+#define MR_HEADER_GUARD_hlds__hlds_inst_mode
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_INST_MODE_DECL_GUARD
+#define HLDS__HLDS_INST_MODE_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_any_inst_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_ground_inst_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_hlds_inst_defn_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_hlds_mode_body_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_hlds_mode_defn_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_inst_for_type_ctor_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_inst_pair_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_inst_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_maybe_inst_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_maybe_inst_det_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_merge_inst_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_mode_defns_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_mode_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_mostly_uniq_inst_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_shared_inst_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_unify_inst_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_inst_mode__hlds__hlds_inst_mode__type_ctor_info_user_inst_table_0;
+
+void MR_CALL 
+hlds__hlds_inst_mode__any_insts_from_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__any_insts_to_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__det_update_any_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__det_update_ground_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__det_update_merge_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__det_update_mostly_uniq_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__det_update_shared_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__det_update_unify_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__ground_insts_from_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__ground_insts_to_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_get_any_insts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_get_ground_insts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_get_merge_insts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_get_mostly_uniq_insts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_get_shared_insts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_get_unify_insts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_get_user_insts_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_init_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_set_any_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_set_ground_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_set_merge_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_set_mostly_uniq_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_set_shared_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_set_unify_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__inst_table_set_user_insts_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__lookup_any_inst_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__lookup_ground_inst_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__lookup_merge_inst_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__lookup_mostly_uniq_inst_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__lookup_shared_inst_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__lookup_unify_inst_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode__merge_insts_from_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__merge_insts_to_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__mode_table_get_mode_defns_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__mode_table_init_1_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode__mode_table_insert_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__mode_table_optimize_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__mostly_uniq_insts_from_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__mostly_uniq_insts_to_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__search_insert_any_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__search_insert_ground_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__search_insert_merge_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__search_insert_mostly_uniq_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__search_insert_shared_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__search_insert_unify_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_inst_mode__shared_insts_from_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__shared_insts_to_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__unify_insts_from_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode__unify_insts_to_sorted_pairs_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____any_inst_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____ground_inst_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____hlds_inst_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____hlds_mode_body_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____hlds_mode_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____inst_for_type_ctor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____inst_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____maybe_inst_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____maybe_inst_det_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____merge_inst_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____mode_defns_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____mode_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____mostly_uniq_inst_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____shared_inst_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____unify_inst_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_inst_mode____Compare____user_inst_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____any_inst_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____ground_inst_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____hlds_inst_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____hlds_mode_body_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____hlds_mode_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____inst_for_type_ctor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____inst_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____maybe_inst_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____maybe_inst_det_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____merge_inst_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____mode_defns_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____mode_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____mostly_uniq_inst_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____shared_inst_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____unify_inst_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_inst_mode____Unify____user_inst_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_inst_mode__init(void);
+void mercury__hlds__hlds_inst_mode__init_type_tables(void);
+void mercury__hlds__hlds_inst_mode__init_debugger(void);
+const char *mercury__hlds__hlds_inst_mode__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_inst_mode
+
+// :- end_interface hlds.hlds_inst_mode.
