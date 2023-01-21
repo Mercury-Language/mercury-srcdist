@@ -1,0 +1,5 @@
+:- module (parse_tree.error_util).
+:- interface.
+:- type error_spec_accumulator.
+:- implementation.
+:- type error_spec_accumulator == maybe.maybe(pair.pair(set.set(parse_tree.error_spec.error_spec))).
