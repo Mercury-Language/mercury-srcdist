@@ -1,0 +1,2 @@
+:- module (transform_hlds.accumulator).
+:- interface.
