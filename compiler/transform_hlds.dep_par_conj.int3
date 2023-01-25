@@ -1,0 +1,9 @@
+:- module (transform_hlds.dep_par_conj).
+:- interface.
+:- type_representation(arg_pos, is_eqv_to(int)).
+:- type_representation(done_par_procs, is_eqv_to(map(par_proc_call_pattern, new_par_proc))).
+:- type_representation(future_map, is_eqv_to(map(prog_var, prog_var))).
+:- type_representation(pending_par_procs, is_eqv_to(assoc_list(par_proc_call_pattern, new_par_proc))).
+:- type_representation(proc_pushable_args_map, is_eqv_to(map(arg_pos, maybe_worth_pushing))).
+:- type_representation(pushable_args_map, is_eqv_to(map(pred_proc_id, proc_pushable_args_map))).
+:- type_representation(rev_proc_map, is_eqv_to(map(pred_proc_id, pred_proc_id))).

@@ -1,0 +1,8 @@
+:- module (hlds.quantification).
+:- interface.
+:- type nonlocals_to_recompute
+    --->    ord_nl_maybe_lambda 
+    ;       ord_nl_no_lambda 
+    ;       cg_nl_no_lambda .
+:- type quant_warning
+    --->    warn_overlap(list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_context).
