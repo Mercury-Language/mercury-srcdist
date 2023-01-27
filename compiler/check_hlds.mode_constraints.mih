@@ -1,0 +1,101 @@
+/*
+** Automatically generated from `mode_constraints.m'
+** by the Mercury compiler,
+** version rotd-2023-01-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.mode_constraints.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__mode_constraints
+#define MR_HEADER_GUARD_check_hlds__mode_constraints
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODE_CONSTRAINTS_DECL_GUARD
+#define CHECK_HLDS__MODE_CONSTRAINTS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_can_succeed_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_constrain_var_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_goal_constraints_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_ho_calls_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_ho_modes_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_mode_decl_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_number_robdd_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mode_constraints__check_hlds__mode_constraints__type_ctor_info_sccs_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_ho_modes__arity1__check_hlds__mode_constraints__goal_constraints_info__arity0__[7];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_ho_modes__arity1__check_hlds__mode_constraints__mode_decl_info__arity0__[7];
+
+extern const MR_TypeClassDeclStruct check_hlds__mode_constraints__check_hlds__mode_constraints__type_class_decl_has_ho_modes_1;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_mc_info__arity1__check_hlds__mode_constraints__goal_constraints_info__arity0__[7];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_mc_info__arity1__check_hlds__mode_constraints__mode_decl_info__arity0__[7];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_mc_info__arity1__check_hlds__mode_constraints__number_robdd_info__arity0__[7];
+
+extern const MR_TypeClassDeclStruct check_hlds__mode_constraints__check_hlds__mode_constraints__type_class_decl_has_mc_info_1;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_module_info__arity1__check_hlds__mode_constraints__goal_constraints_info__arity0__[7];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_check_hlds__mode_constraints__has_module_info__arity1__check_hlds__mode_constraints__number_robdd_info__arity0__[7];
+
+extern const MR_TypeClassDeclStruct check_hlds__mode_constraints__check_hlds__mode_constraints__type_class_decl_has_module_info_1;
+
+void MR_CALL 
+check_hlds__mode_constraints__dump_abstract_constraints_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mode_constraints__mc_process_module_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void mercury__check_hlds__mode_constraints__init(void);
+void mercury__check_hlds__mode_constraints__init_type_tables(void);
+void mercury__check_hlds__mode_constraints__init_debugger(void);
+const char *mercury__check_hlds__mode_constraints__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.mode_constraints
+
+// :- end_interface check_hlds.mode_constraints.

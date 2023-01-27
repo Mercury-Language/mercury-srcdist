@@ -1,0 +1,10 @@
+:- module ((transform_hlds.rbmm).region_arguments).
+:- interface.
+:- type pp_actual_region_args_table.
+:- type proc_formal_region_args_table.
+:- type proc_pp_actual_region_args_table.
+:- type region_args.
+:- type_representation(pp_actual_region_args_table, is_eqv_to(map(program_point, transform_hlds.rbmm.region_arguments.region_args))).
+:- type_representation(proc_formal_region_args_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.region_arguments.region_args))).
+:- type_representation(proc_pp_actual_region_args_table, is_eqv_to(map(pred_proc_id, transform_hlds.rbmm.region_arguments.pp_actual_region_args_table))).
+:- type_representation(region_args, is_word_aligned_ptr).

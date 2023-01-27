@@ -1,0 +1,14 @@
+:- module (parse_tree.deps_map).
+:- interface.
+:- use_module map.
+:- use_module (mdbcomp.sym_name).
+:- type deps
+    --->    deps(parse_tree.deps_map.have_processed, parse_tree.module_baggage.burdened_module).
+:- type deps_map == map.map(mdbcomp.sym_name.module_name, parse_tree.deps_map.deps).
+:- type have_processed
+    --->    not_yet_processed 
+    ;       already_processed .
+:- type submodule_kind
+    --->    toplevel 
+    ;       nested_submodule 
+    ;       separate_submodule .

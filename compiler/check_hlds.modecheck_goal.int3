@@ -1,0 +1,3 @@
+:- module (check_hlds.modecheck_goal).
+:- interface.
+:- type_representation(construct_var_info_map, is_eqv_to(map(prog_var, construct_var_info))).
