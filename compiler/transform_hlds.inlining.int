@@ -1,0 +1,29 @@
+:- module (transform_hlds.inlining).
+:- interface.
+:- use_module hlds.
+:- use_module io.
+:- use_module list.
+:- use_module map.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_clauses).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.hlds_rtti).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.var_table).
+:- type may_inline_purity_promised_pred
+    --->    may_not_inline_purity_promised_pred 
+    ;       may_inline_purity_promised_pred .
+:- pred can_inline_proc(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_goal.builtin_state, transform_hlds.inlining.may_inline_purity_promised_pred).
+:- mode can_inline_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred do_inline_call(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.tvar), list.list(parse_tree.prog_data.prog_var), hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, parse_tree.var_table.var_table, parse_tree.var_table.var_table, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_goal.hlds_goal).
+:- mode do_inline_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred inline_in_module(io.text_output_stream, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode inline_in_module((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred is_simple_clause_list(list.list(hlds.hlds_clauses.clause), int).
+:- mode is_simple_clause_list((builtin.in), (builtin.in)) is semidet.
+:- pred is_simple_goal(hlds.hlds_goal.hlds_goal, int).
+:- mode is_simple_goal((builtin.in), (builtin.in)) is semidet.
+:- pred rename_goal(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), parse_tree.var_table.var_table, parse_tree.var_table.var_table, parse_tree.var_table.var_table, map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal).
+:- mode rename_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.

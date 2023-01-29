@@ -1,0 +1,27 @@
+:- module (libs.uint_emu).
+:- interface.
+:- use_module (libs.globals).
+:- type bits_per_uint
+    --->    bits_per_uint(int).
+:- pred left_shift(libs.uint_emu.bits_per_uint, uint, int, uint).
+:- mode left_shift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred left_ushift(libs.uint_emu.bits_per_uint, uint, uint, uint).
+:- mode left_ushift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred minus(libs.uint_emu.bits_per_uint, uint, uint, uint).
+:- mode minus((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred mod(libs.uint_emu.bits_per_uint, uint, uint, uint).
+:- mode mod((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred plus(libs.uint_emu.bits_per_uint, uint, uint, uint).
+:- mode plus((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred quotient(libs.uint_emu.bits_per_uint, uint, uint, uint).
+:- mode quotient((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred rem(libs.uint_emu.bits_per_uint, uint, uint, uint).
+:- mode rem((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred right_shift(libs.uint_emu.bits_per_uint, uint, int, uint).
+:- mode right_shift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred right_ushift(libs.uint_emu.bits_per_uint, uint, uint, uint).
+:- mode right_ushift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred target_bits_per_uint(libs.globals.globals, libs.uint_emu.bits_per_uint).
+:- mode target_bits_per_uint((builtin.in), (builtin.out)) is det.
+:- pred times(libs.uint_emu.bits_per_uint, uint, uint, uint).
+:- mode times((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
