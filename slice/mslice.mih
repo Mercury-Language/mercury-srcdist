@@ -1,0 +1,59 @@
+/*
+** Automatically generated from `mslice.m'
+** by the Mercury compiler,
+** version rotd-2023-01-30
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mslice.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mslice
+#define MR_HEADER_GUARD_mslice
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MSLICE_DECL_GUARD
+#define MSLICE_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mslice__mslice__type_ctor_info_option_0;
+
+extern const MR_TypeCtorInfo_Struct mslice__mslice__type_ctor_info_option_table_0;
+
+void MR_CALL 
+main_2_p_0(void);
+
+void mercury__mslice__init(void);
+void mercury__mslice__init_type_tables(void);
+void mercury__mslice__init_debugger(void);
+const char *mercury__mslice__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mslice
+
+// :- end_interface mslice.

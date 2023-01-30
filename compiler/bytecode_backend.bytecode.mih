@@ -1,0 +1,276 @@
+/*
+** Automatically generated from `bytecode.m'
+** by the Mercury compiler,
+** version rotd-2023-01-30
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module bytecode_backend.bytecode.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_bytecode_backend__bytecode
+#define MR_HEADER_GUARD_bytecode_backend__bytecode
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BYTECODE_BACKEND__BYTECODE_DECL_GUARD
+#define BYTECODE_BACKEND__BYTECODE_DECL_GUARD
+#include "bytecode_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_arg_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_code_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_id_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_cons_tag_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_dir_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_is_func_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_label_id_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_module_id_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_pred_id_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_proc_id_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_reg_type_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_temp_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_test_id_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_tree_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_var_0;
+
+extern const MR_TypeCtorInfo_Struct bytecode_backend__bytecode__bytecode_backend__bytecode__type_ctor_info_byte_var_info_0;
+
+void MR_CALL 
+bytecode_backend__bytecode__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_98_121_116_101_99_111_100_101_95_98_97_99_107_101_110_100_95_95_98_121_116_101_99_111_100_101_95_95_98_121_116_101_95_114_101_103_95_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+bytecode_backend__bytecode__debug_bytecode_file_4_p_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+bytecode_backend__bytecode__output_bytecode_file_4_p_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_arg_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_code_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_cons_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_cons_tag_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_dir_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_is_func_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_label_id_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_module_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_pred_id_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_proc_id_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_reg_type_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_temp_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_test_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_tree_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_var_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Compare____byte_var_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+bytecode_backend__bytecode____Index____byte_code_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_arg_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_code_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_cons_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_cons_tag_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_dir_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_is_func_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_label_id_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_module_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_pred_id_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_proc_id_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_reg_type_0_0(void);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_temp_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_test_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_tree_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_var_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+bytecode_backend__bytecode____Unify____byte_var_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__bytecode_backend__bytecode__init(void);
+void mercury__bytecode_backend__bytecode__init_type_tables(void);
+void mercury__bytecode_backend__bytecode__init_debugger(void);
+const char *mercury__bytecode_backend__bytecode__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_bytecode_backend.bytecode
+
+// :- end_interface bytecode_backend.bytecode.

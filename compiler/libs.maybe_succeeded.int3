@@ -1,0 +1,5 @@
+:- module (libs.maybe_succeeded).
+:- interface.
+:- type maybe_succeeded
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_succeeded, du_repn(enum("did_not_succeed", "succeeded", [],  no_c_j_cs))).
