@@ -1,0 +1,12 @@
+:- module (check_hlds.polymorphism_goal).
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module (check_hlds.polymorphism_info).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_rtti).
+:- use_module (parse_tree.prog_data).
+:- pred polymorphism_process_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, check_hlds.polymorphism_info.poly_info, check_hlds.polymorphism_info.poly_info).
+:- mode polymorphism_process_goal((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred unification_typeinfos_rtti_varmaps(parse_tree.prog_data.mer_type, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_goal.unification, hlds.hlds_goal.unification, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode unification_typeinfos_rtti_varmaps((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
