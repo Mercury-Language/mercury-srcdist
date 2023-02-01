@@ -1,0 +1,39 @@
+// Automatically generated from `interactive_query.m'
+// by the Mercury compiler,
+// version rotd-2023-02-01
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef MDB__INTERACTIVE_QUERY_MH
+#define MDB__INTERACTIVE_QUERY_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDB__INTERACTIVE_QUERY_DECL_GUARD
+#define MDB__INTERACTIVE_QUERY_DECL_GUARD
+
+    #include "mercury_grade.h"
+    #include "mercury_string.h"
+
+
+#endif
+void ML_query(MR_Word, MR_Word, MR_String, MR_Word, MR_Word, MR_Word, MR_Word);
+void ML_query_external(MR_Word, MR_Word, MR_String, MR_Word, MR_Word, MR_Word, MR_Word);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__INTERACTIVE_QUERY_MH */

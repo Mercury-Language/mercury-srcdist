@@ -1,0 +1,1177 @@
+/*
+** Automatically generated from `maybe.m'
+** by the Mercury compiler,
+** version rotd-2023-02-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module maybe.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_maybe
+#define MR_HEADER_GUARD_maybe
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAYBE_DECL_GUARD
+#define MAYBE_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__maybe__maybe__type_ctor_info_maybe_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__maybe__maybe__type_ctor_info_maybe_error_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__maybe__maybe__type_ctor_info_maybe_error_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__maybe__maybe__type_ctor_info_maybe_error_2;
+
+extern const MR_TypeCtorInfo_Struct mercury__maybe__maybe__type_ctor_info_maybe_errors_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__maybe__maybe__type_ctor_info_maybe_errors_2;
+
+void MR_CALL 
+mercury__maybe__fold2_maybe_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__maybe__fold2_maybe_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__maybe__fold2_maybe_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__maybe__fold2_maybe_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__maybe__fold2_maybe_6_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_bool MR_CALL 
+mercury__maybe__fold2_maybe_6_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__maybe__fold3_maybe_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__maybe__fold3_maybe_8_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__maybe__fold3_maybe_8_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__maybe__fold3_maybe_8_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__maybe__fold3_maybe_8_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+MR_bool MR_CALL 
+mercury__maybe__fold3_maybe_8_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Box param_7,
+  MR_Box * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12);
+
+void MR_CALL 
+mercury__maybe__fold4_maybe_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__maybe__fold4_maybe_10_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__maybe__fold4_maybe_10_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__maybe__fold4_maybe_10_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__maybe__fold4_maybe_10_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+MR_bool MR_CALL 
+mercury__maybe__fold4_maybe_10_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15);
+
+void MR_CALL 
+mercury__maybe__fold5_maybe_12_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__maybe__fold5_maybe_12_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__maybe__fold5_maybe_12_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__maybe__fold5_maybe_12_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__maybe__fold5_maybe_12_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+MR_bool MR_CALL 
+mercury__maybe__fold5_maybe_12_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18);
+
+void MR_CALL 
+mercury__maybe__fold_maybe_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__maybe__fold_maybe_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__maybe__fold_maybe_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__maybe__fold_maybe_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__maybe__fold_maybe_4_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__maybe__fold_maybe_4_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__maybe__map_fold2_maybe_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__maybe__map_fold2_maybe_7_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__maybe__map_fold2_maybe_7_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold2_maybe_7_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold2_maybe_7_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold2_maybe_7_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__maybe__map_fold3_maybe_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+void MR_CALL 
+mercury__maybe__map_fold3_maybe_9_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+void MR_CALL 
+mercury__maybe__map_fold3_maybe_9_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold3_maybe_9_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold3_maybe_9_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold3_maybe_9_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Box param_9,
+  MR_Box * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14);
+
+void MR_CALL 
+mercury__maybe__map_fold4_maybe_11_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+void MR_CALL 
+mercury__maybe__map_fold4_maybe_11_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+void MR_CALL 
+mercury__maybe__map_fold4_maybe_11_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold4_maybe_11_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold4_maybe_11_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold4_maybe_11_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9,
+  MR_Box param_10,
+  MR_Box * param_11,
+  MR_Box param_12,
+  MR_Box * param_13,
+  MR_Box param_14,
+  MR_Box * param_15,
+  MR_Box param_16,
+  MR_Box * param_17);
+
+void MR_CALL 
+mercury__maybe__map_fold5_maybe_13_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+void MR_CALL 
+mercury__maybe__map_fold5_maybe_13_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+void MR_CALL 
+mercury__maybe__map_fold5_maybe_13_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold5_maybe_13_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold5_maybe_13_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold5_maybe_13_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10,
+  MR_Box param_11,
+  MR_Box * param_12,
+  MR_Box param_13,
+  MR_Box * param_14,
+  MR_Box param_15,
+  MR_Box * param_16,
+  MR_Box param_17,
+  MR_Box * param_18,
+  MR_Box param_19,
+  MR_Box * param_20);
+
+void MR_CALL 
+mercury__maybe__map_fold_maybe_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__maybe__map_fold_maybe_5_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__maybe__map_fold_maybe_5_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold_maybe_5_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold_maybe_5_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__maybe__map_fold_maybe_5_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__maybe__map_maybe_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+mercury__maybe__map_maybe_3_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__maybe__map_maybe_3_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Cont param_6,
+  void * param_7);
+
+void MR_CALL 
+mercury__maybe__map_maybe_3_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Cont param_6,
+  void * param_7);
+
+MR_bool MR_CALL 
+mercury__maybe__maybe_is_yes_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+MR_Box MR_CALL 
+mercury__maybe__fold_maybe_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5);
+
+MR_Word MR_CALL 
+mercury__maybe__func_to_maybe_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__maybe__map_maybe_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Box MR_CALL 
+mercury__maybe__maybe_default_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__maybe__pred_to_maybe_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__maybe____Compare____maybe_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__maybe____Compare____maybe_error_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__maybe____Compare____maybe_error_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__maybe____Compare____maybe_error_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+mercury__maybe____Compare____maybe_errors_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__maybe____Compare____maybe_errors_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_bool MR_CALL 
+mercury__maybe____Unify____maybe_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__maybe____Unify____maybe_error_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__maybe____Unify____maybe_error_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__maybe____Unify____maybe_error_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__maybe____Unify____maybe_errors_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__maybe____Unify____maybe_errors_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void mercury__maybe__init(void);
+void mercury__maybe__init_type_tables(void);
+void mercury__maybe__init_debugger(void);
+const char *mercury__maybe__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_maybe
+
+// :- end_interface maybe.
