@@ -1,0 +1,362 @@
+/*
+** Automatically generated from `prof_info.m'
+** by the Mercury compiler,
+** version rotd-2023-02-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module prof_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_prof_info
+#define MR_HEADER_GUARD_prof_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PROF_INFO_DECL_GUARD
+#define PROF_INFO_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct prof_info__prof_info__type_ctor_info_addrdecl_0;
+
+extern const MR_TypeCtorInfo_Struct prof_info__prof_info__type_ctor_info_cycle_map_0;
+
+extern const MR_TypeCtorInfo_Struct prof_info__prof_info__type_ctor_info_pred_info_0;
+
+extern const MR_TypeCtorInfo_Struct prof_info__prof_info__type_ctor_info_prof_0;
+
+extern const MR_TypeCtorInfo_Struct prof_info__prof_info__type_ctor_info_prof_node_0;
+
+extern const MR_TypeCtorInfo_Struct prof_info__prof_info__type_ctor_info_prof_node_map_0;
+
+extern const MR_TypeCtorInfo_Struct prof_info__prof_info__type_ctor_info_prof_node_type_0;
+
+void MR_CALL 
+prof_info__get_prof_node_4_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+prof_info__pred_info_get_counts_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+prof_info__pred_info_get_entire_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+prof_info__pred_info_get_pred_name_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+prof_info__pred_info_init_3_p_0(
+  MR_String param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+prof_info__prof_get_addrdeclmap_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+prof_info__prof_get_entire_7_p_0(
+  MR_Word param_1,
+  MR_Float * param_2,
+  MR_String * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+prof_info__prof_get_profnodemap_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+prof_info__prof_node_concat_to_child_4_p_0(
+  MR_String param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+prof_info__prof_node_concat_to_member_4_p_0(
+  MR_String param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+prof_info__prof_node_concat_to_name_list_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+prof_info__prof_node_concat_to_parent_4_p_0(
+  MR_String param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+prof_info__prof_node_get_child_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+prof_info__prof_node_get_cycle_number_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+prof_info__prof_node_get_entire_cycle_8_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Float * param_5,
+  MR_Word * param_6,
+  MR_Integer * param_7,
+  MR_Integer * param_8);
+
+void MR_CALL 
+prof_info__prof_node_get_entire_pred_10_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Float * param_5,
+  MR_Word * param_6,
+  MR_Word * param_7,
+  MR_Integer * param_8,
+  MR_Integer * param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+prof_info__prof_node_get_initial_counts_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+prof_info__prof_node_get_parent_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+prof_info__prof_node_get_pred_name_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+prof_info__prof_node_get_propagated_counts_2_p_0(
+  MR_Word param_1,
+  MR_Float * param_2);
+
+void MR_CALL 
+prof_info__prof_node_get_self_calls_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+prof_info__prof_node_get_total_calls_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+prof_info__prof_node_set_cycle_num_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+prof_info__prof_node_set_initial_counts_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+prof_info__prof_node_set_propagated_counts_3_p_0(
+  MR_Float param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+prof_info__prof_node_set_self_calls_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+prof_info__prof_node_set_total_calls_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+prof_info__prof_node_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+prof_info__prof_set_cyclemap_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+prof_info__prof_set_entire_7_p_0(
+  MR_Float param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+prof_info__prof_set_profnodemap_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+prof_info__update_prof_node_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+prof_info__prof_node_init_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+prof_info__prof_node_init_cycle_7_f_0(
+  MR_String param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Float param_4,
+  MR_Word param_5,
+  MR_Integer param_6,
+  MR_Integer param_7);
+
+void MR_CALL 
+prof_info____Compare____addrdecl_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+prof_info____Compare____cycle_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+prof_info____Compare____pred_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+prof_info____Compare____prof_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+prof_info____Compare____prof_node_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+prof_info____Compare____prof_node_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+prof_info____Compare____prof_node_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+prof_info____Unify____addrdecl_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+prof_info____Unify____cycle_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+prof_info____Unify____pred_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+prof_info____Unify____prof_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+prof_info____Unify____prof_node_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+prof_info____Unify____prof_node_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+prof_info____Unify____prof_node_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__prof_info__init(void);
+void mercury__prof_info__init_type_tables(void);
+void mercury__prof_info__init_debugger(void);
+const char *mercury__prof_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_prof_info
+
+// :- end_interface prof_info.
