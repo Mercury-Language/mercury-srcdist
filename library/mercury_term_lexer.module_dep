@@ -1,0 +1,14 @@
+module(2, "mercury_term_lexer.m",
+	mercury_term_lexer,
+	{},
+	{builtin, char, integer, io, private_builtin},
+	{int, list, require, string, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - mercury_term_lexer, "C#" - mercury_term_lexer, "Java" - mercury_term_lexer},
+	no_foreign_export,
+	no_main,
+	{}
+).

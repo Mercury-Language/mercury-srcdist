@@ -1,0 +1,23 @@
+:- module ((hlds.make_hlds).make_hlds_types).
+:- interface.
+:- use_module cord.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.status).
+:- use_module (parse_tree.prog_data).
+:- type found_invalid_inst_or_mode
+    --->    did_not_find_invalid_inst_or_mode 
+    ;       found_invalid_inst_or_mode .
+:- type found_invalid_type
+    --->    did_not_find_invalid_type 
+    ;       found_invalid_type .
+:- type ims_cord(T) == cord.cord(hlds.make_hlds.make_hlds_types.ims_sub_list(T)).
+:- type ims_list(T) == list.list(hlds.make_hlds.make_hlds_types.ims_sub_list(T)).
+:- type ims_sub_list(T)
+    --->    ims_sub_list(hlds.status.item_mercury_status, list.list(T)).
+:- type sec_cord(T) == cord.cord(hlds.make_hlds.make_hlds_types.sec_sub_list(T)).
+:- type sec_info
+    --->    sec_info(hlds.status.item_mercury_status, parse_tree.prog_data.need_qualifier).
+:- type sec_list(T) == list.list(hlds.make_hlds.make_hlds_types.sec_sub_list(T)).
+:- type sec_sub_list(T)
+    --->    sec_sub_list(hlds.make_hlds.make_hlds_types.sec_info, list.list(T)).
