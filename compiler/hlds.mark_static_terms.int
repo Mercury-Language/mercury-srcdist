@@ -1,0 +1,7 @@
+:- module (hlds.mark_static_terms).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module (hlds.hlds_module).
+:- pred maybe_mark_static_terms(bool.bool, bool.bool, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode maybe_mark_static_terms((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
