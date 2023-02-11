@@ -1,0 +1,208 @@
+/*
+** Automatically generated from `string.to_string.m'
+** by the Mercury compiler,
+** version rotd-2023-02-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module string.to_string.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_string__to_string
+#define MR_HEADER_GUARD_string__to_string
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef STRING__TO_STRING_DECL_GUARD
+#define STRING__TO_STRING_DECL_GUARD
+#include "string.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__string__to_string__string__to_string__type_ctor_info_revstrings_0;
+
+void MR_CALL 
+mercury__string__to_string__LCMC__pred__value_to_revstrings_prio__1_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__string__to_string__LCMC__pred__value_to_revstrings_prio__1_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__string__to_string__LCMC__pred__value_to_revstrings_prio__1_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__string__to_string__LCMC__pred__value_to_revstrings_prio__1_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__string__to_string__string_ops_noncanon_impl_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__to_string__string_ops_noncanon_impl_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__to_string__string_ops_noncanon_impl_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__to_string__string_ops_noncanon_impl_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__to_string__value_to_revstrings_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__string__to_string__value_to_revstrings_5_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__string__to_string__value_to_revstrings_5_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__string__to_string__value_to_revstrings_5_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+mercury__string__to_string__value_to_revstrings_prio_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__string__to_string__value_to_revstrings_prio_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__string__to_string__value_to_revstrings_prio_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+mercury__string__to_string__value_to_revstrings_prio_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_String MR_CALL 
+mercury__string__to_string__string_impl_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_String MR_CALL 
+mercury__string__to_string__string_ops_impl_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__string__to_string____Compare____revstrings_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__string__to_string____Unify____revstrings_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__string__to_string__init(void);
+void mercury__string__to_string__init_type_tables(void);
+void mercury__string__to_string__init_debugger(void);
+const char *mercury__string__to_string__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_string.to_string
+
+// :- end_interface string.to_string.
