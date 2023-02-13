@@ -1,0 +1,27 @@
+:- module (mdbcomp.goal_path).
+:- interface.
+:- type containing_goal.
+:- type containing_goal_map.
+:- type forward_goal_path.
+:- type goal_attr_array(T).
+:- type goal_forward_path_map.
+:- type goal_id.
+:- type goal_path_step.
+:- type goal_path_string.
+:- type goal_reverse_path_bimap.
+:- type goal_reverse_path_map.
+:- type maybe_cut
+	where	type_is_abstract_enum(1).
+:- type maybe_switch_num_functors.
+:- type reverse_goal_path.
+:- abstract_inst((uniq_goal_attr_array)).
+:- abstract_mode((gaa_di)).
+:- abstract_mode((gaa_uo)).
+:- type_representation(containing_goal_map, is_eqv_to(map(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.containing_goal))).
+:- type_representation(goal_attr_array(V_1), du_repn(notag("goal_attr_array", array(maybe(V_1)),  no_c_j_cs))).
+:- type_representation(goal_forward_path_map, is_eqv_to(map(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.forward_goal_path))).
+:- type_representation(goal_id, du_repn(notag("goal_id", int,  no_c_j_cs))).
+:- type_representation(goal_path_string, is_eqv_to(string)).
+:- type_representation(goal_reverse_path_bimap, is_eqv_to(bimap(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.reverse_goal_path))).
+:- type_representation(goal_reverse_path_map, is_eqv_to(map(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.reverse_goal_path))).
+:- type_representation(maybe_cut, du_repn(enum("scope_is_cut", "scope_is_no_cut", [],  no_c_j_cs))).

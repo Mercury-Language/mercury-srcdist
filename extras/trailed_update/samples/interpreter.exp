@@ -1,0 +1,136 @@
+Pure Prolog Interpreter.
+
+Consulting file `interpreter.m'...
+?- a = a.
+No (more) solutions.
+?- X = X.
+No (more) solutions.
+?- No (more) solutions.
+?- No (more) solutions.
+?- Y = Y.
+No (more) solutions.
+?- true ; true.
+true ; true.
+No (more) solutions.
+?- :- interface.
+:- module interpreter.
+:- implementation.
+:- import_module unsafe.
+:- import_module store, tr_store, map, multi_map, assoc_list.
+:- import_module list, string, term, varset, term_io, require, std_util.
+:- import_module io.
+:- mode database_lookup_pred_clause(in, in, out) is nondet.
+:- mode database_lookup_clause(in, in, out) is nondet.
+:- mode database_lookup_clause(in, in, out, out, out) is nondet.
+:- mode database_assert_clause(in, in, in, out) is det.
+:- mode database_init(out) is det.
+:- mode deref_list(in, out, mdi, muo) is det.
+:- mode deref(in, out, mdi, muo) is det.
+:- mode not_occurs_list(in, in, mdi, muo) is semidet.
+:- mode not_occurs(in, in, mdi, muo) is semidet.
+:- mode unify_list(in, in, mdi, muo) is semidet.
+:- mode unify(in, in, mdi, muo) is semidet.
+:- mode solve(in, in, mdi, muo) is nondet.
+:- mode my_term_to_term_list(in, out, in, out, in, out, mdi, muo) is det.
+:- mode my_term_to_term(in, out, in, out, in, out, mdi, muo) is det.
+:- mode my_term_to_term_list(in, out, mdi, muo) is det.
+:- mode my_term_to_term(in, out, mdi, muo) is det.
+:- mode term_to_my_term_list(in, out, in, out, mdi, muo) is det.
+:- mode term_to_my_term(in, out, in, out, mdi, muo) is det.
+:- mode term_to_my_term_list(in, out, mdi, muo) is det.
+:- mode term_to_my_term(in, out, mdi, muo) is det.
+:- mode consult_until_eof_2(in, in, out, di, uo) is det.
+:- mode consult_until_eof(in, out, di, uo) is det.
+:- mode consult(in, in, out, di, uo) is det.
+:- mode consult_list(in, in, out, di, uo) is det.
+:- mode write_solution(in, in, in, mdi, di, uo) is det.
+:- mode print_solutions(in, in, in, mdi, in, di, uo) is cc_multi.
+:- mode main_loop_2(in, in, di, uo) is cc_multi.
+:- mode main_loop(in, di, uo) is cc_multi.
+:- mode main(di, uo) is cc_multi.
+:- pred database_lookup_pred_clause(db_pred, list(my_term(_2)), clause).
+:- pred database_lookup_clause(database, my_term(_2), clause).
+:- pred database_lookup_clause(database, my_term(_2), varset, term, term).
+:- pred database_assert_clause(database, varset, term, database).
+:- pred database_init(database).
+:- pred deref_list(list(my_term(_2)), list(my_term(_2)), store(_2), store(_2)).
+:- pred deref(my_term(_2), my_term(_2), store(_2), store(_2)).
+:- pred not_occurs_list(list(my_term(_2)), my_var(_2), store(_2), store(_2)).
+:- pred not_occurs(my_term(_2), my_var(_2), store(_2), store(_2)).
+:- pred unify_list(list(my_term(_2)), list(my_term(_2)), store(_2), store(_2)).
+:- pred unify(my_term(_2), my_term(_2), store(_2), store(_2)).
+:- pred solve(database, my_term(_2), store(_2), store(_2)).
+:- pred my_term_to_term_list(list(my_term(_2)), list(term), varset, varset, assoc_list(my_var(_2), var), assoc_list(my_var(_2), var), store(_2), store(_2)).
+:- pred my_term_to_term(my_term(_2), term, varset, varset, assoc_list(my_var(_2), var), assoc_list(my_var(_2), var), store(_2), store(_2)).
+:- pred my_term_to_term_list(list(my_term(_2)), list(term), store(_2), store(_2)).
+:- pred my_term_to_term(my_term(_2), term, store(_2), store(_2)).
+:- pred term_to_my_term_list(list(term), list(my_term(_2)), map(var, my_var(_2)), map(var, my_var(_2)), store(_2), store(_2)).
+:- pred term_to_my_term(term, my_term(_2), map(var, my_var(_2)), map(var, my_var(_2)), store(_2), store(_2)).
+:- pred term_to_my_term_list(list(term), list(my_term(_2)), store(_2), store(_2)).
+:- pred term_to_my_term(term, my_term(_2), store(_2), store(_2)).
+:- pred consult_until_eof_2(read_term, database, database, io__state, io__state).
+:- pred consult_until_eof(database, database, io__state, io__state).
+:- pred consult(string, database, database, io__state, io__state).
+:- pred consult_list(list(string), database, database, io__state, io__state).
+:- pred write_solution(varset, map(var, my_var(_2)), my_term(_2), store(_2), io__state, io__state).
+:- pred print_solutions(varset, map(var, my_var(_2)), my_term(_2), store(_2), database, io__state, io__state).
+:- pred main_loop_2(read_term, database, io__state, io__state).
+:- pred main_loop(database, io__state, io__state).
+:- pred main(io__state, io__state).
+:- type clause ---> clause(varset, term, term).
+:- type _2 / _3 ---> _2 / _3.
+:- type db_pred ---> db_pred(list(clause), multi_map(string / int, clause)).
+:- type database ---> database(list(clause), map(string / int, db_pred)).
+:- type my_term(_2) ---> var(my_var(_2)) ; free ; functor(const, list(my_term(_2))).
+:- type my_var(_2) == generic_mutvar(my_term(_2), _2).
+No (more) solutions.
+?- No (more) solutions.
+?- print_solutions(_3, _4, _5, _6, _7) --> unsorted_aggregate((pred (_8 :: muo)) is nondet :- solve(_7, _5, unsafe_promise_unique(_6), _8), write_solution(_3, _4, _5)), io__write_string("No (more) solutions.\n").
+consult_until_eof_2(term(_3, _4), _5, _6) --> { database_assert_clause(_5, _3, _4, _7) }, consult_until_eof(_7, _6).
+consult_until_eof_2(error(_3, _4), _5, _6) --> io__write_string("Error reading term at line "), io__write_int(_4), io__write_string(" of standard input: "), io__write_string(_3), io__write_string("\n"), consult_until_eof(_5, _6).
+consult_until_eof_2(eof, _3, _3) --> [].
+my_term_to_term(_3, _4) --> { varset__init(_5) }, { _6 = [] }, my_term_to_term(_3, _4, _5, _7, _6, _8).
+consult_list([_3 | _4], _5, _6) --> consult(_3, _5, _7), consult_list(_4, _7, _6).
+consult_list([], _3, _3) --> [].
+consult(_3, _4, _5) --> io__write_string("Consulting file `"), io__write_string(_3), io__write_string("\'...\n"), io__see(_3, _6), ({ _6 = ok } -> consult_until_eof(_4, _5), io__seen ; io__write_string("Error opening file `"), io__write_string(_3), io__write_string("\' for input.\n"), { _5 = _4 }).
+consult_until_eof(_3, _4) --> term_io__read_term(_5), consult_until_eof_2(_5, _3, _4).
+deref_list([_3 | _4], [_5 | _6]) --> deref(_3, _5), deref_list(_4, _6).
+deref_list([], []) --> [].
+main_loop(_3) --> io__write_string("?- "), term_io__read_term(_4), main_loop_2(_4, _3).
+deref(functor(_3, _4), functor(_3, _5)) --> deref_list(_4, _5).
+deref(var(_3), _4) --> tr_store__get_mutvar(_3, _5), ({ _5 \= free } -> deref(_5, _4) ; { _4 = var(_3) }).
+deref(free, _3) --> { error("interpreter__deref: unexpected occurence of `free\'") }.
+main --> io__write_string("Pure Prolog Interpreter.\n\n"), io__command_line_arguments(_3), ({ _3 = [] } -> io__stderr_stream(_4), io__write_string(_4, "Usage: interpreter filename ...\n"), io__set_exit_status(1) ; { database_init(_5) }, consult_list(_3, _5, _6), main_loop(_6)).
+main_loop_2(term(_3, _4), _5) --> { store__new(_6) }, { map__init(_7) }, { term_to_my_term(_4, _8, _7, _9, _6, _10) }, print_solutions(_3, _9, _8, _10, _5), main_loop(_5).
+main_loop_2(error(_3, _4), _5) --> io__write_string("Error reading term at line "), io__write_int(_4), io__write_string(" of standard input: "), io__write_string(_3), io__write_string("\n"), main_loop(_5).
+main_loop_2(eof, _3) --> [].
+my_term_to_term_list(_3, _4) --> { varset__init(_5) }, { _6 = [] }, my_term_to_term_list(_3, _4, _5, _7, _6, _8).
+not_occurs(functor(_3, _4), _5) --> not_occurs_list(_4, _5).
+not_occurs(var(_3), _4) --> { _3 \= _4 }, tr_store__get_mutvar(_3, _5), ({ _5 = free } -> [] ; not_occurs(_5, _4)).
+my_term_to_term(functor(_3, _4), functor(_3, _5, _6), _7, _8, _9, _10) --> { context_init(_6) }, my_term_to_term_list(_4, _5, _7, _8, _9, _10).
+my_term_to_term(free, variable(_3), _4, _5, _6, _6) --> { varset__new_var(_4, _3, _5) }, { error("my_term_to_term: unexpected free var") }.
+my_term_to_term(var(_3), variable(_4), _5, _6, _7, _8) --> ({ assoc_list__search(_7, _3, _9) } -> { _4 = _9 }, { _10 = _5 }, { _11 = _7 } ; { varset__new_var(_5, _4, _10) }, { _11 = [_3 - _4 | _7] }), tr_store__get_mutvar(_3, _12), ({ _12 \= free } -> my_term_to_term(_12, _13, _10, _14, _11, _8), { varset__bind_var(_14, _4, _13, _6) } ; { _8 = _11 }, { _6 = _10 }).
+my_term_to_term_list([_3 | _4], [_5 | _6], _7, _8, _9, _10) --> my_term_to_term(_3, _5, _7, _11, _9, _12), my_term_to_term_list(_4, _6, _11, _8, _12, _10).
+my_term_to_term_list([], [], _3, _3, _4, _4) --> [].
+not_occurs_list([_3 | _4], _5) --> not_occurs(_3, _5), not_occurs_list(_4, _5).
+not_occurs_list([], _3) --> [].
+term_to_my_term_list(_3, _4) --> { map__init(_5) }, term_to_my_term_list(_3, _4, _5, _6).
+term_to_my_term(_3, _4) --> { map__init(_5) }, term_to_my_term(_3, _4, _5, _6).
+solve(_3, _4) --> { database_lookup_clause(_3, _4, _5, _6, _7) }, term_to_my_term_list([_6, _7], [_8, _9]), unify(_4, _8), solve(_3, _9).
+solve(_3, functor(atom("="), [_4, _5])) --> unify(_4, _5).
+solve(_3, functor(atom(";"), [_4, _5])) --> solve(_3, _4) ; solve(_3, _5).
+solve(_3, functor(atom(","), [_4, _5])) --> solve(_3, _4), solve(_3, _5).
+solve(_3, functor(atom("true"), [])) --> [].
+term_to_my_term(functor(_3, _4, _5), functor(_3, _6), _7, _8) --> term_to_my_term_list(_4, _6, _7, _8).
+term_to_my_term(variable(_3), var(_4), _5, _6) --> { map__search(_5, _3, _7) } -> { _4 = _7 }, { _6 = _5 } ; tr_store__new_mutvar(free, _4), { map__det_insert(_5, _3, _4, _6) }.
+unify(functor(_3, _4), functor(_3, _5)) --> unify_list(_4, _5).
+unify(functor(_3, _4), var(_5)) --> tr_store__get_mutvar(_5, _6), ({ _6 \= free } -> unify(functor(_3, _4), _6) ; not_occurs_list(_4, _5), tr_store__set_mutvar(_5, functor(_3, _4))).
+unify(var(_3), functor(_4, _5)) --> tr_store__get_mutvar(_3, _6), ({ _6 \= free } -> unify(_6, functor(_4, _5)) ; not_occurs_list(_5, _3), tr_store__set_mutvar(_3, functor(_4, _5))).
+unify(var(_3), var(_4)) --> tr_store__get_mutvar(_3, _5), tr_store__get_mutvar(_4, _6), ({ _5 \= free } -> ({ _6 \= free } -> unify(_5, _6) ; deref(_5, _7), ({ _7 = var(_4) } -> [] ; not_occurs(_7, _4), tr_store__set_mutvar(_4, _7))) ; { _6 \= free } -> deref(_6, _8), ({ _8 = var(_3) } -> [] ; not_occurs(_8, _3), tr_store__set_mutvar(_3, _8)) ; { _3 = _4 } -> [] ; tr_store__set_mutvar(_3, var(_4))).
+term_to_my_term_list([_3 | _4], [_5 | _6], _7, _8) --> term_to_my_term(_3, _5, _7, _9), term_to_my_term_list(_4, _6, _9, _8).
+term_to_my_term_list([], [], _3, _3) --> [].
+unify_list([_3 | _4], [_5 | _6]) --> unify(_3, _5), unify_list(_4, _6).
+unify_list([], []) --> [].
+write_solution(_3, _4, _5, _6) --> { map__keys(_4, _7) }, { map__values(_4, _8) }, { assoc_list__from_corresponding_lists(_8, _7, _9) }, { my_term_to_term(_5, _10, _3, _11, _9, _12, _6, _13) }, term_io__write_term_nl(_11, _10).
+No (more) solutions.
+?- 

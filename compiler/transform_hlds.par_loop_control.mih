@@ -1,0 +1,68 @@
+/*
+** Automatically generated from `par_loop_control.m'
+** by the Mercury compiler,
+** version rotd-2023-02-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.par_loop_control.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__par_loop_control
+#define MR_HEADER_GUARD_transform_hlds__par_loop_control
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__PAR_LOOP_CONTROL_DECL_GUARD
+#define TRANSFORM_HLDS__PAR_LOOP_CONTROL_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__par_loop_control__transform_hlds__par_loop_control__type_ctor_info_fixup_goal_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__par_loop_control__transform_hlds__par_loop_control__type_ctor_info_goal_is_last_goal_on_path_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__par_loop_control__transform_hlds__par_loop_control__type_ctor_info_loop_control_info_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__par_loop_control__transform_hlds__par_loop_control__type_ctor_info_preserve_tail_recursion_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__par_loop_control__transform_hlds__par_loop_control__type_ctor_info_seen_usable_recursion_0;
+
+void MR_CALL 
+transform_hlds__par_loop_control__maybe_par_loop_control_module_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__transform_hlds__par_loop_control__init(void);
+void mercury__transform_hlds__par_loop_control__init_type_tables(void);
+void mercury__transform_hlds__par_loop_control__init_debugger(void);
+const char *mercury__transform_hlds__par_loop_control__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.par_loop_control
+
+// :- end_interface transform_hlds.par_loop_control.
