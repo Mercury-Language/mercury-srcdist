@@ -1,0 +1,4 @@
+:- module (parse_tree.parse_vars).
+:- interface.
+:- type plain_state_dot_colon_vars(T).
+:- type plain_state_vars(T).

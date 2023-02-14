@@ -1,0 +1,5 @@
+:- module (check_hlds.inst_match).
+:- interface.
+:- type ground_matches_bound
+    --->    ground_matches_bound_if_complete 
+    ;       ground_matches_bound_always .
