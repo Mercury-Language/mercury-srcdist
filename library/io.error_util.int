@@ -1,0 +1,19 @@
+:- module (io.error_util).
+:- interface.
+:- pred is_error(io.system_error, string, maybe.maybe(io.error), io.io, io.io).
+:- mode is_error((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred is_error_maybe_win32(io.system_error, bool.bool, string, maybe.maybe(io.error), io.io, io.io).
+:- mode is_error_maybe_win32((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_io_error_from_maybe_win32_error(io.system_error, bool.bool, string, io.error, io.io, io.io).
+:- mode make_io_error_from_maybe_win32_error((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_io_error_from_system_error_impl(io.system_error, string, io.error, io.io, io.io).
+:- mode make_io_error_from_system_error_impl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_io_error_from_windows_error_impl(io.system_error, string, io.error, io.io, io.io).
+:- mode make_io_error_from_windows_error_impl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func no_error = io.system_error.
+:- pred throw_on_close_error(io.system_error, io.io, io.io).
+:- mode throw_on_close_error((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred throw_on_error(io.system_error, string, io.io, io.io).
+:- mode throw_on_error((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred throw_on_output_error(io.system_error, io.io, io.io).
+:- mode throw_on_output_error((builtin.in), (builtin.di), (builtin.uo)) is det.

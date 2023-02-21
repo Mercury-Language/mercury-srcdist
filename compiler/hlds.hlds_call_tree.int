@@ -1,0 +1,6 @@
+:- module (hlds.hlds_call_tree).
+:- interface.
+:- use_module io.
+:- use_module (hlds.hlds_module).
+:- pred write_local_call_tree(io.text_output_stream, io.text_output_stream, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_local_call_tree((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
