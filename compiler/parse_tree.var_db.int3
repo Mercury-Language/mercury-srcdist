@@ -1,0 +1,5 @@
+:- module (parse_tree.var_db).
+:- interface.
+:- type var_db.
+:- type var_name_source.
+:- type var_type_source.
