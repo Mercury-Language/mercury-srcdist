@@ -1,0 +1,6 @@
+:- module (libs.file_util).
+:- interface.
+:- type dir_name == string.
+:- type file_name == string.
+:- type path_name_and_stream
+    --->    path_name_and_stream(string, io.text_input_stream).

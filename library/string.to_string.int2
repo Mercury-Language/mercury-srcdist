@@ -1,0 +1,2 @@
+:- module (string.to_string).
+:- interface.

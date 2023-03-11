@@ -1,0 +1,25 @@
+@echo off
+rem @configure_input@
+rem ---------------------------------------------------------------------------
+rem Copyright (C) 2001, 2003, 2005, 2011 The University of Melbourne.
+rem This file may only be copied under the terms of the GNU General
+rem Public License - see the file COPYING in the Mercury distribution.
+rem ---------------------------------------------------------------------------
+rem
+rem mercury.bat - Melbourne Mercury Compiler.
+rem
+rem Use `mercury -h' for help.
+rem
+rem ---------------------------------------------------------------------------
+rem This is a Windows batch file version of the `mmc' Bourne shell script.
+rem (We don't use that name because it conflicts with that of the Microsoft
+rem Management Console.)
+rem ---------------------------------------------------------------------------
+
+rem Don't export any local environment changes.
+setlocal
+
+set MERCURY_CONFIG_DIR="@CONFIG_LIBDIR@"
+set MERCURY_COMPILER="@PREFIX@\bin\mercury_compile"
+
+%MERCURY_COMPILER% %*
