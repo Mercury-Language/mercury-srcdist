@@ -1,0 +1,4 @@
+:- module fatter_sparse_bitset.
+:- interface.
+:- type fatter_sparse_bitset(T).
+:- type_representation(fatter_sparse_bitset(V_1), du_repn(notag("fatter_sparse_bitset", bitset_elems,  no_c_j_cs))).
