@@ -1,0 +1,3 @@
+:- module (mdb.term_rep).
+:- interface.
+:- type term_rep.

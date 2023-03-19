@@ -1,0 +1,4 @@
+:- module ((transform_hlds.ctgc).structure_sharing).
+:- interface.
+:- include_module (((transform_hlds.ctgc).structure_sharing).analysis).
+:- include_module (((transform_hlds.ctgc).structure_sharing).domain).
