@@ -1,0 +1,5 @@
+:- module varset.
+:- interface.
+:- use_module term.
+:- type varset == varset.varset(term.generic).
+:- type varset(T).
