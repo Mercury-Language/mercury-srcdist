@@ -1,0 +1,5 @@
+:- module (transform_hlds.unneeded_code).
+:- interface.
+:- type_representation(refined_goal_map, is_eqv_to(map(pair(goal_id, int), list(hlds_goal)))).
+:- type_representation(where_needed_branches, is_eqv_to(map(branch_point, set(int)))).
+:- type_representation(where_needed_map, is_eqv_to(map(prog_var, where_needed))).

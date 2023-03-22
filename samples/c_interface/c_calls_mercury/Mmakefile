@@ -1,0 +1,28 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# This source file is hereby placed in the public domain.  -fjh (the author).
+#-----------------------------------------------------------------------------#
+MAIN_TARGET=all
+
+depend: mercury_main.depend
+all: mercury_main
+
+#-----------------------------------------------------------------------------#
+
+# Pass `-g' to the C compiler and linker, so we can use a debugger (e.g. gdb)
+MGNUCFLAGS=-g
+MLFLAGS=-g
+
+# Tell the Mercury linker to link in c_main.o and mercury_lib.o
+MLOBJS=c_main.o
+
+#-----------------------------------------------------------------------------#
+
+c_main.o: mercury_lib.mh c_main.h
+
+# make sure that `mmake clean' removes c_main.o
+clean_local:
+	rm -f c_main.o
+
+#-----------------------------------------------------------------------------#

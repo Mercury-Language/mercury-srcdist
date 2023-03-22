@@ -1,0 +1,14 @@
+module(2, "varset.m",
+	varset,
+	{},
+	{assoc_list, builtin, list, map, maybe, private_builtin, set, term},
+	{int, pair, require, stream, string, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

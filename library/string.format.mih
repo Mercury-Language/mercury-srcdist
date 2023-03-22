@@ -1,0 +1,515 @@
+/*
+** Automatically generated from `string.format.m'
+** by the Mercury compiler,
+** version 22.01.6-beta-2023-03-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module string.format.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_string__format
+#define MR_HEADER_GUARD_string__format
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef STRING__FORMAT_DECL_GUARD
+#define STRING__FORMAT_DECL_GUARD
+#include "string.mih"
+
+#include "mercury_float.h"    // for MR_float_to_string
+
+// The following macro should expand to MR_TRUE if the C grades should
+// implement string.format using C's sprintf function.
+// Setting it to MR_FALSE will cause string.format to use the Mercury
+// implementation of string formatting in C grades.
+
+#define ML_USE_SPRINTF MR_TRUE
+
+
+#endif
+
+
+
+
+void MR_CALL 
+mercury__string__format__format_cast_int16_to_int_2_p_0(
+  int16_t param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__string__format__format_cast_int16_to_uint_2_p_0(
+  int16_t param_1,
+  MR_Unsigned * param_2);
+
+void MR_CALL 
+mercury__string__format__format_cast_int32_to_int_2_p_0(
+  int32_t param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__string__format__format_cast_int32_to_uint_2_p_0(
+  int32_t param_1,
+  MR_Unsigned * param_2);
+
+void MR_CALL 
+mercury__string__format__format_cast_int8_to_int_2_p_0(
+  int8_t param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__string__format__format_cast_int8_to_uint_2_p_0(
+  int8_t param_1,
+  MR_Unsigned * param_2);
+
+void MR_CALL 
+mercury__string__format__format_cast_int_to_uint_2_p_0(
+  MR_Integer param_1,
+  MR_Unsigned * param_2);
+
+void MR_CALL 
+mercury__string__format__format_cast_uint16_to_uint_2_p_0(
+  uint16_t param_1,
+  MR_Unsigned * param_2);
+
+void MR_CALL 
+mercury__string__format__format_cast_uint32_to_uint_2_p_0(
+  uint32_t param_1,
+  MR_Unsigned * param_2);
+
+void MR_CALL 
+mercury__string__format__format_cast_uint8_to_uint_2_p_0(
+  uint8_t param_1,
+  MR_Unsigned * param_2);
+
+void MR_CALL 
+mercury__string__format__format_char_component_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Char param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_char_component_nowidth_3_p_0(
+  MR_Word param_1,
+  MR_Char param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mercury__string__format__format_char_component_width_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Char param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_float_component_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Float param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+mercury__string__format__format_float_component_nowidth_noprec_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Float param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_float_component_nowidth_prec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Float param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_float_component_width_noprec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Float param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_float_component_width_prec_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Float param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+mercury__string__format__format_impl_3_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mercury__string__format__format_signed_int64_component_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  int64_t param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_signed_int64_component_nowidth_noprec_3_p_0(
+  MR_Word param_1,
+  int64_t param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mercury__string__format__format_signed_int64_component_nowidth_prec_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  int64_t param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_signed_int64_component_width_noprec_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  int64_t param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_signed_int64_component_width_prec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  int64_t param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_signed_int_component_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_signed_int_component_nowidth_noprec_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mercury__string__format__format_signed_int_component_nowidth_prec_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_signed_int_component_width_noprec_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_signed_int_component_width_prec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_string_component_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_string_component_nowidth_noprec_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mercury__string__format__format_string_component_nowidth_prec_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_String param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_string_component_width_noprec_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_String param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_string_component_width_prec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_String param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_uint64_component_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  uint64_t param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+mercury__string__format__format_uint64_component_nowidth_noprec_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  uint64_t param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_uint64_component_nowidth_prec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  uint64_t param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_uint64_component_width_noprec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  uint64_t param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_uint64_component_width_prec_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  uint64_t param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+mercury__string__format__format_uint_component_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Unsigned param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+mercury__string__format__format_uint_component_nowidth_noprec_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Unsigned param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_uint_component_nowidth_prec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Unsigned param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_uint_component_width_noprec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Unsigned param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_uint_component_width_prec_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Unsigned param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+mercury__string__format__format_unsigned_int64_component_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  int64_t param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+mercury__string__format__format_unsigned_int64_component_nowidth_noprec_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  int64_t param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_unsigned_int64_component_nowidth_prec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  int64_t param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_unsigned_int64_component_width_noprec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  int64_t param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_unsigned_int64_component_width_prec_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  int64_t param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+mercury__string__format__format_unsigned_int_component_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+mercury__string__format__format_unsigned_int_component_nowidth_noprec_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mercury__string__format__format_unsigned_int_component_nowidth_prec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_unsigned_int_component_width_noprec_5_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+mercury__string__format__format_unsigned_int_component_width_prec_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Integer param_5,
+  MR_String * param_6);
+
+MR_bool MR_CALL 
+mercury__string__format__using_sprintf_0_p_0(void);
+
+MR_bool MR_CALL 
+mercury__string__format__using_sprintf_for_char_1_p_0(
+  MR_Char param_1);
+
+MR_String MR_CALL 
+mercury__string__format__format_char_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Char param_3);
+
+MR_String MR_CALL 
+mercury__string__format__format_signed_int_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4);
+
+MR_String MR_CALL 
+mercury__string__format__format_signed_int64_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  int64_t param_4);
+
+MR_String MR_CALL 
+mercury__string__format__int64_decimal_specifier_0_f_0(void);
+
+MR_String MR_CALL 
+mercury__string__format__int_length_modifier_0_f_0(void);
+
+MR_String MR_CALL 
+mercury__string__format__justify_string_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3);
+
+MR_String MR_CALL 
+mercury__string__format__make_format_sprintf_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String param_4,
+  MR_String param_5);
+
+MR_String MR_CALL 
+mercury__string__format__native_format_char_2_f_0(
+  MR_String param_1,
+  MR_Char param_2);
+
+MR_String MR_CALL 
+mercury__string__format__native_format_int_2_f_0(
+  MR_String param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+mercury__string__format__native_format_int64_2_f_0(
+  MR_String param_1,
+  int64_t param_2);
+
+void mercury__string__format__init(void);
+void mercury__string__format__init_type_tables(void);
+void mercury__string__format__init_debugger(void);
+const char *mercury__string__format__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_string.format
+
+// :- end_interface string.format.
