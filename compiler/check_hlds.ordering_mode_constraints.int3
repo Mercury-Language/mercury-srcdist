@@ -1,0 +1,12 @@
+:- module (check_hlds.ordering_mode_constraints).
+:- interface.
+:- type conjunct_id.
+:- type mode_ordering_constraint.
+:- type mode_ordering_constraints.
+:- type ordering_constraints_info.
+:- type_representation(conjunct_id, is_eqv_to(int)).
+:- type_representation(mode_analysis_failures, is_eqv_to(list(mode_analysis_failure))).
+:- type_representation(mode_ordering_constraint, is_word_aligned_ptr).
+:- type_representation(mode_ordering_constraints, is_eqv_to(list(check_hlds.ordering_mode_constraints.mode_ordering_constraint))).
+:- type_representation(ordering_constraints_info, is_word_aligned_ptr).
+:- type_representation(prog_var_at_conjuncts_map, is_eqv_to(multi_map(prog_var, mc_rep_var))).
