@@ -1,0 +1,81 @@
+/*
+** Automatically generated from `browser_term.m'
+** by the Mercury compiler,
+** version rotd-2023-03-25
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.browser_term.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__browser_term
+#define MR_HEADER_GUARD_mdb__browser_term
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__BROWSER_TERM_DECL_GUARD
+#define MDB__BROWSER_TERM_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__browser_term__mdb__browser_term__type_ctor_info_browser_term_0;
+
+MR_Word MR_CALL 
+mdb__browser_term__plain_term_to_browser_term_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+mdb__browser_term__synthetic_term_to_browser_term_3_f_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mdb__browser_term__univ_to_browser_term_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mdb__browser_term____Compare____browser_term_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__browser_term____Unify____browser_term_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdb__browser_term__init(void);
+void mercury__mdb__browser_term__init_type_tables(void);
+void mercury__mdb__browser_term__init_debugger(void);
+const char *mercury__mdb__browser_term__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.browser_term
+
+// :- end_interface mdb.browser_term.
