@@ -1,0 +1,17 @@
+:- module (libs.lp).
+:- interface.
+:- type coeff.
+:- type direction
+	where	type_is_abstract_enum(1).
+:- type equation.
+:- type equations.
+:- type objective.
+:- type operator
+	where	type_is_abstract_enum(2).
+:- type result.
+:- type_representation(coeff, is_eqv_to(pair(var, float))).
+:- type_representation(direction, du_repn(enum("max", "min", [],  no_c_j_cs))).
+:- type_representation(equation, is_word_aligned_ptr).
+:- type_representation(equations, is_eqv_to(list(libs.lp.equation))).
+:- type_representation(objective, is_eqv_to(list(libs.lp.coeff))).
+:- type_representation(operator, du_repn(enum("op_le", "op_eq", ["op_ge"],  no_c_j_cs))).
