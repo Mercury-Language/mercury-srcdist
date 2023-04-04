@@ -1,0 +1,14 @@
+:- module (random.sfc16).
+:- interface.
+:- type random.
+:- instance (random.random(random.sfc16.random)).
+:- pred generate_uint16(uint16, random.sfc16.random, random.sfc16.random).
+:- mode generate_uint16((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_uint32(uint32, random.sfc16.random, random.sfc16.random).
+:- mode generate_uint32((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_uint64(uint64, random.sfc16.random, random.sfc16.random).
+:- mode generate_uint64((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_uint8(uint8, random.sfc16.random, random.sfc16.random).
+:- mode generate_uint8((builtin.out), (builtin.in), (builtin.out)) is det.
+:- func init = random.sfc16.random.
+:- func seed(uint64) = random.sfc16.random.
