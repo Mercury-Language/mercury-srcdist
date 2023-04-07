@@ -1,0 +1,28 @@
+:- module (parse_tree.parse_tree_out_type).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module varset.
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- type maybe_exist_constraints
+    --->    no_exist_constraints 
+    ;       have_exist_constraints_print_paren(list.list(parse_tree.prog_data.prog_constraint)).
+:- func mercury_constraint_to_string(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.prog_constraint) = string.
+:- pred mercury_format_class_context(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, list.list(parse_tree.prog_data.prog_constraint), parse_tree.parse_tree_out_type.maybe_exist_constraints, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_class_context((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_constraint(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.prog_constraint, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_constraint((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_prog_constraint_list(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, string, list.list(parse_tree.prog_data.prog_constraint), S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_prog_constraint_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_format_type(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.mer_type, S, U, U) <= ((parse_tree.parse_tree_out_info).output(S, U)).
+:- mode mercury_format_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_class_context(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, list.list(parse_tree.prog_data.prog_constraint), parse_tree.parse_tree_out_type.maybe_exist_constraints, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_class_context((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_constraint(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.prog_constraint, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_constraint((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_type(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.mer_type, io.text_output_stream, io.io, io.io).
+:- mode mercury_output_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func mercury_prog_constraint_list_to_string(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, string, list.list(parse_tree.prog_data.prog_constraint)) = string.
+:- func mercury_type_list_to_string(parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.mer_type)) = string.
+:- func mercury_type_to_string(parse_tree.prog_data.tvarset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.mer_type) = string.
