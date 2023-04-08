@@ -1,0 +1,20 @@
+:- module (ml_backend.mlds_to_cs_global).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module (ml_backend.ml_global_data).
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_cs_util).
+:- use_module (ml_backend.mlds_to_target_util).
+:- pred output_global_var_decls_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, ml_backend.mlds_to_target_util.indent, list.list(ml_backend.mlds.mlds_global_var_defn), io.io, io.io).
+:- mode output_global_var_decls_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_global_var_defn_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, ml_backend.mlds_to_target_util.indent, ml_backend.mlds_to_target_util.output_aux, ml_backend.mlds.mlds_global_var_defn, io.io, io.io).
+:- mode output_global_var_defn_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_init_global_var_method_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, ml_backend.mlds_to_target_util.indent, list.list(ml_backend.mlds.mlds_global_var_defn), io.io, io.io).
+:- mode output_init_global_var_method_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_assignments_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, ml_backend.mlds_to_target_util.indent, list.list(ml_backend.mlds.mlds_global_var_defn), io.io, io.io).
+:- mode output_rtti_assignments_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_scalar_common_data_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, ml_backend.mlds_to_target_util.indent, ml_backend.ml_global_data.ml_scalar_cell_map, io.io, io.io).
+:- mode output_scalar_common_data_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_vector_common_data_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, ml_backend.mlds_to_target_util.indent, ml_backend.ml_global_data.ml_vector_cell_map, io.io, io.io).
+:- mode output_vector_common_data_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

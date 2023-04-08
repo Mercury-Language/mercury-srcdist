@@ -1,0 +1,71 @@
+/*
+** Automatically generated from `stratify.m'
+** by the Mercury compiler,
+** version rotd-2023-04-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.stratify.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__stratify
+#define MR_HEADER_GUARD_check_hlds__stratify
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__STRATIFY_DECL_GUARD
+#define CHECK_HLDS__STRATIFY_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__stratify__check_hlds__stratify__type_ctor_info_call_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__stratify__check_hlds__stratify__type_ctor_info_calls_higher_order_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__stratify__check_hlds__stratify__type_ctor_info_error_or_warning_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__stratify__check_hlds__stratify__type_ctor_info_ho_in_out_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__stratify__check_hlds__stratify__type_ctor_info_ho_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__stratify__check_hlds__stratify__type_ctor_info_strat_ho_info_0;
+
+void MR_CALL 
+check_hlds__stratify__check_module_for_stratification_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void mercury__check_hlds__stratify__init(void);
+void mercury__check_hlds__stratify__init_type_tables(void);
+void mercury__check_hlds__stratify__init_debugger(void);
+const char *mercury__check_hlds__stratify__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.stratify
+
+// :- end_interface check_hlds.stratify.
