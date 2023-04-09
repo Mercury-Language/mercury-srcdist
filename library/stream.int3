@@ -1,0 +1,28 @@
+:- module stream.
+:- interface.
+:- include_module (stream.string_writer).
+:- type maybe_partial_res(T, Error).
+:- type name.
+:- type res(Error).
+:- type res(T, Error).
+:- type result(Error).
+:- type result(T, Error).
+:- type whence
+	where	type_is_abstract_enum(2).
+:- abstract_mode((bulk_get_di)).
+:- abstract_mode((bulk_get_uo)).
+:- typeclass bulk_reader(Stream, Index, Store, State, Error).
+:- typeclass duplex(Stream, State).
+:- typeclass error(Error).
+:- typeclass input(Stream, State).
+:- typeclass line_oriented(Stream, State).
+:- typeclass output(Stream, State).
+:- typeclass putback(Stream, Unit, State, Error).
+:- typeclass reader(Stream, Unit, State, Error).
+:- typeclass seekable(Stream, State).
+:- typeclass stream(Stream, State).
+:- typeclass unbounded_putback(Stream, Unit, State, Error).
+:- typeclass unboxed_reader(Stream, Unit, State, Error).
+:- typeclass writer(Stream, Unit, State).
+:- type_representation(name, is_eqv_to(string)).
+:- type_representation(whence, du_repn(enum("set", "cur", ["end"],  no_c_j_cs))).

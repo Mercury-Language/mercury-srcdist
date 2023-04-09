@@ -1,0 +1,5 @@
+:- module (parse_tree.parse_tree_out_sym_name).
+:- interface.
+:- type needs_brackets
+	where	type_is_abstract_enum(1).
+:- type_representation(needs_brackets, du_repn(enum("needs_brackets", "does_not_need_brackets", [],  no_c_j_cs))).
