@@ -1,0 +1,128 @@
+:- module (io.environment).
+:- use_module array.
+:- use_module assoc_list.
+:- use_module benchmarking.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module dir.
+:- use_module exception.
+:- use_module int.
+:- use_module int16.
+:- use_module int32.
+:- use_module int64.
+:- use_module int8.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mercury_term_parser.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module rtti_implementation.
+:- use_module stream.
+:- use_module string.
+:- use_module table_builtin.
+:- use_module term.
+:- use_module term_conversion.
+:- use_module term_subst.
+:- use_module time.
+:- use_module type_desc.
+:- use_module uint16.
+:- use_module uint32.
+:- use_module uint64.
+:- use_module uint8.
+:- use_module univ.
+:- use_module (io.call_system).
+:- use_module (io.environment).
+:- use_module (io.error_util).
+:- use_module (io.file).
+:- use_module (io.primitives_read).
+:- use_module (io.primitives_write).
+:- use_module (io.stream_db).
+:- use_module (io.stream_ops).
+:- use_module (io.text_read).
+:- use_module (stream.string_writer).
+:- use_module (string.format).
+:- use_module (string.parse_util).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", (io.environment)).
+:- pragma foreign_import_module("C", (io.stream_ops)).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", (io.environment)).
+:- pragma foreign_import_module("C#", (io.primitives_write)).
+:- pragma foreign_import_module("C#", (io.stream_ops)).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", (io.environment)).
+:- pragma foreign_import_module("Java", (io.stream_ops)).
+
+:- type env_var_assoc_list == list.list(pair.pair(string, string)).
+
+:- pred (io.environment).get_environment_var_assoc_list(list.list(pair.pair(string, string)), list.list(pair.pair(string, string)), io.state, io.state).
+:- mode get_environment_var_assoc_list((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+
+:- pragma foreign_proc("C", (io.environment).get_environment_var_assoc_list(EnvVarAL0 :: (builtin.in), EnvVarAL :: (builtin.out), _IO0 :: (builtin.di), _IO :: (builtin.uo)), [may_call_mercury, not_thread_safe, tabled_for_io, promise_pure, may_modify_trail], "
+    MR_Word cur_env = EnvVarAL0;
+    MR_Word next_env;
+    int     i;
+    char    **environ_vars;
+
+    // See the comments about the environ global below
+    // for an explanation of this.
+    #if defined(MR_MAC_OSX)
+        environ_vars = (*_NSGetEnviron());
+    #else
+        environ_vars = environ;
+    #endif
+
+    for (i = 0; environ_vars[i] != NULL; i++) {
+        ML_record_env_var_equal_value(environ_vars[i], cur_env, &next_env);
+        cur_env = next_env;
+    }
+
+    EnvVarAL = cur_env;
+").
+
+(io.environment).get_environment_var_map(V_4, V_7, V_8) :-
+    V_9 = list.[] : list.list(pair.pair(string, string)),
+    (io.environment).get_environment_var_assoc_list(V_9, V_6, V_7, V_8),
+    map.from_assoc_list(V_6, V_4).
+
+:- pragma foreign_proc("C", (io.environment).have_set_environment_var, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    SUCCESS_INDICATOR = MR_TRUE;
+").
+
+:- pragma termination_info((io.environment).get_environment_var((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.environment).get_environment_var_assoc_list((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.environment).get_environment_var_map((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(((io.environment).have_set_environment_var), finite(0, []), cannot_loop).
+:- pragma termination_info((io.environment).set_environment_var((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.environment).set_environment_var((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, ((io.environment).get_environment_var), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.environment).get_environment_var_assoc_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.environment).get_environment_var_map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.environment).have_set_environment_var), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.environment).set_environment_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.environment).set_environment_var), 5, 0, may_throw(user_exception)).

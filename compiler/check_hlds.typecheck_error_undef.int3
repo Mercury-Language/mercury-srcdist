@@ -1,0 +1,3 @@
+:- module (check_hlds.typecheck_error_undef).
+:- interface.
+:- type cons_error.
