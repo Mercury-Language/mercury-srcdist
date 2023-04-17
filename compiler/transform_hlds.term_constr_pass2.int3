@@ -1,0 +1,7 @@
+:- module (transform_hlds.term_constr_pass2).
+:- interface.
+:- type pass2_options.
+:- type_representation(abstract_ppids, is_eqv_to(list(abstract_ppid))).
+:- type_representation(cycles, is_eqv_to(list(cycle))).
+:- type_representation(edges, is_eqv_to(list(edge))).
+:- type_representation(pass2_options, du_repn(notag("pass2_options", int,  no_c_j_cs))).

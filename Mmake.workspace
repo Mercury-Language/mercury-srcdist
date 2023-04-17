@@ -1,0 +1,250 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2002-2008, 2010, 2012 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public Licence - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+# Mmake.workspace - build a program or library using the current workspace,
+# not an installed library.
+#
+# The variable WORKSPACE must be set externally.
+#
+# If the variable LINK_STATIC is set to `yes', the names of the `.a' files
+# for the Mercury libraries will be included in MLLIBS, otherwise
+# `-l' options will be included.
+#
+# By default, if LINK_STATIC is unset or set to `no', `-R' options
+# will be passed to ml for each of the directories containing the
+# Mercury libraries. If SET_RPATH is set to `no', these options will
+# not be passed. This is useful for building the Mercury libraries,
+# for which the rpath must be set in each Mmakefile to point to
+# the installed library directory.
+#
+# Setting LINK_BOEHM_GC_ONLY to `yes' causes only the boehm_gc directory
+# to be included in MLFLAGS, MLLIBS and CFLAGS.
+
+# Setting LINK_RUNTIME_ONLY to `yes' causes only the *_gc and runtime
+# directories to be included in MLFLAGS, MLLIBS and CFLAGS.
+
+# Setting LINK_STDLIB_ONLY to `yes' causes only the *_gc, runtime
+# and library directories to be included in MLFLAGS, MLLIBS and CFLAGS.
+
+#-----------------------------------------------------------------------------#
+# CROSS_COMPILING is set in Mmake.common but that is not used in the test
+# suite. We don't support testing when cross-compiling anyway.
+ifeq ($(origin CROSS_COMPILING),undefined)
+CROSS_COMPILING = no
+endif
+
+ifeq ($(origin LINK_STATIC),undefined)
+LINK_STATIC = no
+endif
+ifeq ($(origin SET_RPATH),undefined)
+SET_RPATH = yes
+endif
+ifeq ($(origin LINK_BOEHM_GC_ONLY),undefined)
+LINK_BOEHM_GC_ONLY = no
+endif
+ifeq ($(origin LINK_RUNTIME_ONLY),undefined)
+LINK_RUNTIME_ONLY = no
+endif
+ifeq ($(origin LINK_STDLIB_ONLY),undefined)
+LINK_STDLIB_ONLY = no
+endif
+ifeq ($(origin EXTRA_MTAGSFLAGS),undefined)
+EXTRA_MTAGSFLAGS =
+endif
+
+SCRIPTS_DIR = $(WORKSPACE)/scripts
+RUNTIME_DIR = $(WORKSPACE)/runtime
+LIBRARY_DIR = $(WORKSPACE)/library
+TRACE_DIR = $(WORKSPACE)/trace
+SSDB_DIR = $(WORKSPACE)/ssdb
+MDBCOMP_DIR = $(WORKSPACE)/mdbcomp
+BROWSER_DIR = $(WORKSPACE)/browser
+BOEHM_GC_DIR = $(WORKSPACE)/boehm_gc
+COMPILER_DIR = $(WORKSPACE)/compiler
+UTIL_DIR = $(WORKSPACE)/util
+ROBDD_DIR = $(WORKSPACE)/robdd
+
+# The names of the various libraries.
+# The archives and shared object objects have a "lib" prefix and a ".a" or
+# ".so" (or ".dll") suffix around these names; the initialization files
+# have just a ".init" suffix. (The trace library does not have a .init file,
+# since it contains no Mercury code.)
+#
+# If you change these, you will also need to change the files indicated
+# in scripts/c2init.in.
+RT_LIB_NAME = mer_rt
+STD_LIB_NAME = mer_std
+TRACE_LIB_NAME = mer_trace
+EVENTSPEC_LIB_NAME = mer_eventspec
+SSDB_LIB_NAME = mer_ssdb
+BROWSER_LIB_NAME = mer_browser
+MDBCOMP_LIB_NAME = mer_mdbcomp
+
+# This specifies the path to the so_locations file (or its equivalent),
+# which is used by the linker to help it to map different shared objects
+# to different virtual memory addresses at static link time, so as to avoid
+# the need to relocate them at dynamic link time.
+SO_LOCATIONS_DIR        = $(WORKSPACE)/
+export SO_LOCATIONS_DIR
+
+MC =		$(SCRIPTS_DIR)/mmc
+MGNUC =		$(SCRIPTS_DIR)/mgnuc
+ML =		$(SCRIPTS_DIR)/ml
+# We cannot use the binaries in util when cross-compiling.
+# Just assume that the default c2init and mkinit are usable.
+ifneq ($(CROSS_COMPILING),yes)
+C2INIT =	MERCURY_MKINIT=$(UTIL_DIR)/mkinit $(SCRIPTS_DIR)/c2init
+MKLIBINIT =	$(UTIL_DIR)/mkinit -k
+endif
+MTAGS =		$(SCRIPTS_DIR)/mtags
+MTAGSFLAGS +=	$(EXTRA_MTAGSFLAGS)
+
+VPATH =		$(LIBRARY_DIR)
+
+ifeq ($(origin MERCURY_CONFIG_FILE),undefined)
+MERCURY_CONFIG_FILE = $(SCRIPTS_DIR)/Mercury.config.bootstrap
+CONFIG_OVERRIDE =
+else
+CONFIG_OVERRIDE = --config-file $(MERCURY_CONFIG_FILE)
+endif
+
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+MCFLAGS      += --options-file $(WORKSPACE)/Mercury.options
+endif
+
+# now in FLAGS files
+# MCFLAGS    += -I$(LIBRARY_DIR)
+# no in .mgnuc_opt files
+# MGNUCFLAGS += --no-mercury-stdlib-dir
+
+# XXX browser.init and mdbcomp.init might need to be included even if tracing
+# is disabled if ssdb uses code from the browser or mdbcomp libraries
+C2INITFLAGS  += --trace-init-file $(BROWSER_DIR)/$(BROWSER_LIB_NAME).init \
+		--trace-init-file $(MDBCOMP_DIR)/$(MDBCOMP_LIB_NAME).init \
+		--ssdb-init-file $(SSDB_DIR)/$(SSDB_LIB_NAME).init
+C2INITARGS   += $(LIBRARY_DIR)/$(STD_LIB_NAME).init \
+		$(RUNTIME_DIR)/$(RT_LIB_NAME).init
+MLFLAGS      += --no-mercury-stdlib-dir
+
+# now in .mgnuc_copts files
+# #
+# # Work out the C include directories.
+# #
+# C_INCL_DIRS   = -I$(BOEHM_GC_DIR) -I$(BOEHM_GC_DIR)/include
+# ifneq ($(LINK_BOEHM_GC_ONLY),yes)
+# C_INCL_DIRS  += -I$(RUNTIME_DIR)
+# ifneq ($(LINK_RUNTIME_ONLY),yes)
+# C_INCL_DIRS  += -I$(LIBRARY_DIR) -I$(LIBRARY_DIR)/$(mihs_subdir)
+# ifneq ($(LINK_STDLIB_ONLY),yes)
+# C_INCL_DIRS  += -I$(MDBCOMP_DIR) -I$(MDBCOMP_DIR)/$(mihs_subdir) \
+# 		-I$(BROWSER_DIR) -I$(BROWSER_DIR)/$(mihs_subdir) -I$(TRACE_DIR)
+# endif
+# endif
+# endif
+# CFLAGS       += $(C_INCL_DIRS)
+
+# now in FLAGS files
+# MCFLAGS    += $(C_INCL_DIRS:-I%=--c-include-directory %)
+
+#
+# Work out the .NET directories
+#
+MERC_C_INCL_DIR = $(RUNTIME_DIR)
+MERC_DLL_DIR = $(LIBRARY_DIR)
+
+#
+# Work out which libraries to link with.
+# The $(shell) here is needed to allow the variable values in
+# ECHO_MERCURY_OPTIONS in Mmake.vars to be single-quoted when
+# passed to echo in order to preserve double-quotes (e.g. for
+# file names containing spaces).
+#
+GC_LIBS_0=`$(ML) --grade $(GRADE) --print-gc-grade`
+GC_LIBS=$(shell echo $(GC_LIBS_0))
+
+STATIC_GC_LIBS_0 = 						\
+	`							\
+	    case $(GRADE) in					\
+	    	*.gc*)		echo $(BOEHM_GC_DIR)/lib$(GC_LIBS).$A	;; \
+	    esac						\
+	`
+STATIC_GC_LIBS = $(shell echo $(STATIC_GC_LIBS_0))
+
+SHARED_GC_LIBS_0 =						\
+	 `							\
+	    case $(GRADE) in					\
+		*.gc*)		echo -l$(GC_LIBS) ;;		\
+	    esac						\
+	`
+SHARED_GC_LIBS = $(shell echo $(SHARED_GC_LIBS_0))
+
+
+ifeq ($(LINK_STATIC),yes)
+
+STATIC_RT_LIBS=
+STATIC_STD_LIBS=
+STATIC_TRACE_LIBS=
+ifneq ($(LINK_BOEHM_GC_ONLY),yes)
+STATIC_RT_LIBS = $(RUNTIME_DIR)/lib$(RT_LIB_NAME).$A
+ifneq ($(LINK_RUNTIME_ONLY),yes)
+STATIC_STD_LIBS = $(LIBRARY_DIR)/lib$(STD_LIB_NAME).$A
+ifneq ($(LINK_STDLIB_ONLY),yes)
+STATIC_TRACE_LIBS = $(TRACE_DIR)/lib$(TRACE_LIB_NAME).$A \
+		$(TRACE_DIR)/lib$(EVENTSPEC_LIB_NAME).$A \
+		$(SSDB_DIR)/lib$(SSDB_LIB_NAME).$A \
+		$(BROWSER_DIR)/lib$(BROWSER_LIB_NAME).$A \
+		$(MDBCOMP_DIR)/lib$(MDBCOMP_LIB_NAME).$A
+endif
+endif
+endif
+ifeq ("$(filter csharp% java%,$(GRADE))","")
+MLOBJS += $(STATIC_TRACE_LIBS) $(STATIC_STD_LIBS) \
+		$(STATIC_RT_LIBS) $(STATIC_GC_LIBS)
+endif
+
+MCFLAGS += --mercury-linkage static
+
+else # LINK_STATIC != yes
+
+LINK_RT_LIB_OPTS=
+LINK_STD_LIB_OPTS=
+LINK_TRACE_SSDB_LIB_OPTS=
+ifneq ($(LINK_BOEHM_GC_ONLY),yes)
+ifneq ("$(filter csharp%,$(GRADE))","")
+# There is no separate runtime library for C# grades.
+LINK_RT_LIB_OPTS =
+else
+LINK_RT_LIB_OPTS = -l$(RT_LIB_NAME)
+endif
+ifneq ($(LINK_RUNTIME_ONLY),yes)
+LINK_STD_LIB_OPTS = -l$(STD_LIB_NAME)
+ifneq ($(LINK_STDLIB_ONLY),yes)
+LINK_TRACE_SSDB_LIB_OPTS = -l$(TRACE_LIB_NAME) -l$(EVENTSPEC_LIB_NAME) \
+	-l$(SSDB_LIB_NAME) -l$(BROWSER_LIB_NAME) -l$(MDBCOMP_LIB_NAME)
+endif
+endif
+endif
+
+LINK_LIB_OPTS = $(LINK_TRACE_SSDB_LIB_OPTS) $(LINK_STD_LIB_OPTS) \
+		$(LINK_RT_LIB_OPTS) $(SHARED_GC_LIBS)
+LIB_DIR_OPTS = -L$(BOEHM_GC_DIR) -L$(RUNTIME_DIR) \
+		-L$(LIBRARY_DIR) -L$(TRACE_DIR) -L$(MDBCOMP_DIR) \
+		-L$(BROWSER_DIR) -L$(SSDB_DIR)
+
+MLFLAGS      += $(LIB_DIR_OPTS)
+# now in FLAGS files
+# MCFLAGS    += $(LIB_DIR_OPTS)
+MLLIBS       += $(LINK_LIB_OPTS)
+
+MCFLAGS      += --mercury-linkage shared
+
+ifeq ($(SET_RPATH),yes)
+MLFLAGS += $(LIB_DIR_OPTS:-L%=-R%)
+MCFLAGS += --flags RPATH
+endif
+
+endif # LINK_STATIC != yes
