@@ -1,0 +1,4 @@
+:- module (parse_tree.int_emu).
+:- interface.
+:- type word_bits
+    --->    word_bits(int).

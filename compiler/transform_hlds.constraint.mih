@@ -1,0 +1,97 @@
+/*
+** Automatically generated from `constraint.m'
+** by the Mercury compiler,
+** version rotd-2023-04-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.constraint.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__constraint
+#define MR_HEADER_GUARD_transform_hlds__constraint
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CONSTRAINT_DECL_GUARD
+#define TRANSFORM_HLDS__CONSTRAINT_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__constraint__transform_hlds__constraint__type_ctor_info_annotated_conj_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__constraint__transform_hlds__constraint__type_ctor_info_annotated_conjunct_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__constraint__transform_hlds__constraint__type_ctor_info_constrained_conj_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__constraint__transform_hlds__constraint__type_ctor_info_constrained_goal_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__constraint__transform_hlds__constraint__type_ctor_info_constraint_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__constraint__transform_hlds__constraint__type_ctor_info_constraint_info_0;
+
+void MR_CALL 
+transform_hlds__constraint__constraint_info_deconstruct_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__constraint__constraint_info_init_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__constraint__propagate_constraints_in_goal_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+transform_hlds__constraint____Compare____constraint_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__constraint____Unify____constraint_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__constraint__init(void);
+void mercury__transform_hlds__constraint__init_type_tables(void);
+void mercury__transform_hlds__constraint__init_debugger(void);
+const char *mercury__transform_hlds__constraint__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.constraint
+
+// :- end_interface transform_hlds.constraint.

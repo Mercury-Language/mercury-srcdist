@@ -1,0 +1,56 @@
+:- module (parse_tree.int_emu).
+:- interface.
+:- use_module libs.
+:- use_module (libs.globals).
+:- type word_bits
+    --->    word_bits(int).
+:- pred int_floor_to_multiple_of_bits_per_int(int, parse_tree.int_emu.word_bits, int).
+:- mode int_floor_to_multiple_of_bits_per_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_left_shift(parse_tree.int_emu.word_bits, int, int, int).
+:- mode int_left_shift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_left_ushift(parse_tree.int_emu.word_bits, int, uint, int).
+:- mode int_left_ushift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_minus(parse_tree.int_emu.word_bits, int, int, int).
+:- mode int_minus((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_mod(parse_tree.int_emu.word_bits, int, int, int).
+:- mode int_mod((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_plus(parse_tree.int_emu.word_bits, int, int, int).
+:- mode int_plus((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_quot_bits_per_int(int, parse_tree.int_emu.word_bits, int).
+:- mode int_quot_bits_per_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_quotient(parse_tree.int_emu.word_bits, int, int, int).
+:- mode int_quotient((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_rem(parse_tree.int_emu.word_bits, int, int, int).
+:- mode int_rem((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_rem_bits_per_int(int, parse_tree.int_emu.word_bits, int).
+:- mode int_rem_bits_per_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_right_shift(parse_tree.int_emu.word_bits, int, int, int).
+:- mode int_right_shift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_right_ushift(parse_tree.int_emu.word_bits, int, uint, int).
+:- mode int_right_ushift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_times(parse_tree.int_emu.word_bits, int, int, int).
+:- mode int_times((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_times_bits_per_int(int, parse_tree.int_emu.word_bits, int).
+:- mode int_times_bits_per_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred target_word_bits(libs.globals.globals, parse_tree.int_emu.word_bits).
+:- mode target_word_bits((builtin.in), (builtin.out)) is det.
+:- pred uint_left_shift(parse_tree.int_emu.word_bits, uint, int, uint).
+:- mode uint_left_shift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred uint_left_ushift(parse_tree.int_emu.word_bits, uint, uint, uint).
+:- mode uint_left_ushift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred uint_minus(parse_tree.int_emu.word_bits, uint, uint, uint).
+:- mode uint_minus((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred uint_mod(parse_tree.int_emu.word_bits, uint, uint, uint).
+:- mode uint_mod((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred uint_plus(parse_tree.int_emu.word_bits, uint, uint, uint).
+:- mode uint_plus((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred uint_quotient(parse_tree.int_emu.word_bits, uint, uint, uint).
+:- mode uint_quotient((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred uint_rem(parse_tree.int_emu.word_bits, uint, uint, uint).
+:- mode uint_rem((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred uint_right_shift(parse_tree.int_emu.word_bits, uint, int, uint).
+:- mode uint_right_shift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred uint_right_ushift(parse_tree.int_emu.word_bits, uint, uint, uint).
+:- mode uint_right_ushift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred uint_times(parse_tree.int_emu.word_bits, uint, uint, uint).
+:- mode uint_times((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.

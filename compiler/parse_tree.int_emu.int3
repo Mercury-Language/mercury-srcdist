@@ -1,0 +1,4 @@
+:- module (parse_tree.int_emu).
+:- interface.
+:- type word_bits.
+:- type_representation(word_bits, du_repn(notag("word_bits", int,  no_c_j_cs))).
