@@ -1,0 +1,43 @@
+// Automatically generated from `stm_builtin.m'
+// by the Mercury compiler,
+// version rotd-2023-04-19
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef STM_BUILTIN_MH
+#define STM_BUILTIN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef STM_BUILTIN_DECL_GUARD
+#define STM_BUILTIN_DECL_GUARD
+#include "mercury_stm.h"
+
+/*
+INIT mercury_sys_init_stm_builtin_modules
+*/
+
+#if !defined(MR_HIGHLEVEL_CODE)
+    MR_define_extern_entry(mercury__stm_builtin__block_thread_resume);
+#endif
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* STM_BUILTIN_MH */
