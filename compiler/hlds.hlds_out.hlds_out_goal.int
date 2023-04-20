@@ -1,0 +1,33 @@
+:- module ((hlds.hlds_out).hlds_out_goal).
+:- interface.
+:- use_module assoc_list.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_data).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_llds).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.vartypes).
+:- use_module (parse_tree.prog_data).
+:- use_module ((hlds.hlds_out).hlds_out_util).
+:- func case_comment(string, string, list.list(string)) = string.
+:- pred do_write_goal(hlds.hlds_out.hlds_out_util.hlds_out_info, io.text_output_stream, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, hlds.vartypes.maybe_vartypes, parse_tree.prog_data.var_name_print, int, string, hlds.hlds_goal.hlds_goal, io.io, io.io).
+:- mode do_write_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred dump_goal(io.text_output_stream, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, hlds.hlds_goal.hlds_goal, io.io, io.io).
+:- mode dump_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred dump_goal_nl(io.text_output_stream, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, hlds.hlds_goal.hlds_goal, io.io, io.io).
+:- mode dump_goal_nl((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred project_cons_name_and_tag(hlds.hlds_data.tagged_cons_id, string, hlds.hlds_data.cons_tag).
+:- mode project_cons_name_and_tag((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func unify_rhs_to_string(hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, parse_tree.prog_data.var_name_print, hlds.hlds_goal.unify_rhs) = string.
+:- pred write_goal(hlds.hlds_out.hlds_out_util.hlds_out_info, io.text_output_stream, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, parse_tree.prog_data.var_name_print, int, string, hlds.hlds_goal.hlds_goal, io.io, io.io).
+:- mode write_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_goal_list(hlds.hlds_out.hlds_out_util.hlds_out_info, io.text_output_stream, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, hlds.vartypes.maybe_vartypes, parse_tree.prog_data.var_name_print, int, string, list.list(hlds.hlds_goal.hlds_goal), io.io, io.io).
+:- mode write_goal_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_goal_nl(hlds.hlds_out.hlds_out_util.hlds_out_info, io.text_output_stream, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, parse_tree.prog_data.var_name_print, int, string, hlds.hlds_goal.hlds_goal, io.io, io.io).
+:- mode write_goal_nl((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_unify_rhs(hlds.hlds_out.hlds_out_util.hlds_out_info, io.text_output_stream, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, parse_tree.prog_data.inst_varset, parse_tree.prog_data.var_name_print, int, hlds.hlds_goal.unify_rhs, io.io, io.io).
+:- mode write_unify_rhs((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_var_to_abs_locns(io.text_output_stream, parse_tree.prog_data.prog_varset, parse_tree.prog_data.var_name_print, int, assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_llds.abs_locn), io.io, io.io).
+:- mode write_var_to_abs_locns((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

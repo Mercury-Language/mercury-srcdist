@@ -1,0 +1,27 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+
+# Specify the location of the `mercury_tcltk' package.
+MERCURY_TCLTK_DIR	= ../../mercury_tcltk
+
+# To use shared libraries under Linux you need to add these:
+MGNUCFLAGS    = -I$(MERCURY_TCLTK_DIR) -I/usr/include/tcl8.4
+EXTRA_MLFLAGS = -shared
+
+# This will need to be modified according to the versions of
+# tk and tcl you are using.
+EXTRA_MLLIBS  = -ltk8.4 -ltcl8.4 -L/usr/X11R6/lib -lX11 \
+			-lXext -lm -ldl
+
+# Tell mmake to use the `mercury_tcltk' library.
+VPATH 		= $(MERCURY_TCLTK_DIR):$(MMAKE_VPATH)
+MCFLAGS 	= -I$(MERCURY_TCLTK_DIR) $(EXTRA_MCFLAGS)
+MLFLAGS 	= -R$(MERCURY_TCLTK_DIR) $(EXTRA_MLFLAGS) \
+          	  -L$(MERCURY_TCLTK_DIR)
+MLLIBS 		= -lmercury_tcltk $(EXTRA_MLLIBS)
+C2INITARGS 	= $(MERCURY_TCLTK_DIR)/mercury_tcltk.init
+
+default_target: calc
+
+depend: calc.dep
