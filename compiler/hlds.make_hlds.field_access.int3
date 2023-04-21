@@ -1,0 +1,4 @@
+:- module ((hlds.make_hlds).field_access).
+:- interface.
+:- type field_list.
+:- type_representation(field_list, is_eqv_to(assoc_list(sym_name, list(prog_term)))).
