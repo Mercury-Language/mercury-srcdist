@@ -1,0 +1,2 @@
+:- module (parse_tree.check_module_interface).
+:- interface.

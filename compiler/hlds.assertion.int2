@@ -1,0 +1,6 @@
+:- module (hlds.assertion).
+:- interface.
+:- type associative_vars_output_var
+    --->    associative_vars_output_var(parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.prog_var).
+:- type state_update_vars
+    --->    state_update_vars(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).
