@@ -1,0 +1,5 @@
+:- module (check_hlds.typecheck_error_util).
+:- interface.
+:- type arg_vector_kind.
+:- type type_error_goal_context.
+:- type var_vector_kind.
