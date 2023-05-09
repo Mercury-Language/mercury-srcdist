@@ -1,0 +1,24 @@
+:- module (ml_backend.mlds_to_cs_type).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_cs_util).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_type).
+:- pred boxed_type_to_string_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.mlds_type, string).
+:- mode boxed_type_to_string_for_csharp((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred csharp_builtin_type(ml_backend.mlds.mlds_type, string).
+:- mode csharp_builtin_type((builtin.in), (builtin.out)) is semidet.
+:- pred hand_defined_type_for_csharp(parse_tree.prog_data.mer_type, parse_tree.prog_type.type_ctor_category, string, list.list(int)).
+:- mode hand_defined_type_for_csharp((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- func int_type_to_csharp_type(parse_tree.prog_data.int_type) = string.
+:- func method_ptr_type_to_string(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.mlds_arg_types, ml_backend.mlds.mlds_return_types) = string.
+:- pred output_type_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, ml_backend.mlds.mlds_type, io.io, io.io).
+:- mode output_type_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_type_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, io.text_output_stream, ml_backend.mlds.mlds_type, list.list(int), io.io, io.io).
+:- mode output_type_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred type_to_string_and_dims_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.mlds_type, string, list.list(int)).
+:- mode type_to_string_and_dims_for_csharp((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func type_to_string_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.mlds_type) = string.

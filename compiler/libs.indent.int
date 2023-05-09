@@ -1,0 +1,7 @@
+:- module (libs.indent).
+:- interface.
+:- use_module io.
+:- func indent2_increment = int.
+:- func indent2_string(int) = string.
+:- pred write_indent2(io.text_output_stream, int, io.io, io.io).
+:- mode write_indent2((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
