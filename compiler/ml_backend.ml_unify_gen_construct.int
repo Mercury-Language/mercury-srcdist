@@ -1,0 +1,24 @@
+:- module (ml_backend.ml_unify_gen_construct).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (ml_backend.ml_gen_info).
+:- use_module (ml_backend.ml_global_data).
+:- use_module (ml_backend.ml_unify_gen_util).
+:- use_module (ml_backend.mlds).
+:- use_module (parse_tree.prog_data).
+:- type mlds_rval_type_and_width
+    --->    rval_type_and_width(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type, parse_tree.prog_data.arg_pos_width).
+:- pred ml_gen_new_object(maybe.maybe(parse_tree.prog_data.cons_id), maybe.maybe(ml_backend.mlds.qual_ctor_id), parse_tree.prog_data.ptag, bool.bool, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, list.list(ml_backend.ml_unify_gen_construct.mlds_rval_type_and_width), list.list(ml_backend.ml_unify_gen_util.arg_var_type_and_width), list.list(hlds.hlds_goal.unify_mode), int, list.list(int), hlds.hlds_goal.how_to_construct, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_new_object((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_generate_const_structs(hlds.hlds_module.module_info, ml_backend.mlds.mlds_target_lang, ml_backend.ml_gen_info.ml_const_struct_map, ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode ml_generate_const_structs((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_generate_construction_unification(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.unify_mode), list.list(int), hlds.hlds_goal.how_to_construct, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_construction_unification((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_generate_ground_term(parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_ground_term((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

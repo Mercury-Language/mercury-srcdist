@@ -1,0 +1,363 @@
+:- module kv_list.
+:- use_module assoc_list.
+:- use_module builtin.
+:- use_module list.
+:- use_module pair.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module type_desc.
+
+kv_list.det_elem(V_5, V_4) = V_6 :-
+    kv_list.lookup(V_4, V_5, V_6).
+
+kv_list.elem(V_5, V_4) = V_6 :-
+    kv_list.search(V_4, V_5, V_6).
+
+kv_list.filter(V_4, V_5) = V_6 :-
+    kv_list.filter(V_4, V_5, V_6).
+
+kv_list.filter(V_4, kv_list.kv_nil, kv_list.kv_nil).
+kv_list.filter(V_5, kv_list.kv_cons(V_6, V_7, V_8), V_9) :-
+    ( if
+      call(V_5, V_6)
+    then
+      kv_list.filter(V_5, V_8, V_10),
+      V_9 = kv_list.kv_cons(V_6, V_7, V_10) : kv_list.kv_list(K_1, V_2)
+    else
+      kv_list.filter(V_5, V_8, V_9)
+    ).
+
+kv_list.filter(V_5, kv_list.kv_nil, kv_list.kv_nil, kv_list.kv_nil).
+kv_list.filter(V_6, kv_list.kv_cons(V_7, V_8, V_9), V_10, V_11) :-
+    ( if
+      call(V_6, V_7)
+    then
+      kv_list.filter(V_6, V_9, V_12, V_11),
+      V_10 = kv_list.kv_cons(V_7, V_8, V_12) : kv_list.kv_list(K_1, V_2)
+    else
+      kv_list.filter(V_6, V_9, V_10, V_13),
+      V_11 = kv_list.kv_cons(V_7, V_8, V_13) : kv_list.kv_list(K_1, V_2)
+    ).
+
+kv_list.foldl(V_5, kv_list.kv_nil, V_6) = V_6.
+kv_list.foldl(V_7, kv_list.kv_cons(V_8, V_9, V_10), V_12) = V_13 :-
+    V_14 = apply(V_7, V_8, V_9, V_12),
+    V_13 = kv_list.foldl(V_7, V_10, V_14).
+
+kv_list.foldl(V_5, kv_list.kv_nil, V_7, V_8) :-
+    V_8 = V_7.
+kv_list.foldl(V_9, kv_list.kv_cons(V_10, V_11, V_12), V_14, V_15) :-
+    call(V_9, V_10, V_11, V_14, V_16),
+    kv_list.foldl(V_9, V_12, V_16, V_15).
+
+kv_list.foldl2(V_7, kv_list.kv_nil, V_10, V_11, V_12, V_13) :-
+    V_13 = V_12,
+    V_11 = V_10.
+kv_list.foldl2(V_14, kv_list.kv_cons(V_15, V_16, V_17), V_20, V_21, V_22, V_23) :-
+    call(V_14, V_15, V_16, V_20, V_24, V_22, V_25),
+    kv_list.foldl2(V_14, V_17, V_24, V_21, V_25, V_23).
+
+kv_list.foldl2_values(V_7, kv_list.kv_nil, V_10, V_11, V_12, V_13) :-
+    V_13 = V_12,
+    V_11 = V_10.
+kv_list.foldl2_values(V_14, kv_list.kv_cons(V_15, V_16, V_17), V_20, V_21, V_22, V_23) :-
+    call(V_14, V_16, V_20, V_24, V_22, V_25),
+    kv_list.foldl2_values(V_14, V_17, V_24, V_21, V_25, V_23).
+
+kv_list.foldl3(V_9, kv_list.kv_nil, V_13, V_14, V_15, V_16, V_17, V_18) :-
+    V_18 = V_17,
+    V_16 = V_15,
+    V_14 = V_13.
+kv_list.foldl3(V_19, kv_list.kv_cons(V_20, V_21, V_22), V_26, V_27, V_28, V_29, V_30, V_31) :-
+    call(V_19, V_20, V_21, V_26, V_32, V_28, V_33, V_30, V_34),
+    kv_list.foldl3(V_19, V_22, V_32, V_27, V_33, V_29, V_34, V_31).
+
+kv_list.foldl3_values(V_9, kv_list.kv_nil, V_13, V_14, V_15, V_16, V_17, V_18) :-
+    V_18 = V_17,
+    V_16 = V_15,
+    V_14 = V_13.
+kv_list.foldl3_values(V_19, kv_list.kv_cons(V_20, V_21, V_22), V_26, V_27, V_28, V_29, V_30, V_31) :-
+    call(V_19, V_21, V_26, V_32, V_28, V_33, V_30, V_34),
+    kv_list.foldl3_values(V_19, V_22, V_32, V_27, V_33, V_29, V_34, V_31).
+
+kv_list.foldl_keys(V_5, kv_list.kv_nil, V_6) = V_6.
+kv_list.foldl_keys(V_7, kv_list.kv_cons(V_8, V_9, V_10), V_12) = V_13 :-
+    V_14 = apply(V_7, V_8, V_12),
+    V_13 = kv_list.foldl_keys(V_7, V_10, V_14).
+
+kv_list.foldl_keys(V_5, kv_list.kv_nil, V_7, V_8) :-
+    V_8 = V_7.
+kv_list.foldl_keys(V_9, kv_list.kv_cons(V_10, V_11, V_12), V_14, V_15) :-
+    call(V_9, V_10, V_14, V_16),
+    kv_list.foldl_keys(V_9, V_12, V_16, V_15).
+
+kv_list.foldl_values(V_5, kv_list.kv_nil, V_6) = V_6.
+kv_list.foldl_values(V_7, kv_list.kv_cons(V_8, V_9, V_10), V_12) = V_13 :-
+    V_14 = apply(V_7, V_9, V_12),
+    V_13 = kv_list.foldl_values(V_7, V_10, V_14).
+
+kv_list.foldl_values(V_5, kv_list.kv_nil, V_7, V_8) :-
+    V_8 = V_7.
+kv_list.foldl_values(V_9, kv_list.kv_cons(V_10, V_11, V_12), V_14, V_15) :-
+    call(V_9, V_11, V_14, V_16),
+    kv_list.foldl_values(V_9, V_12, V_16, V_15).
+
+kv_list.from_corresponding_lists(V_4, V_5) = V_6 :-
+    kv_list.from_corresponding_lists(V_4, V_5, V_6).
+
+kv_list.keys(V_3) = V_4 :-
+    kv_list.keys(V_3, V_4).
+
+kv_list.keys(kv_list.kv_nil, list.[]).
+kv_list.keys(kv_list.kv_cons(V_3, V_4, V_5), list.[V_3 | V_6]) :-
+    kv_list.keys(V_5, V_6).
+
+kv_list.map_keys_only(V_4, kv_list.kv_nil) = kv_list.kv_nil.
+kv_list.map_keys_only(V_5, kv_list.kv_cons(V_6, V_7, V_8)) = kv_list.kv_cons(V_9, V_7, V_10) :-
+    V_9 = apply(V_5, V_6),
+    V_10 = kv_list.map_keys_only(V_5, V_8).
+
+kv_list.map_keys_only(V_4, kv_list.kv_nil, kv_list.kv_nil).
+kv_list.map_keys_only(V_5, kv_list.kv_cons(V_6, V_7, V_8), kv_list.kv_cons(V_9, V_7, V_10)) :-
+    call(V_5, V_6, V_9),
+    kv_list.map_keys_only(V_5, V_8, V_10).
+
+kv_list.map_values(V_4, kv_list.kv_nil) = kv_list.kv_nil.
+kv_list.map_values(V_5, kv_list.kv_cons(V_6, V_7, V_8)) = kv_list.kv_cons(V_6, V_9, V_10) :-
+    V_9 = apply(V_5, V_6, V_7),
+    V_10 = kv_list.map_values(V_5, V_8).
+
+kv_list.map_values(V_4, kv_list.kv_nil, kv_list.kv_nil).
+kv_list.map_values(V_5, kv_list.kv_cons(V_6, V_7, V_8), kv_list.kv_cons(V_6, V_9, V_10)) :-
+    call(V_5, V_6, V_7, V_9),
+    kv_list.map_values(V_5, V_8, V_10).
+
+kv_list.map_values_only(V_4, kv_list.kv_nil) = kv_list.kv_nil.
+kv_list.map_values_only(V_5, kv_list.kv_cons(V_6, V_7, V_8)) = kv_list.kv_cons(V_6, V_9, V_10) :-
+    V_9 = apply(V_5, V_7),
+    V_10 = kv_list.map_values_only(V_5, V_8).
+
+kv_list.map_values_only(V_4, kv_list.kv_nil, kv_list.kv_nil).
+kv_list.map_values_only(V_5, kv_list.kv_cons(V_6, V_7, V_8), kv_list.kv_cons(V_6, V_9, V_10)) :-
+    call(V_5, V_7, V_9),
+    kv_list.map_values_only(V_5, V_8, V_10).
+
+kv_list.merge(V_4, V_5) = V_6 :-
+    kv_list.merge(V_4, V_5, V_6).
+
+kv_list.negated_filter(V_4, V_5) = V_6 :-
+    kv_list.negated_filter(V_4, V_5, V_6).
+
+kv_list.negated_filter(V_4, kv_list.kv_nil, kv_list.kv_nil).
+kv_list.negated_filter(V_5, kv_list.kv_cons(V_6, V_7, V_8), V_9) :-
+    ( if
+      call(V_5, V_6)
+    then
+      kv_list.negated_filter(V_5, V_8, V_9)
+    else
+      kv_list.negated_filter(V_5, V_8, V_10),
+      V_9 = kv_list.kv_cons(V_6, V_7, V_10) : kv_list.kv_list(K_1, V_2)
+    ).
+
+kv_list.reverse_members(V_3) = V_4 :-
+    kv_list.reverse_members(V_3, V_4).
+
+kv_list.reverse_members(kv_list.kv_nil, kv_list.kv_nil).
+kv_list.reverse_members(kv_list.kv_cons(V_3, V_4, V_5), kv_list.kv_cons(V_4, V_3, V_6)) :-
+    kv_list.reverse_members(V_5, V_6).
+
+kv_list.search(kv_list.kv_cons(V_4, V_5, V_6), V_7, V_8) :-
+    ( if
+      V_4 = V_7
+    then
+      V_8 = V_5
+    else
+      kv_list.search(V_6, V_7, V_8)
+    ).
+
+kv_list.svremove(V_5, V_6, V_8, V_9) :-
+    kv_list.remove(V_8, V_5, V_6, V_9).
+
+kv_list.values(V_3) = V_4 :-
+    kv_list.values(V_3, V_4).
+
+kv_list.values(kv_list.kv_nil, list.[]).
+kv_list.values(kv_list.kv_cons(V_3, V_4, V_5), list.[V_4 | V_6]) :-
+    kv_list.values(V_5, V_6).
+
+:- pragma termination_info(kv_list.assoc_list_to_kv_list((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.det_elem((builtin.in), (builtin.in)) = (builtin.out), finite(-3, [no, no, no, yes, no]), can_loop).
+:- pragma termination_info(kv_list.elem((builtin.in), (builtin.in)) = (builtin.out), finite(-3, [no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(kv_list.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl(((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl(((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl2_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl3_values(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_keys((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_keys(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_keys(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_keys(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_keys(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_keys(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_keys(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_keys(((pred((builtin.in), (builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_keys(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_values((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_values(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_values(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_values(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_values(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_values(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_values(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_values(((pred((builtin.in), (builtin.in), (builtin.out)) is multi) >> (pred((builtin.in), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.foldl_values(((pred((builtin.in), (builtin.in), (builtin.out)) is nondet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.from_corresponding_lists((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(kv_list.from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(kv_list.keys((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.keys((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.keys_and_values((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(kv_list.kv_list_to_assoc_list((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(kv_list.lookup((builtin.in), (builtin.in), (builtin.out)), finite(-3, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(kv_list.map_keys_only((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(kv_list.map_keys_only(((pred((builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.map_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(kv_list.map_values(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.map_values_only((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(kv_list.map_values_only(((pred((builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.merge((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.merge((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.negated_filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(kv_list.negated_filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(kv_list.remove((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-3, [no, no, yes, no, no, no]), cannot_loop).
+:- pragma termination_info(kv_list.reverse_members((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.reverse_members((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.search((builtin.in), (builtin.in), (builtin.out)), finite(-3, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(kv_list.svremove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), finite(-3, [no, no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.values((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(kv_list.values((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+
+:- pragma exceptions(function, (kv_list.assoc_list_to_kv_list), 1, 0, will_not_throw).
+:- pragma exceptions(function, (kv_list.det_elem), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (kv_list.elem), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (kv_list.filter), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (kv_list.foldl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2_values), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2_values), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2_values), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2_values), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2_values), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2_values), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2_values), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl2_values), 6, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3), 8, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3_values), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3_values), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3_values), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3_values), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3_values), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3_values), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3_values), 8, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl3_values), 8, 7, may_throw(user_exception)).
+:- pragma exceptions(function, (kv_list.foldl_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_keys), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_keys), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_keys), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_keys), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_keys), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_keys), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_keys), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_keys), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(function, (kv_list.foldl_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_values), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_values), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_values), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_values), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_values), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_values), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_values), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.foldl_values), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(function, (kv_list.from_corresponding_lists), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (kv_list.keys), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (kv_list.keys), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (kv_list.keys_and_values), 3, 0, will_not_throw).
+:- pragma exceptions(function, (kv_list.kv_list_to_assoc_list), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (kv_list.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (kv_list.map_keys_only), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.map_keys_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (kv_list.map_values), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (kv_list.map_values_only), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.map_values_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (kv_list.merge), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (kv_list.merge), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (kv_list.negated_filter), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.negated_filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (kv_list.remove), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (kv_list.reverse_members), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (kv_list.reverse_members), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (kv_list.search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (kv_list.svremove), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (kv_list.update), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (kv_list.values), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (kv_list.values), 2, 0, will_not_throw).

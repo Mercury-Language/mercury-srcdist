@@ -1,0 +1,10 @@
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2002 University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+# Mercury.options - module-specific flags for Mmake and `mmc --make'.
+#-----------------------------------------------------------------------------#
+
+MCFLAGS-snapshots = --optimise-constructor-last-call
+MCFLAGS-demangle_test = --no-warn-implicit-stream-calls
