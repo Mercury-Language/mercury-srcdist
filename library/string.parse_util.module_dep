@@ -1,0 +1,14 @@
+module(2, "string.parse_util.m",
+	(string.parse_util),
+	{string},
+	{builtin, list, private_builtin},
+	{int},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

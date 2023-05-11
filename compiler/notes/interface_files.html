@@ -1,0 +1,1025 @@
+<!--
+vim: ts=4 sw=4 expandtab ft=html
+-->
+
+<html>
+<head>
+<title>Interface files</title>
+</head>
+
+<body>
+
+<h1>Interface files</h1>
+
+<h2>A warning</h2>
+
+<p>
+Our system of interface files is quite complex.
+Some of the complexity is justified, or at least was justified at the time.
+Other aspects are almost certainly accidents.
+The compiler's old representation of parse trees as raw lists of items,
+with any structure and constraints being implicit rather than explicit,
+was quite error prone;
+since the structure and constraints were not expressed in types,
+violations did not result in type errors,
+and thus could accumulate undetected.
+<p>
+I (zs) don't believe any design document for this system
+ever existed outside of Fergus's head.
+This document is my (zs's) attempt to reconstruct that design document.
+In the rest of this file, I will try to be careful to explicitly distinguish
+between what I <em>know</em> to be true,
+and what I only <em>believe</em> to be true,
+either because I remember it, or because I deduce it from the code.
+Note also that I may be mistaken.
+
+<h2>Automatic generation of interface files</h2>
+
+<p>
+The principle of information hiding dictates that
+only <em>some</em> of the contents of a module
+should be visible outside the module.
+The part that is visible outside the module
+is usually called <em>the interface</em>,
+while the part that is not visible outside the module
+is usually called <em>the implementation</em>.
+<p>
+When compiling a module A that imports functionality from module B,
+the compiler usually wants to read a file
+containing <em>only</em> the interface of module B.
+In some languages such as Ada, C and C++,
+programmers themselves write this file.
+Having to maintain two files for one module can be a bit of a hassle,
+so in other languages, such as Haskell,
+programmers only ever edit one file for each module (its source file).
+Within that file, they indicate which parts are public and which are not,
+and the compiler uses this information to generate
+each module's interface file automatically.
+
+<h2>Introduction to interface files</h2>
+
+<p>
+In Mercury, the source code of each module is in a single file,
+whose suffix is .m,
+and the generation of interface files is solely the job of the compiler.
+However, unlike most other similar programming languages,
+the compiler generates three or four different interface files
+for each source file,
+and it generates these in two or three steps.
+<p>
+The steps are as follows.
+<p>
+
+<ul>
+<li>
+The compiler option --make-short-interface
+calls for the creation of the .int3 files
+of the modules named as arguments.
+<li>
+The compiler option --make-private-interface
+calls for the creation of the .int0 files
+of the modules named as arguments.
+<li>
+The compiler option --make-interface
+calls for the creation of the .int and .int2 files
+of the modules named as arguments.
+</ul>
+
+<p>
+The different kinds of interface files are as follows.
+<p>
+
+<ul>
+<li>
+The .int3 files are generated first,
+using only the module's .m file as input.
+<p>
+They were originally intended to record just the names
+of the types, insts and modes are defined in the module,
+to allow references to these names
+to be disambiguated (i.e. to be fully module qualified)
+when creating the other kinds of interface files for other modules.
+<p>
+However, we were forced to include information of the form
+"type A is defined to be equivalent to type B" in .int3 files,
+because on 32 bit architectures, if type B is "float",
+then modules that work with values of type A
+need to know to reserve two words for them, not one.
+<p>
+<li>
+The .int0 files are generated next,
+but only for modules that include submodules.
+The submodules of a module A have access to parts of A
+that other, third-party modules do not.
+<p>
+I believe the intention was that A.int0 play the same role
+for these exported-only-to-submodules parts of A
+as some other module's .int3 file plays
+for its exported-to-everyone parts.
+I believe the A.int0 file should be read only when processing A's submodules:
+either creating their .int/.int2 files, or generating target code for them.
+<p>
+<li>
+The .int and .int2 files are the interface files that are generated last,
+using as input not only the module's .m file,
+but also the .int3 files of other modules
+(certainly those imported by this module, but possibly others as well),
+and the .int0 files of any ancestor modules.
+<p>
+The .int file plays the traditional role of the interface file;
+it is an automatically generated analogue
+of a C header file or Ada package specification.
+As such, it contains everything in the module's interface section(s),
+plus some other information from the implementation section
+that the compiler has found it needed over the years.
+<p>
+The compiler generates .int2 files from .int files
+by filtering out some items.
+The original filtering algorithm was the same as
+the one we applied to the original module to generate .int3 files.
+I believe the intention was to make each .int2 file
+a fully module qualified version of the corresponding .int3 file.
+However, since the differences between the two starting points
+(the unqualified whole module for .int3 files
+and its fully module qualified .int file)
+are not restricted to differences in qualification,
+and the two filtering algorithms have also diverged over time,
+so the differences between a module's .int2 and .int3 files
+are <em>not</em> be restricted to just qualification.
+<p>
+Something to keep in mind:
+while the --make-short-interface compiler option
+calls for the creation of .int3 files,
+several predicate and variable names inside the compiler
+use the term "short interface files" to refer to .int2 files.
+While sort-of justifiable, in that
+.int2 files are in fact shorter versions of .int files,
+it can nevertheless be extremely confusing.
+</ul>
+
+<h2>The contents of .int3 files</h2>
+
+<p>
+The contents of the .int3 file of a module are derived solely from
+the contents of the interface sections of that module.
+Each item in these sections
+
+<ul>
+<li>
+may be included in the .int3 file unchanged;
+<li>
+may be included in the .int3 file after some changes; or
+<li>
+it may be left out of the .int3 file.
+</ul>
+
+<p>
+If the item is included in the .int3 file, whether changed or unchanged,
+it stays in the interface section,
+so .int3 files contain no implementation section.
+<p>
+After we decide what items to include in the .int3 file,
+its contents are module qualified to the maximum extent possible.
+However, this cannot guarantee <em>full</em> module qualification,
+for reasons explained below.
+<p>
+The rules for choosing between the above three outcomes
+of course depend on the item's type.
+<p>
+
+<ul>
+<li>
+Type definitions are always included in the .int3 file in some form,
+but the form depends on what kind of type is being defined.
+<p>
+    <ul>
+    <li>
+    Abstract type definitions (i.e. type declarations) are left unchanged.
+    <li>
+    Definitions of discriminated union (du) types
+    are included in an abstract form,
+    but this abstract form records whether the type being defined
+    is a dummy type, a notag type, a subword-sized type that fits in N bits,
+    or general abstract type
+    (which means a type that fits none of those categories).
+    <li>
+    Solver type definitions are made abstract as well.
+    <li>
+    Definitions that define a type to be equivalent to another type
+    are also replaced by (general) abstract type definitions.
+    <em>XXX</em> This may be the wrong thing to do for types
+    that are equivalent to types that are dummies, notags, or subword-sized.
+    <li>
+    Definitions of foreign types are included with only one minor change:
+    if the type has user-specified unification and/or comparison predicates,
+    the part of the type definition naming those predicates is deleted.
+    Since all unifications and comparisons of values of the type
+    will call the unify and compare predicates of the type,
+    which will be generated inside this module,
+    only this module needs to know the noncanonical nature of this type.
+    </ul>
+<p>
+The overall effect of these rules is that for each type definition,
+we convey two pieces of information to the reader of the .int3 file.
+<p>
+The first piece of information is just the name of the type,
+which the readers need for disambiguation.
+Every name in a .int file must be fully module qualified,
+so if the interface section of a module refers to type t1,
+the code that creates the module's .int file needs to know
+which of the imported modules defines a type named t1.
+It gets this information from the .int3 files
+of the modules listed in import_module declarations.
+<p>
+The second piece of information is
+whether the representation of the given type differs from the standard,
+and if so, how.
+<em>XXX</em> The compiler can now put this info into type representation items
+that are separate from the type definition items.
+For now, it actually does so only if the value of the --experiment option
+is set to a special value.
+<p>
+<li>
+Inst and mode definitions are always included in the .int3 file
+in an abstract form that contains no information except their name and arity.
+The reason is to allow references to inst and mode names
+to be fully module qualified.
+<p>
+<li>
+Class definitions are also included in the .int3 file
+in an abstract form that contains no information except their name and arity.
+Again, the reason is to allow references to class names
+to be fully module qualified.
+<p>
+<li>
+Instance definitions are always included in the .int3 file in abstract form.
+Since instance definitions do not define any new names,
+this cannot be for purposes of module qualification.
+I think it is probably to help detect overlapping instances,
+but I am not sure.
+<p>
+<li>
+The type and mode declarations of predicates and functions
+are never included in .int3 files.
+<p>
+<li>
+Clauses should never occur in interface sections,
+Not only are they never included in .int3 files,
+we generate a warning for them.
+<em>XXX</em> This warning can be annoying,
+since it is sent to the terminal, not to the module's .err file.
+I think it would be better to ignore such errors when generating .int3 files,
+and report them later, when generating code.
+<p>
+<li>
+Pragmas are never included in .int3 files.
+For the ones that may not occur in interface sections,
+we generate a warning, as we do for clauses.
+<em>XXX</em> These warnings have the same problems as warnings for clauses.
+<p>
+<li>
+Foreign_import_module items are never included in .int3 files.
+<p>
+<li>
+Promises are never included in .int3 files.
+<p>
+<li>
+Mutables are never included in .int3 files.
+<p>
+<li>
+Initialise and finalize declarations are never included in .int3 files.
+<p>
+<li>
+Declarations of submodules are always included in the .int3 file unchanged.
+<p>
+<li>
+We include in the .int3 file
+the module's import_module (but not use_module) declarations
+only if the .int3 file contains at least one item
+that contains a name (type name, inst name, mode name etc)
+that may be defined in those other modules.
+In that case, the module qualification of that name
+will require knowing which other module defines that name.
+<p>
+At the moment, such possibly unqualified names may appear in
+<p>
+<ul>
+<li>
+the member types in the heads of abstract instance definitions
+(all instance definitions in .int3 files are abstract).
+</ul>
+<p>
+If the interface contains any of these kinds of items,
+then <em>none</em> of the interface's import_module declarations
+will be included in the .int3 file.
+If it does, then <em>all</em> of the interface's
+import_module declarations will be included in the .int3 file.
+</ul>
+
+<p>
+<em>XXX</em>
+While type definition items will never contain references
+to type constructor names that may require qualification,
+type <em>representation</em> items for equivalence types may.
+<p>
+<em>XXX</em>
+If e.g. the constructor t1/0 appears in an abstract instance definition,
+and the module defines a type constructor t1/0,
+this arguably should <em>not</em> require us
+to include all the imports in the .int3 file.
+The reason has two parts.
+Either the t1/0 is defined in one or more of the imported modules, or it isn't.
+If it is not defined in any of them,
+then causing the readers of this module's .int3 file
+to read those other modules' .int3 files
+will just compute the same result, only slower.
+On the other hand, if some of those modules do define t1/0,
+then this type constructor is multiply defined, so its appearance
+in the instance definition is ambiguous.
+This fact will be reported in an error message when
+this module is compiled to target code.
+Reporting it during some other compiler invocation
+that happens to read this module's .int3 file
+may be more of a distraction than a help.
+<p>
+<em>XXX</em>
+We should investigate replacing the copied import_module declaration list
+with a single item that says
+"these type, inst, etc names in this .int3 file
+may be defined in these other modules".
+This should have two benefits.
+One, it would allow us to stop the transitive grabbing of .int3 files
+as soon as we have read the .int3 files
+that define all the type, inst etc names that are still outstanding.
+Two, it should allow us to start using the transitively grabbed files
+<em>only</em> for their intended purpose,
+which should stop "leaks" of declarations/definitions
+from these transitively-included-only-for-module-qualification modules
+to the HLDS of the module being compiled.
+Right now, it is possible, though rare,
+to delete an import of module b from module a,
+and discover that this results in an error:
+a type being undefined, when that type is defined in module c.
+This happens only because the import of b
+dragged with it the definitions inside c as well,
+so that the import of c was required by the language definition
+but <em>not</em> by the compiler.
+
+<h2>The contents of .int0 files</h2>
+
+<p>
+The contents of the .int0 file of a module are derived from the contents of
+both the interface sections and the implementation sections of that module,
+<em>after</em> they are fully module qualified.
+This requires reading in, via grab_unqual_imported_modules_make_int,
+<ul>
+<li>
+the .int0 files of this module's ancestor modules;
+<li>
+the .int3 files of the modules used or imported by this module;
+<li>
+the .int3 files of the modules imported by the .int0 or .int3 files
+we have read in under the first, second or <em>third</em> point,
+until we get to a fixpoint.
+</ul>
+
+<p>
+Items are never moved between sections:
+items in the interface section of the module
+are put into the interface section of the .int0 file,
+while items in the implementation section of the module
+are put into the implementation section of the .int0 file.
+<p>
+
+<ul>
+<li>
+Type definitions are always included in the .int0 file unchanged.
+<em>XXX</em> Julien says this may be the wrong thing to do for solver types,
+and that the failure of the submodules/ts test case
+with intermodule optimization may be caused by this.
+<p>
+<li>
+Inst and mode definitions are always included in the .int0 file unchanged.
+<p>
+<li>
+Class definitions are always included in the .int0 file unchanged.
+<p>
+<li>
+Instance definitions are always included in the .int3 file in abstract form.
+<p>
+<li>
+The type and mode declarations of predicates and functions
+are always included in .int0 files unchanged.
+<p>
+<li>
+Clauses are never included in .int0 files.
+<p>
+<li>
+Pragmas that may appear in interface sections
+are always included in .int0 files unchanged
+(regardless of which section they <em>actually</em> appear in).
+Pragmas that may not appear in interface sections
+are never included in .int0 files.
+<p>
+<li>
+Foreign_import_module items are always included in .int0 files.
+<p>
+<li>
+Promises are always included in .int0 files unchanged.
+<p>
+<li>
+Mutables are never included in .int0 files.
+(This is because every module that sees a mutable declaration
+would attempt to reserve its own memory for the mutable;
+having more than one location for a single mutable would obviously not work.)
+However, we do put automatically generated predmode declarations
+for all of the mutable's get and set predicates into .int0 files.
+<p>
+<li>
+Initialize and finalize declarations are never included in .int0 files.
+<p>
+<li>
+Declarations of submodules are always included in the .int0 file unchanged.
+<p>
+<li>
+Import_module and use_module declarations
+are always included in the .int0 file unchanged.
+</ul>
+
+<h2>The contents of .int files</h2>
+
+<p>
+The contents of the .int file of a module are derived from the contents of
+both the interface sections and the implementation sections of that module,
+<em>after</em> they are fully module qualified.
+This requires reading in, via grab_unqual_imported_modules_make_int,
+
+<ul>
+<li>
+the .int0 files of this module's ancestor modules;
+<li>
+the .int3 files of the modules used or imported by this module;
+<li>
+the .int3 files of the modules imported by the .int0 or .int3 files
+we have read in under the first, second or <em>third</em> point,
+until we get to a fixpoint.
+</ul>
+
+<p>
+Items are never moved between sections:
+items in the interface section of the module
+are put into the interface section of the .int file,
+while items in the implementation section of the module
+are put into the implementation section of the .int file.
+
+<p>
+
+<!--
+<em>XXX</em>
+pre vs post qual; interface vs implementation
+<p>
+<em>XXX</em>
+pre-qual in the interface:
+keep instance definitions after deleting the instance's methods;
+keep everything else unchanged.
+<p>
+<em>XXX</em>
+pre-qual in the implementation:
+keep type_defns after calling make_canon_make_du_and_solver_types_abstract;
+keep class defns after deleting the class's methods;
+keep foreign enum pragmas;
+keep foreign_import_modules;
+delete everything else,
+<p>
+-->
+
+<ul>
+<li>
+Type definitions in the interface
+are always included in the .int file unchanged.
+<p>
+Type definitions in the implementation section
+are transformed in two stages: before and after qualification.
+<p>
+In the first, pre-qualification stage,
+we transform such all type definitions as follows:
+    <ul>
+    <li>
+    Abstract type definitions (i.e. type declarations) are left unchanged.
+    <li>
+    Definitions of discriminated union (du) types
+    are included with only one minor change:
+    if the type has user-specified unification and/or comparison predicates,
+    the part of the type definition naming those predicates is deleted.
+    The part of the definition
+    that specifies the function symbols and their argument types is left in.
+    <em>XXX</em>
+    The reason given for keeping the function symbol info is that
+    they may be needed for processing insts
+    that may name those function symbols,
+    but the function symbols of most nonexported types
+    are not named by any inst in scope.
+    <li>
+    Definitions of foreign types are also included
+    with the only change being the deletion of the names
+    of any user-specified unification and/or comparison predicates.
+    <li>
+    Definitions that define a type to be equivalent to another type
+    are included as as, <em>without</em> being made abstract.
+    <em>XXX</em>
+    To handle 64 bit floats on 32 bit platforms correctly,
+    the compiler needs to be able to fully expand
+    all chains of type equivalences.
+    However, the right way to transmit the fact of the equivalence
+    is through type_repn items (which can be used only for this purpose),
+    and not type_defn items (which can be used for semantic checks as well,
+    possibly violating encapsulation).
+    <li>
+    Solver type definitions are made fully abstract.
+    There is an <em>XXX</em> by rafe on the relevant code,
+    saying this may be the wrong thing to do.
+    </ul>
+<p>
+<em>XXX</em> This is done by make_canon_make_du_and_solver_types_abstract,
+which is relevant for the .int2 section below.
+<p>
+In the second, post-qualification stage,
+we keep only a subset of the type definitions in the implementation section,
+and even the ones we keep, we transform further.
+<em>XXX</em> Actually, we transform them further
+<em>only</em> if they have only one definition in the implementation section.
+If they have two or more, we leave them alone.
+This is almost certainly a bug.
+<p>
+We keep a type definition in the implementation section
+if the type constructor being defined
+satisfies any of the following conditions:
+    <ul>
+    <li>
+    The type constructor has a definition is a du type that is
+    either a direct dummy type or an abstract enum type.
+    We preserve these because they provide information
+    for decisions about type representation.
+    The <em>form</em> in which we preserve them is as abstract types
+    that nevertheless say that the type is a direct dummy or an enum type.
+    <em>XXX</em> This info should be in type_repn items.
+    <li>
+    The type constructor has a definition is a foreign type.
+    We preserve such type definitions unchanged.
+    <em>XXX</em> The ostensible reason is that
+    this is also for decisions about type representation,
+    but I do not believe it.
+    <li>
+    The type constructor has a definition that is an equivalence type.
+    We preserve such type definitions unchanged,
+    because equivalence chains have to be expanded fully
+    when deciding type representations.
+    <em>XXX</em> The info about type equivalences should be in type_repn items.
+    <li>
+    The type constructor appears in the expansion
+    of the right hand side of a type equivalence.
+    We preserve the definitions of such types
+    because the algorithm deciding type representations
+    needs to know about them.
+    because equivalence chains have to be expanded fully
+    Such a type can be of any kind: discriminated union, foreign, abstract,
+    another equivalence type, or even a solver type,
+    though solver types will have been made abstract before qualification.
+    The <em>form</em> in which the type definition will be preserved
+    is given by the relevant bullet point above.
+    <li>
+    The type constructor appears in the argument type of a function symbol
+    in the discriminated union definition of another type constructor
+    that occurs in the expansion of the right hand side of a type equivalence.
+    Again, the reason is that the
+    algorithm deciding type representations needs to know about them,
+    And again, the <em>form</em> in which the type definition will be preserved
+    is given by the relevant bullet point above.
+    <em>XXX</em>
+    only SOME expansions
+    <li>
+    <em>TODO check if there are any more categories</em>
+    </ul>
+<p>
+Note that a type constructor may have more than one definition
+either within the rules of Mercury
+(e.g. an abstract and a non-abstract definition,
+or a Mercury definition and some foreign definitions),
+or violating the rules of Mercury,
+as in the case of buggy code.
+<p>
+<li>
+Inst and mode definitions in the interface
+are always included in the .int file unchanged.
+Inst and mode definitions in the implementation
+are never included in the .int file unchanged.
+<em>XXX</em>
+We don't touch the type constructors
+in ":- inst ... for typector" declarations.
+Maybe we should treat them as type constructors
+in superclasses in typeclass declarations:
+i.e. we should consider them ground for importing any modules they mention.
+<p>
+<li>
+Class definitions in the interface
+are always included in the .int file unchanged.
+Class definitions in the implementation
+are always included in the .int file with the methods deleted.
+<em>XXX Why?</em>
+<p>
+<li>
+Instance definitions in the interface
+are always included in the .int file with the methods deleted.
+Instance definitions in the implementation
+are never included in the .int file.
+<p>
+<li>
+The type and mode declarations of predicates and functions in the interface
+are always included in the .int file unchanged.
+The type and mode declarations of predicates and functions
+in the implementation
+are never included in the .int file.
+<p>
+<li>
+Clauses are never included in .int files.
+<p>
+<li>
+Pragmas in the interface section
+are always included in .int files unchanged,
+provided that they <em>may</em> appear in interface sections.
+The only pragmas in the implementation section
+that are included in the .int file are foreign_enum pragmas
+for type constructors that are defined in the interface section
+in a non-abstract form.
+<p>
+<li>
+Promises in the interface section
+are included in .int files if and only if they promise
+exclusivity, exhaustiveness, or both.
+<em>XXX Why the limitation?</em>
+Promises in the implementation section
+are never included in .int files.
+<p>
+<li>
+Mutables are never included in .int files.
+<p>
+<li>
+Initialize and finalize declarations are never included in .int files.
+<p>
+<li>
+Declarations of submodules are always included in the .int file unchanged.
+<p>
+<li>
+Explicit foreign_import_module items in the source file
+are included in the .int file,
+in the same section as their original occurrence.
+These foreign_import_module items may import
+either the current module or any other module, in any target language.
+<p>
+The compiler also puts foreign_import_module items into .int files
+automatically, without explicit action by the programmer.
+These implicit foreign_import_module items always import the current module.
+<p>
+We put such an implicit self-import
+into the interface of the .int file for a given target language
+if the .int file interface also contains either
+a foreign type definition or a foreign enum pragma for that language.
+Likewise, we put such an implicit self-import
+into the implementation of the .int file for a given target language
+if the .int file interprocess also contains either
+a foreign type definition or a foreign enum pragma for that language.
+<p>
+There is one exception from the above.
+If the interface section of the .int file contains
+a foreign_import_module for a given module in a given target language,
+then the compiler won't include
+a copy of the same foreign_import_module item in the implementation section,
+either explicitly or implicitly.
+<p>
+<li>
+We put a use_module declaration
+into the interface section of the .int file
+for all of the modules that have an import_module and/or use_module declaration
+in the module's interface section.
+<p>
+We put a use_module declaration
+into the implementation section of the .int file
+for all of the modules that have an import_module and/or use_module declaration
+in the module's implementation section, provided
+<ul>
+<li>
+the module defines an entity
+that occurs in a superclass constraint of a typeclass declaration
+in the implementation section of the .int file; or
+<li>
+the module defines an entity
+that occurs on the right hand side of a type definition
+in the implementation section of the .int file.
+</ul>
+<p>
+The reason why we need to use_module declarations for these modules
+is that the compiler creates entries
+for e.g. the types we are imported from them
+only when it sees them defined, not when it sees them used.
+<em>XXX</em>
+XXX We should consider fixing that.
+<p>
+The reason why we can turn what were originally import_module declarations
+into use_module declarations
+is that we generate the .int file at all
+only if we can successfully module qualify everything in it
+(actually, everything in the augmented compilation unit
+from which we derive the .int file's contents).
+<em>XXX</em>
+This is not quite true.
+A compiler invocation that cannot fully module qualify
+the augmented compilation unit
+when trying to generate an interface file
+will exit with a nonzero exit status,
+so technically it fails,
+but it will still generate the interface file.
+<em>XXX</em>
+XXX We should consider fixing that.
+In fact, if we cannot generate an interface file correctly,
+we should delete the file we would have overwritten (if it exists)
+as well as its timestamp file (again, if it exists).
+</ul>
+
+<h2>The contents of .int2 files</h2>
+
+<p>
+The contents of the .int2 file of a module are derived
+from the contents of the module's .int file.
+This means that indirectly, it is derived from
+both the interface sections and the implementation sections of that module,
+<em>after</em> they are fully module qualified,
+which requires reading in various interface files of various other modules
+(see the section on .int files above for details).
+<p>
+
+<ul>
+<li>
+Type definitions in the interface section
+are copied <em>from the .int file</em> (not the source file)
+with two changes:
+    <ul>
+    <li>
+    discriminated and solver types are made abstract
+    (though solver type definitions in interface sections
+    ought to be abstract in the first place), and
+    <li>
+    if the type has user-specified unification and/or comparison predicates,
+    the part of the type definition naming those predicates is deleted.
+    </ul>
+<p>
+We keep a type definition in the implementation section
+if the type constructor being defined
+satisfies any of the following conditions:
+XXX this seems wrong
+    <ul>
+    <li>
+    Type definitions in the implementation section
+    are copied <em>from the .int file</em> (not the source file) unchanged.
+    These should only be used when making decisions
+    about the representations of the types defined in the interface.
+    We already compute exactly which nonexported types
+    we need definitions for in the implementation section, and what form,
+    for the .int2 file;
+    we need exactly the same info for the same purpose in .int2 files.
+    In both cases, we should need these
+    only until we switch to using type_repn items instead.
+    </ul>
+<p>
+<li>
+Inst and mode definitions in the interface
+are always included in the .int2 file
+in exactly the same form as in the .int file.
+<p>
+<em>XXX</em>
+It should eventually be possible to make abstract
+any inst and mode definitions that do not refer to any other modules
+(other than the public or private builtin modules,
+though the private one does not define any insts or modes).
+This is because the only thing that
+code using such an inst or mode can do with it
+is pass it to a predicate or function defined in the same module.
+However, until recently the compiler
+did not handle abstract insts and modes at all, and even now,
+the only thing they can be used for reliably is module qualification;
+pretty much all operations on abstract insts and modes
+will cause a compiler abort.
+<p>
+<li>
+Class definitions in the interface
+are always included in the .int2 file with the methods deleted.
+Class definitions in the implementation
+are never included in the .int2 file.
+<em>XXX Why?</em>
+<p>
+<li>
+Instance definitions in the interface
+are always included in the .int2 file with the methods deleted.
+Instance definitions in the implementation
+are never included in the .int2 file.
+<p>
+<li>
+The type and mode declarations of predicates and functions
+are never included in the .int2 file,
+whether they occur in the interface or the implementation.
+<p>
+<li>
+Clauses are never included in .int2 files.
+<p>
+<li>
+Pragmas are never included in .int2 files.
+<p>
+<li>
+Promises are never included in .int2 files.
+<p>
+<li>
+Mutables are never included in .int2 files.
+<p>
+<li>
+Initialize and finalize declarations are never included in .int2 files.
+<p>
+<li>
+Declarations of submodules in the interface section
+are always included in the .int2 file.
+Declarations of submodules in the implementation section
+are never included in the .int2 file.
+<em>XXX Why?</em>
+Until we switch to using type_repn items, the second part may be a bug.
+If an abstract-exported type is defined to be equivalent
+to a type that is defined in a submodule in the interface,
+then the equivalence type_defn we will include
+in the .int2 file's implementation section
+will refer to the submodule
+<em>without</em> seeing the include_module declaration.
+<p>
+<li>
+We copy an explicit foreign_import_module item
+from the interface of the source file
+to the interface of the .int2 file
+if we include in the interface of the .int2 file
+a foreign type definition
+for the target language mentioned in that foreign_import_module item.
+We put an implicit foreign_import_module item for the current module
+into the interface of the .int2 file
+for every target language mentioned in such a foreign_type definition.
+<p>
+We copy explicit an foreign_import_module item
+from the interface <em>or</em> the implementation section of the source file
+to the implementation section of the .int2 file
+if we include in the implementation section of the .int2 file
+a foreign type definition
+for the target language mentioned in that foreign_import_module item.
+Likewise,
+we put an implicit foreign_import_module item for the current module
+into the implementation section of the .int2 file
+for every target language mentioned in a foreign_type definition
+in the implementation section of the .int2 file.
+<p>
+As with .int files,
+there is one exception from the above.
+If the interface section of the .int2 file contains
+a foreign_import_module for a given module in a given target language,
+then the compiler won't include
+a copy of the same foreign_import_module item in the implementation section,
+either explicitly or implicitly.
+<p>
+<li>
+We never put any import_module declarations
+in the interface section of the .int2 file,
+nor do we ever put any import_module or use_module declarations
+in the implementation section of the .int2 file.
+We <em>do</em> put a use_module declaration
+into the interface section of the .int2 file
+for all of the modules that have an import_module and/or use_module declaration
+in the module's interface section,
+<em>and</em>
+which are referred to by one of the
+type, inst, mode, typeclass or instance definitions in the interface,
+in one of the following ways:
+<p>
+    <ul>
+    <li>
+    if the module defines a type that occurs
+    on the right hand side of the definition of an equivalence type;
+    <li>
+    if the module defines a type constructor
+    that is mentioned as being the type an inst is for;
+    <li>
+    if the module defines an inst or a mode
+    that occurs in the right hand side of the definition of an inst or a mode;
+    <li>
+    if the module defines a typeclass or a type constructor
+    that occurs in a superclass constraint on a typeclass definition; or
+    <li>
+    if the module defines a typeclass or a type constructor
+    that an instance definition is for,
+    or a typeclass or a type constructor
+    that occurs in a class constraint on an instance definition.
+    </ul>
+<p>
+As mentioned above in .int file section,
+the reason why we need use_module declarations for these modules
+is that the compiler creates entries
+for e.g. the types we are importing from them
+only when it sees them defined, not when it sees them used.
+<p>
+And as was also mentioned above in .int file section,
+the reason why we can turn what were originally import_module declarations
+into use_module declarations
+is that we generate the .int2 file at all
+only if we can successfully module qualify everything in it
+(actually, everything in the augmented compilation unit
+from which we derive the .int2 file's contents).
+</ul>
+
+<h2>Inclusion property</h2>
+
+<p>
+A module's .int, .int2 and .int3 files
+are supposed to maintain the property that
+<ul>
+<li>
+every piece of information that is in items in the .int3 file
+is also in the .int2 file, and
+<li>
+every piece of information that is in items in the .int2 file
+is also in the .int file.
+</ul>
+<p>
+This is implicit in the fact that
+the algorithm we use to read in interface files (in grab_modules.m)
+never reads in a .int2 file if it has read in that module's .int file, and
+never reads in a .int3 file if it has read in that module's .int or .int2 file.
+In fact, making this possible is the reason why
+it reads in .int files first, .int2 files next, and .int3 files last.
+<p>
+(Note that in the presence of intermodule optimization,
+grab_modules.m <em>can</em> read in a module's .int file
+(as an int-for-opt file) <em>after</em> it reads in its .int2 file.
+This will typically lead to
+many entities defined in the .int2 file being defined twice.
+The compiler must (and does) reject such double definitions silently.)
+<p>
+I (zs) don't see any inclusion requirements being placed on .int0 files.
+However, grab_modules.m does have to read in its ancestors'.int0 files first,
+because the set of .int files it needs to read includes
+not just the .int files of the modules imported by the current module,
+but also the .int files of the modules imported by its ancestors.
+<p>
+Note that the inclusion property
+does not apply to import_module and use_module declarations.
+While .int and .int2 files contain only use_module declarations,
+.int3 files contain only import_module declarations,
+which can be considered more expressive,
+and .int3 files may contain import_module declarations for modules
+for which the corresponding .int and/or .int2 files
+do <em>not</em> contain use_module declarations.
+This is because in the absence of errors,
+.int and .int2 files are always fully module qualified,
+which is something we cannot insist on for .int3 files.
+This difference is
+<ul>
+<li>
+why .int and .int2 files can avoid importing or using
+modules that they do not refer to, and
+<li>
+why .int and .int2 files can use, not import,
+modules that they do refer to.
+</ul>
+<p>
+Consumers of .int3 files need import_module declarations
+because they need to <em>find</em>
+which module defines an entity, such as a type constructor;
+consumers of .int and .int2 files need only use_module declarations
+because they need only to <em>look up</em>
+the definition of that entity.
+<p>
+That definition should be needed only in two cases.
+First, in the case of type definitions,
+we may need to follow chains of type equivalences to the end
+in order to make decisions about type representations involving that type.
+Second, in the case of inst and mode definitions,
+we may likewise need to follow chains of equivalences to the end
+in order to figure out the exact expansions of named insts and modes,
+which we may need for mode analysis.
+
+<h2>Timestamp files</h2>
+
+<ul>
+<li>
+The datestamp on the .date3 file gives the last time
+the .int3 file was checked for consistency.
+<li>
+The datestamp on the .date0 file gives the last time
+the .int0 file was checked for consistency.
+<li>
+The datestamp on the .date file gives the last time
+the .int and .int2 files were checked for consistency.
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1998-2007, 2009-2010, 2012 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# browser/Mmakefile - this is the Mmakefile for building the Mercury
+# browser library, which also includes other functionality needed
+# by Mercury debuggers.
+
+# Since the code in this directory is intended to be invoked only from
+# the trace library, which turns off tracing in the Mercury code it calls,
+# compiling the modules in this directory with tracing on only makes
+# the generated code much bigger. However, since all Mercury code
+# in an executable must be of the same grade, we need to be able to
+# compile the modules in this directory in debug grades as well.
+
+# Specify which files to check for namespace cleanliness, and which name
+# prefixes are allowed.
+
+CHECK_HDRS  =
+CHECK_MHDRS = $(mer_browser.mhs)
+CHECK_OBJS  = $(mer_browser.os)
+ALLOW_LIB_PREFIX=yes
+ALLOW_BROWSER_PREFIX=yes
+ALLOW_MDBCOMP_PREFIX=yes
+ALLOW_SSDB_PREFIX=yes
+
+MERCURY_DIR=..
+LINK_STDLIB_ONLY=yes
+include $(MERCURY_DIR)/Mmake.common
+-include Mmake.browser.params
+
+# Override the default rule in `mmake --use-mmc-make' that asks `mmc'
+# to create a missing optional params file.
+Mmake.browser.params:
+
+# Module-specific options should go in Mercury.options,
+# so they can be found by `mmc --make'.
+include Mercury.options
+
+MAIN_TARGET=main
+
+MERCURY_MAIN_LIB_MODULES=$(BROWSER_LIB_NAME)
+MERCURY_MAIN_MODULES=$(MERCURY_MAIN_LIB_MODULES) browse_test declarative_test
+
+VPATH = $(LIBRARY_DIR) $(MDBCOMP_DIR)
+
+DEPENDS =	$(patsubst %,%.depend,$(MERCURY_MAIN_MODULES))
+INTS_TARGETS =	$(patsubst %,%.ints,$(MERCURY_MAIN_MODULES))
+INT3S_TARGETS =	$(patsubst %,%.int3s,$(MERCURY_MAIN_MODULES))
+LIBS =		$(patsubst %,lib%,$(MERCURY_MAIN_LIB_MODULES))
+CHECKS =	$(patsubst %,%.check,$(MERCURY_MAIN_LIB_MODULES))
+
+#-----------------------------------------------------------------------------#
+
+# Specify which compilers to use to compile the library.
+# Don't change these without good reason - if you want to do a temporary
+# change, change ../Mmake.params, or create Mmake.browser.params.
+
+CFLAGS	     += $(DLL_CFLAGS)
+ifeq ($(INSTALLABLE_PREFIX),yes)
+MLFLAGS      += -R$(FINAL_INSTALL_MERC_LIB_DIR)	\
+		-R$(FINAL_INSTALL_MERC_GC_LIB_DIR)
+MCFLAGS      += -R$(FINAL_INSTALL_MERC_LIB_DIR)	\
+		-R$(FINAL_INSTALL_MERC_GC_LIB_DIR)
+endif
+ifeq ("$(filter csharp% java%,$(GRADE))","")
+MLLIBS 	     += $(SOCKET_LIBRARY) $(NSL_LIBRARY) $(DL_LIBRARY) \
+		$(READLINE_LIBRARIES)
+endif
+
+MCFLAGS      += --flags MDB_FLAGS $(CONFIG_OVERRIDE)
+
+#-----------------------------------------------------------------------------#
+
+# Set the install name for Darwin shared libraries. We disable the
+# --shlib-linker-use-install-name mmc option so that the -install_name linker
+# option is not passed in the .dep files. We do this to avoid a problem when
+# building from the C source distribution: if the C source distribution is
+# generated on a non-Darwin system then the -install_name option is not passed
+# in the .dep files, so it must be passed here, however if a C source
+# distribution is generated on a Darwin system then by default the
+# -install_name option will be passed in the .dep files which will cause it to
+# be passed twice (here and in the .dep files) which is not allowed by the
+# linker, so we disable the mmc option which causes the -install_name option
+# to be passed in the .dep files.
+
+ifeq "$(findstring apple-darwin,$(FULLARCH))" "apple-darwin"
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+MCFLAGS += --ld-libflags \
+	"-install_name $(FINAL_INSTALL_MERC_LIB_DIR)/lib$(BROWSER_LIB_NAME).dylib"
+else
+LD_LIBFLAGS-libmer_browser.dylib = -install_name \
+	$(FINAL_INSTALL_MERC_LIB_DIR)/lib$(BROWSER_LIB_NAME).dylib
+endif
+endif
+
+#-----------------------------------------------------------------------------#
+
+MTAGS	= $(SCRIPTS_DIR)/mtags
+
+LN	= ln
+
+#-----------------------------------------------------------------------------#
+
+# The C# and Java implementations of the standard library are not yet
+# complete, so we need to pass `--allow-stubs' to get them to compile.
+# Since the standard library is compiled with `--halt-at-warn',
+# we also need `--no-warn-stubs'.
+ifneq ("$(filter csharp% java%,$(GRADE))","")
+MCFLAGS += --allow-stubs --no-warn-stubs
+endif
+
+#-----------------------------------------------------------------------------#
+
+# Stuff for Windows DLLS using gnu-win32
+
+ifeq ($(USE_DLLS),yes)
+
+# XXX what do we need here for MDBCOMP_LIB_NAME?
+DLL_CFLAGS = -Dlib$(BROWSER_LIB_NAME)_DEFINE_DLL
+
+include $(MERCURY_DIR)/Makefile.DLLs
+
+else
+
+DLL_CFLAGS =
+DLL_DEF_LIB =
+
+endif
+
+#-----------------------------------------------------------------------------#
+
+# targets
+
+.PHONY: main
+main:	library $(TAGS_FILE_EXISTS)
+
+.PHONY: all
+all:	library $(TAGS_FILE_EXISTS)
+
+.PHONY: library
+
+library: $(LIBS)
+
+.PHONY: depend
+depend:	MDB_FLAGS $(DEPENDS)
+$(DEPENDS): Mercury.modules
+
+# XXX To prevent bitrot, aux should list the auxiliary programs
+# that are needed only during development, and not by ordinary users.
+# However, we noticed this fact too late: fatal bit rot has already occurred.
+# The browse_test program requires access to the mdbcomp package, whose
+# modules are now in another directory, and the declarative_test program
+# requires updates to its own source code.
+# aux:	browse_test declarative_test
+.PHONY: aux
+aux:
+
+.PHONY: depend_aux
+depend_aux: browse_test.depend declarative_test.depend
+
+# This directory contains source files for which the module name
+# does not match the file name, so smart recompilation won't work
+# without the Mercury.modules file.
+# XXX this .PHONY directive is required when building the source
+# distribution -- why?
+.PHONY: Mercury.modules
+Mercury.modules: MDB_FLAGS
+	$(MC) $(ALL_GRADEFLAGS) $(ALL_MCFLAGS) -f *.m
+
+.PHONY: check
+check:	$(CHECKS)
+
+.PHONY: all-ints
+all-ints: ints int3s
+
+.PHONY: ints
+ints:	$(INTS_TARGETS)
+
+.PHONY: int3s
+int3s:	$(INT3S_TARGETS)
+
+#-----------------------------------------------------------------------------#
+
+# We need the shenanigans with .browser_tags to avoid situations in which
+# "mmake tags" in this directory does nothing even in the absence of a tags
+# file in this directory, because mmake uses VPATH to find ../library/tags
+# and believes it to be the tags file we are asking for.
+#
+# We give files in mdbcomp to mtags before the files in this directory
+# because we want references to entities defined in the modules copied from the
+# mdbcomp directory to this directory to go the actual, effective definitions,
+# the definitions which can be changed *without* those changes going away
+# on the next copy.
+
+tags:	.browser_tags
+
+.browser_tags: 	$(MTAGS) $(wildcard *.m) \
+		$(wildcard $(MDBCOMP_DIR)/*.m) \
+		$(wildcard $(LIBRARY_DIR)/*.m)
+	$(MTAGS) $(MDBCOMP_DIR)/*.m *.m $(LIBRARY_DIR)/*.m
+	@touch .browser_tags
+
+.PHONY: tags_file_exists
+tags_file_exists:
+	@if test ! -f tags; \
+	then \
+		echo making tags; \
+		$(MTAGS) $(MDBCOMP_DIR)/*.m *.m $(LIBRARY_DIR)/*.m; \
+		touch .browser_tags; \
+	fi
+
+$(BROWSER_LIB_NAME).stats: $(COMPILER_DIR)/source_stats.awk \
+		$($(BROWSER_LIB_NAME).ms)
+	awk -f $(COMPILER_DIR)/source_stats.awk \
+		`vpath_find $($(BROWSER_LIB_NAME).ms)` > $@
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: dates
+dates:
+	touch $($(BROWSER_LIB_NAME).dates)
+
+#-----------------------------------------------------------------------------#
+
+# The documentation of the reason for this set of rules
+# can be found in library/Mmakefile.
+
+.PHONY: os cs css javas
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+os:	$(BROWSER_LIB_NAME).os
+cs:	$(BROWSER_LIB_NAME).cs
+css:	$(BROWSER_LIB_NAME).css
+javas:	$(BROWSER_LIB_NAME).javas
+else
+ifneq ($(origin $(BROWSER_LIB_NAME).os),undefined)
+os:	$($(BROWSER_LIB_NAME).os)
+cs:	$($(BROWSER_LIB_NAME).cs)
+css:	$($(BROWSER_LIB_NAME).css)
+javas:	$($(BROWSER_LIB_NAME).javas)
+else
+os:
+	mmake depend; mmake os
+
+cs:
+	mmake depend; mmake cs
+
+css:
+	mmake depend; mmake css
+
+javas:
+	mmake depend; mmake javas
+endif
+endif
+
+#-----------------------------------------------------------------------------#
+
+# Ensure we recompile mdb__version if VERSION is changed.
+$(os_subdir)mdb.o \
+$(os_subdir)mdb.pic_o \
+	: $(RUNTIME_DIR)/mercury_conf.h
+
+#-----------------------------------------------------------------------------#
+
+realclean_local:
+	rm -f Mercury.modules tags MDB_FLAGS MDB_FLAGS.date
+
+#-----------------------------------------------------------------------------#
+
+# Installation targets
+
+.PHONY: install
+install: install_library
+
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+
+.PHONY: install_library
+install_library: lib$(BROWSER_LIB_NAME).install
+
+else
+
+.PHONY: install_library
+install_library:				\
+	lib$(BROWSER_LIB_NAME).install_library	\
+	lib$(BROWSER_LIB_NAME).install_ints	\
+	lib$(BROWSER_LIB_NAME).install_hdrs
+
+endif
+
+#-----------------------------------------------------------------------------#
