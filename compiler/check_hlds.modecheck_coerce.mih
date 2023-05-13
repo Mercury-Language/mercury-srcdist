@@ -1,0 +1,78 @@
+/*
+** Automatically generated from `modecheck_coerce.m'
+** by the Mercury compiler,
+** version rotd-2023-05-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.modecheck_coerce.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__modecheck_coerce
+#define MR_HEADER_GUARD_check_hlds__modecheck_coerce
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODECHECK_COERCE_DECL_GUARD
+#define CHECK_HLDS__MODECHECK_COERCE_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_bound_inst_or_error_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_expanded_insts_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_get_arg_types_result_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_maybe_coerce_error_1;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_modecheck_coerce_result_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_rev_term_path_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modecheck_coerce__check_hlds__modecheck_coerce__type_ctor_info_types_comparison_0;
+
+void MR_CALL 
+check_hlds__modecheck_coerce__modecheck_coerce_8_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void mercury__check_hlds__modecheck_coerce__init(void);
+void mercury__check_hlds__modecheck_coerce__init_type_tables(void);
+void mercury__check_hlds__modecheck_coerce__init_debugger(void);
+const char *mercury__check_hlds__modecheck_coerce__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.modecheck_coerce
+
+// :- end_interface check_hlds.modecheck_coerce.
