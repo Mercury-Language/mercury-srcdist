@@ -1,0 +1,5 @@
+:- module (ml_backend.mlds_to_c_type).
+:- interface.
+:- type type_prefix_suffix.
+:- abstract_inst((type_prefix_suffix)).
+:- type_representation(type_prefix_suffix, is_eqv_to(pred(mlds_to_c_opts, mlds_type, string, string))).

@@ -1,0 +1,54 @@
+:- module globals.
+:- interface.
+:- use_module bool.
+:- use_module getopt.
+:- use_module io.
+:- use_module list.
+:- use_module options.
+:- type globals.
+:- type what_to_profile
+    --->    memory_words 
+    ;       memory_cells 
+    ;       memory_snapshots 
+    ;       user_plus_system_time 
+    ;       user_time 
+    ;       real_time .
+:- pred get_options(globals.globals, options.option_table).
+:- mode get_options((builtin.in), (builtin.out)) is det.
+:- pred get_what_to_profile(globals.globals, globals.what_to_profile).
+:- mode get_what_to_profile((builtin.in), (builtin.out)) is det.
+:- pred io_get_globals(globals.globals, io.io, io.io).
+:- mode io_get_globals((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_init(options.option_table, io.io, io.io).
+:- mode io_init((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred io_lookup_accumulating_option(options.option, list.list(string), io.io, io.io).
+:- mode io_lookup_accumulating_option((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_lookup_bool_option(options.option, bool.bool, io.io, io.io).
+:- mode io_lookup_bool_option((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_lookup_int_option(options.option, int, io.io, io.io).
+:- mode io_lookup_int_option((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_lookup_option(options.option, getopt.option_data, io.io, io.io).
+:- mode io_lookup_option((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_lookup_string_option(options.option, string, io.io, io.io).
+:- mode io_lookup_string_option((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_set_globals(globals.globals, io.io, io.io).
+:- mode io_set_globals((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred io_set_option(options.option, getopt.option_data, io.io, io.io).
+:- mode io_set_option((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred lookup_accumulating_option(globals.globals, options.option, list.list(string)).
+:- mode lookup_accumulating_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_bool_option(globals.globals, options.option, bool.bool).
+:- mode lookup_bool_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_int_option(globals.globals, options.option, int).
+:- mode lookup_int_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_option(globals.globals, options.option, getopt.option_data).
+:- mode lookup_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_string_option(globals.globals, options.option, string).
+:- mode lookup_string_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_options(options.option_table, globals.globals, globals.globals).
+:- mode set_options((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_what_to_profile(globals.what_to_profile, globals.globals, globals.globals).
+:- mode set_what_to_profile((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred what_to_profile(string, globals.what_to_profile).
+:- mode what_to_profile((builtin.in), (builtin.out)) is semidet.
+:- mode what_to_profile((builtin.out), (builtin.in)) is det.
