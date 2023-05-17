@@ -1,0 +1,375 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1998-2008 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# Mmakefile for the Mercury trace library, which contains the runtime
+# system components that are needed only if some procedures are traced.
+
+#-----------------------------------------------------------------------------#
+
+# The list of human-written C header files of the trace library.
+# Keep this list in alphabetical order, please.
+HAND_TRACE_HDRS	=	\
+			mercury_trace.h			\
+			mercury_trace_alias.h		\
+			mercury_trace_browse.h		\
+			mercury_trace_cmd_backward.h	\
+			mercury_trace_cmd_breakpoint.h	\
+			mercury_trace_cmd_browsing.h	\
+			mercury_trace_cmd_dd.h		\
+			mercury_trace_cmd_developer.h	\
+			mercury_trace_cmd_exp.h		\
+			mercury_trace_cmd_help.h	\
+			mercury_trace_cmd_misc.h	\
+			mercury_trace_cmd_parameter.h	\
+			mercury_trace_cmd_queries.h	\
+			mercury_trace_cmd_table_io.h	\
+			mercury_trace_cmds.h		\
+			mercury_trace_command_queue.h	\
+			mercury_trace_completion.h	\
+			mercury_trace_declarative.h	\
+			mercury_trace_external.h	\
+			mercury_trace_help.h		\
+			mercury_trace_hold_vars.h	\
+			mercury_trace_internal.h	\
+			mercury_trace_readline.h	\
+			mercury_trace_source.h		\
+			mercury_trace_spy.h		\
+			mercury_trace_tables.h		\
+			mercury_trace_util.h		\
+			mercury_trace_vars.h
+
+# The list of human-written C source files of the trace library.
+# Keep this list in alphabetical order, please.
+HAND_TRACE_SRCS	=	\
+			mercury_trace.c			\
+			mercury_trace_alias.c		\
+			mercury_trace_browse.c		\
+			mercury_trace_cmd_backward.c	\
+			mercury_trace_cmd_breakpoint.c	\
+			mercury_trace_cmd_browsing.c	\
+			mercury_trace_cmd_dd.c		\
+			mercury_trace_cmd_developer.c	\
+			mercury_trace_cmd_exp.c		\
+			mercury_trace_cmd_forward.c	\
+			mercury_trace_cmd_help.c	\
+			mercury_trace_cmd_misc.c	\
+			mercury_trace_cmd_parameter.c	\
+			mercury_trace_cmd_queries.c	\
+			mercury_trace_cmd_table_io.c	\
+			mercury_trace_command_queue.c		\
+			mercury_trace_completion.c	\
+			mercury_trace_declarative.c	\
+			mercury_trace_external.c	\
+			mercury_trace_help.c		\
+			mercury_trace_hold_vars.c	\
+			mercury_trace_internal.c	\
+			mercury_trace_readline.c	\
+			mercury_trace_source.c		\
+			mercury_trace_spy.c		\
+			mercury_trace_tables.c		\
+			mercury_trace_util.c		\
+			mercury_trace_vars.c
+
+# The list of human-written C header files of the eventspec library.
+# Keep this list in alphabetical order, please.
+HAND_EVENTSPEC_HDRS	=	\
+			mercury_event_scanner.h	\
+			mercury_event_spec.h
+
+# The list of human-written C source files of the eventspec library.
+# Keep this list in alphabetical order, please.
+HAND_EVENTSPEC_SRCS	=	\
+			mercury_event_spec.c
+
+# The list of automatically created C header files.
+# Keep this list in alphabetical order, please.
+GEN_EVENTSPEC_HDRS	=	\
+			mercury_event_parser.h
+
+# The list of automatically created C source files.
+# Keep this list in alphabetical order, please.
+GEN_EVENTSPEC_SRCS	=	\
+			mercury_event_parser.c		\
+			mercury_event_scanner.c
+
+TRACE_HDRS		= $(HAND_TRACE_HDRS)
+TRACE_SRCS		= $(HAND_TRACE_SRCS)
+
+EVENTSPEC_HDRS		= $(HAND_EVENTSPEC_HDRS) $(GEN_EVENTSPEC_HDRS)
+EVENTSPEC_SRCS		= $(HAND_EVENTSPEC_SRCS) $(GEN_EVENTSPEC_SRCS)
+
+HAND_HDRS		= $(HAND_TRACE_HDRS) $(HAND_EVENTSPEC_HDRS)
+HAND_SRCS		= $(HAND_TRACE_SRCS) $(HAND_EVENTSPEC_SRCS)
+
+HDRS 			= $(TRACE_HDRS) $(EVENTSPEC_HDRS)
+SRCS 			= $(TRACE_SRCS) $(EVENTSPEC_SRCS)
+
+# The object files in this directory depend on many of the header files
+# in the runtime. However, changes to many of these header files require
+# a global make clean. Here we list only the header files from the runtime
+# whose changes don't usually require a make clean but which nevertheless
+# require the trace library to be recompiled.
+RUNTIME_HDRS	=	\
+			$(RUNTIME_DIR)/mercury_stack_layout.h \
+			$(RUNTIME_DIR)/mercury_trace_base.h \
+			$(RUNTIME_DIR)/mercury_trace_term.h
+
+TRACE_OBJS		= $(TRACE_SRCS:.c=.$O)
+EVENTSPEC_OBJS		= $(EVENTSPEC_SRCS:.c=.$O)
+OBJS			= $(SRCS:.c=.$O)
+TRACE_PIC_OBJS		= $(TRACE_SRCS:.c=.$(EXT_FOR_PIC_OBJECTS))
+EVENTSPEC_PIC_OBJS	= $(EVENTSPEC_SRCS:.c=.$(EXT_FOR_PIC_OBJECTS))
+PIC_OBJS		= $(SRCS:.c=.$(EXT_FOR_PIC_OBJECTS))
+
+EVENTSPEC_LDFLAGS	= -L$(BROWSER_DIR) -L$(MDBCOMP_DIR) -L$(LIBRARY_DIR) \
+			-L$(RUNTIME_DIR) -L$(BOEHM_GC_DIR) -L/usr/local/lib
+EVENTSPEC_LDLIBS= 	-l$(BROWSER_LIB_NAME) -l$(MDBCOMP_LIB_NAME) \
+			$(MLLIBS) $(SOCKET_LIBRARY) \
+			$(NSL_LIBRARY) $(DL_LIBRARY) $(READLINE_LIBRARIES)
+
+TRACE_LDFLAGS		= -L$(TRACE_DIR) $(EVENTSPEC_LDFLAGS)
+TRACE_LDLIBS		= -l$(EVENTSPEC_LIB_NAME) $(EVENTSPEC_LDLIBS)
+
+THREADLIBS	= \
+		` case "$(GRADE)" in					\
+		    *.par*) echo "-lpthread" ;;				\
+		  esac							\
+		`
+MAIN_TARGET=all
+
+# Specify which files to check for namespace cleanliness, and which name
+# prefixes are allowed.
+#
+# The header files generated by flex and bison cannot pass any kind of
+# namespace cleanliness test, and we don't have enough control over them
+# to make them pass those tests.
+
+CHECK_HDRS  = $(HAND_HDRS)
+CHECK_MHDRS =
+CHECK_OBJS  = $(OBJS)
+ALLOW_LIB_PREFIX=no
+ALLOW_BROWSER_PREFIX=no
+ALLOW_MDBCOMP_PREFIX=no
+ALLOW_SSDB_PREFIX=no
+
+BISON		= bison
+BISON_OPTS	= -v
+FLEX		= flex
+FLEX_OPTS	= -8
+
+MERCURY_DIR=..
+LINK_STDLIB_ONLY=yes
+include $(MERCURY_DIR)/Mmake.common
+-include Mmake.trace.params
+
+# Avoid trying to make this file with `mmc --make' if it doesn't exist.
+Mmake.trace.params: ;
+
+#-----------------------------------------------------------------------------#
+
+CFLAGS		+= $(DLL_CFLAGS)
+MGNUCFLAGS	+= --c-debug --no-ansi
+
+#-----------------------------------------------------------------------------#
+
+# Stuff for Windows DLLs
+
+ifeq ($(USE_DLLS),yes)
+
+DLL_CFLAGS	= -Dlib$(TRACE_LIB_NAME)_DEFINE_DLL
+
+# the following header files are created automatically by Makefile.DLLs
+LIB_DLL_H	= lib$(TRACE_LIB_NAME)_dll.h
+LIB_GLOBALS_H 	= lib$(TRACE_LIB_NAME)_globals.h
+
+include $(MERCURY_DIR)/Makefile.DLLs
+
+else
+
+DLL_CFLAGS =
+LIB_DLL_H =
+LIB_GLOBALS_H =
+DLL_DEF_LIB =
+
+endif
+
+#-----------------------------------------------------------------------------#
+
+# Most object files do not depend on the automatically generated headers;
+# for the ones that do, we list the dependency explicitly.
+
+$(OBJS) $(PIC_OBJS): $(HAND_HDRS) $(RUNTIME_HDRS)
+
+mercury_event_scanner.$(O): $(GEN_EVENTSPEC_HDRS)
+mercury_event_scanner.$(EXT_FOR_PIC_OBJECTS): $(GEN_EVENTSPEC_HDRS)
+mercury_event_parser.$(O): $(GEN_EVENTSPEC_HDRS)
+mercury_event_parser.$(EXT_FOR_PIC_OBJECTS): $(GEN_EVENTSPEC_HDRS)
+mercury_event_spec.$(O): $(GEN_EVENTSPEC_HDRS)
+mercury_event_spec.$(EXT_FOR_PIC_OBJECTS): $(GEN_EVENTSPEC_HDRS)
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: all
+.PHONY: trace
+ifneq ("$(filter csharp% java%,$(GRADE))","")
+# there is no tracing in the C# or Java backends
+
+all:
+
+trace:
+
+else
+
+all:	trace $(TAGS_FILE_EXISTS)
+
+trace:	lib$(EVENTSPEC_LIB_NAME).$A
+trace:	lib$(EVENTSPEC_LIB_NAME).$(EXT_FOR_SHARED_LIB)
+trace:	lib$(TRACE_LIB_NAME).$A
+trace:	lib$(TRACE_LIB_NAME).$(EXT_FOR_SHARED_LIB)
+trace:	$(LIB_DLL_H) $(LIB_GLOBALS_H)
+
+endif
+
+# This uses a pattern rule to express to make that the rule's recipe is
+# responsible for making all of the targets, not individual targets.
+mercury_event_%.c mercury_event_%.h: mercury_event_%.y
+	$(BISON) $(BISON_OPTS) -p mercury_event_ -d \
+		-o mercury_event_$*.c mercury_event_$*.y
+
+mercury_event_scanner.c: mercury_event_scanner.l mercury_event_parser.h
+	$(FLEX) $(FLEX_OPTS) -s -Pmercury_event_ \
+		-omercury_event_scanner.c \
+		mercury_event_scanner.l
+
+RPATH_1=$(SHLIB_RPATH_OPT)$(FINAL_INSTALL_MERC_LIB_DIR)
+RPATH_2=$(SHLIB_RPATH_SEP)$(FINAL_INSTALL_MERC_GC_LIB_DIR)
+
+lib$(TRACE_LIB_NAME)$(DLL_DEF_LIB).$A: \
+		$(TRACE_OBJS) lib$(EVENTSPEC_LIB_NAME)$(DLL_DEF_LIB).$A
+	rm -f lib$(TRACE_LIB_NAME)$(DLL_DEF_LIB).$A
+	$(AR) $(ALL_ARFLAGS) \
+		$(AR_LIBFILE_OPT)lib$(TRACE_LIB_NAME)$(DLL_DEF_LIB).$A \
+		$(TRACE_OBJS)
+	$(RANLIB) $(RANLIBFLAGS) lib$(TRACE_LIB_NAME)$(DLL_DEF_LIB).$A
+
+lib$(EVENTSPEC_LIB_NAME)$(DLL_DEF_LIB).$A: $(EVENTSPEC_OBJS)
+	rm -f lib$(EVENTSPEC_LIB_NAME)$(DLL_DEF_LIB).$A
+	$(AR) $(ALL_ARFLAGS) \
+		$(AR_LIBFILE_OPT)lib$(EVENTSPEC_LIB_NAME)$(DLL_DEF_LIB).$A \
+		$(EVENTSPEC_OBJS)
+	$(RANLIB) lib$(EVENTSPEC_LIB_NAME)$(DLL_DEF_LIB).$A
+
+lib$(TRACE_LIB_NAME).so: $(TRACE_PIC_OBJS) lib$(EVENTSPEC_LIB_NAME).so
+	$(LINK_SHARED_OBJ) $(ERROR_UNDEFINED) $(LDFLAGS_FOR_SANITIZERS) \
+		-o lib$(TRACE_LIB_NAME).so $(TRACE_PIC_OBJS)		\
+		$(RPATH_1)$(RPATH_2)					\
+		$(ALL_LD_LIBFLAGS) $(TRACE_LDFLAGS)			\
+		$(TRACE_LDLIBS) $(THREADLIBS)				\
+		$(SHARED_LIBS)
+
+lib$(EVENTSPEC_LIB_NAME).so: $(EVENTSPEC_PIC_OBJS)
+	$(LINK_SHARED_OBJ) $(ERROR_UNDEFINED) $(LDFLAGS_FOR_SANITIZERS) \
+		-o lib$(EVENTSPEC_LIB_NAME).so $(EVENTSPEC_PIC_OBJS)	\
+		$(RPATH_1)$(RPATH_2)					\
+		$(ALL_LD_LIBFLAGS) $(EVENTSPEC_LDFLAGS)			\
+		$(EVENTSPEC_LDLIBS) $(THREADLIBS)			\
+		$(SHARED_LIBS)
+
+# For Darwin:
+lib$(TRACE_LIB_NAME).dylib: $(TRACE_PIC_OBJS) lib$(EVENTSPEC_LIB_NAME).dylib
+	$(LINK_SHARED_OBJ) $(ERROR_UNDEFINED) $(LDFLAGS_FOR_SANITIZERS) \
+		-o lib$(TRACE_LIB_NAME).dylib $(TRACE_PIC_OBJS)		\
+		-install_name 						\
+		$(FINAL_INSTALL_MERC_LIB_DIR)/lib$(TRACE_LIB_NAME).dylib \
+		$(ALL_LD_LIBFLAGS) $(TRACE_LDFLAGS)			\
+		$(TRACE_LDLIBS) $(THREADLIBS)				\
+		$(SHARED_LIBS)
+
+lib$(EVENTSPEC_LIB_NAME).dylib: $(EVENTSPEC_PIC_OBJS)
+	$(LINK_SHARED_OBJ) $(ERROR_UNDEFINED) $(LDFLAGS_FOR_SANITIZERS) \
+		-o lib$(EVENTSPEC_LIB_NAME).dylib $(EVENTSPEC_PIC_OBJS)	\
+		-install_name 						\
+		$(FINAL_INSTALL_MERC_LIB_DIR)/lib$(EVENTSPEC_LIB_NAME).dylib \
+		$(ALL_LD_LIBFLAGS) $(EVENTSPEC_LDFLAGS)			\
+		$(EVENTSPEC_LDLIBS) $(THREADLIBS)			\
+		$(SHARED_LIBS)
+
+.PHONY: cs
+cs:	$(SRCS)
+
+tags:	$(HAND_SRCS) $(HAND_HDRS)
+	ctags $(HAND_SRCS) $(HAND_HDRS) $(RUNTIME_DIR)/*.c $(RUNTIME_DIR)/*.h
+
+.PHONY: tags_file_exists
+tags_file_exists:
+	@if test ! -f tags; then echo making tags; \
+	ctags $(HAND_SRCS) $(HAND_HDRS) \
+		$(RUNTIME_DIR)/*.c $(RUNTIME_DIR)/*.h ; \
+	fi
+
+#-----------------------------------------------------------------------------#
+
+# installation rules
+
+.PHONY: install
+install: install_headers install_lib
+
+ifneq ("$(filter csharp% java%,$(GRADE))","")
+
+# there is no tracing in the C# or Java backends
+
+.PHONY: install_headers
+install_headers:
+
+.PHONY: install_lib
+install_lib:
+
+else
+
+.PHONY: install_headers
+install_headers: $(HDRS) $(LIB_GLOBALS_H)
+	cp `vpath_find $(HDRS) $(LIB_GLOBALS_H)` $(INSTALL_INC_DIR)
+
+.PHONY: install_lib
+install_lib: \
+		lib$(TRACE_LIB_NAME).$A \
+		lib$(TRACE_LIB_NAME).$(EXT_FOR_SHARED_LIB) \
+		lib$(EVENTSPEC_LIB_NAME).$A \
+		lib$(EVENTSPEC_LIB_NAME).$(EXT_FOR_SHARED_LIB)
+	-[ -d $(INSTALL_MERC_LIB_DIR) ] || mkdir -p $(INSTALL_MERC_LIB_DIR)
+	cp `vpath_find \
+		lib$(TRACE_LIB_NAME).$A \
+		lib$(TRACE_LIB_NAME).$(EXT_FOR_SHARED_LIB) \
+		lib$(EVENTSPEC_LIB_NAME).$A \
+		lib$(EVENTSPEC_LIB_NAME).$(EXT_FOR_SHARED_LIB) \
+		` \
+		$(INSTALL_MERC_LIB_DIR)
+	$(RANLIB) $(RANLIBFLAGS) \
+		$(INSTALL_MERC_LIB_DIR)/lib$(TRACE_LIB_NAME).$A
+	$(RANLIB) $(RANLIBFLAGS) \
+		$(INSTALL_MERC_LIB_DIR)/lib$(EVENTSPEC_LIB_NAME).$A
+
+endif
+
+#-----------------------------------------------------------------------------#
+
+clean_local: clean_o clean_check
+
+.PHONY: clean_o
+clean_o:
+	rm -f $(OBJS) $(PIC_OBJS)
+
+.PHONY: realclean_local
+realclean_local:
+	rm -f lib$(TRACE_LIB_NAME).$A
+	rm -f lib$(TRACE_LIB_NAME).$(EXT_FOR_SHARED_LIB)
+	rm -f lib$(EVENTSPEC_LIB_NAME).$A
+	rm -f lib$(EVENTSPEC_LIB_NAME).$(EXT_FOR_SHARED_LIB)
+	rm -f $(GEN_EVENTSPEC_SRCS) $(GEN_EVENTSPEC_HDRS)
+
+#-----------------------------------------------------------------------------#

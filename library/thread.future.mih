@@ -1,0 +1,144 @@
+/*
+** Automatically generated from `thread.future.m'
+** by the Mercury compiler,
+** version rotd-2023-05-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module thread.future.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_thread__future
+#define MR_HEADER_GUARD_thread__future
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef THREAD__FUTURE_DECL_GUARD
+#define THREAD__FUTURE_DECL_GUARD
+#include "thread.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__future__thread__future__type_ctor_info_future_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__future__thread__future__type_ctor_info_future_io_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__future__thread__future__type_ctor_info_ok_or_exception_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__thread__future__thread__future__type_ctor_info_ready_0;
+
+void MR_CALL 
+mercury__thread__future__init_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__thread__future__signal_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__thread__future__wait_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__thread__future__wait_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+MR_Word MR_CALL 
+mercury__thread__future__future_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Box MR_CALL 
+mercury__thread__future__wait_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__thread__future____Compare____future_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__thread__future____Compare____future_io_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__thread__future____Compare____ok_or_exception_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__thread__future____Compare____ready_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__thread__future____Unify____future_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__thread__future____Unify____future_io_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__thread__future____Unify____ok_or_exception_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__thread__future____Unify____ready_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__thread__future__init(void);
+void mercury__thread__future__init_type_tables(void);
+void mercury__thread__future__init_debugger(void);
+const char *mercury__thread__future__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_thread.future
+
+// :- end_interface thread.future.
