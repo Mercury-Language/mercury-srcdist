@@ -1,0 +1,2 @@
+:- module (ml_backend.ml_top_gen).
+:- interface.

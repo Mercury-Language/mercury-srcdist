@@ -1,0 +1,55 @@
+/*
+** Automatically generated from `try_all_grade_structs.m'
+** by the Mercury compiler,
+** version rotd-2023-05-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module try_all_grade_structs.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_try_all_grade_structs
+#define MR_HEADER_GUARD_try_all_grade_structs
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRY_ALL_GRADE_STRUCTS_DECL_GUARD
+#define TRY_ALL_GRADE_STRUCTS_DECL_GUARD
+
+#endif
+
+
+
+void MR_CALL 
+main_2_p_0(void);
+
+void mercury__try_all_grade_structs__init(void);
+void mercury__try_all_grade_structs__init_type_tables(void);
+void mercury__try_all_grade_structs__init_debugger(void);
+const char *mercury__try_all_grade_structs__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_try_all_grade_structs
+
+// :- end_interface try_all_grade_structs.
