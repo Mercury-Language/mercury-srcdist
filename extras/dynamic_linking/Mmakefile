@@ -1,0 +1,81 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2000-2005 The University of Melbourne.
+# Copyright (C) 2015-2016, 2018 The Mercury team.
+# This file is distributed under the terms specified in COPYING.LIB.
+#-----------------------------------------------------------------------------#
+
+INSTALL_PREFIX := $(INSTALL_PREFIX)/extras
+
+# Use shared libraries, since they're needed for dynamic linking
+MLFLAGS = --shared
+
+# Link in the `-ldl' library (this may not be needed on some systems)
+MLLIBS = -ldl
+
+# enable C-level debugging
+CFLAGS = -g
+MLFLAGS += --no-strip
+
+-include ../Mmake.params
+
+main_target: libdl
+depend: dl.depend dl_test.depend dl_test2.depend hello.depend
+
+install: libdl.install
+
+#-----------------------------------------------------------------------------#
+#
+# Some simple regression tests
+#
+
+.PHONY: check
+check:	dl_test.res
+
+# The dl_test2 test case only works in non-hl* grades.
+ifeq "$(findstring hl,$(GRADE))" ""
+check: dl_test2.res
+endif
+
+dl_test.res: dl_test dl_test.exp libhello.$(EXT_FOR_SHARED_LIB)
+	./dl_test > dl_test.out
+	diff -c dl_test.out dl_test.exp
+
+dl_test2.res: dl_test2 dl_test2.exp libhello.$(EXT_FOR_SHARED_LIB)
+	./dl_test2 > dl_test2.out
+	diff -c dl_test2.out dl_test2.exp
+
+#-----------------------------------------------------------------------------#
+#
+# We want copies of name_mangling.m and dl.m in both
+# extras/dynamic_linking and in mercury/browser.
+# The master copy in our CVS repository is in mercury/browser.
+# The copy here is automatically generated from that copy.
+#
+
+dl.depend dl_test.depend dl_test2.depend: sources
+
+.PHONY: sources
+sources: dl.m name_mangle.m
+
+BROWSER_DIR = $(shell \
+	if [ -d ../../browser ]; then \
+		echo ../../browser; \
+	elif [ -d ../../../mercury/browser ]; then \
+		echo ../../../mercury/browser; \
+	else \
+		echo none; \
+	fi)
+
+ifneq ("$(BROWSER_DIR)","none")
+
+name_mangle.m: $(BROWSER_DIR)/name_mangle.m
+	sed 's/mdb.//g' $< > $@
+
+dl.m: $(BROWSER_DIR)/dl.m
+	sed 's/mdb.//g' $< > $@
+
+endif
+
+#-----------------------------------------------------------------------------#
