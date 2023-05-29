@@ -1,0 +1,106 @@
+/*
+** Automatically generated from `modes.m'
+** by the Mercury compiler,
+** version rotd-2023-05-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.modes.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__modes
+#define MR_HEADER_GUARD_check_hlds__modes
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODES_DECL_GUARD
+#define CHECK_HLDS__MODES_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modes__check_hlds__modes__type_ctor_info_clause_form_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modes__check_hlds__modes__type_ctor_info_include_detism_on_modes_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modes__check_hlds__modes__type_ctor_info_maybe_infer_modes_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__modes__check_hlds__modes__type_ctor_info_maybe_unify_pred_0;
+
+void MR_CALL 
+check_hlds__modes__check_pred_modes_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+check_hlds__modes__modecheck_lambda_final_insts_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__modes__modecheck_module_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__modes__modecheck_proc_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+check_hlds__modes__modecheck_proc_general_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7,
+  MR_Word * param_8);
+
+void mercury__check_hlds__modes__init(void);
+void mercury__check_hlds__modes__init_type_tables(void);
+void mercury__check_hlds__modes__init_debugger(void);
+const char *mercury__check_hlds__modes__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.modes
+
+// :- end_interface check_hlds.modes.

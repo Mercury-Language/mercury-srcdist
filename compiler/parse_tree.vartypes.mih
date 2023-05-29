@@ -1,0 +1,244 @@
+/*
+** Automatically generated from `vartypes.m'
+** by the Mercury compiler,
+** version rotd-2023-05-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.vartypes.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__vartypes
+#define MR_HEADER_GUARD_parse_tree__vartypes
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__VARTYPES_DECL_GUARD
+#define PARSE_TREE__VARTYPES_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__vartypes__parse_tree__vartypes__type_ctor_info_prog_var_set_types_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__vartypes__parse_tree__vartypes__type_ctor_info_vartypes_0;
+
+void MR_CALL 
+parse_tree__vartypes__add_var_type_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__vartypes__apply_rec_subst_to_vartypes_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__apply_subst_to_vartypes_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__apply_variable_renaming_to_vartypes_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__delete_sorted_var_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__delete_var_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__delete_var_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__foldl_var_types_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+parse_tree__vartypes__init_vartypes_1_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+parse_tree__vartypes__is_in_vartypes_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__vartypes__lookup_var_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__lookup_var_types_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__search_insert_var_type_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+parse_tree__vartypes__search_var_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__transform_foldl_var_types_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+parse_tree__vartypes__update_var_type_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__vartypes__vartypes_add_corresponding_lists_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+parse_tree__vartypes__vartypes_count_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+parse_tree__vartypes__vartypes_from_corresponding_lists_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__vartypes_from_rev_sorted_assoc_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__vartypes__vartypes_from_sorted_assoc_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+parse_tree__vartypes__vartypes_is_empty_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+parse_tree__vartypes__vartypes_optimize_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__vartypes__vartypes_select_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+parse_tree__vartypes__vartypes_to_sorted_assoc_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__vartypes__vartypes_types_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+parse_tree__vartypes__vartypes_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_Word MR_CALL 
+parse_tree__vartypes__lookup_var_type_func_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+parse_tree__vartypes____Compare____prog_var_set_types_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+parse_tree__vartypes____Compare____vartypes_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+parse_tree__vartypes____Unify____prog_var_set_types_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+parse_tree__vartypes____Unify____vartypes_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__parse_tree__vartypes__init(void);
+void mercury__parse_tree__vartypes__init_type_tables(void);
+void mercury__parse_tree__vartypes__init_debugger(void);
+const char *mercury__parse_tree__vartypes__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.vartypes
+
+// :- end_interface parse_tree.vartypes.

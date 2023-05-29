@@ -1,0 +1,22 @@
+:- module (make.module_target).
+:- interface.
+:- use_module backend_libs.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (backend_libs.compile_target_code).
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.maybe_util).
+:- use_module (make.dependencies).
+:- use_module (make.make_info).
+:- use_module (parse_tree.module_dep_info).
+:- type foreign_code_file
+    --->    foreign_code_file(((make.module_target).foreign_language) :: libs.globals.foreign_language, ((make.module_target).target_file) :: libs.file_util.file_name, ((make.module_target).object_file) :: libs.file_util.file_name).
+:- pred external_foreign_code_files(libs.globals.globals, backend_libs.compile_target_code.pic, parse_tree.module_dep_info.module_dep_info, list.list(make.module_target.foreign_code_file), io.io, io.io).
+:- mode external_foreign_code_files((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_module_target(list.list(string), libs.globals.globals, make.dependencies.dependency_file, libs.maybe_util.maybe_succeeded, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode make_module_target((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred record_made_target(libs.globals.globals, make.make_info.target_file, make.make_info.compilation_task_type, libs.maybe_util.maybe_succeeded, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode record_made_target((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
