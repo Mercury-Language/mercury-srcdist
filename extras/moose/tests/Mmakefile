@@ -1,0 +1,19 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+
+.SUFFIXES: .m .moo
+
+default_target: all
+
+depend: array_based.depend
+
+array_based.depend: array_based.m
+
+all: array_based.c
+
+.moo.m:
+	../moose $<
+
+realclean:
+	rm -f array_based.m
