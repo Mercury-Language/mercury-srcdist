@@ -1,0 +1,50 @@
+:- module (libs.globals).
+:- interface.
+:- type backend
+	where	type_is_abstract_enum(1).
+:- type c_compiler_type.
+:- type clang_version.
+:- type compilation_target
+	where	type_is_abstract_enum(2).
+:- type csharp_compiler_type
+	where	type_is_abstract_enum(2).
+:- type env_type
+	where	type_is_abstract_enum(3).
+:- type file_install_cmd.
+:- type foreign_language
+	where	type_is_abstract_enum(2).
+:- type gc_method
+	where	type_is_abstract_enum(3).
+:- type globals.
+:- type limit_error_contexts_map.
+:- type line_number_range.
+:- type may_be_thread_safe.
+:- type maybe_item_version_numbers
+	where	type_is_abstract_enum(1).
+:- type maybe_smart_recompilation
+	where	type_is_abstract_enum(1).
+:- type reuse_strategy.
+:- type source_file_map.
+:- type ssdb_trace_level
+	where	type_is_abstract_enum(2).
+:- type termination_norm
+	where	type_is_abstract_enum(2).
+:- type word_size
+	where	type_is_abstract_enum(1).
+:- type_representation(backend, du_repn(enum("high_level_backend", "low_level_backend", [],  no_c_j_cs))).
+:- type_representation(clang_version, is_word_aligned_ptr).
+:- type_representation(compilation_target, du_repn(enum("target_c", "target_csharp", ["target_java"],  no_c_j_cs))).
+:- type_representation(csharp_compiler_type, du_repn(enum("csharp_microsoft", "csharp_mono", ["csharp_unknown"],  no_c_j_cs))).
+:- type_representation(env_type, du_repn(enum("env_type_posix", "env_type_cygwin", ["env_type_msys", "env_type_win_cmd", "env_type_powershell"],  no_c_j_cs))).
+:- type_representation(foreign_language, du_repn(enum("lang_c", "lang_csharp", ["lang_java"],  no_c_j_cs))).
+:- type_representation(gc_method, du_repn(enum("gc_automatic", "gc_none", ["gc_boehm", "gc_boehm_debug", "gc_hgc", "gc_accurate"],  no_c_j_cs))).
+:- type_representation(globals, is_word_aligned_ptr).
+:- type_representation(limit_error_contexts_map, is_eqv_to(map(string, list(libs.globals.line_number_range)))).
+:- type_representation(line_number_range, is_word_aligned_ptr).
+:- type_representation(may_be_thread_safe, is_eqv_to(bool)).
+:- type_representation(maybe_item_version_numbers, du_repn(enum("do_not_disable_item_version_numbers", "disable_item_version_numbers", [],  no_c_j_cs))).
+:- type_representation(maybe_smart_recompilation, du_repn(enum("do_not_disable_smart_recompilation", "disable_smart_recompilation", [],  no_c_j_cs))).
+:- type_representation(source_file_map, is_eqv_to(bimap(module_name, string))).
+:- type_representation(ssdb_trace_level, du_repn(enum("ssdb_none", "ssdb_shallow", ["ssdb_deep"],  no_c_j_cs))).
+:- type_representation(termination_norm, du_repn(enum("norm_simple", "norm_total", ["norm_num_data_elems", "norm_size_data_elems"],  no_c_j_cs))).
+:- type_representation(word_size, du_repn(enum("word_size_32", "word_size_64", [],  no_c_j_cs))).
