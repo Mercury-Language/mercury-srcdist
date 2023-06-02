@@ -1,0 +1,2 @@
+:- module (parse_tree.parse_tree_out_misc).
+:- interface.

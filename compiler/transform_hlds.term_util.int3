@@ -1,0 +1,13 @@
+:- module (transform_hlds.term_util).
+:- interface.
+:- type arg_size_info.
+:- type maybe_believe_check_termination
+	where	type_is_abstract_enum(1).
+:- type pass_info.
+:- type termination_info.
+:- type used_args.
+:- type_representation(arg_size_info, is_eqv_to(generic_arg_size_info(list(term_error)))).
+:- type_representation(maybe_believe_check_termination, du_repn(enum("do_not_believe_check_termination", "do_believe_check_termination", [],  no_c_j_cs))).
+:- type_representation(pass_info, is_word_aligned_ptr).
+:- type_representation(termination_info, is_eqv_to(generic_termination_info(unit, list(term_error)))).
+:- type_representation(used_args, is_eqv_to(map(pred_proc_id, list(bool)))).

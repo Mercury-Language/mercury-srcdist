@@ -1,0 +1,53 @@
+:- module (io.primitives_write).
+:- interface.
+:- use_module char.
+:- pred do_write_binary_string_utf8(io.stream, string, io.system_error, io.io, io.io).
+:- mode do_write_binary_string_utf8((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_binary_uint16(io.stream, uint16, io.system_error, io.io, io.io).
+:- mode do_write_binary_uint16((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_binary_uint16_be(io.stream, uint16, io.system_error, io.io, io.io).
+:- mode do_write_binary_uint16_be((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_binary_uint16_le(io.stream, uint16, io.system_error, io.io, io.io).
+:- mode do_write_binary_uint16_le((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_binary_uint32(io.stream, uint32, io.system_error, io.io, io.io).
+:- mode do_write_binary_uint32((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_binary_uint32_be(io.stream, uint32, io.system_error, io.io, io.io).
+:- mode do_write_binary_uint32_be((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_binary_uint32_le(io.stream, uint32, io.system_error, io.io, io.io).
+:- mode do_write_binary_uint32_le((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_binary_uint64(io.stream, uint64, io.system_error, io.io, io.io).
+:- mode do_write_binary_uint64((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_binary_uint64_be(io.stream, uint64, io.system_error, io.io, io.io).
+:- mode do_write_binary_uint64_be((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_binary_uint64_le(io.stream, uint64, io.system_error, io.io, io.io).
+:- mode do_write_binary_uint64_le((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_byte(io.stream, int, io.system_error, io.io, io.io).
+:- mode do_write_byte((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_char(io.stream, char.char, io.system_error, io.io, io.io).
+:- mode do_write_char((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_float(io.stream, float, io.system_error, io.io, io.io).
+:- mode do_write_float((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_int(io.stream, int, io.system_error, io.io, io.io).
+:- mode do_write_int((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_int16(io.stream, int16, io.system_error, io.io, io.io).
+:- mode do_write_int16((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_int32(io.stream, int32, io.system_error, io.io, io.io).
+:- mode do_write_int32((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_int64(io.stream, int64, io.system_error, io.io, io.io).
+:- mode do_write_int64((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_int8(io.stream, int8, io.system_error, io.io, io.io).
+:- mode do_write_int8((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_string(io.stream, string, io.system_error, io.io, io.io).
+:- mode do_write_string((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_uint(io.stream, uint, io.system_error, io.io, io.io).
+:- mode do_write_uint((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_uint16(io.stream, uint16, io.system_error, io.io, io.io).
+:- mode do_write_uint16((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_uint32(io.stream, uint32, io.system_error, io.io, io.io).
+:- mode do_write_uint32((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_uint64(io.stream, uint64, io.system_error, io.io, io.io).
+:- mode do_write_uint64((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred do_write_uint8(io.stream, uint8, io.system_error, io.io, io.io).
+:- mode do_write_uint8((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- pragma foreign_import_module("C#", (io.stream_ops)).
