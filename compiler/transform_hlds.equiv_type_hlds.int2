@@ -1,0 +1,2 @@
+:- module (transform_hlds.equiv_type_hlds).
+:- interface.

@@ -1,0 +1,333 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2005-2007, 2009-2012 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public Licence - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# Mmakefile for building the Mercury slice and dice tools.
+
+MERCURY_DIR=..
+LINK_STATIC=yes
+include $(MERCURY_DIR)/Mmake.common
+
+#----------------------------------------------------------------------------#
+
+# Override some settings from ../Mmake.workspace so that in debugging grades
+# we do not include mer_mdbcomp.init when creating the _init.c files in
+# this directory. We copy the mdbcomp modules into this directory so if we
+# do include mer_mdbcomp.init we will end up with duplicate entries in the
+# _init.c files.
+
+C2INITFLAGS = --trace-init-file $(BROWSER_DIR)/$(BROWSER_LIB_NAME).init
+
+#----------------------------------------------------------------------------#
+
+-include Mmake.slice.params
+
+# Override the default rule in `mmake --use-mmc-make' that asks `mmc' to
+# create a missing optional params file.
+Mmake.slice.params:
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+MAIN_TARGET		= all
+
+# If you add more modules, you will also have to modify the os, cs, css
+# and java targets below, as well as ../Mmakefile.
+MERCURY_MAIN_MODULES	= mslice mdice mcov mtc_union mtc_diff
+
+DEPENDS	= $(patsubst %,%.depend,$(MERCURY_MAIN_MODULES))
+INTS	= $(patsubst %,%.ints,$(MERCURY_MAIN_MODULES))
+INT3S	= $(patsubst %,%.int3s,$(MERCURY_MAIN_MODULES))
+CHECKS	= $(patsubst %,%.check,$(MERCURY_MAIN_MODULES))
+PDBS    = $(patsubst %,%.pdb,$(MERCURY_MAIN_MODULES))
+
+VPATH = $(LIBRARY_DIR) $(SSDB_DIR)
+
+#-----------------------------------------------------------------------------#
+
+MDBCOMP_MODULES = \
+	builtin_modules.m \
+	feedback.automatic_parallelism.m \
+	feedback.m \
+	mdbcomp.m \
+	mdbcomp.goal_path.m \
+	prim_data.m \
+	program_representation.m \
+	rtti_access.m \
+	shared_utilities.m \
+	slice_and_dice.m \
+	sym_name.m \
+	trace_counts.m
+
+#-----------------------------------------------------------------------------#
+
+MLFLAGS += --shared
+MCFLAGS += --flags SLICE_FLAGS $(CONFIG_OVERRIDE)
+
+#-----------------------------------------------------------------------------#
+
+ifneq ("$(filter csharp% java%,$(GRADE))","")
+MLOBJS =
+endif
+
+#-----------------------------------------------------------------------------#
+
+# Tell the C# compiler where the stdlib assembly is.
+#
+ifneq ("$(filter csharp%,$(GRADE))","")
+CSCFLAGS=-lib:../library -r:mer_std.dll
+endif
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: depend
+depend:	$(MDBCOMP_MODULES) $(DEPENDS)
+
+$(DEPENDS): Mercury.modules SLICE_FLAGS $(MDBCOMP_MODULES)
+
+# This directory contains source files for which the module
+# name doesn't match the file name, so smart recompilation
+# won't work without the Mercury.modules file.
+.PHONY: Mercury.modules
+Mercury.modules: SLICE_FLAGS $(MDBCOMP_MODULES)
+	$(MC) $(ALL_GRADEFLAGS) $(ALL_MCFLAGS) -f *.m
+
+.PHONY: all
+all:	$(MDBCOMP_MODULES) $(MERCURY_MAIN_MODULES) $(TAGS_FILE_EXISTS)
+
+#-----------------------------------------------------------------------------#
+#
+# The programs in this directory rely on the mdbcomp package, since
+# it contains the types that define the representation of Mercury programs
+# for tools such as debuggers and profilers, and predicates that operate on
+# those representations.
+#
+# If we linked ../mdbcomp/libmer_mdbcomp.so into the executables in this
+# directory, then those executables would have to be compiled in the same grade
+# as the modules of the mdbcomp directory, which in turn is the same grade
+# as the modules of the library and compiler directories. This would work,
+# but it would mean that rebuilding the tools in this directory in another
+# grade (e.g. to enable debugging) would take several minutes. To avoid such
+# delays, we copy across the source files of the mdbcomp library. The copied
+# .m files, and the .m files that natively reside in this directory, can be
+# recompiled in a different grade much more quickly than that.
+#
+
+$(MDBCOMP_MODULES): %: $(MDBCOMP_DIR)/%
+	-@/bin/rm -f $*
+	@cp $(MDBCOMP_DIR)/$* .
+	@chmod a-w $*
+
+#-----------------------------------------------------------------------------#
+
+# The C# and Java implementations of the mdbcomp library are not yet
+# complete, so we need to pass `--allow-stubs' to get them to compile.
+# Since the standard library is compiled with `--halt-at-warn',
+# we also need `--no-warn-stubs'.
+ifneq ("$(filter csharp% java%,$(GRADE))","")
+MCFLAGS += --allow-stubs --no-warn-stubs
+endif
+
+#-----------------------------------------------------------------------------#
+
+# Add some additional dependencies, so that Mmake knows to remake the
+# slicer and dicer if one of the libraries changes.
+# XXX Should also depend on $(BOEHM_GC_DIR)/libgc(_prof).$A, but only
+# if in .gc(.prof) grade.
+
+RUN_LIB_BROW = \
+	$(RUNTIME_DIR)/lib$(RT_LIB_NAME).$A \
+	$(LIBRARY_DIR)/lib$(STD_LIB_NAME).$A \
+	$(BROWSER_DIR)/lib$(BROWSER_LIB_NAME).$A
+
+ifeq ("$(filter csharp% java%,$(GRADE))","")
+mslice:		$(RUN_LIB_BROW)
+mdice:		$(RUN_LIB_BROW)
+mcov:		$(RUN_LIB_BROW)
+mtc_union:	$(RUN_LIB_BROW)
+mtc_diff:	$(RUN_LIB_BROW)
+endif
+
+$(cs_subdir)mslice_init.c:	$(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+$(cs_subdir)mdice_init.c:	$(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+$(cs_subdir)mcov_init.c:	$(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+$(cs_subdir)mtc_union_init.c:	$(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+$(cs_subdir)mtc_diff_init.c:	$(UTIL_DIR)/mkinit$(EXT_FOR_EXE)
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: check
+check:	$(CHECKS)
+
+.PHONY: ints
+ints:	$(INTS)
+
+#-----------------------------------------------------------------------------#
+
+# We need the shenanigans with .slice_tags to avoid situations in which
+# "mmake tags" in this directory does nothing even in the absence of a tags
+# file in this directory, because mmake uses VPATH to find ../library/tags
+# and believes it to be the tags file we are asking for.
+#
+# We give files in mdbcomp to mtags before the files in this directory
+# because we want references to entities defined in the modules copied from the
+# mdbcomp directory to this directory to go the actual, effective definitions,
+# the definitions which can be changed *without* those changes going away
+# on the next copy.
+
+tags:	.slice_tags
+
+.slice_tags: $(MTAGS) $(wildcard *.m) \
+		$(wildcard $(MDBCOMP_DIR)/*.m) \
+		$(wildcard $(LIBRARY_DIR)/*.m)
+	$(MTAGS) $(MDBCOMP_DIR)/*.m *.m $(LIBRARY_DIR)/*.m
+	@touch .slice_tags
+
+.PHONY: tags_file_exists
+tags_file_exists:
+	@if test ! -f tags; \
+	then \
+		echo making tags; \
+		$(MTAGS) $(MDBCOMP_DIR)/*.m *.m $(LIBRARY_DIR)/*.m; \
+		touch .slice_tags; \
+	fi
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: dates
+dates:
+	touch $(mslice.dates) $(mdice.dates) $(mcov.dates) \
+		$(mtc_union.dates) $(mtc_diff.ms)
+
+#-----------------------------------------------------------------------------#
+
+# The documentation of the reason for this set of rules
+# can be found in library/Mmakefile.
+
+.PHONY: os cs css javas
+
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+
+os: \
+	mslice.os \
+	mdice.os \
+	mcov.os \
+	mtc_union.os \
+	mtc_diff.os 
+
+cs: \
+	mslice.cs \
+	mdice.cs \
+	mcov.cs \
+	mtc_union.cs \
+	mtc_diff.cs 
+css: \
+	mslice.css \
+	mdice.css \
+	mcov.css \
+	mtc_union.css \
+	mtc_diff.css 
+javas: \
+	mslice.javas \
+	mdice.javas \
+	mcov.javas \
+	mtc_union.javas \
+	mtc_diff.javas 
+
+else
+ifneq ($(origin mslice.os),undefined)
+
+os: \
+	$(mslice.os) \
+	$(mdice.os) \
+	$(mcov.os) \
+	$(mtc_union.os) \
+	$(mtc_diff.os) 
+
+cs: \
+	$(mslice.cs) \
+	$(mdice.cs) \
+	$(mcov.cs) \
+	$(mtc_union.cs) \
+	$(mtc_diff.cs) 
+css: \
+	$(mslice.css) \
+	$(mdice.css) \
+	$(mcov.css) \
+	$(mtc_union.css) \
+	$(mtc_diff.css) 
+javas: \
+	$(mslice.javas) \
+	$(mdice.javas) \
+	$(mcov.javas) \
+	$(mtc_union.javas) \
+	$(mtc_diff.javas) 
+
+else
+
+os:
+	mmake depend; mmake os
+
+cs:
+	mmake depend; mmake cs
+
+css:
+	mmake depend; mmake css
+
+javas:
+	mmake depend; mmake javas
+
+endif
+endif
+
+#-----------------------------------------------------------------------------#
+
+realclean_local:
+	rm -f Mercury.modules tags SLICE_FLAGS SLICE_FLAGS.date \
+		.mdbcomp_modules $(MDBCOMP_MODULES) mdbcomp.*.err
+	rm -f $(PDBS) vc*.pdb
+
+#-----------------------------------------------------------------------------#
+
+# Installation targets
+
+.PHONY: install
+install: install_slicer
+
+.PHONY: install_slicer
+install_slicer: mslice mdice mtc_union mcov mtc_diff
+	-[ -d $(INSTALL_MERC_BIN_DIR) ] || mkdir -p $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mslice$(EXT_FOR_EXE)` \
+		$(INSTALL_MERC_BIN_DIR)/mslice$(EXT_FOR_EXE)
+	cp `vpath_find mdice$(EXT_FOR_EXE)` \
+		$(INSTALL_MERC_BIN_DIR)/mdice$(EXT_FOR_EXE)
+	cp `vpath_find mcov$(EXT_FOR_EXE)` \
+		$(INSTALL_MERC_BIN_DIR)/mcov$(EXT_FOR_EXE)
+	cp `vpath_find mtc_union$(EXT_FOR_EXE)` \
+		$(INSTALL_MERC_BIN_DIR)/mtc_union$(EXT_FOR_EXE)
+	cp `vpath_find mtc_diff$(EXT_FOR_EXE)` \
+		$(INSTALL_MERC_BIN_DIR)/mtc_diff$(EXT_FOR_EXE)
+ifeq ($(findstring java,$(GRADE)),java)
+	cp `vpath_find mdice.jar` $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mslice.jar` $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mcov.jar` $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mtc_diff.jar` $(INSTALL_MERC_BIN_DIR)
+	cp `vpath_find mtc_union.jar` $(INSTALL_MERC_BIN_DIR)
+endif
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: uninstall
+uninstall:
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mslice$(EXT_FOR_EXE)
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mdice$(EXT_FOR_EXE)
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mcov$(EXT_FOR_EXE)
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mtc_union$(EXT_FOR_EXE)
+	-rm -f $(INSTALL_MERC_BIN_DIR)/mtc_diff$(EXT_FOR_EXE)
+
+#-----------------------------------------------------------------------------#
