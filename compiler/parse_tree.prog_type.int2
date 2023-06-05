@@ -1,0 +1,48 @@
+:- module (parse_tree.prog_type).
+:- interface.
+:- type is_builtin_dummy_type_ctor
+    --->    is_builtin_dummy_type_ctor 
+    ;       is_builtin_non_dummy_type_ctor 
+    ;       is_not_builtin_dummy_type_ctor .
+:- type is_dummy_type
+    --->    is_dummy_type 
+    ;       is_not_dummy_type .
+:- type non_kinded_type =< parse_tree.prog_data.mer_type
+    --->    type_variable(parse_tree.prog_data.tvar, parse_tree.prog_data.kind)
+    ;       defined_type(mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.kind)
+    ;       builtin_type(parse_tree.prog_data.builtin_type)
+    ;       tuple_type(list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.kind)
+    ;       higher_order_type(mdbcomp.prim_data.pred_or_func, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.ho_inst_info, parse_tree.prog_data.purity, parse_tree.prog_data.lambda_eval_method)
+    ;       apply_n_type(parse_tree.prog_data.tvar, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.kind).
+:- type polymorphism_cell
+    --->    type_info_cell(parse_tree.prog_data.type_ctor)
+    ;       typeclass_info_cell .
+:- type type_ctor_cat_builtin
+    --->    cat_builtin_int(parse_tree.prog_data.int_type)
+    ;       cat_builtin_float 
+    ;       cat_builtin_char 
+    ;       cat_builtin_string .
+:- type type_ctor_cat_enum
+    --->    cat_enum_mercury 
+    ;       cat_enum_foreign .
+:- type type_ctor_cat_system
+    --->    cat_system_type_info 
+    ;       cat_system_type_ctor_info 
+    ;       cat_system_typeclass_info 
+    ;       cat_system_base_typeclass_info .
+:- type type_ctor_cat_user
+    --->    cat_user_direct_dummy 
+    ;       cat_user_abstract_dummy 
+    ;       cat_user_notag 
+    ;       cat_user_abstract_notag 
+    ;       cat_user_general .
+:- type type_ctor_category
+    --->    ctor_cat_builtin(parse_tree.prog_type.type_ctor_cat_builtin)
+    ;       ctor_cat_builtin_dummy 
+    ;       ctor_cat_void 
+    ;       ctor_cat_variable 
+    ;       ctor_cat_higher_order 
+    ;       ctor_cat_tuple 
+    ;       ctor_cat_enum(parse_tree.prog_type.type_ctor_cat_enum)
+    ;       ctor_cat_system(parse_tree.prog_type.type_ctor_cat_system)
+    ;       ctor_cat_user(parse_tree.prog_type.type_ctor_cat_user).

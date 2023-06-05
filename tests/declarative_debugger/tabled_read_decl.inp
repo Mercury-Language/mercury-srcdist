@@ -1,0 +1,57 @@
+echo on
+register --quiet
+context none
+table_io allow
+table_io start
+break tabled_read_decl__test
+continue
+finish -n
+print
+dd -d 3 -n 7 -a
+print 1-2
+p io 1-2
+print io 2-1
+browse io 4
+print
+num_io_actions 3
+quit
+browse 1
+num_io_actions 10
+quit
+no
+yes
+yes
+break tabled_read_decl.part_2
+c
+break tabled_read_decl.test
+c
+delete *
+f
+dd -d 3 -n 7 -ad1
+y
+n
+y
+y
+print io limits
+print io
+print io 8
+print action 10-12
+browse io 9
+p
+quit
+break tabled_read_decl.part_3
+c
+break tabled_read_decl.fake_io
+c
+table_io stop
+delete *
+f
+dd -d 3 -n 7 -ad1
+y
+y
+y
+n
+y
+y
+y
+c
