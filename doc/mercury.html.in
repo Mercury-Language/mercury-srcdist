@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- -->
+<title>Mercury documentation</title>
+</head>
+<body>
+<h1>Mercury documentation, version <VERSION></h1>
+<p>
+<ul>
+<li><a href="mercury_ref.html">Mercury Language Reference Manual</a>
+<li><a href="mercury_user_guide.html">Mercury User's Guide</a>
+<li><a href="mercury_library.html">Mercury Library Reference Manual</a>
+<li><a href="mercury_trans_guide.html">Prolog to Mercury Transition Guide</a>
+<li><a href="mercury_faq.html">Frequently Asked Questions</a>
+</ul>
+<p>
+<ul>
+<li><a href="https://mercurylang.org">Mercury Home Page</a>
+</ul>
+</body>
+</html>
