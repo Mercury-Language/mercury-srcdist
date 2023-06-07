@@ -1,0 +1,1600 @@
+:- module array.
+:- use_module builtin.
+:- use_module exception.
+:- use_module int.
+:- use_module list.
+:- use_module pretty_printer.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module type_desc.
+:- use_module (string.format).
+:- use_module (string.parse_util).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C", (io.stream_ops)).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", version_array).
+:- pragma foreign_import_module("C#", (io.stream_ops)).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", version_array).
+:- pragma foreign_import_module("Java", (io.stream_ops)).
+
+:- type array(T).
+:- pragma foreign_type(c, array(T), "MR_ArrayPtr", [can_pass_as_mercury_type])
+    where
+        equality is (array.array_equal),
+        comparison is (array.array_compare).
+:- pragma foreign_type(java, array(T), "/* Array */ java.lang.Object")
+    where
+        equality is (array.array_equal),
+        comparison is (array.array_compare).
+:- pragma foreign_type(csharp, array(T), "System.Array")
+    where
+        equality is (array.array_equal),
+        comparison is (array.array_compare).
+
+:- pred array.approx_binary_search_loop((func(T, T) = builtin.comparison_result), array.array(T), T, int, int, int).
+:- mode approx_binary_search_loop((builtin.in), (array.array_ui), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred array.array_compare(builtin.comparison_result, array.array(T), array.array(T)).
+:- mode array_compare((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pragma terminates(pred((array.array_compare)/3)).
+:- pred array.array_equal(array.array(T), array.array(T)).
+:- mode array_equal((builtin.in), (builtin.in)) is semidet.
+:- pragma terminates(pred((array.array_equal)/2)).
+:- pred array.binary_search_loop((func(T, T) = builtin.comparison_result), array.array(T), T, int, int, int).
+:- mode binary_search_loop((builtin.in), (array.array_ui), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred array.do_all_false((pred T), int, int, array.array(T)).
+:- mode do_all_false(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred array.do_all_true((pred T), int, int, array.array(T)).
+:- mode do_all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred array.do_fill_range(T, int, int, array.array(T), array.array(T)).
+:- mode do_fill_range((builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo)) is det.
+:- pred array.do_foldl2(pred(T1, T2, T2, T3, T3), int, int, array.array(T1), T2, T2, T3, T3).
+:- mode do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.do_foldl2_corresponding(pred(T1, T2, T3, T3, T4, T4), int, int, array.array(T1), array.array(T2), T3, T3, T4, T4).
+:- mode do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.do_foldl3(pred(T1, T2, T2, T3, T3, T4, T4), int, int, array.array(T1), T2, T2, T3, T3, T4, T4).
+:- mode do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.do_foldl4(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5), int, int, array.array(T1), T2, T2, T3, T3, T4, T4, T5, T5).
+:- mode do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.do_foldl5(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5, T6, T6), int, int, array.array(T1), T2, T2, T3, T3, T4, T4, T5, T5, T6, T6).
+:- mode do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.do_foldl_corresponding(pred(T1, T2, T3, T3), int, int, array.array(T1), array.array(T2), T3, T3).
+:- mode do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- func array.do_foldl_func((func(T1, T2) = T2), array.array(T1), T2, int, int) = T2.
+:- mode do_foldl_func(((func((builtin.in), (builtin.in)) = (builtin.out) is det) >> (func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- mode do_foldl_func(((func((builtin.in), (builtin.di)) = (builtin.uo) is det) >> (func((builtin.in), (builtin.di)) = (builtin.uo) is det)), (builtin.in), (builtin.di), (builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred array.do_foldl_pred(pred(T1, T2, T2), array.array(T1), int, int, T2, T2).
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.do_foldr2(pred(T1, T2, T2, T3, T3), int, int, array.array(T1), T2, T2, T3, T3).
+:- mode do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.do_foldr3(pred(T1, T2, T2, T3, T3, T4, T4), int, int, array.array(T1), T2, T2, T3, T3, T4, T4).
+:- mode do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.do_foldr4(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5), int, int, array.array(T1), T2, T2, T3, T3, T4, T4, T5, T5).
+:- mode do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.do_foldr5(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5, T6, T6), int, int, array.array(T1), T2, T2, T3, T3, T4, T4, T5, T5, T6, T6).
+:- mode do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- func array.do_foldr_func((func(T1, T2) = T2), array.array(T1), T2, int, int) = T2.
+:- mode do_foldr_func(((func((builtin.in), (builtin.in)) = (builtin.out) is det) >> (func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- mode do_foldr_func(((func((builtin.in), (builtin.di)) = (builtin.uo) is det) >> (func((builtin.in), (builtin.di)) = (builtin.uo) is det)), (builtin.in), (builtin.di), (builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred array.do_foldr_pred(pred(T1, T2, T2), int, int, array.array(T1), T2, T2).
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode do_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.generate_foldl2_loop(pred(int, T, A, A, B, B), int, int, array.array(T), array.array(T), A, A, B, B).
+:- mode generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)) is det.
+:- mode generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- mode generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.generate_foldl_loop(pred(int, T, A, A), int, int, array.array(T), array.array(T), A, A).
+:- mode generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)) is det.
+:- mode generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)) is det.
+:- mode generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)) is det.
+:- mode generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)) is semidet.
+:- mode generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.generate_loop(((func int) = T), int, int, array.array(T), array.array(T)).
+:- mode generate_loop((builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo)) is det.
+:- pred array.map_2(int, int, pred(T1, T2), array.array(T1), array.array(T2), array.array(T2)).
+:- mode map_2((builtin.in), (builtin.in), builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (array.array_di), (array.array_uo)) is det.
+:- pred array.map_corresponding_foldl_2(pred(T1, T2, T3, T4, T4), int, int, array.array(T1), array.array(T2), array.array(T3), array.array(T3), T4, T4).
+:- mode map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)) is det.
+:- mode map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)) is det.
+:- mode map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)) is det.
+:- mode map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)) is semidet.
+:- mode map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)) is semidet.
+:- pred array.map_foldl_loop(pred(T1, T2, T3, T3), int, array.array(T1), array.array(T2), array.array(T2), T3, T3).
+:- mode map_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)) is det.
+:- mode map_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)) is det.
+:- mode map_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)) is det.
+:- mode map_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)) is semidet.
+:- func array.samsort_subarray(array.array(T), int, int) = array.array(T).
+:- mode samsort_subarray((array.array_di), (builtin.in), (builtin.in)) = (array.array_uo) is det.
+:- pragma type_spec(func((array.samsort_subarray)/3), T = string).
+:- pragma type_spec(func((array.samsort_subarray)/3), T = int).
+:- pred array.samsort_up(int, array.array(T), array.array(T), array.array(T), array.array(T), int, int, int).
+:- mode samsort_up((builtin.in), (array.array_di), (array.array_uo), (array.array_di), (array.array_uo), (builtin.in), (builtin.in), (builtin.in)) is det.
+:- pragma type_spec(pred((array.samsort_up)/8), T = string).
+:- pragma type_spec(pred((array.samsort_up)/8), T = int).
+:- pred array.unsafe_init(int, T, int, array.array(T)).
+:- mode unsafe_init((builtin.in), (builtin.in), (builtin.in), (array.array_uo)) is det.
+
+array.all_false(V_3, V_4) :-
+    V_5 = array.min(V_4),
+    V_6 = array.max(V_4),
+    array.do_all_false(V_3, V_5, V_6, V_4).
+
+array.all_true(V_3, V_4) :-
+    V_5 = array.min(V_4),
+    V_6 = array.max(V_4),
+    array.do_all_true(V_3, V_5, V_6, V_4).
+
+:- pragma foreign_proc("C", array.append(ArrayA :: (builtin.in), ArrayB :: (builtin.in)) = (ArrayC :: (array.array_uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, sharing(yes(array.array(T), array.array(T), array.array(T)), [cel(ArrayA, [T]) - cel(ArrayC, [T]), cel(ArrayB, [T]) - cel(ArrayC, [T])]), will_not_modify_trail, doesnt_affect_liveness], "
+    MR_Integer sizeC;
+    MR_Integer i;
+    MR_Integer offset;
+
+    sizeC = ArrayA->size + ArrayB->size;
+    ML_alloc_array(ArrayC, sizeC + 1, MR_ALLOC_ID);
+
+    ArrayC->size = sizeC;
+    for (i = 0; i < ArrayA->size; i++) {
+        ArrayC->elements[i] = ArrayA->elements[i];
+    }
+
+    offset = ArrayA->size;
+    for (i = 0; i < ArrayB->size; i++) {
+        ArrayC->elements[offset + i] = ArrayB->elements[i];
+    }
+").
+
+array.approx_binary_search(V_4, V_5, V_6) :-
+    V_7 = builtin.ordering : (func(T_1, T_1) = builtin.comparison_result),
+    array.approx_binary_search(V_7, V_4, V_5, V_6).
+
+array.approx_binary_search(V_5, V_6, V_7, V_8) :-
+    V_9 = 0 : int,
+    V_10 = int.(V_11 - V_12),
+    V_11 = array.size(V_6),
+    V_12 = 1 : int,
+    array.approx_binary_search_loop(V_5, V_6, V_7, V_9, V_10, V_8).
+
+array.approx_binary_search_loop(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    int.(V_10 =< V_11),
+    V_13 = int.(V_10 + V_17),
+    V_17 = int.unchecked_right_shift(V_18, V_19),
+    V_18 = int.(V_11 - V_10),
+    V_19 = 1 : int,
+    array.unsafe_lookup(V_8, V_13, V_14),
+    V_15 = apply(V_7, V_14, V_9),
+    ( % disjunction
+      V_15 = builtin.(>) : builtin.comparison_result,
+      V_20 = int.(V_13 - V_21),
+      V_21 = 1 : int,
+      array.approx_binary_search_loop(V_7, V_8, V_9, V_10, V_20, V_12)
+    ;
+      V_15 = builtin.(=) : builtin.comparison_result,
+      V_12 = V_13
+    ;
+      V_15 = builtin.(<) : builtin.comparison_result,
+      ( if
+        ( if
+          int.(V_13 < V_11)
+        then
+          V_22 = int.(V_13 + V_23),
+          V_23 = 1 : int,
+          array.unsafe_lookup(V_8, V_22, V_16),
+          V_24 = builtin.(<) : builtin.comparison_result,
+          V_24 = apply(V_7, V_9, V_16)
+        else
+          V_13 = V_11
+        )
+      then
+        V_12 = V_13
+      else
+        V_25 = int.(V_13 + V_26),
+        V_26 = 1 : int,
+        array.approx_binary_search_loop(V_7, V_8, V_9, V_25, V_11, V_12)
+      )
+    ).
+
+array.array(V_3) = V_4 :-
+    array.from_list(V_3, V_4).
+
+array.array_compare(V_4, V_5) = V_6 :-
+    array.array_compare(V_6, V_4, V_5).
+
+array.array_to_doc(V_3) = V_2 :-
+    V_2 = pretty_printer.array_to_doc(V_3).
+
+array.binary_search(V_4, V_5, V_6) :-
+    V_7 = builtin.ordering : (func(T_1, T_1) = builtin.comparison_result),
+    array.binary_search(V_7, V_4, V_5, V_6).
+
+array.binary_search(V_5, V_6, V_7, V_8) :-
+    V_9 = 0 : int,
+    V_10 = int.(V_11 - V_12),
+    V_11 = array.size(V_6),
+    V_12 = 1 : int,
+    array.binary_search_loop(V_5, V_6, V_7, V_9, V_10, V_8).
+
+array.binary_search_loop(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    int.(V_10 =< V_11),
+    V_13 = int.(V_10 + V_16),
+    V_16 = int.unchecked_right_shift(V_17, V_18),
+    V_17 = int.(V_11 - V_10),
+    V_18 = 1 : int,
+    array.unsafe_lookup(V_8, V_13, V_14),
+    V_15 = apply(V_7, V_14, V_9),
+    ( % disjunction
+      V_15 = builtin.(>) : builtin.comparison_result,
+      V_19 = int.(V_13 - V_20),
+      V_20 = 1 : int,
+      array.binary_search_loop(V_7, V_8, V_9, V_10, V_19, V_12)
+    ;
+      V_15 = builtin.(=) : builtin.comparison_result,
+      V_12 = V_13
+    ;
+      V_15 = builtin.(<) : builtin.comparison_result,
+      V_21 = int.(V_13 + V_22),
+      V_22 = 1 : int,
+      array.binary_search_loop(V_7, V_8, V_9, V_21, V_11, V_12)
+    ).
+
+array.bounds(V_4, V_5, V_6) :-
+    array.min(V_4, V_5),
+    array.max(V_4, V_6).
+
+array.copy(V_3) = V_4 :-
+    array.copy(V_3, V_4).
+
+:- pragma foreign_proc("C", array.copy(Array0 :: (builtin.in), Array :: (array.array_uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, sharing(yes(array.array(T), array.array(T)), [cel(Array0, [T]) - cel(Array, [T])]), will_not_modify_trail, doesnt_affect_liveness], "
+    ML_alloc_array(Array, Array0->size + 1, MR_ALLOC_ID);
+    ML_copy_array(Array, (MR_ConstArrayPtr) Array0);
+").
+
+array.do_all_false(V_5, V_6, V_7, V_8) :-
+    ( if
+      int.(V_6 =< V_7)
+    then
+      array.unsafe_lookup(V_8, V_6, V_9),
+      not (
+        call(V_5, V_9)
+      ),
+      V_10 = int.(V_6 + V_11),
+      V_11 = 1 : int,
+      array.do_all_false(V_5, V_10, V_7, V_8)
+    else
+      true
+    ).
+
+array.do_all_true(V_5, V_6, V_7, V_8) :-
+    ( if
+      int.(V_6 =< V_7)
+    then
+      array.unsafe_lookup(V_8, V_6, V_9),
+      call(V_5, V_9),
+      V_10 = int.(V_6 + V_11),
+      V_11 = 1 : int,
+      array.do_all_true(V_5, V_10, V_7, V_8)
+    else
+      true
+    ).
+
+array.do_foldl2(V_9, V_10, V_11, V_12, V_15, V_16, V_17, V_18) :-
+    ( if
+      int.(V_11 < V_10)
+    then
+      V_18 = V_17,
+      V_16 = V_15
+    else
+      V_19 = array.unsafe_elem(V_10, V_12),
+      call(V_9, V_19, V_15, V_20, V_17, V_21),
+      V_22 = int.(V_10 + V_25),
+      V_25 = 1 : int,
+      array.do_foldl2(V_9, V_22, V_11, V_12, V_20, V_16, V_21, V_18)
+    ).
+
+array.do_foldl2_corresponding(V_10, V_11, V_12, V_13, V_14, V_19, V_20, V_21, V_22) :-
+    ( if
+      int.(V_11 > V_12)
+    then
+      V_22 = V_21,
+      V_20 = V_19
+    else
+      array.unsafe_lookup(V_13, V_11, V_17),
+      array.unsafe_lookup(V_14, V_11, V_18),
+      call(V_10, V_17, V_18, V_19, V_23, V_21, V_24),
+      V_25 = int.(V_11 + V_28),
+      V_28 = 1 : int,
+      array.do_foldl2_corresponding(V_10, V_25, V_12, V_13, V_14, V_23, V_20, V_24, V_22)
+    ).
+
+array.do_foldl3(V_11, V_12, V_13, V_14, V_18, V_19, V_20, V_21, V_22, V_23) :-
+    ( if
+      int.(V_13 < V_12)
+    then
+      V_23 = V_22,
+      V_21 = V_20,
+      V_19 = V_18
+    else
+      V_24 = array.unsafe_elem(V_12, V_14),
+      call(V_11, V_24, V_18, V_25, V_20, V_26, V_22, V_27),
+      V_28 = int.(V_12 + V_32),
+      V_32 = 1 : int,
+      array.do_foldl3(V_11, V_28, V_13, V_14, V_25, V_19, V_26, V_21, V_27, V_23)
+    ).
+
+array.do_foldl4(V_13, V_14, V_15, V_16, V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28) :-
+    ( if
+      int.(V_15 < V_14)
+    then
+      V_28 = V_27,
+      V_26 = V_25,
+      V_24 = V_23,
+      V_22 = V_21
+    else
+      V_29 = array.unsafe_elem(V_14, V_16),
+      call(V_13, V_29, V_21, V_30, V_23, V_31, V_25, V_32, V_27, V_33),
+      V_34 = int.(V_14 + V_39),
+      V_39 = 1 : int,
+      array.do_foldl4(V_13, V_34, V_15, V_16, V_30, V_22, V_31, V_24, V_32, V_26, V_33, V_28)
+    ).
+
+array.do_foldl5(V_15, V_16, V_17, V_18, V_24, V_25, V_26, V_27, V_28, V_29, V_30, V_31, V_32, V_33) :-
+    ( if
+      int.(V_17 < V_16)
+    then
+      V_33 = V_32,
+      V_31 = V_30,
+      V_29 = V_28,
+      V_27 = V_26,
+      V_25 = V_24
+    else
+      V_34 = array.unsafe_elem(V_16, V_18),
+      call(V_15, V_34, V_24, V_35, V_26, V_36, V_28, V_37, V_30, V_38, V_32, V_39),
+      V_40 = int.(V_16 + V_46),
+      V_46 = 1 : int,
+      array.do_foldl5(V_15, V_40, V_17, V_18, V_35, V_25, V_36, V_27, V_37, V_29, V_38, V_31, V_39, V_33)
+    ).
+
+array.do_foldl_corresponding(V_8, V_9, V_10, V_11, V_12, V_14, V_15) :-
+    ( if
+      int.(V_10 < V_9)
+    then
+      V_15 = V_14
+    else
+      V_16 = array.unsafe_elem(V_9, V_11),
+      V_17 = array.unsafe_elem(V_9, V_12),
+      call(V_8, V_16, V_17, V_14, V_18),
+      V_19 = int.(V_9 + V_21),
+      V_21 = 1 : int,
+      array.do_foldl_corresponding(V_8, V_19, V_10, V_11, V_12, V_18, V_15)
+    ).
+
+array.do_foldl_func(V_7, V_8, V_9, V_10, V_11) = V_6 :-
+    ( if
+      int.(V_11 < V_10)
+    then
+      V_6 = V_9
+    else
+      V_6 = array.do_foldl_func(V_7, V_8, V_12, V_14, V_11),
+      V_12 = apply(V_7, V_13, V_9),
+      V_13 = array.unsafe_elem(V_10, V_8),
+      V_14 = int.(V_10 + V_15),
+      V_15 = 1 : int
+    ).
+
+array.do_foldl_pred(V_7, V_8, V_9, V_10, V_12, V_13) :-
+    ( if
+      int.(V_10 < V_9)
+    then
+      V_13 = V_12
+    else
+      V_14 = array.unsafe_elem(V_9, V_8),
+      call(V_7, V_14, V_12, V_15),
+      V_16 = int.(V_9 + V_18),
+      V_18 = 1 : int,
+      array.do_foldl_pred(V_7, V_8, V_16, V_10, V_15, V_13)
+    ).
+
+array.do_foldr2(V_9, V_10, V_11, V_12, V_15, V_16, V_17, V_18) :-
+    ( if
+      int.(V_11 < V_10)
+    then
+      V_18 = V_17,
+      V_16 = V_15
+    else
+      V_19 = array.unsafe_elem(V_11, V_12),
+      call(V_9, V_19, V_15, V_20, V_17, V_21),
+      V_22 = int.(V_11 - V_25),
+      V_25 = 1 : int,
+      array.do_foldr2(V_9, V_10, V_22, V_12, V_20, V_16, V_21, V_18)
+    ).
+
+array.do_foldr3(V_11, V_12, V_13, V_14, V_18, V_19, V_20, V_21, V_22, V_23) :-
+    ( if
+      int.(V_13 < V_12)
+    then
+      V_23 = V_22,
+      V_21 = V_20,
+      V_19 = V_18
+    else
+      V_24 = array.unsafe_elem(V_13, V_14),
+      call(V_11, V_24, V_18, V_25, V_20, V_26, V_22, V_27),
+      V_28 = int.(V_13 - V_32),
+      V_32 = 1 : int,
+      array.do_foldr3(V_11, V_12, V_28, V_14, V_25, V_19, V_26, V_21, V_27, V_23)
+    ).
+
+array.do_foldr4(V_13, V_14, V_15, V_16, V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28) :-
+    ( if
+      int.(V_15 < V_14)
+    then
+      V_28 = V_27,
+      V_26 = V_25,
+      V_24 = V_23,
+      V_22 = V_21
+    else
+      V_29 = array.unsafe_elem(V_15, V_16),
+      call(V_13, V_29, V_21, V_30, V_23, V_31, V_25, V_32, V_27, V_33),
+      V_34 = int.(V_15 - V_39),
+      V_39 = 1 : int,
+      array.do_foldr4(V_13, V_14, V_34, V_16, V_30, V_22, V_31, V_24, V_32, V_26, V_33, V_28)
+    ).
+
+array.do_foldr5(V_15, V_16, V_17, V_18, V_24, V_25, V_26, V_27, V_28, V_29, V_30, V_31, V_32, V_33) :-
+    ( if
+      int.(V_17 < V_16)
+    then
+      V_33 = V_32,
+      V_31 = V_30,
+      V_29 = V_28,
+      V_27 = V_26,
+      V_25 = V_24
+    else
+      V_34 = array.unsafe_elem(V_17, V_18),
+      call(V_15, V_34, V_24, V_35, V_26, V_36, V_28, V_37, V_30, V_38, V_32, V_39),
+      V_40 = int.(V_17 - V_46),
+      V_46 = 1 : int,
+      array.do_foldr5(V_15, V_16, V_40, V_18, V_35, V_25, V_36, V_27, V_37, V_29, V_38, V_31, V_39, V_33)
+    ).
+
+array.do_foldr_func(V_7, V_8, V_9, V_10, V_11) = V_6 :-
+    ( if
+      int.(V_11 < V_10)
+    then
+      V_6 = V_9
+    else
+      V_6 = array.do_foldr_func(V_7, V_8, V_12, V_10, V_14),
+      V_12 = apply(V_7, V_13, V_9),
+      V_13 = array.unsafe_elem(V_11, V_8),
+      V_14 = int.(V_11 - V_15),
+      V_15 = 1 : int
+    ).
+
+array.do_foldr_pred(V_7, V_8, V_9, V_10, V_12, V_13) :-
+    ( if
+      int.(V_9 < V_8)
+    then
+      V_13 = V_12
+    else
+      V_14 = array.unsafe_elem(V_9, V_10),
+      call(V_7, V_14, V_12, V_15),
+      V_16 = int.(V_9 - V_18),
+      V_18 = 1 : int,
+      array.do_foldr_pred(V_7, V_8, V_16, V_10, V_15, V_13)
+    ).
+
+array.elem(V_4, V_5) = V_6 :-
+    array.lookup(V_5, V_4, V_6).
+
+array.'elem :='(V_5, V_8, V_7) = V_9 :-
+    array.set(V_5, V_7, V_8, V_9).
+
+array.fetch_items(V_5, V_6, V_7) = V_8 :-
+    array.fetch_items(V_5, V_6, V_7, V_8).
+
+array.fill(V_4, V_8, V_9) :-
+    array.bounds(V_8, V_6, V_7),
+    array.do_fill_range(V_4, V_6, V_7, V_8, V_9).
+
+array.foldl(V_5, V_6, V_7) = V_4 :-
+    V_4 = array.do_foldl_func(V_5, V_6, V_7, V_8, V_9),
+    V_8 = array.min(V_6),
+    V_9 = array.max(V_6).
+
+array.foldl(V_5, V_6, V_8, V_9) :-
+    V_10 = array.min(V_6),
+    V_11 = array.max(V_6),
+    array.do_foldl_pred(V_5, V_6, V_10, V_11, V_8, V_9).
+
+array.foldl2(V_7, V_8, V_11, V_12, V_13, V_14) :-
+    V_15 = array.min(V_8),
+    V_16 = array.max(V_8),
+    array.do_foldl2(V_7, V_15, V_16, V_8, V_11, V_12, V_13, V_14).
+
+array.foldl2_corresponding(V_8, V_9, V_10, V_15, V_16, V_17, V_18) :-
+    V_13 = array.max(V_9),
+    V_14 = array.max(V_10),
+    ( if
+      V_13 = V_14
+    then
+      V_19 = 0 : int,
+      array.do_foldl2_corresponding(V_8, V_19, V_13, V_9, V_10, V_15, V_16, V_17, V_18)
+    else
+      V_22 = "predicate `array.foldl2_corresponding\'/7" : string,
+      V_23 = "mismatched array sizes" : string,
+      require.unexpected(V_22, V_23),
+      V_18 = V_17,
+      V_16 = V_15
+    ).
+
+array.foldl3(V_9, V_10, V_14, V_15, V_16, V_17, V_18, V_19) :-
+    V_20 = array.min(V_10),
+    V_21 = array.max(V_10),
+    array.do_foldl3(V_9, V_20, V_21, V_10, V_14, V_15, V_16, V_17, V_18, V_19).
+
+array.foldl4(V_11, V_12, V_17, V_18, V_19, V_20, V_21, V_22, V_23, V_24) :-
+    V_25 = array.min(V_12),
+    V_26 = array.max(V_12),
+    array.do_foldl4(V_11, V_25, V_26, V_12, V_17, V_18, V_19, V_20, V_21, V_22, V_23, V_24).
+
+array.foldl5(V_13, V_14, V_20, V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28, V_29) :-
+    V_30 = array.min(V_14),
+    V_31 = array.max(V_14),
+    array.do_foldl5(V_13, V_30, V_31, V_14, V_20, V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28, V_29).
+
+array.foldl_corresponding(V_6, V_7, V_8, V_12, V_13) :-
+    V_10 = array.max(V_7),
+    V_11 = array.max(V_8),
+    ( if
+      V_10 = V_11
+    then
+      V_14 = 0 : int,
+      array.do_foldl_corresponding(V_6, V_14, V_10, V_7, V_8, V_12, V_13)
+    else
+      V_16 = "predicate `array.foldl_corresponding\'/5" : string,
+      V_17 = "mismatched array sizes" : string,
+      require.unexpected(V_16, V_17),
+      V_13 = V_12
+    ).
+
+array.foldr(V_5, V_6, V_7) = V_4 :-
+    V_4 = array.do_foldr_func(V_5, V_6, V_7, V_8, V_9),
+    V_8 = array.min(V_6),
+    V_9 = array.max(V_6).
+
+array.foldr(V_5, V_6, V_8, V_9) :-
+    V_10 = array.min(V_6),
+    V_11 = array.max(V_6),
+    array.do_foldr_pred(V_5, V_10, V_11, V_6, V_8, V_9).
+
+array.foldr2(V_7, V_8, V_11, V_12, V_13, V_14) :-
+    V_15 = array.min(V_8),
+    V_16 = array.max(V_8),
+    array.do_foldr2(V_7, V_15, V_16, V_8, V_11, V_12, V_13, V_14).
+
+array.foldr3(V_9, V_10, V_14, V_15, V_16, V_17, V_18, V_19) :-
+    V_20 = array.min(V_10),
+    V_21 = array.max(V_10),
+    array.do_foldr3(V_9, V_20, V_21, V_10, V_14, V_15, V_16, V_17, V_18, V_19).
+
+array.foldr4(V_11, V_12, V_17, V_18, V_19, V_20, V_21, V_22, V_23, V_24) :-
+    V_25 = array.min(V_12),
+    V_26 = array.max(V_12),
+    array.do_foldr4(V_11, V_25, V_26, V_12, V_17, V_18, V_19, V_20, V_21, V_22, V_23, V_24).
+
+array.foldr5(V_13, V_14, V_20, V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28, V_29) :-
+    V_30 = array.min(V_14),
+    V_31 = array.max(V_14),
+    array.do_foldr5(V_13, V_30, V_31, V_14, V_20, V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28, V_29).
+
+array.from_list(V_3) = V_4 :-
+    array.from_list(V_3, V_4).
+
+array.from_reverse_list(V_3) = V_4 :-
+    array.from_reverse_list(V_3, V_4).
+
+array.generate(V_4, V_5) = V_6 :-
+    V_10 = 0 : int,
+    builtin.compare(V_7, V_4, V_10),
+    ( % disjunction
+      V_7 = builtin.(<) : builtin.comparison_result,
+      V_11 = "function `array.generate\'/2" : string,
+      V_12 = "negative size" : string,
+      require.unexpected(V_11, V_12)
+    ;
+      V_7 = builtin.(=) : builtin.comparison_result,
+      array.make_empty_array(V_6)
+    ;
+      V_7 = builtin.(>) : builtin.comparison_result,
+      V_8 = apply(V_5, V_13),
+      V_13 = 0 : int,
+      V_14 = 0 : int,
+      array.unsafe_init(V_4, V_8, V_14, V_9),
+      V_15 = 1 : int,
+      array.generate_loop(V_5, V_15, V_4, V_9, V_6)
+    ).
+
+array.generate_foldl(V_6, V_7, V_8, V_13, V_14) :-
+    V_15 = 0 : int,
+    builtin.compare(V_10, V_6, V_15),
+    ( % disjunction
+      V_10 = builtin.(<) : builtin.comparison_result,
+      V_16 = "predicate `array.generate_foldl\'/5" : string,
+      V_17 = "negative size" : string,
+      require.unexpected(V_16, V_17),
+      V_14 = V_13
+    ;
+      V_10 = builtin.(=) : builtin.comparison_result,
+      array.make_empty_array(V_8),
+      V_14 = V_13
+    ;
+      V_10 = builtin.(>) : builtin.comparison_result,
+      V_18 = 0 : int,
+      call(V_7, V_18, V_11, V_13, V_19),
+      V_20 = 0 : int,
+      array.unsafe_init(V_6, V_11, V_20, V_12),
+      V_21 = 1 : int,
+      array.generate_foldl_loop(V_7, V_21, V_6, V_12, V_8, V_19, V_14)
+    ).
+
+array.generate_foldl2(V_8, V_9, V_10, V_16, V_17, V_18, V_19) :-
+    V_20 = 0 : int,
+    builtin.compare(V_13, V_8, V_20),
+    ( % disjunction
+      V_13 = builtin.(<) : builtin.comparison_result,
+      V_21 = "predicate `array.generate_foldl2\'/7" : string,
+      V_22 = "negative size" : string,
+      require.unexpected(V_21, V_22),
+      V_17 = V_16,
+      V_19 = V_18
+    ;
+      V_13 = builtin.(=) : builtin.comparison_result,
+      array.make_empty_array(V_10),
+      V_17 = V_16,
+      V_19 = V_18
+    ;
+      V_13 = builtin.(>) : builtin.comparison_result,
+      V_23 = 0 : int,
+      call(V_9, V_23, V_14, V_16, V_24, V_18, V_25),
+      V_26 = 0 : int,
+      array.unsafe_init(V_8, V_14, V_26, V_15),
+      V_27 = 1 : int,
+      array.generate_foldl2_loop(V_9, V_27, V_8, V_15, V_10, V_24, V_17, V_25, V_19)
+    ).
+
+array.generate_foldl2_loop(V_10, V_11, V_12, V_17, V_18, V_19, V_20, V_21, V_22) :-
+    ( if
+      int.(V_11 < V_12)
+    then
+      call(V_10, V_11, V_16, V_19, V_23, V_21, V_24),
+      array.unsafe_set(V_11, V_16, V_17, V_25),
+      V_26 = int.(V_11 + V_30),
+      V_30 = 1 : int,
+      array.generate_foldl2_loop(V_10, V_26, V_12, V_25, V_18, V_23, V_20, V_24, V_22)
+    else
+      V_22 = V_21,
+      V_20 = V_19,
+      V_18 = V_17
+    ).
+
+array.generate_foldl_loop(V_8, V_9, V_10, V_14, V_15, V_16, V_17) :-
+    ( if
+      int.(V_9 < V_10)
+    then
+      call(V_8, V_9, V_13, V_16, V_18),
+      array.unsafe_set(V_9, V_13, V_14, V_19),
+      V_20 = int.(V_9 + V_23),
+      V_23 = 1 : int,
+      array.generate_foldl_loop(V_8, V_20, V_10, V_19, V_15, V_18, V_17)
+    else
+      V_17 = V_16,
+      V_15 = V_14
+    ).
+
+array.generate_loop(V_6, V_7, V_8, V_11, V_12) :-
+    ( if
+      int.(V_7 < V_8)
+    then
+      V_10 = apply(V_6, V_7),
+      array.unsafe_set(V_7, V_10, V_11, V_13),
+      V_14 = int.(V_7 + V_16),
+      V_16 = 1 : int,
+      array.generate_loop(V_6, V_14, V_8, V_13, V_12)
+    else
+      V_12 = V_11
+    ).
+
+array.in_bounds(V_3, V_4) :-
+    array.bounds(V_3, V_5, V_6),
+    int.(V_5 =< V_4),
+    int.(V_4 =< V_6).
+
+array.init(V_4, V_5) = V_6 :-
+    array.init(V_4, V_5, V_6).
+
+array.is_empty(V_2) :-
+    V_3 = 0 : int,
+    array.size(V_2, V_3).
+
+array.lookup(V_4, V_5) = V_6 :-
+    array.lookup(V_4, V_5, V_6).
+
+array.make_empty_array = V_2 :-
+    array.make_empty_array(V_2).
+
+:- pragma foreign_proc("C", array.make_empty_array(Array :: (array.array_uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness], "
+    ML_alloc_array(Array, 1, MR_ALLOC_ID);
+    ML_init_array(Array, 0, 0);
+").
+
+array.map(V_4, V_5) = V_6 :-
+    V_7 = (pred(V_10::(ground >> ground), V_11::(free >> ground)) is det :-
+      some [] (
+        V_10 = V_12,
+        V_13 = apply(V_4, V_12),
+        V_11 = V_13
+      )
+    ) : pred(T1_1, T2_2),
+    array.map(V_7, V_5, V_6).
+
+array.map(V_4, V_5, V_6) :-
+    ( if
+      V_11 = 0 : int,
+      array.semidet_lookup(V_5, V_11, V_7)
+    then
+      array.size(V_5, V_8),
+      call(V_4, V_7, V_9),
+      V_12 = 0 : int,
+      array.unsafe_init(V_8, V_9, V_12, V_10),
+      V_13 = 1 : int,
+      array.map_2(V_13, V_8, V_4, V_5, V_10, V_6)
+    else
+      array.make_empty_array(V_6)
+    ).
+
+array.map_2(V_7, V_8, V_9, V_10, V_14, V_15) :-
+    ( if
+      int.(V_7 >= V_8)
+    then
+      V_15 = V_14
+    else
+      array.unsafe_lookup(V_10, V_7, V_12),
+      call(V_9, V_12, V_13),
+      array.unsafe_set(V_7, V_13, V_14, V_16),
+      V_17 = int.(V_7 + V_19),
+      V_19 = 1 : int,
+      array.map_2(V_17, V_8, V_9, V_10, V_16, V_15)
+    ).
+
+array.map_corresponding_foldl(V_7, V_8, V_9, V_10, V_18, V_19) :-
+    V_12 = array.size(V_8),
+    V_13 = array.size(V_9),
+    ( if
+      not (
+        V_12 = V_13
+      )
+    then
+      V_20 = "predicate `array.map_corresponding_foldl\'/6" : string,
+      V_21 = "mismatched array sizes" : string,
+      require.unexpected(V_20, V_21),
+      V_19 = V_18
+    else
+      ( if
+        V_22 = 0 : int,
+        int.(V_12 =< V_22)
+      then
+        V_10 = array.make_empty_array,
+        V_19 = V_18
+      else
+        V_23 = 0 : int,
+        array.unsafe_lookup(V_8, V_23, V_14),
+        V_24 = 0 : int,
+        array.unsafe_lookup(V_9, V_24, V_15),
+        call(V_7, V_14, V_15, V_16, V_18, V_25),
+        V_26 = 0 : int,
+        array.unsafe_init(V_12, V_16, V_26, V_17),
+        V_27 = 1 : int,
+        array.map_corresponding_foldl_2(V_7, V_27, V_12, V_8, V_9, V_17, V_10, V_25, V_19)
+      )
+    ).
+
+array.map_corresponding_foldl_2(V_10, V_11, V_12, V_13, V_14, V_20, V_21, V_22, V_23) :-
+    ( if
+      int.(V_11 < V_12)
+    then
+      array.unsafe_lookup(V_13, V_11, V_17),
+      array.unsafe_lookup(V_14, V_11, V_18),
+      call(V_10, V_17, V_18, V_19, V_22, V_24),
+      array.unsafe_set(V_11, V_19, V_20, V_25),
+      V_26 = int.(V_11 + V_29),
+      V_29 = 1 : int,
+      array.map_corresponding_foldl_2(V_10, V_26, V_12, V_13, V_14, V_25, V_21, V_24, V_23)
+    else
+      V_23 = V_22,
+      V_21 = V_20
+    ).
+
+array.map_foldl(V_6, V_7, V_8, V_14, V_15) :-
+    V_10 = array.size(V_7),
+    ( if
+      V_16 = 0 : int,
+      int.(V_10 =< V_16)
+    then
+      V_8 = array.make_empty_array,
+      V_15 = V_14
+    else
+      V_17 = 0 : int,
+      array.unsafe_lookup(V_7, V_17, V_11),
+      call(V_6, V_11, V_12, V_14, V_18),
+      V_19 = 0 : int,
+      array.unsafe_init(V_10, V_12, V_19, V_13),
+      V_20 = 1 : int,
+      array.map_foldl_loop(V_6, V_20, V_7, V_13, V_8, V_18, V_15)
+    ).
+
+array.map_foldl_loop(V_8, V_9, V_10, V_15, V_16, V_17, V_18) :-
+    ( if
+      V_19 = array.size(V_10),
+      int.(V_9 < V_19)
+    then
+      array.unsafe_lookup(V_10, V_9, V_13),
+      call(V_8, V_13, V_14, V_17, V_20),
+      array.unsafe_set(V_9, V_14, V_15, V_21),
+      V_22 = int.(V_9 + V_25),
+      V_25 = 1 : int,
+      array.map_foldl_loop(V_8, V_22, V_10, V_21, V_16, V_20, V_18)
+    else
+      V_18 = V_17,
+      V_16 = V_15
+    ).
+
+array.max(V_3) = V_4 :-
+    array.max(V_3, V_4).
+
+:- pragma foreign_proc("C", array.max(Array :: (builtin.in), Max :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness], "
+    Max = Array->size - 1;
+").
+
+array.member(V_3, V_4) :-
+    V_6 = array.min(V_3),
+    V_7 = array.max(V_3),
+    int.nondet_int_in_range(V_6, V_7, V_5),
+    array.unsafe_lookup(V_3, V_5, V_4).
+
+array.min(V_3) = V_4 :-
+    array.min(V_3, V_4).
+
+:- pragma foreign_proc("C", array.min(Array :: (builtin.in), Min :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness], "
+    // Array not used.
+    Min = 0;
+").
+
+array.resize(V_8, V_6, V_7) = V_9 :-
+    array.resize(V_6, V_7, V_8, V_9).
+
+array.samsort_subarray(V_5, V_6, V_7) = V_8 :-
+    V_10 = 0 : int,
+    V_11 = array.copy(V_5),
+    V_12 = V_6,
+    array.samsort_up(V_10, V_11, V_8, V_5, V_9, V_6, V_7, V_12).
+
+array.semidet_greatest_index(V_3) = V_4 :-
+    ( if
+      array.is_empty(V_3)
+    then
+      fail
+    else
+      V_4 = array.max(V_3)
+    ).
+
+array.semidet_least_index(V_3) = V_4 :-
+    ( if
+      array.is_empty(V_3)
+    then
+      fail
+    else
+      V_4 = array.min(V_3)
+    ).
+
+array.semidet_lookup(V_4, V_5, V_6) :-
+    ( if
+      array.in_bounds(V_4, V_5)
+    then
+      array.unsafe_lookup(V_4, V_5, V_6)
+    else
+      fail
+    ).
+
+array.set(V_5, V_6, V_7) = V_8 :-
+    array.set(V_6, V_7, V_5, V_8).
+
+array.shrink(V_6, V_5) = V_7 :-
+    array.shrink(V_5, V_6, V_7).
+
+array.size(V_3) = V_4 :-
+    array.size(V_3, V_4).
+
+:- pragma foreign_proc("C", array.size(Array :: (builtin.in), Max :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, no_sharing, will_not_modify_trail, doesnt_affect_liveness], "
+    Max = Array->size;
+").
+
+array.slow_set(V_8, V_6, V_7) = V_9 :-
+    array.slow_set(V_6, V_7, V_8, V_9).
+
+array.slow_set(V_5, V_6, V_8, V_9) :-
+    array.copy(V_8, V_10),
+    array.set(V_5, V_6, V_10, V_9).
+
+array.sort(V_3) = V_2 :-
+    V_2 = array.samsort_subarray(V_3, V_4, V_5),
+    V_4 = array.min(V_3),
+    V_5 = array.max(V_3).
+
+array.to_list(V_3) = V_4 :-
+    array.to_list(V_3, V_4).
+
+array.unsafe_elem(V_4, V_5) = V_6 :-
+    array.unsafe_lookup(V_5, V_4, V_6).
+
+array.'unsafe_elem :='(V_5, V_8, V_7) = V_9 :-
+    array.unsafe_set(V_5, V_7, V_8, V_9).
+
+:- pragma foreign_proc("C", array.unsafe_init(Size :: (builtin.in), FirstElem :: (builtin.in), IndexToSet :: (builtin.in), Array :: (array.array_uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    ML_alloc_array(Array, Size + 1, MR_ALLOC_ID);
+
+    // In debugging grades, we fill the array with the first element,
+    // in case the return value of a call to this predicate is examined
+    // in the debugger.
+    #if defined(MR_EXEC_TRACE)
+        ML_init_array(Array, Size, FirstElem);
+    #else
+        Array->size = Size;
+        Array->elements[IndexToSet] = FirstElem;
+    #endif
+
+").
+
+:- pragma foreign_proc("C", array.unsafe_lookup(Array :: (builtin.in), Index :: (builtin.in), Item :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, sharing(yes(array.array(T), int, T), [cel(Array, [T]) - cel(Item, [])]), will_not_modify_trail, doesnt_affect_liveness], "
+    Item = Array->elements[Index];
+").
+
+:- pragma foreign_proc("C", array.unsafe_set(Index :: (builtin.in), Item :: (builtin.in), Array0 :: (array.array_di), Array :: (array.array_uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, sharing(yes(int, T, array.array(T), array.array(T)), [cel(Array0, []) - cel(Array, []), cel(Item, []) - cel(Array, [T])]), will_not_modify_trail, doesnt_affect_liveness], "
+    Array0->elements[Index] = Item; // destructive update!
+    Array = Array0;
+").
+
+array.unsafe_swap(V_5, V_6, V_10, V_11) :-
+    array.unsafe_lookup(V_10, V_5, V_8),
+    array.unsafe_lookup(V_10, V_6, V_9),
+    array.unsafe_set(V_5, V_9, V_10, V_12),
+    array.unsafe_set(V_6, V_8, V_12, V_11).
+
+:- pragma termination_info(array.all_false(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(array.all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(array.append((builtin.in), (builtin.in)) = (array.array_uo), infinite, cannot_loop).
+:- pragma termination_info(array.approx_binary_search((array.array_ui), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.approx_binary_search((builtin.in), (array.array_ui), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.approx_binary_search_loop((builtin.in), (array.array_ui), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.array((builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.array_compare((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(array.array_compare((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(array.array_equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(array.array_to_doc((array.array_ui)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.binary_search((array.array_ui), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.binary_search((builtin.in), (array.array_ui), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.binary_search_loop((builtin.in), (array.array_ui), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.bounds((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(array.copy((builtin.in)) = (array.array_uo), infinite, cannot_loop).
+:- pragma termination_info(array.copy((builtin.in), (array.array_uo)), infinite, cannot_loop).
+:- pragma termination_info(array.det_greatest_index((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.det_least_index((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.do_all_false(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(array.do_all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(array.do_fill_range((builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_func(((func((builtin.in), (builtin.in)) = (builtin.out) is det) >> (func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_func(((func((builtin.in), (builtin.di)) = (builtin.uo) is det) >> (func((builtin.in), (builtin.di)) = (builtin.uo) is det)), (builtin.in), (builtin.di), (builtin.in), (builtin.in)) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldl_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr_func(((func((builtin.in), (builtin.in)) = (builtin.out) is det) >> (func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.do_foldr_func(((func((builtin.in), (builtin.di)) = (builtin.uo) is det) >> (func((builtin.in), (builtin.di)) = (builtin.uo) is det)), (builtin.in), (builtin.di), (builtin.in), (builtin.in)) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info(array.do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr_pred(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr_pred(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.do_foldr_pred(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.dynamic_cast_to_array((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.elem((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.'elem :='((builtin.in), (array.array_di), (builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.fetch_items((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.fetch_items((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.fill((builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.fill_range((builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl(((func((builtin.in), (builtin.in)) = (builtin.out) is det) >> (func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.foldl(((func((builtin.in), (builtin.di)) = (builtin.uo) is det) >> (func((builtin.in), (builtin.di)) = (builtin.uo) is det)), (builtin.in), (builtin.di)) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info(array.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl2_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldl_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldr(((func((builtin.in), (builtin.in)) = (builtin.out) is det) >> (func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.foldr(((func((builtin.in), (builtin.di)) = (builtin.uo) is det) >> (func((builtin.in), (builtin.di)) = (builtin.uo) is det)), (builtin.in), (builtin.di)) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info(array.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldr(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldr(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldr3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldr4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.foldr5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.from_list((builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.from_list((builtin.in), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.from_reverse_list((builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.from_reverse_list((builtin.in), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.generate((builtin.in), (builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (array.array_uo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (array.array_uo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (array.array_uo), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)) is det)), (array.array_uo), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (array.array_uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (array.array_uo), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)) is semidet)), (array.array_uo), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is semidet)), (array.array_uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl2_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.generate_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.generate_loop((builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.in_bounds((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(array.init((builtin.in), (builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.init((builtin.in), (builtin.in), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(array.lookup((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.lookup((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((array.make_empty_array) = (array.array_uo), infinite, cannot_loop).
+:- pragma termination_info(array.make_empty_array((array.array_uo)), infinite, cannot_loop).
+:- pragma termination_info(array.map(((func((builtin.in)) = (builtin.out) is det) >> (func((builtin.in)) = (builtin.out) is det)), (builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.map(((pred((builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out)) is det)), (builtin.in), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.map_2((builtin.in), (builtin.in), builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (array.array_uo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (array.array_uo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.map_corresponding_foldl_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (array.array_uo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.map_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.map_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(array.map_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(array.map_foldl_loop(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (array.array_di), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.max((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(array.max((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(array.member((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.min((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(array.min((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(array.resize((array.array_di), (builtin.in), (builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.resize((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.samsort_subarray((array.array_di), (builtin.in), (builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.samsort_up((builtin.in), (array.array_di), (array.array_uo), (array.array_di), (array.array_uo), (builtin.in), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(array.semidet_greatest_index((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(array.semidet_least_index((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(array.semidet_lookup((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(array.semidet_set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, cannot_loop).
+:- pragma termination_info(array.semidet_slow_set((builtin.in), (builtin.in), (builtin.in), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.set((array.array_di), (builtin.in), (builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.shrink((array.array_di), (builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.shrink((builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.size((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(array.size((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(array.slow_set((builtin.in), (builtin.in), (builtin.in)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.slow_set((builtin.in), (builtin.in), (builtin.in), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.sort((array.array_di)) = (array.array_uo), infinite, can_loop).
+:- pragma termination_info(array.swap((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(array.to_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array.to_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(array.unsafe_elem((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(array.'unsafe_elem :='((builtin.in), (array.array_di), (builtin.in)) = (array.array_uo), infinite, cannot_loop).
+:- pragma termination_info(array.unsafe_init((builtin.in), (builtin.in), (builtin.in), (array.array_uo)), infinite, cannot_loop).
+:- pragma termination_info(array.unsafe_lookup((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(array.unsafe_set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, cannot_loop).
+:- pragma termination_info(array.unsafe_swap((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, (array.all_false), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.all_true), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.append), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.approx_binary_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.approx_binary_search), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.approx_binary_search_loop), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.array), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.array_compare), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (array.array_compare), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (array.array_equal), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (array.array_to_doc), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.binary_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.binary_search), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.binary_search_loop), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.bounds), 3, 0, will_not_throw).
+:- pragma exceptions(function, (array.copy), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.copy), 2, 0, will_not_throw).
+:- pragma exceptions(function, (array.det_greatest_index), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.det_least_index), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_all_false), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_all_true), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_fill_range), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.do_foldl2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2_corresponding), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2_corresponding), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2_corresponding), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2_corresponding), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2_corresponding), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl2_corresponding), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl3), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl3), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl3), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl3), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl3), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl3), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl4), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl4), 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl4), 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl4), 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl4), 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl4), 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl5), 14, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl5), 14, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl5), 14, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl5), 14, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl5), 14, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl5), 14, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_corresponding), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_corresponding), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_corresponding), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_corresponding), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_corresponding), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_corresponding), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (array.do_foldl_func), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.do_foldl_func), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_pred), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_pred), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_pred), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_pred), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_pred), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldl_pred), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr2), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr2), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr2), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr2), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr2), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr3), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr3), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr3), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr3), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr3), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr3), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr4), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr4), 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr4), 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr4), 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr4), 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr4), 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr5), 14, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr5), 14, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr5), 14, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr5), 14, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr5), 14, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr5), 14, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (array.do_foldr_func), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.do_foldr_func), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr_pred), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr_pred), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr_pred), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr_pred), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr_pred), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.do_foldr_pred), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.dynamic_cast_to_array), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.elem), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.'elem :='), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.fetch_items), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.fetch_items), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.fill), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.fill_range), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.foldl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.foldl), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2_corresponding), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2_corresponding), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2_corresponding), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2_corresponding), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2_corresponding), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl2_corresponding), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl3), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl4), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl4), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl4), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl4), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl4), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl4), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl5), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl5), 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl5), 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl5), 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl5), 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl5), 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl_corresponding), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl_corresponding), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl_corresponding), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl_corresponding), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl_corresponding), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldl_corresponding), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (array.foldr), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.foldr), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr3), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr4), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr4), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr4), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr4), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr4), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr4), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr5), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr5), 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr5), 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr5), 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr5), 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.foldr5), 12, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (array.from_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.from_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.from_reverse_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.from_reverse_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.generate), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2_loop), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2_loop), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2_loop), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2_loop), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2_loop), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl2_loop), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl_loop), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl_loop), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl_loop), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl_loop), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl_loop), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_foldl_loop), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.generate_loop), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.in_bounds), 2, 0, will_not_throw).
+:- pragma exceptions(function, (array.init), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.init), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (array.lookup), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.make_empty_array), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.make_empty_array), 1, 0, will_not_throw).
+:- pragma exceptions(function, (array.map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl_2), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl_2), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl_2), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl_2), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl_2), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_corresponding_foldl_2), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_foldl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_foldl), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_foldl), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_foldl), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_foldl_loop), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_foldl_loop), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_foldl_loop), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.map_foldl_loop), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(function, (array.max), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.max), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.min), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.min), 2, 0, will_not_throw).
+:- pragma exceptions(function, (array.resize), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.resize), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.samsort_subarray), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.samsort_up), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.semidet_greatest_index), 1, 0, will_not_throw).
+:- pragma exceptions(function, (array.semidet_least_index), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.semidet_lookup), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.semidet_set), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.semidet_slow_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.shrink), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.shrink), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.size), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.size), 2, 0, will_not_throw).
+:- pragma exceptions(function, (array.slow_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.slow_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.sort), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.swap), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.to_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array.to_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array.unsafe_elem), 2, 0, will_not_throw).
+:- pragma exceptions(function, (array.'unsafe_elem :='), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.unsafe_init), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.unsafe_lookup), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.unsafe_set), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (array.unsafe_swap), 4, 0, will_not_throw).

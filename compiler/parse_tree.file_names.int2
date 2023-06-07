@@ -1,0 +1,22 @@
+:- module (parse_tree.file_names).
+:- interface.
+:- type ext
+    --->    ext_src 
+    ;       ext_other(parse_tree.file_names.other_ext).
+:- type maybe_create_dirs
+    --->    do_create_dirs 
+    ;       do_not_create_dirs .
+:- type maybe_search
+    --->    do_search 
+    ;       do_not_search .
+:- type other_ext
+    --->    other_ext(string).
+:- implementation.
+:- type ext_exec
+    --->    ext_exec_exe .
+:- type ext_init_c
+    --->    ext_init_c .
+:- type ext_mh
+    --->    ext_mh_mh .
+:- type ext_mih
+    --->    ext_mih_mih .
