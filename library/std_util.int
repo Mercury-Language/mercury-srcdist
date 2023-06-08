@@ -1,0 +1,10 @@
+:- module std_util.
+:- interface.
+:- func compose(((func T2) = T3), ((func T1) = T2), T1) = T3.
+:- func converse((func(T1, T2) = T3), T2, T1) = T3.
+:- func id(T) = T.
+:- pred isnt((pred T), T).
+:- mode isnt(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- pred negate((pred)).
+:- mode negate(builtin.in(((pred) is semidet))) is semidet.
+:- func pow(((func T) = T), int, T) = T.
