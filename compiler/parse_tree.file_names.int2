@@ -1,0 +1,159 @@
+:- module (parse_tree.file_names).
+:- interface.
+:- type ext
+    --->    ext_src 
+    ;       ext_other(parse_tree.file_names.other_ext).
+:- type ext_analysis
+    --->    ext_an_analysis 
+    ;       ext_an_date 
+    ;       ext_an_status 
+    ;       ext_an_imdg 
+    ;       ext_an_request .
+:- type ext_bytecode
+    --->    ext_bc_mbc 
+    ;       ext_bc_bytedebug .
+:- type ext_exec
+    --->    ext_exec_exe .
+:- type ext_exec_gs
+    --->    ext_exec_gs_noext 
+    ;       ext_exec_gs_bat 
+    ;       ext_exec_exec_opt .
+:- type ext_init_c
+    --->    ext_init_c .
+:- type ext_init_obj
+    --->    ext_init_obj_dollar_o 
+    ;       ext_init_obj_o 
+    ;       ext_init_obj_pic_o 
+    ;       ext_init_obj_obj_opt 
+    ;       ext_init_obj_pic_obj_opt .
+:- type ext_int
+    --->    ext_int_int0 
+    ;       ext_int_int1 
+    ;       ext_int_int2 
+    ;       ext_int_int3 
+    ;       ext_int_date_int0 
+    ;       ext_int_date_int12 
+    ;       ext_int_date_int3 .
+:- type ext_lib
+    --->    ext_lib_dollar_efsl 
+    ;       ext_lib_dylib 
+    ;       ext_lib_lib 
+    ;       ext_lib_so .
+:- type ext_lib_gs
+    --->    ext_lib_gs_dollar_a 
+    ;       ext_lib_gs_archive 
+    ;       ext_lib_gs_dll 
+    ;       ext_lib_gs_init 
+    ;       ext_lib_gs_jar 
+    ;       ext_lib_gs_lib_opt 
+    ;       ext_lib_gs_sh_lib_opt .
+:- type ext_mh
+    --->    ext_mh_mh .
+:- type ext_mih
+    --->    ext_mih_mih .
+:- type ext_misc_gs
+    --->    ext_misc_gs_used 
+    ;       ext_misc_gs_track_flags .
+:- type ext_misc_ngs
+    --->    ext_misc_ngs_module_dep 
+    ;       ext_misc_ngs_err_date 
+    ;       ext_misc_ngs_prof .
+:- type ext_mmake_target
+    --->    ext_mt_all_int3s 
+    ;       ext_mt_all_ints 
+    ;       ext_mt_all_opts 
+    ;       ext_mt_all_trans_opts 
+    ;       ext_mt_check 
+    ;       ext_mt_classes 
+    ;       ext_mt_clean 
+    ;       ext_mt_depend 
+    ;       ext_mt_install_grade_hdrs 
+    ;       ext_mt_install_hdrs 
+    ;       ext_mt_install_ints 
+    ;       ext_mt_install_opts 
+    ;       ext_mt_int3s 
+    ;       ext_mt_ints 
+    ;       ext_mt_javas 
+    ;       ext_mt_opts 
+    ;       ext_mt_realclean 
+    ;       ext_mt_trans_opts .
+:- type ext_mmakefile_fragment
+    --->    ext_mf_d 
+    ;       ext_mf_dv 
+    ;       ext_mf_dep 
+    ;       ext_mf_dir_sl_all_os .
+:- type ext_obj
+    --->    ext_obj_dollar_o 
+    ;       ext_obj_dollar_efpo 
+    ;       ext_obj_o 
+    ;       ext_obj_pic_o 
+    ;       ext_obj_obj_opt 
+    ;       ext_obj_pic_obj_opt .
+:- type ext_opt
+    --->    ext_opt_plain 
+    ;       ext_opt_trans 
+    ;       ext_opt_date_plain 
+    ;       ext_opt_date_trans .
+:- type ext_target_c_cs
+    --->    ext_target_c 
+    ;       ext_target_cs .
+:- type ext_target_date
+    --->    ext_target_date_c 
+    ;       ext_target_date_cs 
+    ;       ext_target_date_java .
+:- type ext_target_java
+    --->    ext_target_java_java 
+    ;       ext_target_java_class .
+:- type ext_user
+    --->    ext_user_depgraph 
+    ;       ext_user_err 
+    ;       ext_user_hlds_dump 
+    ;       ext_user_mlds_dump 
+    ;       ext_user_order 
+    ;       ext_user_ugly .
+:- type ext_user_ngs
+    --->    ext_user_ngs_defn_ext 
+    ;       ext_user_ngs_defn_lc 
+    ;       ext_user_ngs_defns 
+    ;       ext_user_ngs_imports_graph 
+    ;       ext_user_ngs_lct 
+    ;       ext_user_ngs_lct_order 
+    ;       ext_user_ngs_mode_constr 
+    ;       ext_user_ngs_order_to 
+    ;       ext_user_ngs_type_repns 
+    ;       ext_user_ngs_xml .
+:- type maybe_create_dirs
+    --->    do_create_dirs 
+    ;       do_not_create_dirs .
+:- type maybe_search
+    --->    do_search 
+    ;       do_not_search .
+:- type newext
+    --->    newext_src 
+    ;       newext_exec(parse_tree.file_names.ext_exec)
+    ;       newext_lib(parse_tree.file_names.ext_lib)
+    ;       newext_exec_gs(parse_tree.file_names.ext_exec_gs)
+    ;       newext_lib_gs(parse_tree.file_names.ext_lib_gs)
+    ;       newext_mh(parse_tree.file_names.ext_mh)
+    ;       newext_mih(parse_tree.file_names.ext_mih)
+    ;       newext_user(parse_tree.file_names.ext_user)
+    ;       newext_user_ngs(parse_tree.file_names.ext_user_ngs)
+    ;       newext_mmakefile_fragment(parse_tree.file_names.ext_mmakefile_fragment)
+    ;       newext_mmake_target(parse_tree.file_names.ext_mmake_target)
+    ;       newext_int(parse_tree.file_names.ext_int)
+    ;       newext_opt(parse_tree.file_names.ext_opt)
+    ;       newext_target_c_cs(parse_tree.file_names.ext_target_c_cs)
+    ;       newext_target_java(parse_tree.file_names.ext_target_java)
+    ;       newext_target_date(parse_tree.file_names.ext_target_date)
+    ;       newext_target_init_c(parse_tree.file_names.ext_init_c)
+    ;       newext_target_init_obj(parse_tree.file_names.ext_init_obj)
+    ;       newext_target_obj(parse_tree.file_names.ext_obj)
+    ;       newext_bytecode(parse_tree.file_names.ext_bytecode)
+    ;       newext_analysis(parse_tree.file_names.ext_analysis)
+    ;       newext_misc_ngs(parse_tree.file_names.ext_misc_ngs)
+    ;       newext_misc_gs(parse_tree.file_names.ext_misc_gs)
+    ;       newext_other(parse_tree.file_names.other_newext).
+:- type other_ext
+    --->    other_ext(string).
+:- type other_newext
+    --->    other_newext(string).
