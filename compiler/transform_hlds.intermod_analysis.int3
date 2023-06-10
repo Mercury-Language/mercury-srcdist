@@ -1,0 +1,8 @@
+:- module (transform_hlds.intermod_analysis).
+:- interface.
+:- type maybe_should_write
+	where	type_is_abstract_enum(1).
+:- type should_write_for
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_should_write, du_repn(enum("should_not_write", "should_write", [],  no_c_j_cs))).
+:- type_representation(should_write_for, du_repn(enum("for_analysis_framework", "for_pragma", [],  no_c_j_cs))).

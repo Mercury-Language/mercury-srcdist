@@ -1,0 +1,2 @@
+:- module (mdb.diff).
+:- interface.
