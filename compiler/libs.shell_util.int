@@ -1,0 +1,3 @@
+:- module (libs.shell_util).
+:- interface.
+:- func quote_shell_cmd_arg(string) = string.

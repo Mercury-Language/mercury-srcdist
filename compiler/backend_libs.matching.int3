@@ -1,0 +1,9 @@
+:- module (backend_libs.matching).
+:- interface.
+:- type benefit_node.
+:- type cost_node.
+:- type matching_params.
+:- type_representation(benefit_node, is_word_aligned_ptr).
+:- type_representation(cost_node, is_word_aligned_ptr).
+:- type_representation(edge_list, is_eqv_to(assoc_list(backend_libs.matching.benefit_node, backend_libs.matching.cost_node))).
+:- type_representation(matching_params, is_word_aligned_ptr).
