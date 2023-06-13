@@ -1,0 +1,8 @@
+:- module (parse_tree.equiv_type).
+:- interface.
+:- type eqv_type_body.
+:- type type_eqv_map.
+:- type_representation(circ_types, is_eqv_to(set(type_ctor))).
+:- type_representation(eqv_type_body, is_word_aligned_ptr).
+:- type_representation(inst_eqv_map, is_eqv_to(map(inst_ctor, eqv_inst_body))).
+:- type_representation(type_eqv_map, is_eqv_to(map(type_ctor, parse_tree.equiv_type.eqv_type_body))).
