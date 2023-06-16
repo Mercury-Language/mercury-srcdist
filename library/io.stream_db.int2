@@ -1,0 +1,22 @@
+:- module (io.stream_db).
+:- interface.
+:- use_module map.
+:- type maybe_stream_info
+    --->    stream(((io.stream_db).maybe_stream_id) :: int, ((io.stream_db).maybe_stream_mode) :: io.stream_db.stream_mode, ((io.stream_db).maybe_stream_content) :: io.stream_db.stream_content, ((io.stream_db).maybe_stream_source) :: io.stream_db.stream_source)
+    ;       unknown_stream .
+:- type stream_content
+    --->    text 
+    ;       binary 
+    ;       preopen .
+:- type stream_db == map.map(io.stream_id, io.stream_db.stream_info).
+:- type stream_info
+    --->    stream(((io.stream_db).stream_id) :: int, ((io.stream_db).stream_mode) :: io.stream_db.stream_mode, ((io.stream_db).stream_content) :: io.stream_db.stream_content, ((io.stream_db).stream_source) :: io.stream_db.stream_source).
+:- type stream_mode
+    --->    input 
+    ;       output 
+    ;       append .
+:- type stream_source
+    --->    file(string)
+    ;       stdin 
+    ;       stdout 
+    ;       stderr .
