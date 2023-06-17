@@ -1,0 +1,87 @@
+:- module (make.util).
+:- interface.
+:- use_module backend_libs.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (backend_libs.compile_target_code).
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.options).
+:- use_module (libs.timestamp).
+:- use_module (make.dependencies).
+:- use_module (make.make_info).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.file_names).
+:- pred debug_file_msg(libs.globals.globals, make.make_info.target_file, string, io.io, io.io).
+:- mode debug_file_msg((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred debug_make_msg(libs.globals.globals, pred(io.io, io.io), io.io, io.io).
+:- mode debug_make_msg((builtin.in), ((pred((builtin.di), (builtin.uo)) is det) >> (pred((builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.
+:- pred dependency_file_hash(make.dependencies.dependency_file, int).
+:- mode dependency_file_hash((builtin.in), (builtin.out)) is det.
+:- pred dependency_file_to_file_name(libs.globals.globals, make.dependencies.dependency_file, string, io.io, io.io).
+:- mode dependency_file_to_file_name((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred dependency_file_with_module_index_hash(make.dependencies.dependency_file_with_module_index, int).
+:- mode dependency_file_with_module_index_hash((builtin.in), (builtin.out)) is det.
+:- pred extension_to_target_type(libs.globals.globals, string, make.make_info.module_target_type).
+:- mode extension_to_target_type((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred file_error(make.make_info.make_info, libs.file_util.file_name, io.io, io.io).
+:- mode file_error((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred find_error_or_older_ok_timestamp(maybe.maybe_error(libs.timestamp.timestamp), maybe.maybe_error(libs.timestamp.timestamp), maybe.maybe_error(libs.timestamp.timestamp)).
+:- mode find_error_or_older_ok_timestamp((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred find_error_or_oldest_ok_timestamp(list.list(maybe.maybe_error(libs.timestamp.timestamp)), maybe.maybe_error(libs.timestamp.timestamp)).
+:- mode find_error_or_oldest_ok_timestamp((builtin.in), (builtin.out)) is det.
+:- pred get_dependency_timestamp(libs.globals.globals, make.dependencies.dependency_file, maybe.maybe_error(libs.timestamp.timestamp), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_dependency_timestamp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_file_name(libs.globals.globals, string, parse_tree.file_names.maybe_search, make.make_info.target_file, libs.file_util.file_name, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_file_timestamp(list.list(libs.file_util.dir_name), libs.file_util.file_name, maybe.maybe_error(libs.timestamp.timestamp), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_file_timestamp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_make_target_file_name(libs.globals.globals, string, make.make_info.target_file, string, io.io, io.io).
+:- mode get_make_target_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_real_milliseconds(int, io.io, io.io).
+:- mode get_real_milliseconds((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_target_timestamp(libs.globals.globals, parse_tree.file_names.maybe_search, make.make_info.target_file, maybe.maybe_error(libs.timestamp.timestamp), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_target_timestamp((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_timestamp_file_timestamp(libs.globals.globals, make.make_info.target_file, maybe.maybe_error(libs.timestamp.timestamp), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_timestamp_file_timestamp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func init_target_file_timestamps = make.make_info.target_file_timestamps.
+:- pred linked_target_file_name(libs.globals.globals, mdbcomp.sym_name.module_name, backend_libs.compile_target_code.linked_target_type, libs.file_util.file_name, io.io, io.io).
+:- mode linked_target_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func make_dependency_list(list.list(mdbcomp.sym_name.module_name), make.make_info.module_target_type) = list.list(make.dependencies.dependency_file).
+:- pred make_remove_file(libs.globals.globals, libs.options.option, libs.file_util.file_name, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode make_remove_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func make_target_file_list(list.list(mdbcomp.sym_name.module_name), make.make_info.module_target_type) = list.list(make.make_info.target_file).
+:- pred maybe_make_linked_target_message(libs.globals.globals, libs.file_util.file_name, io.io, io.io).
+:- mode maybe_make_linked_target_message((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_make_target_message(libs.globals.globals, libs.file_util.file_name, io.io, io.io).
+:- mode maybe_make_target_message((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_make_target_message_to_stream(libs.globals.globals, io.text_output_stream, libs.file_util.file_name, io.io, io.io).
+:- mode maybe_make_target_message_to_stream((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_reanalyse_modules_message(libs.globals.globals, io.io, io.io).
+:- mode maybe_reanalyse_modules_message((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_symlink_or_copy_linked_target_message(libs.globals.globals, libs.file_util.file_name, io.io, io.io).
+:- mode maybe_symlink_or_copy_linked_target_message((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_warn_up_to_date_target(libs.globals.globals, make.make_info.top_target_file, libs.file_util.file_name, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode maybe_warn_up_to_date_target((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred module_name_hash(mdbcomp.sym_name.module_name, int).
+:- mode module_name_hash((builtin.in), (builtin.out)) is det.
+:- pred remove_make_module_file(libs.globals.globals, libs.options.option, mdbcomp.sym_name.module_name, parse_tree.file_names.ext, parse_tree.file_names.newext, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode remove_make_module_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred remove_make_target_file(libs.globals.globals, string, libs.options.option, make.make_info.target_file, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode remove_make_target_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred remove_make_target_file_by_name(libs.globals.globals, string, libs.options.option, mdbcomp.sym_name.module_name, make.make_info.module_target_type, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode remove_make_target_file_by_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred target_extension_synonym(string, make.make_info.module_target_type).
+:- mode target_extension_synonym((builtin.in), (builtin.out)) is semidet.
+:- pred target_is_grade_or_arch_dependent(make.make_info.module_target_type).
+:- mode target_is_grade_or_arch_dependent((builtin.in)) is semidet.
+:- pred timestamp_extension(make.make_info.module_target_type, parse_tree.file_names.other_ext, parse_tree.file_names.newext).
+:- mode timestamp_extension((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred verbose_make_msg(libs.globals.globals, pred(io.io, io.io), io.io, io.io).
+:- mode verbose_make_msg((builtin.in), ((pred((builtin.di), (builtin.uo)) is det) >> (pred((builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.
+:- pred verbose_make_msg_option(libs.globals.globals, libs.options.option, pred(io.io, io.io), io.io, io.io).
+:- mode verbose_make_msg_option((builtin.in), (builtin.in), ((pred((builtin.di), (builtin.uo)) is det) >> (pred((builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.

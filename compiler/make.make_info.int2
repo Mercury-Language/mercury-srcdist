@@ -1,0 +1,89 @@
+:- module (make.make_info).
+:- interface.
+:- use_module map.
+:- use_module maybe.
+:- use_module version_hash_table.
+:- use_module (libs.timestamp).
+:- type c_header_type
+    --->    header_mh 
+    ;       header_mih .
+:- type compilation_task_type
+    --->    process_module(make.make_info.module_compilation_task_type)
+    ;       target_code_to_object_code(backend_libs.compile_target_code.pic)
+    ;       foreign_code_to_object_code(backend_libs.compile_target_code.pic, libs.globals.foreign_language)
+    ;       fact_table_code_to_object_code(backend_libs.compile_target_code.pic, libs.file_util.file_name).
+:- type dependency_file_index_map
+    --->    dependency_file_index_map(((make.make_info).dfim_forward_map) :: version_hash_table.version_hash_table(make.dependencies.dependency_file_with_module_index, make.deps_set.dependency_file_index), ((make.make_info).dfim_reverse_map) :: version_array.version_array(make.dependencies.dependency_file_with_module_index), ((make.make_info).dfim_counter) :: uint).
+:- type dependency_status
+    --->    deps_status_not_considered 
+    ;       deps_status_being_built 
+    ;       deps_status_up_to_date 
+    ;       deps_status_error .
+:- type file_timestamps == map.map(string, maybe.maybe_error(libs.timestamp.timestamp)).
+:- type import_or_include
+    --->    ioi_import(mdbcomp.sym_name.module_name)
+    ;       ioi_include(mdbcomp.sym_name.module_name).
+:- type linked_target_file
+    --->    linked_target_file(((make.make_info).linked_tf_name) :: mdbcomp.sym_name.module_name, ((make.make_info).linked_tf_type) :: backend_libs.compile_target_code.linked_target_type).
+:- type make_error
+    --->    make_error_target(make.make_info.target_file)
+    ;       make_error_dependencies(mdbcomp.sym_name.module_name)
+    ;       make_error_other(string).
+:- type make_info
+    --->    make_info(((make.make_info).mki_module_dependencies) :: map.map(mdbcomp.sym_name.module_name, make.make_info.maybe_module_dep_info), ((make.make_info).mki_file_timestamps) :: make.make_info.file_timestamps, ((make.make_info).mki_target_file_timestamps) :: make.make_info.target_file_timestamps, ((make.make_info).mki_detected_grade_flags) :: list.list(string), ((make.make_info).mki_option_args) :: list.list(string), ((make.make_info).mki_options_variables) :: make.options_file.options_variables, ((make.make_info).mki_module_index_map) :: make.make_info.module_index_map, ((make.make_info).mki_dep_file_index_map) :: make.make_info.dependency_file_index_map, ((make.make_info).mki_dependency_status) :: version_hash_table.version_hash_table(make.dependencies.dependency_file, make.make_info.dependency_status), ((make.make_info).mki_cached_direct_imports) :: make.dependencies.cached_direct_imports, ((make.make_info).mki_cached_non_intermod_direct_imports) :: make.dependencies.cached_direct_imports, ((make.make_info).mki_cached_indirect_imports) :: make.dependencies.cached_indirect_imports, ((make.make_info).mki_cached_transitive_dependencies) :: make.dependencies.cached_transitive_dependencies, ((make.make_info).mki_cached_transitive_foreign_imports) :: make.dependencies.cached_transitive_foreign_imports, ((make.make_info).mki_cached_computed_module_deps) :: make.dependencies.cached_computed_module_deps, ((make.make_info).mki_rebuild_module_deps) :: make.make_info.rebuild_module_deps, ((make.make_info).mki_keep_going) :: make.make_info.maybe_keep_going, ((make.make_info).mki_error_file_modules) :: set.set(mdbcomp.sym_name.module_name), ((make.make_info).mki_importing_module) :: maybe.maybe(make.make_info.import_or_include), ((make.make_info).mki_command_line_targets) :: set.set(make.make_info.top_target_file), ((make.make_info).mki_reanalysis_passes) :: int, ((make.make_info).mki_maybe_stdout_lock) :: maybe.maybe(make.build.stdout_lock), ((make.make_info).mki_mi_read_module_maps) :: parse_tree.read_modules.have_read_module_maps).
+:- type maybe_keep_going
+    --->    do_not_keep_going 
+    ;       do_keep_going .
+:- type maybe_module_dep_info
+    --->    no_module_dep_info 
+    ;       some_module_dep_info(parse_tree.module_dep_info.module_dep_info).
+:- type misc_target_type
+    --->    misc_target_clean 
+    ;       misc_target_realclean 
+    ;       misc_target_build_all(make.make_info.module_target_type)
+    ;       misc_target_build_analyses 
+    ;       misc_target_build_library 
+    ;       misc_target_install_library 
+    ;       misc_target_build_xml_docs .
+:- type module_compilation_task_type
+    --->    task_errorcheck 
+    ;       task_make_int0 
+    ;       task_make_int12 
+    ;       task_make_int3 
+    ;       task_make_opt 
+    ;       task_make_analysis_registry 
+    ;       task_compile_to_target_code 
+    ;       task_make_xml_doc .
+:- type module_index_map
+    --->    module_index_map(((make.make_info).mim_forward_map) :: version_hash_table.version_hash_table(mdbcomp.sym_name.module_name, make.deps_set.module_index), ((make.make_info).mim_reverse_map) :: version_array.version_array(mdbcomp.sym_name.module_name), ((make.make_info).mim_counter) :: uint).
+:- type module_target_type
+    --->    module_target_source 
+    ;       module_target_errors 
+    ;       module_target_int0 
+    ;       module_target_int1 
+    ;       module_target_int2 
+    ;       module_target_int3 
+    ;       module_target_opt 
+    ;       module_target_analysis_registry 
+    ;       module_target_track_flags 
+    ;       module_target_c_header(make.make_info.c_header_type)
+    ;       module_target_c_code 
+    ;       module_target_csharp_code 
+    ;       module_target_java_code 
+    ;       module_target_java_class_code 
+    ;       module_target_object_code(backend_libs.compile_target_code.pic)
+    ;       module_target_foreign_object(backend_libs.compile_target_code.pic, libs.globals.foreign_language)
+    ;       module_target_fact_table_object(backend_libs.compile_target_code.pic, libs.file_util.file_name)
+    ;       module_target_xml_doc .
+:- type rebuild_module_deps
+    --->    do_rebuild_module_deps 
+    ;       do_not_rebuild_module_deps .
+:- type target_file
+    --->    target_file(((make.make_info).target_file_name) :: mdbcomp.sym_name.module_name, ((make.make_info).target_file_type) :: make.make_info.module_target_type).
+:- type target_file_timestamps == version_hash_table.version_hash_table(make.make_info.target_file, libs.timestamp.timestamp).
+:- type target_type
+    --->    module_target(make.make_info.module_target_type)
+    ;       linked_target(backend_libs.compile_target_code.linked_target_type)
+    ;       misc_target(make.make_info.misc_target_type).
+:- type top_target_file
+    --->    top_target_file(((make.make_info).ttf_name) :: mdbcomp.sym_name.module_name, ((make.make_info).ttf_type) :: make.make_info.target_type).
