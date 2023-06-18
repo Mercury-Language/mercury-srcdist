@@ -1,0 +1,2 @@
+:- module (parse_tree.generate_dep_d_files).
+:- interface.
