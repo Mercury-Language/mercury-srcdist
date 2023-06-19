@@ -1,0 +1,9 @@
+:- module (check_hlds.unused_imports).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_spec).
+:- pred warn_about_unused_imports(hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec)).
+:- mode warn_about_unused_imports((builtin.in), (builtin.out)) is det.

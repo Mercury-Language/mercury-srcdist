@@ -1,0 +1,52 @@
+:- module (hlds.mark_tail_calls).
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_dependency_graph).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (libs.compiler_util).
+:- use_module (libs.dependency_graph).
+:- use_module (libs.globals).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.prog_data).
+:- type found_any_rec_calls
+    --->    not_found_any_rec_calls 
+    ;       found_any_rec_calls .
+:- type maybe_warn_non_tail_mutual_rec
+    --->    do_not_warn_non_tail_mutual_rec 
+    ;       warn_non_tail_mutual_rec .
+:- type maybe_warn_non_tail_self_rec
+    --->    do_not_warn_non_tail_self_rec 
+    ;       warn_non_tail_self_rec .
+:- type nontail_rec_call_reason
+    --->    ntrcr_program 
+    ;       ntrcr_mlds_in_scc_not_in_tscc 
+    ;       ntrcr_mlds_in_tscc_stack_ref 
+    ;       ntrcr_mlds_model_non_in_cont_func .
+:- type nontail_rec_obviousness
+    --->    non_obvious_nontail_rec 
+    ;       obvious_nontail_rec .
+:- type warn_non_tail_rec_params
+    --->    warn_non_tail_rec_params(libs.compiler_util.warning_or_error, hlds.mark_tail_calls.maybe_warn_non_tail_self_rec, hlds.mark_tail_calls.maybe_warn_non_tail_mutual_rec).
+:- pred add_message_for_nontail_mutual_recursive_call(parse_tree.prog_data.pf_sym_name_arity, hlds.hlds_pred.proc_id, parse_tree.prog_data.pf_sym_name_arity, parse_tree.prog_data.prog_context, hlds.mark_tail_calls.nontail_rec_call_reason, libs.compiler_util.warning_or_error, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_message_for_nontail_mutual_recursive_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_message_for_nontail_self_recursive_call(parse_tree.prog_data.pf_sym_name_arity, hlds.hlds_pred.proc_id, parse_tree.prog_data.prog_context, hlds.mark_tail_calls.nontail_rec_call_reason, libs.compiler_util.warning_or_error, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_message_for_nontail_self_recursive_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_default_warn_parms(libs.globals.globals, hlds.mark_tail_calls.warn_non_tail_rec_params).
+:- mode get_default_warn_parms((builtin.in), (builtin.out)) is det.
+:- pred mark_self_and_mutual_tail_rec_calls_in_module(hlds.hlds_dependency_graph.hlds_dependency_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode mark_self_and_mutual_tail_rec_calls_in_module((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mark_self_and_mutual_tail_rec_calls_in_module_for_mlds_code_gen(hlds.hlds_dependency_graph.hlds_dependency_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode mark_self_and_mutual_tail_rec_calls_in_module_for_mlds_code_gen((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred mark_tail_rec_calls_in_pred_for_llds_code_gen(libs.dependency_graph.scc_map(hlds.hlds_pred.pred_proc_id), hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode mark_tail_rec_calls_in_pred_for_llds_code_gen((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred mark_tail_rec_calls_in_proc_for_llds_code_gen(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, libs.dependency_graph.scc_map(hlds.hlds_pred.pred_proc_id), hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode mark_tail_rec_calls_in_proc_for_llds_code_gen((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_override_warn_params_for_proc(hlds.hlds_pred.proc_info, hlds.mark_tail_calls.warn_non_tail_rec_params, hlds.mark_tail_calls.warn_non_tail_rec_params).
+:- mode maybe_override_warn_params_for_proc((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_report_no_tail_or_nontail_recursive_calls(hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.mark_tail_calls.found_any_rec_calls, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode maybe_report_no_tail_or_nontail_recursive_calls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_report_nontail_recursive_call(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_context, hlds.mark_tail_calls.nontail_rec_call_reason, hlds.mark_tail_calls.nontail_rec_obviousness, hlds.mark_tail_calls.warn_non_tail_rec_params, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode maybe_report_nontail_recursive_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
