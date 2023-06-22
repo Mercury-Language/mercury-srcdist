@@ -1,0 +1,72 @@
+/*
+** Automatically generated from `var_value_names.m'
+** by the Mercury compiler,
+** version rotd-2023-06-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module var_value_names.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_var_value_names
+#define MR_HEADER_GUARD_var_value_names
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef VAR_VALUE_NAMES_DECL_GUARD
+#define VAR_VALUE_NAMES_DECL_GUARD
+
+#endif
+
+
+
+void MR_CALL 
+var_value_names__solver_var_name_2_p_1(
+  MR_String * param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+var_value_names__solver_var_name_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+var_value_names__solver_var_value_name_2_p_1(
+  MR_String * param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+var_value_names__solver_var_value_name_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void mercury__var_value_names__init(void);
+void mercury__var_value_names__init_type_tables(void);
+void mercury__var_value_names__init_debugger(void);
+const char *mercury__var_value_names__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_var_value_names
+
+// :- end_interface var_value_names.

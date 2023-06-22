@@ -1,0 +1,5 @@
+:- module (hlds.pre_quantification).
+:- interface.
+:- type_representation(vars_to_zones, is_eqv_to(map(prog_var, sparse_bitset(zone)))).
+:- type_representation(zone, is_eqv_to(uint)).
+:- type_representation(zones_to_dup_vars, is_eqv_to(map(zone, list(prog_var)))).

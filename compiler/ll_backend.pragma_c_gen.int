@@ -1,0 +1,20 @@
+:- module (ll_backend.pragma_c_gen).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (hlds.code_model).
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_pred).
+:- use_module (ll_backend.code_info).
+:- use_module (ll_backend.code_loc_dep).
+:- use_module (ll_backend.llds).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_foreign).
+:- func foreign_proc_struct_name(mdbcomp.sym_name.module_name, string, int, hlds.hlds_pred.proc_id) = string.
+:- func foreign_proc_succ_ind_name = string.
+:- pred generate_code_for_foreign_proc(hlds.code_model.code_model, parse_tree.prog_data_foreign.pragma_foreign_proc_attributes, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(hlds.hlds_goal.foreign_arg), list.list(hlds.hlds_goal.foreign_arg), maybe.maybe(parse_tree.prog_data.trace_expr(parse_tree.prog_data.trace_runtime)), parse_tree.prog_data_foreign.pragma_foreign_proc_impl, hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_code_for_foreign_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
