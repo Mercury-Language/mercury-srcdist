@@ -1,0 +1,14 @@
+module(2, "term_vars.m",
+	term_vars,
+	{},
+	{builtin, list, private_builtin, term},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

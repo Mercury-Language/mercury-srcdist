@@ -1,0 +1,34 @@
+:- module (backend_libs.interval).
+:- interface.
+:- type anchor.
+:- type anchor_follow_info.
+:- type branch_construct
+	where	type_is_abstract_enum(3).
+:- type branch_end_info.
+:- type insert_map.
+:- type insert_spec.
+:- type interval_id.
+:- type interval_info.
+:- type interval_params.
+:- type maybe_needs_flush
+	where	type_is_abstract_enum(1).
+:- type rename_map.
+:- type resume_save_status
+	where	type_is_abstract_enum(1).
+:- type save_point.
+:- type save_point_type
+	where	type_is_abstract_enum(1).
+:- typeclass build_interval_info_acc(T).
+:- type_representation(anchor_follow_info, is_word_aligned_ptr).
+:- type_representation(branch_construct, du_repn(enum("branch_ite", "branch_disj", ["branch_switch", "branch_neg", "branch_par_conj"],  no_c_j_cs))).
+:- type_representation(branch_end_info, is_word_aligned_ptr).
+:- type_representation(insert_map, is_eqv_to(map(backend_libs.interval.anchor, list(backend_libs.interval.insert_spec)))).
+:- type_representation(insert_spec, is_word_aligned_ptr).
+:- type_representation(interval_id, du_repn(notag("interval_id", int,  no_c_j_cs))).
+:- type_representation(interval_info, is_word_aligned_ptr).
+:- type_representation(interval_params, is_word_aligned_ptr).
+:- type_representation(maybe_needs_flush, du_repn(enum("needs_flush", "doesnt_need_flush", [],  no_c_j_cs))).
+:- type_representation(rename_map, is_eqv_to(map(prog_var, prog_var))).
+:- type_representation(resume_save_status, du_repn(enum("has_resume_save", "has_no_resume_save", [],  no_c_j_cs))).
+:- type_representation(save_point, is_word_aligned_ptr).
+:- type_representation(save_point_type, du_repn(enum("save_point_call_site", "save_point_resume_point", [],  no_c_j_cs))).
