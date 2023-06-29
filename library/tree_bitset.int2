@@ -1,0 +1,3 @@
+:- module tree_bitset.
+:- interface.
+:- type tree_bitset(T).
