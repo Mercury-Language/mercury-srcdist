@@ -1,0 +1,7 @@
+:- module (ml_backend.ml_optimize).
+:- interface.
+:- use_module libs.
+:- use_module (libs.globals).
+:- use_module (ml_backend.mlds).
+:- pred mlds_optimize(libs.globals.globals, ml_backend.mlds.mlds, ml_backend.mlds.mlds).
+:- mode mlds_optimize((builtin.in), (builtin.in), (builtin.out)) is det.

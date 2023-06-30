@@ -1,0 +1,169 @@
+/*
+** Automatically generated from `special_pred.m'
+** by the Mercury compiler,
+** version rotd-2023-06-30
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.special_pred.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__special_pred
+#define MR_HEADER_GUARD_hlds__special_pred
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__SPECIAL_PRED_DECL_GUARD
+#define HLDS__SPECIAL_PRED_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__special_pred__hlds__special_pred__type_ctor_info_special_pred_maps_0;
+
+void MR_CALL 
+hlds__special_pred__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_112_101_99_105_97_108_95_112_114_101_100_95_109_111_100_101_95_110_117_109_95_95_91_49_93_95_48_2_p_0(
+  MR_Integer * param_1);
+
+MR_bool MR_CALL 
+hlds__special_pred__can_generate_special_pred_clauses_for_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__special_pred__compiler_generated_rtti_for_builtins_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__special_pred__get_special_proc_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Integer * param_6);
+
+void MR_CALL 
+hlds__special_pred__get_special_proc_det_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Integer * param_6);
+
+MR_bool MR_CALL 
+hlds__special_pred__is_builtin_type_special_preds_defined_in_mercury_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+hlds__special_pred__lookup_special_pred_maps_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__special_pred__search_special_pred_maps_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__special_pred__special_pred_description_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+MR_bool MR_CALL 
+hlds__special_pred__special_pred_for_type_needs_typecheck_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__special_pred__special_pred_get_type_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__special_pred__special_pred_get_type_det_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__special_pred__special_pred_interface_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+hlds__special_pred__special_pred_is_generated_lazily_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__special_pred__special_pred_is_generated_lazily_for_defn_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+hlds__special_pred__special_pred_list_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+hlds__special_pred__special_pred_mode_num_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+hlds__special_pred____Compare____special_pred_maps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__special_pred____Unify____special_pred_maps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__special_pred__init(void);
+void mercury__hlds__special_pred__init_type_tables(void);
+void mercury__hlds__special_pred__init_debugger(void);
+const char *mercury__hlds__special_pred__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.special_pred
+
+// :- end_interface hlds.special_pred.
