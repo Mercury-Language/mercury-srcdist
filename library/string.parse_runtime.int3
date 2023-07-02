@@ -1,0 +1,5 @@
+:- module (string.parse_runtime).
+:- interface.
+:- type sized_int.
+:- type sized_uint.
+:- type string_format_spec.
