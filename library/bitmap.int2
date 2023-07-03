@@ -1,0 +1,37 @@
+:- module bitmap.
+:- interface.
+:- use_module io.
+:- use_module stream.
+:- type bit_index == int.
+:- type bitmap.
+:- type bitmap_error
+    --->    bitmap_error(string).
+:- type byte == int.
+:- type byte_index == int.
+:- type num_bits == int.
+:- type num_bytes == int.
+:- type slice.
+:- type word == int.
+:- inst bitmap == ground.
+:- inst uniq_bitmap == (bitmap.bitmap).
+:- mode (bitmap_di) == builtin.in((bitmap.uniq_bitmap)).
+:- mode (bitmap_ui) == builtin.in((bitmap.uniq_bitmap)).
+:- mode (bitmap_uo) == builtin.out((bitmap.uniq_bitmap)).
+:- instance (stream.bulk_reader(io.binary_input_stream, int, bitmap.bitmap, io.io, io.error)).
+:- instance (stream.writer(io.binary_output_stream, bitmap.bitmap, io.io)).
+:- instance (stream.writer(io.binary_output_stream, bitmap.slice, io.io)).
+:- implementation.
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", (io.stream_ops)).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", (io.stream_ops)).
+:- pragma foreign_type(c, bitmap, "MR_BitmapPtr", [can_pass_as_mercury_type])
+    where
+        type_is_abstract_noncanonical.
+:- pragma foreign_type(java, bitmap, "jmercury.runtime.MercuryBitmap")
+    where
+        type_is_abstract_noncanonical.
+:- pragma foreign_type(csharp, bitmap, "mercury.runtime.MercuryBitmap")
+    where
+        type_is_abstract_noncanonical.
