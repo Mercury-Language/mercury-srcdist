@@ -1,0 +1,29 @@
+:- module (ml_backend.mlds_to_c_global).
+:- interface.
+:- use_module assoc_list.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module (libs.indent).
+:- use_module (ml_backend.ml_global_data).
+:- use_module (ml_backend.mlds).
+:- use_module (ml_backend.mlds_to_c_util).
+:- type maybe_blank_line_between_defns
+    --->    no_blank_line_between_defns 
+    ;       blank_line_between_defns .
+:- pred mlds_output_alloc_site_decls(io.text_output_stream, libs.indent.indent, assoc_list.assoc_list(ml_backend.mlds.mlds_alloc_id, ml_backend.ml_global_data.ml_alloc_site_data), io.io, io.io).
+:- mode mlds_output_alloc_site_decls((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_alloc_site_defns(ml_backend.mlds_to_c_util.mlds_to_c_opts, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_module_name, assoc_list.assoc_list(ml_backend.mlds.mlds_alloc_id, ml_backend.ml_global_data.ml_alloc_site_data), io.io, io.io).
+:- mode mlds_output_alloc_site_defns((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_global_var_decls(ml_backend.mlds_to_c_util.mlds_to_c_opts, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_module_name, list.list(ml_backend.mlds.mlds_global_var_defn), io.io, io.io).
+:- mode mlds_output_global_var_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_global_var_defns(ml_backend.mlds_to_c_util.mlds_to_c_opts, io.text_output_stream, libs.indent.indent, ml_backend.mlds_to_c_global.maybe_blank_line_between_defns, ml_backend.mlds.mlds_module_name, list.list(ml_backend.mlds.mlds_global_var_defn), io.io, io.io).
+:- mode mlds_output_global_var_defns((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_scalar_cell_group_decls(ml_backend.mlds_to_c_util.mlds_to_c_opts, io.text_output_stream, libs.indent.indent, string, assoc_list.assoc_list(ml_backend.mlds.ml_scalar_common_type_num, ml_backend.ml_global_data.ml_scalar_cell_group), io.io, io.io).
+:- mode mlds_output_scalar_cell_group_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_scalar_cell_group_defns(ml_backend.mlds_to_c_util.mlds_to_c_opts, io.text_output_stream, libs.indent.indent, string, assoc_list.assoc_list(ml_backend.mlds.ml_scalar_common_type_num, ml_backend.ml_global_data.ml_scalar_cell_group), io.io, io.io).
+:- mode mlds_output_scalar_cell_group_defns((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_vector_cell_group_decls(ml_backend.mlds_to_c_util.mlds_to_c_opts, io.text_output_stream, libs.indent.indent, ml_backend.mlds.mlds_module_name, string, assoc_list.assoc_list(ml_backend.mlds.ml_vector_common_type_num, ml_backend.ml_global_data.ml_vector_cell_group), io.io, io.io).
+:- mode mlds_output_vector_cell_group_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_vector_cell_group_defns(ml_backend.mlds_to_c_util.mlds_to_c_opts, io.text_output_stream, libs.indent.indent, string, assoc_list.assoc_list(ml_backend.mlds.ml_vector_common_type_num, ml_backend.ml_global_data.ml_vector_cell_group), io.io, io.io).
+:- mode mlds_output_vector_cell_group_defns((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

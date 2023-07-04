@@ -1,0 +1,199 @@
+:- module (ml_backend.mlds).
+:- interface.
+:- type class_access
+	where	type_is_abstract_enum(1).
+:- type constness
+	where	type_is_abstract_enum(1).
+:- type function_access
+	where	type_is_abstract_enum(1).
+:- type global_var_access
+	where	type_is_abstract_enum(1).
+:- type global_var_ref.
+:- type initializer_array_size.
+:- type mercury_mlds_import_type
+	where	type_is_abstract_enum(1).
+:- type mercury_module_name.
+:- type ml_call_kind
+	where	type_is_abstract_enum(2).
+:- type ml_scalar_common_type_num.
+:- type ml_vector_common_type_num.
+:- type mlds.
+:- type mlds_alloc_id.
+:- type mlds_arg_types.
+:- type mlds_argument.
+:- type mlds_atomic_statement.
+:- type mlds_case_match_cond.
+:- type mlds_class_decl_flags.
+:- type mlds_class_defn.
+:- type mlds_class_id.
+:- type mlds_class_inherits.
+:- type mlds_class_kind
+	where	type_is_abstract_enum(2).
+:- type mlds_class_name.
+:- type mlds_code_addr.
+:- type mlds_compiler_aux_var
+	where	type_is_abstract_enum(4).
+:- type mlds_compiler_var.
+:- type mlds_ctor_id.
+:- type mlds_enum_class_defn.
+:- type mlds_enum_class_id.
+:- type mlds_enum_class_inherits
+	where	type_is_abstract_subtype(mlds_class_inherits/0).
+:- type mlds_enum_const.
+:- type mlds_enum_const_defn.
+:- type mlds_exception_handler.
+:- type mlds_exported_enum.
+:- type mlds_exported_enum_constant.
+:- type mlds_exported_enums.
+:- type mlds_field_id.
+:- type mlds_field_var_decl_flags.
+:- type mlds_field_var_defn.
+:- type mlds_field_var_name.
+:- type mlds_foreign_code.
+:- type mlds_func_label.
+:- type mlds_func_params.
+:- type mlds_func_signature.
+:- type mlds_function_body.
+:- type mlds_function_decl_flags.
+:- type mlds_function_defn.
+:- type mlds_function_name.
+:- type mlds_gc_statement.
+:- type mlds_global_const_var
+	where	type_is_abstract_enum(3).
+:- type mlds_global_var_decl_flags.
+:- type mlds_global_var_defn.
+:- type mlds_global_var_name.
+:- type mlds_goto_target.
+:- type mlds_import.
+:- type mlds_initializer.
+:- type mlds_interface_id.
+:- type mlds_label.
+:- type mlds_local_var_defn.
+:- type mlds_local_var_name.
+:- type mlds_local_var_name_type.
+:- type mlds_lval.
+:- type mlds_maybe_aux_func_id.
+:- type mlds_module_name.
+:- type mlds_package_name.
+:- type mlds_plain_func_name.
+:- type mlds_pragma_export.
+:- type mlds_pred_label.
+:- type mlds_proc_label.
+:- type mlds_qual_kind
+	where	type_is_abstract_enum(1).
+:- type mlds_reset_trail_reason
+	where	type_is_abstract_enum(3).
+:- type mlds_return_types.
+:- type mlds_rval.
+:- type mlds_rval_const.
+:- type mlds_scalar_common.
+:- type mlds_stmt.
+:- type mlds_switch_case.
+:- type mlds_switch_default.
+:- type mlds_switch_range.
+:- type mlds_target_lang
+	where	type_is_abstract_enum(2).
+:- type mlds_type.
+:- type mlds_typed_rval.
+:- type mlds_vector_common.
+:- type outline_arg.
+:- type overridability
+	where	type_is_abstract_enum(1).
+:- type per_instance
+	where	type_is_abstract_enum(1).
+:- type proc_id_in_tscc.
+:- type qual_class_name.
+:- type qual_ctor_id.
+:- type qual_field_var_name.
+:- type qual_func_label.
+:- type qual_function_name.
+:- type qual_global_var_name.
+:- type qual_proc_label.
+:- type target_code_component.
+:- type trail_op.
+:- type while_loop_kind
+	where	type_is_abstract_enum(1).
+:- abstract_inst((atomic_stmt_is_new_object)).
+:- abstract_inst((lvn_prog_var)).
+:- abstract_inst((ml_stmt_is_atomic)).
+:- abstract_inst((ml_stmt_is_block)).
+:- abstract_inst((ml_stmt_is_call)).
+:- abstract_inst((ml_stmt_is_computed_goto)).
+:- abstract_inst((ml_stmt_is_do_commit)).
+:- abstract_inst((ml_stmt_is_goto)).
+:- abstract_inst((ml_stmt_is_if_then_else)).
+:- abstract_inst((ml_stmt_is_label)).
+:- abstract_inst((ml_stmt_is_return)).
+:- abstract_inst((ml_stmt_is_switch)).
+:- abstract_inst((ml_stmt_is_try_commit)).
+:- abstract_inst((ml_stmt_is_while)).
+:- type_representation(class_access, du_repn(enum("class_public", "class_private", [],  no_c_j_cs))).
+:- type_representation(constness, du_repn(enum("modifiable", "const", [],  no_c_j_cs))).
+:- type_representation(function_access, du_repn(enum("func_public", "func_private", [],  no_c_j_cs))).
+:- type_representation(global_var_access, du_repn(enum("gvar_acc_module_only", "gvar_acc_whole_program", [],  no_c_j_cs))).
+:- type_representation(global_var_ref, du_repn(notag("env_var_ref", string,  no_c_j_cs))).
+:- type_representation(mercury_mlds_import_type, du_repn(enum("user_visible_interface", "compiler_visible_interface", [],  no_c_j_cs))).
+:- type_representation(mercury_module_name, is_eqv_to(sym_name.module_name)).
+:- type_representation(ml_call_kind, du_repn(enum("no_return_call", "tail_call", ["ordinary_call"],  no_c_j_cs))).
+:- type_representation(ml_scalar_common_type_num, du_repn(notag("ml_scalar_common_type_num", int,  no_c_j_cs))).
+:- type_representation(ml_vector_common_type_num, du_repn(notag("ml_vector_common_type_num", int,  no_c_j_cs))).
+:- type_representation(mlds, is_word_aligned_ptr).
+:- type_representation(mlds_alloc_id, du_repn(notag("mlds_alloc_id", int,  no_c_j_cs))).
+:- type_representation(mlds_arg_types, is_eqv_to(list(ml_backend.mlds.mlds_type))).
+:- type_representation(mlds_argument, is_word_aligned_ptr).
+:- type_representation(mlds_class_decl_flags, is_word_aligned_ptr).
+:- type_representation(mlds_class_defn, is_word_aligned_ptr).
+:- type_representation(mlds_class_id, is_word_aligned_ptr).
+:- type_representation(mlds_class_kind, du_repn(enum("mlds_class", "mlds_interface", ["mlds_struct"],  no_c_j_cs))).
+:- type_representation(mlds_class_name, is_eqv_to(string)).
+:- type_representation(mlds_code_addr, is_word_aligned_ptr).
+:- type_representation(mlds_compiler_aux_var, du_repn(enum("mcav_commit", "mcav_slot", ["mcav_later_slot", "mcav_num_later_solns", "mcav_limit", "mcav_str", "mcav_lo", "mcav_mid", "mcav_hi", "mcav_stop_loop", "mcav_result", "mcav_case_num"],  no_c_j_cs))).
+:- type_representation(mlds_ctor_id, is_word_aligned_ptr).
+:- type_representation(mlds_enum_class_defn, is_word_aligned_ptr).
+:- type_representation(mlds_enum_class_id, is_word_aligned_ptr).
+:- type_representation(mlds_enum_class_inherits, is_subtype_of((ml_backend.mlds).mlds_class_inherits/0)).
+:- type_representation(mlds_enum_const_defn, is_word_aligned_ptr).
+:- type_representation(mlds_exception_handler, is_word_aligned_ptr).
+:- type_representation(mlds_exported_enum, is_word_aligned_ptr).
+:- type_representation(mlds_exported_enum_constant, is_word_aligned_ptr).
+:- type_representation(mlds_exported_enums, is_eqv_to(list(ml_backend.mlds.mlds_exported_enum))).
+:- type_representation(mlds_field_var_decl_flags, is_word_aligned_ptr).
+:- type_representation(mlds_field_var_defn, is_word_aligned_ptr).
+:- type_representation(mlds_foreign_code, is_word_aligned_ptr).
+:- type_representation(mlds_func_label, is_word_aligned_ptr).
+:- type_representation(mlds_func_params, is_word_aligned_ptr).
+:- type_representation(mlds_func_signature, is_word_aligned_ptr).
+:- type_representation(mlds_function_decl_flags, is_word_aligned_ptr).
+:- type_representation(mlds_function_defn, is_word_aligned_ptr).
+:- type_representation(mlds_global_const_var, du_repn(enum("mgcv_const_var", "mgcv_float", ["mgcv_int64", "mgcv_uint64", "mgcv_closure_layout", "mgcv_typevar_vector", "mgcv_bit_vector"],  no_c_j_cs))).
+:- type_representation(mlds_global_var_decl_flags, is_word_aligned_ptr).
+:- type_representation(mlds_global_var_defn, is_word_aligned_ptr).
+:- type_representation(mlds_import, is_word_aligned_ptr).
+:- type_representation(mlds_interface_id, is_word_aligned_ptr).
+:- type_representation(mlds_label, du_repn(notag("mlds_label", string,  no_c_j_cs))).
+:- type_representation(mlds_local_var_defn, is_word_aligned_ptr).
+:- type_representation(mlds_local_var_name_type, is_word_aligned_ptr).
+:- type_representation(mlds_module_name, is_word_aligned_ptr).
+:- type_representation(mlds_package_name, is_eqv_to(ml_backend.mlds.mlds_module_name)).
+:- type_representation(mlds_plain_func_name, is_word_aligned_ptr).
+:- type_representation(mlds_pragma_export, is_word_aligned_ptr).
+:- type_representation(mlds_proc_label, is_word_aligned_ptr).
+:- type_representation(mlds_qual_kind, du_repn(enum("module_qual", "type_qual", [],  no_c_j_cs))).
+:- type_representation(mlds_reset_trail_reason, du_repn(enum("undo", "commit", ["solve", "exception", "gc"],  no_c_j_cs))).
+:- type_representation(mlds_return_types, is_eqv_to(list(ml_backend.mlds.mlds_type))).
+:- type_representation(mlds_scalar_common, is_word_aligned_ptr).
+:- type_representation(mlds_switch_case, is_word_aligned_ptr).
+:- type_representation(mlds_target_lang, du_repn(enum("ml_target_c", "ml_target_csharp", ["ml_target_java"],  no_c_j_cs))).
+:- type_representation(mlds_typed_rval, is_word_aligned_ptr).
+:- type_representation(mlds_vector_common, is_word_aligned_ptr).
+:- type_representation(overridability, du_repn(enum("overridable", "sealed", [],  no_c_j_cs))).
+:- type_representation(per_instance, du_repn(enum("one_copy", "per_instance", [],  no_c_j_cs))).
+:- type_representation(proc_id_in_tscc, du_repn(notag("proc_id_in_tscc", int,  no_c_j_cs))).
+:- type_representation(qual_class_name, is_word_aligned_ptr).
+:- type_representation(qual_ctor_id, is_word_aligned_ptr).
+:- type_representation(qual_field_var_name, is_word_aligned_ptr).
+:- type_representation(qual_func_label, is_word_aligned_ptr).
+:- type_representation(qual_function_name, is_word_aligned_ptr).
+:- type_representation(qual_global_var_name, is_word_aligned_ptr).
+:- type_representation(qual_proc_label, is_word_aligned_ptr).
+:- type_representation(while_loop_kind, du_repn(enum("may_loop_zero_times", "loop_at_least_once", [],  no_c_j_cs))).

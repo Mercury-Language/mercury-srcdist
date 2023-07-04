@@ -1,0 +1,2 @@
+:- module recursion_patterns.
+:- interface.

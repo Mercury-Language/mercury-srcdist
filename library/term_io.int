@@ -1,0 +1,132 @@
+:- module term_io.
+:- interface.
+:- use_module char.
+:- use_module io.
+:- use_module ops.
+:- use_module stream.
+:- use_module term.
+:- use_module varset.
+:- type adjacent_to_graphic_token
+    --->    maybe_adjacent_to_graphic_token 
+    ;       not_adjacent_to_graphic_token .
+:- func constant_to_string(term.const) = string.
+:- pred encode_escaped_char(char.char, string).
+:- mode encode_escaped_char((builtin.in), (builtin.out)) is semidet.
+:- mode encode_escaped_char((builtin.out), (builtin.in)) is semidet.
+:- func escaped_char(char.char) = string.
+:- func escaped_char_to_string(char.char) = string.
+:- func escaped_string(string) = string.
+:- func format_constant(term.const) = string.
+:- pred format_constant(Stream, term.const, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_constant((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_escaped_char(Stream, char.char, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_escaped_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_escaped_string(Stream, string, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_escaped_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_quoted_atom(Stream, string, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_quoted_atom((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_quoted_atom_agt(Stream, string, term_io.adjacent_to_graphic_token, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_quoted_atom_agt((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_quoted_char(Stream, char.char, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_quoted_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_quoted_string(Stream, string, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_quoted_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_term(Stream, varset.varset(T), term.term(T), State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_term((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_term_nl(Stream, varset.varset(T), term.term(T), State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_term_nl((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_term_nl_with_op_table(Stream, OpTable, varset.varset(T), term.term(T), State, State) <= (ops.op_table(OpTable), stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_term_nl_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_term_with_op_table(Stream, OpTable, varset.varset(T), term.term(T), State, State) <= (ops.op_table(OpTable), stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_term_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_variable(Stream, term.var(T), varset.varset(T), State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_variable((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format_variable_with_op_table(Stream, OpTable, term.var(T), varset.varset(T), State, State) <= (ops.op_table(OpTable), stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode format_variable_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func integer_base_int(term.integer_base) = int.
+:- func integer_base_prefix(term.integer_base) = string.
+:- pred is_mercury_punctuation_char(char.char).
+:- mode is_mercury_punctuation_char((builtin.in)) is semidet.
+:- func mercury_escape_char(char.char) = string.
+:- pred quote_atom(string, io.io, io.io).
+:- mode quote_atom((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred quote_atom(Stream, string, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode quote_atom((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred quote_atom_agt(string, term_io.adjacent_to_graphic_token, io.io, io.io).
+:- mode quote_atom_agt((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred quote_atom_agt(Stream, string, term_io.adjacent_to_graphic_token, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode quote_atom_agt((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred quote_char(char.char, io.io, io.io).
+:- mode quote_char((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred quote_char(Stream, char.char, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode quote_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred quote_string(string, io.io, io.io).
+:- mode quote_string((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred quote_string(Stream, string, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode quote_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func quoted_atom(string) = string.
+:- func quoted_atom_agt(string, term_io.adjacent_to_graphic_token) = string.
+:- func quoted_char(char.char) = string.
+:- func quoted_char_to_string(char.char) = string.
+:- func quoted_string(string) = string.
+:- pred string_is_escaped_char(char.char, string).
+:- mode string_is_escaped_char((builtin.in), (builtin.out)) is det.
+:- mode string_is_escaped_char((builtin.out), (builtin.in)) is semidet.
+:- func term_nl_to_string(varset.varset(T), term.term(T)) = string.
+:- func term_nl_with_op_table_to_string(OpTable, varset.varset(T), term.term(T)) = string <= (ops.op_table(OpTable)).
+:- func term_to_string(varset.varset(T), term.term(T)) = string.
+:- func term_with_op_table_to_string(OpTable, varset.varset(T), term.term(T)) = string <= (ops.op_table(OpTable)).
+:- func variable_to_string(term.var(T), varset.varset(T)) = string.
+:- func variable_with_op_table_to_string(OpTable, term.var(T), varset.varset(T)) = string <= (ops.op_table(OpTable)).
+:- pred write_constant(term.const, io.io, io.io).
+:- mode write_constant((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_constant(io.text_output_stream, term.const, io.io, io.io).
+:- mode write_constant((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_escaped_char(char.char, io.io, io.io).
+:- mode write_escaped_char((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_escaped_char(Stream, char.char, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode write_escaped_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_escaped_string(string, io.io, io.io).
+:- mode write_escaped_string((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_escaped_string(Stream, string, State, State) <= (stream.writer(Stream, string, State), stream.writer(Stream, char.char, State)).
+:- mode write_escaped_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_quoted_atom(string, io.io, io.io).
+:- mode write_quoted_atom((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_quoted_atom(io.text_output_stream, string, io.io, io.io).
+:- mode write_quoted_atom((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_quoted_atom_agt(string, term_io.adjacent_to_graphic_token, io.io, io.io).
+:- mode write_quoted_atom_agt((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_quoted_atom_agt(io.text_output_stream, string, term_io.adjacent_to_graphic_token, io.io, io.io).
+:- mode write_quoted_atom_agt((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_quoted_char(char.char, io.io, io.io).
+:- mode write_quoted_char((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_quoted_char(io.text_output_stream, char.char, io.io, io.io).
+:- mode write_quoted_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_quoted_string(string, io.io, io.io).
+:- mode write_quoted_string((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_quoted_string(io.text_output_stream, string, io.io, io.io).
+:- mode write_quoted_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_term(varset.varset(T), term.term(T), io.io, io.io).
+:- mode write_term((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_term(io.text_output_stream, varset.varset(T), term.term(T), io.io, io.io).
+:- mode write_term((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_term_nl(varset.varset(T), term.term(T), io.io, io.io).
+:- mode write_term_nl((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_term_nl(io.text_output_stream, varset.varset(T), term.term(T), io.io, io.io).
+:- mode write_term_nl((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_term_nl_with_op_table(OpTable, varset.varset(T), term.term(T), io.io, io.io) <= (ops.op_table(OpTable)).
+:- mode write_term_nl_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_term_nl_with_op_table(io.text_output_stream, OpTable, varset.varset(T), term.term(T), io.io, io.io) <= (ops.op_table(OpTable)).
+:- mode write_term_nl_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_term_with_op_table(OpTable, varset.varset(T), term.term(T), io.io, io.io) <= (ops.op_table(OpTable)).
+:- mode write_term_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_term_with_op_table(io.text_output_stream, OpTable, varset.varset(T), term.term(T), io.io, io.io) <= (ops.op_table(OpTable)).
+:- mode write_term_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_variable(term.var(T), varset.varset(T), io.io, io.io).
+:- mode write_variable((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_variable(io.text_output_stream, term.var(T), varset.varset(T), io.io, io.io).
+:- mode write_variable((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_variable_with_op_table(OpTable, term.var(T), varset.varset(T), io.io, io.io) <= (ops.op_table(OpTable)).
+:- mode write_variable_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_variable_with_op_table(io.text_output_stream, OpTable, term.var(T), varset.varset(T), io.io, io.io) <= (ops.op_table(OpTable)).
+:- mode write_variable_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
