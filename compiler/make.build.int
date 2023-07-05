@@ -1,0 +1,53 @@
+:- module (make.build).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (libs.globals).
+:- use_module (libs.maybe_util).
+:- use_module (make.dependencies).
+:- use_module (make.make_info).
+:- use_module (make.options_file).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_spec).
+:- type foldl2_pred_with_status(T, Info, IO) == pred(libs.globals.globals, T, libs.maybe_util.maybe_succeeded, Info, Info, IO, IO).
+:- type may_build
+    --->    may_not_build(list.list(parse_tree.error_spec.error_spec))
+    ;       may_build(list.list(string), libs.globals.globals).
+:- type maybe_invoked_by_mmc_make
+    --->    not_invoked_by_mmc_make 
+    ;       invoked_by_mmc_make .
+:- type stdout_lock.
+:- inst foldl2_pred_with_status == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pred foldl2_install_library_grades(make.make_info.maybe_keep_going, libs.maybe_util.maybe_succeeded, mdbcomp.sym_name.module_name, list.list(mdbcomp.sym_name.module_name), libs.globals.globals, list.list(string), libs.maybe_util.maybe_succeeded, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode foldl2_install_library_grades((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred foldl2_make_module_targets(make.make_info.maybe_keep_going, list.list(string), libs.globals.globals, list.list(make.dependencies.dependency_file), libs.maybe_util.maybe_succeeded, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode foldl2_make_module_targets((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred foldl2_make_module_targets_maybe_parallel(make.make_info.maybe_keep_going, list.list(string), libs.globals.globals, list.list(make.dependencies.dependency_file), libs.maybe_util.maybe_succeeded, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode foldl2_make_module_targets_maybe_parallel((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred foldl2_make_top_targets(make.make_info.maybe_keep_going, libs.globals.globals, list.list(make.make_info.top_target_file), libs.maybe_util.maybe_succeeded, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode foldl2_make_top_targets((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lock_stdout(make.build.stdout_lock, io.io, io.io).
+:- mode lock_stdout((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred prepare_to_redirect_output(mdbcomp.sym_name.module_name, maybe.maybe(io.text_output_stream), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode prepare_to_redirect_output((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred setup_for_build_with_module_options(make.build.maybe_invoked_by_mmc_make, mdbcomp.sym_name.module_name, list.list(string), make.options_file.options_variables, list.list(string), list.list(string), make.build.may_build, io.io, io.io).
+:- mode setup_for_build_with_module_options((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred unlock_stdout(make.build.stdout_lock, io.io, io.io).
+:- mode unlock_stdout((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred unredirect_output(libs.globals.globals, mdbcomp.sym_name.module_name, io.text_output_stream, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode unredirect_output((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred with_locked_stdout(make.make_info.make_info, pred(io.io, io.io), io.io, io.io).
+:- mode with_locked_stdout((builtin.in), builtin.in((pred((builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- pragma foreign_import_module("C", (make.build)).
+:- pragma foreign_import_module("C#", (make.build)).
+:- pragma foreign_import_module("Java", (make.build)).
+:- type job_ctl.
+:- pragma foreign_type(c, job_ctl, "MC_JobCtl *").
+:- pragma foreign_type(java, job_ctl, "java.lang.Object").
+:- pragma foreign_type(csharp, job_ctl, "object").
+:- type stdout_lock == make.build.job_ctl.

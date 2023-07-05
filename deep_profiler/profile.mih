@@ -1,0 +1,1047 @@
+/*
+** Automatically generated from `profile.m'
+** by the Mercury compiler,
+** version rotd-2023-07-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module profile.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_profile
+#define MR_HEADER_GUARD_profile
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PROFILE_DECL_GUARD
+#define PROFILE_DECL_GUARD
+#include "mercury_deep_profiling.h"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_array_slot_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_callees_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_caller_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_dynamic_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_dynamic_ptr_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_dynamics_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_kind_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_kind_and_callee_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_kind_and_callee_1;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_kind_and_info_1;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_static_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_static_map_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_static_ptr_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_statics_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_canonical_flag_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_clique_ptr_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_compensation_table_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_coverage_data_type_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_deep_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_deep_compression_flag_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_deep_flags_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_initial_deep_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_is_zeroed_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_module_data_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_dynamic_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_dynamic_ptr_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_dynamics_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_static_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_static_ptr_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_statics_0;
+
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_profile_stats_0;
+
+void MR_CALL 
+profile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_114_111_102_105_108_101_95_95_100_101_101_112_95_99_111_109_112_114_101_115_115_105_111_110_95_102_108_97_103_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+profile__deep_extract_csdptr_callee_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_extract_csdptr_caller_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_get_maybe_progrep_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+profile__deep_get_progrep_det_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+profile__deep_lookup_call_site_calls_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_call_site_dynamics_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_call_site_static_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_call_site_statics_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_clique_index_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_clique_maybe_child_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_clique_members_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_clique_parents_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_csd_comp_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_csd_desc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_csd_own_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_css_desc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_css_own_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_pd_comp_table_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_pd_desc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_pd_own_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_proc_callers_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_proc_dynamic_sites_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr * param_3);
+
+void MR_CALL 
+profile__deep_lookup_proc_dynamics_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_proc_statics_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_ps_coverage_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_ps_desc_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_lookup_ps_own_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__deep_update_csd_comp_table_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+profile__deep_update_csd_desc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+profile__deep_update_pd_comp_table_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+profile__deep_update_pd_desc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+profile__deep_update_pd_own_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+profile__extract_csd_callee_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+profile__extract_csd_caller_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+profile__extract_csdptr_callee_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__extract_csdptr_caller_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__extract_init_call_site_dynamics_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr * param_2);
+
+void MR_CALL 
+profile__extract_init_call_site_statics_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr * param_2);
+
+void MR_CALL 
+profile__extract_init_proc_dynamics_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr * param_2);
+
+void MR_CALL 
+profile__extract_init_proc_statics_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr * param_2);
+
+void MR_CALL 
+profile__extract_init_root_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+profile__extract_instrument_quanta_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+profile__extract_max_csd_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+profile__extract_max_css_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+profile__extract_max_pd_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+profile__extract_max_ps_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+profile__extract_num_callseqs_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+profile__extract_pd_sites_2_p_0(
+  MR_Word param_1,
+  MR_ArrayPtr * param_2);
+
+void MR_CALL 
+profile__extract_ticks_per_sec_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+profile__extract_user_quanta_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+profile__is_call_site_kind_2_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+profile__lookup_call_site_calls_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_call_site_dynamics_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_call_site_static_map_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_call_site_statics_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_clique_index_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_clique_maybe_child_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_clique_members_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_clique_parents_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_csd_comp_table_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_csd_desc_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_csd_own_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_css_desc_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_css_own_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_pd_comp_table_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_pd_desc_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_pd_own_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_proc_callers_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_proc_dynamics_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_proc_statics_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_ps_coverage_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_ps_desc_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__lookup_ps_own_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+profile__update_call_site_dynamics_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+profile__update_call_site_static_map_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+profile__update_call_site_statics_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+profile__update_css_desc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+profile__update_css_own_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+profile__update_proc_callers_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+profile__update_proc_dynamics_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+profile__update_proc_statics_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+profile__update_ps_coverage_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+profile__update_ps_desc_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+void MR_CALL 
+profile__update_ps_own_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_ArrayPtr * param_4);
+
+MR_bool MR_CALL 
+profile__valid_call_site_dynamic_ptr_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile__valid_call_site_dynamic_ptr_raw_2_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile__valid_call_site_static_ptr_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile__valid_call_site_static_ptr_raw_2_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile__valid_clique_ptr_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile__valid_proc_dynamic_ptr_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile__valid_proc_dynamic_ptr_raw_2_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile__valid_proc_static_ptr_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile__valid_proc_static_ptr_raw_2_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+profile__decl_module_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+profile__dummy_call_site_dynamic_ptr_0_f_0(void);
+
+MR_Word MR_CALL 
+profile__dummy_call_site_static_ptr_0_f_0(void);
+
+MR_Word MR_CALL 
+profile__dummy_clique_ptr_0_f_0(void);
+
+MR_Word MR_CALL 
+profile__dummy_proc_dynamic_ptr_0_f_0(void);
+
+MR_Word MR_CALL 
+profile__dummy_proc_id_0_f_0(void);
+
+MR_Word MR_CALL 
+profile__dummy_proc_static_ptr_0_f_0(void);
+
+MR_Word MR_CALL 
+profile__main_parent_proc_id_0_f_0(void);
+
+MR_Word MR_CALL 
+profile__root_desc_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+profile__root_own_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+profile__root_total_info_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+profile__wrap_proc_static_ptr_1_f_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+profile____Compare____call_site_array_slot_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____call_site_callees_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____call_site_caller_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____call_site_dynamic_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____call_site_dynamic_ptr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____call_site_dynamics_0_0(
+  MR_Word * param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+void MR_CALL 
+profile____Compare____call_site_kind_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____call_site_kind_and_callee_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____call_site_kind_and_callee_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+profile____Compare____call_site_kind_and_info_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+profile____Compare____call_site_static_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____call_site_static_map_0_0(
+  MR_Word * param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+void MR_CALL 
+profile____Compare____call_site_static_ptr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____call_site_statics_0_0(
+  MR_Word * param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+void MR_CALL 
+profile____Compare____canonical_flag_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____clique_ptr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____compensation_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____coverage_data_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____deep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____deep_compression_flag_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+profile____Compare____deep_flags_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____initial_deep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____is_zeroed_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____module_data_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____proc_dynamic_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____proc_dynamic_ptr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____proc_dynamics_0_0(
+  MR_Word * param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+void MR_CALL 
+profile____Compare____proc_static_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____proc_static_ptr_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+profile____Compare____proc_statics_0_0(
+  MR_Word * param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+void MR_CALL 
+profile____Compare____profile_stats_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_array_slot_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_callees_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_caller_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_dynamic_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_dynamic_ptr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_dynamics_0_0(
+  MR_ArrayPtr param_1,
+  MR_ArrayPtr param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_kind_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_kind_and_callee_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_kind_and_callee_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_kind_and_info_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_static_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_static_map_0_0(
+  MR_ArrayPtr param_1,
+  MR_ArrayPtr param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_static_ptr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____call_site_statics_0_0(
+  MR_ArrayPtr param_1,
+  MR_ArrayPtr param_2);
+
+MR_bool MR_CALL 
+profile____Unify____canonical_flag_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____clique_ptr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____compensation_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____coverage_data_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____deep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____deep_compression_flag_0_0(void);
+
+MR_bool MR_CALL 
+profile____Unify____deep_flags_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____initial_deep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____is_zeroed_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____module_data_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____proc_dynamic_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____proc_dynamic_ptr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____proc_dynamics_0_0(
+  MR_ArrayPtr param_1,
+  MR_ArrayPtr param_2);
+
+MR_bool MR_CALL 
+profile____Unify____proc_static_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____proc_static_ptr_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+profile____Unify____proc_statics_0_0(
+  MR_ArrayPtr param_1,
+  MR_ArrayPtr param_2);
+
+MR_bool MR_CALL 
+profile____Unify____profile_stats_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__profile__init(void);
+void mercury__profile__init_type_tables(void);
+void mercury__profile__init_debugger(void);
+const char *mercury__profile__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_profile
+
+// :- end_interface profile.

@@ -1,0 +1,2 @@
+make.util.m:477: In clause for predicate `target_type_to_target_extension'/3:
+make.util.m:477:   warning: variable `Globals' occurs only once in this scope.
