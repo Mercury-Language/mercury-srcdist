@@ -1,0 +1,14 @@
+module(2, "mer_std.m",
+	mer_std,
+	{},
+	{builtin, private_builtin},
+	{library},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

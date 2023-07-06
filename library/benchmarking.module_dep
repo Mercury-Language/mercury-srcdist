@@ -1,0 +1,14 @@
+module(2, "benchmarking.m",
+	benchmarking,
+	{},
+	{bool, builtin, io, maybe, private_builtin},
+	{int, list, mutvar, require, string, (io.error_util), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - benchmarking, "C#" - benchmarking, "C#" - (io.primitives_write), "C#" - (io.stream_ops), "Java" - benchmarking, "Java" - (io.stream_ops)},
+	no_foreign_export,
+	no_main,
+	{}
+).
