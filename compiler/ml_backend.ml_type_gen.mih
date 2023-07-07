@@ -1,0 +1,137 @@
+/*
+** Automatically generated from `ml_type_gen.m'
+** by the Mercury compiler,
+** version rotd-2023-07-07
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_type_gen.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_type_gen
+#define MR_HEADER_GUARD_ml_backend__ml_type_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_TYPE_GEN_DECL_GUARD
+#define ML_BACKEND__ML_TYPE_GEN_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_type_gen__ml_backend__ml_type_gen__type_ctor_info_mlds_field_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_type_gen__ml_backend__ml_type_gen__type_ctor_info_tag_uses_base_class_0;
+
+void MR_CALL 
+ml_backend__ml_type_gen__ctors_with_and_without_secondary_tag_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+ml_backend__ml_type_gen__ml_gen_exported_enums_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ml_backend__ml_type_gen__ml_gen_type_name_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+ml_backend__ml_type_gen__ml_gen_types_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+ml_backend__ml_type_gen__ml_gen_constructor_function_8_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8);
+
+MR_String MR_CALL 
+ml_backend__ml_type_gen__ml_gen_du_ctor_name_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4);
+
+MR_String MR_CALL 
+ml_backend__ml_type_gen__ml_gen_du_ctor_name_unqual_type_5_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Integer param_5);
+
+MR_Word MR_CALL 
+ml_backend__ml_type_gen__ml_tag_uses_base_class_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+ml_backend__ml_type_gen__ml_target_uses_constructors_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ml_backend__ml_type_gen____Compare____mlds_field_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ml_backend__ml_type_gen____Compare____tag_uses_base_class_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__ml_type_gen____Unify____mlds_field_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ml_backend__ml_type_gen____Unify____tag_uses_base_class_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__ml_type_gen__init(void);
+void mercury__ml_backend__ml_type_gen__init_type_tables(void);
+void mercury__ml_backend__ml_type_gen__init_debugger(void);
+const char *mercury__ml_backend__ml_type_gen__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.ml_type_gen
+
+// :- end_interface ml_backend.ml_type_gen.
