@@ -1,0 +1,2 @@
+CFLAGS_FOR_ERRMSG_FILTER=-ftrack-macro-expansion=0 -fno-diagnostics-show-caret
+CFLAGS_FOR_NO_INFINITE_RECURSION=
