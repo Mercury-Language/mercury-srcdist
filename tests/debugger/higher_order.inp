@@ -1,0 +1,26 @@
+echo on
+context none
+format_param size 100
+format_param depth 100
+format flat
+step
+print *
+finish
+print *
+step
+print *
+finish
+print *
+step
+print *
+finish
+print *
+step
+print *
+finish
+print *
+step
+print *
+finish
+print *
+continue -S

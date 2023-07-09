@@ -1,0 +1,162 @@
+/*
+** Automatically generated from `analysis_utils.m'
+** by the Mercury compiler,
+** version rotd-2023-07-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module analysis_utils.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_analysis_utils
+#define MR_HEADER_GUARD_analysis_utils
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ANALYSIS_UTILS_DECL_GUARD
+#define ANALYSIS_UTILS_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct analysis_utils__analysis_utils__type_ctor_info_callee_0;
+
+extern const MR_TypeCtorInfo_Struct analysis_utils__analysis_utils__type_ctor_info_cost_and_callees_0;
+
+extern const MR_TypeCtorInfo_Struct analysis_utils__analysis_utils__type_ctor_info_cost_and_callees_1;
+
+extern const MR_TypeCtorInfo_Struct analysis_utils__analysis_utils__type_ctor_info_higher_order_0;
+
+void MR_CALL 
+analysis_utils__build_dynamic_call_site_cost_and_callee_map_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+analysis_utils__build_recursive_call_site_cost_map_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis_utils__build_recursive_call_site_cost_map_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis_utils__build_static_call_site_cost_and_callee_map_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+analysis_utils__cost_and_callees_is_recursive_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+analysis_utils__deep_get_maybe_procrep_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+analysis_utils__find_clique_first_and_other_procs_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+analysis_utils__proc_dynamic_paired_call_site_slots_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+analysis_utils____Compare____callee_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis_utils____Compare____cost_and_callees_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis_utils____Compare____cost_and_callees_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+analysis_utils____Compare____higher_order_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+analysis_utils____Unify____callee_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+analysis_utils____Unify____cost_and_callees_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+analysis_utils____Unify____cost_and_callees_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+analysis_utils____Unify____higher_order_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__analysis_utils__init(void);
+void mercury__analysis_utils__init_type_tables(void);
+void mercury__analysis_utils__init_debugger(void);
+const char *mercury__analysis_utils__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_analysis_utils
+
+// :- end_interface analysis_utils.

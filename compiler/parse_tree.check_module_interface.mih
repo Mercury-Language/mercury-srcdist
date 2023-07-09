@@ -1,0 +1,60 @@
+/*
+** Automatically generated from `check_module_interface.m'
+** by the Mercury compiler,
+** version rotd-2023-07-09
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.check_module_interface.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__check_module_interface
+#define MR_HEADER_GUARD_parse_tree__check_module_interface
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__CHECK_MODULE_INTERFACE_DECL_GUARD
+#define PARSE_TREE__CHECK_MODULE_INTERFACE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+void MR_CALL 
+parse_tree__check_module_interface__check_module_interface_for_no_exports_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void mercury__parse_tree__check_module_interface__init(void);
+void mercury__parse_tree__check_module_interface__init_type_tables(void);
+void mercury__parse_tree__check_module_interface__init_debugger(void);
+const char *mercury__parse_tree__check_module_interface__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.check_module_interface
+
+// :- end_interface parse_tree.check_module_interface.

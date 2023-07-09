@@ -1,0 +1,40 @@
+:- module (make.make_info).
+:- interface.
+:- type c_header_type
+	where	type_is_abstract_enum(1).
+:- type compilation_task_type.
+:- type dependency_file_index_map.
+:- type dependency_status
+	where	type_is_abstract_enum(2).
+:- type file_timestamps.
+:- type import_or_include.
+:- type linked_target_file.
+:- type make_error.
+:- type make_info.
+:- type maybe_keep_going
+	where	type_is_abstract_enum(1).
+:- type maybe_module_dep_info.
+:- type maybe_rebuild_module_deps
+	where	type_is_abstract_enum(1).
+:- type misc_target_type.
+:- type module_compilation_task_type
+	where	type_is_abstract_enum(3).
+:- type module_index_map.
+:- type module_target_type.
+:- type target_file.
+:- type target_file_timestamps.
+:- type target_type.
+:- type top_target_file.
+:- type_representation(c_header_type, du_repn(enum("header_mh", "header_mih", [],  no_c_j_cs))).
+:- type_representation(dependency_file_index_map, is_word_aligned_ptr).
+:- type_representation(dependency_status, du_repn(enum("deps_status_not_considered", "deps_status_being_built", ["deps_status_up_to_date", "deps_status_error"],  no_c_j_cs))).
+:- type_representation(file_timestamps, is_eqv_to(map(string, maybe_error(timestamp)))).
+:- type_representation(linked_target_file, is_word_aligned_ptr).
+:- type_representation(make_info, is_word_aligned_ptr).
+:- type_representation(maybe_keep_going, du_repn(enum("do_not_keep_going", "do_keep_going", [],  no_c_j_cs))).
+:- type_representation(maybe_rebuild_module_deps, du_repn(enum("do_rebuild_module_deps", "do_not_rebuild_module_deps", [],  no_c_j_cs))).
+:- type_representation(module_compilation_task_type, du_repn(enum("task_errorcheck", "task_make_int0", ["task_make_int12", "task_make_int3", "task_make_opt", "task_make_analysis_registry", "task_compile_to_target_code", "task_make_xml_doc"],  no_c_j_cs))).
+:- type_representation(module_index_map, is_word_aligned_ptr).
+:- type_representation(target_file, is_word_aligned_ptr).
+:- type_representation(target_file_timestamps, is_eqv_to(version_hash_table(make.make_info.target_file, timestamp))).
+:- type_representation(top_target_file, is_word_aligned_ptr).
