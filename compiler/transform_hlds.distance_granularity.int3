@@ -1,0 +1,2 @@
+:- module (transform_hlds.distance_granularity).
+:- interface.
