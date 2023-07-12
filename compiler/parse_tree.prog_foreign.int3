@@ -1,0 +1,18 @@
+:- module (parse_tree.prog_foreign).
+:- interface.
+:- type foreign_body_code.
+:- type foreign_decl_code.
+:- type foreign_export_decl.
+:- type foreign_export_decls.
+:- type foreign_export_defn.
+:- type foreign_export_defns.
+:- type pred_target_name.
+:- type pred_target_names.
+:- type_representation(foreign_body_code, is_word_aligned_ptr).
+:- type_representation(foreign_decl_code, is_word_aligned_ptr).
+:- type_representation(foreign_export_decl, is_word_aligned_ptr).
+:- type_representation(foreign_export_decls, is_word_aligned_ptr).
+:- type_representation(foreign_export_defn, du_repn(notag("foreign_export_defn", string,  no_c_j_cs))).
+:- type_representation(foreign_export_defns, is_eqv_to(list(parse_tree.prog_foreign.foreign_export_defn))).
+:- type_representation(pred_target_name, is_eqv_to(pair(sym_name_arity, string))).
+:- type_representation(pred_target_names, du_repn(notag("pred_target_names", map(int, list(pred_target_name)),  no_c_j_cs))).

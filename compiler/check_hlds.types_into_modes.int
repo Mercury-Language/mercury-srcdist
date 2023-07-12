@@ -1,0 +1,11 @@
+:- module (check_hlds.types_into_modes).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (check_hlds.inst_mode_type_prop).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.error_spec).
+:- pred propagate_checked_types_into_pred_modes(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.proc_id), list.list(parse_tree.error_spec.error_spec), check_hlds.inst_mode_type_prop.tprop_cache, check_hlds.inst_mode_type_prop.tprop_cache, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode propagate_checked_types_into_pred_modes((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
