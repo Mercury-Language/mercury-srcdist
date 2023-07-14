@@ -1,0 +1,6 @@
+:- module (mdb.declarative_oracle).
+:- interface.
+:- type oracle_response(T).
+:- type oracle_state.
+:- type_representation(module_trust_map, is_eqv_to(map(module_name, module_trust_info))).
+:- type_representation(oracle_state, is_word_aligned_ptr).

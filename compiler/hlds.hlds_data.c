@@ -1,0 +1,10469 @@
+/*
+** Automatically generated from `hlds_data.m'
+** by the Mercury compiler,
+** version rotd-2023-07-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_data.
+// :- implementation.
+
+/*
+INIT mercury__hlds__hlds_data__init
+ENDINIT
+*/
+
+#include "hlds.hlds_data.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "getopt.mih"
+#include "hlds.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "term_context.mih"
+#include "time.mih"
+#include "transform_hlds.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "uint.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "hlds.goal_mode.mih"
+#include "hlds.hlds_class.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_cons.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_promise.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_name.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.status.mih"
+#include "libs.globals.mih"
+#include "libs.op_mode.mih"
+#include "libs.optimization_options.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_spec.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "parse_tree.var_table.mih"
+#include "parse_tree.vartypes.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_util.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 hlds__hlds_data__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0;
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__hlds_data__list__pti_list_1__plain_pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 hlds__hlds_data__pair__pti_pair_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0;
+
+static const MR_VA_PseudoTypeInfo_Struct4 hlds__hlds_data____vpti_pred_4__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1;
+
+static const MR_VA_PseudoTypeInfo_Struct6 hlds__hlds_data____vpti_pred_6__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1__pseudo_2__pseudo_2;
+
+static const MR_VA_PseudoTypeInfo_Struct8 hlds__hlds_data____vpti_pred_8__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1__pseudo_2__pseudo_2__pseudo_3__pseudo_3;
+
+static const MR_VA_PseudoTypeInfo_Struct5 hlds__hlds_data____vpti_pred_5__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_0[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_1[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_1;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_2[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_2;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_3[2];
+
+static const MR_DuArgLocn hlds__hlds_data__hlds__hlds_data__field_locns_cons_tag_0_3[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_3;
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_4;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_5[3];
+
+static const MR_DuArgLocn hlds__hlds_data__hlds__hlds_data__field_locns_cons_tag_0_5[3];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_5;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_6[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_6;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_7[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_7;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_8[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_8;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_9[3];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_9;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_10[3];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_10;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_11[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_11;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_12[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_12;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_13[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_13;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_14[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_14;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_15[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_15;
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_16;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_17[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_17;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_18[3];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_18;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_0[2];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_1[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_2[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_3[15];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_cons_tag_0[4];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_cons_tag_0[19];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_cons_tag_0[19];
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__type_ctor_info_ctor_field_name_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_constructor_arg_repn_0_0[4];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_constructor_arg_repn_0_0[4];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_constructor_arg_repn_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_constructor_arg_repn_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_constructor_arg_repn_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_constructor_arg_repn_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_constructor_arg_repn_0[1];
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__list__ti_list_1hlds__hlds_data__type_ctor_info_constructor_arg_repn_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_constructor_repn_0_0[7];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_constructor_repn_0_0[7];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_constructor_repn_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_constructor_repn_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_constructor_repn_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_constructor_repn_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_constructor_repn_0[1];
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__one_or_more__ti_one_or_more_1hlds__hlds_data__type_ctor_info_constructor_repn_0;
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__tree234__ti_tree234_2builtin__type_ctor_info_string_0one_or_more__ti_one_or_more_1hlds__hlds_data__type_ctor_info_constructor_repn_0;
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_du_type_kind_0_1[1];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_du_type_kind_0_1[1];
+
+static const MR_DuArgLocn hlds__hlds_data__hlds__hlds_data__field_locns_du_type_kind_0_1[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_1;
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_2;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_du_type_kind_0_3[3];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_du_type_kind_0_3[3];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_3;
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_4;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_kind_0_0[3];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_kind_0_1[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_kind_0_2[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_du_type_kind_0[3];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_du_type_kind_0[5];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_du_type_kind_0[5];
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__list__ti_list_1hlds__hlds_data__type_ctor_info_constructor_repn_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__list__ti_list_1parse_tree__prog_data__type_ctor_info_sym_name_arity_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1list__ti_list_1parse_tree__prog_data__type_ctor_info_sym_name_arity_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_du_type_repn_0_0[5];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_du_type_repn_0_0[5];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_repn_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_repn_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_du_type_repn_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_du_type_repn_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_du_type_repn_0[1];
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_c_foreign_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_c_foreign_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_java_foreign_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_java_foreign_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_csharp_foreign_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_csharp_foreign_type_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_foreign_type_body_0_0[3];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_foreign_type_body_0_0[3];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_foreign_type_body_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_foreign_type_body_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_foreign_type_body_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_foreign_type_body_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_foreign_type_body_0[1];
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__hlds_data__parse_tree__prog_data__pti_type_details_foreign_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__hlds_data__maybe__pti_maybe_1__pseudo_parse_tree__prog_data__pti_type_details_foreign_1__pseudo_1;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_0[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_1[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_1;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_2[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_2;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_3[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_3;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_4[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_4;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_1[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_2[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_3[2];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_hlds_type_body_0[4];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_hlds_type_body_0[5];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_hlds_type_body_0[5];
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__varset__ti_varset_1parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0parse_tree__prog_data__type_ctor_info_kind_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_defn_0_0[9];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_hlds_type_defn_0_0[9];
+
+static const MR_DuArgLocn hlds__hlds_data__hlds__hlds_data__field_locns_hlds_type_defn_0_0[9];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_defn_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_defn_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_hlds_type_defn_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_hlds_type_defn_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_hlds_type_defn_0[1];
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_0[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_1[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_1;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_2[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_2;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_3[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_3;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_4[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_4;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_5[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_5;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_6[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_6;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_7[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_7;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_8[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_8;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_9[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_9;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_1[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_2[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_3[7];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_int_tag_0[4];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_int_tag_0[10];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_int_tag_0[10];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_args_tag_info_0_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_local_args_tag_info_0_1[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_args_tag_info_0_1;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_local_args_tag_info_0_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_local_args_tag_info_0_1[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_local_args_tag_info_0[2];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_local_args_tag_info_0[2];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_local_args_tag_info_0[2];
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_local_sectag_0_0[3];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_local_sectag_0_0[3];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_sectag_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_local_sectag_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_local_sectag_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_local_sectag_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_local_sectag_0[1];
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_lsectag_mask_0_0;
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_lsectag_mask_0_1;
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_ordinal_ordered_lsectag_mask_0[2];
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_name_ordered_lsectag_mask_0[2];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_lsectag_mask_0[2];
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_may_use_atomic_alloc_0_0;
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_may_use_atomic_alloc_0_1;
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_ordinal_ordered_may_use_atomic_alloc_0[2];
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_name_ordered_may_use_atomic_alloc_0[2];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_may_use_atomic_alloc_0[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_maybe_cheaper_tag_test_0_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_maybe_cheaper_tag_test_0_1[4];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_maybe_cheaper_tag_test_0_1[4];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_maybe_cheaper_tag_test_0_1;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_maybe_cheaper_tag_test_0_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_maybe_cheaper_tag_test_0_1[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_maybe_cheaper_tag_test_0[2];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_maybe_cheaper_tag_test_0[2];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_maybe_cheaper_tag_test_0[2];
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_no_tag_type_0_0[3];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_no_tag_type_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_no_tag_type_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_no_tag_type_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_no_tag_type_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_no_tag_type_0[1];
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_no_tag_type_0;
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_remote_args_tag_info_0_1[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_1;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_remote_args_tag_info_0_2[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_2;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_remote_args_tag_info_0_3[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_3;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_1[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_2[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_3[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_remote_args_tag_info_0[4];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_remote_args_tag_info_0[4];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_remote_args_tag_info_0[4];
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_remote_sectag_0_0[2];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_remote_sectag_0_0[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_sectag_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_sectag_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_remote_sectag_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_remote_sectag_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_remote_sectag_0[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_rsectag_size_0_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_rsectag_size_0_1[1];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_rsectag_size_0_1;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_rsectag_size_0_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_rsectag_size_0_1[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_rsectag_size_0[2];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_rsectag_size_0[2];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_rsectag_size_0[2];
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_sectag_bits_0_0[2];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_sectag_bits_0_0[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_sectag_bits_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_sectag_bits_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_sectag_bits_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_sectag_bits_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_sectag_bits_0[1];
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_tagged_cons_id_0_0[2];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_tagged_cons_id_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_tagged_cons_id_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_tagged_cons_id_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_tagged_cons_id_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_tagged_cons_id_0[1];
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__one_or_more__ti_one_or_more_1parse_tree__prog_data__type_ctor_info_constructor_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1hlds__hlds_data__type_ctor_info_du_type_repn_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1hlds__hlds_data__type_ctor_info_foreign_type_body_0;
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_type_body_du_0_0[5];
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_type_body_du_0_0[5];
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_type_body_du_0_0;
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_type_body_du_0_0[1];
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_type_body_du_0[1];
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_type_body_du_0[1];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_type_body_du_0[1];
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0;
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_type_defn_prev_errors_0_0;
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_type_defn_prev_errors_0_1;
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_ordinal_ordered_type_defn_prev_errors_0[2];
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_name_ordered_type_defn_prev_errors_0[2];
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_type_defn_prev_errors_0[2];
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__tree234__ti_tree234_2builtin__type_ctor_info_string_0tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0;
+
+static void MR_CALL 
+hlds__hlds_data____Compare____type_ctor_table_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_ctor_table_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+hlds__hlds_data__map_foldl_over_type_ctor_defns_2_6_p_0(
+  MR_Word TypeInfo_for_T_15,
+  MR_Word Pred_7,
+  MR_String _Name_8,
+  MR_Word STATE_VARIABLE_TypeCtorTable_0_11,
+  MR_Word * STATE_VARIABLE_TypeCtorTable_12,
+  MR_Box STATE_VARIABLE_Acc_0_13,
+  MR_Box * STATE_VARIABLE_Acc_14);
+
+static void MR_CALL 
+hlds__hlds_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_112_95_102_111_108_100_108_95_111_118_101_114_95_116_121_112_101_95_99_116_111_114_95_100_101_102_110_115_95_50_95_95_91_51_93_95_48_6_p_0(
+  MR_Word TypeInfo_for_T_15,
+  MR_Word Pred_7,
+  MR_Word STATE_VARIABLE_TypeCtorTable_0_11,
+  MR_Word * STATE_VARIABLE_TypeCtorTable_12,
+  MR_Box STATE_VARIABLE_Acc_0_13,
+  MR_Box * STATE_VARIABLE_Acc_14);
+
+static void MR_CALL 
+hlds__hlds_data__foldl3_over_type_ctor_defns_2_8_p_0(
+  MR_Word TypeInfo_for_T_20,
+  MR_Word TypeInfo_for_U_21,
+  MR_Word TypeInfo_for_V_22,
+  MR_Word Pred_9,
+  MR_Word TypeCtorTable_10,
+  MR_Box STATE_VARIABLE_AccA_0_14,
+  MR_Box * STATE_VARIABLE_AccA_15,
+  MR_Box STATE_VARIABLE_AccB_0_16,
+  MR_Box * STATE_VARIABLE_AccB_17,
+  MR_Box STATE_VARIABLE_AccC_0_18,
+  MR_Box * STATE_VARIABLE_AccC_19);
+
+static void MR_CALL 
+hlds__hlds_data__foldl2_over_type_ctor_defns_2_6_p_0(
+  MR_Word TypeInfo_for_T_15,
+  MR_Word TypeInfo_for_U_16,
+  MR_Word Pred_7,
+  MR_Word TypeCtorTable_8,
+  MR_Box STATE_VARIABLE_AccA_0_11,
+  MR_Box * STATE_VARIABLE_AccA_12,
+  MR_Box STATE_VARIABLE_AccB_0_13,
+  MR_Box * STATE_VARIABLE_AccB_14);
+
+static void MR_CALL 
+hlds__hlds_data__foldl_over_type_ctor_defns_2_4_p_0(
+  MR_Word TypeInfo_for_T_10,
+  MR_Word Pred_5,
+  MR_Word TypeCtorTable_6,
+  MR_Box STATE_VARIABLE_Acc_0_8,
+  MR_Box * STATE_VARIABLE_Acc_9);
+
+static void MR_CALL 
+hlds__hlds_data__compare_type_ctor_defns_by_name_3_p_0(
+  MR_Word PairA_4,
+  MR_Word PairB_5,
+  MR_Word * Result_6);
+
+static void MR_CALL 
+hlds__hlds_data__get_all_type_ctor_defns_2_3_p_0(
+  MR_Word TypeCtorTable_4,
+  MR_Word STATE_VARIABLE_TypeCtorsDefns_0_7,
+  MR_Word * STATE_VARIABLE_TypeCtorsDefns_8);
+
+static void MR_CALL 
+hlds__hlds_data__gather_constructor_cons_ids_4_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word STATE_VARIABLE_ConsIds_0_3,
+  MR_Word * STATE_VARIABLE_ConsIds_4);
+
+static void MR_CALL 
+hlds__hlds_data__map_foldl_over_type_ctor_defns_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+hlds__hlds_data__foldl3_over_type_ctor_defns_8_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5,
+  MR_Box wrapper_arg_6,
+  MR_Box * wrapper_arg_7);
+
+static void MR_CALL 
+hlds__hlds_data__foldl2_over_type_ctor_defns_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5);
+
+static void MR_CALL 
+hlds__hlds_data__foldl_over_type_ctor_defns_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+hlds__hlds_data__set_all_type_ctor_defns_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+hlds__hlds_data__gather_type_ctors_by_name_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_RevTypeCtorsDefnsByName_0_2,
+  MR_Word * STATE_VARIABLE_RevTypeCtorsDefnsByName_3);
+
+static void MR_CALL 
+hlds__hlds_data__gather_type_ctors_this_name_5_p_0(
+  MR_String ThisName_1,
+  MR_Word STATE_VARIABLE_TypeCtorTable_0_2,
+  MR_Word * STATE_VARIABLE_TypeCtorTable_3,
+  MR_Word HeadVar__4_4,
+  MR_Word * HeadVar__5_5);
+
+static void MR_CALL 
+hlds__hlds_data__get_all_type_ctor_defns_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____cons_tag_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____cons_tag_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____constructor_arg_repn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____constructor_arg_repn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____constructor_repn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____constructor_repn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____ctor_name_to_repn_map_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____ctor_name_to_repn_map_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____du_type_kind_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____du_type_kind_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____du_type_repn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____du_type_repn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____foreign_type_body_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____foreign_type_body_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____foreign_type_lang_body_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____foreign_type_lang_body_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box wrapper_arg_4);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_type_body_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____hlds_type_body_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_type_defn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____hlds_type_defn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____int_tag_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____int_tag_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____local_args_tag_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____local_args_tag_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____local_sectag_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____local_sectag_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____lsectag_mask_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____lsectag_mask_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____may_use_atomic_alloc_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____may_use_atomic_alloc_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____maybe_cheaper_tag_test_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____maybe_cheaper_tag_test_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____no_tag_type_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____no_tag_type_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____no_tag_type_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____no_tag_type_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____remote_args_tag_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____remote_args_tag_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____remote_sectag_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____remote_sectag_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____rsectag_size_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____rsectag_size_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____sectag_bits_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____sectag_bits_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____tagged_cons_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____tagged_cons_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_body_du_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____type_body_du_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_ctor_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____type_ctor_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_defn_prev_errors_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____type_defn_prev_errors_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__hlds_data____Compare____type_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_1[8][3];
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_2[20][2];
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_3[1][1];
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_4[2][6];
+
+static /* final */ const MR_Integer hlds__hlds_data_scalar_common_5[1][2];
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_6[1][8];
+
+static /* final */ const MR_Integer hlds__hlds_data_scalar_common_7[1][3];
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_8[1][11];
+
+static /* final */ const MR_Integer hlds__hlds_data_scalar_common_9[1][4];
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_10[1][14];
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_11[1][10];
+
+
+
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_1[8][3] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&hlds__hlds_data_scalar_common_2[1]))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_data_scalar_common_2[15])),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_kind_0))
+  },
+  /* row   4 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_no_tag_type_0))
+  },
+  /* row   5 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&hlds__hlds_data_scalar_common_1[0]))
+  },
+  /* row   6 */
+  {
+    ((MR_Box) (&hlds__hlds_data_scalar_common_4[0])),
+    ((MR_Box) (hlds__hlds_data__get_all_type_ctor_defns_2_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   7 */
+  {
+    ((MR_Box) (&hlds__hlds_data_scalar_common_4[1])),
+    ((MR_Box) (hlds__hlds_data__set_all_type_ctor_defns_3_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_2[20][2] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_data_scalar_common_1[1]))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_constructor_repn_0))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ctor_field_name_0))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_constructor_arg_repn_0))
+  },
+  /* row   4 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row   5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_constructor_repn_0))
+  },
+  /* row   6 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_sym_name_arity_0))
+  },
+  /* row   7 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&hlds__hlds_data_scalar_common_2[6]))
+  },
+  /* row   8 */
+  {
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_c_foreign_type_0))
+  },
+  /* row   9 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&hlds__hlds_data_scalar_common_2[8]))
+  },
+  /* row  10 */
+  {
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_java_foreign_type_0))
+  },
+  /* row  11 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&hlds__hlds_data_scalar_common_2[10]))
+  },
+  /* row  12 */
+  {
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_csharp_foreign_type_0))
+  },
+  /* row  13 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&hlds__hlds_data_scalar_common_2[12]))
+  },
+  /* row  14 */
+  {
+    ((MR_Box) (&mercury__varset__varset__type_ctor_info_varset_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row  15 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row  16 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_data_scalar_common_2[15]))
+  },
+  /* row  17 */
+  {
+    ((MR_Box) (&mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_constructor_0))
+  },
+  /* row  18 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_du_type_repn_0))
+  },
+  /* row  19 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_foreign_type_body_0))
+  },
+};
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_3[1][1] = {
+  /* row   0 */
+  { ((MR_Box) (((MR_Box) (MR_Word) (UINT8_C(0))))) },
+};
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_4[2][6] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_data__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0)),
+    ((MR_Box) (&hlds__hlds_data__list__pti_list_1__plain_pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0)),
+    ((MR_Box) (&hlds__hlds_data__list__pti_list_1__plain_pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_data__pair__pti_pair_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0)),
+    ((MR_Box) (&hlds__hlds_data__pair__pti_pair_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_comparison_result_0))
+  },
+};
+
+static /* final */ const MR_Integer hlds__hlds_data_scalar_common_5[1][2] = {
+  /* row   0 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 33
+  },
+};
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_6[1][8] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (&hlds__hlds_data_scalar_common_5[0])),
+    ((MR_Box) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&hlds__hlds_data____vpti_pred_4__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1)),
+    ((MR_Box) (&hlds__hlds_data__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0)),
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 1))
+  },
+};
+
+static /* final */ const MR_Integer hlds__hlds_data_scalar_common_7[1][3] = {
+  /* row   0 */
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 33,
+    (MR_Integer) 65
+  },
+};
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_8[1][11] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (&hlds__hlds_data_scalar_common_7[0])),
+    ((MR_Box) ((MR_Integer) 8)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&hlds__hlds_data____vpti_pred_6__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1__pseudo_2__pseudo_2)),
+    ((MR_Box) (&hlds__hlds_data__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0)),
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) ((MR_Integer) 2))
+  },
+};
+
+static /* final */ const MR_Integer hlds__hlds_data_scalar_common_9[1][4] = {
+  /* row   0 */
+  {
+    (MR_Integer) 3,
+    (MR_Integer) 33,
+    (MR_Integer) 65,
+    (MR_Integer) 97
+  },
+};
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_10[1][14] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (&hlds__hlds_data_scalar_common_9[0])),
+    ((MR_Box) ((MR_Integer) 11)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&hlds__hlds_data____vpti_pred_8__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1__pseudo_2__pseudo_2__pseudo_3__pseudo_3)),
+    ((MR_Box) (&hlds__hlds_data__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0)),
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) ((MR_Integer) 3))
+  },
+};
+
+static /* final */ const MR_Box hlds__hlds_data_scalar_common_11[1][10] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (&hlds__hlds_data_scalar_common_5[0])),
+    ((MR_Box) ((MR_Integer) 7)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&hlds__hlds_data____vpti_pred_5__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&hlds__hlds_data__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0)),
+    ((MR_Box) (&hlds__hlds_data__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0)),
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 1))
+  },
+};
+
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "io.stream_ops.mh"
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 hlds__hlds_data__tree234__pti_tree234_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_TypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__hlds_data__list__pti_list_1__plain_pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_PseudoTypeInfo) (&hlds__hlds_data__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 hlds__hlds_data__pair__pti_pair_2__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0)
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct4 hlds__hlds_data____vpti_pred_4__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 4,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0),
+    (MR_PseudoTypeInfo) ((MR_Integer) 1),
+    (MR_PseudoTypeInfo) ((MR_Integer) 1)
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct6 hlds__hlds_data____vpti_pred_6__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1__pseudo_2__pseudo_2 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 6,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0),
+    (MR_PseudoTypeInfo) ((MR_Integer) 1),
+    (MR_PseudoTypeInfo) ((MR_Integer) 1),
+    (MR_PseudoTypeInfo) ((MR_Integer) 2),
+    (MR_PseudoTypeInfo) ((MR_Integer) 2)
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct8 hlds__hlds_data____vpti_pred_8__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1__pseudo_2__pseudo_2__pseudo_3__pseudo_3 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 8,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0),
+    (MR_PseudoTypeInfo) ((MR_Integer) 1),
+    (MR_PseudoTypeInfo) ((MR_Integer) 1),
+    (MR_PseudoTypeInfo) ((MR_Integer) 2),
+    (MR_PseudoTypeInfo) ((MR_Integer) 2),
+    (MR_PseudoTypeInfo) ((MR_Integer) 3),
+    (MR_PseudoTypeInfo) ((MR_Integer) 3)
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct5 hlds__hlds_data____vpti_pred_5__plain_parse_tree__prog_data__type_ctor_info_type_ctor_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__plain_hlds__hlds_data__type_ctor_info_hlds_type_defn_0__pseudo_1__pseudo_1 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 5,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0),
+    (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0),
+    (MR_PseudoTypeInfo) ((MR_Integer) 1),
+    (MR_PseudoTypeInfo) ((MR_Integer) 1)
+  }
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_0[1] = { (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_int_tag_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_0 = {
+  (MR_String) "int_tag",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_1[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_float_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_1 = {
+  (MR_String) "float_tag",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(1),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_2[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_2 = {
+  (MR_String) "string_tag",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 0,
+  INT32_C(2),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_3[2] = {
+  (MR_PseudoTypeInfo) (&libs__globals__libs__globals__type_ctor_info_foreign_language_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0)
+};
+
+static const MR_DuArgLocn hlds__hlds_data__hlds__hlds_data__field_locns_cons_tag_0_3[2] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_3 = {
+  (MR_String) "foreign_tag",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 1,
+  INT32_C(3),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_3,
+  NULL,
+  hlds__hlds_data__hlds__hlds_data__field_locns_cons_tag_0_3,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_4 = {
+  (MR_String) "dummy_tag",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(4),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_5[3] = {
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ptag_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_local_sectag_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_lsectag_mask_0)
+};
+
+static const MR_DuArgLocn hlds__hlds_data__hlds__hlds_data__field_locns_cons_tag_0_5[3] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_5 = {
+  (MR_String) "shared_local_tag_no_args",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 2,
+  INT32_C(5),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_5,
+  NULL,
+  hlds__hlds_data__hlds__hlds_data__field_locns_cons_tag_0_5,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_6[2] = {
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_6 = {
+  (MR_String) "ground_term_const_tag",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 3,
+  INT32_C(6),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_6,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_7[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_7 = {
+  (MR_String) "type_info_const_tag",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 4,
+  INT32_C(7),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_7,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_8[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_8 = {
+  (MR_String) "typeclass_info_const_tag",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 5,
+  INT32_C(8),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_8,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_9[3] = {
+  (MR_PseudoTypeInfo) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_9 = {
+  (MR_String) "type_ctor_info_tag",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 6,
+  INT32_C(9),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_9,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_10[3] = {
+  (MR_PseudoTypeInfo) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_class_id_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_10 = {
+  (MR_String) "base_typeclass_info_tag",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 7,
+  INT32_C(10),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_10,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_11[2] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_11 = {
+  (MR_String) "deep_profiling_proc_layout_tag",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 8,
+  INT32_C(11),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_11,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_12[2] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_12 = {
+  (MR_String) "tabling_info_tag",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 9,
+  INT32_C(12),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_12,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_13[2] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_13 = {
+  (MR_String) "table_io_entry_tag",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 10,
+  INT32_C(13),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_13,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_14[1] = { (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_remote_args_tag_info_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_14 = {
+  (MR_String) "remote_args_tag",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 11,
+  INT32_C(14),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_14,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_15[1] = { (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_local_args_tag_info_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_15 = {
+  (MR_String) "local_args_tag",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 12,
+  INT32_C(15),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_15,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_16 = {
+  (MR_String) "no_tag",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 1,
+  INT32_C(16),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_17[1] = { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ptag_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_17 = {
+  (MR_String) "direct_arg_tag",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 13,
+  INT32_C(17),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_17,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_18[3] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_lambda_eval_method_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_18 = {
+  (MR_String) "closure_tag",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 14,
+  INT32_C(18),
+  hlds__hlds_data__hlds__hlds_data__field_types_cons_tag_0_18,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_0[2] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_4,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_16
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_1[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_0 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_2[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_1 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_3[15] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_2,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_3,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_5,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_6,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_7,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_8,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_9,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_10,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_11,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_12,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_13,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_14,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_15,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_17,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_18
+};
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_cons_tag_0[4] = {
+  {
+    UINT32_C(2),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_2,
+    INT8_C(-1),
+    UINT8_C(2),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(15),
+    MR_SECTAG_REMOTE_FULL_WORD,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_cons_tag_0_3,
+    INT8_C(-1),
+    UINT8_C(3),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_cons_tag_0[19] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_10,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_18,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_11,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_17,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_4,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_1,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_3,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_6,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_0,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_15,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_16,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_14,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_5,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_2,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_13,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_12,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_9,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_7,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_cons_tag_0_8
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_cons_tag_0[19] = {
+  (MR_Integer) 8,
+  (MR_Integer) 5,
+  (MR_Integer) 13,
+  (MR_Integer) 6,
+  (MR_Integer) 4,
+  (MR_Integer) 12,
+  (MR_Integer) 7,
+  (MR_Integer) 17,
+  (MR_Integer) 18,
+  (MR_Integer) 16,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 15,
+  (MR_Integer) 14,
+  (MR_Integer) 11,
+  (MR_Integer) 9,
+  (MR_Integer) 10,
+  (MR_Integer) 3,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(4),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____cons_tag_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____cons_tag_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "cons_tag",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_cons_tag_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_cons_tag_0 },
+  (MR_Integer) 19,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_cons_tag_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__type_ctor_info_ctor_field_name_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ctor_field_name_0) }
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_constructor_arg_repn_0_0[4] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__type_ctor_info_ctor_field_name_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_arg_pos_width_0),
+  (MR_PseudoTypeInfo) (&mercury__term_context__term_context__type_ctor_info_term_context_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_constructor_arg_repn_0_0[4] = {
+  (MR_String) "car_field_name",
+  (MR_String) "car_type",
+  (MR_String) "car_pos_width",
+  (MR_String) "car_context"
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_constructor_arg_repn_0_0 = {
+  (MR_String) "ctor_arg_repn",
+  INT16_C(4),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_constructor_arg_repn_0_0,
+  hlds__hlds_data__hlds__hlds_data__field_names_constructor_arg_repn_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_constructor_arg_repn_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_constructor_arg_repn_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_constructor_arg_repn_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_constructor_arg_repn_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_constructor_arg_repn_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_constructor_arg_repn_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_constructor_arg_repn_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_constructor_arg_repn_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____constructor_arg_repn_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____constructor_arg_repn_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "constructor_arg_repn",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_constructor_arg_repn_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_constructor_arg_repn_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_constructor_arg_repn_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__list__ti_list_1hlds__hlds_data__type_ctor_info_constructor_arg_repn_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_constructor_arg_repn_0) }
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_constructor_repn_0_0[7] = {
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint32_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_maybe_cons_exist_constraints_0),
+  (MR_PseudoTypeInfo) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__list__ti_list_1hlds__hlds_data__type_ctor_info_constructor_arg_repn_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0),
+  (MR_PseudoTypeInfo) (&mercury__term_context__term_context__type_ctor_info_term_context_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_constructor_repn_0_0[7] = {
+  (MR_String) "cr_ordinal",
+  (MR_String) "cr_maybe_exist",
+  (MR_String) "cr_name",
+  (MR_String) "cr_tag",
+  (MR_String) "cr_args",
+  (MR_String) "cr_num_args",
+  (MR_String) "cr_context"
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_constructor_repn_0_0 = {
+  (MR_String) "ctor_repn",
+  INT16_C(7),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_constructor_repn_0_0,
+  hlds__hlds_data__hlds__hlds_data__field_names_constructor_repn_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_constructor_repn_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_constructor_repn_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_constructor_repn_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_constructor_repn_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_constructor_repn_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_constructor_repn_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_constructor_repn_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_constructor_repn_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____constructor_repn_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____constructor_repn_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "constructor_repn",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_constructor_repn_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_constructor_repn_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_constructor_repn_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__one_or_more__ti_one_or_more_1hlds__hlds_data__type_ctor_info_constructor_repn_0 = {
+  &mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1,
+  { (MR_TypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_constructor_repn_0) }
+};
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__tree234__ti_tree234_2builtin__type_ctor_info_string_0one_or_more__ti_one_or_more_1hlds__hlds_data__type_ctor_info_constructor_repn_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0),
+    (MR_TypeInfo) (&hlds__hlds_data__one_or_more__ti_one_or_more_1hlds__hlds_data__type_ctor_info_constructor_repn_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_ctor_name_to_repn_map_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (hlds__hlds_data____Unify____ctor_name_to_repn_map_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____ctor_name_to_repn_map_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "ctor_name_to_repn_map",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&hlds__hlds_data__tree234__ti_tree234_2builtin__type_ctor_info_string_0one_or_more__ti_one_or_more_1hlds__hlds_data__type_ctor_info_constructor_repn_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_0 = {
+  (MR_String) "du_type_kind_mercury_enum",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(0),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_du_type_kind_0_1[1] = { (MR_PseudoTypeInfo) (&libs__globals__libs__globals__type_ctor_info_foreign_language_0) };
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_du_type_kind_0_1[1] = { (MR_String) "dtkfe_language" };
+
+static const MR_DuArgLocn hlds__hlds_data__hlds__hlds_data__field_locns_du_type_kind_0_1[1] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  }
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_1 = {
+  (MR_String) "du_type_kind_foreign_enum",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  hlds__hlds_data__hlds__hlds_data__field_types_du_type_kind_0_1,
+  hlds__hlds_data__hlds__hlds_data__field_names_du_type_kind_0_1,
+  hlds__hlds_data__hlds__hlds_data__field_locns_du_type_kind_0_1,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_2 = {
+  (MR_String) "du_type_kind_direct_dummy",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 1,
+  INT32_C(2),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  { (MR_TypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0) }
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_du_type_kind_0_3[3] = {
+  (MR_PseudoTypeInfo) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__maybe__ti_maybe_1builtin__type_ctor_info_string_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_du_type_kind_0_3[3] = {
+  (MR_String) "dtkn_functor_name",
+  (MR_String) "dtkn_arg_type",
+  (MR_String) "dtkn_maybe_arg_name"
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_3 = {
+  (MR_String) "du_type_kind_notag",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(3),
+  hlds__hlds_data__hlds__hlds_data__field_types_du_type_kind_0_3,
+  hlds__hlds_data__hlds__hlds_data__field_names_du_type_kind_0_3,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_4 = {
+  (MR_String) "du_type_kind_general",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 2,
+  INT32_C(4),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_kind_0_0[3] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_0,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_2,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_4
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_kind_0_1[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_1 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_kind_0_2[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_3 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_du_type_kind_0[3] = {
+  {
+    UINT32_C(3),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_kind_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_kind_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_kind_0_2,
+    INT8_C(-1),
+    UINT8_C(2),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_du_type_kind_0[5] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_2,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_1,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_4,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_0,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_kind_0_3
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_du_type_kind_0[5] = {
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_du_type_kind_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(3),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____du_type_kind_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____du_type_kind_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "du_type_kind",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_du_type_kind_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_du_type_kind_0 },
+  (MR_Integer) 5,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_du_type_kind_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__list__ti_list_1hlds__hlds_data__type_ctor_info_constructor_repn_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_constructor_repn_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__list__ti_list_1parse_tree__prog_data__type_ctor_info_sym_name_arity_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_sym_name_arity_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1list__ti_list_1parse_tree__prog_data__type_ctor_info_sym_name_arity_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  { (MR_TypeInfo) (&hlds__hlds_data__list__ti_list_1parse_tree__prog_data__type_ctor_info_sym_name_arity_0) }
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_du_type_repn_0_0[5] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__list__ti_list_1hlds__hlds_data__type_ctor_info_constructor_repn_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__tree234__ti_tree234_2builtin__type_ctor_info_string_0one_or_more__ti_one_or_more_1hlds__hlds_data__type_ctor_info_constructor_repn_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_maybe_cheaper_tag_test_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_du_type_kind_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__maybe__ti_maybe_1list__ti_list_1parse_tree__prog_data__type_ctor_info_sym_name_arity_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_du_type_repn_0_0[5] = {
+  (MR_String) "dur_ctor_repns",
+  (MR_String) "dur_ctor_map",
+  (MR_String) "dur_cheaper_tag_test",
+  (MR_String) "dur_kind",
+  (MR_String) "dur_direct_arg_ctors"
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_repn_0_0 = {
+  (MR_String) "du_type_repn",
+  INT16_C(5),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_du_type_repn_0_0,
+  hlds__hlds_data__hlds__hlds_data__field_names_du_type_repn_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_repn_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_repn_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_du_type_repn_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_du_type_repn_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_du_type_repn_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_du_type_repn_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_du_type_repn_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_du_type_repn_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____du_type_repn_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____du_type_repn_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "du_type_repn",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_du_type_repn_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_du_type_repn_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_du_type_repn_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_c_foreign_type_0 = {
+  &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_c_foreign_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_c_foreign_type_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  { (MR_TypeInfo) (&hlds__hlds_data__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_c_foreign_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_java_foreign_type_0 = {
+  &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_java_foreign_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_java_foreign_type_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  { (MR_TypeInfo) (&hlds__hlds_data__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_java_foreign_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_csharp_foreign_type_0 = {
+  &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_csharp_foreign_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_csharp_foreign_type_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  { (MR_TypeInfo) (&hlds__hlds_data__parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_csharp_foreign_type_0) }
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_foreign_type_body_0_0[3] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_c_foreign_type_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_java_foreign_type_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__maybe__ti_maybe_1parse_tree__prog_data__ti_type_details_foreign_1parse_tree__prog_data__type_ctor_info_csharp_foreign_type_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_foreign_type_body_0_0[3] = {
+  (MR_String) "c",
+  (MR_String) "java",
+  (MR_String) "csharp"
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_foreign_type_body_0_0 = {
+  (MR_String) "foreign_type_body",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_foreign_type_body_0_0,
+  hlds__hlds_data__hlds__hlds_data__field_names_foreign_type_body_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_foreign_type_body_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_foreign_type_body_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_foreign_type_body_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_foreign_type_body_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_foreign_type_body_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_foreign_type_body_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_foreign_type_body_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_foreign_type_body_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____foreign_type_body_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____foreign_type_body_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "foreign_type_body",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_foreign_type_body_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_foreign_type_body_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_foreign_type_body_0,
+
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__hlds_data__parse_tree__prog_data__pti_type_details_foreign_1__pseudo_1 = {
+  &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1,
+  { (MR_PseudoTypeInfo) ((MR_Integer) 1) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__hlds_data__maybe__pti_maybe_1__pseudo_parse_tree__prog_data__pti_type_details_foreign_1__pseudo_1 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  { (MR_PseudoTypeInfo) (&hlds__hlds_data__parse_tree__prog_data__pti_type_details_foreign_1__pseudo_1) }
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_foreign_type_lang_body_1 = {
+  (MR_Integer) 1,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (hlds__hlds_data____Unify____foreign_type_lang_body_1_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____foreign_type_lang_body_1_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "foreign_type_lang_body",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&hlds__hlds_data__maybe__pti_maybe_1__pseudo_parse_tree__prog_data__pti_type_details_foreign_1__pseudo_1) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_0[1] = { (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_body_du_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_0 = {
+  (MR_String) "hlds_du_type",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE_DIRECT_ARG,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_1[1] = { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_1 = {
+  (MR_String) "hlds_eqv_type",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(1),
+  hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_2[1] = { (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_foreign_type_body_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_2 = {
+  (MR_String) "hlds_foreign_type",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE_DIRECT_ARG,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(2),
+  hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_3[1] = { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_solver_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_3 = {
+  (MR_String) "hlds_solver_type",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 0,
+  INT32_C(3),
+  hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_3,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_4[1] = { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_abstract_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_4 = {
+  (MR_String) "hlds_abstract_type",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 1,
+  INT32_C(4),
+  hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_body_0_4,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_0 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_1[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_2 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_2[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_1 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_3[2] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_3,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_4
+};
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_hlds_type_body_0[4] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE_DIRECT_ARG,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE_DIRECT_ARG,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_2,
+    INT8_C(-1),
+    UINT8_C(2),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(2),
+    MR_SECTAG_REMOTE_FULL_WORD,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_body_0_3,
+    INT8_C(-1),
+    UINT8_C(3),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_hlds_type_body_0[5] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_4,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_0,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_1,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_2,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_body_0_3
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_hlds_type_body_0[5] = {
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_body_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(4),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____hlds_type_body_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____hlds_type_body_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "hlds_type_body",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_hlds_type_body_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_hlds_type_body_0 },
+  (MR_Integer) 5,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_hlds_type_body_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__varset__ti_varset_1parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&hlds__hlds_data__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0parse_tree__prog_data__type_ctor_info_kind_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) (&hlds__hlds_data__term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0),
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_kind_0)
+  }
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_defn_0_0[9] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__varset__ti_varset_1parse_tree__prog_data__type_ctor_info_tvar_type_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0parse_tree__prog_data__type_ctor_info_kind_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_body_0),
+  (MR_PseudoTypeInfo) (&mercury__bool__bool__type_ctor_info_bool_0),
+  (MR_PseudoTypeInfo) (&hlds__status__hlds__status__type_ctor_info_type_status_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_need_qualifier_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_defn_prev_errors_0),
+  (MR_PseudoTypeInfo) (&mercury__term_context__term_context__type_ctor_info_term_context_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_hlds_type_defn_0_0[9] = {
+  (MR_String) "type_defn_tvarset",
+  (MR_String) "type_defn_params",
+  (MR_String) "type_defn_kinds",
+  (MR_String) "type_defn_body",
+  (MR_String) "type_defn_in_exported_eqv",
+  (MR_String) "type_defn_status",
+  (MR_String) "type_defn_ctors_need_qualifier",
+  (MR_String) "type_defn_prev_errors",
+  (MR_String) "type_defn_context"
+};
+
+static const MR_DuArgLocn hlds__hlds_data__hlds__hlds_data__field_locns_hlds_type_defn_0_0[9] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 3,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 4,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 5,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 6,
+    (MR_Integer) 1,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 6,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  },
+  {
+    (MR_Integer) 7,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_defn_0_0 = {
+  (MR_String) "hlds_type_defn",
+  INT16_C(9),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_hlds_type_defn_0_0,
+  hlds__hlds_data__hlds__hlds_data__field_names_hlds_type_defn_0_0,
+  hlds__hlds_data__hlds__hlds_data__field_locns_hlds_type_defn_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_defn_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_defn_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_hlds_type_defn_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_hlds_type_defn_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_hlds_type_defn_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_hlds_type_defn_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_hlds_type_defn_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____hlds_type_defn_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____hlds_type_defn_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "hlds_type_defn",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_hlds_type_defn_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_hlds_type_defn_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_hlds_type_defn_0,
+
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_0[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_0 = {
+  (MR_String) "int_tag_int",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_1[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_1 = {
+  (MR_String) "int_tag_uint",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_2[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int8_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_2 = {
+  (MR_String) "int_tag_int8",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(2),
+  hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_3[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint8_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_3 = {
+  (MR_String) "int_tag_uint8",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 0,
+  INT32_C(3),
+  hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_3,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_4[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int16_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_4 = {
+  (MR_String) "int_tag_int16",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 1,
+  INT32_C(4),
+  hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_4,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_5[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint16_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_5 = {
+  (MR_String) "int_tag_uint16",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 2,
+  INT32_C(5),
+  hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_5,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_6[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int32_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_6 = {
+  (MR_String) "int_tag_int32",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 3,
+  INT32_C(6),
+  hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_6,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_7[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint32_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_7 = {
+  (MR_String) "int_tag_uint32",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 4,
+  INT32_C(7),
+  hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_7,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_8[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_int64_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_8 = {
+  (MR_String) "int_tag_int64",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 5,
+  INT32_C(8),
+  hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_8,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_9[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint64_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_9 = {
+  (MR_String) "int_tag_uint64",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_REMOTE_FULL_WORD,
+  UINT8_C(3),
+  (MR_Integer) 6,
+  INT32_C(9),
+  hlds__hlds_data__hlds__hlds_data__field_types_int_tag_0_9,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_0 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_1[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_1 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_2[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_2 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_3[7] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_3,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_4,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_5,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_6,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_7,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_8,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_9
+};
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_int_tag_0[4] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_2,
+    INT8_C(-1),
+    UINT8_C(2),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(7),
+    MR_SECTAG_REMOTE_FULL_WORD,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_int_tag_0_3,
+    INT8_C(-1),
+    UINT8_C(3),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_int_tag_0[10] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_0,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_4,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_6,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_8,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_2,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_1,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_5,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_7,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_9,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_int_tag_0_3
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_int_tag_0[10] = {
+  (MR_Integer) 0,
+  (MR_Integer) 5,
+  (MR_Integer) 4,
+  (MR_Integer) 9,
+  (MR_Integer) 1,
+  (MR_Integer) 6,
+  (MR_Integer) 2,
+  (MR_Integer) 7,
+  (MR_Integer) 3,
+  (MR_Integer) 8
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_int_tag_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(4),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____int_tag_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____int_tag_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "int_tag",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_int_tag_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_int_tag_0 },
+  (MR_Integer) 10,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_int_tag_0,
+
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_args_tag_info_0_0 = {
+  (MR_String) "local_args_only_functor",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(0),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_local_args_tag_info_0_1[2] = {
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ptag_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_local_sectag_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_args_tag_info_0_1 = {
+  (MR_String) "local_args_not_only_functor",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  hlds__hlds_data__hlds__hlds_data__field_types_local_args_tag_info_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_local_args_tag_info_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_args_tag_info_0_0 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_local_args_tag_info_0_1[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_args_tag_info_0_1 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_local_args_tag_info_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_local_args_tag_info_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_local_args_tag_info_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_local_args_tag_info_0[2] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_args_tag_info_0_1,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_args_tag_info_0_0
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_local_args_tag_info_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_local_args_tag_info_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____local_args_tag_info_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____local_args_tag_info_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "local_args_tag_info",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_local_args_tag_info_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_local_args_tag_info_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_local_args_tag_info_0,
+
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_local_sectag_0_0[3] = {
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_sectag_bits_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_local_sectag_0_0[3] = {
+  (MR_String) "lsectag_value",
+  (MR_String) "lsectag_prim_sec",
+  (MR_String) "lsectag_bits"
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_sectag_0_0 = {
+  (MR_String) "local_sectag",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_local_sectag_0_0,
+  hlds__hlds_data__hlds__hlds_data__field_names_local_sectag_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_local_sectag_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_sectag_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_local_sectag_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_local_sectag_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_local_sectag_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_local_sectag_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_local_sectag_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_local_sectag_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____local_sectag_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____local_sectag_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "local_sectag",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_local_sectag_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_local_sectag_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_local_sectag_0,
+
+};
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_lsectag_mask_0_0 = {
+  (MR_String) "lsectag_always_rest_of_word",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_lsectag_mask_0_1 = {
+  (MR_String) "lsectag_must_be_masked",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_ordinal_ordered_lsectag_mask_0[2] = {
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_lsectag_mask_0_0,
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_lsectag_mask_0_1
+};
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_name_ordered_lsectag_mask_0[2] = {
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_lsectag_mask_0_0,
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_lsectag_mask_0_1
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_lsectag_mask_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_lsectag_mask_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (hlds__hlds_data____Unify____lsectag_mask_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____lsectag_mask_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "lsectag_mask",
+  { hlds__hlds_data__hlds__hlds_data__enum_name_ordered_lsectag_mask_0 },
+  { hlds__hlds_data__hlds__hlds_data__enum_ordinal_ordered_lsectag_mask_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_lsectag_mask_0,
+
+};
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_may_use_atomic_alloc_0_0 = {
+  (MR_String) "may_use_atomic_alloc",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_may_use_atomic_alloc_0_1 = {
+  (MR_String) "may_not_use_atomic_alloc",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_ordinal_ordered_may_use_atomic_alloc_0[2] = {
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_may_use_atomic_alloc_0_0,
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_may_use_atomic_alloc_0_1
+};
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_name_ordered_may_use_atomic_alloc_0[2] = {
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_may_use_atomic_alloc_0_1,
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_may_use_atomic_alloc_0_0
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_may_use_atomic_alloc_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_may_use_atomic_alloc_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (hlds__hlds_data____Unify____may_use_atomic_alloc_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____may_use_atomic_alloc_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "may_use_atomic_alloc",
+  { hlds__hlds_data__hlds__hlds_data__enum_name_ordered_may_use_atomic_alloc_0 },
+  { hlds__hlds_data__hlds__hlds_data__enum_ordinal_ordered_may_use_atomic_alloc_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_may_use_atomic_alloc_0,
+
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_maybe_cheaper_tag_test_0_0 = {
+  (MR_String) "no_cheaper_tag_test",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(0),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_maybe_cheaper_tag_test_0_1[4] = {
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_maybe_cheaper_tag_test_0_1[4] = {
+  (MR_String) "more_expensive_cons_id",
+  (MR_String) "more_expensive_cons_tag",
+  (MR_String) "less_expensive_cons_id",
+  (MR_String) "less_expensive_cons_tag"
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_maybe_cheaper_tag_test_0_1 = {
+  (MR_String) "cheaper_tag_test",
+  INT16_C(4),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  hlds__hlds_data__hlds__hlds_data__field_types_maybe_cheaper_tag_test_0_1,
+  hlds__hlds_data__hlds__hlds_data__field_names_maybe_cheaper_tag_test_0_1,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_maybe_cheaper_tag_test_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_maybe_cheaper_tag_test_0_0 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_maybe_cheaper_tag_test_0_1[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_maybe_cheaper_tag_test_0_1 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_maybe_cheaper_tag_test_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_maybe_cheaper_tag_test_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_maybe_cheaper_tag_test_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_maybe_cheaper_tag_test_0[2] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_maybe_cheaper_tag_test_0_1,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_maybe_cheaper_tag_test_0_0
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_maybe_cheaper_tag_test_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_maybe_cheaper_tag_test_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____maybe_cheaper_tag_test_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____maybe_cheaper_tag_test_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "maybe_cheaper_tag_test",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_maybe_cheaper_tag_test_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_maybe_cheaper_tag_test_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_maybe_cheaper_tag_test_0,
+
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_no_tag_type_0_0[3] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_tvar_type_0),
+  (MR_PseudoTypeInfo) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_no_tag_type_0_0 = {
+  (MR_String) "no_tag_type",
+  INT16_C(3),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_no_tag_type_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_no_tag_type_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_no_tag_type_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_no_tag_type_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_no_tag_type_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_no_tag_type_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_no_tag_type_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_no_tag_type_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_no_tag_type_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____no_tag_type_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____no_tag_type_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "no_tag_type",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_no_tag_type_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_no_tag_type_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_no_tag_type_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_no_tag_type_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_TypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_no_tag_type_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_no_tag_type_table_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (hlds__hlds_data____Unify____no_tag_type_table_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____no_tag_type_table_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "no_tag_type_table",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&hlds__hlds_data__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_no_tag_type_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_0 = {
+  (MR_String) "remote_args_only_functor",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(0),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_remote_args_tag_info_0_1[1] = { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ptag_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_1 = {
+  (MR_String) "remote_args_unshared",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  hlds__hlds_data__hlds__hlds_data__field_types_remote_args_tag_info_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_remote_args_tag_info_0_2[2] = {
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ptag_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_remote_sectag_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_2 = {
+  (MR_String) "remote_args_shared",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(2),
+  (MR_Integer) -1,
+  INT32_C(2),
+  hlds__hlds_data__hlds__hlds_data__field_types_remote_args_tag_info_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_remote_args_tag_info_0_3[1] = { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_3 = {
+  (MR_String) "remote_args_ctor",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(3),
+  (MR_Integer) -1,
+  INT32_C(3),
+  hlds__hlds_data__hlds__hlds_data__field_types_remote_args_tag_info_0_3,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_0 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_1[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_1 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_2[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_2 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_3[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_3 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_remote_args_tag_info_0[4] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_2,
+    INT8_C(-1),
+    UINT8_C(2),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_args_tag_info_0_3,
+    INT8_C(-1),
+    UINT8_C(3),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_remote_args_tag_info_0[4] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_3,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_0,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_2,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_args_tag_info_0_1
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_remote_args_tag_info_0[4] = {
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_remote_args_tag_info_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(4),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____remote_args_tag_info_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____remote_args_tag_info_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "remote_args_tag_info",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_remote_args_tag_info_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_remote_args_tag_info_0 },
+  (MR_Integer) 4,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_remote_args_tag_info_0,
+
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_remote_sectag_0_0[2] = {
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_rsectag_size_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_remote_sectag_0_0[2] = {
+  (MR_String) "rsectag_value",
+  (MR_String) "rsectag_size"
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_sectag_0_0 = {
+  (MR_String) "remote_sectag",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_remote_sectag_0_0,
+  hlds__hlds_data__hlds__hlds_data__field_names_remote_sectag_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_sectag_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_sectag_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_remote_sectag_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_remote_sectag_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_remote_sectag_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_remote_sectag_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_remote_sectag_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_remote_sectag_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____remote_sectag_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____remote_sectag_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "remote_sectag",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_remote_sectag_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_remote_sectag_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_remote_sectag_0,
+
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_rsectag_size_0_0 = {
+  (MR_String) "rsectag_word",
+  INT16_C(0),
+  UINT16_C(0),
+  MR_SECTAG_LOCAL_REST_OF_WORD,
+  UINT8_C(0),
+  (MR_Integer) 0,
+  INT32_C(0),
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_rsectag_size_0_1[1] = { (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_sectag_bits_0) };
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_rsectag_size_0_1 = {
+  (MR_String) "rsectag_subword",
+  INT16_C(1),
+  UINT16_C(0),
+  MR_SECTAG_NONE_DIRECT_ARG,
+  UINT8_C(1),
+  (MR_Integer) -1,
+  INT32_C(1),
+  hlds__hlds_data__hlds__hlds_data__field_types_rsectag_size_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_rsectag_size_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_rsectag_size_0_0 };
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_rsectag_size_0_1[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_rsectag_size_0_1 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_rsectag_size_0[2] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_LOCAL_REST_OF_WORD,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_rsectag_size_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  },
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE_DIRECT_ARG,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_rsectag_size_0_1,
+    INT8_C(-1),
+    UINT8_C(1),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_rsectag_size_0[2] = {
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_rsectag_size_0_1,
+  &hlds__hlds_data__hlds__hlds_data__du_functor_desc_rsectag_size_0_0
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_rsectag_size_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_rsectag_size_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(2),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____rsectag_size_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____rsectag_size_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "rsectag_size",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_rsectag_size_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_rsectag_size_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_rsectag_size_0,
+
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_sectag_bits_0_0[2] = {
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint8_0),
+  (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_uint_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_sectag_bits_0_0[2] = {
+  (MR_String) "sectag_num_bits",
+  (MR_String) "sectag_mask"
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_sectag_bits_0_0 = {
+  (MR_String) "sectag_bits",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_sectag_bits_0_0,
+  hlds__hlds_data__hlds__hlds_data__field_names_sectag_bits_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_sectag_bits_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_sectag_bits_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_sectag_bits_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_sectag_bits_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_sectag_bits_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_sectag_bits_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_sectag_bits_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_sectag_bits_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____sectag_bits_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____sectag_bits_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "sectag_bits",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_sectag_bits_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_sectag_bits_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_sectag_bits_0,
+
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_tagged_cons_id_0_0[2] = {
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0)
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_tagged_cons_id_0_0 = {
+  (MR_String) "tagged_cons_id",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_tagged_cons_id_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_tagged_cons_id_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_tagged_cons_id_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_tagged_cons_id_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_tagged_cons_id_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_tagged_cons_id_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_tagged_cons_id_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_tagged_cons_id_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____tagged_cons_id_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____tagged_cons_id_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "tagged_cons_id",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_tagged_cons_id_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_tagged_cons_id_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_tagged_cons_id_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__one_or_more__ti_one_or_more_1parse_tree__prog_data__type_ctor_info_constructor_0 = {
+  &mercury__one_or_more__one_or_more__type_ctor_info_one_or_more_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_constructor_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1hlds__hlds_data__type_ctor_info_du_type_repn_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  { (MR_TypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_du_type_repn_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__hlds_data__maybe__ti_maybe_1hlds__hlds_data__type_ctor_info_foreign_type_body_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  { (MR_TypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_foreign_type_body_0) }
+};
+
+static const MR_PseudoTypeInfo hlds__hlds_data__hlds__hlds_data__field_types_type_body_du_0_0[5] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__one_or_more__ti_one_or_more_1parse_tree__prog_data__type_ctor_info_constructor_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_maybe_subtype_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_maybe_canonical_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__maybe__ti_maybe_1hlds__hlds_data__type_ctor_info_du_type_repn_0),
+  (MR_PseudoTypeInfo) (&hlds__hlds_data__maybe__ti_maybe_1hlds__hlds_data__type_ctor_info_foreign_type_body_0)
+};
+
+static const MR_ConstString hlds__hlds_data__hlds__hlds_data__field_names_type_body_du_0_0[5] = {
+  (MR_String) "du_type_ctors",
+  (MR_String) "du_type_supertype",
+  (MR_String) "du_type_canonical",
+  (MR_String) "du_type_repn",
+  (MR_String) "du_type_is_foreign_type"
+};
+
+static const MR_DuFunctorDesc hlds__hlds_data__hlds__hlds_data__du_functor_desc_type_body_du_0_0 = {
+  (MR_String) "type_body_du",
+  INT16_C(5),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__hlds_data__hlds__hlds_data__field_types_type_body_du_0_0,
+  hlds__hlds_data__hlds__hlds_data__field_names_type_body_du_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_stag_ordered_type_body_du_0_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_type_body_du_0_0 };
+
+static const MR_DuPtagLayout hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_type_body_du_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__hlds_data__hlds__hlds_data__du_stag_ordered_type_body_du_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__hlds_data__hlds__hlds_data__du_name_ordered_type_body_du_0[1] = { &hlds__hlds_data__hlds__hlds_data__du_functor_desc_type_body_du_0_0 };
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_type_body_du_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_body_du_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__hlds_data____Unify____type_body_du_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____type_body_du_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "type_body_du",
+  { hlds__hlds_data__hlds__hlds_data__du_name_ordered_type_body_du_0 },
+  { hlds__hlds_data__hlds__hlds_data__du_ptag_ordered_type_body_du_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_type_body_du_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_TypeInfo) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_ctor_table_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (hlds__hlds_data____Unify____type_ctor_table_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____type_ctor_table_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "type_ctor_table",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&hlds__hlds_data__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_type_defn_prev_errors_0_0 = {
+  (MR_String) "type_defn_no_prev_errors",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc hlds__hlds_data__hlds__hlds_data__enum_functor_desc_type_defn_prev_errors_0_1 = {
+  (MR_String) "type_defn_prev_errors",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_ordinal_ordered_type_defn_prev_errors_0[2] = {
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_type_defn_prev_errors_0_0,
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_type_defn_prev_errors_0_1
+};
+
+static const MR_EnumFunctorDescPtr hlds__hlds_data__hlds__hlds_data__enum_name_ordered_type_defn_prev_errors_0[2] = {
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_type_defn_prev_errors_0_0,
+  &hlds__hlds_data__hlds__hlds_data__enum_functor_desc_type_defn_prev_errors_0_1
+};
+
+static const MR_Integer hlds__hlds_data__hlds__hlds_data__functor_number_map_type_defn_prev_errors_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_defn_prev_errors_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (hlds__hlds_data____Unify____type_defn_prev_errors_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____type_defn_prev_errors_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "type_defn_prev_errors",
+  { hlds__hlds_data__hlds__hlds_data__enum_name_ordered_type_defn_prev_errors_0 },
+  { hlds__hlds_data__hlds__hlds_data__enum_ordinal_ordered_type_defn_prev_errors_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  hlds__hlds_data__hlds__hlds_data__functor_number_map_type_defn_prev_errors_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct2 hlds__hlds_data__tree234__ti_tree234_2builtin__type_ctor_info_string_0tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0),
+    (MR_TypeInfo) (&hlds__hlds_data__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0)
+  }
+};
+
+const MR_TypeCtorInfo_Struct hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_table_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (hlds__hlds_data____Unify____type_table_0_0_10001)),
+  ((MR_Box) (hlds__hlds_data____Compare____type_table_0_0_10001)),
+  (MR_String) "hlds.hlds_data",
+  (MR_String) "type_table",
+  { NULL },
+  { (MR_PseudoTypeInfo) (&hlds__hlds_data__tree234__ti_tree234_2builtin__type_ctor_info_string_0tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0hlds__hlds_data__type_ctor_info_hlds_type_defn_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+void MR_CALL 
+hlds__hlds_data____Compare____type_table_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[5]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_table_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[5]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____type_defn_prev_errors_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_defn_prev_errors_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____type_ctor_table_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[0]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_ctor_table_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[0]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____tagged_cons_id_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_9 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_10 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_9 == CastY_10);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word SubResult1_6;
+
+    parse_tree__prog_data____Compare____cons_id_0_0(&SubResult1_6, ArgX1_4, ArgY1_5);
+    succeeded = (SubResult1_6 != (MR_Integer) 0);
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+      hlds__hlds_data____Compare____cons_tag_0_0(HeadVar__1_1, ArgX2_7, ArgY2_8);
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____tagged_cons_id_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_7 == CastY_8);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+
+    succeeded = parse_tree__prog_data____Unify____cons_id_0_0(ArgX1_3, ArgY1_4);
+    if (succeeded)
+      succeeded = hlds__hlds_data____Unify____cons_tag_0_0(ArgX2_5, ArgY2_6);
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____no_tag_type_table_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[4]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____no_tag_type_table_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[4]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____no_tag_type_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_12 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_13 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_12 == CastY_13);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 2))));
+    MR_Word SubResult1_6;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[16]), &SubResult1_6, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+    succeeded = (SubResult1_6 != (MR_Integer) 0);
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+
+      mdbcomp__sym_name____Compare____sym_name_0_0(&SubResult2_9, ArgX2_7, ArgY2_8);
+      succeeded = (SubResult2_9 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+        parse_tree__prog_data____Compare____mer_type_0_0(HeadVar__1_1, ArgX3_10, ArgY3_11);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____no_tag_type_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_9 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_10 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_9 == CastY_10);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 2))));
+    MR_Word ArgY3_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[16]), ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+    if (succeeded)
+    {
+      succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(ArgX2_5, ArgY2_6);
+      if (succeeded)
+        succeeded = parse_tree__prog_data____Unify____mer_type_0_0(ArgX3_7, ArgY3_8);
+    }
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____may_use_atomic_alloc_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____may_use_atomic_alloc_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____lsectag_mask_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____lsectag_mask_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_type_defn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_30 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_31 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_30 == CastY_31);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 2))));
+    MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgY4_14 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 3))));
+    MR_Word ArgX5_16 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 4))) & (MR_Integer) 1);
+    MR_Word ArgY5_17 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 4))) & (MR_Integer) 1);
+    MR_Word ArgX6_19 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 5))));
+    MR_Word ArgY6_20 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 5))));
+    MR_Word ArgX7_22 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 6))) >> 1)) & (MR_Integer) 1);
+    MR_Word ArgY7_23 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 6))) >> 1)) & (MR_Integer) 1);
+    MR_Word ArgX8_25 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 6))) & (MR_Integer) 1);
+    MR_Word ArgY8_26 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 6))) & (MR_Integer) 1);
+    MR_Word ArgX9_28 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 7))));
+    MR_Word ArgY9_29 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 7))));
+    MR_Word SubResult1_6;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[14]), &SubResult1_6, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+    succeeded = (SubResult1_6 != (MR_Integer) 0);
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+
+      mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[16]), &SubResult2_9, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+      succeeded = (SubResult2_9 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+      {
+        MR_Word SubResult3_12;
+
+        mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[3]), &SubResult3_12, ((MR_Box) (ArgX3_10)), ((MR_Box) (ArgY3_11)));
+        succeeded = (SubResult3_12 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult3_12;
+        else
+        {
+          MR_Word SubResult4_15;
+
+          hlds__hlds_data____Compare____hlds_type_body_0_0(&SubResult4_15, ArgX4_13, ArgY4_14);
+          succeeded = (SubResult4_15 != (MR_Integer) 0);
+          if (succeeded)
+            *HeadVar__1_1 = SubResult4_15;
+          else
+          {
+            MR_Word SubResult5_18;
+            MR_Integer Var_41 = (MR_Integer) (ArgX5_16);
+            MR_Integer Var_42 = (MR_Integer) (ArgY5_17);
+
+            succeeded = (Var_41 < Var_42);
+            if (succeeded)
+            {
+              SubResult5_18 = (MR_Integer) 1;
+              succeeded = MR_TRUE;
+            }
+            else
+            {
+              succeeded = (Var_41 > Var_42);
+              if (succeeded)
+              {
+                SubResult5_18 = (MR_Integer) 2;
+                succeeded = MR_TRUE;
+              }
+              else
+              {
+                succeeded = MR_TRUE;
+                succeeded = !(succeeded);
+                if (succeeded)
+                {
+                  SubResult5_18 = (MR_Integer) 0;
+                  succeeded = MR_TRUE;
+                }
+              }
+            }
+            if (succeeded)
+              *HeadVar__1_1 = SubResult5_18;
+            else
+            {
+              MR_Word SubResult6_21;
+
+              hlds__status____Compare____type_status_0_0(&SubResult6_21, ArgX6_19, ArgY6_20);
+              succeeded = (SubResult6_21 != (MR_Integer) 0);
+              if (succeeded)
+                *HeadVar__1_1 = SubResult6_21;
+              else
+              {
+                MR_Word SubResult7_24;
+                MR_Integer Var_43 = (MR_Integer) (ArgX7_22);
+                MR_Integer Var_44 = (MR_Integer) (ArgY7_23);
+
+                succeeded = (Var_43 < Var_44);
+                if (succeeded)
+                {
+                  SubResult7_24 = (MR_Integer) 1;
+                  succeeded = MR_TRUE;
+                }
+                else
+                {
+                  succeeded = (Var_43 > Var_44);
+                  if (succeeded)
+                  {
+                    SubResult7_24 = (MR_Integer) 2;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = MR_TRUE;
+                    succeeded = !(succeeded);
+                    if (succeeded)
+                    {
+                      SubResult7_24 = (MR_Integer) 0;
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                }
+                if (succeeded)
+                  *HeadVar__1_1 = SubResult7_24;
+                else
+                {
+                  MR_Word SubResult8_27;
+                  MR_Integer Var_45 = (MR_Integer) (ArgX8_25);
+                  MR_Integer Var_46 = (MR_Integer) (ArgY8_26);
+
+                  succeeded = (Var_45 < Var_46);
+                  if (succeeded)
+                  {
+                    SubResult8_27 = (MR_Integer) 1;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = (Var_45 > Var_46);
+                    if (succeeded)
+                    {
+                      SubResult8_27 = (MR_Integer) 2;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = MR_TRUE;
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                      {
+                        SubResult8_27 = (MR_Integer) 0;
+                        succeeded = MR_TRUE;
+                      }
+                    }
+                  }
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult8_27;
+                  else
+                    mercury__term_context____Compare____term_context_0_0(HeadVar__1_1, ArgX9_28, ArgY9_29);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_type_defn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_21 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_22 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_21 == CastY_22);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word TypeInfo_24_24;
+    MR_Word TypeInfo_25_25;
+    MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 2))));
+    MR_Word ArgY3_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgX4_9 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 3))));
+    MR_Word ArgY4_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgX5_11 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 4))) & (MR_Integer) 1);
+    MR_Word ArgY5_12 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 4))) & (MR_Integer) 1);
+    MR_Word ArgX6_13 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 5))));
+    MR_Word ArgY6_14 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 5))));
+    MR_Word ArgX7_15 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 6))) >> 1)) & (MR_Integer) 1);
+    MR_Word ArgY7_16 = ((((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 6))) >> 1)) & (MR_Integer) 1);
+    MR_Word ArgX8_17 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 6))) & (MR_Integer) 1);
+    MR_Word ArgY8_18 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 6))) & (MR_Integer) 1);
+    MR_Word ArgX9_19 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 7))));
+    MR_Word ArgY9_20 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 7))));
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[14]), ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+    if (succeeded)
+    {
+      TypeInfo_24_24 = (MR_Word) (&hlds__hlds_data_scalar_common_2[16]);
+      succeeded = mercury__builtin__unify_2_p_0(TypeInfo_24_24, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+      if (succeeded)
+      {
+        TypeInfo_25_25 = (MR_Word) (&hlds__hlds_data_scalar_common_1[3]);
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_25_25, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+        if (succeeded)
+        {
+          succeeded = hlds__hlds_data____Unify____hlds_type_body_0_0(ArgX4_9, ArgY4_10);
+          if (succeeded)
+          {
+            succeeded = (ArgX5_11 == ArgY5_12);
+            if (succeeded)
+            {
+              succeeded = hlds__status____Unify____type_status_0_0(ArgX6_13, ArgY6_14);
+              if (succeeded)
+              {
+                succeeded = (ArgX7_15 == ArgY7_16);
+                if (succeeded)
+                {
+                  succeeded = (ArgX8_17 == ArgY8_18);
+                  if (succeeded)
+                    succeeded = mercury__term_context____Unify____term_context_0_0(ArgX9_19, ArgY9_20);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____hlds_type_body_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_54 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_55 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_54 == CastY_55);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+    switch (MR_tag((MR_Word) HeadVar__2_2)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word Var_62 = (MR_Word) ((MR_Word) (HeadVar__2_2));
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word ArgY1_5 = (MR_Word) ((MR_Word) (HeadVar__3_3));
+
+                hlds__hlds_data____Compare____type_body_du_0_0(HeadVar__1_1, Var_62, ArgY1_5);
+              }
+              break;
+            case (MR_Integer) 1:
+              *HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 2:
+              *HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word Var_64 = (MR_Word) (MR_body((MR_Word) (HeadVar__2_2), (MR_Integer) 1));
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word ArgY1_29 = (MR_Word) (MR_body((MR_Word) (HeadVar__3_3), (MR_Integer) 1));
+
+                hlds__hlds_data____Compare____foreign_type_body_0_0(HeadVar__1_1, Var_64, ArgY1_29);
+              }
+              break;
+            case (MR_Integer) 2:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word Var_63 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 0))));
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 1:
+              *HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word ArgY1_17 = ((MR_Word) ((MR_hl_field(2, HeadVar__3_3, (MR_Integer) 0))));
+
+                parse_tree__prog_data____Compare____mer_type_0_0(HeadVar__1_1, Var_63, ArgY1_17);
+              }
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word Var_65 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        MR_Word ArgY1_41 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+
+                        parse_tree__prog_data____Compare____type_details_solver_0_0(HeadVar__1_1, Var_65, ArgY1_41);
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word Var_61 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        MR_Word ArgY1_53 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+
+                        parse_tree__prog_data____Compare____type_details_abstract_0_0(HeadVar__1_1, Var_61, ArgY1_53);
+                      }
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+    }
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____type_body_du_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_18 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_19 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_18 == CastY_19);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 2))));
+    MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgY4_14 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 3))));
+    MR_Word ArgX5_16 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 4))));
+    MR_Word ArgY5_17 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 4))));
+    MR_Word SubResult1_6;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[17]), &SubResult1_6, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+    succeeded = (SubResult1_6 != (MR_Integer) 0);
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+
+      parse_tree__prog_data____Compare____maybe_subtype_0_0(&SubResult2_9, ArgX2_7, ArgY2_8);
+      succeeded = (SubResult2_9 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+      {
+        MR_Word SubResult3_12;
+
+        parse_tree__prog_data____Compare____maybe_canonical_0_0(&SubResult3_12, ArgX3_10, ArgY3_11);
+        succeeded = (SubResult3_12 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult3_12;
+        else
+        {
+          MR_Word SubResult4_15;
+
+          mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[18]), &SubResult4_15, ((MR_Box) (ArgX4_13)), ((MR_Box) (ArgY4_14)));
+          succeeded = (SubResult4_15 != (MR_Integer) 0);
+          if (succeeded)
+            *HeadVar__1_1 = SubResult4_15;
+          else
+            mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[19]), HeadVar__1_1, ((MR_Box) (ArgX5_16)), ((MR_Box) (ArgY5_17)));
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_type_body_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_13 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_14 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_13 == CastY_14);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+    switch (MR_tag((MR_Word) HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word ArgX1_3 = (MR_Word) ((MR_Word) (HeadVar__1_1));
+          MR_Word ArgY1_4;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+          if (succeeded)
+          {
+            ArgY1_4 = (MR_Word) ((MR_Word) (HeadVar__2_2));
+            succeeded = hlds__hlds_data____Unify____type_body_du_0_0(ArgX1_3, ArgY1_4);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ArgX1_7 = (MR_Word) (MR_body((MR_Word) (HeadVar__1_1), (MR_Integer) 1));
+          MR_Word ArgY1_8;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+          if (succeeded)
+          {
+            ArgY1_8 = (MR_Word) (MR_body((MR_Word) (HeadVar__2_2), (MR_Integer) 1));
+            succeeded = hlds__hlds_data____Unify____foreign_type_body_0_0(ArgX1_7, ArgY1_8);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word ArgX1_5 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, (MR_Integer) 0))));
+          MR_Word ArgY1_6;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+          if (succeeded)
+          {
+            ArgY1_6 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 0))));
+            succeeded = parse_tree__prog_data____Unify____mer_type_0_0(ArgX1_5, ArgY1_6);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word ArgX1_9 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+              MR_Word ArgY1_10;
+
+              succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+              if (succeeded)
+              {
+                ArgY1_10 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                succeeded = parse_tree__prog_data____Unify____type_details_solver_0_0(ArgX1_9, ArgY1_10);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word ArgX1_11 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+              MR_Word ArgY1_12;
+
+              succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+              if (succeeded)
+              {
+                ArgY1_12 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                succeeded = parse_tree__prog_data____Unify____type_details_abstract_0_0(ArgX1_11, ArgY1_12);
+              }
+            }
+            break;
+        }
+        break;
+    }
+  return succeeded;
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_body_du_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_13 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_14 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_13 == CastY_14);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word TypeInfo_18_18;
+    MR_Word TypeInfo_19_19;
+    MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 2))));
+    MR_Word ArgY3_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgX4_9 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 3))));
+    MR_Word ArgY4_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgX5_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 4))));
+    MR_Word ArgY5_12 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 4))));
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[17]), ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+    if (succeeded)
+    {
+      succeeded = parse_tree__prog_data____Unify____maybe_subtype_0_0(ArgX2_5, ArgY2_6);
+      if (succeeded)
+      {
+        succeeded = parse_tree__prog_data____Unify____maybe_canonical_0_0(ArgX3_7, ArgY3_8);
+        if (succeeded)
+        {
+          TypeInfo_18_18 = (MR_Word) (&hlds__hlds_data_scalar_common_2[18]);
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_18_18, ((MR_Box) (ArgX4_9)), ((MR_Box) (ArgY4_10)));
+          if (succeeded)
+          {
+            TypeInfo_19_19 = (MR_Word) (&hlds__hlds_data_scalar_common_2[19]);
+            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_19_19, ((MR_Box) (ArgX5_11)), ((MR_Box) (ArgY5_12)));
+          }
+        }
+      }
+    }
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____foreign_type_lang_body_1_0(
+  MR_Word TypeInfo_for_T_6,
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word TypeInfo_8_8;
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  {
+    TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, TypeInfo_8_8, 0) = ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1));
+    MR_hl_field(0, TypeInfo_8_8, 1) = ((MR_Box) (TypeInfo_for_T_6));
+  }
+  mercury__maybe____Compare____maybe_1_0(TypeInfo_8_8, HeadVar__1_1, (MR_Word) (Cast_HeadVar1_4), (MR_Word) (Cast_HeadVar2_5));
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____foreign_type_lang_body_1_0(
+  MR_Word TypeInfo_for_T_5,
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word TypeInfo_7_7;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  {
+    TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, TypeInfo_7_7, 0) = ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_details_foreign_1));
+    MR_hl_field(0, TypeInfo_7_7, 1) = ((MR_Box) (TypeInfo_for_T_5));
+  }
+  succeeded = mercury__maybe____Unify____maybe_1_0(TypeInfo_7_7, (MR_Word) (Cast_HeadVar1_3), (MR_Word) (Cast_HeadVar2_4));
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____foreign_type_body_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_12 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_13 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_12 == CastY_13);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 2))));
+    MR_Word SubResult1_6;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[9]), &SubResult1_6, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+    succeeded = (SubResult1_6 != (MR_Integer) 0);
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+
+      mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[11]), &SubResult2_9, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+      succeeded = (SubResult2_9 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+        mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[13]), HeadVar__1_1, ((MR_Box) (ArgX3_10)), ((MR_Box) (ArgY3_11)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____foreign_type_body_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_9 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_10 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_9 == CastY_10);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word TypeInfo_12_12;
+    MR_Word TypeInfo_13_13;
+    MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 2))));
+    MR_Word ArgY3_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[9]), ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+    if (succeeded)
+    {
+      TypeInfo_12_12 = (MR_Word) (&hlds__hlds_data_scalar_common_2[11]);
+      succeeded = mercury__builtin__unify_2_p_0(TypeInfo_12_12, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+      if (succeeded)
+      {
+        TypeInfo_13_13 = (MR_Word) (&hlds__hlds_data_scalar_common_2[13]);
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_13_13, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+      }
+    }
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____du_type_repn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_18 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_19 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_18 == CastY_19);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 2))));
+    MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgY4_14 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 3))));
+    MR_Word ArgX5_16 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 4))));
+    MR_Word ArgY5_17 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 4))));
+    MR_Word SubResult1_6;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[5]), &SubResult1_6, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+    succeeded = (SubResult1_6 != (MR_Integer) 0);
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+
+      mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[2]), &SubResult2_9, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+      succeeded = (SubResult2_9 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+      {
+        MR_Word SubResult3_12;
+
+        hlds__hlds_data____Compare____maybe_cheaper_tag_test_0_0(&SubResult3_12, ArgX3_10, ArgY3_11);
+        succeeded = (SubResult3_12 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult3_12;
+        else
+        {
+          MR_Word SubResult4_15;
+
+          hlds__hlds_data____Compare____du_type_kind_0_0(&SubResult4_15, ArgX4_13, ArgY4_14);
+          succeeded = (SubResult4_15 != (MR_Integer) 0);
+          if (succeeded)
+            *HeadVar__1_1 = SubResult4_15;
+          else
+            mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[7]), HeadVar__1_1, ((MR_Box) (ArgX5_16)), ((MR_Box) (ArgY5_17)));
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____maybe_cheaper_tag_test_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_23 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_24 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_23 == CastY_24);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+    if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    MR_Word Var_29 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word Var_30 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word Var_31 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word Var_32 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+
+    if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+    {
+      MR_Word ArgY1_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 0))));
+      MR_Word ArgY2_16 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 1))));
+      MR_Word ArgY3_19 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 2))));
+      MR_Word ArgY4_22 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 3))));
+      MR_Word SubResult1_14;
+
+      parse_tree__prog_data____Compare____cons_id_0_0(&SubResult1_14, Var_32, ArgY1_13);
+      succeeded = (SubResult1_14 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult1_14;
+      else
+      {
+        MR_Word SubResult2_17;
+
+        hlds__hlds_data____Compare____cons_tag_0_0(&SubResult2_17, Var_31, ArgY2_16);
+        succeeded = (SubResult2_17 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult2_17;
+        else
+        {
+          MR_Word SubResult3_20;
+
+          parse_tree__prog_data____Compare____cons_id_0_0(&SubResult3_20, Var_30, ArgY3_19);
+          succeeded = (SubResult3_20 != (MR_Integer) 0);
+          if (succeeded)
+            *HeadVar__1_1 = SubResult3_20;
+          else
+            hlds__hlds_data____Compare____cons_tag_0_0(HeadVar__1_1, Var_29, ArgY4_22);
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____du_type_repn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_13 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_14 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_13 == CastY_14);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word TypeInfo_16_16;
+    MR_Word TypeInfo_17_17;
+    MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 2))));
+    MR_Word ArgY3_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgX4_9 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 3))));
+    MR_Word ArgY4_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgX5_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 4))));
+    MR_Word ArgY5_12 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 4))));
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[5]), ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+    if (succeeded)
+    {
+      TypeInfo_16_16 = (MR_Word) (&hlds__hlds_data_scalar_common_1[2]);
+      succeeded = mercury__builtin__unify_2_p_0(TypeInfo_16_16, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+      if (succeeded)
+      {
+        succeeded = hlds__hlds_data____Unify____maybe_cheaper_tag_test_0_0(ArgX3_7, ArgY3_8);
+        if (succeeded)
+        {
+          succeeded = hlds__hlds_data____Unify____du_type_kind_0_0(ArgX4_9, ArgY4_10);
+          if (succeeded)
+          {
+            TypeInfo_17_17 = (MR_Word) (&hlds__hlds_data_scalar_common_2[7]);
+            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_17_17, ((MR_Box) (ArgX5_11)), ((MR_Box) (ArgY5_12)));
+          }
+        }
+      }
+    }
+  }
+  return succeeded;
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____maybe_cheaper_tag_test_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_13 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_14 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_13 == CastY_14);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    MR_Integer CastX_3 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_4 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastY_4 == CastX_3);
+  }
+  else
+  {
+    MR_Word ArgX1_5 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ArgY1_6;
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_8;
+    MR_Word ArgX3_9 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 2))));
+    MR_Word ArgY3_10;
+    MR_Word ArgX4_11 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 3))));
+    MR_Word ArgY4_12;
+
+    succeeded = (HeadVar__2_2 != (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+    {
+      ArgY1_6 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+      ArgY2_8 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 1))));
+      ArgY3_10 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 2))));
+      ArgY4_12 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 3))));
+      succeeded = parse_tree__prog_data____Unify____cons_id_0_0(ArgX1_5, ArgY1_6);
+      if (succeeded)
+      {
+        succeeded = hlds__hlds_data____Unify____cons_tag_0_0(ArgX2_7, ArgY2_8);
+        if (succeeded)
+        {
+          succeeded = parse_tree__prog_data____Unify____cons_id_0_0(ArgX3_9, ArgY3_10);
+          if (succeeded)
+            succeeded = hlds__hlds_data____Unify____cons_tag_0_0(ArgX4_11, ArgY4_12);
+        }
+      }
+    }
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____du_type_kind_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_46 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_47 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_46 == CastY_47);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+    switch (MR_tag((MR_Word) HeadVar__2_2)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+            break;
+          case (MR_Integer) 2:
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word Var_52 = ((MR_Unsigned) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_unmkbody(HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word ArgY1_10 = ((MR_Unsigned) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 3);
+                MR_Integer Var_56 = (MR_Integer) (Var_52);
+                MR_Integer Var_57 = (MR_Integer) (ArgY1_10);
+
+                succeeded = (Var_56 < Var_57);
+                if (succeeded)
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                else
+                {
+                  succeeded = (Var_56 > Var_57);
+                  if (succeeded)
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                  else
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              *HeadVar__1_1 = (MR_Integer) 1;
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word Var_53 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 2))));
+          MR_Word Var_54 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 1))));
+          MR_Word Var_55 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 0))));
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_unmkbody(HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word ArgY1_32 = ((MR_Word) ((MR_hl_field(2, HeadVar__3_3, (MR_Integer) 0))));
+                MR_Word ArgY2_35 = ((MR_Word) ((MR_hl_field(2, HeadVar__3_3, (MR_Integer) 1))));
+                MR_Word ArgY3_38 = ((MR_Word) ((MR_hl_field(2, HeadVar__3_3, (MR_Integer) 2))));
+                MR_Word SubResult1_33;
+
+                mdbcomp__sym_name____Compare____sym_name_0_0(&SubResult1_33, Var_55, ArgY1_32);
+                succeeded = (SubResult1_33 != (MR_Integer) 0);
+                if (succeeded)
+                  *HeadVar__1_1 = SubResult1_33;
+                else
+                {
+                  MR_Word SubResult2_36;
+
+                  parse_tree__prog_data____Compare____mer_type_0_0(&SubResult2_36, Var_54, ArgY2_35);
+                  succeeded = (SubResult2_36 != (MR_Integer) 0);
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult2_36;
+                  else
+                    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[4]), HeadVar__1_1, ((MR_Box) (Var_53)), ((MR_Box) (ArgY3_38)));
+                }
+              }
+              break;
+          }
+        }
+        break;
+    }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____du_type_kind_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_17 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_18 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_17 == CastY_18);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+    switch (MR_tag((MR_Word) HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(HeadVar__1_1)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Integer CastX_3 = (MR_Integer) (HeadVar__1_1);
+              MR_Integer CastY_4 = (MR_Integer) (HeadVar__2_2);
+
+              succeeded = (CastY_4 == CastX_3);
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+              MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+              succeeded = (CastY_8 == CastX_7);
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Integer CastX_15 = (MR_Integer) (HeadVar__1_1);
+              MR_Integer CastY_16 = (MR_Integer) (HeadVar__2_2);
+
+              succeeded = (CastY_16 == CastX_15);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ArgX1_5 = ((MR_Unsigned) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 3);
+          MR_Word ArgY1_6;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+          if (succeeded)
+          {
+            ArgY1_6 = ((MR_Unsigned) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+            succeeded = (ArgX1_5 == ArgY1_6);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word TypeInfo_21_21;
+          MR_Word ArgX1_9 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, (MR_Integer) 0))));
+          MR_Word ArgY1_10;
+          MR_Word ArgX2_11 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, (MR_Integer) 1))));
+          MR_Word ArgY2_12;
+          MR_Word ArgX3_13 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, (MR_Integer) 2))));
+          MR_Word ArgY3_14;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+          if (succeeded)
+          {
+            ArgY1_10 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 0))));
+            ArgY2_12 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 1))));
+            ArgY3_14 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 2))));
+            succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(ArgX1_9, ArgY1_10);
+            if (succeeded)
+            {
+              succeeded = parse_tree__prog_data____Unify____mer_type_0_0(ArgX2_11, ArgY2_12);
+              if (succeeded)
+              {
+                TypeInfo_21_21 = (MR_Word) (&hlds__hlds_data_scalar_common_2[4]);
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_21_21, ((MR_Box) (ArgX3_13)), ((MR_Box) (ArgY3_14)));
+              }
+            }
+          }
+        }
+        break;
+    }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____ctor_name_to_repn_map_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+  MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+  mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[2]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____ctor_name_to_repn_map_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+  MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+  succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[2]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____constructor_repn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_24 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_25 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_24 == CastY_25);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    uint32_t ArgX1_4 = ((uint32_t) (MR_Word) (MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0)));
+    uint32_t ArgY1_5 = ((uint32_t) (MR_Word) (MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0)));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 2))));
+    MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgY4_14 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 3))));
+    MR_Word ArgX5_16 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 4))));
+    MR_Word ArgY5_17 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 4))));
+    MR_Integer ArgX6_19 = ((MR_Integer) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 5))));
+    MR_Integer ArgY6_20 = ((MR_Integer) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 5))));
+    MR_Word ArgX7_22 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 6))));
+    MR_Word ArgY7_23 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 6))));
+    MR_Word SubResult1_6;
+
+    succeeded = (ArgX1_4 < ArgY1_5);
+    if (succeeded)
+    {
+      SubResult1_6 = (MR_Integer) 1;
+      succeeded = MR_TRUE;
+    }
+    else
+    {
+      succeeded = (ArgX1_4 > ArgY1_5);
+      if (succeeded)
+      {
+        SubResult1_6 = (MR_Integer) 2;
+        succeeded = MR_TRUE;
+      }
+      else
+      {
+        succeeded = MR_TRUE;
+        succeeded = !(succeeded);
+        if (succeeded)
+        {
+          SubResult1_6 = (MR_Integer) 0;
+          succeeded = MR_TRUE;
+        }
+      }
+    }
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+
+      parse_tree__prog_data____Compare____maybe_cons_exist_constraints_0_0(&SubResult2_9, ArgX2_7, ArgY2_8);
+      succeeded = (SubResult2_9 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+      {
+        MR_Word SubResult3_12;
+
+        mdbcomp__sym_name____Compare____sym_name_0_0(&SubResult3_12, ArgX3_10, ArgY3_11);
+        succeeded = (SubResult3_12 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult3_12;
+        else
+        {
+          MR_Word SubResult4_15;
+
+          hlds__hlds_data____Compare____cons_tag_0_0(&SubResult4_15, ArgX4_13, ArgY4_14);
+          succeeded = (SubResult4_15 != (MR_Integer) 0);
+          if (succeeded)
+            *HeadVar__1_1 = SubResult4_15;
+          else
+          {
+            MR_Word SubResult5_18;
+
+            mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[3]), &SubResult5_18, ((MR_Box) (ArgX5_16)), ((MR_Box) (ArgY5_17)));
+            succeeded = (SubResult5_18 != (MR_Integer) 0);
+            if (succeeded)
+              *HeadVar__1_1 = SubResult5_18;
+            else
+            {
+              MR_Word SubResult6_21;
+
+              succeeded = (ArgX6_19 < ArgY6_20);
+              if (succeeded)
+              {
+                SubResult6_21 = (MR_Integer) 1;
+                succeeded = MR_TRUE;
+              }
+              else
+              {
+                succeeded = (ArgX6_19 > ArgY6_20);
+                if (succeeded)
+                {
+                  SubResult6_21 = (MR_Integer) 2;
+                  succeeded = MR_TRUE;
+                }
+                else
+                {
+                  succeeded = MR_TRUE;
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                  {
+                    SubResult6_21 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                }
+              }
+              if (succeeded)
+                *HeadVar__1_1 = SubResult6_21;
+              else
+                mercury__term_context____Compare____term_context_0_0(HeadVar__1_1, ArgX7_22, ArgY7_23);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____constructor_repn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_17 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_18 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_17 == CastY_18);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word TypeInfo_21_21;
+    uint32_t ArgX1_3 = ((uint32_t) (MR_Word) (MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0)));
+    uint32_t ArgY1_4 = ((uint32_t) (MR_Word) (MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0)));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 2))));
+    MR_Word ArgY3_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgX4_9 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 3))));
+    MR_Word ArgY4_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgX5_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 4))));
+    MR_Word ArgY5_12 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 4))));
+    MR_Integer ArgX6_13 = ((MR_Integer) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 5))));
+    MR_Integer ArgY6_14 = ((MR_Integer) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 5))));
+    MR_Word ArgX7_15 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 6))));
+    MR_Word ArgY7_16 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 6))));
+
+    succeeded = (ArgX1_3 == ArgY1_4);
+    if (succeeded)
+    {
+      succeeded = parse_tree__prog_data____Unify____maybe_cons_exist_constraints_0_0(ArgX2_5, ArgY2_6);
+      if (succeeded)
+      {
+        succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(ArgX3_7, ArgY3_8);
+        if (succeeded)
+        {
+          succeeded = hlds__hlds_data____Unify____cons_tag_0_0(ArgX4_9, ArgY4_10);
+          if (succeeded)
+          {
+            TypeInfo_21_21 = (MR_Word) (&hlds__hlds_data_scalar_common_2[3]);
+            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_21_21, ((MR_Box) (ArgX5_11)), ((MR_Box) (ArgY5_12)));
+            if (succeeded)
+            {
+              succeeded = (ArgX6_13 == ArgY6_14);
+              if (succeeded)
+                succeeded = mercury__term_context____Unify____term_context_0_0(ArgX7_15, ArgY7_16);
+            }
+          }
+        }
+      }
+    }
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____constructor_arg_repn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_15 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_16 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_15 == CastY_16);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 2))));
+    MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgY4_14 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 3))));
+    MR_Word SubResult1_6;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[2]), &SubResult1_6, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+    succeeded = (SubResult1_6 != (MR_Integer) 0);
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+
+      parse_tree__prog_data____Compare____mer_type_0_0(&SubResult2_9, ArgX2_7, ArgY2_8);
+      succeeded = (SubResult2_9 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+      {
+        MR_Word SubResult3_12;
+
+        parse_tree__prog_data____Compare____arg_pos_width_0_0(&SubResult3_12, ArgX3_10, ArgY3_11);
+        succeeded = (SubResult3_12 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult3_12;
+        else
+          mercury__term_context____Compare____term_context_0_0(HeadVar__1_1, ArgX4_13, ArgY4_14);
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____constructor_arg_repn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_11 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_12 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_11 == CastY_12);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 2))));
+    MR_Word ArgY3_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgX4_9 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 3))));
+    MR_Word ArgY4_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__hlds_data_scalar_common_2[2]), ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+    if (succeeded)
+    {
+      succeeded = parse_tree__prog_data____Unify____mer_type_0_0(ArgX2_5, ArgY2_6);
+      if (succeeded)
+      {
+        succeeded = parse_tree__prog_data____Unify____arg_pos_width_0_0(ArgX3_7, ArgY3_8);
+        if (succeeded)
+          succeeded = mercury__term_context____Unify____term_context_0_0(ArgX4_9, ArgY4_10);
+      }
+    }
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____cons_tag_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_80 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_81 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_80 == CastY_81);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Integer IndexX_4;
+    MR_Integer IndexY_5;
+
+    hlds__hlds_data____Index____cons_tag_0_0(HeadVar__2_2, &IndexX_4);
+    hlds__hlds_data____Index____cons_tag_0_0(HeadVar__3_3, &IndexY_5);
+    succeeded = (IndexX_4 < IndexY_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (IndexX_4 > IndexY_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+      {
+        MR_Word CompareResult_6;
+
+        switch (MR_tag((MR_Word) HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(HeadVar__2_2)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  CompareResult_6 = (MR_Integer) 0;
+                  succeeded = MR_TRUE;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  CompareResult_6 = (MR_Integer) 0;
+                  succeeded = MR_TRUE;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word ArgX1_7 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+              MR_Word ArgY1_8;
+
+              succeeded = ((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 1);
+              if (succeeded)
+              {
+                ArgY1_8 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 0))));
+                hlds__hlds_data____Compare____int_tag_0_0(&CompareResult_6, ArgX1_7, ArgY1_8);
+                succeeded = MR_TRUE;
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Float ArgX1_9 = MR_unbox_float((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 0)));
+              MR_Float ArgY1_10;
+
+              succeeded = ((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 2);
+              if (succeeded)
+              {
+                ArgY1_10 = MR_unbox_float((MR_hl_field(2, HeadVar__3_3, (MR_Integer) 0)));
+                mercury__private_builtin__builtin_compare_float_3_p_0(&CompareResult_6, ArgX1_9, ArgY1_10);
+                succeeded = MR_TRUE;
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            switch (((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0))))) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_String ArgX1_11 = ((MR_String) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_String ArgY1_12;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                  if (succeeded)
+                  {
+                    ArgY1_12 = ((MR_String) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    mercury__private_builtin__builtin_compare_string_3_p_0(&CompareResult_6, ArgX1_11, ArgY1_12);
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgX1_13 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))) & (MR_Integer) 3);
+                  MR_Word ArgY1_14;
+                  MR_String ArgX2_16 = ((MR_String) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  MR_String ArgY2_17;
+                  MR_Word SubResult1_15;
+                  MR_Integer Var_113;
+                  MR_Integer Var_114;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                  if (succeeded)
+                  {
+                    ArgY1_14 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))) & (MR_Integer) 3);
+                    ArgY2_17 = ((MR_String) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 2))));
+                    Var_113 = (MR_Integer) (ArgX1_13);
+                    Var_114 = (MR_Integer) (ArgY1_14);
+                    succeeded = (Var_113 < Var_114);
+                    if (succeeded)
+                    {
+                      SubResult1_15 = (MR_Integer) 1;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = (Var_113 > Var_114);
+                      if (succeeded)
+                      {
+                        SubResult1_15 = (MR_Integer) 2;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = MR_TRUE;
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                        {
+                          SubResult1_15 = (MR_Integer) 0;
+                          succeeded = MR_TRUE;
+                        }
+                      }
+                    }
+                    if (succeeded)
+                      CompareResult_6 = SubResult1_15;
+                    else
+                      mercury__private_builtin__builtin_compare_string_3_p_0(&CompareResult_6, ArgX2_16, ArgY2_17);
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgX1_18 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Word ArgY1_19;
+                  MR_Word ArgX2_21 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  MR_Word ArgY2_22;
+                  MR_Word ArgX3_24 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 3))) & (MR_Integer) 1);
+                  MR_Word ArgY3_25;
+                  MR_Word SubResult1_20;
+                  uint8_t Var_115;
+                  uint8_t Var_116;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                  if (succeeded)
+                  {
+                    ArgY1_19 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    ArgY2_22 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 2))));
+                    ArgY3_25 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 3))) & (MR_Integer) 1);
+                    Var_115 = (uint8_t) (ArgX1_18);
+                    Var_116 = (uint8_t) (ArgY1_19);
+                    succeeded = (Var_115 < Var_116);
+                    if (succeeded)
+                    {
+                      SubResult1_20 = (MR_Integer) 1;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = (Var_115 > Var_116);
+                      if (succeeded)
+                      {
+                        SubResult1_20 = (MR_Integer) 2;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = MR_TRUE;
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                        {
+                          SubResult1_20 = (MR_Integer) 0;
+                          succeeded = MR_TRUE;
+                        }
+                      }
+                    }
+                    if (succeeded)
+                      CompareResult_6 = SubResult1_20;
+                    else
+                    {
+                      MR_Word SubResult2_23;
+
+                      hlds__hlds_data____Compare____local_sectag_0_0(&SubResult2_23, ArgX2_21, ArgY2_22);
+                      succeeded = (SubResult2_23 != (MR_Integer) 0);
+                      if (succeeded)
+                        CompareResult_6 = SubResult2_23;
+                      else
+                      {
+                        MR_Integer Var_117 = (MR_Integer) (ArgX3_24);
+                        MR_Integer Var_118 = (MR_Integer) (ArgY3_25);
+
+                        succeeded = (Var_117 < Var_118);
+                        if (succeeded)
+                          CompareResult_6 = (MR_Integer) 1;
+                        else
+                        {
+                          succeeded = (Var_117 > Var_118);
+                          if (succeeded)
+                            CompareResult_6 = (MR_Integer) 2;
+                          else
+                            CompareResult_6 = (MR_Integer) 0;
+                        }
+                      }
+                    }
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Integer ArgX1_26 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Integer ArgY1_27;
+                  MR_Word ArgX2_29 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  MR_Word ArgY2_30;
+                  MR_Word SubResult1_28;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                  if (succeeded)
+                  {
+                    ArgY1_27 = ((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    ArgY2_30 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 2))));
+                    succeeded = (ArgX1_26 < ArgY1_27);
+                    if (succeeded)
+                    {
+                      SubResult1_28 = (MR_Integer) 1;
+                      succeeded = MR_TRUE;
+                    }
+                    else
+                    {
+                      succeeded = (ArgX1_26 > ArgY1_27);
+                      if (succeeded)
+                      {
+                        SubResult1_28 = (MR_Integer) 2;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = MR_TRUE;
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                        {
+                          SubResult1_28 = (MR_Integer) 0;
+                          succeeded = MR_TRUE;
+                        }
+                      }
+                    }
+                    if (succeeded)
+                      CompareResult_6 = SubResult1_28;
+                    else
+                      hlds__hlds_data____Compare____cons_tag_0_0(&CompareResult_6, ArgX2_29, ArgY2_30);
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 4:
+                {
+                  MR_Integer ArgX1_31 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Integer ArgY1_32;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                  if (succeeded)
+                  {
+                    ArgY1_32 = ((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    succeeded = (ArgX1_31 < ArgY1_32);
+                    if (succeeded)
+                      CompareResult_6 = (MR_Integer) 1;
+                    else
+                    {
+                      succeeded = (ArgX1_31 > ArgY1_32);
+                      if (succeeded)
+                        CompareResult_6 = (MR_Integer) 2;
+                      else
+                        CompareResult_6 = (MR_Integer) 0;
+                    }
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 5:
+                {
+                  MR_Integer ArgX1_33 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Integer ArgY1_34;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                  if (succeeded)
+                  {
+                    ArgY1_34 = ((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    succeeded = (ArgX1_33 < ArgY1_34);
+                    if (succeeded)
+                      CompareResult_6 = (MR_Integer) 1;
+                    else
+                    {
+                      succeeded = (ArgX1_33 > ArgY1_34);
+                      if (succeeded)
+                        CompareResult_6 = (MR_Integer) 2;
+                      else
+                        CompareResult_6 = (MR_Integer) 0;
+                    }
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 6:
+                {
+                  MR_Word ArgX1_35 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Word ArgY1_36;
+                  MR_String ArgX2_38 = ((MR_String) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  MR_String ArgY2_39;
+                  MR_Integer ArgX3_41 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 3))));
+                  MR_Integer ArgY3_42;
+                  MR_Word SubResult1_37;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                  if (succeeded)
+                  {
+                    ArgY1_36 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    ArgY2_39 = ((MR_String) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 2))));
+                    ArgY3_42 = ((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 3))));
+                    mdbcomp__sym_name____Compare____sym_name_0_0(&SubResult1_37, ArgX1_35, ArgY1_36);
+                    succeeded = (SubResult1_37 != (MR_Integer) 0);
+                    if (succeeded)
+                      CompareResult_6 = SubResult1_37;
+                    else
+                    {
+                      MR_Word SubResult2_40;
+
+                      mercury__private_builtin__builtin_compare_string_3_p_0(&SubResult2_40, ArgX2_38, ArgY2_39);
+                      succeeded = (SubResult2_40 != (MR_Integer) 0);
+                      if (succeeded)
+                        CompareResult_6 = SubResult2_40;
+                      else
+                      {
+                        succeeded = (ArgX3_41 < ArgY3_42);
+                        if (succeeded)
+                          CompareResult_6 = (MR_Integer) 1;
+                        else
+                        {
+                          succeeded = (ArgX3_41 > ArgY3_42);
+                          if (succeeded)
+                            CompareResult_6 = (MR_Integer) 2;
+                          else
+                            CompareResult_6 = (MR_Integer) 0;
+                        }
+                      }
+                    }
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 7:
+                {
+                  MR_Word ArgX1_43 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Word ArgY1_44;
+                  MR_Word ArgX2_46 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  MR_Word ArgY2_47;
+                  MR_String ArgX3_49 = ((MR_String) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 3))));
+                  MR_String ArgY3_50;
+                  MR_Word SubResult1_45;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                  if (succeeded)
+                  {
+                    ArgY1_44 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    ArgY2_47 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 2))));
+                    ArgY3_50 = ((MR_String) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 3))));
+                    mdbcomp__sym_name____Compare____sym_name_0_0(&SubResult1_45, ArgX1_43, ArgY1_44);
+                    succeeded = (SubResult1_45 != (MR_Integer) 0);
+                    if (succeeded)
+                      CompareResult_6 = SubResult1_45;
+                    else
+                    {
+                      MR_Word SubResult2_48;
+
+                      parse_tree__prog_data____Compare____class_id_0_0(&SubResult2_48, ArgX2_46, ArgY2_47);
+                      succeeded = (SubResult2_48 != (MR_Integer) 0);
+                      if (succeeded)
+                        CompareResult_6 = SubResult2_48;
+                      else
+                        mercury__private_builtin__builtin_compare_string_3_p_0(&CompareResult_6, ArgX3_49, ArgY3_50);
+                    }
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 8:
+                {
+                  MR_Word ArgX1_51 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Word ArgY1_52;
+                  MR_Integer ArgX2_54 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  MR_Integer ArgY2_55;
+                  MR_Word SubResult1_53;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                  if (succeeded)
+                  {
+                    ArgY1_52 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    ArgY2_55 = ((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 2))));
+                    hlds__hlds_pred____Compare____pred_id_0_0(&SubResult1_53, ArgX1_51, ArgY1_52);
+                    succeeded = (SubResult1_53 != (MR_Integer) 0);
+                    if (succeeded)
+                      CompareResult_6 = SubResult1_53;
+                    else
+                    {
+                      succeeded = (ArgX2_54 < ArgY2_55);
+                      if (succeeded)
+                        CompareResult_6 = (MR_Integer) 1;
+                      else
+                      {
+                        succeeded = (ArgX2_54 > ArgY2_55);
+                        if (succeeded)
+                          CompareResult_6 = (MR_Integer) 2;
+                        else
+                          CompareResult_6 = (MR_Integer) 0;
+                      }
+                    }
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 9:
+                {
+                  MR_Word ArgX1_56 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Word ArgY1_57;
+                  MR_Integer ArgX2_59 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  MR_Integer ArgY2_60;
+                  MR_Word SubResult1_58;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                  if (succeeded)
+                  {
+                    ArgY1_57 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    ArgY2_60 = ((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 2))));
+                    hlds__hlds_pred____Compare____pred_id_0_0(&SubResult1_58, ArgX1_56, ArgY1_57);
+                    succeeded = (SubResult1_58 != (MR_Integer) 0);
+                    if (succeeded)
+                      CompareResult_6 = SubResult1_58;
+                    else
+                    {
+                      succeeded = (ArgX2_59 < ArgY2_60);
+                      if (succeeded)
+                        CompareResult_6 = (MR_Integer) 1;
+                      else
+                      {
+                        succeeded = (ArgX2_59 > ArgY2_60);
+                        if (succeeded)
+                          CompareResult_6 = (MR_Integer) 2;
+                        else
+                          CompareResult_6 = (MR_Integer) 0;
+                      }
+                    }
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 10:
+                {
+                  MR_Word ArgX1_61 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Word ArgY1_62;
+                  MR_Integer ArgX2_64 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  MR_Integer ArgY2_65;
+                  MR_Word SubResult1_63;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                  if (succeeded)
+                  {
+                    ArgY1_62 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    ArgY2_65 = ((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 2))));
+                    hlds__hlds_pred____Compare____pred_id_0_0(&SubResult1_63, ArgX1_61, ArgY1_62);
+                    succeeded = (SubResult1_63 != (MR_Integer) 0);
+                    if (succeeded)
+                      CompareResult_6 = SubResult1_63;
+                    else
+                    {
+                      succeeded = (ArgX2_64 < ArgY2_65);
+                      if (succeeded)
+                        CompareResult_6 = (MR_Integer) 1;
+                      else
+                      {
+                        succeeded = (ArgX2_64 > ArgY2_65);
+                        if (succeeded)
+                          CompareResult_6 = (MR_Integer) 2;
+                        else
+                          CompareResult_6 = (MR_Integer) 0;
+                      }
+                    }
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 11:
+                {
+                  MR_Word ArgX1_66 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Word ArgY1_67;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 11)));
+                  if (succeeded)
+                  {
+                    ArgY1_67 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    hlds__hlds_data____Compare____remote_args_tag_info_0_0(&CompareResult_6, ArgX1_66, ArgY1_67);
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 12:
+                {
+                  MR_Word ArgX1_68 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Word ArgY1_69;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 12)));
+                  if (succeeded)
+                  {
+                    ArgY1_69 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    hlds__hlds_data____Compare____local_args_tag_info_0_0(&CompareResult_6, ArgX1_68, ArgY1_69);
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 13:
+                {
+                  MR_Word ArgX1_70 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Word ArgY1_71;
+                  uint8_t Var_111;
+                  uint8_t Var_112;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 13)));
+                  if (succeeded)
+                  {
+                    ArgY1_71 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    Var_111 = (uint8_t) (ArgX1_70);
+                    Var_112 = (uint8_t) (ArgY1_71);
+                    succeeded = (Var_111 < Var_112);
+                    if (succeeded)
+                      CompareResult_6 = (MR_Integer) 1;
+                    else
+                    {
+                      succeeded = (Var_111 > Var_112);
+                      if (succeeded)
+                        CompareResult_6 = (MR_Integer) 2;
+                      else
+                        CompareResult_6 = (MR_Integer) 0;
+                    }
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+              case (MR_Integer) 14:
+                {
+                  MR_Word ArgX1_72 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  MR_Word ArgY1_73;
+                  MR_Integer ArgX2_75 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  MR_Integer ArgY2_76;
+                  MR_Word SubResult1_74;
+
+                  succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 14)));
+                  if (succeeded)
+                  {
+                    ArgY1_73 = ((MR_Word) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1))));
+                    ArgY2_76 = ((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 2))));
+                    hlds__hlds_pred____Compare____pred_id_0_0(&SubResult1_74, ArgX1_72, ArgY1_73);
+                    succeeded = (SubResult1_74 != (MR_Integer) 0);
+                    if (succeeded)
+                      CompareResult_6 = SubResult1_74;
+                    else
+                    {
+                      MR_Word SubResult2_77;
+
+                      succeeded = (ArgX2_75 < ArgY2_76);
+                      if (succeeded)
+                      {
+                        SubResult2_77 = (MR_Integer) 1;
+                        succeeded = MR_TRUE;
+                      }
+                      else
+                      {
+                        succeeded = (ArgX2_75 > ArgY2_76);
+                        if (succeeded)
+                        {
+                          SubResult2_77 = (MR_Integer) 2;
+                          succeeded = MR_TRUE;
+                        }
+                        else
+                        {
+                          succeeded = MR_TRUE;
+                          succeeded = !(succeeded);
+                          if (succeeded)
+                          {
+                            SubResult2_77 = (MR_Integer) 0;
+                            succeeded = MR_TRUE;
+                          }
+                        }
+                      }
+                      if (succeeded)
+                        CompareResult_6 = SubResult2_77;
+                      else
+                        CompareResult_6 = (MR_Integer) 0;
+                    }
+                    succeeded = MR_TRUE;
+                  }
+                }
+                break;
+            }
+            break;
+        }
+        if (succeeded)
+          *HeadVar__1_1 = CompareResult_6;
+        else
+          {
+            mercury__private_builtin__compare_error_0_p_0();
+            return;
+          }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____remote_args_tag_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_37 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_38 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_37 == CastY_38);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+    switch (MR_tag((MR_Word) HeadVar__2_2)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_tag((MR_Word) HeadVar__3_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *HeadVar__1_1 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 1:
+            *HeadVar__1_1 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 2:
+            *HeadVar__1_1 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 3:
+            *HeadVar__1_1 = (MR_Integer) 1;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word Var_46 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word ArgY1_10 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 0))));
+                uint8_t Var_49 = (uint8_t) (Var_46);
+                uint8_t Var_50 = (uint8_t) (ArgY1_10);
+
+                succeeded = (Var_49 < Var_50);
+                if (succeeded)
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                else
+                {
+                  succeeded = (Var_49 > Var_50);
+                  if (succeeded)
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                  else
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              *HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 3:
+              *HeadVar__1_1 = (MR_Integer) 1;
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word Var_44 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 1))));
+          MR_Word Var_45 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 0))));
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 1:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word ArgY1_22 = ((MR_Word) ((MR_hl_field(2, HeadVar__3_3, (MR_Integer) 0))));
+                MR_Word ArgY2_25 = ((MR_Word) ((MR_hl_field(2, HeadVar__3_3, (MR_Integer) 1))));
+                MR_Word SubResult1_23;
+                uint8_t Var_47 = (uint8_t) (Var_45);
+                uint8_t Var_48 = (uint8_t) (ArgY1_22);
+
+                succeeded = (Var_47 < Var_48);
+                if (succeeded)
+                {
+                  SubResult1_23 = (MR_Integer) 1;
+                  succeeded = MR_TRUE;
+                }
+                else
+                {
+                  succeeded = (Var_47 > Var_48);
+                  if (succeeded)
+                  {
+                    SubResult1_23 = (MR_Integer) 2;
+                    succeeded = MR_TRUE;
+                  }
+                  else
+                  {
+                    succeeded = MR_TRUE;
+                    succeeded = !(succeeded);
+                    if (succeeded)
+                    {
+                      SubResult1_23 = (MR_Integer) 0;
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                }
+                if (succeeded)
+                  *HeadVar__1_1 = SubResult1_23;
+                else
+                  hlds__hlds_data____Compare____remote_sectag_0_0(HeadVar__1_1, Var_44, ArgY2_25);
+              }
+              break;
+            case (MR_Integer) 3:
+              *HeadVar__1_1 = (MR_Integer) 1;
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          MR_Unsigned Var_43 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0))));
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 1:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 2:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Unsigned ArgY1_36 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))));
+
+                succeeded = (Var_43 < ArgY1_36);
+                if (succeeded)
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                else
+                {
+                  succeeded = (Var_43 > ArgY1_36);
+                  if (succeeded)
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                  else
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                }
+              }
+              break;
+          }
+        }
+        break;
+    }
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____remote_sectag_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_9 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_10 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_9 == CastY_10);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Unsigned ArgX1_4 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Unsigned ArgY1_5 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word SubResult1_6;
+
+    succeeded = (ArgX1_4 < ArgY1_5);
+    if (succeeded)
+    {
+      SubResult1_6 = (MR_Integer) 1;
+      succeeded = MR_TRUE;
+    }
+    else
+    {
+      succeeded = (ArgX1_4 > ArgY1_5);
+      if (succeeded)
+      {
+        SubResult1_6 = (MR_Integer) 2;
+        succeeded = MR_TRUE;
+      }
+      else
+      {
+        succeeded = MR_TRUE;
+        succeeded = !(succeeded);
+        if (succeeded)
+        {
+          SubResult1_6 = (MR_Integer) 0;
+          succeeded = MR_TRUE;
+        }
+      }
+    }
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+      hlds__hlds_data____Compare____rsectag_size_0_0(HeadVar__1_1, ArgX2_7, ArgY2_8);
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____rsectag_size_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_8 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_9 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_8 == CastY_9);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+    if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    MR_Word Var_11 = (MR_Word) (MR_body((MR_Word) (HeadVar__2_2), (MR_Integer) 1));
+
+    if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+    {
+      MR_Word ArgY1_7 = (MR_Word) (MR_body((MR_Word) (HeadVar__3_3), (MR_Integer) 1));
+
+      hlds__hlds_data____Compare____sectag_bits_0_0(HeadVar__1_1, Var_11, ArgY1_7);
+    }
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____local_args_tag_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_13 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_14 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_13 == CastY_14);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+    if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    MR_Word Var_17 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word Var_18 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+
+    if ((HeadVar__3_3 == (MR_Word) ((MR_Unsigned) 0U)))
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+    {
+      MR_Word ArgY1_9 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 0))));
+      MR_Word ArgY2_12 = ((MR_Word) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 1))));
+      MR_Word SubResult1_10;
+      uint8_t Var_19 = (uint8_t) (Var_18);
+      uint8_t Var_20 = (uint8_t) (ArgY1_9);
+
+      succeeded = (Var_19 < Var_20);
+      if (succeeded)
+      {
+        SubResult1_10 = (MR_Integer) 1;
+        succeeded = MR_TRUE;
+      }
+      else
+      {
+        succeeded = (Var_19 > Var_20);
+        if (succeeded)
+        {
+          SubResult1_10 = (MR_Integer) 2;
+          succeeded = MR_TRUE;
+        }
+        else
+        {
+          succeeded = MR_TRUE;
+          succeeded = !(succeeded);
+          if (succeeded)
+          {
+            SubResult1_10 = (MR_Integer) 0;
+            succeeded = MR_TRUE;
+          }
+        }
+      }
+      if (succeeded)
+        *HeadVar__1_1 = SubResult1_10;
+      else
+        hlds__hlds_data____Compare____local_sectag_0_0(HeadVar__1_1, Var_17, ArgY2_12);
+    }
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____local_sectag_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_12 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_13 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_12 == CastY_13);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Unsigned ArgX1_4 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Unsigned ArgY1_5 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Unsigned ArgX2_7 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Unsigned ArgY2_8 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 2))));
+    MR_Word SubResult1_6;
+
+    succeeded = (ArgX1_4 < ArgY1_5);
+    if (succeeded)
+    {
+      SubResult1_6 = (MR_Integer) 1;
+      succeeded = MR_TRUE;
+    }
+    else
+    {
+      succeeded = (ArgX1_4 > ArgY1_5);
+      if (succeeded)
+      {
+        SubResult1_6 = (MR_Integer) 2;
+        succeeded = MR_TRUE;
+      }
+      else
+      {
+        succeeded = MR_TRUE;
+        succeeded = !(succeeded);
+        if (succeeded)
+        {
+          SubResult1_6 = (MR_Integer) 0;
+          succeeded = MR_TRUE;
+        }
+      }
+    }
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+
+      succeeded = (ArgX2_7 < ArgY2_8);
+      if (succeeded)
+      {
+        SubResult2_9 = (MR_Integer) 1;
+        succeeded = MR_TRUE;
+      }
+      else
+      {
+        succeeded = (ArgX2_7 > ArgY2_8);
+        if (succeeded)
+        {
+          SubResult2_9 = (MR_Integer) 2;
+          succeeded = MR_TRUE;
+        }
+        else
+        {
+          succeeded = MR_TRUE;
+          succeeded = !(succeeded);
+          if (succeeded)
+          {
+            SubResult2_9 = (MR_Integer) 0;
+            succeeded = MR_TRUE;
+          }
+        }
+      }
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+        hlds__hlds_data____Compare____sectag_bits_0_0(HeadVar__1_1, ArgX3_10, ArgY3_11);
+    }
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____sectag_bits_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_9 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_10 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_9 == CastY_10);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    uint8_t ArgX1_4 = ((uint8_t) (MR_Word) (MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0)));
+    uint8_t ArgY1_5 = ((uint8_t) (MR_Word) (MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0)));
+    MR_Unsigned ArgX2_7 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Unsigned ArgY2_8 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word SubResult1_6;
+
+    succeeded = (ArgX1_4 < ArgY1_5);
+    if (succeeded)
+    {
+      SubResult1_6 = (MR_Integer) 1;
+      succeeded = MR_TRUE;
+    }
+    else
+    {
+      succeeded = (ArgX1_4 > ArgY1_5);
+      if (succeeded)
+      {
+        SubResult1_6 = (MR_Integer) 2;
+        succeeded = MR_TRUE;
+      }
+      else
+      {
+        succeeded = MR_TRUE;
+        succeeded = !(succeeded);
+        if (succeeded)
+        {
+          SubResult1_6 = (MR_Integer) 0;
+          succeeded = MR_TRUE;
+        }
+      }
+    }
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      succeeded = (ArgX2_7 < ArgY2_8);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 1;
+      else
+      {
+        succeeded = (ArgX2_7 > ArgY2_8);
+        if (succeeded)
+          *HeadVar__1_1 = (MR_Integer) 2;
+        else
+          *HeadVar__1_1 = (MR_Integer) 0;
+      }
+    }
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data____Compare____int_tag_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_204 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_205 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_204 == CastY_205);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+    switch (MR_tag((MR_Word) HeadVar__2_2)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Integer Var_216 = ((MR_Integer) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer ArgY1_5 = ((MR_Integer) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+
+                succeeded = (Var_216 < ArgY1_5);
+                if (succeeded)
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                else
+                {
+                  succeeded = (Var_216 > ArgY1_5);
+                  if (succeeded)
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                  else
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              *HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 2:
+              *HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 4:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 5:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 6:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Unsigned Var_221 = ((MR_Unsigned) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Unsigned ArgY1_27 = ((MR_Unsigned) ((MR_hl_field(1, HeadVar__3_3, (MR_Integer) 0))));
+
+                succeeded = (Var_221 < ArgY1_27);
+                if (succeeded)
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                else
+                {
+                  succeeded = (Var_221 > ArgY1_27);
+                  if (succeeded)
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                  else
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              *HeadVar__1_1 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 4:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 5:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 6:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          int8_t Var_220 = ((int8_t) (MR_Word) (MR_hl_field(2, HeadVar__2_2, (MR_Integer) 0)));
+
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 1:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 2:
+              {
+                int8_t ArgY1_49 = ((int8_t) (MR_Word) (MR_hl_field(2, HeadVar__3_3, (MR_Integer) 0)));
+
+                succeeded = (Var_220 < ArgY1_49);
+                if (succeeded)
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                else
+                {
+                  succeeded = (Var_220 > ArgY1_49);
+                  if (succeeded)
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                  else
+                    *HeadVar__1_1 = (MR_Integer) 0;
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 4:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 5:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 6:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              uint8_t Var_225 = ((uint8_t) (MR_Word) (MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        uint8_t ArgY1_71 = ((uint8_t) (MR_Word) (MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1)));
+
+                        succeeded = (Var_225 < ArgY1_71);
+                        if (succeeded)
+                          *HeadVar__1_1 = (MR_Integer) 1;
+                        else
+                        {
+                          succeeded = (Var_225 > ArgY1_71);
+                          if (succeeded)
+                            *HeadVar__1_1 = (MR_Integer) 2;
+                          else
+                            *HeadVar__1_1 = (MR_Integer) 0;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 5:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 6:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              int16_t Var_217 = ((int16_t) (MR_Word) (MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        int16_t ArgY1_93 = ((int16_t) (MR_Word) (MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1)));
+
+                        succeeded = (Var_217 < ArgY1_93);
+                        if (succeeded)
+                          *HeadVar__1_1 = (MR_Integer) 1;
+                        else
+                        {
+                          succeeded = (Var_217 > ArgY1_93);
+                          if (succeeded)
+                            *HeadVar__1_1 = (MR_Integer) 2;
+                          else
+                            *HeadVar__1_1 = (MR_Integer) 0;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 5:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 6:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              uint16_t Var_222 = ((uint16_t) (MR_Word) (MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        uint16_t ArgY1_115 = ((uint16_t) (MR_Word) (MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1)));
+
+                        succeeded = (Var_222 < ArgY1_115);
+                        if (succeeded)
+                          *HeadVar__1_1 = (MR_Integer) 1;
+                        else
+                        {
+                          succeeded = (Var_222 > ArgY1_115);
+                          if (succeeded)
+                            *HeadVar__1_1 = (MR_Integer) 2;
+                          else
+                            *HeadVar__1_1 = (MR_Integer) 0;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 5:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 6:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              int32_t Var_218 = ((int32_t) (MR_Word) (MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      {
+                        int32_t ArgY1_137 = ((int32_t) (MR_Word) (MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1)));
+
+                        succeeded = (Var_218 < ArgY1_137);
+                        if (succeeded)
+                          *HeadVar__1_1 = (MR_Integer) 1;
+                        else
+                        {
+                          succeeded = (Var_218 > ArgY1_137);
+                          if (succeeded)
+                            *HeadVar__1_1 = (MR_Integer) 2;
+                          else
+                            *HeadVar__1_1 = (MR_Integer) 0;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 5:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 6:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              uint32_t Var_223 = ((uint32_t) (MR_Word) (MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 4:
+                      {
+                        uint32_t ArgY1_159 = ((uint32_t) (MR_Word) (MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1)));
+
+                        succeeded = (Var_223 < ArgY1_159);
+                        if (succeeded)
+                          *HeadVar__1_1 = (MR_Integer) 1;
+                        else
+                        {
+                          succeeded = (Var_223 > ArgY1_159);
+                          if (succeeded)
+                            *HeadVar__1_1 = (MR_Integer) 2;
+                          else
+                            *HeadVar__1_1 = (MR_Integer) 0;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 5:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 6:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              int64_t Var_219 = MR_unbox_int64((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 5:
+                      {
+                        int64_t ArgY1_181 = MR_unbox_int64((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1)));
+
+                        succeeded = (Var_219 < ArgY1_181);
+                        if (succeeded)
+                          *HeadVar__1_1 = (MR_Integer) 1;
+                        else
+                        {
+                          succeeded = (Var_219 > ArgY1_181);
+                          if (succeeded)
+                            *HeadVar__1_1 = (MR_Integer) 2;
+                          else
+                            *HeadVar__1_1 = (MR_Integer) 0;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 6:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              uint64_t Var_224 = MR_unbox_uint64((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 5:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 6:
+                      {
+                        uint64_t ArgY1_203 = MR_unbox_uint64((MR_hl_field(3, HeadVar__3_3, (MR_Integer) 1)));
+
+                        succeeded = (Var_224 < ArgY1_203);
+                        if (succeeded)
+                          *HeadVar__1_1 = (MR_Integer) 1;
+                        else
+                        {
+                          succeeded = (Var_224 > ArgY1_203);
+                          if (succeeded)
+                            *HeadVar__1_1 = (MR_Integer) 2;
+                          else
+                            *HeadVar__1_1 = (MR_Integer) 0;
+                        }
+                      }
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+    }
+}
+
+void MR_CALL 
+hlds__hlds_data____Index____cons_tag_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Integer * HeadVar__2_2)
+{
+  switch (MR_tag((MR_Word) HeadVar__1_1)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (MR_unmkbody(HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *HeadVar__2_2 = (MR_Integer) 4;
+          break;
+        case (MR_Integer) 1:
+          *HeadVar__2_2 = (MR_Integer) 16;
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      *HeadVar__2_2 = (MR_Integer) 0;
+      break;
+    case (MR_Integer) 2:
+      *HeadVar__2_2 = (MR_Integer) 1;
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 0))))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *HeadVar__2_2 = (MR_Integer) 2;
+          break;
+        case (MR_Integer) 1:
+          *HeadVar__2_2 = (MR_Integer) 3;
+          break;
+        case (MR_Integer) 2:
+          *HeadVar__2_2 = (MR_Integer) 5;
+          break;
+        case (MR_Integer) 3:
+          *HeadVar__2_2 = (MR_Integer) 6;
+          break;
+        case (MR_Integer) 4:
+          *HeadVar__2_2 = (MR_Integer) 7;
+          break;
+        case (MR_Integer) 5:
+          *HeadVar__2_2 = (MR_Integer) 8;
+          break;
+        case (MR_Integer) 6:
+          *HeadVar__2_2 = (MR_Integer) 9;
+          break;
+        case (MR_Integer) 7:
+          *HeadVar__2_2 = (MR_Integer) 10;
+          break;
+        case (MR_Integer) 8:
+          *HeadVar__2_2 = (MR_Integer) 11;
+          break;
+        case (MR_Integer) 9:
+          *HeadVar__2_2 = (MR_Integer) 12;
+          break;
+        case (MR_Integer) 10:
+          *HeadVar__2_2 = (MR_Integer) 13;
+          break;
+        case (MR_Integer) 11:
+          *HeadVar__2_2 = (MR_Integer) 14;
+          break;
+        case (MR_Integer) 12:
+          *HeadVar__2_2 = (MR_Integer) 15;
+          break;
+        case (MR_Integer) 13:
+          *HeadVar__2_2 = (MR_Integer) 17;
+          break;
+        case (MR_Integer) 14:
+          *HeadVar__2_2 = (MR_Integer) 18;
+          break;
+      }
+      break;
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____cons_tag_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_67 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_68 = (MR_Integer) (HeadVar__2_2);
+
+    // setup for model_semi tailcalls optimized into a loop
+    ;
+    succeeded = (CastX_67 == CastY_68);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer CastX_13 = (MR_Integer) (HeadVar__1_1);
+                MR_Integer CastY_14 = (MR_Integer) (HeadVar__2_2);
+
+                succeeded = (CastY_14 == CastX_13);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer CastX_57 = (MR_Integer) (HeadVar__1_1);
+                MR_Integer CastY_58 = (MR_Integer) (HeadVar__2_2);
+
+                succeeded = (CastY_58 == CastX_57);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0))));
+            MR_Word ArgY1_4;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+            if (succeeded)
+            {
+              ArgY1_4 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+              succeeded = hlds__hlds_data____Unify____int_tag_0_0(ArgX1_3, ArgY1_4);
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Float ArgX1_5 = MR_unbox_float((MR_hl_field(2, HeadVar__1_1, (MR_Integer) 0)));
+            MR_Float ArgY1_6;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+            if (succeeded)
+            {
+              ArgY1_6 = MR_unbox_float((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 0)));
+              succeeded = (ArgX1_5 == ArgY1_6);
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 0))))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_String ArgX1_7 = ((MR_String) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_String ArgY1_8;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (succeeded)
+                {
+                  ArgY1_8 = ((MR_String) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  succeeded = (strcmp(ArgX1_7, ArgY1_8) == 0);
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word ArgX1_9 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))) & (MR_Integer) 3);
+                MR_Word ArgY1_10;
+                MR_String ArgX2_11 = ((MR_String) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 2))));
+                MR_String ArgY2_12;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (succeeded)
+                {
+                  ArgY1_10 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))) & (MR_Integer) 3);
+                  ArgY2_12 = ((MR_String) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  succeeded = (ArgX1_9 == ArgY1_10);
+                  if (succeeded)
+                    succeeded = (strcmp(ArgX2_11, ArgY2_12) == 0);
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word ArgX1_15 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Word ArgY1_16;
+                MR_Word ArgX2_17 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 2))));
+                MR_Word ArgY2_18;
+                MR_Word ArgX3_19 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 3))) & (MR_Integer) 1);
+                MR_Word ArgY3_20;
+                uint8_t Var_84;
+                uint8_t Var_85;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (succeeded)
+                {
+                  ArgY1_16 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  ArgY2_18 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  ArgY3_20 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 3))) & (MR_Integer) 1);
+                  Var_84 = (uint8_t) (ArgX1_15);
+                  Var_85 = (uint8_t) (ArgY1_16);
+                  succeeded = (Var_84 == Var_85);
+                  if (succeeded)
+                  {
+                    succeeded = hlds__hlds_data____Unify____local_sectag_0_0(ArgX2_17, ArgY2_18);
+                    if (succeeded)
+                      succeeded = (ArgX3_19 == ArgY3_20);
+                  }
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer ArgX1_21 = ((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Integer ArgY1_22;
+                MR_Word ArgX2_23 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 2))));
+                MR_Word ArgY2_24;
+                MR_Word next_value_of_HeadVar__1_1;
+                MR_Word next_value_of_HeadVar__2_2;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (succeeded)
+                {
+                  ArgY1_22 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  ArgY2_24 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  succeeded = (ArgX1_21 == ArgY1_22);
+                  if (succeeded)
+                  {
+                    // direct tailcall eliminated
+                    ;
+                    next_value_of_HeadVar__1_1 = ArgX2_23;
+                    next_value_of_HeadVar__2_2 = ArgY2_24;
+                    HeadVar__1_1 = next_value_of_HeadVar__1_1;
+                    HeadVar__2_2 = next_value_of_HeadVar__2_2;
+                    continue;
+                  }
+                }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer ArgX1_25 = ((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Integer ArgY1_26;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                if (succeeded)
+                {
+                  ArgY1_26 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  succeeded = (ArgX1_25 == ArgY1_26);
+                }
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Integer ArgX1_27 = ((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Integer ArgY1_28;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                if (succeeded)
+                {
+                  ArgY1_28 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  succeeded = (ArgX1_27 == ArgY1_28);
+                }
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word ArgX1_29 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Word ArgY1_30;
+                MR_String ArgX2_31 = ((MR_String) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 2))));
+                MR_String ArgY2_32;
+                MR_Integer ArgX3_33 = ((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 3))));
+                MR_Integer ArgY3_34;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                if (succeeded)
+                {
+                  ArgY1_30 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  ArgY2_32 = ((MR_String) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  ArgY3_34 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 3))));
+                  succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(ArgX1_29, ArgY1_30);
+                  if (succeeded)
+                  {
+                    succeeded = (strcmp(ArgX2_31, ArgY2_32) == 0);
+                    if (succeeded)
+                      succeeded = (ArgX3_33 == ArgY3_34);
+                  }
+                }
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word ArgX1_35 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Word ArgY1_36;
+                MR_Word ArgX2_37 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 2))));
+                MR_Word ArgY2_38;
+                MR_String ArgX3_39 = ((MR_String) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 3))));
+                MR_String ArgY3_40;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                if (succeeded)
+                {
+                  ArgY1_36 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  ArgY2_38 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  ArgY3_40 = ((MR_String) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 3))));
+                  succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(ArgX1_35, ArgY1_36);
+                  if (succeeded)
+                  {
+                    succeeded = parse_tree__prog_data____Unify____class_id_0_0(ArgX2_37, ArgY2_38);
+                    if (succeeded)
+                      succeeded = (strcmp(ArgX3_39, ArgY3_40) == 0);
+                  }
+                }
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Word ArgX1_41 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Word ArgY1_42;
+                MR_Integer ArgX2_43 = ((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 2))));
+                MR_Integer ArgY2_44;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                if (succeeded)
+                {
+                  ArgY1_42 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  ArgY2_44 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  succeeded = hlds__hlds_pred____Unify____pred_id_0_0(ArgX1_41, ArgY1_42);
+                  if (succeeded)
+                    succeeded = (ArgX2_43 == ArgY2_44);
+                }
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Word ArgX1_45 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Word ArgY1_46;
+                MR_Integer ArgX2_47 = ((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 2))));
+                MR_Integer ArgY2_48;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                if (succeeded)
+                {
+                  ArgY1_46 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  ArgY2_48 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  succeeded = hlds__hlds_pred____Unify____pred_id_0_0(ArgX1_45, ArgY1_46);
+                  if (succeeded)
+                    succeeded = (ArgX2_47 == ArgY2_48);
+                }
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word ArgX1_49 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Word ArgY1_50;
+                MR_Integer ArgX2_51 = ((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 2))));
+                MR_Integer ArgY2_52;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                if (succeeded)
+                {
+                  ArgY1_50 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  ArgY2_52 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  succeeded = hlds__hlds_pred____Unify____pred_id_0_0(ArgX1_49, ArgY1_50);
+                  if (succeeded)
+                    succeeded = (ArgX2_51 == ArgY2_52);
+                }
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word ArgX1_53 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Word ArgY1_54;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 11)));
+                if (succeeded)
+                {
+                  ArgY1_54 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  succeeded = hlds__hlds_data____Unify____remote_args_tag_info_0_0(ArgX1_53, ArgY1_54);
+                }
+              }
+              break;
+            case (MR_Integer) 12:
+              {
+                MR_Word ArgX1_55 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Word ArgY1_56;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 12)));
+                if (succeeded)
+                {
+                  ArgY1_56 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  succeeded = hlds__hlds_data____Unify____local_args_tag_info_0_0(ArgX1_55, ArgY1_56);
+                }
+              }
+              break;
+            case (MR_Integer) 13:
+              {
+                MR_Word ArgX1_59 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Word ArgY1_60;
+                uint8_t Var_82;
+                uint8_t Var_83;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 13)));
+                if (succeeded)
+                {
+                  ArgY1_60 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  Var_82 = (uint8_t) (ArgX1_59);
+                  Var_83 = (uint8_t) (ArgY1_60);
+                  succeeded = (Var_82 == Var_83);
+                }
+              }
+              break;
+            case (MR_Integer) 14:
+              {
+                MR_Word ArgX1_61 = ((MR_Word) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1))));
+                MR_Word ArgY1_62;
+                MR_Integer ArgX2_63 = ((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 2))));
+                MR_Integer ArgY2_64;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 14)));
+                if (succeeded)
+                {
+                  ArgY1_62 = ((MR_Word) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1))));
+                  ArgY2_64 = ((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 2))));
+                  succeeded = hlds__hlds_pred____Unify____pred_id_0_0(ArgX1_61, ArgY1_62);
+                  if (succeeded)
+                    succeeded = (ArgX2_63 == ArgY2_64);
+                }
+              }
+              break;
+          }
+          break;
+      }
+    return succeeded;
+    break;
+  }
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____remote_args_tag_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_13 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_14 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_13 == CastY_14);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+    switch (MR_tag((MR_Word) HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Integer CastX_3 = (MR_Integer) (HeadVar__1_1);
+          MR_Integer CastY_4 = (MR_Integer) (HeadVar__2_2);
+
+          succeeded = (CastY_4 == CastX_3);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ArgX1_5 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0))));
+          MR_Word ArgY1_6;
+          uint8_t Var_19;
+          uint8_t Var_20;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+          if (succeeded)
+          {
+            ArgY1_6 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+            Var_19 = (uint8_t) (ArgX1_5);
+            Var_20 = (uint8_t) (ArgY1_6);
+            succeeded = (Var_19 == Var_20);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word ArgX1_7 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, (MR_Integer) 0))));
+          MR_Word ArgY1_8;
+          MR_Word ArgX2_9 = ((MR_Word) ((MR_hl_field(2, HeadVar__1_1, (MR_Integer) 1))));
+          MR_Word ArgY2_10;
+          uint8_t Var_17;
+          uint8_t Var_18;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+          if (succeeded)
+          {
+            ArgY1_8 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 0))));
+            ArgY2_10 = ((MR_Word) ((MR_hl_field(2, HeadVar__2_2, (MR_Integer) 1))));
+            Var_17 = (uint8_t) (ArgX1_7);
+            Var_18 = (uint8_t) (ArgY1_8);
+            succeeded = (Var_17 == Var_18);
+            if (succeeded)
+              succeeded = hlds__hlds_data____Unify____remote_sectag_0_0(ArgX2_9, ArgY2_10);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          MR_Unsigned ArgX1_11 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 0))));
+          MR_Unsigned ArgY1_12;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3);
+          if (succeeded)
+          {
+            ArgY1_12 = ((MR_Unsigned) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0))));
+            succeeded = (ArgX1_11 == ArgY1_12);
+          }
+        }
+        break;
+    }
+  return succeeded;
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____remote_sectag_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_7 == CastY_8);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Unsigned ArgX1_3 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Unsigned ArgY1_4 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+
+    succeeded = (ArgX1_3 == ArgY1_4);
+    if (succeeded)
+      succeeded = hlds__hlds_data____Unify____rsectag_size_0_0(ArgX2_5, ArgY2_6);
+  }
+  return succeeded;
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____rsectag_size_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_7 == CastY_8);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    MR_Integer CastX_3 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_4 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastY_4 == CastX_3);
+  }
+  else
+  {
+    MR_Word ArgX1_5 = (MR_Word) (MR_body((MR_Word) (HeadVar__1_1), (MR_Integer) 1));
+    MR_Word ArgY1_6;
+
+    succeeded = (HeadVar__2_2 != (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+    {
+      ArgY1_6 = (MR_Word) (MR_body((MR_Word) (HeadVar__2_2), (MR_Integer) 1));
+      succeeded = hlds__hlds_data____Unify____sectag_bits_0_0(ArgX1_5, ArgY1_6);
+    }
+  }
+  return succeeded;
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____local_args_tag_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_9 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_10 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_9 == CastY_10);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    MR_Integer CastX_3 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_4 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastY_4 == CastX_3);
+  }
+  else
+  {
+    MR_Word ArgX1_5 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ArgY1_6;
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_8;
+    uint8_t Var_12;
+    uint8_t Var_13;
+
+    succeeded = (HeadVar__2_2 != (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+    {
+      ArgY1_6 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+      ArgY2_8 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 1))));
+      Var_12 = (uint8_t) (ArgX1_5);
+      Var_13 = (uint8_t) (ArgY1_6);
+      succeeded = (Var_12 == Var_13);
+      if (succeeded)
+        succeeded = hlds__hlds_data____Unify____local_sectag_0_0(ArgX2_7, ArgY2_8);
+    }
+  }
+  return succeeded;
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____local_sectag_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_9 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_10 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_9 == CastY_10);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Unsigned ArgX1_3 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Unsigned ArgY1_4 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Unsigned ArgX2_5 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Unsigned ArgY2_6 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 2))));
+    MR_Word ArgY3_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+
+    succeeded = (ArgX1_3 == ArgY1_4);
+    if (succeeded)
+    {
+      succeeded = (ArgX2_5 == ArgY2_6);
+      if (succeeded)
+        succeeded = hlds__hlds_data____Unify____sectag_bits_0_0(ArgX3_7, ArgY3_8);
+    }
+  }
+  return succeeded;
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____sectag_bits_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_7 == CastY_8);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    uint8_t ArgX1_3 = ((uint8_t) (MR_Word) (MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0)));
+    uint8_t ArgY1_4 = ((uint8_t) (MR_Word) (MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0)));
+    MR_Unsigned ArgX2_5 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Unsigned ArgY2_6 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+
+    succeeded = (ArgX1_3 == ArgY1_4);
+    if (succeeded)
+      succeeded = (ArgX2_5 == ArgY2_6);
+  }
+  return succeeded;
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data____Unify____int_tag_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_23 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_24 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_23 == CastY_24);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+    switch (MR_tag((MR_Word) HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Integer ArgX1_3 = ((MR_Integer) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+          MR_Integer ArgY1_4;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 0);
+          if (succeeded)
+          {
+            ArgY1_4 = ((MR_Integer) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+            succeeded = (ArgX1_3 == ArgY1_4);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Unsigned ArgX1_5 = ((MR_Unsigned) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0))));
+          MR_Unsigned ArgY1_6;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 1);
+          if (succeeded)
+          {
+            ArgY1_6 = ((MR_Unsigned) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+            succeeded = (ArgX1_5 == ArgY1_6);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          int8_t ArgX1_7 = ((int8_t) (MR_Word) (MR_hl_field(2, HeadVar__1_1, (MR_Integer) 0)));
+          int8_t ArgY1_8;
+
+          succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 2);
+          if (succeeded)
+          {
+            ArgY1_8 = ((int8_t) (MR_Word) (MR_hl_field(2, HeadVar__2_2, (MR_Integer) 0)));
+            succeeded = (ArgX1_7 == ArgY1_8);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              uint8_t ArgX1_9 = ((uint8_t) (MR_Word) (MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1)));
+              uint8_t ArgY1_10;
+
+              succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+              if (succeeded)
+              {
+                ArgY1_10 = ((uint8_t) (MR_Word) (MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+                succeeded = (ArgX1_9 == ArgY1_10);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              int16_t ArgX1_11 = ((int16_t) (MR_Word) (MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1)));
+              int16_t ArgY1_12;
+
+              succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+              if (succeeded)
+              {
+                ArgY1_12 = ((int16_t) (MR_Word) (MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+                succeeded = (ArgX1_11 == ArgY1_12);
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              uint16_t ArgX1_13 = ((uint16_t) (MR_Word) (MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1)));
+              uint16_t ArgY1_14;
+
+              succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+              if (succeeded)
+              {
+                ArgY1_14 = ((uint16_t) (MR_Word) (MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+                succeeded = (ArgX1_13 == ArgY1_14);
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              int32_t ArgX1_15 = ((int32_t) (MR_Word) (MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1)));
+              int32_t ArgY1_16;
+
+              succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 3)));
+              if (succeeded)
+              {
+                ArgY1_16 = ((int32_t) (MR_Word) (MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+                succeeded = (ArgX1_15 == ArgY1_16);
+              }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              uint32_t ArgX1_17 = ((uint32_t) (MR_Word) (MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1)));
+              uint32_t ArgY1_18;
+
+              succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 4)));
+              if (succeeded)
+              {
+                ArgY1_18 = ((uint32_t) (MR_Word) (MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+                succeeded = (ArgX1_17 == ArgY1_18);
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              int64_t ArgX1_19 = MR_unbox_int64((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1)));
+              int64_t ArgY1_20;
+
+              succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 5)));
+              if (succeeded)
+              {
+                ArgY1_20 = MR_unbox_int64((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+                succeeded = (ArgX1_19 == ArgY1_20);
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              uint64_t ArgX1_21 = MR_unbox_uint64((MR_hl_field(3, HeadVar__1_1, (MR_Integer) 1)));
+              uint64_t ArgY1_22;
+
+              succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 6)));
+              if (succeeded)
+              {
+                ArgY1_22 = MR_unbox_uint64((MR_hl_field(3, HeadVar__2_2, (MR_Integer) 1)));
+                succeeded = (ArgX1_21 == ArgY1_22);
+              }
+            }
+            break;
+        }
+        break;
+    }
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data__map_foldl_over_type_ctor_defns_2_6_p_0(
+  MR_Word TypeInfo_for_T_15,
+  MR_Word Pred_7,
+  MR_String _Name_8,
+  MR_Word STATE_VARIABLE_TypeCtorTable_0_11,
+  MR_Word * STATE_VARIABLE_TypeCtorTable_12,
+  MR_Box STATE_VARIABLE_Acc_0_13,
+  MR_Box * STATE_VARIABLE_Acc_14)
+{
+  hlds__hlds_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_112_95_102_111_108_100_108_95_111_118_101_114_95_116_121_112_101_95_99_116_111_114_95_100_101_102_110_115_95_50_95_95_91_51_93_95_48_6_p_0(TypeInfo_for_T_15, Pred_7, STATE_VARIABLE_TypeCtorTable_0_11, STATE_VARIABLE_TypeCtorTable_12, STATE_VARIABLE_Acc_0_13, STATE_VARIABLE_Acc_14);
+}
+
+static void MR_CALL 
+hlds__hlds_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_112_95_102_111_108_100_108_95_111_118_101_114_95_116_121_112_101_95_99_116_111_114_95_100_101_102_110_115_95_50_95_95_91_51_93_95_48_6_p_0(
+  MR_Word TypeInfo_for_T_15,
+  MR_Word Pred_7,
+  MR_Word STATE_VARIABLE_TypeCtorTable_0_11,
+  MR_Word * STATE_VARIABLE_TypeCtorTable_12,
+  MR_Box STATE_VARIABLE_Acc_0_13,
+  MR_Box * STATE_VARIABLE_Acc_14)
+{
+  mercury__map__map_foldl_5_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), TypeInfo_for_T_15, Pred_7, STATE_VARIABLE_TypeCtorTable_0_11, STATE_VARIABLE_TypeCtorTable_12, STATE_VARIABLE_Acc_0_13, STATE_VARIABLE_Acc_14);
+}
+
+static void MR_CALL 
+hlds__hlds_data__foldl3_over_type_ctor_defns_2_8_p_0(
+  MR_Word TypeInfo_for_T_20,
+  MR_Word TypeInfo_for_U_21,
+  MR_Word TypeInfo_for_V_22,
+  MR_Word Pred_9,
+  MR_Word TypeCtorTable_10,
+  MR_Box STATE_VARIABLE_AccA_0_14,
+  MR_Box * STATE_VARIABLE_AccA_15,
+  MR_Box STATE_VARIABLE_AccB_0_16,
+  MR_Box * STATE_VARIABLE_AccB_17,
+  MR_Box STATE_VARIABLE_AccC_0_18,
+  MR_Box * STATE_VARIABLE_AccC_19)
+{
+  mercury__map__foldl3_8_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), TypeInfo_for_T_20, TypeInfo_for_U_21, TypeInfo_for_V_22, Pred_9, TypeCtorTable_10, STATE_VARIABLE_AccA_0_14, STATE_VARIABLE_AccA_15, STATE_VARIABLE_AccB_0_16, STATE_VARIABLE_AccB_17, STATE_VARIABLE_AccC_0_18, STATE_VARIABLE_AccC_19);
+}
+
+static void MR_CALL 
+hlds__hlds_data__foldl2_over_type_ctor_defns_2_6_p_0(
+  MR_Word TypeInfo_for_T_15,
+  MR_Word TypeInfo_for_U_16,
+  MR_Word Pred_7,
+  MR_Word TypeCtorTable_8,
+  MR_Box STATE_VARIABLE_AccA_0_11,
+  MR_Box * STATE_VARIABLE_AccA_12,
+  MR_Box STATE_VARIABLE_AccB_0_13,
+  MR_Box * STATE_VARIABLE_AccB_14)
+{
+  mercury__map__foldl2_6_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), TypeInfo_for_T_15, TypeInfo_for_U_16, Pred_7, TypeCtorTable_8, STATE_VARIABLE_AccA_0_11, STATE_VARIABLE_AccA_12, STATE_VARIABLE_AccB_0_13, STATE_VARIABLE_AccB_14);
+}
+
+static void MR_CALL 
+hlds__hlds_data__foldl_over_type_ctor_defns_2_4_p_0(
+  MR_Word TypeInfo_for_T_10,
+  MR_Word Pred_5,
+  MR_Word TypeCtorTable_6,
+  MR_Box STATE_VARIABLE_Acc_0_8,
+  MR_Box * STATE_VARIABLE_Acc_9)
+{
+  mercury__map__foldl_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), TypeInfo_for_T_10, Pred_5, TypeCtorTable_6, STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_9);
+}
+
+static void MR_CALL 
+hlds__hlds_data__compare_type_ctor_defns_by_name_3_p_0(
+  MR_Word PairA_4,
+  MR_Word PairB_5,
+  MR_Word * Result_6)
+{
+  MR_Word TypeCtorA_7 = ((MR_Word) ((MR_hl_field(0, PairA_4, (MR_Integer) 0))));
+  MR_Word TypeCtorB_9 = ((MR_Word) ((MR_hl_field(0, PairB_5, (MR_Integer) 0))));
+  MR_Word SymNameA_11 = ((MR_Word) ((MR_hl_field(0, TypeCtorA_7, (MR_Integer) 0))));
+  MR_Word SymNameB_13 = ((MR_Word) ((MR_hl_field(0, TypeCtorB_9, (MR_Integer) 0))));
+  MR_String NameA_15;
+  MR_String NameB_16;
+
+  NameA_15 = mdbcomp__sym_name__unqualify_name_1_f_0(SymNameA_11);
+  NameB_16 = mdbcomp__sym_name__unqualify_name_1_f_0(SymNameB_13);
+  mercury__private_builtin__builtin_compare_string_3_p_0(Result_6, NameA_15, NameB_16);
+}
+
+static void MR_CALL 
+hlds__hlds_data__get_all_type_ctor_defns_2_3_p_0(
+  MR_Word TypeCtorTable_4,
+  MR_Word STATE_VARIABLE_TypeCtorsDefns_0_7,
+  MR_Word * STATE_VARIABLE_TypeCtorsDefns_8)
+{
+  MR_Word NameTypeCtorsDefns_6;
+
+  mercury__map__to_assoc_list_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), TypeCtorTable_4, &NameTypeCtorsDefns_6);
+  *STATE_VARIABLE_TypeCtorsDefns_8 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__hlds_data_scalar_common_1[1]), NameTypeCtorsDefns_6, STATE_VARIABLE_TypeCtorsDefns_0_7);
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data__asserted_word_aligned_pointer_1_p_0(
+  MR_Word HeadVar__1_1)
+{
+  MR_bool succeeded;
+  MR_Word Set_2 = (MR_Word) (HeadVar__1_1);
+
+  succeeded = mercury__set__contains_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_type_assertion_0), Set_2, ((MR_Box) ((MR_Integer) 2)));
+  return succeeded;
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data__asserted_stable_1_p_0(
+  MR_Word Assertions_2)
+{
+  MR_bool succeeded;
+  MR_Word Set_3 = (MR_Word) (Assertions_2);
+
+  succeeded = mercury__set__contains_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_type_assertion_0), Set_3, ((MR_Box) ((MR_Integer) 1)));
+  if (succeeded)
+    succeeded = hlds__hlds_data__asserted_can_pass_as_mercury_type_1_p_0(Assertions_2);
+  return succeeded;
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data__asserted_can_pass_as_mercury_type_1_p_0(
+  MR_Word HeadVar__1_1)
+{
+  MR_bool succeeded;
+  MR_Word Set_2 = (MR_Word) (HeadVar__1_1);
+
+  succeeded = mercury__set__contains_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_type_assertion_0), Set_2, ((MR_Box) ((MR_Integer) 0)));
+  if (!(succeeded))
+    succeeded = mercury__set__contains_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_type_assertion_0), Set_2, ((MR_Box) ((MR_Integer) 2)));
+  return succeeded;
+}
+
+MR_Word MR_CALL 
+hlds__hlds_data__constructor_cons_ids_2_f_0(
+  MR_Word TypeCtor_4,
+  MR_Word Ctors_5)
+{
+  MR_Word SortedConsIds_6;
+  MR_Word ConsIds_7;
+
+  hlds__hlds_data__gather_constructor_cons_ids_4_p_0(TypeCtor_4, Ctors_5, (MR_Word) ((MR_Unsigned) 0U), &ConsIds_7);
+  mercury__list__sort_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0), ConsIds_7, &SortedConsIds_6);
+  return SortedConsIds_6;
+}
+
+static void MR_CALL 
+hlds__hlds_data__gather_constructor_cons_ids_4_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word STATE_VARIABLE_ConsIds_0_3,
+  MR_Word * STATE_VARIABLE_ConsIds_4)
+{
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_ConsIds_4 = STATE_VARIABLE_ConsIds_0_3;
+    else
+    {
+      MR_Word Ctor_10 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 0))));
+      MR_Word Ctors_11 = ((MR_Word) ((MR_hl_field(1, HeadVar__2_2, (MR_Integer) 1))));
+      MR_Word SymName_15 = ((MR_Word) ((MR_hl_field(0, Ctor_10, (MR_Integer) 2))));
+      MR_Integer Arity_17 = ((MR_Integer) ((MR_hl_field(0, Ctor_10, (MR_Integer) 4))));
+      MR_Word ConsId_19;
+      MR_Word STATE_VARIABLE_ConsIds_22_22;
+      MR_Word next_value_of_HeadVar__2_2;
+      MR_Word next_value_of_STATE_VARIABLE_ConsIds_0_3;
+
+      {
+        ConsId_19 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(3, ConsId_19, 0) = ((MR_Box) ((MR_Unsigned) 2U));
+        MR_hl_field(3, ConsId_19, 1) = ((MR_Box) (SymName_15));
+        MR_hl_field(3, ConsId_19, 2) = ((MR_Box) (Arity_17));
+        MR_hl_field(3, ConsId_19, 3) = ((MR_Box) (HeadVar__1_1));
+      }
+      {
+        STATE_VARIABLE_ConsIds_22_22 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, STATE_VARIABLE_ConsIds_22_22, 0) = ((MR_Box) (ConsId_19));
+        MR_hl_field(1, STATE_VARIABLE_ConsIds_22_22, 1) = ((MR_Box) (STATE_VARIABLE_ConsIds_0_3));
+      }
+      // direct tailcall eliminated
+      ;
+      next_value_of_HeadVar__2_2 = Ctors_11;
+      next_value_of_STATE_VARIABLE_ConsIds_0_3 = STATE_VARIABLE_ConsIds_22_22;
+      HeadVar__2_2 = next_value_of_HeadVar__2_2;
+      STATE_VARIABLE_ConsIds_0_3 = next_value_of_STATE_VARIABLE_ConsIds_0_3;
+      continue;
+    }
+    break;
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data__insert_ctor_repn_into_map_3_p_0(
+  MR_Word CtorRepn_4,
+  MR_Word STATE_VARIABLE_CtorRepnMap_0_12,
+  MR_Word * STATE_VARIABLE_CtorRepnMap_13)
+{
+  MR_bool succeeded;
+  MR_Word SymName_6 = ((MR_Word) ((MR_hl_field(0, CtorRepn_4, (MR_Integer) 2))));
+  MR_String Name_7;
+  MR_Word OldCtorRepns_8;
+  MR_Box conv0_OldCtorRepns_8;
+
+  Name_7 = mdbcomp__sym_name__unqualify_name_1_f_0(SymName_6);
+  succeeded = mercury__map__search_3_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_2[1]), STATE_VARIABLE_CtorRepnMap_0_12, ((MR_Box) (Name_7)), &conv0_OldCtorRepns_8);
+  if (succeeded)
+  {
+    OldCtorRepns_8 = ((MR_Word) (conv0_OldCtorRepns_8));
+    succeeded = MR_TRUE;
+  }
+  if (succeeded)
+  {
+    MR_Word FirstOldCtorRepn_9 = ((MR_Word) ((MR_hl_field(0, OldCtorRepns_8, (MR_Integer) 0))));
+    MR_Word LaterOldCtorRepns_10 = ((MR_Word) ((MR_hl_field(0, OldCtorRepns_8, (MR_Integer) 1))));
+    MR_Word CtorRepns_11;
+    MR_Word Var_14;
+
+    {
+      Var_14 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_14, 0) = ((MR_Box) (FirstOldCtorRepn_9));
+      MR_hl_field(1, Var_14, 1) = ((MR_Box) (LaterOldCtorRepns_10));
+    }
+    {
+      CtorRepns_11 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, CtorRepns_11, 0) = ((MR_Box) (CtorRepn_4));
+      MR_hl_field(0, CtorRepns_11, 1) = ((MR_Box) (Var_14));
+    }
+    mercury__map__det_update_4_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_2[1]), ((MR_Box) (Name_7)), ((MR_Box) (CtorRepns_11)), STATE_VARIABLE_CtorRepnMap_0_12, STATE_VARIABLE_CtorRepnMap_13);
+  }
+  else
+  {
+    MR_Word Var_16;
+
+    {
+      Var_16 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_16, 0) = ((MR_Box) (CtorRepn_4));
+      MR_hl_field(0, Var_16, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    mercury__map__det_insert_4_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_2[1]), ((MR_Box) (Name_7)), ((MR_Box) (Var_16)), STATE_VARIABLE_CtorRepnMap_0_12, STATE_VARIABLE_CtorRepnMap_13);
+  }
+}
+
+MR_Word MR_CALL 
+hlds__hlds_data__get_maybe_cheaper_tag_test_1_f_0(
+  MR_Word TypeBody_3)
+{
+  MR_Word CheaperTagTest_4;
+
+  switch (MR_tag((MR_Word) TypeBody_3)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word MaybeRepn_8;
+        MR_Word Var_15 = (MR_Word) ((MR_Word) (TypeBody_3));
+
+        MaybeRepn_8 = ((MR_Word) ((MR_hl_field(0, Var_15, (MR_Integer) 3))));
+        if ((MaybeRepn_8 == (MR_Word) ((MR_Unsigned) 0U)))
+          mercury__require__unexpected_2_p_0((MR_String) "function \140hlds.hlds_data.get_maybe_cheaper_tag_test\'/1", (MR_String) "MaybeRepn = no");
+        else
+        {
+          MR_Word Repn_10 = ((MR_Word) ((MR_hl_field(1, MaybeRepn_8, (MR_Integer) 0))));
+
+          CheaperTagTest_4 = ((MR_Word) ((MR_hl_field(0, Repn_10, (MR_Integer) 2))));
+        }
+      }
+      break;
+    case (MR_Integer) 1:
+      CheaperTagTest_4 = (MR_Word) ((MR_Unsigned) 0U);
+      break;
+    case (MR_Integer) 2:
+      CheaperTagTest_4 = (MR_Word) ((MR_Unsigned) 0U);
+      break;
+    case (MR_Integer) 3:
+      CheaperTagTest_4 = (MR_Word) ((MR_Unsigned) 0U);
+      break;
+  }
+  return CheaperTagTest_4;
+}
+
+void MR_CALL 
+hlds__hlds_data__set_type_defn_prev_errors_3_p_0(
+  MR_Word X_4,
+  MR_Word STATE_VARIABLE_Defn_0_6,
+  MR_Word * STATE_VARIABLE_Defn_7)
+{
+  MR_Word Var_8 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 0))));
+  MR_Word Var_9 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 1))));
+  MR_Word Var_10 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 2))));
+  MR_Word Var_11 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 3))));
+  MR_Word Var_12 = ((MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 4))) & (MR_Integer) 1);
+  MR_Word Var_13 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 5))));
+  MR_Word Var_14 = ((((MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 6))) >> 1)) & (MR_Integer) 1);
+  MR_Word Var_16 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 7))));
+
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+    *STATE_VARIABLE_Defn_7 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (Var_8));
+    MR_hl_field(0, base, 1) = ((MR_Box) (Var_9));
+    MR_hl_field(0, base, 2) = ((MR_Box) (Var_10));
+    MR_hl_field(0, base, 3) = ((MR_Box) (Var_11));
+    MR_hl_field(0, base, 4) = (MR_Box) ((MR_Unsigned) (Var_12));
+    MR_hl_field(0, base, 5) = ((MR_Box) (Var_13));
+    MR_hl_field(0, base, 6) = (MR_Box) (((((MR_Unsigned) (Var_14) << 1)) | (MR_Unsigned) (X_4)));
+    MR_hl_field(0, base, 7) = ((MR_Box) (Var_16));
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data__set_type_defn_in_exported_eqv_3_p_0(
+  MR_Word X_4,
+  MR_Word STATE_VARIABLE_Defn_0_6,
+  MR_Word * STATE_VARIABLE_Defn_7)
+{
+  MR_Word Var_8 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 0))));
+  MR_Word Var_9 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 1))));
+  MR_Word Var_10 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 2))));
+  MR_Word Var_11 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 3))));
+  MR_Word Var_13 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 5))));
+  MR_Word Var_16 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 7))));
+  MR_Unsigned packed_word_1 = (MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 6)));
+
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+    *STATE_VARIABLE_Defn_7 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (Var_8));
+    MR_hl_field(0, base, 1) = ((MR_Box) (Var_9));
+    MR_hl_field(0, base, 2) = ((MR_Box) (Var_10));
+    MR_hl_field(0, base, 3) = ((MR_Box) (Var_11));
+    MR_hl_field(0, base, 4) = (MR_Box) ((MR_Unsigned) (X_4));
+    MR_hl_field(0, base, 5) = ((MR_Box) (Var_13));
+    MR_hl_field(0, base, 6) = (MR_Box) (packed_word_1);
+    MR_hl_field(0, base, 7) = ((MR_Box) (Var_16));
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data__set_type_defn_status_3_p_0(
+  MR_Word X_4,
+  MR_Word STATE_VARIABLE_Defn_0_6,
+  MR_Word * STATE_VARIABLE_Defn_7)
+{
+  MR_Word Var_8 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 0))));
+  MR_Word Var_9 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 1))));
+  MR_Word Var_10 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 2))));
+  MR_Word Var_11 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 3))));
+  MR_Word Var_12 = ((MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 4))) & (MR_Integer) 1);
+  MR_Word Var_16 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 7))));
+  MR_Unsigned packed_word_1 = (MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 6)));
+
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+    *STATE_VARIABLE_Defn_7 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (Var_8));
+    MR_hl_field(0, base, 1) = ((MR_Box) (Var_9));
+    MR_hl_field(0, base, 2) = ((MR_Box) (Var_10));
+    MR_hl_field(0, base, 3) = ((MR_Box) (Var_11));
+    MR_hl_field(0, base, 4) = (MR_Box) ((MR_Unsigned) (Var_12));
+    MR_hl_field(0, base, 5) = ((MR_Box) (X_4));
+    MR_hl_field(0, base, 6) = (MR_Box) (packed_word_1);
+    MR_hl_field(0, base, 7) = ((MR_Box) (Var_16));
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data__set_type_defn_tvarset_3_p_0(
+  MR_Word X_4,
+  MR_Word STATE_VARIABLE_Defn_0_6,
+  MR_Word * STATE_VARIABLE_Defn_7)
+{
+  MR_Word Var_9 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 1))));
+  MR_Word Var_10 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 2))));
+  MR_Word Var_11 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 3))));
+  MR_Word Var_12 = ((MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 4))) & (MR_Integer) 1);
+  MR_Word Var_13 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 5))));
+  MR_Word Var_16 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 7))));
+  MR_Unsigned packed_word_1 = (MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 6)));
+
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+    *STATE_VARIABLE_Defn_7 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (X_4));
+    MR_hl_field(0, base, 1) = ((MR_Box) (Var_9));
+    MR_hl_field(0, base, 2) = ((MR_Box) (Var_10));
+    MR_hl_field(0, base, 3) = ((MR_Box) (Var_11));
+    MR_hl_field(0, base, 4) = (MR_Box) ((MR_Unsigned) (Var_12));
+    MR_hl_field(0, base, 5) = ((MR_Box) (Var_13));
+    MR_hl_field(0, base, 6) = (MR_Box) (packed_word_1);
+    MR_hl_field(0, base, 7) = ((MR_Box) (Var_16));
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data__set_type_defn_body_3_p_0(
+  MR_Word X_4,
+  MR_Word STATE_VARIABLE_Defn_0_6,
+  MR_Word * STATE_VARIABLE_Defn_7)
+{
+  MR_Word Var_8 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 0))));
+  MR_Word Var_9 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 1))));
+  MR_Word Var_10 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 2))));
+  MR_Word Var_12 = ((MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 4))) & (MR_Integer) 1);
+  MR_Word Var_13 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 5))));
+  MR_Word Var_16 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 7))));
+  MR_Unsigned packed_word_1 = (MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Defn_0_6, (MR_Integer) 6)));
+
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+    *STATE_VARIABLE_Defn_7 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (Var_8));
+    MR_hl_field(0, base, 1) = ((MR_Box) (Var_9));
+    MR_hl_field(0, base, 2) = ((MR_Box) (Var_10));
+    MR_hl_field(0, base, 3) = ((MR_Box) (X_4));
+    MR_hl_field(0, base, 4) = (MR_Box) ((MR_Unsigned) (Var_12));
+    MR_hl_field(0, base, 5) = ((MR_Box) (Var_13));
+    MR_hl_field(0, base, 6) = (MR_Box) (packed_word_1);
+    MR_hl_field(0, base, 7) = ((MR_Box) (Var_16));
+  }
+}
+
+void MR_CALL 
+hlds__hlds_data__get_type_defn_context_2_p_0(
+  MR_Word Defn_3,
+  MR_Word * X_4)
+{
+  *X_4 = ((MR_Word) ((MR_hl_field(0, Defn_3, (MR_Integer) 7))));
+}
+
+void MR_CALL 
+hlds__hlds_data__get_type_defn_prev_errors_2_p_0(
+  MR_Word Defn_3,
+  MR_Word * X_4)
+{
+  *X_4 = ((MR_Unsigned) ((MR_hl_field(0, Defn_3, (MR_Integer) 6))) & (MR_Integer) 1);
+}
+
+void MR_CALL 
+hlds__hlds_data__get_type_defn_ctors_need_qualifier_2_p_0(
+  MR_Word Defn_3,
+  MR_Word * X_4)
+{
+  *X_4 = ((((MR_Unsigned) ((MR_hl_field(0, Defn_3, (MR_Integer) 6))) >> 1)) & (MR_Integer) 1);
+}
+
+void MR_CALL 
+hlds__hlds_data__get_type_defn_in_exported_eqv_2_p_0(
+  MR_Word Defn_3,
+  MR_Word * X_4)
+{
+  *X_4 = ((MR_Unsigned) ((MR_hl_field(0, Defn_3, (MR_Integer) 4))) & (MR_Integer) 1);
+}
+
+void MR_CALL 
+hlds__hlds_data__get_type_defn_status_2_p_0(
+  MR_Word Defn_3,
+  MR_Word * X_4)
+{
+  *X_4 = ((MR_Word) ((MR_hl_field(0, Defn_3, (MR_Integer) 5))));
+}
+
+void MR_CALL 
+hlds__hlds_data__get_type_defn_body_2_p_0(
+  MR_Word Defn_3,
+  MR_Word * X_4)
+{
+  *X_4 = ((MR_Word) ((MR_hl_field(0, Defn_3, (MR_Integer) 3))));
+}
+
+void MR_CALL 
+hlds__hlds_data__get_type_defn_kind_map_2_p_0(
+  MR_Word Defn_3,
+  MR_Word * X_4)
+{
+  *X_4 = ((MR_Word) ((MR_hl_field(0, Defn_3, (MR_Integer) 2))));
+}
+
+void MR_CALL 
+hlds__hlds_data__get_type_defn_tparams_2_p_0(
+  MR_Word Defn_3,
+  MR_Word * X_4)
+{
+  *X_4 = ((MR_Word) ((MR_hl_field(0, Defn_3, (MR_Integer) 1))));
+}
+
+void MR_CALL 
+hlds__hlds_data__get_type_defn_tvarset_2_p_0(
+  MR_Word Defn_3,
+  MR_Word * X_4)
+{
+  *X_4 = ((MR_Word) ((MR_hl_field(0, Defn_3, (MR_Integer) 0))));
+}
+
+void MR_CALL 
+hlds__hlds_data__create_hlds_type_defn_10_p_0(
+  MR_Word Tvarset_11,
+  MR_Word Params_12,
+  MR_Word Kinds_13,
+  MR_Word TypeBody_14,
+  MR_Word InExportedEqv_15,
+  MR_Word TypeStatus_16,
+  MR_Word NeedQual_17,
+  MR_Word PrevErrors_18,
+  MR_Word Context_19,
+  MR_Word * Defn_20)
+{
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+    *Defn_20 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (Tvarset_11));
+    MR_hl_field(0, base, 1) = ((MR_Box) (Params_12));
+    MR_hl_field(0, base, 2) = ((MR_Box) (Kinds_13));
+    MR_hl_field(0, base, 3) = ((MR_Box) (TypeBody_14));
+    MR_hl_field(0, base, 4) = (MR_Box) ((MR_Unsigned) (InExportedEqv_15));
+    MR_hl_field(0, base, 5) = ((MR_Box) (TypeStatus_16));
+    MR_hl_field(0, base, 6) = (MR_Box) (((((MR_Unsigned) (NeedQual_17) << 1)) | (MR_Unsigned) (PrevErrors_18)));
+    MR_hl_field(0, base, 7) = ((MR_Box) (Context_19));
+  }
+}
+
+static void MR_CALL 
+hlds__hlds_data__map_foldl_over_type_ctor_defns_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_STATE_VARIABLE_TypeCtorTable_12;
+
+  hlds__hlds_data__map_foldl_over_type_ctor_defns_2_6_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_String) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_TypeCtorTable_12, wrapper_arg_4, wrapper_arg_5);
+  *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_TypeCtorTable_12));
+}
+
+void MR_CALL 
+hlds__hlds_data__map_foldl_over_type_ctor_defns_5_p_0(
+  MR_Word TypeInfo_for_T_14,
+  MR_Word Pred_6,
+  MR_Word STATE_VARIABLE_TypeTable_0_9,
+  MR_Word * STATE_VARIABLE_TypeTable_10,
+  MR_Box STATE_VARIABLE_Acc_0_11,
+  MR_Box * STATE_VARIABLE_Acc_12)
+{
+  MR_Word Var_13;
+
+  {
+    Var_13 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_13, 0) = ((MR_Box) (&hlds__hlds_data_scalar_common_11[0]));
+    MR_hl_field(0, Var_13, 1) = ((MR_Box) (hlds__hlds_data__map_foldl_over_type_ctor_defns_5_p_0_1));
+    MR_hl_field(0, Var_13, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_13, 3) = ((MR_Box) (TypeInfo_for_T_14));
+    MR_hl_field(0, Var_13, 4) = ((MR_Box) (Pred_6));
+  }
+  mercury__map__map_foldl_5_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]), TypeInfo_for_T_14, Var_13, STATE_VARIABLE_TypeTable_0_9, STATE_VARIABLE_TypeTable_10, STATE_VARIABLE_Acc_0_11, STATE_VARIABLE_Acc_12);
+}
+
+static void MR_CALL 
+hlds__hlds_data__foldl3_over_type_ctor_defns_8_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5,
+  MR_Box wrapper_arg_6,
+  MR_Box * wrapper_arg_7)
+{
+  MR_Box closure = closure_arg;
+
+  hlds__hlds_data__foldl3_over_type_ctor_defns_2_8_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 5)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 6)))), ((MR_Word) (wrapper_arg_1)), wrapper_arg_2, wrapper_arg_3, wrapper_arg_4, wrapper_arg_5, wrapper_arg_6, wrapper_arg_7);
+}
+
+void MR_CALL 
+hlds__hlds_data__foldl3_over_type_ctor_defns_8_p_0(
+  MR_Word TypeInfo_for_T_21,
+  MR_Word TypeInfo_for_U_22,
+  MR_Word TypeInfo_for_V_23,
+  MR_Word Pred_9,
+  MR_Word TypeTable_10,
+  MR_Box STATE_VARIABLE_AccA_0_14,
+  MR_Box * STATE_VARIABLE_AccA_15,
+  MR_Box STATE_VARIABLE_AccB_0_16,
+  MR_Box * STATE_VARIABLE_AccB_17,
+  MR_Box STATE_VARIABLE_AccC_0_18,
+  MR_Box * STATE_VARIABLE_AccC_19)
+{
+  MR_Word Var_20;
+
+  {
+    Var_20 = (MR_Word) MR_new_object(MR_Word, (7 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_20, 0) = ((MR_Box) (&hlds__hlds_data_scalar_common_10[0]));
+    MR_hl_field(0, Var_20, 1) = ((MR_Box) (hlds__hlds_data__foldl3_over_type_ctor_defns_8_p_0_1));
+    MR_hl_field(0, Var_20, 2) = ((MR_Box) ((MR_Integer) 4));
+    MR_hl_field(0, Var_20, 3) = ((MR_Box) (TypeInfo_for_T_21));
+    MR_hl_field(0, Var_20, 4) = ((MR_Box) (TypeInfo_for_U_22));
+    MR_hl_field(0, Var_20, 5) = ((MR_Box) (TypeInfo_for_V_23));
+    MR_hl_field(0, Var_20, 6) = ((MR_Box) (Pred_9));
+  }
+  mercury__map__foldl3_values_8_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[0]), TypeInfo_for_T_21, TypeInfo_for_U_22, TypeInfo_for_V_23, (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_20, TypeTable_10, STATE_VARIABLE_AccA_0_14, STATE_VARIABLE_AccA_15, STATE_VARIABLE_AccB_0_16, STATE_VARIABLE_AccB_17, STATE_VARIABLE_AccC_0_18, STATE_VARIABLE_AccC_19);
+}
+
+static void MR_CALL 
+hlds__hlds_data__foldl2_over_type_ctor_defns_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3,
+  MR_Box wrapper_arg_4,
+  MR_Box * wrapper_arg_5)
+{
+  MR_Box closure = closure_arg;
+
+  hlds__hlds_data__foldl2_over_type_ctor_defns_2_6_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 5)))), ((MR_Word) (wrapper_arg_1)), wrapper_arg_2, wrapper_arg_3, wrapper_arg_4, wrapper_arg_5);
+}
+
+void MR_CALL 
+hlds__hlds_data__foldl2_over_type_ctor_defns_6_p_0(
+  MR_Word TypeInfo_for_T_16,
+  MR_Word TypeInfo_for_U_17,
+  MR_Word Pred_7,
+  MR_Word TypeTable_8,
+  MR_Box STATE_VARIABLE_AccA_0_11,
+  MR_Box * STATE_VARIABLE_AccA_12,
+  MR_Box STATE_VARIABLE_AccB_0_13,
+  MR_Box * STATE_VARIABLE_AccB_14)
+{
+  MR_Word Var_15;
+
+  {
+    Var_15 = (MR_Word) MR_new_object(MR_Word, (6 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_15, 0) = ((MR_Box) (&hlds__hlds_data_scalar_common_8[0]));
+    MR_hl_field(0, Var_15, 1) = ((MR_Box) (hlds__hlds_data__foldl2_over_type_ctor_defns_6_p_0_1));
+    MR_hl_field(0, Var_15, 2) = ((MR_Box) ((MR_Integer) 3));
+    MR_hl_field(0, Var_15, 3) = ((MR_Box) (TypeInfo_for_T_16));
+    MR_hl_field(0, Var_15, 4) = ((MR_Box) (TypeInfo_for_U_17));
+    MR_hl_field(0, Var_15, 5) = ((MR_Box) (Pred_7));
+  }
+  mercury__map__foldl2_values_6_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[0]), TypeInfo_for_T_16, TypeInfo_for_U_17, (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_15, TypeTable_8, STATE_VARIABLE_AccA_0_11, STATE_VARIABLE_AccA_12, STATE_VARIABLE_AccB_0_13, STATE_VARIABLE_AccB_14);
+}
+
+static void MR_CALL 
+hlds__hlds_data__foldl_over_type_ctor_defns_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+
+  hlds__hlds_data__foldl_over_type_ctor_defns_2_4_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)), wrapper_arg_2, wrapper_arg_3);
+}
+
+void MR_CALL 
+hlds__hlds_data__foldl_over_type_ctor_defns_4_p_0(
+  MR_Word TypeInfo_for_T_11,
+  MR_Word Pred_5,
+  MR_Word TypeTable_6,
+  MR_Box STATE_VARIABLE_Acc_0_8,
+  MR_Box * STATE_VARIABLE_Acc_9)
+{
+  MR_Word Var_10;
+
+  {
+    Var_10 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_10, 0) = ((MR_Box) (&hlds__hlds_data_scalar_common_6[0]));
+    MR_hl_field(0, Var_10, 1) = ((MR_Box) (hlds__hlds_data__foldl_over_type_ctor_defns_4_p_0_1));
+    MR_hl_field(0, Var_10, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_10, 3) = ((MR_Box) (TypeInfo_for_T_11));
+    MR_hl_field(0, Var_10, 4) = ((MR_Box) (Pred_5));
+  }
+  mercury__map__foldl_values_4_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[0]), TypeInfo_for_T_11, (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_10, TypeTable_6, STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_9);
+}
+
+static void MR_CALL 
+hlds__hlds_data__set_all_type_ctor_defns_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_Result_6;
+
+  hlds__hlds_data__compare_type_ctor_defns_by_name_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_Result_6);
+  *wrapper_arg_3 = ((MR_Box) (conv0_Result_6));
+}
+
+void MR_CALL 
+hlds__hlds_data__set_all_type_ctor_defns_3_p_0(
+  MR_Word TypeCtorsDefns_4,
+  MR_Word * SortedTypeCtorsDefns_5,
+  MR_Word * TypeTable_6)
+{
+  MR_Word RevTypeCtorsDefnsByName_7;
+
+  mercury__list__sort_3_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[1]), (MR_Word) (&hlds__hlds_data_scalar_common_1[7]), TypeCtorsDefns_4, SortedTypeCtorsDefns_5);
+  hlds__hlds_data__gather_type_ctors_by_name_3_p_0(*SortedTypeCtorsDefns_5, (MR_Word) ((MR_Unsigned) 0U), &RevTypeCtorsDefnsByName_7);
+  mercury__map__from_rev_sorted_assoc_list_2_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]), RevTypeCtorsDefnsByName_7, TypeTable_6);
+}
+
+static void MR_CALL 
+hlds__hlds_data__gather_type_ctors_by_name_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_RevTypeCtorsDefnsByName_0_2,
+  MR_Word * STATE_VARIABLE_RevTypeCtorsDefnsByName_3)
+{
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_RevTypeCtorsDefnsByName_3 = STATE_VARIABLE_RevTypeCtorsDefnsByName_0_2;
+    else
+    {
+      MR_Word TypeCtorTypeDefn_7 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word TypeCtorsTypeDefns0_8 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word TypeCtor_10 = ((MR_Word) ((MR_hl_field(0, TypeCtorTypeDefn_7, (MR_Integer) 0))));
+      MR_Word TypeDefn_11 = ((MR_Word) ((MR_hl_field(0, TypeCtorTypeDefn_7, (MR_Integer) 1))));
+      MR_Word SymName_12 = ((MR_Word) ((MR_hl_field(0, TypeCtor_10, (MR_Integer) 0))));
+      MR_String Name_14;
+      MR_Word TypeCtorTable0_15;
+      MR_Word TypeCtorTable_16;
+      MR_Word TypeCtorsTypeDefns_17;
+      MR_Word STATE_VARIABLE_RevTypeCtorsDefnsByName_20_20;
+      MR_Word Var_21;
+      MR_Word next_value_of_HeadVar__1_1;
+      MR_Word next_value_of_STATE_VARIABLE_RevTypeCtorsDefnsByName_0_2;
+
+      Name_14 = mdbcomp__sym_name__unqualify_name_1_f_0(SymName_12);
+      TypeCtorTable0_15 = mercury__map__singleton_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), ((MR_Box) (TypeCtor_10)), ((MR_Box) (TypeDefn_11)));
+      hlds__hlds_data__gather_type_ctors_this_name_5_p_0(Name_14, TypeCtorTable0_15, &TypeCtorTable_16, TypeCtorsTypeDefns0_8, &TypeCtorsTypeDefns_17);
+      {
+        Var_21 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, Var_21, 0) = ((MR_Box) (Name_14));
+        MR_hl_field(0, Var_21, 1) = ((MR_Box) (TypeCtorTable_16));
+      }
+      {
+        STATE_VARIABLE_RevTypeCtorsDefnsByName_20_20 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, STATE_VARIABLE_RevTypeCtorsDefnsByName_20_20, 0) = ((MR_Box) (Var_21));
+        MR_hl_field(1, STATE_VARIABLE_RevTypeCtorsDefnsByName_20_20, 1) = ((MR_Box) (STATE_VARIABLE_RevTypeCtorsDefnsByName_0_2));
+      }
+      // direct tailcall eliminated
+      ;
+      next_value_of_HeadVar__1_1 = TypeCtorsTypeDefns_17;
+      next_value_of_STATE_VARIABLE_RevTypeCtorsDefnsByName_0_2 = STATE_VARIABLE_RevTypeCtorsDefnsByName_20_20;
+      HeadVar__1_1 = next_value_of_HeadVar__1_1;
+      STATE_VARIABLE_RevTypeCtorsDefnsByName_0_2 = next_value_of_STATE_VARIABLE_RevTypeCtorsDefnsByName_0_2;
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+hlds__hlds_data__gather_type_ctors_this_name_5_p_0(
+  MR_String ThisName_1,
+  MR_Word STATE_VARIABLE_TypeCtorTable_0_2,
+  MR_Word * STATE_VARIABLE_TypeCtorTable_3,
+  MR_Word HeadVar__4_4,
+  MR_Word * HeadVar__5_5)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__4_4 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      *HeadVar__5_5 = (MR_Word) ((MR_Unsigned) 0U);
+      *STATE_VARIABLE_TypeCtorTable_3 = STATE_VARIABLE_TypeCtorTable_0_2;
+    }
+    else
+    {
+      MR_Word TypeCtorTypeDefn_12 = ((MR_Word) ((MR_hl_field(1, HeadVar__4_4, (MR_Integer) 0))));
+      MR_Word TypeCtorsTypeDefns_13 = ((MR_Word) ((MR_hl_field(1, HeadVar__4_4, (MR_Integer) 1))));
+      MR_Word TypeCtor_15 = ((MR_Word) ((MR_hl_field(0, TypeCtorTypeDefn_12, (MR_Integer) 0))));
+      MR_Word TypeDefn_16 = ((MR_Word) ((MR_hl_field(0, TypeCtorTypeDefn_12, (MR_Integer) 1))));
+      MR_Word SymName_17 = ((MR_Word) ((MR_hl_field(0, TypeCtor_15, (MR_Integer) 0))));
+      MR_String Name_19;
+
+      Name_19 = mdbcomp__sym_name__unqualify_name_1_f_0(SymName_17);
+      succeeded = (strcmp(Name_19, ThisName_1) == 0);
+      if (succeeded)
+      {
+        MR_Word STATE_VARIABLE_TypeCtorTable_22_22;
+        MR_Word next_value_of_STATE_VARIABLE_TypeCtorTable_0_2;
+        MR_Word next_value_of_HeadVar__4_4;
+
+        mercury__map__det_insert_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), ((MR_Box) (TypeCtor_15)), ((MR_Box) (TypeDefn_16)), STATE_VARIABLE_TypeCtorTable_0_2, &STATE_VARIABLE_TypeCtorTable_22_22);
+        // direct tailcall eliminated
+        ;
+        next_value_of_STATE_VARIABLE_TypeCtorTable_0_2 = STATE_VARIABLE_TypeCtorTable_22_22;
+        next_value_of_HeadVar__4_4 = TypeCtorsTypeDefns_13;
+        STATE_VARIABLE_TypeCtorTable_0_2 = next_value_of_STATE_VARIABLE_TypeCtorTable_0_2;
+        HeadVar__4_4 = next_value_of_HeadVar__4_4;
+        continue;
+      }
+      else
+      {
+        *HeadVar__5_5 = HeadVar__4_4;
+        *STATE_VARIABLE_TypeCtorTable_3 = STATE_VARIABLE_TypeCtorTable_0_2;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+hlds__hlds_data__get_all_type_ctor_defns_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_STATE_VARIABLE_TypeCtorsDefns_8;
+
+  hlds__hlds_data__get_all_type_ctor_defns_2_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_TypeCtorsDefns_8);
+  *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_TypeCtorsDefns_8));
+}
+
+void MR_CALL 
+hlds__hlds_data__get_all_type_ctor_defns_2_p_0(
+  MR_Word TypeTable_3,
+  MR_Word * TypeCtorsDefns_4)
+{
+  MR_Box conv1_TypeCtorsDefns_4;
+
+  mercury__map__foldl_values_4_p_0((MR_Word) (&hlds__hlds_data_scalar_common_1[0]), (MR_Word) (&hlds__hlds_data_scalar_common_2[0]), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[6]), TypeTable_3, ((MR_Box) ((MR_Unsigned) 0U)), &conv1_TypeCtorsDefns_4);
+  *TypeCtorsDefns_4 = ((MR_Word) (conv1_TypeCtorsDefns_4));
+}
+
+void MR_CALL 
+hlds__hlds_data__lookup_type_ctor_defn_3_p_0(
+  MR_Word TypeTable_4,
+  MR_Word TypeCtor_5,
+  MR_Word * TypeDefn_6)
+{
+  MR_Word SymName_7 = ((MR_Word) ((MR_hl_field(0, TypeCtor_5, (MR_Integer) 0))));
+  MR_String Name_9;
+  MR_Word TypeCtorTable_10;
+  MR_Box conv0_TypeCtorTable_10;
+  MR_Box conv1_TypeDefn_6;
+
+  Name_9 = mdbcomp__sym_name__unqualify_name_1_f_0(SymName_7);
+  mercury__map__lookup_3_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]), TypeTable_4, ((MR_Box) (Name_9)), &conv0_TypeCtorTable_10);
+  TypeCtorTable_10 = ((MR_Word) (conv0_TypeCtorTable_10));
+  mercury__map__lookup_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), TypeCtorTable_10, ((MR_Box) (TypeCtor_5)), &conv1_TypeDefn_6);
+  *TypeDefn_6 = ((MR_Word) (conv1_TypeDefn_6));
+}
+
+MR_bool MR_CALL 
+hlds__hlds_data__search_type_ctor_defn_3_p_0(
+  MR_Word TypeTable_4,
+  MR_Word TypeCtor_5,
+  MR_Word * TypeDefn_6)
+{
+  MR_bool succeeded;
+  MR_Word TypeCtorInfo_13_13;
+  MR_Word TypeCtorInfo_14_14;
+  MR_Word SymName_7 = ((MR_Word) ((MR_hl_field(0, TypeCtor_5, (MR_Integer) 0))));
+  MR_String Name_9;
+  MR_Word TypeCtorTable_10;
+  MR_Box conv0_TypeCtorTable_10;
+  MR_Box conv1_TypeDefn_6;
+
+  Name_9 = mdbcomp__sym_name__unqualify_name_1_f_0(SymName_7);
+  succeeded = mercury__map__search_3_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]), TypeTable_4, ((MR_Box) (Name_9)), &conv0_TypeCtorTable_10);
+  if (succeeded)
+  {
+    TypeCtorTable_10 = ((MR_Word) (conv0_TypeCtorTable_10));
+    succeeded = MR_TRUE;
+  }
+  if (succeeded)
+  {
+    TypeCtorInfo_13_13 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0);
+    TypeCtorInfo_14_14 = (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0);
+    succeeded = mercury__map__search_3_p_0(TypeCtorInfo_13_13, TypeCtorInfo_14_14, TypeCtorTable_10, ((MR_Box) (TypeCtor_5)), &conv1_TypeDefn_6);
+    if (succeeded)
+    {
+      *TypeDefn_6 = ((MR_Word) (conv1_TypeDefn_6));
+      succeeded = MR_TRUE;
+    }
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__hlds_data__replace_type_ctor_defn_4_p_0(
+  MR_Word TypeCtor_5,
+  MR_Word TypeDefn_6,
+  MR_Word STATE_VARIABLE_TypeTable_0_13,
+  MR_Word * STATE_VARIABLE_TypeTable_14)
+{
+  MR_Word SymName_8 = ((MR_Word) ((MR_hl_field(0, TypeCtor_5, (MR_Integer) 0))));
+  MR_String Name_10;
+  MR_Word TypeCtorTable0_11;
+  MR_Word TypeCtorTable_12;
+  MR_Box conv0_TypeCtorTable0_11;
+
+  Name_10 = mdbcomp__sym_name__unqualify_name_1_f_0(SymName_8);
+  mercury__map__lookup_3_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]), STATE_VARIABLE_TypeTable_0_13, ((MR_Box) (Name_10)), &conv0_TypeCtorTable0_11);
+  TypeCtorTable0_11 = ((MR_Word) (conv0_TypeCtorTable0_11));
+  mercury__map__det_update_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), ((MR_Box) (TypeCtor_5)), ((MR_Box) (TypeDefn_6)), TypeCtorTable0_11, &TypeCtorTable_12);
+  mercury__map__det_update_4_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]), ((MR_Box) (Name_10)), ((MR_Box) (TypeCtorTable_12)), STATE_VARIABLE_TypeTable_0_13, STATE_VARIABLE_TypeTable_14);
+}
+
+void MR_CALL 
+hlds__hlds_data__add_type_ctor_defn_4_p_0(
+  MR_Word TypeCtor_5,
+  MR_Word TypeDefn_6,
+  MR_Word STATE_VARIABLE_TypeTable_0_13,
+  MR_Word * STATE_VARIABLE_TypeTable_14)
+{
+  MR_bool succeeded;
+  MR_Word SymName_8 = ((MR_Word) ((MR_hl_field(0, TypeCtor_5, (MR_Integer) 0))));
+  MR_String Name_10;
+  MR_Word TypeCtorTable0_11;
+  MR_Box conv0_TypeCtorTable0_11;
+
+  Name_10 = mdbcomp__sym_name__unqualify_name_1_f_0(SymName_8);
+  succeeded = mercury__map__search_3_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]), STATE_VARIABLE_TypeTable_0_13, ((MR_Box) (Name_10)), &conv0_TypeCtorTable0_11);
+  if (succeeded)
+  {
+    TypeCtorTable0_11 = ((MR_Word) (conv0_TypeCtorTable0_11));
+    succeeded = MR_TRUE;
+  }
+  if (succeeded)
+  {
+    MR_Word TypeCtorTable_12;
+
+    mercury__map__det_insert_4_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), ((MR_Box) (TypeCtor_5)), ((MR_Box) (TypeDefn_6)), TypeCtorTable0_11, &TypeCtorTable_12);
+    mercury__map__det_update_4_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]), ((MR_Box) (Name_10)), ((MR_Box) (TypeCtorTable_12)), STATE_VARIABLE_TypeTable_0_13, STATE_VARIABLE_TypeTable_14);
+  }
+  else
+  {
+    MR_Word TypeCtorTable_17;
+
+    TypeCtorTable_17 = mercury__map__singleton_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0), ((MR_Box) (TypeCtor_5)), ((MR_Box) (TypeDefn_6)));
+    mercury__map__det_insert_4_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]), ((MR_Box) (Name_10)), ((MR_Box) (TypeCtorTable_17)), STATE_VARIABLE_TypeTable_0_13, STATE_VARIABLE_TypeTable_14);
+  }
+}
+
+MR_Word MR_CALL 
+hlds__hlds_data__init_type_table_0_f_0(void)
+{
+  MR_Word HeadVar__1_1;
+
+  HeadVar__1_1 = mercury__map__init_0_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&hlds__hlds_data_scalar_common_1[0]));
+  return HeadVar__1_1;
+}
+
+MR_Word MR_CALL 
+hlds__hlds_data__project_tagged_cons_id_tag_1_f_0(
+  MR_Word TaggedConsId_3)
+{
+  MR_Word Tag_4 = ((MR_Word) ((MR_hl_field(0, TaggedConsId_3, (MR_Integer) 1))));
+
+  return Tag_4;
+}
+
+MR_Word MR_CALL 
+hlds__hlds_data__get_maybe_secondary_tag_1_f_0(
+  MR_Word Tag_3)
+{
+  while (MR_TRUE)
+  {
+    MR_Word MaybeSectag_4;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    switch (MR_tag((MR_Word) Tag_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        MaybeSectag_4 = (MR_Word) ((MR_Unsigned) 0U);
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        MaybeSectag_4 = (MR_Word) ((MR_Unsigned) 0U);
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, Tag_3, (MR_Integer) 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+          case (MR_Integer) 9:
+          case (MR_Integer) 10:
+          case (MR_Integer) 13:
+          case (MR_Integer) 14:
+            MaybeSectag_4 = (MR_Word) ((MR_Unsigned) 0U);
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word LocalSectag_31 = ((MR_Word) ((MR_hl_field(3, Tag_3, (MR_Integer) 2))));
+              MR_Unsigned SectagUint_33 = ((MR_Unsigned) ((MR_hl_field(0, LocalSectag_31, (MR_Integer) 0))));
+              MR_Integer Sectag_36;
+
+              Sectag_36 = mercury__uint__cast_to_int_1_f_0(SectagUint_33);
+              {
+                MaybeSectag_4 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(1, MaybeSectag_4, 0) = ((MR_Box) (Sectag_36));
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word SubTag_29 = ((MR_Word) ((MR_hl_field(3, Tag_3, (MR_Integer) 2))));
+              MR_Word next_value_of_Tag_3 = SubTag_29;
+
+              // direct tailcall eliminated
+              ;
+              Tag_3 = next_value_of_Tag_3;
+              continue;
+            }
+            break;
+          case (MR_Integer) 11:
+            {
+              MR_Word RemoteArgsTagInfo_40 = ((MR_Word) ((MR_hl_field(3, Tag_3, (MR_Integer) 1))));
+
+              switch (MR_tag((MR_Word) RemoteArgsTagInfo_40)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  MaybeSectag_4 = (MR_Word) ((MR_Unsigned) 0U);
+                  break;
+                case (MR_Integer) 1:
+                  MaybeSectag_4 = (MR_Word) ((MR_Unsigned) 0U);
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Word RemoteSectag_42 = ((MR_Word) ((MR_hl_field(2, RemoteArgsTagInfo_40, (MR_Integer) 1))));
+                    MR_Unsigned SectagUint_59 = ((MR_Unsigned) ((MR_hl_field(0, RemoteSectag_42, (MR_Integer) 0))));
+                    MR_Integer Sectag_60;
+
+                    Sectag_60 = mercury__uint__cast_to_int_1_f_0(SectagUint_59);
+                    {
+                      MaybeSectag_4 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, MaybeSectag_4, 0) = ((MR_Box) (Sectag_60));
+                    }
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  {
+                    MR_Unsigned Data_44 = ((MR_Unsigned) ((MR_hl_field(3, RemoteArgsTagInfo_40, (MR_Integer) 0))));
+                    MR_Integer Var_45;
+
+                    Var_45 = mercury__uint__cast_to_int_1_f_0(Data_44);
+                    {
+                      MaybeSectag_4 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, MaybeSectag_4, 0) = ((MR_Box) (Var_45));
+                    }
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 12:
+            {
+              MR_Word LocalArgsTagInfo_37 = ((MR_Word) ((MR_hl_field(3, Tag_3, (MR_Integer) 1))));
+              MR_Integer Sectag_56;
+
+              if ((LocalArgsTagInfo_37 == (MR_Word) ((MR_Unsigned) 0U)))
+                Sectag_56 = (MR_Integer) 0;
+              else
+              {
+                MR_Word LocalSectag_48 = ((MR_Word) ((MR_hl_field(1, LocalArgsTagInfo_37, (MR_Integer) 1))));
+                MR_Unsigned SectagUint_49 = ((MR_Unsigned) ((MR_hl_field(0, LocalSectag_48, (MR_Integer) 0))));
+
+                Sectag_56 = mercury__uint__cast_to_int_1_f_0(SectagUint_49);
+              }
+              {
+                MaybeSectag_4 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(1, MaybeSectag_4, 0) = ((MR_Box) (Sectag_56));
+              }
+            }
+            break;
+        }
+        break;
+    }
+    return MaybeSectag_4;
+    break;
+  }
+}
+
+MR_Word MR_CALL 
+hlds__hlds_data__get_maybe_primary_tag_1_f_0(
+  MR_Word Tag_3)
+{
+  while (MR_TRUE)
+  {
+    MR_Word MaybePtag_4;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    switch (MR_tag((MR_Word) Tag_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        MaybePtag_4 = (MR_Word) ((MR_Unsigned) 0U);
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        MaybePtag_4 = (MR_Word) ((MR_Unsigned) 0U);
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, Tag_3, (MR_Integer) 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+          case (MR_Integer) 9:
+          case (MR_Integer) 10:
+          case (MR_Integer) 14:
+            MaybePtag_4 = (MR_Word) ((MR_Unsigned) 0U);
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word Ptag_47 = ((MR_Word) ((MR_hl_field(3, Tag_3, (MR_Integer) 1))));
+
+              {
+                MaybePtag_4 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(1, MaybePtag_4, 0) = ((MR_Box) (Ptag_47));
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word SubTag_28 = ((MR_Word) ((MR_hl_field(3, Tag_3, (MR_Integer) 2))));
+              MR_Word next_value_of_Tag_3 = SubTag_28;
+
+              // direct tailcall eliminated
+              ;
+              Tag_3 = next_value_of_Tag_3;
+              continue;
+            }
+            break;
+          case (MR_Integer) 11:
+            {
+              MR_Word RemoteArgsTagInfo_32 = ((MR_Word) ((MR_hl_field(3, Tag_3, (MR_Integer) 1))));
+
+              switch (MR_tag((MR_Word) RemoteArgsTagInfo_32)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  MaybePtag_4 = (MR_Word) (MR_mkword(1, &hlds__hlds_data_scalar_common_3[0]));
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word Ptag_46 = ((MR_Word) ((MR_hl_field(1, RemoteArgsTagInfo_32, (MR_Integer) 0))));
+
+                    {
+                      MaybePtag_4 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, MaybePtag_4, 0) = ((MR_Box) (Ptag_46));
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Word Ptag_42 = ((MR_Word) ((MR_hl_field(2, RemoteArgsTagInfo_32, (MR_Integer) 0))));
+
+                    {
+                      MaybePtag_4 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, MaybePtag_4, 0) = ((MR_Box) (Ptag_42));
+                    }
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  MaybePtag_4 = (MR_Word) (MR_mkword(1, &hlds__hlds_data_scalar_common_3[0]));
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 12:
+            {
+              MR_Word LocalArgsTagInfo_35 = ((MR_Word) ((MR_hl_field(3, Tag_3, (MR_Integer) 1))));
+              MR_Word Ptag_45;
+
+              if ((LocalArgsTagInfo_35 == (MR_Word) ((MR_Unsigned) 0U)))
+                Ptag_45 = (MR_Word) (((MR_Box) (MR_Word) (UINT8_C(0))));
+              else
+                Ptag_45 = ((MR_Word) ((MR_hl_field(1, LocalArgsTagInfo_35, (MR_Integer) 0))));
+              {
+                MaybePtag_4 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(1, MaybePtag_4, 0) = ((MR_Box) (Ptag_45));
+              }
+            }
+            break;
+          case (MR_Integer) 13:
+            {
+              MR_Word Ptag_29 = ((MR_Word) ((MR_hl_field(3, Tag_3, (MR_Integer) 1))));
+
+              {
+                MaybePtag_4 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(1, MaybePtag_4, 0) = ((MR_Box) (Ptag_29));
+              }
+            }
+            break;
+        }
+        break;
+    }
+    return MaybePtag_4;
+    break;
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____cons_tag_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____cons_tag_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____cons_tag_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____cons_tag_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____constructor_arg_repn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____constructor_arg_repn_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____constructor_arg_repn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____constructor_arg_repn_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____constructor_repn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____constructor_repn_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____constructor_repn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____constructor_repn_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____ctor_name_to_repn_map_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____ctor_name_to_repn_map_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____ctor_name_to_repn_map_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____ctor_name_to_repn_map_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____du_type_kind_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____du_type_kind_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____du_type_kind_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____du_type_kind_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____du_type_repn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____du_type_repn_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____du_type_repn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____du_type_repn_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____foreign_type_body_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____foreign_type_body_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____foreign_type_body_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____foreign_type_body_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____foreign_type_lang_body_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____foreign_type_lang_body_1_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____foreign_type_lang_body_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box wrapper_arg_4)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____foreign_type_lang_body_1_0(((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_3)), ((MR_Word) (wrapper_arg_4)));
+  *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_type_body_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____hlds_type_body_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____hlds_type_body_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____hlds_type_body_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____hlds_type_defn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____hlds_type_defn_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____hlds_type_defn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____hlds_type_defn_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____int_tag_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____int_tag_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____int_tag_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____int_tag_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____local_args_tag_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____local_args_tag_info_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____local_args_tag_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____local_args_tag_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____local_sectag_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____local_sectag_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____local_sectag_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____local_sectag_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____lsectag_mask_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____lsectag_mask_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____lsectag_mask_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____lsectag_mask_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____may_use_atomic_alloc_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____may_use_atomic_alloc_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____may_use_atomic_alloc_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____may_use_atomic_alloc_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____maybe_cheaper_tag_test_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____maybe_cheaper_tag_test_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____maybe_cheaper_tag_test_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____maybe_cheaper_tag_test_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____no_tag_type_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____no_tag_type_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____no_tag_type_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____no_tag_type_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____no_tag_type_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____no_tag_type_table_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____no_tag_type_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____no_tag_type_table_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____remote_args_tag_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____remote_args_tag_info_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____remote_args_tag_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____remote_args_tag_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____remote_sectag_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____remote_sectag_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____remote_sectag_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____remote_sectag_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____rsectag_size_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____rsectag_size_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____rsectag_size_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____rsectag_size_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____sectag_bits_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____sectag_bits_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____sectag_bits_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____sectag_bits_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____tagged_cons_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____tagged_cons_id_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____tagged_cons_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____tagged_cons_id_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_body_du_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____type_body_du_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____type_body_du_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____type_body_du_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_ctor_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____type_ctor_table_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____type_ctor_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____type_ctor_table_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_defn_prev_errors_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____type_defn_prev_errors_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____type_defn_prev_errors_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____type_defn_prev_errors_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__hlds_data____Unify____type_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__hlds_data____Unify____type_table_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__hlds_data____Compare____type_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__hlds_data____Compare____type_table_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+void mercury__hlds__hlds_data__init(void)
+{
+}
+
+void mercury__hlds__hlds_data__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_constructor_arg_repn_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_constructor_repn_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_ctor_name_to_repn_map_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_du_type_kind_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_du_type_repn_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_foreign_type_body_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_foreign_type_lang_body_1);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_body_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_hlds_type_defn_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_int_tag_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_local_args_tag_info_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_local_sectag_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_lsectag_mask_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_may_use_atomic_alloc_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_maybe_cheaper_tag_test_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_no_tag_type_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_no_tag_type_table_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_remote_args_tag_info_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_remote_sectag_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_rsectag_size_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_sectag_bits_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_body_du_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_ctor_table_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_defn_prev_errors_0);
+	MR_register_type_ctor_info(&hlds__hlds_data__hlds__hlds_data__type_ctor_info_type_table_0);
+}
+
+void mercury__hlds__hlds_data__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__hlds__hlds_data__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module hlds.hlds_data.
