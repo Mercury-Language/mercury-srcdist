@@ -1,0 +1,11 @@
+:- module (random.system_rng).
+:- interface.
+:- type system_rng.
+:- instance (random.urandom(random.system_rng.system_rng, io.io)).
+:- implementation.
+:- pragma foreign_import_module("C", (random.system_rng)).
+:- pragma foreign_import_module("C#", (random.system_rng)).
+:- pragma foreign_import_module("Java", (random.system_rng)).
+:- pragma foreign_type(c, system_rng, "ML_SystemRandomHandle", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, system_rng, "random__system_rng.ML_SystemRandomHandle").
+:- pragma foreign_type(csharp, system_rng, "random__system_rng.ML_SystemRandomHandle").

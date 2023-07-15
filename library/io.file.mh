@@ -1,0 +1,56 @@
+// Automatically generated from `io.file.m'
+// by the Mercury compiler,
+// version rotd-2023-07-15
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef IO__FILE_MH
+#define IO__FILE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO__FILE_DECL_GUARD
+#define IO__FILE_DECL_GUARD
+#define ML_FILE_TYPE_REGULAR_FILE 0
+#define ML_FILE_TYPE_DIRECTORY 1
+#define ML_FILE_TYPE_SYMBOLIC_LINK 2
+#define ML_FILE_TYPE_NAMED_PIPE 3
+#define ML_FILE_TYPE_SOCKET 4
+#define ML_FILE_TYPE_CHARACTER_DEVICE 5
+#define ML_FILE_TYPE_BLOCK_DEVICE 6
+#define ML_FILE_TYPE_MESSAGE_QUEUE 7
+#define ML_FILE_TYPE_SEMAPHORE 8
+#define ML_FILE_TYPE_SHARED_MEMORY 9
+#define ML_FILE_TYPE_UNKNOWN 10
+
+#ifdef MR_HAVE_UNISTD_H
+    #include <unistd.h>
+#endif
+    #include <sys/types.h>
+    #include <sys/stat.h>
+    #include <fcntl.h>
+
+    #define ML_MAX_TEMPNAME_TRIES   (6 * 4)
+
+    extern long ML_io_tempnam_counter;
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO__FILE_MH */
