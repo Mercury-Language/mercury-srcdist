@@ -1,0 +1,155 @@
+/*
+** Automatically generated from `parse.m'
+** by the Mercury compiler,
+** version rotd-2023-07-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.parse.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__parse
+#define MR_HEADER_GUARD_mdb__parse
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__PARSE_DECL_GUARD
+#define MDB__PARSE_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__parse__mdb__parse__type_ctor_info_command_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__parse__mdb__parse__type_ctor_info_external_request_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__parse__mdb__parse__type_ctor_info_format_option_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__parse__mdb__parse__type_ctor_info_format_param_cmd_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__parse__mdb__parse__type_ctor_info_path_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__parse__mdb__parse__type_ctor_info_setting_option_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__parse__mdb__parse__type_ctor_info_token_0;
+
+MR_bool MR_CALL 
+mdb__parse__parse_browser_command_words_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdb__parse__read_browser_command_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__parse__read_browser_command_external_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdb__parse____Compare____command_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__parse____Compare____external_request_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__parse____Compare____format_option_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__parse____Compare____format_param_cmd_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__parse____Compare____path_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__parse____Compare____setting_option_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__parse____Index____command_0_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mdb__parse____Unify____command_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__parse____Unify____external_request_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__parse____Unify____format_option_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__parse____Unify____format_param_cmd_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__parse____Unify____path_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__parse____Unify____setting_option_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdb__parse__init(void);
+void mercury__mdb__parse__init_type_tables(void);
+void mercury__mdb__parse__init_debugger(void);
+const char *mercury__mdb__parse__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.parse
+
+// :- end_interface mdb.parse.
