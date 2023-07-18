@@ -1,0 +1,2 @@
+:- module (make.top_level).
+:- interface.
