@@ -1,0 +1,4 @@
+:- module (transform_hlds.smm_common).
+:- interface.
+:- type program_point.
+:- type_representation(program_point, is_word_aligned_ptr).

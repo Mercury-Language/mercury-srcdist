@@ -1,0 +1,10 @@
+:- module (ll_backend.code_gen).
+:- interface.
+:- use_module hlds.
+:- use_module (hlds.code_model).
+:- use_module (hlds.hlds_goal).
+:- use_module (ll_backend.code_info).
+:- use_module (ll_backend.code_loc_dep).
+:- use_module (ll_backend.llds).
+:- pred generate_goal(hlds.code_model.code_model, hlds.hlds_goal.hlds_goal, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_goal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

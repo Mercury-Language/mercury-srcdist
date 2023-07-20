@@ -1,0 +1,699 @@
+/*
+** Automatically generated from `ranges.m'
+** by the Mercury compiler,
+** version rotd-2023-07-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ranges.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ranges
+#define MR_HEADER_GUARD_ranges
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RANGES_DECL_GUARD
+#define RANGES_DECL_GUARD
+
+
+typedef MR_Word ML_Ranges;
+
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__ranges__ranges__type_ctor_info_ranges_0;
+
+void MR_CALL 
+mercury__ranges__LCMC__func__difference__1_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__ranges__LCMC__func__intersection__1_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__ranges__LCMC__func__plus__1_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__ranges__LCMC__func__restrict_max__1_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__ranges__LCMC__func__shift__1_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__ranges__LCMC__func__union__1_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__ranges__LCMC__pred__prune_to_prev_non_member__1_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__ranges__compare_lex_3_p_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__ranges__disjoint_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mercury__ranges__foldl_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__foldl_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__foldl_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__foldl_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__foldl_4_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__foldl_4_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__foldl2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__ranges__foldl2_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__ranges__foldl2_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__ranges__foldl2_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__ranges__foldl2_6_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__ranges__foldl2_6_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__ranges__foldl3_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__ranges__foldl3_8_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__ranges__foldl3_8_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+MR_bool MR_CALL 
+mercury__ranges__foldl3_8_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box * param_7,
+  MR_Box param_8,
+  MR_Box * param_9,
+  MR_Box param_10,
+  MR_Box * param_11);
+
+void MR_CALL 
+mercury__ranges__foldr_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__foldr_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__foldr_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__foldr_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__foldr_4_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__foldr_4_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__greatest_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+mercury__ranges__greatest_2_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__ranges__insert_3_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__ranges__is_contiguous_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3);
+
+MR_bool MR_CALL 
+mercury__ranges__is_empty_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+mercury__ranges__is_non_empty_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+mercury__ranges__least_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+mercury__ranges__member_2_p_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__ranges__next_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__ranges__nondet_member_2_p_0(
+  MR_Integer * param_1,
+  MR_Word param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+mercury__ranges__prune_to_next_non_member_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__ranges__prune_to_prev_non_member_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4);
+
+void MR_CALL 
+mercury__ranges__range_foldl_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__range_foldl_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__range_foldl_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__range_foldl_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__range_foldl_4_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__range_foldl_4_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__range_foldl2_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__ranges__range_foldl2_6_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__ranges__range_foldl2_6_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__ranges__range_foldl2_6_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__ranges__range_foldl2_6_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+MR_bool MR_CALL 
+mercury__ranges__range_foldl2_6_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6,
+  MR_Box param_7,
+  MR_Box * param_8);
+
+void MR_CALL 
+mercury__ranges__range_foldr_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__range_foldr_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__range_foldr_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__range_foldr_4_p_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__range_foldr_4_p_4(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__range_foldr_4_p_5(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+mercury__ranges__range_member_3_p_0(
+  MR_Integer * param_1,
+  MR_Integer * param_2,
+  MR_Word param_3,
+  MR_Cont param_4,
+  void * param_5);
+
+MR_bool MR_CALL 
+mercury__ranges__split_4_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+mercury__ranges__subset_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__contraction_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__delete_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__difference_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__dilation_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__empty_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__ranges__from_list_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__ranges__from_set_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__ranges__insert_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__intersection_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+mercury__ranges__median_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__ranges__negate_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__ranges__negate_aux_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__plus_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__range_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__restrict_max_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__restrict_min_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__restrict_range_3_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__ranges__shift_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+mercury__ranges__size_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__ranges__to_sorted_list_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__ranges__to_sorted_list_2_3_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__ranges__union_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__ranges__universe_0_f_0(void);
+
+void MR_CALL 
+mercury__ranges____Compare____ranges_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__ranges____Unify____ranges_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ranges__init(void);
+void mercury__ranges__init_type_tables(void);
+void mercury__ranges__init_debugger(void);
+const char *mercury__ranges__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ranges
+
+// :- end_interface ranges.

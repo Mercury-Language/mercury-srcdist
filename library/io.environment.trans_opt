@@ -1,0 +1,17 @@
+:- module (io.environment).
+
+:- pragma termination_info((io.environment).get_environment_var((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.environment).get_environment_var_assoc_list((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.environment).get_environment_var_map((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((io.environment).getenv((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(((io.environment).have_set_environment_var), finite(0, []), cannot_loop).
+:- pragma termination_info((io.environment).set_environment_var((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.environment).set_environment_var((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, ((io.environment).get_environment_var), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.environment).get_environment_var_assoc_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.environment).get_environment_var_map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.environment).getenv), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.environment).have_set_environment_var), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.environment).set_environment_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.environment).set_environment_var), 5, 0, will_not_throw).
