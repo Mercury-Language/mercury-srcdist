@@ -1,0 +1,5 @@
+:- module (check_hlds.recompute_instmap_deltas).
+:- interface.
+:- type recomp_atomics
+	where	type_is_abstract_enum(1).
+:- type_representation(recomp_atomics, du_repn(enum("recomp_atomics", "no_recomp_atomics", [],  no_c_j_cs))).

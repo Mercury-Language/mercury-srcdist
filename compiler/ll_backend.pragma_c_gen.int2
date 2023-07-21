@@ -1,0 +1,2 @@
+:- module (ll_backend.pragma_c_gen).
+:- interface.
