@@ -1,0 +1,108 @@
+/*
+** Automatically generated from `interface.m'
+** by the Mercury compiler,
+** version rotd-2023-07-22
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module interface.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_interface
+#define MR_HEADER_GUARD_interface
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef INTERFACE_DECL_GUARD
+#define INTERFACE_DECL_GUARD
+
+#endif
+
+
+
+void MR_CALL 
+interface__recv_string_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+interface__recv_term_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+interface__send_string_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_String param_3);
+
+void MR_CALL 
+interface__send_term_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Box param_4);
+
+MR_String MR_CALL 
+interface__from_server_pipe_name_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+interface__mutex_file_name_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+interface__response_file_name_2_f_0(
+  MR_String param_1,
+  MR_Integer param_2);
+
+MR_String MR_CALL 
+interface__server_startup_name_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+interface__to_server_pipe_name_1_f_0(
+  MR_String param_1);
+
+MR_String MR_CALL 
+interface__want_dir_0_f_0(void);
+
+MR_String MR_CALL 
+interface__want_file_name_0_f_0(void);
+
+MR_String MR_CALL 
+interface__want_prefix_0_f_0(void);
+
+void mercury__interface__init(void);
+void mercury__interface__init_type_tables(void);
+void mercury__interface__init_debugger(void);
+const char *mercury__interface__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_interface
+
+// :- end_interface interface.
