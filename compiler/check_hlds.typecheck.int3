@@ -1,0 +1,7 @@
+:- module (check_hlds.typecheck).
+:- interface.
+:- type number_of_iterations
+	where	type_is_abstract_enum(1).
+:- type_representation(cons_type_assign_set, is_eqv_to(list(cons_type_assign))).
+:- type_representation(invariant_set, is_eqv_to(set(tvar))).
+:- type_representation(number_of_iterations, du_repn(enum("within_iteration_limit", "exceeded_iteration_limit", [],  no_c_j_cs))).
