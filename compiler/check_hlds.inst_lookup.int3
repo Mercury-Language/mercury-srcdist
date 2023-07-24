@@ -1,0 +1,4 @@
+:- module (check_hlds.inst_lookup).
+:- interface.
+:- abstract_inst((mer_inst_expanded)).
+:- abstract_inst((mer_inst_expanded_no_constraints)).
