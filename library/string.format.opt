@@ -1,0 +1,361 @@
+:- module (string.format).
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module exception.
+:- use_module float.
+:- use_module int.
+:- use_module int16.
+:- use_module int32.
+:- use_module int64.
+:- use_module int8.
+:- use_module integer.
+:- use_module list.
+:- use_module maybe.
+:- use_module ops.
+:- use_module pair.
+:- use_module pretty_printer.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module term_io.
+:- use_module uint.
+:- use_module uint16.
+:- use_module uint32.
+:- use_module uint64.
+:- use_module uint8.
+:- use_module (string.format).
+:- use_module (string.parse_runtime).
+:- use_module (string.parse_util).
+:- use_module (string.to_string).
+
+:- pred (string.format).format_char_component(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, character, string).
+:- mode format_char_component((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred (string.format).format_float_component(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, string.parse_util.string_format_float_kind, float, string).
+:- mode format_float_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred (string.format).format_signed_int64_component(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, int64, string).
+:- mode format_signed_int64_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred (string.format).format_signed_int_component(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, int, string).
+:- mode format_signed_int_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred (string.format).format_string_component(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, string, string).
+:- mode format_string_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred (string.format).format_uint64_component(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, string.parse_util.string_format_int_base, uint64, string).
+:- mode format_uint64_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred (string.format).format_uint_component(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, string.parse_util.string_format_int_base, uint, string).
+:- mode format_uint_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred (string.format).format_unsigned_int64_component(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, string.parse_util.string_format_int_base, int64, string).
+:- mode format_unsigned_int64_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred (string.format).format_unsigned_int_component(string.parse_util.string_format_flags, string.parse_util.string_format_maybe_width, string.parse_util.string_format_maybe_prec, string.parse_util.string_format_int_base, int, string).
+:- mode format_unsigned_int_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+
+(string.format).format_cast_int16_to_int(V_3, V_4) :-
+    V_4 = int16.cast_to_int(V_3).
+
+(string.format).format_cast_int16_to_uint(V_3, V_4) :-
+    V_4 = uint16.cast_to_uint(V_5),
+    V_5 = uint16.cast_from_int16(V_3).
+
+(string.format).format_cast_int32_to_int(V_3, V_4) :-
+    V_4 = int32.cast_to_int(V_3).
+
+(string.format).format_cast_int32_to_uint(V_3, V_4) :-
+    V_4 = uint32.cast_to_uint(V_5),
+    V_5 = uint32.cast_from_int32(V_3).
+
+(string.format).format_cast_int8_to_int(V_3, V_4) :-
+    V_4 = int8.cast_to_int(V_3).
+
+(string.format).format_cast_int8_to_uint(V_3, V_4) :-
+    V_4 = uint8.cast_to_uint(V_5),
+    V_5 = uint8.cast_from_int8(V_3).
+
+(string.format).format_cast_int_to_uint(V_3, V_4) :-
+    V_4 = uint.cast_from_int(V_3).
+
+(string.format).format_cast_uint16_to_uint(V_3, V_4) :-
+    V_4 = uint16.cast_to_uint(V_3).
+
+(string.format).format_cast_uint32_to_uint(V_3, V_4) :-
+    V_4 = uint32.cast_to_uint(V_3).
+
+(string.format).format_cast_uint8_to_uint(V_3, V_4) :-
+    V_4 = uint8.cast_to_uint(V_3).
+
+(string.format).format_char_component_nowidth(V_4, V_5, V_6) :-
+    V_7 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    (string.format).format_char_component(V_4, V_7, V_5, V_6).
+
+(string.format).format_char_component_width(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).specified_width(V_6) : string.parse_util.string_format_maybe_width,
+    (string.format).format_char_component(V_5, V_9, V_7, V_8).
+
+(string.format).format_float_component_nowidth_noprec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_float_component(V_5, V_9, V_10, V_6, V_7, V_8).
+
+(string.format).format_float_component_nowidth_prec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).specified_prec(V_7) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_float_component(V_6, V_11, V_12, V_8, V_9, V_10).
+
+(string.format).format_float_component_width_noprec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).specified_width(V_7) : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_float_component(V_6, V_11, V_12, V_8, V_9, V_10).
+
+(string.format).format_float_component_width_prec(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    V_13 = (string.parse_util).specified_width(V_8) : string.parse_util.string_format_maybe_width,
+    V_14 = (string.parse_util).specified_prec(V_9) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_float_component(V_7, V_13, V_14, V_10, V_11, V_12).
+
+(string.format).format_signed_int64_component_nowidth_noprec(V_4, V_5, V_6) :-
+    V_7 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_8 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_signed_int64_component(V_4, V_7, V_8, V_5, V_6).
+
+(string.format).format_signed_int64_component_nowidth_prec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).specified_prec(V_6) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_signed_int64_component(V_5, V_9, V_10, V_7, V_8).
+
+(string.format).format_signed_int64_component_width_noprec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).specified_width(V_6) : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_signed_int64_component(V_5, V_9, V_10, V_7, V_8).
+
+(string.format).format_signed_int64_component_width_prec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).specified_width(V_7) : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).specified_prec(V_8) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_signed_int64_component(V_6, V_11, V_12, V_9, V_10).
+
+(string.format).format_signed_int_component_nowidth_noprec(V_4, V_5, V_6) :-
+    V_7 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_8 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_signed_int_component(V_4, V_7, V_8, V_5, V_6).
+
+(string.format).format_signed_int_component_nowidth_prec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).specified_prec(V_6) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_signed_int_component(V_5, V_9, V_10, V_7, V_8).
+
+(string.format).format_signed_int_component_width_noprec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).specified_width(V_6) : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_signed_int_component(V_5, V_9, V_10, V_7, V_8).
+
+(string.format).format_signed_int_component_width_prec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).specified_width(V_7) : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).specified_prec(V_8) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_signed_int_component(V_6, V_11, V_12, V_9, V_10).
+
+(string.format).format_string_component_nowidth_noprec(V_4, V_5, V_6) :-
+    V_7 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_8 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_string_component(V_4, V_7, V_8, V_5, V_6).
+
+(string.format).format_string_component_nowidth_prec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).specified_prec(V_6) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_string_component(V_5, V_9, V_10, V_7, V_8).
+
+(string.format).format_string_component_width_noprec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).specified_width(V_6) : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_string_component(V_5, V_9, V_10, V_7, V_8).
+
+(string.format).format_string_component_width_prec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).specified_width(V_7) : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).specified_prec(V_8) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_string_component(V_6, V_11, V_12, V_9, V_10).
+
+(string.format).format_uint64_component_nowidth_noprec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_uint64_component(V_5, V_9, V_10, V_6, V_7, V_8).
+
+(string.format).format_uint64_component_nowidth_prec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).specified_prec(V_7) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_uint64_component(V_6, V_11, V_12, V_8, V_9, V_10).
+
+(string.format).format_uint64_component_width_noprec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).specified_width(V_7) : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_uint64_component(V_6, V_11, V_12, V_8, V_9, V_10).
+
+(string.format).format_uint64_component_width_prec(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    V_13 = (string.parse_util).specified_width(V_8) : string.parse_util.string_format_maybe_width,
+    V_14 = (string.parse_util).specified_prec(V_9) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_uint64_component(V_7, V_13, V_14, V_10, V_11, V_12).
+
+(string.format).format_uint_component_nowidth_noprec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_uint_component(V_5, V_9, V_10, V_6, V_7, V_8).
+
+(string.format).format_uint_component_nowidth_prec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).specified_prec(V_7) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_uint_component(V_6, V_11, V_12, V_8, V_9, V_10).
+
+(string.format).format_uint_component_width_noprec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).specified_width(V_7) : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_uint_component(V_6, V_11, V_12, V_8, V_9, V_10).
+
+(string.format).format_uint_component_width_prec(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    V_13 = (string.parse_util).specified_width(V_8) : string.parse_util.string_format_maybe_width,
+    V_14 = (string.parse_util).specified_prec(V_9) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_uint_component(V_7, V_13, V_14, V_10, V_11, V_12).
+
+(string.format).format_unsigned_int64_component_nowidth_noprec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_unsigned_int64_component(V_5, V_9, V_10, V_6, V_7, V_8).
+
+(string.format).format_unsigned_int64_component_nowidth_prec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).specified_prec(V_7) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_unsigned_int64_component(V_6, V_11, V_12, V_8, V_9, V_10).
+
+(string.format).format_unsigned_int64_component_width_noprec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).specified_width(V_7) : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_unsigned_int64_component(V_6, V_11, V_12, V_8, V_9, V_10).
+
+(string.format).format_unsigned_int64_component_width_prec(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    V_13 = (string.parse_util).specified_width(V_8) : string.parse_util.string_format_maybe_width,
+    V_14 = (string.parse_util).specified_prec(V_9) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_unsigned_int64_component(V_7, V_13, V_14, V_10, V_11, V_12).
+
+(string.format).format_unsigned_int_component_nowidth_noprec(V_5, V_6, V_7, V_8) :-
+    V_9 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_10 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_unsigned_int_component(V_5, V_9, V_10, V_6, V_7, V_8).
+
+(string.format).format_unsigned_int_component_nowidth_prec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).no_specified_width : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).specified_prec(V_7) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_unsigned_int_component(V_6, V_11, V_12, V_8, V_9, V_10).
+
+(string.format).format_unsigned_int_component_width_noprec(V_6, V_7, V_8, V_9, V_10) :-
+    V_11 = (string.parse_util).specified_width(V_7) : string.parse_util.string_format_maybe_width,
+    V_12 = (string.parse_util).no_specified_prec : string.parse_util.string_format_maybe_prec,
+    (string.format).format_unsigned_int_component(V_6, V_11, V_12, V_8, V_9, V_10).
+
+(string.format).format_unsigned_int_component_width_prec(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    V_13 = (string.parse_util).specified_width(V_8) : string.parse_util.string_format_maybe_width,
+    V_14 = (string.parse_util).specified_prec(V_9) : string.parse_util.string_format_maybe_prec,
+    (string.format).format_unsigned_int_component(V_7, V_13, V_14, V_10, V_11, V_12).
+
+:- pragma termination_info((string.format).format_cast_int16_to_int((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_cast_int16_to_uint((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_cast_int32_to_int((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_cast_int32_to_uint((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_cast_int8_to_int((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_cast_int8_to_uint((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_cast_int_to_uint((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_cast_uint16_to_uint((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_cast_uint32_to_uint((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_cast_uint8_to_uint((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_char_component((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_char_component_nowidth((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_char_component_width((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_float_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_float_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_float_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_float_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_float_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_impl((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_string_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_string_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_string_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_string_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_string_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint64_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint64_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint64_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint64_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint64_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int64_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int64_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int64_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int64_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int64_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+
+:- pragma exceptions(predicate, ((string.format).format_cast_int16_to_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_cast_int16_to_uint), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_cast_int32_to_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_cast_int32_to_uint), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_cast_int8_to_int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_cast_int8_to_uint), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_cast_int_to_uint), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_cast_uint16_to_uint), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_cast_uint32_to_uint), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_cast_uint8_to_uint), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_char_component), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_char_component_nowidth), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_char_component_width), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_float_component), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_float_component_nowidth_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_float_component_nowidth_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_float_component_width_noprec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_float_component_width_prec), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_impl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int64_component), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int64_component_nowidth_noprec), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int64_component_nowidth_prec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int64_component_width_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int64_component_width_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int_component), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int_component_nowidth_noprec), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int_component_nowidth_prec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int_component_width_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int_component_width_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_string_component), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_string_component_nowidth_noprec), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_string_component_nowidth_prec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_string_component_width_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_string_component_width_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint64_component), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint64_component_nowidth_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint64_component_nowidth_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint64_component_width_noprec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint64_component_width_prec), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint_component), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint_component_nowidth_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint_component_nowidth_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint_component_width_noprec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint_component_width_prec), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int64_component), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int64_component_nowidth_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int64_component_nowidth_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int64_component_width_noprec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int64_component_width_prec), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int_component), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int_component_nowidth_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int_component_nowidth_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int_component_width_noprec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int_component_width_prec), 6, 0, may_throw(user_exception)).
