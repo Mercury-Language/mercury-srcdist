@@ -1,0 +1,5 @@
+:- module (parse_tree.prog_util).
+:- interface.
+:- type strip_what_module_names
+	where	type_is_abstract_enum(1).
+:- type_representation(strip_what_module_names, du_repn(enum("strip_builtin_module_name", "strip_all_module_names", [],  no_c_j_cs))).

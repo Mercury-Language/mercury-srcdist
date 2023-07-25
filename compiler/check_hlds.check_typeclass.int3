@@ -1,0 +1,5 @@
+:- module (check_hlds.check_typeclass).
+:- interface.
+:- type_representation(induced_fundeps, is_eqv_to(list(induced_fundep))).
+:- type_representation(type_vector, is_eqv_to(list(mer_type))).
+:- type_representation(type_vector_instances_map, is_eqv_to(map(type_vector, type_vector_instances))).
