@@ -1,0 +1,7 @@
+:- module (parse_tree.decide_type_repn).
+:- interface.
+:- type_representation(ctor_repn_map, is_eqv_to(map(uint32, ctor_repn))).
+:- type_representation(eqv_repn_map, is_eqv_to(map(type_ctor, item_type_repn_info_eqv))).
+:- type_representation(simple_du_map, is_eqv_to(map(type_ctor, simple_du_repn))).
+:- type_representation(subtype_repn_map, is_eqv_to(map(type_ctor, item_type_repn_info_subtype))).
+:- type_representation(word_aligned_type_ctors_c, is_eqv_to(set_tree234(type_ctor))).

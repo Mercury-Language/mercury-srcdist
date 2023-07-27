@@ -1,0 +1,14 @@
+:- module (hlds.error_msg_inst).
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.prog_data).
+:- type maybe_expand_named_insts
+    --->    dont_expand_named_insts 
+    ;       expand_named_insts .
+:- type short_inst
+    --->    quote_short_inst 
+    ;       fixed_short_inst .
+:- func error_msg_inst(hlds.hlds_module.module_info, parse_tree.prog_data.inst_varset, hlds.error_msg_inst.maybe_expand_named_insts, hlds.error_msg_inst.short_inst, list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.format_piece), list.list(parse_tree.error_spec.format_piece), parse_tree.prog_data.mer_inst) = list.list(parse_tree.error_spec.format_piece).

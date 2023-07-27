@@ -1,0 +1,7 @@
+:- module ((transform_hlds.rbmm).region_transformation).
+:- interface.
+:- use_module map.
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- type name_to_prog_var == map.map(string, parse_tree.prog_data.prog_var).
+:- type name_to_prog_var_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_transformation.name_to_prog_var).

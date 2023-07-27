@@ -1,0 +1,2 @@
+# As far as I (zs) can tell, no --cell-cache option was ever in the repository.
+# MCFLAGS-interpret=--cell-cache

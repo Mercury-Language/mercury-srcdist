@@ -1,0 +1,8 @@
+:- module (hlds.error_msg_inst).
+:- interface.
+:- type maybe_expand_named_insts
+    --->    dont_expand_named_insts 
+    ;       expand_named_insts .
+:- type short_inst
+    --->    quote_short_inst 
+    ;       fixed_short_inst .
