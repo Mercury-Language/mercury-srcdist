@@ -1,0 +1,750 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = debugger
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+RETRY_PROGS = \
+	all_solutions			\
+	browser_test			\
+	chooser_tag_test		\
+	io_tab_goto			\
+	lambda_expr			\
+	mdb_command_test		\
+	queens				\
+	retry				\
+	scripts				\
+	tabled_read			\
+	tabled_read_unitize		\
+	tabled_read_decl		\
+	tabled_typeclass		\
+	tailrec1
+
+NONRETRY_PROGS = \
+	ambiguity			\
+	breakpoints			\
+	browse_packed			\
+	browse_pretty			\
+	class_decl			\
+	cmd_quote			\
+	cond				\
+	debugger_regs			\
+	dice				\
+	double_print			\
+	exception_cmd			\
+	exception_value			\
+	exception_vars			\
+	existential_type_classes	\
+	exported_eqv_type		\
+	field_names			\
+	foreign_type			\
+	higher_order			\
+	implied_instance		\
+	interpreter			\
+	label_layout			\
+	lambdatest			\
+	list_cmd			\
+	lval_desc_array			\
+	mdbrc_test			\
+	multi_parameter			\
+	mutrec				\
+	mutrec_higher_order		\
+	pack				\
+	poly_io_retry			\
+	poly_io_retry2			\
+	polymorphic_ground_term		\
+	polymorphic_output		\
+	print_goal			\
+	print_io_actions		\
+	print_table			\
+	queens_rep			\
+	resume_typeinfos		\
+	save				\
+	shell				\
+	switch_on_unbounded		\
+	synth_attr			\
+	synth_attr_impure		\
+	type_desc_test			\
+	uci_index			\
+	user_event			\
+	user_event_2
+
+TABLING_PROGS = \
+	fib				\
+	loopcheck
+
+# We currently don't pass this test.
+#	deeply_nested_typeinfo
+# This test is currently not useful.
+#	output_term_dep
+
+SENSITIVE_PROGS = \
+	completion			\
+	nondet_stack
+
+SHALLOW_PROGS = \
+	shallow				\
+	user_event_shallow
+
+INTERACTIVE_PROGS = \
+	interactive
+
+# Since the `interactive' test case requires the use of shared libraries,
+# this means it won't work properly if the static libraries are linked
+# (as is done by tools/bootcheck and tools/lmc).
+# So we only enable it if LINK_STATIC is not set.
+#
+# The value of LINK_STATIC is normally in set in ../Mmake.common. However,
+# we include ./Mmake.common only later on in this file, because
+# ../Mmake.commmon depends on the value of the TESTS make variable, and hence
+# on the value of PROGS, part of which we are trying to compute here.
+# We resolve this circularity by repeating the critical test of WORKSPACE from
+# ../Mmake.common here,
+
+ifneq ($(origin WORKSPACE),undefined)
+    LINK_STATIC = yes
+endif
+ifeq ($(origin LINK_STATIC),undefined)
+    LINK_STATIC = no
+endif
+
+ifneq ($(LINK_STATIC),no)
+    INTERACTIVE_PROGS :=
+endif
+
+# Declarative debugging grades don't support trace level shallow,
+# so we execute the tests exercising shallow tracing only in grades
+# other than .decldebug grades.
+ifneq "$(findstring decldebug,$(GRADE))" ""
+    SHALLOW_PROGS :=
+endif
+
+# Tabling is not compatible with parallel execution,
+# so tests exercising tabling will never succeed in .par grades.
+ifneq "$(findstring par,$(GRADE))" ""
+    TABLING_PROGS :=
+endif
+
+# The sensitive tests are so named because they are sensitive to details
+# of code generation. We therefore execute them only in a minimal set of
+# grades that still ensures good test coverage. For example, the tests
+# in trailing grades without debugging do not test anything that the tests in
+# .debug.tr grades do not.
+
+ifneq "$(findstring prof,$(GRADE))" ""
+    SENSITIVE_PROGS :=
+endif
+ifneq "$(findstring memprof,$(GRADE))" ""
+    SENSITIVE_PROGS :=
+endif
+ifeq "$(findstring debug,$(GRADE))" ""
+    ifneq "$(findstring tr,$(GRADE))" ""
+	SENSITIVE_PROGS :=
+    endif
+endif
+ifneq "$(findstring mm,$(GRADE))" ""
+    SENSITIVE_PROGS :=
+endif
+ifneq "$(findstring tsw,$(GRADE))" ""
+    SENSITIVE_PROGS :=
+endif
+ifneq "$(findstring tsc,$(GRADE))" ""
+    SENSITIVE_PROGS :=
+endif
+
+# The no_inline_builtins test only works if the library is built with
+# execution tracing enabled. Adding a `.exp2' file to allow it to be run
+# in other grades would mean that we wouldn't detect a regression which
+# caused builtins not to be traced with `--no-inline-builtins'.
+ifeq "$(findstring debug,$(GRADE))" "debug"
+    DEBUG_GRADE_PROGS = no_inline_builtins
+else
+    DEBUG_GRADE_PROGS =
+endif
+
+# The uci test matches its expected output only if the grade supports
+# enumerated types. Currently all grades do support enumerated types.
+ENUM_PROGS = uci
+
+# The tests term_size_words and term_size_cells are each meant to be used
+# in their respective grades only.
+ifneq "$(findstring .tsw,$(GRADE))" ""
+    TERM_SIZE_PROGS = term_size_words
+else
+    ifneq "$(findstring .tsc,$(GRADE))" ""
+	TERM_SIZE_PROGS = term_size_cells
+    else
+	TERM_SIZE_PROGS =
+    endif
+endif
+
+# The mmos_print test is meant to be used in mmos grades only.
+ifneq "$(findstring mmos,$(GRADE))" ""
+    MMOS_PROGS = mmos_print
+else
+    MMOS_PROGS =
+endif
+
+ALL_RETRY_PROGS = \
+	$(RETRY_PROGS) \
+	$(INTERACTIVE_PROGS)
+ALL_NONRETRY_PROGS = \
+	$(NONRETRY_PROGS) \
+	$(SENSITIVE_PROGS) \
+	$(SHALLOW_PROGS) \
+	$(DEBUG_GRADE_PROGS) \
+	$(ENUM_PROGS) \
+	$(TERM_SIZE_PROGS) \
+	$(MMOS_PROGS)
+
+# Debugging doesn't yet don't work in MLDS grades (hl*, csharp, java),
+# and the retry command doesn't and will not work in deep profiling
+# grades (profdeep).
+# Also base grades `jump' and `fast' cannot be used with
+# stack layouts (which are required for tracing).
+
+ifneq "$(findstring profdeep,$(GRADE))" ""
+    # Eventually, this should be DEBUGGER_PROGS0=$(ALL_NONRETRY_PROGS).
+    # However, the code that is required to switch off the profiling
+    # primitives in Mercury code invoked by the debugger (e.g. for
+    # browsing) has not yet been implemented.
+    DEBUGGER_PROGS0 =
+else
+    DEBUGGER_PROGS0 = $(ALL_NONRETRY_PROGS) $(ALL_RETRY_PROGS)
+endif
+
+# The tail call optimisation isn't supported in decldebug grades,
+# so we don't run the tailrec1 test in those grades.
+ifneq "$(findstring decldebug,$(GRADE))" ""
+    DEBUGGER_PROGS = $(subst tailrec1,,$(DEBUGGER_PROGS0))
+else
+    DEBUGGER_PROGS = $(DEBUGGER_PROGS0)
+endif
+
+ifneq "$(filter hl% java% csharp%,$(GRADE))" ""
+    PROGS =
+else
+    ifneq "$(findstring asm_,$(GRADE))" ""
+        PROGS = $(DEBUGGER_PROGS)
+    else
+        ifneq "$(findstring jump,$(GRADE))" ""
+            PROGS =
+        else
+            ifneq "$(findstring fast,$(GRADE))" ""
+                PROGS =
+            else
+                PROGS = $(DEBUGGER_PROGS)
+            endif
+        endif
+    endif
+endif
+
+TESTS = $(sort $(PROGS))
+include ../Mmake.common
+
+# The minimum trace level in .decldebug grades is --trace decl.
+ifneq "$(findstring decldebug,$(GRADE))" ""
+    MCFLAGS += --trace decl
+else
+    MCFLAGS += --trace deep
+endif
+MLFLAGS += --trace
+
+# Some of the test cases require a different input in decldebug grades,
+# so we set INP to the appropriate extension to use for those tests.
+# All other tests ignore this variable.
+#
+ifneq "$(findstring .decldebug,$(GRADE))" ""
+    INP = inp2
+else
+    INP = inp
+endif
+
+# Module-specific options should go in Mercury.options so they can be found
+# by `mmc --make'.
+include Mercury.options
+
+%.runtest: %.res ;
+
+#-----------------------------------------------------------------------------#
+
+ambiguity.out: ambiguity ambiguity.inp
+	$(MDB_STD) ./ambiguity < ambiguity.inp > ambiguity.out 2>&1
+
+all_solutions.out: all_solutions all_solutions.inp
+	$(MDB) ./all_solutions < all_solutions.inp > all_solutions.out 2>&1
+
+breakpoints.out: breakpoints breakpoints.inp
+	$(MDB_STD) ./breakpoints < breakpoints.inp > breakpoints.out 2>&1
+
+browse_packed.out: browse_packed browse_packed.inp
+	$(MDB) ./browse_packed < browse_packed.inp > browse_packed.out 2>&1
+
+# We need to pipe the output through sed to avoid hard-coding dependencies on
+# particular line numbers in the standard library source code.
+browse_pretty.out: browse_pretty browse_pretty.inp
+	$(MDB) ./browse_pretty < browse_pretty.inp 2>&1 | \
+		sed 's/io.m:[0-9]*/io.m:NNNN/g' > browse_pretty.out 2>&1
+
+# We need to pipe the output through sed to avoid hard-coding dependencies on
+# particular line numbers in the standard library source code.
+browser_test.out: browser_test browser_test.inp
+	$(MDB_STD) ./browser_test < browser_test.inp 2>&1 | \
+		sed 's/io.m:[0-9]*/io.m:NNNN/g' > browser_test.out 2>&1
+
+# We need to pipe the output through sed to avoid hard-coding dependencies on
+# particular line numbers in the standard library source code.
+class_decl.out: class_decl class_decl.inp
+	$(MDB) ./class_decl < class_decl.inp 2>&1 | \
+		sed 's/io.m:[0-9]*/io.m:NNNN/g' > class_decl.out 2>&1
+
+# We need to pipe the output through sed to avoid hard-coding dependencies on
+# particular line numbers in the standard library source code.
+cmd_quote.out: cmd_quote cmd_quote.inp
+	$(MDB) ./cmd_quote < cmd_quote.inp 2>&1 | \
+		sed 's/io.m:[0-9]*/io.m:NNNN/g' > cmd_quote.out 2>&1
+
+cond.out: cond cond.inp
+	$(MDB_STD) ./cond < cond.inp > cond.out 2>&1
+
+chooser_tag_test.out: chooser_tag_test chooser_tag_test.inp
+	$(MDB_STD) ./chooser_tag_test < chooser_tag_test.inp \
+		> chooser_tag_test.out 2>&1
+
+# Set up readline to make it easier to use completion non-interactively.
+completion.out: completion completion.inp
+	INPUTRC=completion.inputrc $(MDB) ./completion \
+		< completion.inp 2>&1 | sed -e '/^$$/d' > completion.out 2>&1
+
+debugger_regs.out: debugger_regs debugger_regs.inp
+	$(MDB) ./debugger_regs < debugger_regs.inp > debugger_regs.out 2>&1
+
+deeply_nested_typeinfo.out: deeply_nested_typeinfo deeply_nested_typeinfo.inp
+	$(MDB_STD) ./deeply_nested_typeinfo < deeply_nested_typeinfo.inp \
+		> deeply_nested_typeinfo.out 2>&1
+
+double_print.out: double_print double_print.inp
+	$(MDB_STD) ./double_print < double_print.inp > double_print.out 2>&1
+
+poly_io_retry.out: poly_io_retry poly_io_retry.inp
+	$(MDB_STD) ./poly_io_retry < poly_io_retry.inp \
+		> poly_io_retry.out 2>&1
+
+poly_io_retry2.out: poly_io_retry2 poly_io_retry2.inp
+	$(MDB_STD) ./poly_io_retry2 < poly_io_retry2.inp \
+		> poly_io_retry2.out 2>&1
+
+# The exception_cmd, exception_vars and loopcheck tests
+# are supposed to return a non-zero exit status, since they exit by throwing
+# an exception. We strip the goal paths from their exception events, since
+# the exact goal paths are dependent on optimization level. The stripping
+# must be done outside the condition of the if-then-else.
+exception_cmd.out: exception_cmd exception_cmd.inp
+	if $(MDB_STD) ./exception_cmd < exception_cmd.inp	\
+		> exception_cmd.tmp 2>&1;			\
+	then							\
+		sed -e '/EXCP/s/).*/)/' < exception_cmd.tmp	\
+			> exception_cmd.out 2>&1;		\
+		rm exception_cmd.tmp;				\
+		false;						\
+	else							\
+		sed -e '/EXCP/s/).*/)/' < exception_cmd.tmp	\
+			> exception_cmd.out 2>&1;		\
+		rm exception_cmd.tmp;				\
+		true;						\
+	fi
+
+dice.pass1: dice
+	/bin/rm -f .mercury_trace_counts.*dice.*
+	MERCURY_OPTIONS=--trace-count ./dice 1 2 3 4 && \
+	mv .mercury_trace_counts.*dice.* dice.pass1
+
+dice.pass2: dice dice.pass1
+	/bin/rm -f .mercury_trace_counts.*dice.*
+	MERCURY_OPTIONS=--trace-count ./dice 5 6 7 8 && \
+	mv .mercury_trace_counts.*dice.* dice.pass2
+
+dice.pass3: dice dice.pass2
+	/bin/rm -f .mercury_trace_counts.*dice.*
+	MERCURY_OPTIONS=--trace-count ./dice 10 11 100 && \
+	mv .mercury_trace_counts.*dice.* dice.pass3
+
+dice.passes: dice.pass1 dice.pass2 dice.pass3
+	MERCURY_OPTIONS= \
+	$(SLICE_DIR)mtc_union -o dice.passes dice.pass1 dice.pass2 dice.pass3
+
+dice.fail: dice dice.passes
+	/bin/rm -f .mercury_trace_counts.*dice.*
+	MERCURY_OPTIONS=--trace-count ./dice 4 1 2 3 && \
+	mv .mercury_trace_counts.*dice.* dice.fail
+
+dice.out: dice dice.inp dice.passes dice.fail
+	$(MDB_STD) ./dice 4 1 2 3 < dice.inp > dice.out 2>&1
+
+# We need to pipe the output through sed to avoid hard-coding dependencies on
+# particular line numbers in the standard library source code.
+exception_value.out: exception_value exception_value.inp
+	$(MDB_STD) ./exception_value < exception_value.inp 2>&1 | \
+		sed -e 's/exception.m:[0-9]*/exception.m:NNNN/g' | \
+		sed -e '/EXCP/s/).*/)/' > exception_value.out 2>&1
+
+exception_vars.out: exception_vars exception_vars.inp
+	if $(MDB_STD) ./exception_vars < exception_vars.inp	\
+		> exception_vars.tmp 2>&1;			\
+	then							\
+		sed -e '/EXCP/s/).*/)/' < exception_vars.tmp	\
+			> exception_vars.out 2>&1;		\
+		rm exception_vars.tmp;				\
+		false;						\
+	else							\
+		sed -e '/EXCP/s/).*/)/' < exception_vars.tmp	\
+			> exception_vars.out 2>&1;		\
+		rm exception_vars.tmp;				\
+		true;						\
+	fi
+
+# We need to pipe the output through sed to avoid hard-coding dependencies on
+# particular line numbers in the standard library source code.
+existential_type_classes.out: existential_type_classes \
+			existential_type_classes.inp
+	$(MDB_STD) ./existential_type_classes < existential_type_classes.inp \
+		2>&1 | sed 's/string.m:[0-9]*/string.m:NNNN/g' | \
+		sed 's/int.m:[0-9]*/int.m:NNNN/g' | \
+		sed 's/existential_type_classes.m:[0-9]*/existential_type_classes.m:NNNN/g' | \
+		sed 's/c_pointer(0x[0-9A-Fa-f]*)/c_pointer(0xXXXX)/g' \
+		> existential_type_classes.out
+
+exported_eqv_type.out: exported_eqv_type exported_eqv_type.inp
+	$(MDB_STD) ./exported_eqv_type < exported_eqv_type.inp > exported_eqv_type.out 2>&1
+
+fib.out: fib fib.inp
+	$(MDB_STD) ./fib < fib.inp > fib.out 2>&1
+
+field_names.out: field_names field_names.inp
+	$(MDB) ./field_names < field_names.inp > field_names.out 2>&1
+
+foreign_type.out: foreign_type foreign_type.inp
+	$(MDB_STD) ./foreign_type < foreign_type.inp | \
+		sed 's/coord, 0x[-0-9A-Fa-f]*/coord, 0xXXXX/g'  |\
+		sed 's/coord, [0-9A-F][0-9A-F][0-9A-F]*/coord, 0xXXXX/g'  \
+		> foreign_type.out 2>&1
+
+higher_order.out: higher_order higher_order.inp
+	$(MDB_STD) ./higher_order < higher_order.inp > higher_order.out 2>&1
+
+implied_instance.out: implied_instance implied_instance.inp
+	$(MDB) ./implied_instance < implied_instance.inp \
+		> implied_instance.out 2>&1
+
+io_tab_goto.out: io_tab_goto io_tab_goto.inp
+	$(MDB_STD) ./io_tab_goto < io_tab_goto.inp 2>&1 | \
+		sed 's/c_pointer(0x[-0-9A-Fa-f]*)/c_pointer(0xXXXX)/g' \
+		> io_tab_goto.out 2>&1
+
+lambda_expr.out: lambda_expr lambda_expr.inp
+	$(MDB_STD) ./lambda_expr < lambda_expr.inp > lambda_expr.out 2>&1
+
+label_layout.out: label_layout label_layout.inp
+	$(MDB) ./label_layout < label_layout.inp > label_layout.out 2>&1
+
+lambdatest.out: lambdatest lambdatest.inp
+	$(MDB_STD) ./lambdatest < lambdatest.inp > lambdatest.out 2>&1
+
+list_cmd.out: list_cmd list_cmd.inp
+	$(MDB) ./list_cmd < list_cmd.inp > list_cmd.out 2>&1
+
+loopcheck.out: loopcheck loopcheck.$(INP)
+	if $(MDB) ./loopcheck < loopcheck.$(INP)		\
+		> loopcheck.tmp 2>&1;				\
+	then							\
+		sed -e '/EXCP/s/).*/)/'				\
+		    -e 's/require.m:[0-9]*/require.m:NNNN/g'	\
+		    -e 's/label with no stack layout info/unknown label/' \
+			< loopcheck.tmp > loopcheck.out 2>&1;	\
+		rm loopcheck.tmp;				\
+		false;						\
+	else							\
+		sed -e '/EXCP/s/).*/)/'				\
+		    -e 's/require.m:[0-9]*/require.m:NNNN/g'	\
+			< loopcheck.tmp	> loopcheck.out 2>&1;	\
+		rm loopcheck.tmp;				\
+		true;						\
+	fi
+
+interpreter.out: interpreter interpreter.inp
+	$(MDB_STD) ./interpreter interpreter.m < interpreter.inp \
+		> interpreter.out 2>&1
+
+lval_desc_array.out: lval_desc_array lval_desc_array.inp
+	$(MDB) ./lval_desc_array < lval_desc_array.inp \
+		> lval_desc_array.out 2>&1
+
+# The use of MDB_STD_NOINIT here is to override the default mdbrc file
+# specified by the MDB make variable.
+mdbrc_test.out: mdbrc_test mdbrc_test.inp mdbrc_test.mdbrc
+	cp mdbrc_test.mdbrc .mdbrc
+	$(MDB_STD_NOINIT) ./mdbrc_test < mdbrc_test.inp \
+		> mdbrc_test.out 2>&1
+	/bin/rm .mdbrc
+
+# We need to pipe the output through sed to avoid hard-coding dependencies on
+# particular line numbers in the standard library source code.
+multi_parameter.out: multi_parameter multi_parameter.inp
+	$(MDB) ./multi_parameter < multi_parameter.inp 2>&1 | \
+		sed 's/char.m:[0-9]*/char.m:NNNN/g' > multi_parameter.out
+
+no_inline_builtins.out: no_inline_builtins no_inline_builtins.inp
+	$(MDB) ./no_inline_builtins < no_inline_builtins.inp \
+		> no_inline_builtins.out 2>&1
+
+mmos_print.out: mmos_print mmos_print.inp
+	$(MDB) ./mmos_print < mmos_print.inp \
+		> mmos_print.out 2>&1
+
+mutrec.out: 	mutrec mutrec.inp
+	$(MDB) ./mutrec < mutrec.inp > mutrec.out 2>&1
+
+mutrec_higher_order.out: mutrec_higher_order mutrec_higher_order.inp
+	$(MDB_STD) ./mutrec_higher_order < mutrec_higher_order.inp \
+		> mutrec_higher_order.out 2>&1
+
+# We need to pipe the output through sed to avoid hard-coding dependencies on
+# particular line numbers in the standard library source code.
+output_term_dep.out: output_term_dep output_term_dep.inp
+	$(MDB) ./output_term_dep < output_term_dep.inp 2>&1 | \
+		sed 's/io.m:[0-9]*/io.m:NNNN/g' > output_term_dep.out 2>&1
+
+pack.out: pack pack.inp
+	$(MDB_STD) ./pack < pack.inp > pack.out 2>&1
+
+polymorphic_ground_term.out: polymorphic_ground_term polymorphic_ground_term.inp
+	$(MDB_STD) ./polymorphic_ground_term < polymorphic_ground_term.inp \
+		> polymorphic_ground_term.out 2>&1;
+
+polymorphic_output.out: polymorphic_output polymorphic_output.inp
+	$(MDB_STD) ./polymorphic_output < polymorphic_output.inp \
+		> polymorphic_output.out 2>&1;
+
+print_goal.out: print_goal print_goal.inp
+	$(MDB_STD) ./print_goal < print_goal.inp > print_goal.out 2>&1
+
+print_io_actions.out: print_io_actions print_io_actions.inp \
+		print_io_actions.data
+	$(MDB_STD) ./print_io_actions < print_io_actions.inp | \
+		sed 's/c_pointer(0x[-0-9A-Fa-f]*)/c_pointer(0xXXXX)/g' \
+		> print_io_actions.out 2>&1
+
+print_table.out: print_table print_table.inp
+	$(MDB_STD) ./print_table < print_table.inp > print_table.out 2>&1
+
+queens.out: queens queens.inp
+	$(MDB_STD) ./queens < queens.inp 2>&1 | \
+		sed 's/int.m:[0-9]*/int.m:NNNN/g' > queens.out 2>&1
+
+queens_rep.out: queens_rep queens_rep.inp
+	$(MDB) ./queens_rep < queens_rep.inp > queens_rep.out 2>&1
+
+# We insert the names of entry labels into the label table only in a few grades
+# (e.g. profiling grades). The debugger's redo label is an entry label. To
+# avoid spurious inconsistencies in the output, we filter out its name even
+# when known.
+nondet_stack.out: nondet_stack nondet_stack.inp
+	$(MDB_STD) ./nondet_stack < nondet_stack.inp 2>&1 | \
+		sed 's/entry label MR_do_trace_redo_fail_deep/label UNKNOWN/g' \
+		| sed 's/unnamed label 0x.*/unnamed label/' \
+		| sed 's/unnamed label [0-9a-fA-F][0-9a-fA-F]*/unnamed label/' \
+		| sed 's/unnamed entry label 0x.*/unnamed entry label/' \
+		| sed 's/unnamed entry label [0-9a-fA-F][0-9a-fA-F]*/unnamed entry label/' \
+		| sed 's/label UNKNOWN .*/label UNKNOWN/' \
+		| sed 's/nondet_stack.m:[0-9]*/nondet_stack.m:NNNN/g' \
+		> nondet_stack.out 2>&1
+
+resume_typeinfos.out: resume_typeinfos resume_typeinfos.inp
+	$(MDB_STD) ./resume_typeinfos < resume_typeinfos.inp 2>&1 | \
+		sed 's/resume_typeinfos.m:[0-9]*/resume_typeinfos.m:NNNN/g' \
+		> resume_typeinfos.out 2>&1
+
+retry.out: retry retry.inp
+	$(MDB_STD) ./retry < retry.inp > retry.out 2>&1
+
+# The value of web_browser_cmd will be system specific, so we pipe the output
+# through sed and replace the system specific bit with a known character
+# sequence.
+save.out: save save.inp
+	$(MDB) ./save < save.inp 2>&1 | \
+	    sed 's/web_browser_cmd.*/web_browser_cmd ZZZ/g' | \
+	    sed 's/^alias grep source.*$$/alias grep source ZZZ\/mdb_grep/' | \
+	    sed 's/^alias open source.*$$/alias open source ZZZ\/mdb_open/' | \
+	    sed 's/^alias track source.*$$/alias track source ZZZ\/mdb_track/'\
+	    > save.out 2>&1
+
+scripts.out: scripts scripts.inp
+	EDITOR=cat $(MDB_STD) ./scripts < scripts.inp > scripts.out 2>&1
+
+shallow.out: shallow shallow.inp
+	$(MDB) ./shallow < shallow.inp > shallow.out 2>&1
+
+shell.out: shell shell.inp
+	$(MDB_STD) ./shell < shell.inp > shell.out 2>&1
+
+switch_on_unbounded.out: switch_on_unbounded switch_on_unbounded.inp
+	$(MDB_STD) ./switch_on_unbounded < switch_on_unbounded.inp \
+		> switch_on_unbounded.out 2>&1
+
+tabled_read.out: tabled_read tabled_read.inp tabled_read.data
+	$(MDB_STD) ./tabled_read < tabled_read.inp 2>&1 | \
+		sed 's/c_pointer(0x[-0-9A-Fa-f]*)/c_pointer(0xXXXX)/g' \
+		> tabled_read.out 2>&1
+
+tabled_read_unitize.out: tabled_read_unitize.data
+
+tabled_read_unitize.out: tabled_read_unitize tabled_read_unitize.inp
+	$(MDB_STD) ./tabled_read_unitize < tabled_read_unitize.inp \
+		> tabled_read_unitize.out 2>&1
+
+tabled_read_decl.out: tabled_read_decl tabled_read_decl.inp tabled_read_decl.data
+	$(MDB_STD) ./tabled_read_decl < tabled_read_decl.inp 2>&1 | \
+		sed 's/c_pointer(0x[-0-9A-Fa-f]*)/c_pointer(0xXXXX)/g' \
+		> tabled_read_decl.out 2>&1
+
+tabled_typeclass.out: tabled_typeclass tabled_typeclass.inp
+	$(MDB_STD) ./tabled_typeclass < tabled_typeclass.inp 2>&1 | \
+		sed 's/0x[-0-9A-Fa-f]*/0xXXXX/g' | \
+		sed 's/(nil)/0xXXXX/g' | \
+		sed 's/stream, [0-9a-fA-F]\{2\}[0-9a-fA-F]*/stream, 0xXXXX/g' | \
+		sed 's/system_error, 0\{2\}0*/system_error, 0xXXXX/g' \
+		> tabled_typeclass.out 2>&1
+
+tailrec1.out: tailrec1 tailrec1.inp tailrec1.data
+	$(MDB_STD) ./tailrec1 < tailrec1.inp > tailrec1.out 2>&1
+
+term_size_cells.out: term_size_cells term_size_cells.inp
+	$(MDB_STD) ./term_size_cells < term_size_cells.inp \
+		> term_size_cells.out 2>&1
+
+term_size_words.out: term_size_words term_size_words.inp
+	$(MDB_STD) ./term_size_words < term_size_words.inp \
+		> term_size_words.out 2>&1
+
+type_desc_test.out: type_desc_test type_desc_test.inp
+	$(MDB_STD) ./type_desc_test < type_desc_test.inp \
+		> type_desc_test.out 2>&1
+
+uci.out: uci uci.inp
+	$(MDB_STD) ./uci < uci.inp > uci.out 2>&1
+
+uci_index.out: uci_index uci_index.inp
+	$(MDB_STD) ./uci_index < uci_index.inp > uci_index.out 2>&1
+
+synth_attr.out: synth_attr synth_attr.inp synth_attr_spec
+	$(MDB_STD) ./synth_attr < synth_attr.inp > synth_attr.out 2>&1
+
+synth_attr_impure.out: synth_attr_impure synth_attr_impure.inp \
+		synth_attr_impure_spec
+	$(MDB_STD) ./synth_attr_impure < synth_attr_impure.inp \
+		> synth_attr_impure.out 2>&1
+
+user_event.out: user_event user_event.inp user_event_spec
+	$(MDB_STD) ./user_event < user_event.inp 2>&1 > user_event.out 2>&1
+
+user_event_2.out: user_event_2 user_event_2.inp user_event_spec_2
+	$(MDB_STD) ./user_event_2 < user_event_2.inp \
+		> user_event_2.out 2>&1
+
+user_event_shallow.out: user_event_shallow user_event_shallow.inp \
+		user_event_spec
+	$(MDB_STD) ./user_event_shallow < user_event_shallow.inp \
+		> user_event_shallow.out 2>&1
+
+# When WORKSPACE is set, use $(WORKSPACE)/tools/lmc to compile the query.
+ifneq ($(origin WORKSPACE), undefined)
+export WORKSPACE
+endif
+
+# Note that interactive.out.orig depends on $(interactive.ints) because
+# interactive.inp contains interactive queries that require interactive.ints
+# to have been built.
+interactive.out.orig: interactive interactive.ints
+ifneq ($(origin WORKSPACE),undefined)
+	rm -rf lmc
+	mkdir ./lmc
+	cp $(WORKSPACE)/tools/lmc lmc/mmc
+endif
+	echo "echo on" > interactive.inp.tmp
+	echo mmc_options $(ALL_GRADEFLAGS) $(ALL_MCFLAGS) \
+			--trace minimum >> interactive.inp.tmp
+	cat interactive.inp >> interactive.inp.tmp
+	PATH="`pwd`/lmc:$$PATH" $(MDB) ./interactive \
+		< interactive.inp.tmp > interactive.out.orig 2>&1
+	rm -f interactive.inp.tmp
+	rm -rf lmc
+
+# We pipe the output through sed to avoid differences for `--use-subdirs',
+# and to remove some spurious warnings that `gcc' and `ld' issue.
+# XXX we should fix the spurious warnings about unresolved symbols.
+# (The spurious warnings about exception handling are due to a flaw
+# in the Digital Unix 3.2 linker, so that one is DEC's problem.)
+interactive.out: interactive.out.orig
+	cat interactive.out.orig | \
+		sed \
+		    -e '/mdb> mmc_options/d' \
+		    -e '/In file included from .*\/lib\/mercury\/inc\/mercury_trace_base.h:[0-9]*,$$/N' \
+		    -e 's/In file included from .*\/lib\/mercury\/inc\/mercury_trace_base.h:[0-9]*,.//' \
+		    -e '/                 from .*\/lib\/mercury\/inc\/mercury_wrapper.h:[0-9]*,$$/N' \
+		    -e 's/                 from .*\/lib\/mercury\/inc\/mercury_wrapper.h:[0-9]*,.//' \
+		    -e '/                 from .*\/lib\/mercury\/inc\/mercury_imp.h:[0-9]*,$$/N' \
+		    -e 's/                 from .*\/lib\/mercury\/inc\/mercury_imp.h:[0-9]*,.//' \
+		    -e '/                 from mdb_query.c:[0-9]*:$$/N' \
+		    -e 's/                 from mdb_query.c:[0-9]*:.//' \
+		    -e '/\/usr\/local\/apps\/gcc-2.95.3\/lib\/gcc-lib\/alpha-dec-osf5.1\/2.95.3\/include\/unistd.h:[0-9]*: warning: .cuserid. redefined$$/N' \
+		    -e 's/\/usr\/local\/apps\/gcc-2.95.3\/lib\/gcc-lib\/alpha-dec-osf5.1\/2.95.3\/include\/unistd.h:[0-9]*: warning: .cuserid. redefined.//' \
+		    -e '/\/usr\/local\/apps\/gcc-2.95.3\/lib\/gcc-lib\/alpha-dec-osf5.1\/2.95.3\/include\/stdio.h:[0-9]*: warning: this is the location of the previous definition$$/N' \
+		    -e 's/\/usr\/local\/apps\/gcc-2.95.3\/lib\/gcc-lib\/alpha-dec-osf5.1\/2.95.3\/include\/stdio.h:[0-9]*: warning: this is the location of the previous definition.//' \
+		    -e '/In file included from \/usr\/local\/apps\/gcc-2.95.3\/lib\/gcc-lib\/alpha-dec-osf5.1\/2.95.3\/include\/stdarg.h:[0-9]*,$$/N' \
+		    -e 's/In file included from \/usr\/local\/apps\/gcc-2.95.3\/lib\/gcc-lib\/alpha-dec-osf5.1\/2.95.3\/include\/stdarg.h:[0-9]*,.//' \
+		    -e '/                 from .*\/lib\/mercury\/inc\/mercury_library_types.h:[0-9]*,$$/N' \
+		    -e 's/                 from .*\/lib\/mercury\/inc\/mercury_library_types.h:[0-9]*,.//' \
+		    -e '/                 from .*\/lib\/mercury\/inc\/mercury_imp.h:[0-9]*,$$/N' \
+		    -e 's/                 from .*\/lib\/mercury\/inc\/mercury_imp.h:[0-9]*,.//' \
+		    -e '/                 from mdb_query.c:[0-9]*:$$/N' \
+		    -e 's/                 from mdb_query.c:[0-9]*:.//' \
+		    -e '/\/usr\/local\/apps\/gcc-2.95.3\/lib\/gcc-lib\/alpha-dec-osf5.1\/2.95.3\/include\/va-alpha.h:[0-9]*: warning: redefinition of .va_list.$$/N' \
+		    -e 's/\/usr\/local\/apps\/gcc-2.95.3\/lib\/gcc-lib\/alpha-dec-osf5.1\/2.95.3\/include\/va-alpha.h:[0-9]*: warning: redefinition of .va_list..//' \
+		    -e '/\/usr\/local\/apps\/gcc-2.95.3\/lib\/gcc-lib\/alpha-dec-osf5.1\/2.95.3\/include\/va_list.h:[0-9]*: warning: .va_list. previously declared here$$/N' \
+		    -e 's/\/usr\/local\/apps\/gcc-2.95.3\/lib\/gcc-lib\/alpha-dec-osf5.1\/2.95.3\/include\/va_list.h:[0-9]*: warning: .va_list. previously declared here.//' \
+		    -e '/\/usr\/bin\/ld:$$/N' \
+		    -e 's/\/usr\/bin\/ld:.//' \
+		    -e '/\/bin\/ld:$$/N' \
+		    -e 's/\/bin\/ld:.//' \
+		    -e '/Warning: Linking some objects which contain exception information sections$$/N' \
+		    -e 's/Warning: Linking some objects which contain exception information sections.//' \
+		    -e '/	and some which do not. This may cause fatal runtime exception handling$$/N' \
+		    -e 's/	and some which do not. This may cause fatal runtime exception handling.//' \
+		    -e '/	problems (last obj encountered without exceptions was .*)\.$$/N' \
+		    -e 's/	problems (last obj encountered without exceptions was .*)\..//' \
+		    -e '/Warning: Unresolved:$$/N' \
+		    -e 's/Warning: Unresolved:.//' \
+		    -e '/<predicate .main.\/2 mode 0>$$/N' \
+		    -e 's/<predicate .main.\/2 mode 0>.//' \
+		    -e '/<predicate .interactive:qperm.\/2 mode 0>$$/N' \
+		    -e 's/<predicate .interactive:qperm.\/2 mode 0>.//' \
+		    -e '/__start$$/N' \
+		    -e 's/__start.//' \
+		    > interactive.out
+	# ignore egcs internal errors -- those are not our fault
+	if grep 'gcc.*Internal compiler error' interactive.out; then \
+		cp interactive.exp interactive.out; \
+	fi
+
+# We ignore the result of this action because
+# the exit status of grep is not useful in this case.
+mdb_command_test.out: mdb_command_test mdb_command_test.inp
+	-$(MDB) ./mdb_command_test < mdb_command_test.inp 2>&1 \
+		| egrep "internal error in the trace help system" \
+		> mdb_command_test.out
+
+#-----------------------------------------------------------------------------#
