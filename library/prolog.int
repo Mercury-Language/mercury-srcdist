@@ -1,0 +1,40 @@
+:- module prolog.
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module pair.
+:- use_module univ.
+:- type univ_result == pair.pair(string, list.list(univ.univ)).
+:- pred =..(T, prolog.univ_result).
+:- mode =..((builtin.in), (builtin.out)) is det.
+:- pred =:=(T, T).
+:- mode =:=((builtin.in), (builtin.in)) is semidet.
+:- pred ==(T, T).
+:- mode ==((builtin.in), (builtin.in)) is semidet.
+:- pred =\=(T, T).
+:- mode =\=((builtin.in), (builtin.in)) is semidet.
+:- pred \==(T, T).
+:- mode \==((builtin.in), (builtin.in)) is semidet.
+:- pred arg(int, T, univ.univ).
+:- mode arg((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred det_arg(int, T, univ.univ).
+:- mode det_arg((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred is(T, T) is det.
+:- mode is((builtin.uo), (builtin.di)) is det.
+:- mode is((builtin.out), (builtin.in)) is det.
+:- pred see(string, io.res, io.io, io.io).
+:- mode see((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred see_binary(string, io.res, io.io, io.io).
+:- mode see_binary((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred seen(io.io, io.io).
+:- mode seen((builtin.di), (builtin.uo)) is det.
+:- pred seen_binary(io.io, io.io).
+:- mode seen_binary((builtin.di), (builtin.uo)) is det.
+:- pred tell(string, io.res, io.io, io.io).
+:- mode tell((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred tell_binary(string, io.res, io.io, io.io).
+:- mode tell_binary((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred told(io.io, io.io).
+:- mode told((builtin.di), (builtin.uo)) is det.
+:- pred told_binary(io.io, io.io).
+:- mode told_binary((builtin.di), (builtin.uo)) is det.
