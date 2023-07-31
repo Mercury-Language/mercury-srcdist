@@ -1,0 +1,338 @@
+/*
+** Automatically generated from `make.util.m'
+** by the Mercury compiler,
+** version rotd-2023-07-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__util
+#define MR_HEADER_GUARD_make__util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__UTIL_DECL_GUARD
+#define MAKE__UTIL_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__util__make__util__type_ctor_info_target_extension_0;
+
+void MR_CALL 
+make__util__debug_make_msg_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+make__util__dependency_file_hash_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+make__util__dependency_file_to_file_name_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+make__util__dependency_file_with_module_index_hash_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+MR_bool MR_CALL 
+make__util__extension_to_target_type_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__util__file_error_msg_2_p_0(
+  MR_String param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+make__util__find_error_or_older_ok_timestamp_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__util__find_error_or_oldest_ok_timestamp_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+make__util__get_dependency_timestamp_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+make__util__get_file_name_9_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_String * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+make__util__get_file_timestamp_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+make__util__get_make_target_file_name_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+make__util__get_real_milliseconds_3_p_0(
+  MR_Integer * param_1);
+
+void MR_CALL 
+make__util__get_target_timestamp_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+make__util__get_timestamp_file_timestamp_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+make__util__linked_target_file_name_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+make__util__make_remove_file_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+make__util__maybe_making_filename_msg_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+make__util__maybe_reanalyse_modules_msg_2_p_0(
+  MR_Word param_1,
+  MR_String * param_2);
+
+void MR_CALL 
+make__util__maybe_symlink_or_copy_linked_target_msg_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+make__util__maybe_warn_up_to_date_target_msg_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+make__util__maybe_write_msg_3_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+make__util__maybe_write_msg_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+make__util__maybe_write_msg_locked_4_p_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+void MR_CALL 
+make__util__maybe_write_msg_locked_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3);
+
+void MR_CALL 
+make__util__module_name_hash_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+make__util__option_set_four_part_msg_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_String param_5,
+  MR_String param_6,
+  MR_String * param_7);
+
+void MR_CALL 
+make__util__option_set_one_part_msg_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+make__util__option_set_three_part_msg_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_String param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+make__util__option_set_two_part_msg_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+make__util__remove_make_module_file_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+make__util__remove_make_target_file_8_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+make__util__remove_make_target_file_by_name_9_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+MR_bool MR_CALL 
+make__util__target_extension_synonym_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+make__util__target_is_grade_or_arch_dependent_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+make__util__timestamp_extension_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+make__util__verbose_make_four_part_msg_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_String param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+make__util__verbose_make_one_part_msg_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+make__util__verbose_make_three_part_msg_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_String param_4,
+  MR_String * param_5);
+
+void MR_CALL 
+make__util__verbose_make_two_part_msg_4_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_String param_3,
+  MR_String * param_4);
+
+MR_Word MR_CALL 
+make__util__init_target_file_timestamps_0_f_0(void);
+
+MR_Word MR_CALL 
+make__util__make_dependency_list_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+make__util__make_target_file_list_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__make__util__init(void);
+void mercury__make__util__init_type_tables(void);
+void mercury__make__util__init_debugger(void);
+const char *mercury__make__util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.util
+
+// :- end_interface make.util.

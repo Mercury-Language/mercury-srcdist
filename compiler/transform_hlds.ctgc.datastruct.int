@@ -1,0 +1,35 @@
+:- module ((transform_hlds.ctgc).datastruct).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_pragma).
+:- use_module (parse_tree.var_table).
+:- pred datastruct_apply_widening(hlds.hlds_module.module_info, parse_tree.var_table.var_table, parse_tree.prog_data_pragma.datastruct, parse_tree.prog_data_pragma.datastruct).
+:- mode datastruct_apply_widening((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred datastruct_equal(parse_tree.prog_data_pragma.datastruct, parse_tree.prog_data_pragma.datastruct).
+:- mode datastruct_equal((builtin.in), (builtin.in)) is semidet.
+:- func datastruct_init(parse_tree.prog_data.prog_var) = parse_tree.prog_data_pragma.datastruct.
+:- func datastruct_init_with_pos(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, int) = parse_tree.prog_data_pragma.datastruct.
+:- func datastruct_init_with_selector(parse_tree.prog_data.prog_var, parse_tree.prog_data_pragma.selector) = parse_tree.prog_data_pragma.datastruct.
+:- func datastruct_lists_least_upper_bound(hlds.hlds_module.module_info, parse_tree.var_table.var_table, list.list(parse_tree.prog_data_pragma.datastruct), list.list(parse_tree.prog_data_pragma.datastruct)) = list.list(parse_tree.prog_data_pragma.datastruct).
+:- pred datastruct_refers_to_topcell(parse_tree.prog_data_pragma.datastruct).
+:- mode datastruct_refers_to_topcell((builtin.in)) is semidet.
+:- pred datastruct_same_vars(parse_tree.prog_data_pragma.datastruct, parse_tree.prog_data_pragma.datastruct).
+:- mode datastruct_same_vars((builtin.in), (builtin.in)) is semidet.
+:- pred datastruct_subsumed_by(hlds.hlds_module.module_info, parse_tree.var_table.var_table, parse_tree.prog_data_pragma.datastruct, parse_tree.prog_data_pragma.datastruct).
+:- mode datastruct_subsumed_by((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred datastruct_subsumed_by_list(hlds.hlds_module.module_info, parse_tree.var_table.var_table, parse_tree.prog_data_pragma.datastruct, list.list(parse_tree.prog_data_pragma.datastruct)).
+:- mode datastruct_subsumed_by_list((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred datastruct_subsumed_by_return_selector(hlds.hlds_module.module_info, parse_tree.var_table.var_table, parse_tree.prog_data_pragma.datastruct, parse_tree.prog_data_pragma.datastruct, parse_tree.prog_data_pragma.selector).
+:- mode datastruct_subsumed_by_return_selector((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func datastruct_termshift(hlds.hlds_module.module_info, parse_tree.var_table.var_table, parse_tree.prog_data_pragma.selector, parse_tree.prog_data_pragma.datastruct) = parse_tree.prog_data_pragma.datastruct.
+:- func datastructs_project(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data_pragma.datastruct)) = list.list(parse_tree.prog_data_pragma.datastruct).
+:- pred datastructs_subsumed_by_list(hlds.hlds_module.module_info, parse_tree.var_table.var_table, list.list(parse_tree.prog_data_pragma.datastruct), list.list(parse_tree.prog_data_pragma.datastruct)).
+:- mode datastructs_subsumed_by_list((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred datastructs_that_are_subsumed_by_list(hlds.hlds_module.module_info, parse_tree.var_table.var_table, list.list(parse_tree.prog_data_pragma.datastruct), list.list(parse_tree.prog_data_pragma.datastruct), list.list(parse_tree.prog_data_pragma.datastruct)).
+:- mode datastructs_that_are_subsumed_by_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func datastructs_vars(list.list(parse_tree.prog_data_pragma.datastruct)) = list.list(parse_tree.prog_data.prog_var).
+:- func normalize_datastruct(hlds.hlds_module.module_info, parse_tree.var_table.var_table, parse_tree.prog_data_pragma.datastruct) = parse_tree.prog_data_pragma.datastruct.
