@@ -1,0 +1,9 @@
+:- module (ll_backend.prog_rep).
+:- interface.
+:- type flatten_par_conjs
+	where	type_is_abstract_enum(1).
+:- type prog_rep_info.
+:- type var_num_map.
+:- type_representation(flatten_par_conjs, du_repn(enum("flatten_par_conjs", "expect_no_par_conjs", [],  no_c_j_cs))).
+:- type_representation(prog_rep_info, is_word_aligned_ptr).
+:- type_representation(var_num_map, is_eqv_to(map(prog_var, pair(int, string)))).
