@@ -1,0 +1,9 @@
+:- module (ll_backend.unify_gen_util).
+:- interface.
+:- type arg_and_width(Arg).
+:- type assign_dir
+	where	type_is_abstract_enum(2).
+:- type maybe_zero_const
+	where	type_is_abstract_enum(1).
+:- type_representation(assign_dir, du_repn(enum("assign_left", "assign_right", ["assign_unused"],  no_c_j_cs))).
+:- type_representation(maybe_zero_const, du_repn(enum("is_not_zero_const", "is_zero_const", [],  no_c_j_cs))).
