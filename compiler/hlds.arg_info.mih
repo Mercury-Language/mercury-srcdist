@@ -1,0 +1,153 @@
+/*
+** Automatically generated from `arg_info.m'
+** by the Mercury compiler,
+** version rotd-2023-08-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.arg_info.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__arg_info
+#define MR_HEADER_GUARD_hlds__arg_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__ARG_INFO_DECL_GUARD
+#define HLDS__ARG_INFO_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+void MR_CALL 
+hlds__arg_info__compute_in_and_out_vars_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__arg_info__compute_in_and_out_vars_sep_regs_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7,
+  MR_Word * param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+hlds__arg_info__generate_arg_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__arg_info__generate_proc_arg_info_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__arg_info__generic_call_arg_reg_types_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__arg_info__make_arg_infos_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__arg_info__make_standard_arg_infos_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__arg_info__partition_args_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__arg_info__partition_args_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__arg_info__partition_generic_call_args_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+hlds__arg_info__partition_proc_args_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__arg_info__partition_proc_call_args_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word * param_7);
+
+void mercury__hlds__arg_info__init(void);
+void mercury__hlds__arg_info__init_type_tables(void);
+void mercury__hlds__arg_info__init_debugger(void);
+const char *mercury__hlds__arg_info__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.arg_info
+
+// :- end_interface hlds.arg_info.

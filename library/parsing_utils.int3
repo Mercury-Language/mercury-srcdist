@@ -1,0 +1,17 @@
+:- module parsing_utils.
+:- interface.
+:- type line_numbers.
+:- type parse_result(T).
+:- type parser(T).
+:- type parser_with_state(T, S).
+:- type ps.
+:- type skip_whitespace_pred.
+:- type src.
+:- abstract_inst((parser)).
+:- abstract_inst((parser_with_state)).
+:- type_representation(line_numbers, is_eqv_to(array(int))).
+:- type_representation(parser(V_1), is_eqv_to(pred(parsing_utils.src, V_1, parsing_utils.ps, parsing_utils.ps))).
+:- type_representation(parser_with_state(V_1, V_2), is_eqv_to(pred(parsing_utils.src, V_1, V_2, V_2, parsing_utils.ps, parsing_utils.ps))).
+:- type_representation(ps, is_eqv_to(int)).
+:- type_representation(skip_whitespace_pred, is_eqv_to(parsing_utils.parser(unit))).
+:- type_representation(src, is_word_aligned_ptr).

@@ -1,0 +1,12 @@
+:- module library.
+:- interface.
+:- type doc_or_undoc
+    --->    doc 
+    ;       undoc .
+:- pred mercury_std_library_module(string).
+:- mode mercury_std_library_module((builtin.in)) is semidet.
+:- pred stdlib_module_doc_undoc(string, library.doc_or_undoc).
+:- mode stdlib_module_doc_undoc((builtin.in), (builtin.out)) is semidet.
+:- mode stdlib_module_doc_undoc((builtin.out), (builtin.out)) is multi.
+:- pred version(string, string).
+:- mode version((builtin.out), (builtin.out)) is det.

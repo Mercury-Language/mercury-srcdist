@@ -1,0 +1,42 @@
+:- module ((parse_tree.module_qual).qual_errors).
+:- interface.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module (mdbcomp.prim_data).
+:- use_module (parse_tree.prog_data).
+:- type mq_constraint_error_context
+    --->    mqcec_class_defn(parse_tree.prog_data.prog_context, parse_tree.prog_data.class_id)
+    ;       mqcec_class_method(parse_tree.prog_data.prog_context, mdbcomp.prim_data.pred_or_func, string)
+    ;       mqcec_instance_defn(parse_tree.prog_data.prog_context, parse_tree.prog_data.class_name, list.list(parse_tree.prog_data.mer_type))
+    ;       mqcec_type_defn_constructor(parse_tree.prog_data.prog_context, parse_tree.prog_data.type_ctor, string)
+    ;       mqcec_pred_decl(parse_tree.prog_data.prog_context, parse_tree.prog_data.pf_sym_name_arity).
+:- type mq_error_context
+    --->    mqec_type_defn(parse_tree.prog_data.prog_context, parse_tree.prog_data.type_ctor)
+    ;       mqec_inst_defn(parse_tree.prog_data.prog_context, parse_tree.prog_data.inst_ctor)
+    ;       mqec_mode_defn(parse_tree.prog_data.prog_context, parse_tree.prog_data.mode_ctor)
+    ;       mqec_constructor_arg(parse_tree.prog_data.prog_context, parse_tree.prog_data.type_ctor, string, int, maybe.maybe(parse_tree.prog_data.ctor_field_name))
+    ;       mqec_typeclass_constraint_name(parse_tree.module_qual.qual_errors.mq_constraint_error_context)
+    ;       mqec_typeclass_constraint(mdbcomp.sym_name.sym_name, int, parse_tree.module_qual.qual_errors.mq_constraint_error_context)
+    ;       mqec_pred_or_func(parse_tree.prog_data.prog_context, mdbcomp.prim_data.pred_or_func, parse_tree.module_qual.id_set.mq_id)
+    ;       mqec_pred_or_func_mode(parse_tree.prog_data.prog_context, maybe.maybe(mdbcomp.prim_data.pred_or_func), parse_tree.module_qual.id_set.mq_id)
+    ;       mqec_foreign_proc(parse_tree.prog_data.prog_context)
+    ;       mqec_foreign_enum(parse_tree.prog_data.prog_context)
+    ;       mqec_foreign_export_enum(parse_tree.prog_data.prog_context)
+    ;       mqec_pragma_decl(parse_tree.prog_data.prog_context, parse_tree.prog_item.decl_pragma)
+    ;       mqec_pragma_impl(parse_tree.prog_data.prog_context, parse_tree.prog_item.impl_pragma)
+    ;       mqec_lambda_expr(parse_tree.prog_data.prog_context)
+    ;       mqec_clause_mode_annotation(parse_tree.prog_data.prog_context)
+    ;       mqec_type_qual(parse_tree.prog_data.prog_context)
+    ;       mqec_class(parse_tree.prog_data.prog_context, parse_tree.prog_data.class_id)
+    ;       mqec_instance(parse_tree.prog_data.prog_context, parse_tree.prog_data.class_id)
+    ;       mqec_mutable(parse_tree.prog_data.prog_context, string)
+    ;       mqec_type_repn(parse_tree.prog_data.prog_context, parse_tree.prog_data.type_ctor)
+    ;       mqec_event_spec_attr(parse_tree.prog_data.prog_context, string, string).
+:- pred report_ambiguous_match(parse_tree.module_qual.qual_errors.mq_error_context, parse_tree.module_qual.id_set.mq_id, parse_tree.module_qual.id_set.qual_id_kind, list.list(mdbcomp.sym_name.module_name), list.list(mdbcomp.sym_name.module_name), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode report_ambiguous_match((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred report_invalid_user_inst(mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.mer_inst), parse_tree.module_qual.qual_errors.mq_error_context, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode report_invalid_user_inst((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred report_undefined_mq_id(parse_tree.module_qual.mq_info, parse_tree.module_qual.qual_errors.mq_error_context, parse_tree.module_qual.id_set.mq_id, parse_tree.module_qual.id_set.qual_id_kind, mdbcomp.sym_name.module_name, list.list(mdbcomp.sym_name.module_name), list.list(mdbcomp.sym_name.module_name), set.set(int), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode report_undefined_mq_id((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred warn_unused_interface_import(mdbcomp.sym_name.module_name, pair.pair(mdbcomp.sym_name.module_name, one_or_more.one_or_more(parse_tree.prog_data.prog_context)), list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode warn_unused_interface_import((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
