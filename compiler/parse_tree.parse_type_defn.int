@@ -1,0 +1,20 @@
+:- module (parse_tree.parse_type_defn).
+:- interface.
+:- use_module cord.
+:- use_module list.
+:- use_module mdbcomp.
+:- use_module term.
+:- use_module varset.
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.parse_types).
+:- use_module (parse_tree.prog_data).
+:- pred parse_solver_type_defn_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_solver_type_defn_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_type_defn_head(cord.cord(parse_tree.error_spec.format_piece), mdbcomp.sym_name.module_name, varset.varset, term.term, parse_tree.maybe_error.maybe2(mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.type_param))).
+:- mode parse_type_defn_head((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_type_defn_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, parse_tree.prog_data.item_seq_num, parse_tree.prog_data.is_solver_type, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_type_defn_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_where_unify_compare(mdbcomp.sym_name.module_name, varset.varset, term.term, parse_tree.maybe_error.maybe1(parse_tree.prog_data.maybe_canonical)).
+:- mode parse_where_unify_compare((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,265 @@
+/*
+** Automatically generated from `math.m'
+** by the Mercury compiler,
+** version rotd-2023-08-07
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module math.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_math
+#define MR_HEADER_GUARD_math
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MATH_DECL_GUARD
+#define MATH_DECL_GUARD
+
+
+    #include <math.h>
+
+    // Mathematical constants.
+    //
+    // The maximum number of significant decimal digits which can be packed
+    // into an IEEE-754 extended precision floating point number is 18.
+    // Therefore 20 significant decimal digits for these constants
+    // should be plenty.
+
+    #define ML_FLOAT_E      2.7182818284590452354
+    #define ML_FLOAT_PI     3.1415926535897932384
+    #define ML_FLOAT_LN2    0.69314718055994530941
+
+    // Choose between float or double cmath functions depending on the type of
+    // MR_Float
+    #if defined(MR_USE_SINGLE_PREC_FLOAT)
+        #define ML_EXP(X)       expf(X)
+        #define ML_LOG(X)       logf(X)
+        #define ML_LOG10(X)     log10f(X)
+        #define ML_POW(X, Y)    powf(X, Y)
+        #define ML_SQRT(X)      sqrtf(X)
+        #define ML_SIN(X)       sinf(X)
+        #define ML_COS(X)       cosf(X)
+        #define ML_TAN(X)       tanf(X)
+        #define ML_ASIN(X)      asinf(X)
+        #define ML_ACOS(X)      acosf(X)
+        #define ML_ATAN(X)      atanf(X)
+        #define ML_ATAN2(X, Y)  atan2f(X, Y)
+        #define ML_SINH(X)      sinhf(X)
+        #define ML_COSH(X)      coshf(X)
+        #define ML_TANH(X)      tanhf(X)
+        #if defined(MR_HAVE_FMA)
+            #define ML_FMA(X, Y, Z) fmaf(X, Y, Z)
+        #endif
+    #else
+        #define ML_EXP(X)       exp(X)
+        #define ML_LOG(X)       log(X)
+        #define ML_LOG10(X)     log10(X)
+        #define ML_POW(X, Y)    pow(X, Y)
+        #define ML_SQRT(X)      sqrt(X)
+        #define ML_SIN(X)       sin(X)
+        #define ML_COS(X)       cos(X)
+        #define ML_TAN(X)       tan(X)
+        #define ML_ASIN(X)      asin(X)
+        #define ML_ACOS(X)      acos(X)
+        #define ML_ATAN(X)      atan(X)
+        #define ML_ATAN2(X, Y)  atan2(X, Y)
+        #define ML_SINH(X)      sinh(X)
+        #define ML_COSH(X)      cosh(X)
+        #define ML_TANH(X)      tanh(X)
+        #if defined(MR_HAVE_FMA)
+            #define ML_FMA(X, Y, Z) fma(X, Y, Z)
+        #endif
+    #endif
+
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__math__math__type_ctor_info_quadratic_roots_0;
+
+MR_bool MR_CALL 
+mercury__math__have_fma_0_p_0(void);
+
+MR_Float MR_CALL 
+mercury__math__acos_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__asin_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__atan_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__atan2_2_f_0(
+  MR_Float param_1,
+  MR_Float param_2);
+
+MR_Float MR_CALL 
+mercury__math__ceiling_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__cos_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__cosh_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__e_0_f_0(void);
+
+MR_Float MR_CALL 
+mercury__math__exp_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__floor_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__fma_3_f_0(
+  MR_Float param_1,
+  MR_Float param_2,
+  MR_Float param_3);
+
+MR_Float MR_CALL 
+mercury__math__ln_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__log_2_f_0(
+  MR_Float param_1,
+  MR_Float param_2);
+
+MR_Float MR_CALL 
+mercury__math__log10_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__log2_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__pi_0_f_0(void);
+
+MR_Float MR_CALL 
+mercury__math__pow_2_f_0(
+  MR_Float param_1,
+  MR_Float param_2);
+
+MR_Float MR_CALL 
+mercury__math__round_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__sin_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__sinh_1_f_0(
+  MR_Float param_1);
+
+MR_Word MR_CALL 
+mercury__math__solve_quadratic_3_f_0(
+  MR_Float param_1,
+  MR_Float param_2,
+  MR_Float param_3);
+
+MR_Float MR_CALL 
+mercury__math__sqrt_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__tan_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__tanh_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__truncate_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__unchecked_acos_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__unchecked_asin_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__unchecked_ln_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__unchecked_log_2_f_0(
+  MR_Float param_1,
+  MR_Float param_2);
+
+MR_Float MR_CALL 
+mercury__math__unchecked_log10_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__unchecked_log2_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+mercury__math__unchecked_pow_2_f_0(
+  MR_Float param_1,
+  MR_Float param_2);
+
+MR_Float MR_CALL 
+mercury__math__unchecked_sqrt_1_f_0(
+  MR_Float param_1);
+
+void MR_CALL 
+mercury__math____Compare____quadratic_roots_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__math____Unify____quadratic_roots_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__math__init(void);
+void mercury__math__init_type_tables(void);
+void mercury__math__init_debugger(void);
+const char *mercury__math__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_math
+
+// :- end_interface math.
