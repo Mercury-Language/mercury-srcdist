@@ -1,0 +1,63 @@
+/*
+** Automatically generated from `make.track_flags.m'
+** by the Mercury compiler,
+** version rotd-2023-08-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.track_flags.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__track_flags
+#define MR_HEADER_GUARD_make__track_flags
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__TRACK_FLAGS_DECL_GUARD
+#define MAKE__TRACK_FLAGS_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__track_flags__make__track_flags__type_ctor_info_last_hash_0;
+
+void MR_CALL 
+make__track_flags__make_track_flags_files_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void mercury__make__track_flags__init(void);
+void mercury__make__track_flags__init_type_tables(void);
+void mercury__make__track_flags__init_debugger(void);
+const char *mercury__make__track_flags__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.track_flags
+
+// :- end_interface make.track_flags.
