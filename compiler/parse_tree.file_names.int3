@@ -1,0 +1,70 @@
+:- module (parse_tree.file_names).
+:- interface.
+:- type ext.
+:- type ext_analysis
+	where	type_is_abstract_enum(2).
+:- type ext_analysis_ds
+	where	type_is_abstract_enum(1).
+:- type ext_bytecode
+	where	type_is_abstract_enum(1).
+:- type ext_cur
+	where	type_is_abstract_enum(5).
+:- type ext_exec_gs
+	where	type_is_abstract_enum(2).
+:- type ext_init_c.
+:- type ext_init_obj
+	where	type_is_abstract_enum(3).
+:- type ext_int
+	where	type_is_abstract_enum(3).
+:- type ext_lib_gs
+	where	type_is_abstract_enum(3).
+:- type ext_mih.
+:- type ext_misc_gs
+	where	type_is_abstract_enum(1).
+:- type ext_misc_ngs
+	where	type_is_abstract_enum(2).
+:- type ext_mmake_fragment
+	where	type_is_abstract_enum(2).
+:- type ext_obj
+	where	type_is_abstract_enum(3).
+:- type ext_opt
+	where	type_is_abstract_enum(1).
+:- type ext_opt_date
+	where	type_is_abstract_enum(1).
+:- type ext_target_c_cs
+	where	type_is_abstract_enum(1).
+:- type ext_target_date
+	where	type_is_abstract_enum(2).
+:- type ext_target_java
+	where	type_is_abstract_enum(1).
+:- type ext_user_ngs
+	where	type_is_abstract_enum(4).
+:- type maybe_create_dirs
+	where	type_is_abstract_enum(1).
+:- type maybe_for_search
+	where	type_is_abstract_enum(1).
+:- type maybe_search
+	where	type_is_abstract_enum(1).
+:- type_representation(ext_analysis, du_repn(enum("ext_an_analysis", "ext_an_imdg", ["ext_an_request"],  no_c_j_cs))).
+:- type_representation(ext_analysis_ds, du_repn(enum("ext_an_ds_date", "ext_an_ds_status", [],  no_c_j_cs))).
+:- type_representation(ext_bytecode, du_repn(enum("ext_bc_mbc", "ext_bc_bytedebug", [],  no_c_j_cs))).
+:- type_representation(ext_cur, du_repn(enum("ext_cur_exec_exe", "ext_cur_lib_dollar_efsl", ["ext_cur_lib_lib", "ext_cur_lib_so", "ext_cur_mh", "ext_cur_pmt_all_int3s", "ext_cur_pmt_all_ints", "ext_cur_pmt_all_opts", "ext_cur_pmt_all_trans_opts", "ext_cur_pmt_check", "ext_cur_pmt_classes", "ext_cur_pmt_clean", "ext_cur_pmt_depend", "ext_cur_pmt_install_grade_hdrs", "ext_cur_pmt_install_hdrs", "ext_cur_pmt_install_ints", "ext_cur_pmt_install_opts", "ext_cur_pmt_int3s", "ext_cur_pmt_ints", "ext_cur_pmt_javas", "ext_cur_pmt_opts", "ext_cur_pmt_realclean", "ext_cur_pmt_trans_opts", "ext_cur_user_depgraph", "ext_cur_user_err", "ext_cur_user_hlds_dump", "ext_cur_user_mlds_dump", "ext_cur_user_order", "ext_cur_user_ugly"],  no_c_j_cs))).
+:- type_representation(ext_exec_gs, du_repn(enum("ext_exec_gs_noext", "ext_exec_gs_bat", ["ext_exec_exec_opt"],  no_c_j_cs))).
+:- type_representation(ext_init_c, du_repn(direct_dummy("ext_init_c",  no_c_j_cs))).
+:- type_representation(ext_init_obj, du_repn(enum("ext_init_obj_dollar_o", "ext_init_obj_o", ["ext_init_obj_pic_o", "ext_init_obj_obj_opt", "ext_init_obj_pic_obj_opt"],  no_c_j_cs))).
+:- type_representation(ext_int, du_repn(enum("ext_int_int0", "ext_int_int1", ["ext_int_int2", "ext_int_int3", "ext_int_date_int0", "ext_int_date_int12", "ext_int_date_int3"],  no_c_j_cs))).
+:- type_representation(ext_lib_gs, du_repn(enum("ext_lib_gs_dollar_a", "ext_lib_gs_archive", ["ext_lib_gs_dll", "ext_lib_gs_init", "ext_lib_gs_jar", "ext_lib_gs_lib_opt", "ext_lib_gs_sh_lib_opt"],  no_c_j_cs))).
+:- type_representation(ext_mih, du_repn(direct_dummy("ext_mih_mih",  no_c_j_cs))).
+:- type_representation(ext_misc_gs, du_repn(enum("ext_misc_gs_used", "ext_misc_gs_track_flags", [],  no_c_j_cs))).
+:- type_representation(ext_misc_ngs, du_repn(enum("ext_misc_ngs_module_dep", "ext_misc_ngs_err_date", ["ext_misc_ngs_prof"],  no_c_j_cs))).
+:- type_representation(ext_mmake_fragment, du_repn(enum("ext_mf_d", "ext_mf_dv", ["ext_mf_dep"],  no_c_j_cs))).
+:- type_representation(ext_obj, du_repn(enum("ext_obj_dollar_o", "ext_obj_dollar_efpo", ["ext_obj_o", "ext_obj_pic_o", "ext_obj_obj_opt", "ext_obj_pic_obj_opt"],  no_c_j_cs))).
+:- type_representation(ext_opt, du_repn(enum("ext_opt_plain", "ext_opt_trans", [],  no_c_j_cs))).
+:- type_representation(ext_opt_date, du_repn(enum("ext_opt_date_plain", "ext_opt_date_trans", [],  no_c_j_cs))).
+:- type_representation(ext_target_c_cs, du_repn(enum("ext_target_c", "ext_target_cs", [],  no_c_j_cs))).
+:- type_representation(ext_target_date, du_repn(enum("ext_target_date_c", "ext_target_date_cs", ["ext_target_date_java"],  no_c_j_cs))).
+:- type_representation(ext_target_java, du_repn(enum("ext_target_java_java", "ext_target_java_class", [],  no_c_j_cs))).
+:- type_representation(ext_user_ngs, du_repn(enum("ext_user_ngs_defn_ext", "ext_user_ngs_defn_lc", ["ext_user_ngs_defns", "ext_user_ngs_imports_graph", "ext_user_ngs_lct", "ext_user_ngs_lct_order", "ext_user_ngs_mode_constr", "ext_user_ngs_order_to", "ext_user_ngs_type_repns", "ext_user_ngs_xml"],  no_c_j_cs))).
+:- type_representation(maybe_create_dirs, du_repn(enum("do_create_dirs", "do_not_create_dirs", [],  no_c_j_cs))).
+:- type_representation(maybe_for_search, du_repn(enum("not_for_search", "for_search", [],  no_c_j_cs))).
+:- type_representation(maybe_search, du_repn(enum("do_not_search", "do_search", [],  no_c_j_cs))).

@@ -1,0 +1,147 @@
+:- module (parse_tree.file_names).
+:- interface.
+:- type ext
+    --->    ext_cur(parse_tree.file_names.ext_cur)
+    ;       ext_int(parse_tree.file_names.ext_int)
+    ;       ext_opt(parse_tree.file_names.ext_opt)
+    ;       ext_opt_date(parse_tree.file_names.ext_opt_date)
+    ;       ext_mih(parse_tree.file_names.ext_mih)
+    ;       ext_target_c_cs(parse_tree.file_names.ext_target_c_cs)
+    ;       ext_target_java(parse_tree.file_names.ext_target_java)
+    ;       ext_target_date(parse_tree.file_names.ext_target_date)
+    ;       ext_target_obj(parse_tree.file_names.ext_obj)
+    ;       ext_target_init_c(parse_tree.file_names.ext_init_c)
+    ;       ext_target_init_obj(parse_tree.file_names.ext_init_obj)
+    ;       ext_exec_gs(parse_tree.file_names.ext_exec_gs)
+    ;       ext_lib_gs(parse_tree.file_names.ext_lib_gs)
+    ;       ext_mmake_fragment(parse_tree.file_names.ext_mmake_fragment)
+    ;       ext_user_ngs(parse_tree.file_names.ext_user_ngs)
+    ;       ext_analysis(parse_tree.file_names.ext_analysis)
+    ;       ext_analysis_ds(parse_tree.file_names.ext_analysis_ds)
+    ;       ext_bytecode(parse_tree.file_names.ext_bytecode)
+    ;       ext_misc_ngs(parse_tree.file_names.ext_misc_ngs)
+    ;       ext_misc_gs(parse_tree.file_names.ext_misc_gs).
+:- type ext_analysis
+    --->    ext_an_analysis 
+    ;       ext_an_imdg 
+    ;       ext_an_request .
+:- type ext_analysis_ds
+    --->    ext_an_ds_date 
+    ;       ext_an_ds_status .
+:- type ext_bytecode
+    --->    ext_bc_mbc 
+    ;       ext_bc_bytedebug .
+:- type ext_cur
+    --->    ext_cur_exec_exe 
+    ;       ext_cur_lib_dollar_efsl 
+    ;       ext_cur_lib_lib 
+    ;       ext_cur_lib_so 
+    ;       ext_cur_mh 
+    ;       ext_cur_pmt_all_int3s 
+    ;       ext_cur_pmt_all_ints 
+    ;       ext_cur_pmt_all_opts 
+    ;       ext_cur_pmt_all_trans_opts 
+    ;       ext_cur_pmt_check 
+    ;       ext_cur_pmt_classes 
+    ;       ext_cur_pmt_clean 
+    ;       ext_cur_pmt_depend 
+    ;       ext_cur_pmt_install_grade_hdrs 
+    ;       ext_cur_pmt_install_hdrs 
+    ;       ext_cur_pmt_install_ints 
+    ;       ext_cur_pmt_install_opts 
+    ;       ext_cur_pmt_int3s 
+    ;       ext_cur_pmt_ints 
+    ;       ext_cur_pmt_javas 
+    ;       ext_cur_pmt_opts 
+    ;       ext_cur_pmt_realclean 
+    ;       ext_cur_pmt_trans_opts 
+    ;       ext_cur_user_depgraph 
+    ;       ext_cur_user_err 
+    ;       ext_cur_user_hlds_dump 
+    ;       ext_cur_user_mlds_dump 
+    ;       ext_cur_user_order 
+    ;       ext_cur_user_ugly .
+:- type ext_exec_gs
+    --->    ext_exec_gs_noext 
+    ;       ext_exec_gs_bat 
+    ;       ext_exec_exec_opt .
+:- type ext_init_c
+    --->    ext_init_c .
+:- type ext_init_obj
+    --->    ext_init_obj_dollar_o 
+    ;       ext_init_obj_o 
+    ;       ext_init_obj_pic_o 
+    ;       ext_init_obj_obj_opt 
+    ;       ext_init_obj_pic_obj_opt .
+:- type ext_int
+    --->    ext_int_int0 
+    ;       ext_int_int1 
+    ;       ext_int_int2 
+    ;       ext_int_int3 
+    ;       ext_int_date_int0 
+    ;       ext_int_date_int12 
+    ;       ext_int_date_int3 .
+:- type ext_lib_gs
+    --->    ext_lib_gs_dollar_a 
+    ;       ext_lib_gs_archive 
+    ;       ext_lib_gs_dll 
+    ;       ext_lib_gs_init 
+    ;       ext_lib_gs_jar 
+    ;       ext_lib_gs_lib_opt 
+    ;       ext_lib_gs_sh_lib_opt .
+:- type ext_mih
+    --->    ext_mih_mih .
+:- type ext_misc_gs
+    --->    ext_misc_gs_used 
+    ;       ext_misc_gs_track_flags .
+:- type ext_misc_ngs
+    --->    ext_misc_ngs_module_dep 
+    ;       ext_misc_ngs_err_date 
+    ;       ext_misc_ngs_prof .
+:- type ext_mmake_fragment
+    --->    ext_mf_d 
+    ;       ext_mf_dv 
+    ;       ext_mf_dep .
+:- type ext_obj
+    --->    ext_obj_dollar_o 
+    ;       ext_obj_dollar_efpo 
+    ;       ext_obj_o 
+    ;       ext_obj_pic_o 
+    ;       ext_obj_obj_opt 
+    ;       ext_obj_pic_obj_opt .
+:- type ext_opt
+    --->    ext_opt_plain 
+    ;       ext_opt_trans .
+:- type ext_opt_date
+    --->    ext_opt_date_plain 
+    ;       ext_opt_date_trans .
+:- type ext_target_c_cs
+    --->    ext_target_c 
+    ;       ext_target_cs .
+:- type ext_target_date
+    --->    ext_target_date_c 
+    ;       ext_target_date_cs 
+    ;       ext_target_date_java .
+:- type ext_target_java
+    --->    ext_target_java_java 
+    ;       ext_target_java_class .
+:- type ext_user_ngs
+    --->    ext_user_ngs_defn_ext 
+    ;       ext_user_ngs_defn_lc 
+    ;       ext_user_ngs_defns 
+    ;       ext_user_ngs_imports_graph 
+    ;       ext_user_ngs_lct 
+    ;       ext_user_ngs_lct_order 
+    ;       ext_user_ngs_mode_constr 
+    ;       ext_user_ngs_order_to 
+    ;       ext_user_ngs_type_repns 
+    ;       ext_user_ngs_xml .
+:- type maybe_create_dirs
+    --->    do_create_dirs 
+    ;       do_not_create_dirs .
+:- type maybe_for_search
+    --->    not_for_search 
+    ;       for_search .
+:- type maybe_search
+    --->    do_not_search 
+    ;       do_search .

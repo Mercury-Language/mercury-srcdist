@@ -1,0 +1,2 @@
+:- module term_vars.
+:- interface.
