@@ -1,0 +1,4 @@
+:- module (parse_tree.int_emu).
+:- interface.
+:- type op_num_bits.
+:- type op_type.

@@ -1,0 +1,9 @@
+:- module grade_lib.
+:- interface.
+:- include_module (grade_lib.grade_setup).
+:- include_module (grade_lib.grade_solver).
+:- include_module (grade_lib.grade_spec).
+:- include_module (grade_lib.grade_state).
+:- include_module (grade_lib.grade_string).
+:- include_module (grade_lib.grade_structure).
+:- include_module (grade_lib.grade_vars).

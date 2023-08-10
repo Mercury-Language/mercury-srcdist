@@ -1,0 +1,11 @@
+:- module (backend_libs.pseudo_type_info).
+:- interface.
+:- use_module parse_tree.
+:- use_module (backend_libs.rtti).
+:- use_module (parse_tree.prog_data).
+:- pred construct_maybe_pseudo_type_info(parse_tree.prog_data.mer_type, int, parse_tree.prog_data.existq_tvars, backend_libs.rtti.rtti_maybe_pseudo_type_info).
+:- mode construct_maybe_pseudo_type_info((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_pseudo_type_info(parse_tree.prog_data.mer_type, int, parse_tree.prog_data.existq_tvars, backend_libs.rtti.rtti_pseudo_type_info).
+:- mode construct_pseudo_type_info((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_type_info(parse_tree.prog_data.mer_type, backend_libs.rtti.rtti_type_info).
+:- mode construct_type_info((builtin.in), (builtin.out)) is det.

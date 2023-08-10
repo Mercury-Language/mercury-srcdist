@@ -1,0 +1,10 @@
+:- module (grade_lib.grade_string).
+:- interface.
+:- use_module maybe.
+:- use_module (grade_lib.grade_solver).
+:- use_module (grade_lib.grade_structure).
+:- type which_grade_string
+    --->    grade_string_user 
+    ;       grade_string_link_check .
+:- func grade_string_to_succ_soln(string) = maybe.maybe_errors(grade_lib.grade_solver.success_soln_map, string).
+:- func grade_structure_to_grade_string(grade_lib.grade_string.which_grade_string, grade_lib.grade_structure.grade_structure) = string.
