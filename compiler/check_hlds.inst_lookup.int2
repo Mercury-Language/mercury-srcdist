@@ -1,0 +1,21 @@
+:- module (check_hlds.inst_lookup).
+:- interface.
+:- use_module hlds.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.prog_data).
+:- inst mer_inst_expanded for (parse_tree.prog_data).mer_inst/0
+    --->    any(ground, ground)
+    ;       bound(ground, ground, ground)
+    ;       constrained_inst_vars(ground, ground)
+    ;       free
+    ;       ground(ground, ground)
+    ;       inst_var(ground)
+    ;       not_reached.
+:- inst mer_inst_expanded_no_constraints for (parse_tree.prog_data).mer_inst/0
+    --->    any(ground, ground)
+    ;       bound(ground, ground, ground)
+    ;       free
+    ;       ground(ground, ground)
+    ;       inst_var(ground)
+    ;       not_reached.

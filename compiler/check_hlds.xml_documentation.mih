@@ -1,0 +1,65 @@
+/*
+** Automatically generated from `xml_documentation.m'
+** by the Mercury compiler,
+** version rotd-2023-08-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.xml_documentation.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__xml_documentation
+#define MR_HEADER_GUARD_check_hlds__xml_documentation
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__XML_DOCUMENTATION_DECL_GUARD
+#define CHECK_HLDS__XML_DOCUMENTATION_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__xml_documentation__check_hlds__xml_documentation__type_ctor_info_comments_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__xml_documentation__check_hlds__xml_documentation__type_ctor_info_line_type_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__xml_documentation__check_hlds__xml_documentation__type_ctor_info_module_info_xml_doc_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_term_to_xml__xmlable__arity1__check_hlds__xml_documentation__module_info_xml_doc__arity0__[6];
+
+void MR_CALL 
+check_hlds__xml_documentation__xml_documentation_3_p_0(
+  MR_Word param_1);
+
+void mercury__check_hlds__xml_documentation__init(void);
+void mercury__check_hlds__xml_documentation__init_type_tables(void);
+void mercury__check_hlds__xml_documentation__init_debugger(void);
+const char *mercury__check_hlds__xml_documentation__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.xml_documentation
+
+// :- end_interface check_hlds.xml_documentation.

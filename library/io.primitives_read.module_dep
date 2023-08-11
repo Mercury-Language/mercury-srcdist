@@ -1,0 +1,14 @@
+module(2, "io.primitives_read.m",
+	(io.primitives_read),
+	{io},
+	{builtin, char, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (io.primitives_read), "C#" - (io.primitives_read), "C#" - (io.stream_ops), "Java" - (io.primitives_read)},
+	no_foreign_export,
+	no_main,
+	{}
+).
