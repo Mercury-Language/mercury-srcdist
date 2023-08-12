@@ -1,0 +1,8 @@
+:- module (libs.maybe_util).
+:- interface.
+:- type maybe_changed
+    --->    unchanged 
+    ;       changed .
+:- type maybe_succeeded
+    --->    did_not_succeed 
+    ;       succeeded .

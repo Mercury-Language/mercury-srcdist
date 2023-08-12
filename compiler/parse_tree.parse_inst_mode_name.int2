@@ -1,0 +1,13 @@
+:- module (parse_tree.parse_inst_mode_name).
+:- interface.
+:- type allow_constrained_inst_var
+    --->    allow_constrained_inst_var 
+    ;       no_allow_constrained_inst_var(parse_tree.parse_inst_mode_name.why_no_constrained_inst_var).
+:- type why_no_constrained_inst_var
+    --->    wnciv_constraint_rhs 
+    ;       wnciv_inst_defn_lhs 
+    ;       wnciv_eqv_inst_defn_rhs 
+    ;       wnciv_mode_defn_rhs 
+    ;       wnciv_type_and_mode 
+    ;       wnciv_solver_type_inst 
+    ;       wnciv_mutable_inst .
