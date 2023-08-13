@@ -1,0 +1,34 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# This source file is hereby placed in the public domain.  -fjh (the author).
+#-----------------------------------------------------------------------------#
+
+# Define rules for compiling Fortran
+
+FC=gfortran
+FFLAGS=
+
+.SUFFIXES: .f
+
+.f.o:
+	$(FC) $(FFLAGS) -c $<
+
+#-----------------------------------------------------------------------------#
+
+MAIN_TARGET=all
+
+depend: mercury_main.depend
+all: mercury_main
+
+# Tell the Mercury linker to link in fortran_main.o and libgfortran.
+MLOBJS=fortran_main.o
+MLLIBS=-lgfortran
+
+# Tell mmake that it needs to make fortran_main.o before it can make
+# mercury_main.
+mercury_main: fortran_main.o
+
+# make sure that `mmake clean' removes fortran_main.o
+clean_local:
+	rm -f fortran_main.o

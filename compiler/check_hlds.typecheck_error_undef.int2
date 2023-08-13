@@ -1,0 +1,7 @@
+:- module (check_hlds.typecheck_error_undef).
+:- interface.
+:- type cons_error
+    --->    foreign_type_constructor(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn)
+    ;       abstract_imported_type 
+    ;       invalid_field_update(mdbcomp.sym_name.sym_name, hlds.hlds_cons.hlds_ctor_field_defn, parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.tvar))
+    ;       new_on_non_existential_type(parse_tree.prog_data.type_ctor).
