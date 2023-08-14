@@ -1,0 +1,5 @@
+:- module ((hlds.make_hlds).make_hlds_warn).
+:- interface.
+:- type maybe_seen_quant
+	where	type_is_abstract_enum(1).
+:- type_representation(maybe_seen_quant, du_repn(enum("have_not_seen_quant", "have_seen_quant", [],  no_c_j_cs))).
