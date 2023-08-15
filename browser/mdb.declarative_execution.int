@@ -1,0 +1,111 @@
+:- module (mdb.declarative_execution).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module (mdb.term_rep).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.program_representation).
+:- use_module (mdbcomp.rtti_access).
+:- use_module (mdbcomp.sym_name).
+:- type event_number == int.
+:- type goal_status
+    --->    succeeded 
+    ;       failed 
+    ;       undecided .
+:- type implicit_tree_info
+    --->    implicit_tree_info(((mdb.declarative_execution).ideal_depth) :: int).
+:- type sequence_number == int.
+:- type suspicion_accumulator == int.
+:- type trace_atom
+    --->    atom(((mdb.declarative_execution).proc_layout) :: mdbcomp.rtti_access.proc_layout, ((mdb.declarative_execution).atom_args) :: list.list(mdb.declarative_execution.trace_atom_arg)).
+:- type trace_atom_arg
+    --->    arg_info(((mdb.declarative_execution).prog_visible) :: bool.bool, ((mdb.declarative_execution).prog_vis_headvar_num) :: int, ((mdb.declarative_execution).arg_value) :: maybe.maybe(mdb.term_rep.term_rep)).
+:- type trace_node(R)
+    --->    node_call(((mdb.declarative_execution).call_preceding) :: R, ((mdb.declarative_execution).call_last_interface) :: R, ((mdb.declarative_execution).call_atom_args) :: list.list(mdb.declarative_execution.trace_atom_arg), ((mdb.declarative_execution).call_seq) :: mdb.declarative_execution.sequence_number, ((mdb.declarative_execution).call_event) :: mdb.declarative_execution.event_number, ((mdb.declarative_execution).call_at_max_depth) :: maybe.maybe(mdb.declarative_execution.implicit_tree_info), ((mdb.declarative_execution).call_return_label) :: maybe.maybe(mdbcomp.rtti_access.label_layout), ((mdb.declarative_execution).call_label) :: mdbcomp.rtti_access.label_layout, ((mdb.declarative_execution).call_io_seq_num) :: int, ((mdb.declarative_execution).call_suspicion) :: mdb.declarative_execution.suspicion_accumulator)
+    ;       node_exit(((mdb.declarative_execution).exit_preceding) :: R, ((mdb.declarative_execution).exit_call) :: R, ((mdb.declarative_execution).exit_prev_redo) :: R, ((mdb.declarative_execution).exit_atom_args) :: list.list(mdb.declarative_execution.trace_atom_arg), ((mdb.declarative_execution).exit_event) :: mdb.declarative_execution.event_number, ((mdb.declarative_execution).exit_label) :: mdbcomp.rtti_access.label_layout, ((mdb.declarative_execution).exit_io_seq_num) :: int, ((mdb.declarative_execution).exit_suspicion) :: mdb.declarative_execution.suspicion_accumulator)
+    ;       node_redo(((mdb.declarative_execution).redo_preceding) :: R, ((mdb.declarative_execution).redo_exit) :: R, ((mdb.declarative_execution).redo_event) :: mdb.declarative_execution.event_number, ((mdb.declarative_execution).redo_label) :: mdbcomp.rtti_access.label_layout, ((mdb.declarative_execution).redo_suspicion) :: mdb.declarative_execution.suspicion_accumulator)
+    ;       node_fail(((mdb.declarative_execution).fail_preceding) :: R, ((mdb.declarative_execution).fail_call) :: R, ((mdb.declarative_execution).fail_redo) :: R, ((mdb.declarative_execution).fail_event) :: mdb.declarative_execution.event_number, ((mdb.declarative_execution).fail_label) :: mdbcomp.rtti_access.label_layout, ((mdb.declarative_execution).fail_suspicion) :: mdb.declarative_execution.suspicion_accumulator)
+    ;       node_excp(((mdb.declarative_execution).excp_preceding) :: R, ((mdb.declarative_execution).excp_call) :: R, ((mdb.declarative_execution).excp_redo) :: R, ((mdb.declarative_execution).excp_value) :: mdb.term_rep.term_rep, ((mdb.declarative_execution).excp_event) :: mdb.declarative_execution.event_number, ((mdb.declarative_execution).excp_label) :: mdbcomp.rtti_access.label_layout, ((mdb.declarative_execution).excp_suspicion) :: mdb.declarative_execution.suspicion_accumulator)
+    ;       node_switch(((mdb.declarative_execution).switch_preceding) :: R, ((mdb.declarative_execution).switch_label) :: mdbcomp.rtti_access.label_layout)
+    ;       node_first_disj(((mdb.declarative_execution).first_disj_preceding) :: R, ((mdb.declarative_execution).first_disj_label) :: mdbcomp.rtti_access.label_layout)
+    ;       node_later_disj(((mdb.declarative_execution).later_disj_preceding) :: R, ((mdb.declarative_execution).later_disj_label) :: mdbcomp.rtti_access.label_layout, ((mdb.declarative_execution).later_disj_first) :: R)
+    ;       node_cond(((mdb.declarative_execution).cond_preceding) :: R, ((mdb.declarative_execution).cond_label) :: mdbcomp.rtti_access.label_layout, ((mdb.declarative_execution).cond_status) :: mdb.declarative_execution.goal_status)
+    ;       node_then(((mdb.declarative_execution).then_preceding) :: R, ((mdb.declarative_execution).then_cond) :: R, ((mdb.declarative_execution).then_label) :: mdbcomp.rtti_access.label_layout)
+    ;       node_else(((mdb.declarative_execution).else_preceding) :: R, ((mdb.declarative_execution).else_cond) :: R, ((mdb.declarative_execution).else_label) :: mdbcomp.rtti_access.label_layout)
+    ;       node_neg(((mdb.declarative_execution).neg_preceding) :: R, ((mdb.declarative_execution).neg_label) :: mdbcomp.rtti_access.label_layout, ((mdb.declarative_execution).neg_status) :: mdb.declarative_execution.goal_status)
+    ;       node_neg_succ(((mdb.declarative_execution).neg_succ_preceding) :: R, ((mdb.declarative_execution).neg_succ_enter) :: R, ((mdb.declarative_execution).neg_succ_label) :: mdbcomp.rtti_access.label_layout)
+    ;       node_neg_fail(((mdb.declarative_execution).neg_fail_preceding) :: R, ((mdb.declarative_execution).neg_fail_enter) :: R, ((mdb.declarative_execution).neg_fail_label) :: mdbcomp.rtti_access.label_layout).
+:- type trace_node_id.
+:- type trace_node_key.
+:- type trace_node_map.
+:- type trace_node_store.
+:- type which_headvars
+    --->    all_headvars 
+    ;       only_user_headvars .
+:- inst trace_node_call for (mdb.declarative_execution).trace_node/1
+    --->    node_call(ground, ground, ground, ground, ground, ground, ground, ground, ground, ground).
+:- inst trace_node_cond for (mdb.declarative_execution).trace_node/1
+    --->    node_cond(ground, ground, ground).
+:- inst trace_node_disj for (mdb.declarative_execution).trace_node/1
+    --->    node_first_disj(ground, ground)
+    ;       node_later_disj(ground, ground, ground).
+:- inst trace_node_exit for (mdb.declarative_execution).trace_node/1
+    --->    node_exit(ground, ground, ground, ground, ground, ground, ground, ground).
+:- inst trace_node_first_disj for (mdb.declarative_execution).trace_node/1
+    --->    node_first_disj(ground, ground).
+:- inst trace_node_neg for (mdb.declarative_execution).trace_node/1
+    --->    node_neg(ground, ground, ground).
+:- inst trace_node_redo for (mdb.declarative_execution).trace_node/1
+    --->    node_redo(ground, ground, ground, ground, ground).
+:- typeclass annotated_trace(S, R) where [
+	pred trace_node_from_id(S, R, mdb.declarative_execution.trace_node(R)),
+	mode trace_node_from_id((builtin.in), (builtin.in), (builtin.out)) is semidet
+].
+:- instance ((mdb.declarative_execution).annotated_trace(mdb.declarative_execution.trace_node_map, mdb.declarative_execution.trace_node_key)).
+:- instance ((mdb.declarative_execution).annotated_trace(mdb.declarative_execution.trace_node_store, mdb.declarative_execution.trace_node_id)).
+:- pred absolute_arg_num(mdbcomp.program_representation.arg_pos, mdb.declarative_execution.trace_atom, int).
+:- mode absolute_arg_num((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred call_node_from_id(S, R, mdb.declarative_execution.trace_node(R)) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- mode call_node_from_id((builtin.in), (builtin.in), builtin.out(((mdb.declarative_execution).trace_node_call))) is det.
+:- pred call_node_maybe_proc_defn_rep(mdb.declarative_execution.trace_node(R), maybe.maybe(mdbcomp.program_representation.proc_defn_rep)).
+:- mode call_node_maybe_proc_defn_rep(builtin.in(((mdb.declarative_execution).trace_node_call)), (builtin.out)) is det.
+:- func chosen_head_vars_presentation = mdb.declarative_execution.which_headvars.
+:- pred cond_node_from_id(S, R, mdb.declarative_execution.trace_node(R)) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- mode cond_node_from_id((builtin.in), (builtin.in), builtin.out(((mdb.declarative_execution).trace_node_cond))) is det.
+:- pred det_trace_node_from_id(S, R, mdb.declarative_execution.trace_node(R)) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- mode det_trace_node_from_id((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred disj_node_from_id(S, R, mdb.declarative_execution.trace_node(R)) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- mode disj_node_from_id((builtin.in), (builtin.in), builtin.out(((mdb.declarative_execution).trace_node_disj))) is det.
+:- pred exit_node_from_id(S, R, mdb.declarative_execution.trace_node(R)) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- mode exit_node_from_id((builtin.in), (builtin.in), builtin.out(((mdb.declarative_execution).trace_node_exit))) is det.
+:- pred first_disj_node_from_id(S, R, mdb.declarative_execution.trace_node(R)) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- mode first_disj_node_from_id((builtin.in), (builtin.in), builtin.out(((mdb.declarative_execution).trace_node_first_disj))) is det.
+:- pred get_pred_attributes(mdbcomp.prim_data.proc_label, mdbcomp.sym_name.module_name, string, int, mdbcomp.prim_data.pred_or_func).
+:- mode get_pred_attributes((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func get_trace_call_atom(mdb.declarative_execution.trace_node(R)) = mdb.declarative_execution.trace_atom.
+:- mode get_trace_call_atom(builtin.in(((mdb.declarative_execution).trace_node_call))) = (builtin.out) is det.
+:- mode get_trace_call_atom((builtin.in)) = (builtin.out) is semidet.
+:- func get_trace_exit_atom(mdb.declarative_execution.trace_node(R)) = mdb.declarative_execution.trace_atom.
+:- mode get_trace_exit_atom(builtin.in(((mdb.declarative_execution).trace_node_exit))) = (builtin.out) is det.
+:- mode get_trace_exit_atom((builtin.in)) = (builtin.out) is semidet.
+:- pred is_user_visible_arg(mdb.declarative_execution.trace_atom_arg).
+:- mode is_user_visible_arg((builtin.in)) is semidet.
+:- pred load_trace_node_map(io.text_input_stream, mdb.declarative_execution.trace_node_map, mdb.declarative_execution.trace_node_key, io.io, io.io).
+:- mode load_trace_node_map((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_filter_headvars(mdb.declarative_execution.which_headvars, list.list(mdb.declarative_execution.trace_atom_arg), list.list(mdb.declarative_execution.trace_atom_arg)).
+:- mode maybe_filter_headvars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_redo_node_from_id(S, R, mdb.declarative_execution.trace_node(R)) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- mode maybe_redo_node_from_id((builtin.in), (builtin.in), builtin.out(((mdb.declarative_execution).trace_node_redo))) is semidet.
+:- pred neg_node_from_id(S, R, mdb.declarative_execution.trace_node(R)) <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- mode neg_node_from_id((builtin.in), (builtin.in), builtin.out(((mdb.declarative_execution).trace_node_neg))) is det.
+:- pred save_trace_node_store(io.text_output_stream, mdb.declarative_execution.trace_node_store, mdb.declarative_execution.trace_node_id, io.io, io.io).
+:- mode save_trace_node_store((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred select_arg_at_pos(mdbcomp.program_representation.arg_pos, list.list(mdb.declarative_execution.trace_atom_arg), mdb.declarative_execution.trace_atom_arg).
+:- mode select_arg_at_pos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func step_in_stratum(S, mdb.declarative_execution.trace_node(R)) = R <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- func step_left_in_contour(S, mdb.declarative_execution.trace_node(R)) = R <= ((mdb.declarative_execution).annotated_trace(S, R)).
+:- pred user_arg_num(mdbcomp.program_representation.arg_pos, mdb.declarative_execution.trace_atom, int).
+:- mode user_arg_num((builtin.in), (builtin.in), (builtin.out)) is det.

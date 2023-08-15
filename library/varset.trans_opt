@@ -1,0 +1,131 @@
+:- module varset.
+
+:- pragma termination_info(varset.bind_var((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(varset.bind_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.bind_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.bind_vars((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.bind_vars_loop((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.coerce((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(varset.coerce((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.construct_varset((builtin.in), (builtin.in), (builtin.out)), finite(4, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(varset.copy_var_names((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.create_name_var_map((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.create_name_var_map((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.delete_sorted_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.delete_sorted_vars((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.delete_var((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(varset.delete_var((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.delete_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.delete_vars((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.ensure_unique_names((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.ensure_unique_names((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.ensure_unique_names_loop((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.get_bindings((builtin.in)) = (builtin.out), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(varset.get_bindings((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(varset.get_var_names((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info((varset.init) = (builtin.out), finite(4, [no, no]), cannot_loop).
+:- pragma termination_info(varset.init((builtin.out)), finite(4, [no, no]), cannot_loop).
+:- pragma termination_info(varset.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(varset.lookup_name((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(varset.lookup_name((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.lookup_name((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(varset.lookup_name((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.lookup_name_default_prefix((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(varset.lookup_name_default_prefix((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.lookup_vars((builtin.in)) = (builtin.out), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(varset.lookup_vars((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(varset.max_var((builtin.in)) = (builtin.out), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(varset.merge((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_renaming((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_renaming_without_names((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_without_names((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.name_var((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(varset.name_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.new_maybe_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.new_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.new_uniquely_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.new_var((builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.new_vars((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.new_vars_loop((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.num_allocated((builtin.in)) = (builtin.out), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(varset.search_name((builtin.in), (builtin.in), (builtin.out)), finite(-7, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(varset.search_var((builtin.in), (builtin.in), (builtin.out)), finite(-7, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(varset.select((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.select((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.set_bindings((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(varset.set_bindings((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(varset.squash((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.undo_default_names((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.undo_default_names_loop((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(varset.unname_var((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(varset.unname_var((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.var_name_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.var_name_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.vars((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.vars_loop((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+
+:- pragma exceptions(function, (varset.bind_var), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.bind_var), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (varset.bind_vars), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.bind_vars), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.bind_vars_loop), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (varset.coerce), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.coerce), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.construct_varset), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.copy_var_names), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (varset.create_name_var_map), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.create_name_var_map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.delete_sorted_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.delete_sorted_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.delete_var), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.delete_var), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.delete_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.delete_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.ensure_unique_names), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.ensure_unique_names), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.ensure_unique_names_loop), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.get_bindings), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.get_bindings), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.get_var_names), 2, 0, will_not_throw).
+:- pragma exceptions(function, (varset.init), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (varset.lookup_name), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.lookup_name), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (varset.lookup_name), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.lookup_name), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (varset.lookup_name_default_prefix), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.lookup_name_default_prefix), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (varset.lookup_vars), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.lookup_vars), 2, 0, will_not_throw).
+:- pragma exceptions(function, (varset.max_var), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.merge), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_renaming), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_renaming_without_names), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_without_names), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.name_var), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.name_var), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.new_maybe_named_var), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.new_named_var), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.new_uniquely_named_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.new_var), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.new_vars), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.new_vars_loop), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.num_allocated), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.search_name), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (varset.search_var), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (varset.select), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.select), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.set_bindings), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.set_bindings), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.squash), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.undo_default_names), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.undo_default_names_loop), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.unname_var), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.unname_var), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.var_name_list), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.var_name_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (varset.vars), 1, 0, conditional).
+:- pragma exceptions(predicate, (varset.vars), 2, 0, conditional).
+:- pragma exceptions(predicate, (varset.vars_loop), 4, 0, conditional).

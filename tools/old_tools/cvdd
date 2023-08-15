@@ -1,0 +1,165 @@
+#!/bin/sh
+#
+# This script performs a diff between the main directories of two Mercury
+# workspaces. It is meant to be useful if you are not connected to a network
+# and therefore unable to "cvs add" files; in such circumstances, doing a
+# "cvdd clean_ws work_ws" can be a sufficiently good substitute for a
+# "cvd diff work_ws". It is not intended to be a full replacement, e.g.
+# it doesn't do anything meaningful if you add an entire new directory.
+#
+# Normally, the script restricts its attention to files and directories
+# that are either under CVS control or whose names appear in a file called
+# NEWFILES (for files) or NEWDIRS (for directories). If you specify the -e
+# option, the script will also look at files with the name given as the
+# argument of -e. The intended use is "cvdd -e Log", which includes any changes
+# in Log files to be reflected in the output. This is useful when backing up
+# a workspace.
+
+pathname="."
+extras=""
+extraopts=""
+diffopts=""
+
+while test $# -gt 0
+do
+	case "$1" in
+	-e)
+		extras="$extras $2"
+		extraopts="$extraopts -e $2"
+		shift ; shift
+		;;
+	-p)
+		pathname="$2"
+		shift ; shift
+		;;
+	-*)
+		diffopts="$diffopts $1"
+		shift
+		;;
+	*)
+		break ;;
+	esac
+done
+
+usage="usage: cvdd [-e filename] dir1 dir2"
+
+if test "$diffopts" = ""
+then
+	# these are the default diff options
+	diffopts="-ubB"
+fi
+
+if test $# -ne 2
+then
+	echo "$usage"
+	exit 1
+fi
+
+case "$1" in
+	/*)	arg1="$1" ;;
+	*)	arg1=`/bin/pwd`/"$1" ;;
+esac
+case "$2" in
+	/*)	arg2="$2" ;;
+	*)	arg2=`/bin/pwd`/"$2" ;;
+esac
+
+if test ! -d "$arg1" -o ! -d "$arg2"
+then
+	echo "$usage"
+	exit 1
+fi
+
+case "$pathname" in
+./*)
+	pathname=`expr $pathname : '\./\(.*\)'`
+	;;
+esac
+
+echo "Diffing $pathname"
+
+filelist="/tmp/cvdd_files$$"
+dirlist="/tmp/cvdd_dirs$$"
+trap "/bin/rm -f $filelist $dirlist > /dev/null 2>&1; exit 0" 0
+trap "/bin/rm -f $filelist $dirlist > /dev/null 2>&1; exit 1" 1 2 3 15
+
+(
+	cvsfiles $arg1
+	cvsfiles $arg2
+	if test -f $arg1/NEWFILES
+	then
+		cat $arg1/NEWFILES
+	fi
+	if test -f $arg2/NEWFILES
+	then
+		cat $arg2/NEWFILES
+	fi
+	for extra in "$extras"
+	do
+		if test -f $arg1/$extra -o -f $arg2/$extra
+		then
+			echo $extra
+		fi
+	done
+) | sort -u > $filelist
+
+(
+	cvsdirs $arg1
+	cvsdirs $arg2
+	if test -f $arg1/NEWDIRS
+	then
+		cat $arg1/NEWDIRS
+	fi
+	if test -f $arg2/NEWDIRS
+	then
+		cat $arg2/NEWDIRS
+	fi
+) | sort -u > $dirlist
+
+for file in `cat $filelist`
+do
+	if test -f "$arg1/$file" -a -f "$arg2/$file"
+	then
+		(cd $arg2 ; diff $diffopts "$arg1/$file" "$file")
+	elif test -f "$arg1/$file"
+	then
+		# echo "old file $arg1/$file"
+		# cat "$arg1/$file"
+		(cd $arg1 ; diff $diffopts "$file" /dev/null)
+	elif test -f "$arg2/$file"
+	then
+		# echo "new file $arg2/$file"
+		# cat "$arg2/$file"
+		(cd $arg2 ; diff $diffopts /dev/null "$file")
+	else
+		echo "neither $arg1/$file nor $arg2/$file exist"
+	fi
+done
+
+for dir in `cat $dirlist`
+do
+	if test -d "$arg1/$dir/CVS" -a -d "$arg2/$dir/CVS"
+	then
+		cvdd -p "$pathname/$dir" $extraopts $diffopts "$arg1/$dir" "$arg2/$dir"
+	elif test -d "$arg1/$dir/CVS"
+	then
+		echo "old dir $arg1/$dir"
+		if test -f "$arg1/$dir/NEWDIRFILES"
+		then
+			more `cat $arg1/$dir/NEWDIRFILES`
+		else
+			more $arg1/$dir/*
+		fi
+	elif test -d "$arg2/$dir/CVS"
+	then
+		echo "new dir $arg2/$dir"
+		if test -f "$arg2/$dir/NEWDIRFILES"
+		then
+			more `cat $arg2/$dir/NEWDIRFILES`
+		else
+			more $arg2/$dir/*
+		fi
+	else
+		echo "neither $arg1/$dir nor $arg2/$dir are under CVS control"
+	fi
+done
