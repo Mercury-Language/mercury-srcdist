@@ -1,0 +1,14 @@
+module(2, "kv_list.m",
+	kv_list,
+	{},
+	{assoc_list, builtin, list, private_builtin},
+	{pair, require, string, type_desc},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

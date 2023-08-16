@@ -1,0 +1,2 @@
+:- module (hlds.du_type_layout).
+:- interface.
