@@ -1,0 +1,6 @@
+:- module (ll_backend.code_info).
+:- interface.
+:- type code_info.
+:- type for_call_or_closure
+    --->    for_immediate_call 
+    ;       for_closure .
