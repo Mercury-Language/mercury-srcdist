@@ -1,0 +1,4916 @@
+/*
+** Automatically generated from `make_hlds_warn.m'
+** by the Mercury compiler,
+** version rotd-2023-08-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.make_hlds_warn.
+// :- implementation.
+
+/*
+INIT mercury__hlds__make_hlds__make_hlds_warn__init
+ENDINIT
+*/
+
+#include "hlds.make_hlds.make_hlds_warn.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "edit_seq.mih"
+#include "enum.mih"
+#include "getopt.mih"
+#include "hlds.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "multi_map.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "term_context.mih"
+#include "time.mih"
+#include "transform_hlds.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.goal_mode.mih"
+#include "hlds.goal_util.mih"
+#include "hlds.hlds_class.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_cons.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_inst_mode.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_out.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_promise.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.make_hlds.mih"
+#include "hlds.pred_name.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.quantification.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.op_mode.mih"
+#include "libs.optimization_options.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_spec.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.parse_tree_out_info.mih"
+#include "parse_tree.parse_tree_out_misc.mih"
+#include "parse_tree.parse_tree_out_term.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "parse_tree.var_db.mih"
+#include "parse_tree.var_table.mih"
+#include "parse_tree.vartypes.mih"
+#include "string.builder.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_util.mih"
+#include "hlds.hlds_out.hlds_out_goal.mih"
+#include "hlds.hlds_out.hlds_out_util.mih"
+
+
+
+struct hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0_s {
+  MR_Word hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__QuantVars_6;
+  MR_Word hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__VarSet_7;
+  MR_bool hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded;
+  MR_Word hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__TypeCtorInfo_14_14;
+  MR_String hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__Name_9;
+  jmp_buf hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__commit_0;
+  MR_Word hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__QuantVar_10;
+  MR_String hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__Var_15;
+};
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__list__pti_list_1__plain_builtin__type_ctor_info_string_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__maybe__pti_maybe_1__plain_parse_tree__prog_data_foreign__type_ctor_info_foreign_arg_name_mode_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_goal_0;
+
+static const MR_EnumFunctorDesc hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_maybe_seen_quant_0_0;
+
+static const MR_EnumFunctorDesc hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_maybe_seen_quant_0_1;
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_ordinal_ordered_maybe_seen_quant_0[2];
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_name_ordered_maybe_seen_quant_0[2];
+
+static const MR_Integer hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__functor_number_map_maybe_seen_quant_0[2];
+
+static const MR_EnumFunctorDesc hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_single_or_multi_0_0;
+
+static const MR_EnumFunctorDesc hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_single_or_multi_0_1;
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_ordinal_ordered_single_or_multi_0[2];
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_name_ordered_single_or_multi_0[2];
+
+static const MR_Integer hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__functor_number_map_single_or_multi_0[2];
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__varset__ti_varset_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__list__ti_list_1parse_tree__error_spec__type_ctor_info_error_spec_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__field_types_warn_info_0_0[8];
+
+static const MR_ConstString hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__field_names_warn_info_0_0[8];
+
+static const MR_DuArgLocn hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__field_locns_warn_info_0_0[8];
+
+static const MR_DuFunctorDesc hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_functor_desc_warn_info_0_0;
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_stag_ordered_warn_info_0_0[1];
+
+static const MR_DuPtagLayout hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_ptag_ordered_warn_info_0[1];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_name_ordered_warn_info_0[1];
+
+static const MR_Integer hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__functor_number_map_warn_info_0[1];
+
+static MR_String MR_CALL 
+hlds__make_hlds__make_hlds_warn__IntroducedFrom__func__generate_variable_warning__563__1_2_f_0(
+  MR_Word VarSet_11,
+  MR_Word HeadVar__2_86);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____warn_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____warn_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____single_or_multi_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____single_or_multi_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__flatten_to_conj_list_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__flatten_to_conj_list_2_p_0(
+  MR_Word Goal_3,
+  MR_Word * GoalList_4);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__is_multi_var_3_p_0(
+  MR_Word NonLocals_4,
+  MR_Word VarSet_5,
+  MR_Word Var_6);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_1(
+  void * env_ptr_arg);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_2(
+  void * env_ptr_arg);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_3(
+  void * env_ptr_arg);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0(
+  MR_Word NonLocals_5,
+  MR_Word QuantVars_6,
+  MR_Word VarSet_7,
+  MR_Word Var_8);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__var_is_unmentioned_3_p_0(
+  MR_Word NameList1_4,
+  MR_Word MaybeArg_5,
+  MR_String * Name_6);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_warn__quant_warning_to_spec_3_f_0(
+  MR_Word PfSymNameArity_5,
+  MR_Word VarSet_6,
+  MR_Word Warning_7);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__check_promise_ex_goal_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__check_promise_ex_goal_4_p_0(
+  MR_Word PromiseType_5,
+  MR_Word Goal_6,
+  MR_Word STATE_VARIABLE_Specs_0_19,
+  MR_Word * STATE_VARIABLE_Specs_20);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__check_promise_ex_disjunction_4_p_0(
+  MR_Word PromiseType_5,
+  MR_Word DisjConjList_6,
+  MR_Word STATE_VARIABLE_Specs_0_10,
+  MR_Word * STATE_VARIABLE_Specs_11);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__check_promise_ex_disj_arm_5_p_0(
+  MR_Word PromiseType_6,
+  MR_Word Goals_7,
+  MR_Word CallUsed_8,
+  MR_Word STATE_VARIABLE_Specs_0_23,
+  MR_Word * STATE_VARIABLE_Specs_24);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(
+  MR_Word tscc_proc_1_input_1_Goal_5,
+  MR_Word tscc_proc_1_input_2_QuantVars_6,
+  MR_Word tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98,
+  MR_Word * tscc_output_ptr_1_STATE_VARIABLE_Info_99);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_unify_6_p_0(
+  MR_Word tscc_proc_2_input_1_X_7,
+  MR_Word tscc_proc_2_input_2_RHS_8,
+  MR_Word tscc_proc_2_input_3_GoalInfo_9,
+  MR_Word tscc_proc_2_input_4_QuantVars_10,
+  MR_Word tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29,
+  MR_Word * tscc_output_ptr_1_STATE_VARIABLE_Info_99);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_cases_4_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word QuantVars_2,
+  MR_Word STATE_VARIABLE_Info_0_3,
+  MR_Word * STATE_VARIABLE_Info_4);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_list_4_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word QuantVars_2,
+  MR_Word STATE_VARIABLE_Info_0_3,
+  MR_Word * STATE_VARIABLE_Info_4);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(
+  MR_Word GoalVars_7,
+  MR_Word GoalInfo_8,
+  MR_Word NonLocals_9,
+  MR_Word QuantVars_10,
+  MR_Word STATE_VARIABLE_Info_0_27,
+  MR_Word * STATE_VARIABLE_Info_28);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__add_warn_spec_3_p_0(
+  MR_Word Spec_4,
+  MR_Word STATE_VARIABLE_Info_0_8,
+  MR_Word * STATE_VARIABLE_Info_9);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_warn__generate_variable_warning_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__generate_variable_warning_7_p_0(
+  MR_Word SingleMulti_8,
+  MR_Word Context_9,
+  MR_Word PfSymNameArity_10,
+  MR_Word VarSet_11,
+  MR_Word Var_12,
+  MR_Word Vars_13,
+  MR_Word * Spec_14);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_pragma_foreign_proc_10_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__pragma_foreign_proc_body_checks_9_p_0(
+  MR_Word ModuleInfo_10,
+  MR_Word Lang_11,
+  MR_Word Context_12,
+  MR_Word PFSymNameArity_13,
+  MR_Word PredId_14,
+  MR_Integer ProcId_15,
+  MR_Word BodyPieces_16,
+  MR_Word STATE_VARIABLE_Specs_0_21,
+  MR_Word * STATE_VARIABLE_Specs_22);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__c_code_to_name_list_2_2_p_0(
+  MR_Word C_Code_3,
+  MR_Word * List_4);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__get_first_c_name_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word * HeadVar__2_2,
+  MR_Word * HeadVar__3_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__get_first_c_name_in_word_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word * HeadVar__2_2,
+  MR_Word * HeadVar__3_3);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_warn__add_quant_warnings_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____maybe_seen_quant_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____maybe_seen_quant_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____single_or_multi_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____single_or_multi_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____warn_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____warn_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_warn_scalar_common_1[94][2];
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_warn_scalar_common_2[2][7];
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_warn_scalar_common_3[4][6];
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_warn_scalar_common_4[2][5];
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_warn_scalar_common_5[4][3];
+
+
+
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_warn_scalar_common_1[94][2] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_foreign_arg_name_mode_0))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_goal_0))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) (&mercury__varset__varset__type_ctor_info_varset_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row   4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_error_spec_0))
+  },
+  /* row   5 */
+  {
+    ((MR_Box) (&parse_tree__set_of_var__parse_tree__set_of_var__type_ctor_info_set_of_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row   6 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "In the"))
+  },
+  /* row   7 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "code for"))
+  },
+  /* row   8 */
+  {
+    ((MR_Box) ((MR_Unsigned) 8U)),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row   9 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) ":"))
+  },
+  /* row  10 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[9]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  11 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "not occur in the"))
+  },
+  /* row  12 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "code."))
+  },
+  /* row  13 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[12]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  14 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "declarations."))
+  },
+  /* row  15 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[14]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  16 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 32U)),
+    ((MR_Box) ((MR_String) "foreign_proc"))
+  },
+  /* row  17 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[16]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[15])))
+  },
+  /* row  18 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "That macro is only defined within the body of"))
+  },
+  /* row  19 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[18]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[17])))
+  },
+  /* row  20 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "macro."))
+  },
+  /* row  21 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[20]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[19])))
+  },
+  /* row  22 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) "MR_ALLOC_ID"))
+  },
+  /* row  23 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[22]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[21])))
+  },
+  /* row  24 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "declaration may refer to the"))
+  },
+  /* row  25 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[24]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[23])))
+  },
+  /* row  26 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 32U)),
+    ((MR_Box) ((MR_String) "foreign_code"))
+  },
+  /* row  27 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[26]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[25])))
+  },
+  /* row  28 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "Warning: the body of this"))
+  },
+  /* row  29 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[28]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[27])))
+  },
+  /* row  30 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "In clause for"))
+  },
+  /* row  31 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "warning: variable"))
+  },
+  /* row  32 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "has overlapping scopes."))
+  },
+  /* row  33 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[32]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  34 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "warning: variables"))
+  },
+  /* row  35 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "each have overlapping scopes."))
+  },
+  /* row  36 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[35]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  37 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "occurs"))
+  },
+  /* row  38 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "in this scope."))
+  },
+  /* row  39 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[38]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  40 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "occur"))
+  },
+  /* row  41 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "does"))
+  },
+  /* row  42 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[41]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  43 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "do"))
+  },
+  /* row  44 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[43]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  45 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "Warning: the"))
+  },
+  /* row  46 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "may set"))
+  },
+  /* row  47 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) "SUCCESS_INDICATOR"))
+  },
+  /* row  48 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "but it cannot fail."))
+  },
+  /* row  49 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[48]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  50 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) ","))
+  },
+  /* row  51 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[50]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[49])))
+  },
+  /* row  52 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "does not appear to set"))
+  },
+  /* row  53 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "but it can fail."))
+  },
+  /* row  54 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[53]))),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row  55 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[50]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[54])))
+  },
+  /* row  56 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "statement."))
+  },
+  /* row  57 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[56]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  58 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 0U)),
+    ((MR_Box) ((MR_String) "return"))
+  },
+  /* row  59 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[58]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[57])))
+  },
+  /* row  60 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "may contain a"))
+  },
+  /* row  61 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[60]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[59])))
+  },
+  /* row  62 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "In"))
+  },
+  /* row  63 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "declaration:"))
+  },
+  /* row  64 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "error:"))
+  },
+  /* row  65 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[47]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[51])))
+  },
+  /* row  66 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[46]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[65])))
+  },
+  /* row  67 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[47]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[55])))
+  },
+  /* row  68 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[52]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[67])))
+  },
+  /* row  69 */
+  {
+    ((MR_Box) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "disjunct contains more than one call"))
+  },
+  /* row  70 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[69]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  71 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[64]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[70])))
+  },
+  /* row  72 */
+  {
+    ((MR_Box) ((MR_Unsigned) 8U)),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[71])))
+  },
+  /* row  73 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[63]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[72])))
+  },
+  /* row  74 */
+  {
+    ((MR_Box) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "disjunct is not a call or unification"))
+  },
+  /* row  75 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[74]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  76 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[64]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[75])))
+  },
+  /* row  77 */
+  {
+    ((MR_Box) ((MR_Unsigned) 8U)),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[76])))
+  },
+  /* row  78 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[63]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[77])))
+  },
+  /* row  79 */
+  {
+    ((MR_Box) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "universal quantification should come before the declaration name"))
+  },
+  /* row  80 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[79]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  81 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[64]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[80])))
+  },
+  /* row  82 */
+  {
+    ((MR_Box) ((MR_Unsigned) 8U)),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[81])))
+  },
+  /* row  83 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[63]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[82])))
+  },
+  /* row  84 */
+  {
+    ((MR_Box) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "goal in declaration is not a disjunction"))
+  },
+  /* row  85 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[84]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  86 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[64]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[85])))
+  },
+  /* row  87 */
+  {
+    ((MR_Box) ((MR_Unsigned) 8U)),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[86])))
+  },
+  /* row  88 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[63]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[87])))
+  },
+  /* row  89 */
+  {
+    ((MR_Box) ((MR_Unsigned) 6U)),
+    ((MR_Box) ((MR_String) "declaration has no universally quantified variables"))
+  },
+  /* row  90 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[89]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[8])))
+  },
+  /* row  91 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[64]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[90])))
+  },
+  /* row  92 */
+  {
+    ((MR_Box) ((MR_Unsigned) 8U)),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[91])))
+  },
+  /* row  93 */
+  {
+    ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[63]))),
+    ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[92])))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_warn_scalar_common_2[2][7] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pf_sym_name_arity_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__quantification__hlds__quantification__type_ctor_info_quant_warning_0)),
+    ((MR_Box) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_error_spec_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_warn_scalar_common_3[4][6] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__maybe__pti_maybe_1__plain_parse_tree__prog_data_foreign__type_ctor_info_foreign_arg_name_mode_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row   2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row   3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_warn_info_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_warn_info_0))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_warn_scalar_common_4[2][5] = {
+  /* row   0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_foreign_arg_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__maybe__pti_maybe_1__plain_parse_tree__prog_data_foreign__type_ctor_info_foreign_arg_name_mode_0))
+  },
+  /* row   1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_goal_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_goal_0))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_warn_scalar_common_5[4][3] = {
+  /* row   0 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn_scalar_common_4[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   1 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn_scalar_common_3[3])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   2 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn_scalar_common_4[1])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_warn__check_promise_ex_goal_4_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row   3 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_warn_scalar_common_4[1])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_warn__flatten_to_conj_list_2_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "io.stream_ops.mh"
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__list__pti_list_1__plain_builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_PseudoTypeInfo) (&mercury__builtin__builtin__type_ctor_info_string_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__maybe__pti_maybe_1__plain_parse_tree__prog_data_foreign__type_ctor_info_foreign_arg_name_mode_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_foreign_arg_name_mode_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__sparse_bitset__pti_sparse_bitset_1__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  { (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_warn__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0) }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_goal_0) }
+};
+
+static const MR_EnumFunctorDesc hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_maybe_seen_quant_0_0 = {
+  (MR_String) "have_not_seen_quant",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_maybe_seen_quant_0_1 = {
+  (MR_String) "have_seen_quant",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_ordinal_ordered_maybe_seen_quant_0[2] = {
+  &hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_maybe_seen_quant_0_0,
+  &hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_maybe_seen_quant_0_1
+};
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_name_ordered_maybe_seen_quant_0[2] = {
+  &hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_maybe_seen_quant_0_0,
+  &hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_maybe_seen_quant_0_1
+};
+
+static const MR_Integer hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__functor_number_map_maybe_seen_quant_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_maybe_seen_quant_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (hlds__make_hlds__make_hlds_warn____Unify____maybe_seen_quant_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__make_hlds_warn____Compare____maybe_seen_quant_0_0_10001)),
+  (MR_String) "hlds.make_hlds.make_hlds_warn",
+  (MR_String) "maybe_seen_quant",
+  { hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_name_ordered_maybe_seen_quant_0 },
+  { hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_ordinal_ordered_maybe_seen_quant_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__functor_number_map_maybe_seen_quant_0,
+
+};
+
+static const MR_EnumFunctorDesc hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_single_or_multi_0_0 = {
+  (MR_String) "sm_single",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_single_or_multi_0_1 = {
+  (MR_String) "sm_multi",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_ordinal_ordered_single_or_multi_0[2] = {
+  &hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_single_or_multi_0_0,
+  &hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_single_or_multi_0_1
+};
+
+static const MR_EnumFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_name_ordered_single_or_multi_0[2] = {
+  &hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_single_or_multi_0_1,
+  &hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_functor_desc_single_or_multi_0_0
+};
+
+static const MR_Integer hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__functor_number_map_single_or_multi_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_single_or_multi_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (hlds__make_hlds__make_hlds_warn____Unify____single_or_multi_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__make_hlds_warn____Compare____single_or_multi_0_0_10001)),
+  (MR_String) "hlds.make_hlds.make_hlds_warn",
+  (MR_String) "single_or_multi",
+  { hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_name_ordered_single_or_multi_0 },
+  { hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__enum_ordinal_ordered_single_or_multi_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__functor_number_map_single_or_multi_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__varset__ti_varset_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  { (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__list__ti_list_1parse_tree__error_spec__type_ctor_info_error_spec_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  { (MR_TypeInfo) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_error_spec_0) }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_warn__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  { (MR_TypeInfo) (&hlds__make_hlds__make_hlds_warn__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0) }
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__field_types_warn_info_0_0[8] = {
+  (MR_PseudoTypeInfo) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0),
+  (MR_PseudoTypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pf_sym_name_arity_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_warn__varset__ti_varset_1parse_tree__prog_data__type_ctor_info_prog_var_type_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_warn__list__ti_list_1parse_tree__error_spec__type_ctor_info_error_spec_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_warn__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_warn__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0),
+  (MR_PseudoTypeInfo) (&mercury__term_context__term_context__type_ctor_info_term_context_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_maybe_seen_quant_0)
+};
+
+static const MR_ConstString hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__field_names_warn_info_0_0[8] = {
+  (MR_String) "wi_module_info",
+  (MR_String) "wi_pf_sna",
+  (MR_String) "wi_varset",
+  (MR_String) "wi_specs",
+  (MR_String) "wi_singleton_headvars",
+  (MR_String) "wi_multi_headvars",
+  (MR_String) "wi_head_context",
+  (MR_String) "wi_seen_quant"
+};
+
+static const MR_DuArgLocn hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__field_locns_warn_info_0_0[8] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 3,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 4,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 5,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 6,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 7,
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_functor_desc_warn_info_0_0 = {
+  (MR_String) "warn_info",
+  INT16_C(8),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__field_types_warn_info_0_0,
+  hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__field_names_warn_info_0_0,
+  hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__field_locns_warn_info_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_stag_ordered_warn_info_0_0[1] = { &hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_functor_desc_warn_info_0_0 };
+
+static const MR_DuPtagLayout hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_ptag_ordered_warn_info_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_stag_ordered_warn_info_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_name_ordered_warn_info_0[1] = { &hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_functor_desc_warn_info_0_0 };
+
+static const MR_Integer hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__functor_number_map_warn_info_0[1] = { (MR_Integer) 0 };
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_warn_info_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__make_hlds__make_hlds_warn____Unify____warn_info_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__make_hlds_warn____Compare____warn_info_0_0_10001)),
+  (MR_String) "hlds.make_hlds.make_hlds_warn",
+  (MR_String) "warn_info",
+  { hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_name_ordered_warn_info_0 },
+  { hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__du_ptag_ordered_warn_info_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__functor_number_map_warn_info_0,
+
+};
+
+static MR_String MR_CALL 
+hlds__make_hlds__make_hlds_warn__IntroducedFrom__func__generate_variable_warning__563__1_2_f_0(
+  MR_Word VarSet_11,
+  MR_Word HeadVar__2_86)
+{
+  MR_String HeadVar__3_87;
+
+  HeadVar__3_87 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_vs_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), VarSet_11, HeadVar__2_86);
+  return HeadVar__3_87;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____warn_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_27 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer CastY_28 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (CastX_27 == CastY_28);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 0;
+  else
+  {
+    MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 0))));
+    MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 1))));
+    MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 2))));
+    MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgY4_14 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 3))));
+    MR_Word ArgX5_16 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 4))));
+    MR_Word ArgY5_17 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 4))));
+    MR_Word ArgX6_19 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 5))));
+    MR_Word ArgY6_20 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 5))));
+    MR_Word ArgX7_22 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 6))));
+    MR_Word ArgY7_23 = ((MR_Word) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 6))));
+    MR_Word ArgX8_25 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 7))) & (MR_Integer) 1);
+    MR_Word ArgY8_26 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__3_3, (MR_Integer) 7))) & (MR_Integer) 1);
+    MR_Word SubResult1_6;
+
+    hlds__hlds_module____Compare____module_info_0_0(&SubResult1_6, ArgX1_4, ArgY1_5);
+    succeeded = (SubResult1_6 != (MR_Integer) 0);
+    if (succeeded)
+      *HeadVar__1_1 = SubResult1_6;
+    else
+    {
+      MR_Word SubResult2_9;
+
+      parse_tree__prog_data____Compare____pf_sym_name_arity_0_0(&SubResult2_9, ArgX2_7, ArgY2_8);
+      succeeded = (SubResult2_9 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult2_9;
+      else
+      {
+        MR_Word SubResult3_12;
+
+        mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[3]), &SubResult3_12, ((MR_Box) (ArgX3_10)), ((MR_Box) (ArgY3_11)));
+        succeeded = (SubResult3_12 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult3_12;
+        else
+        {
+          MR_Word SubResult4_15;
+
+          mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[4]), &SubResult4_15, ((MR_Box) (ArgX4_13)), ((MR_Box) (ArgY4_14)));
+          succeeded = (SubResult4_15 != (MR_Integer) 0);
+          if (succeeded)
+            *HeadVar__1_1 = SubResult4_15;
+          else
+          {
+            MR_Word SubResult5_18;
+
+            mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[5]), &SubResult5_18, ((MR_Box) (ArgX5_16)), ((MR_Box) (ArgY5_17)));
+            succeeded = (SubResult5_18 != (MR_Integer) 0);
+            if (succeeded)
+              *HeadVar__1_1 = SubResult5_18;
+            else
+            {
+              MR_Word SubResult6_21;
+
+              mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[5]), &SubResult6_21, ((MR_Box) (ArgX6_19)), ((MR_Box) (ArgY6_20)));
+              succeeded = (SubResult6_21 != (MR_Integer) 0);
+              if (succeeded)
+                *HeadVar__1_1 = SubResult6_21;
+              else
+              {
+                MR_Word SubResult7_24;
+
+                mercury__term_context____Compare____term_context_0_0(&SubResult7_24, ArgX7_22, ArgY7_23);
+                succeeded = (SubResult7_24 != (MR_Integer) 0);
+                if (succeeded)
+                  *HeadVar__1_1 = SubResult7_24;
+                else
+                {
+                  MR_Integer Var_37 = (MR_Integer) (ArgX8_25);
+                  MR_Integer Var_38 = (MR_Integer) (ArgY8_26);
+
+                  succeeded = (Var_37 < Var_38);
+                  if (succeeded)
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                  else
+                  {
+                    succeeded = (Var_37 > Var_38);
+                    if (succeeded)
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                    else
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____warn_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded;
+  MR_Integer CastX_19 = (MR_Integer) (HeadVar__1_1);
+  MR_Integer CastY_20 = (MR_Integer) (HeadVar__2_2);
+
+  succeeded = (CastX_19 == CastY_20);
+  if (succeeded)
+    succeeded = MR_TRUE;
+  else
+  {
+    MR_Word TypeInfo_23_23;
+    MR_Word TypeInfo_24_24;
+    MR_Word TypeInfo_25_25;
+    MR_Word TypeInfo_26_26;
+    MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 0))));
+    MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 1))));
+    MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 2))));
+    MR_Word ArgY3_8 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 2))));
+    MR_Word ArgX4_9 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 3))));
+    MR_Word ArgY4_10 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 3))));
+    MR_Word ArgX5_11 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 4))));
+    MR_Word ArgY5_12 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 4))));
+    MR_Word ArgX6_13 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 5))));
+    MR_Word ArgY6_14 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 5))));
+    MR_Word ArgX7_15 = ((MR_Word) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 6))));
+    MR_Word ArgY7_16 = ((MR_Word) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 6))));
+    MR_Word ArgX8_17 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__1_1, (MR_Integer) 7))) & (MR_Integer) 1);
+    MR_Word ArgY8_18 = ((MR_Unsigned) ((MR_hl_field(0, HeadVar__2_2, (MR_Integer) 7))) & (MR_Integer) 1);
+
+    succeeded = hlds__hlds_module____Unify____module_info_0_0(ArgX1_3, ArgY1_4);
+    if (succeeded)
+    {
+      succeeded = parse_tree__prog_data____Unify____pf_sym_name_arity_0_0(ArgX2_5, ArgY2_6);
+      if (succeeded)
+      {
+        TypeInfo_23_23 = (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[3]);
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_23_23, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+        if (succeeded)
+        {
+          TypeInfo_24_24 = (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[4]);
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_24_24, ((MR_Box) (ArgX4_9)), ((MR_Box) (ArgY4_10)));
+          if (succeeded)
+          {
+            TypeInfo_25_25 = (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[5]);
+            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_25_25, ((MR_Box) (ArgX5_11)), ((MR_Box) (ArgY5_12)));
+            if (succeeded)
+            {
+              TypeInfo_26_26 = (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[5]);
+              succeeded = mercury__builtin__unify_2_p_0(TypeInfo_26_26, ((MR_Box) (ArgX6_13)), ((MR_Box) (ArgY6_14)));
+              if (succeeded)
+              {
+                succeeded = mercury__term_context____Unify____term_context_0_0(ArgX7_15, ArgY7_16);
+                if (succeeded)
+                  succeeded = (ArgX8_17 == ArgY8_18);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____single_or_multi_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____single_or_multi_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____maybe_seen_quant_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  MR_bool succeeded;
+  MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+  MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+  succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+  if (succeeded)
+    *HeadVar__1_1 = (MR_Integer) 1;
+  else
+  {
+    succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 2;
+    else
+      *HeadVar__1_1 = (MR_Integer) 0;
+  }
+}
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____maybe_seen_quant_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  MR_bool succeeded = (HeadVar__1_1 == HeadVar__2_2);
+
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__flatten_to_conj_list_2_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_GoalList_4;
+
+  hlds__make_hlds__make_hlds_warn__flatten_to_conj_list_2_p_0(((MR_Word) (wrapper_arg_1)), &conv0_GoalList_4);
+  *wrapper_arg_2 = ((MR_Box) (conv0_GoalList_4));
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__flatten_to_conj_list_2_p_0(
+  MR_Word Goal_3,
+  MR_Word * GoalList_4)
+{
+  MR_bool succeeded = ((MR_tag((MR_Word) Goal_3)) == (MR_Integer) 2);
+  MR_Word ConjunctA_6;
+  MR_Word ConjunctsB_7;
+
+  if (succeeded)
+  {
+    ConjunctA_6 = ((MR_Word) ((MR_hl_field(2, Goal_3, (MR_Integer) 1))));
+    ConjunctsB_7 = ((MR_Word) ((MR_hl_field(2, Goal_3, (MR_Integer) 2))));
+    {
+      MR_Word ConjunctGoalLists_8;
+      MR_Word Var_10;
+
+      {
+        Var_10 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_10, 0) = ((MR_Box) (ConjunctA_6));
+        MR_hl_field(1, Var_10, 1) = ((MR_Box) (ConjunctsB_7));
+      }
+      mercury__list__map_3_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_goal_0), (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[2]), (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_5[3]), Var_10, &ConjunctGoalLists_8);
+      mercury__list__condense_2_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_goal_0), ConjunctGoalLists_8, GoalList_4);
+    }
+  }
+  else
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *GoalList_4 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Goal_3));
+      MR_hl_field(1, base, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__is_multi_var_3_p_0(
+  MR_Word NonLocals_4,
+  MR_Word VarSet_5,
+  MR_Word Var_6)
+{
+  MR_bool succeeded;
+  MR_String Name_7;
+  MR_String Var_8;
+
+  succeeded = parse_tree__set_of_var__member_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), NonLocals_4, Var_6);
+  if (succeeded)
+  {
+    succeeded = mercury__varset__search_name_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), VarSet_5, Var_6, &Name_7);
+    if (succeeded)
+    {
+      Var_8 = (MR_String) "_";
+      succeeded = mercury__string__prefix_2_p_0(Name_7, Var_8);
+    }
+  }
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_1(
+  void * env_ptr_arg)
+{
+  struct hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0_s * env_ptr = (struct hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0_s *) (env_ptr_arg);
+
+  MR_builtin_longjmp((env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__commit_0, 1);
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_2(
+  void * env_ptr_arg)
+{
+  struct hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0_s * env_ptr = (struct hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0_s *) (env_ptr_arg);
+
+  (env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = mercury__varset__search_name_3_p_0((env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__TypeCtorInfo_14_14, (env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__VarSet_7, (env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__QuantVar_10, &(env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__Var_15);
+  if ((env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded)
+  {
+    (env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = (strcmp((env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__Name_9, (env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__Var_15) == 0);
+    if ((env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded)
+      hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_1(env_ptr);
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_3(
+  void * env_ptr_arg)
+{
+  struct hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0_s * env_ptr = (struct hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0_s *) (env_ptr_arg);
+
+  if (MR_builtin_setjmp((env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__commit_0) == 0)
+    {
+      parse_tree__set_of_var__member_2_p_1((env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__TypeCtorInfo_14_14, (env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__QuantVars_6, &(env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__QuantVar_10, hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_2, env_ptr);
+      (env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = MR_FALSE;
+    }
+  else
+    (env_ptr)->hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = MR_TRUE;
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0(
+  MR_Word NonLocals_5,
+  MR_Word QuantVars_6,
+  MR_Word VarSet_7,
+  MR_Word Var_8)
+{
+  struct hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0_s env;
+
+  (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__QuantVars_6 = QuantVars_6;
+  (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__VarSet_7 = VarSet_7;
+  {
+    MR_String Var_11;
+    MR_String Var_12;
+
+    (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = parse_tree__set_of_var__member_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), NonLocals_5, Var_8);
+    (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = !((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded);
+    if ((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded)
+    {
+      (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__TypeCtorInfo_14_14 = (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0);
+      (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = mercury__varset__search_name_3_p_0((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__TypeCtorInfo_14_14, (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__VarSet_7, Var_8, &(env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__Name_9);
+      if ((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded)
+      {
+        Var_11 = (MR_String) "_";
+        (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = mercury__string__prefix_2_p_0((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__Name_9, Var_11);
+        (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = !((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded);
+        if ((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded)
+        {
+          Var_12 = (MR_String) "DCG_";
+          (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = mercury__string__prefix_2_p_0((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__Name_9, Var_12);
+          (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = !((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded);
+          if ((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded)
+          {
+            hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_3(&env);
+            (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded = !((env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded);
+          }
+        }
+      }
+    }
+    return (env).hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0_env_0__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__var_is_unmentioned_3_p_0(
+  MR_Word NameList1_4,
+  MR_Word MaybeArg_5,
+  MR_String * Name_6)
+{
+  MR_bool succeeded = (MaybeArg_5 != (MR_Word) ((MR_Unsigned) 0U));
+  MR_Word Var_8;
+  MR_String Var_9;
+  MR_Word TypeCtorInfo_10_10;
+
+  if (succeeded)
+  {
+    Var_8 = ((MR_Word) ((MR_hl_field(1, MaybeArg_5, (MR_Integer) 0))));
+    *Name_6 = ((MR_String) ((MR_hl_field(0, Var_8, (MR_Integer) 0))));
+    Var_9 = (MR_String) "_";
+    succeeded = mercury__string__prefix_2_p_0(*Name_6, Var_9);
+    succeeded = !(succeeded);
+    if (succeeded)
+    {
+      TypeCtorInfo_10_10 = (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0);
+      succeeded = mercury__list__member_2_p_0(TypeCtorInfo_10_10, ((MR_Box) (*Name_6)), NameList1_4);
+      succeeded = !(succeeded);
+    }
+  }
+  return succeeded;
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_warn__quant_warning_to_spec_3_f_0(
+  MR_Word PfSymNameArity_5,
+  MR_Word VarSet_6,
+  MR_Word Warning_7)
+{
+  MR_Word Spec_8;
+  MR_Word Vars_9 = ((MR_Word) ((MR_hl_field(0, Warning_7, (MR_Integer) 0))));
+  MR_Word Context_10 = ((MR_Word) ((MR_hl_field(0, Warning_7, (MR_Integer) 1))));
+  MR_Word Pieces1_11;
+  MR_Word Pieces2_13;
+  MR_Word Var_19;
+  MR_Word Var_20;
+  MR_Word Var_58;
+  MR_Word Var_59;
+  MR_Word Var_60;
+
+  {
+    Var_20 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(3, Var_20, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+    MR_hl_field(3, Var_20, 1) = ((MR_Box) (PfSymNameArity_5));
+  }
+  {
+    Var_19 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_19, 0) = ((MR_Box) (Var_20));
+    MR_hl_field(1, Var_19, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[10])));
+  }
+  {
+    Pieces1_11 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Pieces1_11, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[30])));
+    MR_hl_field(1, Pieces1_11, 1) = ((MR_Box) (Var_19));
+  }
+  if ((Vars_9 == (MR_Word) ((MR_Unsigned) 0U)))
+    mercury__require__unexpected_2_p_0((MR_String) "function \140hlds.make_hlds.make_hlds_warn.quant_warning_to_spec\'/3", (MR_String) "Vars = []");
+  else
+  {
+    MR_Word Var_65 = ((MR_Word) ((MR_hl_field(1, Vars_9, (MR_Integer) 1))));
+    MR_Word Var_66 = ((MR_Word) ((MR_hl_field(1, Vars_9, (MR_Integer) 0))));
+
+    if ((Var_65 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Word Var_32;
+      MR_Word Var_33;
+      MR_String Var_34;
+
+      Var_34 = parse_tree__parse_tree_out_term__mercury_var_to_name_only_vs_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), VarSet_6, Var_66);
+      {
+        Var_33 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(3, Var_33, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(3, Var_33, 1) = ((MR_Box) (Var_34));
+      }
+      {
+        Var_32 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_32, 0) = ((MR_Box) (Var_33));
+        MR_hl_field(1, Var_32, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[33])));
+      }
+      {
+        Pieces2_13 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Pieces2_13, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[31])));
+        MR_hl_field(1, Pieces2_13, 1) = ((MR_Box) (Var_32));
+      }
+    }
+    else
+    {
+      MR_Word Var_44;
+      MR_Word Var_45;
+      MR_String Var_46;
+
+      Var_46 = parse_tree__parse_tree_out_term__mercury_vars_to_name_only_vs_2_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), VarSet_6, Vars_9);
+      {
+        Var_45 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(3, Var_45, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(3, Var_45, 1) = ((MR_Box) (Var_46));
+      }
+      {
+        Var_44 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_44, 0) = ((MR_Box) (Var_45));
+        MR_hl_field(1, Var_44, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[36])));
+      }
+      {
+        Pieces2_13 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Pieces2_13, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[34])));
+        MR_hl_field(1, Pieces2_13, 1) = ((MR_Box) (Var_44));
+      }
+    }
+  }
+  Var_60 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Pieces1_11, Pieces2_13);
+  {
+    Var_59 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_59, 0) = ((MR_Box) (Context_10));
+    MR_hl_field(0, Var_59, 1) = ((MR_Box) (Var_60));
+  }
+  {
+    Var_58 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_58, 0) = ((MR_Box) (Var_59));
+    MR_hl_field(1, Var_58, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    Spec_8 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(3, Spec_8, 0) = ((MR_Box) ((MR_String) "function \140hlds.make_hlds.make_hlds_warn.quant_warning_to_spec\'/3"));
+    MR_hl_field(3, Spec_8, 1) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 10) << 1)) | (MR_Unsigned) ((MR_Integer) 1)));
+    MR_hl_field(3, Spec_8, 2) = ((MR_Box) ((MR_Unsigned) 4U));
+    MR_hl_field(3, Spec_8, 3) = ((MR_Box) ((MR_Unsigned) 40U));
+    MR_hl_field(3, Spec_8, 4) = ((MR_Box) (Var_58));
+  }
+  return Spec_8;
+}
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_suspicious_foreign_code_5_p_0(
+  MR_Word Lang_6,
+  MR_Word BodyCode_7,
+  MR_Word Context_8,
+  MR_Word STATE_VARIABLE_Specs_0_15,
+  MR_Word * STATE_VARIABLE_Specs_16)
+{
+  MR_bool succeeded;
+
+  if (((MR_tag((MR_Word) BodyCode_7)) == (MR_Integer) 1))
+    *STATE_VARIABLE_Specs_16 = STATE_VARIABLE_Specs_0_15;
+  else
+  {
+    MR_String Code_11 = ((MR_String) ((MR_hl_field(0, BodyCode_7, (MR_Integer) 0))));
+
+    switch (Lang_6) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word C_CodeList_12;
+          MR_Word CharList_51;
+
+          mercury__string__to_char_list_2_p_0(Code_11, &CharList_51);
+          hlds__make_hlds__make_hlds_warn__c_code_to_name_list_2_2_p_0(CharList_51, &C_CodeList_12);
+          succeeded = mercury__list__member_2_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), ((MR_Box) ((MR_String) "MR_ALLOC_ID")), C_CodeList_12);
+          if (succeeded)
+          {
+            MR_Word Spec_14;
+            MR_Word Var_47;
+            MR_Word Var_48;
+
+            {
+              Var_48 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(0, Var_48, 0) = ((MR_Box) (Context_8));
+              MR_hl_field(0, Var_48, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[29])));
+            }
+            {
+              Var_47 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Var_47, 0) = ((MR_Box) (Var_48));
+              MR_hl_field(1, Var_47, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            }
+            {
+              Spec_14 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, Spec_14, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.warn_suspicious_foreign_code\'/5"));
+              MR_hl_field(3, Spec_14, 1) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 59) << 1)) | (MR_Unsigned) ((MR_Integer) 1)));
+              MR_hl_field(3, Spec_14, 2) = ((MR_Box) ((MR_Unsigned) 4U));
+              MR_hl_field(3, Spec_14, 3) = ((MR_Box) ((MR_Unsigned) 40U));
+              MR_hl_field(3, Spec_14, 4) = ((MR_Box) (Var_47));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              *STATE_VARIABLE_Specs_16 = base;
+              MR_hl_field(1, base, 0) = ((MR_Box) (Spec_14));
+              MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_15));
+            }
+          }
+          else
+            *STATE_VARIABLE_Specs_16 = STATE_VARIABLE_Specs_0_15;
+        }
+        break;
+      case (MR_Integer) 1:
+        *STATE_VARIABLE_Specs_16 = STATE_VARIABLE_Specs_0_15;
+        break;
+      case (MR_Integer) 2:
+        *STATE_VARIABLE_Specs_16 = STATE_VARIABLE_Specs_0_15;
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn__check_promise_ex_decl_6_p_0(
+  MR_Word UnivVars_7,
+  MR_Word PromiseType_8,
+  MR_Word Goal_9,
+  MR_Word Context_10,
+  MR_Word STATE_VARIABLE_Specs_0_14,
+  MR_Word * STATE_VARIABLE_Specs_15)
+{
+  MR_Word STATE_VARIABLE_Specs_17_17;
+
+  if ((UnivVars_7 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    MR_Word Pieces_18;
+    MR_Word Spec_19;
+    MR_Word Var_22;
+    MR_Word Var_23;
+    MR_String Var_24;
+
+    Var_24 = parse_tree__parse_tree_out_misc__promise_to_string_1_f_0(PromiseType_8);
+    {
+      Var_23 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(3, Var_23, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(3, Var_23, 1) = ((MR_Box) (Var_24));
+    }
+    {
+      Var_22 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_22, 0) = ((MR_Box) (Var_23));
+      MR_hl_field(1, Var_22, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[93])));
+    }
+    {
+      Pieces_18 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Pieces_18, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[62])));
+      MR_hl_field(1, Pieces_18, 1) = ((MR_Box) (Var_22));
+    }
+    {
+      Spec_19 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Spec_19, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.promise_ex_error\'/5"));
+      MR_hl_field(1, Spec_19, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(1, Spec_19, 2) = ((MR_Box) ((MR_Unsigned) 40U));
+      MR_hl_field(1, Spec_19, 3) = ((MR_Box) (Context_10));
+      MR_hl_field(1, Spec_19, 4) = ((MR_Box) (Pieces_18));
+    }
+    {
+      STATE_VARIABLE_Specs_17_17 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, STATE_VARIABLE_Specs_17_17, 0) = ((MR_Box) (Spec_19));
+      MR_hl_field(1, STATE_VARIABLE_Specs_17_17, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_14));
+    }
+  }
+  else
+    STATE_VARIABLE_Specs_17_17 = STATE_VARIABLE_Specs_0_14;
+  hlds__make_hlds__make_hlds_warn__check_promise_ex_goal_4_p_0(PromiseType_8, Goal_9, STATE_VARIABLE_Specs_17_17, STATE_VARIABLE_Specs_15);
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__check_promise_ex_goal_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv0_GoalList_4;
+
+  hlds__make_hlds__make_hlds_warn__flatten_to_conj_list_2_p_0(((MR_Word) (wrapper_arg_1)), &conv0_GoalList_4);
+  *wrapper_arg_2 = ((MR_Box) (conv0_GoalList_4));
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__check_promise_ex_goal_4_p_0(
+  MR_Word PromiseType_5,
+  MR_Word Goal_6,
+  MR_Word STATE_VARIABLE_Specs_0_19,
+  MR_Word * STATE_VARIABLE_Specs_20)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded = ((((MR_tag((MR_Word) Goal_6)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, Goal_6, (MR_Integer) 0)))) == (MR_Integer) 6)));
+    MR_Word SubGoal_10;
+    MR_Word Var_21;
+    MR_Word Var_22;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if (succeeded)
+    {
+      Var_21 = ((((MR_Unsigned) ((MR_hl_field(3, Goal_6, (MR_Integer) 1))) >> 1)) & (MR_Integer) 1);
+      Var_22 = ((MR_Unsigned) ((MR_hl_field(3, Goal_6, (MR_Integer) 1))) & (MR_Integer) 1);
+      SubGoal_10 = ((MR_Word) ((MR_hl_field(3, Goal_6, (MR_Integer) 4))));
+      succeeded = (Var_21 == (MR_Integer) 0);
+      if (succeeded)
+        succeeded = (Var_22 == (MR_Integer) 0);
+    }
+    if (succeeded)
+    {
+      MR_Word next_value_of_Goal_6 = SubGoal_10;
+
+      // direct tailcall eliminated
+      ;
+      Goal_6 = next_value_of_Goal_6;
+      continue;
+    }
+    else
+    {
+      MR_Word Disjunct1_12;
+      MR_Word Disjunct2_13;
+      MR_Word Disjuncts3plus_14;
+
+      succeeded = ((((MR_tag((MR_Word) Goal_6)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, Goal_6, (MR_Integer) 0)))) == (MR_Integer) 2)));
+      if (succeeded)
+      {
+        Disjunct1_12 = ((MR_Word) ((MR_hl_field(3, Goal_6, (MR_Integer) 2))));
+        Disjunct2_13 = ((MR_Word) ((MR_hl_field(3, Goal_6, (MR_Integer) 3))));
+        Disjuncts3plus_14 = ((MR_Word) ((MR_hl_field(3, Goal_6, (MR_Integer) 4))));
+        {
+          MR_Word DisjList_15;
+          MR_Word DisjConjList_16;
+          MR_Word Var_24;
+
+          {
+            Var_24 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_24, 0) = ((MR_Box) (Disjunct2_13));
+            MR_hl_field(1, Var_24, 1) = ((MR_Box) (Disjuncts3plus_14));
+          }
+          {
+            DisjList_15 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, DisjList_15, 0) = ((MR_Box) (Disjunct1_12));
+            MR_hl_field(1, DisjList_15, 1) = ((MR_Box) (Var_24));
+          }
+          mercury__list__map_3_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_goal_0), (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[2]), (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_5[2]), DisjList_15, &DisjConjList_16);
+          hlds__make_hlds__make_hlds_warn__check_promise_ex_disjunction_4_p_0(PromiseType_5, DisjConjList_16, STATE_VARIABLE_Specs_0_19, STATE_VARIABLE_Specs_20);
+        }
+      }
+      else
+      {
+        MR_Word Context_17;
+        MR_Word SubGoal_37;
+        MR_Word Var_27;
+        MR_Word Var_28;
+
+        succeeded = ((((MR_tag((MR_Word) Goal_6)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, Goal_6, (MR_Integer) 0)))) == (MR_Integer) 6)));
+        if (succeeded)
+        {
+          Var_27 = ((((MR_Unsigned) ((MR_hl_field(3, Goal_6, (MR_Integer) 1))) >> 1)) & (MR_Integer) 1);
+          Var_28 = ((MR_Unsigned) ((MR_hl_field(3, Goal_6, (MR_Integer) 1))) & (MR_Integer) 1);
+          Context_17 = ((MR_Word) ((MR_hl_field(3, Goal_6, (MR_Integer) 2))));
+          SubGoal_37 = ((MR_Word) ((MR_hl_field(3, Goal_6, (MR_Integer) 4))));
+          succeeded = (Var_27 == (MR_Integer) 1);
+          if (succeeded)
+            succeeded = (Var_28 == (MR_Integer) 0);
+        }
+        if (succeeded)
+        {
+          MR_Word STATE_VARIABLE_Specs_30_30;
+          MR_Word Pieces_42;
+          MR_Word Spec_43;
+          MR_Word Var_46;
+          MR_Word Var_47;
+          MR_String Var_48;
+          MR_Word next_value_of_Goal_6;
+          MR_Word next_value_of_STATE_VARIABLE_Specs_0_19;
+
+          Var_48 = parse_tree__parse_tree_out_misc__promise_to_string_1_f_0(PromiseType_5);
+          {
+            Var_47 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(3, Var_47, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(3, Var_47, 1) = ((MR_Box) (Var_48));
+          }
+          {
+            Var_46 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_46, 0) = ((MR_Box) (Var_47));
+            MR_hl_field(1, Var_46, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[83])));
+          }
+          {
+            Pieces_42 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Pieces_42, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[62])));
+            MR_hl_field(1, Pieces_42, 1) = ((MR_Box) (Var_46));
+          }
+          {
+            Spec_43 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Spec_43, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.promise_ex_error\'/5"));
+            MR_hl_field(1, Spec_43, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(1, Spec_43, 2) = ((MR_Box) ((MR_Unsigned) 40U));
+            MR_hl_field(1, Spec_43, 3) = ((MR_Box) (Context_17));
+            MR_hl_field(1, Spec_43, 4) = ((MR_Box) (Pieces_42));
+          }
+          {
+            STATE_VARIABLE_Specs_30_30 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, STATE_VARIABLE_Specs_30_30, 0) = ((MR_Box) (Spec_43));
+            MR_hl_field(1, STATE_VARIABLE_Specs_30_30, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_19));
+          }
+          // direct tailcall eliminated
+          ;
+          next_value_of_Goal_6 = SubGoal_37;
+          next_value_of_STATE_VARIABLE_Specs_0_19 = STATE_VARIABLE_Specs_30_30;
+          Goal_6 = next_value_of_Goal_6;
+          STATE_VARIABLE_Specs_0_19 = next_value_of_STATE_VARIABLE_Specs_0_19;
+          continue;
+        }
+        else
+        {
+          MR_Word Var_34;
+          MR_Word Pieces_65;
+          MR_Word Spec_66;
+          MR_Word Var_69;
+          MR_Word Var_70;
+          MR_String Var_71;
+
+          Var_34 = parse_tree__prog_item__get_goal_context_1_f_0(Goal_6);
+          Var_71 = parse_tree__parse_tree_out_misc__promise_to_string_1_f_0(PromiseType_5);
+          {
+            Var_70 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(3, Var_70, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(3, Var_70, 1) = ((MR_Box) (Var_71));
+          }
+          {
+            Var_69 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_69, 0) = ((MR_Box) (Var_70));
+            MR_hl_field(1, Var_69, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[88])));
+          }
+          {
+            Pieces_65 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Pieces_65, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[62])));
+            MR_hl_field(1, Pieces_65, 1) = ((MR_Box) (Var_69));
+          }
+          {
+            Spec_66 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Spec_66, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.promise_ex_error\'/5"));
+            MR_hl_field(1, Spec_66, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+            MR_hl_field(1, Spec_66, 2) = ((MR_Box) ((MR_Unsigned) 40U));
+            MR_hl_field(1, Spec_66, 3) = ((MR_Box) (Var_34));
+            MR_hl_field(1, Spec_66, 4) = ((MR_Box) (Pieces_65));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            *STATE_VARIABLE_Specs_20 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (Spec_66));
+            MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_19));
+          }
+        }
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__check_promise_ex_disjunction_4_p_0(
+  MR_Word PromiseType_5,
+  MR_Word DisjConjList_6,
+  MR_Word STATE_VARIABLE_Specs_0_10,
+  MR_Word * STATE_VARIABLE_Specs_11)
+{
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((DisjConjList_6 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_Specs_11 = STATE_VARIABLE_Specs_0_10;
+    else
+    {
+      MR_Word ConjList_8 = ((MR_Word) ((MR_hl_field(1, DisjConjList_6, (MR_Integer) 0))));
+      MR_Word Rest_9 = ((MR_Word) ((MR_hl_field(1, DisjConjList_6, (MR_Integer) 1))));
+      MR_Word STATE_VARIABLE_Specs_13_13;
+      MR_Word next_value_of_DisjConjList_6;
+      MR_Word next_value_of_STATE_VARIABLE_Specs_0_10;
+
+      hlds__make_hlds__make_hlds_warn__check_promise_ex_disj_arm_5_p_0(PromiseType_5, ConjList_8, (MR_Integer) 0, STATE_VARIABLE_Specs_0_10, &STATE_VARIABLE_Specs_13_13);
+      // direct tailcall eliminated
+      ;
+      next_value_of_DisjConjList_6 = Rest_9;
+      next_value_of_STATE_VARIABLE_Specs_0_10 = STATE_VARIABLE_Specs_13_13;
+      DisjConjList_6 = next_value_of_DisjConjList_6;
+      STATE_VARIABLE_Specs_0_10 = next_value_of_STATE_VARIABLE_Specs_0_10;
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__check_promise_ex_disj_arm_5_p_0(
+  MR_Word PromiseType_6,
+  MR_Word Goals_7,
+  MR_Word CallUsed_8,
+  MR_Word STATE_VARIABLE_Specs_0_23,
+  MR_Word * STATE_VARIABLE_Specs_24)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((Goals_7 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_Specs_24 = STATE_VARIABLE_Specs_0_23;
+    else
+    {
+      MR_Word HeadGoal_10 = ((MR_Word) ((MR_hl_field(1, Goals_7, (MR_Integer) 0))));
+      MR_Word TailGoals_11 = ((MR_Word) ((MR_hl_field(1, Goals_7, (MR_Integer) 1))));
+
+      succeeded = ((MR_tag((MR_Word) HeadGoal_10)) == (MR_Integer) 0);
+      if (succeeded)
+      {
+        MR_Word next_value_of_Goals_7 = TailGoals_11;
+
+        // direct tailcall eliminated
+        ;
+        Goals_7 = next_value_of_Goals_7;
+        continue;
+      }
+      else
+      {
+        MR_Word HeadSubGoal_18;
+        MR_Word Var_26;
+        MR_Word Var_27;
+
+        succeeded = ((((MR_tag((MR_Word) HeadGoal_10)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(3, HeadGoal_10, (MR_Integer) 0)))) == (MR_Integer) 6)));
+        if (succeeded)
+        {
+          Var_26 = ((((MR_Unsigned) ((MR_hl_field(3, HeadGoal_10, (MR_Integer) 1))) >> 1)) & (MR_Integer) 1);
+          Var_27 = ((MR_Unsigned) ((MR_hl_field(3, HeadGoal_10, (MR_Integer) 1))) & (MR_Integer) 1);
+          HeadSubGoal_18 = ((MR_Word) ((MR_hl_field(3, HeadGoal_10, (MR_Integer) 4))));
+          succeeded = (Var_26 == (MR_Integer) 0);
+          if (succeeded)
+            succeeded = (Var_27 == (MR_Integer) 0);
+        }
+        if (succeeded)
+        {
+          MR_Word Var_28;
+          MR_Word next_value_of_Goals_7;
+
+          {
+            Var_28 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_28, 0) = ((MR_Box) (HeadSubGoal_18));
+            MR_hl_field(1, Var_28, 1) = ((MR_Box) (TailGoals_11));
+          }
+          // direct tailcall eliminated
+          ;
+          next_value_of_Goals_7 = Var_28;
+          Goals_7 = next_value_of_Goals_7;
+          continue;
+        }
+        else
+        {
+          MR_Word Context_19;
+
+          succeeded = ((MR_tag((MR_Word) HeadGoal_10)) == (MR_Integer) 1);
+          if (succeeded)
+          {
+            Context_19 = ((MR_Word) ((MR_hl_field(1, HeadGoal_10, (MR_Integer) 0))));
+            {
+              MR_Word STATE_VARIABLE_Specs_31_31;
+              MR_Word next_value_of_Goals_7;
+              MR_Word next_value_of_STATE_VARIABLE_Specs_0_23;
+
+              switch (CallUsed_8) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  STATE_VARIABLE_Specs_31_31 = STATE_VARIABLE_Specs_0_23;
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word Pieces_37;
+                    MR_Word Spec_38;
+                    MR_Word Var_41;
+                    MR_Word Var_42;
+                    MR_String Var_43;
+
+                    Var_43 = parse_tree__parse_tree_out_misc__promise_to_string_1_f_0(PromiseType_6);
+                    {
+                      Var_42 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(3, Var_42, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+                      MR_hl_field(3, Var_42, 1) = ((MR_Box) (Var_43));
+                    }
+                    {
+                      Var_41 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, Var_41, 0) = ((MR_Box) (Var_42));
+                      MR_hl_field(1, Var_41, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[73])));
+                    }
+                    {
+                      Pieces_37 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, Pieces_37, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[62])));
+                      MR_hl_field(1, Pieces_37, 1) = ((MR_Box) (Var_41));
+                    }
+                    {
+                      Spec_38 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, Spec_38, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.promise_ex_error\'/5"));
+                      MR_hl_field(1, Spec_38, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                      MR_hl_field(1, Spec_38, 2) = ((MR_Box) ((MR_Unsigned) 40U));
+                      MR_hl_field(1, Spec_38, 3) = ((MR_Box) (Context_19));
+                      MR_hl_field(1, Spec_38, 4) = ((MR_Box) (Pieces_37));
+                    }
+                    {
+                      STATE_VARIABLE_Specs_31_31 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, STATE_VARIABLE_Specs_31_31, 0) = ((MR_Box) (Spec_38));
+                      MR_hl_field(1, STATE_VARIABLE_Specs_31_31, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_23));
+                    }
+                  }
+                  break;
+              }
+              // direct tailcall eliminated
+              ;
+              next_value_of_Goals_7 = TailGoals_11;
+              next_value_of_STATE_VARIABLE_Specs_0_23 = STATE_VARIABLE_Specs_31_31;
+              Goals_7 = next_value_of_Goals_7;
+              CallUsed_8 = (MR_Integer) 1;
+              STATE_VARIABLE_Specs_0_23 = next_value_of_STATE_VARIABLE_Specs_0_23;
+              continue;
+            }
+          }
+          else
+          {
+            MR_Word Var_34;
+            MR_Word STATE_VARIABLE_Specs_36_36;
+            MR_Word Pieces_60;
+            MR_Word Spec_61;
+            MR_Word Var_64;
+            MR_Word Var_65;
+            MR_String Var_66;
+            MR_Word next_value_of_Goals_7;
+            MR_Word next_value_of_STATE_VARIABLE_Specs_0_23;
+
+            Var_34 = parse_tree__prog_item__get_goal_context_1_f_0(HeadGoal_10);
+            Var_66 = parse_tree__parse_tree_out_misc__promise_to_string_1_f_0(PromiseType_6);
+            {
+              Var_65 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(3, Var_65, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+              MR_hl_field(3, Var_65, 1) = ((MR_Box) (Var_66));
+            }
+            {
+              Var_64 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Var_64, 0) = ((MR_Box) (Var_65));
+              MR_hl_field(1, Var_64, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[78])));
+            }
+            {
+              Pieces_60 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Pieces_60, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[62])));
+              MR_hl_field(1, Pieces_60, 1) = ((MR_Box) (Var_64));
+            }
+            {
+              Spec_61 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, Spec_61, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.promise_ex_error\'/5"));
+              MR_hl_field(1, Spec_61, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+              MR_hl_field(1, Spec_61, 2) = ((MR_Box) ((MR_Unsigned) 40U));
+              MR_hl_field(1, Spec_61, 3) = ((MR_Box) (Var_34));
+              MR_hl_field(1, Spec_61, 4) = ((MR_Box) (Pieces_60));
+            }
+            {
+              STATE_VARIABLE_Specs_36_36 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(1, STATE_VARIABLE_Specs_36_36, 0) = ((MR_Box) (Spec_61));
+              MR_hl_field(1, STATE_VARIABLE_Specs_36_36, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_23));
+            }
+            // direct tailcall eliminated
+            ;
+            next_value_of_Goals_7 = TailGoals_11;
+            next_value_of_STATE_VARIABLE_Specs_0_23 = STATE_VARIABLE_Specs_36_36;
+            Goals_7 = next_value_of_Goals_7;
+            STATE_VARIABLE_Specs_0_23 = next_value_of_STATE_VARIABLE_Specs_0_23;
+            continue;
+          }
+        }
+      }
+    }
+    break;
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_7_p_0(
+  MR_Word ModuleInfo_8,
+  MR_Word PfSymNameArity_9,
+  MR_Word VarSet_10,
+  MR_Word BodyGoal_11,
+  MR_Word * SeenQuant_12,
+  MR_Word STATE_VARIABLE_Specs_0_34,
+  MR_Word * STATE_VARIABLE_Specs_35)
+{
+  MR_Word Info0_16;
+  MR_Word QuantVars_17;
+  MR_Word Info_18;
+  MR_Word NewSpecs_22;
+  MR_Word SingletonHeadVarsSet_23;
+  MR_Word MultiHeadVarsSet_24;
+  MR_Word HeadContext_25;
+  MR_Word SingletonHeadVars_26;
+  MR_Word MultiHeadVars_27;
+  MR_Word Var_43;
+  MR_Word Var_44;
+  MR_Word Var_45;
+  MR_Word STATE_VARIABLE_Specs_47_47;
+  MR_Word STATE_VARIABLE_Specs_49_49;
+
+  Var_43 = parse_tree__set_of_var__init_0_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0));
+  Var_44 = parse_tree__set_of_var__init_0_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0));
+  Var_45 = mercury__term_context__dummy_context_0_f_0();
+  {
+    Info0_16 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Info0_16, 0) = ((MR_Box) (ModuleInfo_8));
+    MR_hl_field(0, Info0_16, 1) = ((MR_Box) (PfSymNameArity_9));
+    MR_hl_field(0, Info0_16, 2) = ((MR_Box) (VarSet_10));
+    MR_hl_field(0, Info0_16, 3) = ((MR_Box) ((MR_Unsigned) 0U));
+    MR_hl_field(0, Info0_16, 4) = ((MR_Box) (Var_43));
+    MR_hl_field(0, Info0_16, 5) = ((MR_Box) (Var_44));
+    MR_hl_field(0, Info0_16, 6) = ((MR_Box) (Var_45));
+    MR_hl_field(0, Info0_16, 7) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 0));
+  }
+  QuantVars_17 = parse_tree__set_of_var__init_0_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0));
+  hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(BodyGoal_11, QuantVars_17, Info0_16, &Info_18);
+  NewSpecs_22 = ((MR_Word) ((MR_hl_field(0, Info_18, (MR_Integer) 3))));
+  SingletonHeadVarsSet_23 = ((MR_Word) ((MR_hl_field(0, Info_18, (MR_Integer) 4))));
+  MultiHeadVarsSet_24 = ((MR_Word) ((MR_hl_field(0, Info_18, (MR_Integer) 5))));
+  HeadContext_25 = ((MR_Word) ((MR_hl_field(0, Info_18, (MR_Integer) 6))));
+  *SeenQuant_12 = ((MR_Unsigned) ((MR_hl_field(0, Info_18, (MR_Integer) 7))) & (MR_Integer) 1);
+  STATE_VARIABLE_Specs_47_47 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_error_spec_0), NewSpecs_22, STATE_VARIABLE_Specs_0_34);
+  parse_tree__set_of_var__to_sorted_list_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), SingletonHeadVarsSet_23, &SingletonHeadVars_26);
+  parse_tree__set_of_var__to_sorted_list_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), MultiHeadVarsSet_24, &MultiHeadVars_27);
+  if ((SingletonHeadVars_26 == (MR_Word) ((MR_Unsigned) 0U)))
+    STATE_VARIABLE_Specs_49_49 = STATE_VARIABLE_Specs_47_47;
+  else
+  {
+    MR_Word HeadSHV_28 = ((MR_Word) ((MR_hl_field(1, SingletonHeadVars_26, (MR_Integer) 0))));
+    MR_Word TailSHVs_29 = ((MR_Word) ((MR_hl_field(1, SingletonHeadVars_26, (MR_Integer) 1))));
+    MR_Word SingleSpec_30;
+
+    hlds__make_hlds__make_hlds_warn__generate_variable_warning_7_p_0((MR_Integer) 0, HeadContext_25, PfSymNameArity_9, VarSet_10, HeadSHV_28, TailSHVs_29, &SingleSpec_30);
+    {
+      STATE_VARIABLE_Specs_49_49 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, STATE_VARIABLE_Specs_49_49, 0) = ((MR_Box) (SingleSpec_30));
+      MR_hl_field(1, STATE_VARIABLE_Specs_49_49, 1) = ((MR_Box) (STATE_VARIABLE_Specs_47_47));
+    }
+  }
+  if ((MultiHeadVars_27 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_Specs_35 = STATE_VARIABLE_Specs_49_49;
+  else
+  {
+    MR_Word HeadMHV_31 = ((MR_Word) ((MR_hl_field(1, MultiHeadVars_27, (MR_Integer) 0))));
+    MR_Word TailMHVs_32 = ((MR_Word) ((MR_hl_field(1, MultiHeadVars_27, (MR_Integer) 1))));
+    MR_Word MultiSpec_33;
+
+    hlds__make_hlds__make_hlds_warn__generate_variable_warning_7_p_0((MR_Integer) 1, HeadContext_25, PfSymNameArity_9, VarSet_10, HeadMHV_31, TailMHVs_32, &MultiSpec_33);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *STATE_VARIABLE_Specs_35 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (MultiSpec_33));
+      MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_49_49));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  MR_Box closure = closure_arg;
+  MR_Word conv1_STATE_VARIABLE_Info_9;
+
+  hlds__make_hlds__make_hlds_warn__add_warn_spec_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv1_STATE_VARIABLE_Info_9);
+  *wrapper_arg_3 = ((MR_Box) (conv1_STATE_VARIABLE_Info_9));
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_HeadVar__2_2;
+
+  conv0_HeadVar__2_2 = hlds__hlds_goal__foreign_arg_maybe_name_mode_1_f_0(((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(
+  MR_Word tscc_proc_1_input_1_Goal_5,
+  MR_Word tscc_proc_1_input_2_QuantVars_6,
+  MR_Word tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98,
+  MR_Word * tscc_output_ptr_1_STATE_VARIABLE_Info_99)
+{
+  MR_Word tscc_proc_2_input_1_X_7;
+  MR_Word tscc_proc_2_input_2_RHS_8;
+  MR_Word tscc_proc_2_input_3_GoalInfo_9;
+  MR_Word tscc_proc_2_input_4_QuantVars_10;
+  MR_Word tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29;
+  MR_Word tscc_output_1_STATE_VARIABLE_Info_99;
+
+  // The code for TSCC PROC 1: pred hlds.make_hlds.make_hlds_warn.warn_singletons_in_goal/4-0.
+  ;
+  // Setup for mutual tailcalls optimized into a loop.
+  ;
+  // The mutually recursive procedures are:
+  ;
+  ;
+  // proc 1 in TSCC: pred hlds.make_hlds.make_hlds_warn.warn_singletons_in_goal/4-0
+  ;
+  // proc 2 in TSCC: pred hlds.make_hlds.make_hlds_warn.warn_singletons_in_unify/6-0
+  ;
+  ;
+  goto top_of_proc_1;
+top_of_proc_1:;
+  {
+    MR_Word Goal_5 = tscc_proc_1_input_1_Goal_5;
+    MR_Word QuantVars_6 = tscc_proc_1_input_2_QuantVars_6;
+    MR_Word STATE_VARIABLE_Info_0_98 = tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+    MR_Word STATE_VARIABLE_Info_99;
+    MR_bool succeeded;
+    MR_Word GoalExpr_8 = ((MR_Word) ((MR_hl_field(0, Goal_5, (MR_Integer) 0))));
+    MR_Word GoalInfo_9 = ((MR_Word) ((MR_hl_field(0, Goal_5, (MR_Integer) 1))));
+
+    switch (MR_tag((MR_Word) GoalExpr_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word SubGoal_15 = (MR_Word) ((MR_Word) (GoalExpr_8));
+          MR_Word next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_15;
+          MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+          MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_0_98;
+
+          // direct tailcall eliminated
+          ;
+          tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+          tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+          tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+          goto top_of_proc_1;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word Var_68 = ((MR_Word) ((MR_hl_field(1, GoalExpr_8, (MR_Integer) 0))));
+          MR_Word RHS_69 = ((MR_Word) ((MR_hl_field(1, GoalExpr_8, (MR_Integer) 1))));
+          MR_Word next_value_of_tscc_proc_2_input_1_X_7 = Var_68;
+          MR_Word next_value_of_tscc_proc_2_input_2_RHS_8 = RHS_69;
+          MR_Word next_value_of_tscc_proc_2_input_3_GoalInfo_9 = GoalInfo_9;
+          MR_Word next_value_of_tscc_proc_2_input_4_QuantVars_10 = QuantVars_6;
+          MR_Word next_value_of_tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29 = STATE_VARIABLE_Info_0_98;
+
+          // direct tailcall eliminated
+          ;
+          tscc_proc_2_input_1_X_7 = next_value_of_tscc_proc_2_input_1_X_7;
+          tscc_proc_2_input_2_RHS_8 = next_value_of_tscc_proc_2_input_2_RHS_8;
+          tscc_proc_2_input_3_GoalInfo_9 = next_value_of_tscc_proc_2_input_3_GoalInfo_9;
+          tscc_proc_2_input_4_QuantVars_10 = next_value_of_tscc_proc_2_input_4_QuantVars_10;
+          tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29 = next_value_of_tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29;
+          goto top_of_proc_2;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word Args_58 = ((MR_Word) ((MR_hl_field(2, GoalExpr_8, (MR_Integer) 2))));
+          MR_Word NonLocals_157;
+
+          NonLocals_157 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+          hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Args_58, GoalInfo_9, NonLocals_157, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word GenericCall_62 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+              MR_Word Args0_63 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 2))));
+              MR_Word Args1_67;
+              MR_Word NonLocals_158;
+              MR_Word Args_159;
+
+              hlds__goal_util__generic_call_vars_2_p_0(GenericCall_62, &Args1_67);
+              Args_159 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[1]), Args0_63, Args1_67);
+              NonLocals_158 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+              hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Args_159, GoalInfo_9, NonLocals_158, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word Attrs_73 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+              MR_Word PredId_74 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 2))));
+              MR_Integer ProcId_75 = ((MR_Integer) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 3))));
+              MR_Word PragmaImpl_78 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 7))));
+              MR_Word Context_79;
+              MR_Word Lang_80;
+              MR_Word NamesModes_81;
+              MR_Word PragmaSpecs_82;
+              MR_Word Var_128;
+              MR_Word Args_160 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 4))));
+              MR_Word Var_178;
+              MR_Box conv2_STATE_VARIABLE_Info_99;
+
+              Context_79 = hlds__hlds_goal__goal_info_get_context_1_f_0(GoalInfo_9);
+              Lang_80 = parse_tree__prog_data_foreign__get_foreign_language_1_f_0(Attrs_73);
+              NamesModes_81 = mercury__list__map_2_f_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_foreign_arg_0), (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[0]), (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_5[0]), Args_160);
+              Var_128 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 0))));
+              Var_178 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 1))));
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_pragma_foreign_proc_10_p_0(Var_128, PragmaImpl_78, Lang_80, NamesModes_81, Context_79, Var_178, PredId_74, ProcId_75, (MR_Word) ((MR_Unsigned) 0U), &PragmaSpecs_82);
+              mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_error_spec_0), (MR_Word) (&hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_warn_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_5[1]), PragmaSpecs_82, ((MR_Box) (STATE_VARIABLE_Info_0_98)), &conv2_STATE_VARIABLE_Info_99);
+              STATE_VARIABLE_Info_99 = ((MR_Word) (conv2_STATE_VARIABLE_Info_99));
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word Goals_11 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 2))));
+
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_list_4_p_0(Goals_11, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word Goals_143 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_list_4_p_0(Goals_143, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word Cases_14 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 3))));
+
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_cases_4_p_0(Cases_14, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word Reason_16 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+              MR_Word SubGoal_152 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 2))));
+
+              switch (MR_tag((MR_Word) Reason_16)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Word Vars_17 = ((MR_Word) ((MR_hl_field(0, Reason_16, (MR_Integer) 0))));
+                    MR_Word Creator_18 = ((MR_Unsigned) ((MR_hl_field(0, Reason_16, (MR_Integer) 1))) & (MR_Integer) 1);
+                    MR_Word SubQuantVars_23;
+                    MR_Word STATE_VARIABLE_Info_106_106;
+                    MR_Word next_value_of_tscc_proc_1_input_1_Goal_5;
+                    MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+
+                    if ((Vars_17 == (MR_Word) ((MR_Unsigned) 0U)))
+                    {
+                      SubQuantVars_23 = QuantVars_6;
+                      STATE_VARIABLE_Info_106_106 = STATE_VARIABLE_Info_0_98;
+                    }
+                    else
+                    {
+                      MR_Word SubGoalVars_21;
+                      MR_Word EmptySet_22;
+                      MR_Word STATE_VARIABLE_Info_104_104;
+                      MR_Word Var_162 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 0))));
+                      MR_Word Var_163 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 1))));
+                      MR_Word Var_164 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 2))));
+                      MR_Word Var_165 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 3))));
+                      MR_Word Var_166 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 4))));
+                      MR_Word Var_167 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 5))));
+                      MR_Word Var_168 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 6))));
+
+                      {
+                        STATE_VARIABLE_Info_104_104 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 0) = ((MR_Box) (Var_162));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 1) = ((MR_Box) (Var_163));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 2) = ((MR_Box) (Var_164));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 3) = ((MR_Box) (Var_165));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 4) = ((MR_Box) (Var_166));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 5) = ((MR_Box) (Var_167));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 6) = ((MR_Box) (Var_168));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 7) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 1));
+                      }
+                      SubGoalVars_21 = hlds__quantification__free_goal_vars_1_f_0(SubGoal_152);
+                      parse_tree__set_of_var__init_1_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), &EmptySet_22);
+                      switch (Creator_18) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 1:
+                          {
+                            SubQuantVars_23 = QuantVars_6;
+                            STATE_VARIABLE_Info_106_106 = STATE_VARIABLE_Info_104_104;
+                          }
+                          break;
+                        case (MR_Integer) 0:
+                          {
+                            hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Vars_17, GoalInfo_9, EmptySet_22, SubGoalVars_21, STATE_VARIABLE_Info_104_104, &STATE_VARIABLE_Info_106_106);
+                            parse_tree__set_of_var__insert_list_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), Vars_17, QuantVars_6, &SubQuantVars_23);
+                          }
+                          break;
+                      }
+                    }
+                    // direct tailcall eliminated
+                    ;
+                    next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_152;
+                    next_value_of_tscc_proc_1_input_2_QuantVars_6 = SubQuantVars_23;
+                    next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_106_106;
+                    tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                    tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                    goto top_of_proc_1;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word HeadWarning_27 = ((MR_Unsigned) ((MR_hl_field(1, Reason_16, (MR_Integer) 0))) & (MR_Integer) 7);
+                    MR_Word TailWarnings_28 = ((MR_Word) ((MR_hl_field(1, Reason_16, (MR_Integer) 1))));
+
+                    succeeded = (HeadWarning_27 == (MR_Integer) 0);
+                    if (!(succeeded))
+                      succeeded = mercury__list__member_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_goal_warning_0), ((MR_Box) ((MR_Integer) 0)), TailWarnings_28);
+                    if (succeeded)
+                      STATE_VARIABLE_Info_99 = STATE_VARIABLE_Info_0_98;
+                    else
+                    {
+                      MR_Word next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_152;
+                      MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+                      MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_0_98;
+
+                      // direct tailcall eliminated
+                      ;
+                      tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                      tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                      tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                      goto top_of_proc_1;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Word STATE_VARIABLE_Info_108_108;
+                    MR_Word Vars_148 = ((MR_Word) ((MR_hl_field(2, Reason_16, (MR_Integer) 0))));
+                    MR_Word SubQuantVars_151;
+                    MR_Word next_value_of_tscc_proc_1_input_1_Goal_5;
+                    MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+
+                    if ((Vars_148 == (MR_Word) ((MR_Unsigned) 0U)))
+                    {
+                      SubQuantVars_151 = QuantVars_6;
+                      STATE_VARIABLE_Info_108_108 = STATE_VARIABLE_Info_0_98;
+                    }
+                    else
+                    {
+                      MR_Word SubGoalVars_144;
+                      MR_Word EmptySet_145;
+
+                      SubGoalVars_144 = hlds__quantification__free_goal_vars_1_f_0(SubGoal_152);
+                      parse_tree__set_of_var__init_1_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), &EmptySet_145);
+                      hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Vars_148, GoalInfo_9, EmptySet_145, SubGoalVars_144, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_108_108);
+                      parse_tree__set_of_var__insert_list_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), Vars_148, QuantVars_6, &SubQuantVars_151);
+                    }
+                    // direct tailcall eliminated
+                    ;
+                    next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_152;
+                    next_value_of_tscc_proc_1_input_2_QuantVars_6 = SubQuantVars_151;
+                    next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_108_108;
+                    tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                    tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                    goto top_of_proc_1;
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, Reason_16, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                    case (MR_Integer) 1:
+                    case (MR_Integer) 2:
+                    case (MR_Integer) 3:
+                    case (MR_Integer) 4:
+                    case (MR_Integer) 5:
+                    case (MR_Integer) 7:
+                      {
+                        MR_Word next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_152;
+                        MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+                        MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_0_98;
+
+                        // direct tailcall eliminated
+                        ;
+                        tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                        tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                        tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                        goto top_of_proc_1;
+                      }
+                      break;
+                    case (MR_Integer) 6:
+                      {
+                        MR_Word TermVar_41 = ((MR_Word) ((MR_hl_field(3, Reason_16, (MR_Integer) 1))));
+                        MR_Word NonLocals_43;
+                        MR_Word Var_113;
+
+                        NonLocals_43 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+                        {
+                          Var_113 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(1, Var_113, 0) = ((MR_Box) (TermVar_41));
+                          MR_hl_field(1, Var_113, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                        }
+                        hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Var_113, GoalInfo_9, NonLocals_43, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+                      }
+                      break;
+                    case (MR_Integer) 8:
+                      {
+                        mercury__require__sorry_2_p_0((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.warn_singletons_in_goal\'/4", (MR_String) "loop_control");
+                        return;
+                      }
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word Cond_47 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 2))));
+              MR_Word Then_48 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 3))));
+              MR_Word Else_49 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 4))));
+              MR_Word CondThenQuantVars_55;
+              MR_Word STATE_VARIABLE_Info_120_120;
+              MR_Word STATE_VARIABLE_Info_121_121;
+              MR_Word STATE_VARIABLE_Info_122_122;
+              MR_Word Vars_155 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+              MR_Word next_value_of_tscc_proc_1_input_1_Goal_5;
+              MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6;
+              MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+
+              if ((Vars_155 == (MR_Word) ((MR_Unsigned) 0U)))
+                STATE_VARIABLE_Info_120_120 = STATE_VARIABLE_Info_0_98;
+              else
+              {
+                MR_Word CondVars_52;
+                MR_Word ThenVars_53;
+                MR_Word CondThenVars_54;
+                MR_Word STATE_VARIABLE_Info_118_118;
+                MR_Word EmptySet_153;
+                MR_Word Var_170 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 0))));
+                MR_Word Var_171 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 1))));
+                MR_Word Var_172 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 2))));
+                MR_Word Var_173 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 3))));
+                MR_Word Var_174 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 4))));
+                MR_Word Var_175 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 5))));
+                MR_Word Var_176 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 6))));
+
+                {
+                  STATE_VARIABLE_Info_118_118 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 0) = ((MR_Box) (Var_170));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 1) = ((MR_Box) (Var_171));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 2) = ((MR_Box) (Var_172));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 3) = ((MR_Box) (Var_173));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 4) = ((MR_Box) (Var_174));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 5) = ((MR_Box) (Var_175));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 6) = ((MR_Box) (Var_176));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 7) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 1));
+                }
+                CondVars_52 = hlds__quantification__free_goal_vars_1_f_0(Cond_47);
+                ThenVars_53 = hlds__quantification__free_goal_vars_1_f_0(Then_48);
+                parse_tree__set_of_var__union_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), CondVars_52, ThenVars_53, &CondThenVars_54);
+                parse_tree__set_of_var__init_1_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), &EmptySet_153);
+                hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Vars_155, GoalInfo_9, EmptySet_153, CondThenVars_54, STATE_VARIABLE_Info_118_118, &STATE_VARIABLE_Info_120_120);
+              }
+              parse_tree__set_of_var__insert_list_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), Vars_155, QuantVars_6, &CondThenQuantVars_55);
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(Cond_47, CondThenQuantVars_55, STATE_VARIABLE_Info_120_120, &STATE_VARIABLE_Info_121_121);
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(Then_48, CondThenQuantVars_55, STATE_VARIABLE_Info_121_121, &STATE_VARIABLE_Info_122_122);
+              // direct tailcall eliminated
+              ;
+              next_value_of_tscc_proc_1_input_1_Goal_5 = Else_49;
+              next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+              next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_122_122;
+              tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+              tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+              tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+              goto top_of_proc_1;
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Word ShortHand_83 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+
+              switch (MR_tag((MR_Word) ShortHand_83)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Word GoalB_97 = ((MR_Word) ((MR_hl_field(0, ShortHand_83, (MR_Integer) 1))));
+                    MR_Word Goal_211 = ((MR_Word) ((MR_hl_field(0, ShortHand_83, (MR_Integer) 0))));
+                    MR_Word Goals_212;
+                    MR_Word STATE_VARIABLE_Info_15_216;
+                    MR_Word Goal_220;
+                    MR_Word next_value_of_tscc_proc_1_input_1_Goal_5;
+                    MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+
+                    {
+                      Goals_212 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, Goals_212, 0) = ((MR_Box) (GoalB_97));
+                      MR_hl_field(1, Goals_212, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                    }
+                    hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(Goal_211, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_15_216);
+                    Goal_220 = ((MR_Word) ((MR_hl_field(1, Goals_212, (MR_Integer) 0))));
+                    // direct tailcall eliminated
+                    ;
+                    next_value_of_tscc_proc_1_input_1_Goal_5 = Goal_220;
+                    next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+                    next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_15_216;
+                    tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                    tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                    goto top_of_proc_1;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word Inner_86 = ((MR_Word) ((MR_hl_field(1, ShortHand_83, (MR_Integer) 2))));
+                    MR_Word MainGoal_88 = ((MR_Word) ((MR_hl_field(1, ShortHand_83, (MR_Integer) 4))));
+                    MR_Word OrElseGoals_89 = ((MR_Word) ((MR_hl_field(1, ShortHand_83, (MR_Integer) 5))));
+                    MR_Word InnerDI_91 = ((MR_Word) ((MR_hl_field(0, Inner_86, (MR_Integer) 0))));
+                    MR_Word InnerUO_92 = ((MR_Word) ((MR_hl_field(0, Inner_86, (MR_Integer) 1))));
+                    MR_Word InsideQuantVars_93;
+                    MR_Word Var_133;
+                    MR_Word Var_134;
+                    MR_Word STATE_VARIABLE_Info_136_136;
+
+                    {
+                      Var_134 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, Var_134, 0) = ((MR_Box) (InnerUO_92));
+                      MR_hl_field(1, Var_134, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                    }
+                    {
+                      Var_133 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, Var_133, 0) = ((MR_Box) (InnerDI_91));
+                      MR_hl_field(1, Var_133, 1) = ((MR_Box) (Var_134));
+                    }
+                    parse_tree__set_of_var__insert_list_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), Var_133, QuantVars_6, &InsideQuantVars_93);
+                    hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(MainGoal_88, InsideQuantVars_93, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_136_136);
+                    hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_list_4_p_0(OrElseGoals_89, InsideQuantVars_93, STATE_VARIABLE_Info_136_136, &STATE_VARIABLE_Info_99);
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Word SubGoal_161 = ((MR_Word) ((MR_hl_field(2, ShortHand_83, (MR_Integer) 2))));
+                    MR_Word next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_161;
+                    MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+                    MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_0_98;
+
+                    // direct tailcall eliminated
+                    ;
+                    tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                    tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                    goto top_of_proc_1;
+                  }
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+    }
+    tscc_output_1_STATE_VARIABLE_Info_99 = STATE_VARIABLE_Info_99;
+    goto tscc_end;
+  }
+top_of_proc_2:;
+  {
+    MR_Word X_7 = tscc_proc_2_input_1_X_7;
+    MR_Word RHS_8 = tscc_proc_2_input_2_RHS_8;
+    MR_Word GoalInfo_9 = tscc_proc_2_input_3_GoalInfo_9;
+    MR_Word QuantVars_10 = tscc_proc_2_input_4_QuantVars_10;
+    MR_Word STATE_VARIABLE_Info_0_29 = tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29;
+    MR_Word STATE_VARIABLE_Info_30;
+
+    switch (MR_tag((MR_Word) RHS_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word Y_12 = ((MR_Word) ((MR_hl_field(0, RHS_8, (MR_Integer) 0))));
+          MR_Word NonLocals_13;
+          MR_Word Var_31;
+          MR_Word Var_33;
+
+          NonLocals_13 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+          {
+            Var_33 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_33, 0) = ((MR_Box) (Y_12));
+            MR_hl_field(1, Var_33, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_31 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_31, 0) = ((MR_Box) (X_7));
+            MR_hl_field(1, Var_31, 1) = ((MR_Box) (Var_33));
+          }
+          hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Var_31, GoalInfo_9, NonLocals_13, QuantVars_10, STATE_VARIABLE_Info_0_29, &STATE_VARIABLE_Info_30);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word Ys_16 = ((MR_Word) ((MR_hl_field(1, RHS_8, (MR_Integer) 2))));
+          MR_Word Var_35;
+          MR_Word NonLocals_42;
+
+          NonLocals_42 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+          {
+            Var_35 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_35, 0) = ((MR_Box) (X_7));
+            MR_hl_field(1, Var_35, 1) = ((MR_Box) (Ys_16));
+          }
+          hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Var_35, GoalInfo_9, NonLocals_42, QuantVars_10, STATE_VARIABLE_Info_0_29, &STATE_VARIABLE_Info_30);
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word ArgVarsModes_22 = ((MR_Word) ((MR_hl_field(2, RHS_8, (MR_Integer) 3))));
+          MR_Word LambdaGoal_24 = ((MR_Word) ((MR_hl_field(2, RHS_8, (MR_Integer) 5))));
+          MR_Word ArgVars_25;
+          MR_Word LambdaGoalInfo_27;
+          MR_Word LambdaNonLocals_28;
+          MR_Word STATE_VARIABLE_Info_37_37;
+          MR_Word Var_38;
+          MR_Word STATE_VARIABLE_Info_39_39;
+          MR_Word NonLocals_43;
+          MR_Word next_value_of_tscc_proc_1_input_1_Goal_5;
+          MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6;
+          MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+
+          mercury__assoc_list__keys_2_p_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[1]), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0), ArgVarsModes_22, &ArgVars_25);
+          LambdaGoalInfo_27 = ((MR_Word) ((MR_hl_field(0, LambdaGoal_24, (MR_Integer) 1))));
+          LambdaNonLocals_28 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(LambdaGoalInfo_27);
+          hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(ArgVars_25, GoalInfo_9, LambdaNonLocals_28, QuantVars_10, STATE_VARIABLE_Info_0_29, &STATE_VARIABLE_Info_37_37);
+          NonLocals_43 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+          {
+            Var_38 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_38, 0) = ((MR_Box) (X_7));
+            MR_hl_field(1, Var_38, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Var_38, GoalInfo_9, NonLocals_43, QuantVars_10, STATE_VARIABLE_Info_37_37, &STATE_VARIABLE_Info_39_39);
+          // direct tailcall eliminated
+          ;
+          next_value_of_tscc_proc_1_input_1_Goal_5 = LambdaGoal_24;
+          next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_10;
+          next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_39_39;
+          tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+          tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+          tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+          goto top_of_proc_1;
+        }
+        break;
+    }
+    tscc_output_1_STATE_VARIABLE_Info_99 = STATE_VARIABLE_Info_30;
+    goto tscc_end;
+  }
+tscc_end:;
+  *tscc_output_ptr_1_STATE_VARIABLE_Info_99 = tscc_output_1_STATE_VARIABLE_Info_99;
+  return;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_unify_6_p_0(
+  MR_Word tscc_proc_2_input_1_X_7,
+  MR_Word tscc_proc_2_input_2_RHS_8,
+  MR_Word tscc_proc_2_input_3_GoalInfo_9,
+  MR_Word tscc_proc_2_input_4_QuantVars_10,
+  MR_Word tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29,
+  MR_Word * tscc_output_ptr_1_STATE_VARIABLE_Info_99)
+{
+  MR_Word tscc_proc_1_input_1_Goal_5;
+  MR_Word tscc_proc_1_input_2_QuantVars_6;
+  MR_Word tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+  MR_Word tscc_output_1_STATE_VARIABLE_Info_99;
+
+  // The code for TSCC PROC 2: pred hlds.make_hlds.make_hlds_warn.warn_singletons_in_unify/6-0.
+  ;
+  // Setup for mutual tailcalls optimized into a loop.
+  ;
+  // The mutually recursive procedures are:
+  ;
+  ;
+  // proc 1 in TSCC: pred hlds.make_hlds.make_hlds_warn.warn_singletons_in_goal/4-0
+  ;
+  // proc 2 in TSCC: pred hlds.make_hlds.make_hlds_warn.warn_singletons_in_unify/6-0
+  ;
+  ;
+  goto top_of_proc_2;
+top_of_proc_1:;
+  {
+    MR_Word Goal_5 = tscc_proc_1_input_1_Goal_5;
+    MR_Word QuantVars_6 = tscc_proc_1_input_2_QuantVars_6;
+    MR_Word STATE_VARIABLE_Info_0_98 = tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+    MR_Word STATE_VARIABLE_Info_99;
+    MR_bool succeeded;
+    MR_Word GoalExpr_8 = ((MR_Word) ((MR_hl_field(0, Goal_5, (MR_Integer) 0))));
+    MR_Word GoalInfo_9 = ((MR_Word) ((MR_hl_field(0, Goal_5, (MR_Integer) 1))));
+
+    switch (MR_tag((MR_Word) GoalExpr_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word SubGoal_15 = (MR_Word) ((MR_Word) (GoalExpr_8));
+          MR_Word next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_15;
+          MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+          MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_0_98;
+
+          // direct tailcall eliminated
+          ;
+          tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+          tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+          tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+          goto top_of_proc_1;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word Var_68 = ((MR_Word) ((MR_hl_field(1, GoalExpr_8, (MR_Integer) 0))));
+          MR_Word RHS_69 = ((MR_Word) ((MR_hl_field(1, GoalExpr_8, (MR_Integer) 1))));
+          MR_Word next_value_of_tscc_proc_2_input_1_X_7 = Var_68;
+          MR_Word next_value_of_tscc_proc_2_input_2_RHS_8 = RHS_69;
+          MR_Word next_value_of_tscc_proc_2_input_3_GoalInfo_9 = GoalInfo_9;
+          MR_Word next_value_of_tscc_proc_2_input_4_QuantVars_10 = QuantVars_6;
+          MR_Word next_value_of_tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29 = STATE_VARIABLE_Info_0_98;
+
+          // direct tailcall eliminated
+          ;
+          tscc_proc_2_input_1_X_7 = next_value_of_tscc_proc_2_input_1_X_7;
+          tscc_proc_2_input_2_RHS_8 = next_value_of_tscc_proc_2_input_2_RHS_8;
+          tscc_proc_2_input_3_GoalInfo_9 = next_value_of_tscc_proc_2_input_3_GoalInfo_9;
+          tscc_proc_2_input_4_QuantVars_10 = next_value_of_tscc_proc_2_input_4_QuantVars_10;
+          tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29 = next_value_of_tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29;
+          goto top_of_proc_2;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word Args_58 = ((MR_Word) ((MR_hl_field(2, GoalExpr_8, (MR_Integer) 2))));
+          MR_Word NonLocals_157;
+
+          NonLocals_157 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+          hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Args_58, GoalInfo_9, NonLocals_157, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word GenericCall_62 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+              MR_Word Args0_63 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 2))));
+              MR_Word Args1_67;
+              MR_Word NonLocals_158;
+              MR_Word Args_159;
+
+              hlds__goal_util__generic_call_vars_2_p_0(GenericCall_62, &Args1_67);
+              Args_159 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[1]), Args0_63, Args1_67);
+              NonLocals_158 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+              hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Args_159, GoalInfo_9, NonLocals_158, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word Attrs_73 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+              MR_Word PredId_74 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 2))));
+              MR_Integer ProcId_75 = ((MR_Integer) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 3))));
+              MR_Word PragmaImpl_78 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 7))));
+              MR_Word Context_79;
+              MR_Word Lang_80;
+              MR_Word NamesModes_81;
+              MR_Word PragmaSpecs_82;
+              MR_Word Var_128;
+              MR_Word Args_160 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 4))));
+              MR_Word Var_178;
+              MR_Box conv2_STATE_VARIABLE_Info_99;
+
+              Context_79 = hlds__hlds_goal__goal_info_get_context_1_f_0(GoalInfo_9);
+              Lang_80 = parse_tree__prog_data_foreign__get_foreign_language_1_f_0(Attrs_73);
+              NamesModes_81 = mercury__list__map_2_f_0((MR_Word) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_foreign_arg_0), (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[0]), (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_5[0]), Args_160);
+              Var_128 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 0))));
+              Var_178 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 1))));
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_pragma_foreign_proc_10_p_0(Var_128, PragmaImpl_78, Lang_80, NamesModes_81, Context_79, Var_178, PredId_74, ProcId_75, (MR_Word) ((MR_Unsigned) 0U), &PragmaSpecs_82);
+              mercury__list__foldl_4_p_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_error_spec_0), (MR_Word) (&hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_warn_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_5[1]), PragmaSpecs_82, ((MR_Box) (STATE_VARIABLE_Info_0_98)), &conv2_STATE_VARIABLE_Info_99);
+              STATE_VARIABLE_Info_99 = ((MR_Word) (conv2_STATE_VARIABLE_Info_99));
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word Goals_11 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 2))));
+
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_list_4_p_0(Goals_11, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word Goals_143 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_list_4_p_0(Goals_143, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word Cases_14 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 3))));
+
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_cases_4_p_0(Cases_14, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word Reason_16 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+              MR_Word SubGoal_152 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 2))));
+
+              switch (MR_tag((MR_Word) Reason_16)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Word Vars_17 = ((MR_Word) ((MR_hl_field(0, Reason_16, (MR_Integer) 0))));
+                    MR_Word Creator_18 = ((MR_Unsigned) ((MR_hl_field(0, Reason_16, (MR_Integer) 1))) & (MR_Integer) 1);
+                    MR_Word SubQuantVars_23;
+                    MR_Word STATE_VARIABLE_Info_106_106;
+                    MR_Word next_value_of_tscc_proc_1_input_1_Goal_5;
+                    MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+
+                    if ((Vars_17 == (MR_Word) ((MR_Unsigned) 0U)))
+                    {
+                      SubQuantVars_23 = QuantVars_6;
+                      STATE_VARIABLE_Info_106_106 = STATE_VARIABLE_Info_0_98;
+                    }
+                    else
+                    {
+                      MR_Word SubGoalVars_21;
+                      MR_Word EmptySet_22;
+                      MR_Word STATE_VARIABLE_Info_104_104;
+                      MR_Word Var_162 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 0))));
+                      MR_Word Var_163 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 1))));
+                      MR_Word Var_164 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 2))));
+                      MR_Word Var_165 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 3))));
+                      MR_Word Var_166 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 4))));
+                      MR_Word Var_167 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 5))));
+                      MR_Word Var_168 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 6))));
+
+                      {
+                        STATE_VARIABLE_Info_104_104 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 0) = ((MR_Box) (Var_162));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 1) = ((MR_Box) (Var_163));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 2) = ((MR_Box) (Var_164));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 3) = ((MR_Box) (Var_165));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 4) = ((MR_Box) (Var_166));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 5) = ((MR_Box) (Var_167));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 6) = ((MR_Box) (Var_168));
+                        MR_hl_field(0, STATE_VARIABLE_Info_104_104, 7) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 1));
+                      }
+                      SubGoalVars_21 = hlds__quantification__free_goal_vars_1_f_0(SubGoal_152);
+                      parse_tree__set_of_var__init_1_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), &EmptySet_22);
+                      switch (Creator_18) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 1:
+                          {
+                            SubQuantVars_23 = QuantVars_6;
+                            STATE_VARIABLE_Info_106_106 = STATE_VARIABLE_Info_104_104;
+                          }
+                          break;
+                        case (MR_Integer) 0:
+                          {
+                            hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Vars_17, GoalInfo_9, EmptySet_22, SubGoalVars_21, STATE_VARIABLE_Info_104_104, &STATE_VARIABLE_Info_106_106);
+                            parse_tree__set_of_var__insert_list_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), Vars_17, QuantVars_6, &SubQuantVars_23);
+                          }
+                          break;
+                      }
+                    }
+                    // direct tailcall eliminated
+                    ;
+                    next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_152;
+                    next_value_of_tscc_proc_1_input_2_QuantVars_6 = SubQuantVars_23;
+                    next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_106_106;
+                    tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                    tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                    goto top_of_proc_1;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word HeadWarning_27 = ((MR_Unsigned) ((MR_hl_field(1, Reason_16, (MR_Integer) 0))) & (MR_Integer) 7);
+                    MR_Word TailWarnings_28 = ((MR_Word) ((MR_hl_field(1, Reason_16, (MR_Integer) 1))));
+
+                    succeeded = (HeadWarning_27 == (MR_Integer) 0);
+                    if (!(succeeded))
+                      succeeded = mercury__list__member_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_goal_warning_0), ((MR_Box) ((MR_Integer) 0)), TailWarnings_28);
+                    if (succeeded)
+                      STATE_VARIABLE_Info_99 = STATE_VARIABLE_Info_0_98;
+                    else
+                    {
+                      MR_Word next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_152;
+                      MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+                      MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_0_98;
+
+                      // direct tailcall eliminated
+                      ;
+                      tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                      tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                      tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                      goto top_of_proc_1;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Word STATE_VARIABLE_Info_108_108;
+                    MR_Word Vars_148 = ((MR_Word) ((MR_hl_field(2, Reason_16, (MR_Integer) 0))));
+                    MR_Word SubQuantVars_151;
+                    MR_Word next_value_of_tscc_proc_1_input_1_Goal_5;
+                    MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+
+                    if ((Vars_148 == (MR_Word) ((MR_Unsigned) 0U)))
+                    {
+                      SubQuantVars_151 = QuantVars_6;
+                      STATE_VARIABLE_Info_108_108 = STATE_VARIABLE_Info_0_98;
+                    }
+                    else
+                    {
+                      MR_Word SubGoalVars_144;
+                      MR_Word EmptySet_145;
+
+                      SubGoalVars_144 = hlds__quantification__free_goal_vars_1_f_0(SubGoal_152);
+                      parse_tree__set_of_var__init_1_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), &EmptySet_145);
+                      hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Vars_148, GoalInfo_9, EmptySet_145, SubGoalVars_144, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_108_108);
+                      parse_tree__set_of_var__insert_list_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), Vars_148, QuantVars_6, &SubQuantVars_151);
+                    }
+                    // direct tailcall eliminated
+                    ;
+                    next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_152;
+                    next_value_of_tscc_proc_1_input_2_QuantVars_6 = SubQuantVars_151;
+                    next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_108_108;
+                    tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                    tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                    goto top_of_proc_1;
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) ((MR_hl_field(3, Reason_16, (MR_Integer) 0))))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                    case (MR_Integer) 1:
+                    case (MR_Integer) 2:
+                    case (MR_Integer) 3:
+                    case (MR_Integer) 4:
+                    case (MR_Integer) 5:
+                    case (MR_Integer) 7:
+                      {
+                        MR_Word next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_152;
+                        MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+                        MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_0_98;
+
+                        // direct tailcall eliminated
+                        ;
+                        tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                        tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                        tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                        goto top_of_proc_1;
+                      }
+                      break;
+                    case (MR_Integer) 6:
+                      {
+                        MR_Word TermVar_41 = ((MR_Word) ((MR_hl_field(3, Reason_16, (MR_Integer) 1))));
+                        MR_Word NonLocals_43;
+                        MR_Word Var_113;
+
+                        NonLocals_43 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+                        {
+                          Var_113 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(1, Var_113, 0) = ((MR_Box) (TermVar_41));
+                          MR_hl_field(1, Var_113, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                        }
+                        hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Var_113, GoalInfo_9, NonLocals_43, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_99);
+                      }
+                      break;
+                    case (MR_Integer) 8:
+                      {
+                        mercury__require__sorry_2_p_0((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.warn_singletons_in_goal\'/4", (MR_String) "loop_control");
+                        return;
+                      }
+                      break;
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word Cond_47 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 2))));
+              MR_Word Then_48 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 3))));
+              MR_Word Else_49 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 4))));
+              MR_Word CondThenQuantVars_55;
+              MR_Word STATE_VARIABLE_Info_120_120;
+              MR_Word STATE_VARIABLE_Info_121_121;
+              MR_Word STATE_VARIABLE_Info_122_122;
+              MR_Word Vars_155 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+              MR_Word next_value_of_tscc_proc_1_input_1_Goal_5;
+              MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6;
+              MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+
+              if ((Vars_155 == (MR_Word) ((MR_Unsigned) 0U)))
+                STATE_VARIABLE_Info_120_120 = STATE_VARIABLE_Info_0_98;
+              else
+              {
+                MR_Word CondVars_52;
+                MR_Word ThenVars_53;
+                MR_Word CondThenVars_54;
+                MR_Word STATE_VARIABLE_Info_118_118;
+                MR_Word EmptySet_153;
+                MR_Word Var_170 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 0))));
+                MR_Word Var_171 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 1))));
+                MR_Word Var_172 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 2))));
+                MR_Word Var_173 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 3))));
+                MR_Word Var_174 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 4))));
+                MR_Word Var_175 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 5))));
+                MR_Word Var_176 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_98, (MR_Integer) 6))));
+
+                {
+                  STATE_VARIABLE_Info_118_118 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 0) = ((MR_Box) (Var_170));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 1) = ((MR_Box) (Var_171));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 2) = ((MR_Box) (Var_172));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 3) = ((MR_Box) (Var_173));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 4) = ((MR_Box) (Var_174));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 5) = ((MR_Box) (Var_175));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 6) = ((MR_Box) (Var_176));
+                  MR_hl_field(0, STATE_VARIABLE_Info_118_118, 7) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 1));
+                }
+                CondVars_52 = hlds__quantification__free_goal_vars_1_f_0(Cond_47);
+                ThenVars_53 = hlds__quantification__free_goal_vars_1_f_0(Then_48);
+                parse_tree__set_of_var__union_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), CondVars_52, ThenVars_53, &CondThenVars_54);
+                parse_tree__set_of_var__init_1_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), &EmptySet_153);
+                hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Vars_155, GoalInfo_9, EmptySet_153, CondThenVars_54, STATE_VARIABLE_Info_118_118, &STATE_VARIABLE_Info_120_120);
+              }
+              parse_tree__set_of_var__insert_list_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), Vars_155, QuantVars_6, &CondThenQuantVars_55);
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(Cond_47, CondThenQuantVars_55, STATE_VARIABLE_Info_120_120, &STATE_VARIABLE_Info_121_121);
+              hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(Then_48, CondThenQuantVars_55, STATE_VARIABLE_Info_121_121, &STATE_VARIABLE_Info_122_122);
+              // direct tailcall eliminated
+              ;
+              next_value_of_tscc_proc_1_input_1_Goal_5 = Else_49;
+              next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+              next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_122_122;
+              tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+              tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+              tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+              goto top_of_proc_1;
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Word ShortHand_83 = ((MR_Word) ((MR_hl_field(3, GoalExpr_8, (MR_Integer) 1))));
+
+              switch (MR_tag((MR_Word) ShortHand_83)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Word GoalB_97 = ((MR_Word) ((MR_hl_field(0, ShortHand_83, (MR_Integer) 1))));
+                    MR_Word Goal_211 = ((MR_Word) ((MR_hl_field(0, ShortHand_83, (MR_Integer) 0))));
+                    MR_Word Goals_212;
+                    MR_Word STATE_VARIABLE_Info_15_216;
+                    MR_Word Goal_220;
+                    MR_Word next_value_of_tscc_proc_1_input_1_Goal_5;
+                    MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+
+                    {
+                      Goals_212 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, Goals_212, 0) = ((MR_Box) (GoalB_97));
+                      MR_hl_field(1, Goals_212, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                    }
+                    hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(Goal_211, QuantVars_6, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_15_216);
+                    Goal_220 = ((MR_Word) ((MR_hl_field(1, Goals_212, (MR_Integer) 0))));
+                    // direct tailcall eliminated
+                    ;
+                    next_value_of_tscc_proc_1_input_1_Goal_5 = Goal_220;
+                    next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+                    next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_15_216;
+                    tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                    tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                    goto top_of_proc_1;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word Inner_86 = ((MR_Word) ((MR_hl_field(1, ShortHand_83, (MR_Integer) 2))));
+                    MR_Word MainGoal_88 = ((MR_Word) ((MR_hl_field(1, ShortHand_83, (MR_Integer) 4))));
+                    MR_Word OrElseGoals_89 = ((MR_Word) ((MR_hl_field(1, ShortHand_83, (MR_Integer) 5))));
+                    MR_Word InnerDI_91 = ((MR_Word) ((MR_hl_field(0, Inner_86, (MR_Integer) 0))));
+                    MR_Word InnerUO_92 = ((MR_Word) ((MR_hl_field(0, Inner_86, (MR_Integer) 1))));
+                    MR_Word InsideQuantVars_93;
+                    MR_Word Var_133;
+                    MR_Word Var_134;
+                    MR_Word STATE_VARIABLE_Info_136_136;
+
+                    {
+                      Var_134 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, Var_134, 0) = ((MR_Box) (InnerUO_92));
+                      MR_hl_field(1, Var_134, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                    }
+                    {
+                      Var_133 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(1, Var_133, 0) = ((MR_Box) (InnerDI_91));
+                      MR_hl_field(1, Var_133, 1) = ((MR_Box) (Var_134));
+                    }
+                    parse_tree__set_of_var__insert_list_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), Var_133, QuantVars_6, &InsideQuantVars_93);
+                    hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(MainGoal_88, InsideQuantVars_93, STATE_VARIABLE_Info_0_98, &STATE_VARIABLE_Info_136_136);
+                    hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_list_4_p_0(OrElseGoals_89, InsideQuantVars_93, STATE_VARIABLE_Info_136_136, &STATE_VARIABLE_Info_99);
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Word SubGoal_161 = ((MR_Word) ((MR_hl_field(2, ShortHand_83, (MR_Integer) 2))));
+                    MR_Word next_value_of_tscc_proc_1_input_1_Goal_5 = SubGoal_161;
+                    MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_6;
+                    MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_0_98;
+
+                    // direct tailcall eliminated
+                    ;
+                    tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+                    tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+                    tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+                    goto top_of_proc_1;
+                  }
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+    }
+    tscc_output_1_STATE_VARIABLE_Info_99 = STATE_VARIABLE_Info_99;
+    goto tscc_end;
+  }
+top_of_proc_2:;
+  {
+    MR_Word X_7 = tscc_proc_2_input_1_X_7;
+    MR_Word RHS_8 = tscc_proc_2_input_2_RHS_8;
+    MR_Word GoalInfo_9 = tscc_proc_2_input_3_GoalInfo_9;
+    MR_Word QuantVars_10 = tscc_proc_2_input_4_QuantVars_10;
+    MR_Word STATE_VARIABLE_Info_0_29 = tscc_proc_2_input_5_STATE_VARIABLE_Info_0_29;
+    MR_Word STATE_VARIABLE_Info_30;
+
+    switch (MR_tag((MR_Word) RHS_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word Y_12 = ((MR_Word) ((MR_hl_field(0, RHS_8, (MR_Integer) 0))));
+          MR_Word NonLocals_13;
+          MR_Word Var_31;
+          MR_Word Var_33;
+
+          NonLocals_13 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+          {
+            Var_33 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_33, 0) = ((MR_Box) (Y_12));
+            MR_hl_field(1, Var_33, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Var_31 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_31, 0) = ((MR_Box) (X_7));
+            MR_hl_field(1, Var_31, 1) = ((MR_Box) (Var_33));
+          }
+          hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Var_31, GoalInfo_9, NonLocals_13, QuantVars_10, STATE_VARIABLE_Info_0_29, &STATE_VARIABLE_Info_30);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word Ys_16 = ((MR_Word) ((MR_hl_field(1, RHS_8, (MR_Integer) 2))));
+          MR_Word Var_35;
+          MR_Word NonLocals_42;
+
+          NonLocals_42 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+          {
+            Var_35 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_35, 0) = ((MR_Box) (X_7));
+            MR_hl_field(1, Var_35, 1) = ((MR_Box) (Ys_16));
+          }
+          hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Var_35, GoalInfo_9, NonLocals_42, QuantVars_10, STATE_VARIABLE_Info_0_29, &STATE_VARIABLE_Info_30);
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word ArgVarsModes_22 = ((MR_Word) ((MR_hl_field(2, RHS_8, (MR_Integer) 3))));
+          MR_Word LambdaGoal_24 = ((MR_Word) ((MR_hl_field(2, RHS_8, (MR_Integer) 5))));
+          MR_Word ArgVars_25;
+          MR_Word LambdaGoalInfo_27;
+          MR_Word LambdaNonLocals_28;
+          MR_Word STATE_VARIABLE_Info_37_37;
+          MR_Word Var_38;
+          MR_Word STATE_VARIABLE_Info_39_39;
+          MR_Word NonLocals_43;
+          MR_Word next_value_of_tscc_proc_1_input_1_Goal_5;
+          MR_Word next_value_of_tscc_proc_1_input_2_QuantVars_6;
+          MR_Word next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+
+          mercury__assoc_list__keys_2_p_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[1]), (MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0), ArgVarsModes_22, &ArgVars_25);
+          LambdaGoalInfo_27 = ((MR_Word) ((MR_hl_field(0, LambdaGoal_24, (MR_Integer) 1))));
+          LambdaNonLocals_28 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(LambdaGoalInfo_27);
+          hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(ArgVars_25, GoalInfo_9, LambdaNonLocals_28, QuantVars_10, STATE_VARIABLE_Info_0_29, &STATE_VARIABLE_Info_37_37);
+          NonLocals_43 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(GoalInfo_9);
+          {
+            Var_38 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_38, 0) = ((MR_Box) (X_7));
+            MR_hl_field(1, Var_38, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(Var_38, GoalInfo_9, NonLocals_43, QuantVars_10, STATE_VARIABLE_Info_37_37, &STATE_VARIABLE_Info_39_39);
+          // direct tailcall eliminated
+          ;
+          next_value_of_tscc_proc_1_input_1_Goal_5 = LambdaGoal_24;
+          next_value_of_tscc_proc_1_input_2_QuantVars_6 = QuantVars_10;
+          next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = STATE_VARIABLE_Info_39_39;
+          tscc_proc_1_input_1_Goal_5 = next_value_of_tscc_proc_1_input_1_Goal_5;
+          tscc_proc_1_input_2_QuantVars_6 = next_value_of_tscc_proc_1_input_2_QuantVars_6;
+          tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98 = next_value_of_tscc_proc_1_input_3_STATE_VARIABLE_Info_0_98;
+          goto top_of_proc_1;
+        }
+        break;
+    }
+    tscc_output_1_STATE_VARIABLE_Info_99 = STATE_VARIABLE_Info_30;
+    goto tscc_end;
+  }
+tscc_end:;
+  *tscc_output_ptr_1_STATE_VARIABLE_Info_99 = tscc_output_1_STATE_VARIABLE_Info_99;
+  return;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_cases_4_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word QuantVars_2,
+  MR_Word STATE_VARIABLE_Info_0_3,
+  MR_Word * STATE_VARIABLE_Info_4)
+{
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_Info_4 = STATE_VARIABLE_Info_0_3;
+    else
+    {
+      MR_Word Case_9 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word Cases_10 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word Goal_15 = ((MR_Word) ((MR_hl_field(0, Case_9, (MR_Integer) 2))));
+      MR_Word STATE_VARIABLE_Info_18_18;
+      MR_Word next_value_of_HeadVar__1_1;
+      MR_Word next_value_of_STATE_VARIABLE_Info_0_3;
+
+      hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(Goal_15, QuantVars_2, STATE_VARIABLE_Info_0_3, &STATE_VARIABLE_Info_18_18);
+      // direct tailcall eliminated
+      ;
+      next_value_of_HeadVar__1_1 = Cases_10;
+      next_value_of_STATE_VARIABLE_Info_0_3 = STATE_VARIABLE_Info_18_18;
+      HeadVar__1_1 = next_value_of_HeadVar__1_1;
+      STATE_VARIABLE_Info_0_3 = next_value_of_STATE_VARIABLE_Info_0_3;
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_list_4_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word QuantVars_2,
+  MR_Word STATE_VARIABLE_Info_0_3,
+  MR_Word * STATE_VARIABLE_Info_4)
+{
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_Info_4 = STATE_VARIABLE_Info_0_3;
+    else
+    {
+      MR_Word Goal_9 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word Goals_10 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word STATE_VARIABLE_Info_15_15;
+      MR_Word next_value_of_HeadVar__1_1;
+      MR_Word next_value_of_STATE_VARIABLE_Info_0_3;
+
+      hlds__make_hlds__make_hlds_warn__warn_singletons_in_goal_4_p_0(Goal_9, QuantVars_2, STATE_VARIABLE_Info_0_3, &STATE_VARIABLE_Info_15_15);
+      // direct tailcall eliminated
+      ;
+      next_value_of_HeadVar__1_1 = Goals_10;
+      next_value_of_STATE_VARIABLE_Info_0_3 = STATE_VARIABLE_Info_15_15;
+      HeadVar__1_1 = next_value_of_HeadVar__1_1;
+      STATE_VARIABLE_Info_0_3 = next_value_of_STATE_VARIABLE_Info_0_3;
+      continue;
+    }
+    break;
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = hlds__make_hlds__make_hlds_warn__is_multi_var_3_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)));
+  return succeeded;
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+
+  succeeded = hlds__make_hlds__make_hlds_warn__is_singleton_var_4_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 5)))), ((MR_Word) (wrapper_arg_1)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0(
+  MR_Word GoalVars_7,
+  MR_Word GoalInfo_8,
+  MR_Word NonLocals_9,
+  MR_Word QuantVars_10,
+  MR_Word STATE_VARIABLE_Info_0_27,
+  MR_Word * STATE_VARIABLE_Info_28)
+{
+  MR_bool succeeded;
+  MR_Word VarSet_12 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_27, (MR_Integer) 2))));
+  MR_Word PfSymNameArity_13 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_27, (MR_Integer) 1))));
+  MR_Word Context_14;
+  MR_Word SingleVars_15;
+  MR_Word MultiVars_21;
+  MR_Word Var_29;
+  MR_Word STATE_VARIABLE_Info_33_33;
+  MR_Word Var_37;
+
+  Context_14 = hlds__hlds_goal__goal_info_get_context_1_f_0(GoalInfo_8);
+  {
+    Var_29 = (MR_Word) MR_new_object(MR_Word, (6 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_29, 0) = ((MR_Box) (&hlds__make_hlds__make_hlds_warn_scalar_common_2[1]));
+    MR_hl_field(0, Var_29, 1) = ((MR_Box) (hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0_1));
+    MR_hl_field(0, Var_29, 2) = ((MR_Box) ((MR_Integer) 3));
+    MR_hl_field(0, Var_29, 3) = ((MR_Box) (NonLocals_9));
+    MR_hl_field(0, Var_29, 4) = ((MR_Box) (QuantVars_10));
+    MR_hl_field(0, Var_29, 5) = ((MR_Box) (VarSet_12));
+  }
+  mercury__list__filter_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[1]), Var_29, GoalVars_7, &SingleVars_15);
+  if ((SingleVars_15 == (MR_Word) ((MR_Unsigned) 0U)))
+    STATE_VARIABLE_Info_33_33 = STATE_VARIABLE_Info_0_27;
+  else
+  {
+    MR_Word HeadSV_16 = ((MR_Word) ((MR_hl_field(1, SingleVars_15, (MR_Integer) 0))));
+    MR_Word TailSVs_17 = ((MR_Word) ((MR_hl_field(1, SingleVars_15, (MR_Integer) 1))));
+
+    succeeded = hlds__hlds_goal__goal_info_has_feature_2_p_0(GoalInfo_8, (MR_Integer) 14);
+    if (succeeded)
+      STATE_VARIABLE_Info_33_33 = STATE_VARIABLE_Info_0_27;
+    else
+    {
+      succeeded = hlds__hlds_goal__goal_info_has_feature_2_p_0(GoalInfo_8, (MR_Integer) 1);
+      if (succeeded)
+      {
+        MR_Word SingleHeadVars0_18 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_27, (MR_Integer) 4))));
+        MR_Word SingleHeadVars_19;
+        MR_Word STATE_VARIABLE_Info_32_32;
+        MR_Word Var_34;
+        MR_Word Var_64;
+        MR_Word Var_65;
+        MR_Word Var_66;
+        MR_Word Var_67;
+        MR_Word Var_69;
+        MR_Word Var_70;
+        MR_Word Var_71;
+        MR_Word Var_72;
+        MR_Word Var_73;
+        MR_Word Var_74;
+        MR_Word Var_75;
+        MR_Word Var_76;
+        MR_Word Var_77;
+        MR_Word Var_79;
+
+        parse_tree__set_of_var__insert_list_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), SingleVars_15, SingleHeadVars0_18, &SingleHeadVars_19);
+        Var_64 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_27, (MR_Integer) 0))));
+        Var_65 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_27, (MR_Integer) 1))));
+        Var_66 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_27, (MR_Integer) 2))));
+        Var_67 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_27, (MR_Integer) 3))));
+        Var_69 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_27, (MR_Integer) 5))));
+        Var_70 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_27, (MR_Integer) 6))));
+        Var_71 = ((MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Info_0_27, (MR_Integer) 7))) & (MR_Integer) 1);
+        {
+          STATE_VARIABLE_Info_32_32 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, STATE_VARIABLE_Info_32_32, 0) = ((MR_Box) (Var_64));
+          MR_hl_field(0, STATE_VARIABLE_Info_32_32, 1) = ((MR_Box) (Var_65));
+          MR_hl_field(0, STATE_VARIABLE_Info_32_32, 2) = ((MR_Box) (Var_66));
+          MR_hl_field(0, STATE_VARIABLE_Info_32_32, 3) = ((MR_Box) (Var_67));
+          MR_hl_field(0, STATE_VARIABLE_Info_32_32, 4) = ((MR_Box) (SingleHeadVars_19));
+          MR_hl_field(0, STATE_VARIABLE_Info_32_32, 5) = ((MR_Box) (Var_69));
+          MR_hl_field(0, STATE_VARIABLE_Info_32_32, 6) = ((MR_Box) (Var_70));
+          MR_hl_field(0, STATE_VARIABLE_Info_32_32, 7) = (MR_Box) ((MR_Unsigned) (Var_71));
+        }
+        Var_34 = hlds__hlds_goal__goal_info_get_context_1_f_0(GoalInfo_8);
+        Var_72 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_32_32, (MR_Integer) 0))));
+        Var_73 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_32_32, (MR_Integer) 1))));
+        Var_74 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_32_32, (MR_Integer) 2))));
+        Var_75 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_32_32, (MR_Integer) 3))));
+        Var_76 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_32_32, (MR_Integer) 4))));
+        Var_77 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_32_32, (MR_Integer) 5))));
+        Var_79 = ((MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Info_32_32, (MR_Integer) 7))) & (MR_Integer) 1);
+        {
+          STATE_VARIABLE_Info_33_33 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(0, STATE_VARIABLE_Info_33_33, 0) = ((MR_Box) (Var_72));
+          MR_hl_field(0, STATE_VARIABLE_Info_33_33, 1) = ((MR_Box) (Var_73));
+          MR_hl_field(0, STATE_VARIABLE_Info_33_33, 2) = ((MR_Box) (Var_74));
+          MR_hl_field(0, STATE_VARIABLE_Info_33_33, 3) = ((MR_Box) (Var_75));
+          MR_hl_field(0, STATE_VARIABLE_Info_33_33, 4) = ((MR_Box) (Var_76));
+          MR_hl_field(0, STATE_VARIABLE_Info_33_33, 5) = ((MR_Box) (Var_77));
+          MR_hl_field(0, STATE_VARIABLE_Info_33_33, 6) = ((MR_Box) (Var_34));
+          MR_hl_field(0, STATE_VARIABLE_Info_33_33, 7) = (MR_Box) ((MR_Unsigned) (Var_79));
+        }
+      }
+      else
+      {
+        MR_Word SingleSpec_20;
+
+        hlds__make_hlds__make_hlds_warn__generate_variable_warning_7_p_0((MR_Integer) 0, Context_14, PfSymNameArity_13, VarSet_12, HeadSV_16, TailSVs_17, &SingleSpec_20);
+        hlds__make_hlds__make_hlds_warn__add_warn_spec_3_p_0(SingleSpec_20, STATE_VARIABLE_Info_0_27, &STATE_VARIABLE_Info_33_33);
+      }
+    }
+  }
+  {
+    Var_37 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_37, 0) = ((MR_Box) (&hlds__make_hlds__make_hlds_warn_scalar_common_3[2]));
+    MR_hl_field(0, Var_37, 1) = ((MR_Box) (hlds__make_hlds__make_hlds_warn__warn_singletons_goal_vars_6_p_0_2));
+    MR_hl_field(0, Var_37, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_37, 3) = ((MR_Box) (NonLocals_9));
+    MR_hl_field(0, Var_37, 4) = ((MR_Box) (VarSet_12));
+  }
+  mercury__list__filter_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[1]), Var_37, GoalVars_7, &MultiVars_21);
+  if ((MultiVars_21 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_Info_28 = STATE_VARIABLE_Info_33_33;
+  else
+  {
+    MR_Word HeadMV_22 = ((MR_Word) ((MR_hl_field(1, MultiVars_21, (MR_Integer) 0))));
+    MR_Word TailMVs_23 = ((MR_Word) ((MR_hl_field(1, MultiVars_21, (MR_Integer) 1))));
+
+    succeeded = hlds__hlds_goal__goal_info_has_feature_2_p_0(GoalInfo_8, (MR_Integer) 1);
+    if (succeeded)
+    {
+      MR_Word MultiHeadVars0_24 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_33_33, (MR_Integer) 5))));
+      MR_Word MultiHeadVars_25;
+      MR_Word STATE_VARIABLE_Info_39_39;
+      MR_Word Var_41;
+      MR_Word Var_87;
+      MR_Word Var_88;
+      MR_Word Var_89;
+      MR_Word Var_90;
+      MR_Word Var_91;
+      MR_Word Var_93;
+      MR_Word Var_94;
+      MR_Word Var_95;
+      MR_Word Var_96;
+      MR_Word Var_97;
+      MR_Word Var_98;
+      MR_Word Var_99;
+      MR_Word Var_100;
+      MR_Word Var_102;
+
+      parse_tree__set_of_var__insert_list_3_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0), MultiVars_21, MultiHeadVars0_24, &MultiHeadVars_25);
+      Var_87 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_33_33, (MR_Integer) 0))));
+      Var_88 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_33_33, (MR_Integer) 1))));
+      Var_89 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_33_33, (MR_Integer) 2))));
+      Var_90 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_33_33, (MR_Integer) 3))));
+      Var_91 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_33_33, (MR_Integer) 4))));
+      Var_93 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_33_33, (MR_Integer) 6))));
+      Var_94 = ((MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Info_33_33, (MR_Integer) 7))) & (MR_Integer) 1);
+      {
+        STATE_VARIABLE_Info_39_39 = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(0, STATE_VARIABLE_Info_39_39, 0) = ((MR_Box) (Var_87));
+        MR_hl_field(0, STATE_VARIABLE_Info_39_39, 1) = ((MR_Box) (Var_88));
+        MR_hl_field(0, STATE_VARIABLE_Info_39_39, 2) = ((MR_Box) (Var_89));
+        MR_hl_field(0, STATE_VARIABLE_Info_39_39, 3) = ((MR_Box) (Var_90));
+        MR_hl_field(0, STATE_VARIABLE_Info_39_39, 4) = ((MR_Box) (Var_91));
+        MR_hl_field(0, STATE_VARIABLE_Info_39_39, 5) = ((MR_Box) (MultiHeadVars_25));
+        MR_hl_field(0, STATE_VARIABLE_Info_39_39, 6) = ((MR_Box) (Var_93));
+        MR_hl_field(0, STATE_VARIABLE_Info_39_39, 7) = (MR_Box) ((MR_Unsigned) (Var_94));
+      }
+      Var_41 = hlds__hlds_goal__goal_info_get_context_1_f_0(GoalInfo_8);
+      Var_95 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_39_39, (MR_Integer) 0))));
+      Var_96 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_39_39, (MR_Integer) 1))));
+      Var_97 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_39_39, (MR_Integer) 2))));
+      Var_98 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_39_39, (MR_Integer) 3))));
+      Var_99 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_39_39, (MR_Integer) 4))));
+      Var_100 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_39_39, (MR_Integer) 5))));
+      Var_102 = ((MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Info_39_39, (MR_Integer) 7))) & (MR_Integer) 1);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+        *STATE_VARIABLE_Info_28 = base;
+        MR_hl_field(0, base, 0) = ((MR_Box) (Var_95));
+        MR_hl_field(0, base, 1) = ((MR_Box) (Var_96));
+        MR_hl_field(0, base, 2) = ((MR_Box) (Var_97));
+        MR_hl_field(0, base, 3) = ((MR_Box) (Var_98));
+        MR_hl_field(0, base, 4) = ((MR_Box) (Var_99));
+        MR_hl_field(0, base, 5) = ((MR_Box) (Var_100));
+        MR_hl_field(0, base, 6) = ((MR_Box) (Var_41));
+        MR_hl_field(0, base, 7) = (MR_Box) ((MR_Unsigned) (Var_102));
+      }
+    }
+    else
+    {
+      MR_Word MultiSpec_26;
+
+      hlds__make_hlds__make_hlds_warn__generate_variable_warning_7_p_0((MR_Integer) 1, Context_14, PfSymNameArity_13, VarSet_12, HeadMV_22, TailMVs_23, &MultiSpec_26);
+      hlds__make_hlds__make_hlds_warn__add_warn_spec_3_p_0(MultiSpec_26, STATE_VARIABLE_Info_33_33, STATE_VARIABLE_Info_28);
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__add_warn_spec_3_p_0(
+  MR_Word Spec_4,
+  MR_Word STATE_VARIABLE_Info_0_8,
+  MR_Word * STATE_VARIABLE_Info_9)
+{
+  MR_Word Specs0_6 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_8, (MR_Integer) 3))));
+  MR_Word Specs_7;
+  MR_Word Var_10 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_8, (MR_Integer) 0))));
+  MR_Word Var_11 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_8, (MR_Integer) 1))));
+  MR_Word Var_12 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_8, (MR_Integer) 2))));
+  MR_Word Var_13 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_8, (MR_Integer) 4))));
+  MR_Word Var_14 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_8, (MR_Integer) 5))));
+  MR_Word Var_15 = ((MR_Word) ((MR_hl_field(0, STATE_VARIABLE_Info_0_8, (MR_Integer) 6))));
+  MR_Word Var_16 = ((MR_Unsigned) ((MR_hl_field(0, STATE_VARIABLE_Info_0_8, (MR_Integer) 7))) & (MR_Integer) 1);
+
+  {
+    Specs_7 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Specs_7, 0) = ((MR_Box) (Spec_4));
+    MR_hl_field(1, Specs_7, 1) = ((MR_Box) (Specs0_6));
+  }
+  {
+    MR_Word base;
+    base = (MR_Word) MR_new_object(MR_Word, (8 * sizeof(MR_Word)), NULL, NULL);
+    *STATE_VARIABLE_Info_9 = base;
+    MR_hl_field(0, base, 0) = ((MR_Box) (Var_10));
+    MR_hl_field(0, base, 1) = ((MR_Box) (Var_11));
+    MR_hl_field(0, base, 2) = ((MR_Box) (Var_12));
+    MR_hl_field(0, base, 3) = ((MR_Box) (Specs_7));
+    MR_hl_field(0, base, 4) = ((MR_Box) (Var_13));
+    MR_hl_field(0, base, 5) = ((MR_Box) (Var_14));
+    MR_hl_field(0, base, 6) = ((MR_Box) (Var_15));
+    MR_hl_field(0, base, 7) = (MR_Box) ((MR_Unsigned) (Var_16));
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_warn__generate_variable_warning_7_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_String conv0_HeadVar__3_87;
+
+  conv0_HeadVar__3_87 = hlds__make_hlds__make_hlds_warn__IntroducedFrom__func__generate_variable_warning__563__1_2_f_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__3_87));
+  return wrapper_arg_2;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__generate_variable_warning_7_p_0(
+  MR_Word SingleMulti_8,
+  MR_Word Context_9,
+  MR_Word PfSymNameArity_10,
+  MR_Word VarSet_11,
+  MR_Word Var_12,
+  MR_Word Vars_13,
+  MR_Word * Spec_14)
+{
+  MR_String Count_15;
+  MR_Word PreamblePieces_16;
+  MR_Word VarStrs0_17;
+  MR_Word VarStrs_18;
+  MR_String VarsStr_19;
+  MR_Word VarsPiece_20;
+  MR_Word WarnPieces_22;
+  MR_Word Var_28;
+  MR_Word Var_29;
+  MR_Word Var_36;
+  MR_Word Var_37;
+  MR_String Var_39;
+  MR_String Var_40;
+  MR_Word Var_80;
+  MR_Word Var_81;
+  MR_Word Var_82;
+
+  switch (SingleMulti_8) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      Count_15 = (MR_String) "more than once";
+      break;
+    case (MR_Integer) 0:
+      Count_15 = (MR_String) "only once";
+      break;
+  }
+  {
+    Var_29 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(3, Var_29, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+    MR_hl_field(3, Var_29, 1) = ((MR_Box) (PfSymNameArity_10));
+  }
+  {
+    Var_28 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_28, 0) = ((MR_Box) (Var_29));
+    MR_hl_field(1, Var_28, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[10])));
+  }
+  {
+    PreamblePieces_16 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, PreamblePieces_16, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[30])));
+    MR_hl_field(1, PreamblePieces_16, 1) = ((MR_Box) (Var_28));
+  }
+  {
+    Var_36 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_36, 0) = ((MR_Box) (&hlds__make_hlds__make_hlds_warn_scalar_common_3[1]));
+    MR_hl_field(0, Var_36, 1) = ((MR_Box) (hlds__make_hlds__make_hlds_warn__generate_variable_warning_7_p_0_1));
+    MR_hl_field(0, Var_36, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_36, 3) = ((MR_Box) (VarSet_11));
+  }
+  {
+    Var_37 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_37, 0) = ((MR_Box) (Var_12));
+    MR_hl_field(1, Var_37, 1) = ((MR_Box) (Vars_13));
+  }
+  VarStrs0_17 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[1]), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_36, Var_37);
+  mercury__list__sort_and_remove_dups_2_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), VarStrs0_17, &VarStrs_18);
+  Var_40 = mercury__string__join_list_2_f_0((MR_String) ", ", VarStrs_18);
+  Var_39 = mercury__string__f_43_43_2_f_0(Var_40, (MR_String) "\'");
+  VarsStr_19 = mercury__string__f_43_43_2_f_0((MR_String) "\140", Var_39);
+  {
+    VarsPiece_20 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(3, VarsPiece_20, 0) = ((MR_Box) ((MR_Unsigned) 6U));
+    MR_hl_field(3, VarsPiece_20, 1) = ((MR_Box) (VarsStr_19));
+  }
+  if ((VarStrs_18 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      mercury__require__unexpected_2_p_0((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.generate_variable_warning\'/7", (MR_String) "VarStrs = []");
+      return;
+    }
+  else
+  {
+    MR_Word Var_90 = ((MR_Word) ((MR_hl_field(1, VarStrs_18, (MR_Integer) 1))));
+
+    if ((Var_90 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Word Var_48;
+      MR_Word Var_49;
+      MR_Word Var_52;
+      MR_Word Var_53;
+
+      {
+        Var_53 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(3, Var_53, 0) = ((MR_Box) ((MR_Unsigned) 6U));
+        MR_hl_field(3, Var_53, 1) = ((MR_Box) (Count_15));
+      }
+      {
+        Var_52 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_52, 0) = ((MR_Box) (Var_53));
+        MR_hl_field(1, Var_52, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[39])));
+      }
+      {
+        Var_49 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_49, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[37])));
+        MR_hl_field(1, Var_49, 1) = ((MR_Box) (Var_52));
+      }
+      {
+        Var_48 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_48, 0) = ((MR_Box) (VarsPiece_20));
+        MR_hl_field(1, Var_48, 1) = ((MR_Box) (Var_49));
+      }
+      {
+        WarnPieces_22 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, WarnPieces_22, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[31])));
+        MR_hl_field(1, WarnPieces_22, 1) = ((MR_Box) (Var_48));
+      }
+    }
+    else
+    {
+      MR_Word Var_63;
+      MR_Word Var_64;
+      MR_Word Var_67;
+      MR_Word Var_68;
+
+      {
+        Var_68 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(3, Var_68, 0) = ((MR_Box) ((MR_Unsigned) 6U));
+        MR_hl_field(3, Var_68, 1) = ((MR_Box) (Count_15));
+      }
+      {
+        Var_67 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_67, 0) = ((MR_Box) (Var_68));
+        MR_hl_field(1, Var_67, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[39])));
+      }
+      {
+        Var_64 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_64, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[40])));
+        MR_hl_field(1, Var_64, 1) = ((MR_Box) (Var_67));
+      }
+      {
+        Var_63 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_63, 0) = ((MR_Box) (VarsPiece_20));
+        MR_hl_field(1, Var_63, 1) = ((MR_Box) (Var_64));
+      }
+      {
+        WarnPieces_22 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, WarnPieces_22, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[34])));
+        MR_hl_field(1, WarnPieces_22, 1) = ((MR_Box) (Var_63));
+      }
+    }
+  }
+  Var_82 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), PreamblePieces_16, WarnPieces_22);
+  {
+    Var_81 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_81, 0) = ((MR_Box) (Context_9));
+    MR_hl_field(0, Var_81, 1) = ((MR_Box) (Var_82));
+  }
+  {
+    Var_80 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+    MR_hl_field(1, Var_80, 0) = ((MR_Box) (Var_81));
+    MR_hl_field(1, Var_80, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+  }
+  {
+    MR_Word base;
+    base = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+    *Spec_14 = base;
+    MR_hl_field(3, base, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.generate_variable_warning\'/7"));
+    MR_hl_field(3, base, 1) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 9) << 1)) | (MR_Unsigned) ((MR_Integer) 1)));
+    MR_hl_field(3, base, 2) = ((MR_Box) ((MR_Unsigned) 4U));
+    MR_hl_field(3, base, 3) = ((MR_Box) ((MR_Unsigned) 40U));
+    MR_hl_field(3, base, 4) = ((MR_Box) (Var_80));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_pragma_foreign_proc_10_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2)
+{
+  MR_bool succeeded;
+  MR_Box closure = closure_arg;
+  MR_String conv0_Name_6;
+
+  succeeded = hlds__make_hlds__make_hlds_warn__var_is_unmentioned_3_p_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) (wrapper_arg_1)), &conv0_Name_6);
+  if (succeeded)
+  {
+    *wrapper_arg_2 = ((MR_Box) (conv0_Name_6));
+    succeeded = MR_TRUE;
+  }
+  return succeeded;
+}
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn__warn_singletons_in_pragma_foreign_proc_10_p_0(
+  MR_Word ModuleInfo_11,
+  MR_Word PragmaImpl_12,
+  MR_Word Lang_13,
+  MR_Word Args_14,
+  MR_Word Context_15,
+  MR_Word PFSymNameArity_16,
+  MR_Word PredId_17,
+  MR_Integer ProcId_18,
+  MR_Word STATE_VARIABLE_Specs_0_29,
+  MR_Word * STATE_VARIABLE_Specs_30)
+{
+  MR_bool succeeded;
+  MR_String LangStr_20;
+  MR_String Code_21;
+  MR_Word C_CodeList_23;
+  MR_Word UnmentionedVars_24;
+  MR_Word Var_31;
+  MR_Word STATE_VARIABLE_Specs_69_69;
+  MR_Word CharList_75;
+
+  LangStr_20 = libs__globals__foreign_language_string_1_f_0(Lang_13);
+  Code_21 = ((MR_String) ((MR_hl_field(0, PragmaImpl_12, (MR_Integer) 0))));
+  mercury__string__to_char_list_2_p_0(Code_21, &CharList_75);
+  hlds__make_hlds__make_hlds_warn__c_code_to_name_list_2_2_p_0(CharList_75, &C_CodeList_23);
+  {
+    Var_31 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_31, 0) = ((MR_Box) (&hlds__make_hlds__make_hlds_warn_scalar_common_3[0]));
+    MR_hl_field(0, Var_31, 1) = ((MR_Box) (hlds__make_hlds__make_hlds_warn__warn_singletons_in_pragma_foreign_proc_10_p_0_1));
+    MR_hl_field(0, Var_31, 2) = ((MR_Box) ((MR_Integer) 1));
+    MR_hl_field(0, Var_31, 3) = ((MR_Box) (C_CodeList_23));
+  }
+  mercury__list__filter_map_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_warn_scalar_common_1[0]), (MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), Var_31, Args_14, &UnmentionedVars_24);
+  if ((UnmentionedVars_24 == (MR_Word) ((MR_Unsigned) 0U)))
+    STATE_VARIABLE_Specs_69_69 = STATE_VARIABLE_Specs_0_29;
+  else
+  {
+    MR_Word Pieces_27;
+    MR_Word Spec_28;
+    MR_Word Var_32;
+    MR_Word Var_35;
+    MR_Word Var_36;
+    MR_Word Var_37;
+    MR_Word Var_40;
+    MR_Word Var_41;
+    MR_Word Var_48;
+    MR_Word Var_49;
+    MR_Word Var_50;
+    MR_Word Var_53;
+    MR_Word Var_66;
+    MR_Word Var_67;
+    MR_String Var_76;
+    MR_Word Var_77;
+
+    {
+      Var_36 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(3, Var_36, 0) = ((MR_Box) ((MR_Unsigned) 6U));
+      MR_hl_field(3, Var_36, 1) = ((MR_Box) (LangStr_20));
+    }
+    {
+      Var_41 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(3, Var_41, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+      MR_hl_field(3, Var_41, 1) = ((MR_Box) (PFSymNameArity_16));
+    }
+    {
+      Var_40 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_40, 0) = ((MR_Box) (Var_41));
+      MR_hl_field(1, Var_40, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[10])));
+    }
+    {
+      Var_37 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_37, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[7])));
+      MR_hl_field(1, Var_37, 1) = ((MR_Box) (Var_40));
+    }
+    {
+      Var_35 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_35, 0) = ((MR_Box) (Var_36));
+      MR_hl_field(1, Var_35, 1) = ((MR_Box) (Var_37));
+    }
+    {
+      Var_32 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_32, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[6])));
+      MR_hl_field(1, Var_32, 1) = ((MR_Box) (Var_35));
+    }
+    succeeded = (UnmentionedVars_24 != (MR_Word) ((MR_Unsigned) 0U));
+    if (succeeded)
+    {
+      Var_76 = ((MR_String) ((MR_hl_field(1, UnmentionedVars_24, (MR_Integer) 0))));
+      Var_77 = ((MR_Word) ((MR_hl_field(1, UnmentionedVars_24, (MR_Integer) 1))));
+      succeeded = (Var_77 == (MR_Word) ((MR_Unsigned) 0U));
+    }
+    if (succeeded)
+    {
+      MR_Word Var_80;
+      MR_Word Var_81;
+
+      {
+        Var_81 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(3, Var_81, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(3, Var_81, 1) = ((MR_Box) (Var_76));
+      }
+      {
+        Var_80 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_80, 0) = ((MR_Box) (Var_81));
+        MR_hl_field(1, Var_80, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[42])));
+      }
+      {
+        Var_49 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_49, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[31])));
+        MR_hl_field(1, Var_49, 1) = ((MR_Box) (Var_80));
+      }
+    }
+    else
+    {
+      MR_Word Var_88;
+      MR_Word Var_89;
+      MR_String Var_90;
+      MR_String Var_91;
+
+      Var_91 = mercury__string__join_list_2_f_0((MR_String) ", ", UnmentionedVars_24);
+      Var_90 = parse_tree__error_spec__add_quotes_1_f_0(Var_91);
+      {
+        Var_89 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(3, Var_89, 0) = ((MR_Box) ((MR_Unsigned) 6U));
+        MR_hl_field(3, Var_89, 1) = ((MR_Box) (Var_90));
+      }
+      {
+        Var_88 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_88, 0) = ((MR_Box) (Var_89));
+        MR_hl_field(1, Var_88, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[44])));
+      }
+      {
+        Var_49 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(1, Var_49, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[34])));
+        MR_hl_field(1, Var_49, 1) = ((MR_Box) (Var_88));
+      }
+    }
+    {
+      Var_53 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_53, 0) = ((MR_Box) (Var_36));
+      MR_hl_field(1, Var_53, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[13])));
+    }
+    {
+      Var_50 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_50, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[11])));
+      MR_hl_field(1, Var_50, 1) = ((MR_Box) (Var_53));
+    }
+    Var_48 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_49, Var_50);
+    Pieces_27 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_format_piece_0), Var_32, Var_48);
+    {
+      Var_67 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(0, Var_67, 0) = ((MR_Box) (Context_15));
+      MR_hl_field(0, Var_67, 1) = ((MR_Box) (Pieces_27));
+    }
+    {
+      Var_66 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, Var_66, 0) = ((MR_Box) (Var_67));
+      MR_hl_field(1, Var_66, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      Spec_28 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(3, Spec_28, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.warn_singletons_in_pragma_foreign_proc\'/10"));
+      MR_hl_field(3, Spec_28, 1) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 9) << 1)) | (MR_Unsigned) ((MR_Integer) 1)));
+      MR_hl_field(3, Spec_28, 2) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(3, Spec_28, 3) = ((MR_Box) ((MR_Unsigned) 40U));
+      MR_hl_field(3, Spec_28, 4) = ((MR_Box) (Var_66));
+    }
+    {
+      STATE_VARIABLE_Specs_69_69 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(1, STATE_VARIABLE_Specs_69_69, 0) = ((MR_Box) (Spec_28));
+      MR_hl_field(1, STATE_VARIABLE_Specs_69_69, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_29));
+    }
+  }
+  hlds__make_hlds__make_hlds_warn__pragma_foreign_proc_body_checks_9_p_0(ModuleInfo_11, Lang_13, Context_15, PFSymNameArity_16, PredId_17, ProcId_18, C_CodeList_23, STATE_VARIABLE_Specs_69_69, STATE_VARIABLE_Specs_30);
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__pragma_foreign_proc_body_checks_9_p_0(
+  MR_Word ModuleInfo_10,
+  MR_Word Lang_11,
+  MR_Word Context_12,
+  MR_Word PFSymNameArity_13,
+  MR_Word PredId_14,
+  MR_Integer ProcId_15,
+  MR_Word BodyPieces_16,
+  MR_Word STATE_VARIABLE_Specs_0_21,
+  MR_Word * STATE_VARIABLE_Specs_22)
+{
+  MR_bool succeeded;
+  MR_Word PredInfo_18;
+  MR_Word PredStatus_19;
+  MR_Word IsImported_20;
+
+  hlds__hlds_module__module_info_pred_info_3_p_0(ModuleInfo_10, PredId_14, &PredInfo_18);
+  hlds__hlds_pred__pred_info_get_status_2_p_0(PredInfo_18, &PredStatus_19);
+  IsImported_20 = hlds__status__pred_status_is_imported_1_f_0(PredStatus_19);
+  switch (IsImported_20) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word STATE_VARIABLE_Specs_23_23;
+        MR_Word ProcInfo_24;
+        MR_Word MaybeDeclDetism_25;
+
+        hlds__hlds_module__module_info_proc_info_4_p_0(ModuleInfo_10, PredId_14, ProcId_15, &ProcInfo_24);
+        hlds__hlds_pred__proc_info_get_declared_determinism_2_p_0(ProcInfo_24, &MaybeDeclDetism_25);
+        if ((MaybeDeclDetism_25 == (MR_Word) ((MR_Unsigned) 0U)))
+          STATE_VARIABLE_Specs_23_23 = STATE_VARIABLE_Specs_0_21;
+        else
+        {
+          MR_Word Detism_26 = ((MR_Word) ((MR_hl_field(1, MaybeDeclDetism_25, (MR_Integer) 0))));
+
+          switch (Detism_26) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 4:
+            case (MR_Integer) 0:
+            case (MR_Integer) 6:
+              {
+                succeeded = mercury__list__member_2_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), ((MR_Box) ((MR_String) "SUCCESS_INDICATOR")), BodyPieces_16);
+                if (succeeded)
+                {
+                  MR_String LangStr_28;
+                  MR_Word Pieces_29;
+                  MR_Word Spec_30;
+                  MR_Word Var_33;
+                  MR_Word Var_34;
+                  MR_Word Var_35;
+                  MR_Word Var_38;
+                  MR_Word Var_39;
+                  MR_Word Var_51;
+                  MR_Word Var_52;
+
+                  LangStr_28 = libs__globals__foreign_language_string_1_f_0(Lang_11);
+                  {
+                    Var_34 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(2, Var_34, 0) = ((MR_Box) (LangStr_28));
+                  }
+                  {
+                    Var_39 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(3, Var_39, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+                    MR_hl_field(3, Var_39, 1) = ((MR_Box) (PFSymNameArity_13));
+                  }
+                  {
+                    Var_38 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_38, 0) = ((MR_Box) (Var_39));
+                    MR_hl_field(1, Var_38, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[66])));
+                  }
+                  {
+                    Var_35 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_35, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[7])));
+                    MR_hl_field(1, Var_35, 1) = ((MR_Box) (Var_38));
+                  }
+                  {
+                    Var_33 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_33, 0) = ((MR_Box) (Var_34));
+                    MR_hl_field(1, Var_33, 1) = ((MR_Box) (Var_35));
+                  }
+                  {
+                    Pieces_29 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Pieces_29, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[45])));
+                    MR_hl_field(1, Pieces_29, 1) = ((MR_Box) (Var_33));
+                  }
+                  {
+                    Var_52 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(0, Var_52, 0) = ((MR_Box) (Context_12));
+                    MR_hl_field(0, Var_52, 1) = ((MR_Box) (Pieces_29));
+                  }
+                  {
+                    Var_51 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_51, 0) = ((MR_Box) (Var_52));
+                    MR_hl_field(1, Var_51, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                  }
+                  {
+                    Spec_30 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(3, Spec_30, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.check_fp_body_for_success_indicator\'/9"));
+                    MR_hl_field(3, Spec_30, 1) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 58) << 1)) | (MR_Unsigned) ((MR_Integer) 1)));
+                    MR_hl_field(3, Spec_30, 2) = ((MR_Box) ((MR_Unsigned) 4U));
+                    MR_hl_field(3, Spec_30, 3) = ((MR_Box) ((MR_Unsigned) 40U));
+                    MR_hl_field(3, Spec_30, 4) = ((MR_Box) (Var_51));
+                  }
+                  {
+                    STATE_VARIABLE_Specs_23_23 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, STATE_VARIABLE_Specs_23_23, 0) = ((MR_Box) (Spec_30));
+                    MR_hl_field(1, STATE_VARIABLE_Specs_23_23, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_21));
+                  }
+                }
+                else
+                  STATE_VARIABLE_Specs_23_23 = STATE_VARIABLE_Specs_0_21;
+              }
+              break;
+            case (MR_Integer) 5:
+            case (MR_Integer) 1:
+              {
+                succeeded = mercury__list__member_2_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), ((MR_Box) ((MR_String) "SUCCESS_INDICATOR")), BodyPieces_16);
+                if (succeeded)
+                  STATE_VARIABLE_Specs_23_23 = STATE_VARIABLE_Specs_0_21;
+                else
+                {
+                  MR_Word Var_56;
+                  MR_Word Var_57;
+                  MR_Word Var_58;
+                  MR_Word Var_61;
+                  MR_Word Var_62;
+                  MR_Word Var_74;
+                  MR_Word Var_75;
+                  MR_String LangStr_77;
+                  MR_Word Pieces_78;
+                  MR_Word Spec_79;
+
+                  LangStr_77 = libs__globals__foreign_language_string_1_f_0(Lang_11);
+                  {
+                    Var_57 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(2, Var_57, 0) = ((MR_Box) (LangStr_77));
+                  }
+                  {
+                    Var_62 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(3, Var_62, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+                    MR_hl_field(3, Var_62, 1) = ((MR_Box) (PFSymNameArity_13));
+                  }
+                  {
+                    Var_61 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_61, 0) = ((MR_Box) (Var_62));
+                    MR_hl_field(1, Var_61, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[68])));
+                  }
+                  {
+                    Var_58 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_58, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[7])));
+                    MR_hl_field(1, Var_58, 1) = ((MR_Box) (Var_61));
+                  }
+                  {
+                    Var_56 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_56, 0) = ((MR_Box) (Var_57));
+                    MR_hl_field(1, Var_56, 1) = ((MR_Box) (Var_58));
+                  }
+                  {
+                    Pieces_78 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Pieces_78, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[45])));
+                    MR_hl_field(1, Pieces_78, 1) = ((MR_Box) (Var_56));
+                  }
+                  {
+                    Var_75 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(0, Var_75, 0) = ((MR_Box) (Context_12));
+                    MR_hl_field(0, Var_75, 1) = ((MR_Box) (Pieces_78));
+                  }
+                  {
+                    Var_74 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, Var_74, 0) = ((MR_Box) (Var_75));
+                    MR_hl_field(1, Var_74, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+                  }
+                  {
+                    Spec_79 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(3, Spec_79, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.check_fp_body_for_success_indicator\'/9"));
+                    MR_hl_field(3, Spec_79, 1) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 58) << 1)) | (MR_Unsigned) ((MR_Integer) 1)));
+                    MR_hl_field(3, Spec_79, 2) = ((MR_Box) ((MR_Unsigned) 4U));
+                    MR_hl_field(3, Spec_79, 3) = ((MR_Box) ((MR_Unsigned) 40U));
+                    MR_hl_field(3, Spec_79, 4) = ((MR_Box) (Var_74));
+                  }
+                  {
+                    STATE_VARIABLE_Specs_23_23 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(1, STATE_VARIABLE_Specs_23_23, 0) = ((MR_Box) (Spec_79));
+                    MR_hl_field(1, STATE_VARIABLE_Specs_23_23, 1) = ((MR_Box) (STATE_VARIABLE_Specs_0_21));
+                  }
+                }
+              }
+              break;
+            case (MR_Integer) 7:
+              STATE_VARIABLE_Specs_23_23 = STATE_VARIABLE_Specs_0_21;
+              break;
+            case (MR_Integer) 2:
+              STATE_VARIABLE_Specs_23_23 = STATE_VARIABLE_Specs_0_21;
+              break;
+            case (MR_Integer) 3:
+              STATE_VARIABLE_Specs_23_23 = STATE_VARIABLE_Specs_0_21;
+              break;
+          }
+        }
+        succeeded = mercury__list__member_2_p_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), ((MR_Box) ((MR_String) "return")), BodyPieces_16);
+        if (succeeded)
+        {
+          MR_String LangStr_82;
+          MR_Word Pieces_83;
+          MR_Word Spec_84;
+          MR_Word Var_88;
+          MR_Word Var_89;
+          MR_Word Var_90;
+          MR_Word Var_93;
+          MR_Word Var_94;
+          MR_Word Var_101;
+          MR_Word Var_102;
+
+          LangStr_82 = libs__globals__foreign_language_string_1_f_0(Lang_11);
+          {
+            Var_89 = (MR_Word) MR_mkword(2, MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(2, Var_89, 0) = ((MR_Box) (LangStr_82));
+          }
+          {
+            Var_94 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(3, Var_94, 0) = ((MR_Box) ((MR_Unsigned) 14U));
+            MR_hl_field(3, Var_94, 1) = ((MR_Box) (PFSymNameArity_13));
+          }
+          {
+            Var_93 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_93, 0) = ((MR_Box) (Var_94));
+            MR_hl_field(1, Var_93, 1) = ((MR_Box) (MR_mkword(1, &hlds__make_hlds__make_hlds_warn_scalar_common_1[61])));
+          }
+          {
+            Var_90 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_90, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[7])));
+            MR_hl_field(1, Var_90, 1) = ((MR_Box) (Var_93));
+          }
+          {
+            Var_88 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_88, 0) = ((MR_Box) (Var_89));
+            MR_hl_field(1, Var_88, 1) = ((MR_Box) (Var_90));
+          }
+          {
+            Pieces_83 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Pieces_83, 0) = ((MR_Box) (MR_mkword(3, &hlds__make_hlds__make_hlds_warn_scalar_common_1[45])));
+            MR_hl_field(1, Pieces_83, 1) = ((MR_Box) (Var_88));
+          }
+          {
+            Var_102 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(0, Var_102, 0) = ((MR_Box) (Context_12));
+            MR_hl_field(0, Var_102, 1) = ((MR_Box) (Pieces_83));
+          }
+          {
+            Var_101 = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(1, Var_101, 0) = ((MR_Box) (Var_102));
+            MR_hl_field(1, Var_101, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+          }
+          {
+            Spec_84 = (MR_Word) MR_mkword(3, MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(3, Spec_84, 0) = ((MR_Box) ((MR_String) "predicate \140hlds.make_hlds.make_hlds_warn.check_fp_body_for_return\'/6"));
+            MR_hl_field(3, Spec_84, 1) = (MR_Box) (((((MR_Unsigned) ((MR_Integer) 58) << 1)) | (MR_Unsigned) ((MR_Integer) 1)));
+            MR_hl_field(3, Spec_84, 2) = ((MR_Box) ((MR_Unsigned) 4U));
+            MR_hl_field(3, Spec_84, 3) = ((MR_Box) ((MR_Unsigned) 40U));
+            MR_hl_field(3, Spec_84, 4) = ((MR_Box) (Var_101));
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            *STATE_VARIABLE_Specs_22 = base;
+            MR_hl_field(1, base, 0) = ((MR_Box) (Spec_84));
+            MR_hl_field(1, base, 1) = ((MR_Box) (STATE_VARIABLE_Specs_23_23));
+          }
+        }
+        else
+          *STATE_VARIABLE_Specs_22 = STATE_VARIABLE_Specs_23_23;
+      }
+      break;
+    case (MR_Integer) 1:
+      *STATE_VARIABLE_Specs_22 = STATE_VARIABLE_Specs_0_21;
+      break;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__c_code_to_name_list_2_2_p_0(
+  MR_Word C_Code_3,
+  MR_Word * List_4)
+{
+  MR_Word NameCharList_5;
+  MR_Word TheRest_6;
+
+  hlds__make_hlds__make_hlds_warn__get_first_c_name_3_p_0(C_Code_3, &NameCharList_5, &TheRest_6);
+  if ((NameCharList_5 == (MR_Word) ((MR_Unsigned) 0U)))
+    *List_4 = (MR_Word) ((MR_Unsigned) 0U);
+  else
+  {
+    MR_Word Names_9;
+    MR_String Name_10;
+
+    hlds__make_hlds__make_hlds_warn__c_code_to_name_list_2_2_p_0(TheRest_6, &Names_9);
+    mercury__string__from_char_list_2_p_0(NameCharList_5, &Name_10);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      *List_4 = base;
+      MR_hl_field(1, base, 0) = ((MR_Box) (Name_10));
+      MR_hl_field(1, base, 1) = ((MR_Box) (Names_9));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__get_first_c_name_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word * HeadVar__2_2,
+  MR_Word * HeadVar__3_3)
+{
+  while (MR_TRUE)
+  {
+    MR_bool succeeded;
+
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      *HeadVar__2_2 = (MR_Word) ((MR_Unsigned) 0U);
+      *HeadVar__3_3 = (MR_Word) ((MR_Unsigned) 0U);
+    }
+    else
+    {
+      MR_Char C_4 = ((MR_Char) (MR_Word) (MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word CodeChars_5 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 1))));
+
+      succeeded = mercury__char__is_alnum_or_underscore_1_p_0(C_4);
+      if (succeeded)
+      {
+        MR_Word NameCharList0_8;
+
+        hlds__make_hlds__make_hlds_warn__get_first_c_name_in_word_3_p_0(CodeChars_5, &NameCharList0_8, HeadVar__3_3);
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+          *HeadVar__2_2 = base;
+          MR_hl_field(1, base, 0) = ((MR_Box) (MR_Word) (C_4));
+          MR_hl_field(1, base, 1) = ((MR_Box) (NameCharList0_8));
+        }
+      }
+      else
+      {
+        MR_Word next_value_of_HeadVar__1_1 = CodeChars_5;
+
+        // direct tailcall eliminated
+        ;
+        HeadVar__1_1 = next_value_of_HeadVar__1_1;
+        continue;
+      }
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn__get_first_c_name_in_word_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word * HeadVar__2_2,
+  MR_Word * HeadVar__3_3)
+{
+  MR_bool succeeded;
+
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *HeadVar__2_2 = (MR_Word) ((MR_Unsigned) 0U);
+    *HeadVar__3_3 = (MR_Word) ((MR_Unsigned) 0U);
+  }
+  else
+  {
+    MR_Char C_4 = ((MR_Char) (MR_Word) (MR_hl_field(1, HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word CodeChars_5 = ((MR_Word) ((MR_hl_field(1, HeadVar__1_1, (MR_Integer) 1))));
+
+    succeeded = mercury__char__is_alnum_or_underscore_1_p_0(C_4);
+    if (succeeded)
+    {
+      MR_Word NameCharList0_8;
+
+      hlds__make_hlds__make_hlds_warn__get_first_c_name_in_word_3_p_0(CodeChars_5, &NameCharList0_8, HeadVar__3_3);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(1, MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *HeadVar__2_2 = base;
+        MR_hl_field(1, base, 0) = ((MR_Box) (MR_Word) (C_4));
+        MR_hl_field(1, base, 1) = ((MR_Box) (NameCharList0_8));
+      }
+    }
+    else
+    {
+      *HeadVar__2_2 = (MR_Word) ((MR_Unsigned) 0U);
+      *HeadVar__3_3 = CodeChars_5;
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_warn__add_quant_warnings_5_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  MR_Box wrapper_arg_2;
+  MR_Box closure = closure_arg;
+  MR_Word conv0_Spec_8;
+
+  conv0_Spec_8 = hlds__make_hlds__make_hlds_warn__quant_warning_to_spec_3_f_0(((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(0, closure, (MR_Integer) 4)))), ((MR_Word) (wrapper_arg_1)));
+  wrapper_arg_2 = ((MR_Box) (conv0_Spec_8));
+  return wrapper_arg_2;
+}
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_warn__add_quant_warnings_5_p_0(
+  MR_Word PfSymNameArity_6,
+  MR_Word VarSet_7,
+  MR_Word Warnings_8,
+  MR_Word STATE_VARIABLE_Specs_0_11,
+  MR_Word * STATE_VARIABLE_Specs_12)
+{
+  MR_Word WarningSpecs_10;
+  MR_Word Var_13;
+
+  {
+    Var_13 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+    MR_hl_field(0, Var_13, 0) = ((MR_Box) (&hlds__make_hlds__make_hlds_warn_scalar_common_2[0]));
+    MR_hl_field(0, Var_13, 1) = ((MR_Box) (hlds__make_hlds__make_hlds_warn__add_quant_warnings_5_p_0_1));
+    MR_hl_field(0, Var_13, 2) = ((MR_Box) ((MR_Integer) 2));
+    MR_hl_field(0, Var_13, 3) = ((MR_Box) (PfSymNameArity_6));
+    MR_hl_field(0, Var_13, 4) = ((MR_Box) (VarSet_7));
+  }
+  WarningSpecs_10 = mercury__list__map_2_f_0((MR_Word) (&hlds__quantification__hlds__quantification__type_ctor_info_quant_warning_0), (MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_error_spec_0), Var_13, Warnings_8);
+  *STATE_VARIABLE_Specs_12 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_spec__parse_tree__error_spec__type_ctor_info_error_spec_0), WarningSpecs_10, STATE_VARIABLE_Specs_0_11);
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____maybe_seen_quant_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__make_hlds__make_hlds_warn____Unify____maybe_seen_quant_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____maybe_seen_quant_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__make_hlds__make_hlds_warn____Compare____maybe_seen_quant_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____single_or_multi_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__make_hlds__make_hlds_warn____Unify____single_or_multi_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____single_or_multi_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__make_hlds__make_hlds_warn____Compare____single_or_multi_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_warn____Unify____warn_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  MR_bool succeeded;
+
+  succeeded = hlds__make_hlds__make_hlds_warn____Unify____warn_info_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+  return succeeded;
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_warn____Compare____warn_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  MR_Word conv0_HeadVar__1_1;
+
+  hlds__make_hlds__make_hlds_warn____Compare____warn_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+  *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+}
+
+void mercury__hlds__make_hlds__make_hlds_warn__init(void)
+{
+}
+
+void mercury__hlds__make_hlds__make_hlds_warn__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_maybe_seen_quant_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_single_or_multi_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__make_hlds_warn__hlds__make_hlds__make_hlds_warn__type_ctor_info_warn_info_0);
+}
+
+void mercury__hlds__make_hlds__make_hlds_warn__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__hlds__make_hlds__make_hlds_warn__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module hlds.make_hlds.make_hlds_warn.

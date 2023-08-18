@@ -1,0 +1,175 @@
+/*
+** Automatically generated from `dump.m'
+** by the Mercury compiler,
+** version rotd-2023-08-18
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module dump.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_dump
+#define MR_HEADER_GUARD_dump
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef DUMP_DECL_GUARD
+#define DUMP_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct dump__dump__type_ctor_info_dump_cliques_0;
+
+extern const MR_TypeCtorInfo_Struct dump__dump__type_ctor_info_dump_options_0;
+
+extern const MR_TypeCtorInfo_Struct dump__dump__type_ctor_info_dump_prop_measurements_0;
+
+extern const MR_TypeCtorInfo_Struct dump__dump__type_ctor_info_dump_rev_links_0;
+
+extern const MR_TypeCtorInfo_Struct dump__dump__type_ctor_info_dumpable_array_0;
+
+extern const MR_TypeCtorInfo_Struct dump__dump__type_ctor_info_restriction_0;
+
+extern const MR_TypeCtorInfo_Struct dump__dump__type_ctor_info_show_restricted_dump_0;
+
+extern const MR_TypeCtorInfo_Struct dump__dump__type_ctor_info_show_stats_0;
+
+void MR_CALL 
+dump__det_dump_array_options_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+dump__dump_array_options_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+dump__dump_array_options_to_dump_options_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+dump__dump_deep_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+dump__dump_initial_deep_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+dump__default_dump_options_0_f_0(void);
+
+void MR_CALL 
+dump____Compare____dump_cliques_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+dump____Compare____dump_options_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+dump____Compare____dump_prop_measurements_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+dump____Compare____dump_rev_links_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+dump____Compare____dumpable_array_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+dump____Compare____show_restricted_dump_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+dump____Compare____show_stats_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+dump____Unify____dump_cliques_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+dump____Unify____dump_options_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+dump____Unify____dump_prop_measurements_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+dump____Unify____dump_rev_links_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+dump____Unify____dumpable_array_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+dump____Unify____show_restricted_dump_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+dump____Unify____show_stats_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__dump__init(void);
+void mercury__dump__init_type_tables(void);
+void mercury__dump__init_debugger(void);
+const char *mercury__dump__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_dump
+
+// :- end_interface dump.

@@ -1,0 +1,62 @@
+:- module (make.dependencies).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.maybe_util).
+:- use_module (libs.timestamp).
+:- use_module (make.deps_set).
+:- use_module (make.make_info).
+:- use_module (mdbcomp.sym_name).
+:- type cached_computed_module_deps.
+:- type cached_direct_imports.
+:- type cached_indirect_imports.
+:- type cached_transitive_dependencies.
+:- type cached_transitive_foreign_imports.
+:- type dependencies_result
+    --->    deps_up_to_date 
+    ;       deps_out_of_date 
+    ;       deps_error .
+:- type dependency_file
+    --->    dep_target(make.make_info.target_file)
+    ;       dep_file(libs.file_util.file_name).
+:- type dependency_file_with_module_index
+    --->    dfmi_target(make.deps_set.module_index, make.make_info.module_target_type)
+    ;       dfmi_file(libs.file_util.file_name).
+:- pred check_dependencies(libs.globals.globals, libs.file_util.file_name, maybe.maybe_error(libs.timestamp.timestamp), libs.maybe_util.maybe_succeeded, list.list(make.dependencies.dependency_file), make.dependencies.dependencies_result, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode check_dependencies((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred check_dependency_timestamps(libs.globals.globals, libs.file_util.file_name, maybe.maybe_error(libs.timestamp.timestamp), libs.maybe_util.maybe_succeeded, list.list({make.dependencies.dependency_file, maybe.maybe(libs.file_util.file_name), make.make_info.dependency_status}), list.list(maybe.maybe_error(libs.timestamp.timestamp)), make.dependencies.dependencies_result, io.io, io.io).
+:- mode check_dependency_timestamps((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred find_reachable_local_modules(libs.globals.globals, mdbcomp.sym_name.module_name, libs.maybe_util.maybe_succeeded, set.set(mdbcomp.sym_name.module_name), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode find_reachable_local_modules((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred find_target_dependencies_of_modules(make.make_info.maybe_keep_going, libs.globals.globals, make.make_info.module_target_type, list.list(make.deps_set.module_index), libs.maybe_util.maybe_succeeded, libs.maybe_util.maybe_succeeded, make.deps_set.deps_set(make.deps_set.dependency_file_index), make.deps_set.deps_set(make.deps_set.dependency_file_index), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode find_target_dependencies_of_modules((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_dependency_status(libs.globals.globals, make.dependencies.dependency_file, {make.dependencies.dependency_file, maybe.maybe(libs.file_util.file_name), make.make_info.dependency_status}, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_dependency_status((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func init_cached_computed_module_deps = make.dependencies.cached_computed_module_deps.
+:- func init_cached_direct_imports = make.dependencies.cached_direct_imports.
+:- func init_cached_indirect_imports = make.dependencies.cached_indirect_imports.
+:- func init_cached_transitive_dependencies = make.dependencies.cached_transitive_dependencies.
+:- func init_cached_transitive_foreign_imports = make.dependencies.cached_transitive_foreign_imports.
+:- pred make_local_module_id_options(libs.globals.globals, mdbcomp.sym_name.module_name, libs.maybe_util.maybe_succeeded, list.list(string), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode make_local_module_id_options((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred remove_nested_modules(libs.globals.globals, list.list(mdbcomp.sym_name.module_name), list.list(mdbcomp.sym_name.module_name), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode remove_nested_modules((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- use_module map.
+:- type cached_computed_module_deps == map.map(make.dependencies.computed_module_deps_key, make.dependencies.deps_result(make.deps_set.dependency_file_index)).
+:- type cached_direct_imports == map.map(make.deps_set.module_index, make.dependencies.module_deps_result).
+:- type cached_indirect_imports == map.map(make.deps_set.module_index, make.dependencies.module_deps_result).
+:- type cached_transitive_dependencies == map.map(make.dependencies.transitive_dependencies_root, make.dependencies.deps_result(make.deps_set.module_index)).
+:- type cached_transitive_foreign_imports == map.map(make.deps_set.module_index, make.dependencies.module_deps_result).
+:- type computed_module_deps_key.
+:- type computed_module_deps_label
+    --->    computed_module_deps_import_012 .
+:- type deps_result(T).
+:- type module_deps_result == make.dependencies.deps_result(make.deps_set.module_index).
+:- type transitive_dependencies_root.
