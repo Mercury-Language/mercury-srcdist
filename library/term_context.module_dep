@@ -1,0 +1,14 @@
+module(2, "term_context.m",
+	term_context,
+	{},
+	{builtin, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

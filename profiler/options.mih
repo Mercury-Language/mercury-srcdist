@@ -1,0 +1,117 @@
+/*
+** Automatically generated from `options.m'
+** by the Mercury compiler,
+** version rotd-2023-08-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module options.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_options
+#define MR_HEADER_GUARD_options
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef OPTIONS_DECL_GUARD
+#define OPTIONS_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct options__options__type_ctor_info_option_0;
+
+extern const MR_TypeCtorInfo_Struct options__options__type_ctor_info_option_table_0;
+
+MR_bool MR_CALL 
+options__long_option_2_p_0(
+  MR_String param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+options__maybe_flush_output_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+options__maybe_write_string_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3);
+
+void MR_CALL 
+options__option_default_2_p_0(
+  MR_Word * param_1,
+  MR_Word * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+options__options_help_3_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+options__short_option_2_p_0(
+  MR_Char param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+options__special_handler_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+options____Compare____option_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+options____Compare____option_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+options____Unify____option_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+options____Unify____option_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__options__init(void);
+void mercury__options__init_type_tables(void);
+void mercury__options__init_debugger(void);
+const char *mercury__options__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_options
+
+// :- end_interface options.

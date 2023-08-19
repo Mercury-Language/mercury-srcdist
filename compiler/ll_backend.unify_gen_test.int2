@@ -1,0 +1,5 @@
+:- module (ll_backend.unify_gen_test).
+:- interface.
+:- type test_sense
+    --->    branch_on_success 
+    ;       branch_on_failure .
