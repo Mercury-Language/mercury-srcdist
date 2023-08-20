@@ -1,0 +1,2 @@
+:- module (mdb.save_term).
+:- interface.

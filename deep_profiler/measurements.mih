@@ -1,0 +1,525 @@
+/*
+** Automatically generated from `measurements.m'
+** by the Mercury compiler,
+** version rotd-2023-08-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module measurements.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_measurements
+#define MR_HEADER_GUARD_measurements
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MEASUREMENTS_DECL_GUARD
+#define MEASUREMENTS_DECL_GUARD
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_cost_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_cs_cost_csq_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_goal_cost_csq_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_inherit_prof_info_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_is_active_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_own_prof_info_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_parallel_exec_metrics_incomplete_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_parallel_exec_metrics_internal_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_parallelism_amount_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_proc_cost_csq_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_recursion_depth_0;
+
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_static_coverage_info_0;
+
+void MR_CALL 
+measurements__add_coverage_arrays_3_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+measurements__array_to_static_coverage_2_p_0(
+  MR_ArrayPtr param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+measurements__cs_cost_to_proc_cost_3_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+measurements__decompress_profile_10_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Integer * param_7,
+  MR_Integer * param_8,
+  MR_Integer * param_9,
+  MR_Integer * param_10);
+
+MR_bool MR_CALL 
+measurements__exceeded_desired_parallelism_2_p_0(
+  MR_Float param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurements__is_zero_inherit_prof_info_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+measurements__is_zero_own_prof_info_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+measurements__recursion_depth_descend_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+measurements__recursion_depth_is_base_case_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+measurements__sub_computation_parallelism_3_p_0(
+  MR_Word param_1,
+  MR_Float param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+measurements__sub_computation_parallelism_4_p_0(
+  MR_Word param_1,
+  MR_Float param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+measurements__weighted_average_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Float * param_3);
+
+MR_Word MR_CALL 
+measurements__add_goal_costs_branch_3_f_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+measurements__add_goal_costs_seq_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+measurements__add_inherit_to_inherit_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+measurements__add_inherit_to_own_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+measurements__add_own_to_inherit_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+measurements__add_own_to_own_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Integer MR_CALL 
+measurements__allocs_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__atomic_goal_cost_1_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+measurements__build_cs_cost_csq_2_f_0(
+  MR_Integer param_1,
+  MR_Float param_2);
+
+MR_Word MR_CALL 
+measurements__build_cs_cost_csq_percall_2_f_0(
+  MR_Float param_1,
+  MR_Float param_2);
+
+MR_Word MR_CALL 
+measurements__build_proc_cost_csq_3_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+measurements__call_goal_cost_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__call_goal_cost_2_f_0(
+  MR_Integer param_1,
+  MR_Float param_2);
+
+MR_Integer MR_CALL 
+measurements__calls_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__callseqs_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__compress_profile_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__compress_profile_8_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer param_5,
+  MR_Integer param_6,
+  MR_Integer param_7,
+  MR_Integer param_8);
+
+MR_Word MR_CALL 
+measurements__compute_is_active_1_f_0(
+  MR_Word param_1);
+
+MR_Float MR_CALL 
+measurements__cs_cost_get_calls_1_f_0(
+  MR_Word param_1);
+
+MR_Float MR_CALL 
+measurements__cs_cost_get_percall_1_f_0(
+  MR_Word param_1);
+
+MR_Float MR_CALL 
+measurements__cs_cost_get_total_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__cs_cost_per_proc_call_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+measurements__dead_goal_cost_0_f_0(void);
+
+MR_Integer MR_CALL 
+measurements__excps_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__exits_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__fails_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__finalise_parallel_exec_metrics_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__goal_cost_change_calls_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2);
+
+MR_Integer MR_CALL 
+measurements__goal_cost_get_calls_1_f_0(
+  MR_Word param_1);
+
+MR_Float MR_CALL 
+measurements__goal_cost_get_percall_1_f_0(
+  MR_Word param_1);
+
+MR_Float MR_CALL 
+measurements__goal_cost_get_total_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__inherit_allocs_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__inherit_callseqs_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__inherit_quanta_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__inherit_words_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__init_empty_parallel_exec_metrics_7_f_0(
+  MR_Float param_1,
+  MR_Float param_2,
+  MR_Integer param_3,
+  MR_Float param_4,
+  MR_Float param_5,
+  MR_Float param_6,
+  MR_Float param_7);
+
+MR_Word MR_CALL 
+measurements__init_parallel_exec_metrics_incomplete_6_f_0(
+  MR_Word param_1,
+  MR_Float param_2,
+  MR_Float param_3,
+  MR_Float param_4,
+  MR_Float param_5,
+  MR_Float param_6);
+
+MR_Word MR_CALL 
+measurements__no_parallelism_0_f_0(void);
+
+MR_String MR_CALL 
+measurements__own_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__parallel_exec_metrics_get_num_calls_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__proc_cost_get_calls_nonrec_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__proc_cost_get_calls_rec_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__proc_cost_get_calls_total_1_f_0(
+  MR_Word param_1);
+
+MR_Float MR_CALL 
+measurements__proc_cost_get_total_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__quanta_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__recursion_depth_from_float_1_f_0(
+  MR_Float param_1);
+
+MR_Float MR_CALL 
+measurements__recursion_depth_to_float_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__recursion_depth_to_int_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__redos_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__some_parallelism_1_f_0(
+  MR_Float param_1);
+
+MR_Word MR_CALL 
+measurements__static_coverage_maybe_get_coverage_points_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__subtract_inherit_from_inherit_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+measurements__subtract_own_from_inherit_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+measurements__sum_inherit_infos_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__sum_own_infos_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+measurements__words_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+measurements__zero_cs_cost_0_f_0(void);
+
+MR_Word MR_CALL 
+measurements__zero_inherit_prof_info_0_f_0(void);
+
+MR_Word MR_CALL 
+measurements__zero_own_prof_info_0_f_0(void);
+
+MR_Word MR_CALL 
+measurements__zero_static_coverage_0_f_0(void);
+
+void MR_CALL 
+measurements____Compare____cs_cost_csq_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurements____Compare____goal_cost_csq_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurements____Compare____inherit_prof_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurements____Compare____is_active_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurements____Compare____own_prof_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurements____Compare____parallel_exec_metrics_incomplete_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurements____Compare____parallelism_amount_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurements____Compare____proc_cost_csq_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurements____Compare____recursion_depth_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+measurements____Compare____static_coverage_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+measurements____Unify____cs_cost_csq_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurements____Unify____goal_cost_csq_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurements____Unify____inherit_prof_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurements____Unify____is_active_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurements____Unify____own_prof_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurements____Unify____parallel_exec_metrics_incomplete_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurements____Unify____parallelism_amount_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurements____Unify____proc_cost_csq_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurements____Unify____recursion_depth_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+measurements____Unify____static_coverage_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__measurements__init(void);
+void mercury__measurements__init_type_tables(void);
+void mercury__measurements__init_debugger(void);
+const char *mercury__measurements__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_measurements
+
+// :- end_interface measurements.
