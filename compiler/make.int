@@ -1,0 +1,17 @@
+:- module make.
+:- interface.
+:- include_module (make.build).
+:- include_module (make.module_dep_file).
+:- include_module (make.options_file).
+:- include_module (make.top_level).
+:- implementation.
+:- include_module (make.dependencies).
+:- include_module (make.deps_set).
+:- include_module (make.file_names).
+:- include_module (make.hash).
+:- include_module (make.make_info).
+:- include_module (make.module_target).
+:- include_module (make.program_target).
+:- include_module (make.timestamp).
+:- include_module (make.track_flags).
+:- include_module (make.util).
