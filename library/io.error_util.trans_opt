@@ -1,0 +1,21 @@
+:- module (io.error_util).
+
+:- pragma termination_info((io.error_util).is_error((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.error_util).is_error_maybe_win32((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.error_util).make_io_error_from_maybe_win32_error((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.error_util).make_io_error_from_system_error_impl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((io.error_util).make_io_error_from_windows_error_impl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(((io.error_util).no_error) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((io.error_util).throw_on_close_error((builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info((io.error_util).throw_on_error((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info((io.error_util).throw_on_output_error((builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), cannot_loop).
+
+:- pragma exceptions(predicate, ((io.error_util).is_error), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.error_util).is_error_maybe_win32), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.error_util).make_io_error_from_maybe_win32_error), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.error_util).make_io_error_from_system_error_impl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.error_util).make_io_error_from_windows_error_impl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((io.error_util).no_error), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((io.error_util).throw_on_close_error), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.error_util).throw_on_error), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((io.error_util).throw_on_output_error), 3, 0, may_throw(user_exception)).

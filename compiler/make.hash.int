@@ -1,0 +1,14 @@
+:- module (make.hash).
+:- interface.
+:- use_module mdbcomp.
+:- use_module (make.dependencies).
+:- use_module (make.make_info).
+:- use_module (mdbcomp.sym_name).
+:- pred dependency_file_hash(make.dependencies.dependency_file, int).
+:- mode dependency_file_hash((builtin.in), (builtin.out)) is det.
+:- pred dependency_file_with_module_index_hash(make.dependencies.dependency_file_with_module_index, int).
+:- mode dependency_file_with_module_index_hash((builtin.in), (builtin.out)) is det.
+:- pred module_name_hash(mdbcomp.sym_name.module_name, int).
+:- mode module_name_hash((builtin.in), (builtin.out)) is det.
+:- pred target_file_hash(make.make_info.target_file, int).
+:- mode target_file_hash((builtin.in), (builtin.out)) is det.

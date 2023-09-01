@@ -1,0 +1,7 @@
+:- module array2d.
+:- interface.
+:- type array2d(T).
+:- abstract_inst((array2d)).
+:- abstract_mode((array2d_di)).
+:- abstract_mode((array2d_ui)).
+:- abstract_mode((array2d_uo)).

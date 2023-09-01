@@ -1,0 +1,5 @@
+:- module (check_hlds.modecheck_util).
+:- interface.
+:- type after_goals.
+:- type extra_goals.
+:- type_representation(inst_expansions, is_eqv_to(set_tree234(inst_name))).

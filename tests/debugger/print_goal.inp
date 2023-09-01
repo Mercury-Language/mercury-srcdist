@@ -1,0 +1,20 @@
+echo on
+context none
+register --quiet
+b big_data
+b print_goal
+c
+p goal
+finish
+p goal
+c
+v
+p goal
+finish
+v
+p goal
+c
+v
+finish
+v
+c

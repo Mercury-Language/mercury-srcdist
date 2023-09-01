@@ -1,0 +1,25 @@
+:- module (grade_lib.grade_setup).
+:- interface.
+:- type autoconf_gcc_gotos_avail
+	where	type_is_abstract_enum(1).
+:- type autoconf_gcc_labels_avail
+	where	type_is_abstract_enum(1).
+:- type autoconf_gcc_regs_avail
+	where	type_is_abstract_enum(1).
+:- type autoconf_low_tag_bits_avail
+	where	type_is_abstract_enum(2).
+:- type autoconf_merc_file
+	where	type_is_abstract_enum(1).
+:- type autoconf_results.
+:- type autoconf_size_of_double
+	where	type_is_abstract_enum(1).
+:- type solver_var_set_to
+	where	type_is_abstract_enum(1).
+:- type_representation(autoconf_gcc_gotos_avail, du_repn(enum("autoconf_gcc_gotos_avail_no", "autoconf_gcc_gotos_avail_yes", [],  no_c_j_cs))).
+:- type_representation(autoconf_gcc_labels_avail, du_repn(enum("autoconf_gcc_labels_avail_no", "autoconf_gcc_labels_avail_yes", [],  no_c_j_cs))).
+:- type_representation(autoconf_gcc_regs_avail, du_repn(enum("autoconf_gcc_regs_avail_no", "autoconf_gcc_regs_avail_yes", [],  no_c_j_cs))).
+:- type_representation(autoconf_low_tag_bits_avail, du_repn(enum("autoconf_low_tag_bits_avail_0", "autoconf_low_tag_bits_avail_2", ["autoconf_low_tag_bits_avail_3"],  no_c_j_cs))).
+:- type_representation(autoconf_merc_file, du_repn(enum("autoconf_merc_file_no", "autoconf_merc_file_yes", [],  no_c_j_cs))).
+:- type_representation(autoconf_results, is_word_aligned_ptr).
+:- type_representation(autoconf_size_of_double, du_repn(enum("autoconf_size_of_double_eq_ptr", "autoconf_size_of_double_ne_ptr", [],  no_c_j_cs))).
+:- type_representation(solver_var_set_to, du_repn(enum("set_to_false", "set_to_true", [],  no_c_j_cs))).

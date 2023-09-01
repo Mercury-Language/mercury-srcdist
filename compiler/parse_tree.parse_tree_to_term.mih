@@ -1,0 +1,119 @@
+/*
+** Automatically generated from `parse_tree_to_term.m'
+** by the Mercury compiler,
+** version rotd-2023-09-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.parse_tree_to_term.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__parse_tree_to_term
+#define MR_HEADER_GUARD_parse_tree__parse_tree_to_term
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PARSE_TREE_TO_TERM_DECL_GUARD
+#define PARSE_TREE__PARSE_TREE_TO_TERM_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+void MR_CALL 
+parse_tree__parse_tree_to_term__unparse_type_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_String MR_CALL 
+parse_tree__parse_tree_to_term__any_inst_uniqueness_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__parse_tree_to_term__inst_name_to_limited_size_term_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+parse_tree__parse_tree_to_term__inst_name_to_term_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__parse_tree_to_term__inst_test_results_to_term_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__parse_tree_to_term__inst_to_limited_size_term_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+parse_tree__parse_tree_to_term__inst_to_term_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+parse_tree__parse_tree_to_term__inst_uniqueness_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__parse_tree_to_term__int_const_to_decimal_term_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+parse_tree__parse_tree_to_term__is_live_to_str_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+parse_tree__parse_tree_to_term__mode_to_term_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+parse_tree__parse_tree_to_term__mode_to_term_with_context_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_String MR_CALL 
+parse_tree__parse_tree_to_term__unify_is_real_to_str_1_f_0(
+  MR_Word param_1);
+
+void mercury__parse_tree__parse_tree_to_term__init(void);
+void mercury__parse_tree__parse_tree_to_term__init_type_tables(void);
+void mercury__parse_tree__parse_tree_to_term__init_debugger(void);
+const char *mercury__parse_tree__parse_tree_to_term__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.parse_tree_to_term
+
+// :- end_interface parse_tree.parse_tree_to_term.
