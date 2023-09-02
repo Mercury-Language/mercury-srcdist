@@ -1,0 +1,14 @@
+module(2, "io.call_system.m",
+	(io.call_system),
+	{io},
+	{builtin, private_builtin},
+	{string, (io.error_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (io.call_system), "C#" - (io.call_system), "Java" - (io.call_system)},
+	no_foreign_export,
+	no_main,
+	{}
+).
