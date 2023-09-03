@@ -1,0 +1,4 @@
+:- module ((hlds.hlds_out).hlds_out_goal).
+:- interface.
+:- type hlds_out_info_goal
+    --->    hlds_out_info_goal((((hlds.hlds_out).hlds_out_goal).hoig_out_info) :: hlds.hlds_out.hlds_out_util.hlds_out_info, (((hlds.hlds_out).hlds_out_goal).hoig_module_info) :: hlds.hlds_module.module_info, (((hlds.hlds_out).hlds_out_goal).hoig_var_name_src) :: parse_tree.var_db.var_name_source, (((hlds.hlds_out).hlds_out_goal).hoig_var_name_print) :: parse_tree.prog_data.var_name_print, (((hlds.hlds_out).hlds_out_goal).hoig_tvarset) :: parse_tree.prog_data.tvarset, (((hlds.hlds_out).hlds_out_goal).hoig_inst_varset) :: parse_tree.prog_data.inst_varset, (((hlds.hlds_out).hlds_out_goal).hoig_type_qual) :: parse_tree.var_table.type_qual).

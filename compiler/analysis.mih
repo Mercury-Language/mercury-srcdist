@@ -1,0 +1,872 @@
+/*
+** Automatically generated from `analysis.m'
+** by the Mercury compiler,
+** version rotd-2023-09-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module analysis.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_analysis
+#define MR_HEADER_GUARD_analysis
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ANALYSIS_DECL_GUARD
+#define ANALYSIS_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word analysis__mutable_variable_debug_analysis_stream;
+#else
+    extern MR_Word analysis__mutable_variable_debug_analysis_stream;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock analysis__mutable_variable_debug_analysis_stream_lock;
+#endif
+
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_info_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_map_1;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_name_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_request_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_result_2;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_status_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_analysis_type_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_any_call_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_fixpoint_type_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_func_analysis_map_1;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_func_id_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_imdg_arc_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_make_analysis_registry_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_module_analysis_map_1;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_no_func_info_0;
+
+extern const MR_TypeCtorInfo_Struct analysis__analysis__type_ctor_info_some_analysis_result_0;
+
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_analysis_3;
+
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_answer_pattern_2;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__call_pattern__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__[5];
+
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_call_pattern_2;
+
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_compiler_1;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__[7];
+
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_partial_order_2;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_analysis__to_term__arity1__analysis__any_call__arity0__[7];
+
+extern const MR_TypeClassDeclStruct analysis__analysis__type_class_decl_to_term_1;
+
+MR_bool MR_CALL 
+analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__analysis__any_call__arity0______analysis__equivalent_3_3_p_0(void);
+
+MR_bool MR_CALL 
+analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__analysis__any_call__arity0______analysis__more_precise_than_3_3_p_0(void);
+
+MR_bool MR_CALL 
+analysis__ClassMethod_for_analysis__to_term____analysis__any_call__arity0______analysis__from_term_2_2_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+MR_bool MR_CALL 
+analysis__analyses_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+analysis__analyses_3_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_String * param_3,
+  MR_Word * param_4,
+  MR_Cont param_5,
+  void * param_6);
+
+void MR_CALL 
+analysis__clear_imdg_entries_pointing_at_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+analysis__clear_imdg_entries_pointing_at_2_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+analysis__clear_imdg_entries_pointing_at_3_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+analysis__combine_func_imdg_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+analysis__combine_imdg_lists_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+analysis__do_read_module_overall_status_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+analysis__ensure_module_status_loaded_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+analysis__equivalent_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+MR_bool MR_CALL 
+analysis__from_term_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+analysis__get_debug_analysis_stream_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+analysis__get_debug_analysis_stream_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+analysis__get_func_info_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+analysis__initialise_mutable_debug_analysis_stream_0_p_0(void);
+
+void MR_CALL 
+analysis__load_module_analysis_results_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis__load_module_imdg_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis__lock_debug_analysis_stream_0_p_0(void);
+
+void MR_CALL 
+analysis__lookup_best_result_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+analysis__lookup_exactly_matching_result_even_from_invalid_modules_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+analysis__lookup_existing_call_patterns_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis__lookup_matching_results_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+analysis__lookup_requests_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis__lookup_results_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+analysis__lookup_results_1_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis__lookup_results_2_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+analysis__maybe_write_module_imdg_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis__maybe_write_module_overall_status_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis__maybe_write_module_requests_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis__module_is_local_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+analysis__module_name_to_read_file_name_7_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis__module_name_to_write_file_name_7_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_String * param_6);
+
+void MR_CALL 
+analysis__more_precise_answer_4_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+analysis__more_precise_than_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+void MR_CALL 
+analysis__pre_initialise_mutable_debug_analysis_stream_0_p_0(void);
+
+void MR_CALL 
+analysis__prepare_intermodule_analysis_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis__record_dependency_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+analysis__record_dependency_2_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+analysis__record_request_6_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+analysis__record_request_2_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+analysis__record_result_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+analysis__record_result_in_analysis_map_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+analysis__replace_result_in_analysis_map_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box param_5,
+  MR_Box param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+analysis__replace_result_in_list_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+analysis__set_analysis_debug_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+analysis__set_debug_analysis_stream_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+analysis__set_debug_analysis_stream_3_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+analysis__taint_module_overall_status_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+analysis__unlock_debug_analysis_stream_0_p_0(void);
+
+void MR_CALL 
+analysis__unsafe_get_debug_analysis_stream_1_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+analysis__unsafe_set_debug_analysis_stream_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+analysis__update_analysis_registry_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+analysis__update_analysis_registry_2_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+analysis__update_analysis_registry_3_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis__update_analysis_registry_4_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+analysis__update_analysis_registry_5_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+analysis__update_intermodule_dependencies_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+analysis__update_intermodule_dependencies_2_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+analysis__write_analysis_files_7_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+analysis__write_changed_answer_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+void MR_CALL 
+analysis__write_clearing_entries_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis__write_no_change_in_result_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Box param_6,
+  MR_Box param_7);
+
+void MR_CALL 
+analysis__write_tainting_module_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+analysis__ClassMethod_for_analysis__to_term____analysis__any_call__arity0______analysis__to_term_1_1_f_0(void);
+
+MR_Word MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_108_117_98_95_114_101_115_117_108_116_95_115_116_97_116_117_115_101_115_95_50_95_95_91_49_93_95_48_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_108_117_98_95_114_101_115_117_108_116_95_115_116_97_116_117_115_101_115_95_51_95_95_91_49_93_95_48_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+analysis__analysis_name_2_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+analysis__analysis_version_number_2_f_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+analysis__arc_module_name_3_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Box MR_CALL 
+analysis__bottom_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_String MR_CALL 
+analysis__compiler_name_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+analysis__imdg_dependent_modules_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box param_6);
+
+MR_Word MR_CALL 
+analysis__init_analysis_info_3_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+analysis__lub_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+analysis__lub_result_statuses_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+analysis__lub_result_statuses_2_3_f_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+analysis__lub_result_statuses_3_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+analysis__lub_result_statuses_4_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+analysis__preferred_fixpoint_type_2_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+analysis__to_term_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+analysis__top_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+analysis____Compare____analysis_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis____Compare____analysis_map_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+analysis____Compare____analysis_name_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+analysis____Compare____analysis_request_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis____Compare____analysis_result_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void MR_CALL 
+analysis____Compare____analysis_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis____Compare____analysis_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis____Compare____any_call_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+analysis____Compare____fixpoint_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis____Compare____func_analysis_map_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+analysis____Compare____func_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis____Compare____imdg_arc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis____Compare____make_analysis_registry_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+analysis____Compare____module_analysis_map_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+analysis____Compare____no_func_info_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+analysis____Compare____some_analysis_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+analysis____Unify____analysis_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+analysis____Unify____analysis_map_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+analysis____Unify____analysis_name_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+analysis____Unify____analysis_request_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+analysis____Unify____analysis_result_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+analysis____Unify____analysis_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+analysis____Unify____analysis_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+analysis____Unify____any_call_0_0(void);
+
+MR_bool MR_CALL 
+analysis____Unify____fixpoint_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+analysis____Unify____func_analysis_map_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+analysis____Unify____func_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+analysis____Unify____imdg_arc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+analysis____Unify____make_analysis_registry_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+analysis____Unify____module_analysis_map_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+analysis____Unify____no_func_info_0_0(void);
+
+MR_bool MR_CALL 
+analysis____Unify____some_analysis_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__analysis__init(void);
+void mercury__analysis__init_type_tables(void);
+void mercury__analysis__init_debugger(void);
+void mercury__analysis__required_init(void);
+const char *mercury__analysis__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_analysis
+
+// :- end_interface analysis.

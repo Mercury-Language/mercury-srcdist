@@ -1,0 +1,167 @@
+/*
+** Automatically generated from `options_file.m'
+** by the Mercury compiler,
+** version rotd-2023-09-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.options_file.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__options_file
+#define MR_HEADER_GUARD_make__options_file
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__OPTIONS_FILE_DECL_GUARD
+#define MAKE__OPTIONS_FILE_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_found_options_file_error_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_incl_stack_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_include_check_result_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_is_options_file_optional_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_maybe_is_first_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_maybe_options_file_line_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_mmc_option_type_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_opt_var_or_spec_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_options_file_error_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_options_file_line_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_options_variable_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_options_variable_class_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_options_variable_type_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_options_variable_value_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_options_variables_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_parse_result_1;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_pre_incl_stack_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_search_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_search_info_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_set_or_add_0;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_variable_result_1;
+
+extern const MR_TypeCtorInfo_Struct make__options_file__make__options_file__type_ctor_info_variable_source_0;
+
+void MR_CALL 
+make__options_file__dump_options_file_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__options_file__lookup_default_options_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+make__options_file__lookup_main_target_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+make__options_file__lookup_mercury_stdlib_dir_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+make__options_file__lookup_mmc_module_options_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__options_file__lookup_mmc_options_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+make__options_file__read_args_file_6_p_0(
+  MR_String param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__options_file__read_named_options_file_7_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+make__options_file__read_options_files_named_in_options_file_option_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+make__options_file__options_variables_init_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+make__options_file____Compare____options_variables_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__options_file____Unify____options_variables_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__make__options_file__init(void);
+void mercury__make__options_file__init_type_tables(void);
+void mercury__make__options_file__init_debugger(void);
+const char *mercury__make__options_file__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.options_file
+
+// :- end_interface make.options_file.

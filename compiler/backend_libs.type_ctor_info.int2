@@ -1,0 +1,2 @@
+:- module (backend_libs.type_ctor_info).
+:- interface.

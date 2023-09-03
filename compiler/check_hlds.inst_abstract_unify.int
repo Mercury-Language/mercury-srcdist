@@ -1,0 +1,11 @@
+:- module (check_hlds.inst_abstract_unify).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.prog_data).
+:- pred abstractly_unify_inst(parse_tree.prog_data.is_live, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, parse_tree.prog_data.unify_is_real, parse_tree.prog_data.mer_inst, parse_tree.prog_data.determinism, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode abstractly_unify_inst((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred abstractly_unify_inst_functor(parse_tree.prog_data.is_live, parse_tree.prog_data.mer_inst, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.is_live), parse_tree.prog_data.unify_is_real, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.determinism, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode abstractly_unify_inst_functor((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.
