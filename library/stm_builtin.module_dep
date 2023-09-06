@@ -1,0 +1,14 @@
+module(2, "stm_builtin.m",
+	stm_builtin,
+	{},
+	{builtin, io, private_builtin},
+	{exception, univ},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - stm_builtin},
+	no_foreign_export,
+	no_main,
+	{}
+).
