@@ -1,0 +1,172 @@
+:- module ((check_hlds.simplify).format_call).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.vartypes).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type maybe_generate_implicit_stream_warnings
+    --->    do_not_generate_implicit_stream_warnings 
+    ;       generate_implicit_stream_warnings .
+:- pred analyze_and_optimize_format_calls(hlds.hlds_module.module_info, check_hlds.simplify.format_call.maybe_generate_implicit_stream_warnings, hlds.hlds_goal.hlds_goal, maybe.maybe(hlds.hlds_goal.hlds_goal), list.list(parse_tree.error_util.error_spec), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode analyze_and_optimize_format_calls((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred is_format_call(mdbcomp.sym_name.module_name, string, list.list(parse_tree.prog_data.prog_var)).
+:- mode is_format_call((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- implementation.
+:- include_module (((check_hlds.simplify).format_call).parse_string_format).
+:- import_module bool.
+:- import_module counter.
+:- import_module getopt.
+:- import_module libs.
+:- import_module map.
+:- import_module pair.
+:- import_module require.
+:- import_module set_tree234.
+:- import_module string.
+:- import_module term.
+:- import_module varset.
+:- import_module (hlds.goal_path).
+:- import_module (hlds.goal_util).
+:- import_module (hlds.hlds_out).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (hlds.make_goal).
+:- import_module (hlds.pred_table).
+:- import_module (libs.globals).
+:- import_module (libs.optimization_options).
+:- import_module (libs.options).
+:- import_module (mdbcomp.builtin_modules).
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.builtin_lib_types).
+:- import_module (parse_tree.parse_tree_out_info).
+:- import_module (parse_tree.set_of_var).
+:- import_module (string.parse_util).
+:- import_module ((check_hlds.simplify).simplify_goal_call).
+:- import_module ((hlds.hlds_out).hlds_out_goal).
+:- import_module ((hlds.hlds_out).hlds_out_util).
+:- import_module (((check_hlds.simplify).format_call).parse_string_format).
+:- type conj_id
+    --->    conj_id(int).
+:- type conj_map
+    --->    conj_map((((check_hlds.simplify).format_call).cm_string_map) :: check_hlds.simplify.format_call.string_map, (((check_hlds.simplify).format_call).cm_list_skeleton_map) :: check_hlds.simplify.format_call.list_skeleton_map, (((check_hlds.simplify).format_call).cm_list_element_map) :: check_hlds.simplify.format_call.list_element_map, (((check_hlds.simplify).format_call).cm_eqv_map) :: check_hlds.simplify.format_call.fc_eqv_map).
+:- type conj_maps == map.map(check_hlds.simplify.format_call.conj_id, check_hlds.simplify.format_call.conj_map).
+:- type conj_pred_map == map.map(check_hlds.simplify.format_call.conj_id, check_hlds.simplify.format_call.conj_id).
+:- type fc_eqv_map == map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).
+:- type fc_goal_id_map == map.map(mdbcomp.goal_path.goal_id, check_hlds.simplify.format_call.fc_opt_goal_info).
+:- type fc_opt_goal_info
+    --->    fc_opt_goal_info((((check_hlds.simplify).format_call).fcogi_replacement_goal) :: hlds.hlds_goal.hlds_goal, (((check_hlds.simplify).format_call).fcogi_unneeded_vars) :: list.list(parse_tree.prog_data.prog_var), (((check_hlds.simplify).format_call).fcogi_unneeded_goals) :: list.list(mdbcomp.goal_path.goal_id)).
+:- type follow_skeleton_result
+    --->    no_follow_skeleton_result 
+    ;       follow_skeleton_result((((check_hlds.simplify).format_call).fsr_element_vars) :: list.list(parse_tree.prog_data.prog_var), (((check_hlds.simplify).format_call).fsr_skeleton_vars) :: list.list(parse_tree.prog_data.prog_var)).
+:- type follow_string_result
+    --->    no_follow_string_result 
+    ;       follow_string_result((((check_hlds.simplify).format_call).fsr_string) :: string, (((check_hlds.simplify).format_call).fsr_to_delete_vars) :: list.list(parse_tree.prog_data.prog_var), (((check_hlds.simplify).format_call).fsr_to_delete_goals) :: list.list(mdbcomp.goal_path.goal_id)).
+:- type format_call_kind
+    --->    kind_string_format((((check_hlds.simplify).format_call).sf_context) :: parse_tree.prog_data.prog_context, (((check_hlds.simplify).format_call).sf_result_var) :: parse_tree.prog_data.prog_var)
+    ;       kind_io_format_nostream((((check_hlds.simplify).format_call).iofns_context) :: parse_tree.prog_data.prog_context, (((check_hlds.simplify).format_call).iofns_io_in_var) :: parse_tree.prog_data.prog_var, (((check_hlds.simplify).format_call).iofns_io_out_var) :: parse_tree.prog_data.prog_var)
+    ;       kind_io_format_stream((((check_hlds.simplify).format_call).iofs_context) :: parse_tree.prog_data.prog_context, (((check_hlds.simplify).format_call).iofs_stream_var) :: parse_tree.prog_data.prog_var, (((check_hlds.simplify).format_call).iofs_io_in_var) :: parse_tree.prog_data.prog_var, (((check_hlds.simplify).format_call).iofs_io_out_var) :: parse_tree.prog_data.prog_var)
+    ;       kind_stream_string_writer((((check_hlds.simplify).format_call).ssw_context) :: parse_tree.prog_data.prog_context, (((check_hlds.simplify).format_call).ssw_tc_info_var) :: parse_tree.prog_data.prog_var, (((check_hlds.simplify).format_call).ssw_stream_var) :: parse_tree.prog_data.prog_var, (((check_hlds.simplify).format_call).ssw_in_var) :: parse_tree.prog_data.prog_var, (((check_hlds.simplify).format_call).ssw_out_var) :: parse_tree.prog_data.prog_var).
+:- type format_call_site
+    --->    format_call_site((((check_hlds.simplify).format_call).fcs_goal_id) :: mdbcomp.goal_path.goal_id, (((check_hlds.simplify).format_call).fcs_goal_info) :: hlds.hlds_goal.hlds_goal_info, (((check_hlds.simplify).format_call).fcs_string_var) :: parse_tree.prog_data.prog_var, (((check_hlds.simplify).format_call).fcs_values_var) :: parse_tree.prog_data.prog_var, (((check_hlds.simplify).format_call).fcs_call_kind) :: check_hlds.simplify.format_call.format_call_kind, (((check_hlds.simplify).format_call).fcs_called_pred_id) :: hlds.hlds_pred.pred_id, (((check_hlds.simplify).format_call).fcs_called_pred_module) :: mdbcomp.sym_name.module_name, (((check_hlds.simplify).format_call).fcs_called_pred_name) :: string, (((check_hlds.simplify).format_call).fcs_called_pred_arity) :: parse_tree.prog_data.arity, (((check_hlds.simplify).format_call).fcs_call_context) :: parse_tree.prog_data.prog_context, (((check_hlds.simplify).format_call).fcs_containing_conj) :: check_hlds.simplify.format_call.conj_id).
+:- type list_element_map == map.map(parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.parse_string_format.abstract_poly_type).
+:- type list_skeleton_map == map.map(parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.list_skeleton_state).
+:- type list_skeleton_state
+    --->    list_skeleton_nil 
+    ;       list_skeleton_cons((((check_hlds.simplify).format_call).head) :: parse_tree.prog_data.prog_var, (((check_hlds.simplify).format_call).tail) :: parse_tree.prog_data.prog_var).
+:- type string_map == map.map(parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.string_state).
+:- type string_state
+    --->    string_const(string)
+    ;       string_append(mdbcomp.goal_path.goal_id, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var)
+    ;       string_append_list(mdbcomp.goal_path.goal_id, parse_tree.prog_data.prog_var).
+:- pred add_to_element_map(check_hlds.simplify.format_call.conj_id, parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.parse_string_format.abstract_poly_type, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_maps).
+:- mode add_to_element_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_to_fc_eqv_map(check_hlds.simplify.format_call.conj_id, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_maps).
+:- mode add_to_fc_eqv_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_to_list_map(check_hlds.simplify.format_call.conj_id, parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.list_skeleton_state, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_maps).
+:- mode add_to_list_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_to_string_map(check_hlds.simplify.format_call.conj_id, parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.string_state, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_maps).
+:- mode add_to_string_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred alloc_id(check_hlds.simplify.format_call.conj_id, counter.counter, counter.counter).
+:- mode alloc_id((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred build_flags_arg(parse_tree.prog_data.prog_context, string.parse_util.string_format_flags, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode build_flags_arg((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred build_float_kind_arg(string.parse_util.string_format_float_kind, parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode build_float_kind_arg((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred build_int_base_arg(string.parse_util.string_format_int_base, parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode build_int_base_arg((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred cast_int_value_var_if_needed(hlds.hlds_module.module_info, parse_tree.prog_data.prog_context, check_hlds.simplify.format_call.parse_string_format.int_size, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode cast_int_value_var_if_needed((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred cast_int_value_var_to_uint_if_needed(hlds.hlds_module.module_info, parse_tree.prog_data.prog_context, check_hlds.simplify.format_call.parse_string_format.int_size, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode cast_int_value_var_to_uint_if_needed((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred cast_uint_value_var_if_needed(hlds.hlds_module.module_info, parse_tree.prog_data.prog_context, check_hlds.simplify.format_call.parse_string_format.uint_size, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode cast_uint_value_var_if_needed((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred check_format_call_site(hlds.hlds_module.module_info, check_hlds.simplify.format_call.maybe_generate_implicit_stream_warnings, libs.optimization_options.maybe_opt_format_calls, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_pred_map, check_hlds.simplify.format_call.format_call_site, check_hlds.simplify.format_call.fc_goal_id_map, check_hlds.simplify.format_call.fc_goal_id_map, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode check_format_call_site((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred create_io_format_replacement(hlds.hlds_module.module_info, list.list(check_hlds.simplify.format_call.parse_string_format.compiler_format_spec), parse_tree.prog_data.prog_context, maybe.maybe(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode create_io_format_replacement((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred create_replacement_goal(hlds.hlds_module.module_info, mdbcomp.goal_path.goal_id, check_hlds.simplify.format_call.format_call_kind, list.list(check_hlds.simplify.format_call.parse_string_format.compiler_format_spec), list.list(parse_tree.prog_data.prog_var), list.list(mdbcomp.goal_path.goal_id), check_hlds.simplify.format_call.fc_goal_id_map, check_hlds.simplify.format_call.fc_goal_id_map, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode create_replacement_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred create_stream_string_writer_format_replacement(hlds.hlds_module.module_info, list.list(check_hlds.simplify.format_call.parse_string_format.compiler_format_spec), parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode create_stream_string_writer_format_replacement((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred create_string_format_replacement(hlds.hlds_module.module_info, list.list(check_hlds.simplify.format_call.parse_string_format.compiler_format_spec), parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode create_string_format_replacement((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred follow_format_string(check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_pred_map, check_hlds.simplify.format_call.conj_id, parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.follow_string_result).
+:- mode follow_format_string((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred follow_list_skeleton(check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_pred_map, check_hlds.simplify.format_call.conj_id, parse_tree.prog_data.prog_var, check_hlds.simplify.format_call.follow_skeleton_result).
+:- mode follow_list_skeleton((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred follow_poly_type(check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_pred_map, check_hlds.simplify.format_call.conj_id, parse_tree.prog_data.prog_var, maybe.maybe(check_hlds.simplify.format_call.parse_string_format.abstract_poly_type)).
+:- mode follow_poly_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred format_call_traverse_conj(hlds.hlds_module.module_info, list.list(hlds.hlds_goal.hlds_goal), check_hlds.simplify.format_call.conj_id, list.list(check_hlds.simplify.format_call.format_call_site), list.list(check_hlds.simplify.format_call.format_call_site), counter.counter, counter.counter, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_pred_map, check_hlds.simplify.format_call.conj_pred_map, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar).
+:- mode format_call_traverse_conj((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred format_call_traverse_disj(hlds.hlds_module.module_info, list.list(hlds.hlds_goal.hlds_goal), check_hlds.simplify.format_call.conj_id, list.list(check_hlds.simplify.format_call.format_call_site), list.list(check_hlds.simplify.format_call.format_call_site), counter.counter, counter.counter, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_pred_map, check_hlds.simplify.format_call.conj_pred_map, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar).
+:- mode format_call_traverse_disj((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred format_call_traverse_disj_arms(hlds.hlds_module.module_info, list.list(hlds.hlds_goal.hlds_goal), check_hlds.simplify.format_call.conj_id, list.list(check_hlds.simplify.format_call.format_call_site), list.list(check_hlds.simplify.format_call.format_call_site), counter.counter, counter.counter, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_pred_map, check_hlds.simplify.format_call.conj_pred_map, list.list(parse_tree.set_of_var.set_of_progvar)).
+:- mode format_call_traverse_disj_arms((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred format_call_traverse_goal(hlds.hlds_module.module_info, hlds.hlds_goal.hlds_goal, check_hlds.simplify.format_call.conj_id, list.list(check_hlds.simplify.format_call.format_call_site), list.list(check_hlds.simplify.format_call.format_call_site), counter.counter, counter.counter, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_pred_map, check_hlds.simplify.format_call.conj_pred_map, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar).
+:- mode format_call_traverse_goal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred format_call_traverse_unify(hlds.hlds_goal.unification, hlds.hlds_goal.hlds_goal_info, check_hlds.simplify.format_call.conj_id, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_pred_map, check_hlds.simplify.format_call.conj_pred_map, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar).
+:- mode format_call_traverse_unify((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func get_conj_map(check_hlds.simplify.format_call.conj_maps, check_hlds.simplify.format_call.conj_id) = check_hlds.simplify.format_call.conj_map.
+:- pred is_format_call_kind_and_vars(mdbcomp.sym_name.module_name, string, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal_info, check_hlds.simplify.format_call.format_call_kind, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).
+:- mode is_format_call_kind_and_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred make_di_uo_instmap_delta(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, hlds.instmap.instmap_delta).
+:- mode make_di_uo_instmap_delta((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_result_var_if_needed(maybe.maybe(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode make_result_var_if_needed((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_build_prec_arg(check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_prec, string, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode maybe_build_prec_arg((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_build_width_arg(check_hlds.simplify.format_call.parse_string_format.compiler_format_maybe_width, string, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode maybe_build_width_arg((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred opt_format_call_sites_in_conj(list.list(hlds.hlds_goal.hlds_goal), list.list(hlds.hlds_goal.hlds_goal), check_hlds.simplify.format_call.fc_goal_id_map, check_hlds.simplify.format_call.fc_goal_id_map, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, set_tree234.set_tree234(mdbcomp.goal_path.goal_id), set_tree234.set_tree234(mdbcomp.goal_path.goal_id)).
+:- mode opt_format_call_sites_in_conj((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred opt_format_call_sites_in_disj(list.list(hlds.hlds_goal.hlds_goal), list.list(hlds.hlds_goal.hlds_goal), check_hlds.simplify.format_call.fc_goal_id_map, check_hlds.simplify.format_call.fc_goal_id_map, parse_tree.set_of_var.set_of_progvar, list.list(parse_tree.set_of_var.set_of_progvar), list.list(parse_tree.set_of_var.set_of_progvar), parse_tree.set_of_var.set_of_progvar, list.list(parse_tree.set_of_var.set_of_progvar), list.list(parse_tree.set_of_var.set_of_progvar), set_tree234.set_tree234(mdbcomp.goal_path.goal_id), list.list(set_tree234.set_tree234(mdbcomp.goal_path.goal_id)), list.list(set_tree234.set_tree234(mdbcomp.goal_path.goal_id))).
+:- mode opt_format_call_sites_in_disj((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred opt_format_call_sites_in_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, check_hlds.simplify.format_call.fc_goal_id_map, check_hlds.simplify.format_call.fc_goal_id_map, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, set_tree234.set_tree234(mdbcomp.goal_path.goal_id), set_tree234.set_tree234(mdbcomp.goal_path.goal_id)).
+:- mode opt_format_call_sites_in_goal((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred opt_format_call_sites_in_switch(list.list(hlds.hlds_goal.case), list.list(hlds.hlds_goal.case), check_hlds.simplify.format_call.fc_goal_id_map, check_hlds.simplify.format_call.fc_goal_id_map, parse_tree.set_of_var.set_of_progvar, list.list(parse_tree.set_of_var.set_of_progvar), list.list(parse_tree.set_of_var.set_of_progvar), parse_tree.set_of_var.set_of_progvar, list.list(parse_tree.set_of_var.set_of_progvar), list.list(parse_tree.set_of_var.set_of_progvar), set_tree234.set_tree234(mdbcomp.goal_path.goal_id), list.list(set_tree234.set_tree234(mdbcomp.goal_path.goal_id)), list.list(set_tree234.set_tree234(mdbcomp.goal_path.goal_id))).
+:- mode opt_format_call_sites_in_switch((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred project_all_follow_string_results(list.list(check_hlds.simplify.format_call.follow_string_result), string, list.list(parse_tree.prog_data.prog_var), list.list(mdbcomp.goal_path.goal_id)).
+:- mode project_all_follow_string_results((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred project_all_yes(list.list(maybe.maybe(T)), list.list(T)).
+:- mode project_all_yes((builtin.in), (builtin.out)) is semidet.
+:- func project_case_goal(hlds.hlds_goal.case) = hlds.hlds_goal.hlds_goal.
+:- pred replace_io_format(hlds.hlds_module.module_info, list.list(check_hlds.simplify.format_call.parse_string_format.compiler_format_spec), maybe.maybe(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode replace_io_format((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred replace_io_format_nonempty(hlds.hlds_module.module_info, check_hlds.simplify.format_call.parse_string_format.compiler_format_spec, list.list(check_hlds.simplify.format_call.parse_string_format.compiler_format_spec), maybe.maybe(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode replace_io_format_nonempty((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred replace_one_io_format(hlds.hlds_module.module_info, check_hlds.simplify.format_call.parse_string_format.compiler_format_spec, maybe.maybe(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode replace_one_io_format((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred replace_string_format(hlds.hlds_module.module_info, list.list(check_hlds.simplify.format_call.parse_string_format.compiler_format_spec), parse_tree.prog_data.prog_context, maybe.maybe(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode replace_string_format((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred replace_string_format_nonempty(hlds.hlds_module.module_info, check_hlds.simplify.format_call.parse_string_format.compiler_format_spec, list.list(check_hlds.simplify.format_call.parse_string_format.compiler_format_spec), parse_tree.prog_data.prog_context, maybe.maybe(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode replace_string_format_nonempty((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred represent_spec(hlds.hlds_module.module_info, check_hlds.simplify.format_call.parse_string_format.compiler_format_spec, maybe.maybe(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.hlds_goal), parse_tree.prog_data.prog_context, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes).
+:- mode represent_spec((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func string_format_error_to_words(string.parse_util.string_format_error) = parse_tree.error_util.format_component.
