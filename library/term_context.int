@@ -1,0 +1,10 @@
+:- module term_context.
+:- interface.
+:- type term_context
+    --->    context((term_context.context_filename) :: string, (term_context.context_linenumber) :: int).
+:- func context_file(term_context.term_context) = string.
+:- func context_init(string, int) = term_context.term_context.
+:- func context_line(term_context.term_context) = int.
+:- func dummy_context = term_context.term_context.
+:- pred is_dummy_context(term_context.term_context).
+:- mode is_dummy_context((builtin.in)) is semidet.
