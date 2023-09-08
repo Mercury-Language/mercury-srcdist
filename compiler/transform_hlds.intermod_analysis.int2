@@ -1,0 +1,8 @@
+:- module (transform_hlds.intermod_analysis).
+:- interface.
+:- type maybe_should_write
+    --->    should_not_write 
+    ;       should_write .
+:- type should_write_for
+    --->    for_analysis_framework 
+    ;       for_pragma .

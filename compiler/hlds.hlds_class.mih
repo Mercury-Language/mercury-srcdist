@@ -1,0 +1,430 @@
+/*
+** Automatically generated from `hlds_class.m'
+** by the Mercury compiler,
+** version rotd-2023-09-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.hlds_class.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_class
+#define MR_HEADER_GUARD_hlds__hlds_class
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_CLASS_DECL_GUARD
+#define HLDS__HLDS_CLASS_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_ancestor_constraints_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_class_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_constraint_id_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_constraint_map_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_constraint_proof_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_constraint_proof_map_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_constraint_type_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_hlds_class_argpos_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_hlds_class_defn_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_hlds_class_fundep_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_hlds_class_fundeps_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_hlds_constraint_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_hlds_constraints_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_hlds_instance_defn_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_instance_id_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_instance_table_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_maybe_bad_class_defn_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_method_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_method_proc_num_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__hlds_class__hlds__hlds_class__type_ctor_info_redundant_constraints_0;
+
+void MR_CALL 
+hlds__hlds_class__compare_hlds_constraints_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_class__init_hlds_constraint_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_class__lookup_hlds_constraint_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__hlds_class__make_body_hlds_constraints_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__hlds_class__make_head_hlds_constraints_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_class__make_hlds_constraint_list_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__hlds_class__make_hlds_constraints_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+hlds__hlds_class__matching_constraints_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__hlds_class__merge_hlds_constraints_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_class__num_extra_instance_args_2_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2);
+
+void MR_CALL 
+hlds__hlds_class__retrieve_prog_constraint_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_class__retrieve_prog_constraint_list_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+hlds__hlds_class__retrieve_prog_constraints_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class__search_hlds_constraint_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Integer param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__hlds_class__update_constraint_map_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__hlds_class__update_redundant_constraints_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+hlds__hlds_class__lookup_method_proc_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+hlds__hlds_class__method_infos_to_pred_proc_ids_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__hlds_class__restrict_list_elements_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____ancestor_constraints_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____class_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____constraint_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____constraint_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____constraint_proof_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____constraint_proof_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____constraint_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____hlds_class_argpos_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____hlds_class_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____hlds_class_fundep_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____hlds_class_fundeps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____hlds_constraint_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____hlds_constraints_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____hlds_instance_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____instance_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____instance_table_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____maybe_bad_class_defn_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____method_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____method_proc_num_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__hlds_class____Compare____redundant_constraints_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____ancestor_constraints_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____class_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____constraint_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____constraint_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____constraint_proof_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____constraint_proof_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____constraint_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____hlds_class_argpos_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____hlds_class_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____hlds_class_fundep_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____hlds_class_fundeps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____hlds_constraint_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____hlds_constraints_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____hlds_instance_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____instance_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____instance_table_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____maybe_bad_class_defn_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____method_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____method_proc_num_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__hlds_class____Unify____redundant_constraints_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__hlds_class__init(void);
+void mercury__hlds__hlds_class__init_type_tables(void);
+void mercury__hlds__hlds_class__init_debugger(void);
+const char *mercury__hlds__hlds_class__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.hlds_class
+
+// :- end_interface hlds.hlds_class.

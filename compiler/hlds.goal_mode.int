@@ -1,0 +1,15 @@
+:- module (hlds.goal_mode).
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_rename).
+:- use_module (parse_tree.var_table).
+:- type goal_mode.
+:- pred compute_goal_modes_in_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode compute_goal_modes_in_module((builtin.in), (builtin.out)) is det.
+:- func dump_goal_mode(string, parse_tree.var_table.var_table, hlds.goal_mode.goal_mode) = list.list(string).
+:- func make_dummy_goal_mode = hlds.goal_mode.goal_mode.
+:- pred rename_vars_in_goal_mode(parse_tree.prog_rename.must_rename, parse_tree.prog_data.prog_var_renaming, hlds.goal_mode.goal_mode, hlds.goal_mode.goal_mode).
+:- mode rename_vars_in_goal_mode((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
