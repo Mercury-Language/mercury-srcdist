@@ -1,0 +1,14 @@
+module(2, "assoc_list.m",
+	assoc_list,
+	{},
+	{builtin, list, pair, private_builtin},
+	{require, string, type_desc},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

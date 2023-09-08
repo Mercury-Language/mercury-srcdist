@@ -1,0 +1,17 @@
+:- module (transform_hlds.term_norm).
+:- interface.
+:- use_module hlds.
+:- use_module libs.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (libs.globals).
+:- use_module (parse_tree.prog_data).
+:- type functor_info.
+:- func functor_lower_bound(hlds.hlds_module.module_info, transform_hlds.term_norm.functor_info, parse_tree.prog_data.type_ctor, parse_tree.prog_data.cons_id) = int.
+:- pred functor_norm(hlds.hlds_module.module_info, transform_hlds.term_norm.functor_info, parse_tree.prog_data.type_ctor, parse_tree.prog_data.cons_id, int, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.unify_mode), list.list(hlds.hlds_goal.unify_mode)).
+:- mode functor_norm((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func set_functor_info(hlds.hlds_module.module_info, libs.globals.termination_norm) = transform_hlds.term_norm.functor_info.
+:- pred zero_size_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode zero_size_type((builtin.in), (builtin.in)) is semidet.
