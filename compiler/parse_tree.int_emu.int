@@ -1,0 +1,49 @@
+:- module (parse_tree.int_emu).
+:- interface.
+:- use_module integer.
+:- use_module libs.
+:- use_module (libs.globals).
+:- use_module (parse_tree.prog_data).
+:- type op_num_bits
+    --->    word_bits(int)
+    ;       bits_8 
+    ;       bits_16 
+    ;       bits_32 
+    ;       bits_64 .
+:- type op_type
+    --->    op_int(parse_tree.int_emu.op_num_bits)
+    ;       op_uint(parse_tree.int_emu.op_num_bits).
+:- pred emu_and(parse_tree.int_emu.op_type, parse_tree.prog_data.cons_id, parse_tree.prog_data.cons_id, parse_tree.prog_data.some_int_const).
+:- mode emu_and((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_int_floor_to_multiple_of_bits_per_int(parse_tree.int_emu.op_type, parse_tree.prog_data.some_int_const, parse_tree.prog_data.some_int_const).
+:- mode emu_int_floor_to_multiple_of_bits_per_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_int_quot_bits_per_int(parse_tree.int_emu.op_type, parse_tree.prog_data.some_int_const, parse_tree.prog_data.some_int_const).
+:- mode emu_int_quot_bits_per_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_int_rem_bits_per_int(parse_tree.int_emu.op_type, parse_tree.prog_data.some_int_const, parse_tree.prog_data.some_int_const).
+:- mode emu_int_rem_bits_per_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_int_times_bits_per_int(parse_tree.int_emu.op_type, parse_tree.prog_data.some_int_const, parse_tree.prog_data.some_int_const).
+:- mode emu_int_times_bits_per_int((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_left_shift(parse_tree.int_emu.op_type, integer.integer, int, parse_tree.prog_data.some_int_const).
+:- mode emu_left_shift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_minus(parse_tree.int_emu.op_type, integer.integer, integer.integer, parse_tree.prog_data.some_int_const).
+:- mode emu_minus((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_mod(parse_tree.int_emu.op_type, integer.integer, integer.integer, parse_tree.prog_data.some_int_const).
+:- mode emu_mod((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_not(parse_tree.int_emu.op_type, parse_tree.prog_data.cons_id, parse_tree.prog_data.some_int_const).
+:- mode emu_not((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_or(parse_tree.int_emu.op_type, parse_tree.prog_data.cons_id, parse_tree.prog_data.cons_id, parse_tree.prog_data.some_int_const).
+:- mode emu_or((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_plus(parse_tree.int_emu.op_type, integer.integer, integer.integer, parse_tree.prog_data.some_int_const).
+:- mode emu_plus((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_quotient(parse_tree.int_emu.op_type, integer.integer, integer.integer, parse_tree.prog_data.some_int_const).
+:- mode emu_quotient((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_rem(parse_tree.int_emu.op_type, integer.integer, integer.integer, parse_tree.prog_data.some_int_const).
+:- mode emu_rem((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_right_shift(parse_tree.int_emu.op_type, integer.integer, int, parse_tree.prog_data.some_int_const).
+:- mode emu_right_shift((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_times(parse_tree.int_emu.op_type, integer.integer, integer.integer, parse_tree.prog_data.some_int_const).
+:- mode emu_times((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred emu_xor(parse_tree.int_emu.op_type, parse_tree.prog_data.cons_id, parse_tree.prog_data.cons_id, parse_tree.prog_data.some_int_const).
+:- mode emu_xor((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func target_op_type(libs.globals.globals) = parse_tree.int_emu.op_num_bits.
+:- func target_word_bits(libs.globals.globals) = int.
