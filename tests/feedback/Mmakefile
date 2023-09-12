@@ -1,0 +1,52 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = feedback
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+AUTOPAR_REPORTS = \
+	mandelbrot \
+	mmc
+
+REPORTS = $(patsubst %,autopar_%,$(AUTOPAR_REPORTS))
+
+TESTS = $(patsubst %,%-nodepend,$(sort $(REPORTS)))
+include ../Mmake.common
+
+# Try to use the feedback tools in this workspace if available;
+# otherwise, use the tools in $PATH.
+FB_CREATE_WS = ../../deep_profiler/mdprof_create_feedback
+FB_REPORT_WS = ../../deep_profiler/mdprof_report_feedback
+
+FB_CREATE_SYS = mdprof_create_feedback
+FB_REPORT_SYS = mdprof_report_feedback
+
+FB_CREATE = `if test -e $(FB_CREATE_WS); then \
+                echo $(FB_CREATE_WS); \
+            else \
+                echo $(FB_CREATE_SYS); \
+            fi`
+FB_REPORT = `if test -e $(FB_REPORT_WS); then \
+                echo $(FB_REPORT_WS); \
+            else \
+                echo $(FB_REPORT_SYS); \
+            fi`
+
+%.runtest: %.res ;
+
+%.out: %.feedback
+	$(FB_REPORT) $< > $@
+
+autopar_%.feedback: %/Deep.data %/Deep.procrep
+	$(FB_CREATE) -v 0 --implicit-parallelism $< $@
+
+%.realclean:
+	rm -rf $(@:.realclean=.feedback) \
+		$(@:.realclean=.out) \
+		$(@:.realclean=.res) \
+		$(@:.realclean=.res1) \
+		$(@:.realclean=.log)
