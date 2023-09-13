@@ -1,0 +1,2 @@
+:- module ((hlds.make_hlds).instance_method_clauses).
+:- interface.

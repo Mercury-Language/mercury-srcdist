@@ -1,0 +1,42 @@
+:- module ((hlds.make_hlds).add_pragma).
+:- interface.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.prog_item).
+:- use_module ((hlds.make_hlds).make_hlds_types).
+:- use_module ((hlds.make_hlds).qual_info).
+:- pred add_decl_markers(hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_decl_marker_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_decl_markers((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_decl_pragmas(hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_decl_pragma_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_decl_pragmas((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_decl_pragmas_reuse(list.list(parse_tree.prog_item.decl_pragma_struct_reuse_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_decl_pragmas_reuse((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_decl_pragmas_sharing(list.list(parse_tree.prog_item.decl_pragma_struct_sharing_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_decl_pragmas_sharing((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_decl_pragmas_termination(list.list(parse_tree.prog_item.decl_pragma_termination_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_decl_pragmas_termination((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_decl_pragmas_termination2(list.list(parse_tree.prog_item.decl_pragma_termination2_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_decl_pragmas_termination2((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_decl_pragmas_type_spec(list.list(parse_tree.prog_item.decl_pragma_type_spec_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_decl_pragmas_type_spec((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_gen_pragma_exceptions(parse_tree.prog_item.gen_pragma_exceptions_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_gen_pragma_exceptions((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_gen_pragma_mm_tabling(parse_tree.prog_item.gen_pragma_mm_tabling_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_gen_pragma_mm_tabling((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_gen_pragma_trailing(parse_tree.prog_item.gen_pragma_trailing_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_gen_pragma_trailing((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_gen_pragma_unused_args(parse_tree.prog_item.gen_pragma_unused_args_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_gen_pragma_unused_args((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_impl_markers(hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_impl_marker_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_impl_markers((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_impl_pragmas(hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.item_impl_pragma_info), hlds.make_hlds.make_hlds_types.ims_cord(parse_tree.prog_item.impl_pragma_tabled_info), hlds.make_hlds.make_hlds_types.ims_cord(parse_tree.prog_item.impl_pragma_tabled_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_impl_pragmas((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_impl_pragmas_tabled(hlds.make_hlds.make_hlds_types.ims_list(parse_tree.prog_item.impl_pragma_tabled_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_impl_pragmas_tabled((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_pragma_foreign_proc_export(parse_tree.prog_item.impl_pragma_fproc_export_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_spec.error_spec), list.list(parse_tree.error_spec.error_spec)).
+:- mode add_pragma_foreign_proc_export((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- include_module (((hlds.make_hlds).add_pragma).add_pragma_tabling).
+:- include_module (((hlds.make_hlds).add_pragma).add_pragma_type_spec).
