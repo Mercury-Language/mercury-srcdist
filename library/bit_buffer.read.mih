@@ -1,0 +1,187 @@
+/*
+** Automatically generated from `bit_buffer.read.m'
+** by the Mercury compiler,
+** version rotd-2023-09-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module bit_buffer.read.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_bit_buffer__read
+#define MR_HEADER_GUARD_bit_buffer__read
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BIT_BUFFER__READ_DECL_GUARD
+#define BIT_BUFFER__READ_DECL_GUARD
+#include "bit_buffer.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__bit_buffer__read__bit_buffer__read__type_ctor_info_io_read_buffer_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bit_buffer__read__bit_buffer__read__type_ctor_info_read_buffer_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__bit_buffer__read__bit_buffer__read__type_ctor_info_read_buffer_3;
+
+void MR_CALL 
+mercury__bit_buffer__read__buffer_status_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__bit_buffer__read__finalize_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3,
+  MR_Box * param_4,
+  MR_Box * param_5,
+  MR_Integer * param_6,
+  MR_Integer * param_7);
+
+void MR_CALL 
+mercury__bit_buffer__read__get_bit_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mercury__bit_buffer__read__get_bitmap_6_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box * param_3,
+  MR_Integer * param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+mercury__bit_buffer__read__get_bitmap_8_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Box * param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+mercury__bit_buffer__read__get_bits_8_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5,
+  MR_Integer * param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+MR_Word MR_CALL 
+mercury__bit_buffer__read__new_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__bit_buffer__read__new_bitmap_reader_1_f_0(
+  MR_Box param_1);
+
+MR_Word MR_CALL 
+mercury__bit_buffer__read__new_bitmap_reader_3_f_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+MR_Integer MR_CALL 
+mercury__bit_buffer__read__num_bits_to_byte_boundary_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Integer MR_CALL 
+mercury__bit_buffer__read__num_buffered_bits_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__bit_buffer__read____Compare____io_read_buffer_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__bit_buffer__read____Compare____read_buffer_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__bit_buffer__read____Compare____read_buffer_3_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+MR_bool MR_CALL 
+mercury__bit_buffer__read____Unify____io_read_buffer_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__bit_buffer__read____Unify____read_buffer_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__bit_buffer__read____Unify____read_buffer_3_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void mercury__bit_buffer__read__init(void);
+void mercury__bit_buffer__read__init_type_tables(void);
+void mercury__bit_buffer__read__init_debugger(void);
+const char *mercury__bit_buffer__read__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_bit_buffer.read
+
+// :- end_interface bit_buffer.read.
