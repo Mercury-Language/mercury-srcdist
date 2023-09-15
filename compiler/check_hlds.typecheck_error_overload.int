@@ -1,0 +1,10 @@
+:- module (check_hlds.typecheck_error_overload).
+:- interface.
+:- use_module parse_tree.
+:- use_module (check_hlds.type_assign).
+:- use_module (check_hlds.typecheck_info).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.prog_data).
+:- func report_ambiguity_error(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.typecheck_info.overloaded_symbol_map, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign) = parse_tree.error_spec.error_spec.
+:- func report_error_too_much_overloading(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.typecheck_info.overloaded_symbol_map) = parse_tree.error_spec.error_spec.
+:- func report_warning_too_much_overloading(check_hlds.typecheck_info.type_error_clause_context, parse_tree.prog_data.prog_context, check_hlds.typecheck_info.overloaded_symbol_map) = parse_tree.error_spec.error_spec.
