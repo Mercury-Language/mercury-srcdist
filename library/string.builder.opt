@@ -1,0 +1,88 @@
+:- module (string.builder).
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module cord.
+:- use_module deconstruct.
+:- use_module int.
+:- use_module list.
+:- use_module maybe.
+:- use_module ops.
+:- use_module pair.
+:- use_module pretty_printer.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module stream.
+:- use_module uint.
+:- use_module uint8.
+:- use_module (string.format).
+:- use_module (string.to_string).
+
+:- type state
+    --->    state(list.list(string)).
+
+:- instance (stream.output(string.builder.handle, string.builder.state)).
+:- instance (stream.stream(string.builder.handle, string.builder.state)).
+:- instance (stream.writer(string.builder.handle, character, string.builder.state)).
+:- instance (stream.writer(string.builder.handle, string, string.builder.state)).
+
+:- pred (string.builder).total_num_code_points_acc(list.list(string), int, int).
+:- mode total_num_code_points_acc((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred (string.builder).total_num_code_points_is_at_most_loop(list.list(string), int).
+:- mode total_num_code_points_is_at_most_loop((builtin.in), (builtin.in)) is semidet.
+
+:- pragma inline(pred(((string.builder).append_char)/3)).
+(string.builder).append_char(V_4, V_8, V_9) :-
+    V_8 = (string.builder).state(V_6) : string.builder.state,
+    V_7 = list.[V_10 | V_6] : list.list(string),
+    V_10 = string.char_to_string(V_4),
+    V_9 = (string.builder).state(V_7) : string.builder.state.
+
+:- pragma inline(pred(((string.builder).append_string)/3)).
+(string.builder).append_string(V_4, V_9, V_10) :-
+    V_9 = (string.builder).state(V_6) : string.builder.state,
+    builtin.copy(V_4, V_7),
+    V_8 = list.[V_7 | V_6] : list.list(string),
+    V_10 = (string.builder).state(V_8) : string.builder.state.
+
+(string.builder).init = string.builder.state(V_2) :-
+    V_2 = list.[] : list.list(string).
+
+(string.builder).to_string(V_3) = V_4 :-
+    V_3 = (string.builder).state(V_5) : string.builder.state,
+    V_4 = string.append_list(V_6),
+    V_6 = list.reverse(V_5).
+
+(string.builder).total_num_code_points(V_3) = V_4 :-
+    V_3 = (string.builder).state(V_5) : string.builder.state,
+    V_6 = 0 : int,
+    (string.builder).total_num_code_points_acc(V_5, V_6, V_4).
+
+(string.builder).total_num_code_points_is_at_most(V_3, V_4) :-
+    V_3 = (string.builder).state(V_5) : string.builder.state,
+    (string.builder).total_num_code_points_is_at_most_loop(V_5, V_4).
+
+:- pragma termination_info((string.builder).'ClassMethod_for_stream__output____string__builder__handle__arity0__string__builder__state__arity0______stream__flush_3'((builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info((string.builder).'ClassMethod_for_stream__stream____string__builder__handle__arity0__string__builder__state__arity0______stream__name_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info((string.builder).'ClassMethod_for_stream__writer____string__builder__handle__arity0__character__arity0__string__builder__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((string.builder).'ClassMethod_for_stream__writer____string__builder__handle__arity0__string__arity0__string__builder__state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((string.builder).append_char((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((string.builder).append_string((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((string.builder).append_strings((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(((string.builder).init) = (builtin.uo), finite(1, [no]), cannot_loop).
+:- pragma termination_info((string.builder).to_string((builtin.in)) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info((string.builder).total_num_code_points((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info((string.builder).total_num_code_points_acc((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), can_loop).
+:- pragma termination_info((string.builder).total_num_code_points_is_at_most((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info((string.builder).total_num_code_points_is_at_most_loop((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+
+:- pragma exceptions(predicate, ((string.builder).append_char), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.builder).append_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.builder).append_strings), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((string.builder).init), 0, 0, will_not_throw).
+:- pragma exceptions(function, ((string.builder).to_string), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((string.builder).total_num_code_points), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.builder).total_num_code_points_acc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.builder).total_num_code_points_is_at_most), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.builder).total_num_code_points_is_at_most_loop), 2, 0, may_throw(user_exception)).
