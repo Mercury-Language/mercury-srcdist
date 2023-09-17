@@ -1,0 +1,352 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+TESTS_DIR = ..
+THIS_DIR = valid
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+# Please keep these lists sorted.
+# The documentation of what tests each list should contain (what little
+# there is of it) is in ../valid/Mmake.valid.common.
+
+AGC_PROGS = \
+	agc_graph \
+	agc_ho_pred \
+	agc_ite \
+	agc_unbound_typevars \
+	agc_unbound_typevars2 \
+	agc_unused_in
+
+TRAIL_PROGS = \
+	complex_failure \
+	semi_fail_in_non_ite
+
+TYPECLASS_PROGS = \
+	abstract_typeclass \
+	bug271 \
+	complex_constraint \
+	exists_bug \
+	exists_dummy \
+	exists_fundeps \
+	exists_fundeps_2 \
+	exists_fundeps_3 \
+	flatten_conj_bug \
+	func_method \
+	fundeps \
+	fundeps_poly_instance \
+	gh98 \
+	instance_dup_var \
+	instance_superclass \
+	instance_typequal \
+	instance_unconstrained_tvar \
+	logged_stream \
+	mpj2 \
+	mpj5 \
+	mpj6 \
+	mpj7 \
+	repeated_class_constraint \
+	string_format_in_instance \
+	superclass_bug \
+	superclass_improvement \
+	tci_spec_varmap \
+	time_yaowl \
+	typeclass_constraint_arity \
+	typeclass_constraint_no_var \
+	typeclass_constraint_nonvar_bug \
+	typeclass_det_warning \
+	undetermined_mode_lambda \
+	use_import_only_for_instance
+
+C_PROGS = \
+	bug109 \
+	bug485
+
+OTHER_PROGS = \
+	any_inst_merge \
+	any_matches_bound \
+	big_foreign_type \
+	bug128 \
+	bug134 \
+	bug142 \
+	bug159 \
+	bug180 \
+	bug183 \
+	bug190 \
+	bug300 \
+	bug301 \
+	bug318 \
+	bug361 \
+	bug380 \
+	bug402 \
+	bug414 \
+	bug429 \
+	bug457 \
+	bug480 \
+	bug480a \
+	bug481 \
+	bug483 \
+	bug486 \
+	bug493 \
+	bug51 \
+	bug512 \
+	bug539 \
+	bug544 \
+	bug85 \
+	builtin_false \
+	call_failure \
+	common_struct_bug \
+	compl_unify_bug \
+	complete_int8_switch \
+	complete_uint8_switch \
+	complicated_unify \
+	constr_inst_syntax \
+	constrained_poly_bound_arg \
+	constrained_poly_insts \
+	constrained_poly_multi \
+	constraint_prop_bug \
+	constructor_arg_names \
+	cse_unique \
+	dcg_test \
+	deforest_bug \
+	deforest_loop \
+	deforest_rerun_det \
+	det_condition \
+	det_inference \
+	det_string_switch \
+	det_switch \
+	double_vn \
+	dupelim_mkword_hole \
+	easy_nondet_test \
+	easy_nondet_test_2 \
+	empty_bound_inst_list \
+	empty_switch \
+	equiv_solns_ia \
+	error \
+	eval \
+	existential_cons \
+	explicit_quant \
+	export_before_func \
+	fail_ite \
+	file_stream_instances \
+	followcode_det_problem \
+	foreign_underscore_var \
+	func_default_modes \
+	func_in_head \
+	gh65 \
+	gh89 \
+	github_50 \
+	hawkins_switch_bug \
+	headvar_not_found \
+	higher_order \
+	higher_order2 \
+	higher_order3 \
+	higher_order4 \
+	higher_order5 \
+	higher_order_implied_mode \
+	ho_and_type_spec_bug \
+	ho_and_type_spec_bug2 \
+	ho_func_call_2 \
+	ho_inst \
+	ho_unify \
+	id_type_bug \
+	implied_mode \
+	implied_mode_no_tag \
+	impure_lambda_bug \
+	indexing \
+	inhibit_warn_test \
+	inlining_bug \
+	inst_perf_bug_1 \
+	inst_perf_bug_2 \
+	instmap_generic_failure \
+	int_imp_test \
+	lambda_inference\
+	lambda_instmap_bug \
+	lambda_instmap_bug2 \
+	lambda_output \
+	lambda_quant \
+	lambda_quant_bug \
+	lambda_recompute \
+	lambda_struct_bug \
+	lambda_switch \
+	lambda_type \
+	lazy_list \
+	lco_term \
+	liveness_nonlocals \
+	livevals_seq \
+	long_name \
+	loop \
+	loop_in_disj \
+	loop_inv_bug \
+	mark_static_bug \
+	mc_bag \
+	mc_extra_nonlocals \
+	mc_graph \
+	mc_hhf_nonlocals_bug \
+	mc_implied_modes \
+	merge_ground_any \
+	mert \
+	middle_rec_labels \
+	mode_syntax \
+	modes_bug \
+	mostly_uniq_bug \
+	mostly_uniq_mode_inf \
+	mostly_uniq_neg \
+	multidet_prune1 \
+	multidet_test \
+	mutual_tailrec_outputs \
+	nasty_func_test \
+	neg_erroneous \
+	negation_in_dupl_for_switch \
+	no_warn_format_imports \
+	no_warn_obsolete \
+	no_warn_unresolved_poly \
+	nondet_live \
+	overloading \
+	param_mode_bug \
+	pred_with_no_modes \
+	preferred_switch_var \
+	promise_equiv_exists_non_local \
+	promise_ex \
+	qualified_cons_id \
+	quantifier_warning \
+	record_syntax_bug \
+	record_syntax_bug_2 \
+	record_syntax_bug_3 \
+	record_syntax_bug_4 \
+	record_syntax_bug_5 \
+	recursive_no_tag_type \
+	reg_bug \
+	require_bug \
+	require_tailrec_1 \
+	require_tailrec_2 \
+	require_tailrec_3 \
+	required_var \
+	semidet_disj \
+	shape_type \
+	simplify_bug \
+	simplify_bug2 \
+	size_prof_ho_bug \
+	soln_context \
+	solver_type_bug \
+	some_switch \
+	spurious_purity_warning \
+	stack_alloc \
+	stack_opt_simplify \
+	state_var_bug \
+	state_var_mode_bug \
+	state_var_mode_bug2 \
+	static \
+	subtype_basic \
+	subtype_switch \
+	switch_detection_bug \
+	switch_detection_bug2 \
+	switches \
+	table_aux_preds_erlang \
+	tabled_for_io \
+	tabled_io \
+	trace_goal_reorder \
+	tricky_assert2 \
+	tricky_ite \
+	tuple_eqv \
+	two_pragma_c_codes \
+	two_way_unif \
+	type_inf_ambig_test \
+	typeclass_inlining_bug \
+	unbound_inst_var \
+	unbound_tvar_in_lambda \
+	undead_proc \
+	unescaped_special_char \
+	unify_dummy \
+	unify_typeinfo_bug \
+	uniq_mode_inf_bug \
+	uniq_unify \
+	unknown_warning \
+	unreachable_code \
+	unused_args_test2 \
+	vn_float \
+	wrapper_arg_lvals \
+	zero_arity
+
+C_INTERFACE_PROGS =
+
+SOLVER_PROGS = \
+	ho_any_inst \
+	solv \
+
+DEEP_PROF_CAPABLE_PROGS = \
+	impure_detism
+
+LLDS_PROGS = \
+	exists_cast_bug \
+	fzn_debug_abort \
+	liveness_disagree \
+	liveness_ite \
+	livevars_shallow \
+	livevars_shallow2 \
+	untuple_bug
+
+TABLE_PROGS = \
+	bug36 \
+	table_wrong_func_arity \
+	mercury_java_parser_follow_code_bug
+
+PAR_CONJ_PROGS = \
+	par_dummy \
+	par_dupelim \
+	par_saved_const
+
+CTGC_PROGS = \
+	reuse_static \
+	reuse_static2 \
+	sharing_exist \
+	sharing_loop \
+	sharing_loop2 \
+	sharing_loop3 \
+	table_no_attr
+
+CONSTRAINT_TYPECHECK_PROGS = \
+	ambig_functor \
+	ambiguity_stress_test
+
+# bug50 and bug50_full are compiled with --trace deep and that
+# is not compatible with --decl-debug.
+#
+NON_DECLDEBUG_PROGS = \
+	bug50 \
+	bug50_full
+
+# XXX The quantification pass can't properly handle the following test case:
+#	bad_singleton_warning
+#
+# XXX The mode system can't handle the following test cases yet:
+#	assoc_list_bug
+#	determinism
+#	mode_merge_insts
+#	unify_inst_bug
+#
+# XXX We also don't pass this one (see the comments in it for details):
+#
+#	mode_selection
+#
+# XXX ... or this one:
+#
+#	some_singleton
+#
+# XXX The following tests are not valid under the current Mercury
+# language rules:
+#
+#	field_detism
+#	ho_func_call
+#
+# The following test case checked for a problem with the varsets attached
+# to mutables. It only ever worked in the presence of automatic solver
+# type initialisation, but due to subsequent changes in the mode analyser,
+# and the deletion of support for automatic solver type initialisation,
+# it cannot currently be compiled.
+#
+#       solver_type_mutable_bug
+
+include ../valid/Mmake.valid.common

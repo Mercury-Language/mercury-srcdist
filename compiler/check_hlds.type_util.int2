@@ -1,0 +1,10 @@
+:- module (check_hlds.type_util).
+:- interface.
+:- type ctor_defn
+    --->    ctor_defn(((check_hlds.type_util).ctor_tvars) :: parse_tree.prog_data.tvarset, ((check_hlds.type_util).ctor_tvar_kinds) :: parse_tree.prog_data.tvar_kind_map, ((check_hlds.type_util).ctor_maybe_exist) :: parse_tree.prog_data.maybe_cons_exist_constraints, ((check_hlds.type_util).ctor_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.type_util).ctor_result_type) :: parse_tree.prog_data.mer_type).
+:- type is_dummy_type
+    --->    is_dummy_type 
+    ;       is_not_dummy_type .
+:- type is_either_dummy_type
+    --->    at_least_one_is_dummy_type 
+    ;       neither_is_dummy_type .
