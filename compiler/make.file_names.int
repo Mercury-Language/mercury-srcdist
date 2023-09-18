@@ -1,0 +1,25 @@
+:- module (make.file_names).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (make.make_info).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.file_names).
+:- pred dependency_file_to_file_name(libs.globals.globals, make.make_info.dependency_file, string, io.io, io.io).
+:- mode dependency_file_to_file_name((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred extension_to_target_type(libs.globals.globals, string, make.make_info.module_target_type).
+:- mode extension_to_target_type((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred get_file_name(io.text_output_stream, libs.globals.globals, string, parse_tree.file_names.maybe_for_search, make.make_info.target_file, libs.file_util.file_name, make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode get_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_make_target_file_name(libs.globals.globals, string, make.make_info.target_file, string, io.io, io.io).
+:- mode get_make_target_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred module_target_to_file_name(libs.globals.globals, string, make.make_info.module_target_type, mdbcomp.sym_name.module_name, libs.file_util.file_name, io.io, io.io).
+:- mode module_target_to_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred target_extension_synonym(string, make.make_info.module_target_type).
+:- mode target_extension_synonym((builtin.in), (builtin.out)) is semidet.
+:- pred timestamp_extension(make.make_info.module_target_type, parse_tree.file_names.ext).
+:- mode timestamp_extension((builtin.in), (builtin.out)) is semidet.

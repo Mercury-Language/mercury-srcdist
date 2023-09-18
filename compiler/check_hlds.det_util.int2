@@ -1,0 +1,15 @@
+:- module (check_hlds.det_util).
+:- interface.
+:- type contains_format_call
+    --->    does_not_contain_format_call 
+    ;       contains_format_call .
+:- type contains_incomplete_switch
+    --->    does_not_contain_incomplete_switch 
+    ;       contains_incomplete_switch .
+:- type contains_require_scope
+    --->    does_not_contain_require_scope 
+    ;       contains_require_scope .
+:- type det_info.
+:- type report_pess_extra_vars
+    --->    pess_extra_vars_report 
+    ;       pess_extra_vars_ignore .
