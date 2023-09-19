@@ -1,0 +1,40 @@
+:- module counter.
+:- use_module builtin.
+:- use_module int.
+:- use_module private_builtin.
+:- use_module uint.
+
+:- type counter
+    --->    counter(int).
+:- type ucounter
+    --->    ucounter(uint).
+
+counter.allocate(V_4, counter.counter(V_4), counter.counter(V_5)) :-
+    V_5 = int.(V_4 + V_6),
+    V_6 = 1 : int.
+
+counter.init(V_3) = counter.counter(V_3).
+
+counter.init(V_3, counter.counter(V_3)).
+
+counter.uallocate(V_4, counter.ucounter(V_4), counter.ucounter(V_5)) :-
+    V_5 = uint.(V_4 + V_6),
+    V_6 = 1u : uint.
+
+counter.uinit(V_3) = counter.ucounter(V_3).
+
+counter.uinit(V_3, counter.ucounter(V_3)).
+
+:- pragma termination_info(counter.allocate((builtin.out), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(counter.init((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(counter.init((builtin.in), (builtin.out)), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(counter.uallocate((builtin.out), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(counter.uinit((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(counter.uinit((builtin.in), (builtin.out)), finite(1, [yes, no]), cannot_loop).
+
+:- pragma exceptions(predicate, (counter.allocate), 3, 0, will_not_throw).
+:- pragma exceptions(function, (counter.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (counter.init), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (counter.uallocate), 3, 0, will_not_throw).
+:- pragma exceptions(function, (counter.uinit), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (counter.uinit), 2, 0, will_not_throw).

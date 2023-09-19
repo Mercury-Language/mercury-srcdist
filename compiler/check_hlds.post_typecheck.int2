@@ -1,0 +1,2 @@
+:- module (check_hlds.post_typecheck).
+:- interface.

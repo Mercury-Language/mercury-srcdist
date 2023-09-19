@@ -1,0 +1,4 @@
+:- module (make.dependencies).
+:- interface.
+:- type_representation(find_module_deps(V_1), is_eqv_to(pred(globals, module_index, maybe_succeeded, deps_set(V_1), make_info, make_info, io, io))).
+:- type_representation(find_module_deps_plain_set(V_1), is_eqv_to(pred(globals, module_index, maybe_succeeded, set(V_1), make_info, make_info, io, io))).
