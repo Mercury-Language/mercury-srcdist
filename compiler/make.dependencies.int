@@ -1,0 +1,11 @@
+:- module (make.dependencies).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module (libs.globals).
+:- use_module (libs.maybe_util).
+:- use_module (make.deps_set).
+:- use_module (make.make_info).
+:- pred find_target_dependencies_of_modules(make.make_info.maybe_keep_going, libs.globals.globals, make.make_info.module_target_type, list.list(make.deps_set.module_index), libs.maybe_util.maybe_succeeded, libs.maybe_util.maybe_succeeded, make.deps_set.deps_set(make.deps_set.dependency_file_index), make.deps_set.deps_set(make.deps_set.dependency_file_index), make.make_info.make_info, make.make_info.make_info, io.io, io.io).
+:- mode find_target_dependencies_of_modules((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
