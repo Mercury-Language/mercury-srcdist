@@ -1,0 +1,10 @@
+:- module (parse_tree.parse_tree_out_type_repn).
+:- interface.
+:- use_module io.
+:- use_module (parse_tree.parse_tree_out_info).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_item).
+:- func fill_kind_size_to_string(parse_tree.prog_item.fill_kind_size) = string.
+:- func foreign_type_assertion_to_string(parse_tree.prog_data.foreign_type_assertion) = string.
+:- pred mercury_output_item_type_repn(parse_tree.parse_tree_out_info.merc_out_info, io.text_output_stream, parse_tree.prog_item.item_type_repn_info, io.io, io.io).
+:- mode mercury_output_item_type_repn((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

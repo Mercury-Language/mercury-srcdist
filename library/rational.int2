@@ -1,0 +1,3 @@
+:- module rational.
+:- interface.
+:- type rational.

@@ -1,0 +1,25 @@
+:- module (make.deps_cache).
+:- interface.
+:- type cached_computed_module_deps.
+:- type cached_direct_imports.
+:- type cached_indirect_imports.
+:- type cached_transitive_foreign_imports.
+:- type computed_module_deps_key.
+:- type computed_module_deps_label.
+:- type deps_result(T).
+:- type module_deps_result.
+:- type process_modules_where
+	where	type_is_abstract_enum(1).
+:- type transitive_dependencies_root.
+:- type transitive_dependencies_type
+	where	type_is_abstract_enum(2).
+:- type_representation(cached_computed_module_deps, is_eqv_to(map(make.deps_cache.computed_module_deps_key, make.deps_cache.deps_result(dependency_file_index)))).
+:- type_representation(cached_direct_imports, is_eqv_to(map(module_index, make.deps_cache.module_deps_result))).
+:- type_representation(cached_indirect_imports, is_eqv_to(map(module_index, make.deps_cache.module_deps_result))).
+:- type_representation(cached_transitive_foreign_imports, is_eqv_to(map(module_index, make.deps_cache.module_deps_result))).
+:- type_representation(computed_module_deps_key, is_word_aligned_ptr).
+:- type_representation(computed_module_deps_label, du_repn(direct_dummy("computed_module_deps_import_012",  no_c_j_cs))).
+:- type_representation(module_deps_result, is_eqv_to(make.deps_cache.deps_result(module_index))).
+:- type_representation(process_modules_where, du_repn(enum("process_only_modules_in_cur_dir", "process_modules_anywhere", [],  no_c_j_cs))).
+:- type_representation(transitive_dependencies_root, is_word_aligned_ptr).
+:- type_representation(transitive_dependencies_type, du_repn(enum("interface_imports", "all_imports", ["all_dependencies"],  no_c_j_cs))).
