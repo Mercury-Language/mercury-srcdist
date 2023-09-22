@@ -1,0 +1,58 @@
+:- module (recompilation.used_file).
+:- interface.
+:- use_module assoc_list.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module pair.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_spec).
+:- use_module (parse_tree.module_baggage).
+:- use_module (parse_tree.prog_data).
+:- type imported_item_set == set.set(parse_tree.prog_data.name_arity).
+:- type imported_items == map.map(mdbcomp.sym_name.module_name, recompilation.used_file.module_imported_items).
+:- type module_imported_items
+    --->    module_imported_items(((recompilation.used_file).mii_type_names) :: recompilation.used_file.imported_item_set, ((recompilation.used_file).mii_type_defns) :: recompilation.used_file.imported_item_set, ((recompilation.used_file).mii_insts) :: recompilation.used_file.imported_item_set, ((recompilation.used_file).mii_modes) :: recompilation.used_file.imported_item_set, ((recompilation.used_file).mii_typeclasses) :: recompilation.used_file.imported_item_set, ((recompilation.used_file).mii_functors) :: recompilation.used_file.imported_item_set, ((recompilation.used_file).mii_predicates) :: recompilation.used_file.imported_item_set, ((recompilation.used_file).mii_functions) :: recompilation.used_file.imported_item_set).
+:- type recomp_used_module
+    --->    recomp_used_module(mdbcomp.sym_name.module_name, parse_tree.module_baggage.module_timestamp, maybe.maybe(recompilation.module_item_version_numbers)).
+:- type resolved_functor
+    --->    resolved_functor_pred_or_func(hlds.hlds_pred.pred_id, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.module_name, parse_tree.prog_data.pred_form_arity)
+    ;       resolved_functor_data_constructor(parse_tree.prog_data.type_ctor)
+    ;       resolved_functor_field_access_func(parse_tree.prog_data.cons_ctor).
+:- type resolved_functor_map == recompilation.used_file.resolved_item_map(set.set(recompilation.used_file.resolved_functor)).
+:- type resolved_functor_set == recompilation.used_file.resolved_item_set(set.set(recompilation.used_file.resolved_functor)).
+:- type resolved_item_list(T) == assoc_list.assoc_list(parse_tree.prog_data.arity, recompilation.used_file.resolved_item_map(T)).
+:- type resolved_item_map(T) == map.map(recompilation.module_qualifier, T).
+:- type resolved_item_set(T) == map.map(string, recompilation.used_file.resolved_item_list(T)).
+:- type resolved_pred_or_func_map == recompilation.used_file.resolved_item_map(set.set(pair.pair(hlds.hlds_pred.pred_id, mdbcomp.sym_name.module_name))).
+:- type resolved_pred_or_func_set == recompilation.used_file.resolved_item_set(set.set(pair.pair(hlds.hlds_pred.pred_id, mdbcomp.sym_name.module_name))).
+:- type resolved_used_items
+    --->    resolved_used_items(((recompilation.used_file).rui_type_names) :: recompilation.simple_item_set, ((recompilation.used_file).rui_type_defns) :: recompilation.simple_item_set, ((recompilation.used_file).rui_insts) :: recompilation.simple_item_set, ((recompilation.used_file).rui_modes) :: recompilation.simple_item_set, ((recompilation.used_file).rui_typeclasses) :: recompilation.simple_item_set, ((recompilation.used_file).rui_functors) :: recompilation.used_file.resolved_functor_set, ((recompilation.used_file).rui_predicates) :: recompilation.used_file.resolved_pred_or_func_set, ((recompilation.used_file).rui_functions) :: recompilation.used_file.resolved_pred_or_func_set).
+:- type used_file
+    --->    used_file(parse_tree.module_baggage.module_timestamp, list.list(mdbcomp.sym_name.module_name), recompilation.used_file.resolved_used_items, list.list(recompilation.recomp_item_name), list.list(recompilation.used_file.recomp_used_module)).
+:- type used_file_contents
+    --->    used_file_contents(((recompilation.used_file).ufc_module_name) :: mdbcomp.sym_name.module_name, ((recompilation.used_file).ufc_maybe_top_module) :: parse_tree.module_baggage.maybe_top_module, ((recompilation.used_file).ufc_module_timestamp_map) :: parse_tree.module_baggage.module_timestamp_map, ((recompilation.used_file).ufc_mi_version_numbers_map) :: recompilation.module_item_version_numbers_map, ((recompilation.used_file).ufc_resolved_used_items) :: recompilation.used_file.resolved_used_items, ((recompilation.used_file).ufc_used_typeclasses) :: set.set(recompilation.recomp_item_name), ((recompilation.used_file).ufc_imported_items) :: recompilation.used_file.imported_items, ((recompilation.used_file).ufc_module_instances) :: map.map(mdbcomp.sym_name.module_name, set.set(recompilation.recomp_item_name))).
+:- type used_file_error
+    --->    uf_read_error(libs.file_util.file_name, io.error)
+    ;       uf_syntax_error(parse_tree.prog_data.prog_context, string)
+    ;       uf_invalid_file_format(libs.file_util.file_name)
+    ;       uf_unreadable_used_items(list.list(parse_tree.error_spec.error_spec)).
+:- type used_file_result(T)
+    --->    used_file_ok(T)
+    ;       used_file_error(recompilation.used_file.used_file_error).
+:- func init_resolved_used_items = recompilation.used_file.resolved_used_items.
+:- pred read_used_file_for_module(libs.globals.globals, mdbcomp.sym_name.module_name, recompilation.used_file.used_file_result(recompilation.used_file.used_file), io.io, io.io).
+:- mode read_used_file_for_module((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func used_file_version_number = int.
+:- pred write_usage_file(io.text_output_stream, hlds.hlds_module.module_info, recompilation.used_file.used_file_contents, io.io, io.io).
+:- mode write_usage_file((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

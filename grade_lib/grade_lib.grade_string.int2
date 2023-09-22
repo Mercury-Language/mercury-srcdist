@@ -1,0 +1,5 @@
+:- module (grade_lib.grade_string).
+:- interface.
+:- type which_grade_string
+    --->    grade_string_user 
+    ;       grade_string_link_check .

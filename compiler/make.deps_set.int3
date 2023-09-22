@@ -1,0 +1,17 @@
+:- module (make.deps_set).
+:- interface.
+:- import_module enum.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module set.
+:- import_module sparse_bitset.
+:- import_module (make.make_info).
+:- import_module (mdbcomp.sym_name).
+:- type dependency_file_index.
+:- type deps_set(T).
+:- type module_index.
+:- instance uenum(make.deps_set.dependency_file_index).
+:- instance uenum(make.deps_set.module_index).
+:- type_representation(dependency_file_index, du_repn(notag("dependency_file_index", uint,  no_c_j_cs))).
+:- type_representation(deps_set(V_1), is_eqv_to(sparse_bitset(V_1))).
+:- type_representation(module_index, du_repn(notag("module_index", uint,  no_c_j_cs))).
