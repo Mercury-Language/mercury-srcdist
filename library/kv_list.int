@@ -1,0 +1,120 @@
+:- module kv_list.
+:- interface.
+:- use_module assoc_list.
+:- use_module list.
+:- type kv_list(K, V)
+    --->    kv_nil 
+    ;       kv_cons(K, V, kv_list.kv_list(K, V)).
+:- func assoc_list_to_kv_list(assoc_list.assoc_list(K, V)) = kv_list.kv_list(K, V).
+:- func det_elem(K, kv_list.kv_list(K, V)) = V is det.
+:- func elem(K, kv_list.kv_list(K, V)) = V is semidet.
+:- pred filter((pred K), kv_list.kv_list(K, V), kv_list.kv_list(K, V)).
+:- mode filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)) is det.
+:- func filter((pred K), kv_list.kv_list(K, V)) = kv_list.kv_list(K, V).
+:- mode filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out) is det.
+:- pred filter((pred K), kv_list.kv_list(K, V), kv_list.kv_list(K, V), kv_list.kv_list(K, V)).
+:- mode filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred foldl(pred(K, V, A, A), kv_list.kv_list(K, V), A, A).
+:- mode foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- func foldl((func(K, V, A) = A), kv_list.kv_list(K, V), A) = A.
+:- pred foldl2(pred(K, V, A, A, B, B), kv_list.kv_list(K, V), A, A, B, B).
+:- mode foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- mode foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- pred foldl2_values(pred(V, A, A, B, B), kv_list.kv_list(K, V), A, A, B, B).
+:- mode foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- mode foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi.
+:- mode foldl2_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- pred foldl3(pred(K, V, A, A, B, B, C, C), kv_list.kv_list(K, V), A, A, B, B, C, C).
+:- mode foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- mode foldl3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- pred foldl3_values(pred(V, A, A, B, B, C, C), kv_list.kv_list(K, V), A, A, B, B, C, C).
+:- mode foldl3_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl3_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl3_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl3_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl3_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl3_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- mode foldl3_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is multi.
+:- mode foldl3_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+:- pred foldl_keys(pred(K, A, A), kv_list.kv_list(K, V), A, A).
+:- mode foldl_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl_keys(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl_keys(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl_keys(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl_keys(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode foldl_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- mode foldl_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- func foldl_keys((func(K, A) = A), kv_list.kv_list(K, V), A) = A.
+:- pred foldl_values(pred(V, A, A), kv_list.kv_list(K, V), A, A).
+:- mode foldl_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl_values(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl_values(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl_values(builtin.in((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl_values(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- mode foldl_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is multi)), (builtin.in), (builtin.in), (builtin.out)) is multi.
+:- mode foldl_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is nondet)), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- func foldl_values((func(V, A) = A), kv_list.kv_list(K, V), A) = A.
+:- pred from_corresponding_lists(list.list(K), list.list(V), kv_list.kv_list(K, V)).
+:- mode from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func from_corresponding_lists(list.list(K), list.list(V)) = kv_list.kv_list(K, V).
+:- pred keys(kv_list.kv_list(K, V), list.list(K)).
+:- mode keys((builtin.in), (builtin.out)) is det.
+:- func keys(kv_list.kv_list(K, V)) = list.list(K).
+:- pred keys_and_values(kv_list.kv_list(K, V), list.list(K), list.list(V)).
+:- mode keys_and_values((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func kv_list_to_assoc_list(kv_list.kv_list(K, V)) = assoc_list.assoc_list(K, V).
+:- pred lookup(kv_list.kv_list(K, V), K, V).
+:- mode lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred map_keys_only(pred(K, L), kv_list.kv_list(K, V), kv_list.kv_list(L, V)).
+:- mode map_keys_only(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- func map_keys_only(((func K) = L), kv_list.kv_list(K, V)) = kv_list.kv_list(L, V).
+:- pred map_values(pred(K, V, W), kv_list.kv_list(K, V), kv_list.kv_list(K, W)).
+:- mode map_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- func map_values((func(K, V) = W), kv_list.kv_list(K, V)) = kv_list.kv_list(K, W).
+:- pred map_values_only(pred(V, W), kv_list.kv_list(K, V), kv_list.kv_list(K, W)).
+:- mode map_values_only(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- func map_values_only(((func V) = W), kv_list.kv_list(K, V)) = kv_list.kv_list(K, W).
+:- pred merge(kv_list.kv_list(K, V), kv_list.kv_list(K, V), kv_list.kv_list(K, V)).
+:- mode merge((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func merge(kv_list.kv_list(K, V), kv_list.kv_list(K, V)) = kv_list.kv_list(K, V).
+:- pred negated_filter((pred K), kv_list.kv_list(K, V), kv_list.kv_list(K, V)).
+:- mode negated_filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)) is det.
+:- func negated_filter((pred K), kv_list.kv_list(K, V)) = kv_list.kv_list(K, V).
+:- mode negated_filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out) is det.
+:- pred remove(kv_list.kv_list(K, V), K, V, kv_list.kv_list(K, V)).
+:- mode remove((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred reverse_members(kv_list.kv_list(K, V), kv_list.kv_list(V, K)).
+:- mode reverse_members((builtin.in), (builtin.out)) is det.
+:- func reverse_members(kv_list.kv_list(K, V)) = kv_list.kv_list(V, K).
+:- pred search(kv_list.kv_list(K, V), K, V).
+:- mode search((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred svremove(K, V, kv_list.kv_list(K, V), kv_list.kv_list(K, V)).
+:- mode svremove((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred update(K, V, kv_list.kv_list(K, V), kv_list.kv_list(K, V)).
+:- mode update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred values(kv_list.kv_list(K, V), list.list(V)).
+:- mode values((builtin.in), (builtin.out)) is det.
+:- func values(kv_list.kv_list(K, V)) = list.list(V).

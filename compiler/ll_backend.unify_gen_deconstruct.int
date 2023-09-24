@@ -1,0 +1,14 @@
+:- module (ll_backend.unify_gen_deconstruct).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (ll_backend.code_info).
+:- use_module (ll_backend.code_loc_dep).
+:- use_module (ll_backend.llds).
+:- use_module (parse_tree.prog_data).
+:- pred generate_deconstruct_no_tag_unify_arg(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, hlds.hlds_goal.unify_mode, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_deconstruct_no_tag_unify_arg((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generate_deconstruction_unification(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.unify_mode), parse_tree.prog_data.can_fail, hlds.hlds_goal.can_cgc, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_deconstruction_unification((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

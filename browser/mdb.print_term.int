@@ -1,0 +1,16 @@
+:- module (mdb.print_term).
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- use_module maybe.
+:- use_module (mdb.browser_info).
+:- use_module (mdb.browser_term).
+:- use_module (mdb.parse).
+:- type unbound
+    --->    '_' .
+:- pred browser_term_to_html_flat_string(mdb.browser_term.browser_term, string, bool.bool, io.io, io.io).
+:- mode browser_term_to_html_flat_string((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred portray(mdb.browser_info.debugger, mdb.browser_info.browse_caller_type, mdb.browser_info.portray_format, mdb.browser_info.browser_info, io.io, io.io).
+:- mode portray((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred portray_maybe_path(mdb.browser_info.debugger, mdb.browser_info.browse_caller_type, mdb.browser_info.portray_format, mdb.browser_info.browser_info, maybe.maybe(mdb.parse.path), io.io, io.io).
+:- mode portray_maybe_path((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.

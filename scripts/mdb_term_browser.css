@@ -1,0 +1,24 @@
+/*
+** Copyright (C) 2017-2018 The Mercury team.
+** This file is distributed under the terms specified in COPYING.LIB.
+*/
+
+body {
+    font-family: Sans-Serif;
+}
+div.search-container {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+li.jstree-node a span.pos {
+    color: blue;
+}
+li.jstree-node a span.name {
+    color: purple;
+}
+li.jstree-node a span {
+    padding-right: 0.5em;
+}
+.jstree-anchor, .jstree-animated, .jstree-wholerow {
+    transition: none !important;
+}
