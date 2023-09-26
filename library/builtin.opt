@@ -1,0 +1,147 @@
+:- module builtin.
+:- use_module builtin.
+:- use_module int.
+:- use_module private_builtin.
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", builtin).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", builtin).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", builtin).
+
+:- type c_pointer.
+
+builtin.(V_3 @< V_4) :-
+    V_5 = builtin.(<) : builtin.comparison_result,
+    builtin.compare(V_5, V_3, V_4).
+
+builtin.(V_3 @=< V_4) :-
+    not (
+      V_5 = builtin.(>) : builtin.comparison_result,
+      builtin.compare(V_5, V_3, V_4)
+    ).
+
+builtin.(V_3 @> V_4) :-
+    V_5 = builtin.(>) : builtin.comparison_result,
+    builtin.compare(V_5, V_3, V_4).
+
+builtin.(V_3 @>= V_4) :-
+    not (
+      V_5 = builtin.(<) : builtin.comparison_result,
+      builtin.compare(V_5, V_3, V_4)
+    ).
+
+:- pragma promise_equivalent_clauses(pred((builtin.cc_multi_equal)/2)).
+:- pragma foreign_proc("C",
+    builtin.cc_multi_equal(X :: (builtin.di), Y :: (builtin.uo)),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail, doesnt_affect_liveness],
+"
+    Y = X;
+").
+:- pragma foreign_proc("C",
+    builtin.cc_multi_equal(X :: (builtin.in), Y :: (builtin.out)),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail, doesnt_affect_liveness],
+"
+    Y = X;
+").
+
+:- pragma foreign_proc("C",
+    builtin.copy(Value :: (builtin.in), Copy :: (builtin.uo)),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness],
+"
+    MR_save_transient_registers();
+    Copy = MR_deep_copy(Value, (MR_TypeInfo) TypeInfo_for_T, NULL, NULL);
+    MR_restore_transient_registers();
+").
+:- pragma foreign_proc("C",
+    builtin.copy(Value :: (builtin.ui), Copy :: (builtin.uo)),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness],
+"
+    MR_save_transient_registers();
+    Copy = MR_deep_copy(Value, (MR_TypeInfo) TypeInfo_for_T, NULL, NULL);
+    MR_restore_transient_registers();
+").
+
+builtin.dynamic_cast(V_3, V_4) :-
+    private_builtin.typed_unify(V_3, V_4).
+
+builtin.false :-
+    fail.
+
+builtin.ordering(V_4, V_5) = V_6 :-
+    builtin.compare(V_6, V_4, V_5).
+
+:- pragma foreign_proc("C",
+    builtin.semidet_fail,
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail, doesnt_affect_liveness],
+"
+    SUCCESS_INDICATOR = MR_FALSE;
+").
+
+builtin.semidet_false :-
+    builtin.semidet_fail.
+
+:- pragma foreign_proc("C",
+    builtin.semidet_succeed,
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail, doesnt_affect_liveness],
+"
+    SUCCESS_INDICATOR = MR_TRUE;
+").
+
+builtin.semidet_true :-
+    builtin.semidet_succeed.
+
+builtin.semipure_true :-
+    semipure private_builtin.semip.
+
+:- pragma foreign_proc("C",
+    builtin.unsafe_cast_any_to_ground(X :: (builtin.ia)) = (Y :: (builtin.out)),
+    [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail],
+"
+    Y = X;
+").
+
+:- pragma termination_info(builtin.'@<'((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(builtin.'@=<'((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(builtin.'@>'((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(builtin.'@>='((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(builtin.cc_multi_equal((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(builtin.cc_multi_equal((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(builtin.copy((builtin.ui), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(builtin.copy((builtin.in), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(builtin.dynamic_cast((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((builtin.false), infinite, cannot_loop).
+:- pragma termination_info((builtin.impure_true), finite(0, []), can_loop).
+:- pragma termination_info((builtin.init_runtime_hooks), finite(0, []), cannot_loop).
+:- pragma termination_info(builtin.ordering((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info((builtin.semidet_fail), finite(0, []), cannot_loop).
+:- pragma termination_info((builtin.semidet_false), finite(0, []), cannot_loop).
+:- pragma termination_info((builtin.semidet_succeed), finite(0, []), cannot_loop).
+:- pragma termination_info((builtin.semidet_true), finite(0, []), cannot_loop).
+:- pragma termination_info((builtin.semipure_true), finite(0, []), can_loop).
+:- pragma termination_info(builtin.unsafe_cast_any_to_ground((builtin.ia)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(builtin.unsafe_promise_unique((builtin.in)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(builtin.unsafe_promise_unique((builtin.in), (builtin.uo)), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, (builtin.(@<)), 2, 0, conditional).
+:- pragma exceptions(predicate, (builtin.(@=<)), 2, 0, conditional).
+:- pragma exceptions(predicate, (builtin.(@>)), 2, 0, conditional).
+:- pragma exceptions(predicate, (builtin.(@>=)), 2, 0, conditional).
+:- pragma exceptions(predicate, (builtin.cc_multi_equal), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.cc_multi_equal), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (builtin.copy), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.copy), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (builtin.dynamic_cast), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (builtin.false), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.impure_true), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (builtin.init_runtime_hooks), 0, 0, will_not_throw).
+:- pragma exceptions(function, (builtin.ordering), 2, 0, conditional).
+:- pragma exceptions(predicate, (builtin.semidet_fail), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.semidet_false), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.semidet_succeed), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.semidet_true), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.semipure_true), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (builtin.unsafe_cast_any_to_ground), 1, 0, will_not_throw).
+:- pragma exceptions(function, (builtin.unsafe_promise_unique), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (builtin.unsafe_promise_unique), 2, 0, will_not_throw).
