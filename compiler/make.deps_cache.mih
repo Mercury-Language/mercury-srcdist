@@ -1,0 +1,210 @@
+/*
+** Automatically generated from `make.deps_cache.m'
+** by the Mercury compiler,
+** version rotd-2023-10-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.deps_cache.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__deps_cache
+#define MR_HEADER_GUARD_make__deps_cache
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__DEPS_CACHE_DECL_GUARD
+#define MAKE__DEPS_CACHE_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_cached_computed_module_deps_0;
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_cached_direct_imports_0;
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_cached_indirect_imports_0;
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_cached_transitive_foreign_imports_0;
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_computed_module_deps_key_0;
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_computed_module_deps_label_0;
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_deps_result_1;
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_module_deps_result_0;
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_process_modules_where_0;
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_transitive_dependencies_root_0;
+
+extern const MR_TypeCtorInfo_Struct make__deps_cache__make__deps_cache__type_ctor_info_transitive_dependencies_type_0;
+
+void MR_CALL 
+make__deps_cache__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_109_97_107_101_95_95_100_101_112_115_95_99_97_99_104_101_95_95_99_111_109_112_117_116_101_100_95_109_111_100_117_108_101_95_100_101_112_115_95_108_97_98_101_108_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+  MR_Word * param_1);
+
+MR_Word MR_CALL 
+make__deps_cache__init_cached_computed_module_deps_0_f_0(void);
+
+MR_Word MR_CALL 
+make__deps_cache__init_cached_direct_imports_0_f_0(void);
+
+MR_Word MR_CALL 
+make__deps_cache__init_cached_indirect_imports_0_f_0(void);
+
+MR_Word MR_CALL 
+make__deps_cache__init_cached_transitive_foreign_imports_0_f_0(void);
+
+void MR_CALL 
+make__deps_cache____Compare____cached_computed_module_deps_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__deps_cache____Compare____cached_direct_imports_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__deps_cache____Compare____cached_indirect_imports_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__deps_cache____Compare____cached_transitive_foreign_imports_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__deps_cache____Compare____computed_module_deps_key_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__deps_cache____Compare____computed_module_deps_label_0_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+make__deps_cache____Compare____deps_result_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+make__deps_cache____Compare____module_deps_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__deps_cache____Compare____process_modules_where_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__deps_cache____Compare____transitive_dependencies_root_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__deps_cache____Compare____transitive_dependencies_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____cached_computed_module_deps_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____cached_direct_imports_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____cached_indirect_imports_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____cached_transitive_foreign_imports_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____computed_module_deps_key_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____computed_module_deps_label_0_0(void);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____deps_result_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____module_deps_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____process_modules_where_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____transitive_dependencies_root_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__deps_cache____Unify____transitive_dependencies_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__make__deps_cache__init(void);
+void mercury__make__deps_cache__init_type_tables(void);
+void mercury__make__deps_cache__init_debugger(void);
+const char *mercury__make__deps_cache__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.deps_cache
+
+// :- end_interface make.deps_cache.
