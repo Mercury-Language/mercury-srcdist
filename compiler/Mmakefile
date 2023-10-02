@@ -1,0 +1,279 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1995-2003, 2005-2012 The University of Melbourne.
+# Copyright (C) 2013-2017, 2019-2020, 2022-2023 The Mercury team.
+# This file may only be copied under the terms of the GNU General
+# Public Licence - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# Mmake - this is Mmake file for building the Mercury compiler
+
+MERCURY_DIR=..
+LINK_STATIC=yes
+include $(MERCURY_DIR)/Mmake.common
+
+# Override the settings in ../Mmake.workspace so that in debugging grades we
+# do not include mer_mdbcomp.init twice in the list of files passed to mkinit.
+#
+C2INITFLAGS = \
+	--trace-init-file $(BROWSER_DIR)/$(BROWSER_LIB_NAME).init \
+	--ssdb-init-file $(SSDB_DIR)/$(SSDB_LIB_NAME).init
+
+-include Mmake.compiler.params
+
+# Override the default rule in `mmake --use-mmc-make' that asks `mmc' to
+# create a missing optional params file for us.
+Mmake.compiler.params:
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+MAIN_TARGET=all
+
+MERCURY_MAIN_MODULES = mercury_compile
+
+PDBS = $(patsubst %,%.pdb,$(MERCURY_MAIN_MODULES))
+
+VPATH = \
+	$(LIBRARY_DIR) \
+	$(MDBCOMP_DIR) \
+	$(BROWSER_DIR) \
+	$(SSDB_DIR)
+
+#-----------------------------------------------------------------------------#
+
+MCFLAGS	     += --flags COMP_FLAGS $(CONFIG_OVERRIDE)
+
+ifeq ("$(filter csharp% java%,$(GRADE))","")
+MLLIBS       += $(THREAD_LIBS)
+else
+MLOBJS =
+endif
+
+ALL_MLLIBS    = $(MLLIBS) $(EXTRA_MLLIBS)
+MLFLAGS      += --shared
+C2INITARGS   += $(MDBCOMP_DIR)/$(MDBCOMP_LIB_NAME).init
+
+# -Xmx256m doesn't always seem to be enough memory to build the compiler.
+# This bumps up the memory when building the compiler if the javac executable
+# accepts the -J-Xmx flag, without bumping up the memory requirements in
+# general.
+ifneq ("$(findstring -J\"-Xmx,$(JAVACFLAGS))","")
+JAVACFLAGS   += -J\"-Xmx2048m\"
+endif
+
+# The default C stack size of 1Mb on Windows is not enough to bootcheck the
+# system using a Mercury compiler built in the hlc.gc grade with MinGW64 GCC,
+# Cygwin GCC or MinGW64 clang.
+# XXX For MSVC, we currently set the stack size in the ml script.
+ifneq ("$(USING_MICROSOFT_CL_COMPILER)", "yes")
+ifneq ("$(findstring x86_64-w64-mingw32,$(FULLARCH))","")
+LDFLAGS += -Wl,--stack=8388608
+endif
+ifneq ("$(findstring x86_64-pc-cygwin,$(FULLARCH))","")
+LDFLAGS += -Wl,--stack=8388608
+endif
+endif
+
+#-----------------------------------------------------------------------------#
+
+# Targets.
+
+# Specify the name of the top-level module to build.
+MC_PROG = mercury_compile
+
+# mercury_compile
+
+.PHONY: depend
+depend:		$(MC_PROG).depend
+
+$(MC_PROG).depend: Mercury.modules COMP_FLAGS
+
+# This directory contains source files for which the module
+# name doesn't match the file name, so smart recompilation
+# won't work without the Mercury.modules file.
+# XXX this .PHONY directive is required when building the source
+# distribution -- why?
+.PHONY: Mercury.modules
+Mercury.modules: COMP_FLAGS
+	$(MC) $(ALL_GRADEFLAGS) $(ALL_MCFLAGS) -f *.m
+
+.PHONY: all
+all:		mercury $(TAGS_FILE_EXISTS)
+
+.PHONY: mercury
+mercury:	mercury_compile
+
+#-----------------------------------------------------------------------------#
+
+# Tell the C# compiler where the stdlib and mdbcomp assemblies are.
+#
+ifneq ("$(filter csharp%,$(GRADE))","")
+CSCFLAGS=-lib:../library -r:mer_std.dll -lib:../mdbcomp -r:mer_mdbcomp.dll
+endif
+
+#-----------------------------------------------------------------------------#
+
+# Add some additional dependencies, so that Mmake knows to remake the
+# compiler if one of the libraries changes.
+
+ifeq ("$(filter csharp% java%,$(GRADE))","")
+$(MC_PROG): $(RUNTIME_DIR)/lib$(RT_LIB_NAME).$A
+$(MC_PROG): $(LIBRARY_DIR)/lib$(STD_LIB_NAME).$A
+$(MC_PROG): $(MDBCOMP_DIR)/lib$(MDBCOMP_LIB_NAME).$A
+$(MC_PROG): $(BROWSER_DIR)/lib$(BROWSER_LIB_NAME).$A
+$(MC_PROG): $(SSDB_DIR)/lib$(SSDB_LIB_NAME).$A
+$(MC_PROG): $(TRACE_DIR)/lib$(TRACE_LIB_NAME).$A
+$(MC_PROG): $(TRACE_DIR)/lib$(EVENTSPEC_LIB_NAME).$A
+# XXX should also depend on $(BOEHM_GC_DIR)/libgc(_prof).$A, but only
+# if in .gc(.prof) grade
+endif
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: check
+check:	$(MC_PROG).check
+
+.PHONY: ints
+int3s:	$(MC_PROG).int3s
+
+.PHONY: ints
+ints:	$(MC_PROG).ints
+
+#-----------------------------------------------------------------------------#
+
+# We need the shenanigans with .compiler_tags to avoid situations in which an
+# "mmake tags" in this directory does nothing even in the absence of a tags
+# file in this directory, because mmake uses VPATH to find ../library/tags
+# and believes it to be the tags file we are asking for.
+
+.PHONY: tags
+tags:	.compiler_tags
+
+.compiler_tags:	$(MTAGS) \
+		$(wildcard *.m) \
+		$(wildcard $(LIBRARY_DIR)/*.m) \
+		$(wildcard $(MDBCOMP_DIR)/*.m)
+	$(MTAGS) $(MTAGSFLAGS) *.m $(LIBRARY_DIR)/*.m $(MDBCOMP_DIR)/*.m
+	@touch .compiler_tags
+
+.PHONY: tags_file_exists
+tags_file_exists:
+	@if test ! -f tags; then echo making tags; \
+	$(MTAGS) $(MTAGSFLAGS) *.m $(LIBRARY_DIR)/*.m $(MDBCOMP_DIR)/*.m; \
+	touch .compiler_tags; \
+	fi
+
+$(MC_PROG).stats: source_stats.awk $($(MC_PROG).ms)
+	awk -f `vpath_find source_stats.awk` \
+		`vpath_find $($(MC_PROG).ms)` > $@
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: dates
+dates:
+	touch $($(MC_PROG).dates)
+
+#-----------------------------------------------------------------------------#
+
+# The documentation of the reason for this set of rules
+# can be found in library/Mmakefile.
+
+# Note that the cs and os targets don't build mercury_compile_init.{c,o}.
+
+.PHONY: os cs css javas opts
+ifeq ($(MMAKE_USE_MMC_MAKE),yes)
+os:	$(MC_PROG).os
+cs:	$(MC_PROG).cs
+css:	$(MC_PROG).css
+javas:	$(MC_PROG).javas
+opts:	$(MC_PROG).opts
+else
+ifneq ($(origin $(MC_PROG).os),undefined)
+os:	$($(MC_PROG).os)
+cs:	$($(MC_PROG).cs)
+css:	$($(MC_PROG).css)
+javas:	$($(MC_PROG).javas)
+opts:	$($(MC_PROG).opts)
+else
+os:
+	mmake depend; mmake os
+
+cs:
+	mmake depend; mmake cs
+
+css:
+	mmake depend; mmake css
+
+javas:
+	mmake depend; mmake javas
+
+opts:
+	mmake depend; mmake opts
+endif
+endif
+
+#-----------------------------------------------------------------------------#
+
+clean_local:
+	rm -f ../main.$O $(PREPROCESSED_M_FILES) $(PP_DATE_FILES)
+
+realclean_local:
+	rm -f tags $(MC_PROG).stats Mercury.modules \
+		COMP_FLAGS COMP_FLAGS.date mercury_compile$(EXT_FOR_EXE)
+	rm -f $(PDBS) vc*.pdb
+
+#-----------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------#
+
+# Installation targets
+
+.PHONY: install
+install: install_mercury
+
+.PHONY: install_all
+install_all: install_mercury
+
+.PHONY: install_mercury
+install_mercury: install_compiler
+
+.PHONY: install_dirs
+install_dirs:
+	-[ -d $(INSTALL_MERC_BIN_DIR) ] || mkdir -p $(INSTALL_MERC_BIN_DIR)
+
+# If the compiler is built in the Java grade then we need to install Java
+# archive containing its class files, 'mercury_compiler.jar', but
+# *not* the generated wrapper script 'mercury_compile' from this directory.
+# The latter will set the CLASSPATH variable relative to this directory and
+# won't work when moved to the installation directory.  Instead we use the
+# version of the wrapper script from the scripts directory and leave the
+# one here alone.
+#
+# Similarly, for compilers built in the C# grade we need to install the
+# executable assembly, 'mercury_compile.exe', but *not* the generated
+# wrapper script 'mercury_compile' from this directory.  As with the Java grade,
+# we use the version of the wrapper script from the scripts directory.
+# XXX This covers Mono but not actual .NET; in the latter case we don't need
+# a wrapper script at all.
+#
+ifeq ($(findstring java,$(GRADE)),java)
+INSTALL_PROGRAM=mercury_compile.jar
+else ifeq ($(findstring csharp,$(GRADE)),csharp)
+INSTALL_PROGRAM=mercury_compile.exe
+else
+INSTALL_PROGRAM=mercury_compile$(EXT_FOR_EXE)
+endif
+
+.PHONY: install_compiler
+install_compiler: mercury_compile install_dirs
+	cp `vpath_find $(INSTALL_PROGRAM)` $(INSTALL_MERC_BIN_DIR)
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: uninstall
+uninstall:
+	-rm -f $(INSTALL_MERC_BIN_DIR)/$(INSTALL_PROGRAM)
+
+#-----------------------------------------------------------------------------#

@@ -1,0 +1,5 @@
+:- module (ml_backend.mlds_to_c_global).
+:- interface.
+:- type maybe_blank_line_between_defns
+    --->    no_blank_line_between_defns 
+    ;       blank_line_between_defns .
