@@ -1,0 +1,5 @@
+:- module (parse_tree.parse_tree_out_cons_id).
+:- interface.
+:- type needs_brackets
+    --->    needs_brackets 
+    ;       does_not_need_brackets .
